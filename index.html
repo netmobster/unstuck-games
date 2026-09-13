@@ -132,6 +132,29 @@ body[data-mode="stuck"] .game .name{font-family:'Inter',sans-serif!important;fon
 .game.live .name{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(56px,8vw,96px);letter-spacing:.18em}
 .game.live .hook{max-width:44ch;font-weight:400;color:rgba(230,240,240,.82)}
 .game.live .play{display:inline-block;align-self:flex-start;margin-top:6px;background:#5dcaa5;color:#080d12;border-radius:999px;padding:14px 34px;font-family:'DM Sans',var(--fb);font-weight:700;font-size:13px;letter-spacing:.3em;text-transform:uppercase}
+/* early access: playable today somewhere else (Elsewhere → Claude Code) */
+.game.live.early{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:36px;align-items:center;min-height:0;background:#1c120b;color:#f3e6d3;border-color:#1c120b}
+.game.live.early:hover{color:#f3e6d3;box-shadow:0 30px 60px rgba(28,18,11,.45)}
+.game.live.early .copy{display:flex;flex-direction:column;gap:14px;min-width:0}
+.game.live.early .soon{background:transparent;color:#f08a2c;border-color:#f08a2c}
+.game.live.early .name{font-size:clamp(48px,6.5vw,84px);letter-spacing:.14em;color:#f3e6d3}
+.game.live.early .hook{color:rgba(243,230,211,.8)}
+.game.live.early .play{background:#f08a2c;color:#1c120b}
+.game.live.early .foot{color:#f08a2c;opacity:.85}
+.board{position:relative;border:1px solid rgba(240,138,44,.28);background:rgba(10,6,3,.55);padding:26px 24px 22px;font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:13px;line-height:1.9;color:#f3e6d3;margin-top:10px}
+.board-tag{position:absolute;top:-10px;right:18px;background:#1c120b;color:#f08a2c;font-size:10px;letter-spacing:.3em;padding:0 8px}
+.board .b-title{font-weight:700}
+.board .b-dim{color:rgba(243,230,211,.55)}
+.board .b-row{display:grid;grid-template-columns:minmax(0,1.7fr) .9fr auto 3.2em 5.2em;gap:10px;white-space:nowrap}
+.board .b-row:first-of-type{margin-top:10px}
+.board .b-name{font-weight:700;overflow:hidden;text-overflow:ellipsis}
+.board .b-bar{color:#f08a2c;letter-spacing:1px}
+.board .b-bar.unknown{color:rgba(243,230,211,.22)}
+.board .b-eyes{color:#f08a2c;font-weight:700}
+.board .b-head{margin-top:12px;color:#f08a2c;font-weight:700}
+@media (max-width:860px){.game.live.early{grid-template-columns:1fr}.board .b-row{grid-template-columns:minmax(0,1.6fr) auto 3.2em}.board .b-row>span:nth-child(2),.board .b-row>span:nth-child(5){display:none}}
+body[data-mode="stuck"] .game.live .board{display:none}
+body[data-mode="stuck"] .game.live.early{grid-template-columns:1fr}
 body[data-mode="stuck"] .game.live iframe,body[data-mode="stuck"] .game.live .veil,body[data-mode="stuck"] .game.live .mark svg{display:none}
 .marchwrap{overflow:hidden;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:14px 0}
 .march{display:flex;gap:8px;width:max-content;animation:march .5s linear infinite}
@@ -311,8 +334,8 @@ const COPY = {
     subYesHead: "You get", subNoHead: "Never",
     subPerks: ["No ads, anywhere", "God Mode, always on", "Unrestricted progression", "All unlocks", "Bonus & experimental modes"],
     subNots: ["Pay-to-win", "Premium currency", "Energy or lives", "Pay-to-continue", "A crippled free version"],
-    gamesKicker: "ONE PLAYABLE · TEN ON THE WAY", gamesTitle: "Games that got out.",
-    gamesSub: "Orbis got out first. The rest are working titles with real hooks: four originals, three corpses worth resurrecting, three clean mechanical specimens. Each one ships when it's fun, and not one minute before.", soon: "COMING SOON", live: "PLAY NOW",
+    gamesKicker: "ONE PLAYABLE · ONE EARLY ACCESS · TEN ON THE WAY", gamesTitle: "Games that got out.",
+    gamesSub: "Orbis got out first. Elsewhere is out, just not in your browser yet. The rest are working titles with real hooks: four originals, three corpses worth resurrecting, three clean mechanical specimens. Each one ships when it's fun, and not one minute before.", soon: "COMING SOON", live: "PLAY NOW", early: "EARLY ACCESS",
     manKicker: "THE FOUNDING PRINCIPLE",
     manifesto: ["Find something fun.", "Make it ours.", "Make it good.", "Don't bullshit the player.", "Ship another one."],
     faqTitle: "Questions you should be asking.",
@@ -355,7 +378,7 @@ const COPY = {
     subPerks: ["2,000 Gems (+500 bonus!)", "VIP badge", "Remove ads (some ads)", "Energy refill ×3", "Loot crate keys"],
     subNots: ["Gems do not refund", "Passes expire", "VIP requires renewal", "Ads return after 7 days", "Offer may vary by region"],
     gamesKicker: "PORTFOLIO", gamesTitle: "Our Diversified Title Pipeline",
-    gamesSub: "Proven genres. Proven monetization. LiveOps-ready from day one.", soon: "PRE-REGISTER", live: "INSTALL NOW",
+    gamesSub: "Proven genres. Proven monetization. LiveOps-ready from day one.", soon: "PRE-REGISTER", live: "INSTALL NOW", early: "BETA WAITLIST",
     manKicker: "MISSION STATEMENT",
     manifesto: ["Synergize engagement.", "Optimize the funnel.", "Maximize LTV.", "Monetize the whale.", "Ship the season pass."],
     faqTitle: "Frequently Asked Questions",
@@ -375,8 +398,10 @@ const COPY = {
   }
 };
 
+// Catalog status: play = runs in the browser here · early = playable today on another surface · (GAMES) = coming soon
 const LIVE = [
-  { name: "ORBIS", stuckName: "Orbit Merge: Idle Galaxy Tycoon", href: "orbis/", genre: "AMBIENT · ORBITAL ANT FARM", hook: "A little universe you watch evolve. Two dials change the conditions, never the outcome. Leave it running. Fall asleep to it.", foot: "DNA: 90s FISH SCREENSAVER × IDLE ORBITER · MADE TO FALL ASLEEP TO" }
+  { kind: "play", name: "ORBIS", stuckName: "Orbit Merge: Idle Galaxy Tycoon", href: "orbis/", genre: "AMBIENT · ORBITAL ANT FARM", hook: "A little universe you watch evolve. Two dials change the conditions, never the outcome. Leave it running. Fall asleep to it.", play: "Play", foot: "DNA: 90s FISH SCREENSAVER × IDLE ORBITER · MADE TO FALL ASLEEP TO" },
+  { kind: "early", name: "ELSEWHERE", stuckName: "Kingdom Raid: Idle Lords", href: "https://netmobster.github.io/elsewhere-idle-cc/", genre: "IDLE RPG · YOUR ABSENCE IS THE MECHANIC", hook: "Two minutes a day. Three neighbours who each want something, and one set of eyes. Type anything and it becomes a real order, rolled by a deterministic engine. You will lose. The interesting part is how.", play: "Visit Elsewhere ↗", foot: "PLAYED IN CLAUDE CODE TODAY · BROWSER VERSION ON THE WAY" }
 ];
 
 const ORBIS_MARK = `<svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><ellipse cx="50" cy="50" rx="42" ry="22" stroke="currentColor" stroke-opacity="0.35" stroke-width="0.8"/><circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="1.2"/><circle cx="50" cy="50" r="9" fill="currentColor" fill-opacity="0.15"/><g class="spin"><circle cx="92" cy="50" r="4" fill="currentColor"/><circle cx="92" cy="50" r="6.5" fill="currentColor" fill-opacity="0.22"/></g></svg>`;
@@ -413,10 +438,10 @@ function render() {
   LIVE.forEach((g, i) => {
     const card = $$('#liveGrid .game.live')[i];
     card.querySelector('.genre').textContent = stuck() ? 'HYPER-CASUAL · LIVEOPS' : g.genre;
-    card.querySelector('.soon').textContent = t.live;
+    card.querySelector('.soon').textContent = g.kind === 'early' ? t.early : t.live;
     card.querySelector('.name').textContent = stuck() ? g.stuckName : g.name;
     card.querySelector('.hook').textContent = stuck() ? 'Free to play. In-app purchases from $0.99 to $99.99. Contains ads. Energy required.' : g.hook;
-    card.querySelector('.play').textContent = stuck() ? 'Install for rewards' : 'Play';
+    card.querySelector('.play').textContent = stuck() ? 'Install for rewards' : g.play;
     card.querySelector('.foot').textContent = stuck() ? 'NOW WITH 40% MORE LIVEOPS' : g.foot;
   });
   $('#gameGrid').innerHTML = GAMES.map(g => `
@@ -470,8 +495,29 @@ function finishAd() {
 }
 
 $('#march').innerHTML = '<div></div>'.repeat(80);
-// the live card runs the real game behind itself (?embed = no UI, no sound)
-$('#liveGrid').innerHTML = LIVE.map(g => `
+// play cards run the real game behind themselves (?embed = no UI, no sound);
+// early-access cards show the game's own board and link out
+$('#liveGrid').innerHTML = LIVE.map(g => g.kind === 'early' ? `
+  <a class="game live early" href="${g.href}" target="_blank" rel="noopener">
+    <div class="copy">
+      <div class="top"><span class="genre"></span><span class="soon"></span></div>
+      <div class="name"></div>
+      <p class="hook"></p>
+      <span class="play"></span>
+      <div class="foot"></div>
+    </div>
+    <div class="board" aria-hidden="true">
+      <div class="board-tag">THE BOARD</div>
+      <div class="b-title">OSSEN'S REACH — the dawn watch</div>
+      <div class="b-dim">124 coin · 10 hands · queue 0/5</div>
+      <div class="b-row"><span class="b-name">THE SUNDERED CHARTER</span><span class="b-dim">builders</span><span class="b-bar" id="elsewhereBar"></span><span id="elsewhereNum">8/10</span><span class="b-eyes">EYES ON</span></div>
+      <div class="b-row"><span class="b-name">THE LONG HAND</span><span class="b-dim">diggers</span><span class="b-bar unknown">░░░░░░░░░░</span><span>?</span><span class="b-dim">no eyes</span></div>
+      <div class="b-row"><span class="b-name">THE NINTH WATCH</span><span class="b-dim">raiders</span><span class="b-bar unknown">░░░░░░░░░░</span><span>?</span><span class="b-dim">no eyes</span></div>
+      <div class="b-head">WHAT IS COMING</div>
+      <div>The Sundered Charter is about a day away.</div>
+      <div class="b-dim">Those ░░░ are not zero. They are unknown.</div>
+    </div>
+  </a>` : `
   <a class="game live" href="${g.href}">
     <iframe src="${g.href}?embed" title="${esc(g.name)} running live" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
     <div class="veil"></div>
@@ -481,6 +527,19 @@ $('#liveGrid').innerHTML = LIVE.map(g => `
     <span class="play"></span>
     <div class="foot"></div>
   </a>`).join('');
+// Elsewhere's watched bar fills in "real time", then the world moves on without you
+{
+  let filled = 5;
+  const tickBar = () => {
+    const bar = $('#elsewhereBar'), num = $('#elsewhereNum');
+    if (!bar) return;
+    bar.textContent = '█'.repeat(filled) + '░'.repeat(10 - filled);
+    num.textContent = `${filled}/10`;
+    filled = filled >= 10 ? 4 : filled + 1;
+  };
+  tickBar();
+  setInterval(tickBar, 2600);
+}
 $('#tape').onclick = () => setMode(stuck() ? 'unstuck' : 'stuck');
 $('#btnUnstuck').onclick = () => setMode('unstuck');
 $('#btnStuck').onclick = () => setMode('stuck');
