@@ -1,0 +1,8 @@
+{
+  "name": "unstuck-games",
+  "private": true,
+  "workspaces": ["games/*"],
+  "scripts": {
+    "test": "bun test games"
+  }
+}
