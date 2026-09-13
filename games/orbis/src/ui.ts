@@ -111,7 +111,7 @@ const SPLASH_HTML = `
       <svg class="heart" width="11" height="10" viewBox="0 0 24 22" fill="currentColor" aria-label="love" role="img">
         <path d="M12 21s-7.5-4.6-10-9.5C0.5 8 2 3.5 6 3c2.4-.3 4.4 1 6 3 1.6-2 3.6-3.3 6-3 4 .5 5.5 5 4 8.5C19.5 16.4 12 21 12 21z" />
       </svg>
-      by <a href="https://wtfisecho.com/antigravity" target="_blank" rel="noopener noreferrer">Jeremy Wright</a>
+      by <a href="https://echofiles.substack.com" target="_blank" rel="noopener noreferrer">Jeremy Wright</a>
     </div>
   </div>`;
 
