@@ -99,7 +99,7 @@ const SPLASH_HTML = `
 
     <section class="cta">
       <h2 class="cta-heading fade-up d8">Live in your <em>world</em>.</h2>
-      <button class="begin fade-up d8">Begin</button>
+      <button class="begin fade-up d8">Reveal the world</button>
       <p class="micro fade-up d8">No install <span>◦</span> No account <span>◦</span> Best with sound</p>
     </section>
   </main>
@@ -116,15 +116,24 @@ const SPLASH_HTML = `
   </div>`;
 
 export function mountUI(game: Game, root: HTMLElement) {
-  // ---- splash (original Orbis homepage content, over the live world; Begin = audio-unlock gesture) ----
+  // ---- splash over the live world. "Reveal the world" = audio-unlock gesture + the reveal:
+  // splash dissolves, a caption admits the world was running all along, then the controls arrive.
   const title = el("div", "splash");
   title.innerHTML = SPLASH_HTML;
   root.appendChild(title);
   title.querySelector<HTMLButtonElement>(".begin")!.onclick = () => {
     game.audio.start();
     title.classList.add("gone");
-    setTimeout(() => title.remove(), 900);
+    setTimeout(() => title.remove(), 1800);
+    const caption = el("div", "reveal-caption", "It was already running. You were watching it the whole time.");
+    root.appendChild(caption);
+    setTimeout(() => caption.remove(), 6000);
     dock.classList.remove("hidden");
+    requestAnimationFrame(() => requestAnimationFrame(() => dock.classList.add("shown")));
+    // after the reveal, idle fades go back to their normal quick timing
+    setTimeout(() => dock.classList.add("settled"), 2800);
+    // let the controls be seen after they arrive before the normal idle fade applies
+    visibleUntil = Date.now() + 10000;
     wake();
   };
 
@@ -355,12 +364,14 @@ export function mountUI(game: Game, root: HTMLElement) {
 
   // ---- idle fade + breathe ----
   let idleTimer = 0;
+  /** controls stay visible at least until this time (set by the reveal) */
+  let visibleUntil = 0;
   const wake = () => {
     document.body.classList.remove("idle");
     clearTimeout(idleTimer);
     idleTimer = window.setTimeout(() => {
       if (!dock.matches(":hover") && !godPanel.matches(":hover")) document.body.classList.add("idle");
-    }, 4000);
+    }, Math.max(4000, visibleUntil - Date.now()));
   };
   window.addEventListener("pointermove", wake, { passive: true });
   window.addEventListener("pointerdown", () => {
