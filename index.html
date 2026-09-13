@@ -7,7 +7,7 @@
 <title>Unstuck Games — Don't bullshit the player.</title>
 <meta name="description" content="Small games. No traps. A one-person game studio, plus robots.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito+Sans:wght@400;700;800&family=Inter:wght@400;600;700&family=Bagel+Fat+One&family=Special+Elite&family=Pirata+One&family=Bangers&family=Rammetto+One&family=MedievalSharp&family=Sniglet:wght@800&family=Bowlby+One&family=Shrikhand&family=Courier+Prime:wght@700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito+Sans:wght@400;700;800&family=Inter:wght@400;600;700&family=Bagel+Fat+One&family=Special+Elite&family=Pirata+One&family=Bangers&family=Rammetto+One&family=MedievalSharp&family=Sniglet:wght@800&family=Bowlby+One&family=Shrikhand&family=Courier+Prime:wght@700&family=Cormorant+Garamond:wght@300&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f2efe6;--card:#faf8f2;--ink:#16163a;--muted:#565672;--accent:#2b34d6;--acid:#e9f257;--onAccent:#f2efe6;--r:28px;--rs:16px;--pill:999px;--fh:'Luckiest Guy',cursive;--fb:'Nunito Sans',sans-serif;--tapeA:#e9f257;--tapeB:#16163a;--hw:400;--hls:1px}
 body[data-mode="stuck"]{--bg:#eceef1;--card:#fff;--ink:#1f2937;--muted:#6b7280;--accent:#2563eb;--acid:#d1d5db;--onAccent:#fff;--r:4px;--rs:2px;--pill:4px;--fh:'Inter',sans-serif;--fb:'Inter',sans-serif;--tapeA:#ef4444;--tapeB:#111827;--hw:700;--hls:-0.5px}
@@ -117,6 +117,22 @@ body[data-mode="stuck"] .game{filter:grayscale(1);background:#fff!important;colo
 body[data-mode="stuck"] .game .name{font-family:'Inter',sans-serif!important;font-size:26px!important;letter-spacing:-.5px!important;font-weight:700}
 .game .hook{font-size:16px;line-height:1.45;font-weight:700;text-wrap:pretty}
 .game .foot{margin-top:auto;font-size:13px;font-weight:800;letter-spacing:1px;opacity:.7}
+.game.upcoming{filter:grayscale(1);opacity:.5}
+.game.upcoming:hover{transform:none;box-shadow:none;opacity:.7}
+/* live game: featured, full width, running the actual game behind the card */
+.game.live{grid-column:1/-1;min-height:420px;background:#080d12;color:#e6f0f0;text-decoration:none;cursor:pointer}
+.game.live:hover{color:#e6f0f0;transform:translateY(-6px);box-shadow:0 30px 60px rgba(8,13,18,.45)}
+.game.live iframe{position:absolute;inset:0;width:100%;height:100%;border:0;pointer-events:none;opacity:.9}
+.game.live .veil{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,13,18,.88) 0%,rgba(8,13,18,.55) 45%,rgba(8,13,18,0) 80%);pointer-events:none}
+.game.live>*:not(iframe):not(.veil){position:relative}
+.game.live .soon{background:#5dcaa5;color:#080d12;border-color:#5dcaa5}
+.game.live .mark{display:flex;align-items:center;gap:18px;margin-top:auto;color:#5dcaa5}
+.game.live .mark svg{width:72px;height:72px;filter:drop-shadow(0 0 12px rgba(93,202,165,.5))}
+.game.live .mark svg .spin{transform-origin:50% 50%;animation:spin 24s linear infinite}
+.game.live .name{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(56px,8vw,96px);letter-spacing:.18em}
+.game.live .hook{max-width:44ch;font-weight:400;color:rgba(230,240,240,.82)}
+.game.live .play{display:inline-block;align-self:flex-start;margin-top:6px;background:#5dcaa5;color:#080d12;border-radius:999px;padding:14px 34px;font-family:'DM Sans',var(--fb);font-weight:700;font-size:13px;letter-spacing:.3em;text-transform:uppercase}
+body[data-mode="stuck"] .game.live iframe,body[data-mode="stuck"] .game.live .veil,body[data-mode="stuck"] .game.live .mark svg{display:none}
 .marchwrap{overflow:hidden;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:14px 0}
 .march{display:flex;gap:8px;width:max-content;animation:march .5s linear infinite}
 .march div{width:16px;height:16px;border-radius:4px 4px 2px 2px;background:var(--ink);flex:none}
@@ -238,6 +254,7 @@ footer .fine{font-size:14px;font-weight:700;color:var(--muted);text-align:right;
 
   <section id="games" class="games">
     <div class="head"><div class="kick" data-t="gamesKicker"></div><h2 data-t="gamesTitle"></h2><p data-t="gamesSub"></p></div>
+    <div class="grid2" id="liveGrid"></div>
     <div class="grid2" id="gameGrid"></div>
     <div class="marchwrap"><div class="march" id="march" data-anim></div></div>
   </section>
@@ -294,8 +311,8 @@ const COPY = {
     subYesHead: "You get", subNoHead: "Never",
     subPerks: ["No ads, anywhere", "God Mode, always on", "Unrestricted progression", "All unlocks", "Bonus & experimental modes"],
     subNots: ["Pay-to-win", "Premium currency", "Energy or lives", "Pay-to-continue", "A crippled free version"],
-    gamesKicker: "COMING SOON · TEN CONCEPTS", gamesTitle: "Games that got out.",
-    gamesSub: "Working titles. Real hooks. Four originals, three corpses worth resurrecting, three clean mechanical specimens. Each one ships when it's fun, and not one minute before.", soon: "COMING SOON",
+    gamesKicker: "ONE PLAYABLE · TEN ON THE WAY", gamesTitle: "Games that got out.",
+    gamesSub: "Orbis got out first. The rest are working titles with real hooks: four originals, three corpses worth resurrecting, three clean mechanical specimens. Each one ships when it's fun, and not one minute before.", soon: "COMING SOON", live: "PLAY NOW",
     manKicker: "THE FOUNDING PRINCIPLE",
     manifesto: ["Find something fun.", "Make it ours.", "Make it good.", "Don't bullshit the player.", "Ship another one."],
     faqTitle: "Questions you should be asking.",
@@ -338,7 +355,7 @@ const COPY = {
     subPerks: ["2,000 Gems (+500 bonus!)", "VIP badge", "Remove ads (some ads)", "Energy refill ×3", "Loot crate keys"],
     subNots: ["Gems do not refund", "Passes expire", "VIP requires renewal", "Ads return after 7 days", "Offer may vary by region"],
     gamesKicker: "PORTFOLIO", gamesTitle: "Our Diversified Title Pipeline",
-    gamesSub: "Proven genres. Proven monetization. LiveOps-ready from day one.", soon: "PRE-REGISTER",
+    gamesSub: "Proven genres. Proven monetization. LiveOps-ready from day one.", soon: "PRE-REGISTER", live: "INSTALL NOW",
     manKicker: "MISSION STATEMENT",
     manifesto: ["Synergize engagement.", "Optimize the funnel.", "Maximize LTV.", "Monetize the whale.", "Ship the season pass."],
     faqTitle: "Frequently Asked Questions",
@@ -357,6 +374,12 @@ const COPY = {
     footer: "© Unstuck Interactive Entertainment Group, Inc. All rights reserved. Terms apply. Results not typical."
   }
 };
+
+const LIVE = [
+  { name: "ORBIS", stuckName: "Orbit Merge: Idle Galaxy Tycoon", href: "orbis/", genre: "AMBIENT · ORBITAL ANT FARM", hook: "A little universe you watch evolve. Two dials change the conditions, never the outcome. Leave it running. Fall asleep to it.", foot: "DNA: 90s FISH SCREENSAVER × IDLE ORBITER · MADE TO FALL ASLEEP TO" }
+];
+
+const ORBIS_MARK = `<svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><ellipse cx="50" cy="50" rx="42" ry="22" stroke="currentColor" stroke-opacity="0.35" stroke-width="0.8"/><circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="1.2"/><circle cx="50" cy="50" r="9" fill="currentColor" fill-opacity="0.15"/><g class="spin"><circle cx="92" cy="50" r="4" fill="currentColor"/><circle cx="92" cy="50" r="6.5" fill="currentColor" fill-opacity="0.22"/></g></svg>`;
 
 const GAMES = [
   { name: "Slimeball", stuckName: "Slime Merge Tycoon 3D", font: "'Bagel Fat One', cursive", size: "40px", ls: "0", bg: "#62d26f", fg: "#16163a", genre: "PHYSICS TOY", hook: "Bounce a slime through a city. Absorb everything. Regret nothing. Get enormous.", sw: "64px", sh: "56px", sr: "50% 50% 46% 46%", sc: "#16163a", sb: "none", anim: "squash 1.3s ease-in-out infinite" },
@@ -386,8 +409,18 @@ function render() {
   $('#adRules').innerHTML = t.adRules.map(r => `<span>${esc(r)}</span>`).join('');
   $('#subPerks').innerHTML = t.subPerks.map(p => `<div class="item"><i>✓</i>${esc(p)}</div>`).join('');
   $('#subNots').innerHTML = t.subNots.map(n => `<div class="item no"><i>×</i>${esc(n)}</div>`).join('');
+  // live cards are built once (their iframe runs the real game); render() only updates their text
+  LIVE.forEach((g, i) => {
+    const card = $$('#liveGrid .game.live')[i];
+    card.querySelector('.genre').textContent = stuck() ? 'HYPER-CASUAL · LIVEOPS' : g.genre;
+    card.querySelector('.soon').textContent = t.live;
+    card.querySelector('.name').textContent = stuck() ? g.stuckName : g.name;
+    card.querySelector('.hook').textContent = stuck() ? 'Free to play. In-app purchases from $0.99 to $99.99. Contains ads. Energy required.' : g.hook;
+    card.querySelector('.play').textContent = stuck() ? 'Install for rewards' : 'Play';
+    card.querySelector('.foot').textContent = stuck() ? 'NOW WITH 40% MORE LIVEOPS' : g.foot;
+  });
   $('#gameGrid').innerHTML = GAMES.map(g => `
-    <div class="game" style="background:${g.bg};color:${g.fg}">
+    <div class="game upcoming" style="background:${g.bg};color:${g.fg}">
       <div class="top"><span class="genre">${esc(stuck() ? 'HYPER-CASUAL · LIVEOPS' : g.genre)}</span><span class="soon">${esc(t.soon)}</span></div>
       <div class="stage"><div data-anim style="width:${g.sw};height:${g.sh};border-radius:${g.sr};background:${g.sc};border:${g.sb};animation:${g.anim}"></div></div>
       <div class="name" style="font-family:${g.font};font-size:${g.size};letter-spacing:${g.ls}">${esc(stuck() ? g.stuckName : g.name)}</div>
@@ -437,6 +470,17 @@ function finishAd() {
 }
 
 $('#march').innerHTML = '<div></div>'.repeat(80);
+// the live card runs the real game behind itself (?embed = no UI, no sound)
+$('#liveGrid').innerHTML = LIVE.map(g => `
+  <a class="game live" href="${g.href}">
+    <iframe src="${g.href}?embed" title="${esc(g.name)} running live" tabindex="-1" aria-hidden="true" loading="lazy"></iframe>
+    <div class="veil"></div>
+    <div class="top"><span class="genre"></span><span class="soon"></span></div>
+    <div class="mark">${ORBIS_MARK}<div class="name"></div></div>
+    <p class="hook"></p>
+    <span class="play"></span>
+    <div class="foot"></div>
+  </a>`).join('');
 $('#tape').onclick = () => setMode(stuck() ? 'unstuck' : 'stuck');
 $('#btnUnstuck').onclick = () => setMode('unstuck');
 $('#btnStuck').onclick = () => setMode('stuck');

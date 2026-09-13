@@ -51,15 +51,19 @@ export class OrbisAudio {
   private buffers: Partial<Record<SfxKey, AudioBuffer>> = {};
   private voices: Record<SfxKey, Voice[]> = { merge: [], collision: [] };
   private lastTrigger: Record<SfxKey, number> = { merge: 0, collision: 0 };
-  private music: HTMLAudioElement;
+  private music: HTMLAudioElement | null = null;
   musicVolume = 0.2;
   sfxVolume = 0.3;
   musicMuted = false;
   sfxMuted = false;
   started = false;
 
-  constructor(private base = "audio/") {
-    this.music = new Audio(`${base}music.mp3`);
+  constructor(private base = "audio/") {}
+
+  /** Begin buffering the music (10MB) so Begin plays promptly. Never called in ?embed. */
+  prime() {
+    if (this.music) return;
+    this.music = new Audio(`${this.base}music.mp3`);
     this.music.loop = true;
     this.music.preload = "auto";
     this.applyVolumes();
@@ -69,7 +73,8 @@ export class OrbisAudio {
   async start() {
     if (this.started) return;
     this.started = true;
-    this.music.play().catch(() => {});
+    this.prime();
+    this.music!.play().catch(() => {});
     this.ctx = new AudioContext();
     this.sfxBus = this.ctx.createGain();
     this.sfxBus.connect(this.ctx.destination);
@@ -85,7 +90,7 @@ export class OrbisAudio {
   }
 
   applyVolumes() {
-    this.music.volume = this.musicMuted ? 0 : this.musicVolume * MUSIC_MAX;
+    if (this.music) this.music.volume = this.musicMuted ? 0 : this.musicVolume * MUSIC_MAX;
     if (this.sfxBus && this.ctx) {
       this.sfxBus.gain.setTargetAtTime(this.sfxMuted ? 0 : this.sfxVolume * SFX_MAX, this.ctx.currentTime, 0.05);
     }
