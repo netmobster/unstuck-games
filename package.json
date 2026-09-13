@@ -1,0 +1,9 @@
+{
+  "name": "unstuck-games",
+  "private": true,
+  "workspaces": ["games/*"],
+  "scripts": {
+    "test": "bun test games",
+    "build": "bun run --cwd games/orbis build"
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "name": "@unstuck/orbis",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "sweep": "bun run scripts/sweep.ts"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.8.3",
+    "vite": "^7"
+  }
+}
