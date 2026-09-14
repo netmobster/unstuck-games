@@ -47,6 +47,7 @@ h2 .script{letter-spacing:0}
 nav{background:rgba(28,32,38,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--edge)}
 nav .wrap{padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
 .brand{display:flex;align-items:center;gap:12px}
+.alpha{background:var(--pink);color:#1c2026;font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:10px;letter-spacing:3px;padding:3px 8px;transform:rotate(-4deg);white-space:nowrap}
 .lock{display:flex;align-items:baseline;gap:6px}
 .lock .strike{font-size:16px;text-decoration-thickness:2px}
 .lock .script{font-size:19px}
@@ -173,6 +174,7 @@ footer .fine{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing
     <a href="#top" class="brand">
       <svg width="34" height="34" viewBox="0 0 120 120"><ellipse cx="60" cy="62" rx="34" ry="46" fill="#e6e9ee"/><ellipse cx="60" cy="48" rx="16" ry="18" fill="#1c2026"/><g transform="rotate(-18 96 40)"><rect x="88" y="20" width="16" height="42" rx="3" fill="#ff5fa2"/><rect x="84" y="14" width="24" height="8" rx="2" fill="#ff5fa2"/></g></svg>
       <span class="lock"><span class="strike">GOOD</span><span class="script tilt">Bad</span><b>MONKEYS</b></span>
+      <span class="alpha">ALPHA</span>
     </a>
     <div class="links">
       <a href="#archive">ARCHIVE</a><a href="#parts">PARTS</a><a href="#tone">VS</a><a href="#stops">STOPS</a><a href="#god">GOD MODE</a>
@@ -188,7 +190,7 @@ footer .fine{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing
       <h1><span class="row"><span class="strike">GOOD</span><span class="script tilt">Bad</span></span><span class="word">MONKEYS</span></h1>
       <p class="tag">Not always better. <span class="script">Always weirder.</span></p>
       <p class="lead">You're Jame, a mechanic from Alberta. You land, read what she did while you were gone, fix a planet's problem with whatever she's bolted on, say one thing on your way out, and leave. She takes it literally.</p>
-      <div class="ctas"><a href="#archive" class="btn">Read her file</a><button class="btn ghost" id="notYet">Play the prototype</button></div>
+      <div class="ctas"><a href="#archive" class="btn">Read her file</a><a href="play/" class="btn ghost" id="playAlpha">Play the alpha →</a></div>
     </div>
     <div class="orbit">
       <div class="ring"></div><div class="ring2"><i></i></div>
@@ -358,7 +360,6 @@ function watchAd(){
 function say(m){const el=$('#toast');el.textContent=m;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),3600)}
 $('#reroll').onclick=()=>{smudge();seed=(seed*1103515245+12345)>>>0;entry()};
 $('#gBtn').onclick=watchAd;
-$('#notYet').onclick=()=>{smudge(.08);say("Not yet. She's still out there. Prototype is a throwaway; the real one ships when it's fun.")};
 tape();entry();renderGod();
 </script>
 </body>

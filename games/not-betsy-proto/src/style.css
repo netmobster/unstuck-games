@@ -10,6 +10,14 @@
 .order .log-here{display:flex;flex-direction:column;gap:8px}
 .clockline{font-family:var(--fm);font-size:11px;letter-spacing:1px;color:var(--soft)}
 
+/* Alpha badge: tape-on-the-bench, bottom right, links back to CD's hero page */
+.alpha-badge{position:fixed;right:14px;bottom:14px;z-index:60;background:var(--pink);color:var(--ink);
+  font-family:var(--fm);font-weight:600;font-size:11px;letter-spacing:3px;padding:7px 12px;text-decoration:none;
+  transform:rotate(-3deg);box-shadow:0 6px 16px rgba(0,0,0,.35);display:flex;gap:8px;align-items:baseline}
+.alpha-badge small{font-weight:400;font-size:9px;letter-spacing:1px}
+.alpha-badge:hover{transform:rotate(-1deg) translateY(-2px)}
+@media (max-width:520px){.alpha-badge small{display:none}}
+
 /* Playtest drawer: replaces CD's dev panel. Not part of the game. */
 .debug{position:fixed;left:14px;bottom:14px;z-index:60;background:rgba(0,0,0,.78);color:#fff;
   backdrop-filter:blur(6px);border-radius:10px;padding:10px 14px;font-family:var(--fm);font-size:11px;

@@ -5,6 +5,7 @@
   "scripts": {
     "content": "bun run scripts/make-content.ts",
     "dev": "vite",
+    "build": "vite build",
     "smoke": "bun run scripts/smoke.ts",
     "causal": "bun run scripts/causal.ts",
     "typecheck": "tsc --noEmit"
