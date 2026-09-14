@@ -81,9 +81,16 @@ export type Run = {
   log: LogEntry[];
   returnLog: LogEntry[]; // what she logged during the last absence
   landLogIndex: number; // where this stop's landing entries start in log
+  landEndIndex: number; // where landing + customs end and Jame's fix attempts begin
   ledger: { t: string; kind: string; detail: unknown }[];
   verdict: null | { score: number; band: "archived" | "deferred" | "unclassifiable"; classification: string; why: Why; carry: Mutation | null };
   history: string[][]; // mutation ids present at each landing — for divergence
+  /** where each part came from, in her words (workbench hang tag) */
+  origins: Record<string, string>;
+  /** parts the Prestige took, and when (dashed on the hull; OPTIMIZED on the report) */
+  tidied: { id: string; name: string; category: string; absurdity: number; stop: number; day: number }[];
+  /** set for one encounter when Jame's last words boosted it; her next line ends "You said." */
+  echo: boolean;
 };
 
 const clamp = (v: number, lo: number, hi: number) => Math.max(lo, Math.min(hi, v));
@@ -98,7 +105,8 @@ export function newRun(seed: number, carried: Mutation | null = null, opts: RunO
     fixed: [], fixesLeft: 2, goal: null, hand: [], words: null,
     fronts: { vorian: 0, tubs: 0, synthesis: 0 },
     tags: {}, seen: { mutations: new Set(), planets: new Set(), words: new Set() },
-    log: [], returnLog: [], landLogIndex: 0, ledger: [], verdict: null, history: [],
+    log: [], returnLog: [], landLogIndex: 0, landEndIndex: 0, ledger: [], verdict: null, history: [],
+    origins: {}, tidied: [], echo: false,
   };
   const pool = [...CONTENT.planets];
   while (run.route.length < STOPS) run.route.push(pool.splice(rng.int(pool.length), 1)[0]);
@@ -106,6 +114,7 @@ export function newRun(seed: number, carried: Mutation | null = null, opts: RunO
   // carried first, so the starting parts can never duplicate it
   if (carried) {
     run.mutations.push(carried);
+    run.origins[carried.id] = "carried forward from the last Not Betsy. optimized. you are welcome.";
     say(run, "prestige", `CARRIED FORWARD: ${carried.name}, OPTIMIZED. YOU ARE WELCOME.`);
   }
   for (let i = 0; i < 2; i++) bolt(run, pickMutation(run), "start");
@@ -115,6 +124,8 @@ export function newRun(seed: number, carried: Mutation | null = null, opts: RunO
 
 // ---------- logging ----------
 function say(run: Run, who: LogEntry["who"], text: string) {
+  // Jay 2026-09-14: blame lives in her voice, not in a UI annotation
+  if (run.echo && who === "not-betsy") { text = `${text} You said.`; run.echo = false; }
   const e = { stop: run.stop, day: run.day, who, text };
   run.log.push(e);
   if (run.phase === "away") run.returnLog.push(e);
@@ -159,8 +170,26 @@ function pickMutation(run: Run): Mutation | null {
   return role[0];
 }
 
-function bolt(run: Run, m: Mutation | null, how: string) {
+function originText(run: Run, how: string, from?: string) {
+  const when = `on day ${run.day}`;
+  switch (how) {
+    case "start": return "was already bolted on when Jame found her.";
+    case "salvage": return `salvaged ${when}. it was already attached to something.`;
+    case "trade": return `traded for the ${from} ${when}. she does not know why yet.`;
+    case "pity": return `a trader felt sorry for her ${when}.`;
+    case "stray": return `came with ${from}.`;
+    case "panic": return "panic purchase on the approach.";
+    default: return "nobody knows.";
+  }
+}
+
+function tookAway(run: Run, m: Mutation) {
+  run.tidied.push({ id: m.id, name: m.name, category: m.category, absurdity: m.absurdity, stop: run.stop, day: run.day });
+}
+
+function bolt(run: Run, m: Mutation | null, how: string, from?: string) {
   if (!m) return;
+  run.origins[m.id] = originText(run, how, from);
   run.mutations.push(m);
   run.seen.mutations.add(m.id);
   apply(run, m.upside);
@@ -184,6 +213,7 @@ function land(run: Run) {
   run.customsToday = roll < 0.35 ? "none" : roll < 0.7 ? (run.planet.customs as Run["customsToday"]) : "full";
   say(run, "system", `LANDED: ${run.planet.name}. ${run.planet.problem}`);
   if (run.customsToday !== "none") customs(run);
+  run.landEndIndex = run.log.length;
   run.hand = drawWords(run);
   record(run, "land", { planet: run.planet.id, customs: run.customsToday });
 }
@@ -195,6 +225,7 @@ function customs(run: Run) {
     run.fronts.tubs += run.customsToday === "full" ? 2 : 1;
     if (run.customsToday === "full" && run.rng.next() < 0.5) {
       run.mutations = run.mutations.filter((x) => x.id !== m.id);
+      tookAway(run, m);
       apply(run, { smudge: -1 });
       say(run, "prestige", `CONFISCATED: ${m.name}. CLASSIFICATION: CONTRABAND, PROBABLY.`);
     } else {
@@ -288,12 +319,18 @@ export function advanceDay(run: Run) {
   } else {
     const weights = { ...BASE_WEIGHTS };
     for (const [k, v] of Object.entries(goal.weights)) weights[k as Encounter] = Math.max(0, weights[k as Encounter] + v);
+    const boosted = new Set<string>();
     for (const [k, v] of Object.entries(run.words?.encounter_weights ?? {})) {
       if (k === "power") apply(run, { power: v as number });
-      else if (k in weights) weights[k as Encounter] = Math.max(0, weights[k as Encounter] + (v as number));
+      else if (k in weights) {
+        weights[k as Encounter] = Math.max(0, weights[k as Encounter] + (v as number));
+        if ((v as number) > 0) boosted.add(k);
+      }
     }
     const enc = weightedPick(run, weights);
+    run.echo = boosted.has(enc);
     encounter(run, enc);
+    run.echo = false;
   }
 
   // the Prestige moves on its own clocks
@@ -350,7 +387,7 @@ function encounter(run: Run, enc: Encounter) {
       const out = run.mutations.splice(run.rng.int(run.mutations.length), 1)[0];
       apply(run, { scrap: 3 });
       say(run, "not-betsy", `Traded ${out.name} for scrap. The trader seemed frightened by it.`);
-      bolt(run, pickMutation(run), "trade");
+      bolt(run, pickMutation(run), "trade", out.name);
       break;
     }
     case "stray": {
@@ -360,9 +397,10 @@ function encounter(run: Run, enc: Encounter) {
       run.strays.push(s);
       addTags(run, s.why_tags);
       say(run, "not-betsy", s.log.arrives);
-      if (s.effect === "grant-mutation") bolt(run, pickMutation(run), "stray");
+      if (s.effect === "grant-mutation") bolt(run, pickMutation(run), "stray", s.name);
       if (s.effect === "remove-mutation" && run.mutations.length) {
         const gone = run.mutations.splice(run.rng.int(run.mutations.length), 1)[0];
+        tookAway(run, gone);
         say(run, "not-betsy", `${s.name} has removed ${gone.name}. They say it was "for the best."`);
       }
       break;
@@ -404,6 +442,7 @@ function tidy(run: Run, why: string) {
   if (tidyable.length) {
     const m = tidyable[run.rng.int(tidyable.length)];
     run.mutations = run.mutations.filter((x) => x.id !== m.id);
+    tookAway(run, m);
     say(run, "prestige", `REMOVED: ${m.name}. PERFORMANCE IMPROVED BY 0.003%.`);
   }
   apply(run, { smudge: -2 });

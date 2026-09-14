@@ -51,6 +51,11 @@ decision rounds. Jay's own words are the decision; options were only a map. Not 
 
 | **Content pipeline** | *"The AI is in the production, math and RNGs are in the deployment."* Bolt-ons, strays and whys are generated SEREN-style at authoring time (schema → dials → categorized output), then chosen at runtime by math (**match to where the player is too strong or too weak**) and a separate **absurdity seed** that picks the actual object. | 9 |
 
+| **In-game UI** | **CD's workbench design** (`games/not-betsy-proto/design/`). *"Layouts as STATES, not OPTIONS"*: its three screens are the bargain's three states (landed → away → verdict) and replace CC's A/B/C layout experiments. | 11 |
+| **Blame** | **Only her voice.** No "that's on me" UI note; when your last words drove what happened, her log line ends *"You said."* | 11 |
+| **Last words** | **Show her literal reading before you pick** ("she'll hear: …"). You choose the misunderstanding on purpose. | 11 |
+| **Fit hint** | **Always visible.** Parts that solve this planet glow pink with *"this one!"* | 11 |
+
 ## Prototype placeholders (NOT decisions — just enough to smoke test)
 
 Jay: *"For first rough test just put random stuff in that makes sense with random properties that don't."*

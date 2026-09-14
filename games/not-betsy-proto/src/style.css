@@ -1,117 +1,32 @@
-/* Functional prototype styling. Terminal-minimal Prestige look that rusts at the edges as Smudge rises.
-   --rust (0..1) = how un-optimizable she is right now. CD designs the real thing later. */
-:root {
-  --rust: 0;
-  --tidy: 0;
-  --ink: #16181a;
-  --paper: #f4f5f2;
-  --dim: #6b716d;
-  --rustc: #b5541c;
-  --line: color-mix(in srgb, #d9dcd6 calc((1 - var(--rust)) * 100%), var(--rustc));
-  --mono: ui-monospace, "Cascadia Mono", Consolas, Menlo, monospace;
-}
-* { box-sizing: border-box; }
-html, body { margin: 0; background: var(--paper); color: var(--ink); font: 14px/1.5 var(--mono); }
-body {
-  min-height: 100vh;
-  /* grime creeps in from the edges */
-  box-shadow: inset 0 0 calc(var(--rust) * 180px) calc(var(--rust) * 40px) rgba(120, 60, 20, calc(var(--rust) * 0.45));
-}
-button, select { font: inherit; }
-b { font-weight: 700; }
-.dim { color: var(--dim); }
-header { position: sticky; top: 0; z-index: 5; background: var(--paper); border-bottom: 1px solid var(--line); padding: 10px 16px; display: flex; flex-wrap: wrap; gap: 6px 22px; align-items: baseline; }
-.title { font-weight: 700; letter-spacing: .12em; }
-.res span { margin-right: 14px; }
-.fronts .clock { margin-right: 12px; color: var(--dim); }
-.fronts i { font-style: normal; letter-spacing: 1px; color: #3b3f3c; }
-main { padding: 14px 16px 60px; max-width: 1400px; margin: 0 auto; }
-.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; align-items: start; }
-.grid.away { grid-template-columns: minmax(0, 760px); justify-content: center; }
-.panel {
-  background: #fff; border: 1px solid var(--line); padding: 14px;
-  /* the Prestige's straight lines give up as she gets weirder */
-  transform: rotate(calc((var(--rust) - 0.5) * 0.6deg));
-  border-radius: calc(var(--rust) * 10px);
-}
-.panel:nth-child(2n) { transform: rotate(calc((0.5 - var(--rust)) * 0.8deg)); }
-h2 { font-size: 15px; margin: 0 0 8px; letter-spacing: .04em; }
-h3 { font-size: 13px; margin: 14px 0 6px; }
-.tag { font-size: 11px; font-weight: 400; border: 1px solid var(--line); padding: 1px 6px; margin-left: 6px; }
-.tag.prestige { border-color: #999; }
-.log { list-style: none; padding: 0; margin: 8px 0; display: grid; gap: 4px; }
-.log li { padding-left: 4px; border-left: 2px solid transparent; }
-.log .when { color: var(--dim); font-size: 11px; min-width: 52px; display: inline-block; }
-.who-not-betsy { border-left-color: var(--rustc) !important; }
-.who-prestige { color: #2c2c2c; text-transform: none; font-weight: 700; border-left-color: #999 !important; }
-.who-jame { font-style: italic; }
-.who-system { color: var(--dim); }
-.parts { list-style: none; padding: 0; margin: 0; display: grid; gap: 8px; }
-.part { border: 1px solid var(--line); padding: 8px; }
-.part.kept { outline: 2px solid #c9a227; }
-.part-body { font-size: 12px; margin: 4px 0; }
-.up { color: #2f6b3f; }
-.down { color: #8a3b22; }
-.part-actions, .choices { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
-button { background: #fff; border: 1px solid #aeb2ad; padding: 6px 10px; cursor: pointer; }
-button:hover:not(:disabled) { background: #eef0ec; }
-button:disabled { opacity: .45; cursor: default; }
-button.on { background: var(--ink); color: #fff; }
-button.primary { background: var(--ink); color: #fff; border-color: var(--ink); padding: 8px 14px; }
-button.god { border-color: #c9a227; color: #7a6112; }
-.words button { text-align: left; }
-.leave .primary { margin-top: 12px; width: 100%; }
+/* CD's workbench design lives verbatim in cd.css (from design/cd-workbench-reference.html).
+   This file only holds what wiring it to the real sim needed. Keep CD's rules in cd.css. */
+@import "./cd.css";
 
-/* verdict: the Prestige's clean report, then the why written over it */
-.verdict { max-width: 820px; }
-.report { background: #fff; border: 1px solid #cfd2cc; padding: 22px; font-size: 13px; letter-spacing: .03em; }
-.report-head { font-weight: 700; letter-spacing: .2em; margin-bottom: 12px; }
-.report table { border-collapse: collapse; width: 100%; }
-.report td { border-top: 1px solid #e3e5e0; padding: 6px 4px; }
-.report td:first-child { color: var(--dim); width: 40%; }
-.why { margin: -18px 18px 18px; padding: 22px 24px; background: #fbf3e6; border: 2px solid var(--rustc); transform: rotate(-1.2deg); box-shadow: 4px 6px 0 rgba(120, 60, 20, .18); }
-.why-label { font-size: 11px; letter-spacing: .2em; color: var(--rustc); text-transform: uppercase; }
-.why-text { font-family: Georgia, "Times New Roman", serif; font-size: 24px; line-height: 1.35; margin: 8px 0; }
-.archive { padding-left: 18px; display: grid; gap: 6px; }
-.debug { margin: 0 16px 40px; border-top: 1px dashed #bbb; padding-top: 8px; }
-.debug summary { cursor: pointer; color: var(--dim); }
-.ledger { max-height: 320px; overflow: auto; background: #111; color: #cfc; font-size: 11px; padding: 10px; }
-@media (max-width: 640px) {
-  header { gap: 4px 14px; }
-  .why-text { font-size: 20px; }
-  .panel, .panel:nth-child(2n) { transform: none; }
-}
+.ticker .res{display:flex;gap:14px;color:var(--bolt);white-space:nowrap}
+.ticker .res b{color:var(--ink)}
+.btn-leave[disabled]{opacity:.45;cursor:default;transform:none}
+.said .lit{display:block;margin-top:6px;font-size:17px;color:var(--bolt)}
+.empty{font-family:var(--fh);font-size:20px;color:var(--soft)}
+.order .log-here{display:flex;flex-direction:column;gap:8px}
+.clockline{font-family:var(--fm);font-size:11px;letter-spacing:1px;color:var(--soft)}
 
-/* ---------- Layout B · Ship cutaway ---------- */
-.layout-ship { display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(300px, .9fr); gap: 16px; align-items: start; }
-.stage { background: #fff; border: 1px solid var(--line); padding: 10px; }
-.ship { width: 100%; height: auto; display: block; }
-.ship text { font: 11px var(--mono); fill: #1b1d1c; }
-.ship .hull-name { font-weight: 700; letter-spacing: .2em; fill: #9aa19c; }
-.ship .initial { font-size: 10px; }
-.grid-parts { grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); margin-top: 10px; }
-.side { display: grid; gap: 12px; }
-.side details summary { cursor: pointer; }
-@media (max-width: 860px) { .layout-ship { grid-template-columns: 1fr; } }
+/* Alpha badge: tape-on-the-bench, bottom right, links back to CD's hero page */
+.alpha-badge{position:fixed;right:14px;bottom:14px;z-index:60;background:var(--pink);color:var(--ink);
+  font-family:var(--fm);font-weight:600;font-size:11px;letter-spacing:3px;padding:7px 12px;text-decoration:none;
+  transform:rotate(-3deg);box-shadow:0 6px 16px rgba(0,0,0,.35);display:flex;gap:8px;align-items:baseline}
+.alpha-badge small{font-weight:400;font-size:9px;letter-spacing:1px}
+.alpha-badge:hover{transform:rotate(-1deg) translateY(-2px)}
+@media (max-width:520px){.alpha-badge small{display:none}}
 
-/* ---------- Layout C · Log-first (phone) ---------- */
-.layout-log { max-width: 520px; margin: 0 auto; padding-bottom: 300px; }
-.thread { display: grid; gap: 8px; }
-.thread-label { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; color: var(--dim); margin-top: 10px; }
-.bubble { max-width: 88%; padding: 8px 11px; border-radius: 14px; background: #fff; border: 1px solid var(--line); }
-.bubble .bwho { display: block; font-size: 10px; letter-spacing: .12em; color: var(--dim); text-transform: uppercase; }
-.bubble.from-not-betsy { border-left: 3px solid var(--rustc); border-bottom-left-radius: 3px; }
-.bubble.from-prestige { justify-self: end; background: #eceee9; font-weight: 700; border-bottom-right-radius: 3px; }
-.bubble.from-jame { justify-self: end; font-style: italic; background: #fbf3e6; }
-.bubble.from-system { color: var(--dim); }
-.card { background: #fff; border: 1px solid var(--line); padding: 12px; }
-.planet-card .kicker { font-size: 11px; letter-spacing: .15em; color: var(--rustc); text-transform: uppercase; }
-.planet-card h2 { margin: 2px 0 4px; }
-.swipe { list-style: none; padding: 0 0 6px; margin: 0; display: grid; grid-auto-flow: column; grid-auto-columns: 82%; gap: 8px; overflow-x: auto; scroll-snap-type: x mandatory; }
-.swipe > li { scroll-snap-align: start; background: #fff; }
-.chips { display: flex; flex-wrap: wrap; gap: 6px; }
-.chip { font-size: 12px; border: 1px solid var(--line); border-radius: 999px; padding: 2px 9px; background: #fff; }
-.chip.habit { border-style: dashed; }
-.sheet { position: fixed; left: 0; right: 0; bottom: 0; background: var(--paper); border-top: 1px solid var(--line); padding: 8px 14px calc(10px + env(safe-area-inset-bottom)); max-height: 46vh; overflow: auto; box-shadow: 0 -8px 24px rgba(0,0,0,.06); }
-.sheet h3 { margin: 6px 0 4px; }
-body[data-layout="log"] .debug { margin-bottom: 320px; }
+/* Playtest drawer: replaces CD's dev panel. Not part of the game. */
+.debug{position:fixed;left:14px;bottom:14px;z-index:60;background:rgba(0,0,0,.78);color:#fff;
+  backdrop-filter:blur(6px);border-radius:10px;padding:10px 14px;font-family:var(--fm);font-size:11px;
+  letter-spacing:1px;max-width:min(420px,calc(100vw - 28px))}
+.debug summary{cursor:pointer;letter-spacing:2px}
+.debug .rows{display:flex;flex-direction:column;gap:8px;margin-top:10px}
+.debug label{display:flex;gap:8px;align-items:center;justify-content:space-between}
+.debug select,.debug button{font:inherit;letter-spacing:0}
+.debug button{background:var(--paper);color:var(--ink);border:none;border-radius:999px;padding:5px 10px;cursor:pointer}
+.debug .btns{display:flex;flex-wrap:wrap;gap:6px}
+.debug input[type=range]{accent-color:var(--pink)}
+.debug pre{max-height:40vh;overflow:auto;font-size:10px;white-space:pre-wrap}
