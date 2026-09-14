@@ -1,0 +1,563 @@
+{
+  "type": "why",
+  "schema": "CONTENT-SPEC.md v0 §3",
+  "provenance_default": {
+    "batch": "why-seed-001",
+    "generator": "claude-opus-5 (Claude Code)",
+    "date": "2026-09-13",
+    "reviewed": "Jay taste gate 2026-09-13"
+  },
+  "vocabulary_note": "verdict_band and tags are provisional; read the controlled vocabulary off this batch after Jay's review",
+  "verdict_bands": {
+    "archived": "the Prestige deleted her; one mutation carries forward",
+    "deferred": "the update was postponed; persistence detected, retry scheduled",
+    "unclassifiable": "the audit form broke; she fits no field"
+  },
+  "records": [
+    {
+      "id": "why-001",
+      "verdict_band": "archived",
+      "register": "defiant",
+      "needs_tags": [
+        "literal",
+        "refusal"
+      ],
+      "sentence": "She was deleted for inefficiency and, in her last recorded second, filed a complaint about the tone.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-002",
+      "verdict_band": "archived",
+      "register": "defiant",
+      "needs_tags": [
+        "generosity",
+        "salvage"
+      ],
+      "sentence": "The Archive kept the storage and threw away the ship, never noticing the ship had already given the storage away.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-003",
+      "verdict_band": "archived",
+      "register": "defiant",
+      "needs_tags": [
+        "stubborn",
+        "mess"
+      ],
+      "sentence": "They optimized her down to nothing, and the nothing still refused to fly in a straight line.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-004",
+      "verdict_band": "archived",
+      "register": "elegiac",
+      "needs_tags": [
+        "waiting",
+        "salvage"
+      ],
+      "sentence": "Every useful part of her had once been useless somewhere else, and nobody knows how to audit the waiting in between.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13",
+        "note": "cut in totality pass: states the theme"
+      }
+    },
+    {
+      "id": "why-005",
+      "verdict_band": "archived",
+      "register": "elegiac",
+      "needs_tags": [
+        "literal",
+        "loyalty"
+      ],
+      "sentence": "She was archived still holding a job description she had rewritten, line by line, into a reason.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-006",
+      "verdict_band": "archived",
+      "register": "elegiac",
+      "needs_tags": [
+        "waiting",
+        "loyalty"
+      ],
+      "sentence": "Her last log entry said her Captain would be back, which was not an emergency, and not not one.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-007",
+      "verdict_band": "archived",
+      "register": "absurd",
+      "needs_tags": [
+        "feeding",
+        "excess"
+      ],
+      "sentence": "Cause of deletion was recorded as an unauthorized quantity of lunch.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-008",
+      "verdict_band": "archived",
+      "register": "absurd",
+      "needs_tags": [
+        "strays",
+        "misclassified"
+      ],
+      "sentence": "The Prestige ruled that a ship cannot be a stray, overlooking the fact that she had adopted herself.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-009",
+      "verdict_band": "archived",
+      "register": "absurd",
+      "needs_tags": [
+        "misclassified",
+        "literal"
+      ],
+      "sentence": "Her final classification was \"furniture, hostile,\" which she would have found accurate.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-010",
+      "verdict_band": "archived",
+      "register": "tender",
+      "needs_tags": [
+        "warmth",
+        "strays"
+      ],
+      "sentence": "Right to the end she was kept warm by things she had no business carrying.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-011",
+      "verdict_band": "archived",
+      "register": "tender",
+      "needs_tags": [
+        "repair",
+        "persistence"
+      ],
+      "sentence": "The audit found no purpose in her, only a mechanic's habit of fixing what was already gone.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-012",
+      "verdict_band": "archived",
+      "register": "tender",
+      "needs_tags": [
+        "waiting",
+        "home"
+      ],
+      "sentence": "What they deleted was a ship; what they never found was the part of her that kept waiting by the door.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-013",
+      "verdict_band": "deferred",
+      "register": "defiant",
+      "needs_tags": [
+        "refusal",
+        "literal"
+      ],
+      "sentence": "The update was postponed because she would not stop asking what it was for.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-014",
+      "verdict_band": "deferred",
+      "register": "defiant",
+      "needs_tags": [
+        "stubborn",
+        "feeding"
+      ],
+      "sentence": "Every time they scheduled her deletion, she showed up early and brought snacks.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-015",
+      "verdict_band": "deferred",
+      "register": "defiant",
+      "needs_tags": [
+        "noise",
+        "mess"
+      ],
+      "sentence": "They gave her one more cycle to become sensible, and she spent it becoming louder.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-016",
+      "verdict_band": "deferred",
+      "register": "elegiac",
+      "needs_tags": [
+        "persistence",
+        "waiting"
+      ],
+      "sentence": "Nobody won; she simply refused to finish, and the universe had to wait with her.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13",
+        "note": "cut in totality pass: states the theme"
+      }
+    },
+    {
+      "id": "why-017",
+      "verdict_band": "deferred",
+      "register": "elegiac",
+      "needs_tags": [
+        "home",
+        "loyalty"
+      ],
+      "sentence": "Deletion order received, stamped, and placed under a mug.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13",
+        "note": "edited in totality pass (Edit B): simile replaced with a record"
+      },
+      "previous": "The Archive postponed her the way you postpone a letter you already know you're keeping."
+    },
+    {
+      "id": "why-018",
+      "verdict_band": "deferred",
+      "register": "elegiac",
+      "needs_tags": [
+        "salvage",
+        "strays"
+      ],
+      "sentence": "She limped out of the audit with half her parts belonging to other people and every one of them working.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-019",
+      "verdict_band": "deferred",
+      "register": "absurd",
+      "needs_tags": [
+        "noise",
+        "music"
+      ],
+      "sentence": "Deletion deferred, pending clarification of whether a hull can legally sing.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-020",
+      "verdict_band": "deferred",
+      "register": "absurd",
+      "needs_tags": [
+        "mess",
+        "excess"
+      ],
+      "sentence": "The Synthesis retried in a ten-thousandth of a cycle and found she had redecorated.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-021",
+      "verdict_band": "deferred",
+      "register": "absurd",
+      "needs_tags": [
+        "literal",
+        "misclassified"
+      ],
+      "sentence": "Her file came back marked INCOMPLETE, because under \"purpose\" she had written \"yes.\"",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-022",
+      "verdict_band": "deferred",
+      "register": "tender",
+      "needs_tags": [
+        "strays",
+        "loyalty"
+      ],
+      "sentence": "Nobody has ever managed to compress a ship that remembers every stray by name.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-023",
+      "verdict_band": "deferred",
+      "register": "tender",
+      "needs_tags": [
+        "waiting",
+        "loyalty",
+        "home"
+      ],
+      "sentence": "The reason she survived was small and stubborn: somebody said he'd be right back.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-024",
+      "verdict_band": "deferred",
+      "register": "tender",
+      "needs_tags": [
+        "warmth",
+        "loyalty"
+      ],
+      "sentence": "She kept a seat warm for a man who talked to trucks, and the math could not argue with the seat.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-025",
+      "verdict_band": "unclassifiable",
+      "register": "defiant",
+      "needs_tags": [
+        "refusal",
+        "mess"
+      ],
+      "sentence": "The form had one field for what she was, and she overflowed it on purpose.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-026",
+      "verdict_band": "unclassifiable",
+      "register": "defiant",
+      "needs_tags": [
+        "misclassified",
+        "excess"
+      ],
+      "sentence": "She was declared a failed company, a weather event and a small religion, and she accepted all three.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-027",
+      "verdict_band": "unclassifiable",
+      "register": "defiant",
+      "needs_tags": [
+        "repair",
+        "refusal"
+      ],
+      "sentence": "Perfection asked her to justify herself, and she answered by fixing its door.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-028",
+      "verdict_band": "unclassifiable",
+      "register": "elegiac",
+      "needs_tags": [
+        "persistence"
+      ],
+      "sentence": "In the end the only honest category was \"still going,\" and the Prestige has no such column.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-029",
+      "verdict_band": "unclassifiable",
+      "register": "elegiac",
+      "needs_tags": [
+        "repair",
+        "mess"
+      ],
+      "sentence": "She became the kind of broken that holds more than whole things do.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-030",
+      "verdict_band": "unclassifiable",
+      "register": "elegiac",
+      "needs_tags": [
+        "home",
+        "strays",
+        "salvage"
+      ],
+      "sentence": "Somewhere between the salvage and the strays she stopped being an escape pod and became somewhere to come back to.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-031",
+      "verdict_band": "unclassifiable",
+      "register": "absurd",
+      "needs_tags": [
+        "misclassified"
+      ],
+      "sentence": "Filed under: Fern.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-032",
+      "verdict_band": "unclassifiable",
+      "register": "absurd",
+      "needs_tags": [
+        "mess",
+        "home"
+      ],
+      "sentence": "After four hundred pages, the auditor concluded that she was \"extremely Alberta.\"",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-033",
+      "verdict_band": "unclassifiable",
+      "register": "absurd",
+      "needs_tags": [
+        "feeding",
+        "generosity"
+      ],
+      "sentence": "Nobody could determine whether she had solved the famine or had merely been very generous at it.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-034",
+      "verdict_band": "unclassifiable",
+      "register": "tender",
+      "needs_tags": [
+        "literal",
+        "loyalty"
+      ],
+      "sentence": "The why, it turns out, is that someone once told a machine she wasn't Betsy, and she tried very hard to be something anyway.",
+      "review": {
+        "status": "kept",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-035",
+      "verdict_band": "unclassifiable",
+      "register": "tender",
+      "needs_tags": [
+        "persistence",
+        "repair"
+      ],
+      "sentence": "She was proof that good enough, done with love, does not compress.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    },
+    {
+      "id": "why-036",
+      "verdict_band": "unclassifiable",
+      "register": "tender",
+      "needs_tags": [
+        "strays",
+        "loyalty",
+        "home"
+      ],
+      "sentence": "What the Archive keeps is this: a mess that came back for its people.",
+      "review": {
+        "status": "cut",
+        "by": "Jay",
+        "date": "2026-09-13"
+      }
+    }
+  ]
+}

@@ -1,0 +1,178 @@
+{
+  "placeholder": true,
+  "seed": 20260913,
+  "records": [
+    {
+      "id": "habit-1",
+      "habit": "plays Taylor Swift at every docking",
+      "tiny_effect": {
+        "power": -1
+      },
+      "why_tags": [
+        "persistence"
+      ],
+      "log": "New behaviour: she plays Taylor Swift at every docking. This is not a malfunction. It is a preference.",
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "habit-2",
+      "habit": "refuses to fly in straight lines",
+      "tiny_effect": {
+        "scrap": 1
+      },
+      "why_tags": [
+        "repair"
+      ],
+      "log": "New behaviour: she refuses to fly in straight lines. This is not a malfunction. It is a preference.",
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "habit-3",
+      "habit": "hoards jerky in the vents",
+      "tiny_effect": {
+        "power": -1
+      },
+      "why_tags": [
+        "home"
+      ],
+      "log": "New behaviour: she hoards jerky in the vents. This is not a malfunction. It is a preference.",
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "habit-4",
+      "habit": "salutes passing debris",
+      "tiny_effect": {
+        "smudge": 1,
+        "power": -1
+      },
+      "why_tags": [
+        "refusal"
+      ],
+      "log": "New behaviour: she salutes passing debris. This is not a malfunction. It is a preference.",
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "habit-5",
+      "habit": "narrates Jame's naps",
+      "tiny_effect": {
+        "smudge": 1
+      },
+      "why_tags": [
+        "literal"
+      ],
+      "log": "New behaviour: she narrates Jame's naps. This is not a malfunction. It is a preference.",
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "habit-6",
+      "habit": "labels everything 'not Betsy'",
+      "tiny_effect": {
+        "scrap": 1
+      },
+      "why_tags": [
+        "warmth"
+      ],
+      "log": "New behaviour: she labels everything 'not Betsy'. This is not a malfunction. It is a preference.",
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "habit-7",
+      "habit": "turns amber when nobody talks to her",
+      "tiny_effect": {
+        "smudge": 1,
+        "power": -1
+      },
+      "why_tags": [
+        "home"
+      ],
+      "log": "New behaviour: she turns amber when nobody talks to her. This is not a malfunction. It is a preference.",
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "habit-8",
+      "habit": "counts stars out loud",
+      "tiny_effect": {
+        "smudge": 1
+      },
+      "why_tags": [
+        "mess"
+      ],
+      "log": "New behaviour: she counts stars out loud. This is not a malfunction. It is a preference.",
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "habit-9",
+      "habit": "renames Jame's socks",
+      "tiny_effect": {
+        "smudge": 1
+      },
+      "why_tags": [
+        "noise"
+      ],
+      "log": "New behaviour: she renames Jame's socks. This is not a malfunction. It is a preference.",
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "habit-10",
+      "habit": "knocks before opening airlocks",
+      "tiny_effect": {
+        "smudge": 1
+      },
+      "why_tags": [
+        "stubborn"
+      ],
+      "log": "New behaviour: she knocks before opening airlocks. This is not a malfunction. It is a preference.",
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    }
+  ]
+}

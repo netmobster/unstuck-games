@@ -1,0 +1,17 @@
+{
+  "name": "@unstuck/not-betsy-proto",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "content": "bun run scripts/make-content.ts",
+    "dev": "vite",
+    "smoke": "bun run scripts/smoke.ts",
+    "causal": "bun run scripts/causal.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.8.3",
+    "vite": "^7"
+  }
+}

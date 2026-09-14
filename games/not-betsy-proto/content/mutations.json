@@ -1,0 +1,915 @@
+{
+  "placeholder": true,
+  "seed": 20260913,
+  "records": [
+    {
+      "id": "mut-01",
+      "name": "External Potato Replicator",
+      "category": "food",
+      "upside": {
+        "scrap": 2,
+        "power": 1,
+        "smudge": 1
+      },
+      "downside": {
+        "scrap": -2,
+        "power": 0,
+        "smudge": 0,
+        "tags": [
+          "loud",
+          "leaks"
+        ]
+      },
+      "solves": [
+        "starving"
+      ],
+      "absurdity": 3,
+      "why_tags": [
+        "home",
+        "mess"
+      ],
+      "log": {
+        "bolted": "Acquired: External Potato Replicator. It is attached now. I did not ask it.",
+        "useless": "External Potato Replicator continues to exist. No emergency.",
+        "pays_off": "External Potato Replicator was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-02",
+      "name": "Cathedral Organ Exhaust",
+      "category": "propulsion",
+      "upside": {
+        "scrap": 2,
+        "power": 1,
+        "smudge": 2
+      },
+      "downside": {
+        "scrap": 0,
+        "power": -1,
+        "smudge": -1,
+        "tags": [
+          "customs-flag",
+          "attracts-prestige"
+        ]
+      },
+      "solves": [
+        "silent",
+        "bureaucratic"
+      ],
+      "absurdity": 3,
+      "why_tags": [
+        "literal",
+        "persistence"
+      ],
+      "log": {
+        "bolted": "Acquired: Cathedral Organ Exhaust. It is attached now. I did not ask it.",
+        "useless": "Cathedral Organ Exhaust continues to exist. No emergency.",
+        "pays_off": "Cathedral Organ Exhaust was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-03",
+      "name": "Decorative Black Hole",
+      "category": "hull",
+      "upside": {
+        "scrap": 0,
+        "power": 1,
+        "smudge": 1
+      },
+      "downside": {
+        "scrap": -1,
+        "power": -2,
+        "smudge": 0,
+        "tags": [
+          "sheds-parts",
+          "smells"
+        ]
+      },
+      "solves": [
+        "too-perfect"
+      ],
+      "absurdity": 2,
+      "why_tags": [
+        "noise",
+        "excess"
+      ],
+      "log": {
+        "bolted": "Acquired: Decorative Black Hole. It is attached now. I did not ask it.",
+        "useless": "Decorative Black Hole continues to exist. No emergency.",
+        "pays_off": "Decorative Black Hole was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-04",
+      "name": "Self-Folding Laundry Arm",
+      "category": "repair",
+      "upside": {
+        "scrap": 1,
+        "power": 1,
+        "smudge": 1
+      },
+      "downside": {
+        "scrap": 0,
+        "power": -1,
+        "smudge": 0,
+        "tags": [
+          "leaks"
+        ]
+      },
+      "solves": [
+        "broken"
+      ],
+      "absurdity": 4,
+      "why_tags": [
+        "generosity",
+        "literal"
+      ],
+      "log": {
+        "bolted": "Acquired: Self-Folding Laundry Arm. It is attached now. I did not ask it.",
+        "useless": "Self-Folding Laundry Arm continues to exist. No emergency.",
+        "pays_off": "Self-Folding Laundry Arm was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-05",
+      "name": "Emergency Weather Balloon Array",
+      "category": "comms",
+      "upside": {
+        "scrap": 1,
+        "power": 2,
+        "smudge": 2
+      },
+      "downside": {
+        "scrap": -2,
+        "power": -2,
+        "smudge": -1,
+        "tags": [
+          "attracts-prestige"
+        ]
+      },
+      "solves": [
+        "lonely"
+      ],
+      "absurdity": 1,
+      "why_tags": [
+        "literal",
+        "mess"
+      ],
+      "log": {
+        "bolted": "Acquired: Emergency Weather Balloon Array. It is attached now. I did not ask it.",
+        "useless": "Emergency Weather Balloon Array continues to exist. No emergency.",
+        "pays_off": "Emergency Weather Balloon Array was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-06",
+      "name": "Heated Everything",
+      "category": "power",
+      "upside": {
+        "scrap": 3,
+        "power": 1,
+        "smudge": 2
+      },
+      "downside": {
+        "scrap": -2,
+        "power": -1,
+        "smudge": -1,
+        "tags": [
+          "customs-flag",
+          "leaks"
+        ]
+      },
+      "solves": [
+        "frozen"
+      ],
+      "absurdity": 2,
+      "why_tags": [
+        "persistence",
+        "repair"
+      ],
+      "log": {
+        "bolted": "Acquired: Heated Everything. It is attached now. I did not ask it.",
+        "useless": "Heated Everything continues to exist. No emergency.",
+        "pays_off": "Heated Everything was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-07",
+      "name": "Sentient Seatbelt",
+      "category": "defence",
+      "upside": {
+        "scrap": 0,
+        "power": 2,
+        "smudge": 3
+      },
+      "downside": {
+        "scrap": -1,
+        "power": -1,
+        "smudge": 0,
+        "tags": [
+          "sheds-parts",
+          "loud"
+        ]
+      },
+      "solves": [
+        "hostile"
+      ],
+      "absurdity": 5,
+      "why_tags": [
+        "mess",
+        "salvage"
+      ],
+      "log": {
+        "bolted": "Acquired: Sentient Seatbelt. It is attached now. I did not ask it.",
+        "useless": "Sentient Seatbelt continues to exist. No emergency.",
+        "pays_off": "Sentient Seatbelt was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-08",
+      "name": "Tax-Deductible Hull Plating",
+      "category": "hull",
+      "upside": {
+        "scrap": 1,
+        "power": 0,
+        "smudge": 1
+      },
+      "downside": {
+        "scrap": 0,
+        "power": 0,
+        "smudge": 0,
+        "tags": [
+          "leaks",
+          "smells"
+        ]
+      },
+      "solves": [
+        "bureaucratic",
+        "hostile"
+      ],
+      "absurdity": 3,
+      "why_tags": [
+        "refusal",
+        "repair"
+      ],
+      "log": {
+        "bolted": "Acquired: Tax-Deductible Hull Plating. It is attached now. I did not ask it.",
+        "useless": "Tax-Deductible Hull Plating continues to exist. No emergency.",
+        "pays_off": "Tax-Deductible Hull Plating was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-09",
+      "name": "Borrowed Moon Anchor",
+      "category": "propulsion",
+      "upside": {
+        "scrap": 1,
+        "power": 0,
+        "smudge": 1
+      },
+      "downside": {
+        "scrap": -1,
+        "power": -1,
+        "smudge": -1,
+        "tags": [
+          "attracts-prestige",
+          "smells"
+        ]
+      },
+      "solves": [
+        "hostile"
+      ],
+      "absurdity": 5,
+      "why_tags": [
+        "warmth",
+        "repair"
+      ],
+      "log": {
+        "bolted": "Acquired: Borrowed Moon Anchor. It is attached now. I did not ask it.",
+        "useless": "Borrowed Moon Anchor continues to exist. No emergency.",
+        "pays_off": "Borrowed Moon Anchor was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-10",
+      "name": "Karaoke Distress Beacon",
+      "category": "comms",
+      "upside": {
+        "scrap": 0,
+        "power": 2,
+        "smudge": 3
+      },
+      "downside": {
+        "scrap": -1,
+        "power": -1,
+        "smudge": 0,
+        "tags": [
+          "smells",
+          "attracts-prestige"
+        ]
+      },
+      "solves": [
+        "silent",
+        "bureaucratic"
+      ],
+      "absurdity": 3,
+      "why_tags": [
+        "literal",
+        "loyalty"
+      ],
+      "log": {
+        "bolted": "Acquired: Karaoke Distress Beacon. It is attached now. I did not ask it.",
+        "useless": "Karaoke Distress Beacon continues to exist. No emergency.",
+        "pays_off": "Karaoke Distress Beacon was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-11",
+      "name": "Hydroponic Mullet",
+      "category": "food",
+      "upside": {
+        "scrap": 1,
+        "power": -1,
+        "smudge": 2
+      },
+      "downside": {
+        "scrap": -2,
+        "power": -1,
+        "smudge": -1,
+        "tags": [
+          "attracts-prestige"
+        ]
+      },
+      "solves": [
+        "starving",
+        "hostile"
+      ],
+      "absurdity": 3,
+      "why_tags": [
+        "home",
+        "music"
+      ],
+      "log": {
+        "bolted": "Acquired: Hydroponic Mullet. It is attached now. I did not ask it.",
+        "useless": "Hydroponic Mullet continues to exist. No emergency.",
+        "pays_off": "Hydroponic Mullet was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-12",
+      "name": "Recursive Toolbox",
+      "category": "repair",
+      "upside": {
+        "scrap": 0,
+        "power": 1,
+        "smudge": 2
+      },
+      "downside": {
+        "scrap": -2,
+        "power": -2,
+        "smudge": -1,
+        "tags": [
+          "attracts-prestige",
+          "sheds-parts"
+        ]
+      },
+      "solves": [
+        "broken"
+      ],
+      "absurdity": 1,
+      "why_tags": [
+        "salvage",
+        "misclassified"
+      ],
+      "log": {
+        "bolted": "Acquired: Recursive Toolbox. It is attached now. I did not ask it.",
+        "useless": "Recursive Toolbox continues to exist. No emergency.",
+        "pays_off": "Recursive Toolbox was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-13",
+      "name": "Cannon That Fires Compliments",
+      "category": "defence",
+      "upside": {
+        "scrap": 2,
+        "power": 2,
+        "smudge": 1
+      },
+      "downside": {
+        "scrap": 0,
+        "power": 0,
+        "smudge": -1,
+        "tags": [
+          "sheds-parts",
+          "customs-flag"
+        ]
+      },
+      "solves": [
+        "hostile"
+      ],
+      "absurdity": 3,
+      "why_tags": [
+        "strays",
+        "noise"
+      ],
+      "log": {
+        "bolted": "Acquired: Cannon That Fires Compliments. It is attached now. I did not ask it.",
+        "useless": "Cannon That Fires Compliments continues to exist. No emergency.",
+        "pays_off": "Cannon That Fires Compliments was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-14",
+      "name": "Lava Lamp Reactor",
+      "category": "power",
+      "upside": {
+        "scrap": 1,
+        "power": 1,
+        "smudge": 1
+      },
+      "downside": {
+        "scrap": 0,
+        "power": -1,
+        "smudge": 0,
+        "tags": [
+          "customs-flag",
+          "smells"
+        ]
+      },
+      "solves": [
+        "frozen"
+      ],
+      "absurdity": 3,
+      "why_tags": [
+        "refusal",
+        "generosity"
+      ],
+      "log": {
+        "bolted": "Acquired: Lava Lamp Reactor. It is attached now. I did not ask it.",
+        "useless": "Lava Lamp Reactor continues to exist. No emergency.",
+        "pays_off": "Lava Lamp Reactor was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-15",
+      "name": "Retractable Porch",
+      "category": "hull",
+      "upside": {
+        "scrap": 2,
+        "power": 0,
+        "smudge": 1
+      },
+      "downside": {
+        "scrap": -2,
+        "power": -1,
+        "smudge": 0,
+        "tags": [
+          "smells",
+          "power-hungry"
+        ]
+      },
+      "solves": [
+        "lonely"
+      ],
+      "absurdity": 4,
+      "why_tags": [
+        "persistence",
+        "home"
+      ],
+      "log": {
+        "bolted": "Acquired: Retractable Porch. It is attached now. I did not ask it.",
+        "useless": "Retractable Porch continues to exist. No emergency.",
+        "pays_off": "Retractable Porch was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-16",
+      "name": "Door That Refuses Mud",
+      "category": "hull",
+      "upside": {
+        "scrap": 2,
+        "power": 2,
+        "smudge": 2
+      },
+      "downside": {
+        "scrap": -1,
+        "power": 0,
+        "smudge": -1,
+        "tags": [
+          "power-hungry",
+          "attracts-prestige"
+        ]
+      },
+      "solves": [
+        "too-perfect"
+      ],
+      "absurdity": 1,
+      "why_tags": [
+        "repair",
+        "strays"
+      ],
+      "log": {
+        "bolted": "Acquired: Door That Refuses Mud. It is attached now. I did not ask it.",
+        "useless": "Door That Refuses Mud continues to exist. No emergency.",
+        "pays_off": "Door That Refuses Mud was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-17",
+      "name": "Mosquito Farm (Class Eight Certified)",
+      "category": "food",
+      "upside": {
+        "scrap": 0,
+        "power": -1,
+        "smudge": 3
+      },
+      "downside": {
+        "scrap": -1,
+        "power": -2,
+        "smudge": -1,
+        "tags": [
+          "smells"
+        ]
+      },
+      "solves": [
+        "too-perfect"
+      ],
+      "absurdity": 2,
+      "why_tags": [
+        "mess",
+        "excess"
+      ],
+      "log": {
+        "bolted": "Acquired: Mosquito Farm (Class Eight Certified). It is attached now. I did not ask it.",
+        "useless": "Mosquito Farm (Class Eight Certified) continues to exist. No emergency.",
+        "pays_off": "Mosquito Farm (Class Eight Certified) was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-18",
+      "name": "Fax Machine to Last Tuesday",
+      "category": "comms",
+      "upside": {
+        "scrap": 1,
+        "power": 0,
+        "smudge": 3
+      },
+      "downside": {
+        "scrap": 0,
+        "power": 0,
+        "smudge": 0,
+        "tags": [
+          "leaks"
+        ]
+      },
+      "solves": [
+        "bureaucratic"
+      ],
+      "absurdity": 3,
+      "why_tags": [
+        "misclassified",
+        "feeding"
+      ],
+      "log": {
+        "bolted": "Acquired: Fax Machine to Last Tuesday. It is attached now. I did not ask it.",
+        "useless": "Fax Machine to Last Tuesday continues to exist. No emergency.",
+        "pays_off": "Fax Machine to Last Tuesday was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-19",
+      "name": "Snow Plow Prow",
+      "category": "propulsion",
+      "upside": {
+        "scrap": 1,
+        "power": 0,
+        "smudge": 3
+      },
+      "downside": {
+        "scrap": -1,
+        "power": -1,
+        "smudge": 0,
+        "tags": [
+          "attracts-prestige"
+        ]
+      },
+      "solves": [
+        "frozen"
+      ],
+      "absurdity": 5,
+      "why_tags": [
+        "strays",
+        "home"
+      ],
+      "log": {
+        "bolted": "Acquired: Snow Plow Prow. It is attached now. I did not ask it.",
+        "useless": "Snow Plow Prow continues to exist. No emergency.",
+        "pays_off": "Snow Plow Prow was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-20",
+      "name": "Infinite Gravy Line",
+      "category": "food",
+      "upside": {
+        "scrap": 0,
+        "power": 2,
+        "smudge": 2
+      },
+      "downside": {
+        "scrap": -1,
+        "power": -2,
+        "smudge": 0,
+        "tags": [
+          "sheds-parts"
+        ]
+      },
+      "solves": [
+        "starving",
+        "broken"
+      ],
+      "absurdity": 4,
+      "why_tags": [
+        "home",
+        "feeding"
+      ],
+      "log": {
+        "bolted": "Acquired: Infinite Gravy Line. It is attached now. I did not ask it.",
+        "useless": "Infinite Gravy Line continues to exist. No emergency.",
+        "pays_off": "Infinite Gravy Line was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-21",
+      "name": "Haunted Coffee Maker",
+      "category": "power",
+      "upside": {
+        "scrap": 0,
+        "power": 2,
+        "smudge": 1
+      },
+      "downside": {
+        "scrap": -2,
+        "power": -2,
+        "smudge": -1,
+        "tags": [
+          "attracts-prestige"
+        ]
+      },
+      "solves": [
+        "broken"
+      ],
+      "absurdity": 4,
+      "why_tags": [
+        "warmth",
+        "misclassified"
+      ],
+      "log": {
+        "bolted": "Acquired: Haunted Coffee Maker. It is attached now. I did not ask it.",
+        "useless": "Haunted Coffee Maker continues to exist. No emergency.",
+        "pays_off": "Haunted Coffee Maker was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-22",
+      "name": "Coat-Hanger Antenna, 10 km",
+      "category": "comms",
+      "upside": {
+        "scrap": 3,
+        "power": 0,
+        "smudge": 3
+      },
+      "downside": {
+        "scrap": 0,
+        "power": -1,
+        "smudge": -1,
+        "tags": [
+          "attracts-prestige",
+          "loud"
+        ]
+      },
+      "solves": [
+        "silent"
+      ],
+      "absurdity": 2,
+      "why_tags": [
+        "refusal",
+        "misclassified"
+      ],
+      "log": {
+        "bolted": "Acquired: Coat-Hanger Antenna, 10 km. It is attached now. I did not ask it.",
+        "useless": "Coat-Hanger Antenna, 10 km continues to exist. No emergency.",
+        "pays_off": "Coat-Hanger Antenna, 10 km was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-23",
+      "name": "Bouncy Castle Airlock",
+      "category": "defence",
+      "upside": {
+        "scrap": 3,
+        "power": 2,
+        "smudge": 2
+      },
+      "downside": {
+        "scrap": -1,
+        "power": 0,
+        "smudge": 0,
+        "tags": [
+          "customs-flag",
+          "sheds-parts"
+        ]
+      },
+      "solves": [
+        "hostile"
+      ],
+      "absurdity": 1,
+      "why_tags": [
+        "persistence",
+        "generosity"
+      ],
+      "log": {
+        "bolted": "Acquired: Bouncy Castle Airlock. It is attached now. I did not ask it.",
+        "useless": "Bouncy Castle Airlock continues to exist. No emergency.",
+        "pays_off": "Bouncy Castle Airlock was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "mut-24",
+      "name": "Hockey Rink Cargo Bay",
+      "category": "hull",
+      "upside": {
+        "scrap": 3,
+        "power": 2,
+        "smudge": 3
+      },
+      "downside": {
+        "scrap": 0,
+        "power": -2,
+        "smudge": -1,
+        "tags": [
+          "smells",
+          "attracts-prestige"
+        ]
+      },
+      "solves": [
+        "lonely"
+      ],
+      "absurdity": 3,
+      "why_tags": [
+        "warmth",
+        "misclassified"
+      ],
+      "log": {
+        "bolted": "Acquired: Hockey Rink Cargo Bay. It is attached now. I did not ask it.",
+        "useless": "Hockey Rink Cargo Bay continues to exist. No emergency.",
+        "pays_off": "Hockey Rink Cargo Bay was useful. I am recording this as an anomaly."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    }
+  ]
+}

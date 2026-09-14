@@ -1,0 +1,132 @@
+{
+  "placeholder": true,
+  "seed": 20260913,
+  "records": [
+    {
+      "id": "stray-1",
+      "name": "Widget",
+      "what": "a sanitation drone that learned to smile",
+      "want": "your mud, kept safe",
+      "effect": "power-drip",
+      "why_tags": [
+        "refusal",
+        "excess"
+      ],
+      "log": {
+        "arrives": "Widget is aboard. They were not invited. They are staying.",
+        "leaves": "Widget has left. I have kept their seat."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "stray-2",
+      "name": "The Gas Cloud Holding Your S",
+      "what": "a sentient cloud with a letter it won't give back",
+      "want": "to be called plural",
+      "effect": "smudge-drip",
+      "why_tags": [
+        "loyalty",
+        "feeding"
+      ],
+      "log": {
+        "arrives": "The Gas Cloud Holding Your S is aboard. They were not invited. They are staying.",
+        "leaves": "The Gas Cloud Holding Your S has left. I have kept their seat."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "stray-3",
+      "name": "Retired Customs Kiosk",
+      "what": "a kiosk with nobody left to process",
+      "want": "one more form, stamped",
+      "effect": "scrap-drip",
+      "why_tags": [
+        "feeding",
+        "strays"
+      ],
+      "log": {
+        "arrives": "Retired Customs Kiosk is aboard. They were not invited. They are staying.",
+        "leaves": "Retired Customs Kiosk has left. I have kept their seat."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "stray-4",
+      "name": "Stowaway Pika Cadet",
+      "what": "a very small soldier with very large ears",
+      "want": "to not be sent home",
+      "effect": "grant-mutation",
+      "why_tags": [
+        "generosity",
+        "refusal"
+      ],
+      "log": {
+        "arrives": "Stowaway Pika Cadet is aboard. They were not invited. They are staying.",
+        "leaves": "Stowaway Pika Cadet has left. I have kept their seat."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "stray-5",
+      "name": "Salvage Crab",
+      "what": "a crab that collects hats",
+      "want": "a hat from every planet",
+      "effect": "remove-mutation",
+      "why_tags": [
+        "misclassified",
+        "feeding"
+      ],
+      "log": {
+        "arrives": "Salvage Crab is aboard. They were not invited. They are staying.",
+        "leaves": "Salvage Crab has left. I have kept their seat."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "stray-6",
+      "name": "Lost Tour Guide Hologram",
+      "what": "a hologram still giving the Aurelia tour",
+      "want": "one listener who stays to the end",
+      "effect": "scrap-drip",
+      "why_tags": [
+        "waiting",
+        "persistence"
+      ],
+      "log": {
+        "arrives": "Lost Tour Guide Hologram is aboard. They were not invited. They are staying.",
+        "leaves": "Lost Tour Guide Hologram has left. I have kept their seat."
+      },
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    }
+  ]
+}

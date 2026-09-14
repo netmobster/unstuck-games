@@ -1,0 +1,230 @@
+{
+  "placeholder": true,
+  "seed": 20260913,
+  "records": [
+    {
+      "id": "words-1",
+      "line": "Don't do anything I wouldn't do.",
+      "literal_reading": "Only do things Jame would do. Jame repairs things.",
+      "encounter_weights": {
+        "salvage": 1,
+        "repair": 3
+      },
+      "why_tags": [
+        "repair",
+        "literal"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "words-2",
+      "line": "Keep her warm.",
+      "literal_reading": "Keep everything warm. Everything.",
+      "encounter_weights": {
+        "power": -2,
+        "salvage": 1
+      },
+      "why_tags": [
+        "warmth",
+        "literal"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "words-3",
+      "line": "Grab anything shiny.",
+      "literal_reading": "Shiny is a salvage priority. Stars are shiny.",
+      "encounter_weights": {
+        "salvage": 3
+      },
+      "why_tags": [
+        "salvage",
+        "excess"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "words-4",
+      "line": "Be nice to strangers.",
+      "literal_reading": "Strangers are to be retained.",
+      "encounter_weights": {
+        "stray": 3
+      },
+      "why_tags": [
+        "strays",
+        "generosity"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "words-5",
+      "line": "Lie low.",
+      "literal_reading": "Minimize altitude. And opinions.",
+      "encounter_weights": {
+        "quiet": 3,
+        "prestige": -1
+      },
+      "why_tags": [
+        "waiting"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "words-6",
+      "line": "Find us some grub.",
+      "literal_reading": "Acquire food. Define food broadly.",
+      "encounter_weights": {
+        "salvage": 2,
+        "trade": 1
+      },
+      "why_tags": [
+        "feeding"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "words-7",
+      "line": "Make some noise if there's trouble.",
+      "literal_reading": "Trouble is likely. Noise is therefore continuous.",
+      "encounter_weights": {
+        "prestige": 1,
+        "habit": 2
+      },
+      "why_tags": [
+        "noise",
+        "music"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "words-8",
+      "line": "Don't talk to the Prestige.",
+      "literal_reading": "Communicate with the Prestige only by gesture.",
+      "encounter_weights": {
+        "prestige": 1,
+        "quiet": 1
+      },
+      "why_tags": [
+        "refusal"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "words-9",
+      "line": "Treat her like family.",
+      "literal_reading": "All parts are family. No part may be discarded.",
+      "encounter_weights": {
+        "trade": -2,
+        "salvage": 1
+      },
+      "why_tags": [
+        "loyalty",
+        "home"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "words-10",
+      "line": "Back in a jiffy.",
+      "literal_reading": "Counting jiffies. It has been many jiffies.",
+      "encounter_weights": {
+        "quiet": 2,
+        "habit": 1
+      },
+      "why_tags": [
+        "waiting",
+        "persistence"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "words-11",
+      "line": "Fix whatever's broken.",
+      "literal_reading": "Everything is broken. Commencing.",
+      "encounter_weights": {
+        "salvage": 2,
+        "repair": 2
+      },
+      "why_tags": [
+        "repair",
+        "stubborn"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "words-12",
+      "line": "Go nuts.",
+      "literal_reading": "Nuts acquired. Continuing to go.",
+      "encounter_weights": {
+        "salvage": 2,
+        "stray": 1,
+        "habit": 2
+      },
+      "why_tags": [
+        "excess",
+        "mess"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    }
+  ]
+}
