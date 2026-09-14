@@ -71,6 +71,16 @@ h1 .strike{text-decoration-thickness:.09em}
 h1 .script{animation:wobble 5s ease-in-out infinite}
 .tag{font-size:26px;font-weight:700;line-height:1.2;color:var(--soft)}
 .tag .script{font-size:30px}
+/* waitlist (posts to Kit via ../kit-waitlist.js) */
+.wait{display:flex;flex-direction:column;gap:10px;border-top:1px dashed var(--bolt);padding-top:20px;max-width:560px}
+.wait .hd{font-weight:700;font-size:17px;color:var(--soft)}
+.wait .hd .script{font-size:18px}
+.wait .row{display:flex;gap:8px;flex-wrap:wrap}
+.wait input{flex:1;min-width:150px;background:var(--hull);color:var(--primer);border:2px solid var(--bolt);border-radius:4px;padding:12px 14px;font:inherit;font-size:15px;outline:none}
+.wait input:focus{border-color:var(--pink)}
+.wait .fine{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.5px;color:var(--muted);line-height:1.6}
+.wait .done{font-family:'Pacifico',cursive;font-size:20px;color:var(--pink);transform:rotate(-1.5deg)}
+.wait .done a{color:var(--pink);text-decoration:underline}
 .ctas{display:flex;gap:12px;flex-wrap:wrap}
 .orbit{position:relative;width:100%;max-width:460px;aspect-ratio:1;margin:0 auto}
 .orbit .ring{position:absolute;inset:0;border-radius:50%;border:1px dashed var(--edge)}
@@ -191,6 +201,15 @@ footer .fine{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing
       <p class="tag">Not always better. <span class="script">Always weirder.</span></p>
       <p class="lead">You're Jame, a mechanic from Alberta. You land, read what she did while you were gone, fix a planet's problem with whatever she's bolted on, say one thing on your way out, and leave. She takes it literally.</p>
       <div class="ctas"><a href="#archive" class="btn">Read her file</a><a href="play/" class="btn ghost" id="playAlpha">Play the alpha →</a></div>
+      <form class="wait" id="bmWait">
+        <div class="hd">Get Unstuck… by waiting… <span class="script">(sorry, not sorry)</span></div>
+        <div class="row">
+          <input id="bmEmail" type="email" required autocomplete="email" placeholder="email" aria-label="Email">
+          <input id="bmName" type="text" autocomplete="given-name" placeholder="first name (optional)" aria-label="First name (optional)">
+          <button class="btn primer" type="submit">Wait for it...</button>
+        </div>
+        <div class="fine">One email when the real one ships. Kit sends a confirm link first. Unsubscribe anytime.</div>
+      </form>
     </div>
     <div class="orbit">
       <div class="ring"></div><div class="ring2"><i></i></div>
@@ -298,6 +317,7 @@ footer .fine{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing
     <span class="lock"><span class="strike">GOOD</span><span class="script tilt">Bad</span><b>MONKEYS</b></span>
     <span class="fine">AN UNSTUCK GAME · <a href="https://netmobster.github.io/unstuck-games/" target="_blank" rel="noopener">DON'T BULLSHIT THE PLAYER</a><br>BAD MONKEYS AND JAME ARE JAY'S · NOT A COMPANY YET</span>
   </footer>
+<script src="../kit-waitlist.js"></script>
 </main>
 <div class="toast" id="toast"></div>
 
@@ -358,6 +378,12 @@ function watchAd(){
     iv=setInterval(()=>{mins--;if(mins<=0){clearInterval(iv);god='idle';pct=0;$('#gMsg').textContent="Hour's up. Nothing else to sell you. She still has the "+(kept||'dog')+'.';}else pct=(mins/60)*100;renderGod()},120)}else renderGod()},60);
 }
 function say(m){const el=$('#toast');el.textContent=m;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),3600)}
+// waitlist: real Kit signup; only says "check your email" when Kit said success
+$('#bmWait').onsubmit=async e=>{e.preventDefault();const f=$('#bmWait'),b=f.querySelector('button'),l=b.textContent;
+  b.disabled=true;b.textContent='…';const r=await kitSubscribe($('#bmEmail').value.trim(),$('#bmName').value.trim());b.disabled=false;b.textContent=l;
+  if(r.ok){smudge(.08);f.innerHTML='<div class="done">she heard you. check your email and confirm.</div>'}
+  else if(r.check){f.innerHTML=`<div class="done">one more step: Kit wants to check you're human. <a href="${r.check}" target="_blank" rel="noopener">finish ↗</a></div>`}
+  else say(r.message)};
 $('#reroll').onclick=()=>{smudge();seed=(seed*1103515245+12345)>>>0;entry()};
 $('#gBtn').onclick=watchAd;
 tape();entry();renderGod();

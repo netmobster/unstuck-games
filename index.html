@@ -5,6 +5,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Unstuck Games — Don't bullshit the player.</title>
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
 <meta name="description" content="Small games. No traps. A one-person game studio, plus robots.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito+Sans:wght@400;700;800&family=Inter:wght@400;600;700&family=Bagel+Fat+One&family=Special+Elite&family=Pirata+One&family=Bangers&family=Rammetto+One&family=MedievalSharp&family=Sniglet:wght@800&family=Bowlby+One&family=Shrikhand&family=Courier+Prime:wght@700&family=Cormorant+Garamond:wght@300&family=DM+Sans:wght@400;700&family=Space+Grotesk:wght@700&family=IBM+Plex+Mono&family=Pacifico&display=swap" rel="stylesheet">
@@ -330,7 +331,7 @@ footer .fine{font-size:14px;font-weight:700;color:var(--muted);text-align:right;
   <section id="waitlist" style="padding-top:32px">
     <div class="wl" id="wl">
       <div class="head"><h2 data-t="wlTitle"></h2><p data-t="wlSub"></p></div>
-      <form id="wlForm"><input id="email" type="email" data-ph="emailPh"><button class="btn ink" type="submit" data-t="joinBtn"></button></form>
+      <form id="wlForm"><input id="email" type="email" required autocomplete="email" data-ph="emailPh" aria-label="Email"><input id="fname" type="text" autocomplete="given-name" data-ph="namePh" aria-label="First name (optional)"><button class="btn ink" type="submit" data-t="joinBtn"></button></form>
       <div class="done" data-t="joinedMsg"></div>
     </div>
   </section>
@@ -339,6 +340,7 @@ footer .fine{font-size:14px;font-weight:700;color:var(--muted);text-align:right;
     <span class="brand"><span class="word"><span class="u" data-u>U</span><span data-t="brandRest"></span></span><span class="bsub" data-t="brandSub"></span></span>
     <span class="fine" data-t="footer"></span>
   </footer>
+<script src="kit-waitlist.js"></script>
 </main>
 
 <div class="toast" id="toast"></div>
@@ -386,7 +388,7 @@ const COPY = {
       ["Who's making these?", "One founder, a pile of AI tooling, and one rule: nothing ships until it's fun."]
     ],
     wlTitle: "Get in before it's fun.", wlSub: "One email when there's something to play. That's the whole newsletter.",
-    emailPh: "you@somewhere.fun", joinBtn: "Join the waitlist", joinedMsg: "You're in. We'll write when there's something worth playing.",
+    emailPh: "you@somewhere.fun", namePh: "first name (optional)", joinBtn: "Wait for it...", joinedMsg: "Almost in. Check your email and click confirm. Then we'll write when there's something worth playing.",
     subscribeToast: "Not real yet. Nothing was charged. That's rather the point.",
     emailErr: "Needs an @ in it. We're not picky beyond that.",
     footer: "Games that got out. · Unstuck Games is not a company yet. It's a hobby with principles."
@@ -432,7 +434,7 @@ const COPY = {
       ["Who's making these?", "A dedicated team of monetization specialists, growth marketers and one intern."]
     ],
     wlTitle: "Pre-register today!", wlSub: "Receive 500 gems* at launch. *Gems subject to expiry, region and our discretion.",
-    emailPh: "Enter your email to unlock rewards", joinBtn: "Pre-register", joinedMsg: "Thank you for your interest. A representative will contact you within 5–7 business days.",
+    emailPh: "Enter your email to unlock rewards", namePh: "Summoner name", joinBtn: "Pre-register", joinedMsg: "Thank you for your interest. A representative will contact you within 5–7 business days.",
     subscribeToast: "Your card has been charged $99.99 for the Starter Gem Bundle. Gems are non-refundable. (Kidding. Nothing happened. Get unstuck.)",
     emailErr: "Error: please enter a valid email to unlock rewards.",
     footer: "© Unstuck Interactive Entertainment Group, Inc. All rights reserved. Terms apply. Results not typical."
@@ -607,7 +609,18 @@ $('#btnUnstuck').onclick = () => setMode('unstuck');
 $('#btnStuck').onclick = () => setMode('stuck');
 $('#adBtn').onclick = watchAd;
 $$('.js-sub').forEach(b => b.onclick = () => say(T().subscribeToast));
-$('#wlForm').onsubmit = e => { e.preventDefault(); if (!$('#email').value.includes('@')) { say(T().emailErr); return; } $('#wl').classList.add('joined'); };
+// real signup: posts to Kit (kit-waitlist.js). Never says "you're in" unless Kit said success.
+$('#wlForm').onsubmit = async e => {
+  e.preventDefault();
+  const email = $('#email').value.trim(), btn = $('#wlForm button');
+  if (!email.includes('@')) { say(T().emailErr); return; }
+  btn.disabled = true; const label = btn.textContent; btn.textContent = '…';
+  const r = await kitSubscribe(email, $('#fname').value.trim());
+  btn.disabled = false; btn.textContent = label;
+  if (r.ok) $('#wl').classList.add('joined');
+  else if (r.check) { $('#wl .done').innerHTML = `One more step: Kit wants to check you're human. <a href="${r.check}" target="_blank" rel="noopener" style="color:inherit;text-decoration:underline">Finish signing up ↗</a>`; $('#wl').classList.add('joined'); }
+  else say(r.message);
+};
 render();
 </script>
 </body>
