@@ -4,9 +4,20 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Bad Monkeys — rough prototype</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet" />
   </head>
   <body>
-    <div id="app"></div>
+    <div id="root">
+      <!-- grime layers (CD): all four read --g, none of them need JS -->
+      <div class="layer layer-dirt"></div>
+      <div class="layer layer-rust"></div>
+      <div class="layer layer-speck"></div>
+      <div class="layer layer-vig"></div>
+      <div class="tickerwrap"><div class="ticker" id="ticker"></div></div>
+      <div id="app"></div>
+      <div id="debug"></div>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

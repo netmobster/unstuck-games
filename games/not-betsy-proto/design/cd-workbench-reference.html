@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bad Monkeys — game UI reference (LANDED / AWAY / VERDICT)</title>
+<!--
+  ============================================================================
+  BAD MONKEYS — UI REFERENCE IMPLEMENTATION
+  Single flat file. No build, no dependencies except Google Fonts.
+  Three screens (LANDED / AWAY / VERDICT) in one file because they share
+  the CSS, the grime system and the voice/material system. Splitting them
+  would triplicate all three and they would drift.
+
+  ---------------------------------------------------------------------------
+  THE ONE RULE (see also CLAUDE.md in the design project)
+  ---------------------------------------------------------------------------
+  The screen is JAME'S WORKBENCH, not the Prestige's dashboard.
+  Her log is EVIDENCE, not an inventory. The reading order IS the game:
+      what she did  ->  what's on the ship  ->  today's problem
+                    ->  the ridiculous part  ->  what I'll say
+  Protect that sequence. The Prestige gets exactly ONE clean white strip
+  (the ticker). Everything else is hers: paper, tape, handwriting, crooked
+  angles, grime. Those are narrative, not decoration — do not normalise them
+  into a single Card component.
+
+  ---------------------------------------------------------------------------
+  FOUR VOICES = FOUR MATERIALS  (see VOICE below)
+  ---------------------------------------------------------------------------
+  NOT BETSY     cream paper   Caveat (handwritten)    taped down
+  THE PRESTIGE  white form    IBM Plex Mono, caps     untaped, square
+  JAME (you)    yellow post-it Pacifico (pink marker) taped down
+  SYSTEM        dark pill     IBM Plex Mono, small    no tape
+  Never render two voices with the same material. That contrast is how the
+  player learns who is talking without a tutorial.
+
+  ---------------------------------------------------------------------------
+  GRIME  (--g, 0 .. 5)
+  ---------------------------------------------------------------------------
+  ONE number drives ALL visual degradation. Set it on the root element as the
+  CSS custom property --g; every effect below is a calc() off it, so there is
+  no "grime stylesheet" to maintain.
+
+      --g = 0    clean. Steel-hull grey ground, straight bench lines, soft
+                 shadows, square paper corners. Roughly as organised as the
+                 marketing site.
+      --g = 1    default. Ground warms toward wood, faint rust at the edges.
+      --g = 2-3  rust bleeds in, shadows gain a hard pixel offset (no blur),
+                 paper picks up inset stains, bench lines tilt and spread.
+      --g = 3+   paper corners tear (clip-path), whole layout jitters in
+                 2-step frames, Prestige strip flickers and chips, headings
+                 get pink/sage chromatic fringing, hull grows rust bolts
+                 and crack lines.
+      --g = 5    unhinged.
+
+  IN GAME, grime is NOT an art setting. Derive it from the sim:
+      g = clamp(0, 5, (smudge - target) / 2)
+  i.e. how far past the Prestige's tolerance she is. The UI decaying IS the
+  audit going badly. See setGrime() / syncGrimeFromSim() below.
+
+  ---------------------------------------------------------------------------
+  PART COUNT  (partCount, 1 .. 9+)
+  ---------------------------------------------------------------------------
+  The ship has EIGHT hardpoints (HP below). Parts 1-8 mount on the hull at
+  those fixed positions. Part 9 and beyond do NOT get hardpoints — they are
+  towed behind on a SLED with a "+N" badge. This is deliberate: the hull must
+  stay readable no matter how much junk she has bolted on, and the sled is
+  funnier than a scrolling list. If you raise the hardpoint count, keep the
+  sled for the overflow.
+  Module art is KIT-BASHED, not per-part drawings: 7 category base shapes
+  (SHAPES) x an accessory stroke. A new part only needs a category.
+
+  Module fill encodes state:
+      grey            idle
+      pink            solves THIS planet's problem tag  ("this one!")
+      yellow stroke   kept past the stop (God Mode)  ✦
+      dashed + faded  tidied away by the Prestige
+  ---------------------------------------------------------------------------
+  THE DEV PANEL (bottom-left) IS NOT PART OF THE GAME. Delete .devpanel and
+  its handlers when wiring this to real state.
+  ============================================================================
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&family=Caveat:wght@500;700&display=swap" rel="stylesheet">
+<style>
+/* ---------- tokens ---------------------------------------------------- */
+:root{
+  --ink:#1c2026; --hull:#2a2f37; --bolt:#5b6473; --muted:#9aa3b0; --soft:#c9cfd8;
+  --primer:#e6e9ee; --paper:#f6efe2; --postit:#ffe98a; --white:#fff;
+  --pink:#ff5fa2; --rust:#b8562e; --gold:#ffd02e; --sage:#7a8a5e; --good:#3f8f6a;
+  --fd:'Space Grotesk',sans-serif;   /* structure, numbers, buttons */
+  --fh:'Caveat',cursive;             /* Jame's hand / Not Betsy paper */
+  --fm:'IBM Plex Mono',monospace;    /* the Prestige, systems */
+  --fs:'Pacifico',cursive;           /* pink marker: Jame writing ON things */
+  --g:1;                             /* GRIME 0..5 — set by JS on #root */
+}
+*{box-sizing:border-box}
+body{margin:0;background:#14171c;font-family:var(--fd);color:var(--ink);-webkit-font-smoothing:antialiased}
+button{font-family:inherit}
+:focus-visible{outline:2px solid var(--pink);outline-offset:3px}
+
+/* ---------- the bench (background responds to grime) ------------------ */
+#root{min-height:100vh;position:relative;overflow:hidden;
+  background:
+    radial-gradient(ellipse at 20% 0%, rgba(255,255,255,.06), transparent 40%),
+    /* bench planks: tilt + widen as grime rises */
+    repeating-linear-gradient(calc(90deg + var(--g) * 1.5deg), rgba(0,0,0,calc(.03 + var(--g) * .03)) 0 2px, transparent 2px calc(26px + var(--g) * 3px)),
+    /* steel at g=0 -> warm wood at g=5 */
+    linear-gradient(180deg, color-mix(in oklch, var(--hull), #4a3d31 calc(var(--g) * 20%)), color-mix(in oklch, var(--ink), #2e261f calc(var(--g) * 20%)));
+}
+.layer{position:absolute;inset:0;pointer-events:none}
+.layer-dirt{opacity:calc(.35 + var(--g) * .2);background:
+  radial-gradient(ellipse at 8% 90%, rgba(20,10,5,.55), transparent 40%),
+  radial-gradient(ellipse at 92% 10%, rgba(20,10,5,.45), transparent 36%),
+  radial-gradient(circle at 70% 80%, rgba(184,86,46,.35), transparent 22%)}
+.layer-rust{opacity:calc(var(--g) * .22);background:
+  radial-gradient(ellipse at 0% 0%, #b8562e, transparent 30%),
+  radial-gradient(ellipse at 100% 0%, #7a3a1a, transparent 28%),
+  radial-gradient(ellipse at 0% 100%, #5a2a10, transparent 34%),
+  radial-gradient(ellipse at 100% 100%, #b8562e, transparent 36%),
+  radial-gradient(circle at 50% 60%, #ff5fa2, transparent 40%)}
+.layer-speck{opacity:calc(var(--g) * .12);
+  background-image:radial-gradient(rgba(0,0,0,.9) 1px, transparent 1.6px), radial-gradient(rgba(184,86,46,.9) 1px, transparent 1.8px);
+  background-size:7px 7px, 13px 13px;background-position:0 0, 3px 5px}
+.layer-vig{inset:-4px;opacity:calc(var(--g) * .18);border:calc(var(--g) * 6px) solid var(--rust);filter:blur(calc(var(--g) * 6px))}
+
+/* ---------- wear recipes (the whole grime system, 4 rules) -----------
+   .wear-*  = drop shadow loses blur and gains a hard pixel offset as grime
+              rises, plus an inset rust/grease stain.
+   .torn-*  = clip-path chews a different corner per object so no two pieces
+              of paper tear the same way.
+   Apply one .wear-* and one .torn-* to any new paper object; nothing else. */
+.wear-sm{box-shadow:0 6px 14px rgba(0,0,0,calc(.3 - var(--g) * .05)),
+  calc(var(--g) * 1.5px) calc(var(--g) * 1.5px) 0 rgba(0,0,0,calc(var(--g) * .18)),
+  inset 0 0 calc(var(--g) * 14px) rgba(184,86,46,calc(var(--g) * .1))}
+.wear-md{box-shadow:0 10px 30px rgba(0,0,0,calc(.38 - var(--g) * .05)),
+  calc(var(--g) * 2px) calc(var(--g) * 2px) 0 rgba(0,0,0,calc(var(--g) * .2)),
+  inset 0 0 calc(var(--g) * 22px) rgba(184,86,46,calc(var(--g) * .1))}
+.wear-lg{box-shadow:0 20px 50px rgba(0,0,0,calc(.45 - var(--g) * .05)),
+  calc(var(--g) * 2.5px) calc(var(--g) * 2.5px) 0 rgba(0,0,0,calc(var(--g) * .22)),
+  inset 0 0 calc(var(--g) * 30px) rgba(184,86,46,calc(var(--g) * .12))}
+.torn-a{clip-path:polygon(0 0, calc(100% - var(--g) * 1.2%) 0, 100% calc(var(--g) * 1%), 100% 100%, calc(var(--g) * 1.6%) 100%, 0 calc(100% - var(--g) * 1.4%))}
+.torn-b{clip-path:polygon(0 0, 100% 0, 100% calc(100% - var(--g) * 1.5%), calc(100% - var(--g) * 2%) 100%, 0 100%)}
+.torn-c{clip-path:polygon(0 calc(var(--g) * .8%), calc(100% - var(--g) * 1.5%) 0, 100% 100%, calc(var(--g) * .6%) calc(100% - var(--g) * 1.2%))}
+.torn-d{clip-path:polygon(calc(var(--g) * .5%) 0, 100% calc(var(--g) * .6%), calc(100% - var(--g) * 1%) 100%, 0 calc(100% - var(--g) * 1.8%))}
+
+/* tape: a translucent strip over the top edge of anything taped down */
+.tape{position:absolute;top:-8px;width:52px;height:15px;background:rgba(255,255,255,.55)}
+.tape-pink{background:rgba(255,95,162,.5)}
+
+/* handwritten headings: chromatic fringing appears with grime */
+.hand{font-family:var(--fh);font-weight:700;color:var(--paper);
+  text-shadow:0 2px 0 rgba(0,0,0,.4),
+    calc(var(--g) * 1px) 0 0 rgba(255,95,162,calc(var(--g) * .18)),
+    calc(var(--g) * -1px) 0 0 rgba(122,138,94,calc(var(--g) * .18))}
+
+/* ---------- animation ------------------------------------------------- */
+@keyframes hover{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(.5deg)}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes swing{0%,100%{transform:rotate(-1.5deg)}50%{transform:rotate(1.5deg)}}
+@keyframes glowpulse{0%,100%{opacity:.5}50%{opacity:1}}
+@keyframes drift{0%,100%{transform:translate(0,0) rotate(-2deg)}50%{transform:translate(18px,-12px) rotate(2deg)}}
+@keyframes flick{0%,100%{opacity:1}93%{opacity:1}94%{opacity:.4}95%{opacity:1}97%{opacity:.6}98%{opacity:1}}
+@keyframes jitter{0%,100%{transform:translate(0,0)}25%{transform:translate(.6px,-.4px)}50%{transform:translate(-.5px,.5px)}75%{transform:translate(.4px,.6px)}}
+@keyframes stamp{0%{transform:scale(1.6) rotate(-14deg);opacity:0}60%{transform:scale(.96) rotate(-8deg);opacity:1}100%{transform:scale(1) rotate(-8deg);opacity:.85}}
+@media (prefers-reduced-motion: reduce){*{animation:none!important}}
+
+/* ---------- the Prestige's ticker: the only clean thing on screen ----- */
+.tickerwrap{position:relative;z-index:10;max-width:1500px;margin:0 auto;padding:16px 20px 0}
+.ticker{background:var(--white);display:flex;align-items:center;gap:22px;flex-wrap:wrap;
+  padding:9px 18px;font-family:var(--fm);font-size:11px;letter-spacing:2px;position:relative;
+  /* slides crooked, stains and chips its bottom edge as grime rises */
+  transform:rotate(calc(-.3deg - var(--g) * .7deg)) translateX(calc(var(--g) * -4px));
+  box-shadow:0 8px 24px rgba(0,0,0,.35), calc(var(--g) * 2px) calc(var(--g) * 2px) 0 rgba(0,0,0,calc(var(--g) * .2)),
+    inset 0 0 calc(var(--g) * 30px) rgba(184,86,46,calc(var(--g) * .18));
+  clip-path:polygon(0 0, 100% 0, 100% calc(100% - var(--g) * 6%), calc(100% - var(--g) * 1%) 100%, 0 100%);
+  border-bottom:2px solid color-mix(in srgb, var(--white), var(--rust) calc(var(--g) * 100%));
+  animation:flick calc(12s - var(--g) * 2s) linear infinite}
+.ticker .lbl{color:var(--bolt);white-space:nowrap}
+.ticker .grp{display:flex;align-items:center;gap:8px;white-space:nowrap}
+.bar{width:90px;height:5px;background:var(--primer);position:relative}
+.bar>i{display:block;height:100%;background:var(--rust);transition:width .4s}
+.bar>u{position:absolute;top:-4px;width:2px;height:13px;background:var(--ink)} /* target notch */
+.fronts{margin-left:auto;display:flex;gap:18px;flex-wrap:wrap}
+.front{display:flex;align-items:center;gap:6px;color:var(--bolt);white-space:nowrap}
+.clock{display:flex;gap:2px}
+.clock>span{width:7px;height:9px;border:1px solid var(--bolt)}
+
+/* ---------- screens --------------------------------------------------- */
+main{position:relative;z-index:6;margin:0 auto;
+  /* paper goes greasy, then the whole layout twitches above g=3 */
+  filter:sepia(calc(var(--g) * .1)) contrast(calc(1 + var(--g) * .03)) hue-rotate(calc(var(--g) * -2deg));
+  animation:jitter calc(3s - var(--g) * .4s) steps(2) infinite;animation-play-state:paused}
+#root.twitch main{animation-play-state:running}
+main[hidden]{display:none}
+#landed{max-width:1500px;padding:26px 20px 80px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:26px;align-items:start}
+#away{max-width:1100px;padding:40px 20px 80px;display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:36px;align-items:center}
+#verdict{max-width:960px;padding:40px 20px 100px;display:flex;flex-direction:column;gap:34px}
+.col{display:flex;flex-direction:column;gap:14px}
+
+/* ---------- LANDED · her log (the most important column) -------------- */
+.note{position:relative;padding:14px 16px}
+.note .meta{display:flex;justify-content:space-between;gap:10px;font-family:var(--fm);
+  font-size:10px;letter-spacing:2px;margin-bottom:4px}
+.note .body{line-height:1.3;text-wrap:pretty}
+.note .blame{margin-top:8px;font-family:var(--fs);font-size:15px;color:var(--pink);
+  transform:rotate(-2deg);display:inline-block}
+.said{position:relative;background:var(--postit);padding:14px 16px 16px;transform:rotate(-1.5deg);
+  font-family:var(--fh);font-size:22px;line-height:1.15}
+.said .k{display:block;margin-bottom:4px;font-family:var(--fm);font-size:13px;letter-spacing:2px;color:var(--bolt)}
+.unfold{align-self:flex-start;background:none;border:none;cursor:pointer;font-family:var(--fh);
+  font-weight:700;font-size:20px;color:var(--paper);transform:rotate(-1deg);
+  text-decoration:underline;text-decoration-color:var(--pink);text-decoration-thickness:2px}
+
+/* ---------- LANDED · the ship ----------------------------------------- */
+.shipwrap{position:relative;padding:10px 0 0}
+.shiptitle{position:absolute;top:0;left:0;font-size:30px;z-index:2}
+.shiptitle small{font-family:var(--fm);font-weight:400;font-size:11px;letter-spacing:2px;color:var(--soft)}
+.shipsvg{width:100%;display:block;overflow:visible;margin-top:20px}
+.module{cursor:pointer}
+.aboard{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:-6px}
+.chip-stray{background:var(--paper);border-radius:999px;padding:6px 12px 6px 8px;font-family:var(--fh);
+  font-weight:700;font-size:17px;display:flex;gap:6px;align-items:center;box-shadow:0 3px 8px rgba(0,0,0,.3);transform:rotate(-1deg)}
+.chip-stray i{width:10px;height:10px;border-radius:50%;background:var(--sage)}
+.chip-habit{border:2px dashed var(--soft);color:var(--paper);border-radius:999px;padding:5px 12px;
+  font-family:var(--fh);font-weight:700;font-size:17px;transform:rotate(1deg)}
+
+/* ---------- LANDED · work order (today's problem) --------------------- */
+.order{position:relative;background:var(--white);padding:22px 24px 20px;display:flex;flex-direction:column;gap:10px;
+  transform:rotate(calc(.6deg + var(--g) * .5deg))}
+.order .kick{display:flex;gap:10px;flex-wrap:wrap;font-family:var(--fm);font-size:10px;letter-spacing:2px;color:var(--bolt)}
+.order h2{margin:0;font-size:clamp(24px,2.6vw,32px);letter-spacing:-.8px;line-height:1.05}
+.order p{margin:0;font-size:17px;line-height:1.45;color:#343a44;text-wrap:pretty}
+.tries{display:flex;align-items:center;gap:10px;font-family:var(--fh);font-weight:700;font-size:20px}
+.tries i{width:18px;height:18px;border-radius:50%;border:2.5px solid var(--ink);display:inline-block}
+.result{background:var(--paper);padding:12px 14px;font-family:var(--fh);font-size:21px;line-height:1.35}
+.stamp{position:absolute;right:18px;bottom:14px;border:3px solid var(--rust);color:var(--rust);
+  font-family:var(--fm);font-weight:600;font-size:14px;letter-spacing:4px;padding:6px 12px;animation:stamp .4s ease-out both}
+
+/* ---------- LANDED · hang tag (the selected part) --------------------- */
+.hangwrap{position:relative;padding-top:26px}
+.string{position:absolute;top:0;left:50%;width:2px;height:30px;background:var(--soft);
+  transform:translateX(-50%) rotate(-6deg);transform-origin:top}
+.hangtag{position:relative;background:var(--paper);padding:22px 22px 18px;border-radius:6px;
+  display:flex;flex-direction:column;gap:8px;border:2px solid transparent;transition:border-color .3s;
+  transform:rotate(calc(-1.2deg - var(--g) * .4deg));transform-origin:50% -30px;animation:swing 6s ease-in-out infinite}
+.hangtag.sel{border-color:var(--pink)}
+.hangtag .hole{position:absolute;top:10px;left:50%;width:12px;height:12px;border-radius:50%;
+  background:#3a3129;transform:translateX(-50%);box-shadow:inset 0 1px 2px rgba(0,0,0,.6)}
+.hangtag .meta{display:flex;justify-content:space-between;gap:10px;margin-top:8px;
+  font-family:var(--fm);font-size:10px;letter-spacing:2px;color:var(--bolt)}
+.hangtag h3{margin:0;font-size:24px;letter-spacing:-.6px;line-height:1.05}
+.hangtag .origin{font-family:var(--fh);font-size:19px;line-height:1.2;color:var(--bolt)}
+.updown{display:flex;flex-direction:column;gap:6px;margin-top:4px;font-size:15px;line-height:1.4}
+.updown div{display:flex;gap:10px}
+.updown b{font-family:var(--fh);font-size:20px;flex:none;width:18px}
+.updown .up b{color:var(--good)} .updown .down b{color:var(--rust)}
+.solves{font-family:var(--fh);font-weight:700;font-size:19px;margin-top:2px}
+.btnrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:8px}
+.btn{border:none;border-radius:999px;padding:13px 16px;font-weight:700;font-size:15px;cursor:pointer;transition:all .2s}
+.btn-use{flex:1;min-width:130px;background:var(--ink);color:var(--paper)}
+.btn-use:hover{transform:translateY(-2px) rotate(-1deg)}
+.btn-use[disabled]{opacity:.4;cursor:default;transform:none}
+.btn-keep{flex:none;background:transparent;border:2.5px solid #d4a017;padding:11px 16px}
+.btn-keep:hover{background:#fff3c4}
+.btn-keep.on{background:var(--gold)}
+.godnote{font-family:var(--fm);font-size:10px;letter-spacing:1px;color:var(--muted);line-height:1.6}
+
+/* ---------- LANDED · the post-it (goal + last words) ------------------ */
+.postit{position:relative;background:var(--postit);padding:22px 22px 20px;display:flex;flex-direction:column;gap:14px;
+  font-family:var(--fh);transform:rotate(calc(1.4deg + var(--g) * .5deg))}
+.postit h3{margin:0;font-weight:700;font-size:28px;line-height:1}
+.postit .q{font-size:18px;color:var(--bolt)}
+.postit .q small{font-size:14px}
+.pickrow{display:flex;gap:8px 12px;flex-wrap:wrap}
+.pick{background:none;border:none;cursor:pointer;font-family:var(--fh);font-weight:700;font-size:22px;
+  color:var(--ink);padding:2px 8px;border-radius:999px;line-height:1.1;transition:all .2s}
+.pick:hover{color:var(--rust)}
+.pick.on{box-shadow:0 0 0 2.5px var(--ink)}           /* circled in pen */
+.wordlist{display:flex;flex-direction:column;gap:4px}
+.word{text-align:left;background:none;border:none;cursor:pointer;padding:4px 8px;border-radius:999px;
+  display:flex;justify-content:space-between;gap:10px;align-items:baseline;transition:all .2s}
+.word span{font-family:var(--fs);font-size:20px;color:var(--bolt);line-height:1.3}
+.word em{font-family:var(--fh);font-style:normal;font-size:15px;color:var(--muted);text-align:right}
+.word.on{box-shadow:0 0 0 2.5px var(--pink)}
+.word.on span{color:var(--pink)}
+.btn-leave{background:var(--ink);color:var(--paper);border:none;border-radius:999px;padding:16px;
+  font-family:var(--fd);font-weight:700;font-size:17px;cursor:pointer;transition:all .25s}
+.btn-leave:hover{transform:translateY(-2px) rotate(-.5deg)}
+.postit .foot{font-size:16px;color:var(--bolt);line-height:1.2}
+
+/* ---------- AWAY ------------------------------------------------------ */
+#away .side{display:flex;flex-direction:column;gap:18px;color:var(--paper)}
+.daybig{display:flex;align-items:baseline;gap:14px}
+.daybig b{font-weight:700;font-size:clamp(90px,14vw,170px);line-height:.85;letter-spacing:-6px}
+.daybig span{font-family:var(--fh);font-size:28px;color:var(--soft)}
+.daydots{display:flex;gap:6px}
+.daydots i{width:26px;height:26px;border-radius:50%;border:2.5px solid var(--paper)}
+#away .brief{font-size:18px;line-height:1.5;max-width:40ch;color:var(--primer);text-wrap:pretty}
+#away .brief em{font-family:var(--fs);font-style:normal;color:var(--pink);font-size:22px}
+.btn-pale{background:var(--paper);color:var(--ink);border:none;border-radius:999px;padding:15px 22px;font-weight:700;font-size:16px;cursor:pointer}
+.btn-pale:hover{transform:translateY(-2px) rotate(-1deg)}
+.btn-out{background:transparent;color:var(--paper);border:2.5px solid var(--paper);border-radius:999px;padding:13px 22px;font-weight:700;font-size:16px;cursor:pointer}
+.btn-out:hover{background:rgba(255,255,255,.1)}
+.aside{font-family:var(--fh);font-size:18px;color:var(--soft)}
+.rumour{display:flex;gap:12px;align-items:baseline;padding:10px 14px}
+.rumour .d{font-family:var(--fm);font-size:10px;letter-spacing:2px;flex:none}
+.rumour .t{line-height:1.35}
+
+/* ---------- VERDICT --------------------------------------------------- */
+.report{background:var(--white);padding:36px;font-family:var(--fm);font-size:13px;line-height:1.9;position:relative}
+.report .hd{display:flex;justify-content:space-between;gap:12px;letter-spacing:3px;font-size:11px;color:var(--bolt);
+  border-bottom:1px solid var(--soft);padding-bottom:10px;margin-bottom:16px;white-space:nowrap}
+.report .rows{display:grid;grid-template-columns:140px minmax(0,1fr);gap:4px 16px}
+.report .rows>span:nth-child(odd){color:var(--bolt)}
+.report .score{font-weight:600;font-size:24px;letter-spacing:-1px}
+.report .band{background:var(--ink);color:#fff;padding:2px 10px;letter-spacing:2px;font-size:11px}
+.report .struck{text-decoration:line-through;text-decoration-color:var(--pink);text-decoration-thickness:2px}
+.report .mark{font-family:var(--fs);color:var(--pink);font-size:18px;display:inline-block;transform:rotate(-4deg)}
+.report .tagpill{background:var(--primer);padding:1px 8px;font-size:10px;letter-spacing:2px}
+.report .bigstamp{position:absolute;right:30px;top:70px;border:3px solid var(--rust);color:var(--rust);
+  font-weight:600;font-size:16px;letter-spacing:5px;padding:8px 14px;transform:rotate(-10deg);opacity:.8}
+/* THE ENDING IS A SENTENCE, written over their form in marker. */
+.why{position:absolute;left:4%;right:2%;bottom:-40px;font-family:var(--fs);
+  font-size:clamp(28px,4.4vw,46px);line-height:1.25;color:var(--pink);transform:rotate(-3deg);
+  text-shadow:2px 2px 0 #fff,-1px -1px 0 #fff,0 12px 30px rgba(0,0,0,.4);pointer-events:none;text-wrap:balance}
+.aftermath{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;margin-top:40px;color:var(--soft)}
+.aftermath .reg{font-family:var(--fh);font-size:19px;line-height:1.3}
+.btn-new{background:var(--pink);color:var(--ink);border:none;border-radius:999px;padding:16px 28px;font-weight:700;font-size:17px;cursor:pointer}
+.btn-new:hover{transform:translateY(-2px) rotate(-1deg)}
+.arow{background:var(--paper);padding:14px 18px;display:grid;grid-template-columns:auto auto minmax(0,1fr);
+  gap:6px 18px;align-items:baseline}
+.arow .d{font-family:var(--fm);font-size:10px;letter-spacing:2px;color:var(--bolt)}
+.arow .b{background:var(--ink);color:#fff;padding:1px 8px;letter-spacing:2px;font-size:10px;font-family:var(--fm)}
+.arow .w{font-family:var(--fh);font-size:20px;line-height:1.25}
+
+/* ---------- DEV PANEL — DELETE WHEN WIRING TO REAL STATE -------------- */
+.devpanel{position:fixed;left:14px;bottom:14px;z-index:60;background:rgba(0,0,0,.72);color:#fff;
+  backdrop-filter:blur(6px);border-radius:10px;padding:12px 14px;font-family:var(--fm);font-size:10px;
+  letter-spacing:1.5px;display:flex;flex-direction:column;gap:10px;min-width:230px}
+.devpanel .row{display:flex;align-items:center;gap:8px;justify-content:space-between}
+.devpanel input[type=range]{width:110px;accent-color:var(--pink)}
+.devpanel .tabs{display:flex;gap:3px}
+.devpanel .tabs button{border:none;cursor:pointer;padding:5px 9px;border-radius:999px;font:inherit;
+  letter-spacing:1.5px;background:transparent;color:var(--soft)}
+.devpanel .tabs button.on{background:var(--paper);color:var(--ink)}
+.devpanel .hint{color:var(--muted);line-height:1.5;letter-spacing:.5px;text-transform:none;font-size:10px}
+</style>
+</head>
+<body>
+<div id="root">
+  <!-- grime layers: all four read --g, none of them need JS -->
+  <div class="layer layer-dirt"></div>
+  <div class="layer layer-rust"></div>
+  <div class="layer layer-speck"></div>
+  <div class="layer layer-vig"></div>
+
+  <!-- THE PRESTIGE'S TICKER — the single clean surface. Clocks live here. -->
+  <div class="tickerwrap"><div class="ticker">
+    <span class="tape tape-pink" style="left:24px;transform:rotate(-3deg)"></span>
+    <span class="lbl">THE PRESTIGE · AUDIT 0003</span>
+    <span class="grp">STOP <b id="tStop"></b></span>
+    <span class="grp">SMUDGE <b style="color:var(--rust)" id="tSmudge"></b>
+      <span class="bar"><i id="tBar"></i><u id="tNotch"></u></span>
+      <span style="color:var(--muted)">TARGET <span id="tTarget"></span></span></span>
+    <span class="fronts" id="tFronts"></span>
+  </div></div>
+
+  <!-- ===================== LANDED ===================== -->
+  <main id="landed">
+    <!-- COLUMN 1 — HER LOG. This is the content of the game. Read it first. -->
+    <section class="col">
+      <div class="hand" style="font-size:26px;transform:rotate(-2deg)">what she did while I was gone</div>
+      <div class="said wear-sm torn-b">
+        <span class="tape" style="left:50%;transform:translateX(-50%) rotate(2deg)"></span>
+        <span class="k">I SAID, ON THE WAY OUT</span>“<span id="lSaid"></span>”
+      </div>
+      <div id="lLog" class="col"></div>
+      <button class="unfold" id="lUnfold"></button>
+    </section>
+
+    <!-- COLUMN 2 — THE SHIP, then TODAY'S PROBLEM. -->
+    <section class="col" style="gap:18px">
+      <div class="shipwrap">
+        <div class="hand shiptitle">Not Betsy <small id="sMeta"></small></div>
+        <svg class="shipsvg" viewBox="0 0 520 360">
+          <defs><radialGradient id="glow" cx="50%" cy="50%" r="50%">
+            <stop offset="0" stop-color="#ff5fa2" stop-opacity=".45"/><stop offset="1" stop-color="#ff5fa2" stop-opacity="0"/>
+          </radialGradient></defs>
+          <ellipse cx="260" cy="190" rx="220" ry="140" fill="url(#glow)" style="opacity:calc(.3 + var(--g) * .4);animation:glowpulse 4s ease-in-out infinite"/>
+          <ellipse cx="260" cy="330" rx="150" ry="12" fill="rgba(0,0,0,.35)"/>
+          <g style="animation:hover 5s ease-in-out infinite;transform-origin:260px 190px">
+            <ellipse cx="260" cy="190" rx="150" ry="88" fill="#e6e9ee" stroke="#1c2026" stroke-width="3"/>
+            <!-- hull weathering: all three read --g -->
+            <path d="M120 200 q60 40 140 40 q80 0 140 -40" fill="none" stroke="#b8562e" stroke-width="7" stroke-linecap="round" stroke-dasharray="18 60" style="opacity:calc(var(--g) * .5)"/>
+            <ellipse cx="260" cy="190" rx="150" ry="88" fill="none" stroke="#9aa3b0" stroke-width="1" stroke-dasharray="2 7"/>
+            <path d="M140 150 l18 10 l-6 14 l22 8 M300 240 l14 -12 l10 14 M180 250 l12 -8 l14 10" fill="none" stroke="#b8562e" stroke-width="1.5" stroke-linecap="round" style="opacity:calc(var(--g) * .22)"/>
+            <g fill="#b8562e" style="opacity:calc(var(--g) * .25)"><circle cx="128" cy="170" r="3"/><circle cx="392" cy="176" r="3"/><circle cx="240" cy="272" r="3"/><circle cx="330" cy="108" r="3"/><circle cx="170" cy="118" r="2.5"/></g>
+            <ellipse cx="200" cy="230" rx="40" ry="10" fill="#7a3a1a" style="opacity:calc(var(--g) * .12)"/>
+            <!-- her viewport -->
+            <ellipse cx="308" cy="176" rx="28" ry="26" fill="#1c2026"/><ellipse cx="300" cy="168" rx="9" ry="8" fill="#5b6473"/>
+            <!-- the name joke, struck out in marker -->
+            <text x="180" y="196" font-family="IBM Plex Mono" font-size="12" letter-spacing="4" fill="#9aa3b0">BETSY</text>
+            <line x1="176" y1="192" x2="232" y2="192" stroke="#ff5fa2" stroke-width="3"/>
+            <text x="172" y="222" font-family="Pacifico" font-size="22" fill="#ff5fa2" transform="rotate(-6 172 222)">not betsy</text>
+            <g id="sHardpoints"></g>
+            <g id="sModules"></g>
+            <g id="sSled"></g>
+          </g>
+        </svg>
+        <div class="aboard" id="sAboard"></div>
+      </div>
+
+      <div class="order wear-md torn-c">
+        <span class="tape tape-pink" style="right:36px;transform:rotate(4deg)"></span>
+        <div class="kick"><span>WORK ORDER · STOP <span id="oStop"></span></span><span style="color:var(--rust)" id="oTag"></span><span>CUSTOMS: <span id="oCustoms"></span></span></div>
+        <h2 id="oName"></h2>
+        <p id="oProblem"></p>
+        <div class="row" style="display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:6px">
+          <div class="tries">tries left <span id="oTries" style="display:flex;gap:6px"></span></div>
+          <div style="font-family:var(--fs);font-size:20px;transform:rotate(-3deg)" id="oStatus"></div>
+        </div>
+        <div id="oResult"></div>
+        <div id="oStamp"></div>
+      </div>
+    </section>
+
+    <!-- COLUMN 3 — THE RIDICULOUS PART, then WHAT I'LL SAY. -->
+    <section class="col" style="gap:20px">
+      <div class="hangwrap">
+        <div class="string"></div>
+        <div class="hangtag wear-md torn-d sel" id="tag">
+          <span class="hole"></span>
+          <div class="meta"><span id="pCat"></span><span style="color:var(--rust);font-size:13px;letter-spacing:1px" id="pStars"></span></div>
+          <h3 id="pName"></h3>
+          <div class="origin" id="pOrigin"></div>
+          <div class="updown">
+            <div class="up"><b>+</b><span id="pUp"></span></div>
+            <div class="down"><b>−</b><span id="pDown"></span></div>
+          </div>
+          <div class="solves" id="pSolves"></div>
+          <div class="btnrow">
+            <button class="btn btn-use" id="pUse">Try it on the problem</button>
+            <button class="btn btn-keep" id="pKeep" title="God Mode: one part survives the shed"></button>
+          </div>
+          <div class="godnote" id="pGod"></div>
+        </div>
+      </div>
+
+      <div class="postit wear-md torn-d">
+        <span class="tape" style="left:30px;transform:rotate(-3deg)"></span>
+        <h3>before I go</h3>
+        <div class="col" style="gap:6px">
+          <div class="q">this week she should:</div>
+          <div class="pickrow" id="bGoals"></div>
+        </div>
+        <div class="col" style="gap:6px">
+          <div class="q">and on the way out I'll say… <small>(she'll take it literally)</small></div>
+          <div class="wordlist" id="bWords"></div>
+        </div>
+        <button class="btn-leave" id="bLeave">Leave her for a week →</button>
+        <div class="foot">she sheds everything at the end of the stop, except the one I keep.</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== AWAY ===================== -->
+  <main id="away" hidden>
+    <div class="side">
+      <div class="hand" style="font-size:30px;transform:rotate(-2deg)">she's out there. I'm not.</div>
+      <div class="daybig"><b id="aDay"></b><span>of 7 days</span></div>
+      <div class="daydots" id="aDots"></div>
+      <div class="brief">I told her: <b id="aGoal"></b>. And on the way out I said <em>“<span id="aSaid"></span>”</em>. She heard it. All of it.</div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        <button class="btn-pale" id="aAdvance">Let a day pass</button>
+        <button class="btn-out" id="aSkip">Skip to landing</button>
+      </div>
+      <div class="aside">or close the tab. she keeps going without me. that's the point.</div>
+    </div>
+    <div class="col">
+      <svg viewBox="0 0 360 260" style="width:100%;overflow:visible">
+        <g style="animation:drift 7s ease-in-out infinite;transform-origin:180px 130px">
+          <ellipse cx="180" cy="130" rx="110" ry="64" fill="#e6e9ee" stroke="#1c2026" stroke-width="3"/>
+          <ellipse cx="214" cy="120" rx="20" ry="18" fill="#1c2026"/>
+          <g id="aBlips"></g>
+        </g>
+        <text id="aScribble" x="180" y="245" text-anchor="middle" font-family="Pacifico" font-size="20" fill="#ff5fa2" transform="rotate(-3 180 245)"></text>
+      </svg>
+      <div class="col" style="gap:10px">
+        <div class="hand" style="font-size:20px;transform:rotate(-1deg)">what I can hear from here</div>
+        <div class="col" style="gap:10px" id="aRumours"></div>
+        <div class="aside" style="font-size:17px">she'll tell me the rest when I land. some of it.<span style="display:inline-block;width:7px;height:14px;background:var(--pink);margin-left:6px;vertical-align:-2px;animation:blink 1s steps(1) infinite"></span></div>
+      </div>
+    </div>
+  </main>
+
+  <!-- ===================== VERDICT ===================== -->
+  <main id="verdict" hidden>
+    <div class="hand" style="font-size:28px;transform:rotate(-2deg)">their report came. I wrote on it.</div>
+    <div style="position:relative;transform:rotate(calc(-.8deg - var(--g) * .5deg))">
+      <span class="tape tape-pink" style="left:40px;top:-10px;width:70px;height:18px;transform:rotate(-4deg);z-index:2"></span>
+      <div class="report wear-lg torn-a">
+        <div class="hd"><span>THE PRESTIGE · AUDIT REPORT</span><span>FORM 0003-C</span></div>
+        <div class="rows">
+          <span>SUBJECT</span><span style="font-weight:600">NOT BETSY</span>
+          <span>STOPS</span><span>3 / 3</span>
+          <span>SMUDGE</span><span><span id="vSmudge"></span> · TARGET <span id="vTarget"></span> · <span style="color:var(--rust)" id="vOver"></span></span>
+          <span>SCORE</span><span class="score" id="vScore"></span>
+          <span>BAND</span><span><span class="band" id="vBand"></span> <span style="color:var(--bolt)">— <span id="vBandNote"></span></span></span>
+          <span>CLASSIFICATION</span><span style="display:flex;gap:10px;align-items:baseline;flex-wrap:wrap"><span class="struck">WEATHER BALLOON</span><span class="mark">home</span></span>
+          <span>OPTIMIZED</span><span>Karaoke Distress Beacon <span class="tagpill">OPTIMIZED</span> <span style="font-family:var(--fh);font-size:17px;color:var(--rust)">that was the best thing she had</span></span>
+          <span>PURPOSE</span><span style="font-family:var(--fs);color:var(--pink);font-size:22px">yes</span>
+        </div>
+        <div class="bigstamp" id="vStamp"></div>
+      </div>
+      <!-- the one sentence the Archive keeps -->
+      <div class="why" id="vWhy"></div>
+    </div>
+    <div class="aftermath">
+      <div class="reg">register: <span id="vReg"></span> · added to the archive<br><span id="vCarry"></span></div>
+      <button class="btn-new" id="vNew">New bargain</button>
+    </div>
+    <div class="col" style="gap:10px;margin-top:8px">
+      <div class="hand" style="font-size:22px;transform:rotate(-1deg)">the archive · every why so far</div>
+      <div class="col" style="gap:10px" id="vArchive"></div>
+    </div>
+  </main>
+
+  <!-- DEV PANEL — DELETE THIS BLOCK WHEN WIRING TO REAL GAME STATE -->
+  <div class="devpanel">
+    <div class="row"><span>SCREEN</span><span class="tabs" id="dTabs">
+      <button data-screen="landed" class="on">LANDED</button><button data-screen="away">AWAY</button><button data-screen="verdict">VERDICT</button>
+    </span></div>
+    <div class="row"><span>GRIME <b id="dGrimeVal"></b></span><input id="dGrime" type="range" min="0" max="5" step="0.25"></div>
+    <div class="row"><span>PARTS <b id="dPartsVal"></b></span><input id="dParts" type="range" min="1" max="12" step="1"></div>
+    <div class="row"><span>SMUDGE <b id="dSmudgeVal"></b></span><input id="dSmudge" type="range" min="0" max="12" step="1"></div>
+    <div class="hint">Grime is derived from (smudge − target) / 2 in game — move Smudge and watch it follow. Dragging Grime directly overrides until reload.</div>
+  </div>
+</div>
+
+<script>
+/* ============================================================================
+   DATA — everything here is placeholder content, authored to show the SHAPE
+   of each record. In the real game these come from the generation/seed layer.
+   ==========================================================================*/
+
+/* Module art is kit-bashed: one base silhouette per CATEGORY + an accessory
+   stroke drawn on top. A new part needs a category, not new artwork.
+   Paths are centred on 0,0 so they can be dropped on any hardpoint.        */
+const SHAPES = {
+  defence:    { d:"M-16,-14 h32 v16 q0,16 -16,20 q-16,-4 -16,-20z", acc:"M-7,-5 h14 M0,-5 v16" },
+  repair:     { d:"M-18,-7 h24 v14 h-24z M7,-14 a12,12 0 1,1 0,28 l-5,-7 v-14z", acc:"M-14,0 h16" },
+  food:       { d:"M-16,-5 h32 v16 q0,7 -7,7 h-18 q-7,0 -7,-7z", acc:"M-10,-5 v-10 h20 v10 M-5,-15 v-6 M5,-15 v-6" },
+  comms:      { d:"M-18,5 a18,18 0 0,1 36,0 z", acc:"M0,5 v-18 M-6,-14 h12" },
+  power:      { d:"M-16,-10 h30 v20 h-30z M14,-5 h5 v10 h-5z", acc:"M-10,-5 h7 M-1,0 h7 M-10,5 h7" },
+  hull:       { d:"M-18,-12 h36 v24 h-36z", acc:"M-14,-7 h3 M11,-7 h3 M-14,7 h3 M11,7 h3 M-18,0 h36" },
+  propulsion: { d:"M-16,-12 h20 l14,12 l-14,12 h-20z", acc:"M-22,-6 h-7 M-22,0 h-10 M-22,6 h-7" }
+};
+
+/* EIGHT hardpoints. Parts beyond these go on the sled. See header comment. */
+const HP = [[150,112],[260,96],[370,112],[420,190],[370,268],[260,284],[150,268],[100,190]];
+
+/* Parts: `solves` is matched against the planet's problem tag (lowercased).
+   `up`/`down` must BOTH exist — every positive has a negative is the rule. */
+const PARTS = [
+  { id:1, name:"Bouncy Castle Airlock", cat:"defence", stars:"✶", origin:"salvaged from a kids' party on day 2. it was already inflated.", up:"+3 scrap, +2 power, +2 smudge. Patrols bounce off.", down:"Customs flags it every time. Sheds two other parts when it deploys.", solves:"hostile", rot:-8 },
+  { id:2, name:"Self-Folding Laundry Arm", cat:"repair", stars:"✶✶", origin:"found in a derelict laundromat. it folded her before she could object.", up:"+1 scrap, +1 power. Folds small hull breaches shut.", down:"Leaks power. Folds strays.", solves:"broken", rot:12 },
+  { id:3, name:"External Potato Replicator", cat:"food", stars:"✶✶", origin:"traded for two songs on day 4. she does not know why yet.", up:"Feeds a planet. Externally.", down:"Only potatoes. The hull smells of potatoes.", solves:"starving", rot:-4 },
+  { id:4, name:"Karaoke Distress Beacon", cat:"comms", stars:"✶✶✶", origin:"a habit that became hardware.", up:"Anyone within a light-year hears you. Everyone.", down:"Anyone within a light-year hears you. Everyone.", solves:"silent", rot:6 },
+  { id:5, name:"Lava Lamp Reactor", cat:"power", stars:"✶✶", origin:"warm. I said.", up:"+4 power. Very relaxing.", down:"Forty minutes to get going. Cannot be rushed.", solves:"dark", rot:-10 },
+  { id:6, name:"Snow Plow Prow", cat:"hull", stars:"✶", origin:"municipal. Red Deer. still has the decal.", up:"Clears debris fields in one pass.", down:"Plows things that are not debris.", solves:"blocked", rot:3 },
+  { id:7, name:"Tax-Deductible Hull Plating", cat:"hull", stars:"✶✶", origin:"customs auction. technically legal.", up:"Customs waves you through. Paperwork immaculate.", down:"Audited annually. Very heavy.", solves:"customs", rot:-6 },
+  { id:8, name:"Haunted Coffee Maker", cat:"food", stars:"✶✶✶", origin:"came with the goose.", up:"Morale. Something makes coffee at 6am regardless.", down:"Something makes coffee at 6am regardless.", solves:"morale", rot:9 },
+  { id:9, name:"Municipal Fountain", cat:"propulsion", stars:"✶✶✶", origin:"nobody knows.", up:"Surprisingly good thrust.", down:"Coins.", solves:"stranded", rot:0 },
+  { id:10, name:"Bus Shelter, Glazed", cat:"hull", stars:"✶", origin:"it was raining on a planet with no rain.", up:"Somewhere to stand.", down:"Somewhere to stand.", solves:"exposed", rot:5 },
+  { id:11, name:"Curling Rocks ×8", cat:"propulsion", stars:"✶✶", origin:"ballast. she insists on sweeping first.", up:"Perfect landings, every time.", down:"Landing now takes four minutes and a broom.", solves:"stranded", rot:-7 },
+  { id:12, name:"Motel Sign, VACANCY", cat:"comms", stars:"✶✶", origin:"a habit that became hardware, again.", up:"Attracts strays with useful skills.", down:"It always says VACANCY.", solves:"silent", rot:8 }
+];
+
+/* FOUR VOICES = FOUR MATERIALS. Do not add a fifth without a new material. */
+const VOICE = {
+  "NOT BETSY":    { bg:"#f6efe2", fg:"#1c2026", meta:"#b8562e", font:"var(--fh)", size:"21px", radius:"2px", tape:true  },
+  "THE PRESTIGE": { bg:"#ffffff", fg:"#343a44", meta:"#5b6473", font:"var(--fm)", size:"12px", radius:"0",   tape:false },
+  "JAME":         { bg:"#ffe98a", fg:"#1c2026", meta:"#b8562e", font:"var(--fs)", size:"19px", radius:"0",   tape:true  },
+  "SYSTEM":       { bg:"rgba(0,0,0,.35)", fg:"#c9cfd8", meta:"#9aa3b0", font:"var(--fm)", size:"11px", radius:"999px", tape:false }
+};
+
+/* Her log, newest first. `caused:true` prints the pink "← that's on me"
+   annotation — use it whenever an entry traces back to the player's words. */
+const LOG = [
+  { day:7, voice:"SYSTEM", text:"Landed: Grainless Vesper. Customs: light. Power −2." },
+  { day:6, voice:"THE PRESTIGE", text:"VORIAN · INTERIM REPORT. SUBJECT WEIRDER THAN EXPECTED. ONE PART SCHEDULED FOR TIDYING." },
+  { day:5, voice:"NOT BETSY", text:"A stray came aboard. It is a goose. It is warm now. You said.", caused:true },
+  { day:4, voice:"NOT BETSY", text:"Traded two songs for an External Potato Replicator. It makes potatoes. Externally. I do not know why yet." },
+  { day:3, voice:"THE PRESTIGE", text:"NOTED: BOUNCY CASTLE AIRLOCK. A FORM HAS BEEN FILED ABOUT YOU." },
+  { day:2, voice:"NOT BETSY", text:"Acquired: Self-Folding Laundry Arm. It is attached now. I did not ask it." },
+  { day:1, voice:"NOT BETSY", text:"You said keep her warm. I have kept everything warm. Everything. The reactor is a lamp now.", caused:true }
+];
+
+const GOALS = ["salvage run","hurry to the next planet","find some crew","keep your head down"];
+/* Three drawn, one said. `hint` is the literal-minded reading she'll apply. */
+const WORDS = [
+  { text:"Keep her warm.", hint:"she'll hear: everything. warm." },
+  { text:"Don't talk to the Prestige.", hint:"she'll hear: don't talk. to anyone." },
+  { text:"Go nuts.", hint:"she'll hear: acquire nuts." }
+];
+const RUMOURS = [
+  { day:1, voice:"SYSTEM", text:"Power −1. Something was traded. She sounded pleased." },
+  { day:2, voice:"NOT BETSY", text:"Warm. All of it. You'll see." },
+  { day:3, voice:"THE PRESTIGE", text:"A FORM IS BEING PREPARED." },
+  { day:4, voice:"SYSTEM", text:"An acquisition. Category: food. She is not saying which." },
+  { day:5, voice:"NOT BETSY", text:"We have a passenger. It has opinions." },
+  { day:6, voice:"THE PRESTIGE", text:"VORIAN HAS OPENED A FILE." },
+  { day:7, voice:"SYSTEM", text:"Approach: Grainless Vesper. She is descending. Sideways." }
+];
+/* The ending is a SENTENCE, not a score. [text, register] */
+const WHYS = [
+  ["Filed under: Fern.", "absurd"],
+  ["Deletion order received, stamped, and placed under a mug.", "defiant"],
+  ["Her file came back marked INCOMPLETE, because under 'purpose' she had written 'yes.'", "absurd"],
+  ["The why, it turns out, is that someone once told a machine she wasn't Betsy, and she tried very hard to be something anyway.", "tender"]
+];
+/* Nothing in this UI is perfectly straight. Cycled, not random, so the
+   layout is stable across re-renders. */
+const TILTS = ["-1.2deg",".9deg","-.6deg","1.4deg","-1deg",".7deg","-1.5deg"];
+
+const PLANET = { name:"Grainless Vesper", tag:"STARVING", customs:"LIGHT",
+  problem:"The harvest failed for the ninth year. The ration cubes ran out politely." };
+
+/* ============================================================================
+   STATE
+   ==========================================================================*/
+const S = {
+  screen:'landed',
+  partCount:9,     // 1..12 here; >8 spills onto the sled
+  grime:null,      // null = derive from smudge (the real game behaviour)
+  sel:3, kept:null, tries:2, result:'', status:'', stamp:'',
+  goal:0, word:0, older:false,
+  day:3, smudge:7, target:5
+};
+
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const parts = () => PARTS.slice(0, S.partCount);
+
+/* THE GRIME RULE. In game, call this with nothing and let it derive. */
+function grimeValue(){
+  if (S.grime !== null) return S.grime;                    // dev override
+  return Math.min(5, Math.max(0, (S.smudge - S.target) / 2));
+}
+function applyGrime(){
+  const g = grimeValue();
+  $('#root').style.setProperty('--g', g.toFixed(3));
+  // the layout only twitches once things are genuinely bad
+  $('#root').classList.toggle('twitch', g >= 3);
+  $('#dGrimeVal').textContent = g.toFixed(2);
+  $('#dGrime').value = g;
+}
+
+/* ============================================================================
+   RENDER — plain string templating, one function per region.
+   ==========================================================================*/
+function renderTicker(){
+  $('#tStop').textContent = '2 / 3';
+  $('#tSmudge').textContent = S.smudge;
+  $('#tTarget').textContent = S.target;
+  $('#tBar').style.width = Math.min(100, S.smudge / 12 * 100) + '%';
+  $('#tNotch').style.left = (S.target / 12 * 100) + '%';
+  // Fronts are clocks, not bars: filled cells = pressure spent. Prestige only.
+  const fronts = [
+    { name:'VORIAN', desc:'Watches her whenever she is weirder than expected', on:5, of:8 },
+    { name:'TUBS', desc:'Flags irregular cargo', on:2, of:6 },
+    { name:'SYNTHESIS', desc:'Scheduled improvements', on:3, of:8 }
+  ];
+  $('#tFronts').innerHTML = fronts.map(f => `<span class="front" title="${esc(f.desc)}">${f.name}
+    <span class="clock">${Array.from({length:f.of},(_,i)=>`<span style="background:${i<f.on?'#5b6473':'transparent'}"></span>`).join('')}</span></span>`).join('');
+}
+
+function renderLog(){
+  $('#lSaid').textContent = WORDS[S.word].text;
+  const rows = S.older ? LOG : LOG.slice(0,5);
+  $('#lLog').innerHTML = rows.map((e,i) => {
+    const v = VOICE[e.voice], tilt = TILTS[i % TILTS.length];
+    return `<div class="note wear-sm torn-a" style="background:${v.bg};color:${v.fg};border-radius:${v.radius};
+      transform:rotate(calc(${tilt} * (1 + var(--g) * .8)))">
+      ${v.tape ? `<span class="tape" style="left:${20 + (i*37)%60}%;transform:rotate(${(i%2?1:-1)*(2+i%3)}deg)"></span>` : ''}
+      <div class="meta" style="color:${v.meta}"><span>${e.voice}</span><span>DAY ${e.day}</span></div>
+      <div class="body" style="font-family:${v.font};font-size:${v.size}">${esc(e.text)}</div>
+      ${e.caused ? `<div class="blame">← that's on me</div>` : ''}
+    </div>`;
+  }).join('');
+  $('#lUnfold').textContent = S.older ? 'fold the older days away' : 'she left two days out. unfold them →';
+}
+
+function renderShip(){
+  const all = parts(), onShip = all.slice(0,8), sled = all.slice(8);
+  $('#sMeta').textContent = `· ${all.length} PARTS · 1 STRAY`;
+  $('#sHardpoints').innerHTML = HP.map(([x,y]) =>
+    `<circle cx="${x}" cy="${y}" r="7" fill="none" stroke="#9aa3b0" stroke-dasharray="2 3"/>`).join('');
+
+  $('#sModules').innerHTML = onShip.map((p,i) => {
+    const [x,y] = HP[i], sh = SHAPES[p.cat];
+    const isSel   = p.id === S.sel;
+    const isKept  = p.id === S.kept;
+    const paysOff = p.solves === PLANET.tag.toLowerCase();
+    const tidied  = i === 7;                 // demo: the Prestige tidied slot 8
+    const fill    = tidied ? 'transparent' : paysOff ? '#ff5fa2' : '#5b6473';
+    const stroke  = isKept ? '#ffd02e' : '#1c2026';
+    return `<g class="module" data-id="${p.id}" transform="translate(${x} ${y}) rotate(${p.rot})">
+      <circle r="30" fill="${isSel ? 'rgba(255,95,162,.28)' : 'transparent'}"/>
+      <path d="${sh.d}" fill="${fill}" stroke="${stroke}" stroke-width="2.5" stroke-linejoin="round"
+            stroke-dasharray="${tidied?'4 3':'0'}" opacity="${tidied?.55:1}"/>
+      <path d="${sh.acc}" fill="none" stroke="${stroke}" stroke-width="2" stroke-linecap="round" opacity="${tidied?.55:1}"/>
+      <circle cx="-10" cy="10" r="1.8" fill="#1c2026"/><circle cx="10" cy="10" r="1.8" fill="#1c2026"/>
+      ${isKept ? `<text x="14" y="-14" font-size="16" fill="#ffd02e" stroke="#1c2026" stroke-width=".6">✦</text>` : ''}
+      ${paysOff ? `<text x="-40" y="-22" font-family="Pacifico" font-size="13" fill="#ff5fa2" transform="rotate(-8)">this one!</text>` : ''}
+    </g>`;
+  }).join('');
+
+  // OVERFLOW: parts 9+ tow behind on a sled rather than crowding the hull.
+  $('#sSled').innerHTML = sled.length ? `<g transform="translate(455 300)">
+      <path d="M-70 -50 q30 10 50 40" fill="none" stroke="#e6e9ee" stroke-width="2" stroke-dasharray="4 4"/>
+      <rect x="-22" y="-10" width="52" height="24" rx="6" fill="#e6e9ee" stroke="#1c2026" stroke-width="2.5"/>
+      <text x="4" y="7" text-anchor="middle" font-family="Space Grotesk" font-weight="700" font-size="13" fill="#1c2026">+${sled.length}</text>
+      <text x="4" y="32" text-anchor="middle" font-family="Caveat" font-weight="700" font-size="14" fill="#f6efe2">on the sled</text>
+    </g>` : '';
+
+  $('#sAboard').innerHTML =
+    `<span class="chip-stray"><i></i>a goose, warm</span>` +
+    `<span class="chip-habit">habit: hums when refuelling</span>`;
+
+  document.querySelectorAll('.module').forEach(g =>
+    g.onclick = () => { S.sel = +g.dataset.id; renderShip(); renderTag(); });
+}
+
+function renderOrder(){
+  $('#oStop').textContent = '2 / 3';
+  $('#oTag').textContent = PLANET.tag;
+  $('#oCustoms').textContent = PLANET.customs;
+  $('#oName').textContent = PLANET.name;
+  $('#oProblem').textContent = PLANET.problem;
+  $('#oTries').innerHTML = [0,1].map(i =>
+    `<i style="background:${i < S.tries ? '#1c2026' : 'transparent'}"></i>`).join('');
+  $('#oStatus').textContent = S.status;
+  $('#oStatus').style.color = S.status === 'solved!' ? 'var(--good)' : S.status === 'partial…' ? 'var(--rust)' : 'var(--bolt)';
+  $('#oResult').innerHTML = S.result ? `<div class="result">${esc(S.result)}</div>` : '';
+  $('#oStamp').innerHTML = S.stamp ? `<div class="stamp">${esc(S.stamp)}</div>` : '';
+}
+
+function renderTag(){
+  const p = parts().find(x => x.id === S.sel) || parts()[0];
+  const solvesHere = p.solves === PLANET.tag.toLowerCase();
+  $('#pCat').textContent = p.cat.toUpperCase();
+  $('#pStars').textContent = p.stars;
+  $('#pName').textContent = p.name;
+  $('#pOrigin').textContent = p.origin;
+  $('#pUp').textContent = p.up;
+  $('#pDown').textContent = p.down;
+  $('#pSolves').textContent = solvesHere
+    ? `solves: ${p.solves}. that's this planet.`
+    : `solves: ${p.solves}. not this planet.`;
+  $('#pSolves').style.color = solvesHere ? 'var(--good)' : 'var(--muted)';
+  $('#pUse').disabled = S.tries <= 0;
+  const kept = S.kept === p.id;
+  $('#pKeep').textContent = '✦ ' + (kept ? 'kept' : 'keep past this stop');
+  $('#pKeep').classList.toggle('on', kept);
+  // God Mode: one ad = one hour = ONE part survives the shed. That is the
+  // entire monetisation surface. Do not add a second thing to sell.
+  $('#pGod').textContent = S.kept
+    ? 'GOD MODE · 00:41 LEFT · ONE PART SURVIVES THE SHED'
+    : 'GOD MODE · ONE AD = ONE HOUR · KEEP ONE PART';
+}
+
+function renderBrief(){
+  $('#bGoals').innerHTML = GOALS.map((n,i) =>
+    `<button class="pick${i===S.goal?' on':''}" data-i="${i}">${esc(n)}</button>`).join('');
+  $('#bWords').innerHTML = WORDS.map((w,i) =>
+    `<button class="word${i===S.word?' on':''}" data-i="${i}"><span>“${esc(w.text)}”</span><em>${esc(w.hint)}</em></button>`).join('');
+  document.querySelectorAll('#bGoals .pick').forEach(b => b.onclick = () => { S.goal = +b.dataset.i; renderBrief(); });
+  document.querySelectorAll('#bWords .word').forEach(b => b.onclick = () => { S.word = +b.dataset.i; renderBrief(); renderLog(); });
+}
+
+function renderAway(){
+  $('#aDay').textContent = S.day;
+  $('#aGoal').textContent = GOALS[S.goal];
+  $('#aSaid').textContent = WORDS[S.word].text;
+  $('#aDots').innerHTML = Array.from({length:7},(_,i) =>
+    `<i style="background:${i < S.day ? 'var(--paper)' : 'transparent'};transform:rotate(${(i%2?1:-1)*(i*3%9)}deg)"></i>`).join('');
+  // Blips resolve from dashed-unknown to solid-known as the week burns down.
+  const blips = [[110,96,'food?'],[250,92,'???'],[290,160,'a goose'],[120,176,'warm']];
+  $('#aBlips').innerHTML = blips.map(([x,y,label],i) => {
+    const known = i < S.day / 2;
+    return `<g transform="translate(${x} ${y})">
+      <rect x="-13" y="-10" width="26" height="20" rx="4" fill="${known?'#5b6473':'transparent'}"
+            stroke="#1c2026" stroke-width="2" stroke-dasharray="${known?'0':'4 3'}" opacity="${known?1:.6}"/>
+      <text y="28" text-anchor="middle" font-family="Caveat" font-weight="700" font-size="13" fill="#f6efe2">${label}</text></g>`;
+  }).join('');
+  $('#aScribble').textContent = S.day >= 7 ? "she's back. brace." : S.day >= 4 ? 'what did the idiot do' : "she's fine. probably.";
+  $('#aRumours').innerHTML = RUMOURS.slice(0, S.day).map((r,i) => {
+    const v = VOICE[r.voice];
+    return `<div class="rumour wear-sm torn-b" style="background:${v.bg};color:${v.fg};transform:rotate(${TILTS[(i+2)%TILTS.length]})">
+      <span class="d" style="color:${v.meta}">DAY ${r.day}</span>
+      <span class="t" style="font-family:${v.font};font-size:${v.size}">${esc(r.text)}</span></div>`;
+  }).join('');
+}
+
+function renderVerdict(){
+  const band = S.smudge > 9 ? 'UNCLASSIFIABLE' : S.smudge > 6 ? 'DEFERRED' : 'ARCHIVED';
+  const why = WHYS[S.smudge % WHYS.length];
+  $('#vSmudge').textContent = S.smudge;
+  $('#vTarget').textContent = S.target;
+  $('#vOver').textContent = `+${Math.max(0, S.smudge - S.target)} OVER`;
+  $('#vScore').textContent = (41 + S.smudge * 3) + ' / 100';
+  $('#vBand').textContent = band;
+  $('#vStamp').textContent = band;
+  $('#vBandNote').textContent = S.smudge > 9 ? 'the form broke. she fits no field.'
+    : S.smudge > 6 ? 'persistence detected. retry scheduled.'
+    : 'subject deleted. one part retained, improved.';
+  $('#vWhy').textContent = why[0];
+  $('#vReg').textContent = why[1];
+  $('#vCarry').textContent = S.smudge > 6
+    ? 'she persists. same ship next bargain.'
+    : 'next Not Betsy starts with one "optimized" part.';
+  const past = [
+    { date:'2026·09·02', band:'ARCHIVED', why:'Filed under: Fern.', tilt:'-.6deg' },
+    { date:'2026·09·07', band:'DEFERRED', why:'Deletion order received, stamped, and placed under a mug.', tilt:'.8deg' },
+    { date:'2026·09·11', band:'UNCLASSIFIABLE', why:"Her file came back marked INCOMPLETE, because under 'purpose' she had written 'yes.'", tilt:'-.4deg' }
+  ];
+  $('#vArchive').innerHTML = past.map(a =>
+    `<div class="arow wear-sm torn-b" style="transform:rotate(${a.tilt})">
+      <span class="d">${a.date}</span><span class="b">${a.band}</span><span class="w">${esc(a.why)}</span></div>`).join('');
+}
+
+function renderAll(){
+  ['landed','away','verdict'].forEach(k => $('#'+k).hidden = (S.screen !== k));
+  document.querySelectorAll('#dTabs button').forEach(b => b.classList.toggle('on', b.dataset.screen === S.screen));
+  $('#dPartsVal').textContent = S.partCount; $('#dParts').value = S.partCount;
+  $('#dSmudgeVal').textContent = S.smudge;   $('#dSmudge').value = S.smudge;
+  applyGrime();
+  renderTicker();
+  if (S.screen === 'landed'){ renderLog(); renderShip(); renderOrder(); renderTag(); renderBrief(); }
+  if (S.screen === 'away') renderAway();
+  if (S.screen === 'verdict') renderVerdict();
+}
+
+/* ============================================================================
+   ACTIONS
+   ==========================================================================*/
+$('#lUnfold').onclick = () => { S.older = !S.older; renderLog(); };
+
+$('#pUse').onclick = () => {
+  if (S.tries <= 0) return;
+  const p = parts().find(x => x.id === S.sel);
+  const ok = p.solves === PLANET.tag.toLowerCase();
+  S.tries--;
+  S.smudge += ok ? 2 : 1;           // even success smudges. That is the point.
+  S.status  = ok ? 'solved!' : (S.tries === 1 ? 'partial…' : 'failed');
+  S.stamp   = ok ? 'RESOLVED' : 'NOTED';
+  S.result  = ok
+    ? `${p.name} deployed. Externally. The planet ate. Vesper has filed a thank-you and a complaint.`
+    : `${p.name} did not help. Something did happen, though. General Tubs has noticed.`;
+  renderAll();
+};
+$('#pKeep').onclick = () => { const p = parts().find(x => x.id === S.sel); S.kept = S.kept === p.id ? null : p.id; renderShip(); renderTag(); };
+$('#bLeave').onclick = () => { S.screen = 'away'; S.day = 0; renderAll(); };
+$('#aAdvance').onclick = () => { S.day = Math.min(7, S.day + 1); S.smudge += S.day % 2; renderAll(); };
+$('#aSkip').onclick = () => { S.day = 7; S.smudge += 2; renderAll(); };
+$('#vNew').onclick = () => { Object.assign(S, { screen:'landed', tries:2, result:'', status:'', stamp:'', smudge:3, day:3, kept:null }); renderAll(); };
+
+/* DEV PANEL handlers — DELETE with the panel markup. */
+document.querySelectorAll('#dTabs button').forEach(b => b.onclick = () => { S.screen = b.dataset.screen; renderAll(); });
+$('#dGrime').oninput  = e => { S.grime = +e.target.value; applyGrime(); };
+$('#dParts').oninput  = e => { S.partCount = +e.target.value; renderAll(); };
+$('#dSmudge').oninput = e => { S.smudge = +e.target.value; S.grime = null; renderAll(); };
+
+renderAll();
+</script>
+</body>
+</html>
