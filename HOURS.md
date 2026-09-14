@@ -16,6 +16,29 @@ Split below is CC's estimate against Jay's ~4:00 total: **Orbis ~1:45 · Game #2
 
 ---
 
+## Game #3 — FERRET BOWLING: LUCY EDITION (tombstone: Galápagos: Mendel's Escape · DNA also from Learn to Fly, Shopping Cart Hero)
+
+**Clock started 2026-09-14 ~19:10 ET** ("READY FOR OUR NEXT GAME?!").
+Prework done before the clock (Jay with CD and red team: hero page, Lucy sprites, gameplay brief) is **not yet counted**; Jay to add an estimate.
+
+| Milestone | Jay-time (cumulative) | Date |
+|---|---|---|
+| Prework (CD page, sprites, brief) | ? (Jay to fill) | before 2026-09-14 |
+| Game chosen, tombstone named, page + homepage banner decided | ~0:15 | 2026-09-14 |
+| Page live + "next up" banner | | |
+| Teardown (Galápagos) | | |
+| Spec'd mechanics tested | | |
+| First Jay playtest | | |
+| First "WHAT THE FUCK, LUCY" | | |
+| First thing Jay hates | | |
+| Ship candidate | | |
+
+| Date | Jay-time | Machine work | What Jay did |
+|---|---|---|---|
+| 2026-09-14 | ~0:15 | Read prework (page, 14 assets, brief), mapped it to method + library, Ferret Bowling page (brief band stripped, Lucy Edition, Kit league form), homepage next-up banner | Picked Ferret Bowling, named the tombstone, sent prework + the (right) brief, 4 decision answers |
+
+---
+
 ## Game #2 — BAD MONKEYS (tombstone: Universal Paperclips · built on Jay's Bad Monkeys canon)
 
 **The first real test of the Unstuck method:** someone else's loved game → teardown → Jay's boundaries → test → something new.
