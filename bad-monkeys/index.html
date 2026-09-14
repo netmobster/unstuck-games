@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Bad Monkeys — Not always better. Always weirder.</title>
+<meta name="description" content="An Unstuck game. You're Jame. She's Not Betsy. The Prestige is auditing you both.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Space+Grotesk:wght@400;500;700&family=IBM+Plex+Mono:wght@400;600&family=Luckiest+Guy&display=swap" rel="stylesheet">
+<style>
+:root{--rust:0;--bg:#1c2026;--hull:#2a2f37;--card:#343a44;--bolt:#5b6473;--muted:#9aa3b0;--soft:#c9cfd8;--primer:#e6e9ee;--pink:#ff5fa2;--rustc:#b8562e;--edge:color-mix(in srgb,#5b6473,#b8562e calc(var(--rust)*100%))}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--primer);font-family:'Space Grotesk',sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--primer);text-decoration:none}a:hover{color:var(--pink)}
+button,input{font-family:inherit}
+h1,h2,p{margin:0}
+.mono{font-family:'IBM Plex Mono',monospace}
+.script{font-family:'Pacifico',cursive;font-weight:400;color:var(--pink)}
+.kick{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:3px;color:var(--muted)}
+.wrap{max-width:1160px;margin:0 auto;padding:0 24px}
+section{padding:64px 0 96px}
+h2{font-weight:700;font-size:clamp(36px,4.5vw,60px);line-height:1.02;letter-spacing:-2px;text-wrap:balance}
+h2 .script{letter-spacing:0}
+.lead{font-size:18px;line-height:1.55;max-width:50ch;color:var(--soft);text-wrap:pretty}
+.sub{font-size:18px;line-height:1.5;max-width:56ch;color:var(--muted);font-weight:500;text-wrap:pretty}
+.head{display:flex;flex-direction:column;gap:14px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:start}
+.btn{display:inline-block;border:none;cursor:pointer;border-radius:4px;padding:16px 26px;font-weight:700;font-size:16px;letter-spacing:.5px;transition:all .25s;background:var(--pink);color:var(--bg);white-space:nowrap}
+.btn:hover{transform:translateY(-3px) rotate(-1deg);color:var(--bg);box-shadow:0 12px 30px rgba(255,95,162,.3)}
+.btn.ghost{background:transparent;color:var(--primer);border:2px solid var(--muted);padding:14px 24px}
+.btn.ghost:hover{border-color:var(--pink);color:var(--pink);box-shadow:none}
+.btn.primer{background:var(--primer);color:var(--bg);padding:14px 22px;font-size:15px}
+.btn.primer:hover{background:var(--pink);box-shadow:none}
+:focus-visible{outline:2px solid var(--pink);outline-offset:2px}
+.strike{font-weight:700;color:var(--bolt);text-decoration:line-through;text-decoration-color:var(--pink)}
+.tilt{display:inline-block;transform:rotate(-4deg)}
+.panel{background:var(--hull);border:1px solid var(--edge);border-radius:6px}
+/* overlays */
+.rust{position:fixed;inset:0;pointer-events:none;z-index:40;opacity:var(--rust);transition:opacity .4s;mix-blend-mode:screen;background:radial-gradient(ellipse at 0% 0%,rgba(184,86,46,.55),transparent 38%),radial-gradient(ellipse at 100% 20%,rgba(184,86,46,.45),transparent 34%),radial-gradient(ellipse at 10% 100%,rgba(120,50,20,.6),transparent 36%),radial-gradient(ellipse at 95% 95%,rgba(184,86,46,.5),transparent 40%)}
+.scan{position:fixed;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,rgba(255,95,162,.35),transparent);pointer-events:none;z-index:41;animation:scan 9s linear infinite}
+/* tape + nav */
+.sticky{position:sticky;top:0;z-index:50}
+.tape{height:32px;overflow:hidden;display:flex;align-items:center;background:var(--primer);color:var(--bg);border-bottom:2px solid color-mix(in srgb,#1c2026,#b8562e calc(var(--rust)*100%))}
+.tape .track{display:flex;width:max-content;animation:marquee 30s linear infinite;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:3px;font-weight:600}
+.tape .grp{display:flex;gap:48px;padding-right:48px;white-space:nowrap}
+.tape span{flex:none}
+nav{background:rgba(28,32,38,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--edge)}
+nav .wrap{padding:12px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px}
+.lock{display:flex;align-items:baseline;gap:6px}
+.lock .strike{font-size:16px;text-decoration-thickness:2px}
+.lock .script{font-size:19px}
+.lock b{font-weight:700;font-size:18px;letter-spacing:-.5px}
+.links{display:flex;align-items:center;gap:22px;font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:2px;flex-wrap:wrap}
+.links a{white-space:nowrap}
+.unstuck{display:flex;align-items:center;gap:8px;background:#f2efe6;color:#16163a;border-radius:999px;padding:6px 14px 6px 10px;font-family:'Luckiest Guy',cursive;font-size:13px;letter-spacing:1px;transition:transform .25s}
+.unstuck:hover{transform:rotate(-3deg) translateY(-2px);color:#16163a}
+.unstuck .u{display:inline-block;color:#2b34d6;transform:translateY(-3px) rotate(-9deg)}
+.unstuck small{font-family:'Space Grotesk',sans-serif;font-weight:700;font-size:9px;letter-spacing:2px}
+/* hero */
+.hero{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:center;padding:80px 0 96px}
+.hero .copy{display:flex;flex-direction:column;gap:24px}
+.hero .kick{line-height:1.9}
+.cursor{display:inline-block;width:8px;height:14px;background:var(--pink);margin-left:6px;vertical-align:-2px;animation:blink 1s steps(1) infinite}
+h1{display:flex;flex-direction:column;line-height:.95}
+h1 .row{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+h1 .strike,h1 .script,h1 .word{font-size:clamp(56px,8vw,104px)}
+h1 .strike,h1 .word{letter-spacing:-3px;font-weight:700}
+h1 .strike{text-decoration-thickness:.09em}
+h1 .script{animation:wobble 5s ease-in-out infinite}
+.tag{font-size:26px;font-weight:700;line-height:1.2;color:var(--soft)}
+.tag .script{font-size:30px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.orbit{position:relative;width:100%;max-width:460px;aspect-ratio:1;margin:0 auto}
+.orbit .ring{position:absolute;inset:0;border-radius:50%;border:1px dashed var(--edge)}
+.orbit .ring2{position:absolute;inset:12%;border-radius:50%;border:1px solid var(--card);animation:spin 40s linear infinite}
+.orbit .ring2 i{position:absolute;top:-6px;left:50%;width:12px;height:12px;border-radius:50%;background:var(--pink)}
+.orbit svg{position:absolute;left:20%;top:14%;width:60%;animation:hover 4s ease-in-out infinite}
+.orbit .arm{transform-origin:96px 40px;animation:bob 3s ease-in-out infinite}
+.chip{position:absolute;padding:6px 10px;background:var(--card);border:1px solid var(--bolt);border-radius:3px;font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;color:var(--muted);white-space:nowrap;animation:drift 6s ease-in-out infinite}
+.scrib{position:absolute;font-family:'Pacifico',cursive;font-size:26px;color:var(--pink);transform:rotate(-8deg);animation:drift 8s ease-in-out infinite}
+/* archive */
+.file{background:var(--primer);color:var(--bg);border-radius:6px;padding:28px;font-family:'IBM Plex Mono',monospace;font-size:13px;line-height:1.9;position:relative;box-shadow:inset 0 0 0 1px var(--muted),0 30px 60px rgba(0,0,0,.35);animation:flicker 7s linear infinite}
+.file .stain{position:absolute;inset:0;border-radius:6px;pointer-events:none;opacity:var(--rust);background:radial-gradient(ellipse at 100% 0%,rgba(184,86,46,.5),transparent 45%),radial-gradient(ellipse at 0% 100%,rgba(184,86,46,.4),transparent 40%)}
+.file .hd{display:flex;justify-content:space-between;gap:12px;letter-spacing:3px;font-size:11px;color:var(--bolt);border-bottom:1px solid var(--muted);padding-bottom:10px;margin-bottom:14px;white-space:nowrap}
+.file .rows{display:grid;grid-template-columns:104px minmax(0,1fr);gap:6px 14px;align-items:start}
+.file .rows>span:nth-child(odd){color:var(--bolt);white-space:nowrap}
+.file .cls{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.file .cls s{text-decoration-color:var(--pink);text-decoration-thickness:2px;color:var(--bolt);white-space:nowrap}
+.file .cls .script{font-size:19px;display:inline-block;transform:rotate(-5deg)}
+.file .eff{display:flex;align-items:center;gap:10px}
+.file .bar{flex:1;max-width:160px;height:8px;background:var(--soft);border-radius:2px;overflow:hidden}
+.file .bar i{display:block;height:100%;background:var(--bg)}
+.file .vd{margin:18px 0 6px;border-top:1px solid var(--muted);padding-top:14px;display:flex;justify-content:space-between;align-items:center;letter-spacing:3px;font-size:11px;color:var(--bolt)}
+.file .vd b{background:var(--bg);color:var(--primer);padding:3px 10px;border-radius:2px;letter-spacing:2px;font-weight:400}
+.file .why{font-family:'Space Grotesk',sans-serif;font-size:20px;font-weight:700;line-height:1.3;letter-spacing:-.3px;text-wrap:pretty}
+.file .note{position:absolute;right:22px;bottom:-14px;font-family:'Pacifico',cursive;font-size:24px;color:var(--pink);transform:rotate(-8deg);animation:wobble 6s ease-in-out infinite}
+.seedrow{display:flex;gap:12px;flex-wrap:wrap;align-items:center}
+.seed{font-family:'IBM Plex Mono',monospace;font-size:12px;color:var(--muted);letter-spacing:1px}
+/* parts */
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+.part{padding:26px;display:flex;flex-direction:column;gap:14px;transition:all .3s;position:relative;overflow:hidden}
+.part:hover{transform:translateY(-6px) rotate(-.8deg);border-color:var(--pink);box-shadow:0 24px 50px rgba(0,0,0,.4)}
+.part .top{display:flex;justify-content:space-between;align-items:center;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--muted)}
+.part .top em{color:var(--pink);font-style:normal}
+.part .stage{height:70px;display:flex;align-items:center}
+.part .name{font-weight:700;font-size:24px;line-height:1.05;letter-spacing:-.5px}
+.part .pm{display:flex;flex-direction:column;gap:6px;font-size:15px;line-height:1.4}
+.part .pm div{display:flex;gap:8px}.part .pm span{color:var(--soft)}
+.part .pm b{flex:none}.part .plus b{color:#7fd1a8}.part .minus b{color:var(--pink)}
+.part .note{margin-top:auto;font-family:'Pacifico',cursive;font-size:18px;color:var(--pink);transform:rotate(-3deg);align-self:flex-end}
+/* tone */
+.tone{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px}
+.prest{background:var(--primer);color:var(--bg);border-radius:6px;padding:32px;display:flex;flex-direction:column;gap:18px;font-family:'IBM Plex Mono',monospace}
+.prest .hd,.jame .hd{font-size:11px;letter-spacing:3px;color:var(--bolt);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.prest div:not(.hd){font-size:15px;line-height:1.6;border-left:2px solid var(--muted);padding-left:14px}
+.jame{padding:32px;display:flex;flex-direction:column;gap:18px}
+.jame .hd{font-family:'IBM Plex Mono',monospace;color:var(--muted)}
+.jame div:not(.hd){font-family:'Pacifico',cursive;font-size:24px;line-height:1.4;color:var(--pink);transform:rotate(-1.5deg)}
+/* stops */
+.stops{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px}
+.stop{padding:22px;display:flex;flex-direction:column;gap:10px;min-height:200px;transition:all .3s}
+.stop:hover{transform:translateY(-6px)}
+.stop.light{background:var(--primer);color:var(--bg)}
+.stop .k{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:3px;opacity:.7}
+.stop .t{font-weight:700;font-size:26px;line-height:1;letter-spacing:-.5px}
+.stop .d{font-size:14px;line-height:1.45;opacity:.85}
+.stop .n{margin-top:auto;font-family:'Pacifico',cursive;font-size:18px;color:var(--pink);transform:rotate(-3deg)}
+.endline{background:var(--primer);color:var(--bg);border-radius:6px;padding:28px 32px;display:flex;gap:24px;align-items:center;flex-wrap:wrap}
+.endline .kick{color:var(--bolt);flex:none;font-size:11px}
+.endline .why{font-weight:700;font-size:clamp(20px,2.4vw,28px);line-height:1.25;letter-spacing:-.5px;flex:1;min-width:260px;text-wrap:pretty}
+.endline .script{font-size:22px;transform:rotate(-6deg)}
+/* god */
+.god{padding:clamp(28px,5vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px;align-items:start}
+.god .left{display:flex;flex-direction:column;gap:18px}
+.chips{display:flex;gap:8px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;white-space:nowrap}
+.chips span{border:1px solid var(--bolt);border-radius:3px;padding:6px 10px;color:var(--muted)}
+.toy{background:var(--bg);border-radius:6px;padding:24px;display:flex;flex-direction:column;gap:16px;border:1px solid var(--card)}
+.toy .hd{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:3px;color:var(--muted);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.toy .hd span:first-child{white-space:nowrap}
+.toy .title{font-weight:700;font-size:22px;line-height:1.2}
+.toy .bar{height:8px;border-radius:2px;background:var(--card);overflow:hidden}
+.toy .bar i{display:block;height:100%;width:0;background:var(--pink);transition:width .1s linear}
+.keeps{display:flex;flex-direction:column;gap:8px}
+.keep{text-align:left;background:var(--hull);color:var(--bolt);border:1px solid var(--card);border-radius:4px;padding:12px 14px;font-weight:700;font-size:15px;cursor:default;display:flex;justify-content:space-between;align-items:center;gap:12px;transition:all .2s}
+.keep span:first-child{white-space:nowrap}
+.keep small{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:2px;opacity:.8;text-align:right}
+.keep.live{color:var(--primer);cursor:pointer}.keep.live:hover{border-color:var(--pink)}
+.keep.on{background:var(--pink);color:var(--bg);border-color:var(--pink)}
+.msg{font-family:'IBM Plex Mono',monospace;font-size:12px;line-height:1.6;color:var(--muted);min-height:20px}
+footer{padding:28px 0 64px;border-top:1px solid var(--edge);display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+footer .fine{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:2px;color:var(--muted);text-align:right;line-height:1.8}
+.toast{position:fixed;left:50%;bottom:28px;transform:translateX(-50%) translateY(20px);opacity:0;pointer-events:none;z-index:60;background:var(--primer);color:var(--bg);border-radius:4px;padding:16px 24px;font-family:'IBM Plex Mono',monospace;font-size:13px;max-width:min(92vw,560px);box-shadow:0 20px 50px rgba(0,0,0,.4);border-left:4px solid var(--pink);line-height:1.5;transition:all .3s}
+.toast.show{opacity:1;transform:translateX(-50%)}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-18deg)}50%{transform:translateY(-14px) rotate(-12deg)}}
+@keyframes drift{0%,100%{transform:translate(0,0) rotate(0)}50%{transform:translate(8px,-18px) rotate(10deg)}}
+@keyframes hover{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+@keyframes marquee{to{transform:translateX(-50%)}}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
+@keyframes scan{0%{transform:translateY(-100%)}100%{transform:translateY(100vh)}}
+@keyframes wobble{0%,100%{transform:rotate(-4deg)}50%{transform:rotate(-7deg) translateY(-3px)}}
+@keyframes flicker{0%,100%{opacity:1}92%{opacity:1}94%{opacity:.3}96%{opacity:1}}
+@keyframes spin{to{transform:rotate(360deg)}}
+@keyframes tick{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+</style>
+</head>
+<body>
+<div class="rust"></div><div class="scan"></div>
+
+<div class="sticky">
+  <div class="tape"><div class="track"><div class="grp" id="tape1"></div><div class="grp" id="tape2"></div></div></div>
+  <nav><div class="wrap">
+    <a href="#top" class="brand">
+      <svg width="34" height="34" viewBox="0 0 120 120"><ellipse cx="60" cy="62" rx="34" ry="46" fill="#e6e9ee"/><ellipse cx="60" cy="48" rx="16" ry="18" fill="#1c2026"/><g transform="rotate(-18 96 40)"><rect x="88" y="20" width="16" height="42" rx="3" fill="#ff5fa2"/><rect x="84" y="14" width="24" height="8" rx="2" fill="#ff5fa2"/></g></svg>
+      <span class="lock"><span class="strike">GOOD</span><span class="script tilt">Bad</span><b>MONKEYS</b></span>
+    </a>
+    <div class="links">
+      <a href="#archive">ARCHIVE</a><a href="#parts">PARTS</a><a href="#tone">VS</a><a href="#stops">STOPS</a><a href="#god">GOD MODE</a>
+      <a class="unstuck" href="https://netmobster.github.io/unstuck-games/" target="_blank" rel="noopener" title="An Unstuck game"><span><span class="u">U</span>NSTUCK</span><small>GAME #2</small></a>
+    </div>
+  </div></nav>
+</div>
+
+<main id="top" class="wrap">
+  <section class="hero">
+    <div class="copy">
+      <div class="kick">THE PRESTIGE · ARCHIVE<br>ENTRY 0003 · SUBJECT: NOT BETSY · STATUS: <span style="color:var(--pink)">GLITCH</span><span class="cursor"></span></div>
+      <h1><span class="row"><span class="strike">GOOD</span><span class="script tilt">Bad</span></span><span class="word">MONKEYS</span></h1>
+      <p class="tag">Not always better. <span class="script">Always weirder.</span></p>
+      <p class="lead">You're Jame, a mechanic from Alberta. You land, read what she did while you were gone, fix a planet's problem with whatever she's bolted on, say one thing on your way out, and leave. She takes it literally.</p>
+      <div class="ctas"><a href="#archive" class="btn">Read her file</a><button class="btn ghost" id="notYet">Play the prototype</button></div>
+    </div>
+    <div class="orbit">
+      <div class="ring"></div><div class="ring2"><i></i></div>
+      <svg viewBox="0 0 120 120"><ellipse cx="60" cy="62" rx="34" ry="46" fill="#e6e9ee"/><ellipse cx="60" cy="48" rx="16" ry="18" fill="#1c2026"/><ellipse cx="55" cy="43" rx="5" ry="6" fill="#343a44"/><rect x="52" y="104" width="16" height="10" rx="2" fill="#9aa3b0"/><g class="arm"><rect x="88" y="20" width="16" height="42" rx="3" fill="#ff5fa2"/><rect x="84" y="14" width="24" height="8" rx="2" fill="#ff5fa2"/><rect x="90" y="58" width="12" height="18" rx="2" fill="#ff5fa2"/></g><rect x="80" y="52" width="14" height="6" fill="#ff5fa2" transform="rotate(20 87 55)"/></svg>
+      <div class="chip" style="left:4%;top:20%">SNOWPLOW · MUNICIPAL</div>
+      <div class="chip" style="right:0;top:34%;animation-duration:7s;animation-delay:1s">GRAIN AUGER · 40 FT</div>
+      <div class="chip" style="left:10%;bottom:10%;animation-duration:5.5s;animation-delay:.5s">DOG · UNLISTED</div>
+      <div class="scrib" style="right:8%;bottom:4%">she's fine</div>
+    </div>
+  </section>
+
+  <section id="archive" class="two">
+    <div class="head" style="gap:20px">
+      <div class="kick">THE ARCHIVE · ONE ENTRY, ROLLED FRESH · EVERY TOUCH ADDS SMUDGE</div>
+      <h2>Nobody wins. <span class="script">The Archive keeps one sentence.</span></h2>
+      <p class="lead" style="max-width:48ch">Three stops, then the Prestige files its verdict: a cold score and a misclassification. This is one of thousands of possible records. Same seed, same choices, same run. Different seed, different ship.</p>
+      <div class="seedrow"><button class="btn primer" id="reroll">Roll another run</button><span class="seed">seed <span id="seed"></span></span></div>
+    </div>
+    <div class="file">
+      <div class="stain"></div>
+      <div class="hd"><span>THE PRESTIGE · ARCHIVE</span><span>ENTRY <span id="eId"></span></span></div>
+      <div class="rows">
+        <span>SUBJECT</span><span style="font-weight:600">NOT BETSY</span>
+        <span>CLASS</span><span class="cls"><s id="eCls"></s><span class="script" id="eFix"></span></span>
+        <span>EFFICIENCY</span><span class="eff"><span style="font-weight:600" id="eEff"></span><span class="bar"><i id="eBar"></i></span></span>
+        <span>CREW</span><span id="eCrew"></span>
+        <span>BOLT-ONS</span><span id="eParts" style="display:flex;flex-direction:column"></span>
+        <span>LAST WORDS</span><span style="font-style:italic" id="eWords"></span>
+        <span>SMUDGE</span><span style="color:var(--rustc);font-weight:600" id="eSmudge"></span>
+      </div>
+      <div class="vd"><span>VERDICT</span><b id="eVerdict"></b></div>
+      <div class="why" id="eWhy"></div>
+      <div class="note" id="eScrib"></div>
+    </div>
+  </section>
+
+  <section id="parts" style="display:flex;flex-direction:column;gap:36px">
+    <div class="head">
+      <div class="kick">BOLT-ONS · WRONG OBJECT, WRONG SHIP</div>
+      <h2 style="font-size:clamp(40px,5.5vw,76px);line-height:1">Useless until it isn't.</h2>
+      <p class="sub">Every positive has a negative. Nobody would fit any of this to an escape pod. She did, while you were gone, because you said something on the way out.</p>
+    </div>
+    <div class="grid" id="partGrid"></div>
+  </section>
+
+  <section id="tone" style="display:flex;flex-direction:column;gap:36px">
+    <div class="head">
+      <div class="kick">TWO VOICES · ONE SHIP</div>
+      <h2 style="max-width:22ch">A spotless empire vs. <span class="script">an Alberta mechanic.</span></h2>
+    </div>
+    <div class="tone">
+      <div class="prest"><div class="hd"><span>THE PRESTIGE</span><span>ARCHIVES THE INEFFICIENT</span></div>
+        <div>Subject exhibits non-standard configuration. Recommend archival.</div>
+        <div>Efficiency 41%. Acceptable range: 92–100%.</div>
+        <div>Crew manifest lists one. Sensors detect four. One is barking.</div>
+        <div>Classification: ESCAPE POD. Function: unclear.</div>
+        <div>Verdict pending. Verdict pending. Verdict pending.</div>
+      </div>
+      <div class="panel jame"><div class="hd"><span>JAME (AND NOT BETSY)</span><span>KEEPS THE DOG</span></div>
+        <div>I said keep it running. Not keep everything.</div>
+        <div>That's not a part, that's a snowplow.</div>
+        <div>We are not a diplomatic vessel. Take the flag down.</div>
+        <div>The dog stays. That's not up for audit.</div>
+        <div>Be good. No, wait —</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="stops" style="display:flex;flex-direction:column;gap:36px">
+    <div class="head">
+      <div class="kick">THE RUN · THREE STOPS, ONE SENTENCE</div>
+      <h2>Absence is the content.</h2>
+      <p class="sub">A stop takes two minutes or thirty. Then a real week passes (fast-forward allowed). Both are valid. Neither is a chore.</p>
+    </div>
+    <div class="stops">
+      <div class="panel stop"><div class="k">01 · LAND</div><div class="t">Read her log</div><div class="d">In her voice. She may leave things out. The stop is a planet problem, a customs intake, or both.</div><div class="n">she did WHAT</div></div>
+      <div class="panel stop"><div class="k">02 · FIX</div><div class="t">Use what's bolted on</div><div class="d">The planet needs something. You have a grain auger and eight curling rocks. Make it work.</div><div class="n">it'll do</div></div>
+      <div class="panel stop light"><div class="k">03 · BRIEF</div><div class="t">Say one thing</div><div class="d">Set a goal. Draw three last-words cards. Say one on your way out. She hears all of it literally.</div><div class="n">be good</div></div>
+      <div class="panel stop"><div class="k">04 · AWAY</div><div class="t">A real week</div><div class="d">She sheds this stop's parts and gets to work: salvage, trades, strays, habits. The Prestige advances on clocks.</div><div class="n">fast-forward ok</div></div>
+      <div class="panel stop"><div class="k">×3 · VERDICT</div><div class="t">The Prestige files</div><div class="d">Archived, deferred or unclassifiable, plus one misclassification. The Archive keeps one sentence of why.</div><div class="n">misfiled</div></div>
+    </div>
+    <div class="endline"><div class="kick">THE END IS A SENTENCE</div><div class="why" id="eWhy2"></div><div class="script">not a score</div></div>
+  </section>
+
+  <section id="god">
+    <div class="panel god">
+      <div class="left">
+        <div class="kick">MONEY · FREE IS THE WHOLE GAME</div>
+        <h2>One ad. One hour. <span class="script">Keep one thing.</span></h2>
+        <p class="lead" style="max-width:48ch">She sheds every part when you leave a stop. God Mode lets one mutation survive. That's it. No gems, no energy, no season pass. Once you've had your hour there's nothing else to sell you.</p>
+        <div class="chips"><span>NO ACCOUNT</span><span>NO INSTALL</span><span>NO RUNTIME AI</span><span>NO TRAPS</span></div>
+      </div>
+      <div class="toy">
+        <div class="hd"><span>TRY IT · NOTHING IS REAL</span><span id="gTag">OFF</span></div>
+        <div class="title" id="gTitle">Leaving the stop. She sheds everything.</div>
+        <div class="bar"><i id="gBar"></i></div>
+        <div class="keeps" id="keeps"></div>
+        <button class="btn" id="gBtn">Watch one ad</button>
+        <div class="msg" id="gMsg"></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span class="lock"><span class="strike">GOOD</span><span class="script tilt">Bad</span><b>MONKEYS</b></span>
+    <span class="fine">AN UNSTUCK GAME · <a href="https://netmobster.github.io/unstuck-games/" target="_blank" rel="noopener">DON'T BULLSHIT THE PLAYER</a><br>BAD MONKEYS AND JAME ARE JAY'S · NOT A COMPANY YET</span>
+  </footer>
+</main>
+<div class="toast" id="toast"></div>
+
+<script>
+const PARTS = [
+  { name: "Snowplow Blade, Municipal", src: "RED DEER", plus: "Clears asteroid debris in one pass.", minus: "She now plows things that are not debris.", note: "it was on sale", w: "70px", h: "26px", r: "3px 3px 14px 14px", bg: "#ff5fa2", b: "none", anim: "hover 3s ease-in-out infinite" },
+  { name: "Grain Auger, 40 ft", src: "SALVAGE", plus: "Loads scrap six times faster.", minus: "Loads scrap whether you wanted it or not.", note: "don't stand there", w: "12px", h: "64px", r: "6px", bg: "#e6e9ee", b: "none", anim: "spin 2.4s linear infinite" },
+  { name: "Block Heater, Interstellar", src: "TRADE", plus: "Cold-starts in any vacuum.", minus: "Runs hot. Strays sleep on it. Will not move.", note: "the dog likes it", w: "48px", h: "48px", r: "50%", bg: "transparent", b: "8px solid #b8562e", anim: "tick 1.6s ease-in-out infinite" },
+  { name: "Bug Zapper, Diplomatic Grade", src: "CUSTOMS", plus: "Repels Prestige drones.", minus: "Also repels customers.", note: "zzt", w: "56px", h: "40px", r: "4px", bg: "transparent", b: "3px dashed #ff5fa2", anim: "flicker 3s linear infinite" },
+  { name: "Curling Rocks ×8, Ballast", src: "STRAY", plus: "Perfect landings, every time.", minus: "She insists on sweeping first.", note: "hurry hard", w: "44px", h: "44px", r: "50%", bg: "#5b6473", b: "6px solid #e6e9ee", anim: "hover 2.2s ease-in-out infinite" },
+  { name: "Motel Sign, Vacancy", src: "HABIT", plus: "Attracts strays with useful skills.", minus: "It always says VACANCY.", note: "we're full", w: "72px", h: "32px", r: "3px", bg: "#e6e9ee", b: "4px solid #ff5fa2", anim: "flicker 5s linear infinite" }
+];
+const CLS = ["ESCAPE POD","CARGO HAULER","WEATHER BALLOON","MOBILE HOME","DIPLOMATIC VESSEL","ICE RESURFACER","GRAIN ELEVATOR"];
+const FIX = ["home","not Betsy","she's fine","mine","leave her","ours now"];
+const CREW = ["1 (+ dog, unlisted)","1 (+ 3 geese, hostile)","1 (+ a customs officer who quit)","1 (+ something in the vents, friendly)","1 (+ 2 strays, 1 opinion)","1 (+ a very old cat, in charge)"];
+const WORDS = ["Keep it running.","Don't do anything stupid.","Just get us home.","Try to blend in.","Be good.","Don't talk to anyone.","Make yourself useful."];
+const WHYS = ["You said 'keep it running.' She did.","She kept the dog. The dog was not efficient. Neither, it turns out, were you.","Nothing about her was optimal. Everything about her was on purpose.","She heard 'blend in' and painted the ship the colour of the planet. The planet was pink.","The Prestige asked what she was for. She asked the same about them.","Filed as an escape pod. Functioned as a home.","She took 'be good' as a target and exceeded it in the wrong direction.","'Make yourself useful' is not a specification. She treated it as one.","She never talked to anyone. She traded with all of them."];
+const SCRIB = ["misfiled","she's fine","keep this one","not a pod","see you in a week","the dog stays"];
+const KEEP = ["Snowplow Blade","Block Heater","Motel Sign"];
+const $ = s => document.querySelector(s);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function rng(seed){let a=seed>>>0;return()=>{a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}}
+
+let seed = (Date.now() % 1e9) >>> 0, rust = 0, god = 'idle', pct = 0, mins = 60, kept = null, iv = null, tt = null;
+const rustPct = () => Math.round(rust * 100) + '%';
+function tape(){const items=["PRESTIGE AUDIT 0003 · IN PROGRESS","SUBJECT: NOT BETSY","CLASS: ESCAPE POD (DISPUTED)","UN-OPTIMIZABILITY: "+rustPct(),"DO NOT FEED THE STRAYS"];const html=[...items,...items].map(t=>`<span>${t}</span>`).join('');$('#tape1').innerHTML=html;$('#tape2').innerHTML=html}
+function smudge(n=.12){rust=Math.min(1,rust+n);document.documentElement.style.setProperty('--rust',rust.toFixed(3));tape()}
+function entry(){
+  const r=rng(seed),pick=a=>a[Math.floor(r()*a.length)];
+  const parts=[...PARTS].sort(()=>r()-.5).slice(0,3).map(p=>p.name);
+  const eff=18+Math.floor(r()*46),sm=40+Math.floor(r()*55);
+  const v=eff>50?'ARCHIVED':(r()>.45?'DEFERRED':'UNCLASSIFIABLE');
+  const why=pick(WHYS);
+  $('#seed').textContent=seed.toString(16).padStart(8,'0');
+  $('#eId').textContent=String(3+Math.floor(r()*9000)).padStart(4,'0');
+  $('#eCls').textContent=pick(CLS);$('#eFix').textContent=pick(FIX);
+  $('#eEff').textContent=eff+'%';$('#eBar').style.width=eff+'%';
+  $('#eCrew').textContent=pick(CREW);
+  $('#eParts').innerHTML=parts.map(p=>`<span>· ${esc(p)}</span>`).join('');
+  $('#eWords').textContent='“'+pick(WORDS)+'”';
+  $('#eSmudge').textContent=sm+' · rising';
+  $('#eVerdict').textContent=v;$('#eWhy').textContent=why;$('#eWhy2').textContent=why;$('#eScrib').textContent=pick(SCRIB);
+}
+$('#partGrid').innerHTML=PARTS.map((p,i)=>`<div class="panel part"><div class="top"><span>PART ${String(i+1).padStart(2,'0')}</span><em>${p.src}</em></div><div class="stage"><div style="width:${p.w};height:${p.h};border-radius:${p.r};background:${p.bg};border:${p.b};animation:${p.anim}"></div></div><div class="name">${esc(p.name)}</div><div class="pm"><div class="plus"><b>+</b><span>${esc(p.plus)}</span></div><div class="minus"><b>−</b><span>${esc(p.minus)}</span></div></div><div class="note">${esc(p.note)}</div></div>`).join('');
+function renderGod(){
+  const on=god==='god';
+  $('#gTag').textContent=on?`ACTIVE · ${String(mins).padStart(2,'0')}:00`:god==='ad'?'AD · 30s · SKIPPABLE AT 5s':'OFF';
+  $('#gTag').style.color=on?'var(--pink)':'var(--muted)';
+  $('#gTitle').textContent=on?(kept?`She keeps the ${kept}.`:'Choose one mutation to keep.'):god==='ad'?'A very short, very fake ad.':'Leaving the stop. She sheds everything.';
+  $('#gBar').style.width=pct+'%';
+  $('#gBtn').textContent=god==='ad'?`Ad playing… ${pct}%`:on?'God Mode running':'Watch one ad';
+  $('#keeps').innerHTML=KEEP.map(k=>`<button class="keep${kept===k?' on':on?' live':''}" data-k="${k}"><span>${k}</span><small>${kept===k?'KEPT':on?'KEEP THIS':'SHEDS ON LEAVE'}</small></button>`).join('');
+  document.querySelectorAll('.keep').forEach(b=>b.onclick=()=>{if(god!=='god')return;kept=b.dataset.k;smudge(.1);$('#gMsg').textContent=`Kept: ${kept}. Everything else is scrap by morning.`;renderGod()});
+}
+function watchAd(){
+  if(god!=='idle')return;smudge(.15);god='ad';pct=0;$('#gMsg').textContent='';renderGod();
+  iv=setInterval(()=>{pct+=4;if(pct>=100){clearInterval(iv);god='god';pct=100;mins=60;$('#gMsg').textContent='God Mode is on. Pick the one thing she keeps when you leave.';renderGod();
+    iv=setInterval(()=>{mins--;if(mins<=0){clearInterval(iv);god='idle';pct=0;$('#gMsg').textContent="Hour's up. Nothing else to sell you. She still has the "+(kept||'dog')+'.';}else pct=(mins/60)*100;renderGod()},120)}else renderGod()},60);
+}
+function say(m){const el=$('#toast');el.textContent=m;el.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>el.classList.remove('show'),3600)}
+$('#reroll').onclick=()=>{smudge();seed=(seed*1103515245+12345)>>>0;entry()};
+$('#gBtn').onclick=watchAd;
+$('#notYet').onclick=()=>{smudge(.08);say("Not yet. She's still out there. Prototype is a throwaway; the real one ships when it's fun.")};
+tape();entry();renderGod();
+</script>
+</body>
+</html>
