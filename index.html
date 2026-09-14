@@ -126,6 +126,12 @@ body[data-mode="stuck"] .game .name{font-family:'Inter',sans-serif!important;fon
 .game .foot{margin-top:auto;font-size:13px;font-weight:800;letter-spacing:1px;opacity:.7}
 .game.upcoming{filter:grayscale(1);opacity:.5}
 .game.upcoming:hover{transform:none;box-shadow:none;opacity:.7}
+/* on deck: fully opaque, a hint of their colour */
+.game.upcoming.deck{filter:grayscale(.6);opacity:1}
+.game.upcoming.deck:hover{filter:grayscale(.3);opacity:1}
+.catalog-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:2px solid var(--ink);padding-top:14px}
+.catalog-head .kick{color:var(--ink);font-size:14px}
+.catalog-sub{font-weight:700;color:var(--muted);font-size:15px}
 /* live game: featured, full width, running the actual game behind the card */
 .game.live{grid-column:1/-1;min-height:420px;background:#080d12;color:#e6f0f0;text-decoration:none;cursor:pointer}
 .game.live:hover{color:#e6f0f0;transform:translateY(-6px);box-shadow:0 30px 60px rgba(8,13,18,.45)}
@@ -304,6 +310,9 @@ footer .fine{font-size:14px;font-weight:700;color:var(--muted);text-align:right;
   <section id="games" class="games">
     <div class="head"><div class="kick" data-t="gamesKicker"></div><h2 data-t="gamesTitle"></h2><p data-t="gamesSub"></p></div>
     <div class="grid2" id="liveGrid"></div>
+    <div class="catalog-head"><span class="kick" data-t="deckKicker"></span><span class="catalog-sub" data-t="deckSub"></span></div>
+    <div class="grid2" id="deckGrid"></div>
+    <div class="catalog-head"><span class="kick" data-t="dayKicker"></span><span class="catalog-sub" data-t="daySub"></span></div>
     <div class="grid2" id="gameGrid"></div>
     <div class="marchwrap"><div class="march" id="march" data-anim></div></div>
   </section>
@@ -362,7 +371,8 @@ const COPY = {
     subYesHead: "You get", subNoHead: "Never",
     subPerks: ["No ads, anywhere", "God Mode, always on", "Unrestricted progression", "All unlocks", "Bonus & experimental modes"],
     subNots: ["Pay-to-win", "Premium currency", "Energy or lives", "Pay-to-continue", "A crippled free version"],
-    gamesKicker: "ONE PLAYABLE · ONE EARLY ACCESS · ONE ON THE BENCH · TEN ON THE WAY", gamesTitle: "Games that got out.",
+    gamesKicker: "ONE PLAYABLE · ONE EARLY ACCESS · ONE ON THE BENCH · THREE ON DECK · SEVEN ONE DAY", gamesTitle: "Games that got out.",
+    deckKicker: "ON DECK", deckSub: "Next in line.", dayKicker: "ONE DAY", daySub: "Real hooks. Not yet.",
     gamesSub: "Orbis got out first. Elsewhere is out, just not in your browser yet. Bad Monkeys is on the bench. The rest are working titles with real hooks: four originals, three corpses worth resurrecting, three clean mechanical specimens. Each one ships when it's fun, and not one minute before.", soon: "COMING SOON", live: "PLAY NOW", early: "EARLY ACCESS", building: "BUILD IN PROGRESS",
     manKicker: "THE FOUNDING PRINCIPLE",
     manifesto: ["Find something fun.", "Make it ours.", "Make it good.", "Don't bullshit the player.", "Ship another one."],
@@ -408,6 +418,7 @@ const COPY = {
     subPerks: ["2,000 Gems (+500 bonus!)", "VIP badge", "Remove ads (some ads)", "Energy refill ×3", "Loot crate keys"],
     subNots: ["Gems do not refund", "Passes expire", "VIP requires renewal", "Ads return after 7 days", "Offer may vary by region"],
     gamesKicker: "PORTFOLIO", gamesTitle: "Our Diversified Title Pipeline",
+    deckKicker: "Q3 PIPELINE", deckSub: "Greenlit for soft launch.", dayKicker: "BACKLOG", daySub: "Pending market validation.",
     gamesSub: "Proven genres. Proven monetization. LiveOps-ready from day one.", soon: "PRE-REGISTER", live: "INSTALL NOW", early: "BETA WAITLIST", building: "SOFT LAUNCH (TIER 3 MARKETS)",
     manKicker: "MISSION STATEMENT",
     manifesto: ["Synergize engagement.", "Optimize the funnel.", "Maximize LTV.", "Monetize the whale.", "Ship the season pass."],
@@ -440,12 +451,12 @@ const ORBIS_MARK = `<svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><e
 const GAMES = [
   { name: "Slimeball", stuckName: "Slime Merge Tycoon 3D", font: "'Bagel Fat One', cursive", size: "40px", ls: "0", bg: "#62d26f", fg: "#16163a", genre: "PHYSICS TOY", hook: "Bounce a slime through a city. Absorb everything. Regret nothing. Get enormous.", sw: "64px", sh: "56px", sr: "50% 50% 46% 46%", sc: "#16163a", sb: "none", anim: "squash 1.3s ease-in-out infinite" },
   { name: "Deadline Dungeon", stuckName: "Dungeon Manager: Idle Office Simulator", font: "'Special Elite', monospace", size: "32px", ls: "-1px", bg: "#ff7a59", fg: "#16163a", genre: "ROGUELITE · CARDS", hook: "Every room is a meeting. Every card is an excuse. Escape the building by 5pm.", sw: "8px", sh: "64px", sr: "4px", sc: "#16163a", sb: "none", anim: "spin 2.2s linear infinite" },
-  { name: "Very Small Kingdom", stuckName: "Kingdom Clash: Age of Heroes", font: "'Pirata One', cursive", size: "36px", ls: "0", bg: "#c9a3ff", fg: "#16163a", genre: "ONE-SCREEN SIM", hook: "One screen. Twelve subjects. All of them have opinions about the well.", sw: "66px", sh: "40px", sr: "4px 22px 22px 4px", sc: "#16163a", sb: "none", anim: "wave 1.6s ease-in-out infinite" },
-  { name: "FERRET HEIST", stuckName: "Heist Master Pro Max", font: "'Bangers', cursive", size: "38px", ls: "1px", bg: "#ffd95c", fg: "#16163a", genre: "STEALTH · 90 SECONDS", hook: "One ferret. One museum. Ninety seconds. The guard has a sandwich.", sw: "72px", sh: "24px", sr: "999px", sc: "#16163a", sb: "none", anim: "dash 1.5s ease-in-out infinite" },
+  { deck: true, name: "Very Small Kingdom", stuckName: "Kingdom Clash: Age of Heroes", font: "'Pirata One', cursive", size: "36px", ls: "0", bg: "#c9a3ff", fg: "#16163a", genre: "ONE-SCREEN SIM", hook: "One screen. Twelve subjects. All of them have opinions about the well.", sw: "66px", sh: "40px", sr: "4px 22px 22px 4px", sc: "#16163a", sb: "none", anim: "wave 1.6s ease-in-out infinite" },
+  { deck: true, name: "FERRET BOWLING", stuckName: "Pet Bowl Blitz: Ferret Strike", font: "'Bangers', cursive", size: "38px", ls: "1px", bg: "#ffd95c", fg: "#16163a", genre: "PHYSICS · FERRETS", hook: "One ferret. Ten pins. The pins did not agree to this.", sw: "72px", sh: "24px", sr: "999px", sc: "#16163a", sb: "none", anim: "dash 1.5s ease-in-out infinite" },
   { name: "DEEP ENOUGH", stuckName: "Mine Blast Saga: Dig Legends", font: "'Rammetto One', cursive", size: "30px", ls: "0", bg: "#c98a3d", fg: "#16163a", genre: "CORPSE · DIG LOOP", hook: "Dig → Find → Surface → Upgrade → Dig Deeper", foot: "DNA: MOTHERLOAD · PROVEN VERB / LOST CLASSIC", sw: "34px", sh: "44px", sr: "6px 6px 17px 17px", sc: "#16163a", sb: "none", anim: "drill 1.6s ease-in-out infinite" },
   { name: "Chainmail", stuckName: "Dungeon Puzzle Quest: Match & Raid", font: "'MedievalSharp', cursive", size: "40px", ls: "0", bg: "#9bb7d4", fg: "#16163a", genre: "CORPSE · TRACE-COMBAT", hook: "Trace Tiles → Fight → Spend → Survive", foot: "DNA: DUNGEON RAID · MECHANIC DENSITY / STRONG CORPSE", sw: "48px", sh: "48px", sr: "10px", sc: "transparent", sb: "8px solid #16163a", anim: "trace 2s ease-in-out infinite" },
   { name: "Nerve", stuckName: "Tentacle Conquest: Empire Wars", font: "'Sniglet', cursive", size: "40px", ls: "0", bg: "#ff9fd6", fg: "#16163a", genre: "CORPSE · NODE STRATEGY", hook: "Connect → Drain → Capture → Reposition", foot: "DNA: TENTACLE WARS · PURE SYSTEM / SPRITE-NATIVE", sw: "56px", sh: "56px", sr: "50%", sc: "transparent", sb: "10px double #16163a", anim: "pulse 1.4s ease-in-out infinite" },
-  { name: "TROLLEY PROBLEM", stuckName: "Cart Rush 3D: Mega Jump", font: "'Bowlby One', cursive", size: "30px", ls: "0", bg: "#7ad7ff", fg: "#16163a", genre: "CLEAN SPECIMEN · LAUNCH LOOP", hook: "Launch → Control → Crash → Upgrade → Launch Again", foot: "DNA: SHOPPING CART HERO · TINY FOOTPRINT / PROVEN LOOP", sw: "52px", sh: "30px", sr: "6px 6px 14px 14px", sc: "#16163a", sb: "none", anim: "launch 1.8s ease-in-out infinite alternate" },
+  { deck: true, name: "TROLLEY PROBLEM", stuckName: "Cart Rush 3D: Mega Jump", font: "'Bowlby One', cursive", size: "30px", ls: "0", bg: "#7ad7ff", fg: "#16163a", genre: "CLEAN SPECIMEN · LAUNCH LOOP", hook: "Launch → Control → Crash → Upgrade → Launch Again", foot: "DNA: SHOPPING CART HERO · TINY FOOTPRINT / PROVEN LOOP", sw: "52px", sh: "30px", sr: "6px 6px 14px 14px", sc: "#16163a", sb: "none", anim: "launch 1.8s ease-in-out infinite alternate" },
   { name: "Poke", stuckName: "God Simulator: Idle Civilization", font: "'Shrikhand', cursive", size: "40px", ls: "0", bg: "#b7e28f", fg: "#16163a", genre: "CLEAN SPECIMEN · GOD TOY", hook: "Shape World → Populate → Interfere → Discover", foot: "DNA: GODFINGER · TOYBOX / EMERGENT STORIES", sw: "64px", sh: "64px", sr: "50%", sc: "#16163a", sb: "none", anim: "squash 2.2s ease-in-out infinite" },
   { name: "ONE MORE CLIP", stuckName: "Paperclip Tycoon: Idle Empire", font: "'Courier Prime', monospace", size: "30px", ls: "-1px", bg: "#f2efe6", fg: "#16163a", genre: "ORIGINAL CLEAN DNA · SYSTEMIC NARRATIVE", hook: "Click → Automate → Expand → Discover What You Built", foot: "DNA: UNIVERSAL PAPERCLIPS · SYSTEMIC NARRATIVE / CC PLAYGROUND", sw: "28px", sh: "60px", sr: "999px", sc: "transparent", sb: "6px solid #16163a", anim: "spin 3s linear infinite" }
 ];
@@ -475,14 +486,16 @@ function render() {
     card.querySelector('.play').textContent = stuck() ? 'Install for rewards' : g.play;
     card.querySelector('.foot').textContent = stuck() ? 'NOW WITH 40% MORE LIVEOPS' : g.foot;
   });
-  $('#gameGrid').innerHTML = GAMES.map(g => `
-    <div class="game upcoming" style="background:${g.bg};color:${g.fg}">
+  const catalogCard = g => `
+    <div class="game upcoming${g.deck ? ' deck' : ''}" style="background:${g.bg};color:${g.fg}">
       <div class="top"><span class="genre">${esc(stuck() ? 'HYPER-CASUAL · LIVEOPS' : g.genre)}</span><span class="soon">${esc(t.soon)}</span></div>
       <div class="stage"><div data-anim style="width:${g.sw};height:${g.sh};border-radius:${g.sr};background:${g.sc};border:${g.sb};animation:${g.anim}"></div></div>
       <div class="name" style="font-family:${g.font};font-size:${g.size};letter-spacing:${g.ls}">${esc(stuck() ? g.stuckName : g.name)}</div>
       <p class="hook">${esc(stuck() ? 'Free to play. In-app purchases from $0.99 to $99.99. Contains ads. Energy required.' : g.hook)}</p>
       <div class="foot">${esc(stuck() ? 'PRE-REGISTRATION REWARDS AVAILABLE' : (g.foot || "SHIPS WHEN IT'S FUN"))}</div>
-    </div>`).join('');
+    </div>`;
+  $('#deckGrid').innerHTML = GAMES.filter(g => g.deck).map(catalogCard).join('');
+  $('#gameGrid').innerHTML = GAMES.filter(g => !g.deck).map(catalogCard).join('');
   $('#manifesto').innerHTML = t.manifesto.map((l, i) => `<div class="line${i === 3 ? ' hi' : ''}">${esc(l)}</div>`).join('');
   $('#faqs').innerHTML = t.faqs.map(([q, a], i) => `
     <div class="faq${openFaq === i ? ' open' : ''}" data-i="${i}">

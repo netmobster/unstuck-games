@@ -1,0 +1,102 @@
+{
+  "placeholder": true,
+  "seed": 20260913,
+  "records": [
+    {
+      "id": "planet-1",
+      "name": "Grainless Vesper",
+      "need": "starving",
+      "problem": "The harvest failed for the ninth year. The ration cubes ran out politely.",
+      "customs": "full",
+      "why_tags": [
+        "repair"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "planet-2",
+      "name": "Aurelia-Prime",
+      "need": "silent",
+      "problem": "A world of perfect silence. The five-hundred-year dance has lost its rhythm.",
+      "customs": "none",
+      "why_tags": [
+        "strays"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "planet-3",
+      "name": "Form Station Twelve",
+      "need": "bureaucratic",
+      "problem": "Everyone is waiting for a form that requires the form they are waiting for.",
+      "customs": "full",
+      "why_tags": [
+        "warmth"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "planet-4",
+      "name": "Glacier Nine",
+      "need": "frozen",
+      "problem": "The heaters were optimized out. The colonists are optimizing their shivering.",
+      "customs": "light",
+      "why_tags": [
+        "feeding"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "planet-5",
+      "name": "Outer Rim Checkpoint",
+      "need": "hostile",
+      "problem": "General Tubs's patrol has declared the landing pad a crime.",
+      "customs": "none",
+      "why_tags": [
+        "refusal"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    },
+    {
+      "id": "planet-6",
+      "name": "Lighthouse Rock",
+      "need": "lonely",
+      "problem": "One keeper, one light, nobody has visited in a century.",
+      "customs": "none",
+      "why_tags": [
+        "home"
+      ],
+      "provenance": {
+        "batch": "proto-placeholder-001",
+        "generator": "make-content.ts (random properties)",
+        "date": "2026-09-13",
+        "reviewed": "placeholder"
+      }
+    }
+  ]
+}
