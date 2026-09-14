@@ -1,0 +1,583 @@
+<title>The Mendel File</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@600;800;900&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+:root{
+  --ground:#e9edf1; --sheet:#f7f9fb; --ink:#141d2b; --soft:#4a5668; --rule:#c5cdd8;
+  --mendel:#2d58c8; --ir:#c21f5b; --ok:#1b7564; --maybe:#a36400; --wash:#dde4ee;
+  --fd:'Big Shoulders Display','Arial Narrow',Impact,sans-serif;
+  --fb:'Source Serif 4',Georgia,'Times New Roman',serif;
+  --fm:'JetBrains Mono',ui-monospace,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --ground:#0d131d; --sheet:#141c29; --ink:#e4e9f1; --soft:#9aa6b8; --rule:#2b3647;
+    --mendel:#7b9cff; --ir:#ff6b98; --ok:#4fc2a8; --maybe:#e2a64a; --wash:#1b2536;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#0d131d; --sheet:#141c29; --ink:#e4e9f1; --soft:#9aa6b8; --rule:#2b3647;
+  --mendel:#7b9cff; --ir:#ff6b98; --ok:#4fc2a8; --maybe:#e2a64a; --wash:#1b2536;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--fb);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--mendel);text-underline-offset:3px}
+a:focus-visible,summary:focus-visible{outline:2px solid var(--ir);outline-offset:3px}
+h1,h2,h3{font-family:var(--fd);font-weight:800;line-height:1;margin:0;text-wrap:balance;letter-spacing:.005em}
+p{margin:0;text-wrap:pretty}
+.mono,.label{font-family:var(--fm)}
+.label{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--soft)}
+.shell{max-width:1180px;margin:0 auto;padding:28px 22px 80px;display:grid;grid-template-columns:200px minmax(0,1fr);gap:48px}
+@media (max-width:880px){.shell{grid-template-columns:1fr;gap:20px}.rail{position:static!important}}
+.rail{position:sticky;top:24px;align-self:start;display:flex;flex-direction:column;gap:14px}
+.rail nav{display:flex;flex-direction:column;gap:6px;font-family:var(--fm);font-size:12px}
+@media (max-width:880px){.rail nav{flex-direction:row;flex-wrap:wrap;gap:6px 14px}}
+.rail nav a{color:var(--soft);text-decoration:none}
+.rail nav a:hover{color:var(--ir)}
+.stamp{font-family:var(--fm);font-size:11px;line-height:1.5;border:1.5px solid var(--ink);padding:8px 10px;color:var(--ink)}
+main{display:flex;flex-direction:column;gap:64px;min-width:0}
+section{display:flex;flex-direction:column;gap:18px;scroll-margin-top:20px}
+.prose{max-width:66ch;display:flex;flex-direction:column;gap:14px}
+h2{font-size:clamp(34px,4.6vw,52px);text-transform:uppercase}
+h2 .k{display:block;font-family:var(--fm);font-weight:400;font-size:12px;letter-spacing:.16em;color:var(--ir);margin-bottom:10px}
+h3{font-size:24px;text-transform:uppercase;letter-spacing:.02em}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:28px;align-items:center}
+@media (max-width:980px){.hero{grid-template-columns:1fr}}
+.hero h1{font-size:clamp(56px,9vw,112px);font-weight:900;text-transform:uppercase;line-height:.86}
+.hero h1 small{display:block;font-size:.34em;font-weight:600;color:var(--mendel);letter-spacing:.04em;margin-top:10px;line-height:1.05}
+.hero .dek{font-size:19px;max-width:48ch;margin-top:18px}
+.epitaph{margin-top:20px;border-left:4px solid var(--ir);padding:4px 0 4px 14px;font-style:italic;font-size:20px;max-width:44ch}
+.rig{background:var(--sheet);border:1.5px solid var(--rule);padding:14px}
+.rig svg{width:100%;height:auto;display:block}
+.rig .cap{margin-top:8px;font-family:var(--fm);font-size:11px;color:var(--soft);line-height:1.5}
+.facts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.facts div{background:var(--sheet);padding:12px 14px;display:flex;flex-direction:column;gap:4px}
+@media (max-width:640px){.facts{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.facts b{font-family:var(--fd);font-size:22px;font-weight:800;line-height:1.05}
+
+/* verdict */
+.verdict{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.card{background:var(--sheet);border:1.5px solid var(--rule);padding:18px 20px;display:flex;flex-direction:column;gap:10px}
+.card.lift{border-top:5px solid var(--ok)}
+.card.fix{border-top:5px solid var(--ir)}
+.card.shift{border-top:5px solid var(--mendel)}
+.card ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:6px}
+.card h3{font-size:22px}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;border-left:2px solid var(--rule);display:flex;flex-direction:column;gap:14px;max-width:760px}
+.tl li{position:relative;padding-left:22px;display:grid;grid-template-columns:110px minmax(0,1fr);gap:14px}
+@media (max-width:560px){.tl li{grid-template-columns:1fr;gap:2px}}
+.tl li::before{content:"";position:absolute;left:-7px;top:8px;width:12px;height:12px;background:var(--ground);border:2px solid var(--mendel);border-radius:50%}
+.tl li.hot::before{background:var(--ir);border-color:var(--ir)}
+.tl time{font-family:var(--fm);font-size:13px;color:var(--soft);padding-top:2px;font-variant-numeric:tabular-nums}
+
+/* verbs */
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px}
+.list{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:8px}
+.list li{padding-left:22px;position:relative}
+.list.can li::before{content:"+";position:absolute;left:2px;font-family:var(--fm);font-weight:600;color:var(--ok)}
+.list.cannot li::before{content:"×";position:absolute;left:2px;font-family:var(--fm);font-weight:600;color:var(--ir)}
+
+/* tables */
+.tablewrap{overflow-x:auto;border:1.5px solid var(--rule);background:var(--sheet)}
+table{border-collapse:collapse;width:100%;min-width:620px;font-size:15px}
+th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);font-weight:600;background:var(--wash)}
+tr:last-child td{border-bottom:none}
+td.obj{font-family:var(--fd);font-size:18px;font-weight:600;white-space:nowrap}
+
+/* tags */
+.tag{display:inline-block;font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:1px 6px;border:1px solid currentColor;border-radius:2px;vertical-align:2px;white-space:nowrap}
+.tag.v{color:var(--ok)}.tag.c{color:var(--maybe)}.tag.n{color:var(--soft)}
+
+/* loops */
+.loops{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:18px}
+.loop ol{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:6px}
+.loop ol li::marker{font-family:var(--fm);color:var(--mendel);font-size:13px}
+
+/* NERM pipeline */
+.pipe{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:0;border:1.5px solid var(--ink)}
+.pipe div{padding:14px;border-right:1.5px solid var(--ink);display:flex;flex-direction:column;gap:6px;background:var(--sheet)}
+.pipe div:last-child{border-right:none}
+@media (max-width:720px){.pipe div{border-right:none;border-bottom:1.5px solid var(--ink)}.pipe div:last-child{border-bottom:none}}
+.pipe b{font-family:var(--fd);font-size:20px;font-weight:800;text-transform:uppercase}
+.pipe span{font-size:15px;line-height:1.45}
+
+/* scores */
+.scores{display:flex;flex-direction:column;gap:10px;max-width:760px}
+.score{display:grid;grid-template-columns:190px minmax(0,1fr) 70px;gap:12px;align-items:center}
+@media (max-width:560px){.score{grid-template-columns:1fr 60px}.score .bar{grid-column:1 / -1;order:3}}
+.score .who{font-size:15px;line-height:1.25}
+.score .who small{display:block;font-family:var(--fm);font-size:11px;color:var(--soft)}
+.bar{height:14px;background:var(--wash);position:relative;border:1px solid var(--rule)}
+.bar i{position:absolute;inset:0 auto 0 0;background:var(--mendel)}
+.bar.players i{background:var(--ok)}
+.bar::after{content:"";position:absolute;left:50%;top:-4px;bottom:-4px;width:1px;background:var(--soft);opacity:.6}
+.score .n{font-family:var(--fm);font-size:14px;text-align:right;font-variant-numeric:tabular-nums}
+
+/* why it died */
+.deaths{counter-reset:d;list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1px;background:var(--rule);border:1px solid var(--rule)}
+.deaths li{background:var(--sheet);padding:16px 18px;counter-increment:d;display:flex;flex-direction:column;gap:6px}
+.deaths li::before{content:"CAUSE " counter(d);font-family:var(--fm);font-size:11px;letter-spacing:.14em;color:var(--ir)}
+.deaths b{font-family:var(--fd);font-size:21px;font-weight:800;text-transform:uppercase;line-height:1.05}
+
+/* map to lucy */
+.map td:first-child{font-family:var(--fd);font-size:18px;font-weight:600;min-width:170px}
+.verdict-pill{font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.08em;padding:2px 8px;border-radius:2px;white-space:nowrap;color:var(--sheet)}
+.p-keep{background:var(--ok)}.p-fix{background:var(--ir)}.p-test{background:var(--maybe)}.p-jay{background:var(--mendel)}
+
+.insight{background:var(--ink);color:var(--ground);padding:26px 28px;display:flex;flex-direction:column;gap:12px}
+.insight h3{font-size:clamp(28px,3.6vw,40px);color:var(--ground)}
+.insight p{max-width:64ch;font-size:18px}
+.insight .label{color:var(--ground);opacity:.75}
+
+.questions{margin:0;padding-left:22px;display:flex;flex-direction:column;gap:10px;max-width:70ch}
+.questions li::marker{font-family:var(--fm);color:var(--ir)}
+
+details.src{border:1.5px solid var(--rule);background:var(--sheet)}
+details.src summary{cursor:pointer;padding:12px 16px;font-family:var(--fm);font-size:12px;letter-spacing:.1em;text-transform:uppercase}
+details.src .body{padding:6px 16px 16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;font-size:13px;line-height:1.5}
+details.src h4{margin:8px 0 6px;font-family:var(--fm);font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+details.src ul{margin:0;padding-left:16px;display:flex;flex-direction:column;gap:3px;word-break:break-word}
+footer{font-family:var(--fm);font-size:12px;color:var(--soft);border-top:1.5px solid var(--rule);padding-top:16px;line-height:1.7}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+.rays line{animation:pulse 3.2s ease-in-out infinite}
+.rays line:nth-child(2n){animation-delay:.8s}
+@keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+</style>
+
+<div class="shell">
+  <aside class="rail">
+    <div class="stamp">UNSTUCK GAMES<br>TEARDOWN · GAME #3<br>FILED 2026-09-14</div>
+    <nav aria-label="Sections">
+      <a href="#verdict">The verdict</a>
+      <a href="#record">The record</a>
+      <a href="#play">How it played</a>
+      <a href="#nerm">Inside NERM</a>
+      <a href="#reception">Reception</a>
+      <a href="#death">Why it died</a>
+      <a href="#dna">The other DNA</a>
+      <a href="#lucy">What Lucy takes</a>
+      <a href="#questions">Open questions</a>
+      <a href="#sources">Sources</a>
+    </nav>
+    <div class="label" style="line-height:1.7">
+      <span class="tag v">verified</span> read in a primary source or 2+ agree<br>
+      <span class="tag c">claimed</span> single secondary source
+    </div>
+  </aside>
+
+  <main>
+    <!-- HERO -->
+    <header class="hero">
+      <div>
+        <div class="label">Tombstone for Ferret Bowling: Lucy Edition</div>
+        <h1 style="margin-top:12px">Galápagos<small>Mendel's Escape · Anark · 1997</small></h1>
+        <p class="dek">A 3D puzzle game where you never touch the hero. Mendel, a synthetic creature with a learning controller called NERM, walks where he likes. You change the world around him and hope he learns the right lesson.</p>
+        <p class="epitaph">A real learning creature, trapped inside a camera it couldn't escape.</p>
+      </div>
+      <figure class="rig" style="margin:0">
+        <svg viewBox="0 0 520 300" role="img" aria-labelledby="rigT">
+          <title id="rigT">Mendel's senses: six infrared rays, three per side, plus front touch sensors</title>
+          <rect x="0" y="0" width="520" height="300" fill="var(--sheet)"/>
+          <g stroke="var(--rule)" stroke-width="1" fill="none">
+            <path d="M0 250 H520 M0 200 H520 M0 150 H520 M0 100 H520 M0 50 H520"/>
+            <path d="M65 0 V300 M130 0 V300 M195 0 V300 M260 0 V300 M325 0 V300 M390 0 V300 M455 0 V300"/>
+          </g>
+          <g class="rays" stroke="var(--ir)" stroke-width="2.5" stroke-linecap="round" fill="none">
+            <line x1="238" y1="138" x2="40" y2="58"/>
+            <line x1="238" y1="142" x2="30" y2="142"/>
+            <line x1="238" y1="146" x2="44" y2="232"/>
+            <line x1="282" y1="138" x2="480" y2="58"/>
+            <line x1="282" y1="142" x2="490" y2="142"/>
+            <line x1="282" y1="146" x2="476" y2="232"/>
+          </g>
+          <g stroke="var(--ink)" stroke-width="3" stroke-linecap="round" fill="none">
+            <path d="M232 188 L178 222 L160 262"/><path d="M288 188 L342 222 L360 262"/>
+            <path d="M226 206 L190 254 L196 286"/><path d="M294 206 L330 254 L324 286"/>
+          </g>
+          <ellipse cx="260" cy="192" rx="46" ry="30" fill="var(--mendel)" stroke="var(--ink)" stroke-width="3"/>
+          <ellipse cx="260" cy="142" rx="26" ry="20" fill="var(--sheet)" stroke="var(--ink)" stroke-width="3"/>
+          <circle cx="250" cy="140" r="4" fill="var(--ink)"/><circle cx="270" cy="140" r="4" fill="var(--ink)"/>
+          <g fill="var(--ink)"><circle cx="246" cy="164" r="3"/><circle cx="260" cy="167" r="3"/><circle cx="274" cy="164" r="3"/></g>
+          <g font-family="JetBrains Mono, monospace" font-size="11" fill="var(--soft)">
+            <text x="20" y="44">IR L1 · UP</text>
+            <text x="20" y="130">IR L2</text>
+            <text x="24" y="250">IR L3 · DOWN</text>
+            <text x="418" y="44">IR R1 · UP</text>
+            <text x="452" y="130">IR R2</text>
+            <text x="388" y="250">IR R3 · DOWN</text>
+            <text x="300" y="172">TOUCH</text>
+            <text x="318" y="200">3 SERVOS</text>
+          </g>
+        </svg>
+        <figcaption class="cap">MENDEL'S ENTIRE WORLD, AS HE SENSES IT. Six infrared "lasers", three per side, angled up and down, plus front touch sensors. Hazards glow in infrared on their own. Standing tall narrows the beams; squatting widens them. The founders compared it to seeing through two cardboard tubes. <span class="tag v">verified</span> (Prima guide appendix). Diagram is illustrative.</figcaption>
+      </figure>
+    </header>
+
+    <div class="facts" aria-label="Key facts">
+      <div><span class="label">Developer</span><b>Anark Game Studios, Boulder</b></div>
+      <div><span class="label">Publisher</span><b>Electronic Arts · Sega (Japan)</b></div>
+      <div><span class="label">Released</span><b>Oct 1997 · Win95 + Mac</b></div>
+      <div><span class="label">Price</span><b>$44.95 SRP</b></div>
+      <div><span class="label">Promised → shipped</span><b>12 worlds → 5 worlds, 36 puzzles</b></div>
+      <div><span class="label">Aggregate</span><b>58% GameRankings</b></div>
+    </div>
+
+    <!-- VERDICT -->
+    <section id="verdict">
+      <h2><span class="k">01 · Summary first</span>The verdict</h2>
+      <div class="prose">
+        <p>Galápagos had the right idea and the wrong game around it. Everyone who played it agreed Mendel felt alive, and that watching him stop walking into a hazard he had died to was magic. Then the camera took the hazard out of view, he took forever to get anywhere, the learning was invisible, and a creature killed too often turned neurotic. The idea outlived the product.</p>
+        <p>For Lucy, the lesson is almost clean. Ferret Bowling already fixes the things that killed Galápagos, and it quietly makes one big move of its own.</p>
+      </div>
+      <div class="verdict">
+        <div class="card lift">
+          <span class="label">Lift it</span>
+          <h3>What Galápagos proved</h3>
+          <ul>
+            <li>Indirect control of a creature that looks alive is instantly compelling.</li>
+            <li>You shape the world, the creature does the rest: a "3D Lemmings with one lemming".</li>
+            <li>Personality from history (bold vs. cautious) is something players name and share.</li>
+            <li>Saving and trading a "brain" was its most loved feature.</li>
+          </ul>
+        </div>
+        <div class="card fix">
+          <span class="label">Already fixed by the brief</span>
+          <h3>What killed it</h3>
+          <ul>
+            <li>The automatic camera hid what mattered. Lucy's camera is fixed behind her.</li>
+            <li>Slow, long, punishing sessions. Lucy's runs are seconds long.</li>
+            <li>Death spirals into a broken creature. Lucy always comes back.</li>
+            <li>Tech first, game second. The brief tests fun before systems.</li>
+          </ul>
+        </div>
+        <div class="card shift">
+          <span class="label">The sideways move</span>
+          <h3>The learner changed</h3>
+          <ul>
+            <li>In Galápagos the <b>creature</b> learned, and players couldn't see it.</li>
+            <li>In Ferret Bowling <b>Lucy is already perfect</b>. The <b>player</b> learns Lucy.</li>
+            <li>That turns the invisible thing into the loop itself. It only works if cause and effect are readable.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECORD -->
+    <section id="record">
+      <h2><span class="k">02 · The paper trail</span>The record</h2>
+      <ol class="tl">
+        <li><time>1994</time><p>Brothers Steve and Scott Collins and their cousin Justin Ebert found Anark near Philadelphia; it moves to Boulder in 1995. NERM is built first as a general adaptive controller. <span class="tag v">verified</span></p></li>
+        <li><time>Nov 1995</time><p>Macworld Expo Boston: Next Generation calls it the most innovative game on the floor. <span class="tag v">verified</span></p></li>
+        <li class="hot"><time>Dec 1995</time><p>Next Generation preview: 12 worlds, a six-legged Mendel, and planned "good Mendel / bad Mendel" reward commands. Due January 1996. <span class="tag v">verified</span></p></li>
+        <li><time>1996</time><p><i>Creatures</i> ships first and takes the "first artificial-life game" title. Galápagos is delayed. <span class="tag v">verified</span></p></li>
+        <li class="hot"><time>7 Oct 1997</time><p>Ships for Windows 95 (Mac two days later), published by EA. Five worlds. The reward commands are gone, replaced by clicking the environment. <span class="tag v">verified</span></p></li>
+        <li><time>Dec 1997</time><p>GameSpot: 6/10, great idea with questionable implementation. <span class="tag v">verified</span></p></li>
+        <li><time>Jan 1998</time><p>Next Generation: 4/5. Sega announces a Japanese release. <span class="tag v">verified</span></p></li>
+        <li><time>Jun 1998</time><p>Next Generation reports the team is building an RPG with NERM. It never surfaces. <span class="tag v">verified</span></p></li>
+        <li class="hot"><time>1998</time><p>Anark leaves games for 3D authoring software. <span class="tag v">verified</span></p></li>
+        <li><time>2008 → 2017</time><p>Anark sells its Gameface UI middleware (enquiries pointed to Nvidia). Commentary traces that lineage into Qt 3D Studio. <span class="tag c">claimed</span></p></li>
+        <li><time>Today</time><p>Not sold anywhere. Abandonware copies and the full ISO live on archive.org; 119 votes on GOG's wishlist. Rights holder unknown. <span class="tag v">verified</span></p></li>
+      </ol>
+    </section>
+
+    <!-- PLAY -->
+    <section id="play">
+      <h2><span class="k">03 · Mechanics</span>How it played</h2>
+      <div class="two">
+        <div class="card">
+          <span class="label">The player can</span>
+          <ul class="list can">
+            <li>Left-click world objects to toggle or reverse them: switches, sliding platforms, force fields, jump pads, lifts. <span class="tag v">verified</span></li>
+            <li>Right-click Mendel's side to prod him left or right. <span class="tag v">verified</span></li>
+            <li>Fence him onto save pads and save (save-anywhere arrived in patch 1.1/1.2). <span class="tag v">verified</span></li>
+            <li>Save, load and export his brain, separately from level progress. <span class="tag v">verified</span></li>
+            <li>Pause any time to plan. <span class="tag c">claimed</span></li>
+          </ul>
+        </div>
+        <div class="card">
+          <span class="label">The player cannot</span>
+          <ul class="list cannot">
+            <li>Steer Mendel, point him at a goal, or warn him of danger. <span class="tag v">verified</span></li>
+            <li>Make Mendel use levers or switches; that job is the player's. <span class="tag v">verified</span></li>
+            <li>Control the camera. It moves on its own. <span class="tag v">verified</span></li>
+            <li>See his learning. No meter or display was found in any source. <span class="tag n">not found</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="prose">
+        <h3>Mendel</h3>
+        <p>A spider-like synthetic creature, deliberately designed to look like no real animal so players would bring no assumptions about how he behaves. A newborn Mendel can't walk; the game ships a pre-trained brain of roughly eight hours <span class="tag c">claimed</span>. He turns away when he senses something ahead, has no jump of his own, overshoots edges because his servos have inertia, and learns to avoid what hurts him <span class="tag v">verified</span>. Lessons survive death. Too many deaths close together, somewhere he can't escape, and he turns neurotic; somewhere safe and stimulating, he recovers <span class="tag v">verified</span>. Designers had to widen catwalks because he picked up a fear of heights <span class="tag v">verified</span>.</p>
+      </div>
+
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Object</th><th>What it does</th><th>How the player uses it</th></tr></thead>
+          <tbody>
+            <tr><td class="obj">Laser mine</td><td>Kills on contact; he turns away from it</td><td>Toggle it on as a fence to herd him</td></tr>
+            <tr><td class="obj">Popper</td><td>Spring pad that launches him upward</td><td>Time the click; his momentum can carry him off the far edge</td></tr>
+            <tr><td class="obj">Sliding slab</td><td>Wall section that pushes out briefly</td><td>Catch him, drop him a level, or shove him across a gap</td></tr>
+            <tr><td class="obj">Rotating spokes</td><td>Shafts that knock or throw him</td><td>Reverse rotation to fling him between shafts</td></tr>
+            <tr><td class="obj">Harmonic gems</td><td>Charge up, then vibrate and destroy him</td><td>Teleport to a charged gem before the audible hum peaks</td></tr>
+            <tr><td class="obj">Yellow crystal</td><td>Short speed boost</td><td>Outrun a floor that collapses behind him</td></tr>
+            <tr><td class="obj">Green crystal</td><td>Brief immunity</td><td>Ride a toxic river</td></tr>
+            <tr><td class="obj">Guardian robot</td><td>Fires homing energy packets</td><td>Can't be fought: dodge with Poppers, block with mines</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="label">Selected from the Prima Official Strategy Guide (1997) <span class="tag v">verified</span></p>
+
+      <div class="loops">
+        <div class="card loop">
+          <span class="label">Moment to moment</span>
+          <ol>
+            <li>Camera follows him into an area; you read what's clickable and what's lethal.</li>
+            <li>He wanders and turns back at obstacles.</li>
+            <li>You toggle objects to open paths, fence off wrong turns, set up launches.</li>
+            <li>Prod him if he drifts the wrong way.</li>
+            <li>He dies, re-forms at the last save, and has learned something.</li>
+            <li>Try again with a slightly different creature.</li>
+          </ol>
+        </div>
+        <div class="card loop">
+          <span class="label">World to world</span>
+          <ol>
+            <li>Clear the Galápagos hub puzzles.</li>
+            <li>Enter a dimension: Sine, Plon, Hellen, Lumen.</li>
+            <li>Chain puzzles between save pads, each world more disorienting.</li>
+            <li>Return to a harder hub section.</li>
+            <li>Finale: fire the gate cutter, the station self-destructs, Mendel escapes.</li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- NERM -->
+    <section id="nerm">
+      <h2><span class="k">04 · Under the hood</span>Inside NERM</h2>
+      <div class="prose">
+        <p><b>Non-stationary Entropic Reduction Mapping</b> (not "Machine"). Scott Collins built it as a general adaptive controller; the founders pitched it for industrial and telecom uses and said it was neither a neural network nor a genetic algorithm. There is no patent for it, no paper, and no public code. Everything below is the developers' own account <span class="tag v">verified</span>.</p>
+      </div>
+      <div class="pipe">
+        <div><span class="label">Senses</span><b>6 IR rays + touch</b><span>Coarse left/right brightness. Hazards emit IR. Body height reshapes the beams.</span></div>
+        <div><span class="label">Controller</span><b>Starts as noise</b><span>An untrained mapping from senses to motors that looks random: a newborn flails.</span></div>
+        <div><span class="label">Signal</span><b>One error number</b><span>Motor strain, IR exposure and collisions. Walls, falls and heat push it up.</span></div>
+        <div><span class="label">Learning</span><b>Never stops</b><span>Reshapes itself to push error down, only in situations it has actually lived through.</span></div>
+        <div><span class="label">Body</span><b>3 servos, no animation</b><span>Every pose is computed from motor angles each frame; inertia makes him overshoot.</span></div>
+      </div>
+      <div class="insight">
+        <span class="label">Design lesson for a deterministic browser game</span>
+        <h3>What made Mendel feel alive wasn't the algorithm.</h3>
+        <p>It was coarse perception, visible clumsiness turning into competence, and personality that built up from history. All three can be faked with seeded rules: a few sensed "buckets", weighted choices that sharpen after pain, seeded weighted picks instead of always choosing the best action (same situation, different choice, identical replays), and a small shareable state file. For Lucy the ask is even smaller: she doesn't need to learn, she needs to look like she has opinions.</p>
+      </div>
+    </section>
+
+    <!-- RECEPTION -->
+    <section id="reception">
+      <h2><span class="k">05 · Critics and players</span>Reception</h2>
+      <div class="scores" role="list" aria-label="Scores, normalized to 100">
+        <div class="score" role="listitem"><div class="who">Home of the Underdogs<small>players · 32 votes · retrospective</small></div><div class="bar players"><i style="width:85.9%"></i></div><div class="n">8.59/10</div></div>
+        <div class="score" role="listitem"><div class="who">Next Generation #37<small>critic · Jan 1998 · Mac</small></div><div class="bar"><i style="width:80%"></i></div><div class="n">4/5</div></div>
+        <div class="score" role="listitem"><div class="who">MobyGames<small>players · 9 ratings</small></div><div class="bar players"><i style="width:68%"></i></div><div class="n">3.4/5</div></div>
+        <div class="score" role="listitem"><div class="who">GameSpot<small>critic · Dec 1997</small></div><div class="bar"><i style="width:60%"></i></div><div class="n">6/10</div></div>
+        <div class="score" role="listitem"><div class="who">GameRankings<small>aggregate</small></div><div class="bar"><i style="width:58%"></i></div><div class="n">58%</div></div>
+      </div>
+      <p class="label">Blue: critics · green: players · midline at 50 · MacAddict #19 printed a score only as an image</p>
+
+      <div class="two">
+        <div class="card lift">
+          <span class="label">What people loved</span>
+          <ul>
+            <li>Mendel feels genuinely alive: he whimpers near danger and shrieks when threatened.</li>
+            <li>Watching him refuse a hazard that killed him is the hook everyone remembers.</li>
+            <li>Nothing else plays like it. "An inverted puzzle": you design, he plays.</li>
+            <li>Handsome, strange worlds; puzzles that stay fresh.</li>
+          </ul>
+        </div>
+        <div class="card fix">
+          <span class="label">What drove them out</span>
+          <ul>
+            <li>The camera, above all: it cut away from the thing you needed to click.</li>
+            <li>Slow, lumbering pace; long gaps between save points.</li>
+            <li>Learning that was inconsistent, invisible, or went wrong (walking in circles).</li>
+            <li>Hard to tell what was clickable; lots of wrist-heavy clicking.</li>
+            <li>A tech demo with too little reason to keep going.</li>
+          </ul>
+        </div>
+      </div>
+      <div class="prose">
+        <p>Next Generation's verdict is the best summary of the relationship: at its best, after days of play, Mendel becomes a partner in solving puzzles; at its worst he's a crab dodging your clumsy clicks. It suits players with "time, patience, and imagination". A forum poster recalling it decades later remembered a Mendel that, after bad guidance, simply stopped moving, as if he'd learned not to trust them.</p>
+      </div>
+    </section>
+
+    <!-- DEATH -->
+    <section id="death">
+      <h2><span class="k">06 · Tombstone</span>Why it died</h2>
+      <ol class="deaths">
+        <li><b>Two years late</b><span>Promised for early 1996, shipped late 1997. <i>Creatures</i> got the headline first.</span></li>
+        <li><b>Scope cut</b><span>Twelve worlds became five.</span></li>
+        <li><b>The camera</b><span>Named as the main flaw by every major review.</span></li>
+        <li><b>Invisible learning</b><span>The core promise was hard to see, and sometimes went backwards.</span></li>
+        <li><b>Slow and punishing</b><span>Lumbering pace, fixed save spots until a patch, a creature that could break.</span></li>
+        <li><b>Tech in search of a game</b><span>NERM came first; the game was a low-risk showcase for it.</span></li>
+        <li><b>The studio moved on</b><span>Anark pivoted to tools in 1998; the NERM RPG never appeared.</span></li>
+      </ol>
+    </section>
+
+    <!-- DNA -->
+    <section id="dna">
+      <h2><span class="k">07 · Lineage</span>The other DNA</h2>
+      <div class="two">
+        <div class="card">
+          <span class="label">Learn to Fly · Light Bringer · 2009</span>
+          <h3>Prep, launch, spend</h3>
+          <p>A penguin, a ramp, six upgrades (ramp, acceleration, air resistance, glider, rockets, fuel), a 6,000 ft goal counted in days. Praised because each new piece of kit flips your strategy; criticized for a hard ceiling and early grind. The sequel's fixed-budget Arcade mode is a built-in fix for the upgrade treadmill; the third game was panned as grindy, with the best strategy collapsing to "point up". <span class="tag v">verified</span></p>
+        </div>
+        <div class="card">
+          <span class="label">Shopping Cart Hero · MonkeyWantBanana · 2009</span>
+          <h3>Launch, trick, land</h3>
+          <p>A timed run-up, a jump, flips in the air, then scored on distance and height. Upgrades: wheels, rockets, bought tricks, and "groupies", score multipliers you lose if you crash, a push-your-luck bet. Later sequels added themed worlds and bosses. <span class="tag v">verified</span></p>
+        </div>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Genre lesson</th><th>Where it comes from</th><th>What it means for Lucy</th></tr></thead>
+          <tbody>
+            <tr><td>Progress that measures time, not choices</td><td>Toss the Turtle, Learn to Fly 3</td><td>Unlocks must change what Lucy does, not how far she goes</td></tr>
+            <tr><td>One best build ends the game</td><td>Toss the Turtle's golden gun</td><td>Mood items as side-grades: more of one behaviour, less of another</td></tr>
+            <tr><td>Autopilot that's too good</td><td>The Sims (Will Wright made the AI worse on purpose)</td><td>Unprepped Lucy should be charmingly bad at bowling</td></tr>
+            <tr><td>Complexity reads as random</td><td>Halo 2 AI (Damian Isla, GDC 2005)</td><td>Lucy telegraphs: freeze, head tilt, dook, then act</td></tr>
+            <tr><td>Players read personality into simple systems</td><td>RimWorld (Tynan Sylvester)</td><td>A few readable biases beat a deep hidden simulation</td></tr>
+            <tr><td>Visible state in the body</td><td>Black &amp; White's creature</td><td>Show mood on Lucy (fur, tail, posture), not in a meter</td></tr>
+            <tr><td>Tendencies, not orders</td><td>Majesty's heroes</td><td>Preps bias Lucy's choices; she can still ignore them</td></tr>
+            <tr><td>Every launcher kept some mid-run input</td><td>LTF, SCH, Burrito Bison, Toss the Turtle</td><td>Ferret Bowling is the outlier: prep must carry every decision</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- LUCY -->
+    <section id="lucy">
+      <h2><span class="k">08 · Against the brief</span>What Lucy takes</h2>
+      <div class="prose">
+        <p>Each mechanic spec'd in the Ferret Bowling brief, checked against the evidence. <b>Keep</b>: the research backs it. <b>Fix</b>: it has a known failure mode to design around. <b>Test</b>: only the prototype can answer. <b>Jay</b>: a design call.</p>
+      </div>
+      <div class="tablewrap map">
+        <table>
+          <thead><tr><th>Brief says</th><th>Call</th><th>Evidence</th><th>Implication</th></tr></thead>
+          <tbody>
+            <tr><td>Prepare, release, watch</td><td><span class="verdict-pill p-keep">KEEP</span></td><td>Galápagos's core, and the part everyone loved</td><td>The idea is proven; the execution is what failed</td></tr>
+            <tr><td>Camera behind Lucy, runs are short</td><td><span class="verdict-pill p-keep">KEEP</span></td><td>Galápagos died on its camera and its pace</td><td>Already solved by CD's rear-view run; protect it</td></tr>
+            <tr><td>She always comes back</td><td><span class="verdict-pill p-keep">KEEP</span></td><td>Mendel's death spiral made him neurotic and players quit</td><td>No trauma spiral, and no punishment for experiments</td></tr>
+            <tr><td>Lucy is already perfect</td><td><span class="verdict-pill p-keep">KEEP</span></td><td>Mendel's learning was invisible; learning moved to the player</td><td>The player's model of Lucy is the progression that matters</td></tr>
+            <tr><td>Mood items are behaviours, not stats</td><td><span class="verdict-pill p-fix">FIX</span></td><td>Best-build collapse in every launcher; CD's page sums preps into one zoomies number</td><td>Each prep biases different choices, never just "more"</td></tr>
+            <tr><td>You can tell why she did it</td><td><span class="verdict-pill p-fix">FIX</span></td><td>Isla: complexity reads as random; Sylvester: unseen systems are wasted</td><td>Telegraph before acting; the run log names causes</td></tr>
+            <tr><td>Floors are different behaviours</td><td><span class="verdict-pill p-keep">KEEP</span></td><td>Galápagos objects each did one legible thing; Learn to Fly's kit flipped strategy</td><td>A floor is a verb, not a multiplier</td></tr>
+            <tr><td>Rolls buy longer hallways</td><td><span class="verdict-pill p-fix">FIX</span></td><td>Learn to Fly's ceiling; Toss the Turtle's time-not-skill treadmill</td><td>New hallways must add new things to happen, not distance</td></tr>
+            <tr><td>A weird bad run can be the best run</td><td><span class="verdict-pill p-test">TEST</span></td><td>Random medals were resented; legible luck (Peggle, Dwarf Fortress) is loved</td><td>Pay for spectacle and chain reactions, and make the luck visible</td></tr>
+            <tr><td>Pickups aren't chosen</td><td><span class="verdict-pill p-test">TEST</span></td><td>Rain World lets geometry steer creatures; luck is fine when you can see it</td><td>Placement is seeded; Lucy's mood decides what she notices</td></tr>
+            <tr><td>No input during the run</td><td><span class="verdict-pill p-jay">JAY</span></td><td>Every launcher kept some mid-run input; Burrito Bison was praised for it</td><td>Hold the line, or allow one non-steering input (a treat squeak?)</td></tr>
+            <tr><td>God Mode keeps one pickup</td><td><span class="verdict-pill p-jay">JAY</span></td><td>Saving and trading Mendel's brain was Galápagos's most loved feature</td><td>A shareable "Lucy run" (seed + prep) may be the stronger free hook</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- QUESTIONS -->
+    <section id="questions">
+      <h2><span class="k">09 · For the next decision round</span>Open questions</h2>
+      <ol class="questions">
+        <li><b>Prep combination.</b> One item per run, two with interactions, or separate behaviour axes? The evidence leans toward side-grades that bias choices, whatever the count.</li>
+        <li><b>The one input.</b> Does Ferret Bowling stay the only launcher with zero mid-run input, or does it get a single thing that isn't steering?</li>
+        <li><b>What rolls reward.</b> Distance and knocked-over things, or spectacle: chain reactions, rare interactions, "unscorable, worth it"?</li>
+        <li><b>Sharing.</b> Mendel's brain files were the most loved feature. Is a shareable run (seed + prep + floor) part of the free game?</li>
+        <li><b>How Lucy shows mood mid-run.</b> Only five rear-view poses exist. Tail, speed, sway and shadow can carry it; does anything else need art?</li>
+        <li><b>The prototype's one question.</b> Twin runs identical except one prep: can we measure that they diverge in a way a player can explain?</li>
+      </ol>
+    </section>
+
+    <!-- SOURCES -->
+    <section id="sources">
+      <h2><span class="k">10 · Receipts</span>Sources</h2>
+      <p class="prose" style="font-size:15px">Five research passes ran in parallel. Several sites blocked access (MobyGames, GameFAQs, GameSpot's full review, the Wayback Machine), so some items rest on search snippets and are marked <span class="tag c">claimed</span>. No NERM patent, paper or source code exists publicly. MacAddict's score, full credits, the composer, and the Japanese release details were not found.</p>
+      <details class="src">
+        <summary>Show all sources</summary>
+        <div class="body">
+          <div>
+            <h4>Primary: magazines and the guide</h4>
+            <ul>
+              <li><a href="https://archive.org/details/Galapagos_Mendels_Escape_Prima">Prima Official Strategy Guide (1997)</a></li>
+              <li><a href="https://archive.org/details/NEXT_Generation_11">Next Generation #11, Nov 1995</a></li>
+              <li><a href="https://archive.org/details/NEXT_Generation_12">Next Generation #12, Dec 1995 (preview)</a></li>
+              <li><a href="https://archive.org/details/NEXT_Generation_15">Next Generation #15, Mar 1996</a></li>
+              <li><a href="https://archive.org/stream/NEXT_Generation_29">Next Generation #29, May 1997</a></li>
+              <li><a href="https://archive.org/details/NEXT_Generation_34">Next Generation #34, Oct 1997 (ad)</a></li>
+              <li><a href="https://archive.org/details/NEXT_Generation_37">Next Generation #37, Jan 1998 (review)</a></li>
+              <li><a href="https://archive.org/details/NEXT_Generation_42">Next Generation #42, Jun 1998 (AI feature)</a></li>
+              <li><a href="https://archive.org/details/MacAddict-002-199610">MacAddict #2, Oct 1996 (Scott Collins)</a></li>
+              <li><a href="https://archive.org/details/MacAddict-019-199803/page/n69/mode/2up">MacAddict #19, Mar 1998 (review)</a></li>
+              <li><a href="https://www.trescomforum.org/viewtopic.php?t=3526">Computer Graphics World, Jul 1997 (repost)</a></li>
+              <li><a href="https://www.sussex.ac.uk/informatics/cogslib/reports/csrp/csrp434.pdf">Grand, Cliff &amp; Malhotra 1996 (Creatures paper)</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Reviews and retrospectives</h4>
+            <ul>
+              <li><a href="https://www.gamespot.com/reviews/galapagos-mendels-escape-review/1900-2536132/">GameSpot review</a> · <a href="https://www.gamespot.com/articles/mendel-makes-his-escape/1100-2467834/">release news</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Galapagos_(video_game)">Wikipedia</a></li>
+              <li><a href="https://homeoftheunderdogs.net/game.php?id=4488">Home of the Underdogs</a></li>
+              <li><a href="https://oldpcgaming.net/galapagos-mendels-escape/">Old PC Gaming</a></li>
+              <li><a href="https://collectionchamber.blogspot.com/p/galapagos-mendels-escape.html">The Collection Chamber</a></li>
+              <li><a href="https://www.squakenet.com/game/galapagos-mendel-escape/">Squakenet</a></li>
+              <li><a href="https://www.pelit.fi/artikkelit/galapagos/">Pelit</a></li>
+              <li><a href="https://www.myabandonware.com/game/galapagos-f64">MyAbandonware</a> · <a href="https://www.old-games.com/download/4271/galapagos-mendel-s-escape">Old-Games</a></li>
+              <li><a href="https://macintoshgarden.org/games/galapagos-mendels-escape">Macintosh Garden</a></li>
+              <li><a href="https://www.gog.com/dreamlist/game/galapagos-mendel-s-escape-1997">GOG Dreamlist</a></li>
+              <li><a href="https://forums.anandtech.com/threads/pc-game-with-blue-spider-robot-that-learns-from-experience.2614913/">AnandTech forum memory</a></li>
+              <li><a href="https://pc.watch.impress.co.jp/docs/article/980116/game.htm">PC Watch (Japan)</a></li>
+              <li><a href="https://archive.org/details/galapagos-mendels-escape">archive.org ISO</a> · <a href="https://archive.org/details/gal_de11">demo</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Anark and the tech</h4>
+            <ul>
+              <li><a href="https://patents.google.com/patent/US7113183B1/en">US7113183B1</a> · <a href="https://patents.google.com/patent/US7369134B2/en">US7369134B2</a> (rendering, not NERM)</li>
+              <li><a href="https://www.gamedeveloper.com/game-platforms/tooling-around-anark-on-gameface-s-next-gen-ui">Game Developer, Anark Gameface (2007)</a></li>
+              <li><a href="https://mcvuk.com/development-news/anark-sells-off-gameface-a-to-nvidia/">MCV, Gameface sale (2008)</a></li>
+              <li><a href="https://creativepro.com/anark-corp-releases-anark-studio-3-0-the-industry-s-most-advanced-interactive-3d-visualization-authoring-solution/">CreativePro, Anark Studio 3.0</a></li>
+              <li><a href="https://tcuvelier.wordpress.com/2017/02/24/annonce-de-qt-3d-studio/">Qt 3D Studio lineage (commentary)</a></li>
+              <li><a href="https://www.anark.com/about">Anark today</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4>Lineage and design theory</h4>
+            <ul>
+              <li><a href="https://jayisgames.com/review/learn-to-fly.php">Learn to Fly</a> · <a href="https://jayisgames.com/review/learn-2-fly.php">2</a> · <a href="https://jayisgames.com/review/learn-to-fly-3.php">3</a> (Jay is Games)</li>
+              <li><a href="https://newgrounds.wiki.gg/wiki/Shopping_Cart_Hero">Shopping Cart Hero (Newgrounds wiki)</a></li>
+              <li><a href="https://ayumilove.wordpress.com/2009/03/18/shopping-cart-hero-walkthrough-review-tips/">Shopping Cart Hero guide</a></li>
+              <li><a href="http://30minutegamer.blogspot.com/2010/08/flash-game-review-toss-turtle.html">Toss the Turtle review</a></li>
+              <li><a href="https://jayisgames.com/review/burrito-bison.php">Burrito Bison review</a></li>
+              <li><a href="https://www.gamedeveloper.com/design/how-to-power-up-players-with-upgrades">Bycer on upgrades</a></li>
+              <li><a href="https://www.thegamer.com/the-sims-ai-bad-on-purpose-first-game-will-wright/">Will Wright on Sims autonomy</a></li>
+              <li><a href="https://www.gamedeveloper.com/programming/gdc-2005-proceeding-handling-complexity-in-the-i-halo-2-i-ai">Isla, Halo 2 AI</a></li>
+              <li><a href="https://tynansylvester.com/2013/06/the-simulation-dream/">Sylvester, The Simulation Dream</a></li>
+              <li><a href="https://www.gamedeveloper.com/design/postmortem-lionhead-studios-i-black-white-i-">Black &amp; White postmortem</a></li>
+              <li><a href="https://en.wikipedia.org/wiki/Majesty:_The_Fantasy_Kingdom_Sim">Majesty</a> · <a href="https://nielsthooft.com/miyamoto-pikmin">Miyamoto on Pikmin</a></li>
+              <li><a href="https://www.gamedeveloper.com/design/crafting-the-complex-chaotic-ecosystem-of-i-rain-world-i-">Rain World ecosystem</a></li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </section>
+
+    <footer>
+      THE MENDEL FILE · Unstuck Games teardown for Ferret Bowling: Lucy Edition · compiled 2026-09-14 from five parallel research passes · Galápagos and Mendel belong to their rights holders; summaries only.
+    </footer>
+  </main>
+</div>
