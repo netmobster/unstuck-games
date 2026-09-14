@@ -18,7 +18,7 @@ Three stops. Nobody wins or loses. The Prestige files its verdict (a cold score 
 and the Archive keeps **one sentence of why**.
 
 ## What makes it an Unstuck game
-- **Lifted from:** Universal Paperclips (each act obsoletes the last, permission grows slower than power, mechanics are the theme, end on the first verb). Rebuilt sideways: a named character instead of an anonymous optimizer, absence instead of clicking, a sentence instead of an ending screen.
+- **Tombstone:** Universal Paperclips (each act obsoletes the last, permission grows slower than power, mechanics are the theme, end on the first verb). Rebuilt sideways: a named character instead of an anonymous optimizer, absence instead of clicking, a sentence instead of an ending screen.
 - **Lifted from our library:** Elsewhere (real-time absence, orders executing into a moved world) · SEREN (fronts on clocks, knowledge ledger, generation schemas) · Orbis (deterministic sim, sweeps, causality probe, God Mode as intervention).
 - **What it contributes:** **generation + dice**. Whole records authored by AI in production, chosen by math and seeds at runtime, no AI in the browser. Plus an ending that's a sentence, not a score.
 

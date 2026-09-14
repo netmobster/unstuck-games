@@ -5,6 +5,7 @@ How an Unstuck game gets made. Living document: every game should change it a li
 ## The loop
 
 1. **Find the fun.** A loved game stuck somewhere: buried under monetization, a dead platform, bad scope, or a creator's own overbuild.
+   **Vocabulary: the source game is the *tombstone*, never something we "lifted from".** Lifting implies copying, and we don't copy. Credit it as `Tombstone: <game>`. The finished game should be so unlike its tombstone that the credit reads as obvious homage in spirit only. (Jay, 2026-09-13: Bad Monkeys is nothing like Paperclips, except in the most spirit-of-the-spirit way.) *"Lift" is only for our own library.*
 2. **Teardown.** Deconstruct it to principles, not features. Label every piece: genre DNA (take freely), principle (abstract and rebuild), expression (do not touch). This is also the provenance trail. → `teardowns/<source>/TEARDOWN.md`
 3. **Lift from the library first.** Before designing anything new, check what our own shipped games already solve. See *The Library* below.
 4. **Boundaries.** Jay sets them. Nothing is designed before they exist. → `teardowns/<source>/BOUNDARIES.md`

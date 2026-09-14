@@ -16,7 +16,7 @@ Split below is CC's estimate against Jay's ~4:00 total: **Orbis ~1:45 · Game #2
 
 ---
 
-## Game #2 — BAD MONKEYS (lifted from Universal Paperclips, built on Jay's Bad Monkeys canon)
+## Game #2 — BAD MONKEYS (tombstone: Universal Paperclips · built on Jay's Bad Monkeys canon)
 
 **The first real test of the Unstuck method:** someone else's loved game → teardown → Jay's boundaries → test → something new.
 
