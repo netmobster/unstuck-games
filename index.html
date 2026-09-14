@@ -7,7 +7,7 @@
 <title>Unstuck Games — Don't bullshit the player.</title>
 <meta name="description" content="Small games. No traps. A one-person game studio, plus robots.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito+Sans:wght@400;700;800&family=Inter:wght@400;600;700&family=Bagel+Fat+One&family=Special+Elite&family=Pirata+One&family=Bangers&family=Rammetto+One&family=MedievalSharp&family=Sniglet:wght@800&family=Bowlby+One&family=Shrikhand&family=Courier+Prime:wght@700&family=Cormorant+Garamond:wght@300&family=DM+Sans:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito+Sans:wght@400;700;800&family=Inter:wght@400;600;700&family=Bagel+Fat+One&family=Special+Elite&family=Pirata+One&family=Bangers&family=Rammetto+One&family=MedievalSharp&family=Sniglet:wght@800&family=Bowlby+One&family=Shrikhand&family=Courier+Prime:wght@700&family=Cormorant+Garamond:wght@300&family=DM+Sans:wght@400;700&family=Space+Grotesk:wght@700&family=IBM+Plex+Mono&family=Pacifico&display=swap" rel="stylesheet">
 <style>
 :root{--bg:#f2efe6;--card:#faf8f2;--ink:#16163a;--muted:#565672;--accent:#2b34d6;--acid:#e9f257;--onAccent:#f2efe6;--r:28px;--rs:16px;--pill:999px;--fh:'Luckiest Guy',cursive;--fb:'Nunito Sans',sans-serif;--tapeA:#e9f257;--tapeB:#16163a;--hw:400;--hls:1px}
 body[data-mode="stuck"]{--bg:#eceef1;--card:#fff;--ink:#1f2937;--muted:#6b7280;--accent:#2563eb;--acid:#d1d5db;--onAccent:#fff;--r:4px;--rs:2px;--pill:4px;--fh:'Inter',sans-serif;--fb:'Inter',sans-serif;--tapeA:#ef4444;--tapeB:#111827;--hw:700;--hls:-0.5px}
@@ -67,6 +67,12 @@ section{padding:64px 0 96px}
 .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px}
 .two{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:48px;align-items:start}
 .refusal{padding:40px;display:flex;flex-direction:column;gap:18px}
+.refusal.wide{grid-column:1/-1}
+#bm-card{scroll-margin-top:140px}
+#philosophy .grid2{grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr))}
+.refusal .lineage{display:flex;align-items:center;gap:12px;flex-wrap:wrap;font-family:var(--fh);font-weight:var(--hw);font-size:22px}
+.refusal .lineage b{color:var(--accent)}
+.refusal .r3btn{align-self:flex-start}
 .refusal .letter{font-family:var(--fh);font-weight:var(--hw);font-size:64px;line-height:1;color:var(--accent)}
 .refusal h3{font-size:32px;line-height:1.05}
 .refusal p{font-size:17px;line-height:1.55;text-wrap:pretty}
@@ -160,6 +166,19 @@ body[data-mode="stuck"] .game .name{font-family:'Inter',sans-serif!important;fon
 @media (max-width:900px){.game.live.early{grid-template-columns:minmax(0,1fr)}}
 @media (max-width:520px){.game.live.early{padding:24px 20px}.board{font-size:12px;padding:22px 14px 18px}.board .b-rows{grid-template-columns:minmax(0,1fr) max-content max-content;column-gap:10px}.board .b-name{white-space:normal}.board .b-row>span:nth-child(5){display:none}}
 body[data-mode="stuck"] .game.live .board{display:none}
+/* build in progress: Bad Monkeys (colours from its own page) */
+.game.live.building{background:#1c2026;color:#e6e9ee;border-color:#1c2026}
+.game.live.building:hover{color:#e6e9ee;box-shadow:0 30px 60px rgba(28,32,38,.5)}
+.game.live.building .soon{color:#ff5fa2;border-color:#ff5fa2}
+.game.live.building .name{font-family:'Space Grotesk',var(--fb);font-weight:700;letter-spacing:-.02em;color:#e6e9ee}
+.game.live.building .hook{color:#c9cfd8}
+.game.live.building .play{background:#ff5fa2;color:#1c2026}
+.game.live.building .foot{color:#9aa3b0;opacity:1}
+.bm-art{position:relative;min-height:240px}
+.bm-art svg{position:absolute;left:32%;top:8%;width:36%;animation:float 5s ease-in-out infinite}
+.bm-chip{position:absolute;padding:5px 9px;background:#343a44;border:1px solid #5b6473;border-radius:3px;font:10px/1 'IBM Plex Mono',monospace;letter-spacing:2px;color:#9aa3b0;white-space:nowrap}
+.bm-scrib{position:absolute;right:4%;bottom:0;font-family:'Pacifico',cursive;font-size:24px;color:#ff5fa2;transform:rotate(-8deg)}
+body[data-mode="stuck"] .game.live .bm-art{display:none}
 body[data-mode="stuck"] .game.live.early{grid-template-columns:1fr}
 body[data-mode="stuck"] .game.live iframe,body[data-mode="stuck"] .game.live .veil,body[data-mode="stuck"] .game.live .mark svg{display:none}
 .marchwrap{overflow:hidden;border-top:2px solid var(--ink);border-bottom:2px solid var(--ink);padding:14px 0}
@@ -243,6 +262,7 @@ footer .fine{font-size:14px;font-weight:700;color:var(--muted);text-align:right;
     <div class="grid2">
       <div class="card refusal"><div class="letter">A</div><h3 data-t="r1Title"></h3><p data-t="r1Body"></p><div class="quote" data-t="r1Quote"></div></div>
       <div class="card refusal"><div class="letter">B</div><h3 data-t="r2Title"></h3><p data-t="r2Body"></p><div class="quote" data-t="r2Quote"></div></div>
+      <div class="card refusal wide"><div class="letter">C</div><h3 data-t="r3Title"></h3><p data-t="r3Body"></p><div class="lineage"><span data-t="r3From"></span><b>→</b><span data-t="r3To"></span></div><div class="quote" data-t="r3Quote"></div><a class="btn ghost r3btn" href="#bm-card" data-t="r3Btn"></a></div>
     </div>
   </section>
 
@@ -324,11 +344,13 @@ const COPY = {
     heroTitle: "Don't bullshit the player.",
     heroSub: "Small games. No traps. Every free game is the whole game, and one $5 subscription covers the entire catalog if you want the toys.",
     cta1: "Join the waitlist", cta2: "Subscribe · $5/mo",
-    refKicker: "TWO THINGS WE REFUSE TO DO", refTitle: "Good games get stuck. We unstick them.",
+    refKicker: "THREE THINGS WE REFUSE TO DO", refTitle: "Good games get stuck. We unstick them.",
     r1Title: "Why build this and not use it?", r1Body: "The ad shows a mechanic you understand instantly. You install. The mechanic barely exists, or hides as a side feature. If it's compelling enough to advertise, it's compelling enough to build.",
     r1Quote: "If the thing is compelling enough to advertise, build the fucking thing.",
     r2Title: "Why build this then pollute it?", r2Body: "A genuinely good loop, slowly buried: ad chains, energy bars, currencies designed to hide the price, timers whose only job is to sell you the timer.",
     r2Quote: "Monetization must not destroy the game that creates the value.",
+    r3Title: "Why let it die, or just copy it?", r3Body: "Some games died that deserve more than a tombstone, but also more than a copy. We take the corpse apart, keep what made it loved, and build something new from what's left.", r3From: "Universal Paperclips", r3To: "Bad Monkeys", r3Btn: "See Bad Monkeys ↓",
+    r3Quote: "More than a tombstone. More than a copy.",
     adKicker: "THE AD MODEL", adTitle: "Watch one ad → God Mode for one hour.",
     adBody: "An ad is an optional, bounded trade. You get something real. We get an impression. Nobody has to hate the transaction. Once you've had your hour, there is nothing else to sell you, and we leave that money on the table on purpose.",
     adRules: ["Max ads per hour", "Max ads per day", "No ad chains", "No 'watch another' loop", "Never interrupts play", "Never worse without ads"],
@@ -340,8 +362,8 @@ const COPY = {
     subYesHead: "You get", subNoHead: "Never",
     subPerks: ["No ads, anywhere", "God Mode, always on", "Unrestricted progression", "All unlocks", "Bonus & experimental modes"],
     subNots: ["Pay-to-win", "Premium currency", "Energy or lives", "Pay-to-continue", "A crippled free version"],
-    gamesKicker: "ONE PLAYABLE · ONE EARLY ACCESS · TEN ON THE WAY", gamesTitle: "Games that got out.",
-    gamesSub: "Orbis got out first. Elsewhere is out, just not in your browser yet. The rest are working titles with real hooks: four originals, three corpses worth resurrecting, three clean mechanical specimens. Each one ships when it's fun, and not one minute before.", soon: "COMING SOON", live: "PLAY NOW", early: "EARLY ACCESS",
+    gamesKicker: "ONE PLAYABLE · ONE EARLY ACCESS · ONE ON THE BENCH · TEN ON THE WAY", gamesTitle: "Games that got out.",
+    gamesSub: "Orbis got out first. Elsewhere is out, just not in your browser yet. Bad Monkeys is on the bench. The rest are working titles with real hooks: four originals, three corpses worth resurrecting, three clean mechanical specimens. Each one ships when it's fun, and not one minute before.", soon: "COMING SOON", live: "PLAY NOW", early: "EARLY ACCESS", building: "BUILD IN PROGRESS",
     manKicker: "THE FOUNDING PRINCIPLE",
     manifesto: ["Find something fun.", "Make it ours.", "Make it good.", "Don't bullshit the player.", "Ship another one."],
     faqTitle: "Questions you should be asking.",
@@ -372,6 +394,8 @@ const COPY = {
     r1Quote: "The ad is the product. The game is the funnel.",
     r2Title: "Engagement Optimization", r2Body: "Layered economies, energy systems and time-gated progression deliver best-in-class session counts and rewarded-video completion rates.",
     r2Quote: "Friction is a feature. Frustration is a KPI.",
+    r3Title: "Legacy IP Revitalization", r3Body: "We acquire beloved franchises and relaunch them with a modern monetization layer. Core fans are a high-LTV cohort.", r3From: "Beloved Classic", r3To: "Live Service", r3Btn: "View Portfolio Asset",
+    r3Quote: "Nostalgia is a renewable resource.",
     adKicker: "REWARDED VIDEO ECOSYSTEM", adTitle: "Watch 5 ads → Continue playing.",
     adBody: "Interstitials every 90 seconds keep our partners happy. Rewarded chains ensure players remain invested in their next unlock. Frequency caps are evaluated quarterly.",
     adRules: ["Unskippable interstitials", "Ad-to-continue", "Reward chains", "Double-reward upsell", "Offline ads (beta)", "Frequency cap: none"],
@@ -384,7 +408,7 @@ const COPY = {
     subPerks: ["2,000 Gems (+500 bonus!)", "VIP badge", "Remove ads (some ads)", "Energy refill ×3", "Loot crate keys"],
     subNots: ["Gems do not refund", "Passes expire", "VIP requires renewal", "Ads return after 7 days", "Offer may vary by region"],
     gamesKicker: "PORTFOLIO", gamesTitle: "Our Diversified Title Pipeline",
-    gamesSub: "Proven genres. Proven monetization. LiveOps-ready from day one.", soon: "PRE-REGISTER", live: "INSTALL NOW", early: "BETA WAITLIST",
+    gamesSub: "Proven genres. Proven monetization. LiveOps-ready from day one.", soon: "PRE-REGISTER", live: "INSTALL NOW", early: "BETA WAITLIST", building: "SOFT LAUNCH (TIER 3 MARKETS)",
     manKicker: "MISSION STATEMENT",
     manifesto: ["Synergize engagement.", "Optimize the funnel.", "Maximize LTV.", "Monetize the whale.", "Ship the season pass."],
     faqTitle: "Frequently Asked Questions",
@@ -407,7 +431,8 @@ const COPY = {
 // Catalog status: play = runs in the browser here · early = playable today on another surface · (GAMES) = coming soon
 const LIVE = [
   { kind: "play", name: "ORBIS", stuckName: "Orbit Merge: Idle Galaxy Tycoon", href: "orbis/", genre: "AMBIENT · ORBITAL ANT FARM", hook: "A little universe you watch evolve. Two dials change the conditions, never the outcome. Leave it running. Fall asleep to it.", play: "Play", foot: "DNA: 90s FISH SCREENSAVER × IDLE ORBITER · MADE TO FALL ASLEEP TO" },
-  { kind: "early", name: "ELSEWHERE", stuckName: "Kingdom Raid: Idle Lords", href: "https://netmobster.github.io/elsewhere-idle-cc/", genre: "IDLE RPG · YOUR ABSENCE IS THE MECHANIC", hook: "Two minutes a day. Three neighbours who each want something, and one set of eyes. Type anything and it becomes a real order, rolled by a deterministic engine. You will lose. The interesting part is how.", play: "Visit Elsewhere ↗", foot: "PLAYED IN CLAUDE CODE TODAY · BROWSER VERSION ON THE WAY" }
+  { kind: "early", name: "ELSEWHERE", stuckName: "Kingdom Raid: Idle Lords", href: "https://netmobster.github.io/elsewhere-idle-cc/", genre: "IDLE RPG · YOUR ABSENCE IS THE MECHANIC", hook: "Two minutes a day. Three neighbours who each want something, and one set of eyes. Type anything and it becomes a real order, rolled by a deterministic engine. You will lose. The interesting part is how.", play: "Visit Elsewhere ↗", foot: "PLAYED IN CLAUDE CODE TODAY · BROWSER VERSION ON THE WAY" },
+  { kind: "building", name: "BAD MONKEYS", stuckName: "Space Monkey Merge: Galaxy Tycoon", href: "bad-monkeys/", genre: "ABSENCE SIM · NOT ALWAYS BETTER, ALWAYS WEIRDER", hook: "You're Jame, a mechanic from Alberta. She's Not Betsy. You land, fix a planet's problem with whatever she bolted on while you were gone, say one thing on your way out, and leave. She takes it literally.", play: "Read her file →", foot: "BUILD IN PROGRESS · LIFTED FROM UNIVERSAL PAPERCLIPS · GAME #2" }
 ];
 
 const ORBIS_MARK = `<svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><ellipse cx="50" cy="50" rx="42" ry="22" stroke="currentColor" stroke-opacity="0.35" stroke-width="0.8"/><circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="1.2"/><circle cx="50" cy="50" r="9" fill="currentColor" fill-opacity="0.15"/><g class="spin"><circle cx="92" cy="50" r="4" fill="currentColor"/><circle cx="92" cy="50" r="6.5" fill="currentColor" fill-opacity="0.22"/></g></svg>`;
@@ -444,7 +469,7 @@ function render() {
   LIVE.forEach((g, i) => {
     const card = $$('#liveGrid .game.live')[i];
     card.querySelector('.genre').textContent = stuck() ? 'HYPER-CASUAL · LIVEOPS' : g.genre;
-    card.querySelector('.soon').textContent = g.kind === 'early' ? t.early : t.live;
+    card.querySelector('.soon').textContent = g.kind === 'early' ? t.early : g.kind === 'building' ? t.building : t.live;
     card.querySelector('.name').textContent = stuck() ? g.stuckName : g.name;
     card.querySelector('.hook').textContent = stuck() ? 'Free to play. In-app purchases from $0.99 to $99.99. Contains ads. Energy required.' : g.hook;
     card.querySelector('.play').textContent = stuck() ? 'Install for rewards' : g.play;
@@ -503,7 +528,23 @@ function finishAd() {
 $('#march').innerHTML = '<div></div>'.repeat(80);
 // play cards run the real game behind themselves (?embed = no UI, no sound);
 // early-access cards show the game's own board and link out
-$('#liveGrid').innerHTML = LIVE.map(g => g.kind === 'early' ? `
+$('#liveGrid').innerHTML = LIVE.map(g => g.kind === 'building' ? `
+  <a class="game live early building" id="bm-card" href="${g.href}">
+    <div class="top"><span class="genre"></span><span class="soon"></span></div>
+    <div class="copy">
+      <div class="name"></div>
+      <p class="hook"></p>
+      <span class="play"></span>
+      <div class="foot"></div>
+    </div>
+    <div class="bm-art" aria-hidden="true">
+      <svg viewBox="0 0 120 120"><ellipse cx="60" cy="62" rx="34" ry="46" fill="#e6e9ee"/><ellipse cx="60" cy="48" rx="16" ry="18" fill="#1c2026"/><ellipse cx="55" cy="43" rx="5" ry="6" fill="#343a44"/><rect x="52" y="104" width="16" height="10" rx="2" fill="#9aa3b0"/><g transform="rotate(-18 96 40)"><rect x="88" y="20" width="16" height="42" rx="3" fill="#ff5fa2"/><rect x="84" y="14" width="24" height="8" rx="2" fill="#ff5fa2"/></g></svg>
+      <span class="bm-chip" style="left:0;top:12%">SNOWPLOW · MUNICIPAL</span>
+      <span class="bm-chip" style="right:0;top:48%">GRAIN AUGER · 40 FT</span>
+      <span class="bm-chip" style="left:4%;bottom:10%">DOG · UNLISTED</span>
+      <span class="bm-scrib">she's fine</span>
+    </div>
+  </a>` : g.kind === 'early' ? `
   <a class="game live early" href="${g.href}" target="_blank" rel="noopener">
     <div class="top"><span class="genre"></span><span class="soon"></span></div>
     <div class="copy">
