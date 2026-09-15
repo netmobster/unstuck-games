@@ -386,17 +386,39 @@ function renderCards() {
   cards.innerHTML = picks.map((e, i) => `<div class="card${e.kind !== "behaviour" ? " gold" : ""}" style="left:${spots[i][0]}px;top:${spots[i][1]}px;--r:${spots[i][2]};animation-delay:${0.1 + i * 0.25}s">${e.kind !== "behaviour" ? `<b>${e.kind.toUpperCase()} · </b>` : ""}${esc(e.text)}</div>`).join("");
 }
 
+/** The post-run portrait: one of Lucy's seven moods, chosen from what the run actually did. */
+type MoodPose = "curious" | "wired" | "dozy" | "grudgy" | "damp" | "asleep" | "proud";
+function moodPose(): { pose: MoodPose; says: string } {
+  const top = profile.stash[profile.stash.length - 1];
+  if (phase === "day" && last) {
+    const achieved = last.comboFired || last.newEntries.some((e) => e.kind === "combo" || e.kind === "habit");
+    if (achieved) return { pose: "proud", says: last.comboFired ? `She did ${COMBOS[last.comboFired].name}. She knows.` : "She has a new habit and she is proud of it." };
+    if (last.prep.includes("bath")) return { pose: "damp", says: "Damp. Delighted. Refusing a towel she already used." };
+    const out = last.leftoverOut?.kind;
+    if (out === "hyper") return { pose: "wired", says: "She is still going. The run is over. Nobody told her." };
+    if (out === "sleepy") return { pose: "dozy", says: "She is barely awake and would like you to stop looking." };
+    if (out === "grudgy") return { pose: "grudgy", says: "She remembers. She will remember tomorrow." };
+    return { pose: "asleep", says: top ? `She is full of ${shortName(top.name)} and asleep.` : "She is asleep. Do not move her." };
+  }
+  if (prep.includes("bath")) return { pose: "damp", says: "Bath first. She has opinions about it." };
+  const k = profile.leftover?.kind;
+  if (k === "hyper") return { pose: "wired", says: "She is ready. She was ready an hour ago." };
+  if (k === "sleepy") return { pose: "dozy", says: "She is up. Technically." };
+  if (k === "grudgy") return { pose: "grudgy", says: "She is not speaking to you." };
+  return { pose: "curious", says: "She is waiting. She knows." };
+}
+
 function renderPeephole() {
   const left = profile.leftover;
   const moodKey = prep.includes("bath") ? "bath" : left?.kind ?? "none";
   const days = [...profile.runs].reverse().slice(0, 4);
-  const top = profile.stash[profile.stash.length - 1];
-  const says = phase === "day" ? (top ? `She is full of ${shortName(top.name)} and asleep.` : "She is asleep. Do not move her.") : "She is waiting. She knows.";
+  const { pose, says } = moodPose();
+  const sleepy = pose === "asleep" || pose === "dozy";
   $("#peephole").innerHTML = `<div class="night"></div><div class="floor"></div>
     <div class="bigcage"><div class="bars"></div><div class="blanket" style="background:${MOOD_INK[moodKey].ink}"></div><div class="blanket2" style="background:repeating-linear-gradient(90deg,#d8352a 0 8px,transparent 8px 20px)"></div>
-      <div class="sleeper"><img src="./sprites/front_asleep_placeholder.png" alt="Lucy asleep in the cage"></div>
-      <span class="z1">z</span><span class="z2">z</span></div>
-    <div class="tag">ZOOMED IN · THE CAGE</div>
+      <div class="sleeper"><img src="./sprites/mood_${pose}.png" alt="Lucy, ${pose}"></div>
+      ${sleepy && pose === "asleep" ? `<span class="z1">z</span><span class="z2">z</span>` : ""}</div>
+    <div class="tag">ZOOMED IN · THE CAGE · ${pose.toUpperCase()}</div>
     <div class="says">${esc(says)}</div>
     <div class="days"><div class="tag">HER DAYS</div><ol>${days.map((d) => `<li>${d.index + 1}. ${esc(d.sentence.replace(/^Lucy /, ""))}</li>`).join("") || "<li>no days yet.</li>"}</ol></div>`;
 }
