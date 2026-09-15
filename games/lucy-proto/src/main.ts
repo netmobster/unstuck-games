@@ -46,11 +46,36 @@ const ctx = cv.getContext("2d")!;
 const T = 22;
 const TAG_COLOR: Record<string, string> = { fabric: "#c98bb0", food: "#e0a44a", soft: "#b9c7a3", hide: "#8f8a7c", noise: "#7aa6c9", shiny: "#e7c948", water: "#6fb7d4", warm: "#e08466", small: "#c7a17a" };
 
+// three states: before the run the whole house; during the run the camera stays close on Lucy and the UI
+// gets out of the way; after the nap it pulls back out to the whole house for the day card
+const cam = { x: (W * T) / 2, y: (H * T) / 2, z: 1 };
+const RUN_ZOOM = 2.6;
+function updateCamera() {
+  const base = cv.width / (W * T);
+  let tx = (W * T) / 2, ty = (H * T) / 2, tz = 1;
+  if (phase === "run" && run) {
+    const f = Math.min(1, tickFrac);
+    tx = (prevPos.x + (run.x - prevPos.x) * f) * T + T / 2;
+    ty = (prevPos.y + (run.y - prevPos.y) * f) * T + T / 2;
+    tz = RUN_ZOOM;
+    const halfW = (W * T) / (2 * tz), halfH = (H * T) / (2 * tz); // keep the house on screen
+    tx = Math.max(halfW, Math.min(W * T - halfW, tx));
+    ty = Math.max(halfH, Math.min(H * T - halfH, ty));
+  }
+  const k = phase === "run" ? 0.12 : 0.07;
+  cam.x += (tx - cam.x) * k; cam.y += (ty - cam.y) * k; cam.z += (tz - cam.z) * k;
+  const s = base * cam.z;
+  ctx.setTransform(s, 0, 0, s, cv.width / 2 - cam.x * s, cv.height / 2 - cam.y * s);
+}
+
 function draw(now: number) {
   const unlocked = run ? run.unlocked : unlockedRooms(profile);
   const things = run ? run.things : profile.things;
   const stashN = run ? run.stash.length : profile.stash.length;
+  ctx.setTransform(1, 0, 0, 1, 0, 0);
   ctx.fillStyle = "#fbf8ef"; ctx.fillRect(0, 0, cv.width, cv.height);
+  updateCamera();
+  ctx.fillStyle = "#fbf8ef"; ctx.fillRect(0, 0, W * T, H * T);
 
   for (const r of ROOMS) {
     const open = unlocked.has(r.id);
@@ -236,24 +261,30 @@ function renderSide() {
     </div>
     ${last ? dayCard(last) : ""}`;
   } else if (phase === "run" && run) {
-    side.innerHTML = `<div class="panel">
-      <span class="tag">2 · OUT OF YOUR HANDS · RUN ${run.index + 1}</span>
-      <div class="row">
-        <button class="squeak" data-squeak ${run.squeakedAt !== null ? "disabled" : ""}>${run.squeakedAt !== null ? "Squeaked" : "Treat squeak (once)"}</button>
-      </div>
-      <div class="row"><span class="tag">SPEED</span>${[1, 4, 16].map((s) => `<button class="chip${speed === s ? " on" : ""}" data-speed="${s}">${s}×</button>`).join("")}<button class="chip" data-skip>skip to nap</button></div>
-      <ul class="feed" id="feed"></ul>
-    </div>`;
+    side.innerHTML = "";
+    const bar = $("#runbar");
+    bar.innerHTML = `<button class="squeak" data-squeak ${run.squeakedAt !== null ? "disabled" : ""}>${run.squeakedAt !== null ? "Squeaked" : "Squeak"}</button>
+      ${[1, 4, 16].map((s) => `<button class="chip${speed === s ? " on" : ""}" data-speed="${s}">${s}×</button>`).join("")}<button class="chip" data-skip>skip to nap</button>`;
     renderFeed();
   } else if (phase === "day" && last) {
     side.innerHTML = `${dayCard(last)}<button class="go" data-back>Back to the cage</button>`;
   }
 }
 
+/** In-run, the only words on screen: her latest line, and why. */
 function renderFeed() {
-  const el = document.getElementById("feed");
-  if (!el || !run) return;
-  el.innerHTML = [...run.events].reverse().map((e) => `<li class="${e.cause.startsWith("ritual:") ? "ritual" : ""}">${esc(e.text)}<span class="c">because: ${esc(e.cause.replace("ritual:", "habit ritual: "))}</span></li>`).join("");
+  const el = $("#caption");
+  if (!run || !run.events.length) { el.hidden = true; return; }
+  const e = run.events[run.events.length - 1];
+  el.hidden = false;
+  el.className = "caption" + (e.cause.startsWith("ritual:") ? " ritual" : "");
+  el.innerHTML = `${esc(e.text)}<span>because: ${esc(e.cause.replace("ritual:", "habit ritual: "))}</span>`;
+}
+
+function setState() {
+  document.body.dataset.state = phase === "run" ? "in-run" : phase === "day" ? "post-run" : "pre-run";
+  $("#runbar").hidden = phase !== "run";
+  if (phase !== "run") $("#caption").hidden = true;
 }
 
 function renderNow() {
@@ -304,7 +335,7 @@ function openDoor() {
   run = startRun(profile, prep);
   prevPos = { x: run.x, y: run.y }; acc = 0;
   phase = "run";
-  renderSide();
+  setState(); renderSide();
 }
 function endRun() {
   if (!run) return;
@@ -313,7 +344,7 @@ function endRun() {
   session.runs.push(spec); persist();
   run = null; phase = "day";
   $("#now").textContent = "";
-  renderSide(); renderBook();
+  setState(); renderSide(); renderBook();
 }
 function autoplay(n: number) {
   for (let i = 0; i < n; i++) {
@@ -330,7 +361,7 @@ function autoplay(n: number) {
     last = finishRun(profile, rr);
     session.runs.push({ prep: p, ...(squeakAt !== undefined && rr.squeakedAt !== null ? { squeakAt } : {}) });
   }
-  persist(); phase = "day"; run = null; renderSide(); renderBook();
+  persist(); phase = "day"; run = null; setState(); renderSide(); renderBook();
 }
 
 document.addEventListener("change", (e) => {
@@ -354,12 +385,12 @@ document.addEventListener("click", (e) => {
   else if ("squeak" in d && run) { squeak(run); renderSide(); }
   else if (d.speed) { speed = Number(d.speed); renderSide(); }
   else if ("skip" in d && run) { while (!run.done) { prevPos = { x: run.x, y: run.y }; step(run); } endRun(); }
-  else if ("back" in d) { phase = "cage"; renderSide(); }
+  else if ("back" in d) { phase = "cage"; setState(); renderSide(); }
   else if (d.auto) autoplay(Number(d.auto));
-  else if ("newsession" in d) { session = { seed: (Math.random() * 2 ** 31) | 0, runs: [] }; persist(); profile = replay(session.seed, []); last = null; run = null; phase = "cage"; prep = []; renderSide(); renderBook(); }
-  else if ("restart" in d) { session = { seed: session.seed, runs: [] }; persist(); profile = replay(session.seed, []); last = null; run = null; phase = "cage"; prep = []; renderSide(); renderBook(); }
+  else if ("newsession" in d) { session = { seed: (Math.random() * 2 ** 31) | 0, runs: [] }; persist(); profile = replay(session.seed, []); last = null; run = null; phase = "cage"; prep = []; setState(); renderSide(); renderBook(); }
+  else if ("restart" in d) { session = { seed: session.seed, runs: [] }; persist(); profile = replay(session.seed, []); last = null; run = null; phase = "cage"; prep = []; setState(); renderSide(); renderBook(); }
   else if ("copy" in d) navigator.clipboard?.writeText(JSON.stringify(session)).then(() => { b.textContent = "Copied"; });
 });
 
-renderSide(); renderBook(); renderDebug();
+setState(); renderSide(); renderBook(); renderDebug();
 void W; void H;

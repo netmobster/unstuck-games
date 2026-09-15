@@ -14,7 +14,11 @@
     </header>
     <main class="app">
       <section class="stage">
-        <canvas id="plan" width="792" height="484" aria-label="Top-down plan of Lucy's house"></canvas>
+        <div class="viewport">
+          <canvas id="plan" width="1584" height="968" aria-label="Lucy's house"></canvas>
+          <div class="runbar" id="runbar" hidden></div>
+          <div class="caption" id="caption" hidden></div>
+        </div>
         <div class="now" id="now"></div>
       </section>
       <aside class="side" id="side"></aside>
