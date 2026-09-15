@@ -93,6 +93,21 @@ section{padding:64px 0 96px}
 .bar{height:12px;border-radius:var(--pill);background:rgba(0,0,0,.18);overflow:hidden}
 .bar div{height:100%;width:0;background:var(--acid);border-radius:var(--pill);transition:width .1s linear}
 .panel.god .bar div{background:var(--ink)}
+/* ONE MORE THING: spin to win (coming soon) */
+.spin .head{gap:20px}
+.spin-top{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+.soonbadge{background:var(--acid);color:var(--ink);border:2px solid var(--ink);border-radius:var(--pill);padding:5px 14px;font-family:var(--fh);font-weight:var(--hw);font-size:15px;letter-spacing:2px;transform:rotate(-3deg);white-space:nowrap}
+.spin-econ{font-family:var(--fh);font-weight:var(--hw);letter-spacing:var(--hls);font-size:clamp(28px,3.4vw,40px);line-height:1.08;color:var(--accent);max-width:18ch;text-wrap:balance}
+.wheelcard{padding:clamp(20px,3vw,36px);display:flex;flex-direction:column;align-items:center;gap:18px}
+.wheelwrap{position:relative;width:min(100%,380px);aspect-ratio:380/410}
+.wheelwrap svg{width:100%;height:100%;display:block;overflow:visible}
+#wheelSpin{transform-origin:190px 190px;transition:transform 4.2s cubic-bezier(.12,.72,.14,1)}
+.wheelwrap .bulbs circle{animation:bulb 1.2s steps(2) infinite}
+.wheelwrap .bulbs circle:nth-child(2n){animation-delay:.6s}
+@keyframes bulb{0%{fill:var(--acid)}50%{fill:var(--bg)}}
+.spinmsg{font-size:16px;line-height:1.45;font-weight:700;color:var(--muted);text-align:center;max-width:36ch;min-height:48px}
+.spinmsg b{color:var(--ink)}
+@media (prefers-reduced-motion:reduce){#wheelSpin{transition:none}.wheelwrap .bulbs circle{animation:none}}
 .admsg{font-size:15px;line-height:1.5;color:var(--muted);min-height:24px;font-weight:700}
 .sub{background:var(--ink);color:var(--bg);border-radius:var(--r);padding:clamp(32px,5vw,64px);display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;transition:all .6s}
 .sub .left{display:flex;flex-direction:column;gap:20px}
@@ -318,6 +333,41 @@ footer .fine{font-size:14px;font-weight:700;color:var(--muted);text-align:right;
     </div>
   </section>
 
+  <section id="spin" class="two spin">
+    <div class="head">
+      <div class="spin-top"><span class="kick" data-t="spinKicker"></span><span class="soonbadge" data-t="spinSoon"></span></div>
+      <h2 data-t="spinTitle"></h2>
+      <p class="spin-econ" data-t="spinEcon"></p>
+      <p class="body" data-t="spinBody"></p>
+      <div class="chips" id="spinRules"></div>
+      <p class="body" style="font-size:16px;color:var(--muted)" data-t="spinAd"></p>
+    </div>
+    <div class="card wheelcard">
+      <div class="wheelwrap">
+        <svg viewBox="0 0 380 410" role="img" aria-label="A prize wheel: 1, 2, 3, 5, 10 or 24 hours of God Mode">
+          <path d="M150 362 L230 362 L262 406 L118 406 Z" fill="var(--ink)"/>
+          <rect x="182" y="300" width="16" height="66" fill="var(--ink)"/>
+          <circle cx="190" cy="190" r="176" fill="var(--ink)"/>
+          <circle cx="190" cy="190" r="170" fill="var(--accent)" stroke="var(--ink)" stroke-width="3"/>
+          <g class="bulbs"><circle cx="190" cy="29" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="245.1" cy="38.7" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="293.5" cy="66.7" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="329.4" cy="109.5" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="348.6" cy="162" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="348.6" cy="218" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="329.4" cy="270.5" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="293.5" cy="313.3" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="245.1" cy="341.3" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="190" cy="351" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="134.9" cy="341.3" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="86.5" cy="313.3" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="50.6" cy="270.5" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="31.4" cy="218" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="31.4" cy="162" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="50.6" cy="109.5" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="86.5" cy="66.7" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/><circle cx="134.9" cy="38.7" r="5" fill="var(--acid)" stroke="var(--ink)" stroke-width="2"/></g>
+          <g id="wheelSpin">
+            <path d="M190 190 L115 60.1 A150 150 0 0 1 265 60.1 Z" fill="var(--accent)" stroke="var(--ink)" stroke-width="3"/><text x="190" y="90" transform="rotate(0 190 90)" text-anchor="middle" dominant-baseline="middle" fill="var(--onAccent)" style="font-family:var(--fh)" font-size="34">1H</text>
+            <path d="M190 190 L265 60.1 A150 150 0 0 1 340 190 Z" fill="var(--bg)" stroke="var(--ink)" stroke-width="3"/><text x="276.6" y="140" transform="rotate(60 276.6 140)" text-anchor="middle" dominant-baseline="middle" fill="var(--ink)" style="font-family:var(--fh)" font-size="34">2H</text>
+            <path d="M190 190 L340 190 A150 150 0 0 1 265 319.9 Z" fill="var(--ink)" stroke="var(--ink)" stroke-width="3"/><text x="276.6" y="240" transform="rotate(120 276.6 240)" text-anchor="middle" dominant-baseline="middle" fill="var(--bg)" style="font-family:var(--fh)" font-size="34">3H</text>
+            <path d="M190 190 L265 319.9 A150 150 0 0 1 115 319.9 Z" fill="var(--bg)" stroke="var(--ink)" stroke-width="3"/><text x="190" y="290" transform="rotate(180 190 290)" text-anchor="middle" dominant-baseline="middle" fill="var(--ink)" style="font-family:var(--fh)" font-size="34">5H</text>
+            <path d="M190 190 L115 319.9 A150 150 0 0 1 40 190 Z" fill="var(--accent)" stroke="var(--ink)" stroke-width="3"/><text x="103.4" y="240" transform="rotate(240 103.4 240)" text-anchor="middle" dominant-baseline="middle" fill="var(--onAccent)" style="font-family:var(--fh)" font-size="34">10H</text>
+            <path d="M190 190 L40 190 A150 150 0 0 1 115 60.1 Z" fill="var(--acid)" stroke="var(--ink)" stroke-width="3"/><text x="103.4" y="140" transform="rotate(300 103.4 140)" text-anchor="middle" dominant-baseline="middle" fill="var(--ink)" style="font-family:var(--fh)" font-size="38">24H</text><text x="74" y="123" transform="rotate(300 74 123)" text-anchor="middle" dominant-baseline="middle" fill="var(--ink)" font-size="16">★</text>
+            <circle cx="190" cy="190" r="30" fill="var(--acid)" stroke="var(--ink)" stroke-width="4"/>
+            <text x="190" y="192" text-anchor="middle" dominant-baseline="middle" fill="var(--ink)" style="font-family:var(--fh)" font-size="26">U</text>
+          </g>
+          <path d="M172 4 L208 4 L190 46 Z" fill="var(--acid)" stroke="var(--ink)" stroke-width="4" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <button class="btn" id="spinBtn" data-t="spinBtn"></button>
+      <div class="spinmsg" id="spinMsg" aria-live="polite"></div>
+    </div>
+  </section>
+
   <section id="games" class="games">
     <div class="head"><div class="kick" data-t="gamesKicker"></div><h2 data-t="gamesTitle"></h2><p data-t="gamesSub"></p></div>
     <div class="grid2" id="liveGrid"></div>
@@ -377,6 +427,13 @@ const COPY = {
     r2Quote: "Monetization must not destroy the game that creates the value.",
     r3Title: "Why let it die, or just copy it?", r3Body: "Some games died that deserve more than a tombstone, but also more than a copy. We take the corpse apart, keep what made it loved, and build something new from what's left.", r3From: "Universal Paperclips", r3To: "Bad Monkeys", r3Btn: "See Bad Monkeys ↓",
     r3Quote: "More than a tombstone. More than a copy.",
+    spinKicker: "ONE MORE THING", spinSoon: "COMING SOON", spinTitle: "🎡 SPIN TO WIN",
+    spinEcon: "Here's the economy: there is no economy.",
+    spinBody: "Once a day, Unstuck gives you a spin. You always win. Every slice is hours of God Mode, across every Unstuck game.",
+    spinRules: ["No ad to spin", "No ad to claim", "Nothing to buy", "No bad slices"],
+    spinAd: "Want more? One ad is still one extra hour. Optional, like it always was.",
+    spinBtn: "Spin it",
+    spinWin: h => `<b>${h} hour${h === 1 ? '' : 's'} of God Mode.</b> ${h === 24 ? 'Jackpot. ' : ''}Coming soon, so nothing was actually awarded. But you'd have won. You always do.`,
     adKicker: "THE AD MODEL", adTitle: "Watch one ad → God Mode for one hour.",
     adBody: "An ad is an optional, bounded trade. You get something real. We get an impression. Nobody has to hate the transaction. Once you've had your hour, there is nothing else to sell you, and we leave that money on the table on purpose.",
     adRules: ["Max ads per hour", "Max ads per day", "No ad chains", "No 'watch another' loop", "Never interrupts play", "Never worse without ads"],
@@ -424,6 +481,13 @@ const COPY = {
     r2Quote: "Friction is a feature. Frustration is a KPI.",
     r3Title: "Legacy IP Revitalization", r3Body: "We acquire beloved franchises and relaunch them with a modern monetization layer. Core fans are a high-LTV cohort.", r3From: "Beloved Classic", r3To: "Live Service", r3Btn: "View Portfolio Asset",
     r3Quote: "Nostalgia is a renewable resource.",
+    spinKicker: "DAILY REWARDS", spinSoon: "LIMITED TIME", spinTitle: "🎰 MEGA SPIN",
+    spinEcon: "Spin daily for Gems, Energy & Tickets!",
+    spinBody: "Log in 7 days in a row to unlock the Premium Wheel. Missed a day? Restore your streak for just 50 Gems.",
+    spinRules: ["Watch ad to spin", "Watch ad to claim", "2× with VIP", "Streak: 0/7"],
+    spinAd: "Out of spins? Premium Spins available in the Store.",
+    spinBtn: "SPIN NOW (1 FREE)",
+    spinWin: h => `<b>You won ${h * 10} Gems!</b> Watch an ad to claim. Streak: 1/7. (Kidding. Nothing happened. Get unstuck.)`,
     adKicker: "REWARDED VIDEO ECOSYSTEM", adTitle: "Watch 5 ads → Continue playing.",
     adBody: "Interstitials every 90 seconds keep our partners happy. Rewarded chains ensure players remain invested in their next unlock. Frequency caps are evaluated quarterly.",
     adRules: ["Unskippable interstitials", "Ad-to-continue", "Reward chains", "Double-reward upsell", "Offline ads (beta)", "Frequency cap: none"],
@@ -491,6 +555,8 @@ function render() {
   $$('[data-ph]').forEach(el => el.placeholder = t[el.dataset.ph]);
   $('#btnUnstuck').classList.toggle('on', !stuck()); $('#btnStuck').classList.toggle('on', stuck());
   $('#adRules').innerHTML = t.adRules.map(r => `<span>${esc(r)}</span>`).join('');
+  $('#spinRules').innerHTML = t.spinRules.map(r => `<span>${esc(r)}</span>`).join('');
+  $('#spinMsg').innerHTML = '';
   $('#subPerks').innerHTML = t.subPerks.map(p => `<div class="item"><i>✓</i>${esc(p)}</div>`).join('');
   $('#subNots').innerHTML = t.subNots.map(n => `<div class="item no"><i>×</i>${esc(n)}</div>`).join('');
   // live cards are built once (their iframe runs the real game); render() only updates their text
@@ -623,6 +689,18 @@ $('#tape').onclick = () => setMode(stuck() ? 'unstuck' : 'stuck');
 $('#btnUnstuck').onclick = () => setMode('unstuck');
 $('#btnStuck').onclick = () => setMode('stuck');
 $('#adBtn').onclick = watchAd;
+// spin to win: a preview. Always lands on a win; awards nothing until it's real.
+let spinTurns = 0, spinning = false;
+$('#spinBtn').onclick = () => {
+  if (spinning) return;
+  spinning = true; $('#spinMsg').innerHTML = '';
+  const HOURS = [1, 2, 3, 5, 10, 24], i = Math.floor(Math.random() * HOURS.length);
+  const now = ((spinTurns % 360) + 360) % 360, target = (360 - i * 60) % 360;
+  spinTurns += 360 * 5 + ((target - now + 360) % 360) + (Math.random() * 24 - 12);
+  $('#wheelSpin').style.transform = `rotate(${spinTurns}deg)`;
+  const done = () => { spinning = false; $('#spinMsg').innerHTML = T().spinWin(HOURS[i]); };
+  matchMedia('(prefers-reduced-motion: reduce)').matches ? done() : setTimeout(done, 4300);
+};
 $$('.js-sub').forEach(b => b.onclick = () => say(T().subscribeToast));
 // real signup: posts to Kit (kit-waitlist.js). Never says "you're in" unless Kit said success.
 $('#wlForm').onsubmit = async e => {
