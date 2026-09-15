@@ -433,14 +433,14 @@ const COPY = {
     spinEcon: "Here's the economy: there is no economy.",
     spinBody: "Once a day, Unstuck gives you a spin. You always win. Every slice is hours of God Mode, across every Unstuck game.",
     spinRules: ["No ad to spin", "No ad to claim", "Nothing to buy", "No bad slices"],
-    spinAd: "Want more? One ad is still one extra hour. Optional, like it always was.",
+    spinAd: "Want more? Watch today's one ad in that game and God Mode is yours on tap for the rest of the day.",
     spinBtn: "Spin it",
     spinWin: h => `<b>${h} hour${h === 1 ? '' : 's'} of God Mode.</b> ${h === 24 ? 'Jackpot. ' : ''}Coming soon, so nothing was actually awarded. But you'd have won. You always do.`,
-    adKicker: "THE AD MODEL", adTitle: "Watch one ad → God Mode for one hour.",
-    adBody: "An ad is an optional, bounded trade. You get something real. We get an impression. Nobody has to hate the transaction. Once you've had your hour, there is nothing else to sell you, and we leave that money on the table on purpose.",
-    adRules: ["Max ads per hour", "Max ads per day", "No ad chains", "No 'watch another' loop", "Never interrupts play", "Never worse without ads"],
-    adBtn: "Watch one ad", adTag: "ONE AD · ~30s", adIdleTag: "BEFORE", adIdle: "One ad. One hour of God Mode.", adWatching: "A very short, very fake ad…", adGod: "GOD MODE",
-    adDone: "There is nothing else to sell you right now.", adOver: "Hour's up. The game is still the whole game. Play on.",
+    adKicker: "THE AD MODEL", adTitle: "One ad a day. God Mode on tap.",
+    adBody: "One ad per game per day. That's the whole ask. It buys an hour of God Mode, and when the hour runs out you click again and get another one — no second ad, no chain, no catch. We leave that money on the table on purpose.",
+    adRules: ["One ad per game per day", "Hour up? Click again, free", "No ad chains", "No 'watch another' loop", "Never interrupts play", "Never worse without ads"],
+    adBtn: "Watch one ad", adAgain: "Another hour, no ad", adTag: "ONE AD · ~30s", adIdleTag: "BEFORE", adAgainTag: "TODAY'S AD: DONE", adIdle: "One ad. Then God Mode whenever you want, all day.", adIdleAgain: "You already watched today's ad. Go on then.", adWatching: "A very short, very fake ad…", adGod: "GOD MODE",
+    adDone: "That's today's ad done for this game. Nothing else to sell you.", adOver: "Hour's up. Click again — you already watched today's ad. Go play.",
     subKicker: "THE SUBSCRIPTION", subPrice: "$5", subPer: "/month · the whole catalog, forever growing",
     subTitle: "One subscription. Every Unstuck game.",
     subBody: "The free version is a complete game. The subscription removes friction and unlocks toys; it does not unlock the right to enjoy the game.",
@@ -456,7 +456,7 @@ const COPY = {
     faqTitle: "Questions you should be asking.",
     faqs: [
       ["Is this a clone factory?", "No. We find a mechanic that's stuck somewhere: under ads, inside a dead platform, behind bad scope. Then we rebuild it sideways with a new premise, new constraints and new progression. If you can tell where it came from, we failed."],
-      ["Will there be ads in the free games?", "Yes, with a hard cap. One ad buys an hour of God Mode. When you've had your hour, there's nothing else to sell you. We leave money on the table on purpose."],
+      ["Will there be ads in the free games?", "One. Per game, per day. That ad turns on God Mode for an hour, and when the hour ends you can switch it back on for another hour, and another, free, until tomorrow. After that one ad there is nothing else to sell you. We leave the money on the table on purpose."],
       ["What does $5 a month actually get me?", "No ads, God Mode, every unlock, bonus modes, and every game we ever ship. The free game is already complete; the subscription removes friction and adds toys."],
       ["Why are the games so small?", "Small is the point. One person plus a lot of robots can actually finish small. A catalog of small, unusually good games beats one bloated game that never ships."],
       ["What if I get bored?", "Good. 'I'm bored of these games' is the only reason we want you to leave. Come back when the next one lands."],
@@ -547,7 +547,7 @@ const GAMES = [
 
 const $ = s => document.querySelector(s), $$ = s => [...document.querySelectorAll(s)];
 let mode = localStorage.getItem('unstuck-mode') === 'stuck' ? 'stuck' : 'unstuck';
-let ad = 'idle', progress = 0, god = 60, adCount = 0, iv = null, tt = null, openFaq = 0;
+let ad = 'idle', progress = 0, god = 60, adCount = 0, dayAd = false, iv = null, tt = null, openFaq = 0;
 const T = () => COPY[mode], stuck = () => mode === 'stuck';
 const esc = s => String(s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 
@@ -595,20 +595,22 @@ function renderAd() {
   const t = T(), p = $('#panel');
   p.className = 'panel' + (ad === 'god' ? ' god' : ad === 'watching' ? ' watching' : '');
   const clock = String(god).padStart(2, '0') + ':00';
-  $('#adTag').textContent = ad === 'god' ? 'ACTIVE FOR' : ad === 'watching' ? t.adTag : (stuck() ? `AD ${adCount + 1} OF 5 · UNSKIPPABLE` : t.adIdleTag);
-  $('#adTitleTxt').textContent = ad === 'god' ? `${t.adGod} · ${clock}` : ad === 'watching' ? t.adWatching : t.adIdle;
+  const paid = dayAd && !stuck(); // today's one ad is done: every further hour is free
+  $('#adTag').textContent = ad === 'god' ? 'ACTIVE FOR' : ad === 'watching' ? t.adTag : (stuck() ? `AD ${adCount + 1} OF 5 · UNSKIPPABLE` : paid ? t.adAgainTag : t.adIdleTag);
+  $('#adTitleTxt').textContent = ad === 'god' ? `${t.adGod} · ${clock}` : ad === 'watching' ? t.adWatching : paid ? t.adIdleAgain : t.adIdle;
   $('#adBar').style.width = progress + '%';
-  $('#adBtn').textContent = ad === 'watching' ? `Ad playing… ${progress}%` : ad === 'god' ? 'God Mode running' : (stuck() ? `${t.adBtn} (${adCount + 1}/5)` : t.adBtn);
+  $('#adBtn').textContent = ad === 'watching' ? `Ad playing… ${progress}%` : ad === 'god' ? 'God Mode running' : (stuck() ? `${t.adBtn} (${adCount + 1}/5)` : paid ? t.adAgain : t.adBtn);
 }
 function setMode(m) {
   mode = m; localStorage.setItem('unstuck-mode', m);
-  clearInterval(iv); ad = 'idle'; progress = 0; adCount = 0; $('#adMsg').textContent = '';
+  clearInterval(iv); ad = 'idle'; progress = 0; adCount = 0; dayAd = false; $('#adMsg').textContent = '';
   $('#wl').classList.remove('joined');
   render();
 }
 function say(msg) { const el = $('#toast'); el.textContent = msg; el.classList.add('show'); clearTimeout(tt); tt = setTimeout(() => el.classList.remove('show'), 3600); }
 function watchAd() {
   if (ad !== 'idle') return;
+  if (dayAd && !stuck()) { startGodHour(); return; } // today's ad is already watched: straight to the hour
   clearInterval(iv); ad = 'watching'; progress = 0; $('#adMsg').textContent = ''; renderAd();
   iv = setInterval(() => { progress += 4; if (progress >= 100) { clearInterval(iv); finishAd(); } else renderAd(); }, 70);
 }
@@ -620,7 +622,12 @@ function finishAd() {
     else $('#adMsg').textContent = `Ad ${adCount} of 5 complete. Keep going! Reward unlocks after ad 5.`;
     renderAd(); return;
   }
-  ad = 'god'; god = 60; progress = 100; $('#adMsg').textContent = t.adDone; renderAd();
+  dayAd = true; $('#adMsg').textContent = t.adDone; startGodHour();
+}
+// one hour of God Mode. When it ends the button comes back, and today's ad is already behind you.
+function startGodHour() {
+  const t = T();
+  clearInterval(iv); ad = 'god'; god = 60; progress = 100; renderAd();
   iv = setInterval(() => { god--; if (god <= 0) { clearInterval(iv); ad = 'idle'; progress = 0; $('#adMsg').textContent = t.adOver; } else progress = (god / 60) * 100; renderAd(); }, 110);
 }
 

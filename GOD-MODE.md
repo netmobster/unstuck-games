@@ -106,14 +106,10 @@ Do not model the ad as an hour-granting currency.
 
 What God Mode *does* is per game (Orbis: direct intervention; Bad Monkeys: keep one mutation; Ferret Bowling: God Mode prep such as the bath). This spec covers only how it is unlocked and how long it lasts.
 
-## Live copy that predates this spec
+## Copy across the sites
 
-These were written under "one ad = one hour" and don't match the rule above. Update them when Jay asks. Left unchanged for now:
+Updated to match this spec on 2026-09-15: the UNSTUCK homepage (ad-model section, spin section, FAQ and the interactive demo), `bad-monkeys/index.html` (God Mode section and its demo), `ferret-bowling/index.html` (money section), and the Bad Monkeys planning docs under `teardowns/universal-paperclips/`.
 
-- `index.html` (UNSTUCK homepage):
-  - spin section: "Want more? One ad is still one extra hour."
-  - ad demo: "Watch one ad → God Mode for one hour."
-  - FAQ: "One ad buys an hour of God Mode. When you've had your hour, there's nothing else to sell you."
-- `bad-monkeys/index.html`: "One ad. One hour." and "Once you've had your hour there's nothing else to sell you."
-- `ferret-bowling/index.html`: "One ad = one hour of God Mode."
-- `teardowns/universal-paperclips/*` (CONCEPT-BRIEF, GAME-SHAPE, PRD-TRD): "one ad = one hour".
+Both interactive demos now behave like the spec: the first activation plays a fake ad, and after that the button reads "Another hour, no ad" for the rest of the visit.
+
+The parody "stuck mode" copy on the homepage (ad chains, gems, energy) is satire of everyone else and stays exactly as it is.

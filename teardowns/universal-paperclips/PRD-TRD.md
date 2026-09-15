@@ -52,7 +52,7 @@ the UI works) · more than one bargain.
 - **Absence economics:** staying away pays a little (capped), never enough to force it.
 
 ### Monetization
-Free is the whole game. **God Mode = one ad = one hour: keep one mutation** past the end of a stop.
+Free is the whole game. **God Mode: keep one mutation** past the end of a stop. Unlock is studio-wide: one ad per game per day, then repeatable one-hour activations (see `GOD-MODE.md`).
 
 ### Success metrics
 Prototype stage: Jay's speedrun verdict ("is this interesting / could it be fun"). Smoke: no dead weeks or
