@@ -34,7 +34,7 @@ superpowers and new liabilities. Every positive comes with a negative, and the r
 - The bargain ends in **one sentence of why**, built from what she became. The Archive keeps it.
 
 ## Money
-Free is the whole game. **God Mode (one ad = one hour): keep one mutation** past the end of a stop.
+Free is the whole game. **God Mode: keep one mutation** past the end of a stop. One ad per game per day, then repeatable one-hour activations (see `GOD-MODE.md`).
 
 ## Kept from Universal Paperclips on purpose
 Each stop obsoletes the last · permission < power · mechanics are the theme · end on the first verb.

@@ -28,7 +28,7 @@ systems meeting offhand human speech. The Prestige's interface starts clean and 
 as she gets harder to optimize.
 
 ## Money
-Free is the whole game. One ad = one hour of God Mode: **keep one mutation** past the end of a stop.
+Free is the whole game. God Mode = **keep one mutation** past the end of a stop; one ad per game per day, then hour-long activations all day (see `GOD-MODE.md`).
 
 ## Canon
 Bad Monkeys (Jay's). Game rights are Jay's, including Jame.

@@ -149,7 +149,7 @@ that frame entirely.
 
 Observations, not decisions:
 - **Offline progress vs. UP's always-open design:** Orbis is leave-it-running. A game that only advances while open fights the catalog's phone-in-bed habit. (Elsewhere goes the other way: the world moves while you're gone.)
-- **The ad model:** UP's pacing brakes (the trust grind, act transitions) are exactly where an F2P game would put an ad wall. Unstuck's "one ad = one hour of God Mode" needs a God Mode that *doesn't* skip the brakes that make the game good.
+- **The ad model:** UP's pacing brakes (the trust grind, act transitions) are exactly where an F2P game would put an ad wall. Unstuck's God Mode (one ad per game per day, then hours on tap) needs to *not* skip the brakes that make the game good.
 - **Button friction** is easy to design out from day one.
 - **Legibility:** UP's Act 3 confusion shows the cost of hiding the rules. Unstuck needs a stance on which odds stay hidden and which get shown.
 - **Length:** 5–12 hours with a real ending is a feature. How long should ours be, and does it end?
