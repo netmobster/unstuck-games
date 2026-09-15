@@ -1,0 +1,286 @@
+// Lucy — rough playable prototype. Top-down house plan (placeholder), real deterministic sim underneath.
+// Prepare Lucy. Open the door. Get out of the way.
+import "./style.css";
+import { CAGE, DOORS, H, ROOMS, STASH, W, type RoomId } from "./house";
+import {
+  COMBOS, ITEMS, ITEM_IDS, comboKey, finishRun, replay, squeak, startRun, step, the, unlockedItems, unlockedRooms,
+  type ItemId, type Profile, type Run, type RunSpec, type RunSummary,
+} from "./sim";
+
+type Session = { seed: number; runs: RunSpec[] };
+const KEY = "lucy:session";
+const load = (): Session => { try { const v = localStorage.getItem(KEY); if (v) return JSON.parse(v); } catch { /* private mode */ } return { seed: (Math.random() * 2 ** 31) | 0, runs: [] }; };
+const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(session)); } catch { /* private mode */ } };
+
+let session = load();
+const params = new URLSearchParams(location.search);
+if (params.has("seed")) session = { seed: Number(params.get("seed")), runs: [] };
+let profile: Profile = replay(session.seed, session.runs);
+
+type Phase = "cage" | "run" | "day";
+let phase: Phase = "cage";
+let prep: ItemId[] = [];
+let run: Run | null = null;
+let last: RunSummary | null = null;
+let speed = 1; // ticks per 100ms
+let prevPos = { x: CAGE.x, y: CAGE.y }, tickFrac = 0;
+
+const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
+const esc = (s: string) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]!));
+
+// ---------- canvas ----------
+const cv = $<HTMLCanvasElement>("#plan");
+const ctx = cv.getContext("2d")!;
+const T = 22;
+const TAG_COLOR: Record<string, string> = { fabric: "#c98bb0", food: "#e0a44a", soft: "#b9c7a3", hide: "#8f8a7c", noise: "#7aa6c9", shiny: "#e7c948", water: "#6fb7d4", warm: "#e08466", small: "#c7a17a" };
+
+function draw(now: number) {
+  const unlocked = run ? run.unlocked : unlockedRooms(profile);
+  const things = run ? run.things : profile.things;
+  const stashN = run ? run.stash.length : profile.stash.length;
+  ctx.fillStyle = "#fbf8ef"; ctx.fillRect(0, 0, cv.width, cv.height);
+
+  for (const r of ROOMS) {
+    const open = unlocked.has(r.id);
+    ctx.fillStyle = open ? r.floor : "#d9d4c8";
+    ctx.fillRect(r.x * T, r.y * T, r.w * T, r.h * T);
+    if (!open) {
+      ctx.save(); ctx.beginPath(); ctx.rect(r.x * T, r.y * T, r.w * T, r.h * T); ctx.clip();
+      ctx.strokeStyle = "rgba(27,26,23,.18)"; ctx.lineWidth = 2;
+      for (let k = -r.h * T; k < r.w * T; k += 12) { ctx.beginPath(); ctx.moveTo(r.x * T + k, r.y * T + r.h * T); ctx.lineTo(r.x * T + k + r.h * T, r.y * T); ctx.stroke(); }
+      ctx.restore();
+    }
+    ctx.strokeStyle = "#1b1a17"; ctx.lineWidth = 3; ctx.strokeRect(r.x * T, r.y * T, r.w * T, r.h * T);
+    ctx.fillStyle = open ? "rgba(27,26,23,.55)" : "rgba(27,26,23,.7)";
+    ctx.font = "700 11px 'Courier Prime', monospace";
+    ctx.fillText(open ? r.name.toUpperCase() : `${r.name.toUpperCase()} · OPENS AT ${r.unlockAt} JOURNAL ENTRIES`, r.x * T + 6, r.y * T + 14);
+  }
+  for (const d of DOORS) {
+    const open = unlocked.has(d.to);
+    ctx.fillStyle = open ? "#efe3cf" : "#8a5a2b";
+    ctx.fillRect(d.x * T + 2, d.y * T + 2, T - 4, T - 4);
+  }
+  // cage
+  ctx.strokeStyle = "#1b1a17"; ctx.lineWidth = 2;
+  ctx.strokeRect((CAGE.x - 1) * T + 4, (CAGE.y - 1) * T + 4, T * 2 - 8, T * 2 - 8);
+  for (let i = 1; i < 4; i++) { ctx.beginPath(); ctx.moveTo((CAGE.x - 1) * T + 4 + i * 9, (CAGE.y - 1) * T + 4); ctx.lineTo((CAGE.x - 1) * T + 4 + i * 9, (CAGE.y + 1) * T - 4); ctx.stroke(); }
+  label("cage", (CAGE.x - 1) * T + 4, (CAGE.y + 1) * T + 10);
+  // stash
+  ctx.fillStyle = "#ffd23f"; ctx.beginPath(); ctx.arc(STASH.x * T + T / 2, STASH.y * T + T / 2, 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  label(`treasure ×${stashN}`, STASH.x * T - 10, STASH.y * T + T + 8);
+
+  // things
+  for (const t of things) {
+    if (!unlocked.has(t.room)) continue;
+    const x = t.x * T + T / 2, y = t.y * T + T / 2;
+    ctx.fillStyle = TAG_COLOR[t.tags[0]] ?? "#bbb";
+    ctx.strokeStyle = "#1b1a17"; ctx.lineWidth = 1.5;
+    if (t.stealable) { ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
+    else { ctx.beginPath(); ctx.roundRect(x - 9, y - 7, 18, 14, 3); ctx.fill(); ctx.stroke(); }
+    label(t.name.replace(/^(a|an|the|your|one) /i, ""), x - 20, y + 17, t.arrivedRun !== undefined ? "#d8352a" : "rgba(27,26,23,.75)");
+  }
+
+  if (!run) {
+    drawLucy(CAGE.x, CAGE.y, 0, now, phase === "day" ? "nap" : "idle");
+    return;
+  }
+  // trail: CD's dashed red route
+  ctx.strokeStyle = "rgba(216,53,42,.55)"; ctx.lineWidth = 2.5; ctx.setLineDash([6, 5]);
+  ctx.beginPath();
+  run.trail.slice(-160).forEach(([tx, ty], i) => { const px = tx * T + T / 2, py = ty * T + T / 2; i ? ctx.lineTo(px, py) : ctx.moveTo(px, py); });
+  ctx.stroke(); ctx.setLineDash([]);
+
+  const f = Math.min(1, tickFrac);
+  const lx = prevPos.x + (run.x - prevPos.x) * f, ly = prevPos.y + (run.y - prevPos.y) * f;
+  const ang = Math.atan2(run.y - prevPos.y, run.x - prevPos.x);
+  drawLucy(lx, ly, Number.isFinite(ang) && (run.x !== prevPos.x || run.y !== prevPos.y) ? ang : 0, now, run.done ? "nap" : run.action?.notice ? "notice" : "move");
+}
+
+function label(s: string, x: number, y: number, color = "rgba(27,26,23,.75)") {
+  ctx.font = "700 9.5px 'Courier Prime', monospace"; ctx.fillStyle = color; ctx.fillText(s, x, y);
+}
+
+function drawLucy(tx: number, ty: number, ang: number, now: number, mode: "idle" | "move" | "notice" | "nap") {
+  const x = tx * T + T / 2, y = ty * T + T / 2 + (mode === "move" ? Math.sin(now / 90) * 1.5 : 0);
+  ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
+  ctx.fillStyle = "rgba(27,26,23,.25)"; ctx.beginPath(); ctx.ellipse(0, 5, 14, 5, 0, 0, Math.PI * 2); ctx.fill();
+  ctx.fillStyle = "#6b4a33"; ctx.strokeStyle = "#1b1a17"; ctx.lineWidth = 1.5;
+  if (mode === "nap") { ctx.beginPath(); ctx.arc(0, 0, 10, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
+  else {
+    ctx.beginPath(); ctx.ellipse(-9, 0, 9, 3.5, Math.sin(now / 160) * 0.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); // tail
+    ctx.beginPath(); ctx.ellipse(2, 0, 11, 5.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); // body
+    ctx.fillStyle = "#e9d7b8"; ctx.beginPath(); ctx.ellipse(13, 0, 5, 4.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); // face mask
+    ctx.fillStyle = "#1b1a17"; ctx.beginPath(); ctx.arc(15, -1.8, 1.2, 0, Math.PI * 2); ctx.arc(15, 1.8, 1.2, 0, Math.PI * 2); ctx.fill();
+  }
+  ctx.restore();
+  ctx.font = "16px 'Alfa Slab One', serif"; ctx.fillStyle = "#d8352a";
+  if (mode === "notice") ctx.fillText("!", x - 3, y - 16);
+  if (mode === "nap") { ctx.fillStyle = "#0f5c57"; ctx.fillText("z", x + 8 + Math.sin(now / 500) * 2, y - 12); ctx.font = "11px 'Alfa Slab One', serif"; ctx.fillText("z", x + 17, y - 22 + Math.sin(now / 400) * 2); }
+}
+
+// ---------- loop ----------
+let acc = 0, lastT = performance.now();
+function frame(now: number) {
+  const dt = Math.min(250, now - lastT); lastT = now;
+  if (phase === "run" && run && !run.done) {
+    acc += dt;
+    const period = 100 / speed;
+    while (acc >= period && !run.done) {
+      acc -= period;
+      prevPos = { x: run.x, y: run.y };
+      const before = run.events.length;
+      step(run);
+      if (run.events.length !== before) renderFeed();
+    }
+    tickFrac = acc / period;
+    renderNow();
+    if (run.done) endRun();
+  }
+  draw(now);
+  requestAnimationFrame(frame);
+}
+requestAnimationFrame(frame);
+
+// ---------- side panel ----------
+function renderStats() {
+  const h = profile.habits;
+  const habits = [h.favNap && "a nap spot", h.favRoom && "a territory", h.nemesis && "a nemesis", h.routine && "a routine"].filter(Boolean);
+  $("#stats").innerHTML = `<span>RUNS <b>${profile.runs.length}</b></span><span>JOURNAL <b>${profile.journal.size}</b></span><span>TREASURES <b>${profile.stash.length}</b></span><span>HABITS <b>${habits.length}</b></span><span>SEED ${session.seed}</span>`;
+}
+
+function renderSide() {
+  renderStats();
+  const side = $("#side");
+  if (phase === "cage") {
+    const open = unlockedItems(profile);
+    const k = comboKey(prep);
+    const known = k && profile.journal.has(`combo:${k}`) ? `Known combo: ${COMBOS[k].name}` : k && COMBOS[k] ? "Something might happen with these two…" : "";
+    side.innerHTML = `<div class="panel">
+      <span class="tag">1 · PREP THE CAGE · UP TO TWO</span>
+      <h2>What goes in with Lucy?</h2>
+      <div class="items">${ITEM_IDS.map((id) => {
+        const locked = !open.includes(id), on = prep.includes(id);
+        return `<button class="item${on ? " on" : ""}" data-item="${id}" ${locked ? "disabled" : ""}><span><b>${esc(ITEMS[id].name)}</b></span><small>${locked ? `journal ${ITEMS[id].unlockAt}` : esc(ITEMS[id].blurb)}</small></button>`;
+      }).join("")}</div>
+      <div class="combo">${esc(known)}</div>
+      <button class="go" data-open>Open the door →</button>
+      <span class="tag">SHE ALWAYS COMES BACK. SHE ALWAYS NAPS.</span>
+    </div>
+    ${last ? dayCard(last) : ""}`;
+  } else if (phase === "run" && run) {
+    side.innerHTML = `<div class="panel">
+      <span class="tag">2 · OUT OF YOUR HANDS · RUN ${run.index + 1}</span>
+      <div class="row">
+        <button class="squeak" data-squeak ${run.squeakedAt !== null ? "disabled" : ""}>${run.squeakedAt !== null ? "Squeaked" : "Treat squeak (once)"}</button>
+      </div>
+      <div class="row"><span class="tag">SPEED</span>${[1, 4, 16].map((s) => `<button class="chip${speed === s ? " on" : ""}" data-speed="${s}">${s}×</button>`).join("")}<button class="chip" data-skip>skip to nap</button></div>
+      <ul class="feed" id="feed"></ul>
+    </div>`;
+    renderFeed();
+  } else if (phase === "day" && last) {
+    side.innerHTML = `${dayCard(last)}<button class="go" data-back>Back to the cage</button>`;
+  }
+}
+
+function renderFeed() {
+  const el = document.getElementById("feed");
+  if (!el || !run) return;
+  el.innerHTML = [...run.events].reverse().map((e) => `<li class="${e.cause.startsWith("ritual:") ? "ritual" : ""}">${esc(e.text)}<span class="c">because: ${esc(e.cause.replace("ritual:", "habit ritual: "))}</span></li>`).join("");
+}
+
+function renderNow() {
+  if (!run) return;
+  const a = run.action;
+  const what = run.done ? "asleep" : !a ? "deciding" : a.notice ? `noticed ${a.target ? the(a.target.name) : "something"}` : a.path.length ? `heading for ${a.target ? the(a.target.name) : "somewhere"}` : `${a.verb}ing ${a.target ? the(a.target.name) : ""}`;
+  $("#now").textContent = `Lucy is ${what} · energy ${Math.max(0, Math.round(run.energy))} · ${(run.tick / 10).toFixed(0)}s`;
+}
+
+function dayCard(s: RunSummary) {
+  const extras = [...s.returned.map((n) => `You found ${the(n)} and put it back.`), ...(s.arrived ? [`Something new turned up in the house: ${s.arrived}.`] : []), ...s.unlockedNow];
+  return `<div class="day">
+    <span class="tag">RUN ${s.index + 1} · ${s.prep.length ? s.prep.map((i) => ITEMS[i].name.toLowerCase()).join(" + ") : "nothing in the cage"} · ${(s.ticks / 10).toFixed(0)}s</span>
+    <div class="sentence">${esc(s.sentence)}</div>
+    ${s.newEntries.length ? `<span class="tag">NEW IN THE JOURNAL</span><ul class="new">${s.newEntries.map((e) => `<li><span class="kind ${e.kind}">${e.kind}</span>${esc(e.text)}</li>`).join("")}</ul>` : `<span class="tag">NOTHING NEW. SHE WAS VERY HERSELF.</span>`}
+    ${extras.length ? `<ul class="new">${extras.map((x) => `<li style="background:var(--lino)">${esc(x)}</li>`).join("")}</ul>` : ""}
+  </div>`;
+}
+
+function renderBook() {
+  const entries = [...profile.journal.values()].reverse();
+  const h = profile.habits;
+  const name = (id: string | null) => (id ? the(profile.things.concat(profile.stash).find((t) => t.id === id)?.name ?? id) : null);
+  const roomName = (id: RoomId | null) => (id ? ROOMS.find((r) => r.id === id)!.name.toLowerCase() : null);
+  $("#book").innerHTML = `
+    <div class="panel"><span class="tag">THE JOURNAL · ${profile.journal.size} THINGS YOU'VE LEARNED ABOUT LUCY</span>
+      <ol>${entries.map((e) => `<li><span class="kind ${e.kind}">${e.kind}</span>${esc(e.text)}</li>`).join("") || "<li>Nothing yet. Open the door.</li>"}</ol></div>
+    <div class="panel"><span class="tag">HER TREASURES · UNDER THE COUCH</span>
+      <ul>${profile.stash.map((t) => `<li>${esc(t.name)}</li>`).join("") || "<li>Empty. For now.</li>"}</ul>
+      <span class="tag">HABITS</span>
+      <ul>${[h.favNap && `Her spot: ${name(h.favNap)}`, h.favRoom && `Her territory: the ${roomName(h.favRoom)}`, h.nemesis && `Her nemesis: ${name(h.nemesis)}`, h.routine && "Routine: checks her treasures first"].filter(Boolean).map((x) => `<li>${esc(x as string)}</li>`).join("") || "<li>None yet. Habits take a few runs.</li>"}</ul></div>
+    <div class="panel"><span class="tag">HER DAYS</span>
+      <ol reversed>${[...profile.runs].reverse().map((r) => `<li>${esc(r.sentence)}</li>`).join("") || "<li>No days yet.</li>"}</ol></div>`;
+}
+
+function renderDebug() {
+  $("#debug").innerHTML = `<summary>PLAYTEST TOOLS</summary>
+    <div class="row">
+      <button data-auto="1">Autoplay 1 run</button><button data-auto="5">Autoplay 5 runs</button>
+      <button data-newsession>New Lucy (new seed)</button><button data-restart>Restart this seed</button><button data-copy>Copy session JSON</button>
+    </div>
+    <p>Autoplay picks 1–2 random unlocked items and squeaks sometimes, like the smoke-test "explorer".</p>`;
+}
+
+// ---------- actions ----------
+function openDoor() {
+  run = startRun(profile, prep);
+  prevPos = { x: run.x, y: run.y }; acc = 0;
+  phase = "run";
+  renderSide();
+}
+function endRun() {
+  if (!run) return;
+  const spec: RunSpec = { prep: run.prep, ...(run.squeakedAt !== null ? { squeakAt: run.squeakedAt } : {}) };
+  last = finishRun(profile, run);
+  session.runs.push(spec); persist();
+  run = null; phase = "day";
+  $("#now").textContent = "";
+  renderSide(); renderBook();
+}
+function autoplay(n: number) {
+  for (let i = 0; i < n; i++) {
+    const open = unlockedItems(profile);
+    const r = Math.random();
+    const a = open[Math.floor(Math.random() * open.length)];
+    let b = open[Math.floor(Math.random() * open.length)];
+    if (b === a) b = open[(open.indexOf(a) + 1) % open.length];
+    const p: ItemId[] = r < 0.7 ? [a, b] : [a];
+    const squeakAt = Math.random() < 0.35 ? 60 + Math.floor(Math.random() * 500) : undefined;
+    const rr = startRun(profile, p);
+    while (!rr.done) { if (squeakAt !== undefined && rr.tick === squeakAt) squeak(rr); step(rr); }
+    last = finishRun(profile, rr);
+    session.runs.push({ prep: p, ...(squeakAt !== undefined && rr.squeakedAt !== null ? { squeakAt } : {}) });
+  }
+  persist(); phase = "day"; run = null; renderSide(); renderBook();
+}
+
+document.addEventListener("click", (e) => {
+  const b = (e.target as HTMLElement).closest("button");
+  if (!b || b.disabled) return;
+  const d = b.dataset;
+  if (d.item) {
+    const id = d.item as ItemId;
+    prep = prep.includes(id) ? prep.filter((x) => x !== id) : [...prep, id].slice(-2);
+    renderSide();
+  } else if ("open" in d) openDoor();
+  else if ("squeak" in d && run) { squeak(run); renderSide(); }
+  else if (d.speed) { speed = Number(d.speed); renderSide(); }
+  else if ("skip" in d && run) { while (!run.done) { prevPos = { x: run.x, y: run.y }; step(run); } endRun(); }
+  else if ("back" in d) { phase = "cage"; renderSide(); }
+  else if (d.auto) autoplay(Number(d.auto));
+  else if ("newsession" in d) { session = { seed: (Math.random() * 2 ** 31) | 0, runs: [] }; persist(); profile = replay(session.seed, []); last = null; run = null; phase = "cage"; prep = []; renderSide(); renderBook(); }
+  else if ("restart" in d) { session = { seed: session.seed, runs: [] }; persist(); profile = replay(session.seed, []); last = null; run = null; phase = "cage"; prep = []; renderSide(); renderBook(); }
+  else if ("copy" in d) navigator.clipboard?.writeText(JSON.stringify(session)).then(() => { b.textContent = "Copied"; });
+});
+
+renderSide(); renderBook(); renderDebug();
+void W; void H;

@@ -25,9 +25,9 @@ Prework done before the clock (Jay with CD and red team: hero page, Lucy sprites
 |---|---|---|
 | Prework (CD page, sprites, brief) | ? (Jay to fill) | before 2026-09-14 |
 | Game chosen, tombstone named, page + homepage banner decided | ~0:15 | 2026-09-14 |
-| Page live + "next up" banner | | |
-| Teardown (Galápagos) | | |
-| Spec'd mechanics tested | | |
+| Page live + "next up" banner | ~0:20 | 2026-09-14 |
+| Teardown (Galápagos): The Mendel File, 5 parallel research agents | ~0:30 | 2026-09-14 |
+| Shape decided (house, 2 items, journal, squeak, naps) + prototype smoke-tested (24,000 runs) | ~0:50 | 2026-09-14 |
 | First Jay playtest | | |
 | First "WHAT THE FUCK, LUCY" | | |
 | First thing Jay hates | | |
@@ -36,6 +36,7 @@ Prework done before the clock (Jay with CD and red team: hero page, Lucy sprites
 | Date | Jay-time | Machine work | What Jay did |
 |---|---|---|---|
 | 2026-09-14 | ~0:15 | Read prework (page, 14 assets, brief), mapped it to method + library, Ferret Bowling page (brief band stripped, Lucy Edition, Kit league form), homepage next-up banner | Picked Ferret Bowling, named the tombstone, sent prework + the (right) brief, 4 decision answers |
+| 2026-09-14 | ~0:35 | 5 research agents + The Mendel File report; BRIEF.md; lucy-proto (house plan, deterministic sim, viewer), 3 smoke rounds (24k runs), tuning, sprite list | Read the report, "explore the home à la Mendel", "experience her experience", "not about winning", adorable-not-chaos tone, 8 decision answers |
 
 ---
 

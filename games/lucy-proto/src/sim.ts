@@ -16,8 +16,8 @@ export const ITEMS: Record<ItemId, { name: string; blurb: string; unlockAt: numb
   sock: { name: "A wound-up sock", blurb: "anything fabric is now prey", unlockAt: 0, mood: { tags: { fabric: 3, small: 1.4 }, speed: 1.1, drain: 1.1, squeak: 0.5 } },
   insult: { name: "A whispered insult", blurb: "she sulks, then forgives you. Eventually.", unlockAt: 0, mood: { tags: { hide: 3 }, speed: 1, drain: 1, squeak: 0.08, sulk: true } },
   salmon: { name: "Purple salmon", blurb: "she is convinced the house is a river", unlockAt: 0, mood: { tags: { water: 3.5, soft: 1.5 }, speed: 1.2, drain: 1.2, squeak: 0.4, swim: true } },
-  towel: { name: "A warm towel", blurb: "cozy. extremely cozy.", unlockAt: 4, mood: { tags: { soft: 2.2, warm: 3 }, speed: 0.7, drain: 0.7, squeak: 0.6 } },
-  squeaky: { name: "A squeaky toy", blurb: "everything that makes a noise must be investigated", unlockAt: 9, mood: { tags: { noise: 3, small: 1.3 }, speed: 1.2, drain: 1.2, squeak: 0.8 } },
+  towel: { name: "A warm towel", blurb: "cozy. extremely cozy.", unlockAt: 10, mood: { tags: { soft: 2.2, warm: 3 }, speed: 0.7, drain: 0.7, squeak: 0.6 } },
+  squeaky: { name: "A squeaky toy", blurb: "everything that makes a noise must be investigated", unlockAt: 20, mood: { tags: { noise: 3, small: 1.3 }, speed: 1.2, drain: 1.2, squeak: 0.8 } },
 };
 export const ITEM_IDS = Object.keys(ITEMS) as ItemId[];
 
@@ -186,11 +186,17 @@ function choose(r: Run) {
   for (const t of present) {
     const d = reach(t.x, t.y), near = 1 / (1 + d / 9), fresh = 1 / (1 + 2 * (r.visits[t.id] ?? 0));
     const i = interest(r, t) * near;
-    if (r.habits.nemesis === t.id) { if (d < 12 && !r.touched.has(t.id)) cands.push({ verb: "glare", target: t, tx: t.x, ty: t.y, score: 1.6 * near, dur: 18, cause: "habit: nemesis" }); continue; }
+    if (r.habits.nemesis === t.id) {
+      if (d < 14 && !r.touched.has(t.id)) {
+        const cause = r.mood.sulk ? "ritual:sulks-with-nemesis" : r.prep.includes("squeaky") ? "ritual:dooks-at-nemesis" : "habit: nemesis";
+        cands.push({ verb: r.mood.sulk ? "sulk" : "glare", target: t, tx: t.x, ty: t.y, score: (cause === "habit: nemesis" ? 1.6 : 3) * near, dur: 18, cause });
+      }
+      continue;
+    }
     if (tired) {
       if (t.tags.includes("soft") || t.tags.includes("warm")) {
         let s = (1 + (r.mood.tags.soft ?? 1) + (r.habits.favNap === t.id ? 3 : 0)) * near;
-        if (r.combo === "snacks+towel" && present.some((f) => f.tags.includes("food") && dist2(f, t) < 30)) s *= 2.5;
+        if (r.combo === "snacks+towel" && present.some((f) => f.tags.includes("food") && dist2(f, t) < 70)) s *= 6;
         cands.push({ verb: "nap", target: t, tx: t.x, ty: t.y, score: s, dur: 0, cause: r.habits.favNap === t.id ? "habit: her spot" : "tired" });
       }
       continue;
@@ -198,7 +204,7 @@ function choose(r: Run) {
     cands.push({ verb: "sniff", target: t, tx: t.x, ty: t.y, score: i * fresh * 0.7, dur: 8, cause: tagCause(r, t) });
     if (t.stealable && !r.carrying) {
       let s = i * fresh * 1.1;
-      if (r.combo === "insult+sock" && t.id === "slipper") s *= 6;
+      if (r.combo === "insult+sock" && (t.id === "slipper" || (t.id === "keys" && !r.things.some((x) => x.id === "slipper")))) s *= 6;
       if (r.combo === "insult+squeaky" && t.tags.includes("noise")) s *= 4;
       cands.push({ verb: "steal", target: t, tx: t.x, ty: t.y, score: s, dur: 6, cause: tagCause(r, t) });
     }
@@ -208,7 +214,7 @@ function choose(r: Run) {
       cands.push({ verb: r.mood.sulk ? "sulk" : "hide", target: t, tx: t.x, ty: t.y, score: s, dur: r.combo === "insult+towel" && t.tags.includes("soft") ? 60 : 26, cause: tagCause(r, t) });
     }
     if (t.tags.includes("noise") || (r.combo === "sock+squeaky" && t.tags.includes("fabric") && t.tags.includes("small")))
-      cands.push({ verb: "play", target: t, tx: t.x, ty: t.y, score: i * fresh * 0.9, dur: 20, cause: tagCause(r, t) });
+      cands.push({ verb: "play", target: t, tx: t.x, ty: t.y, score: i * fresh * (r.combo === "sock+squeaky" && t.tags.includes("fabric") ? 2.4 : 0.9), dur: 20, cause: r.combo === "sock+squeaky" && t.tags.includes("fabric") ? "puppet show" : tagCause(r, t) });
     if (t.tags.includes("water") && (r.mood.swim || r.combo === "salmon+snacks"))
       cands.push({ verb: "fish", target: t, tx: t.x, ty: t.y, score: i * fresh * 1.4, dur: 30, cause: "purple salmon" });
     if (r.combo === "salmon+towel" && t.tags.includes("soft") && !r.touched.has(t.id))
@@ -218,7 +224,7 @@ function choose(r: Run) {
   if (tired && r.mood.sulk && r.stash.length && !r.events.some((e) => e.verb === "gift") && reach(CAGE.x, CAGE.y) >= 0)
     cands.push({ verb: "gift", tx: CAGE.x + 1, ty: CAGE.y, score: 50, dur: 10, cause: "forgiveness" });
   if (!tired && (r.stash.length || r.carrying)) {
-    const routine = r.habits.routine && r.decisions === 1;
+    const routine = (r.habits.routine || r.stash.length >= 3) && r.decisions === 1;
     cands.push({ verb: "stash", tx: STASH.x, ty: STASH.y, score: r.carrying ? 40 : routine ? 30 : 0.5 + r.stash.length * 0.12, dur: 12, cause: r.carrying ? "carrying treasure" : routine ? "habit: routine" : "treasures" });
   }
   if (!tired) {
@@ -298,9 +304,9 @@ function maybeStartle(r: Run) {
     r.touched.add("startle:" + t.id);
     if (r.lucy.next() < 0.35) {
       say(r, "startle", t, "the " + t.name, pick(r, [
-        `The ${t.name} made a noise. Lucy did a full vertical leap and pretended she meant to.`,
-        `Lucy was ambushed by the ${t.name}. She has filed it under "enemies".`,
-        `The ${t.name} hummed at her. She puffed up to twice her size, which is still small.`,
+        `${cap(the(t.name))} made a noise. Lucy did a full vertical leap and pretended she meant to.`,
+        `Lucy was ambushed by ${the(t.name)}. She has filed it under "enemies".`,
+        `${cap(the(t.name))} hummed at her. She puffed up to twice her size, which is still small.`,
       ]));
       const hide = r.things.filter((h) => h.tags.includes("hide") && r.unlocked.has(h.room)).sort((a, b) => dist2(a, r) - dist2(b, r))[0];
       if (hide) {
@@ -319,7 +325,7 @@ function complete(r: Run, a: Action) {
   switch (a.verb) {
     case "sniff":
       if (t) r.touched.add(t.id);
-      say(r, "sniff", t, a.cause, pick(r, [`Lucy sniffed the ${n} thoroughly.`, `Lucy inspected the ${n}. Verdict pending.`, `The ${n} has been sniffed. Approved, probably.`]));
+      say(r, "sniff", t, a.cause, pick(r, [`Lucy sniffed ${the(n)} thoroughly.`, `Lucy inspected ${the(n)}. Verdict pending.`, `${cap(the(n))} has been sniffed. Approved, probably.`]));
       break;
     case "steal":
       if (!t || !r.things.includes(t)) break;
@@ -333,14 +339,20 @@ function complete(r: Run, a: Action) {
     case "stash": {
       if (r.carrying) {
         const item = r.carrying; r.carrying = null;
-        if (r.nestSpot) {
+        if (!r.nestSpot && r.prep.includes("sock") && r.habits.favNap && item.tags.includes("fabric")) {
+          const spot = r.things.find((x) => x.id === r.habits.favNap);
+          say(r, "stash", item, "ritual:decorates-spot", `Lucy draped ${the(item.name)} over ${spot ? the(spot.name) : "her spot"}. Interior design.`);
+        } else if (r.nestSpot) {
           r.nestCount++;
           say(r, "stash", item, "the nest", `Lucy added ${the(item.name)} to her nest. It is coming along beautifully.`);
         } else say(r, "stash", item, a.cause, `Lucy hid ${the(item.name)} under the couch with her other treasures.`);
         r.stash.push(item);
       } else {
         if (r.decisions === 1) r.stashFirstChecked = true;
-        say(r, "stash", undefined, a.cause, r.stash.length
+        say(r, "stash", undefined, r.prep.includes("snacks") && r.habits.routine ? "ritual:crumbs-in-treasure" : r.stash.length >= 4 ? "ritual:rearranged-treasure" : a.cause,
+          r.prep.includes("snacks") && r.habits.routine ? "Lucy added crumbs to her treasure pile. For later. For emergencies."
+          : r.stash.length >= 4 ? `Lucy rearranged all ${r.stash.length} of her treasures, by an order only she understands.`
+          : r.stash.length
           ? `Lucy checked on her treasures. All ${r.stash.length} present. She counted twice.`
           : "Lucy checked under the couch. Nothing there yet. She seemed disappointed in you.");
       }
@@ -349,30 +361,34 @@ function complete(r: Run, a: Action) {
     case "hide":
     case "sulk":
       if (t) r.touched.add(t.id);
-      say(r, a.verb, t, a.cause, a.verb === "sulk"
-        ? (r.combo === "insult+towel" && t?.tags.includes("soft") ? `Lucy rolled herself into the ${n} like a burrito and refused to be perceived.` : pick(r, [`Lucy sulked behind the ${n}. Loudly.`, `Lucy is not speaking to you. She is behind the ${n}.`]))
-        : pick(r, [`Lucy vanished into the ${n}. Only the tail is visible.`, `Lucy hid in the ${n} for no reason she will share.`]));
+      say(r, a.verb, t, a.cause, a.cause === "ritual:sulks-with-nemesis"
+        ? `Lucy sulked right next to ${the(n)}. They are on the same side now.`
+        : a.verb === "sulk"
+        ? (r.combo === "insult+towel" && t?.tags.includes("soft") ? `Lucy rolled herself into ${the(n)} like a burrito and refused to be perceived.` : pick(r, [`Lucy sulked behind ${the(n)}. Loudly.`, `Lucy is not speaking to you. She is behind ${the(n)}.`]))
+        : pick(r, [`Lucy vanished into ${the(n)}. Only the tail is visible.`, `Lucy hid in ${the(n)} for no reason she will share.`]));
       break;
     case "play":
       if (t) r.touched.add(t.id);
       say(r, "play", t, a.cause, r.combo === "sock+squeaky" && t?.tags.includes("fabric")
-        ? `Lucy made the ${n} into a puppet, then attacked the puppet. The puppet lost.`
-        : pick(r, [`Lucy played with the ${n}. Many dooks were had.`, `Lucy did the war dance at the ${n}. Sideways hops. Mouth open.`]));
+        ? `Lucy made ${the(n)} into a puppet, then attacked the puppet. The puppet lost.`
+        : pick(r, [`Lucy played with ${the(n)}. Many dooks were had.`, `Lucy did the war dance at ${the(n)}. Sideways hops. Mouth open.`]));
       break;
     case "fish":
       if (t) r.touched.add(t.id);
       say(r, "fish", t, a.cause, r.combo === "salmon+snacks"
-        ? `Lucy sat by the ${n} and fished for snacks with one paw. None were caught. Spirits remain high.`
-        : pick(r, [`Lucy swam laps near the ${n}. On the floor. With conviction.`, `Lucy tried to swim in the ${n}. She is dry. She is thrilled.`]));
+        ? `Lucy sat by ${the(n)} and fished for snacks with one paw. None were caught. Spirits remain high.`
+        : pick(r, [`Lucy swam laps near ${the(n)}. On the floor. With conviction.`, `Lucy tried to swim in ${the(n)}. She is dry. She is thrilled.`]));
       break;
     case "roll":
       if (t) r.touched.add(t.id);
       r.rolls++;
-      say(r, "roll", t, a.cause, `Lucy rolled all over the ${n} to dry off. She was never wet.`);
+      say(r, "roll", t, a.cause, `Lucy rolled all over ${the(n)} to dry off. She was never wet.`);
       break;
     case "glare":
       if (t) r.touched.add(t.id);
-      say(r, "glare", t, "habit: nemesis", `Lucy stopped to glare at the ${n}. It knows what it did.`);
+      say(r, "glare", t, a.cause, a.cause === "ritual:dooks-at-nemesis"
+        ? `Lucy dooked at ${the(n)} until it apologized. It did not apologize.`
+        : `Lucy stopped to glare at ${the(n)}. It knows what it did.`);
       break;
     case "gift": {
       const g = r.stash.shift()!;
@@ -382,7 +398,9 @@ function complete(r: Run, a: Action) {
       break;
     }
     case "wander":
-      if (r.mood.swim) say(r, "wander", undefined, "purple salmon", pick(r, ["Lucy swam across the room in a straight line, flat as a pancake.", "Lucy glided down the current of the floor.", "Lucy crossed the room doing what can only be called the breaststroke."]));
+      if (r.mood.swim && r.habits.favRoom && roomAt(r.x, r.y) === r.habits.favRoom && !r.events.some((e) => e.cause === "ritual:territory-lake"))
+        say(r, "wander", undefined, "ritual:territory-lake", `Lucy declared the ${roomName(r.habits.favRoom)} a lake. She is its only fish.`);
+      else if (r.mood.swim) say(r, "wander", undefined, "purple salmon", pick(r, ["Lucy swam across the room in a straight line, flat as a pancake.", "Lucy glided down the current of the floor.", "Lucy crossed the room doing what can only be called the breaststroke."]));
       break;
     case "nap": {
       if (a.target) r.touched.add(a.target.id);
@@ -401,7 +419,11 @@ function finishNap(r: Run, t: Placed | null, cause: string) {
   if (r.done) return;
   if (r.carrying) { r.stash.push(r.carrying); r.carrying = null; }
   r.napOn = t?.id ?? null;
-  const where = r.nestSpot && r.nestCount >= 2 ? "in her nest" : t ? `on the ${t.name}` : `in the middle of the ${roomName(roomAt(r.x, r.y))}`;
+  const where = r.nestSpot && r.nestCount >= 2 ? "in her nest" : t ? `on ${the(t.name)}` : `in the middle of the ${roomName(roomAt(r.x, r.y))}`;
+  if (t && r.habits.favNap === t.id && r.prep.includes("towel")) {
+    say(r, "nap", t, "ritual:pancake-on-spot", `Lucy went straight to her spot on ${the(t.name)} and became a pancake.`);
+    r.napOn = t.id; r.done = true; return;
+  }
   say(r, "nap", t ?? undefined, cause, pick(r, [`Lucy curled up ${where} and fell asleep. Run over. She is extremely proud.`, `Lucy fell asleep ${where}, mid-dook.`, `Lucy is asleep ${where}. Do not move her. Those are the rules.`]));
   r.done = true;
 }
@@ -421,7 +443,10 @@ export function squeak(r: Run) {
     const { prev } = bfs(r, r.x, r.y);
     if (r.carrying) { r.stash.push(r.carrying); r.carrying = null; }
     r.action = { verb: "come", tx: CAGE.x + 1, ty: CAGE.y, path: pathTo(prev, r.x, r.y, CAGE.x + 1, CAGE.y) ?? [], dur: 12, t: 0, notice: 3, cause: "the squeak" };
-    say(r, "come", undefined, "the squeak", r.combo === "insult+snacks"
+    if (r.stash.length && !r.mood.sulk) {
+      const shown = r.stash[r.lucy.int(r.stash.length)];
+      say(r, "come", shown, "ritual:show-and-tell", `You squeaked. Lucy came running with ${the(shown.name)} from her stash, to show you. She did not let you hold it.`);
+    } else say(r, "come", undefined, "the squeak", r.combo === "insult+snacks"
       ? "You squeaked. Lucy considered the snacks, then your apology. She accepts both."
       : "You squeaked. Lucy came galloping back, dooking the entire way.");
   } else {
@@ -456,6 +481,7 @@ export function finishRun(p: Profile, r: Run): RunSummary {
   };
 
   for (const e of r.events) if (JOURNAL_VERBS.includes(e.verb) && e.target) add(`${e.verb}:${e.target}`, "behaviour", e.text);
+  for (const e of r.events) if (e.cause.startsWith("ritual:")) add(e.cause, "habit", e.text);
   if (r.squeakAnswered === true) add("come:squeak", "behaviour", "She comes when you squeak. Sometimes.");
   if (r.squeakAnswered === false) add(`ignore:squeak:${r.mood.sulk ? "sulk" : "busy"}`, "behaviour", r.mood.sulk ? "A sulking Lucy ignores the squeak." : "Lucy can ignore a squeak when busy.");
   if (r.mood.swim && r.events.some((e) => e.verb === "wander" && e.cause === "purple salmon")) add("swim", "behaviour", "Purple salmon: the floor is a river now.");
@@ -468,12 +494,12 @@ export function finishRun(p: Profile, r: Run): RunSummary {
     const fired =
       (k === "sock+towel" && r.nestCount >= 2) ||
       (k === "salmon+snacks" && has((e) => e.verb === "fish")) ||
-      (k === "insult+sock" && has((e) => e.verb === "steal" && e.target === "slipper")) ||
+      (k === "insult+sock" && has((e) => e.verb === "steal" && (e.target === "slipper" || e.target === "keys"))) ||
       (k === "insult+snacks" && r.squeakAnswered === true) ||
       (k === "salmon+towel" && r.rolls >= 2) ||
       (k === "sock+squeaky" && has((e) => e.verb === "play" && !!r.things.concat(r.stash).find((t) => t.id === e.target && t.tags.includes("fabric")))) ||
       (k === "insult+squeaky" && has((e) => e.verb === "steal" && !!THINGS.concat(ARRIVALS as Thing[]).find((t) => t.id === e.target && t.tags.includes("noise")))) ||
-      (k === "snacks+towel" && !!r.napOn && r.things.some((f) => f.tags.includes("food") && dist2(f, r) < 30)) ||
+      (k === "snacks+towel" && !!r.napOn && r.things.some((f) => f.tags.includes("food") && dist2(f, r) < 70)) ||
       (k === "insult+towel" && has((e) => e.verb === "sulk" && e.text.includes("burrito")));
     if (fired) { comboFired = k; add(`combo:${k}`, "combo", `${COMBOS[k].name}: ${COMBOS[k].hint}.`); }
   }
@@ -492,10 +518,10 @@ export function finishRun(p: Profile, r: Run): RunSummary {
   const nap = top(p.counts.nap), st = top(p.counts.startle), rm = top(p.counts.room);
   const totalRoom = Object.values(p.counts.room).reduce((s, v) => s + v, 0);
   const h: Habits = {
-    favNap: nap && nap[1] >= 1.6 ? nap[0] : null,
-    nemesis: st && st[1] >= 1.5 ? st[0] : null,
-    favRoom: rm && p.runs.length >= 2 && rm[1] / totalRoom > 0.45 ? (rm[0] as RoomId) : null,
-    routine: p.counts.stashFirst >= 1.6 || (p.habits.routine && p.stash.length > 0),
+    favNap: nap && nap[1] >= 1.35 ? nap[0] : null,
+    nemesis: st && st[1] >= 1.2 ? st[0] : null,
+    favRoom: rm && p.runs.length >= 2 && rm[1] / totalRoom > 0.36 ? (rm[0] as RoomId) : null,
+    routine: p.counts.stashFirst >= 1.3 || (p.habits.routine && p.stash.length > 0),
   };
   const thingName = (id: string) => THINGS.concat(ARRIVALS as Thing[]).find((t) => t.id === id)?.name ?? id;
   if (h.favNap && h.favNap !== p.habits.favNap) add(`habit:nap:${h.favNap}`, "habit", `Habit: the ${thingName(h.favNap)} is her spot now.`);

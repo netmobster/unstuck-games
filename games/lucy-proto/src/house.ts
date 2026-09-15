@@ -14,10 +14,10 @@ export type Room = { id: RoomId; name: string; x: number; y: number; w: number; 
 export const ROOMS: Room[] = [
   { id: "living", name: "Living room", x: 1, y: 1, w: 14, h: 10, unlockAt: 0, floor: "#efe3cf" },
   { id: "kitchen", name: "Kitchen", x: 16, y: 1, w: 10, h: 10, unlockAt: 0, floor: "#e6ecdc" },
-  { id: "bedroom", name: "Bedroom", x: 27, y: 1, w: 8, h: 10, unlockAt: 6, floor: "#eadff0" },
+  { id: "bedroom", name: "Bedroom", x: 27, y: 1, w: 8, h: 10, unlockAt: 12, floor: "#eadff0" },
   { id: "hall", name: "Hallway", x: 1, y: 12, w: 34, h: 3, unlockAt: 0, floor: "#e8dcc4" },
-  { id: "bathroom", name: "Bathroom", x: 1, y: 16, w: 10, h: 5, unlockAt: 14, floor: "#dcebf0" },
-  { id: "laundry", name: "Laundry", x: 12, y: 16, w: 11, h: 5, unlockAt: 24, floor: "#e9e6f2" },
+  { id: "bathroom", name: "Bathroom", x: 1, y: 16, w: 10, h: 5, unlockAt: 24, floor: "#dcebf0" },
+  { id: "laundry", name: "Laundry", x: 12, y: 16, w: 11, h: 5, unlockAt: 38, floor: "#e9e6f2" },
   { id: "entry", name: "Front entry", x: 24, y: 16, w: 11, h: 5, unlockAt: 0, floor: "#e4dfd6" },
 ];
 

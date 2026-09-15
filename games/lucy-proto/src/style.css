@@ -1,0 +1,55 @@
+/* Functional prototype styling, borrowing the Ferret Bowling page palette. CD designs the real thing. */
+:root{
+  --paper:#f6f1e4; --lino:#e8e3cf; --ink:#1b1a17; --teal:#0f5c57; --route:#d8352a; --zoom:#ffd23f; --wood:#8a5a2b; --soft:#3c382f;
+  --slab:'Alfa Slab One',Georgia,serif; --body:Archivo,system-ui,sans-serif; --mono:'Courier Prime',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.45}
+button{font-family:inherit;cursor:pointer}
+button:focus-visible{outline:3px solid var(--route);outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding:12px 20px;border-bottom:2px solid var(--ink)}
+.brand b{font-family:var(--slab);font-weight:400;font-size:20px}
+.brand .teal{color:var(--teal)}
+.ed{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.14em;color:var(--wood);margin-left:8px}
+.stats{display:flex;gap:16px;flex-wrap:wrap;font-family:var(--mono);font-size:12px;letter-spacing:.06em}
+.stats b{font-family:var(--slab);font-weight:400;font-size:16px}
+.app{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,1fr);gap:18px;padding:18px 20px;align-items:start}
+@media (max-width:900px){.app{grid-template-columns:1fr}}
+.stage{display:flex;flex-direction:column;gap:10px}
+canvas{width:100%;height:auto;border:2.5px solid var(--ink);border-radius:4px;background:#fbf8ef;display:block}
+.now{font-family:var(--mono);font-size:13px;min-height:22px;color:var(--soft)}
+.side{display:flex;flex-direction:column;gap:14px}
+.panel{border:2.5px solid var(--ink);border-radius:3px;background:var(--lino);padding:14px;display:flex;flex-direction:column;gap:10px}
+.panel h2{margin:0;font-family:var(--slab);font-weight:400;font-size:20px;line-height:1.1}
+.tag{font-family:var(--mono);font-weight:700;font-size:11px;letter-spacing:.16em;color:var(--wood)}
+.items{display:flex;flex-direction:column;gap:6px}
+.item{text-align:left;border:2px solid var(--ink);background:var(--paper);border-radius:2px;padding:8px 10px;display:flex;justify-content:space-between;gap:10px;align-items:baseline}
+.item small{font-family:var(--mono);font-size:11px;color:var(--wood);text-align:right}
+.item.on{background:var(--zoom)}
+.item[disabled]{opacity:.45;cursor:default}
+.combo{font-family:var(--mono);font-size:12px;color:var(--teal);min-height:18px}
+.go{border:none;border-radius:3px;background:var(--ink);color:var(--paper);font-family:var(--slab);font-size:18px;padding:13px}
+.go:hover{background:var(--route)}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.chip{border:2px solid var(--ink);background:var(--paper);border-radius:999px;padding:5px 11px;font-weight:700;font-size:13px}
+.chip.on{background:var(--ink);color:var(--paper)}
+.squeak{border:2.5px solid var(--ink);background:var(--zoom);border-radius:999px;padding:10px 16px;font-family:var(--slab);font-size:17px}
+.squeak[disabled]{background:var(--lino);opacity:.6;cursor:default}
+.feed{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;max-height:340px;overflow:auto}
+.feed li{background:var(--paper);border-left:4px solid var(--teal);padding:6px 9px;font-size:14px}
+.feed li.ritual{border-left-color:var(--route)}
+.feed li .c{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;color:var(--wood)}
+.day{background:var(--paper);border:2.5px solid var(--ink);padding:14px;display:flex;flex-direction:column;gap:8px}
+.day .sentence{font-family:var(--slab);font-size:21px;line-height:1.2}
+.new{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:5px}
+.new li{background:var(--zoom);padding:5px 9px;font-size:14px;border:1.5px solid var(--ink)}
+.book{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;padding:0 20px 24px}
+.book .panel{max-height:360px;overflow:auto}
+.book ol,.book ul{margin:0;padding-left:18px;display:flex;flex-direction:column;gap:5px;font-size:14px}
+.kind{font-family:var(--mono);font-size:10px;letter-spacing:.1em;padding:1px 5px;border:1px solid currentColor;margin-right:5px;color:var(--teal)}
+.kind.combo{color:var(--route)}.kind.habit{color:var(--wood)}
+.debug{margin:0 20px 30px;border:2px dashed var(--wood);padding:10px 14px;font-family:var(--mono);font-size:12px}
+.debug summary{cursor:pointer;letter-spacing:.14em}
+.debug .row{margin-top:10px}
+.debug button{border:1.5px solid var(--ink);background:var(--paper);padding:5px 9px;border-radius:2px}
+.debug pre{white-space:pre-wrap;max-height:260px;overflow:auto}
