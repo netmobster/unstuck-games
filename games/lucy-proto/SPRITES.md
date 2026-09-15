@@ -18,6 +18,26 @@
 
 ---
 
+## ★ THE V1 SET: generate these first (6 sprites, 16 frames)
+
+Mapped directly to what the prototype's Lucy actually does. Every behaviour in the sim uses one of these; nothing else is needed to ship the playable version. All top-down, facing north, 512×512 cells, transparent, body centre aligned across frames.
+
+| # | File | Frames | What it looks like | Used for (sim verbs) |
+|---|---|---|---|---|
+| 1 | `top_walk_1..4` | 4 | Ordinary trot, legs alternating, tail in a gentle S | wandering, heading for things, **carrying loot** (the game draws the stolen thing in her mouth), fishing for socks, glaring on the way to her nemesis |
+| 2 | `top_zoom_1..4` | 4 | Zoomies gallop: stretched long, back arched, tail straight out | coming for the squeak, hyper runs, **post-bath zoomies**, salmon "swimming" (tinted/flattened in code), startle bolt |
+| 3 | `top_sniff_1..2` | 2 | Head low and forward, nose working, body still | sniffing, the "!" notice moment (frame 1 held), fishing in the water bowl, checking her treasures |
+| 4 | `top_wardance_1..3` | 3 | Sideways hop, back arched, mouth open | playing, dooking, puppet show, drying off after a bath (played fast) |
+| 5 | `top_curl_1..2` | 2 | Curled donut, nose under tail; frame 2 a slightly bigger breath | **the nap that ends every run**, the quick doze in her favourite shoe |
+| 6 | `top_hide` | 1 | Back half only, cut cleanly at the shoulders, tail out | hiding, **sulking** (tail flick in code), in her towel (burrito), in her shoe's nest |
+
+**Cage moods need no new art.** The v0.1 sheet already has them:
+leftover **hyper** → *hyper* · **sleepy** → *lazy* · **grudgy** → *stubborn* · ordinary → *curious* · God Mode bath → *mischievous*.
+
+Everything below is the wishlist for later (dedicated swim, roll, startle puff, the front-facing prep poses, journal stamps). Nothing below blocks the v1.
+
+---
+
 ## A · Top-down Lucy (the game view, highest priority)
 
 These are what you watch during a run on the house plan.
