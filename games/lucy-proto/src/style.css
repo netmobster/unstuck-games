@@ -148,32 +148,44 @@ body[data-state="post-run"] .dim{opacity:.4}
 .footline .right{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
 .footline .hand{font-family:var(--hand);font-size:19px;color:var(--muted)}
 
-/* peephole */
-.peephole{position:relative;margin-top:16px;height:214px;overflow:hidden;border-radius:9px 6px 10px 7px;box-shadow:inset 0 0 0 3px var(--ink);background:#e2d8b8}
-body[data-state="in-run"] .peephole{display:none}
-.peephole .night{position:absolute;inset:0;background:#1d2b3a;opacity:.3;mix-blend-mode:multiply}
-.peephole .floor{position:absolute;left:0;right:0;bottom:0;height:52px;background:#d3c49c;background-image:repeating-linear-gradient(90deg,rgba(43,36,29,.2) 0 2px,transparent 2px 44px);mix-blend-mode:multiply}
-.peephole .bigcage{position:absolute;left:180px;top:22px;width:420px;height:150px;background:#e3d6b2;border-radius:8px 6px 9px 7px;box-shadow:inset 0 0 0 3px var(--ink);overflow:hidden}
-@media (max-width:900px){.peephole .bigcage{left:14px;width:calc(100% - 28px)}.peephole .days{display:none}}
-.peephole .bigcage .bars{position:absolute;inset:14px 0 0;background-image:repeating-linear-gradient(90deg,var(--ink) 0 3px,transparent 3px 26px);opacity:.8}
-.peephole .bigcage .blanket,.peephole .bigcage .blanket2{position:absolute;left:-10px;top:-14px;width:440px;height:26px;border-radius:5px;transform:rotate(-1.2deg);mix-blend-mode:multiply}
-.peephole .bigcage .blanket2{opacity:.6;transform:rotate(-1.2deg) translate(3px,1px)}
-.peephole .sleeper{position:absolute;left:145px;bottom:-6px;width:160px;z-index:5}
-.peephole .sleeper img{width:100%;display:block}
-.peephole .z1,.peephole .z2{position:absolute;font-family:var(--slab);color:var(--teal);animation:fb-zz 3.6s ease-out infinite}
-.peephole .z1{left:290px;bottom:92px;font-size:17px}.peephole .z2{left:316px;bottom:86px;font-size:13px;animation-delay:1.2s}
-.peephole .tag{position:absolute;left:14px;top:10px;font-family:var(--slab);font-size:11px;letter-spacing:.12em;color:var(--tomato)}
-.peephole .says{position:absolute;left:16px;bottom:14px;font-family:var(--hand);font-size:20px;color:var(--ink);max-width:160px;line-height:1.1}
-.peephole .days{position:absolute;right:30px;top:36px;width:260px}
-.peephole .days .tag{position:static}
-.peephole .days ol{list-style:none;margin:6px 0 0;padding:0;font-family:var(--hand);font-size:19px;line-height:1.3;display:flex;flex-direction:column;gap:4px}
-.peephole .days li:nth-child(n+2){opacity:.6}
+/* end of run: the modal. A big portrait of the mood she ended in, what happened, back to the cage. */
+.endmodal{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:3vh 3vw;background:rgba(29,43,58,.42);animation:fb-fade .35s ease-out both}
+.endmodal[hidden]{display:none}
+.sheetmodal{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);width:min(1180px,100%);max-height:94vh;background:var(--paper);border-radius:12px 8px 14px 9px;box-shadow:8px 9px 0 var(--ink);overflow:hidden;animation:fb-deal .5s ease-out both}
+.sheetmodal .portrait{position:relative;min-height:0;background:#e3d6b2;box-shadow:inset -3px 0 0 var(--ink);overflow:hidden;display:flex;align-items:flex-end;justify-content:center}
+.portrait .bars{position:absolute;inset:26px 0 0;background-image:repeating-linear-gradient(90deg,var(--ink) 0 3px,transparent 3px 44px);opacity:.14}
+.portrait .blanket{position:absolute;left:-12px;right:-12px;top:-14px;height:38px;border-radius:6px;transform:rotate(-1.2deg);mix-blend-mode:multiply;opacity:.9}
+.portrait img{position:relative;width:min(92%,62vh);aspect-ratio:1;object-fit:contain;display:block;margin-bottom:-2%;z-index:2}
+.portrait .stamp{position:absolute;left:22px;top:40px;font-family:var(--slab);font-size:clamp(28px,4vw,54px);line-height:1;color:var(--tomato);transform:rotate(-4deg);mix-blend-mode:multiply;z-index:3}
+.portrait .says{position:absolute;left:24px;right:40%;top:calc(46px + clamp(28px,4vw,54px));font-family:var(--hand);font-size:clamp(20px,1.8vw,26px);line-height:1.1;color:var(--ink);z-index:3;text-shadow:0 0 6px #e3d6b2,0 0 12px #e3d6b2}
+.portrait .z1,.portrait .z2{position:absolute;font-family:var(--slab);color:var(--teal);animation:fb-zz 3.6s ease-out infinite;z-index:3}
+.portrait .z1{right:28%;top:30%;font-size:30px}.portrait .z2{right:23%;top:34%;font-size:22px;animation-delay:1.2s}
+.sheetmodal .told{display:flex;flex-direction:column;gap:10px;padding:26px 28px 24px;overflow:auto;min-height:0}
+.told .when{font-family:var(--hand);font-size:20px;color:var(--wood)}
+.told h2{margin:0;font-family:var(--slab);font-weight:400;font-size:clamp(22px,2vw,30px);line-height:1.15;text-wrap:balance;background:var(--marigold);padding:12px 15px 14px;border-radius:7px 5px 8px 5px;box-shadow:4px 5px 0 var(--ink)}
+.told .head{font-family:var(--hand);font-size:21px;color:var(--tomato);margin-top:6px}
+.learned{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:7px}
+.learned li{background:#fff9ea;padding:8px 10px;border-radius:4px 6px 4px 7px;font-size:14px;line-height:1.35;box-shadow:2px 3px 0 rgba(43,36,29,.18)}
+.learned li.combo,.learned li.habit{background:var(--marigold)}
+.learned b{font-family:var(--slab);font-weight:400;font-size:11px;letter-spacing:.06em;color:var(--tomato);margin-right:4px}
+.told .notes{display:flex;flex-wrap:wrap;gap:6px}
+.told .notes span{font-family:var(--hand);font-size:18px;background:#e7dbe2;padding:2px 10px;border-radius:12px 5px 12px 5px}
+.told .tomorrow{font-family:var(--hand);font-size:21px;line-height:1.2;color:var(--muted);border-top:2.5px dashed rgba(43,36,29,.35);padding-top:10px;margin-top:4px}
+.told .tomorrow b{color:var(--tomato)}
+.told .go{margin-top:6px;font-size:19px;padding:14px}
+@media (max-width:900px){.sheetmodal{grid-template-columns:1fr;overflow:auto}.sheetmodal .portrait{height:42vh;box-shadow:inset 0 -3px 0 var(--ink)}.portrait img{width:auto;height:100%}.sheetmodal .told{overflow:visible}}
+@media (prefers-reduced-motion:reduce){.endmodal,.sheetmodal,.portrait .z1,.portrait .z2{animation:none}}
+
+/* pre-run: a small portrait of today's mood in the pack box */
+.cagemood{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.cagemood img{width:92px;height:92px;object-fit:contain;flex:none;background:#e3d6b2;border-radius:8px 5px 9px 6px;box-shadow:inset 0 0 0 2px rgba(43,36,29,.5)}
+.cagemood span{font-family:var(--hand);font-size:19px;line-height:1.1}
 
 /* full journal */
-.journal{margin-top:16px;border-top:2.5px dashed rgba(43,36,29,.35);padding-top:10px}
+.journal{border-top:2.5px dashed rgba(43,36,29,.35);padding-top:10px}
 body[data-state="in-run"] .journal{display:none}
 .journal summary{cursor:pointer;font-family:var(--slab);font-size:12px;letter-spacing:.12em;color:var(--tomato)}
-.journal ol{margin:10px 0 0;padding-left:22px;display:flex;flex-direction:column;gap:5px;font-size:14px;line-height:1.4;max-height:320px;overflow:auto}
+.journal ol{margin:10px 0 0;padding-left:22px;display:flex;flex-direction:column;gap:5px;font-size:14px;line-height:1.4;max-height:none}
 .journal .kind{font-family:var(--hand);font-size:16px;color:var(--teal);margin-right:6px}
 .journal .kind.combo{color:var(--tomato)}.journal .kind.habit{color:var(--wood)}
 
@@ -193,3 +205,4 @@ body[data-state="in-run"] .journal{display:none}
 @keyframes fb-deal{0%{transform:translate(70px,-80px) rotate(24deg);opacity:0}70%{opacity:1}100%{transform:translate(0,0) rotate(var(--r,0deg));opacity:1}}
 @keyframes fb-pile{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-2px) rotate(1deg)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+@keyframes fb-fade{from{opacity:0}to{opacity:1}}

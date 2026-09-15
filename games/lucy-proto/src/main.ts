@@ -31,7 +31,7 @@ if (params.has("seed")) session = { seed: Number(params.get("seed")), runs: [] }
 let profile: Profile = replay(session.seed, session.runs);
 
 type Phase = "cage" | "run" | "day";
-let phase: Phase = profile.runs.length ? "day" : "cage";
+let phase: Phase = "cage"; // "day" is the end-of-run modal; a reload lands back at the cage
 let prep: ItemId[] = [];
 let god = false;
 let zoom = false;
@@ -347,7 +347,9 @@ function renderRail() {
     return;
   }
   // pre-run and post-run share the rail: what happened, her treasures, and packing the cage
-  const s = phase === "day" ? last : null;
+  const s = last;
+  const jOpen = (document.getElementById("journal") as HTMLDetailsElement | null)?.open;
+  const { pose, says } = moodPose();
   const stash = profile.stash;
   const stolenThisRun = new Set(s ? s.events.filter((e) => e.verb === "steal").map((e) => e.target) : []);
   const open = unlockedItems(profile);
@@ -360,6 +362,7 @@ function renderRail() {
       ${stash.length ? `<div class="treasures">${stash.map((t) => `<div class="${stolenThisRun.has(t.id) ? "new" : ""}"><i style="background:${INK[t.tags[0]] ?? "#8a5a2b"}"></i>${esc(shortName(t.name))}${stolenThisRun.has(t.id) ? " new" : ""}</div>`).join("")}</div>` : `<div class="mood">nothing yet. give it a run.</div>`}
     </div>
     <div class="box"><div class="head">pack the cage for run ${nextRun}</div>
+      <div class="cagemood"><img src="./sprites/mood_${pose}.png" alt="Lucy, ${pose}"><span>${esc(says)}</span></div>
       <div class="mood" style="margin-bottom:8px">${left ? `she is <b>${esc(LEFTOVER_TEXT[left.kind])}</b> (${esc(left.why)}). your prep only goes so far today.` : "she is in a perfectly ordinary mood."}</div>
       <div class="picks">${EVERYDAY_IDS.map((id) => {
         const locked = !open.includes(id);
@@ -371,19 +374,16 @@ function renderRail() {
       </div>
       <div class="hint">${esc(known)}</div>
     </div>
-    <button class="go" data-open>OPEN THE DOOR →</button>`;
-  foot.innerHTML = s
+    <button class="go" data-open>OPEN THE DOOR →</button>
+    <details class="journal" id="journal"${jOpen ? " open" : ""}>${journalHtml()}</details>`;
+  foot.innerHTML = phase === "day" && s
     ? `<div class="note">run ${s.index + 1} is over · she is asleep${s.returned.length ? ` · you put back ${esc(s.returned.map(shortName).join(", "))}` : ""}${s.arrived ? ` · new in the house: ${esc(shortName(s.arrived))}` : ""}</div>`
     : `<div class="note">the door is closed · she is waiting</div>`;
 }
 
-// ---------- post-run: findings dealt onto the house, the cage close-up, the journal ----------
+// ---------- post-run: the end-of-run modal, the journal ----------
 function renderCards() {
-  const cards = $("#cards");
-  if (phase !== "day" || !last) { cards.innerHTML = ""; return; }
-  const picks = [...last.newEntries].sort((a, b) => (a.kind === "combo" || a.kind === "habit" ? -1 : 0) - (b.kind === "combo" || b.kind === "habit" ? -1 : 0)).slice(0, 3);
-  const spots: [number, number, string][] = [[40, 330, "-4deg"], [300, 346, "2.6deg"], [560, 326, "-1.8deg"]];
-  cards.innerHTML = picks.map((e, i) => `<div class="card${e.kind !== "behaviour" ? " gold" : ""}" style="left:${spots[i][0]}px;top:${spots[i][1]}px;--r:${spots[i][2]};animation-delay:${0.1 + i * 0.25}s">${e.kind !== "behaviour" ? `<b>${e.kind.toUpperCase()} · </b>` : ""}${esc(e.text)}</div>`).join("");
+  $("#cards").innerHTML = ""; // findings live in the end-of-run modal now
 }
 
 /** The post-run portrait: one of Lucy's seven moods, chosen from what the run actually did. */
@@ -408,24 +408,47 @@ function moodPose(): { pose: MoodPose; says: string } {
   return { pose: "curious", says: "She is waiting. She knows." };
 }
 
-function renderPeephole() {
-  const left = profile.leftover;
-  const moodKey = prep.includes("bath") ? "bath" : left?.kind ?? "none";
-  const days = [...profile.runs].reverse().slice(0, 4);
+/** End of run: a big portrait of the mood she ended in, what happened, then back to the cage. */
+function renderModal() {
+  const m = $("#endModal");
+  if (phase !== "day" || !last) { m.hidden = true; m.innerHTML = ""; return; }
+  const s = last;
   const { pose, says } = moodPose();
-  const sleepy = pose === "asleep" || pose === "dozy";
-  $("#peephole").innerHTML = `<div class="night"></div><div class="floor"></div>
-    <div class="bigcage"><div class="bars"></div><div class="blanket" style="background:${MOOD_INK[moodKey].ink}"></div><div class="blanket2" style="background:repeating-linear-gradient(90deg,#d8352a 0 8px,transparent 8px 20px)"></div>
-      <div class="sleeper"><img src="./sprites/mood_${pose}.png" alt="Lucy, ${pose}"></div>
-      ${sleepy && pose === "asleep" ? `<span class="z1">z</span><span class="z2">z</span>` : ""}</div>
-    <div class="tag">ZOOMED IN · THE CAGE · ${pose.toUpperCase()}</div>
-    <div class="says">${esc(says)}</div>
-    <div class="days"><div class="tag">HER DAYS</div><ol>${days.map((d) => `<li>${d.index + 1}. ${esc(d.sentence.replace(/^Lucy /, ""))}</li>`).join("") || "<li>no days yet.</li>"}</ol></div>`;
+  const moodKey = s.prep.includes("bath") ? "bath" : s.leftoverOut?.kind ?? "none";
+  const took = s.events.filter((e) => e.verb === "steal" && e.target).map((e) => profile.stash.find((t) => t.id === e.target)).filter(Boolean) as Placed[];
+  const entries = [...s.newEntries].sort((a, b) => (b.kind !== "behaviour" ? 1 : 0) - (a.kind !== "behaviour" ? 1 : 0));
+  const notes = [
+    ...s.unlockedNow.map((u) => `unlocked: ${u}`),
+    ...(s.returned.length ? [`you put back ${s.returned.map(shortName).join(", ")}`] : []),
+    ...(s.arrived ? [`new in the house: ${shortName(s.arrived)}`] : []),
+  ];
+  const out = s.leftoverOut;
+  m.hidden = false;
+  m.innerHTML = `<div class="sheetmodal" role="dialog" aria-modal="true" aria-labelledby="endSentence">
+    <div class="portrait">
+      <div class="bars"></div><div class="blanket" style="background:${MOOD_INK[moodKey].ink}"></div>
+      <img src="./sprites/mood_${pose}.png" alt="Lucy, ${pose}">
+      ${pose === "asleep" ? `<span class="z1">z</span><span class="z2">z</span>` : ""}
+      <div class="stamp">${pose.toUpperCase()}</div>
+      <div class="says">${esc(says)}</div>
+    </div>
+    <div class="told">
+      <div class="when">run ${s.index + 1} · ${Math.round(s.ticks / 10)} seconds${s.god ? " · god mode" : ""}${s.prep.length ? ` · ${s.prep.map((i) => ITEMS[i].name.replace(/^A (handful of |wound-up |whispered )?/i, "").toLowerCase()).join(" + ")}` : ""}</div>
+      <h2 id="endSentence">${esc(s.sentence)}</h2>
+      <div class="head">what you learned${entries.length ? ` · ${entries.length} new` : ""}</div>
+      <ul class="learned">${entries.map((e) => `<li class="${e.kind}">${e.kind !== "behaviour" ? `<b>${e.kind.toUpperCase()}</b> ` : ""}${esc(e.text)}</li>`).join("") || `<li>nothing new. she did her usual. she is very consistent.</li>`}</ul>
+      ${took.length ? `<div class="head">she took</div><div class="treasures">${took.map((t) => `<div class="new"><i style="background:${INK[t.tags[0]] ?? "#8a5a2b"}"></i>${esc(shortName(t.name))}</div>`).join("")}</div>` : ""}
+      ${notes.length ? `<div class="notes">${notes.map((n) => `<span>${esc(n)}</span>`).join("")}</div>` : ""}
+      <div class="tomorrow">${out ? `tomorrow she'll be <b>${esc(LEFTOVER_TEXT[out.kind])}</b> · ${esc(out.why)}` : s.prep.includes("bath") ? "the bath washed the mood away. clean slate." : "tomorrow she'll be her ordinary self."}</div>
+      <button class="go" data-cage>BACK TO THE CAGE →</button>
+    </div>
+  </div>`;
+  (m.querySelector("[data-cage]") as HTMLButtonElement | null)?.focus();
 }
 
-function renderJournal() {
+function journalHtml() {
   const entries = [...profile.journal.values()].reverse();
-  $("#journal").innerHTML = `<summary>THE JOURNAL · ${profile.journal.size} THINGS YOU KNOW ABOUT LUCY</summary>
+  return `<summary>THE JOURNAL · ${profile.journal.size} THINGS YOU KNOW</summary>
     <ol>${entries.map((e) => `<li><span class="kind ${e.kind}">${e.kind}</span>${esc(e.text)}</li>`).join("") || "<li>nothing yet. open the door.</li>"}</ol>`;
 }
 
@@ -438,7 +461,7 @@ function renderSubline() {
 function renderAll(delta = 0) {
   document.body.dataset.state = phase === "run" ? "in-run" : phase === "day" ? "post-run" : "pre-run";
   document.body.dataset.zoom = zoom && phase === "run" ? "on" : "off";
-  renderSubline(); renderCounters(delta); buildRooms(); buildThings(); drawRoute(); renderRail(); renderCards(); renderPeephole(); renderJournal();
+  renderSubline(); renderCounters(delta); buildRooms(); buildThings(); drawRoute(); renderRail(); renderCards(); renderModal();
   if (phase !== "run") $("#alert").innerHTML = "";
 }
 
@@ -459,6 +482,12 @@ function endRun() {
   prep = prep.filter((i) => !ITEMS[i].godMode || god);
   renderAll(last.newEntries.length);
 }
+function backToCage() {
+  if (phase !== "day") return;
+  phase = "cage";
+  renderAll();
+}
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") backToCage(); });
 function autoplay(n: number) {
   for (let i = 0; i < n; i++) {
     const open = unlockedItems(profile);
@@ -489,9 +518,10 @@ document.addEventListener("click", (e) => {
       const everyday = prep.filter((x) => !ITEMS[x].godMode), extra = prep.filter((x) => ITEMS[x].godMode);
       prep = [...(everyday.includes(id) ? everyday.filter((x) => x !== id) : [...everyday, id].slice(-2)), ...extra];
     }
-    renderRail(); buildThings(); renderPeephole();
+    renderRail(); buildThings();
   } else if ("god" in d) { god = !god; if (!god) prep = prep.filter((x) => !ITEMS[x].godMode); renderRail(); buildThings(); }
   else if ("open" in d) openDoor();
+  else if ("cage" in d) backToCage();
   else if ("squeak" in d && run) { squeak(run); renderRail(); onEvents(); }
   else if (d.speed) { speed = Number(d.speed); renderRail(); }
   else if ("skip" in d && run) { while (!run.done) { prevPos = { x: run.x, y: run.y }; step(run); } endRun(); }
