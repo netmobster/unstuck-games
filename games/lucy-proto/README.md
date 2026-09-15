@@ -10,7 +10,7 @@ bun run --cwd games/lucy-proto smoke   # SEEDS=400 by default; writes reports/sm
 
 ## Decisions it's built on (Jay, 2026-09-14)
 - **Space:** the house, room by room. Rooms open as the journal grows.
-- **Prep:** up to two items; nine pairs do something neither does alone.
+- **Prep:** up to two of five everyday items; all ten pairs do something neither does alone. Plus a God Mode bath.
 - **Payoff:** her day (a log and one sentence) plus a journal of things you've learned about her. No distance, no score.
 - **Input:** one treat squeak per run. She may or may not care.
 - **After a few runs:** her stash grows, she forms habits, and moods meet habits in rituals.
