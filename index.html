@@ -253,6 +253,8 @@ footer .fine{font-size:14px;font-weight:700;color:var(--muted);text-align:right;
 @keyframes drill{0%,100%{transform:translateY(-22px)}50%{transform:translateY(26px)}}
 @keyframes launch{0%{transform:translate(-40px,20px) rotate(-20deg)}50%{transform:translate(0,-30px) rotate(0deg)}100%{transform:translate(40px,20px) rotate(35deg)}}
 @keyframes trace{0%{transform:rotate(0deg) scale(1)}50%{transform:rotate(45deg) scale(.8)}100%{transform:rotate(90deg) scale(1)}}
+/* Gargantua: a circle that deflates on itself, tries, briefly becomes enormous, deflates again */
+@keyframes deflate{0%,6%{transform:translateY(0) scale(1,1)}12%{transform:translateY(0) scale(1.05,.96)}18%{transform:translateY(0) scale(.97,1.03)}42%{transform:translateY(12px) scale(.62,.52)}58%{transform:translateY(18px) scale(.46,.36)}66%{transform:translateY(18px) scale(.5,.4)}72%{transform:translateY(-4px) scale(1.4,1.4)}78%{transform:translateY(-4px) scale(1.42,1.42)}92%{transform:translateY(16px) scale(.5,.4)}100%{transform:translateY(0) scale(1,1)}}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
 </style>
 </head>
@@ -445,10 +447,10 @@ const COPY = {
     subYesHead: "You get", subNoHead: "Never",
     subPerks: ["No ads, anywhere", "God Mode, always on", "Unrestricted progression", "All unlocks", "Bonus & experimental modes"],
     subNots: ["Pay-to-win", "Premium currency", "Energy or lives", "Pay-to-continue", "A crippled free version"],
-    gamesKicker: "ONE PLAYABLE · ONE EARLY ACCESS · ONE ALPHA · ONE NEXT UP · THREE ON DECK · FIVE ONE DAY", gamesTitle: "Games that got out.",
+    gamesKicker: "ONE PLAYABLE · ONE EARLY ACCESS · ONE ALPHA · ONE NEXT UP · THREE ON DECK · SIX ONE DAY", gamesTitle: "Games that got out.",
     nextKicker: "NEXT UP · GAME #3 · TOMBSTONE: GALÁPAGOS: MENDEL'S ESCAPE", nextHook: "A launcher game about a long animal. You don't aim Lucy. You prepare Lucy.", nextGo: "Meet Lucy →",
     deckKicker: "ON DECK", deckSub: "Next in line.", dayKicker: "ONE DAY", daySub: "Real hooks. Not yet.",
-    gamesSub: "Orbis got out first. Elsewhere is out, just not in your browser yet. Bad Monkeys is in alpha: playable, placeholder content, rough edges on purpose. Ferret Bowling is next up. The rest are working titles with real hooks: three originals, three corpses worth resurrecting, two clean mechanical specimens. Each one ships when it's fun, and not one minute before.", soon: "COMING SOON", live: "PLAY NOW", early: "EARLY ACCESS", building: "ALPHA",
+    gamesSub: "Orbis got out first. Elsewhere is out, just not in your browser yet. Bad Monkeys is in alpha: playable, placeholder content, rough edges on purpose. Ferret Bowling is next up. The rest are working titles with real hooks: four originals, three corpses worth resurrecting, two clean mechanical specimens. Each one ships when it's fun, and not one minute before.", soon: "COMING SOON", live: "PLAY NOW", early: "EARLY ACCESS", building: "ALPHA",
     manKicker: "THE FOUNDING PRINCIPLE",
     manifesto: ["Find something fun.", "Make it ours.", "Make it good.", "Don't bullshit the player.", "Ship another one."],
     faqTitle: "Questions you should be asking.",
@@ -539,6 +541,7 @@ const GAMES = [
   { name: "Chainmail", stuckName: "Dungeon Puzzle Quest: Match & Raid", font: "'MedievalSharp', cursive", size: "40px", ls: "0", bg: "#9bb7d4", fg: "#16163a", genre: "CORPSE · TRACE-COMBAT", hook: "Trace Tiles → Fight → Spend → Survive", foot: "DNA: DUNGEON RAID · MECHANIC DENSITY / STRONG CORPSE", sw: "48px", sh: "48px", sr: "10px", sc: "transparent", sb: "8px solid #16163a", anim: "trace 2s ease-in-out infinite" },
   { name: "Nerve", stuckName: "Tentacle Conquest: Empire Wars", font: "'Sniglet', cursive", size: "40px", ls: "0", bg: "#ff9fd6", fg: "#16163a", genre: "CORPSE · NODE STRATEGY", hook: "Connect → Drain → Capture → Reposition", foot: "DNA: TENTACLE WARS · PURE SYSTEM / SPRITE-NATIVE", sw: "56px", sh: "56px", sr: "50%", sc: "transparent", sb: "10px double #16163a", anim: "pulse 1.4s ease-in-out infinite" },
   { deck: true, name: "TROLLEY PROBLEM", stuckName: "Cart Rush 3D: Mega Jump", font: "'Bowlby One', cursive", size: "30px", ls: "0", bg: "#7ad7ff", fg: "#16163a", genre: "CLEAN SPECIMEN · LAUNCH LOOP", hook: "Launch → Control → Crash → Upgrade → Launch Again", foot: "DNA: SHOPPING CART HERO · TINY FOOTPRINT / PROVEN LOOP", sw: "52px", sh: "30px", sr: "6px 6px 14px 14px", sc: "#16163a", sb: "none", anim: "launch 1.8s ease-in-out infinite alternate" },
+  { name: "Gargantua", stuckName: "Pocket God Idle: Divine Pet Clicker", font: "'Cormorant Garamond', serif", size: "42px", ls: "0", bg: "#cfc8e8", fg: "#16163a", genre: "ORIGINAL · A GOD WHO FORGOT HOW", hook: "A tamagotchi god who can't stay awake. You don't feed him. You coax him.", foot: "DNA: TAMAGOTCHI × GOD TOY · EXISTENTIAL BUOYANCY", sw: "64px", sh: "64px", sr: "50%", sc: "#16163a", sb: "none", anim: "deflate 5.5s ease-in-out infinite" },
   { name: "Poke", stuckName: "God Simulator: Idle Civilization", font: "'Shrikhand', cursive", size: "40px", ls: "0", bg: "#b7e28f", fg: "#16163a", genre: "CLEAN SPECIMEN · GOD TOY", hook: "Shape World → Populate → Interfere → Discover", foot: "DNA: GODFINGER · TOYBOX / EMERGENT STORIES", sw: "64px", sh: "64px", sr: "50%", sc: "#16163a", sb: "none", anim: "squash 2.2s ease-in-out infinite" },
 ];
 
