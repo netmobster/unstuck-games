@@ -35,23 +35,25 @@ export const DOORS: { x: number; y: number; to: RoomId }[] = [
 export const CAGE = { x: 3, y: 3 };
 export const STASH = { x: 11, y: 9, label: "under the couch" };
 
-export type Thing = { id: string; name: string; room: RoomId; x: number; y: number; tags: Tag[]; stealable?: boolean; startles?: boolean };
+export type Thing = { id: string; name: string; room: RoomId; x: number; y: number; tags: Tag[]; stealable?: boolean; startles?: boolean; drag?: boolean; tip?: boolean };
 
 export const THINGS: Thing[] = [
   { id: "couch", name: "couch", room: "living", x: 11, y: 8, tags: ["soft", "hide"] },
-  { id: "rug", name: "living room rug", room: "living", x: 7, y: 6, tags: ["fabric", "soft"] },
+  { id: "rug", drag: true, name: "living room rug", room: "living", x: 7, y: 6, tags: ["fabric", "soft"] },
   { id: "remote", name: "TV remote", room: "living", x: 12, y: 3, tags: ["small", "shiny"], stealable: true },
   { id: "slipper", name: "your slipper", room: "living", x: 4, y: 9, tags: ["fabric", "small"], stealable: true },
   { id: "plant", name: "fiddle-leaf fig", room: "living", x: 2, y: 9, tags: ["hide", "food"] },
-  { id: "cushion", name: "throw cushion", room: "living", x: 9, y: 2, tags: ["fabric", "soft"] },
-  { id: "bin", name: "kitchen bin", room: "kitchen", x: 24, y: 9, tags: ["food", "noise"] },
+  { id: "wastebasket", tip: true, name: "little wastebasket", room: "living", x: 13, y: 5, tags: ["noise", "hide"] },
+  { id: "books", tip: true, name: "stack of books", room: "living", x: 5, y: 2, tags: ["hide"] },
+  { id: "cushion", drag: true, name: "throw cushion", room: "living", x: 9, y: 2, tags: ["fabric", "soft"] },
+  { id: "bin", tip: true, name: "kitchen bin", room: "kitchen", x: 24, y: 9, tags: ["food", "noise"] },
   { id: "bowl", name: "the cat's water bowl", room: "kitchen", x: 17, y: 9, tags: ["water", "food"] },
   { id: "dishtowel", name: "dish towel", room: "kitchen", x: 22, y: 2, tags: ["fabric", "small"], stealable: true },
-  { id: "bag", name: "paper grocery bag", room: "kitchen", x: 19, y: 5, tags: ["hide", "noise"] },
+  { id: "bag", tip: true, name: "paper grocery bag", room: "kitchen", x: 19, y: 5, tags: ["hide", "noise"] },
   { id: "fridge", name: "fridge", room: "kitchen", x: 25, y: 2, tags: ["noise", "warm"], startles: true },
   { id: "shoe", name: "her favourite shoe", room: "hall", x: 4, y: 14, tags: ["soft", "warm", "hide"] },
-  { id: "runner", name: "hallway runner", room: "hall", x: 12, y: 13, tags: ["fabric", "soft"] },
-  { id: "umbrella", name: "umbrella stand", room: "hall", x: 25, y: 12, tags: ["noise", "hide"] },
+  { id: "runner", drag: true, name: "hallway runner", room: "hall", x: 12, y: 13, tags: ["fabric", "soft"] },
+  { id: "umbrella", tip: true, name: "umbrella stand", room: "hall", x: 25, y: 12, tags: ["noise", "hide"] },
   { id: "boots", name: "winter boots", room: "entry", x: 26, y: 19, tags: ["hide", "fabric"] },
   { id: "keys", name: "house keys", room: "entry", x: 33, y: 17, tags: ["small", "shiny", "noise"], stealable: true },
   { id: "coat", name: "fallen scarf", room: "entry", x: 30, y: 19, tags: ["fabric", "soft", "small"], stealable: true },
@@ -59,24 +61,24 @@ export const THINGS: Thing[] = [
   { id: "sock", name: "a single sock", room: "bedroom", x: 28, y: 9, tags: ["fabric", "small"], stealable: true },
   { id: "cable", name: "phone charger", room: "bedroom", x: 34, y: 2, tags: ["small", "shiny"], stealable: true },
   { id: "tub", name: "bathtub", room: "bathroom", x: 3, y: 18, tags: ["water"] },
-  { id: "bathtowel", name: "her towel", room: "bathroom", x: 5, y: 17, tags: ["fabric", "soft", "hide"] },
-  { id: "mat", name: "bath mat", room: "bathroom", x: 7, y: 19, tags: ["fabric", "soft", "water"] },
+  { id: "bathtowel", drag: true, name: "her towel", room: "bathroom", x: 5, y: 17, tags: ["fabric", "soft", "hide"] },
+  { id: "mat", drag: true, name: "bath mat", room: "bathroom", x: 7, y: 19, tags: ["fabric", "soft", "water"] },
   { id: "duck", name: "rubber duck", room: "bathroom", x: 9, y: 17, tags: ["small", "noise", "water"], stealable: true },
   { id: "dryer", name: "dryer", room: "laundry", x: 13, y: 17, tags: ["warm", "noise"], startles: true },
-  { id: "basket", name: "laundry basket", room: "laundry", x: 17, y: 19, tags: ["fabric", "soft", "hide"] },
+  { id: "basket", tip: true, name: "laundry basket", room: "laundry", x: 17, y: 19, tags: ["fabric", "soft", "hide"] },
   { id: "sheet", name: "dryer sheet", room: "laundry", x: 21, y: 18, tags: ["fabric", "small"], stealable: true },
 ];
 
 /** Things that turn up in the house between runs (the world rng picks them, never Lucy's prep). */
 export const ARRIVALS: Omit<Thing, "x" | "y" | "room">[] = [
-  { id: "box", name: "an Amazon box", tags: ["hide", "noise"] },
+  { id: "box", tip: true, name: "an Amazon box", tags: ["hide", "noise"] },
   { id: "ribbon", name: "a curly ribbon", tags: ["fabric", "small", "shiny"], stealable: true },
   { id: "balloon", name: "a leftover balloon", tags: ["noise", "shiny"], startles: true },
   { id: "mitten", name: "one mitten", tags: ["fabric", "small", "warm"], stealable: true },
   { id: "pingpong", name: "a ping-pong ball", tags: ["small", "noise"], stealable: true },
-  { id: "tissue", name: "a crinkly tissue box", tags: ["noise", "fabric", "hide"] },
+  { id: "tissue", tip: true, name: "a crinkly tissue box", tags: ["noise", "fabric", "hide"] },
   { id: "crumbs", name: "toast crumbs", tags: ["food", "small"] },
-  { id: "hoodie", name: "a warm hoodie on the floor", tags: ["fabric", "soft", "warm"] },
+  { id: "hoodie", drag: true, name: "a warm hoodie on the floor", tags: ["fabric", "soft", "warm"] },
   { id: "bottlecap", name: "a bottle cap", tags: ["small", "shiny"], stealable: true },
   { id: "suitcase", name: "an open suitcase", tags: ["hide", "fabric", "soft"] },
 ];

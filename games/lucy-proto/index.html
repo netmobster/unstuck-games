@@ -5,26 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
     <title>Ferret Bowling: Bowling Optional Edition — rough prototype</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo:wght@400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet" />
   </head>
-  <body>
-    <header class="top">
-      <div class="brand"><b>FERRET</b> <b class="teal">BOWLING</b> <span class="ed">BOWLING OPTIONAL EDITION · ROUGH PROTOTYPE · PAINTED LUCY, PLACEHOLDER HOUSE</span></div>
-      <div class="stats" id="stats"></div>
-    </header>
-    <main class="app">
-      <section class="stage">
-        <div class="viewport">
-          <canvas id="plan" width="1584" height="968" aria-label="Lucy's house"></canvas>
-          <div class="runbar" id="runbar" hidden></div>
-          <div class="caption" id="caption" hidden></div>
+  <body data-state="pre-run">
+    <main class="desk">
+      <div class="sheet" id="sheet">
+        <div class="grain" aria-hidden="true"></div>
+        <header class="masthead">
+          <div>
+            <div class="logo">FERRET<span>BOWLING</span><i aria-hidden="true">FERRETBOWLING</i></div>
+            <div class="subline" id="subline">Bowling Optional Edition</div>
+          </div>
+          <div class="counters" id="counters"></div>
+        </header>
+        <div class="stage">
+          <div class="frame" id="frame">
+            <div class="house" id="house">
+              <div class="layer rooms" id="rooms"></div>
+              <div class="layer things" id="things"></div>
+              <svg class="layer route" id="route" aria-hidden="true"><polyline id="routeLine" /></svg>
+              <div class="layer lucy" id="lucy"><div class="shadow"></div><img id="lucyImg" alt="Lucy" /><span class="zz" id="zz">z</span><span class="bang" id="bang">!</span></div>
+              <div class="layer cards" id="cards"></div>
+            </div>
+            <div class="dim" id="dim" aria-hidden="true"></div>
+            <div class="alert" id="alert" aria-live="polite"></div>
+          </div>
+          <aside class="rail" id="rail"></aside>
         </div>
-        <div class="now" id="now"></div>
-      </section>
-      <aside class="side" id="side"></aside>
+        <div class="footline" id="footline"></div>
+        <section class="peephole" id="peephole"></section>
+        <details class="journal" id="journal"></details>
+      </div>
+      <details class="debug" id="debug"></details>
     </main>
-    <section class="book" id="book"></section>
-    <details class="debug" id="debug"></details>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

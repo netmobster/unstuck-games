@@ -48,7 +48,8 @@ const hash = (...xs: (number | string)[]) => {
 };
 
 // ---------- persistent profile (rebuilt by replaying runs) ----------
-export type Placed = Thing & { arrivedRun?: number };
+/** origin: where it was before Lucy moved it (drawn as a dashed ghost). knocked: tipped over. Both persist until you tidy. */
+export type Placed = Thing & { arrivedRun?: number; origin?: { x: number; y: number }; knocked?: boolean };
 export type JournalEntry = { key: string; run: number; text: string; kind: "combo" | "behaviour" | "habit" | "room" | "item" };
 export type Habits = { favNap: string | null; favRoom: RoomId | null; nemesis: string | null; routine: boolean };
 /** 10–20% of how the last run left her. Your prep only goes so far if she isn't in the mood. */
@@ -85,7 +86,7 @@ export const unlockedRooms = (p: Profile) => new Set(ROOMS.filter((r) => p.journ
 export const unlockedItems = (p: Profile) => EVERYDAY_IDS.filter((i) => p.journal.size >= ITEMS[i].unlockAt);
 
 // ---------- a run ----------
-export type Verb = "sniff" | "steal" | "hide" | "play" | "nap" | "fish" | "roll" | "stash" | "come" | "gift" | "startle" | "wander" | "glare" | "sulk" | "doze";
+export type Verb = "sniff" | "steal" | "hide" | "play" | "nap" | "fish" | "roll" | "stash" | "come" | "gift" | "startle" | "wander" | "glare" | "sulk" | "doze" | "drag" | "knock";
 export type RunEvent = { tick: number; verb: Verb; target?: string; room?: RoomId | null; cause: string; text: string };
 export type Action = { verb: Verb; target?: Placed; tx: number; ty: number; path: number[]; dur: number; t: number; notice: number; cause: string };
 
@@ -242,6 +243,11 @@ function choose(r: Run) {
       cands.push({ verb: r.mood.sulk ? "sulk" : "hide", target: t, tx: t.x, ty: t.y, score: s, dur: t.id === "bathtowel" ? 50 : 26, cause: t.id === "bathtowel" && r.mood.bath ? "after the bath" : tagCause(r, t) });
       if (r.mood.sulk) cands[cands.length - 1].dur = t.id === "bathtowel" ? 50 : 38;
     }
+    // Jay: pushing and tipping happen on her home turf (the living room), not everywhere
+    if (t.drag && t.room === "living" && !r.carrying && (r.visits[t.id] ?? 0) < 2)
+      cands.push({ verb: "drag", target: t, tx: t.x, ty: t.y, score: i * fresh * (r.prep.includes("sock") ? 1.2 : 0.55) * (r.mood.bath ? 1.4 : 1), dur: 16, cause: r.prep.includes("sock") ? "a wound-up sock" : "it was in the wrong place" });
+    if (t.tip && t.room === "living" && !t.knocked)
+      cands.push({ verb: "knock", target: t, tx: t.x, ty: t.y, score: i * fresh * (r.mood.speed >= 1.3 || r.leftover?.kind === "hyper" ? 1.3 : 0.5) * (r.prep.includes("squeaky") && t.tags.includes("noise") ? 1.8 : 1), dur: 10, cause: r.mood.speed >= 1.3 ? "zoomies" : r.leftover?.kind === "hyper" ? "leftover: hyper" : tagCause(r, t) });
     if (t.tags.includes("noise") || (r.combo === "sock+squeaky" && t.tags.includes("fabric") && t.tags.includes("small")))
       cands.push({ verb: "play", target: t, tx: t.x, ty: t.y, score: i * fresh * (r.combo === "sock+squeaky" && t.tags.includes("fabric") ? 2.4 : 0.9), dur: 20, cause: r.combo === "sock+squeaky" && t.tags.includes("fabric") ? "puppet show" : tagCause(r, t) });
     if (t.tags.includes("water") && (r.mood.swim || r.combo === "salmon+snacks"))
@@ -445,6 +451,33 @@ function complete(r: Run, a: Action) {
         ? "Lucy climbed into her favourite shoe for a nap she has apparently been owed since last time."
         : pick(r, ["Lucy climbed into her favourite shoe for a quick nap. Then she remembered she had things to do.", "Lucy fell asleep in her shoe for exactly one minute and woke up furious about it.", "Lucy's head is in the shoe. The rest of Lucy is asleep outside the shoe."]));
       break;
+    case "drag": {
+      if (!t) break;
+      r.touched.add(t.id);
+      const room = ROOMS.find((x) => x.id === t.room)!;
+      const taken = (x: number, y: number) => r.things.some((o) => o !== t && o.x === x && o.y === y) || (x === CAGE.x && y === CAGE.y) || (x === STASH.x && y === STASH.y);
+      for (let tries = 0; tries < 16; tries++) {
+        const dx = r.lucy.int(5) - 2, dy = r.lucy.int(5) - 2, nx = t.x + dx, ny = t.y + dy;
+        if ((dx || dy) && nx >= room.x && nx < room.x + room.w && ny >= room.y && ny < room.y + room.h && !taken(nx, ny)) {
+          if (!t.origin) t.origin = { x: t.x, y: t.y };
+          t.x = nx; t.y = ny;
+          if (t.origin.x === t.x && t.origin.y === t.y) delete t.origin; // dragged it right back
+          break;
+        }
+      }
+      say(r, "drag", t, a.cause, t.id === "bathtowel"
+        ? "Lucy dragged her towel somewhere better. Better for Lucy."
+        : pick(r, [`Lucy dragged ${the(n)} a little to the left. It is better there. She has decided.`, `Lucy rearranged ${the(n)}. Without consulting anyone.`, `Lucy tugged ${the(n)} across the floor by one corner, walking backwards the whole way.`]));
+      break;
+    }
+    case "knock":
+      if (!t) break;
+      r.touched.add(t.id);
+      t.knocked = true;
+      say(r, "knock", t, a.cause, t.id === "bin"
+        ? "Lucy tipped over the kitchen bin. Investigation ongoing."
+        : pick(r, [`Lucy knocked over ${the(n)}. She looked at it. She looked at you. No regrets.`, `${cap(the(n))} is on its side now. Lucy did that.`, `Lucy tipped ${the(n)} over to see what was inside. Nothing. She tipped it anyway.`]));
+      break;
     case "wander":
       if (r.mood.swim && r.habits.favRoom && roomAt(r.x, r.y) === r.habits.favRoom && !r.events.some((e) => e.cause === "ritual:territory-lake"))
         say(r, "wander", undefined, "ritual:territory-lake", `Lucy declared the ${roomName(r.habits.favRoom)} a lake. She is its only fish.`);
@@ -522,7 +555,7 @@ export type RunSummary = {
   leftoverIn: Leftover; leftoverOut: Leftover; god: boolean;
 };
 
-const JOURNAL_VERBS: Verb[] = ["steal", "hide", "sulk", "play", "fish", "roll", "startle", "glare", "gift", "nap", "doze"];
+const JOURNAL_VERBS: Verb[] = ["steal", "hide", "sulk", "play", "fish", "roll", "startle", "glare", "gift", "nap", "doze", "drag", "knock"];
 
 export function finishRun(p: Profile, r: Run): RunSummary {
   const beforeRooms = unlockedRooms(p), beforeItems = unlockedItems(p);
@@ -609,6 +642,13 @@ export function finishRun(p: Profile, r: Run): RunSummary {
   // the house moves on (world rng: never depends on prep)
   const world = new Rng(hash(p.seed, r.index, "world"));
   const returned: string[] = [];
+  for (const t of p.things) {
+    if ((t.origin || t.knocked) && world.next() < 0.25) {
+      if (t.origin) { t.x = t.origin.x; t.y = t.origin.y; delete t.origin; }
+      t.knocked = false;
+      returned.push(t.name);
+    }
+  }
   p.stash = p.stash.filter((t) => {
     if (world.next() < 0.22) {
       const orig = THINGS.find((o) => o.id === t.id);

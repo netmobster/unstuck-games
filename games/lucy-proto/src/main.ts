@@ -1,12 +1,15 @@
-// Lucy — rough playable prototype. Top-down house plan (placeholder), real deterministic sim underneath.
+// Ferret Bowling: Bowling Optional Edition — rough prototype.
+// CD's risograph dollhouse (design/cd-game-ui-template.html) drawn from the real sim, painted Lucy on top.
+// States: pre-run (pack the cage) · in-run (whole house + rail, or zoomed close with the chrome gone) · post-run (lamps on).
 // Prepare Lucy. Open the door. Get out of the way.
 import "./style.css";
-import { CAGE, DOORS, H, ROOMS, STASH, W, type RoomId } from "./house";
+import { CAGE, DOORS, ROOMS, STASH, THINGS, W, H, type RoomId, type Tag } from "./house";
 import {
   COMBOS, EVERYDAY_IDS, ITEMS, LEFTOVER_TEXT, comboKey, finishRun, replay, squeak, startRun, step, the, unlockedItems, unlockedRooms,
-  type ItemId, type Profile, type Run, type RunSpec, type RunSummary,
+  type ItemId, type Placed, type Profile, type Run, type RunEvent, type RunSpec, type RunSummary,
 } from "./sim";
 
+// ---------- session ----------
 type Session = { seed: number; runs: RunSpec[] };
 const KEY = "lucy:session";
 const load = (): Session => {
@@ -14,9 +17,8 @@ const load = (): Session => {
     const v = localStorage.getItem(KEY);
     if (v) {
       const s = JSON.parse(v) as Session;
-      // sessions saved before a design change (e.g. the old warm-towel item) can't replay; start that Lucy over
       if (s.runs.every((r) => r.prep.every((i) => i in ITEMS))) return s;
-      return { seed: s.seed, runs: [] };
+      return { seed: s.seed, runs: [] }; // saved before a design change: start that Lucy over
     }
   } catch { /* private mode */ }
   return { seed: (Math.random() * 2 ** 31) | 0, runs: [] };
@@ -29,129 +31,129 @@ if (params.has("seed")) session = { seed: Number(params.get("seed")), runs: [] }
 let profile: Profile = replay(session.seed, session.runs);
 
 type Phase = "cage" | "run" | "day";
-let phase: Phase = "cage";
+let phase: Phase = profile.runs.length ? "day" : "cage";
 let prep: ItemId[] = [];
-let god = false; // God Mode preview: no ads in the prototype
+let god = false;
+let zoom = false;
 let run: Run | null = null;
-let last: RunSummary | null = null;
-let speed = 1; // ticks per 100ms
-let prevPos = { x: CAGE.x, y: CAGE.y }, tickFrac = 0;
+let last: RunSummary | null = profile.runs.at(-1) ?? null;
+let speed = 1;
+let prevPos = { x: CAGE.x, y: CAGE.y }, tickFrac = 0, facing = -Math.PI / 2;
 
 const $ = <T extends HTMLElement>(s: string) => document.querySelector(s) as T;
 const esc = (s: string) => String(s).replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]!));
+const T = 24; // house px per tile: the house is 864×528
+const px = (tile: number) => tile * T + T / 2;
 
-// ---------- canvas ----------
-const cv = $<HTMLCanvasElement>("#plan");
-const ctx = cv.getContext("2d")!;
-const T = 22;
-const TAG_COLOR: Record<string, string> = { fabric: "#c98bb0", food: "#e0a44a", soft: "#b9c7a3", hide: "#8f8a7c", noise: "#7aa6c9", shiny: "#e7c948", water: "#6fb7d4", warm: "#e08466", small: "#c7a17a" };
+// ---------- CD's inks and paper ----------
+const INK: Record<Tag, string> = { fabric: "#b98bbf", food: "#c67139", soft: "#7a8a5e", hide: "#c9a06a", noise: "#5b8fa8", shiny: "#ffd23f", water: "#5b8fa8", warm: "#d8352a", small: "#8a5a2b" };
+const FLOOR: Record<RoomId, { bg: string; tex: string }> = {
+  living: { bg: "#eadfc0", tex: "repeating-linear-gradient(91deg,rgba(138,90,43,.22) 0 2px,transparent 2px 25px)" },
+  kitchen: { bg: "#e4e6cd", tex: "repeating-conic-gradient(rgba(122,138,94,.3) 0% 25%,transparent 0% 50%) 0 0/26px 26px" },
+  bedroom: { bg: "#e7dbe2", tex: "radial-gradient(rgba(185,139,191,.25) 1px,transparent 1.5px) 0 0/14px 14px" },
+  hall: { bg: "#e6dcc0", tex: "repeating-linear-gradient(89deg,rgba(138,90,43,.2) 0 2px,transparent 2px 22px)" },
+  bathroom: { bg: "#dde6e2", tex: "linear-gradient(rgba(91,143,168,.18) 1px,transparent 1px) 0 0/18px 18px,linear-gradient(90deg,rgba(91,143,168,.18) 1px,transparent 1px) 0 0/18px 18px" },
+  laundry: { bg: "#e5e1ea", tex: "repeating-linear-gradient(45deg,rgba(185,139,191,.14) 0 3px,transparent 3px 12px)" },
+  entry: { bg: "#e9e1cb", tex: "repeating-linear-gradient(0deg,rgba(43,36,29,.08) 0 2px,transparent 2px 16px)" },
+};
+const MOOD_INK: Record<string, { ink: string; word: string }> = {
+  none: { ink: "#7a8a5e", word: "content today" },
+  hyper: { ink: "#ffd23f", word: "wired today" },
+  sleepy: { ink: "#0f5c57", word: "dozy today" },
+  grudgy: { ink: "#d8352a", word: "not speaking to you" },
+  bath: { ink: "#b98bbf", word: "damp and delighted" },
+};
+/** hand-cut edges: asymmetric radii, seeded per element so a room keeps its shape forever */
+const radii = (id: string, big = 11) => {
+  let h = 2166136261;
+  for (const c of id) { h ^= c.charCodeAt(0); h = Math.imul(h, 16777619) >>> 0; }
+  const r = (k: number) => 4 + ((h >>> (k * 5)) % (big - 3));
+  return `${r(0)}px ${r(1)}px ${r(2)}px ${r(3)}px`;
+};
+const shortName = (n: string) => n.replace(/^(a|an|the|your|her|one) /i, "");
 
-// three states: before the run the whole house; during the run the camera stays close on Lucy and the UI
-// gets out of the way; after the nap it pulls back out to the whole house for the day card
-const cam = { x: (W * T) / 2, y: (H * T) / 2, z: 1 };
-const RUN_ZOOM = 2.6;
-function updateCamera() {
-  const base = cv.width / (W * T);
-  let tx = (W * T) / 2, ty = (H * T) / 2, tz = 1;
-  if (phase === "run" && run) {
-    const f = Math.min(1, tickFrac);
-    tx = (prevPos.x + (run.x - prevPos.x) * f) * T + T / 2;
-    ty = (prevPos.y + (run.y - prevPos.y) * f) * T + T / 2;
-    tz = RUN_ZOOM;
-    const halfW = (W * T) / (2 * tz), halfH = (H * T) / (2 * tz); // keep the house on screen
-    tx = Math.max(halfW, Math.min(W * T - halfW, tx));
-    ty = Math.max(halfH, Math.min(H * T - halfH, ty));
-  }
-  const k = phase === "run" ? 0.12 : 0.07;
-  cam.x += (tx - cam.x) * k; cam.y += (ty - cam.y) * k; cam.z += (tz - cam.z) * k;
-  const s = base * cam.z;
-  ctx.setTransform(s, 0, 0, s, cv.width / 2 - cam.x * s, cv.height / 2 - cam.y * s);
-}
-
-function draw(now: number) {
+// ---------- the house (rebuilt when it changes, never per frame) ----------
+function buildRooms() {
   const unlocked = run ? run.unlocked : unlockedRooms(profile);
-  const things = run ? run.things : profile.things;
-  const stashN = run ? run.stash.length : profile.stash.length;
-  ctx.setTransform(1, 0, 0, 1, 0, 0);
-  ctx.fillStyle = "#fbf8ef"; ctx.fillRect(0, 0, cv.width, cv.height);
-  updateCamera();
-  ctx.fillStyle = "#fbf8ef"; ctx.fillRect(0, 0, W * T, H * T);
-
+  const known = profile.journal.size;
+  let html = "";
   for (const r of ROOMS) {
     const open = unlocked.has(r.id);
-    ctx.fillStyle = open ? r.floor : "#d9d4c8";
-    ctx.fillRect(r.x * T, r.y * T, r.w * T, r.h * T);
+    const style = `left:${r.x * T}px;top:${r.y * T}px;width:${r.w * T}px;height:${r.h * T}px;border-radius:${radii(r.id)};`;
     if (!open) {
-      ctx.save(); ctx.beginPath(); ctx.rect(r.x * T, r.y * T, r.w * T, r.h * T); ctx.clip();
-      ctx.strokeStyle = "rgba(27,26,23,.18)"; ctx.lineWidth = 2;
-      for (let k = -r.h * T; k < r.w * T; k += 12) { ctx.beginPath(); ctx.moveTo(r.x * T + k, r.y * T + r.h * T); ctx.lineTo(r.x * T + k + r.h * T, r.y * T); ctx.stroke(); }
-      ctx.restore();
+      const left = r.unlockAt - known;
+      html += `<div class="room locked" style="${style}"><div class="tex"></div><span class="lock">${esc(r.name.toLowerCase())}<small class="${phase === "day" && left <= 5 ? "close" : ""}">${phase === "day" ? `${left} more to go` : `opens at ${r.unlockAt} known`}</small></span></div>`;
+      continue;
     }
-    ctx.strokeStyle = "#1b1a17"; ctx.lineWidth = 3; ctx.strokeRect(r.x * T, r.y * T, r.w * T, r.h * T);
-    ctx.fillStyle = open ? "rgba(27,26,23,.55)" : "rgba(27,26,23,.7)";
-    ctx.font = "700 11px 'Courier Prime', monospace";
-    ctx.fillText(open ? r.name.toUpperCase() : `${r.name.toUpperCase()} · OPENS AT ${r.unlockAt} JOURNAL ENTRIES`, r.x * T + 6, r.y * T + 14);
+    const f = FLOOR[r.id];
+    html += `<div class="room" style="${style}background:${f.bg};"><div class="tex" style="background:${f.tex}"></div>${r.id === "living" ? `<div class="sun"></div><div class="dust" style="left:150px;top:30px"></div><div class="dust" style="left:210px;top:70px;animation-delay:3s"></div>` : ""}<div class="name">${esc(r.name.toUpperCase())}</div></div>`;
   }
   for (const d of DOORS) {
-    const open = unlocked.has(d.to);
-    ctx.fillStyle = open ? "#efe3cf" : "#8a5a2b";
-    ctx.fillRect(d.x * T + 2, d.y * T + 2, T - 4, T - 4);
+    if (!unlocked.has(d.to)) continue;
+    const vertical = ROOMS.some((r) => r.id === "hall" && (d.y === r.y - 1 || d.y === r.y + r.h));
+    const bg = FLOOR[d.to === "kitchen" && d.x === 15 ? "living" : "hall"].bg;
+    html += vertical
+      ? `<div class="door" style="left:${d.x * T + 3}px;top:${d.y * T - 4}px;width:${T - 6}px;height:${T + 8}px;background:${bg}"></div>`
+      : `<div class="door" style="left:${d.x * T - 4}px;top:${d.y * T + 3}px;width:${T + 8}px;height:${T - 6}px;background:${bg}"></div>`;
   }
-  // cage
-  ctx.strokeStyle = "#1b1a17"; ctx.lineWidth = 2;
-  ctx.strokeRect((CAGE.x - 1) * T + 4, (CAGE.y - 1) * T + 4, T * 2 - 8, T * 2 - 8);
-  for (let i = 1; i < 4; i++) { ctx.beginPath(); ctx.moveTo((CAGE.x - 1) * T + 4 + i * 9, (CAGE.y - 1) * T + 4); ctx.lineTo((CAGE.x - 1) * T + 4 + i * 9, (CAGE.y + 1) * T - 4); ctx.stroke(); }
-  label("cage", (CAGE.x - 1) * T + 4, (CAGE.y + 1) * T + 10);
-  // stash
-  ctx.fillStyle = "#ffd23f"; ctx.beginPath(); ctx.arc(STASH.x * T + T / 2, STASH.y * T + T / 2, 7, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
-  label(`treasure ×${stashN}`, STASH.x * T - 10, STASH.y * T + T + 8);
+  $("#rooms").innerHTML = html;
+}
 
-  // things
+function thingShape(t: Placed) {
+  const ink = INK[t.tags[0]] ?? "#8a5a2b";
+  if (t.stealable) return { w: 16, h: 10, css: `background:${ink};border-radius:5px 3px 4px 3px;` };
+  if (t.drag) return { w: t.id === "runner" ? 110 : 52, h: t.id === "runner" ? 20 : 26, css: `background:${ink};border-radius:${radii(t.id, 9)};background-image:repeating-linear-gradient(45deg,rgba(242,234,211,.45) 0 4px,transparent 4px 11px);` };
+  if (t.tags.includes("water")) return { w: 26, h: 14, css: `background:${ink};border-radius:0 0 13px 13px;` };
+  if (t.id === "couch" || t.id === "bed") return { w: t.id === "bed" ? 70 : 84, h: t.id === "bed" ? 50 : 34, css: `background:${t.id === "bed" ? "#f2ead3" : "#c67139"};border-radius:${radii(t.id)};` };
+  if (t.id === "fridge" || t.id === "dryer") return { w: 34, h: 44, css: `background:#f2ead3;border-radius:${radii(t.id, 7)};` };
+  if (t.tip) return { w: 26, h: 30, css: `background:${ink};border-radius:2px 3px 7px 6px;` };
+  return { w: 28, h: 24, css: `background:${ink};border-radius:${radii(t.id, 8)};` };
+}
+
+function buildThings() {
+  const unlocked = run ? run.unlocked : unlockedRooms(profile);
+  const things = run ? run.things : profile.things;
+  const stash = run ? run.stash : profile.stash;
+  const thisRun = run ? run.index : (last?.index ?? -1);
+  let html = "";
+  // dashed ghosts: where moved things were, and where stolen things used to live
+  for (const t of things) if (t.origin && unlocked.has(t.room)) {
+    const s = thingShape(t);
+    html += `<div class="ghost" style="left:${px(t.origin.x)}px;top:${px(t.origin.y)}px;width:${s.w}px;height:${s.h}px;border-radius:${radii(t.id, 9)}"></div>`;
+  }
+  for (const st of stash) {
+    const home = THINGS.find((o) => o.id === st.id);
+    if (!home || !unlocked.has(home.room)) continue;
+    html += `<div class="ghost" style="left:${px(home.x)}px;top:${px(home.y)}px;width:16px;height:10px;border-radius:5px 3px 4px 3px"></div><div class="thing" style="left:${px(home.x)}px;top:${px(home.y) + 2}px"><div class="label red">${esc(shortName(home.name))}: gone</div></div>`;
+  }
   for (const t of things) {
     if (!unlocked.has(t.room)) continue;
-    const x = t.x * T + T / 2, y = t.y * T + T / 2;
-    ctx.fillStyle = TAG_COLOR[t.tags[0]] ?? "#bbb";
-    ctx.strokeStyle = "#1b1a17"; ctx.lineWidth = 1.5;
-    if (t.stealable) { ctx.beginPath(); ctx.arc(x, y, 6, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
-    else { ctx.beginPath(); ctx.roundRect(x - 9, y - 7, 18, 14, 3); ctx.fill(); ctx.stroke(); }
-    label(t.name.replace(/^(a|an|the|your|one) /i, ""), x - 20, y + 17, t.arrivedRun !== undefined ? "#d8352a" : "rgba(27,26,23,.75)");
+    const s = thingShape(t);
+    const fresh = t.arrivedRun !== undefined && t.arrivedRun >= thisRun - 1;
+    const label = t.knocked ? `${shortName(t.name)}: knocked over` : t.origin ? `↖ she dragged this` : t.id === "shoe" ? "HER shoe" : t.id === "bathtowel" ? "HER towel" : shortName(t.name);
+    const cls = t.knocked || t.origin ? "red" : fresh ? "teal" : "";
+    html += `<div class="thing${t.knocked ? " knocked" : ""}${fresh ? " new" : ""}" style="left:${px(t.x)}px;top:${px(t.y)}px"><div class="shape" style="width:${s.w}px;height:${s.h}px;${s.css}"></div><div class="label ${cls}">${esc(label)}${fresh ? " — new!" : ""}</div></div>`;
   }
-
-  if (!run) {
-    drawLucy(CAGE.x + 0.6, CAGE.y + 0.2, -Math.PI / 2, now, phase === "day" ? "nap" : "idle");
-    return;
-  }
-  // trail: CD's dashed red route
-  ctx.strokeStyle = "rgba(216,53,42,.55)"; ctx.lineWidth = 2.5; ctx.setLineDash([6, 5]);
-  ctx.beginPath();
-  run.trail.slice(-160).forEach(([tx, ty], i) => { const px = tx * T + T / 2, py = ty * T + T / 2; i ? ctx.lineTo(px, py) : ctx.moveTo(px, py); });
-  ctx.stroke(); ctx.setLineDash([]);
-
-  const f = Math.min(1, tickFrac);
-  const lx = prevPos.x + (run.x - prevPos.x) * f, ly = prevPos.y + (run.y - prevPos.y) * f;
-  if (run.x !== prevPos.x || run.y !== prevPos.y) facing = Math.atan2(run.y - prevPos.y, run.x - prevPos.x);
-  drawLucy(lx, ly, facing, now, poseFor(run));
+  // the cage, with her mood as the blanket
+  const moodKey = run?.mood.bath || (!run && prep.includes("bath")) ? "bath" : (run ? run.leftover : profile.leftover)?.kind ?? "none";
+  const m = MOOD_INK[moodKey];
+  html += `<div class="cage" style="left:${px(CAGE.x) - 31}px;top:${px(CAGE.y) - 30}px"><div class="bars"></div><div class="blanket" style="background:${m.ink}"></div><div class="blanket2" style="background:repeating-linear-gradient(90deg,#d8352a 0 5px,transparent 5px 13px)"></div></div>
+    <div class="cage-label" style="left:${px(CAGE.x) - 36}px;top:${px(CAGE.y) + 30}px">cage — <span>${esc(m.word)}</span></div>`;
+  // the hoard under the couch
+  const shown = stash.slice(0, 6);
+  html += `<div class="hoard" style="left:${px(STASH.x) - 34}px;top:${px(STASH.y) - 4}px">${shown.map((t) => `<i style="width:${12 + (t.name.length % 6)}px;height:${7 + (t.name.length % 4)}px;background:${INK[t.tags[0]] ?? "#8a5a2b"}"></i>`).join("")}</div>
+    ${stash.length ? `<div class="hoard-label" style="left:${px(STASH.x) - 40}px;top:${px(STASH.y) + 10}px">her treasures ×${stash.length}</div>` : ""}`;
+  $("#things").innerHTML = html;
 }
 
-function label(s: string, x: number, y: number, color = "rgba(27,26,23,.75)") {
-  ctx.font = "700 9.5px 'Courier Prime', monospace"; ctx.fillStyle = color; ctx.fillText(s, x, y);
-}
-
-// ---------- Lucy's sprites (red team v1 sheet, sliced by scripts/slice_sprites.py) ----------
-// Painted Lucy on a code-drawn house: the duality is the joke. Cells are 512px, sprites face north.
+// ---------- Lucy (painted, top-down sheet) ----------
 type Pose = "idle" | "walk" | "zoom" | "swim" | "sniff" | "notice" | "wardance" | "hide" | "curl" | "nap";
 const FRAMES: Record<string, string[]> = {
   walk: ["walk_1", "walk_2", "walk_3", "walk_4"], zoom: ["zoom_1", "zoom_2", "zoom_3", "zoom_4"],
   sniff: ["sniff_1", "sniff_2"], wardance: ["wardance_1", "wardance_2", "wardance_3"], curl: ["curl_1", "curl_2"], hide: ["hide"],
 };
-const SPRITES = new Map<string, HTMLImageElement>();
-for (const names of Object.values(FRAMES)) for (const n of names) {
-  const img = new Image(); img.src = `./sprites/top_${n}.png`; SPRITES.set(n, img);
-}
-const spritesReady = () => [...SPRITES.values()].every((i) => i.complete && i.naturalWidth > 0);
-let facing = -Math.PI / 2;
+for (const names of Object.values(FRAMES)) for (const n of names) { const i = new Image(); i.src = `./sprites/top_${n}.png`; }
 
-/** Which animation a moment of the sim gets. Every sim verb maps to one of six sheets. */
 function poseFor(r: Run): Pose {
   if (r.done) return "nap";
   const a = r.action;
@@ -163,211 +165,296 @@ function poseFor(r: Run): Pose {
     return "walk";
   }
   switch (a.verb) {
-    case "play": case "roll": case "come": return "wardance";
+    case "play": case "roll": case "come": case "knock": return "wardance";
     case "hide": case "sulk": return "hide";
     case "doze": return "curl";
     case "glare": return "idle";
-    default: return "sniff"; // sniff, fish, steal, stash, gift
+    default: return "sniff";
   }
 }
 
-function drawLucy(tx: number, ty: number, ang: number, now: number, pose: Pose) {
-  const x = tx * T + T / 2, y = ty * T + T / 2;
-  const sleeping = pose === "nap" || pose === "curl";
-  // soft shadow drawn in code (sprites ship without one)
-  ctx.fillStyle = "rgba(27,26,23,.22)";
-  ctx.beginPath(); ctx.ellipse(x + 2, y + 4, sleeping ? 15 : 12, sleeping ? 11 : 7, 0, 0, Math.PI * 2); ctx.fill();
-
-  if (spritesReady()) {
-    const sheet = pose === "idle" ? "walk" : pose === "notice" ? "sniff" : pose === "swim" ? "zoom" : pose === "nap" ? "curl" : pose;
-    const frames = FRAMES[sheet];
-    const ms = sheet === "zoom" ? 70 : sheet === "walk" ? 120 : sheet === "wardance" ? 110 : sheet === "curl" ? 900 : 320;
-    const still = pose === "idle" || pose === "notice" || pose === "hide";
-    const img = SPRITES.get(frames[still ? 0 : Math.floor(now / ms) % frames.length])!;
-    const size = 64; // a 512 cell drawn at 64px: walking Lucy is ~2.5 tiles nose to tail
-    ctx.save(); ctx.translate(x, y);
-    if (sheet === "walk" || sheet === "zoom" || sheet === "hide") ctx.rotate(ang + Math.PI / 2); // sheet faces north
-    else if (sheet === "sniff") ctx.rotate(ang - Math.PI / 2); // the sniff frames face south
-    else if (sheet === "wardance" && Math.cos(ang) < 0) ctx.scale(-1, 1); // hops toward where she was heading
-    if (pose === "swim") ctx.scale(1.25, 0.85); // flat as a pancake, doing the breaststroke
-    ctx.drawImage(img, -size / 2, -size / 2, size, size);
-    ctx.restore();
+function drawLucy(now: number) {
+  const el = $("#lucy"), img = $<HTMLImageElement>("#lucyImg");
+  let x: number, y: number, pose: Pose;
+  if (run) {
+    const f = Math.min(1, tickFrac);
+    x = (prevPos.x + (run.x - prevPos.x) * f) * T + T / 2;
+    y = (prevPos.y + (run.y - prevPos.y) * f) * T + T / 2;
+    if (run.x !== prevPos.x || run.y !== prevPos.y) facing = Math.atan2(run.y - prevPos.y, run.x - prevPos.x);
+    pose = poseFor(run);
   } else {
-    ctx.fillStyle = "#6b4a33"; ctx.strokeStyle = "#1b1a17"; ctx.lineWidth = 1.5;
-    ctx.beginPath(); ctx.arc(x, y, sleeping ? 10 : 8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+    x = px(CAGE.x) + 18; y = px(CAGE.y) + 4; facing = -Math.PI / 2;
+    pose = phase === "day" ? "nap" : "idle";
   }
+  const sheet = pose === "idle" ? "walk" : pose === "notice" ? "sniff" : pose === "swim" ? "zoom" : pose === "nap" ? "curl" : pose;
+  // tired Lucy (no bar): she moves slower and her frames drag
+  const tired = run && run.energy < 30 ? 1.8 : 1;
+  const ms = (sheet === "zoom" ? 70 : sheet === "walk" ? 120 : sheet === "wardance" ? 110 : sheet === "curl" ? 900 : 320) * tired;
+  const still = pose === "idle" || pose === "notice" || pose === "hide";
+  const frames = FRAMES[sheet];
+  const src = `./sprites/top_${frames[still ? 0 : Math.floor(now / ms) % frames.length]}.png`;
+  if (!img.src.endsWith(src.slice(1))) img.src = src;
+  let rot = 0, sx = 1, sy = 1;
+  if (sheet === "walk" || sheet === "zoom" || sheet === "hide") rot = facing + Math.PI / 2;
+  else if (sheet === "sniff") rot = facing - Math.PI / 2;
+  else if (sheet === "wardance" && Math.cos(facing) < 0) sx = -1;
+  if (pose === "swim") { sx *= 1.25; sy = 0.85; }
+  el.style.transform = `translate(${x}px,${y}px)`;
+  img.style.transform = `rotate(${rot}rad) scale(${sx},${sy})`;
+  el.classList.toggle("asleep", pose === "nap" || pose === "curl");
+  el.classList.toggle("notice", pose === "notice");
+}
 
-  ctx.font = "16px 'Alfa Slab One', serif"; ctx.fillStyle = "#d8352a";
-  if (pose === "notice") ctx.fillText("!", x - 3, y - 22);
-  if (sleeping) { ctx.fillStyle = "#0f5c57"; ctx.fillText("z", x + 12 + Math.sin(now / 500) * 2, y - 14); ctx.font = "11px 'Alfa Slab One', serif"; ctx.fillText("z", x + 21, y - 24 + Math.sin(now / 400) * 2); }
+function drawRoute() {
+  const trail = run ? run.trail : last?.trail ?? [];
+  $("#routeLine").setAttribute("points", trail.map(([tx, ty]) => `${px(tx)},${px(ty)}`).join(" "));
+}
+
+// ---------- camera: one house, two distances ----------
+function placeHouse() {
+  const frame = $("#frame"), house = $("#house");
+  const fw = frame.clientWidth, fh = frame.clientHeight;
+  const fit = Math.min(fw / 864, fh / 528);
+  if (!zoom || !run) { house.style.transform = `translate(${(fw - 864 * fit) / 2}px,${(fh - 528 * fit) / 2}px) scale(${fit})`; return; }
+  const z = Math.max(fit * 2.6, fw / 864);
+  const f = Math.min(1, tickFrac);
+  const lx = (prevPos.x + (run.x - prevPos.x) * f) * T + T / 2, ly = (prevPos.y + (run.y - prevPos.y) * f) * T + T / 2;
+  const tx = Math.min(0, Math.max(fw - 864 * z, fw / 2 - lx * z));
+  const ty = Math.min(0, Math.max(fh - 528 * z, fh / 2 - ly * z));
+  house.style.transform = `translate(${tx}px,${ty}px) scale(${z})`;
+}
+
+// ---------- alerts: only the outrageous, and rationed ----------
+let lastAlert = -1e9;
+function alertFor(e: RunEvent): string | null {
+  const n = e.target ? shortName((run?.things.concat(run.stash).find((t) => t.id === e.target)?.name) ?? e.target).toUpperCase() : "";
+  if (e.verb === "steal") return e.target === "slipper" ? "SHE HAS YOUR SLIPPER" : `SHE HAS THE ${n}`;
+  if (e.verb === "knock") return `THE ${n} IS DOWN`;
+  if (e.verb === "drag") return `THE ${n} HAS MOVED`;
+  if (e.verb === "gift") return "YOU ARE FORGIVEN";
+  if (e.verb === "startle") return `AMBUSHED BY THE ${n}`;
+  if (e.cause.startsWith("ritual:")) return "THAT'S A HABIT NOW";
+  return null;
+}
+function maybeAlert(e: RunEvent) {
+  const text = alertFor(e);
+  const now = performance.now();
+  if (!text || now - lastAlert < 12000 / Math.max(1, speed / 2)) return;
+  lastAlert = now;
+  $("#alert").innerHTML = `<div class="slam"><i>${esc(text)}</i><span>${esc(text)}</span></div>`;
 }
 
 // ---------- loop ----------
-let acc = 0, lastT = performance.now();
+let acc = 0, lastT = performance.now(), seenEvents = 0;
 function frame(now: number) {
   const dt = Math.min(250, now - lastT); lastT = now;
   if (phase === "run" && run && !run.done) {
     acc += dt;
     const period = 100 / speed;
+    let changed = false;
     while (acc >= period && !run.done) {
       acc -= period;
       prevPos = { x: run.x, y: run.y };
-      const before = run.events.length;
       step(run);
-      if (run.events.length !== before) renderFeed();
+      if (run.events.length !== seenEvents) changed = true;
     }
     tickFrac = acc / period;
-    renderNow();
+    if (changed) onEvents();
+    renderStatus();
+    drawRoute();
     if (run.done) endRun();
   }
-  draw(now);
+  drawLucy(now);
+  placeHouse();
   requestAnimationFrame(frame);
 }
-requestAnimationFrame(frame);
 
-// ---------- side panel ----------
-function renderStats() {
-  const h = profile.habits;
-  const habits = [h.favNap && "a nap spot", h.favRoom && "a territory", h.nemesis && "a nemesis", h.routine && "a routine"].filter(Boolean);
-  $("#stats").innerHTML = `<span>RUNS <b>${profile.runs.length}</b></span><span>JOURNAL <b>${profile.journal.size}</b></span><span>TREASURES <b>${profile.stash.length}</b></span><span>HABITS <b>${habits.length}</b></span><span>SEED ${session.seed}</span>`;
-}
-
-function renderSide() {
-  renderStats();
-  const side = $("#side");
-  if (phase === "cage") {
-    const open = unlockedItems(profile);
-    const k = comboKey(prep);
-    const left = profile.leftover;
-    const mood = left
-      ? `<div class="mood ${left.kind}"><b>Lucy is ${esc(LEFTOVER_TEXT[left.kind])}</b><span>(${esc(left.why)}). Your prep only goes about ${Math.round(100 - left.strength * 100)}% as far today${left.kind === "grudgy" ? ", and she may ignore the squeak" : ""}.</span></div>`
-      : `<div class="mood"><b>Lucy is in a perfectly ordinary mood.</b><span>Your prep will land as intended. Probably.</span></div>`;
-    const known = k && profile.journal.has(`combo:${k}`) ? `Known combo: ${COMBOS[k].name}` : k && COMBOS[k] ? "Something might happen with these two…" : "";
-    side.innerHTML = `<div class="panel">
-      <span class="tag">1 · PREP THE CAGE · UP TO TWO</span>
-      <h2>What goes in with Lucy?</h2>
-      ${mood}
-      <div class="items">${EVERYDAY_IDS.map((id) => {
-        const locked = !open.includes(id), on = prep.includes(id);
-        return `<button class="item${on ? " on" : ""}" data-item="${id}" ${locked ? "disabled" : ""}><span><b>${esc(ITEMS[id].name)}</b></span><small>${locked ? `journal ${ITEMS[id].unlockAt}` : esc(ITEMS[id].blurb)}</small></button>`;
-      }).join("")}</div>
-      <div class="combo">${esc(known)}</div>
-      <div class="god">
-        <label><input type="checkbox" data-god ${god ? "checked" : ""}> <b>God Mode</b> <small>(one ad = one hour; free in the prototype)</small></label>
-        ${god ? `<button class="item${prep.includes("bath") ? " on" : ""}" data-item="bath"><span><b>${esc(ITEMS.bath.name)}</b></span><small>${esc(ITEMS.bath.blurb)}</small></button>` : ""}
-      </div>
-      <button class="go" data-open>Open the door →</button>
-      <span class="tag">SHE ALWAYS COMES BACK. SHE ALWAYS NAPS.</span>
-    </div>
-    ${last ? dayCard(last) : ""}`;
-  } else if (phase === "run" && run) {
-    side.innerHTML = "";
-    const bar = $("#runbar");
-    bar.innerHTML = `<button class="squeak" data-squeak ${run.squeakedAt !== null ? "disabled" : ""}>${run.squeakedAt !== null ? "Squeaked" : "Squeak"}</button>
-      ${[1, 4, 16].map((s) => `<button class="chip${speed === s ? " on" : ""}" data-speed="${s}">${s}×</button>`).join("")}<button class="chip" data-skip>skip to nap</button>`;
-    renderFeed();
-  } else if (phase === "day" && last) {
-    side.innerHTML = `${dayCard(last)}<button class="go" data-back>Back to the cage</button>`;
-  }
-}
-
-/** In-run, the only words on screen: her latest line, and why. */
-function renderFeed() {
-  const el = $("#caption");
-  if (!run || !run.events.length) { el.hidden = true; return; }
-  const e = run.events[run.events.length - 1];
-  el.hidden = false;
-  el.className = "caption" + (e.cause.startsWith("ritual:") ? " ritual" : "");
-  el.innerHTML = `${esc(e.text)}<span>because: ${esc(e.cause.replace("ritual:", "habit ritual: "))}</span>`;
-}
-
-function setState() {
-  document.body.dataset.state = phase === "run" ? "in-run" : phase === "day" ? "post-run" : "pre-run";
-  $("#runbar").hidden = phase !== "run";
-  if (phase !== "run") $("#caption").hidden = true;
-}
-
-function renderNow() {
+function onEvents() {
   if (!run) return;
-  const a = run.action;
-  const what = run.done ? "asleep" : !a ? "deciding" : a.notice ? `noticed ${a.target ? the(a.target.name) : "something"}` : a.path.length ? `heading for ${a.target ? the(a.target.name) : "somewhere"}` : `${a.verb}ing ${a.target ? the(a.target.name) : ""}`;
-  $("#now").textContent = `Lucy is ${what} · energy ${Math.max(0, Math.round(run.energy))} · ${(run.tick / 10).toFixed(0)}s`;
+  const fresh = run.events.slice(seenEvents);
+  seenEvents = run.events.length;
+  if (fresh.some((e) => ["steal", "stash", "drag", "knock", "gift"].includes(e.verb))) buildThings();
+  const stashed = fresh.find((e) => e.verb === "stash" && e.target);
+  if (stashed) {
+    const pop = document.createElement("div");
+    pop.className = "plusone"; pop.textContent = "+1";
+    pop.style.left = `${px(STASH.x) + 20}px`; pop.style.top = `${px(STASH.y) - 16}px`;
+    $("#things").appendChild(pop);
+  }
+  for (const e of fresh) maybeAlert(e);
+  renderFeed();
 }
 
-function dayCard(s: RunSummary) {
-  const extras = [...s.returned.map((n) => `You found ${the(n)} and put it back.`), ...(s.arrived ? [`Something new turned up in the house: ${s.arrived}.`] : []), ...s.unlockedNow];
-  return `<div class="day">
-    <span class="tag">${s.god ? "GOD MODE · " : ""}RUN ${s.index + 1} · ${s.prep.length ? s.prep.map((i) => ITEMS[i].name.toLowerCase()).join(" + ") : "nothing in the cage"} · ${(s.ticks / 10).toFixed(0)}s</span>
-    <div class="sentence">${esc(s.sentence)}</div>
-    ${s.newEntries.length ? `<span class="tag">NEW IN THE JOURNAL</span><ul class="new">${s.newEntries.map((e) => `<li><span class="kind ${e.kind}">${e.kind}</span>${esc(e.text)}</li>`).join("")}</ul>` : `<span class="tag">NOTHING NEW. SHE WAS VERY HERSELF.</span>`}
-    ${s.leftoverOut ? `<div class="mood ${s.leftoverOut.kind}"><b>Next time she'll be ${esc(LEFTOVER_TEXT[s.leftoverOut.kind])}</b><span>(${esc(s.leftoverOut.why)})</span></div>` : ""}
-    ${extras.length ? `<ul class="new">${extras.map((x) => `<li style="background:var(--lino)">${esc(x)}</li>`).join("")}</ul>` : ""}
-  </div>`;
-}
-
-function renderBook() {
-  const entries = [...profile.journal.values()].reverse();
+// ---------- rail + footline ----------
+function renderCounters(delta = 0) {
   const h = profile.habits;
-  const name = (id: string | null) => (id ? the(profile.things.concat(profile.stash).find((t) => t.id === id)?.name ?? id) : null);
-  const roomName = (id: RoomId | null) => (id ? ROOMS.find((r) => r.id === id)!.name.toLowerCase() : null);
-  $("#book").innerHTML = `
-    <div class="panel"><span class="tag">THE JOURNAL · ${profile.journal.size} THINGS YOU'VE LEARNED ABOUT LUCY</span>
-      <ol>${entries.map((e) => `<li><span class="kind ${e.kind}">${e.kind}</span>${esc(e.text)}</li>`).join("") || "<li>Nothing yet. Open the door.</li>"}</ol></div>
-    <div class="panel"><span class="tag">HER TREASURES · UNDER THE COUCH</span>
-      <ul>${profile.stash.map((t) => `<li>${esc(t.name)}</li>`).join("") || "<li>Empty. For now.</li>"}</ul>
-      <span class="tag">HABITS</span>
-      <ul>${[h.favNap && `Her spot: ${name(h.favNap)}`, h.favRoom && `Her territory: the ${roomName(h.favRoom)}`, h.nemesis && `Her nemesis: ${name(h.nemesis)}`, h.routine && "Routine: checks her treasures first"].filter(Boolean).map((x) => `<li>${esc(x as string)}</li>`).join("") || "<li>None yet. Habits take a few runs.</li>"}</ul></div>
-    <div class="panel"><span class="tag">HER DAYS</span>
-      <ol reversed>${[...profile.runs].reverse().map((r) => `<li>${esc(r.sentence)}</li>`).join("") || "<li>No days yet.</li>"}</ol></div>`;
+  const habits = [h.favNap, h.favRoom, h.nemesis, h.routine].filter(Boolean).length;
+  const stashN = run ? run.stash.length : profile.stash.length;
+  $("#counters").innerHTML = `<span>runs <b>${profile.runs.length}</b></span><span>known <b>${profile.journal.size}</b>${delta ? ` <em>+${delta}</em>` : ""}</span><span>treasures <b class="red">${stashN}</b></span><span>habits <b>${habits}</b></span>`;
 }
 
-function renderDebug() {
-  $("#debug").innerHTML = `<summary>PLAYTEST TOOLS</summary>
-    <div class="row">
-      <button data-auto="1">Autoplay 1 run</button><button data-auto="5">Autoplay 5 runs</button>
-      <button data-newsession>New Lucy (new seed)</button><button data-restart>Restart this seed</button><button data-copy>Copy session JSON</button>
+function nowText(r: Run) {
+  const a = r.action;
+  if (r.done) return "Asleep";
+  if (!a) return "Deciding";
+  const target = a.target ? shortName(a.target.name) : "";
+  if (a.notice) return `Noticed the ${target || "something"}`;
+  if (a.path.length) return target ? `Heading for the ${target}` : "Going somewhere, apparently";
+  const verbs: Record<string, string> = { sniff: "Sniffing", steal: "Taking", hide: "Hiding in", sulk: "Sulking behind", play: "Playing with", fish: "Fishing in", roll: "Rolling on", stash: "Checking her treasures", come: "Coming for the squeak", gift: "Bringing you something", drag: "Dragging", knock: "Knocking over", doze: "Dozing in", glare: "Glaring at", wander: "Wandering", startle: "Recovering from", nap: "Asleep on" };
+  return `${verbs[a.verb] ?? "Busy with"} ${a.verb === "stash" || a.verb === "come" || a.verb === "wander" ? "" : `the ${target}`}`.trim();
+}
+
+function controlsHtml(r: Run) {
+  return `<button class="squeak" data-squeak ${r.squeakedAt !== null ? "disabled" : ""}>${r.squeakedAt !== null ? "SQUEAKED" : "SQUEAK ×1"}</button>
+    ${[1, 4, 16].map((s) => `<button class="chip${speed === s ? " on" : ""}" data-speed="${s}">${s}×</button>`).join("")}
+    <button class="chip" data-skip>NAP →</button>`;
+}
+
+function renderStatus() {
+  if (!run) return;
+  const st = document.getElementById("statusWhat");
+  if (st) {
+    st.textContent = nowText(run);
+    $("#statusWhen").textContent = `out of your hands · ${Math.round(run.tick / 10)}s`;
+  }
+  const cap = document.getElementById("zoomWhen");
+  if (cap) cap.textContent = `${ROOMS.find((x) => x.id === (run!.rooms.size ? [...run!.rooms].at(-1) : "living"))?.name ?? ""} · ${Math.round(run.tick / 10)}s · treasures ${run.stash.length}`;
+}
+
+function renderFeed() {
+  if (!run) return;
+  const latest = run.events.slice(-4).reverse();
+  const feed = document.getElementById("feed");
+  if (feed) feed.innerHTML = latest.map((e) => `<div class="entry">${esc(e.text)}<div class="why">because: ${esc(e.cause.replace("ritual:", "habit: "))}</div></div>`).join("");
+  const ritual = [...run.events].reverse().find((e) => e.cause.startsWith("ritual:"));
+  const hc = document.getElementById("habitcard");
+  if (hc) hc.innerHTML = ritual ? `<div class="habitcard"><div class="tape"></div><div class="head">that's a habit now</div><div class="body">${esc(ritual.text)}</div></div>` : "";
+  const cap = document.getElementById("zoomCap");
+  if (cap && latest[0]) cap.innerHTML = `${esc(latest[0].text)}<small>because: ${esc(latest[0].cause.replace("ritual:", "habit: "))}</small>`;
+}
+
+function renderRail() {
+  const rail = $("#rail"), foot = $("#footline");
+  if (phase === "run" && run) {
+    rail.innerHTML = `<div class="status"><div class="when" id="statusWhen"></div><div class="what" id="statusWhat"></div></div>
+      <div class="controls">${controlsHtml(run)}</div>
+      <div class="box"><div class="head">she is doing things</div><div class="feed" id="feed"></div></div>
+      <div id="habitcard"></div>`;
+    foot.innerHTML = zoom
+      ? `<div class="cap" id="zoomCap"></div><div class="right"><span class="hand" id="zoomWhen"></span>${controlsHtml(run)}<button class="chip teal" data-zoom>← BACK OUT</button></div>`
+      : `<div class="note">whole house · everything at once</div><div class="right"><span class="hand">get closer →</span><button class="chip on" data-zoom>ZOOM</button></div>`;
+    renderStatus(); renderFeed();
+    return;
+  }
+  // pre-run and post-run share the rail: what happened, her treasures, and packing the cage
+  const s = phase === "day" ? last : null;
+  const stash = profile.stash;
+  const stolenThisRun = new Set(s ? s.events.filter((e) => e.verb === "steal").map((e) => e.target) : []);
+  const open = unlockedItems(profile);
+  const k = comboKey(prep);
+  const known = k && profile.journal.has(`combo:${k}`) ? `known combo: ${COMBOS[k].name}` : k && COMBOS[k] ? "something might happen with these two…" : "pick two. she does the rest.";
+  const left = profile.leftover;
+  const nextRun = profile.runs.length + 1;
+  rail.innerHTML = `${s ? `<div class="sentence"><div class="when">run ${s.index + 1} · ${Math.round(s.ticks / 10)} seconds${s.god ? " · god mode" : ""}</div><div class="text">${esc(s.sentence)}</div></div>` : ""}
+    <div class="box"><div class="head">her treasures — under the couch</div>
+      ${stash.length ? `<div class="treasures">${stash.map((t) => `<div class="${stolenThisRun.has(t.id) ? "new" : ""}"><i style="background:${INK[t.tags[0]] ?? "#8a5a2b"}"></i>${esc(shortName(t.name))}${stolenThisRun.has(t.id) ? " new" : ""}</div>`).join("")}</div>` : `<div class="mood">nothing yet. give it a run.</div>`}
     </div>
-    <p>Autoplay picks 1–2 random unlocked items and squeaks sometimes, like the smoke-test "explorer".</p>`;
+    <div class="box"><div class="head">pack the cage for run ${nextRun}</div>
+      <div class="mood" style="margin-bottom:8px">${left ? `she is <b>${esc(LEFTOVER_TEXT[left.kind])}</b> (${esc(left.why)}). your prep only goes so far today.` : "she is in a perfectly ordinary mood."}</div>
+      <div class="picks">${EVERYDAY_IDS.map((id) => {
+        const locked = !open.includes(id);
+        const isNew = s?.unlockedNow.some((u) => u.includes(ITEMS[id].name.toLowerCase()));
+        return `<button class="pick${prep.includes(id) ? " on" : ""}" data-item="${id}" ${locked ? "disabled" : ""}>${esc(ITEMS[id].name.replace(/^A (handful of |wound-up |whispered )?/i, "").toLowerCase())}${locked ? ` <small>at ${ITEMS[id].unlockAt} known</small>` : isNew ? " <small>new</small>" : ""}</button>`;
+      }).join("")}
+        <button class="pick god${god ? " on" : ""}" data-god>god mode</button>
+        ${god ? `<button class="pick god${prep.includes("bath") ? " on" : ""}" data-item="bath">a bath${left ? " <small>washes the mood away</small>" : ""}</button>` : ""}
+      </div>
+      <div class="hint">${esc(known)}</div>
+    </div>
+    <button class="go" data-open>OPEN THE DOOR →</button>`;
+  foot.innerHTML = s
+    ? `<div class="note">run ${s.index + 1} is over · she is asleep${s.returned.length ? ` · you put back ${esc(s.returned.map(shortName).join(", "))}` : ""}${s.arrived ? ` · new in the house: ${esc(shortName(s.arrived))}` : ""}</div>`
+    : `<div class="note">the door is closed · she is waiting</div>`;
+}
+
+// ---------- post-run: findings dealt onto the house, the cage close-up, the journal ----------
+function renderCards() {
+  const cards = $("#cards");
+  if (phase !== "day" || !last) { cards.innerHTML = ""; return; }
+  const picks = [...last.newEntries].sort((a, b) => (a.kind === "combo" || a.kind === "habit" ? -1 : 0) - (b.kind === "combo" || b.kind === "habit" ? -1 : 0)).slice(0, 3);
+  const spots: [number, number, string][] = [[40, 330, "-4deg"], [300, 346, "2.6deg"], [560, 326, "-1.8deg"]];
+  cards.innerHTML = picks.map((e, i) => `<div class="card${e.kind !== "behaviour" ? " gold" : ""}" style="left:${spots[i][0]}px;top:${spots[i][1]}px;--r:${spots[i][2]};animation-delay:${0.1 + i * 0.25}s">${e.kind !== "behaviour" ? `<b>${e.kind.toUpperCase()} · </b>` : ""}${esc(e.text)}</div>`).join("");
+}
+
+function renderPeephole() {
+  const left = profile.leftover;
+  const moodKey = prep.includes("bath") ? "bath" : left?.kind ?? "none";
+  const days = [...profile.runs].reverse().slice(0, 4);
+  const top = profile.stash[profile.stash.length - 1];
+  const says = phase === "day" ? (top ? `She is full of ${shortName(top.name)} and asleep.` : "She is asleep. Do not move her.") : "She is waiting. She knows.";
+  $("#peephole").innerHTML = `<div class="night"></div><div class="floor"></div>
+    <div class="bigcage"><div class="bars"></div><div class="blanket" style="background:${MOOD_INK[moodKey].ink}"></div><div class="blanket2" style="background:repeating-linear-gradient(90deg,#d8352a 0 8px,transparent 8px 20px)"></div>
+      <div class="sleeper"><img src="./sprites/front_asleep_placeholder.png" alt="Lucy asleep in the cage"></div>
+      <span class="z1">z</span><span class="z2">z</span></div>
+    <div class="tag">ZOOMED IN · THE CAGE</div>
+    <div class="says">${esc(says)}</div>
+    <div class="days"><div class="tag">HER DAYS</div><ol>${days.map((d) => `<li>${d.index + 1}. ${esc(d.sentence.replace(/^Lucy /, ""))}</li>`).join("") || "<li>no days yet.</li>"}</ol></div>`;
+}
+
+function renderJournal() {
+  const entries = [...profile.journal.values()].reverse();
+  $("#journal").innerHTML = `<summary>THE JOURNAL · ${profile.journal.size} THINGS YOU KNOW ABOUT LUCY</summary>
+    <ol>${entries.map((e) => `<li><span class="kind ${e.kind}">${e.kind}</span>${esc(e.text)}</li>`).join("") || "<li>nothing yet. open the door.</li>"}</ol>`;
+}
+
+function renderSubline() {
+  $("#subline").textContent = phase === "run" && run
+    ? `Bowling Optional Edition — run ${run.index + 1}${run.prep.length ? `, ${run.prep.map((i) => ITEMS[i].name.replace(/^A (handful of |wound-up |whispered )?/i, "").toLowerCase()).join(" + ")}` : ""}`
+    : phase === "day" && last ? `Bowling Optional Edition — run ${last.index + 1} is over, she is asleep` : "Bowling Optional Edition — the door is closed";
+}
+
+function renderAll(delta = 0) {
+  document.body.dataset.state = phase === "run" ? "in-run" : phase === "day" ? "post-run" : "pre-run";
+  document.body.dataset.zoom = zoom && phase === "run" ? "on" : "off";
+  renderSubline(); renderCounters(delta); buildRooms(); buildThings(); drawRoute(); renderRail(); renderCards(); renderPeephole(); renderJournal();
+  if (phase !== "run") $("#alert").innerHTML = "";
 }
 
 // ---------- actions ----------
 function openDoor() {
   run = startRun(profile, prep);
-  prevPos = { x: run.x, y: run.y }; acc = 0;
+  prevPos = { x: run.x, y: run.y }; acc = 0; seenEvents = 0; lastAlert = -1e9;
   phase = "run";
-  setState(); renderSide();
+  renderAll();
+  onEvents();
 }
 function endRun() {
   if (!run) return;
   const spec: RunSpec = { prep: run.prep, ...(run.squeakedAt !== null ? { squeakAt: run.squeakedAt } : {}) };
   last = finishRun(profile, run);
   session.runs.push(spec); persist();
-  run = null; phase = "day";
-  $("#now").textContent = "";
-  setState(); renderSide(); renderBook();
+  run = null; phase = "day"; zoom = false;
+  prep = prep.filter((i) => !ITEMS[i].godMode || god);
+  renderAll(last.newEntries.length);
 }
 function autoplay(n: number) {
   for (let i = 0; i < n; i++) {
     const open = unlockedItems(profile);
-    const r = Math.random();
     const a = open[Math.floor(Math.random() * open.length)];
     let b = open[Math.floor(Math.random() * open.length)];
     if (b === a) b = open[(open.indexOf(a) + 1) % open.length];
-    const p: ItemId[] = r < 0.7 ? [a, b] : [a];
-    if (profile.leftover?.kind === "grudgy" && Math.random() < 0.3) p.push("bath");
+    const p: ItemId[] = Math.random() < 0.7 ? [a, b] : [a];
     const squeakAt = Math.random() < 0.35 ? 60 + Math.floor(Math.random() * 500) : undefined;
     const rr = startRun(profile, p);
     while (!rr.done) { if (squeakAt !== undefined && rr.tick === squeakAt) squeak(rr); step(rr); }
     last = finishRun(profile, rr);
     session.runs.push({ prep: p, ...(squeakAt !== undefined && rr.squeakedAt !== null ? { squeakAt } : {}) });
   }
-  persist(); phase = "day"; run = null; setState(); renderSide(); renderBook();
+  persist(); phase = "day"; run = null; zoom = false; renderAll(last?.newEntries.length ?? 0);
 }
-
-document.addEventListener("change", (e) => {
-  const t = e.target as HTMLInputElement;
-  if (t.dataset.god !== undefined) { god = t.checked; if (!god) prep = prep.filter((x) => !ITEMS[x].godMode); renderSide(); }
-});
+function newLucy(seed: number) {
+  session = { seed, runs: [] }; persist(); profile = replay(seed, []); last = null; run = null; phase = "cage"; prep = []; zoom = false; renderAll();
+}
 
 document.addEventListener("click", (e) => {
   const b = (e.target as HTMLElement).closest("button");
@@ -380,17 +467,24 @@ document.addEventListener("click", (e) => {
       const everyday = prep.filter((x) => !ITEMS[x].godMode), extra = prep.filter((x) => ITEMS[x].godMode);
       prep = [...(everyday.includes(id) ? everyday.filter((x) => x !== id) : [...everyday, id].slice(-2)), ...extra];
     }
-    renderSide();
-  } else if ("open" in d) openDoor();
-  else if ("squeak" in d && run) { squeak(run); renderSide(); }
-  else if (d.speed) { speed = Number(d.speed); renderSide(); }
+    renderRail(); buildThings(); renderPeephole();
+  } else if ("god" in d) { god = !god; if (!god) prep = prep.filter((x) => !ITEMS[x].godMode); renderRail(); buildThings(); }
+  else if ("open" in d) openDoor();
+  else if ("squeak" in d && run) { squeak(run); renderRail(); onEvents(); }
+  else if (d.speed) { speed = Number(d.speed); renderRail(); }
   else if ("skip" in d && run) { while (!run.done) { prevPos = { x: run.x, y: run.y }; step(run); } endRun(); }
-  else if ("back" in d) { phase = "cage"; setState(); renderSide(); }
+  else if ("zoom" in d) { zoom = !zoom; document.body.dataset.zoom = zoom ? "on" : "off"; renderRail(); }
   else if (d.auto) autoplay(Number(d.auto));
-  else if ("newsession" in d) { session = { seed: (Math.random() * 2 ** 31) | 0, runs: [] }; persist(); profile = replay(session.seed, []); last = null; run = null; phase = "cage"; prep = []; setState(); renderSide(); renderBook(); }
-  else if ("restart" in d) { session = { seed: session.seed, runs: [] }; persist(); profile = replay(session.seed, []); last = null; run = null; phase = "cage"; prep = []; setState(); renderSide(); renderBook(); }
+  else if ("newsession" in d) newLucy((Math.random() * 2 ** 31) | 0);
+  else if ("restart" in d) newLucy(session.seed);
   else if ("copy" in d) navigator.clipboard?.writeText(JSON.stringify(session)).then(() => { b.textContent = "Copied"; });
 });
+window.addEventListener("resize", placeHouse);
 
-setState(); renderSide(); renderBook(); renderDebug();
+$("#debug").innerHTML = `<summary>playtest tools (not the game)</summary>
+  <div class="row"><button data-auto="1">Autoplay 1 run</button><button data-auto="5">Autoplay 5 runs</button><button data-newsession>New Lucy</button><button data-restart>Restart this seed</button><button data-copy>Copy session JSON</button></div>
+  <p>Seed ${session.seed}. Autoplay picks 1–2 random unlocked items and squeaks sometimes, like the smoke-test explorer.</p>`;
+
+renderAll();
+requestAnimationFrame(frame);
 void W; void H;
