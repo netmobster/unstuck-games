@@ -93,7 +93,7 @@ function draw(now: number) {
   }
 
   if (!run) {
-    drawLucy(CAGE.x, CAGE.y, 0, now, phase === "day" ? "nap" : "idle");
+    drawLucy(CAGE.x + 0.6, CAGE.y + 0.2, -Math.PI / 2, now, phase === "day" ? "nap" : "idle");
     return;
   }
   // trail: CD's dashed red route
@@ -104,30 +104,77 @@ function draw(now: number) {
 
   const f = Math.min(1, tickFrac);
   const lx = prevPos.x + (run.x - prevPos.x) * f, ly = prevPos.y + (run.y - prevPos.y) * f;
-  const ang = Math.atan2(run.y - prevPos.y, run.x - prevPos.x);
-  drawLucy(lx, ly, Number.isFinite(ang) && (run.x !== prevPos.x || run.y !== prevPos.y) ? ang : 0, now, run.done ? "nap" : run.action?.notice ? "notice" : "move");
+  if (run.x !== prevPos.x || run.y !== prevPos.y) facing = Math.atan2(run.y - prevPos.y, run.x - prevPos.x);
+  drawLucy(lx, ly, facing, now, poseFor(run));
 }
 
 function label(s: string, x: number, y: number, color = "rgba(27,26,23,.75)") {
   ctx.font = "700 9.5px 'Courier Prime', monospace"; ctx.fillStyle = color; ctx.fillText(s, x, y);
 }
 
-function drawLucy(tx: number, ty: number, ang: number, now: number, mode: "idle" | "move" | "notice" | "nap") {
-  const x = tx * T + T / 2, y = ty * T + T / 2 + (mode === "move" ? Math.sin(now / 90) * 1.5 : 0);
-  ctx.save(); ctx.translate(x, y); ctx.rotate(ang);
-  ctx.fillStyle = "rgba(27,26,23,.25)"; ctx.beginPath(); ctx.ellipse(0, 5, 14, 5, 0, 0, Math.PI * 2); ctx.fill();
-  ctx.fillStyle = "#6b4a33"; ctx.strokeStyle = "#1b1a17"; ctx.lineWidth = 1.5;
-  if (mode === "nap") { ctx.beginPath(); ctx.arc(0, 0, 10, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); }
-  else {
-    ctx.beginPath(); ctx.ellipse(-9, 0, 9, 3.5, Math.sin(now / 160) * 0.5, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); // tail
-    ctx.beginPath(); ctx.ellipse(2, 0, 11, 5.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); // body
-    ctx.fillStyle = "#e9d7b8"; ctx.beginPath(); ctx.ellipse(13, 0, 5, 4.5, 0, 0, Math.PI * 2); ctx.fill(); ctx.stroke(); // face mask
-    ctx.fillStyle = "#1b1a17"; ctx.beginPath(); ctx.arc(15, -1.8, 1.2, 0, Math.PI * 2); ctx.arc(15, 1.8, 1.2, 0, Math.PI * 2); ctx.fill();
+// ---------- Lucy's sprites (red team v1 sheet, sliced by scripts/slice_sprites.py) ----------
+// Painted Lucy on a code-drawn house: the duality is the joke. Cells are 512px, sprites face north.
+type Pose = "idle" | "walk" | "zoom" | "swim" | "sniff" | "notice" | "wardance" | "hide" | "curl" | "nap";
+const FRAMES: Record<string, string[]> = {
+  walk: ["walk_1", "walk_2", "walk_3", "walk_4"], zoom: ["zoom_1", "zoom_2", "zoom_3", "zoom_4"],
+  sniff: ["sniff_1", "sniff_2"], wardance: ["wardance_1", "wardance_2", "wardance_3"], curl: ["curl_1", "curl_2"], hide: ["hide"],
+};
+const SPRITES = new Map<string, HTMLImageElement>();
+for (const names of Object.values(FRAMES)) for (const n of names) {
+  const img = new Image(); img.src = `./sprites/top_${n}.png`; SPRITES.set(n, img);
+}
+const spritesReady = () => [...SPRITES.values()].every((i) => i.complete && i.naturalWidth > 0);
+let facing = -Math.PI / 2;
+
+/** Which animation a moment of the sim gets. Every sim verb maps to one of six sheets. */
+function poseFor(r: Run): Pose {
+  if (r.done) return "nap";
+  const a = r.action;
+  if (!a) return "idle";
+  if (a.notice > 0) return "notice";
+  if (a.path.length) {
+    if (r.mood.swim && a.verb === "wander") return "swim";
+    if (a.verb === "come" || a.cause === "startled" || r.mood.speed >= 1.35 || r.leftover?.kind === "hyper" || (r.mood.bath && r.rolls < 2)) return "zoom";
+    return "walk";
   }
-  ctx.restore();
+  switch (a.verb) {
+    case "play": case "roll": case "come": return "wardance";
+    case "hide": case "sulk": return "hide";
+    case "doze": return "curl";
+    case "glare": return "idle";
+    default: return "sniff"; // sniff, fish, steal, stash, gift
+  }
+}
+
+function drawLucy(tx: number, ty: number, ang: number, now: number, pose: Pose) {
+  const x = tx * T + T / 2, y = ty * T + T / 2;
+  const sleeping = pose === "nap" || pose === "curl";
+  // soft shadow drawn in code (sprites ship without one)
+  ctx.fillStyle = "rgba(27,26,23,.22)";
+  ctx.beginPath(); ctx.ellipse(x + 2, y + 4, sleeping ? 15 : 12, sleeping ? 11 : 7, 0, 0, Math.PI * 2); ctx.fill();
+
+  if (spritesReady()) {
+    const sheet = pose === "idle" ? "walk" : pose === "notice" ? "sniff" : pose === "swim" ? "zoom" : pose === "nap" ? "curl" : pose;
+    const frames = FRAMES[sheet];
+    const ms = sheet === "zoom" ? 70 : sheet === "walk" ? 120 : sheet === "wardance" ? 110 : sheet === "curl" ? 900 : 320;
+    const still = pose === "idle" || pose === "notice" || pose === "hide";
+    const img = SPRITES.get(frames[still ? 0 : Math.floor(now / ms) % frames.length])!;
+    const size = 64; // a 512 cell drawn at 64px: walking Lucy is ~2.5 tiles nose to tail
+    ctx.save(); ctx.translate(x, y);
+    if (sheet === "walk" || sheet === "zoom" || sheet === "hide") ctx.rotate(ang + Math.PI / 2); // sheet faces north
+    else if (sheet === "sniff") ctx.rotate(ang - Math.PI / 2); // the sniff frames face south
+    else if (sheet === "wardance" && Math.cos(ang) < 0) ctx.scale(-1, 1); // hops toward where she was heading
+    if (pose === "swim") ctx.scale(1.25, 0.85); // flat as a pancake, doing the breaststroke
+    ctx.drawImage(img, -size / 2, -size / 2, size, size);
+    ctx.restore();
+  } else {
+    ctx.fillStyle = "#6b4a33"; ctx.strokeStyle = "#1b1a17"; ctx.lineWidth = 1.5;
+    ctx.beginPath(); ctx.arc(x, y, sleeping ? 10 : 8, 0, Math.PI * 2); ctx.fill(); ctx.stroke();
+  }
+
   ctx.font = "16px 'Alfa Slab One', serif"; ctx.fillStyle = "#d8352a";
-  if (mode === "notice") ctx.fillText("!", x - 3, y - 16);
-  if (mode === "nap") { ctx.fillStyle = "#0f5c57"; ctx.fillText("z", x + 8 + Math.sin(now / 500) * 2, y - 12); ctx.font = "11px 'Alfa Slab One', serif"; ctx.fillText("z", x + 17, y - 22 + Math.sin(now / 400) * 2); }
+  if (pose === "notice") ctx.fillText("!", x - 3, y - 22);
+  if (sleeping) { ctx.fillStyle = "#0f5c57"; ctx.fillText("z", x + 12 + Math.sin(now / 500) * 2, y - 14); ctx.font = "11px 'Alfa Slab One', serif"; ctx.fillText("z", x + 21, y - 24 + Math.sin(now / 400) * 2); }
 }
 
 // ---------- loop ----------
