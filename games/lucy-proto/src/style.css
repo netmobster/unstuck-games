@@ -53,3 +53,10 @@ canvas{width:100%;height:auto;border:2.5px solid var(--ink);border-radius:4px;ba
 .debug .row{margin-top:10px}
 .debug button{border:1.5px solid var(--ink);background:var(--paper);padding:5px 9px;border-radius:2px}
 .debug pre{white-space:pre-wrap;max-height:260px;overflow:auto}
+
+.mood{display:flex;flex-direction:column;gap:2px;background:var(--paper);border:2px dashed var(--wood);padding:8px 10px;font-size:14px}
+.mood span{font-size:13px;color:var(--soft)}
+.mood.grudgy{border-color:var(--route)}.mood.hyper{border-color:var(--zoom);border-style:solid}.mood.sleepy{border-color:var(--teal)}
+.god{display:flex;flex-direction:column;gap:6px;border-top:2px solid var(--ink);padding-top:10px}
+.god label{display:flex;gap:6px;align-items:baseline;font-size:14px}
+.god small{font-family:var(--mono);font-size:11px;color:var(--wood)}

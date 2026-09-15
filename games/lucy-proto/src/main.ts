@@ -3,13 +3,24 @@
 import "./style.css";
 import { CAGE, DOORS, H, ROOMS, STASH, W, type RoomId } from "./house";
 import {
-  COMBOS, ITEMS, ITEM_IDS, comboKey, finishRun, replay, squeak, startRun, step, the, unlockedItems, unlockedRooms,
+  COMBOS, EVERYDAY_IDS, ITEMS, LEFTOVER_TEXT, comboKey, finishRun, replay, squeak, startRun, step, the, unlockedItems, unlockedRooms,
   type ItemId, type Profile, type Run, type RunSpec, type RunSummary,
 } from "./sim";
 
 type Session = { seed: number; runs: RunSpec[] };
 const KEY = "lucy:session";
-const load = (): Session => { try { const v = localStorage.getItem(KEY); if (v) return JSON.parse(v); } catch { /* private mode */ } return { seed: (Math.random() * 2 ** 31) | 0, runs: [] }; };
+const load = (): Session => {
+  try {
+    const v = localStorage.getItem(KEY);
+    if (v) {
+      const s = JSON.parse(v) as Session;
+      // sessions saved before a design change (e.g. the old warm-towel item) can't replay; start that Lucy over
+      if (s.runs.every((r) => r.prep.every((i) => i in ITEMS))) return s;
+      return { seed: s.seed, runs: [] };
+    }
+  } catch { /* private mode */ }
+  return { seed: (Math.random() * 2 ** 31) | 0, runs: [] };
+};
 const persist = () => { try { localStorage.setItem(KEY, JSON.stringify(session)); } catch { /* private mode */ } };
 
 let session = load();
@@ -20,6 +31,7 @@ let profile: Profile = replay(session.seed, session.runs);
 type Phase = "cage" | "run" | "day";
 let phase: Phase = "cage";
 let prep: ItemId[] = [];
+let god = false; // God Mode preview: no ads in the prototype
 let run: Run | null = null;
 let last: RunSummary | null = null;
 let speed = 1; // ticks per 100ms
@@ -154,15 +166,24 @@ function renderSide() {
   if (phase === "cage") {
     const open = unlockedItems(profile);
     const k = comboKey(prep);
+    const left = profile.leftover;
+    const mood = left
+      ? `<div class="mood ${left.kind}"><b>Lucy is ${esc(LEFTOVER_TEXT[left.kind])}</b><span>(${esc(left.why)}). Your prep only goes about ${Math.round(100 - left.strength * 100)}% as far today${left.kind === "grudgy" ? ", and she may ignore the squeak" : ""}.</span></div>`
+      : `<div class="mood"><b>Lucy is in a perfectly ordinary mood.</b><span>Your prep will land as intended. Probably.</span></div>`;
     const known = k && profile.journal.has(`combo:${k}`) ? `Known combo: ${COMBOS[k].name}` : k && COMBOS[k] ? "Something might happen with these two…" : "";
     side.innerHTML = `<div class="panel">
       <span class="tag">1 · PREP THE CAGE · UP TO TWO</span>
       <h2>What goes in with Lucy?</h2>
-      <div class="items">${ITEM_IDS.map((id) => {
+      ${mood}
+      <div class="items">${EVERYDAY_IDS.map((id) => {
         const locked = !open.includes(id), on = prep.includes(id);
         return `<button class="item${on ? " on" : ""}" data-item="${id}" ${locked ? "disabled" : ""}><span><b>${esc(ITEMS[id].name)}</b></span><small>${locked ? `journal ${ITEMS[id].unlockAt}` : esc(ITEMS[id].blurb)}</small></button>`;
       }).join("")}</div>
       <div class="combo">${esc(known)}</div>
+      <div class="god">
+        <label><input type="checkbox" data-god ${god ? "checked" : ""}> <b>God Mode</b> <small>(one ad = one hour; free in the prototype)</small></label>
+        ${god ? `<button class="item${prep.includes("bath") ? " on" : ""}" data-item="bath"><span><b>${esc(ITEMS.bath.name)}</b></span><small>${esc(ITEMS.bath.blurb)}</small></button>` : ""}
+      </div>
       <button class="go" data-open>Open the door →</button>
       <span class="tag">SHE ALWAYS COMES BACK. SHE ALWAYS NAPS.</span>
     </div>
@@ -198,9 +219,10 @@ function renderNow() {
 function dayCard(s: RunSummary) {
   const extras = [...s.returned.map((n) => `You found ${the(n)} and put it back.`), ...(s.arrived ? [`Something new turned up in the house: ${s.arrived}.`] : []), ...s.unlockedNow];
   return `<div class="day">
-    <span class="tag">RUN ${s.index + 1} · ${s.prep.length ? s.prep.map((i) => ITEMS[i].name.toLowerCase()).join(" + ") : "nothing in the cage"} · ${(s.ticks / 10).toFixed(0)}s</span>
+    <span class="tag">${s.god ? "GOD MODE · " : ""}RUN ${s.index + 1} · ${s.prep.length ? s.prep.map((i) => ITEMS[i].name.toLowerCase()).join(" + ") : "nothing in the cage"} · ${(s.ticks / 10).toFixed(0)}s</span>
     <div class="sentence">${esc(s.sentence)}</div>
     ${s.newEntries.length ? `<span class="tag">NEW IN THE JOURNAL</span><ul class="new">${s.newEntries.map((e) => `<li><span class="kind ${e.kind}">${e.kind}</span>${esc(e.text)}</li>`).join("")}</ul>` : `<span class="tag">NOTHING NEW. SHE WAS VERY HERSELF.</span>`}
+    ${s.leftoverOut ? `<div class="mood ${s.leftoverOut.kind}"><b>Next time she'll be ${esc(LEFTOVER_TEXT[s.leftoverOut.kind])}</b><span>(${esc(s.leftoverOut.why)})</span></div>` : ""}
     ${extras.length ? `<ul class="new">${extras.map((x) => `<li style="background:var(--lino)">${esc(x)}</li>`).join("")}</ul>` : ""}
   </div>`;
 }
@@ -254,6 +276,7 @@ function autoplay(n: number) {
     let b = open[Math.floor(Math.random() * open.length)];
     if (b === a) b = open[(open.indexOf(a) + 1) % open.length];
     const p: ItemId[] = r < 0.7 ? [a, b] : [a];
+    if (profile.leftover?.kind === "grudgy" && Math.random() < 0.3) p.push("bath");
     const squeakAt = Math.random() < 0.35 ? 60 + Math.floor(Math.random() * 500) : undefined;
     const rr = startRun(profile, p);
     while (!rr.done) { if (squeakAt !== undefined && rr.tick === squeakAt) squeak(rr); step(rr); }
@@ -263,13 +286,22 @@ function autoplay(n: number) {
   persist(); phase = "day"; run = null; renderSide(); renderBook();
 }
 
+document.addEventListener("change", (e) => {
+  const t = e.target as HTMLInputElement;
+  if (t.dataset.god !== undefined) { god = t.checked; if (!god) prep = prep.filter((x) => !ITEMS[x].godMode); renderSide(); }
+});
+
 document.addEventListener("click", (e) => {
   const b = (e.target as HTMLElement).closest("button");
   if (!b || b.disabled) return;
   const d = b.dataset;
   if (d.item) {
     const id = d.item as ItemId;
-    prep = prep.includes(id) ? prep.filter((x) => x !== id) : [...prep, id].slice(-2);
+    if (ITEMS[id].godMode) prep = prep.includes(id) ? prep.filter((x) => x !== id) : [...prep, id];
+    else {
+      const everyday = prep.filter((x) => !ITEMS[x].godMode), extra = prep.filter((x) => ITEMS[x].godMode);
+      prep = [...(everyday.includes(id) ? everyday.filter((x) => x !== id) : [...everyday, id].slice(-2)), ...extra];
+    }
     renderSide();
   } else if ("open" in d) openDoor();
   else if ("squeak" in d && run) { squeak(run); renderSide(); }

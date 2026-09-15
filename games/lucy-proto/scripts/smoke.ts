@@ -31,6 +31,12 @@ const POLICIES: Policy[] = [
   { name: "loyal (snacks + sock every time)", choose: () => ({ prep: ["snacks", "sock"] }) },
   { name: "single item", choose: (p, rng) => { const items = unlockedItems(p); return { prep: [items[rng.int(items.length)]] }; } },
   { name: "no prep, never squeaks", choose: () => ({ prep: [] }) },
+  { name: "God Mode bather (explorer + a bath whenever she's grudgy)", choose: (p, rng) => {
+    const items = unlockedItems(p);
+    const prep: ItemId[] = rng.next() < 0.7 ? pairsOf(items)[rng.int(pairsOf(items).length)] : [items[rng.int(items.length)]];
+    if (p.leftover?.kind === "grudgy") prep.push("bath");
+    return { prep, squeakAt: rng.next() < 0.35 ? 60 + rng.int(500) : undefined };
+  } },
 ];
 
 // ---------- helpers ----------
@@ -50,6 +56,7 @@ log(`# Lucy smoke — ${new Date().toISOString().slice(0, 16)}`);
 log(`${SEEDS} sessions × ${RUNS} runs × ${POLICIES.length} player styles = ${SEEDS * RUNS * POLICIES.length} runs.`);
 log();
 
+const leftoverStats: Record<string, Record<string, number>> = {};
 type PerRun = { ticks: number[]; rooms: number[]; newE: number[]; dead: number; stash: number[]; habits: number[]; journal: number[]; novelty: number[]; words: number[]; verbs: number[]; forced: number };
 const unlockRun: Record<string, Record<string, number[]>> = {};
 const comboStats: Record<string, { tried: number; fired: number }> = {};
@@ -80,6 +87,9 @@ for (const pol of POLICIES) {
       d.words.push(sum.events.reduce((w, e) => w + e.text.split(/\s+/).length, 0));
       d.verbs.push(new Set(sum.events.map((e) => e.verb)).size);
       if (sum.events.some((e) => e.cause === "fell asleep mid-thought") && sum.ticks >= MAX_TICKS) d.forced++;
+      const lk = sum.leftoverIn?.kind ?? "none";
+      (leftoverStats[pol.name] ??= {})[lk] = (leftoverStats[pol.name][lk] ?? 0) + 1;
+      if (i >= 1 && sum.leftoverIn && sum.leftoverIn.strength > 0.2) fail(`${pol.name} seed ${seed}: leftover strength ${sum.leftoverIn.strength} above 20%`);
       const k = comboKey(spec.prep);
       if (k && COMBOS[k]) { comboStats[k] ??= { tried: 0, fired: 0 }; comboStats[k].tried++; if (sum.comboFired) comboStats[k].fired++; }
       for (const rm of ROOMS) if (rm.unlockAt > 0 && p.journal.size >= rm.unlockAt && !unlockedAtStart.has(rm.id)) { unlockedAtStart.add(rm.id); (unlockRun[pol.name][rm.name] ??= []).push(i + 1); }
@@ -108,6 +118,9 @@ for (const pol of POLICIES) {
   per.forEach((d, i) => {
     log(`| ${i + 1}${i >= 4 && i <= 9 ? " ◆" : ""} | ${f1(med(d.ticks) / 10)} | ${med(d.rooms)} | ${med(d.verbs)} | ${med(d.newE)} / ${q(d.newE, 0.9)} | ${pct(d.dead, SEEDS)} | ${pct(Math.round(med(d.novelty) * 100), 100)} | ${med(d.stash)} | ${med(d.habits)} | ${med(d.journal)} | ${f1(med(d.words) / 3.3)} |`);
   });
+  const ls = leftoverStats[pol.name] ?? {};
+  const lt = Object.values(ls).reduce((a, b) => a + b, 0);
+  log(`\nMood carried in from the last run: ${["none", "hyper", "sleepy", "grudgy"].map((x) => `${x} ${pct(ls[x] ?? 0, lt)}`).join(" · ")}`);
   const u = unlockRun[pol.name];
   log();
   log(`Unlocks (median run, share of sessions that got there): ${Object.entries(u).map(([k, v]) => `${k} → run ${med(v)} (${pct(v.length, SEEDS)})`).join(" · ") || "none"}`);
@@ -127,11 +140,34 @@ log(`Same seed, same history (3 explorer runs), same run index and dice. Only th
 log(`| prep A vs prep B | what she did (distance) | rooms (distance) | where she napped differs | events explained by prep |`);
 log(`|---|---|---|---|---|`);
 const base4: ItemId[] = ["snacks", "sock", "insult", "salmon"];
+// leftover probe: same prep, same everything, but she comes in grudgy/hyper/sleepy vs. ordinary
+log(`### Leftover probe: same prep, different mood coming in`);
+log(`| prep | she came in | what she did vs. ordinary (distance) | squeak answered | nap in her shoe |`);
+log(`|---|---|---|---|---|`);
+for (const pr of [["sock"], ["snacks", "sock"], ["insult"]] as ItemId[][]) {
+  for (const kind of ["hyper", "sleepy", "grudgy"] as const) {
+    const dd: number[] = []; let sqA = 0, sqB = 0, shoe = 0; const N = Math.min(SEEDS, 200);
+    for (let s = 1; s <= N; s++) {
+      const seed = s * 15485863;
+      const pa = replay(seed, [{ prep: ["salmon"] }]), pb = replay(seed, [{ prep: ["salmon"] }]);
+      pa.leftover = null; pb.leftover = { kind, strength: 0.15, why: "probe" };
+      const a = finishRun(pa, runToEnd(startRun(pa, pr), 150));
+      const b = finishRun(pb, runToEnd(startRun(pb, pr), 150));
+      dd.push(jaccard(acts(a), acts(b)));
+      if (a.events.some((e) => e.cause === "the squeak" && e.text.includes("came")) || a.events.some((e) => e.cause === "ritual:show-and-tell")) sqA++;
+      if (b.events.some((e) => e.cause === "the squeak" && e.text.includes("came")) || b.events.some((e) => e.cause === "ritual:show-and-tell")) sqB++;
+      if (b.events.some((e) => e.target === "shoe" && (e.verb === "doze" || e.verb === "nap"))) shoe++;
+    }
+    log(`| ${pr.join(" + ")} | ${kind} | ${med(dd).toFixed(2)} | ${pct(sqA, N)} → ${pct(sqB, N)} | ${pct(shoe, N)} |`);
+  }
+}
+log();
 const twins: [ItemId[], ItemId[]][] = [
   [["snacks"], ["snacks"]],
   [["snacks"], ["sock"]], [["sock"], ["insult"]], [["insult"], ["salmon"]], [["snacks"], ["salmon"]],
   [["sock", "snacks"], ["sock", "insult"]], [["salmon", "snacks"], ["salmon", "sock"]],
   [[], ["salmon"]], [[], ["insult"]],
+  [["insult"], ["insult", "bath"]], [["sock"], ["sock", "bath"]],
 ];
 for (const [A, B] of twins) {
   const dist: number[] = [], rooms: number[] = []; let napDiff = 0; const explA: number[] = [];
