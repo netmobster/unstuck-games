@@ -28,8 +28,8 @@ Prework done before the clock (Jay with CD and red team: hero page, Lucy sprites
 | Page live + "next up" banner | ~0:20 | 2026-09-14 |
 | Teardown (Galápagos): The Mendel File, 5 parallel research agents | ~0:30 | 2026-09-14 |
 | Shape decided (house, 2 items, journal, squeak, naps) + prototype smoke-tested (24,000 runs) | ~0:50 | 2026-09-14 |
-| First Jay playtest | | |
-| First "WHAT THE FUCK, LUCY" | | |
+| First Jay playtest | ~0:55 | 2026-09-14 |
+| First "WHAT THE FUCK, LUCY" | ~0:55 | 2026-09-14: "SHE HAS A FUCKING HOARD." Run 2: sock fishing, four treasures under the couch, dish towel stuffed into her shoe ("It was always going to be a nest.") |
 | First thing Jay hates | | |
 | Ship candidate | | |
 
