@@ -38,6 +38,7 @@
       <a href="#journal" style="font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.1em;color:#2b241d;">THE JOURNAL</a>
       <a href="#treasures" style="font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.1em;color:#2b241d;">HER TREASURES</a>
       <a href="#money" style="font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.1em;color:#d8352a;">$5</a>
+      <a href="#letter" style="font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.1em;color:#0f5c57;">NEWSLETTER</a>
       <a href="../" target="_blank" rel="noopener" style="font-family:'Alfa Slab One',serif;font-size:10px;letter-spacing:.08em;background:#2b241d;color:#ffd23f;padding:6px 10px;border-radius:4px 3px 5px 3px;">UNSTUCK · GAME #3</a>
     </div>
   </div>
@@ -314,6 +315,34 @@
   </div>
 </div>
 
+<!-- ─────────── NEWSLETTER (real Kit waitlist, ../kit-waitlist.js) ─────────── -->
+<style>
+  #letterForm input{flex:1;min-width:160px;background:#fff9ea;color:#2b241d;border:2.5px solid #2b241d;border-radius:4px 3px 5px 3px;padding:12px 13px;font:inherit;font-size:16px;outline:none}
+  #letterForm input:focus{box-shadow:3px 3px 0 #ffd23f}
+  #letterForm button{font-family:'Alfa Slab One',serif;font-size:15px;padding:12px 20px;background:#0f5c57;color:#f2ead3;border:3px solid #2b241d;border-radius:6px 4px 7px 4px;box-shadow:4px 5px 0 #2b241d;cursor:pointer}
+  #letterForm button:hover{background:#d8352a}
+  #letterForm button:focus-visible{outline:2px solid #ffd23f;outline-offset:2px}
+  #letterForm a{text-decoration:underline}
+</style>
+<div id="letter" style="max-width:1180px;margin:0 auto;padding:78px 28px 0;">
+  <div style="position:relative;background:#f2ead3;border-radius:12px 8px 14px 9px;box-shadow:6px 7px 0 rgba(15,92,87,.2);padding:30px 32px;display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:30px;align-items:center;">
+    <div style="display:flex;flex-direction:column;gap:12px;">
+      <span style="font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.14em;color:#d8352a;">THE NEWSLETTER · ONE EMAIL WHEN THE DOOR OPENS</span>
+      <h2 style="font-family:'Alfa Slab One',serif;font-size:clamp(26px,3.2vw,38px);line-height:1.05;margin:0;text-wrap:balance;">Lucy is nearly ready. She has not been told.</h2>
+      <p style="font-size:17px;line-height:1.5;margin:0;color:#5b5346;max-width:32em;">Leave an email and we'll tell you when Ferret Bowling is playable, plus the odd note on the next Unstuck game. Lucy will not email you.</p>
+      <form id="letterForm" style="display:flex;flex-direction:column;gap:9px;margin-top:4px;">
+        <div style="display:flex;gap:9px;flex-wrap:wrap;">
+          <input id="lgEmail" type="email" required autocomplete="email" placeholder="email" aria-label="Email">
+          <input id="lgName" type="text" autocomplete="given-name" placeholder="first name (optional)" aria-label="First name (optional)">
+          <button type="submit">SIGN ME UP</button>
+        </div>
+        <span id="letterMsg" role="status" style="font-family:Caveat,cursive;font-size:19px;color:#8a5a2b;">kit sends a confirm link first. unsubscribe anytime.</span>
+      </form>
+    </div>
+    <div style="display:grid;place-items:center;"><img src="assets/cd/door-released.png" alt="Lucy, out of the cage" style="max-width:100%;max-height:260px;width:auto;display:block;"></div>
+  </div>
+</div>
+
 <!-- ─────────── FOOTER ─────────── -->
 <div style="max-width:1180px;margin:0 auto;padding:70px 28px 60px;">
   <div style="border-top:3px solid #2b241d;padding-top:18px;display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap;">
@@ -330,4 +359,18 @@
 
 </div>
 
+<script src="../kit-waitlist.js"></script>
+<script>
+// real Kit signup: only says "check your email" when Kit said success
+document.getElementById('letterForm').onsubmit = async e => {
+  e.preventDefault();
+  const f = e.currentTarget, b = f.querySelector('button'), msg = document.getElementById('letterMsg'), label = b.textContent;
+  b.disabled = true; b.textContent = '…';
+  const r = await kitSubscribe(document.getElementById('lgEmail').value.trim(), document.getElementById('lgName').value.trim());
+  b.disabled = false; b.textContent = label;
+  if (r.ok) f.innerHTML = '<div style="font-family:\'Alfa Slab One\',serif;font-size:19px;line-height:1.3;">You\'re on the list. Check your email and confirm. Lucy has been informed and does not care.</div>';
+  else if (r.check) f.innerHTML = `<div style="font-family:'Alfa Slab One',serif;font-size:19px;line-height:1.3;">One more step: Kit wants to check you're human. <a href="${r.check}" target="_blank" rel="noopener">Finish ↗</a></div>`;
+  else { msg.textContent = r.message; msg.style.color = '#d8352a'; }
+};
+</script>
 </body></html>
