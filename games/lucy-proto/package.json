@@ -1,0 +1,16 @@
+{
+  "name": "@unstuck/lucy-proto",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "smoke": "bun run scripts/smoke.ts",
+    "typecheck": "tsc --noEmit",
+    "build": "vite build --outDir ../../ferret-bowling/play --emptyOutDir"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "^5.8.3",
+    "vite": "^7"
+  }
+}

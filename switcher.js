@@ -15,7 +15,7 @@
       href: "https://unstuck-games.com/elsewhere/", ink: "#8a5a2b", icon: "◷" },
     { id: "badmonkeys", name: "Bad Monkeys", note: "she sheds every part when you leave", status: "ALPHA",
       href: "https://unstuck-games.com/bad-monkeys/", ink: "#b4573f", icon: "✱" },
-    { id: "ferretbowling", name: "Ferret Bowling", note: "aim is a suggestion", status: "NEXT UP",
+    { id: "ferretbowling", name: "Ferret Bowling", note: "aim is a suggestion", status: "ALPHA",
       href: "https://unstuck-games.com/ferret-bowling/", ink: "#d8352a", icon: "⌁" },
   ];
   var here = (location.pathname.split("/")[1] || "").replace("bad-monkeys","badmonkeys").replace("ferret-bowling","ferretbowling");

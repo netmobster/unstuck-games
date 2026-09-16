@@ -1,0 +1,891 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Ferret Bowling — in-run UI</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<style>/* vietnamese */
+@font-face {
+  font-family: 'Alfa Slab One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("7652303e-a75f-4bad-a405-4af673d98ae5") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Alfa Slab One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("67a63e1b-12ce-4565-b3b0-a25b175b8b78") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Alfa Slab One';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("440bdd99-7f61-461e-b77a-b348618b4c63") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("372cb019-8ee5-4184-827b-c2217b82d25b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("482cf249-4068-4d34-a2fb-75269bfdf93c") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 400;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("2b1f9251-36d3-4340-829c-ca2a0686dfed") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("372cb019-8ee5-4184-827b-c2217b82d25b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("482cf249-4068-4d34-a2fb-75269bfdf93c") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 500;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("2b1f9251-36d3-4340-829c-ca2a0686dfed") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("372cb019-8ee5-4184-827b-c2217b82d25b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("482cf249-4068-4d34-a2fb-75269bfdf93c") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 600;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("2b1f9251-36d3-4340-829c-ca2a0686dfed") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* vietnamese */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("372cb019-8ee5-4184-827b-c2217b82d25b") format('woff2');
+  unicode-range: U+0102-0103, U+0110-0111, U+0128-0129, U+0168-0169, U+01A0-01A1, U+01AF-01B0, U+0300-0301, U+0303-0304, U+0308-0309, U+0323, U+0329, U+1EA0-1EF9, U+20AB;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("482cf249-4068-4d34-a2fb-75269bfdf93c") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Archivo';
+  font-style: normal;
+  font-weight: 700;
+  font-stretch: 100%;
+  font-display: swap;
+  src: url("2b1f9251-36d3-4340-829c-ca2a0686dfed") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("38b960d9-7160-48f2-aa3b-b13c672c1458") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("4b4f77cd-626e-41ff-8c49-a240ba3837a7") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("6ae374a2-3186-48be-a918-398013d04dc4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("80524b17-f27d-4194-aeb5-b9a9e7bd735a") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("38b960d9-7160-48f2-aa3b-b13c672c1458") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("4b4f77cd-626e-41ff-8c49-a240ba3837a7") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("6ae374a2-3186-48be-a918-398013d04dc4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("80524b17-f27d-4194-aeb5-b9a9e7bd735a") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+/* cyrillic-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("38b960d9-7160-48f2-aa3b-b13c672c1458") format('woff2');
+  unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+/* cyrillic */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("4b4f77cd-626e-41ff-8c49-a240ba3837a7") format('woff2');
+  unicode-range: U+0301, U+0400-045F, U+0490-0491, U+04B0-04B1, U+2116;
+}
+/* latin-ext */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("6ae374a2-3186-48be-a918-398013d04dc4") format('woff2');
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF, U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020, U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+/* latin */
+@font-face {
+  font-family: 'Caveat';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("80524b17-f27d-4194-aeb5-b9a9e7bd735a") format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
+</style>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#cdbf9c;font-family:Archivo,sans-serif;color:#2b241d;}
+header.bar{position:sticky;top:0;z-index:100;background:#2b241d;padding:12px 22px;display:flex;align-items:center;gap:22px;flex-wrap:wrap;box-shadow:0 4px 0 rgba(0,0,0,.18);}
+.brand{font-family:'Alfa Slab One',serif;font-size:19px;color:#f2ead3;}
+.brand span{color:#ffd23f}
+.sub{font-family:Caveat,cursive;font-size:19px;color:#cdbf9c;}
+nav{display:flex;gap:7px;margin-left:auto;flex-wrap:wrap}
+nav button{font-family:'Alfa Slab One',serif;font-size:12px;letter-spacing:.06em;padding:9px 14px;border:2.5px solid #f2ead3;border-radius:5px 4px 6px 4px;background:transparent;color:#f2ead3;cursor:pointer;}
+nav button:hover{background:rgba(242,234,211,.14)}
+nav button:focus-visible{outline:2px solid #ffd23f;outline-offset:2px}
+nav button[aria-selected="true"]{background:#ffd23f;color:#2b241d;border-color:#ffd23f;}
+main{padding:26px 22px 80px;}
+.screen{display:none}
+.screen.on{display:block}
+.wrap{display:block;overflow-x:auto;padding-bottom:6px}
+.wrap>*{margin:0 auto}
+.notes{max-width:840px;margin:0 auto;background:#f2ead3;padding:38px 44px 52px;border-radius:10px 7px 12px 8px;box-shadow:6px 7px 0 rgba(15,92,87,.18);}
+.notes h1{font-family:'Alfa Slab One',serif;font-size:32px;line-height:1.1;margin:0 0 14px;}
+.notes h2{font-family:'Alfa Slab One',serif;font-size:19px;margin:34px 0 10px;color:#0f5c57;}
+.notes p,.notes li{font-size:15.5px;line-height:1.6;text-wrap:pretty;}
+.notes .lede{font-size:17.5px;line-height:1.55;border-left:4px solid #d8352a;padding-left:14px;}
+.notes code{font-family:Archivo,sans-serif;font-weight:600;background:rgba(43,36,29,.09);padding:1px 5px;border-radius:3px;font-size:14px;}
+.notes table{border-collapse:collapse;width:100%;margin:12px 0 4px;}
+.notes th{font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:#d8352a;text-align:left;padding:7px 10px 7px 0;border-bottom:2.5px solid #2b241d;}
+.notes td{font-size:15px;line-height:1.5;padding:9px 10px 9px 0;border-bottom:1px solid rgba(43,36,29,.18);vertical-align:top;}
+.notes td:first-child{width:34%}
+.notes a{color:#c67139}
+.notes a:hover{color:#9b5228}
+.caption{max-width:1160px;margin:0 auto 16px;font-family:Caveat,cursive;font-size:21px;color:#4a4036;}
+@keyframes fb-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+  @keyframes fb-bob2{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1.5deg)}}
+  @keyframes fb-breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.03)}}
+  @keyframes fb-drift{0%{transform:translate(0,0);opacity:0}15%{opacity:.75}100%{transform:translate(38px,-46px);opacity:0}}
+  @keyframes fb-drift2{0%{transform:translate(0,0);opacity:0}20%{opacity:.6}100%{transform:translate(-30px,-52px);opacity:0}}
+  @keyframes fb-sway{0%,100%{transform:rotate(-2.5deg)}50%{transform:rotate(2.5deg)}}
+  @keyframes fb-swaylamp{0%,100%{transform:rotate(-1.6deg)}50%{transform:rotate(1.6deg)}}
+  @keyframes fb-flick{0%,100%{opacity:.28}42%{opacity:.85}46%{opacity:.3}60%{opacity:.7}}
+  @keyframes fb-halo{0%,100%{box-shadow:0 0 0 0 rgba(198,113,57,.55)}70%{box-shadow:0 0 0 13px rgba(198,113,57,0)}}
+  @keyframes fb-draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+  @keyframes fb-tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @keyframes fb-jit{0%,100%{transform:rotate(-1deg) translate(0,0)}25%{transform:rotate(-1.6deg) translate(2px,-1px)}50%{transform:rotate(-.4deg) translate(-2px,1px)}75%{transform:rotate(-1.3deg) translate(1px,2px)}}
+  @keyframes fb-shake{0%,92%,100%{transform:translate(0,0) rotate(0)}94%{transform:translate(-3px,2px) rotate(-.25deg)}96%{transform:translate(3px,-2px) rotate(.25deg)}98%{transform:translate(-2px,0) rotate(-.1deg)}}
+  @keyframes fb-zz{0%{transform:translate(0,0) scale(.7);opacity:0}25%{opacity:.9}100%{transform:translate(14px,-30px) scale(1.15);opacity:0}}
+  @keyframes fb-blink{0%,45%,100%{opacity:1}50%,95%{opacity:.15}}
+  @keyframes fb-walkx{0%{transform:translateX(0) scaleX(1)}48%{transform:translateX(520px) scaleX(1)}52%{transform:translateX(520px) scaleX(-1)}100%{transform:translateX(0) scaleX(-1)}}
+  @keyframes fb-slide{0%{transform:translateY(-8px);opacity:0}100%{transform:translateY(0);opacity:1}}
+  @keyframes fb-curtain{0%,100%{transform:skewX(0deg)}50%{transform:skewX(2.4deg)}}
+  @keyframes fb-pile{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-2px) rotate(1deg)}}
+  @keyframes fb-slam{0%{transform:translateY(-34px) scale(.86) rotate(-3deg);opacity:0}5%{transform:translateY(4px) scale(1.06) rotate(-1deg);opacity:1}8%{transform:translateY(0) scale(1) rotate(-1.4deg)}10%{transform:translateY(0) scale(1) rotate(-.6deg)}84%{transform:translateY(0) scale(1) rotate(-1deg);opacity:1}92%{transform:translateY(-10px) scale(.96);opacity:0}100%{opacity:0}}
+  @keyframes fb-pop{0%{transform:translateY(0) scale(.5);opacity:0}12%{transform:translateY(-8px) scale(1.25);opacity:1}55%{transform:translateY(-22px) scale(1);opacity:1}100%{transform:translateY(-40px) scale(.9);opacity:0}}
+  @keyframes fb-land{0%{transform:translateY(-14px) rotate(-3deg);opacity:0;background:#ffd23f}18%{transform:translateY(0) rotate(-.4deg);opacity:1;background:#ffd23f}55%{background:#ffd23f}100%{transform:translateY(0) rotate(-.4deg);opacity:1;background:#fff9ea}}
+  @keyframes fb-glowline{0%,100%{opacity:.45}50%{opacity:1}}
+  @keyframes fb-lamp{0%,100%{opacity:.82}50%{opacity:1}}
+  @keyframes fb-deal{0%{transform:translate(70px,-80px) rotate(24deg);opacity:0}70%{opacity:1}100%{transform:translate(0,0) rotate(0);opacity:1}}
+  @keyframes fb-nudge{0%,100%{transform:translateX(0) rotate(-1deg)}50%{transform:translateX(3px) rotate(1deg)}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important}}
+</style>
+</head>
+<body>
+<header class="bar">
+  <span class="brand">FERRET<span>BOWLING</span></span>
+  <span class="sub">Bowling Optional Edition — in-run UI</span>
+  <nav role="tablist">
+    <button role="tab" aria-selected="true" data-t="during">DURING RUN</button>
+    <button role="tab" aria-selected="false" data-t="zoomed">ZOOMED</button>
+    <button role="tab" aria-selected="false" data-t="after">AFTER RUN</button>
+    <button role="tab" aria-selected="false" data-t="notes">HANDOFF NOTES</button>
+    <button role="tab" aria-selected="false" data-t="home">HOMEPAGE</button>
+  </nav>
+</header>
+<main>
+  <section class="screen on" id="during">
+    <div class="caption">Whole house, everything at once. The route inks itself, things stay moved, the hoard grows, and an alert only fires when she earns one.</div>
+    <div class="wrap"><div style="width:1160px;background:#cdbf9c;padding:22px;box-sizing:border-box;border-radius:6px;box-shadow:0 18px 46px rgba(27,26,23,.3);">
+    <div style="position:relative;background:#f2ead3;border-radius:10px 7px 12px 8px;padding:18px 20px 20px;box-shadow:6px 7px 0 rgba(15,92,87,.18);overflow:hidden;">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(43,36,29,.45) .5px,transparent .6px);background-size:3px 3px;opacity:.2;mix-blend-mode:multiply;pointer-events:none;z-index:40;"></div>
+
+      <!-- masthead -->
+      <div style="position:relative;display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:10px;border-bottom:3px solid #2b241d;">
+        <div>
+          <div style="font-family:'Alfa Slab One',serif;font-size:26px;line-height:1;color:#0f5c57;position:relative;">FERRET<span style="color:#d8352a;">BOWLING</span>
+            <span style="position:absolute;left:2px;top:1.5px;color:#d8352a;opacity:.28;mix-blend-mode:multiply;">FERRETBOWLING</span>
+          </div>
+          <div style="font-family:Caveat,cursive;font-size:19px;color:#8a5a2b;margin-top:2px;">Bowling Optional Edition — run two, purple salmon</div>
+        </div>
+        <div style="display:flex;gap:20px;align-items:flex-end;font-family:Caveat,cursive;font-size:19px;color:#4a4036;">
+          <span>runs <b style="font-family:'Alfa Slab One',serif;font-size:17px;color:#2b241d;">2</b></span>
+          <span>known <b style="font-family:'Alfa Slab One',serif;font-size:17px;color:#2b241d;">21</b></span>
+          <span>treasures <b style="font-family:'Alfa Slab One',serif;font-size:17px;color:#d8352a;">4</b></span>
+          <span>habits <b style="font-family:'Alfa Slab One',serif;font-size:17px;color:#2b241d;">1</b></span>
+        </div>
+      </div>
+
+      <div style="position:relative;display:grid;grid-template-columns:1fr 316px;gap:18px;align-items:start;margin-top:16px;">
+
+        <!-- ── HOUSE ── -->
+        <div style="position:relative;height:428px;">
+          <svg viewBox="0 0 770 428" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:9;overflow:visible;">
+            <path d="M74 150 C74 104 128 118 150 92 C176 62 212 60 244 70 C282 82 284 128 250 150 C210 176 168 176 172 216 C176 258 232 270 286 262" fill="none" stroke="#d8352a" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 10" opacity=".9" style="stroke-dashoffset:1400;animation:fb-draw 11s linear infinite;"></path>
+            <path d="M286 262 L330 258" fill="none" stroke="#d8352a" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 10" opacity=".35"></path>
+          </svg>
+
+          <!-- alert -->
+          <div style="position:absolute;left:214px;top:-6px;z-index:20;animation:fb-slam 9s ease-out infinite;">
+            <div style="position:relative;background:#ffd23f;padding:7px 18px 8px;border-radius:4px 3px 5px 3px;box-shadow:4px 5px 0 #2b241d;">
+              <span style="position:absolute;left:3px;top:2px;right:0;font-family:'Alfa Slab One',serif;font-size:21px;color:#d8352a;opacity:.4;mix-blend-mode:multiply;">SHE HAS THE REMOTE</span>
+              <span style="position:relative;font-family:'Alfa Slab One',serif;font-size:21px;color:#2b241d;">SHE HAS THE REMOTE</span>
+            </div>
+          </div>
+
+          <!-- row 1 -->
+          <div style="display:flex;gap:12px;height:212px;">
+            <!-- LIVING ROOM -->
+            <div style="flex:1.5;position:relative;overflow:hidden;background:#eadfc0;border-radius:9px 5px 11px 6px;box-shadow:5px 6px 0 rgba(15,92,87,.2),inset 0 0 0 2.5px #2b241d;">
+              <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(91deg,rgba(138,90,43,.22) 0 2px,transparent 2px 25px);mix-blend-mode:multiply;"></div>
+              <div style="position:absolute;top:-10px;right:-20px;width:190px;height:150px;background:#ffd23f;opacity:.5;mix-blend-mode:multiply;transform:skewX(-16deg);"></div>
+              <div style="position:absolute;top:7px;left:11px;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;transform:rotate(-1.2deg);">LIVING ROOM</div>
+
+              <div style="position:absolute;top:26px;left:150px;width:5px;height:5px;border-radius:50%;background:#fffaе8;background-color:#fff8dd;animation:fb-drift 7s linear infinite;"></div>
+              <div style="position:absolute;top:56px;left:192px;width:4px;height:4px;border-radius:50%;background:#fff8dd;animation:fb-drift 9.5s linear infinite 2s;"></div>
+              <div style="position:absolute;top:88px;left:232px;width:6px;height:6px;border-radius:50%;background:#fff8dd;animation:fb-drift 8.4s linear infinite 4.2s;"></div>
+
+              <!-- cage + mood blanket -->
+              <div style="position:absolute;left:16px;top:40px;width:72px;height:64px;background:#e3d6b2;border-radius:6px 4px 7px 5px;box-shadow:inset 0 0 0 2.5px #2b241d;">
+                <div style="position:absolute;inset:6px 0 0;background-image:repeating-linear-gradient(90deg,#2b241d 0 2.5px,transparent 2.5px 11px);opacity:.85;"></div>
+                <div style="position:absolute;left:-5px;top:-12px;width:82px;height:18px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:4px 3px 5px 3px;transform:rotate(-2.4deg);"></div>
+                <div style="position:absolute;left:-5px;top:-12px;width:82px;height:18px;background:repeating-linear-gradient(90deg,#d8352a 0 5px,transparent 5px 13px);mix-blend-mode:multiply;opacity:.75;transform:rotate(-2.4deg) translate(2px,1px);"></div>
+              </div>
+              <div style="position:absolute;left:10px;top:108px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#4a4036;">cage — <span style="color:#d8352a;">smug today</span></div>
+
+              <!-- couch -->
+              <div style="position:absolute;right:52px;bottom:48px;width:104px;height:42px;background:#c67139;mix-blend-mode:multiply;border-radius:11px 9px 4px 5px;box-shadow:inset 0 0 0 2.5px #2b241d;"></div>
+              <div style="position:absolute;right:50px;bottom:46px;width:104px;height:42px;background:#d8352a;opacity:.22;mix-blend-mode:multiply;border-radius:11px 9px 4px 5px;"></div>
+              <!-- hoard + new item -->
+              <div style="position:absolute;right:58px;bottom:40px;display:flex;gap:3px;align-items:flex-end;animation:fb-pile 5s ease-in-out infinite;">
+                <div style="width:15px;height:8px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:4px 2px 3px 2px;"></div>
+                <div style="width:12px;height:10px;background:#d8352a;mix-blend-mode:multiply;border-radius:3px;"></div>
+                <div style="width:17px;height:7px;background:#8a5a2b;mix-blend-mode:multiply;border-radius:3px;"></div>
+                <div style="width:11px;height:9px;background:#ffd23f;mix-blend-mode:multiply;border-radius:3px;"></div>
+              </div>
+              <div style="position:absolute;right:20px;bottom:46px;font-family:'Alfa Slab One',serif;font-size:14px;color:#d8352a;animation:fb-pop 6s ease-out infinite;">+1</div>
+              
+
+              <!-- rug + ghost of where it was -->
+              <div style="position:absolute;left:126px;bottom:46px;width:92px;height:36px;border:2px dashed rgba(43,36,29,.32);border-radius:7px 5px 8px 4px;transform:rotate(-6deg);"></div>
+              <div style="position:absolute;left:140px;bottom:40px;width:92px;height:36px;background:#b9483d;mix-blend-mode:multiply;border-radius:7px 5px 8px 4px;transform:rotate(3deg);background-image:repeating-linear-gradient(45deg,rgba(242,234,211,.45) 0 4px,transparent 4px 11px);box-shadow:inset 0 0 0 2px #2b241d;"></div>
+              <div style="position:absolute;left:92px;bottom:12px;white-space:nowrap;font-family:Caveat,cursive;font-size:16px;color:#8a5a2b;transform:rotate(-2deg);">↖ she dragged this</div>
+
+              <!-- plant -->
+              <div style="position:absolute;left:26px;bottom:18px;width:24px;height:19px;background:#8a5a2b;mix-blend-mode:multiply;border-radius:2px 2px 8px 6px;"></div>
+              <div style="position:absolute;left:19px;bottom:35px;width:38px;height:40px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:60% 55% 40% 45%;transform-origin:bottom center;animation:fb-sway 6.5s ease-in-out infinite;"></div>
+
+              <!-- TV remote -->
+              <div style="position:absolute;right:30px;top:58px;width:17px;height:32px;background:#2b241d;border-radius:4px 3px 4px 3px;animation:fb-halo 2.2s ease-out infinite;"></div>
+              <div style="position:absolute;right:28px;top:54px;width:21px;height:6px;background:#ffd23f;mix-blend-mode:multiply;animation:fb-flick 1.7s steps(2,end) infinite;"></div>
+              <div style="position:absolute;right:4px;top:92px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#d8352a;">the remote!!</div>
+
+              <!-- LUCY -->
+              <div style="position:absolute;left:196px;top:104px;z-index:12;animation:fb-bob 1.5s ease-in-out infinite;">
+                <div style="width:80px;height:60px;overflow:hidden;"><img src="3787eac4-4e93-45ef-9c7b-220cb31b2f32" alt="Lucy" style="width:100%;display:block;filter:drop-shadow(0 5px 3px rgba(43,36,29,.35));"></div>
+              </div>
+              <div style="position:absolute;left:206px;top:160px;width:58px;height:8px;border-radius:50%;background:rgba(43,36,29,.22);filter:blur(2px);"></div>
+            </div>
+
+            <!-- KITCHEN -->
+            <div style="flex:1;position:relative;overflow:hidden;background:#e4e6cd;border-radius:6px 10px 5px 11px;box-shadow:5px 6px 0 rgba(15,92,87,.2),inset 0 0 0 2.5px #2b241d;">
+              <div style="position:absolute;inset:0;background-image:repeating-conic-gradient(rgba(122,138,94,.3) 0% 25%,transparent 0% 50%);background-size:26px 26px;mix-blend-mode:multiply;"></div>
+              <div style="position:absolute;left:34px;bottom:30px;width:58px;height:44px;background:#8a5a2b;opacity:.22;mix-blend-mode:multiply;border-radius:50%;"></div>
+              <div style="position:absolute;top:7px;left:11px;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;transform:rotate(.8deg);">KITCHEN</div>
+              <div style="position:absolute;right:14px;top:34px;width:42px;height:82px;background:#f2ead3;border-radius:5px 4px 6px 4px;box-shadow:inset 0 0 0 2.5px #2b241d;"></div>
+              <div style="position:absolute;right:18px;top:66px;width:34px;height:2.5px;background:#2b241d;"></div>
+              <div style="position:absolute;right:20px;top:42px;width:15px;height:5px;background:#ffd23f;mix-blend-mode:multiply;animation:fb-flick 3.6s steps(2,end) infinite;"></div>
+              <div style="position:absolute;right:10px;top:118px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#4a4036;">fridge</div>
+              <div style="position:absolute;left:26px;top:72px;width:36px;height:44px;background:#c9a06a;mix-blend-mode:multiply;border-radius:2px 3px 7px 6px;box-shadow:inset 0 0 0 2.5px #2b241d;transform:rotate(-5deg);"></div>
+              <div style="position:absolute;left:12px;top:120px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#4a4036;">paper bag</div>
+              <div style="position:absolute;left:24px;bottom:16px;width:24px;height:12px;background:#5b8fa8;mix-blend-mode:multiply;border-radius:0 0 12px 12px;"></div>
+              <div style="position:absolute;left:8px;bottom:-2px;white-space:nowrap;font-family:Caveat,cursive;font-size:16px;color:#4a4036;">cat's water</div>
+              <div style="position:absolute;right:28px;bottom:16px;width:26px;height:28px;background:#c67139;mix-blend-mode:multiply;border-radius:3px 4px 5px 4px;box-shadow:inset 0 0 0 2.5px #2b241d;"></div>
+            </div>
+
+            <!-- BEDROOM -->
+            <div style="flex:1;position:relative;overflow:hidden;background:#e7dbe2;border-radius:11px 6px 9px 5px;box-shadow:5px 6px 0 rgba(15,92,87,.2),inset 0 0 0 2.5px #2b241d;">
+              <div style="position:absolute;top:7px;left:11px;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;transform:rotate(-1deg);">BEDROOM</div>
+              <div style="position:absolute;top:6px;right:9px;white-space:nowrap;font-family:Caveat,cursive;font-size:18px;color:#0f5c57;transform:rotate(3deg);">new!</div>
+              <div style="position:absolute;left:20px;bottom:28px;width:98px;height:56px;background:#f2ead3;border-radius:7px 5px 6px 8px;box-shadow:inset 0 0 0 2.5px #2b241d;"></div>
+              <div style="position:absolute;left:20px;bottom:28px;width:98px;height:30px;background:#b98bbf;mix-blend-mode:multiply;opacity:.6;border-radius:7px 5px 0 0;background-image:repeating-linear-gradient(45deg,rgba(242,234,211,.5) 0 5px,transparent 5px 12px);"></div>
+              <div style="position:absolute;left:26px;bottom:62px;width:30px;height:15px;background:#e0d3e6;border-radius:6px;box-shadow:inset 0 0 0 2px #2b241d;"></div>
+              <div style="position:absolute;left:20px;bottom:8px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#4a4036;">the big bed</div>
+              <div style="position:absolute;right:22px;top:52px;width:22px;height:15px;background:#b98bbf;mix-blend-mode:multiply;border-radius:8px 4px 8px 4px;transform:rotate(-14deg);"></div>
+              <div style="position:absolute;right:4px;top:70px;white-space:nowrap;font-family:Caveat,cursive;font-size:16px;color:#4a4036;">one sock</div>
+            </div>
+          </div>
+
+          <!-- HALLWAY -->
+          <div style="margin-top:12px;position:relative;height:74px;overflow:hidden;background:#e6dcc0;border-radius:7px 11px 6px 9px;box-shadow:5px 6px 0 rgba(15,92,87,.2),inset 0 0 0 2.5px #2b241d;">
+            <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(89deg,rgba(138,90,43,.2) 0 2px,transparent 2px 22px);mix-blend-mode:multiply;"></div>
+            <div style="position:absolute;top:5px;left:11px;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;">HALLWAY</div>
+            <div style="position:absolute;left:170px;top:20px;width:214px;height:34px;background:#b06a5e;mix-blend-mode:multiply;border-radius:5px 4px 5px 4px;background-image:repeating-linear-gradient(90deg,rgba(242,234,211,.4) 0 5px,transparent 5px 17px);box-shadow:inset 0 0 0 2px #2b241d;"></div>
+            <div style="position:absolute;left:392px;top:22px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#0f5c57;">fished here 3×</div>
+            <div style="position:absolute;right:130px;top:16px;width:19px;height:44px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:3px 3px 8px 8px;box-shadow:inset 0 0 0 2px #2b241d;"></div>
+            <div style="position:absolute;right:38px;top:24px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#4a4036;">umbrella stand</div>
+            <div style="position:absolute;left:40px;bottom:12px;width:34px;height:17px;background:#8a5a2b;mix-blend-mode:multiply;border-radius:10px 4px 4px 10px;box-shadow:inset 0 0 0 2px #2b241d;"></div>
+            <div style="position:absolute;left:80px;bottom:10px;white-space:nowrap;font-family:Caveat,cursive;font-size:16px;color:#d8352a;">HER shoe — a nest now</div>
+          </div>
+
+          <!-- locked row -->
+          <div style="display:flex;gap:12px;margin-top:12px;height:118px;">
+            <div style="flex:1;position:relative;background:#ded3b4;border-radius:8px 5px 10px 6px;box-shadow:inset 0 0 0 2.5px rgba(43,36,29,.35);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+              <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(43,36,29,.1) 0 7px,transparent 7px 14px);"></div>
+              <span style="position:relative;font-family:Caveat,cursive;font-size:18px;line-height:1.15;color:#6d6350;text-align:center;">bathroom<br><span style="font-size:16px;opacity:.75;">opens at 24 known</span></span>
+            </div>
+            <div style="flex:1;position:relative;background:#ded3b4;border-radius:6px 9px 5px 11px;box-shadow:inset 0 0 0 2.5px rgba(43,36,29,.35);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+              <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(43,36,29,.1) 0 7px,transparent 7px 14px);"></div>
+              <span style="position:relative;font-family:Caveat,cursive;font-size:18px;line-height:1.15;color:#6d6350;text-align:center;">laundry<br><span style="font-size:16px;opacity:.75;">opens at 38 known</span></span>
+            </div>
+            <div style="flex:1.35;position:relative;overflow:hidden;background:#e9e1cb;border-radius:9px 6px 11px 5px;box-shadow:5px 6px 0 rgba(15,92,87,.2),inset 0 0 0 2.5px #2b241d;">
+              <div style="position:absolute;top:6px;left:11px;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;">FRONT ENTRY</div>
+              <div style="position:absolute;left:34px;bottom:24px;width:28px;height:24px;background:#2b241d;border-radius:4px 4px 8px 7px;"></div>
+              <div style="position:absolute;left:64px;bottom:24px;width:28px;height:24px;background:#2b241d;border-radius:4px 4px 8px 7px;transform:rotate(11deg);"></div>
+              <div style="position:absolute;left:28px;bottom:4px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#4a4036;">winter boots</div>
+              <div style="position:absolute;right:60px;top:44px;width:16px;height:16px;background:#ffd23f;mix-blend-mode:multiply;border-radius:50%;box-shadow:inset 0 0 0 2px #2b241d;animation:fb-breathe 2.6s ease-in-out infinite;"></div>
+              <div style="position:absolute;right:6px;top:64px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#0f5c57;">ping-pong ball??</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ── RAIL ── -->
+        <div style="display:flex;flex-direction:column;gap:11px;min-height:428px;">
+          <div style="position:relative;background:#0f5c57;color:#f2ead3;padding:12px 14px 13px;border-radius:7px 5px 8px 5px;">
+            <div style="font-family:Caveat,cursive;font-size:18px;color:#ffd23f;">out of your hands · 74s</div>
+            <div style="font-family:'Alfa Slab One',serif;font-size:18px;line-height:1.2;margin-top:3px;">Heading for the remote</div>
+            <div style="display:flex;align-items:center;gap:8px;margin-top:10px;">
+              <span style="font-family:Caveat,cursive;font-size:17px;opacity:.8;">energy</span>
+              <div style="flex:1;height:9px;background:rgba(242,234,211,.2);border-radius:2px;overflow:hidden;"><div style="width:72%;height:100%;background:#ffd23f;"></div></div>
+              <span style="font-family:'Alfa Slab One',serif;font-size:14px;">72</span>
+            </div>
+          </div>
+
+          <div style="display:flex;gap:7px;align-items:center;">
+            <button style="font-family:'Alfa Slab One',serif;font-size:14px;padding:9px 14px;background:#ffd23f;color:#2b241d;border:2.5px solid #2b241d;border-radius:5px 4px 6px 4px;box-shadow:3px 4px 0 #2b241d;cursor:pointer;">SQUEAK ×1</button>
+            <span style="font-family:'Alfa Slab One',serif;font-size:12px;background:#2b241d;color:#ffd23f;padding:7px 10px;border-radius:4px;">1×</span>
+            <span style="font-family:'Alfa Slab One',serif;font-size:12px;background:rgba(43,36,29,.12);color:#4a4036;padding:7px 10px;border-radius:4px;">4×</span>
+            <span style="font-family:'Alfa Slab One',serif;font-size:12px;background:rgba(43,36,29,.12);color:#4a4036;padding:7px 10px;border-radius:4px;">16×</span>
+          </div>
+
+          <div style="flex:1;min-height:230px;position:relative;background:#e9e1cb;border-radius:6px 9px 6px 9px;padding:10px;box-shadow:inset 0 0 0 2.5px rgba(43,36,29,.5);">
+            <div style="font-family:Caveat,cursive;font-size:19px;color:#d8352a;margin-bottom:8px;">she is doing things</div>
+            <div style="display:flex;flex-direction:column;gap:7px;">
+              <div style="background:#fff9ea;padding:7px 9px;border-radius:4px 6px 4px 7px;font-size:13px;line-height:1.35;box-shadow:2px 3px 0 rgba(43,36,29,.2);transform:rotate(-.5deg);animation:fb-land 5s ease-out infinite;">Went fishing in the throw cushion and pulled out a sock that was not there. Spiritually, she caught it.<div style="font-family:Caveat,cursive;font-size:16px;color:#8a5a2b;margin-top:2px;">because: laundry river</div></div>
+              <div style="background:#fff9ea;padding:7px 9px;border-radius:6px 4px 7px 4px;font-size:13px;line-height:1.35;box-shadow:2px 3px 0 rgba(43,36,29,.14);transform:rotate(.4deg);">Hid your slipper under the couch with her other treasures.</div>
+              <div style="background:#f6efdc;padding:7px 9px;border-radius:4px 7px 4px 6px;font-size:13px;line-height:1.35;opacity:.8;">Grabbed your slipper and dooked about it.</div>
+              <div style="background:#f6efdc;padding:7px 9px;border-radius:7px 4px 6px 4px;font-size:13px;line-height:1.35;opacity:.55;">Poured herself out of the cage.</div>
+            </div>
+          </div>
+
+          <div style="position:relative;background:#2b241d;color:#f2ead3;padding:10px 12px 11px;border-radius:5px 8px 5px 8px;">
+            <div style="font-family:Caveat,cursive;font-size:18px;color:#ffd23f;">that's a habit now</div>
+            <div style="font-size:13px;line-height:1.35;margin-top:2px;">She stuffs fabric into her favourite shoe. Twice.</div>
+            <div style="position:absolute;right:-8px;top:-9px;width:52px;height:17px;background:rgba(255,248,221,.7);transform:rotate(-7deg);box-shadow:0 1px 2px rgba(0,0,0,.2);"></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:relative;margin-top:14px;display:flex;align-items:center;justify-content:space-between;padding-top:11px;border-top:2.5px dashed rgba(43,36,29,.35);">
+        <div style="font-family:Caveat,cursive;font-size:20px;color:#8a5a2b;">whole house · everything at once</div>
+        <div style="display:flex;align-items:center;gap:9px;">
+          <span style="font-family:Caveat,cursive;font-size:19px;color:#4a4036;">get closer →</span>
+          <span style="font-family:'Alfa Slab One',serif;font-size:13px;background:#2b241d;color:#ffd23f;padding:7px 12px;border-radius:4px;">ZOOM</span>
+        </div>
+      </div>
+    </div>
+    </div></div>
+  </section>
+  <section class="screen" id="zoomed">
+    <div class="caption">Same drawing, nothing added — the chrome leaves and the house gets big.</div>
+    <div class="wrap"><div style="width:1160px;background:#cdbf9c;padding:22px;box-sizing:border-box;border-radius:6px;box-shadow:0 18px 46px rgba(27,26,23,.3);">
+    <div style="position:relative;background:#f2ead3;border-radius:10px 7px 12px 8px;padding:14px 16px 16px;box-shadow:6px 7px 0 rgba(15,92,87,.18);overflow:hidden;">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(43,36,29,.45) .5px,transparent .6px);background-size:3px 3px;opacity:.2;mix-blend-mode:multiply;pointer-events:none;z-index:40;"></div>
+
+      <div style="position:relative;display:flex;align-items:baseline;justify-content:space-between;margin-bottom:11px;">
+        <div style="font-family:'Alfa Slab One',serif;font-size:13px;letter-spacing:.12em;color:#d8352a;">LIVING ROOM</div>
+        <div style="font-family:Caveat,cursive;font-size:19px;color:#8a5a2b;">74s · energy 72 · treasures 4</div>
+      </div>
+
+      <div style="position:relative;width:100%;height:560px;overflow:hidden;border-radius:9px 6px 10px 7px;box-shadow:inset 0 0 0 3px #2b241d;background:#eadfc0;">
+        <div style="position:absolute;left:0;top:0;width:430px;height:212px;transform:scale(2.62);transform-origin:0 0;">
+          <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(91deg,rgba(138,90,43,.22) 0 2px,transparent 2px 25px);mix-blend-mode:multiply;"></div>
+          <div style="position:absolute;top:-10px;right:-20px;width:190px;height:150px;background:#ffd23f;opacity:.5;mix-blend-mode:multiply;transform:skewX(-16deg);"></div>
+
+          <div style="position:absolute;top:26px;left:150px;width:5px;height:5px;border-radius:50%;background:#fff8dd;animation:fb-drift 7s linear infinite;"></div>
+          <div style="position:absolute;top:56px;left:192px;width:4px;height:4px;border-radius:50%;background:#fff8dd;animation:fb-drift 9.5s linear infinite 2s;"></div>
+          <div style="position:absolute;top:88px;left:232px;width:6px;height:6px;border-radius:50%;background:#fff8dd;animation:fb-drift 8.4s linear infinite 4.2s;"></div>
+
+          <div style="position:absolute;left:16px;top:40px;width:72px;height:64px;background:#e3d6b2;border-radius:6px 4px 7px 5px;box-shadow:inset 0 0 0 2.5px #2b241d;">
+            <div style="position:absolute;inset:6px 0 0;background-image:repeating-linear-gradient(90deg,#2b241d 0 2.5px,transparent 2.5px 11px);opacity:.85;"></div>
+            <div style="position:absolute;left:-5px;top:-12px;width:82px;height:18px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:4px 3px 5px 3px;transform:rotate(-2.4deg);"></div>
+            <div style="position:absolute;left:-5px;top:-12px;width:82px;height:18px;background:repeating-linear-gradient(90deg,#d8352a 0 5px,transparent 5px 13px);mix-blend-mode:multiply;opacity:.75;transform:rotate(-2.4deg) translate(2px,1px);"></div>
+          </div>
+          <div style="position:absolute;left:10px;top:108px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#4a4036;">cage — <span style="color:#d8352a;">smug today</span></div>
+
+          <div style="position:absolute;right:52px;bottom:48px;width:104px;height:42px;background:#c67139;mix-blend-mode:multiply;border-radius:11px 9px 4px 5px;box-shadow:inset 0 0 0 2.5px #2b241d;"></div>
+          <div style="position:absolute;right:50px;bottom:46px;width:104px;height:42px;background:#d8352a;opacity:.22;mix-blend-mode:multiply;border-radius:11px 9px 4px 5px;"></div>
+          <div style="position:absolute;right:58px;bottom:40px;display:flex;gap:3px;align-items:flex-end;animation:fb-pile 5s ease-in-out infinite;">
+            <div style="width:15px;height:8px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:4px 2px 3px 2px;"></div>
+            <div style="width:12px;height:10px;background:#d8352a;mix-blend-mode:multiply;border-radius:3px;"></div>
+            <div style="width:17px;height:7px;background:#8a5a2b;mix-blend-mode:multiply;border-radius:3px;"></div>
+            <div style="width:11px;height:9px;background:#ffd23f;mix-blend-mode:multiply;border-radius:3px;"></div>
+          </div>
+          <div style="position:absolute;right:20px;bottom:46px;font-family:'Alfa Slab One',serif;font-size:14px;color:#d8352a;animation:fb-pop 6s ease-out infinite;">+1</div>
+          <div style="position:absolute;right:34px;bottom:24px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#8a5a2b;">her treasures ×4</div>
+
+          <div style="position:absolute;left:126px;bottom:46px;width:92px;height:36px;border:2px dashed rgba(43,36,29,.32);border-radius:7px 5px 8px 4px;transform:rotate(-6deg);"></div>
+          <div style="position:absolute;left:140px;bottom:40px;width:92px;height:36px;background:#b9483d;mix-blend-mode:multiply;border-radius:7px 5px 8px 4px;transform:rotate(3deg);background-image:repeating-linear-gradient(45deg,rgba(242,234,211,.45) 0 4px,transparent 4px 11px);box-shadow:inset 0 0 0 2px #2b241d;"></div>
+          <div style="position:absolute;left:92px;bottom:12px;white-space:nowrap;font-family:Caveat,cursive;font-size:16px;color:#8a5a2b;transform:rotate(-2deg);">↖ she dragged this</div>
+
+          <div style="position:absolute;left:26px;bottom:18px;width:24px;height:19px;background:#8a5a2b;mix-blend-mode:multiply;border-radius:2px 2px 8px 6px;"></div>
+          <div style="position:absolute;left:19px;bottom:35px;width:38px;height:40px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:60% 55% 40% 45%;transform-origin:bottom center;animation:fb-sway 6.5s ease-in-out infinite;"></div>
+
+          <div style="position:absolute;right:30px;top:58px;width:17px;height:32px;background:#2b241d;border-radius:4px 3px 4px 3px;animation:fb-halo 2.2s ease-out infinite;"></div>
+          <div style="position:absolute;right:28px;top:54px;width:21px;height:6px;background:#ffd23f;mix-blend-mode:multiply;animation:fb-flick 1.7s steps(2,end) infinite;"></div>
+          <div style="position:absolute;right:4px;top:92px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#d8352a;">the remote!!</div>
+
+          <div style="position:absolute;left:196px;top:104px;z-index:12;animation:fb-bob 1.5s ease-in-out infinite;">
+            <div style="width:80px;height:60px;overflow:hidden;"><img src="5eb3ad56-34bb-4fb2-855a-f2b0ecf680d6" alt="Lucy" style="width:100%;display:block;filter:drop-shadow(0 5px 3px rgba(43,36,29,.35));"></div>
+          </div>
+          <div style="position:absolute;left:206px;top:160px;width:58px;height:8px;border-radius:50%;background:rgba(43,36,29,.22);filter:blur(2px);"></div>
+        </div>
+      </div>
+
+      <div style="position:relative;display:flex;align-items:center;justify-content:space-between;gap:20px;margin-top:13px;">
+        <div style="font-family:Caveat,cursive;font-size:27px;color:#2b241d;line-height:1.2;">She is fishing in the rug for something that is not in the rug.</div>
+        <div style="display:flex;gap:7px;align-items:center;flex-shrink:0;">
+          <button style="font-family:'Alfa Slab One',serif;font-size:14px;padding:9px 14px;background:#ffd23f;color:#2b241d;border:2.5px solid #2b241d;border-radius:5px 4px 6px 4px;box-shadow:3px 4px 0 #2b241d;cursor:pointer;">SQUEAK ×1</button>
+          <span style="font-family:'Alfa Slab One',serif;font-size:12px;background:#2b241d;color:#ffd23f;padding:7px 10px;border-radius:4px;">1×</span>
+          <span style="font-family:'Alfa Slab One',serif;font-size:12px;background:rgba(43,36,29,.12);color:#4a4036;padding:7px 10px;border-radius:4px;">4×</span>
+          <span style="font-family:'Alfa Slab One',serif;font-size:12px;background:rgba(43,36,29,.12);color:#4a4036;padding:7px 10px;border-radius:4px;">16×</span>
+          <span style="font-family:'Alfa Slab One',serif;font-size:12px;background:#0f5c57;color:#f2ead3;padding:7px 12px;border-radius:4px;">← BACK OUT</span>
+        </div>
+      </div>
+    </div>
+    </div></div>
+  </section>
+  <section class="screen" id="after">
+    <div class="caption">Lamps on. The route stays inked, the findings deal themselves onto the rug, and you pack the cage for run three.</div>
+    <div class="wrap"><div style="width:1160px;background:#cdbf9c;padding:22px;box-sizing:border-box;border-radius:6px;box-shadow:0 18px 46px rgba(27,26,23,.3);">
+    <div style="position:relative;background:#f2ead3;border-radius:10px 7px 12px 8px;padding:18px 20px 20px;box-shadow:6px 7px 0 rgba(15,92,87,.18);overflow:hidden;">
+      <div style="position:absolute;inset:0;background-image:radial-gradient(rgba(43,36,29,.45) .5px,transparent .6px);background-size:3px 3px;opacity:.2;mix-blend-mode:multiply;pointer-events:none;z-index:40;"></div>
+
+      <div style="position:relative;display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:10px;border-bottom:3px solid #2b241d;">
+        <div>
+          <div style="font-family:'Alfa Slab One',serif;font-size:26px;line-height:1;color:#0f5c57;position:relative;">FERRET<span style="color:#d8352a;">BOWLING</span>
+            <span style="position:absolute;left:2px;top:1.5px;color:#d8352a;opacity:.28;mix-blend-mode:multiply;">FERRETBOWLING</span>
+          </div>
+          <div style="font-family:Caveat,cursive;font-size:19px;color:#8a5a2b;margin-top:2px;">Bowling Optional Edition — run two is over, she is asleep</div>
+        </div>
+        <div style="display:flex;gap:20px;align-items:flex-end;font-family:Caveat,cursive;font-size:19px;color:#4a4036;">
+          <span>runs <b style="font-family:'Alfa Slab One',serif;font-size:17px;color:#2b241d;">2</b></span>
+          <span>known <b style="font-family:'Alfa Slab One',serif;font-size:17px;color:#2b241d;">21</b> <span style="color:#d8352a;">+12</span></span>
+          <span>treasures <b style="font-family:'Alfa Slab One',serif;font-size:17px;color:#d8352a;">4</b></span>
+          <span>habits <b style="font-family:'Alfa Slab One',serif;font-size:17px;color:#2b241d;">1</b></span>
+        </div>
+      </div>
+
+      <div style="position:relative;display:grid;grid-template-columns:1fr 316px;gap:18px;align-items:start;margin-top:16px;">
+
+        <!-- dim house -->
+        <div style="position:relative;height:428px;">
+          <div style="position:absolute;inset:-4px;background:#1d2b3a;opacity:.44;mix-blend-mode:multiply;z-index:15;pointer-events:none;border-radius:8px;"></div>
+          <div style="position:absolute;left:300px;top:60px;width:300px;height:260px;background:#ffd23f;opacity:.3;mix-blend-mode:screen;z-index:16;pointer-events:none;filter:blur(24px);animation:fb-lamp 6s ease-in-out infinite;"></div>
+
+          <svg viewBox="0 0 770 428" style="position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:18;overflow:visible;">
+            <path d="M74 150 C74 104 128 118 150 92 C176 62 212 60 244 70 C282 82 284 128 250 150 C210 176 168 176 172 216 C176 258 232 270 286 262 C330 256 380 262 420 250 C470 236 520 250 560 268" fill="none" stroke="#ffd23f" stroke-width="3" stroke-linecap="round" stroke-dasharray="2 10" style="animation:fb-glowline 4s ease-in-out infinite;"></path>
+          </svg>
+
+          <div style="display:flex;gap:12px;height:212px;">
+            <div style="flex:1.5;position:relative;overflow:hidden;background:#eadfc0;border-radius:9px 5px 11px 6px;box-shadow:inset 0 0 0 2.5px #2b241d;">
+              <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(91deg,rgba(138,90,43,.22) 0 2px,transparent 2px 25px);mix-blend-mode:multiply;"></div>
+              <div style="position:absolute;top:7px;left:11px;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;">LIVING ROOM</div>
+              <div style="position:absolute;left:16px;top:40px;width:72px;height:64px;background:#e3d6b2;border-radius:6px 4px 7px 5px;box-shadow:inset 0 0 0 2.5px #2b241d;">
+                <div style="position:absolute;inset:6px 0 0;background-image:repeating-linear-gradient(90deg,#2b241d 0 2.5px,transparent 2.5px 11px);opacity:.85;"></div>
+                <div style="position:absolute;left:-5px;top:-12px;width:82px;height:18px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:4px 3px 5px 3px;transform:rotate(-2.4deg);"></div>
+              </div>
+              <div style="position:absolute;left:44px;top:30px;font-family:'Alfa Slab One',serif;font-size:15px;color:#0f5c57;z-index:20;animation:fb-zz 3.4s ease-out infinite;">z</div>
+              <div style="position:absolute;right:52px;bottom:48px;width:104px;height:42px;background:#c67139;mix-blend-mode:multiply;border-radius:11px 9px 4px 5px;box-shadow:inset 0 0 0 2.5px #2b241d;"></div>
+              <div style="position:absolute;left:140px;bottom:40px;width:92px;height:36px;background:#b9483d;mix-blend-mode:multiply;border-radius:7px 5px 8px 4px;transform:rotate(3deg);background-image:repeating-linear-gradient(45deg,rgba(242,234,211,.45) 0 4px,transparent 4px 11px);box-shadow:inset 0 0 0 2px #2b241d;"></div>
+              <div style="position:absolute;left:26px;bottom:18px;width:24px;height:19px;background:#8a5a2b;mix-blend-mode:multiply;border-radius:2px 2px 8px 6px;"></div>
+              <div style="position:absolute;left:19px;bottom:35px;width:38px;height:40px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:60% 55% 40% 45%;"></div>
+
+              
+            </div>
+
+            <div style="flex:1;position:relative;overflow:hidden;background:#e4e6cd;border-radius:6px 10px 5px 11px;box-shadow:inset 0 0 0 2.5px #2b241d;">
+              <div style="position:absolute;inset:0;background-image:repeating-conic-gradient(rgba(122,138,94,.3) 0% 25%,transparent 0% 50%);background-size:26px 26px;mix-blend-mode:multiply;"></div>
+              <div style="position:absolute;top:7px;left:11px;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;">KITCHEN</div>
+              <div style="position:absolute;right:14px;top:34px;width:42px;height:82px;background:#f2ead3;border-radius:5px 4px 6px 4px;box-shadow:inset 0 0 0 2.5px #2b241d;"></div>
+              <div style="position:absolute;left:26px;top:72px;width:36px;height:44px;background:#c9a06a;mix-blend-mode:multiply;border-radius:2px 3px 7px 6px;box-shadow:inset 0 0 0 2.5px #2b241d;transform:rotate(-18deg);"></div>
+              <div style="position:absolute;left:8px;top:122px;white-space:nowrap;font-family:Caveat,cursive;font-size:16px;color:#d8352a;">bag: knocked over</div>
+            </div>
+
+            <div style="flex:1;position:relative;overflow:hidden;background:#e7dbe2;border-radius:11px 6px 9px 5px;box-shadow:inset 0 0 0 2.5px #2b241d;">
+              <div style="position:absolute;top:7px;left:11px;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;">BEDROOM</div>
+              <div style="position:absolute;left:20px;bottom:28px;width:98px;height:56px;background:#f2ead3;border-radius:7px 5px 6px 8px;box-shadow:inset 0 0 0 2.5px #2b241d;"></div>
+              <div style="position:absolute;left:20px;bottom:28px;width:98px;height:30px;background:#b98bbf;mix-blend-mode:multiply;opacity:.6;border-radius:7px 5px 0 0;"></div>
+              <div style="position:absolute;right:16px;top:58px;white-space:nowrap;font-family:Caveat,cursive;font-size:16px;color:#4a4036;">sock: gone</div>
+            </div>
+          </div>
+
+          <div style="margin-top:12px;position:relative;height:74px;overflow:hidden;background:#e6dcc0;border-radius:7px 11px 6px 9px;box-shadow:inset 0 0 0 2.5px #2b241d;">
+            <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(89deg,rgba(138,90,43,.2) 0 2px,transparent 2px 22px);mix-blend-mode:multiply;"></div>
+            <div style="position:absolute;top:5px;left:11px;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;">HALLWAY</div>
+            <div style="position:absolute;left:170px;top:20px;width:214px;height:34px;background:#b06a5e;mix-blend-mode:multiply;border-radius:5px 4px 5px 4px;box-shadow:inset 0 0 0 2px #2b241d;"></div>
+            <div style="position:absolute;left:40px;bottom:12px;width:34px;height:17px;background:#8a5a2b;mix-blend-mode:multiply;border-radius:10px 4px 4px 10px;box-shadow:inset 0 0 0 2px #2b241d;"></div>
+            <div style="position:absolute;left:34px;bottom:30px;width:22px;height:9px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:3px;"></div>
+            <div style="position:absolute;left:80px;bottom:10px;white-space:nowrap;font-family:Caveat,cursive;font-size:16px;color:#d8352a;">towel went in here</div>
+          </div>
+
+          <div style="display:flex;gap:12px;margin-top:12px;height:118px;">
+            <div style="flex:1;position:relative;background:#ded3b4;border-radius:8px 5px 10px 6px;box-shadow:inset 0 0 0 2.5px rgba(43,36,29,.35);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+              <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(43,36,29,.1) 0 7px,transparent 7px 14px);"></div>
+              <span style="position:relative;font-family:Caveat,cursive;font-size:18px;line-height:1.15;color:#6d6350;text-align:center;">bathroom<br><span style="font-size:16px;color:#0f5c57;">3 more to go</span></span>
+            </div>
+            <div style="flex:1;position:relative;background:#ded3b4;border-radius:6px 9px 5px 11px;box-shadow:inset 0 0 0 2.5px rgba(43,36,29,.35);display:flex;align-items:center;justify-content:center;overflow:hidden;">
+              <div style="position:absolute;inset:0;background-image:repeating-linear-gradient(45deg,rgba(43,36,29,.1) 0 7px,transparent 7px 14px);"></div>
+              <span style="position:relative;font-family:Caveat,cursive;font-size:18px;line-height:1.15;color:#6d6350;text-align:center;">laundry<br><span style="font-size:16px;opacity:.75;">17 more to go</span></span>
+            </div>
+            <div style="flex:1.35;position:relative;overflow:hidden;background:#e9e1cb;border-radius:9px 6px 11px 5px;box-shadow:inset 0 0 0 2.5px #2b241d;">
+              <div style="position:absolute;top:6px;left:11px;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;">FRONT ENTRY</div>
+              <div style="position:absolute;left:34px;bottom:24px;width:28px;height:24px;background:#2b241d;border-radius:4px 4px 8px 7px;"></div>
+              <div style="position:absolute;left:64px;bottom:24px;width:28px;height:24px;background:#2b241d;border-radius:4px 4px 8px 7px;transform:rotate(11deg);"></div>
+              <div style="position:absolute;right:60px;top:44px;width:16px;height:16px;background:#ffd23f;mix-blend-mode:multiply;border-radius:50%;box-shadow:inset 0 0 0 2px #2b241d;"></div>
+              <div style="position:absolute;right:6px;top:64px;white-space:nowrap;font-family:Caveat,cursive;font-size:17px;color:#0f5c57;">still there</div>
+            </div>
+          </div>
+        
+          <div style="position:absolute;left:4px;top:298px;width:228px;z-index:26;transform:rotate(-4deg);">
+            <div style="background:#fff9ea;padding:7px 9px;border-radius:4px 6px 4px 7px;font-size:12px;line-height:1.3;box-shadow:3px 4px 0 rgba(43,36,29,.3);animation:fb-deal .7s ease-out .1s both;">The dish towel is in the shoe. It is a nest now.</div>
+          </div>
+          <div style="position:absolute;left:252px;top:306px;width:228px;z-index:26;transform:rotate(2.6deg);">
+            <div style="background:#fff9ea;padding:7px 9px;border-radius:6px 4px 7px 4px;font-size:12px;line-height:1.3;box-shadow:3px 4px 0 rgba(43,36,29,.3);animation:fb-deal .7s ease-out .35s both;">The TV remote: acquired. She did not ask.</div>
+          </div>
+          <div style="position:absolute;left:500px;top:296px;width:234px;z-index:26;transform:rotate(-1.8deg);">
+            <div style="background:#ffd23f;padding:7px 9px;border-radius:5px 7px 4px 6px;font-size:12px;line-height:1.3;box-shadow:3px 4px 0 rgba(43,36,29,.35);animation:fb-deal .7s ease-out .6s both;"><b style="font-family:'Alfa Slab One',serif;font-size:10px;color:#d8352a;">HABIT · </b>She stuffs fabric into her favourite shoe.</div>
+          </div>
+        </div>
+
+        <!-- summary rail -->
+        <div style="display:flex;flex-direction:column;gap:11px;min-height:428px;">
+          <div style="position:relative;background:#ffd23f;padding:13px 15px 15px;border-radius:7px 5px 8px 5px;box-shadow:4px 5px 0 #2b241d;">
+            <div style="font-family:Caveat,cursive;font-size:18px;color:#8a5a2b;">run two · 74 seconds</div>
+            <div style="font-family:'Alfa Slab One',serif;font-size:20px;line-height:1.2;margin-top:3px;color:#2b241d;">She went fishing for socks, then fell asleep on the couch.</div>
+          </div>
+
+          <div style="position:relative;background:#e9e1cb;border-radius:6px 9px 6px 9px;padding:11px 12px;box-shadow:inset 0 0 0 2.5px rgba(43,36,29,.5);">
+            <div style="font-family:Caveat,cursive;font-size:19px;color:#d8352a;margin-bottom:7px;">her treasures — under the couch</div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;">
+              <div style="display:flex;align-items:center;gap:7px;font-family:Caveat,cursive;font-size:18px;"><span style="width:24px;height:12px;background:#8a5a2b;mix-blend-mode:multiply;border-radius:6px 3px 3px 6px;display:inline-block;"></span>slipper</div>
+              <div style="display:flex;align-items:center;gap:7px;font-family:Caveat,cursive;font-size:18px;"><span style="width:11px;height:19px;background:#2b241d;border-radius:3px;display:inline-block;"></span>remote</div>
+              <div style="display:flex;align-items:center;gap:7px;font-family:Caveat,cursive;font-size:18px;"><span style="width:24px;height:10px;background:#b98bbf;mix-blend-mode:multiply;border-radius:5px;display:inline-block;"></span>scarf</div>
+              <div style="display:flex;align-items:center;gap:7px;font-family:Caveat,cursive;font-size:18px;color:#d8352a;"><span style="width:20px;height:15px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:3px;display:inline-block;"></span>dish towel <span style="font-size:15px;">new</span></div>
+            </div>
+          </div>
+
+          <div style="flex:1;min-height:150px;position:relative;background:#e9e1cb;border-radius:9px 6px 9px 6px;padding:11px 12px;box-shadow:inset 0 0 0 2.5px rgba(43,36,29,.5);">
+            <div style="font-family:Caveat,cursive;font-size:19px;color:#d8352a;margin-bottom:7px;">pack the cage for run three</div>
+            <div style="display:flex;flex-wrap:wrap;gap:7px;">
+              <span style="font-family:Caveat,cursive;font-size:18px;background:#fff9ea;padding:5px 11px;border-radius:14px 6px 14px 6px;box-shadow:inset 0 0 0 2px #2b241d;">snacks</span>
+              <span style="font-family:Caveat,cursive;font-size:18px;background:#fff9ea;padding:5px 11px;border-radius:6px 14px 6px 14px;box-shadow:inset 0 0 0 2px #2b241d;">a wound-up sock</span>
+              <span style="font-family:Caveat,cursive;font-size:18px;background:#fff9ea;padding:5px 11px;border-radius:14px 6px 14px 6px;box-shadow:inset 0 0 0 2px #2b241d;">a whispered insult</span>
+              <span style="font-family:Caveat,cursive;font-size:18px;background:#b98bbf;color:#2b241d;padding:5px 11px;border-radius:6px 14px 6px 14px;box-shadow:inset 0 0 0 2px #2b241d;">purple salmon</span>
+              <span style="font-family:Caveat,cursive;font-size:18px;background:#ffd23f;padding:5px 11px;border-radius:14px 6px 14px 6px;box-shadow:inset 0 0 0 2px #2b241d;">squeaky toy <span style="color:#d8352a;">new</span></span>
+            </div>
+            <div style="font-family:Caveat,cursive;font-size:17px;color:#8a5a2b;margin-top:9px;">pick two. she does the rest.</div>
+          </div>
+
+          <button style="font-family:'Alfa Slab One',serif;font-size:17px;padding:12px;background:#0f5c57;color:#f2ead3;border:2.5px solid #2b241d;border-radius:6px 4px 7px 4px;box-shadow:4px 5px 0 #2b241d;cursor:pointer;">BACK TO THE CAGE</button>
+        </div>
+      </div>
+
+      <!-- peephole: cage -->
+      <div style="position:relative;margin-top:16px;height:214px;overflow:hidden;border-radius:9px 6px 10px 7px;box-shadow:inset 0 0 0 3px #2b241d;background:#e2d8b8;">
+        <div style="position:absolute;inset:0;background:#1d2b3a;opacity:.3;mix-blend-mode:multiply;"></div>
+        <div style="position:absolute;left:0;right:0;bottom:0;height:52px;background:#d3c49c;background-image:repeating-linear-gradient(90deg,rgba(43,36,29,.2) 0 2px,transparent 2px 44px);mix-blend-mode:multiply;"></div>
+
+        <div style="position:absolute;left:180px;top:22px;width:420px;height:150px;background:#e3d6b2;border-radius:8px 6px 9px 7px;box-shadow:inset 0 0 0 3px #2b241d;overflow:hidden;">
+          <div style="position:absolute;inset:14px 0 0;background-image:repeating-linear-gradient(90deg,#2b241d 0 3px,transparent 3px 26px);opacity:.8;"></div>
+          <div style="position:absolute;left:-10px;top:-14px;width:440px;height:26px;background:#7a8a5e;mix-blend-mode:multiply;border-radius:5px;transform:rotate(-1.2deg);"></div>
+          <div style="position:absolute;left:-10px;top:-14px;width:440px;height:26px;background:repeating-linear-gradient(90deg,#d8352a 0 8px,transparent 8px 20px);mix-blend-mode:multiply;opacity:.6;transform:rotate(-1.2deg) translate(3px,1px);"></div>
+          <div style="position:absolute;left:150px;bottom:6px;z-index:5;">
+            <div style="width:170px;height:128px;overflow:hidden;"><img src="2a2f7a98-4de6-40e9-b7f0-14db352e4ec5" alt="Lucy asleep" style="width:100%;display:block;"></div>
+          </div>
+          <div style="position:absolute;left:290px;bottom:92px;font-family:'Alfa Slab One',serif;font-size:17px;color:#0f5c57;animation:fb-zz 3.6s ease-out infinite;">z</div>
+          <div style="position:absolute;left:316px;bottom:86px;font-family:'Alfa Slab One',serif;font-size:13px;color:#0f5c57;animation:fb-zz 3.6s ease-out infinite 1.2s;">z</div>
+        </div>
+
+        <div style="position:absolute;right:40px;top:40px;width:250px;">
+          <div style="font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;">HER DAYS</div>
+          <div style="font-family:Caveat,cursive;font-size:19px;line-height:1.35;color:#2b241d;margin-top:6px;">
+            <div>2. went fishing for socks, then fell asleep on the couch.</div>
+            <div style="opacity:.6;margin-top:4px;">1. accepted your apology, and your snacks, then fell asleep on the living room rug.</div>
+          </div>
+        </div>
+
+        <div style="position:absolute;left:14px;top:10px;font-family:'Alfa Slab One',serif;font-size:11px;letter-spacing:.12em;color:#d8352a;">ZOOMED IN · THE CAGE</div>
+        <div style="position:absolute;left:16px;bottom:14px;font-family:Caveat,cursive;font-size:20px;color:#2b241d;max-width:150px;">She is full of socks and asleep.</div>
+      </div>
+    </div>
+    </div></div>
+  </section>
+  <section class="screen" id="notes"><div class="notes">
+<h1>Ferret Bowling — in-run UI handoff</h1>
+<p class="lede">This file is the spec. Three screens (<b>DURING RUN</b>, <b>ZOOMED</b>, <b>AFTER RUN</b>) in one flat HTML file, no build, no dependencies except Google Fonts. Everything in the house is CSS — the only images are three Lucy poses.</p>
+
+<h2>The one rule</h2>
+<p>The player is here to <b>watch</b>. Every pixel is either Lucy, the house she is changing, or the smallest possible readout. The moment the screen starts explaining the simulation instead of showing it, the game is a spreadsheet and we have lost. When in doubt, cut the readout and make the house bigger.</p>
+<p>Corollary: <b>no monospace anywhere.</b> The prototype used mono labels because it was a dev build, and mono reads as telemetry. It was the single biggest cause of "flat and boring". Handwriting reads as someone who lives here.</p>
+
+<h2>Material system — a risograph dollhouse</h2>
+<p>The house is printed paper, not a UI. Five rules produce the whole look; they are cheap and they compose.</p>
+<ol>
+<li><b>Overprint.</b> Every coloured shape is <code>mix-blend-mode: multiply</code> over the paper. Where two inks cross, they darken. Do not soften anything with <code>opacity</code> — let the ink stack.</li>
+<li><b>Misregistration.</b> A duplicate layer offset 2–3px in a second ink at 20–40%. Use it on the masthead and the cage blanket <i>only</i>. Everywhere would read as a broken screen.</li>
+<li><b>Hand-cut edges.</b> Asymmetric radii — <code>border-radius: 9px 5px 11px 6px</code>. Never a uniform radius; uniform radius is the tell that a computer drew it. Generate the four values per element from a seeded RNG so a given room keeps its shape across runs.</li>
+<li><b>Printed shadow.</b> <code>box-shadow: 5px 6px 0 rgba(15,92,87,.2)</code> — hard, offset, tinted with a second ink. <b>Zero blur.</b> Blurred shadows are the other tell.</li>
+<li><b>Grain.</b> One overlay per paper sheet: <code>radial-gradient(rgba(43,36,29,.45) .5px, transparent .6px)</code> at <code>background-size:3px 3px</code>, <code>opacity:.2</code>, multiply, <code>pointer-events:none</code>, above everything.</li>
+</ol>
+
+<h2>Type roles — three faces, no overlap</h2>
+<table>
+<tbody><tr><th>Face</th><th>Used for</th><th>Never</th></tr>
+<tr><td><b>Alfa Slab One</b></td><td>Stamps: room names, counters, buttons, the masthead</td><td>Sentences</td></tr>
+<tr><td><b>Caveat</b></td><td>Anything the player "wrote": object labels, annotations, mood, prep chips</td><td>System state</td></tr>
+<tr><td><b>Archivo</b></td><td>Journal sentences — the game's own narrating voice</td><td>Labels</td></tr>
+</tbody></table>
+<p>Handwritten labels are absolutely positioned with <code>white-space: nowrap</code>. They may overlap the artwork a little — that is correct, they were scribbled on top. They must never overlap <i>each other</i>.</p>
+
+<h2>Must be driven by the sim, not by art</h2>
+<p>Each of these is a real value the simulation already has or can cheaply produce. If any becomes a static decoration, the house stops feeling alive and you may as well delete it.</p>
+<table>
+<tbody><tr><th>Thing on screen</th><th>Driven by</th></tr>
+<tr><td>Route line, drawing itself</td><td>Polyline of her actual positions, revealed with <code>stroke-dashoffset</code> as the run advances. Post-run it stays and turns gold.</td></tr>
+<tr><td>Dashed ghost outlines</td><td>Every object carries <code>origin</code> and <code>current</code>. If they differ, draw the dashed outline at <code>origin</code>. <b>Persists across runs</b> — this is the main proof that the house remembers.</td></tr>
+<tr><td>Hoard under the couch</td><td>One shape per treasure (cap the drawn pile at ~6, keep counting). <code>+1</code> pops on acquisition only.</td></tr>
+<tr><td>Cage blanket</td><td>Mood as a single value — one ink and one stripe pattern per mood, the way grime works in Bad Monkeys. Label underneath reads "cage — smug today".</td></tr>
+<tr><td>Slam alert</td><td>Only <code>outrageous</code>-flagged events, never ordinary journal lines. Hard budget: max one per ~20s or it stops meaning anything.</td></tr>
+<tr><td>"new!" / "+12" markers</td><td>A <code>firstSeenRun</code> field on objects and journal entries.</td></tr>
+<tr><td>Ambient motion</td><td>Free, but keep it per-room and low-amplitude: dust in the window light, fridge lamp flicker, plant sway, the pendant lamp. If it ever competes with Lucy for the eye, slow it down.</td></tr>
+</tbody></table>
+
+<h2>Where I departed from the brief, and why</h2>
+<ul>
+<li><b>Four counters survive (runs / known / treasures / habits).</b> The brief bans RPG statistics and it is right, but these are <i>collection</i> counts: they say "there is more Lucy to find", not "Lucy is 74% better". No percentages, no affinities, no XP, ever. If someone adds a fifth counter, ask what it makes the player do.</li>
+<li><b>One bar: energy.</b> It is really the run clock wearing a costume. Keep it because "she is running out of steam" is a narrative fact. If playtesters start optimising against it, delete it.</li>
+<li><b>Locked rooms show a threshold</b> ("opens at 24 known"). That is the brief's own progression rule made visible. It must stay a journal-entry count — never a currency, never a purchase.</li>
+<li><b>Prep is capped at two.</b> The brief lists five preps. A cap makes prep a <i>choice</i>; no cap makes it a loadout, and a loadout is optimisation. Tune the number, keep the cap.</li>
+<li><b>No pause.</b> Speeds are 1× / 4× / 16× / nap. Pausing an autonomous creature implies you are driving her.</li>
+<li><b>Zoom replaced a second view.</b> An earlier pass had a separate cross-section "peephole" panel under the plan. Cut: a second art style for the same room doubles art cost and splits the player's model of the house. Zoom is now literally the same drawing, scaled, with the chrome removed. One house, two distances.</li>
+<li><b>The journal feed shows four entries, not a scroll.</b> A scrollbar invites reading instead of watching. Full history belongs on the post-run screen.</li>
+</ul>
+
+<h2>Ideas I did not build</h2>
+<ul>
+<li><b>Desire paths.</b> Her route should thin and darken where she has walked before, so the house slowly shows her habits without a word of copy. Cheapest possible "you know Lucy now" feedback.</li>
+<li><b>The paper ages.</b> After ~10 runs the sheet itself picks up more grain, a coffee ring, a torn corner. One value, same shape as the Bad Monkeys grime system.</li>
+<li><b>A different ink for the unprecedented.</b> When the sim produces a behaviour with no prior instance, print that journal card in a colour nothing else uses. That is the "wait, she hasn't done that before" moment made visible, and it is one <code>if</code>.</li>
+<li><b>Lift the couch.</b> Click it, the hoard lays itself out on the rug. Discovery, not inventory management.</li>
+<li><b>Per-room ambience.</b> Audio is by far the cheapest way to make the house feel occupied — the fridge hums, the hallway is dead quiet, the bedroom has a clock.</li>
+<li><b>Nap-skip should still narrate.</b> Skipping ahead shouldn't silently jump; print the two or three things that happened while you weren't looking.</li>
+</ul>
+
+<h2>Assets</h2>
+<ul>
+<li><b>Three poses used:</b> <code>walk</code> (plan view, moving), <code>curious</code> (zoomed), <code>lazy</code> (post-run, asleep in the cage). The source PNGs have a text label baked into the bottom ~20% — cropped here with a fixed-height <code>overflow:hidden</code> wrapper. Re-export clean when you can.</li>
+<li><b>Everything else is CSS.</b> No image assets are needed for the house, the furniture or the hoard, and that is deliberate — a new object costs a div, not a drawing.</li>
+<li><b>Fonts:</b> Alfa Slab One, Caveat, Archivo (Google Fonts).</li>
+<li><b>Palette:</b> paper <code>#f2ead3</code>, ink <code>#2b241d</code>, teal <code>#0f5c57</code>, tomato <code>#d8352a</code>, marigold <code>#ffd23f</code>, sage <code>#7a8a5e</code>, terracotta <code>#c67139</code>, wood <code>#8a5a2b</code>. Eight inks, no more — a riso press has a limited drum count and the constraint is doing real work here.</li>
+</ul>
+</div></section>
+  <section class="screen" id="home"><div class="notes">
+<h1>Suggested updates — the Ferret Bowling homepage</h1>
+<p class="lede">The live page sells a launcher: aim, distance in metres, rolls, top speed, surfaces, boosters with percentage buffs. The game is now a house, a memory and a journal. Most of the page describes a different product — and two sections actively contradict the red-team rule.</p>
+
+<h2>Fix first — these contradict the design brief</h2>
+<ol>
+<li><b>"WHAT SHE PICKS UP" is a stat block.</b> <code>+40% DISTANCE</code>, <code>+1 ROLL PER SECOND</code>, <code>RICOCHET · 3 WALLS</code> is exactly the "feed → stat increase → better run" loop the brief forbids, and it is the most quotable copy on the page. Replace with <b>WHAT SHE TAKES</b>: the same objects, described as things she has opinions about and keeps. "Your slipper. She has had it for four runs and shows no sign of returning it."</li>
+<li><b>The run-log panel</b> (DISTANCE / ROLLS DOWN / TOP SPEED / AIRBORNE) measures a throw. Replace with what a run actually produces: <code>RUN 14 · 74s · 3 new things learned · 1 new treasure · 1 habit confirmed</code>.</li>
+<li><b>"Whatever she knocks over in the hallway, you spend on a longer hallway."</b> That is a currency loop. The house opens on understanding, not spend. Suggested: "Whatever she does in the hallway, you write down. Eventually the bathroom door opens."</li>
+</ol>
+
+<h2>Re-aim — same sections, new subject</h2>
+<table>
+<tbody><tr><th>Now</th><th>Suggested</th></tr>
+<tr><td>THE RUN — rear-view hallway clip, metres ticking up</td><td><b>THE RUN</b> — the plan-view house idling: route inking itself, one journal line landing, the hoard ticking to +1. Sell <i>watching</i>, not speed.</td></tr>
+<tr><td>SURFACES — "every floor lies differently", lino / runner / boards</td><td><b>THE HOUSE</b> — "seven rooms, opening slowly". Living room, kitchen, hallway, bedroom, then bathroom, laundry and front entry behind journal thresholds.</td></tr>
+<tr><td>Nav: LUCY · THE RUN · SURFACES · WHAT SHE PICKS UP · $5</td><td>LUCY · THE HOUSE · THE JOURNAL · HER TREASURES · $5</td></tr>
+<tr><td>Hero promise, launcher framing</td><td>Keep <b>"Aim is a suggestion"</b> — it survives the pivot and it is the best line on the page. Change the promise under it: "You prep the cage, open the door, and find out who she is."</td></tr>
+</tbody></table>
+
+<h2>Add — the two sections that are now the product</h2>
+<ul>
+<li><b>THE JOURNAL.</b> Three real entries as paper, in the game's voice, with nothing explaining them. "Lucy stuffed the dish towel into her favourite shoe. It is a nest now. It was always going to be a nest." This is the most convincing thing the game produces and the site does not show it.</li>
+<li><b>HER TREASURES — UNDER THE COUCH.</b> A short list that reads as a hoard, with one line making the persistence explicit: "She has had your slipper since run 6."</li>
+</ul>
+
+<h2>Do not touch</h2>
+<ul>
+<li>Lucy's bio. It is the reason anyone cares, and "TOP SPEED 19.4 km/h" stays — that is a fact about a real ferret, not a game stat.</li>
+<li>The $5 section and "no ferret behind a paywall".</li>
+<li>The Galápagos tombstone.</li>
+<li>The voice throughout. It is already right; only the nouns need changing.</li>
+</ul>
+
+<h2>Visual</h2>
+<p>If the game goes riso, the site should take the same ink set and the same handwriting — overprinted multiply fills, hard offset shadows, Caveat annotations in the margins. Right now the site is flat cream and Alfa Slab, which is the same problem the game UI had. One shared eight-ink palette across both would do most of the work.</p>
+</div></section>
+</main>
+<script>
+document.querySelectorAll('nav button').forEach(function(b){
+  b.addEventListener('click', function(){
+    document.querySelectorAll('nav button').forEach(function(x){x.setAttribute('aria-selected', x===b ? 'true':'false');});
+    document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('on', s.id===b.dataset.t);});
+    window.scrollTo(0,0);
+  });
+});
+</script>
+
+</body></html>
