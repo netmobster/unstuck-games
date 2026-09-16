@@ -296,3 +296,21 @@ dialog.alpha::backdrop{background:rgba(29,43,58,.55)}
 .hoard-list li.gave,.hoard-list li.gone{opacity:.6}
 .hoard-list li.gave .thought,.hoard-list li.gone .thought{text-decoration:line-through;text-decoration-thickness:1.5px}
 @media (max-width:600px){ .hoard-list li{grid-template-columns:22px minmax(0,1fr)} .hoard-list small{grid-column:2} }
+
+/* the story, on first visit and behind the ? button: sleeping Lucy across the top */
+dialog.intro{width:min(560px,calc(100vw - 32px));max-height:calc(100vh - 32px);overflow:auto}
+.intro-banner{position:relative;height:190px;background:#e3d6b2;border-bottom:3px solid var(--ink);overflow:hidden;
+  background-image:repeating-linear-gradient(90deg,rgba(43,36,29,.12) 0 3px,transparent 3px 40px)}
+.intro-banner img{position:absolute;left:50%;bottom:-38px;width:250px;height:250px;object-fit:contain;transform:translateX(-50%)}
+.intro-banner .z1,.intro-banner .z2{position:absolute;font-family:var(--slab);color:var(--teal);animation:fb-zz 3.6s ease-out infinite}
+.intro-banner .z1{left:calc(50% + 70px);top:38px;font-size:28px}
+.intro-banner .z2{left:calc(50% + 98px);top:18px;font-size:20px;animation-delay:1.2s}
+.intro .alpha-in h2{color:var(--teal)}
+.intro .alpha-in button{align-self:stretch}
+.intro-fine{border-top:2px dashed rgba(43,36,29,.3);padding-top:10px;margin-top:4px;display:flex;flex-direction:column;gap:6px}
+.intro-fine p{font-size:12.5px;line-height:1.45;color:var(--muted)}
+.intro-fine b{color:var(--tomato)}
+.about-btn{width:28px;height:28px;padding:0;font-family:var(--slab);font-size:15px;line-height:1;color:var(--ink);
+  background:transparent;border:2px solid var(--ink);border-radius:50%}
+.about-btn:hover{background:var(--marigold)}
+@media (prefers-reduced-motion:reduce){.intro-banner .z1,.intro-banner .z2{animation:none}}

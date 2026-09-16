@@ -654,12 +654,12 @@ initVoice();
   const dlg = document.getElementById("alphaDlg") as HTMLDialogElement | null;
   const go = document.getElementById("alphaGo");
   if (dlg && go) {
+    const show = () => { try { dlg.showModal(); } catch { dlg.setAttribute("open", ""); } };
     go.addEventListener("click", () => { try { dlg.close(); } catch { dlg.removeAttribute("open"); } });
+    document.getElementById("introBtn")?.addEventListener("click", show);
+    // A new key, so people who only ever saw the old alpha notice get the story once too.
     try {
-      if (!localStorage.getItem("lucy:seen-alpha")) {
-        localStorage.setItem("lucy:seen-alpha", "1");
-        try { dlg.showModal(); } catch { dlg.setAttribute("open", ""); }
-      }
+      if (!localStorage.getItem("lucy:seen-intro")) { localStorage.setItem("lucy:seen-intro", "1"); show(); }
     } catch { /* private window: skip it */ }
   }
 }
