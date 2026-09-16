@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>What Came Out of the Ground</title>
+<meta name="description" content="Ferret Bowling after-action: what the Galápagos teardown promised, what actually got built, and what the library gained.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo:wght@400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  /* The game's own riso palette, because this document is about the game that
+     got made rather than the corpse it came from. Paper, not stone. */
+  :root{
+    --paper:#f2ead3; --ground:#e6dcc0; --ink:#2b241d; --dim:#6b6152;
+    --teal:#0f5c57; --tomato:#d8352a; --marigold:#ffd23f; --sage:#7a8a5e; --wood:#8a5a2b;
+    --slab:'Alfa Slab One',Georgia,serif; --hand:Caveat,cursive; --body:Archivo,system-ui,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--body);font-size:17.5px;line-height:1.6;
+       -webkit-font-smoothing:antialiased}
+  .grain{position:fixed;inset:0;background-image:radial-gradient(rgba(43,36,29,.5) .5px,transparent .6px);
+         background-size:3px 3px;opacity:.18;mix-blend-mode:multiply;pointer-events:none;z-index:99}
+  .wrap{max-width:880px;margin:0 auto;padding:0 22px}
+  h1,h2,h3,h4{font-family:var(--slab);font-weight:400;margin:0;letter-spacing:.01em}
+  a{color:var(--teal)}
+
+  header.top{padding:54px 0 28px}
+  .kick{font-family:var(--slab);font-size:11px;letter-spacing:.22em;color:var(--tomato)}
+  h1{font-size:clamp(40px,8vw,74px);line-height:.95;margin:14px 0 10px}
+  h1 span{color:var(--teal)}
+  .sub{font-family:var(--hand);font-size:25px;line-height:1.25;color:var(--wood);max-width:30ch}
+  .meta{font-family:var(--slab);font-size:10.5px;letter-spacing:.16em;color:var(--dim);margin-top:20px}
+
+  .chain{display:flex;align-items:stretch;gap:0;flex-wrap:wrap;margin:28px 0 10px;
+         border:2.5px solid var(--ink);background:var(--paper);box-shadow:5px 6px 0 rgba(15,92,87,.25)}
+  .chain div{flex:1;min-width:150px;padding:13px 15px;border-right:1.5px dashed rgba(43,36,29,.3)}
+  .chain div:last-child{border-right:0}
+  .chain .st{font-family:var(--slab);font-size:10px;letter-spacing:.16em;color:var(--tomato)}
+  .chain .th{font-size:16px;margin-top:4px;line-height:1.3}
+  .chain .done{font-family:var(--hand);font-size:17px;color:var(--sage)}
+
+  section{padding:28px 0;border-top:2.5px dashed rgba(43,36,29,.32)}
+  h2{font-size:12px;letter-spacing:.2em;color:var(--tomato);text-transform:uppercase;margin-bottom:8px}
+  h3{font-size:clamp(23px,3.4vw,32px);line-height:1.1;margin-bottom:12px}
+  p{margin:0 0 14px}
+  .lede{font-family:var(--hand);font-size:23px;line-height:1.3;color:var(--wood);margin-bottom:16px}
+
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px;margin:20px 0}
+  .card{background:var(--paper);border:2.5px solid var(--ink);border-radius:8px 5px 9px 6px;padding:16px 18px;
+        box-shadow:4px 5px 0 rgba(15,92,87,.2)}
+  .card h4{font-size:17px;margin-bottom:7px;color:var(--teal)}
+  .card p{margin:0;font-size:16px;line-height:1.5}
+  .card p + p{margin-top:8px}
+
+  .kept{border-color:var(--sage)}
+  .kept h4{color:var(--sage)}
+  .cut{border-style:dashed;border-color:var(--tomato)}
+  .cut h4{color:var(--tomato)}
+
+  blockquote{margin:20px 0;padding:14px 18px;background:var(--marigold);border:2.5px solid var(--ink);
+    border-radius:7px 5px 8px 5px;box-shadow:4px 5px 0 var(--ink);font-family:var(--slab);font-size:19px;line-height:1.3}
+  blockquote cite{display:block;margin-top:8px;font-family:var(--body);font-weight:600;font-size:12px;
+    letter-spacing:.1em;font-style:normal;color:var(--wood)}
+
+  .tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:16px}
+  .tbl th{font-family:var(--slab);font-size:10px;letter-spacing:.14em;text-transform:uppercase;text-align:left;
+          color:var(--dim);border-bottom:2.5px solid var(--ink);padding:6px 10px 6px 0}
+  .tbl td{padding:7px 10px 7px 0;border-bottom:1px solid rgba(43,36,29,.2);vertical-align:top}
+  .tbl td.n{font-variant-numeric:tabular-nums;white-space:nowrap}
+  .scroll{overflow-x:auto}
+
+  .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:16px;margin:22px 0}
+  .stats div{border-top:3px solid var(--ink);padding-top:9px}
+  .stats .big{font-family:var(--slab);font-size:29px;line-height:1;display:block;color:var(--teal)}
+  .stats .lbl{font-family:var(--slab);font-size:9.5px;letter-spacing:.14em;color:var(--dim);display:block;margin-top:6px}
+
+  ul{margin:0 0 14px;padding-left:20px}
+  li{margin-bottom:7px}
+  .hand{font-family:var(--hand);font-size:21px;color:var(--wood)}
+  footer{border-top:3px solid var(--ink);margin-top:34px;padding:24px 0 64px;font-size:14.5px;color:var(--dim)}
+  @media (max-width:640px){ body{font-size:17px} .chain div{border-right:0;border-bottom:1.5px dashed rgba(43,36,29,.3)} }
+</style>
+</head>
+<body>
+<div class="grain" aria-hidden="true"></div>
+
+<header class="top"><div class="wrap">
+  <div class="kick">UNSTUCK GAMES · AFTER-ACTION · GAME #3</div>
+  <h1>WHAT CAME OUT<br>OF <span>THE GROUND</span></h1>
+  <p class="sub">We dug up Galápagos: Mendel's Escape. A ferret climbed out.</p>
+  <div class="meta">TOMBSTONE: GALÁPAGOS: MENDEL'S ESCAPE (1997) · SHIPPED AS FERRET BOWLING: BOWLING OPTIONAL EDITION · ALPHA, 16 SEPT 2026</div>
+
+  <div class="chain">
+    <div><span class="st">01 · TOMBSTONE</span><div class="th">Galápagos: Mendel's Escape</div><span class="done">a creature you cannot steer</span></div>
+    <div><span class="st">02 · TEARDOWN</span><div class="th">The Mendel File</div><span class="done">five agents, one report</span></div>
+    <div><span class="st">03 · BOUNDARIES</span><div class="th">Jay's eight answers</div><span class="done">adorable, not chaos</span></div>
+    <div><span class="st">04 · SHIPPED</span><div class="th">Ferret Bowling, alpha</div><span class="done">playable, has a hoard</span></div>
+  </div>
+</div></header>
+
+<div class="wrap">
+
+  <section>
+    <h2>The promise</h2>
+    <h3>What the teardown said was alive</h3>
+    <p class="lede">Mendel's organ: you do not control the creature. You change the world it is in, and it responds in its own time.</p>
+    <p>Galápagos gave its creature a will and gave the player only the environment — you rearrange the room and Mendel walks through it, occasionally into something fatal. The game was buried by its platform and its difficulty, but the organ was intact: <b>a creature with its own agenda, and a player reduced to conditions.</b></p>
+    <p>That was the promise we took into the build. What follows is what survived contact.</p>
+  </section>
+
+  <section>
+    <h2>The evidence</h2>
+    <h3>Two days, by the clock</h3>
+    <div class="stats">
+      <div><span class="big">0:55</span><span class="lbl">JAY-TIME TO FIRST PLAYTEST</span></div>
+      <div><span class="big">24,000</span><span class="lbl">SIMULATED RUNS BEFORE HE SAW IT</span></div>
+      <div><span class="big">6</span><span class="lbl">SMOKE POLICIES, INVARIANTS ALL PASS</span></div>
+      <div><span class="big">10</span><span class="lbl">COMBOS, EVERY ONE FIRES</span></div>
+    </div>
+    <p>The method's promise is that each game costs less of Jay's time than the last. Game #2 reached a rough prototype at ~1:45 of his time. Game #3 reached a playtest at <b>0:55</b>, on a bigger idea, because the library had grown: the deterministic sim and seeded replay came from Orbis, the invariants-versus-experience split came from Bad Monkeys, and the pricing-and-ledger thinking came from Elsewhere.</p>
+    <blockquote>SHE HAS A FUCKING HOARD.<cite>JAY, FIRST PLAYTEST — RUN 2, MINUTE 55</cite></blockquote>
+    <p>That reaction is the entire design validated in five words, and it arrived before any art, sound or polish existed. The hoard was not in the brief. It emerged because stolen things persisted between runs and the sim had nowhere to put them but under the couch.</p>
+  </section>
+
+  <section>
+    <h2>The transplant</h2>
+    <h3>What we kept, and what we cut</h3>
+    <div class="cols">
+      <div class="card kept">
+        <h4>KEPT · the organ itself</h4>
+        <p>You never steer Lucy. You pack a cage, open a door, and get out of the way. Every verb the player has is a condition, not a command.</p>
+      </div>
+      <div class="card kept">
+        <h4>KEPT · the world as the interface</h4>
+        <p>Mendel's rooms became a seven-room house with real doors, real objects and real routes. The house is the control panel.</p>
+      </div>
+      <div class="card kept">
+        <h4>KEPT · consequence without punishment</h4>
+        <p>Nothing kills Lucy. The cost of a bad idea is a wasted day and a grumpy ferret, which turned out to be enough.</p>
+      </div>
+      <div class="card cut">
+        <h4>CUT · difficulty as the teacher</h4>
+        <p>Galápagos taught by killing you. Jay's boundary — "more adorable and weird than chaos and danger" — removed death entirely, and the game got more interesting, not less.</p>
+      </div>
+      <div class="card cut">
+        <h4>CUT · the puzzle</h4>
+        <p>Mendel is a puzzle game with an autonomous piece. Ferret Bowling has no solution, and refuses a score. The payoff is the sentence at the end of the run.</p>
+      </div>
+      <div class="card cut">
+        <h4>CUT · the launcher</h4>
+        <p>The genre DNA promised throwing an animal for distance. Lucy cannot be aimed, and the title kept the joke: <i>Bowling Optional Edition</i>.</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>What the build discovered</h2>
+    <h3>Four things nobody designed</h3>
+    <p><b>1 · Moods are attention, not stats.</b> The items you pack do not make Lucy stronger. They change what she <em>notices</em> — a tag multiplier on the world. The same house produces a different day because she is looking at different things. This is now the cleanest idea in the library.</p>
+    <p><b>2 · The hoard is the retention hook.</b> Treasures persist under the couch between runs. Nothing else in the game makes a player say "one more run" — not the journal, not the combos.</p>
+    <p><b>3 · Habits make a specific ferret.</b> She develops a favourite nap spot, a favourite room, a nemesis and a routine, each decaying if unused. When a mood meets a habit you get a ritual — the shoe nest, the pancake on her spot, the crumbs in the treasure pile. <b>Persistence is what turns a simulation into a character.</b></p>
+    <p><b>4 · Leftover mood across runs.</b> Deciding to play with her does not mean she is in the mood for it. Ten to twenty per cent of yesterday's temper survives into today — hyper, sleepy or grudgy — and a bath washes it away. That single rule is what stopped runs feeling independent of each other.</p>
+    <p class="hand">None of those four were in the brief. All four came out of testing, and three came out of Jay's own asides during a decision round.</p>
+  </section>
+
+  <section>
+    <h2>The library</h2>
+    <h3>What game #3 contributes</h3>
+    <div class="scroll"><table class="tbl">
+      <tr><th>Entry</th><th>What it is</th><th>Where it came from</th></tr>
+      <tr><td><b>Mood as attention</b></td><td>Prep changes what an agent notices — tag multipliers — not what it can do</td><td class="n">Ferret Bowling</td></tr>
+      <tr><td><b>Persistence that characterises</b></td><td>Stash, habits with decay, rituals where mood meets habit</td><td class="n">Ferret Bowling</td></tr>
+      <tr><td><b>Leftover state across runs</b></td><td>A fraction of yesterday's temper survives, and one action can wash it</td><td class="n">Ferret Bowling</td></tr>
+      <tr><td><b>End-of-run modal</b></td><td>A large portrait, what happened, what you learned, and one way back</td><td class="n">Ferret Bowling</td></tr>
+      <tr><td><b>Sprite slicing pipeline</b></td><td>Alpha-channel blob extraction from a generated sheet into aligned frames</td><td class="n">Ferret Bowling</td></tr>
+      <tr><td>Deterministic sim + seeded replay</td><td>Same seed, same ferret</td><td class="n">lifted from Orbis</td></tr>
+      <tr><td>Invariants vs experience sweeps</td><td>Invariants must pass; sweeps only report distributions</td><td class="n">lifted from Bad Monkeys</td></tr>
+    </table></div>
+  </section>
+
+  <section>
+    <h2>Honestly</h2>
+    <h3>What is still wrong with it</h3>
+    <ul>
+      <li><b>No sound.</b> The brief exists — a room bed, seven Lucy sounds, eight event sounds, four moments — and it is Jay's next job.</li>
+      <li><b>Labels collide</b> in the living room when she drags things around. Known, unfixed, visible.</li>
+      <li><b>One seed of content.</b> The journal phrasing repeats sooner than it should. This is where pre-generated variety earns its place, the way Bad Monkeys does it.</li>
+      <li><b>Art is the red team's,</b> not CD's finals. Good enough to ship an alpha, not good enough to ship.</li>
+      <li><b>Mobile is untested</b> for the prototype specifically.</li>
+    </ul>
+    <p>All of that is in the alpha notice the player sees before the first run, which says the quiet part: <i>some of that is a bug, some of that is Lucy, telling them apart is genuinely hard.</i></p>
+  </section>
+
+  <section>
+    <h2>The thread</h2>
+    <h3>Three games in, one verb</h3>
+    <p>Orbis: conditions, never interference. Elsewhere: your absence is the mechanic. Bad Monkeys: she works while you are gone. Ferret Bowling: you cannot aim the ferret. <b>Four games, one verb — you do not control the thing, you set up conditions and find out.</b></p>
+    <p>That is either an identity or a rut, and naming it is what chose game #4. The next tombstone is <b>Majesty (2000)</b>, whose organ is the same refusal seen from the other side: you cannot give an order, only an offer, and the offer can be declined. The difference is that this time you are <em>present</em>, paying, and out of time.</p>
+    <p class="hand">The ferret taught us that persistence makes a character. The next one has to prove that twelve of them can.</p>
+  </section>
+
+  <footer>
+    <p><b>WHAT CAME OUT OF THE GROUND</b> · Ferret Bowling after-action, 16 September 2026. Companion to <a href="REPORT.html">The Mendel File</a>, the teardown that started it, and predecessor to <a href="../majesty/REPORT.html">The Bounty File</a>, which starts the next one.</p>
+    <p>Timings from HOURS.md. Test figures from the prototype's smoke suite. Quotations are Jay's, from the playtest they happened in.</p>
+  </footer>
+</div>
+</body>
+</html>
