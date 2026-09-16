@@ -1,5 +1,7 @@
 # Game #4 — brief
 
+> **Superseded by [deadline-dungeon/PRD-TRD.md](../deadline-dungeon/PRD-TRD.md)** (16 Sep 2026). This brief is kept as the record of how we got there.
+
 Filed 2026-09-16. **A brief, not a spec.** Goals, tone, objective, and a sketch of the
 mechanics as they stand after ideation and the teardown. Nothing below is decided until
 Jay's boundaries (method step 4) are in; open questions are marked **DECIDE** with a
