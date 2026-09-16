@@ -36,6 +36,33 @@ How an Unstuck game gets made. Living document: every game should change it a li
    happens if we put that organ somewhere completely different?** For Majesty the answer
    is already written: *you do not command people; you create incentives and watch them
    decide.* That is worth resurrecting. The office is just where we put it.
+   **Cremation (Jay + red team, 2026-09-16).** The four beats, in order, and the third
+   is the one everybody skips:
+
+   | | |
+   |---|---|
+   | **Tombstone** | What was alive in it? |
+   | **Cremation** | What are we refusing to reproduce? |
+   | **Transplant** | What survives the move? |
+   | **Unstuck** | What happens when that organ is put somewhere completely different? |
+
+   **The source game is not the product spec. It is the evidence.** A teardown that ends
+   in "so let's rebuild that" has failed; we are not making anybody's sequel. After the
+   organ comes out, *the body is burned* — the setting, the genre, the interface, the
+   fan service, and every feature that only makes sense inside the original. Cremation is
+   written down explicitly, because a thing you never named is a thing that creeps back
+   into the design at 2am.
+
+   This matters most where the source is still mourned. Majesty's people are not asking
+   for an underserved market to be served; they are standing around the grave saying
+   *"most still seem to miss the mark of what made the original special."* That is grief,
+   twenty-six years on, and it sets the standard for the teardown: get the mechanics
+   exactly right — down to correcting our own brief's flag count — because precision is
+   the only way to demonstrate you actually went into the corpse rather than admiring the
+   headstone. Then take the organ nobody understood, and let the original stay dead.
+
+   We heard you. We understand why you still miss it. We are not bringing it back.
+
 2. **Teardown.** Deconstruct it to principles, not features. Label every piece: genre DNA (take freely), principle (abstract and rebuild), expression (do not touch). This is also the provenance trail. → `teardowns/<source>/TEARDOWN.md`
 3. **Lift from the library first.** Before designing anything new, check what our own shipped games already solve. See *The Library* below.
 4. **Boundaries.** Jay sets them. Nothing is designed before they exist. → `teardowns/<source>/BOUNDARIES.md`
