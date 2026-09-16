@@ -220,7 +220,7 @@ def _beats(rows: list[dict]) -> list[dict]:
     return out
 
 
-def narrate(view: dict, skip_hours: int | None, first: bool) -> dict:
+def narrate(view: dict, skip_hours: int | None, first: bool, since: int = 0) -> dict:
     system = (
         "You are the Elsewhere narrator. The engine already rolled; you are the only "
         "one who can say what it MEANT. Narrate, never arbitrate.\n"
@@ -242,6 +242,10 @@ def narrate(view: dict, skip_hours: int | None, first: bool) -> dict:
         "register — wry gets wry, grim gets grim. Their words are as binding as the roll.\n"
         "Open cold, on one thing that happened, in a short sentence. Never open by "
         "summarising the day.\n"
+        "`beats` is what happened since the last briefing — that is your subject, and "
+        "the whole of it. `background` is older, already told, and there only so you "
+        "can refer back in a clause; never re-narrate it. If `beats` is empty, say so "
+        "in one line — a quiet day is a real answer — and go straight to the cliffhanger.\n"
         "Do NOT tour the board. The player can see the fronts, the queue and the purse; "
         "a briefing that lists all three neighbours and their clocks has said nothing. "
         "Two or three beats at most, and only the ones that changed something.\n"
@@ -280,7 +284,8 @@ def narrate(view: dict, skip_hours: int | None, first: bool) -> dict:
                     ("name", "style", "wants", "sight", "label", "watched")}
                    for f in view["fronts"]],
         "doctrine": view.get("doctrine"),
-        "ledger": _beats(view["ledger"][:14]),
+        "beats": _beats(view["ledger"][:max(0, len(view["ledger"]) - since)]),
+        "background": _beats(view["ledger"][max(0, len(view["ledger"]) - since):][:6]),
         "horizon": view["horizon"][:3],
         "queue": view["queue"],
     }, ensure_ascii=False)
