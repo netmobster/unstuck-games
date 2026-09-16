@@ -1,0 +1,16 @@
+[Unit]
+Description=Contact form for unstuck-games.com
+After=network-online.target
+
+[Service]
+User=ec2-user
+Environment=AWS_REGION=us-east-2
+Environment=CONTACT_TO=wearecleardigital@gmail.com
+Environment=CONTACT_FROM=wearecleardigital@gmail.com
+Environment=CONTACT_DIR=/srv/contact
+ExecStart=/usr/bin/python3 -u /srv/unstuck/services/contact.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
