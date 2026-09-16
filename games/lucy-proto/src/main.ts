@@ -3,6 +3,9 @@
 // States: pre-run (pack the cage) · in-run (whole house + rail, or zoomed close with the chrome gone) · post-run (lamps on).
 // Prepare Lucy. Open the door. Get out of the way.
 import "./style.css";
+import { initMusic } from "./music";
+import { initVoice, playVoice } from "./voice";
+import { thoughtFor } from "./thoughts";
 import { CAGE, DOORS, ROOMS, STASH, THINGS, W, H, type RoomId, type Tag } from "./house";
 import {
   COMBOS, EVERYDAY_IDS, ITEMS, LEFTOVER_TEXT, comboKey, finishRun, replay, squeak, startRun, step, the, unlockedItems, unlockedRooms,
@@ -203,6 +206,27 @@ function drawLucy(now: number) {
   img.style.transform = `rotate(${rot}rad) scale(${sx},${sy})`;
   el.classList.toggle("asleep", pose === "nap" || pose === "curl");
   el.classList.toggle("notice", pose === "notice");
+  drawCarry(pose);
+}
+
+/** What she has in her mouth. The sim takes a stolen thing out of the room the moment she
+    grabs it, so without this it simply vanished and reappeared as a line of text. Now it
+    rides along at the front of her, the same shape and ink it had on the floor. */
+let carriedId: string | null = null;
+function drawCarry(pose: Pose) {
+  const c = $("#carry");
+  const held = run?.carrying ?? null;
+  if ((held?.id ?? null) !== carriedId) {
+    carriedId = held?.id ?? null;
+    if (held) {
+      const s = thingShape(held);
+      const k = Math.min(1, 20 / Math.max(s.w, s.h)); // mouth-sized
+      c.innerHTML = `<div class="shape" style="width:${Math.round(s.w * k)}px;height:${Math.round(s.h * k)}px;${s.css}"></div>`;
+    } else c.innerHTML = "";
+  }
+  if (!held || pose === "nap" || pose === "curl") { c.style.display = "none"; return; }
+  c.style.display = "block";
+  c.style.transform = `translate(${Math.cos(facing) * 22}px,${Math.sin(facing) * 22}px) rotate(${facing}rad)`;
 }
 
 function drawRoute() {
@@ -281,7 +305,7 @@ function onEvents() {
     pop.style.left = `${px(STASH.x) + 20}px`; pop.style.top = `${px(STASH.y) - 16}px`;
     $("#things").appendChild(pop);
   }
-  for (const e of fresh) maybeAlert(e);
+  for (const e of fresh) { playVoice(e.voice); maybeAlert(e); }
   renderFeed();
 }
 
@@ -391,13 +415,17 @@ type MoodPose = "curious" | "wired" | "dozy" | "grudgy" | "damp" | "asleep" | "p
 function moodPose(): { pose: MoodPose; says: string } {
   const top = profile.stash[profile.stash.length - 1];
   if (phase === "day" && last) {
-    const achieved = last.comboFired || last.newEntries.some((e) => e.kind === "combo" || e.kind === "habit");
-    if (achieved) return { pose: "proud", says: last.comboFired ? `She did ${COMBOS[last.comboFired].name}. She knows.` : "She has a new habit and she is proud of it." };
+    // Order matters, and it used to be wrong: "proud" was checked first and fired on any new
+    // habit or any combo, repeats included, so she wore that face 77% of the time and her
+    // real moods almost never showed. Now pride is for firsts, and her mood outranks habits.
     if (last.prep.includes("bath")) return { pose: "damp", says: "Damp. Delighted. Refusing a towel she already used." };
+    const firstCombo = last.comboFired && last.newEntries.some((e) => e.kind === "combo");
+    if (firstCombo) return { pose: "proud", says: `She did ${COMBOS[last.comboFired!].name}. She knows.` };
     const out = last.leftoverOut?.kind;
     if (out === "hyper") return { pose: "wired", says: "She is still going. The run is over. Nobody told her." };
     if (out === "sleepy") return { pose: "dozy", says: "She is barely awake and would like you to stop looking." };
     if (out === "grudgy") return { pose: "grudgy", says: "She remembers. She will remember tomorrow." };
+    if (last.newEntries.some((e) => e.kind === "habit")) return { pose: "proud", says: "She has a new habit and she is proud of it." };
     return { pose: "asleep", says: top ? `She is full of ${shortName(top.name)} and asleep.` : "She is asleep. Do not move her." };
   }
   if (prep.includes("bath")) return { pose: "damp", says: "Bath first. She has opinions about it." };
@@ -411,6 +439,43 @@ function moodPose(): { pose: MoodPose; says: string } {
 /** The eye: nobody decided this. Only shown after the door has closed, so it can
     never be used to steer a run — read it as forensics, not as a dashboard. */
 let eyeOpen = false;
+
+/** The end-of-run card has two faces: the day, and everything she has ever taken. */
+let face: "day" | "hoard" = "day";
+
+type HoardRow = { t: Placed; state: "here" | "gave" | "gone"; when?: number };
+
+/** Everything she has ever taken, oldest first — including what left the hoard, because
+    she remembers what you took off her. */
+function hoardRows(): HoardRow[] {
+  const rows: HoardRow[] = [
+    ...profile.stash.filter((t) => t.took).map((t) => ({ t, state: "here" as const })),
+    ...profile.things.filter((t) => t.took && t.gave !== undefined).map((t) => ({ t, state: "gave" as const, when: t.gave })),
+    ...profile.gone.filter((t) => t.took).map((t) => ({ t: t as Placed, state: "gone" as const, when: t.goneRun })),
+  ];
+  return rows.map((r, i) => ({ r, i })).sort((a, b) => a.r.t.took!.run - b.r.t.took!.run || a.i - b.i).map((x) => x.r);
+}
+
+function hoardHtml(s: RunSummary) {
+  const rows = hoardRows();
+  const here = rows.filter((r) => r.state === "here").length;
+  const said: string[] = [];
+  const thoughts = rows.map((r, i) => { const line = thoughtFor(r.t, session.seed, i === 0, said.slice(-2)) ?? ""; said.push(line); return line; });
+  if (!rows.length) return `<div class="hoard-face"><p class="hoard-empty">Nothing under the couch yet. She is working on it.</p></div>`;
+  return `<div class="hoard-face">
+    <div class="hoard-sum">${here} under the couch${rows.length > here ? ` · ${rows.length - here} she lost` : ""}</div>
+    <ol class="hoard-list">${rows.map((r, i) => {
+      const k = r.t.took!;
+      const fresh = k.run === s.index && r.state === "here";
+      const note = r.state === "gave" ? `gave it back · run ${r.when! + 1}` : r.state === "gone" ? `tidied away · run ${r.when! + 1}` : fresh ? "new today" : `run ${k.run + 1}`;
+      return `<li class="${r.state}${fresh ? " fresh" : ""}">
+        <i style="background:${INK[r.t.tags[0]] ?? "#8a5a2b"}"></i>
+        <div><b>${esc(shortName(r.t.name))}</b><span class="thought">${esc(thoughts[i])}</span></div>
+        <small>${esc(note)}</small>
+      </li>`;
+    }).join("")}</ol>
+  </div>`;
+}
 
 function workingHtml(s: RunSummary) {
   const near = s.shortlist?.near ?? [];
@@ -450,7 +515,7 @@ function renderModal() {
   ];
   const out = s.leftoverOut;
   m.hidden = false;
-  m.innerHTML = `<div class="sheetmodal" role="dialog" aria-modal="true" aria-labelledby="endSentence">
+  m.innerHTML = `<div class="sheetmodal" role="dialog" aria-modal="true" aria-label="How the run went">
     <div class="portrait">
       <div class="bars"></div><div class="blanket" style="background:${MOOD_INK[moodKey].ink}"></div>
       <img src="./sprites/mood_${pose}.png" alt="Lucy, ${pose}">
@@ -459,14 +524,19 @@ function renderModal() {
       <div class="says">${esc(says)}</div>
     </div>
     <div class="told">
-      <div class="when"><button class="eye" data-eye title="Show the working">◉</button>run ${s.index + 1} · ${Math.round(s.ticks / 10)} seconds${s.god ? " · god mode" : ""}${s.prep.length ? ` · ${s.prep.map((i) => ITEMS[i].name.replace(/^A (handful of |wound-up |whispered )?/i, "").toLowerCase()).join(" + ")}` : ""}</div>
+      <div class="faces" role="tablist">
+        <button role="tab" data-face="day" aria-selected="${face === "day"}">THE DAY</button>
+        <button role="tab" data-face="hoard" aria-selected="${face === "hoard"}">INSPECT HER HOARD · ${profile.stash.length}</button>
+      </div>
+      <div class="when">${face === "hoard" ? `<button class="eye" data-eye title="Show the working" aria-pressed="${eyeOpen}">◉</button>` : ""}run ${s.index + 1} · ${Math.round(s.ticks / 10)} seconds${s.god ? " · god mode" : ""}${s.prep.length ? ` · ${s.prep.map((i) => ITEMS[i].name.replace(/^A (handful of |wound-up |whispered )?/i, "").toLowerCase()).join(" + ")}` : ""}</div>
+      ${face === "hoard" ? `${hoardHtml(s)}${eyeOpen ? workingHtml(s) : ""}` : `
       <h2 id="endSentence">${esc(s.sentence)}</h2>
       <div class="head">what you learned${entries.length ? ` · ${entries.length} new` : ""}</div>
       <ul class="learned">${entries.map((e) => `<li class="${e.kind}">${e.kind !== "behaviour" ? `<b>${e.kind.toUpperCase()}</b> ` : ""}${esc(e.text)}</li>`).join("") || `<li>nothing new. she did her usual. she is very consistent.</li>`}</ul>
       ${took.length ? `<div class="head">she took</div><div class="treasures">${took.map((t) => `<div class="new"><i style="background:${INK[t.tags[0]] ?? "#8a5a2b"}"></i>${esc(shortName(t.name))}</div>`).join("")}</div>` : ""}
       ${notes.length ? `<div class="notes">${notes.map((n) => `<span>${esc(n)}</span>`).join("")}</div>` : ""}
       <div class="tomorrow">${out ? `tomorrow she'll be <b>${esc(LEFTOVER_TEXT[out.kind])}</b> · ${esc(out.why)}` : s.prep.includes("bath") ? "the bath washed the mood away. clean slate." : "tomorrow she'll be her ordinary self."}</div>
-      ${eyeOpen ? workingHtml(s) : ""}
+      `}
       <button class="go" data-cage>BACK TO THE CAGE →</button>
     </div>
   </div>`;
@@ -512,6 +582,7 @@ function endRun() {
 function backToCage() {
   if (phase !== "day") return;
   eyeOpen = false;
+  face = "day";
   phase = "cage";
   renderAll();
 }
@@ -551,6 +622,7 @@ document.addEventListener("click", (e) => {
   else if ("open" in d) openDoor();
   else if ("cage" in d) backToCage();
   else if ("eye" in d) { eyeOpen = !eyeOpen; renderModal(); }
+  else if (d.face) { face = d.face === "hoard" ? "hoard" : "day"; renderModal(); }
   else if ("copyrun" in d) {
     const s = last;
     if (s) navigator.clipboard?.writeText(JSON.stringify({ seed: session.seed, run: s.index + 1, prep: s.prep, squeakAt: s.squeakAt }))
@@ -573,6 +645,8 @@ $("#debug").innerHTML = `<summary>playtest tools (not the game)</summary>
 
 renderAll();
 requestAnimationFrame(frame);
+initMusic();
+initVoice();
 
 // The alpha notice: shown once per browser. It is the only thing in here that
 // interrupts, so it says what is broken, what is Lucy, and where to complain.
