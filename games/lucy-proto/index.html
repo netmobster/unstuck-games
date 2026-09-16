@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Ferret Bowling: Bowling Optional Edition — rough prototype</title>
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Archivo:wght@400;500;600;700&family=Caveat:wght@400;600;700&display=swap" rel="stylesheet" />
+  </head>
+  <body data-state="pre-run">
+    <main class="desk">
+      <div class="sheet" id="sheet">
+        <div class="grain" aria-hidden="true"></div>
+        <header class="masthead">
+          <div>
+            <div class="logo">FERRET<span>BOWLING</span><i aria-hidden="true">FERRETBOWLING</i></div>
+            <div class="subline" id="subline">Bowling Optional Edition</div>
+          </div>
+          <div class="counters" id="counters"></div>
+        </header>
+        <div class="stage">
+          <div class="frame" id="frame">
+            <div class="house" id="house">
+              <div class="layer rooms" id="rooms"></div>
+              <div class="layer things" id="things"></div>
+              <svg class="layer route" id="route" aria-hidden="true"><polyline id="routeLine" /></svg>
+              <div class="layer lucy" id="lucy"><div class="shadow"></div><img id="lucyImg" alt="Lucy" /><span class="zz" id="zz">z</span><span class="bang" id="bang">!</span></div>
+              <div class="layer cards" id="cards"></div>
+            </div>
+            <div class="dim" id="dim" aria-hidden="true"></div>
+            <div class="alert" id="alert" aria-live="polite"></div>
+          </div>
+          <aside class="rail" id="rail"></aside>
+        </div>
+        <div class="footline" id="footline"></div>
+      </div>
+      <div class="endmodal" id="endModal" hidden></div>
+      <details class="debug" id="debug"></details>
+    </main>
+    <script type="module" src="/src/main.ts"></script>
+      <script src="/switcher.js" defer></script>
+  </body>
+</html>
