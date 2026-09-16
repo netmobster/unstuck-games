@@ -6,6 +6,36 @@ How an Unstuck game gets made. Living document: every game should change it a li
 
 1. **Find the fun.** A loved game stuck somewhere: buried under monetization, a dead platform, bad scope, or a creator's own overbuild.
    **Vocabulary: the source game is the *tombstone*, never something we "lifted from".** Lifting implies copying, and we don't copy. Credit it as `Tombstone: <game>`. The finished game should be so unlike its tombstone that the credit reads as obvious homage in spirit only. (Jay, 2026-09-13: Bad Monkeys is nothing like Paperclips, except in the most spirit-of-the-spirit way.) *"Lift" is only for our own library.*
+
+   **The graveyard (Jay + red team, 2026-09-16).** One game gets dug up. Others are only
+   flags sticking out of the ground nearby, marking something also buried there.
+
+   | | | |
+   |---|---|---|
+   | **Tombstone** | The corpse we dug up | One per game. We take its organ. |
+   | **Grave marker** | A flag in the ground beside it | Several. Each names one buried thing worth remembering, and nothing else. |
+
+   A marker is not an influence, a reference or a mood board. It is one specific
+   capability we know is in the earth somewhere, written in a few words, so that when the
+   design forgets it we can point at the flag. Markers never get an organ taken out of
+   them; if a marker turns out to be the thing we actually want, it was the tombstone all
+   along and we say so.
+
+   Every design brief opens with the record:
+
+   ```
+   THE GRAVEYARD
+   Tombstone:  Majesty (2000)
+   Markers:    Dungeon Keeper — autonomous inhabitants with needs, moods, schedules
+               Very Small Kingdom — a population small enough to know individually
+               Deadline Dungeon — compressed time pressure, one-screen workplace absurdity
+               Gargantua — the sleeping god, and the caretaker relationship to it
+   ```
+
+   Then the only question that matters: **what was alive inside the tombstone, and what
+   happens if we put that organ somewhere completely different?** For Majesty the answer
+   is already written: *you do not command people; you create incentives and watch them
+   decide.* That is worth resurrecting. The office is just where we put it.
 2. **Teardown.** Deconstruct it to principles, not features. Label every piece: genre DNA (take freely), principle (abstract and rebuild), expression (do not touch). This is also the provenance trail. → `teardowns/<source>/TEARDOWN.md`
 3. **Lift from the library first.** Before designing anything new, check what our own shipped games already solve. See *The Library* below.
 4. **Boundaries.** Jay sets them. Nothing is designed before they exist. → `teardowns/<source>/BOUNDARIES.md`
