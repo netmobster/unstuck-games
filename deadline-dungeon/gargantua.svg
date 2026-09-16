@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Gargantua">
+  <defs>
+    <linearGradient id="stone" x1="0.3" y1="0" x2="0.7" y2="1"><stop offset="0" stop-color="#4a453c"/><stop offset="0.62" stop-color="#2c2822"/><stop offset="1" stop-color="#1d1a15"/></linearGradient>
+    <linearGradient id="seam" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffe08a"/><stop offset="0.7" stop-color="#e8c25c"/><stop offset="1" stop-color="#e8c25c" stop-opacity="0"/></linearGradient>
+    <radialGradient id="halo"><stop offset="0" stop-color="#e8c25c" stop-opacity="0.34"/><stop offset="1" stop-color="#e8c25c" stop-opacity="0"/></radialGradient>
+  </defs>
+  <rect width="64" height="64" fill="#1d1a15"/>
+  <circle cx="32" cy="34" r="26" fill="url(#halo)"/>
+  <polygon points="28.88,14.00 35.12,14.38 39.28,17.04 41.36,23.88 41.88,37.56 42.92,47.44 43.70,52.00 20.30,52.00 21.08,46.68 22.12,36.04 22.64,23.12 24.72,17.04" fill="url(#stone)"/>
+  <rect x="27.32" y="20.84" width="3" height="20.52" fill="url(#seam)" transform="rotate(6 27.58 31.10)"/>
+  <rect x="33.30" y="27.68" width="2.2" height="14.44" fill="url(#seam)" opacity="0.75" transform="rotate(-8 33.56 34.90)"/>
+</svg>
