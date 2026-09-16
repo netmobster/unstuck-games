@@ -280,6 +280,22 @@ body.dragging{cursor:col-resize;user-select:none}
 .btn.solid{background:var(--ember);border-color:var(--ember);color:var(--bg)}
 
 /* ---------------------------------------------------------------- epilogue */
+dialog.how{padding:0;border:1px solid var(--ember);background:var(--bg);color:var(--ink);width:min(720px,94vw);max-height:88vh}
+dialog.how::backdrop{background:rgba(0,0,0,.74);backdrop-filter:blur(3px)}
+.how-in{display:flex;flex-direction:column;max-height:88vh}
+.how-body{overflow:auto;padding:4px 26px 18px}
+.how-head{padding:22px 26px 6px}
+.how-head h2{margin:0;font-size:26px;letter-spacing:.04em}
+.how-head .sub{color:var(--dim);font-style:italic;margin-top:4px}
+.how-body h3{margin:20px 0 6px;font-size:14px;letter-spacing:.18em;color:var(--ember);text-transform:uppercase}
+.how-body p{margin:8px 0;line-height:1.6}
+.how-body b{color:var(--ink)}
+.how-body ol{margin:8px 0 0;padding-left:20px;line-height:1.7}
+.how-body .warn{color:var(--ember)}
+.how-body dl{margin:6px 0 0}
+.how-body dt{margin-top:10px;font-weight:600}
+.how-body dd{margin:2px 0 0;color:var(--dim);line-height:1.55}
+.how-foot{display:flex;justify-content:flex-end;gap:10px;padding:14px 26px 20px;border-top:1px solid rgba(194,164,106,.25)}
 dialog.epi{padding:0;border:1px solid var(--ember);background:var(--bg);color:var(--ink);width:min(760px,94vw);max-height:90vh}
 dialog.epi::backdrop{background:rgba(0,0,0,.74);backdrop-filter:blur(3px)}
 .epi-in{display:flex;flex-direction:column;max-height:90vh}
@@ -341,6 +357,7 @@ dialog.epi::backdrop{background:rgba(0,0,0,.74);backdrop-filter:blur(3px)}
       <span class="pill" id="aiPill">&hellip;</span>
       <span id="seedPill">SEED &hellip;</span>
       <button class="pill" id="fsDown" aria-label="Smaller text">A&minus;</button><button class="pill" id="fsUp" aria-label="Larger text">A+</button>
+      <button class="pill" id="howBtn">HOW TO PLAY</button>
       <button class="pill" id="newWorld">NEW WORLD</button>
     </span>
   </header>
@@ -415,6 +432,69 @@ dialog.epi::backdrop{background:rgba(0,0,0,.74);backdrop-filter:blur(3px)}
     <div id="sealedPriced"></div>
   </section>
 </div>
+
+<dialog class="how" id="howDlg" aria-label="How to play Elsewhere">
+  <div class="how-in">
+    <div class="how-head">
+      <h2>HOW THIS WORKS</h2>
+      <div class="sub">Five minutes to learn. You will still lose. That is allowed.</div>
+    </div>
+    <div class="how-body">
+      <h3>The shape of it</h3>
+      <p>You hold one small place with three neighbours, and each of them is working on
+      something. <b>The world moves whether you are here or not.</b> You cannot watch
+      everything, so the real decision is what you look at — and what you therefore do
+      not see.</p>
+      <p>Queue an order, seal the watch, and leave. Come back and read what happened.</p>
+
+      <h3>Ask for anything</h3>
+      <p>The order buttons are a shortcut, not the rules. <b>You can ask for anything you
+      can describe, and it becomes a real order with real costs and a real roll.</b></p>
+      <p>Type it in plain words. Whatever you ask for gets turned into a price in coin and
+      hands, a modifier drawn from the world as it actually is, and a roll against the same
+      ladder every other order faces. <b>Nobody decides whether it worked — not you, and
+      not the narrator.</b> The dice do, and the result goes in the ledger with its
+      arithmetic showing.</p>
+      <p class="warn"><b>It can fail. It usually costs something even when it fails.</b>
+      That is what makes it worth doing.</p>
+
+      <h3>Things people have actually tried</h3>
+      <dl>
+        <dt>Send every worker to convert a neighbour to your religion</dt>
+        <dd>Pitch a god of community to a people obsessed with walls. It went badly, and it was worth it.</dd>
+        <dt>Marry into one of them</dt>
+        <dd>Cheap, permanent, and it makes you family to people who were going to rob you.</dd>
+        <dt>Start a rumour that the barrow is cursed</dt>
+        <dd>Costs almost nothing. Works better on the superstitious than the mercenary, and the world knows which is which.</dd>
+        <dt>Pay the raiders to rob somebody else</dt>
+        <dd>Turn your worst neighbour into a weapon aimed at your worst problem.</dd>
+        <dt>Every hand pretends to be a sheep and sells imaginary wool, with receipts</dt>
+        <dd>Half of them corpsed. The rest sold wool. The merchants bought the valley while everyone watched the sheep.</dd>
+        <dt>Fake your own collapse</dt>
+        <dd>Let them think the reach is finished. They stop watching you. So does everyone else.</dd>
+      </dl>
+
+      <h3>First world? Do this and stop thinking about it</h3>
+      <ol>
+        <li><b>Watch</b> whoever looks busiest — that is who is getting somewhere.</li>
+        <li><b>Trade</b> with whoever seems most open to it.</li>
+        <li><b>Disrupt</b> the one you are watching.</li>
+        <li><b>Scout</b> a neighbour you have never seen, so you are not blind on two fronts.</li>
+        <li><b>Leave.</b> Come back and find out.</li>
+      </ol>
+      <p>Each neighbour has three tempers: how likely they are to rob you, how fast they
+      work, and how much they will deal. The board shows you what it honestly knows and
+      nothing it does not.</p>
+
+      <h3>The one rule</h3>
+      <p>The engine rolls first and the story is written from what happened. Nothing you
+      read was decided to make a point. <b>If it surprised you, it surprised the narrator too.</b></p>
+    </div>
+    <div class="how-foot">
+      <button class="btn solid" id="howClose">GO ON THEN</button>
+    </div>
+  </div>
+</dialog>
 
 <dialog class="epi" id="epi">
   <div class="epi-in">
@@ -929,5 +1009,23 @@ boot();
 })();
 </script>
 <script src="/switcher.js" defer></script>
+<script>
+// The guide: opened from the header, and once by itself on a player's first world.
+// localStorage is per-browser and harmless if it is unavailable.
+(function () {
+  var dlg = document.getElementById('howDlg');
+  var open = function () { try { dlg.showModal(); } catch (e) { dlg.setAttribute('open', ''); } };
+  var shut = function () { try { dlg.close(); } catch (e) { dlg.removeAttribute('open'); } };
+  document.getElementById('howBtn').addEventListener('click', open);
+  document.getElementById('howClose').addEventListener('click', shut);
+  dlg.addEventListener('click', function (e) { if (e.target === dlg) shut(); });
+  try {
+    if (!localStorage.getItem('elsewhere:seen-guide')) {
+      localStorage.setItem('elsewhere:seen-guide', '1');
+      setTimeout(open, 900);   // let the first briefing paint first
+    }
+  } catch (e) { /* private window: just do not auto-open */ }
+})();
+</script>
 </body>
 </html>
