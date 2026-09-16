@@ -19,6 +19,17 @@ and the button back to the cage stays visible on both faces.
 
 ## The voice
 
+**Superseded 2026-09-16 by Jay's three lines, which are what shipped:**
+
+- `Shoe is nice. My shoe.`
+- `Am fish. Good fish.`
+- `Soft and warm. Soft and warm.`
+
+Two tiny sentences, capitals and full stops, no grammar to speak of. The second one claims
+the thing or repeats the first. The generator is `games/lucy-proto/src/thoughts.ts`.
+
+*The original draft, kept for the record:*
+
 **Two to four words. No grammar. No sentences. Never a full thought.**
 
 - `soft is soft`

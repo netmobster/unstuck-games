@@ -182,7 +182,9 @@ body[data-state="post-run"] .dim{opacity:.4}
 .portrait .says{position:absolute;left:24px;right:40%;top:calc(46px + clamp(28px,4vw,54px));font-family:var(--hand);font-size:clamp(20px,1.8vw,26px);line-height:1.1;color:var(--ink);z-index:3;text-shadow:0 0 6px #e3d6b2,0 0 12px #e3d6b2}
 .portrait .z1,.portrait .z2{position:absolute;font-family:var(--slab);color:var(--teal);animation:fb-zz 3.6s ease-out infinite;z-index:3}
 .portrait .z1{right:28%;top:30%;font-size:30px}.portrait .z2{right:23%;top:34%;font-size:22px;animation-delay:1.2s}
-.sheetmodal .told{display:flex;flex-direction:column;gap:10px;padding:26px 28px 24px;overflow:auto;min-height:0}
+.sheetmodal .told{display:flex;flex-direction:column;gap:10px;padding:26px 28px 24px;overflow:auto;min-height:0;max-height:94vh}
+/* The column caps itself. Capping only the card let a long hoard grow the grid row past the
+   screen, and the card's overflow:hidden then cropped the top of both columns. */
 .told .when{font-family:var(--hand);font-size:20px;color:var(--wood)}
 .told h2{margin:0;font-family:var(--slab);font-weight:400;font-size:clamp(22px,2vw,30px);line-height:1.15;text-wrap:balance;background:var(--marigold);padding:12px 15px 14px;border-radius:7px 5px 8px 5px;box-shadow:4px 5px 0 var(--ink)}
 .told .head{font-family:var(--hand);font-size:21px;color:var(--tomato);margin-top:6px}
@@ -195,7 +197,7 @@ body[data-state="post-run"] .dim{opacity:.4}
 .told .tomorrow{font-family:var(--hand);font-size:21px;line-height:1.2;color:var(--muted);border-top:2.5px dashed rgba(43,36,29,.35);padding-top:10px;margin-top:4px}
 .told .tomorrow b{color:var(--tomato)}
 .told .go{margin-top:6px;font-size:19px;padding:14px}
-@media (max-width:900px){.sheetmodal{grid-template-columns:1fr;overflow:auto}.sheetmodal .portrait{height:42vh;box-shadow:inset 0 -3px 0 var(--ink)}.portrait img{width:auto;height:100%}.sheetmodal .told{overflow:visible}}
+@media (max-width:900px){.sheetmodal{grid-template-columns:1fr;overflow:auto}.sheetmodal .portrait{height:42vh;box-shadow:inset 0 -3px 0 var(--ink)}.portrait img{width:auto;height:100%}.sheetmodal .told{overflow:visible;max-height:none}.told .faces{position:static}}
 @media (prefers-reduced-motion:reduce){.endmodal,.sheetmodal,.portrait .z1,.portrait .z2{animation:none}}
 
 /* pre-run: a small portrait of today's mood in the pack box */
@@ -273,3 +275,24 @@ dialog.alpha::backdrop{background:rgba(29,43,58,.55)}
 .wk-replay code{flex:1;min-width:190px;font-family:var(--voice);font-size:11px;color:#9c937f;word-break:break-all}
 .wk-replay .chip{background:rgba(255,210,63,.18);color:var(--marigold)}
 @media (max-width:600px){ .wk-grid{grid-template-columns:repeat(2,1fr)} }
+
+/* the modal's two faces: the day, and her hoard */
+.told .faces{display:flex;gap:6px;border-bottom:2.5px solid var(--ink);margin:-26px -28px 2px;padding:18px 28px 0;position:sticky;top:-26px;z-index:4;background:var(--paper)}
+.told .faces button{font-family:var(--slab);font-size:13px;letter-spacing:.08em;padding:8px 13px 7px;background:transparent;color:var(--muted);
+  border:2.5px solid transparent;border-bottom:0;border-radius:6px 5px 0 0;margin-bottom:-2.5px}
+.told .faces button[aria-selected="true"]{background:var(--paper);color:var(--tomato);border-color:var(--ink)}
+.told .faces button:hover{color:var(--ink)}
+.hoard-face{display:flex;flex-direction:column;gap:8px}
+.hoard-sum{font-family:var(--hand);font-size:21px;color:var(--tomato)}
+.hoard-empty{font-family:var(--hand);font-size:22px;color:var(--muted);margin:10px 0}
+.hoard-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column}
+.hoard-list li{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:11px;align-items:center;padding:8px 2px;border-bottom:1.5px dashed rgba(43,36,29,.28)}
+.hoard-list i{width:22px;height:13px;border-radius:6px 3px 4px 6px;mix-blend-mode:multiply;box-shadow:inset 0 0 0 1.5px var(--ink)}
+.hoard-list b{display:block;font-family:var(--voice);font-weight:600;font-size:14px;color:var(--ink)}
+.hoard-list .thought{display:block;font-family:var(--hand);font-size:22px;line-height:1.05;color:var(--teal)}
+.hoard-list small{font-family:var(--hand);font-size:16px;color:var(--wood);white-space:nowrap}
+.hoard-list li.fresh .thought{color:var(--tomato)}
+.hoard-list li.fresh small{color:var(--tomato)}
+.hoard-list li.gave,.hoard-list li.gone{opacity:.6}
+.hoard-list li.gave .thought,.hoard-list li.gone .thought{text-decoration:line-through;text-decoration-thickness:1.5px}
+@media (max-width:600px){ .hoard-list li{grid-template-columns:22px minmax(0,1fr)} .hoard-list small{grid-column:2} }

@@ -50,7 +50,15 @@ const hash = (...xs: (number | string)[]) => {
 
 // ---------- persistent profile (rebuilt by replaying runs) ----------
 /** origin: where it was before Lucy moved it (drawn as a dashed ghost). knocked: tipped over. Both persist until you tidy. */
-export type Placed = Thing & { arrivedRun?: number; origin?: { x: number; y: number }; knocked?: boolean };
+export type Placed = Thing & { arrivedRun?: number; origin?: { x: number; y: number }; knocked?: boolean;
+  /** Why she took it, written down at the moment she did. Facts only — the hoard viewer
+      turns these into her words, and may never invent a reason the run did not have. */
+  took?: Took;
+  /** The run she gave it back to you, by the cage. */
+  gave?: number };
+export type Took = { run: number; cause: string; tag: string | null; mood: string | null; how?: string };
+/** Things that left the hoard without her say-so: the house put them back. */
+export type Gone = Placed & { goneRun: number };
 export type JournalEntry = { key: string; run: number; text: string; kind: "combo" | "behaviour" | "habit" | "room" | "item" };
 export type Habits = { favNap: string | null; favRoom: RoomId | null; nemesis: string | null; routine: boolean };
 /** 10–20% of how the last run left her. Your prep only goes so far if she isn't in the mood. */
@@ -69,6 +77,8 @@ export type Profile = {
   counts: { nap: Record<string, number>; room: Record<string, number>; startle: Record<string, number>; stashFirst: number };
   habits: Habits;
   arrivalOrder: string[];
+  /** Hoard items the house tidied away. She remembers. */
+  gone: Gone[];
   leftover: Leftover;
 };
 
@@ -77,7 +87,7 @@ export function newProfile(seed: number): Profile {
   const order = ARRIVALS.map((a) => a.id);
   for (let i = order.length - 1; i > 0; i--) { const j = rng.int(i + 1); [order[i], order[j]] = [order[j], order[i]]; }
   return {
-    seed, runs: [], things: THINGS.map((t) => ({ ...t })), stash: [], journal: new Map(),
+    seed, runs: [], things: THINGS.map((t) => ({ ...t })), stash: [], gone: [], journal: new Map(),
     counts: { nap: {}, room: {}, startle: {}, stashFirst: 0 },
     habits: { favNap: null, favRoom: null, nemesis: null, routine: false }, arrivalOrder: order, leftover: null,
   };
@@ -331,6 +341,22 @@ function shortName(name: string) {
   return name.replace(/^(A|An|The|Your|Her|One) /i, "").toLowerCase();
 }
 
+/** The tag that caught her eye: the one her mood amplified most, else the thing's first. */
+function eyeTag(r: Run, t: Placed): string | null {
+  let best: string | null = null, bv = 1;
+  for (const tag of t.tags) { const v = r.mood.tags[tag] ?? 1; if (v > bv) { bv = v; best = tag; } }
+  return best ?? t.tags[0] ?? null;
+}
+
+/** One word for the state she was in, as the hoard will remember it. */
+function moodWord(r: Run): string | null {
+  if (r.mood.bath) return "bath";
+  if (r.mood.sulk) return "sulk";
+  if (r.mood.swim) return "swim";
+  if (r.mood.speed >= 1.3) return "zoomies";
+  return r.leftover?.kind ?? null;
+}
+
 function tagCause(r: Run, t: Placed) {
   let best = "", bv = 1;
   for (const tag of t.tags) { const v = r.mood.tags[tag] ?? 1; if (v > bv) { bv = v; best = tag; } }
@@ -419,6 +445,7 @@ function complete(r: Run, a: Action) {
       if (!t || !r.things.includes(t)) break;
       r.touched.add(t.id);
       r.things = r.things.filter((x) => x !== t);
+      t.took = { run: r.index, cause: a.cause, tag: eyeTag(r, t), mood: moodWord(r) };
       r.carrying = t;
       say(r, "steal", t, a.cause, r.combo === "insult+sock" && t.id === "slipper"
         ? "Lucy took your slipper. Not a slipper. Yours. She made eye contact the whole time."
@@ -429,11 +456,14 @@ function complete(r: Run, a: Action) {
         const item = r.carrying; r.carrying = null;
         const shoe = r.things.find((x) => x.id === "shoe");
         if (r.combo === "snacks+sock" && item.tags.includes("fabric")) {
+          if (item.took) item.took.how = "the snack sock";
           say(r, "stash", item, "the snack sock", `Lucy packed ${the(item.name)} with snacks and hid it under the couch. For later. For emergencies.`);
         } else if (r.prep.includes("sock") && shoe && r.unlocked.has(shoe.room) && item.tags.includes("fabric") && r.lucy.next() < 0.5) {
+          if (item.took) item.took.how = "shoe-nest";
           say(r, "stash", item, "ritual:shoe-nest", `Lucy stuffed ${the(item.name)} into her favourite shoe. It is a nest now. It was always going to be a nest.`);
         } else if (r.prep.includes("sock") && r.habits.favNap && item.tags.includes("fabric")) {
           const spot = r.things.find((x) => x.id === r.habits.favNap);
+          if (item.took) item.took.how = "decorates-spot";
           say(r, "stash", item, "ritual:decorates-spot", `Lucy draped ${the(item.name)} over ${spot ? the(spot.name) : "her spot"}. Interior design.`);
         } else say(r, "stash", item, a.cause, `Lucy hid ${the(item.name)} under the couch with her other treasures.`);
         r.stash.push(item);
@@ -489,6 +519,7 @@ function complete(r: Run, a: Action) {
       break;
     case "gift": {
       const g = r.stash.shift()!;
+      g.gave = r.index;
       g.x = CAGE.x + 1; g.y = CAGE.y; g.room = "living";
       r.things.push(g);
       say(r, "gift", g, "forgiveness", `Lucy left ${the(g.name)} by the cage. You are forgiven. Probably.`);
@@ -704,7 +735,7 @@ export function finishRun(p: Profile, r: Run): RunSummary {
   p.stash = p.stash.filter((t) => {
     if (world.next() < 0.22) {
       const orig = THINGS.find((o) => o.id === t.id);
-      if (orig) { p.things.push({ ...orig }); returned.push(t.name); return false; }
+      if (orig) { p.things.push({ ...orig }); p.gone.push({ ...t, goneRun: r.index }); returned.push(t.name); return false; }
     }
     return true;
   });

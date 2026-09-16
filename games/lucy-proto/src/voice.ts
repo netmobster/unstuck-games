@@ -18,7 +18,7 @@ import voiceUrl from "./lucy-voice.wav?url";
 
 const IN = 0.012;    // fade in: short, so the attack of a dook survives
 const OUT = 0.05;    // fade out: longer, because a cut tail is what clicks
-const LEVEL = 0.75;  // her voice sits above the music, but not by much
+const LEVEL = 0.6;   // her voice sits above the music, but not by much (Jay: 20% down from 0.75)
 const FLOOR = 220;   // ms between noises — she is chatty, not a machine gun
 
 let ctx: AudioContext | null = null;
