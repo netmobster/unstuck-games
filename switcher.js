@@ -27,7 +27,11 @@
     ".ug-sw[data-open]{display:grid}",
     ".ug-card{width:min(420px,100%);background:#f2ead3;color:#2b241d;border:3px solid #1b1a17;",
     "border-radius:10px 7px 12px 8px;box-shadow:7px 8px 0 rgba(27,26,23,.55);overflow:hidden}",
-    ".ug-home{display:block;padding:15px 17px;background:#1b1a17;color:#ffd23f;text-decoration:none}",
+    ".ug-home{display:flex;align-items:center;gap:12px;padding:15px 17px;background:#1b1a17;color:#ffd23f;text-decoration:none}",
+    ".ug-home div{flex:1;min-width:0}",
+    ".ug-go{flex:none;display:grid;place-items:center;width:64px;height:40px;background:#2f9e4f;color:#0d1a10;",
+    "border-radius:13px 9px 14px 10px;font-size:22px;line-height:1;box-shadow:3px 4px 0 rgba(13,26,16,.55);transition:transform .12s}",
+    ".ug-home:hover .ug-go{transform:translateX(3px)}",
     ".ug-home b{display:block;font-size:19px;letter-spacing:.02em}",
     ".ug-home span{display:block;font-size:12px;opacity:.75;margin-top:2px;color:#f2ead3}",
     ".ug-row{display:flex;align-items:center;gap:11px;padding:11px 16px;text-decoration:none;color:inherit;",
@@ -51,8 +55,9 @@
   wrap.className = "ug-sw";
   wrap.innerHTML =
     '<div class="ug-card" role="dialog" aria-modal="true" aria-label="Unstuck Games">' +
-      '<a class="ug-home" href="' + HOME + '"><b>UNSTUCK GAMES</b>' +
-      "<span>Good games get stuck. We unstick them.</span></a>" +
+      '<a class="ug-home" href="' + HOME + '"><div><b>UNSTUCK GAMES</b>' +
+      "<span>Good games get stuck. We unstick them.</span></div>" +
+      '<span class="ug-go" aria-hidden="true">⟶</span></a>' +
       GAMES.map(function (g) {
         return '<a class="ug-row" href="' + g.href + '"' + (g.id === here ? ' aria-current="page"' : "") + ">" +
           '<span class="ug-ic" style="background:' + g.ink + '">' + g.icon + "</span>" +
