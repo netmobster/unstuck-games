@@ -43,6 +43,9 @@
   .chip.game{background:var(--accent);color:var(--onAccent);border-color:var(--accent)}
   .card h3{font-size:20px;line-height:1.15}
   .card p{margin:7px 0 0;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .card pre.log{margin:12px 0 0;padding:13px 14px;background:#16163a;color:#e6e4dc;border-radius:6px;
+               font:12.5px/1.5 ui-monospace,'SF Mono',Menlo,Consolas,monospace;overflow-x:auto;white-space:pre}
+  .card p.note{margin-top:10px;font-size:14.5px;color:var(--muted);font-style:italic}
   .card a.read{display:inline-block;margin-top:10px;font-weight:800;font-size:13px;letter-spacing:.08em;
                text-decoration:none;border-bottom:2px solid var(--accent)}
   .quiet{color:var(--muted);font-size:14.5px;line-height:1.5}
@@ -105,6 +108,9 @@ fetch('/updates/changelog.json').then(r => r.json()).then(data => {
       <div class="meta"><span class="chip game">${esc(e.game)}</span><span class="chip">${esc(e.tag)}</span><span>${esc(day(e.date))}</span></div>
       <h3>${esc(e.title)}</h3>
       <p>${esc(e.body)}</p>
+      ${e.log ? `<pre class="log">${esc(e.log.join('
+'))}</pre>` : ''}
+      ${e.note ? `<p class="note">${esc(e.note)}</p>` : ''}
     </article>`).join('');
 }).catch(() => {
   document.getElementById('log').innerHTML = '<div class="card"><p class="quiet">The log is having a moment. Try again shortly.</p></div>';
