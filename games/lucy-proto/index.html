@@ -20,6 +20,7 @@
           </div>
           <div class="mast-right">
             <div class="counters" id="counters"></div>
+            <button class="about-btn" id="introBtn" type="button" title="Lucy's story" aria-label="Open Lucy's story">?</button>
             <div class="music">
               <button id="musicBtn" type="button" aria-pressed="true" title="Sound"></button>
               <input id="musicVol" type="range" min="0" max="100" step="1" value="70" aria-label="Sound volume" />
@@ -45,22 +46,32 @@
       <div class="endmodal" id="endModal" hidden></div>
       <details class="debug" id="debug"></details>
     </main>
-    <dialog class="alpha" id="alphaDlg" aria-label="This is an alpha">
+    <dialog class="alpha intro" id="alphaDlg" aria-labelledby="introTitle">
+      <div class="intro-banner" aria-hidden="true">
+        <img src="./sprites/mood_asleep.png" alt="" />
+        <span class="z1">z</span><span class="z2">z</span>
+      </div>
       <div class="alpha-in">
-        <h2>THIS IS AN ALPHA</h2>
-        <p>Lucy works. The house is real, her habits are real, and the hoard under the couch
-          is very real. Everything else is in progress.</p>
-        <p><b>Expect:</b> rough sprites · labels that overlap in the living room ·
-          the odd thing that makes no sense at all. Some of that is a bug. Some of that is Lucy.
-          Telling them apart is genuinely hard.</p>
-        <p><b>If something breaks</b>, or she does something so strange it deserves a witness,
-          tell us: <a href="https://unstuck-games.com/contact/" target="_blank" rel="noopener">unstuck-games.com/contact</a>.
-          Bug reports with what she was doing at the time are worth their weight in salmon.</p>
-        <p class="small">Your Lucy is saved in this browser. One seed, one ferret, her whole life.</p>
-        <p class="small">Music: <i>Nocturnal Drift</i>, Unstuck Games. Lucy's voice:
-          <a href="https://freesound.org/people/J.Zazvurek/sounds/155115/" target="_blank" rel="noopener">"Ferret" by J. Zazvurek</a>,
-          <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>, cut into phrases.</p>
-        <button id="alphaGo" type="button">LET HER OUT</button>
+        <h2 id="introTitle">LUCY IS ABOUT TO HAVE A DAY</h2>
+        <p>Lucy is asleep in her cage. She does not know it yet, but any minute now she is going
+          on a very big adventure through the whole house.</p>
+        <p>You can't steer her. Nobody can steer her. What you <i>can</i> do is pack her cage
+          first: a handful of snacks, a wound-up sock, a whispered insult. Whatever you give her
+          changes what she notices out there, and what she wants.</p>
+        <p>Then open the door, and get out of the way.</p>
+        <p>Everything she steals ends up under the couch. Everything she does ends up in her
+          journal. Tomorrow, she'll still be a little bit in whatever mood today left her in.
+          If you really must, you can squeak at her. She might come back. She might not.</p>
+        <button id="alphaGo" type="button">WAKE HER UP</button>
+        <div class="intro-fine">
+          <p><b>This is an alpha.</b> Rough sprites, labels that overlap, and the odd thing that makes
+            no sense. Some of that is a bug and some of that is Lucy. If she does something strange
+            enough to deserve a witness, <a href="https://unstuck-games.com/contact/" target="_blank" rel="noopener">tell us</a>.
+            Your Lucy is saved in this browser.</p>
+          <p>Music: <i>Nocturnal Drift</i>, Unstuck Games. Lucy's voice:
+            <a href="https://freesound.org/people/J.Zazvurek/sounds/155115/" target="_blank" rel="noopener">"Ferret" by J. Zazvurek</a>,
+            <a href="https://creativecommons.org/licenses/by/4.0/" target="_blank" rel="noopener">CC BY 4.0</a>.</p>
+        </div>
       </div>
     </dialog>
     <script type="module" src="/src/main.ts"></script>
