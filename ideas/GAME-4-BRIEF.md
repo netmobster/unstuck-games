@@ -44,6 +44,11 @@ yourself at midnight. Things go unclaimed while you watch. Somebody quits. The g
    a score: a sentence at the end, a record of who did what, and why.
 6. **Show the working.** The perception maths (value through greed, danger through a
    personal delusion) are plain numbers, and the eye can show them after the fact.
+7. **Every no has a readable reason.** Majesty players never minded heroes refusing; they
+   minded not knowing why (the 5,000 gold Witch King nobody would touch). When someone
+   declines a task, you can always find out why, even when you can't change it.
+8. **No single safe strategy.** Removing control tends to push players into one safe,
+   pre-committed plan (the Loop Hero critique). Variety has to be the safer bet.
 
 ## Tone
 
