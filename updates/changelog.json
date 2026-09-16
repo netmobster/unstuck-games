@@ -4,6 +4,36 @@
   {
    "date": "2026-09-16",
    "game": "Ferret Bowling",
+   "tag": "the eye",
+   "title": "Show the working",
+   "body": "A small eye on the end-of-run card opens the arithmetic: the world seed, how many decisions she made, her last decision with the three things she nearly did instead and their real odds, every action with the reason the sim recorded, and a replay string. Proof there is no AI in here — seeded dice and tag weights, and you can reconstruct the run exactly. It only appears after the door closes, so it can never be used to steer one.",
+   "log": [
+    "NOBODY DECIDED THIS — seeded dice and tag weights",
+    "",
+    "  seed 288891562 · 11 decisions · 0 rolls · no squeak",
+    "",
+    "  HER LAST DECISION, AND WHAT SHE NEARLY DID INSTEAD",
+    "    nap the favourite shoe     tired     43%   ← taken",
+    "    nap the hallway runner     tired     34%",
+    "    nap the fridge             tired     23%",
+    "",
+    "  WHAT SHE DID, AND WHY THE SIM SAID SO",
+    "    58s  nap · shoe             habit: food-coma",
+    "    51s  steal · keys           a wound-up sock",
+    "    45s  sniff · runner         a wound-up sock",
+    "    41s  hide · plant           a handful of snacks",
+    "    34s  drag · cushion         a wound-up sock",
+    "    32s  sniff · cushion        a wound-up sock",
+    "    29s  knock · wastebasket    zoomies",
+    "    26s  drag · rug             a wound-up sock",
+    "",
+    "  {\"seed\":288891562,\"run\":2,\"prep\":[\"snacks\",\"sock\"],\"squeakAt\":null}"
+   ],
+   "note": "A real run. The sock appears five times because its fabric weighting bent what she noticed all day — that is the mood system visible in the log."
+  },
+  {
+   "date": "2026-09-16",
+   "game": "Ferret Bowling",
    "tag": "alpha",
    "title": "Lucy is playable",
    "body": "Pack her cage, open the door, and get out of the way. She explores seven rooms, steals things, sulks, naps on your laundry, and builds a hoard under the couch that persists between runs. Every run ends with what she did and what she learned. One seed, no sound yet, sprites still rough — but it is a real game now, not a page."
