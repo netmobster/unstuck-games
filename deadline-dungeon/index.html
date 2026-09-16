@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Deadline Dungeon: A God Who Forgot — Gargantua Systems</title>
+<meta name="description" content="Managed IT services for the southwest business community. Our founder has been with the company since its inception.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%232e2a24'/%3E%3Ctext x='16' y='23' font-family='monospace' font-size='20' font-weight='600' fill='%23e8c25c' text-anchor='middle'%3E5%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&family=Spectral:ital,wght@0,400;0,600;0,800;1,400&display=swap" rel="stylesheet">
+<style>
+  html{scroll-behavior:auto;}
+  body{margin:0;background:#e7e2d4;font-family:'IBM Plex Sans',sans-serif;color:#262624;}
+  a{color:#452b04;text-decoration:none;} a:hover{color:#8a5a12;text-decoration:underline;}
+  ::selection{background:#e8c25c;}
+  @keyframes dd-breathe{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.02) translateY(-3px)}}
+  @keyframes dd-seam{0%,100%{opacity:.55}50%{opacity:.95}}
+  @keyframes dd-fluor{0%,100%{opacity:.24}48%{opacity:.24}49%{opacity:.09}50%{opacity:.24}88%{opacity:.24}89%{opacity:.15}90%{opacity:.24}}
+  @keyframes dd-jit{0%,100%{transform:translate(0,0)}25%{transform:translate(-1px,1px)}50%{transform:translate(1px,-1px)}75%{transform:translate(-1px,0)}}
+  @media (prefers-reduced-motion: reduce){*{animation:none !important}}
+</style>
+</head>
+<body>
+<div style="position:relative;">
+
+  <!-- ══ HIS GLOW · fixed to the top of the window, always ══ -->
+  <div style="position:fixed;left:0;right:0;top:0;z-index:200;pointer-events:none;">
+    <div data-r="glow" style="height:8px;background:#e8c25c;box-shadow:0 0 28px 6px rgba(232,194,92,.75);"></div>
+  </div>
+  <div data-r="tint" style="position:fixed;inset:0;z-index:190;pointer-events:none;background:#5d6a72;opacity:0;"></div>
+
+  <!-- ══ MASTHEAD ══ -->
+  <div style="position:relative;background:#f3efe3;border-bottom:1px solid #cfc8b6;padding:20px 40px 16px;display:flex;align-items:center;gap:26px;flex-wrap:wrap;">
+    <div style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:17px;line-height:.95;letter-spacing:-.03em;">GARGANTUA<br>SYSTEMS</div>
+    <div style="display:flex;gap:22px;margin-left:auto;font-family:'IBM Plex Sans',sans-serif;font-weight:500;font-size:12.5px;letter-spacing:.06em;color:#4a4439;flex-wrap:wrap;">
+      <span>SERVICES</span><span>OUR PEOPLE</span><span>CLIENTS</span><span>CAREERS</span><span style="color:#6b6353;">FLOOR 5</span>
+    </div>
+  </div>
+
+  <!-- ══ HERO · deliberately dreary ══ -->
+  <div style="position:relative;background:#e7e2d4;padding:74px 40px 66px;">
+    <div style="max-width:1000px;margin:0 auto;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.24em;color:#6b6353;">MANAGED IT SERVICES · TEMPE, ARIZONA · EST. BEFORE RECORDS</div>
+      <h1 style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:clamp(34px,5.4vw,58px);line-height:1.02;letter-spacing:-.036em;margin:16px 0 18px;max-width:20em;">DEPENDABLE INFRASTRUCTURE SUPPORT FOR THE SOUTHWEST BUSINESS COMMUNITY.</h1>
+      <p style="font-size:18px;line-height:1.55;max-width:44em;margin:0 0 28px;color:#332f29;text-wrap:pretty;">Five floors of dedicated technical staff. Same-day ticket response. Twenty-four hour monitoring. Our founder has been with the company since its inception and remains closely involved in day-to-day operations.</p>
+      <div style="display:flex;gap:32px;flex-wrap:wrap;font-family:'IBM Plex Mono',monospace;font-size:13px;color:#4a4439;">
+        <span>UPTIME 99.4%</span><span>TICKETS CLOSED 41,802</span><span>HEADCOUNT 12</span><span>FLOORS 5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ SERVICES ══ -->
+  <div style="position:relative;background:#cfc8b6;padding:56px 40px;">
+    <div style="max-width:1000px;margin:0 auto;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.2em;color:#4a4439;margin-bottom:22px;">OUR SERVICES</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px;">
+        <div style="background:#e7e2d4;padding:24px;">
+          <div style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:16px;margin-bottom:8px;">TIER 1 · HELPDESK</div>
+          <p style="font-size:15px;line-height:1.5;margin:0;color:#332f29;">Password resets, printer faults, and the thing where the screen goes sideways. Handled by whoever takes the ticket.</p>
+        </div>
+        <div style="background:#e7e2d4;padding:24px;">
+          <div style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:16px;margin-bottom:8px;">TIER 2 · NETWORKS</div>
+          <p style="font-size:15px;line-height:1.5;margin:0;color:#332f29;">Switches, cabling, the server room in July. Requires someone willing to go into the server room in July.</p>
+        </div>
+        <div style="background:#e7e2d4;padding:24px;">
+          <div style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:16px;margin-bottom:8px;">TIER 3 · ESCALATION</div>
+          <p style="font-size:15px;line-height:1.5;margin:0;color:#332f29;">Reserved for matters requiring the founder's direct attention. Availability varies. Please allow four thousand years.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ THE BOARD ══ -->
+  <div style="position:relative;background:#e7e2d4;padding:60px 40px;">
+    <div style="max-width:1000px;margin:0 auto;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.2em;color:#6b6353;margin-bottom:8px;">CURRENT WORKLOAD · FLOOR 1</div>
+      <h2 style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.032em;margin:0 0 24px;">FOUR HOURS OLD. NOBODY HAS TAKEN IT.</h2>
+      <div style="background:#f3efe3;border:2px solid #262624;max-width:700px;">
+        <div style="background:#262624;color:#f3efe3;padding:9px 16px;display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;">
+          <span>TICKET #4417</span><span style="color:#e8c25c;">PRIORITY · DIVINE</span>
+        </div>
+        <div style="padding:20px 18px 18px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#4a4439;">SUBJECT</div>
+          <div style="font-family:Spectral,serif;font-weight:800;font-size:clamp(20px,2.7vw,27px);line-height:1.12;margin:4px 0 18px;">The thing on five is getting colder and nobody wants to go up there.</div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;padding-top:15px;border-top:1px solid #cfc8b6;">
+            <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#4a4439;">OFFERED</div><div style="font-weight:600;font-size:15px;margin-top:3px;">Leave at four on Friday</div></div>
+            <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#4a4439;">DECLINED BY</div><div style="font-weight:600;font-size:15px;margin-top:3px;">Brenda · Keith · Deborah</div></div>
+            <div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;color:#4a4439;">OPEN FOR</div><div style="font-family:'IBM Plex Mono',monospace;font-weight:600;font-size:15px;color:#a3182c;margin-top:3px;">4h 12m</div></div>
+          </div>
+        </div>
+      </div>
+      <div style="margin-top:20px;background:#f3efe3;border-left:5px solid #6e6350;padding:16px 18px;max-width:700px;">
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.16em;color:#4a4439;margin-bottom:6px;">YOU ASKED HER WHY</div>
+        <div style="font-family:Spectral,serif;font-size:20px;line-height:1.4;">"I did the server room in July. I'm not doing the stairs as well."</div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;line-height:1.6;color:#4a4439;margin-top:9px;">AVERSION · STAIRS · TRUE. SHE IS NOT LYING TO YOU. ASKING COST YOU ELEVEN MINUTES.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ THE CONSTRAINT ══ -->
+  <div style="position:relative;background:#2e2a24;color:#e7e2d4;padding:64px 40px;">
+    <div style="max-width:1000px;margin:0 auto;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.22em;color:#e8c25c;margin-bottom:20px;">HOW WORK IS ALLOCATED AT THIS COMPANY</div>
+      <div style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:clamp(26px,4.2vw,44px);line-height:1.06;letter-spacing:-.032em;">YOU CANNOT GIVE AN ORDER.<br>YOU CAN ONLY MAKE AN OFFER.</div>
+      <p style="font-family:Spectral,serif;font-style:italic;font-size:clamp(20px,2.6vw,28px);line-height:1.35;margin:20px 0 34px;color:#e8c25c;">An offer can be declined.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:1px;background:#6e6350;">
+        <div style="background:#2e2a24;padding:22px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#b0a488;margin-bottom:8px;">01</div>
+          <div style="font-weight:600;font-size:17px;line-height:1.32;">Work arrives. You don't assign it — you put an offer on the board.</div>
+        </div>
+        <div style="background:#2e2a24;padding:22px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#b0a488;margin-bottom:8px;">02</div>
+          <div style="font-weight:600;font-size:17px;line-height:1.32;">Somebody takes it. Or reads it, thinks about it, and doesn't.</div>
+        </div>
+        <div style="background:#2e2a24;padding:22px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#b0a488;margin-bottom:8px;">03</div>
+          <div style="font-weight:600;font-size:17px;line-height:1.32;">You raise it. You appeal to what they actually want. You buy pizza.</div>
+        </div>
+        <div style="background:#2e2a24;padding:22px;">
+          <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.18em;color:#b0a488;margin-bottom:8px;">04</div>
+          <div style="font-weight:600;font-size:17px;line-height:1.32;">Or you do it yourself. That's middle management.</div>
+        </div>
+      </div>
+      <div style="margin-top:22px;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.1em;color:#bdb4a2;">AN OFFER MAY BE RAISED AT ANY TIME. AN OFFER MAY NOT BE WITHDRAWN.</div>
+    </div>
+  </div>
+
+  <!-- ══ OUR PEOPLE ══ -->
+  <div style="position:relative;background:#cfc8b6;padding:60px 40px;">
+    <div style="max-width:1000px;margin:0 auto;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.2em;color:#4a4439;margin-bottom:8px;">OUR PEOPLE · HEADCOUNT 12</div>
+      <h2 style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.032em;margin:0 0 10px;">NOBODY HERE IS A WORKER UNIT.</h2>
+      <p style="font-size:16.5px;line-height:1.5;margin:0 0 26px;max-width:42em;color:#332f29;text-wrap:pretty;">Three competing pulls each, underneath. You never see the numbers. You learn them the way you learn colleagues: by being refused, repeatedly, until it starts making sense.</p>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;">
+        <div style="background:#f3efe3;border:1px solid #a49c88;box-shadow:4px 5px 0 rgba(38,38,36,.14);">
+          <div style="background:#2e2a24;padding:7px 12px;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:11px;color:#efe8d6;">GARGANTUA SYSTEMS</div>
+          <div style="display:flex;gap:12px;padding:13px;">
+            <div style="width:60px;height:76px;background:#d8d2c2;border:1px solid #a49c88;display:grid;place-items:center;flex-shrink:0;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5b5548;text-align:center;line-height:1.4;">PHOTO<br>PENDING</span></div>
+            <div><div style="font-family:Spectral,serif;font-weight:800;font-size:20px;line-height:1.05;">Brenda</div><div style="font-weight:600;font-size:11.5px;color:#4a4439;margin-top:4px;">TIER 2 SUPPORT</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b6353;margin-top:6px;">NO. 000000114</div></div>
+          </div>
+          <div style="border-top:1px solid #cfc8b6;padding:8px 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5b5548;">LEAVES AT FIVE.</div>
+        </div>
+        <div style="background:#f3efe3;border:1px solid #a49c88;box-shadow:4px 5px 0 rgba(38,38,36,.14);">
+          <div style="background:#2e2a24;padding:7px 12px;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:11px;color:#efe8d6;">GARGANTUA SYSTEMS</div>
+          <div style="display:flex;gap:12px;padding:13px;">
+            <div style="width:60px;height:76px;background:#d8d2c2;border:1px solid #a49c88;display:grid;place-items:center;flex-shrink:0;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5b5548;text-align:center;line-height:1.4;">PHOTO<br>PENDING</span></div>
+            <div><div style="font-family:Spectral,serif;font-weight:800;font-size:20px;line-height:1.05;">Keith</div><div style="font-weight:600;font-size:11.5px;color:#4a4439;margin-top:4px;">NETWORKS</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b6353;margin-top:6px;">NO. 000000087</div></div>
+          </div>
+          <div style="border-top:1px solid #cfc8b6;padding:8px 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5b5548;">WILL DO ANYTHING FOR PIZZA.</div>
+        </div>
+        <div style="background:#f3efe3;border:1px solid #a49c88;box-shadow:4px 5px 0 rgba(38,38,36,.14);">
+          <div style="background:#2e2a24;padding:7px 12px;font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:11px;color:#efe8d6;">GARGANTUA SYSTEMS</div>
+          <div style="display:flex;gap:12px;padding:13px;">
+            <div style="width:60px;height:76px;background:#d8d2c2;border:1px solid #a49c88;display:grid;place-items:center;flex-shrink:0;"><span style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5b5548;text-align:center;line-height:1.4;">PHOTO<br>PENDING</span></div>
+            <div><div style="font-family:Spectral,serif;font-weight:800;font-size:20px;line-height:1.05;">Deborah</div><div style="font-weight:600;font-size:11.5px;color:#4a4439;margin-top:4px;">ACCOUNTS · FLOOR 4</div><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#6b6353;margin-top:6px;">NO. 000000009</div></div>
+          </div>
+          <div style="border-top:1px solid #cfc8b6;padding:8px 12px;font-family:'IBM Plex Mono',monospace;font-size:11px;color:#5b5548;">HAS MET HIM. WON'T DISCUSS IT.</div>
+        </div>
+      </div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.12em;color:#4a4439;margin-top:16px;">+ NINE MORE · BADGES PENDING</div>
+    </div>
+  </div>
+
+  <!-- ══ TESTIMONIAL ══ -->
+  <div style="position:relative;background:#e7e2d4;padding:66px 40px;">
+    <div style="max-width:1000px;margin:0 auto;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.2em;color:#6b6353;margin-bottom:18px;">WHAT PEOPLE SAY ABOUT WORKING WITH US</div>
+      <div data-r="testimonial" style="font-family:Spectral,serif;font-size:clamp(24px,3.6vw,36px);line-height:1.32;max-width:24em;">"Fucking Brenda. I KNEW she was going to make Martin do it."</div>
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:12px;color:#4a4439;margin-top:16px;">— PLAYTESTER, WEEK 3</div>
+    </div>
+  </div>
+
+  <!-- ══ THE WEEK ══ -->
+  <div style="position:relative;background:#cfc8b6;padding:56px 40px;">
+    <div style="max-width:1000px;margin:0 auto;">
+      <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.2em;color:#4a4439;margin-bottom:18px;">THE WORKING WEEK · THIRTY MINUTES</div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:1px;background:#8d8674;">
+        <div style="background:#e7e2d4;padding:18px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4a4439;">MON</div><div style="font-weight:600;font-size:15.5px;line-height:1.3;margin-top:5px;">Twelve strangers. One of them already dislikes you.</div></div>
+        <div style="background:#e7e2d4;padding:18px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4a4439;">TUE</div><div style="font-weight:600;font-size:15.5px;line-height:1.3;margin-top:5px;">The AC fails. It is July.</div></div>
+        <div style="background:#e7e2d4;padding:18px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4a4439;">WED</div><div style="font-weight:600;font-size:15.5px;line-height:1.3;margin-top:5px;">He asks for something. You bury it.</div></div>
+        <div style="background:#e7e2d4;padding:18px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4a4439;">THU</div><div style="font-weight:600;font-size:15.5px;line-height:1.3;margin-top:5px;">He finds out.</div></div>
+        <div style="background:#e7e2d4;padding:18px;"><div style="font-family:'IBM Plex Mono',monospace;font-size:11px;color:#4a4439;">FRI</div><div style="font-weight:600;font-size:15.5px;line-height:1.3;margin-top:5px;">Head office sends a memo. It goes on the wall.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ FLOOR 5 ══ -->
+  <div style="position:relative;background:#b0aa98;padding:74px 40px;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:#f2f4ea;opacity:.24;animation:dd-fluor 11s linear infinite;"></div>
+    <div style="position:relative;max-width:1000px;margin:0 auto;display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:40px;align-items:center;">
+      <div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.2em;color:#332f29;">FLOOR 5 · ESCALATION</div>
+        <h2 style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:clamp(24px,3.4vw,34px);letter-spacing:-.032em;margin:10px 0 14px;">YOU CAN GO AND SIT WITH HIM.</h2>
+        <p style="font-family:Spectral,serif;font-size:clamp(18px,2.2vw,21px);line-height:1.45;margin:0 0 10px;max-width:30em;">It always helps a little. It costs you the afternoon, and while you are up there nobody downstairs is posting anything, and nobody is keeping the bad news away from him.</p>
+        <p style="font-family:Spectral,serif;font-style:italic;font-size:clamp(18px,2.2vw,21px);line-height:1.45;margin:0;max-width:30em;color:#332f29;">He does not know what he used to be. He knows that somebody came upstairs.</p>
+      </div>
+      <div style="position:relative;display:flex;flex-direction:column;align-items:center;">
+        <div style="position:absolute;left:50%;top:-16%;transform:translateX(-50%);width:260px;height:260px;background:radial-gradient(circle,rgba(232,194,92,.34),transparent 62%);"></div>
+        <div data-r="stone" style="position:relative;width:104px;height:146px;animation:dd-breathe 5.5s ease-in-out infinite;">
+          <div style="position:absolute;inset:0;background:linear-gradient(168deg,#3a3630,#232019 62%,#1a1713);clip-path:polygon(38% 0,62% 1%,78% 8%,86% 26%,88% 62%,92% 88%,95% 100%,5% 100%,8% 86%,12% 58%,14% 24%,22% 8%);"></div>
+          <div data-r="seamA" style="position:absolute;left:30%;top:16%;width:5px;height:56%;background:linear-gradient(180deg,#ffe08a,#e8c25c 70%,transparent);transform:rotate(6deg);animation:dd-seam 5.5s ease-in-out infinite;"></div>
+          <div data-r="seamB" style="position:absolute;left:53%;top:34%;width:4px;height:40%;background:linear-gradient(180deg,#e8c25c,transparent);opacity:.75;transform:rotate(-8deg);"></div>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.16em;color:#332f29;margin-top:16px;">G. GARGANTUA · FOUNDER</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══ THE FLIP ══ -->
+  <div data-r="flip" style="position:relative;background:#2e2a24;color:#e7e2d4;padding:74px 40px 56px;">
+    <div style="max-width:1000px;margin:0 auto;">
+      <div data-r="flipKicker" style="font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.2em;color:#b0a488;">CAREERS</div>
+      <h2 data-r="flipHead" style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:clamp(26px,4vw,42px);line-height:1.05;letter-spacing:-.034em;margin:12px 0 16px;max-width:26em;">WE ARE ALWAYS INTERESTED IN HEARING FROM MOTIVATED CANDIDATES.</h2>
+      <p data-r="flipBody" style="font-family:Spectral,serif;font-size:clamp(18px,2.3vw,22px);line-height:1.45;margin:0 0 40px;max-width:34em;color:#c9c2b2;">Positions on floors 1 through 4 are filled on an ongoing basis. There are currently no vacancies on floor 5 and there have never been any.</p>
+
+      <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:26px;flex-wrap:wrap;padding-top:24px;border-top:1px solid #6e6350;">
+        <div style="display:flex;align-items:flex-end;gap:15px;">
+          <div style="position:relative;width:34px;height:48px;flex-shrink:0;">
+            <div style="position:absolute;inset:0;background:linear-gradient(168deg,#4a453c,#2c2822);clip-path:polygon(38% 0,62% 1%,78% 8%,86% 26%,88% 62%,92% 88%,95% 100%,5% 100%,8% 86%,12% 58%,14% 24%,22% 8%);"></div>
+            <div data-r="seamC" style="position:absolute;left:32%;top:18%;width:3.5px;height:54%;background:linear-gradient(180deg,#ffe08a,transparent);"></div>
+          </div>
+          <div>
+            <div style="font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:17px;line-height:.94;letter-spacing:-.03em;">DEADLINE<br>DUNGEON</div>
+            <div style="font-family:Spectral,serif;font-weight:800;font-style:italic;font-size:14px;color:#e8c25c;">A God Who Forgot</div>
+          </div>
+        </div>
+        <div style="font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;line-height:1.9;color:#bdb4a2;text-align:right;">AN UNSTUCK GAME · #4<br>WORKING TITLE · VERY EARLY</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- review-only readout -->
+  <div data-r="readout" style="position:fixed;right:14px;bottom:14px;z-index:210;white-space:nowrap;font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:.14em;background:#2e2a24;color:#e8c25c;padding:7px 12px;">MOOD 0 · CONTENT</div>
+</div>
+<script>
+(function(){
+  var r = {};
+  document.querySelectorAll('[data-r]').forEach(function(el){ r['_' + el.getAttribute('data-r')] = el; });
+  function apply(){
+    var doc = document.documentElement;
+    var max = doc.scrollHeight - window.innerHeight;
+    var p = max > 0 ? Math.min(1, Math.max(0, window.scrollY / max)) : 0;
+    var furious = p > 0.9;
+    var q = Math.min(1, p / 0.86);
+    var mood = furious ? 100 : Math.round(-86 * q);
+    var ramp = [[232,194,92],[185,168,106],[143,154,134],[109,122,130]];
+    function lerp(a,b,t){ return a + (b-a)*t; }
+    var col;
+    if (furious) col = [216,31,60];
+    else {
+      var t = q * (ramp.length - 1);
+      var i = Math.min(ramp.length - 2, Math.floor(t)), f = t - i;
+      col = [0,1,2].map(function(k){ return Math.round(lerp(ramp[i][k], ramp[i+1][k], f)); });
+    }
+    var rgb = 'rgb(' + col.join(',') + ')';
+    var soft = 'rgba(' + col.join(',') + ',';
+    if (r._glow) {
+      r._glow.style.background = rgb;
+      r._glow.style.height = furious ? '13px' : '8px';
+      r._glow.style.boxShadow = furious ? '0 0 48px 12px ' + soft + '.9)' : '0 0 ' + (28 - 15*q) + 'px 6px ' + soft + (0.75 - 0.4*q) + ')';
+      r._glow.style.animation = furious ? 'dd-jit .2s steps(2,end) infinite' : 'none';
+    }
+    if (r._tint) {
+      r._tint.style.background = furious ? '#3a0d14' : '#5d6a72';
+      r._tint.style.opacity = furious ? 0.22 : (0.26 * q).toFixed(3);
+    }
+    if (r._readout) {
+      var label = furious ? 'FURIOUS' : mood > -12 ? 'CONTENT' : mood > -34 ? 'IDLE' : mood > -68 ? 'FADING' : 'CRITICAL';
+      r._readout.textContent = 'MOOD ' + (mood > 0 ? '+' : '') + mood + ' \u00b7 ' + label;
+      r._readout.style.color = furious ? '#ff8a72' : '#e8c25c';
+    }
+    [r._seamA, r._seamB, r._seamC].forEach(function(s, idx){
+      if (!s) return;
+      if (furious) {
+        s.style.background = 'linear-gradient(180deg,#ff7a5c,#d81f3c)';
+        s.style.opacity = 1;
+        s.style.height = (idx === 1 ? 78 : 84) + '%';
+        s.style.top = '10%';
+      } else {
+        s.style.background = 'linear-gradient(180deg,transparent ' + Math.round(q*62) + '%,' + rgb + ')';
+        s.style.opacity = (0.95 - 0.35*q).toFixed(2);
+      }
+    });
+    if (r._stone) r._stone.style.animationDuration = furious ? '1.1s' : (5.5 + 2.5*q).toFixed(1) + 's';
+    if (r._testimonial) r._testimonial.style.opacity = (1 - 0.4*q).toFixed(2);
+    if (r._flip) {
+      r._flip.style.background = furious ? '#2a0f14' : '#2e2a24';
+      if (r._flipKicker) {
+        r._flipKicker.textContent = furious ? 'FLOOR 5' : 'CAREERS';
+        r._flipKicker.style.color = furious ? '#ff8a72' : '#b0a488';
+      }
+      if (r._flipHead) r._flipHead.textContent = furious
+        ? 'HE HAS REMEMBERED WHAT HE IS.'
+        : 'WE ARE ALWAYS INTERESTED IN HEARING FROM MOTIVATED CANDIDATES.';
+      if (r._flipBody) r._flipBody.textContent = furious
+        ? 'The week is over. It ended on Thursday, four floors below where you were standing, because a request of his was declined on Wednesday and somebody told him.'
+        : 'Positions on floors 1 through 4 are filled on an ongoing basis. There are currently no vacancies on floor 5 and there have never been any.';
+    }
+  }
+  window.addEventListener('scroll', apply, { passive: true });
+  window.addEventListener('resize', apply);
+  apply();
+})();</script>
+<script src="/switcher.js" defer></script>
+</body>
+</html>

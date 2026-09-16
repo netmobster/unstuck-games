@@ -17,6 +17,8 @@
       href: "https://badmonkeys.unstuck-games.com/", ink: "#b4573f", icon: "✱" },
     { id: "ferretbowling", name: "Ferret Bowling", note: "aim is a suggestion", status: "ALPHA",
       href: "https://ferretbowling.unstuck-games.com/", ink: "#d8352a", icon: "⌁" },
+    { id: "deadline", name: "Deadline Dungeon", note: "a god who forgot, and his IT company", status: "IN DESIGN",
+      href: "https://deadline.unstuck-games.com/", ink: "#2e2a24", icon: "5" },
   ];
 
   // Which game we are on. The subdomain says so; the path is the fallback that keeps
