@@ -75,6 +75,7 @@
   document.addEventListener("click", function (e) {
     var a = e.target.closest && e.target.closest("a");
     if (!a || !a.href) return;
+    if (wrap.contains(a)) return; // links inside the picker are real links, including the studio card
     var u = a.href.replace(/\/$/, "");
     if (u === HOME.replace(/\/$/, "") || u === "https://www.unstuck-games.com") {
       e.preventDefault();
