@@ -25,8 +25,8 @@ PRICE = {
 
 DEFAULTS = {
     "interpret": os.environ.get("ELSEWHERE_INTERPRET_MODEL", "amazon.nova-micro-v1:0"),
-    "narrate": os.environ.get("ELSEWHERE_NARRATE_MODEL", "amazon.nova-lite-v1:0"),
-    "chronicle": os.environ.get("ELSEWHERE_CHRONICLE_MODEL", "amazon.nova-lite-v1:0"),
+    "narrate": os.environ.get("ELSEWHERE_NARRATE_MODEL", "us.amazon.nova-pro-v1:0"),
+    "chronicle": os.environ.get("ELSEWHERE_CHRONICLE_MODEL", "us.amazon.nova-pro-v1:0"),
 }
 
 MAX_TOKENS = {"interpret": 350, "narrate": 280, "chronicle": 700}
@@ -248,6 +248,11 @@ def narrate(view: dict, skip_hours: int | None, first: bool) -> dict:
         "Close on ONE cliffhanger — the single nearest thing coming — with its time "
         "attached if the horizon gave you one, and never a time it did not. Choose the "
         "one that should worry them most; drop the others entirely.\n"
+        "Never state a resource figure — not coin, not hands, not a standing. Those "
+        "live on the board beside you; the payload carries them only so you know how "
+        "rich or desperate the holding is. 'The purse is thinner than it was' is yours "
+        "to write; '180 coin' is not.
+"
         "Never invent a time window. 'The next twelve hours will decide' is a "
         "number you made up; if the horizon did not give you a clock, say the "
         "not-knowing instead.\n"
