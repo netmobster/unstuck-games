@@ -4,6 +4,7 @@ Filed, not decided. Nothing here is scoped, designed or scheduled until Jay says
 
 | Filed | Idea | What we know | Status |
 |---|---|---|---|
+| 2026-09-15 | **A domain for Unstuck** | Friday job. Buy it, put DNS on Cloudflare, point the Pages site at it, and give Elsewhere-web a fixed address via a named tunnel instead of the random trycloudflare one. Steps in `INFRA.md`. | **Friday 2026-09-18** |
 | 2026-09-13 | **Homepage: a third qualifier** | Next homepage update: add a third card beside the two refusals (A "Why build this and not use it?", B "Why build this then pollute it?"): **"Games that died that deserve more than a tombstone, but also more than a copy."** Example: Universal Paperclips → Bad Monkeys. | For the next homepage update |
 | 2026-09-13 | **Ferret Bowling** | The ferret game, now filed under this name. (The homepage concept card still reads *FERRET HEIST*; unchanged until Jay decides.) | Undecided beyond the name |
 | 2026-09-13 | **Elsewhere, browser version → Unstuck** | Once Elsewhere is rebuilt in Cursor, CC can take it over. **God Mode is simple mechanics, never "make me win"** (you can't win Elsewhere): two watchers instead of one, a rapid build (two tasks in one tick), or time-shifting backwards. | After the Cursor rebuild |
