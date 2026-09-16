@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "vite",
     "smoke": "bun run scripts/smoke.ts",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build": "vite build --outDir ../../ferret-bowling/play --emptyOutDir"
   },
   "devDependencies": {
     "@types/bun": "latest",
