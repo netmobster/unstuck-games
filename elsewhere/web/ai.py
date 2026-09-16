@@ -305,10 +305,24 @@ def narrate(view: dict, skip_hours: int | None, first: bool, since: int = 0) -> 
 
 def chronicle(s: dict, score: dict) -> dict:
     system = (
-        "Write the Elsewhere chronicle after the fog lifts. Every event already "
-        "happened in the ledger. Do not decide anything. The spine is what "
-        "happened in rooms the player was NOT watching. Use the player's `said` "
-        "lines as the voice of the holding. 400-600 words. No title heading."
+        "Write the Elsewhere chronicle: the one moment the fog lifts and the player "
+        "finds out what the world was doing while they were looking elsewhere. Every "
+        "event already happened in the ledger; you decide nothing, you only tell it.\n"
+        "THE SPINE IS WHAT HAPPENED UNWATCHED. Open there — the room nobody was "
+        "looking at, the work that went on regardless — and keep coming back to it. "
+        "That reveal is the whole payoff, and it is why losing still feels good.\n"
+        "NEVER state a number. Not a clock, not a segment, not a roll, not coin. "
+        "'Their clock, now at 10' is the worst sentence you can write; 'they finished "
+        "while the reach was busy being sheep' is the same fact, told. The scoreboard "
+        "prints the figures beside you.\n"
+        "Tell it through people and things: name a hand, a road, an object, a weather. "
+        "The player's schemes are the comedy and the tragedy of this story — the "
+        "`said` lines are theirs, verbatim, and the chronicle is written in that "
+        "register. If they spent a week pretending to be sheep, the sheep are in "
+        "this story, and so is what it cost them.\n"
+        "Land the ending on the irony the ledger actually contains: what they chose "
+        "to watch, and what that let happen. 400-600 words, plain prose, no heading, "
+        "no lists."
     )
     payload = {
         "holding": s["holding"]["name"],
