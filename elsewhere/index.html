@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Elsewhere — an idle RPG that runs in Claude Code while you are gone</title>
-<meta name="description" content="Unbounded input, entering a bounded deterministic reality engine — and an AI beside you that has to narrate the result and live with it exactly like you do. An idle RPG inside Claude Code that runs whether you are there or not.">
+<title>Elsewhere — an idle RPG that keeps running while you are gone</title>
+<meta name="description" content="Unbounded input, entering a bounded deterministic reality engine — and an AI beside you that has to narrate the result and live with it exactly like you do. An idle RPG in your browser that runs whether you are there or not.">
 
 <!-- The mark, as the tab icon. SVG first for anything modern, PNG for the rest. -->
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
@@ -15,17 +15,17 @@
      LinkedIn, Discord and Slack, which is most of where this gets posted. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Elsewhere">
-<meta property="og:url" content="https://netmobster.github.io/elsewhere-idle-cc/">
-<meta property="og:title" content="Elsewhere — an idle RPG that runs in Claude Code while you are gone">
+<meta property="og:url" content="https://elsewhere.unstuck-games.com/">
+<meta property="og:title" content="Elsewhere — an idle RPG that keeps running while you are gone">
 <meta property="og:description" content="You can type anything. A deterministic Python engine decides what actually happens. The AI beside you narrates a result it did not choose, cannot revise, and finds out when you do.">
-<meta property="og:image" content="https://netmobster.github.io/elsewhere-idle-cc/og.png">
+<meta property="og:image" content="https://elsewhere.unstuck-games.com/og.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Three faction clocks. One reads 8/10 with eyes on it. Two are fogged and read a question mark.">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Elsewhere — an idle RPG that runs in Claude Code while you are gone">
+<meta name="twitter:title" content="Elsewhere — an idle RPG that keeps running while you are gone">
 <meta name="twitter:description" content="Unbounded input, bounded deterministic reality, and an AI that has to live with the result. Those fogged bars are not zero — they are unknown.">
-<meta name="twitter:image" content="https://netmobster.github.io/elsewhere-idle-cc/og.png">
+<meta name="twitter:image" content="https://elsewhere.unstuck-games.com/og.png">
 <meta name="theme-color" content="#0d0c0b">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -258,13 +258,13 @@ footer .it{font-style:italic}
 
 <nav>
   <div class="wrap">
-    <a class="logo" href="#top" aria-label="Elsewhere Idle CC">
+    <a class="logo" href="#top" aria-label="Elsewhere">
       <svg viewBox="0 0 64 64" aria-hidden="true"><circle class="ring-dim" cx="32" cy="32" r="28" transform="rotate(-90 32 32)"/><circle class="ring-lit" cx="32" cy="32" r="28" transform="rotate(-90 32 32)"/><circle class="disc" cx="32" cy="32" r="16"/><circle class="bite" cx="41" cy="26" r="16"/></svg>
-      <span><span class="word">ELSEWHERE</span><span class="sub">IDLE CC</span></span>
+      <span><span class="word">ELSEWHERE</span><span class="sub">AN UNSTUCK GAME</span></span>
     </a>
     <div class="navlinks">
-      <a class="hide" href="demo.html">DEMO</a><a class="hide" href="#how">HOW</a><a class="hide" href="#fog">FOG</a><a class="hide" href="#epilogue">EPILOGUE</a><a class="hide" href="#install">INSTALL</a><a class="hide" href="#source">SOURCE</a>
-      <a class="hide" href="https://github.com/netmobster/elsewhere-idle-cc">GITHUB</a>
+      <a class="hide" href="demo.html">DEMO</a><a class="hide" href="#how">HOW</a><a class="hide" href="#fog">FOG</a><a class="hide" href="#epilogue">EPILOGUE</a><a class="hide" href="#play">GET IN</a><a class="hide" href="#source">SOURCE</a>
+      <a class="hide" href="/play/">PLAY</a>
       <div class="hours"><span class="now" id="hour-word">NIGHT</span>
         <div class="picker" role="group" aria-label="Hour of the world">
           <button data-mode="morning" aria-label="morning" title="morning"></button><button data-mode="day" aria-label="day" title="day"></button><button data-mode="sunset" aria-label="sunset" title="sunset"></button><button data-mode="night" aria-label="night" title="night"></button>
@@ -280,9 +280,9 @@ footer .it{font-style:italic}
     <a href="#how">HOW IT WORKS</a>
     <a href="#fog">FOG</a>
     <a href="#epilogue">THE EPILOGUE</a>
-    <a href="#install">INSTALL</a>
+    <a href="#play">HOW TO GET IN</a>
     <a href="#source">THE SOURCE</a>
-    <a href="https://github.com/netmobster/elsewhere-idle-cc">GITHUB</a>
+    <a href="/play/">PLAY</a>
     <div class="hours drawer-hours">
       <span class="now" id="hour-word-m">NIGHT</span>
       <div class="picker" role="group" aria-label="Hour of the world">
@@ -296,10 +296,10 @@ footer .it{font-style:italic}
 
   <header class="hero">
     <div class="copy">
-      <span class="label hot">AN IDLE RPG FOR CLAUDE CODE</span>
+      <span class="label hot">AN IDLE RPG FOR YOUR BROWSER</span>
       <h1>ELSE<br>WHERE</h1>
       <p class="tag">Unbounded input, entering a bounded deterministic reality engine &mdash; and an AI beside you that has to narrate the result and live with it exactly like you do.</p>
-      <p class="dim">An idle RPG inside Claude Code. It runs in real time whether you are there or not. Two minutes a day, three neighbours who each want something, and one set of eyes to point at them.</p>
+      <p class="dim">An idle RPG that runs in real time whether you are there or not. Two minutes a day, three neighbours who each want something, and one set of eyes to point at them.</p>
       <div class="ctas">
         <a class="btn solid" href="/play/">PLAY IN YOUR BROWSER</a>
         <a class="btn" href="demo.html">WATCH A GAME</a>
@@ -366,7 +366,7 @@ footer .it{font-style:italic}
   </section>
 
   <section id="surfaces">
-    <div class="head in"><span class="label hot">FOUR SURFACES, FOUR JOBS</span><h2>The first three are a UI. The fourth is why this needs an agent.</h2></div>
+    <div class="head in"><span class="label hot">FOUR SURFACES, FOUR JOBS</span><h2>The first three are a UI. The fourth is why this needs a narrator.</h2></div>
     <div class="grid g4 in">
       <div><h3>THE BOARD</h3><p class="dim"><b>Does:</b> State. Exactly what is true, rolled by the engine, arithmetic showing.</p><p class="dim"><b>Never:</b> Interpret. Advise. Invent.</p></div>
       <div><h3>THE CHAT</h3><p class="dim"><b>Does:</b> Intelligence. Reads the ledger and tells you what it means.</p><p class="dim"><b>Never:</b> Decide outcomes. Contradict a roll.</p></div>
@@ -377,13 +377,13 @@ footer .it{font-style:italic}
 
   <section id="engine">
     <div class="head in"><span class="label hot">HOW IT ACTUALLY WORKS</span>
-      <h2>Python rules. The model narrates.</h2>
+      <h2>The engine rules. The narrator narrates.</h2>
       <p class="lede dim">They are not the same job and they never swap.</p>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:40px 56px" class="in">
       <div style="display:flex;flex-direction:column;gap:18px">
-        <p class="dim">Every outcome in the game — every clock tick, every raid, every order, every absurd improvised scheme — is decided by <code>engine.py</code> with a seeded RNG and written to an append-only ledger with its arithmetic showing. Click any row on the board and you get <em>what you ordered · what had changed · what it rolled · what that means · net cost.</em></p>
-        <p class="dim">The model's job is to read that ledger and tell you what it means, in the register <em>you</em> brought to it. It translates your chaos into costs and modifiers. It does not get a vote on whether your chaos worked.</p>
+        <p class="dim">Every outcome in the game — every clock tick, every raid, every order, every absurd improvised scheme — is decided by <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/engine.py"><code>engine.py</code></a> with a seeded RNG and written to an append-only ledger with its arithmetic showing. Click any row on the board and you get <em>what you ordered · what had changed · what it rolled · what that means · net cost.</em></p>
+        <p class="dim">The narrator is a language model on Amazon Bedrock, and its job is to read that ledger and tell you what it means, in the register <em>you</em> brought to it. It translates your chaos into costs and modifiers. It does not get a vote on whether your chaos worked.</p>
         <p class="dim">Determinism is enforced, not hoped for: per-tick RNG derives from <code>(seed, tick)</code> and nothing else. No clock, no dict ordering, no wall time. Same seed plus same elapsed time reproduces a world exactly, on any machine, forever.</p>
       </div>
       <div class="rule">
@@ -505,29 +505,24 @@ footer .it{font-style:italic}
     </div>
   </section>
 
-  <section id="install">
-    <div class="head in"><span class="label hot">INSTALL</span>
-      <h2>There is no installer. Clone it and ask Claude Code to play.</h2>
+  <section id="play">
+    <div class="head in"><span class="label hot">HOW TO GET IN</span>
+      <h2>It runs in your browser. The door is invite-only, for now.</h2>
     </div>
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:32px 56px" class="in">
       <div style="display:flex;flex-direction:column;gap:18px">
-<div class="term"><span class="s">$</span> git clone https://github.com/netmobster/elsewhere-idle-cc
-<span class="s">$</span> cd elsewhere-idle-cc</div>
-        <p class="dim">Then, in Claude Code:</p>
-<div class="term"><span class="e">/elsewhere</span></div>
-        <p class="dim">It rolls you a world, renders the board, and takes your first orders. The <code>/elsewhere</code> command ships inside the repo, so cloning installs it.</p>
+        <p class="dim"><b>Nothing to install.</b> The world lives on our server and keeps running when you close the tab. Come back tomorrow and two days have happened without you.</p>
+        <p class="dim"><b>Why a password.</b> The world is still rough, and every turn is written live by a narrator that costs real money to run. Each session has a hard spend cap on the server, so nobody's curiosity can run up a bill, including ours.</p>
+        <p class="dim"><b>No password?</b> Ask for one at the door. A person reads every request.</p>
+        <div style="display:flex;gap:16px;flex-wrap:wrap;margin-top:6px">
+          <a class="btn solid" href="/play/">PLAY IN YOUR BROWSER</a>
+          <a class="btn" href="demo.html">WATCH A GAME FIRST</a>
+        </div>
       </div>
       <div style="display:flex;flex-direction:column;gap:18px">
-        <p class="dim"><b>Requirements:</b> Python 3.9+. No packages, no build step, no server, no account.</p>
-        <p class="dim"><b>The board is a plain HTML file on disk</b> — <code>elsewhere-board.html</code>, double-clickable. If your plan supports Claude Code Artifacts it'll publish to a live pane that updates each turn, which is nicer. That's an upgrade, not a requirement.</p>
-        <div class="files">
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/engine.py"><code>engine.py</code></a><span>Truth. Every outcome in the game is decided here.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/render.py"><code>render.py</code></a><span>The board. Renders your file on the world, never the world.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/epilogue.py"><code>epilogue.py</code></a><span>The ending. Lifts the fog, scores the world, writes the badge.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/sim.py"><code>sim.py</code></a><span>Fast-forward. Scripted players so a fortnight runs in a second.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/bench.py"><code>bench.py</code></a><span>The judge. Six fitness criteria across twelve seeds.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/NOTES.md"><code>NOTES.md</code></a><span>The build log, including everything that broke.</span>
-        </div>
+        <p class="dim"><b>Best on a desktop or laptop.</b> The board is dense. It works on a phone, but it is not pretty there yet.</p>
+        <p class="dim"><b>Two minutes a day is enough.</b> Look at a neighbour, leave some orders, go away. The game is what happens while you are gone.</p>
+        <p class="dim"><b>You will lose.</b> Everyone does. When a neighbour finishes what they were building, the fog lifts and the chronicle of your holding is written for you. That is the ending, and it is the best part.</p>
       </div>
     </div>
   </section>
@@ -535,43 +530,38 @@ footer .it{font-style:italic}
   <section id="source">
     <div class="head in"><span class="label hot">THE SOURCE</span>
       <h2>Every file, and what it is for.</h2>
-      <p class="lede dim">Seventeen files, no dependencies, nothing hidden. The build log is
-      honest about what broke, including the balance that had to be re-measured twice.</p>
+      <p class="lede dim">All of it is public, and nothing is hidden. The build log is honest about what broke.</p>
     </div>
     <div class="grid in" style="grid-template-columns:repeat(auto-fit,minmax(300px,1fr))">
       <div>
         <span class="label">THE ENGINE</span>
         <div class="files">
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/engine.py"><code>engine.py</code></a><span>Truth. Seeded per-tick RNG, clocks, raids, orders, interest, mega projects, and the improvise path behind freeform.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/render.py"><code>render.py</code></a><span>The board. Enforces the fog contract — never emits a <code>true</code> fact.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/epilogue.py"><code>epilogue.py</code></a><span>The ending. Lifts the fog, scores the run, writes the badge and the chronicle.</span>
+          <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/engine.py"><code>engine.py</code></a><span>Truth. Seeded per-tick RNG, clocks, raids, orders, interest, mega projects, and the improvise path behind freeform.</span>
+          <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/web/fog.py"><code>fog.py</code></a><span>The fog contract. What you are allowed to know, and never a true fact you did not earn.</span>
+          <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/epilogue.py"><code>epilogue.py</code></a><span>The ending. Lifts the fog and scores the run.</span>
+        </div>
+      </div>
+      <div>
+        <span class="label">THE SERVER</span>
+        <div class="files">
+          <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/web/game.py"><code>game.py</code></a><span>Sessions, turns, and the ledger each world keeps.</span>
+          <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/web/ai.py"><code>ai.py</code></a><span>The narrator and the chronicle. It reads outcomes; it never decides them.</span>
+          <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/web/pricing.py"><code>pricing.py</code></a><span>What each call costs, and the per-session cap that stops a runaway bill.</span>
+          <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/web/gate.py"><code>gate.py</code></a><span>The door. One shared password, checked on the server, not in your browser.</span>
         </div>
       </div>
       <div>
         <span class="label">THE HARNESS</span>
         <div class="files">
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/sim.py"><code>sim.py</code></a><span>Four scripted players — attentive, hoarder, erratic, absentee.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/bench.py"><code>bench.py</code></a><span>Six fitness criteria across twelve seeds. Exits non-zero on a failing build.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/.claude/commands/elsewhere.md"><code>/elsewhere</code></a><span>The slash command. Ships in the repo, so cloning installs it.</span>
-        </div>
-      </div>
-      <div>
-        <span class="label">THE DOCUMENTS</span>
-        <div class="files">
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/README.md"><code>README.md</code></a><span>The pitch, the mechanics, the lineage.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/PRD-TRD.md"><code>PRD-TRD.md</code></a><span>Formulas, contracts, criteria, and the traps.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/NOTES.md"><code>NOTES.md</code></a><span>The build log. Two determinism bugs, two fog leaks, one balance regression.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/CHANGELOG.md"><code>CHANGELOG.md</code></a><span>The shipping record, release by release.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/installer.md"><code>installer.md</code></a><span>Setup, full CLI reference, troubleshooting.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/resources.md"><code>resources.md</code></a><span>Every file, linked and explained.</span>
-          <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/llms.txt"><code>llms.txt</code></a><span>Machine-readable summary, for agents.</span>
+          <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/sim.py"><code>sim.py</code></a><span>Four scripted players — attentive, hoarder, erratic, absentee.</span>
+          <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/bench.py"><code>bench.py</code></a><span>Six fitness criteria across twelve seeds. Exits non-zero on a failing build.</span>
+          <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/NOTES.md"><code>NOTES.md</code></a><span>The build log. Two determinism bugs, two fog leaks, one balance regression.</span>
         </div>
       </div>
     </div>
-    <div class="in" style="display:flex;gap:16px;flex-wrap:wrap;margin-top:40px">
-      <a class="btn solid" href="https://github.com/netmobster/elsewhere-idle-cc">BROWSE THE REPO</a>
-      <a class="btn" href="demo.html">WATCH A GAME</a>
-      <a class="btn" href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/NOTES.md">READ THE BUILD LOG</a>
+    <div class="rule in" style="margin-top:56px;max-width:760px">
+      <span class="label hot">WHERE IT STARTED</span>
+      <p class="dim">Elsewhere began as a game you played inside Claude Code: clone a repo, type <code>/elsewhere</code>, and an agent ran the world from your terminal. That version still exists and still works, <a href="https://github.com/netmobster/elsewhere-idle-cc">here</a>. The browser version runs the same engine, with a narrator on a server instead of an agent on your machine, so you can play it without being a developer.</p>
     </div>
   </section>
 
@@ -585,8 +575,8 @@ footer .it{font-style:italic}
       <p>Jeremy &ldquo;Jay&rdquo; Wright. Builder, weirdo, karaoke fiend.
       More at <a href="https://echofiles.substack.com">echofiles.substack.com</a>.</p>
     </div>
-    <p class="it">Built in Claude Code, over about a week, mostly at night. The worst decisions are all documented.</p>
-    <p><a href="https://github.com/netmobster/elsewhere-idle-cc">github.com/netmobster/elsewhere-idle-cc</a> · <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/README.md">Readme</a> · <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/NOTES.md">Build log</a> · <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/installer.md">Install</a> · <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/aboutjay.md">About</a> · <a href="https://github.com/netmobster/elsewhere-idle-cc/blob/main/LICENSE">Licence</a></p>
+    <p class="it">An Unstuck game. Built over about a week, mostly at night. The worst decisions are all documented.</p>
+    <p><a href="https://unstuck-games.com/">unstuck-games.com</a> · <a href="/play/">Play</a> · <a href="https://github.com/netmobster/unstuck-games/blob/main/elsewhere/NOTES.md">Build log</a> · <a href="https://github.com/netmobster/elsewhere-idle-cc">The Claude Code version</a> · <a href="https://unstuck-games.com/contact/">Contact</a></p>
   </footer>
 </main>
 
