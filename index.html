@@ -392,6 +392,11 @@ footer .fine{font-size:14px;font-weight:700;color:var(--muted);text-align:right;
   <section id="games" class="games">
     <div class="head"><div class="kick" data-t="gamesKicker"></div><h2 data-t="gamesTitle"></h2><p data-t="gamesSub"></p></div>
     <div class="grid2" id="liveGrid"></div>
+    <a class="nextup" id="nextup" href="#" hidden>
+      <img id="nextupArt" src="" alt="">
+      <span><div class="nk" id="nextupKick"></div><div class="nn" id="nextupName"></div><div class="nh" id="nextupHook"></div></span>
+      <span class="go" id="nextupGo"></span>
+    </a>
     <div class="catalog-head"><span class="kick" data-t="deckKicker"></span><span class="catalog-sub" data-t="deckSub"></span></div>
     <div class="grid2" id="deckGrid"></div>
     <div class="catalog-head"><span class="kick" data-t="dayKicker"></span><span class="catalog-sub" data-t="daySub"></span></div>
@@ -649,6 +654,34 @@ function startGodHour() {
 $('#march').innerHTML = '<div></div>'.repeat(80);
 // play cards run the real game behind themselves (?embed = no UI, no sound);
 // early-access cards show the game's own board and link out
+
+// ── NEXT UP ─────────────────────────────────────────────────────────────────
+// The banner above the catalogue. Swapping in the next game is this object and
+// nothing else; set on:false to take it down between games.
+const NEXTUP = {
+  on: true,
+  kicker: "ON DECK · GAME #4",
+  name: "DEADLINE DUNGEON",
+  sub: "ROGUELITE · CARDS",
+  hook: "Every room is a meeting. Every card is an excuse. Escape the building by 5pm.",
+  go: "Not yet →",
+  href: "#games",
+  art: "ferret-bowling/assets/lucy/sit.png",
+};
+{
+  const el = $('#nextup');
+  if (el && NEXTUP.on) {
+    el.hidden = false;
+    el.href = NEXTUP.href;
+    $('#nextupKick').textContent = NEXTUP.kicker;
+    $('#nextupName').innerHTML = `${esc(NEXTUP.name)}${NEXTUP.sub ? ` <small>${esc(NEXTUP.sub)}</small>` : ''}`;
+    $('#nextupHook').textContent = NEXTUP.hook;
+    $('#nextupGo').textContent = NEXTUP.go;
+    const art = $('#nextupArt');
+    if (NEXTUP.art) { art.src = NEXTUP.art; art.alt = ''; } else { art.remove(); }
+  }
+}
+
 $('#liveGrid').innerHTML = LIVE.map(g => g.kind === 'building' ? `
   <a class="game live early building" id="bm-card" href="${g.href}">
     <div class="top"><span class="genre"></span><span class="soon"></span></div>
