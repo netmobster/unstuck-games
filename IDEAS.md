@@ -4,6 +4,7 @@ Filed, not decided. Nothing here is scoped, designed or scheduled until Jay says
 
 | Filed | Idea | What we know | Status |
 |---|---|---|---|
+| 2026-09-16 | **Ferret Bowling sound (Jay makes these)** | Three layers — a room bed, ~7 Lucy sounds (dook, sniff, scuffle, thump, yawn, grumble, squeak toy), and event sounds (knock soft/hard, drag fabric/object, rummage, steal, stash, water), plus four moments (door opens, run ends, new journal entry, unlock). Full list with notes in `ferret-bowling/SOUND-BRIEF.md`. | **Tomorrow — Jay** |
 | 2026-09-16 | **Elsewhere on mobile: rebuild, not reflow** | The Watch Post is a two-column desk layout — spine, briefing, neighbours, ledger, queue all visible at once. On a phone that cannot be squeezed, it has to be re-thought: tabs, steps, or Xbox 360 blades. Jay's call. Desktop-only until then, and the playtest DM says so. | **Design job, not a CSS pass** |
 | 2026-09-16 | **Homepage nav** | Needs a proper pass now the site moved: the nav was written for a single-page homepage and the Updates link was bolted on. Check every item, the mobile layout, and what it does from a game page. | **Tomorrow** |
 | 2026-09-16 | **Subdomains per game** | DNS already points at the box; nginx server blocks written and parked. orbis. / badmonkeys. / ferretbowling. / elsewhere., each with /play. | **Tomorrow** |
