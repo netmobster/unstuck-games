@@ -101,7 +101,12 @@ export type Run = {
   rolls: number; decisions: number; stashFirstChecked: boolean; leftover: Leftover; dozed: boolean;
   roomTicks: Record<string, number>;
   visits: Record<string, number>;
+  /** The last decision's shortlist, kept for the eye. The sim never reads it back. */
+  shortlist: Shortlist;
 };
+
+/** What she nearly did instead, with the odds the roll actually used. */
+export type Shortlist = { tick: number; picked: string; near: { what: string; why: string; weight: number }[] } | null;
 
 export const MAX_TICKS = 3000;
 const TICKS_PER_TILE = 3;
@@ -142,7 +147,7 @@ export function startRun(p: Profile, prep: ItemId[]): Run {
     events: [], touched: new Set(), rooms: new Set(["living"]), trail: [[CAGE.x, CAGE.y]],
     squeakedAt: null, squeakAnswered: null, done: false, napOn: null,
     unlocked: unlockedRooms(p), things: p.things.map((t) => ({ ...t })), stash: p.stash.map((t) => ({ ...t })), habits: { ...p.habits },
-    rolls: 0, decisions: 0, stashFirstChecked: false, roomTicks: {}, visits: {}, leftover: p.leftover, dozed: false,
+    rolls: 0, decisions: 0, stashFirstChecked: false, roomTicks: {}, visits: {}, leftover: p.leftover, dozed: false, shortlist: null,
   };
   if (r.mood.bath) {
     const towel = r.things.find((t) => t.id === "bathtowel");
@@ -277,8 +282,21 @@ function choose(r: Run) {
   let c = top[0];
   for (const k of top) if ((roll -= k.score * k.score) <= 0) { c = k; break; }
 
+  // Keep the shortlist for the eye: the same three candidates the roll chose between,
+  // with their real odds (score², normalised). Recording it changes nothing.
+  const label = (k: Cand) => `${k.verb}${k.target ? ` the ${shortName(k.target.name)}` : ""}`;
+  r.shortlist = {
+    tick: r.tick,
+    picked: label(c),
+    near: top.map((k) => ({ what: label(k), why: k.cause, weight: total > 0 ? (k.score * k.score) / total : 0 })),
+  };
+
   const path = pathTo(prev, r.x, r.y, c.tx, c.ty) ?? [];
   r.action = { verb: c.verb, target: c.target, tx: c.tx, ty: c.ty, path, dur: c.dur, t: 0, notice: c.verb === "wander" ? 0 : 5, cause: c.cause };
+}
+
+function shortName(name: string) {
+  return name.replace(/^(A|An|The|Your|Her|One) /i, "").toLowerCase();
 }
 
 function tagCause(r: Run, t: Placed) {
@@ -553,6 +571,8 @@ export type RunSummary = {
   newEntries: JournalEntry[]; sentence: string; rooms: RoomId[]; napOn: string | null; stashSize: number;
   returned: string[]; arrived: string | null; unlockedNow: string[]; comboFired: string | null; trail: [number, number][];
   leftoverIn: Leftover; leftoverOut: Leftover; god: boolean;
+  /** For the eye: how much rolling happened, and her last shortlist. */
+  rolls: number; decisions: number; shortlist: Shortlist;
 };
 
 const JOURNAL_VERBS: Verb[] = ["steal", "hide", "sulk", "play", "fish", "roll", "startle", "glare", "gift", "nap", "doze", "drag", "knock"];
@@ -680,6 +700,7 @@ export function finishRun(p: Profile, r: Run): RunSummary {
     sentence: sentence(r, comboFired), rooms: [...r.rooms], napOn: r.napOn, stashSize: p.stash.length,
     returned, arrived, unlockedNow, comboFired, trail: r.trail,
     leftoverIn: r.leftover, leftoverOut, god: r.prep.some((i) => ITEMS[i].godMode),
+    rolls: r.rolls, decisions: r.decisions, shortlist: r.shortlist,
   };
   p.runs.push(summary);
   return summary;
