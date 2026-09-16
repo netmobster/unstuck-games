@@ -3,6 +3,7 @@
 // States: pre-run (pack the cage) · in-run (whole house + rail, or zoomed close with the chrome gone) · post-run (lamps on).
 // Prepare Lucy. Open the door. Get out of the way.
 import "./style.css";
+import { initMusic } from "./music";
 import { CAGE, DOORS, ROOMS, STASH, THINGS, W, H, type RoomId, type Tag } from "./house";
 import {
   COMBOS, EVERYDAY_IDS, ITEMS, LEFTOVER_TEXT, comboKey, finishRun, replay, squeak, startRun, step, the, unlockedItems, unlockedRooms,
@@ -573,6 +574,7 @@ $("#debug").innerHTML = `<summary>playtest tools (not the game)</summary>
 
 renderAll();
 requestAnimationFrame(frame);
+initMusic();
 
 // The alpha notice: shown once per browser. It is the only thing in here that
 // interrupts, so it says what is broken, what is Lucy, and where to complain.
