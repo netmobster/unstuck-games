@@ -177,32 +177,6 @@ body[data-mode="stuck"] .game .name{font-family:'Inter',sans-serif!important;fon
 .fb-lab{font-family:'Alfa Slab One',serif;font-size:10px;letter-spacing:.14em;color:#d8352a}
 .fb-item{font-family:Caveat,cursive;font-size:19px;line-height:1.1;color:#2b241d}
 .fb-more{font-family:Caveat,cursive;font-size:17px;color:#8a5a2b}
-/* Deadline Dungeon: office greys, and the only gold is him. CD's primary tile is the art. */
-.game.live.deadline{grid-column:1/-1;min-height:360px;background:#e7e2d4;color:#262624;text-decoration:none;
-  display:flex;align-items:center;gap:28px;flex-wrap:wrap;padding:30px clamp(20px,3vw,34px)}
-.game.live.deadline:hover{color:#262624;transform:translateY(-6px)}
-.game.live.deadline .copy{flex:1;min-width:280px;display:flex;flex-direction:column;gap:10px}
-.game.live.deadline .name{font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:clamp(28px,4vw,44px);line-height:.95;letter-spacing:-.034em}
-.game.live.deadline .hook{max-width:48ch;line-height:1.55;margin:0;color:#332f29}
-.game.live.deadline .play{align-self:flex-start;background:#2e2a24;color:#efe8d6;font-family:'IBM Plex Sans',sans-serif;font-weight:700;
-  font-size:14px;letter-spacing:.06em;padding:13px 20px;box-shadow:inset 0 0 0 2px #6e6350}
-.game.live.deadline:hover .play{background:#1d1a15}
-.game.live.deadline .genre,.game.live.deadline .foot{color:#6b6353;font-family:'IBM Plex Mono',monospace}
-.game.live.deadline .soon{background:#2e2a24;color:#efe8d6;border-color:#2e2a24}
-.dd-tile{position:relative;width:min(520px,100%);aspect-ratio:520/300;background:#2e2a24;box-shadow:inset 0 0 0 2px #6e6350;
-  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:22px;padding:30px;overflow:hidden}
-.dd-halo{position:absolute;left:50%;top:14%;transform:translateX(-50%);width:230px;height:230px;background:radial-gradient(circle,rgba(232,194,92,.3),transparent 62%)}
-.dd-stone{position:relative;width:62px;height:88px;animation:dd-breathe 5.5s ease-in-out infinite}
-.dd-stone i{position:absolute;inset:0;background:linear-gradient(168deg,#4a453c,#2c2822 62%,#1d1a15);clip-path:polygon(38% 0,62% 1%,78% 8%,86% 26%,88% 62%,92% 88%,95% 100%,5% 100%,8% 86%,12% 58%,14% 24%,22% 8%)}
-.dd-stone b{position:absolute;display:block}
-.dd-stone .a{left:30%;top:16%;width:4px;height:56%;background:linear-gradient(180deg,#ffe08a,#e8c25c 70%,transparent);transform:rotate(6deg);animation:dd-seam 5.5s ease-in-out infinite}
-.dd-stone .b{left:53%;top:34%;width:3px;height:40%;background:linear-gradient(180deg,#e8c25c,transparent);opacity:.75;transform:rotate(-8deg)}
-.dd-lockup{position:relative;text-align:center}
-.dd-name{font-family:'IBM Plex Sans',sans-serif;font-weight:700;font-size:clamp(30px,5vw,42px);line-height:.92;letter-spacing:-.036em;color:#efe8d6}
-.dd-sub{font-family:Spectral,serif;font-weight:800;font-style:italic;font-size:clamp(19px,3vw,25px);line-height:1;color:#e8c25c;margin-top:10px}
-@keyframes dd-breathe{0%,100%{transform:scale(1) translateY(0)}50%{transform:scale(1.02) translateY(-2px)}}
-@keyframes dd-seam{0%,100%{opacity:.55}50%{opacity:.95}}
-body[data-mode="stuck"] .dd-tile{display:none}
 /* live game: featured, full width, running the actual game behind the card */
 .game.live{grid-column:1/-1;min-height:420px;background:#080d12;color:#e6f0f0;text-decoration:none;cursor:pointer}
 .game.live:hover{color:#e6f0f0;transform:translateY(-6px);box-shadow:0 30px 60px rgba(8,13,18,.45)}
@@ -574,8 +548,7 @@ const LIVE = [
   { kind: "play", name: "ORBIS", stuckName: "Orbit Merge: Idle Galaxy Tycoon", href: "https://orbis.unstuck-games.com/", genre: "AMBIENT · ORBITAL ANT FARM", hook: "A little universe you watch evolve. Two dials change the conditions, never the outcome. Leave it running. Fall asleep to it.", play: "Play", foot: "DNA: 90s FISH SCREENSAVER × IDLE ORBITER · MADE TO FALL ASLEEP TO" },
   { kind: "early", name: "ELSEWHERE", stuckName: "Kingdom Raid: Idle Lords", href: "https://elsewhere.unstuck-games.com/", genre: "IDLE RPG · YOUR ABSENCE IS THE MECHANIC", hook: "Two minutes a day. Three neighbours who each want something, and one set of eyes. Type anything — pretend to be sheep, sell imaginary wool — and it becomes a real order, rolled by a deterministic engine. You will lose. The interesting part is how.", play: "Play in your browser →", foot: "EARLY ACCESS · PASSWORD-GATED WHILE IT IS ROUGH · TOMBSTONE: A DEAD IDLE RPG" },
   { kind: "lucy", name: "FERRET BOWLING", stuckName: "Ferret Blast: Merge & Fling 3D", href: "https://ferretbowling.unstuck-games.com/", genre: "LAUNCHER GAME · AIM IS A SUGGESTION", hook: "You do not steer Lucy. You pack her cage, open the door, and find out who she is today. She explores, steals, sulks, naps, and builds a hoard under the couch. You write it down.", play: "Play the alpha →", foot: "ALPHA · TOMBSTONE: GALÁPAGOS: MENDEL'S ESCAPE · GAME #3" },
-  { kind: "building", name: "BAD MONKEYS", stuckName: "Space Monkey Merge: Galaxy Tycoon", href: "https://badmonkeys.unstuck-games.com/", genre: "ABSENCE SIM · NOT ALWAYS BETTER, ALWAYS WEIRDER", hook: "You're Jame, a mechanic from Alberta. She's Not Betsy. You land, fix a planet's problem with whatever she bolted on while you were gone, say one thing on your way out, and leave. She takes it literally.", play: "Read her file →", foot: "ALPHA · PLACEHOLDER CONTENT · TOMBSTONE: UNIVERSAL PAPERCLIPS · GAME #2" },
-  { kind: "deadline", name: "DEADLINE DUNGEON", stuckName: "Office Boss: Idle Empire Tycoon", href: "https://deadline.unstuck-games.com/", genre: "OFFICE SIM · YOU CANNOT GIVE AN ORDER", hook: "A god who forgot he was a god runs an IT company in Tempe, Arizona. You're the middle manager. Twelve people, a board of offers, and nobody has to say yes. Keep him from fading. Keep him from waking up furious.", play: "Visit Gargantua Systems →", foot: "IN DESIGN · TOMBSTONE: MAJESTY (2000) · GAME #4" }
+  { kind: "building", name: "BAD MONKEYS", stuckName: "Space Monkey Merge: Galaxy Tycoon", href: "https://badmonkeys.unstuck-games.com/", genre: "ABSENCE SIM · NOT ALWAYS BETTER, ALWAYS WEIRDER", hook: "You're Jame, a mechanic from Alberta. She's Not Betsy. You land, fix a planet's problem with whatever she bolted on while you were gone, say one thing on your way out, and leave. She takes it literally.", play: "Read her file →", foot: "ALPHA · PLACEHOLDER CONTENT · TOMBSTONE: UNIVERSAL PAPERCLIPS · GAME #2" }
 ];
 
 const ORBIS_MARK = `<svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><ellipse cx="50" cy="50" rx="42" ry="22" stroke="currentColor" stroke-opacity="0.35" stroke-width="0.8"/><circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="1.2"/><circle cx="50" cy="50" r="9" fill="currentColor" fill-opacity="0.15"/><g class="spin"><circle cx="92" cy="50" r="4" fill="currentColor"/><circle cx="92" cy="50" r="6.5" fill="currentColor" fill-opacity="0.22"/></g></svg>`;
@@ -613,7 +586,7 @@ function render() {
   LIVE.forEach((g, i) => {
     const card = $$('#liveGrid .game.live')[i];
     card.querySelector('.genre').textContent = stuck() ? 'HYPER-CASUAL · LIVEOPS' : g.genre;
-    card.querySelector('.soon').textContent = g.kind === 'early' ? t.early : g.kind === 'building' ? t.building : g.kind === 'deadline' ? 'IN DESIGN' : t.live;
+    card.querySelector('.soon').textContent = g.kind === 'early' ? t.early : g.kind === 'building' ? t.building : t.live;
     card.querySelector('.name').textContent = stuck() ? g.stuckName : g.name;
     card.querySelector('.hook').textContent = stuck() ? 'Free to play. In-app purchases from $0.99 to $99.99. Contains ads. Energy required.' : g.hook;
     card.querySelector('.play').textContent = stuck() ? 'Install for rewards' : g.play;
@@ -709,21 +682,7 @@ const NEXTUP = {
   }
 }
 
-$('#liveGrid').innerHTML = LIVE.map(g => g.kind === 'deadline' ? `
-  <a class="game live deadline" href="${g.href}">
-    <div class="top"><span class="genre"></span><span class="soon"></span></div>
-    <div class="copy">
-      <div class="name"></div>
-      <p class="hook"></p>
-      <span class="play"></span>
-      <div class="foot"></div>
-    </div>
-    <div class="dd-tile" aria-hidden="true">
-      <div class="dd-halo"></div>
-      <div class="dd-stone"><i></i><b class="a"></b><b class="b"></b></div>
-      <div class="dd-lockup"><div class="dd-name">DEADLINE<br>DUNGEON</div><div class="dd-sub">A God Who Forgot</div></div>
-    </div>
-  </a>` : g.kind === 'building' ? `
+$('#liveGrid').innerHTML = LIVE.map(g => g.kind === 'building' ? `
   <a class="game live early building" id="bm-card" href="${g.href}">
     <div class="top"><span class="genre"></span><span class="soon"></span></div>
     <div class="copy">
