@@ -190,7 +190,7 @@ body[data-mode="stuck"] .game .name{font-family:'Inter',sans-serif!important;fon
 .game.live .name{font-family:'Cormorant Garamond',Georgia,serif;font-weight:300;font-size:clamp(56px,8vw,96px);letter-spacing:.18em}
 .game.live .hook{max-width:44ch;font-weight:400;color:rgba(230,240,240,.82)}
 .game.live .play{display:inline-block;align-self:flex-start;margin-top:6px;background:#5dcaa5;color:#080d12;border-radius:999px;padding:14px 34px;font-family:'DM Sans',var(--fb);font-weight:700;font-size:13px;letter-spacing:.3em;text-transform:uppercase}
-/* early access: playable today somewhere else (Elsewhere → Claude Code) */
+/* early access: playable, but password-gated while it is rough */
 .game.live.early{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.1fr);column-gap:40px;row-gap:22px;align-items:start;min-height:0;background:#1c120b;color:#f3e6d3;border-color:#1c120b}
 .game.live.early .top{grid-column:1/-1;gap:16px}
 .game.live.early .soon{white-space:nowrap;flex:none}
@@ -392,11 +392,6 @@ footer .fine{font-size:14px;font-weight:700;color:var(--muted);text-align:right;
   <section id="games" class="games">
     <div class="head"><div class="kick" data-t="gamesKicker"></div><h2 data-t="gamesTitle"></h2><p data-t="gamesSub"></p></div>
     <div class="grid2" id="liveGrid"></div>
-    <a class="nextup" href="ferret-bowling/">
-      <img src="ferret-bowling/assets/lucy/sit.png" alt="Lucy, sitting">
-      <span><div class="nk" data-t="nextKicker"></div><div class="nn">FERRET BOWLING <small>BOWLING OPTIONAL EDITION</small></div><div class="nh" data-t="nextHook"></div></span>
-      <span class="go" data-t="nextGo"></span>
-    </a>
     <div class="catalog-head"><span class="kick" data-t="deckKicker"></span><span class="catalog-sub" data-t="deckSub"></span></div>
     <div class="grid2" id="deckGrid"></div>
     <div class="catalog-head"><span class="kick" data-t="dayKicker"></span><span class="catalog-sub" data-t="daySub"></span></div>
@@ -546,7 +541,7 @@ const COPY = {
 // Catalog status: play = runs in the browser here · early = playable today on another surface · (GAMES) = coming soon
 const LIVE = [
   { kind: "play", name: "ORBIS", stuckName: "Orbit Merge: Idle Galaxy Tycoon", href: "orbis/", genre: "AMBIENT · ORBITAL ANT FARM", hook: "A little universe you watch evolve. Two dials change the conditions, never the outcome. Leave it running. Fall asleep to it.", play: "Play", foot: "DNA: 90s FISH SCREENSAVER × IDLE ORBITER · MADE TO FALL ASLEEP TO" },
-  { kind: "early", name: "ELSEWHERE", stuckName: "Kingdom Raid: Idle Lords", href: "elsewhere/", genre: "IDLE RPG · YOUR ABSENCE IS THE MECHANIC", hook: "Two minutes a day. Three neighbours who each want something, and one set of eyes. Type anything — pretend to be sheep, sell imaginary wool — and it becomes a real order, rolled by a deterministic engine. You will lose. The interesting part is how.", play: "Play in your browser →", foot: "EARLY ACCESS · PASSWORD-GATED WHILE IT IS ROUGH · PLAYS IN CLAUDE CODE TOO" },
+  { kind: "early", name: "ELSEWHERE", stuckName: "Kingdom Raid: Idle Lords", href: "elsewhere/", genre: "IDLE RPG · YOUR ABSENCE IS THE MECHANIC", hook: "Two minutes a day. Three neighbours who each want something, and one set of eyes. Type anything — pretend to be sheep, sell imaginary wool — and it becomes a real order, rolled by a deterministic engine. You will lose. The interesting part is how.", play: "Play in your browser →", foot: "EARLY ACCESS · PASSWORD-GATED WHILE IT IS ROUGH · TOMBSTONE: A DEAD IDLE RPG" },
   { kind: "lucy", name: "FERRET BOWLING", stuckName: "Ferret Blast: Merge & Fling 3D", href: "ferret-bowling/", genre: "LAUNCHER GAME · AIM IS A SUGGESTION", hook: "You do not steer Lucy. You pack her cage, open the door, and find out who she is today. She explores, steals, sulks, naps, and builds a hoard under the couch. You write it down.", play: "Play the alpha →", foot: "ALPHA · TOMBSTONE: GALÁPAGOS: MENDEL'S ESCAPE · GAME #3" },
   { kind: "building", name: "BAD MONKEYS", stuckName: "Space Monkey Merge: Galaxy Tycoon", href: "bad-monkeys/", genre: "ABSENCE SIM · NOT ALWAYS BETTER, ALWAYS WEIRDER", hook: "You're Jame, a mechanic from Alberta. She's Not Betsy. You land, fix a planet's problem with whatever she bolted on while you were gone, say one thing on your way out, and leave. She takes it literally.", play: "Read her file →", foot: "ALPHA · PLACEHOLDER CONTENT · TOMBSTONE: UNIVERSAL PAPERCLIPS · GAME #2" }
 ];

@@ -206,3 +206,18 @@ body[data-state="in-run"] .journal{display:none}
 @keyframes fb-pile{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-2px) rotate(1deg)}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 @keyframes fb-fade{from{opacity:0}to{opacity:1}}
+
+/* the alpha notice: once per browser, then never again unless they clear it */
+dialog.alpha{padding:0;border:3px solid var(--ink);border-radius:10px 7px 12px 8px;background:var(--paper);
+  color:var(--ink);width:min(560px,92vw);box-shadow:8px 9px 0 rgba(15,92,87,.35)}
+dialog.alpha::backdrop{background:rgba(29,43,58,.55)}
+.alpha-in{padding:24px 26px 22px;display:flex;flex-direction:column;gap:10px}
+.alpha-in h2{margin:0;font-family:var(--slab);font-weight:400;font-size:26px;color:var(--tomato);letter-spacing:.02em}
+.alpha-in p{margin:0;font-size:15px;line-height:1.55}
+.alpha-in p.small{font-family:var(--hand);font-size:18px;color:var(--wood)}
+.alpha-in b{color:var(--teal)}
+.alpha-in a{color:var(--teal)}
+.alpha-in button{margin-top:6px;align-self:flex-start;font-family:var(--slab);font-size:17px;padding:12px 20px;
+  background:var(--teal);color:var(--paper);border:2.5px solid var(--ink);border-radius:6px 4px 7px 4px;
+  box-shadow:4px 5px 0 var(--ink);cursor:pointer}
+.alpha-in button:hover{background:var(--tomato)}
