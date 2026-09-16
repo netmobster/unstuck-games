@@ -60,12 +60,10 @@
     <span class="word"><i>U</i>NSTUCK</span><small>GAMES</small>
   </a>
   <div class="links">
-    <a href="/#philosophy">Philosophy</a>
-    <a href="/#ads">Ads</a>
-    <a href="/#subscription">$5</a>
     <a href="/#games">Games</a>
     <a class="on" href="/updates/">Updates</a>
-    <a href="/#faq">FAQ</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
   </div>
 </div></nav>
 
@@ -108,8 +106,7 @@ fetch('/updates/changelog.json').then(r => r.json()).then(data => {
       <div class="meta"><span class="chip game">${esc(e.game)}</span><span class="chip">${esc(e.tag)}</span><span>${esc(day(e.date))}</span></div>
       <h3>${esc(e.title)}</h3>
       <p>${esc(e.body)}</p>
-      ${e.log ? `<pre class="log">${esc(e.log.join('
-'))}</pre>` : ''}
+      ${e.log ? `<pre class="log">${esc(e.log.join('\n'))}</pre>` : ''}
       ${e.note ? `<p class="note">${esc(e.note)}</p>` : ''}
     </article>`).join('');
 }).catch(() => {
