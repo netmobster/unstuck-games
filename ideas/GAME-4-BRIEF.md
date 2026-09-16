@@ -94,6 +94,74 @@ What exists in ideation and the teardown. Everything here is a candidate.
 - **Generation + dice:** the twelve, their quirks and their lines are pre-generated
   records; the runtime only rolls against them. No AI in the running game.
 
+## The staffer: people with things pulling on them
+
+Proposed, not decided. Added 2026-09-16 after reading how SEREN builds its NPCs.
+
+**Majesty gave each hero one price.** Greed against danger, and the answer falls out.
+Memorable, but thin: nobody wants anything except gold.
+
+**SEREN gives each character several pulls that disagree** (`want`, `voice`, `tell`, and
+a `knows` list where every fact carries a visibility). Guz wants the sheep home, is loyal
+to Noke, and has come to like the party. Who he is on a given day is whichever pull wins,
+and the ones that lose still show: *the sentence he did not finish*. But in SEREN a model
+decides all of that live, and nothing is enforced by code.
+
+**This game takes both halves.** Majesty's arithmetic decides; SEREN's record explains. And
+per the studio rule, the records are generated before play, and only dice and the ledger
+run live.
+
+### The record
+
+```yaml
+name:      Brenda Fairweather
+role:      Accounts, third floor, eleven years
+voice:     "Short sentences. Calls everyone 'love' except people she has decided about."
+tell:      "Straightens the stapler before answering anything."
+
+# The pulls. Each is a number the dice read, plus a line the player can eventually read.
+want:      { weight: 3, line: "The corner desk by the window. Carol's desk." }
+greed:     2          # how much a reward moves her, 0-5 (Majesty's greed)
+nerve:     0.6        # how brave she thinks she is, against how hard she thinks it is
+fear:      { weight: 4, line: "The basement. Nobody knows why." }
+loyal_to:  { who: "the god", weight: 2, line: "Covered for him before anyone else did." }
+grudge:    { who: "derek-pike", weight: 3, line: "He took credit for the Harrow ledger." }
+habit:     { what: "long lunch", when: "12:30", weight: 2 }
+
+# What is true about her, and how much of it the player has learned.
+knows:
+  - fact: "The basement fear is about a prayer she answered wrong in year two."
+    visibility: true       # the world's truth; the player has not earned it
+  - fact: "She won't take tasks Derek posts."
+    visibility: suspected  # the player has a theory, from watching
+  - fact: "She's just lazy after lunch."
+    visibility: false      # what the player currently believes, wrongly
+```
+
+### How a decision reads the pulls
+
+When a task is posted, every staffer scores it: the reward times their greed, minus the
+danger as their nerve sees it, plus or minus each pull that the task touches (the place,
+who posted it, who else is on it, what time it is). Highest score takes it; below a floor,
+they wander. The same seeded dice as Ferret Bowling break close calls.
+
+**The refusal is the strongest pull that said no.** It is written down as a fact, with a
+visibility, the moment it happens. That is the readable-refusal goal made concrete: you
+can always find out why Brenda turned it down, but at first you might only *suspect* it
+was Derek, or wrongly believe she's lazy after lunch, until watching turns a suspicion
+into something known.
+
+### What persists
+
+- **An interactions log per staffer, only ever added to.** What you asked, what they did,
+  what they noticed. The office that remembers who quit.
+- **Pulls drift.** A grudge fades if it's never fed, like Lucy's habits; a want that's
+  granted is replaced by the next one.
+- **Secrets are earned, not handed out.** A staffer gets a deeper secret only when play
+  gives them one, the way SEREN creates a secrets file "only when one earns it".
+- **Some staff have an `appears_when`.** The auditor, the god's mother, the rival
+  department: people who arrive when a condition is met and escalate each time.
+
 ## DECIDE — Jay's boundaries
 
 | # | Question | Options | Recommendation |
@@ -108,6 +176,7 @@ What exists in ideation and the teardown. Everything here is a candidate.
 | 8 | **Fixed twelve or generated?** | The same twelve every time · Generated per office | **Generated per office, persistent within it.** Your Brenda is not my Brenda. |
 | 9 | **How dark can it go?** | Cosy · Office-comedy bite · Genuinely bleak | **Office-comedy bite**, like Ferret Bowling's "adorable and weird, not chaos". |
 | 10 | **Platform first?** | Desktop browser · Mobile first | **Desktop browser.** A board of twelve people needs room; mobile after. |
+| 11 | **How many pulls per person?** | Majesty's price only · Price plus two pulls · Price plus a full record (want, fear, loyalty, grudge, habit) | **Full record, but only three pulls active on any one person.** Enough to disagree with themselves, few enough to learn. |
 
 ## Not in this game
 
