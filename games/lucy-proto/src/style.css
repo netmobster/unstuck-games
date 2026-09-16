@@ -96,6 +96,9 @@ body[data-state="post-run"] .route polyline{stroke:var(--marigold);animation:fb-
 .lucy{inset:auto;width:0;height:0;z-index:12;pointer-events:none}
 .lucy img{position:absolute;width:64px;height:64px;left:-32px;top:-32px;filter:drop-shadow(0 3px 2px rgba(43,36,29,.3))}
 .lucy .shadow{position:absolute;width:40px;height:9px;left:-18px;top:6px;border-radius:50%;background:rgba(43,36,29,.2);filter:blur(2px)}
+/* the thing in her mouth: sits under her head, moves with her */
+.lucy .carry{position:absolute;left:0;top:0;width:0;height:0;display:none;z-index:3}
+.lucy .carry .shape{position:absolute;transform:translate(-50%,-50%);mix-blend-mode:multiply;box-shadow:inset 0 0 0 2px var(--ink),2px 2px 0 rgba(43,36,29,.3)}
 .lucy .zz,.lucy .bang{position:absolute;font-family:var(--slab);display:none}
 .lucy .zz{left:14px;top:-34px;font-size:15px;color:var(--teal);animation:fb-zz 3.4s ease-out infinite}
 .lucy .bang{left:-4px;top:-46px;font-size:20px;color:var(--tomato)}

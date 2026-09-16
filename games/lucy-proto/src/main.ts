@@ -205,6 +205,27 @@ function drawLucy(now: number) {
   img.style.transform = `rotate(${rot}rad) scale(${sx},${sy})`;
   el.classList.toggle("asleep", pose === "nap" || pose === "curl");
   el.classList.toggle("notice", pose === "notice");
+  drawCarry(pose);
+}
+
+/** What she has in her mouth. The sim takes a stolen thing out of the room the moment she
+    grabs it, so without this it simply vanished and reappeared as a line of text. Now it
+    rides along at the front of her, the same shape and ink it had on the floor. */
+let carriedId: string | null = null;
+function drawCarry(pose: Pose) {
+  const c = $("#carry");
+  const held = run?.carrying ?? null;
+  if ((held?.id ?? null) !== carriedId) {
+    carriedId = held?.id ?? null;
+    if (held) {
+      const s = thingShape(held);
+      const k = Math.min(1, 20 / Math.max(s.w, s.h)); // mouth-sized
+      c.innerHTML = `<div class="shape" style="width:${Math.round(s.w * k)}px;height:${Math.round(s.h * k)}px;${s.css}"></div>`;
+    } else c.innerHTML = "";
+  }
+  if (!held || pose === "nap" || pose === "curl") { c.style.display = "none"; return; }
+  c.style.display = "block";
+  c.style.transform = `translate(${Math.cos(facing) * 22}px,${Math.sin(facing) * 22}px) rotate(${facing}rad)`;
 }
 
 function drawRoute() {
