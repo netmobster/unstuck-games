@@ -4,6 +4,7 @@
 // Prepare Lucy. Open the door. Get out of the way.
 import "./style.css";
 import { initMusic } from "./music";
+import { initVoice, playVoice } from "./voice";
 import { CAGE, DOORS, ROOMS, STASH, THINGS, W, H, type RoomId, type Tag } from "./house";
 import {
   COMBOS, EVERYDAY_IDS, ITEMS, LEFTOVER_TEXT, comboKey, finishRun, replay, squeak, startRun, step, the, unlockedItems, unlockedRooms,
@@ -282,7 +283,7 @@ function onEvents() {
     pop.style.left = `${px(STASH.x) + 20}px`; pop.style.top = `${px(STASH.y) - 16}px`;
     $("#things").appendChild(pop);
   }
-  for (const e of fresh) maybeAlert(e);
+  for (const e of fresh) { playVoice(e.voice); maybeAlert(e); }
   renderFeed();
 }
 
@@ -575,6 +576,7 @@ $("#debug").innerHTML = `<summary>playtest tools (not the game)</summary>
 renderAll();
 requestAnimationFrame(frame);
 initMusic();
+initVoice();
 
 // The alpha notice: shown once per browser. It is the only thing in here that
 // interrupts, so it says what is broken, what is Lucy, and where to complain.

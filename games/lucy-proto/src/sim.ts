@@ -2,6 +2,7 @@
 // Rule: moods change what Lucy NOTICES and WANTS, never how far she goes. The payoff is her day.
 // Same seed + same runs (prep + squeak tick) → same Lucy, same house, same journal.
 import { Rng } from "./rng";
+import { SLICES, type Slice } from "./voice-slices";
 import {
   ARRIVALS, CAGE, DOORS, H, ROOMS, STASH, THINGS, W, roomAt, walkable,
   type RoomId, type Tag, type Thing,
@@ -87,12 +88,42 @@ export const unlockedItems = (p: Profile) => EVERYDAY_IDS.filter((i) => p.journa
 
 // ---------- a run ----------
 export type Verb = "sniff" | "steal" | "hide" | "play" | "nap" | "fish" | "roll" | "stash" | "come" | "gift" | "startle" | "wander" | "glare" | "sulk" | "doze" | "drag" | "knock";
-export type RunEvent = { tick: number; verb: Verb; target?: string; room?: RoomId | null; cause: string; text: string };
+export type RunEvent = { tick: number; verb: Verb; target?: string; room?: RoomId | null; cause: string; text: string;
+  /** Which phrase of hers this moment made, if any. An index into SLICES — the sound is
+      part of the record, not decoration laid over it, so a seed replays her voice too. */
+  voice?: number };
+
+// How likely she is to make a noise doing this, before her mood gets a say. She is a
+// loud animal when things are going well and a silent one when she is sulking.
+const VOICE: Partial<Record<Verb, number>> = {
+  startle: 0.7, play: 0.65, steal: 0.6, come: 0.6, knock: 0.55, roll: 0.5, gift: 0.5,
+  fish: 0.45, glare: 0.35, drag: 0.3, stash: 0.25, sniff: 0.2, hide: 0.12,
+  sulk: 0.06, wander: 0.05, doze: 0.03, nap: 0.02,
+};
+const LOUD_VERBS = new Set<Verb>(["steal", "play", "startle", "knock", "roll", "come"]);
+const QUIET_VERBS = new Set<Verb>(["sulk", "hide", "doze", "nap", "sniff", "wander"]);
+
+/** Roll for a noise, and for which one. On its own stream by design: adding a voice to
+    the game changed no existing run, because the lucy and text streams are untouched
+    and every old seed still plays out exactly as it did before. */
+function voiceFor(r: Run, verb: Verb): number | undefined {
+  const base = VOICE[verb] ?? 0.2;
+  const keen = (r.mood.sulk ? 0.35 : 1) * (r.leftover?.kind === "hyper" ? 1.35 : 1) * (r.mood.speed >= 1.3 ? 1.2 : 1);
+  if (r.voice.next() >= base * keen) return undefined;
+
+  let tier: Slice["tier"] = QUIET_VERBS.has(verb) ? "soft"
+    : LOUD_VERBS.has(verb) && r.mood.speed >= 1.2 ? "loud" : "mid";
+  if (r.mood.sulk && tier === "loud") tier = "mid";
+
+  const pool: number[] = [];
+  for (let i = 0; i < SLICES.length; i++) if (SLICES[i].tier === tier) pool.push(i);
+  return pool.length ? pool[r.voice.int(pool.length)] : undefined;
+}
 export type Action = { verb: Verb; target?: Placed; tx: number; ty: number; path: number[]; dur: number; t: number; notice: number; cause: string };
 
 export type Run = {
   index: number; prep: ItemId[]; combo: string | null; mood: Mood;
-  lucy: Rng; text: Rng;
+  lucy: Rng; text: Rng; voice: Rng;
   tick: number; x: number; y: number; energy: number;
   action: Action | null; carrying: Placed | null;
   events: RunEvent[]; touched: Set<string>; rooms: Set<RoomId>; trail: [number, number][];
@@ -143,6 +174,7 @@ export function startRun(p: Profile, prep: ItemId[]): Run {
   const r: Run = {
     index, prep, combo: combo && COMBOS[combo] ? combo : null, mood: mixMood(prep, p.leftover),
     lucy: new Rng(hash(p.seed, index, "lucy")), text: new Rng(hash(p.seed, index, "text")),
+    voice: new Rng(hash(p.seed, index, "voice")),
     tick: 0, x: CAGE.x, y: CAGE.y, energy: 100, action: null, carrying: null,
     events: [], touched: new Set(), rooms: new Set(["living"]), trail: [[CAGE.x, CAGE.y]],
     squeakedAt: null, squeakAnswered: null, done: false, napOn: null,
@@ -169,7 +201,7 @@ const idx = (x: number, y: number) => y * W + x;
 function pick<T>(r: Run, xs: T[]): T { return xs[r.text.int(xs.length)]; }
 
 function say(r: Run, verb: Verb, target: Placed | undefined, cause: string, text: string) {
-  r.events.push({ tick: r.tick, verb, target: target?.id, room: roomAt(r.x, r.y), cause, text });
+  r.events.push({ tick: r.tick, verb, target: target?.id, room: roomAt(r.x, r.y), cause, text, voice: voiceFor(r, verb) });
 }
 
 function bfs(r: Run, sx: number, sy: number) {

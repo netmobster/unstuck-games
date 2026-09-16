@@ -37,6 +37,12 @@ function save() {
   try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch { /* fine */ }
 }
 
+/* One switch governs everything that makes a noise. Splitting music and Lucy into two
+   controls would be more configurable and worse: nobody wants the ferret without the
+   room, and "off" should mean off. */
+export const soundOn = () => prefs.on && !document.hidden;
+export const soundLevel = () => prefs.vol;
+
 /** Where the master volume is heading. Zero while hidden: nobody wants a tab they
     cannot see making noise. */
 function aim() {
@@ -125,7 +131,7 @@ export function initMusic() {
   const paint = () => {
     btn.innerHTML = icon(prefs.on);
     btn.setAttribute("aria-pressed", String(prefs.on));
-    btn.title = prefs.on ? "Music on" : "Music off";
+    btn.title = prefs.on ? "Sound on" : "Sound off";
     vol.value = String(Math.round(prefs.vol * 100));
     vol.disabled = !prefs.on;
   };
