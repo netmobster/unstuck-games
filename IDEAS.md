@@ -4,6 +4,7 @@ Filed, not decided. Nothing here is scoped, designed or scheduled until Jay says
 
 | Filed | Idea | What we know | Status |
 |---|---|---|---|
+| 2026-09-16 | **Elsewhere on mobile: rebuild, not reflow** | The Watch Post is a two-column desk layout — spine, briefing, neighbours, ledger, queue all visible at once. On a phone that cannot be squeezed, it has to be re-thought: tabs, steps, or Xbox 360 blades. Jay's call. Desktop-only until then, and the playtest DM says so. | **Design job, not a CSS pass** |
 | 2026-09-16 | **Homepage nav** | Needs a proper pass now the site moved: the nav was written for a single-page homepage and the Updates link was bolted on. Check every item, the mobile layout, and what it does from a game page. | **Tomorrow** |
 | 2026-09-16 | **Subdomains per game** | DNS already points at the box; nginx server blocks written and parked. orbis. / badmonkeys. / ferretbowling. / elsewhere., each with /play. | **Tomorrow** |
 | 2026-09-16 | **Wildcard mail forwarding** | anything@unstuck-games.com → Gmail, via SES receiving + a small forwarder. Touches MX, so do it on its own, not alongside site work. | **Tomorrow** |
