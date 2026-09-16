@@ -251,8 +251,7 @@ def narrate(view: dict, skip_hours: int | None, first: bool) -> dict:
         "Never state a resource figure — not coin, not hands, not a standing. Those "
         "live on the board beside you; the payload carries them only so you know how "
         "rich or desperate the holding is. 'The purse is thinner than it was' is yours "
-        "to write; '180 coin' is not.
-"
+        "to write; '180 coin' is not.\n"
         "Never invent a time window. 'The next twelve hours will decide' is a "
         "number you made up; if the horizon did not give you a clock, say the "
         "not-knowing instead.\n"
