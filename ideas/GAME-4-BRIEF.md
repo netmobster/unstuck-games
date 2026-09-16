@@ -5,7 +5,7 @@ mechanics as they stand after ideation and the teardown. Nothing below is decide
 Jay's boundaries (method step 4) are in; open questions are marked **DECIDE** with a
 recommendation, and the recommendation is only that.
 
-Working title: **THE SLEEPING GOD** (placeholder, not a name).
+Working title: **DEADLINE DUNGEON** (was THE SLEEPING GOD; still a working title).
 
 ## The graveyard
 
@@ -222,6 +222,73 @@ tie. Twelve interacting fields make that failure twelve times easier. **One chea
 belongs in the build from day one:** across many simulated days, how often does each person
 decline, and which force is doing it? If Brenda turns down 77% of everything and Martin is
 the reason every time, that's not a character, it's a bug wearing a cardigan.
+
+## LOCKED — Jay's answers, 2026-09-16
+
+Decided in four rounds of multiple choice. Where these contradict anything earlier in this
+brief (the sleeping god upstairs, "cannot be woken"), **these win.**
+
+### Gargantua, rewritten
+
+**Gargantua is a god who forgot how to be a god and ended up running a dreary IT company in
+Arizona.** He is not asleep upstairs. He's in the building, and he's the boss.
+
+- **His mood is pure Tamagotchi / BB-8.** It shows in his shape and his inner and border
+  colours, not in meters. **How exactly is CD's call** — design in progress.
+- **He can fail in two directions.** The middle manager is keeping him from **dying** and
+  from **getting angry**. Healthy is the band between.
+- **He fades from boredom and meaninglessness.** Same tickets, nothing that needs a god.
+  An office that runs *too* smoothly is dangerous.
+- **He gets angry from being disrespected.** His requests ignored, being told no.
+
+### The shape of a run
+
+| | Decision |
+|---|---|
+| **Run** | **A working week (Mon–Fri), then it resets.** |
+| **You are** | **The middle manager.** |
+| **Friday** | **Gargantua's review** by head office. |
+| **Ending** | **A memo from head office**: a performance review in dreary corporate language. |
+| **What carries over** | **The same twelve come back** with memories, grudges and who-quit intact · **past reviews stay on the wall** · **Gargantua carries his own history** (past reviews, confidence, how godly he feels). *Read from "two-4"; confirm.* |
+
+### The work
+
+- **Currency: one budget, plus perks.** A single number to price tasks, with funny exceptions
+  (pizza, the good parking space, a day off).
+- **Tasks come from four places:** IT tickets from clients · Gargantua's own requests · the
+  office itself (the AC in July in Arizona, the fridge, a birthday card) · review prep that
+  builds toward Friday.
+- **Caring for Gargantua, all four ways:** post it as a task and hope a staffer takes it · do
+  it yourself · shield him from news · give him godly work only he can do.
+
+### The staff
+
+- **They can quit mid-week. You can't hire.** You live with eleven until next week.
+- **You learn why someone declined by asking them.** They answer, sometimes honestly and
+  sometimes with a belief that's wrong. SEREN's `true / known / suspected / false`, delivered
+  as conversation instead of a readout.
+- **A declined Gargantua request is only disrespect if he finds out.** Which makes shielding
+  him from news a real system: cover-ups work until they don't.
+
+### Doing it yourself
+
+**Costs your time, and resentment. Costs no budget.** This is the teardown's escape hatch
+(*"you can always complete the task, at a cost, at midnight, while resentment accrues
+somewhere"*).
+
+**Proposed, awaiting Jay:** keep *midnight* as both name and joke, with two ways to pay —
+do it **during the day** and the office drifts while you're heads-down (nobody posts,
+nobody shields Gargantua); do it **at midnight** and nothing drifts today, but you start
+tomorrow tired. Resentment accrues either way.
+
+### Still open
+
+- The midnight version above.
+- Decisions 1–11 below that the rounds didn't cover directly: how dark (9), platform (10),
+  how much goes in a person (11), and whether offers can be withdrawn (4).
+- Budget: does it refill daily, weekly, or only from finished tickets?
+- What disrespect and boredom actually are, as events, and how far each moves him.
+- What the head-office memo is built from.
 
 ## DECIDE — Jay's boundaries
 
