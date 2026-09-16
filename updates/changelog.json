@@ -1,40 +1,61 @@
 {
-  "note": "Newest first. One entry per thing a player would notice. Dates are the day it went live.",
-  "entries": [
-    {
-      "date": "2026-09-16",
-      "game": "Elsewhere",
-      "tag": "voice",
-      "title": "The narrator narrates again",
-      "body": "Briefings were reciting dice — \"rolling a 4, drift neutral\" — and flattening big ideas into menu orders. Now the arithmetic stays on the board and the prose tells you what it meant. Say you are a pacifist society that sells flattering sketches and the world remembers it, prices it as its own scheme, and the neighbours form opinions. The end-of-world chronicle opens on what happened while you were not looking."
-    },
-    {
-      "date": "2026-09-16",
-      "game": "Elsewhere",
-      "tag": "live",
-      "title": "Playable in a browser",
-      "body": "The world you could only run inside Claude Code now runs at unstuck-games.com/elsewhere/play — password-gated while it is early. Python still rolls the dice; three small models do the talking."
-    },
-    {
-      "date": "2026-09-16",
-      "game": "Unstuck",
-      "tag": "site",
-      "title": "A home of our own",
-      "body": "Every game moved to unstuck-games.com, off a borrowed address and onto a machine we run. Any game now opens the studio picker, so you are never stranded on a page with no way back to the rest."
-    },
-    {
-      "date": "2026-09-15",
-      "game": "Unstuck",
-      "tag": "money",
-      "title": "God Mode: one ad a day, hours on tap",
-      "body": "One ad per game per day. After that, switch God Mode on for an hour whenever you like until tomorrow, free. No second ad, no chain, no energy, no currency. Surely you have to watch another one? No. Go play."
-    },
-    {
-      "date": "2026-09-15",
-      "game": "Ferret Bowling",
-      "tag": "page",
-      "title": "Lucy has a page, and a newsletter",
-      "body": "A launcher game about a long animal, except you do not aim her. One email when the door opens."
-    }
-  ]
+ "note": "Newest first. One entry per thing a player would notice. Dates are the day it went live.",
+ "entries": [
+  {
+   "date": "2026-09-16",
+   "game": "Ferret Bowling",
+   "tag": "alpha",
+   "title": "Lucy is playable",
+   "body": "Pack her cage, open the door, and get out of the way. She explores seven rooms, steals things, sulks, naps on your laundry, and builds a hoard under the couch that persists between runs. Every run ends with what she did and what she learned. One seed, no sound yet, sprites still rough — but it is a real game now, not a page."
+  },
+  {
+   "date": "2026-09-16",
+   "game": "Elsewhere",
+   "tag": "guide",
+   "title": "The game explains itself",
+   "body": "A how-it-works card on your first world, and a HOW TO PLAY button after that. The important part, which everybody misses: the order buttons are a shortcut, not the rules. You can type anything you can describe and it becomes a real order with a real price and a real roll."
+  },
+  {
+   "date": "2026-09-16",
+   "game": "Unstuck",
+   "tag": "site",
+   "title": "About, Contact, and a nav that fits",
+   "body": "The nav is four things now. There is a page about what this actually is, and a contact form that reaches a person — with a list of excellent reasons to write and a few reasons not to. The ferret is unavailable and uninterested."
+  },
+  {
+   "date": "2026-09-16",
+   "game": "Elsewhere",
+   "tag": "voice",
+   "title": "The narrator narrates again",
+   "body": "Briefings were reciting dice — \"rolling a 4, drift neutral\" — and flattening big ideas into menu orders. Now the arithmetic stays on the board and the prose tells you what it meant. Say you are a pacifist society that sells flattering sketches and the world remembers it, prices it as its own scheme, and the neighbours form opinions. The end-of-world chronicle opens on what happened while you were not looking."
+  },
+  {
+   "date": "2026-09-16",
+   "game": "Elsewhere",
+   "tag": "live",
+   "title": "Playable in a browser",
+   "body": "The world you could only run inside Claude Code now runs at unstuck-games.com/elsewhere/play — password-gated while it is early. Python still rolls the dice; three small models do the talking."
+  },
+  {
+   "date": "2026-09-16",
+   "game": "Unstuck",
+   "tag": "site",
+   "title": "A home of our own",
+   "body": "Every game moved to unstuck-games.com, off a borrowed address and onto a machine we run. Any game now opens the studio picker, so you are never stranded on a page with no way back to the rest."
+  },
+  {
+   "date": "2026-09-15",
+   "game": "Unstuck",
+   "tag": "money",
+   "title": "God Mode: one ad a day, hours on tap",
+   "body": "One ad per game per day. After that, switch God Mode on for an hour whenever you like until tomorrow, free. No second ad, no chain, no energy, no currency. Surely you have to watch another one? No. Go play."
+  },
+  {
+   "date": "2026-09-15",
+   "game": "Ferret Bowling",
+   "tag": "page",
+   "title": "Lucy has a page, and a newsletter",
+   "body": "A launcher game about a long animal, except you do not aim her. One email when the door opens."
+  }
+ ]
 }

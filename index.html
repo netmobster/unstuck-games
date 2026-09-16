@@ -158,6 +158,25 @@ body[data-mode="stuck"] .game .name{font-family:'Inter',sans-serif!important;fon
 .catalog-head{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap;border-top:2px solid var(--ink);padding-top:14px}
 .catalog-head .kick{color:var(--ink);font-size:14px}
 .catalog-sub{font-weight:700;color:var(--muted);font-size:15px}
+/* Ferret Bowling: paper, not screen — the card borrows the game's own palette */
+.game.live.lucy{grid-column:1/-1;min-height:360px;background:#e6dcc0;color:#2b241d;text-decoration:none;
+  display:flex;align-items:center;gap:28px;flex-wrap:wrap;padding:30px clamp(20px,3vw,34px)}
+.game.live.lucy:hover{color:#2b241d;transform:translateY(-6px)}
+.game.live.lucy .copy{flex:1;min-width:280px;display:flex;flex-direction:column;gap:10px}
+.game.live.lucy .name{font-family:'Alfa Slab One',serif;font-size:clamp(28px,4vw,44px);line-height:1;color:#0f5c57}
+.game.live.lucy .hook{max-width:46ch;line-height:1.55;margin:0;color:#2b241d}
+.game.live.lucy .play{align-self:flex-start;background:#0f5c57;color:#f2ead3;font-family:'Alfa Slab One',serif;
+  font-size:17px;padding:12px 20px;border:3px solid #2b241d;border-radius:6px 4px 7px 4px;box-shadow:4px 5px 0 #2b241d}
+.game.live.lucy:hover .play{background:#d8352a}
+.game.live.lucy .genre,.game.live.lucy .foot{color:#8a5a2b}
+.game.live.lucy .soon{background:#d8352a;color:#f2ead3;border-color:#d8352a}
+.fb-art{position:relative;display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap}
+.fb-art img{width:clamp(120px,16vw,180px);height:auto;display:block}
+.fb-hoard{display:flex;flex-direction:column;gap:5px;background:#f2ead3;border:2.5px solid #2b241d;
+  border-radius:9px 6px 10px 7px;padding:12px 14px;box-shadow:4px 5px 0 rgba(43,36,29,.25);min-width:150px}
+.fb-lab{font-family:'Alfa Slab One',serif;font-size:10px;letter-spacing:.14em;color:#d8352a}
+.fb-item{font-family:Caveat,cursive;font-size:19px;line-height:1.1;color:#2b241d}
+.fb-more{font-family:Caveat,cursive;font-size:17px;color:#8a5a2b}
 /* live game: featured, full width, running the actual game behind the card */
 .game.live{grid-column:1/-1;min-height:420px;background:#080d12;color:#e6f0f0;text-decoration:none;cursor:pointer}
 .game.live:hover{color:#e6f0f0;transform:translateY(-6px);box-shadow:0 30px 60px rgba(8,13,18,.45)}
@@ -527,7 +546,8 @@ const COPY = {
 // Catalog status: play = runs in the browser here · early = playable today on another surface · (GAMES) = coming soon
 const LIVE = [
   { kind: "play", name: "ORBIS", stuckName: "Orbit Merge: Idle Galaxy Tycoon", href: "orbis/", genre: "AMBIENT · ORBITAL ANT FARM", hook: "A little universe you watch evolve. Two dials change the conditions, never the outcome. Leave it running. Fall asleep to it.", play: "Play", foot: "DNA: 90s FISH SCREENSAVER × IDLE ORBITER · MADE TO FALL ASLEEP TO" },
-  { kind: "early", name: "ELSEWHERE", stuckName: "Kingdom Raid: Idle Lords", href: "elsewhere/", genre: "IDLE RPG · YOUR ABSENCE IS THE MECHANIC", hook: "Two minutes a day. Three neighbours who each want something, and one set of eyes. Type anything and it becomes a real order, rolled by a deterministic engine. You will lose. The interesting part is how.", play: "Visit Elsewhere ↗", foot: "PLAYED IN CLAUDE CODE TODAY · BROWSER VERSION ON THE WAY" },
+  { kind: "early", name: "ELSEWHERE", stuckName: "Kingdom Raid: Idle Lords", href: "elsewhere/", genre: "IDLE RPG · YOUR ABSENCE IS THE MECHANIC", hook: "Two minutes a day. Three neighbours who each want something, and one set of eyes. Type anything — pretend to be sheep, sell imaginary wool — and it becomes a real order, rolled by a deterministic engine. You will lose. The interesting part is how.", play: "Play in your browser →", foot: "EARLY ACCESS · PASSWORD-GATED WHILE IT IS ROUGH · PLAYS IN CLAUDE CODE TOO" },
+  { kind: "lucy", name: "FERRET BOWLING", stuckName: "Ferret Blast: Merge & Fling 3D", href: "ferret-bowling/", genre: "LAUNCHER GAME · AIM IS A SUGGESTION", hook: "You do not steer Lucy. You pack her cage, open the door, and find out who she is today. She explores, steals, sulks, naps, and builds a hoard under the couch. You write it down.", play: "Play the alpha →", foot: "ALPHA · TOMBSTONE: GALÁPAGOS: MENDEL'S ESCAPE · GAME #3" },
   { kind: "building", name: "BAD MONKEYS", stuckName: "Space Monkey Merge: Galaxy Tycoon", href: "bad-monkeys/", genre: "ABSENCE SIM · NOT ALWAYS BETTER, ALWAYS WEIRDER", hook: "You're Jame, a mechanic from Alberta. She's Not Betsy. You land, fix a planet's problem with whatever she bolted on while you were gone, say one thing on your way out, and leave. She takes it literally.", play: "Read her file →", foot: "ALPHA · PLACEHOLDER CONTENT · TOMBSTONE: UNIVERSAL PAPERCLIPS · GAME #2" }
 ];
 
@@ -649,6 +669,26 @@ $('#liveGrid').innerHTML = LIVE.map(g => g.kind === 'building' ? `
       <span class="bm-chip" style="right:0;top:48%">GRAIN AUGER · 40 FT</span>
       <span class="bm-chip" style="left:4%;bottom:10%">DOG · UNLISTED</span>
       <span class="bm-scrib">she's fine</span>
+    </div>
+  </a>` : g.kind === 'lucy' ? `
+  <a class="game live lucy" href="${g.href}">
+    <div class="top"><span class="genre"></span><span class="soon"></span></div>
+    <div class="copy">
+      <div class="name"></div>
+      <p class="hook"></p>
+      <span class="play"></span>
+      <div class="foot"></div>
+    </div>
+    <div class="fb-art" aria-hidden="true">
+      <img src="ferret-bowling/assets/lucy/sit.png" alt="">
+      <div class="fb-hoard">
+        <span class="fb-lab">UNDER THE COUCH</span>
+        <span class="fb-item">phone charger</span>
+        <span class="fb-item">house keys</span>
+        <span class="fb-item">one sock</span>
+        <span class="fb-item">TV remote</span>
+        <span class="fb-more">+3 more</span>
+      </div>
     </div>
   </a>` : g.kind === 'early' ? `
   <a class="game live early" href="${g.href}">
