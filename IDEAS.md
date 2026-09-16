@@ -4,6 +4,11 @@ Filed, not decided. Nothing here is scoped, designed or scheduled until Jay says
 
 | Filed | Idea | What we know | Status |
 |---|---|---|---|
+| 2026-09-16 | **Homepage nav** | Needs a proper pass now the site moved: the nav was written for a single-page homepage and the Updates link was bolted on. Check every item, the mobile layout, and what it does from a game page. | **Tomorrow** |
+| 2026-09-16 | **Subdomains per game** | DNS already points at the box; nginx server blocks written and parked. orbis. / badmonkeys. / ferretbowling. / elsewhere., each with /play. | **Tomorrow** |
+| 2026-09-16 | **Wildcard mail forwarding** | anything@unstuck-games.com → Gmail, via SES receiving + a small forwarder. Touches MX, so do it on its own, not alongside site work. | **Tomorrow** |
+| 2026-09-16 | **Ferret Bowling to alpha** | Build the Lucy prototype and wire /ferret-bowling/play/ (route already stubbed to redirect until it exists). | Next |
+| 2026-09-16 | **Elsewhere to beta** | Narrator rebuilt and played through end to end; wants a real 30-minute session by Jay before the badge changes. | Next |
 | 2026-09-15 | **A domain for Unstuck** | Friday job. Buy it, put DNS on Cloudflare, point the Pages site at it, and give Elsewhere-web a fixed address via a named tunnel instead of the random trycloudflare one. Steps in `INFRA.md`. | **Friday 2026-09-18** |
 | 2026-09-13 | **Homepage: a third qualifier** | Next homepage update: add a third card beside the two refusals (A "Why build this and not use it?", B "Why build this then pollute it?"): **"Games that died that deserve more than a tombstone, but also more than a copy."** Example: Universal Paperclips → Bad Monkeys. | For the next homepage update |
 | 2026-09-13 | **Ferret Bowling** | The ferret game, now filed under this name. (The homepage concept card still reads *FERRET HEIST*; unchanged until Jay decides.) | Undecided beyond the name |
