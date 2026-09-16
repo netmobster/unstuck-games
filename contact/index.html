@@ -1,0 +1,172 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Contact — Unstuck Games</title>
+<meta name="description" content="Reach out if. Don't reach out if.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f2efe6;--card:#faf8f2;--ink:#16163a;--muted:#565672;--accent:#2b34d6;--acid:#e9f257;
+        --onAccent:#f2efe6;--rs:16px;--pill:999px;--fh:'Luckiest Guy',cursive;--fb:'Nunito Sans',sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--fh);font-weight:400;margin:0}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  nav{background:var(--bg);border-bottom:2px solid var(--ink)}
+  nav .wrap{padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand .word{font-family:var(--fh);font-size:28px;line-height:1}
+  .brand .word i{font-style:normal;color:var(--accent)}
+  .brand small{font-family:var(--fh);font-size:12px;letter-spacing:2px;color:var(--muted)}
+  .links{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-weight:800;font-size:14px;letter-spacing:.06em}
+  .links a{text-decoration:none}.links a:hover{color:var(--accent)}
+  .links .on{background:var(--ink);color:var(--bg);padding:6px 12px;border-radius:var(--pill)}
+  header.top{padding:56px 0 6px}
+  header.top .kicker{font-weight:800;font-size:13px;letter-spacing:.16em;color:var(--accent)}
+  header.top h1{font-size:clamp(40px,6.5vw,74px);line-height:.95;margin-top:10px}
+  header.top p{font-size:19px;line-height:1.55;max-width:52ch;margin:16px 0 0;color:var(--muted)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:24px;padding:30px 0 60px;align-items:start}
+  .card{background:var(--card);border:2px solid var(--ink);border-radius:var(--rs);padding:20px 22px;
+        box-shadow:5px 6px 0 rgba(22,22,58,.14)}
+  .card h3{font-size:22px;margin-bottom:12px}
+  .list{display:flex;flex-direction:column;gap:11px}
+  .item{display:flex;gap:10px;align-items:flex-start;font-size:16px;line-height:1.5}
+  .item i{font-style:normal;font-family:var(--fh);font-size:17px;line-height:1.3;flex:none}
+  .yes i{color:#1c8a4a}.no i{color:#c5372c}
+  .no .item{color:var(--muted)}
+  form{display:flex;flex-direction:column;gap:12px}
+  label{font-weight:800;font-size:12px;letter-spacing:.12em;color:var(--muted)}
+  input,textarea,select{width:100%;font:inherit;font-size:16px;padding:12px 13px;background:#fff;
+    border:2px solid var(--ink);border-radius:8px;color:var(--ink)}
+  textarea{min-height:140px;resize:vertical}
+  input:focus,textarea:focus,select:focus{outline:3px solid var(--acid);outline-offset:1px}
+  .row{display:flex;gap:12px;flex-wrap:wrap}.row > div{flex:1;min-width:180px}
+  button{cursor:pointer;border:2px solid var(--ink);border-radius:var(--pill);padding:14px 24px;background:var(--accent);
+         color:var(--onAccent);font-family:var(--fh);font-size:19px;letter-spacing:.5px}
+  button:hover{background:var(--ink)}
+  button[disabled]{opacity:.6;cursor:default}
+  .fine{font-size:13px;color:var(--muted);line-height:1.5}
+  .said{background:var(--acid);border:2px solid var(--ink);border-radius:var(--rs);padding:18px 20px;font-size:17px;line-height:1.55}
+  .said b{font-family:var(--fh);font-weight:400;font-size:21px;display:block;margin-bottom:6px}
+  .hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+  footer{border-top:2px solid var(--ink);padding:26px 0 50px;font-size:13px;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="/"><span class="word"><i>U</i>NSTUCK</span><small>GAMES</small></a>
+  <div class="links">
+    <a href="/#games">Games</a>
+    <a href="/updates/">Updates</a>
+    <a href="/about/">About</a>
+    <a class="on" href="/contact/">Contact</a>
+  </div>
+</div></nav>
+
+<header class="top"><div class="wrap">
+  <div class="kicker">CONTACT</div>
+  <h1>Say something.</h1>
+  <p>It goes to one person. That person reads everything, answers most things, and is slower than he would like to admit.</p>
+</div></header>
+
+<div class="wrap grid">
+  <section class="card">
+    <h3>Reach out if</h3>
+    <div class="list yes">
+      <div class="item"><i>✓</i><span>Something broke, or a game did something so strange it deserves a witness.</span></div>
+      <div class="item"><i>✓</i><span>You want to playtest early and tell the truth about it.</span></div>
+      <div class="item"><i>✓</i><span>You know a game that died and deserved better. Especially if nobody remembers it.</span></div>
+      <div class="item"><i>✓</i><span>You write, draw or make noise, and you think your work belongs in one of these.</span></div>
+      <div class="item"><i>✓</i><span>You want to say hello. That is a whole reason.</span></div>
+    </div>
+
+    <h3 style="margin-top:22px">Don't reach out if</h3>
+    <div class="list no">
+      <div class="item"><i>✗</i><span>You want to know whether the ferret is single. She is unavailable and uninterested.</span></div>
+      <div class="item"><i>✗</i><span>You have a great new microtransaction idea. We have read it. It was about gems.</span></div>
+      <div class="item"><i>✗</i><span>You would like to hop on a quick call about growth, funnels or user acquisition.</span></div>
+      <div class="item"><i>✗</i><span>Your proposal contains the words battle pass, season pass or engagement loop.</span></div>
+      <div class="item"><i>✗</i><span>You are offering to buy the domain. It cost twelve dollars and it is not for sale.</span></div>
+      <div class="item"><i>✗</i><span>You are an SEO expert who has noticed some issues with our website.</span></div>
+    </div>
+  </section>
+
+  <section class="card">
+    <form id="say" novalidate>
+      <div class="row">
+        <div>
+          <label for="name">YOUR NAME</label>
+          <input id="name" name="name" type="text" autocomplete="name" placeholder="who's this">
+        </div>
+        <div>
+          <label for="email">EMAIL</label>
+          <input id="email" name="email" type="email" required autocomplete="email" placeholder="so a reply can find you">
+        </div>
+      </div>
+      <div>
+        <label for="topic">WHAT IS THIS</label>
+        <select id="topic" name="topic">
+          <option>Something broke</option>
+          <option>I want to playtest</option>
+          <option>A game that deserves unsticking</option>
+          <option>Working together</option>
+          <option>Just saying hello</option>
+          <option>Something else entirely</option>
+        </select>
+      </div>
+      <div>
+        <label for="message">THE MESSAGE</label>
+        <textarea id="message" name="message" required placeholder="Take your time. Specifics are a gift."></textarea>
+      </div>
+      <!-- Bots fill everything. People never see this one. -->
+      <div class="hp"><label for="company">Company</label><input id="company" name="company" tabindex="-1" autocomplete="off"></div>
+      <button type="submit">SEND IT</button>
+      <p class="fine" id="fine">No list, no tracking, no newsletter signup hidden in this button. If you want the newsletter, that lives on the game pages and is its own decision.</p>
+    </form>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  <span>UNSTUCK GAMES · <a href="/">Don't bullshit the player</a></span>
+  <span><a href="/about/">About</a> · <a href="https://gamesgotout.substack.com/" target="_blank" rel="noopener">Games That Got Out ↗</a></span>
+</div></footer>
+
+<script src="/switcher.js" defer></script>
+<script>
+const form = document.getElementById('say');
+form.addEventListener('submit', async e => {
+  e.preventDefault();
+  const btn = form.querySelector('button'), fine = document.getElementById('fine');
+  const body = {
+    name: form.name.value.trim(),
+    email: form.email.value.trim(),
+    topic: form.topic.value,
+    message: form.message.value.trim(),
+    company: form.company.value   // honeypot
+  };
+  if (!body.email || !body.message) {
+    fine.textContent = 'An email and a message, at minimum. Everything else is optional.';
+    return;
+  }
+  btn.disabled = true; const label = btn.textContent; btn.textContent = 'SENDING…';
+  try {
+    const r = await fetch('/api/contact', {
+      method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(body)
+    });
+    if (!r.ok) throw new Error(String(r.status));
+    form.innerHTML = '<div class="said"><b>Got it.</b>That is now sitting in an inbox belonging to an actual person, who will read it and probably reply. If it was a bug, thank you — those are the good ones.</div>';
+  } catch (err) {
+    btn.disabled = false; btn.textContent = label;
+    fine.innerHTML = 'That did not send, which is embarrassing on a contact page. Try again, or email <a href="mailto:hello@unstuck-games.com">hello@unstuck-games.com</a> directly.';
+  }
+});
+</script>
+</body>
+</html>
