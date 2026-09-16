@@ -94,73 +94,134 @@ What exists in ideation and the teardown. Everything here is a candidate.
 - **Generation + dice:** the twelve, their quirks and their lines are pre-generated
   records; the runtime only rolls against them. No AI in the running game.
 
-## The staffer: people with things pulling on them
+## The staffer: a small field of competing forces
 
-Proposed, not decided. Added 2026-09-16 after reading how SEREN builds its NPCs.
+Proposed, not decided. Revised 2026-09-16 with the second red team.
 
-**Majesty gave each hero one price.** Greed against danger, and the answer falls out.
-Memorable, but thin: nobody wants anything except gold.
+### The experiment
 
-**SEREN gives each character several pulls that disagree** (`want`, `voice`, `tell`, and
-a `knows` list where every fact carries a visibility). Guz wants the sheep home, is loyal
-to Noke, and has come to like the party. Who he is on a given day is whichever pull wins,
-and the ones that lose still show: *the sentence he did not finish*. But in SEREN a model
-decides all of that live, and nothing is enforced by code.
+Not *can we write twelve believable characters* (SEREN shows we can), and not *can we
+simulate twelve agents* (that's mundane). The experiment is:
 
-**This game takes both halves.** Majesty's arithmetic decides; SEREN's record explains. And
-per the studio rule, the records are generated before play, and only dice and the ledger
-run live.
+> **Can twelve simple, persistent, differently motivated systems produce enough
+> consequential behaviour that the player starts believing there are twelve people in
+> the room?**
 
-### The record
+That's harder than Lucy. Lucy is *ferret ↔ world*. The office is *person ↔ task*,
+*person ↔ world*, *person ↔ person* and *person ↔ remembered history*, and every decision
+changes the field for the next one.
+
+The proof won't be a metric. It'll be a playtester saying: **"Fucking Brenda. I KNEW she
+was going to make Martin do it."**
+
+### Where this sits between Majesty and SEREN
+
+- **Majesty builds the decision machinery first**, and the player invents the person from
+  repeated behaviour. The same 1,000 gold looks enormous to a Rogue and trivial to a
+  Paladin. Expressive, but thin: *the Rogue is pulled by money, the Gnome is pushed by
+  danger.*
+- **SEREN builds the rich person first**, and a model decides what they do live. That
+  supports Ossa Rell's secrets, trigger and escalation ladder, because a model interprets
+  it. **A deterministic office can't use that much.** Biography the arithmetic never reads
+  is decoration.
+- **Game #4 meets in the middle:** give the arithmetic just enough human-shaped structure
+  to act on, let deterministic decisions pile up, and let the player build their own model
+  of who each person is.
+
+**SEREN needs full living humans. This game needs little goblins.** (Jay.) Small, legible,
+persistent, and each one pulling in a few directions at once.
+
+**Appetites, not stats.** `Bravery: 7` describes Brenda. *Wants to be home by five* **pulls**
+Brenda. An appetite has a direction, and that's what makes it usable.
+
+### The atoms
+
+Six small kinds of thing. Every one has to cash out as a force on how a task looks to that
+person; if it can't, it doesn't go in the record.
+
+| Atom | What it is | How it cashes out |
+|---|---|---|
+| **appetite** | what attracts me | raises the value of tasks with that property (visible work, overtime pay, the god's own errands) |
+| **aversion** | what repels me | raises the perceived cost of a category (miracles, the basement, anything after 4:30) |
+| **want** | what I'm trying to make true | pulls toward tasks that move it and away from ones that block it; can be *today only* |
+| **belief** | what I think is true (may be wrong) | changes how I price a person or a task, whether or not it's true |
+| **relationship** | who changes my calculation | shifts the value of a task depending on who posted it and who else is on it |
+| **habit** | what I do when nothing stronger wins | the default at the bottom of the ladder, instead of plain wandering |
+
+Plus Majesty's two per-person numbers underneath everything: **greed** (how much a reward
+moves them) and **nerve** (how they misjudge danger).
+
+### Brenda, at 4:37
 
 ```yaml
-name:      Brenda Fairweather
-role:      Accounts, third floor, eleven years
-voice:     "Short sentences. Calls everyone 'love' except people she has decided about."
-tell:      "Straightens the stapler before answering anything."
+name:   Brenda
+voice:  "Short sentences. Calls everyone 'love' except people she has decided about."
+tell:   "Checks the clock whenever someone says 'quick thing'."
+greed:  2
+nerve:  0.8
 
-# The pulls. Each is a number the dice read, plus a line the player can eventually read.
-want:      { weight: 3, line: "The corner desk by the window. Carol's desk." }
-greed:     2          # how much a reward moves her, 0-5 (Majesty's greed)
-nerve:     0.6        # how brave she thinks she is, against how hard she thinks it is
-fear:      { weight: 4, line: "The basement. Nobody knows why." }
-loyal_to:  { who: "the god", weight: 2, line: "Covered for him before anyone else did." }
-grudge:    { who: "derek-pike", weight: 3, line: "He took credit for the Harrow ledger." }
-habit:     { what: "long lunch", when: "12:30", weight: 2 }
-
-# What is true about her, and how much of it the player has learned.
-knows:
-  - fact: "The basement fear is about a prayer she answered wrong in year two."
-    visibility: true       # the world's truth; the player has not earned it
-  - fact: "She won't take tasks Derek posts."
-    visibility: suspected  # the player has a theory, from watching
-  - fact: "She's just lazy after lunch."
-    visibility: false      # what the player currently believes, wrongly
+want:         { line: "Get home by five: her daughter's recital is tonight.", today: true, weight: 5 }
+appetite:     { line: "Recognition.", on: "visible work", weight: 2 }
+aversion:     { line: "Anything to do with miracles, after Tuesday.", on: "miracle", weight: 3 }
+belief:       { line: "Martin got the promotion she was promised.", about: "martin", truth: false }
+relationship: { with: "martin", weight: -3 }   # Martin on a task makes it worse
+habit:        { what: "tidy the post room", when: "idle" }
 ```
 
-### How a decision reads the pulls
+A task arrives at 4:37: decent reward, easy, twenty minutes, Martin already on it.
 
-When a task is posted, every staffer scores it: the reward times their greed, minus the
-danger as their nerve sees it, plus or minus each pull that the task touches (the place,
-who posted it, who else is on it, what time it is). Highest score takes it; below a floor,
-they wander. The same seeded dice as Ferret Bowling break close calls.
+- The reward, through her greed: **attractive.**
+- The difficulty, through her nerve: **fine.**
+- The recital, which only exists today: **a big pull out of the building.**
+- Martin on it: **a push away**, powered by a belief that isn't even true.
 
-**The refusal is the strongest pull that said no.** It is written down as a fact, with a
-visibility, the moment it happens. That is the readable-refusal goal made concrete: you
-can always find out why Brenda turned it down, but at first you might only *suspect* it
-was Derek, or wrongly believe she's lazy after lunch, until watching turns a suspicion
-into something known.
+**All of Brenda is pulling in different directions, and it lands on no.** Not
+`greed × reward < difficulty`.
 
-### What persists
+### What the player sees, and what the sim knows
 
-- **An interactions log per staffer, only ever added to.** What you asked, what they did,
-  what they noticed. The office that remembers who quit.
-- **Pulls drift.** A grudge fades if it's never fed, like Lucy's habits; a want that's
-  granted is replaced by the next one.
-- **Secrets are earned, not handed out.** A staffer gets a deeper secret only when play
-  gives them one, the way SEREN creates a secrets file "only when one earns it".
-- **Some staff have an `appears_when`.** The auditor, the god's mother, the rival
-  department: people who arrive when a condition is met and escalate each time.
+The sim always holds the true reason. The player gets a surface, and builds the rest. The
+eye shows the legible part:
+
+```
+Brenda declined.
+  reward        attractive
+  difficulty    acceptable
+  time left     bad
+  personal      −28
+```
+
+The `personal −28` is where SEREN's visibility idea earns its place. Each hidden reason is a
+fact tagged `true` (the sim's), `suspected` (the player's theory), `known` (learned in play)
+or `false` (the player believes something wrong). Over days:
+
+- You notice she gets twitchy after 4:30. **Suspected:** Brenda hates late work.
+- **That's wrong.** She doesn't care about late work. *Today* was the recital.
+- Later she mentions the recital. The refusal becomes legible after the fact, and so does
+  the pattern you misread.
+
+**Inferring the wrong thing is a feature.** It's the player's model of a person being
+incomplete, which is exactly what knowing a real colleague is like.
+
+### Coupling: why twelve isn't twelve Lucys
+
+- **People change each other's maths.** Alice taking a task changes whether Brenda wants it.
+  Martin joining pushes Brenda off; for someone else he might be the reason to join.
+- **History changes thresholds.** If you did Brenda's job yourself yesterday, resentment
+  shifts today's numbers. The interactions log, only ever added to, is what the maths
+  reads.
+- **Wants move.** A want that's granted is replaced; a today-only want expires; a grudge
+  fades if nothing feeds it, like Lucy's habits.
+- **Parties aren't formed, they become likely.** People who pull toward each other end up
+  on the same task without any party interface, as in Majesty.
+
+### The guardrail we already paid for
+
+Ferret Bowling's portrait said "proud" 77% of the time because one rule quietly won every
+tie. Twelve interacting fields make that failure twelve times easier. **One cheap check
+belongs in the build from day one:** across many simulated days, how often does each person
+decline, and which force is doing it? If Brenda turns down 77% of everything and Martin is
+the reason every time, that's not a character, it's a bug wearing a cardigan.
 
 ## DECIDE — Jay's boundaries
 
@@ -176,7 +237,7 @@ into something known.
 | 8 | **Fixed twelve or generated?** | The same twelve every time · Generated per office | **Generated per office, persistent within it.** Your Brenda is not my Brenda. |
 | 9 | **How dark can it go?** | Cosy · Office-comedy bite · Genuinely bleak | **Office-comedy bite**, like Ferret Bowling's "adorable and weird, not chaos". |
 | 10 | **Platform first?** | Desktop browser · Mobile first | **Desktop browser.** A board of twelve people needs room; mobile after. |
-| 11 | **How many pulls per person?** | Majesty's price only · Price plus two pulls · Price plus a full record (want, fear, loyalty, grudge, habit) | **Full record, but only three pulls active on any one person.** Enough to disagree with themselves, few enough to learn. |
+| 11 | **How much goes in a person?** | Majesty's two numbers only · Numbers plus the six atoms · A full SEREN-style biography | **Numbers plus the six atoms, about three active at once.** Enough to disagree with themselves; nothing the arithmetic can't read. |
 
 ## Not in this game
 
