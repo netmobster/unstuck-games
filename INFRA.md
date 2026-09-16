@@ -16,6 +16,7 @@ files needed to rebuild the box from nothing are in [`infra/`](infra/).
 | `badmonkeys.unstuck-games.com` | Bad Monkeys | files from `bad-monkeys/` |
 | `ferretbowling.unstuck-games.com` | Ferret Bowling page; the game at `/play/` | files from `ferret-bowling/` |
 | `elsewhere.unstuck-games.com` | Elsewhere page; the world at `/play` behind a password | files from `elsewhere/`, plus the Elsewhere service |
+| `deadline.unstuck-games.com` | Deadline Dungeon (game #4): holding page, design docs | files from `deadline-dungeon/` |
 
 **Old links still work.** `unstuck-games.com/orbis/…`, `/bad-monkeys/…`, `/ferret-bowling/…`
 and `/elsewhere/…` permanently redirect to the same path on the game's own address.
@@ -29,10 +30,10 @@ live at the repo root and nginx serves them on every game address.
 |---|---|
 | Instance | EC2 t4g.small `i-0da082b463daa7314`, **us-east-2** (Ohio) |
 | Public IP | Elastic IP `3.23.50.161` |
-| DNS | IONOS: apex, `www` and a wildcard `*` A record, all to the Elastic IP |
+| DNS | IONOS: **one A record per name** (apex, `www`, `orbis`, `badmonkeys`, `ferretbowling`, `elsewhere`, `deadline`), all to the Elastic IP. **There is no wildcard**, so a new game needs its own record before its certificate. |
 | Firewall | Security group allows 80 and 443 only. **No SSH** — every remote command goes through SSM `send-command`. |
 | Identity | Instance role `unstuck-web`: SSM, `bedrock:InvokeModel`, `ses:SendEmail`. No keys on disk. |
-| TLS | One Let's Encrypt certificate for all six names, `certbot certonly --webroot -w /srv/unstuck`. Renews on its own timer; every host serves `/.well-known/acme-challenge/` from the same folder so renewal keeps working. |
+| TLS | One Let's Encrypt certificate for all seven names, `certbot certonly --webroot -w /srv/unstuck`. Renews on its own timer; every host serves `/.well-known/acme-challenge/` from the same folder so renewal keeps working. |
 
 ## Services
 
@@ -79,7 +80,7 @@ aws ssm send-command --region us-east-2 --instance-ids i-0da082b463daa7314 \
    `/etc/systemd/system/`. Create `/etc/elsewhere.env` from the example with real values.
    Create `/srv/cache` and `/srv/contact`, owned by `ec2-user`.
 5. Issue the certificate:
-   `certbot certonly --webroot -w /srv/unstuck --cert-name unstuck-games.com -d unstuck-games.com -d www.unstuck-games.com -d orbis.unstuck-games.com -d badmonkeys.unstuck-games.com -d ferretbowling.unstuck-games.com -d elsewhere.unstuck-games.com`
+   `certbot certonly --webroot -w /srv/unstuck --cert-name unstuck-games.com -d unstuck-games.com -d www.unstuck-games.com -d orbis.unstuck-games.com -d badmonkeys.unstuck-games.com -d ferretbowling.unstuck-games.com -d elsewhere.unstuck-games.com -d deadline.unstuck-games.com`
    (nginx must be running for this, so start it with the TLS server blocks commented out,
    then restore them.)
 6. `systemctl enable --now elsewhere unstuck-contact unstuck-feed.timer`, then
