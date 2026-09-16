@@ -415,13 +415,17 @@ type MoodPose = "curious" | "wired" | "dozy" | "grudgy" | "damp" | "asleep" | "p
 function moodPose(): { pose: MoodPose; says: string } {
   const top = profile.stash[profile.stash.length - 1];
   if (phase === "day" && last) {
-    const achieved = last.comboFired || last.newEntries.some((e) => e.kind === "combo" || e.kind === "habit");
-    if (achieved) return { pose: "proud", says: last.comboFired ? `She did ${COMBOS[last.comboFired].name}. She knows.` : "She has a new habit and she is proud of it." };
+    // Order matters, and it used to be wrong: "proud" was checked first and fired on any new
+    // habit or any combo, repeats included, so she wore that face 77% of the time and her
+    // real moods almost never showed. Now pride is for firsts, and her mood outranks habits.
     if (last.prep.includes("bath")) return { pose: "damp", says: "Damp. Delighted. Refusing a towel she already used." };
+    const firstCombo = last.comboFired && last.newEntries.some((e) => e.kind === "combo");
+    if (firstCombo) return { pose: "proud", says: `She did ${COMBOS[last.comboFired!].name}. She knows.` };
     const out = last.leftoverOut?.kind;
     if (out === "hyper") return { pose: "wired", says: "She is still going. The run is over. Nobody told her." };
     if (out === "sleepy") return { pose: "dozy", says: "She is barely awake and would like you to stop looking." };
     if (out === "grudgy") return { pose: "grudgy", says: "She remembers. She will remember tomorrow." };
+    if (last.newEntries.some((e) => e.kind === "habit")) return { pose: "proud", says: "She has a new habit and she is proud of it." };
     return { pose: "asleep", says: top ? `She is full of ${shortName(top.name)} and asleep.` : "She is asleep. Do not move her." };
   }
   if (prep.includes("bath")) return { pose: "damp", says: "Bath first. She has opinions about it." };
