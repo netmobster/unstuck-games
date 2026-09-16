@@ -45,7 +45,11 @@
     ".ug-t b{display:block;font-size:15px}",
     ".ug-t span{display:block;font-size:12px;color:#5b5346;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}",
     ".ug-st{font-size:9.5px;letter-spacing:.14em;font-weight:700;padding:3px 7px;border:1.5px solid #1b1a17;border-radius:3px;white-space:nowrap}",
-    ".ug-shut{width:100%;padding:10px;background:#e9e1cb;border:0;border-top:1.5px solid rgba(27,26,23,.18);",
+    ".ug-foot{display:flex;align-items:stretch;border-top:1.5px solid rgba(27,26,23,.18);background:#e9e1cb}",
+    ".ug-foot a{flex:none;display:grid;place-items:center;padding:10px 16px;text-decoration:none;",
+    "font:700 12px/1 system-ui,sans-serif;letter-spacing:.12em;color:#5b5346;border-right:1.5px solid rgba(27,26,23,.18)}",
+    ".ug-foot a:hover{color:#1b1a17;background:#ffd23f}",
+    ".ug-shut{flex:1;padding:10px;background:transparent;border:0;",
     "font:inherit;font-size:12px;letter-spacing:.12em;cursor:pointer;color:#5b5346}",
     "@media (prefers-reduced-motion:no-preference){.ug-sw[data-open] .ug-card{animation:ug-in .16s ease-out}",
     "@keyframes ug-in{from{transform:translateY(7px);opacity:0}to{transform:none;opacity:1}}}",
@@ -65,7 +69,8 @@
           '<span class="ug-t"><b>' + g.name + "</b><span>" + g.note + "</span></span>" +
           '<span class="ug-st" style="color:' + g.ink + '">' + g.status + "</span></a>";
       }).join("") +
-      '<button class="ug-shut" type="button">CLOSE</button>' +
+      '<div class="ug-foot"><a href="' + HOME + 'updates/">UPDATES</a>' +
+      '<button class="ug-shut" type="button">CLOSE</button></div>' +
     "</div>";
   document.addEventListener("DOMContentLoaded", function () { document.body.appendChild(wrap); });
 

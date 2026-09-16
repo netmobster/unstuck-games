@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Updates — Unstuck Games</title>
+<meta name="description" content="What changed in the games, and what we wrote about building them.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  /* Same tokens as the studio homepage, so this reads as the same building. */
+  :root{--bg:#f2efe6;--card:#faf8f2;--ink:#16163a;--muted:#565672;--accent:#2b34d6;--acid:#e9f257;
+        --onAccent:#f2efe6;--r:28px;--rs:16px;--pill:999px;--fh:'Luckiest Guy',cursive;--fb:'Nunito Sans',sans-serif}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  h1,h2,h3,.h{font-family:var(--fh);font-weight:400;margin:0}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  nav{background:var(--bg);border-bottom:2px solid var(--ink)}
+  nav .wrap{padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand .word{font-family:var(--fh);font-size:28px;line-height:1}
+  .brand .word i{font-style:normal;color:var(--accent)}
+  .brand small{font-family:var(--fh);font-size:12px;letter-spacing:2px;color:var(--muted)}
+  .links{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-weight:800;font-size:14px;letter-spacing:.06em}
+  .links a{text-decoration:none}
+  .links a:hover{color:var(--accent)}
+  .links .on{background:var(--ink);color:var(--bg);padding:6px 12px;border-radius:var(--pill)}
+  header.top{padding:54px 0 26px}
+  header.top h1{font-size:clamp(40px,6vw,72px);line-height:.95}
+  header.top p{font-size:19px;line-height:1.5;max-width:46ch;color:var(--muted);margin:14px 0 0}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:26px;padding:20px 0 70px;align-items:start}
+  .col h2{font-size:26px;display:flex;align-items:center;gap:10px}
+  .col .lede{color:var(--muted);font-size:15px;margin:6px 0 18px;line-height:1.5}
+  .stack{display:flex;flex-direction:column;gap:14px}
+  .card{background:var(--card);border:2px solid var(--ink);border-radius:var(--rs);padding:16px 18px;
+        box-shadow:5px 6px 0 rgba(22,22,58,.14)}
+  .card .meta{display:flex;align-items:center;gap:9px;flex-wrap:wrap;font-size:11px;font-weight:800;
+              letter-spacing:.14em;color:var(--muted);margin-bottom:8px}
+  .chip{background:var(--acid);border:1.5px solid var(--ink);border-radius:var(--pill);padding:2px 9px;color:var(--ink)}
+  .chip.game{background:var(--accent);color:var(--onAccent);border-color:var(--accent)}
+  .card h3{font-size:20px;line-height:1.15}
+  .card p{margin:7px 0 0;font-size:15.5px;line-height:1.55;color:var(--ink)}
+  .card a.read{display:inline-block;margin-top:10px;font-weight:800;font-size:13px;letter-spacing:.08em;
+               text-decoration:none;border-bottom:2px solid var(--accent)}
+  .quiet{color:var(--muted);font-size:14.5px;line-height:1.5}
+  footer{border-top:2px solid var(--ink);padding:26px 0 50px;font-size:13px;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="/">
+    <span class="word"><i>U</i>NSTUCK</span><small>GAMES</small>
+  </a>
+  <div class="links">
+    <a href="/#philosophy">Philosophy</a>
+    <a href="/#ads">Ads</a>
+    <a href="/#subscription">$5</a>
+    <a href="/#games">Games</a>
+    <a class="on" href="/updates/">Updates</a>
+    <a href="/#faq">FAQ</a>
+  </div>
+</div></nav>
+
+<header class="top"><div class="wrap">
+  <h1>What changed,<br>and what we wrote.</h1>
+  <p>On the right, everything that shipped — one line per thing a player would notice. On the left, the field journal: longer pieces about building these, published as they happen.</p>
+</div></header>
+
+<div class="wrap cols">
+  <section class="col">
+    <h2>The field journal</h2>
+    <div class="lede">From <a href="https://gamesgotout.substack.com/" target="_blank" rel="noopener">Games That Got Out</a> — the writing that goes with the building. Fetched once a day.</div>
+    <div class="stack" id="posts">
+      <div class="card"><p class="quiet">Loading the journal…</p></div>
+    </div>
+  </section>
+
+  <section class="col">
+    <h2>Shipped</h2>
+    <div class="lede">Newest first. Every entry is a thing you can go and look at.</div>
+    <div class="stack" id="log">
+      <div class="card"><p class="quiet">Loading…</p></div>
+    </div>
+  </section>
+</div>
+
+<footer><div class="wrap">
+  <span>UNSTUCK GAMES · <a href="/">Don't bullshit the player</a></span>
+  <span>Every game free. One ad a day, if you want God Mode.</span>
+</div></footer>
+
+<script src="/switcher.js" defer></script>
+<script>
+const esc = s => String(s == null ? '' : s).replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const day = iso => { const d = new Date(iso); return isNaN(d) ? '' : d.toLocaleDateString(undefined,{day:'numeric',month:'short',year:'numeric'}); };
+
+fetch('/updates/changelog.json').then(r => r.json()).then(data => {
+  document.getElementById('log').innerHTML = (data.entries || []).map(e => `
+    <article class="card">
+      <div class="meta"><span class="chip game">${esc(e.game)}</span><span class="chip">${esc(e.tag)}</span><span>${esc(day(e.date))}</span></div>
+      <h3>${esc(e.title)}</h3>
+      <p>${esc(e.body)}</p>
+    </article>`).join('');
+}).catch(() => {
+  document.getElementById('log').innerHTML = '<div class="card"><p class="quiet">The log is having a moment. Try again shortly.</p></div>';
+});
+
+// The feed is fetched on the server once a day and cached here; browsers cannot
+// read another site's RSS directly, and hammering Substack on every page view
+// would be rude besides.
+fetch('/feed.json').then(r => r.json()).then(f => {
+  const items = (f.items || []).slice(0, 6);
+  document.getElementById('posts').innerHTML = items.length ? items.map(p => `
+    <article class="card">
+      <div class="meta"><span class="chip">journal</span><span>${esc(day(p.date))}</span></div>
+      <h3>${esc(p.title)}</h3>
+      ${p.summary ? `<p>${esc(p.summary)}</p>` : ''}
+      <a class="read" href="${esc(p.link)}" target="_blank" rel="noopener">Read it ↗</a>
+    </article>`).join('') :
+    '<div class="card"><p class="quiet">Nothing published yet. <a href="https://gamesgotout.substack.com/" target="_blank" rel="noopener">Subscribe anyway ↗</a></p></div>';
+}).catch(() => {
+  document.getElementById('posts').innerHTML =
+    '<div class="card"><p class="quiet">Could not reach the journal cache. <a href="https://gamesgotout.substack.com/" target="_blank" rel="noopener">Read it on Substack ↗</a></p></div>';
+});
+</script>
+</body>
+</html>
