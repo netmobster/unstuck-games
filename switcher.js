@@ -29,8 +29,9 @@
     "border-radius:10px 7px 12px 8px;box-shadow:7px 8px 0 rgba(27,26,23,.55);overflow:hidden}",
     ".ug-home{display:flex;align-items:center;gap:12px;padding:15px 17px;background:#1b1a17;color:#ffd23f;text-decoration:none}",
     ".ug-home div{flex:1;min-width:0}",
-    ".ug-go{flex:none;display:grid;place-items:center;width:64px;height:40px;background:#2f9e4f;color:#0d1a10;",
-    "border-radius:13px 9px 14px 10px;font-size:22px;line-height:1;box-shadow:3px 4px 0 rgba(13,26,16,.55);transition:transform .12s}",
+    ".ug-go{flex:none;display:grid;place-items:center;width:64px;height:40px;background:#2f9e4f;",
+    "border-radius:13px 9px 14px 10px;box-shadow:3px 4px 0 rgba(13,26,16,.55);transition:transform .12s}",
+    ".ug-go svg{display:block;width:30px;height:14px}",
     ".ug-home:hover .ug-go{transform:translateX(3px)}",
     ".ug-home b{display:block;font-size:19px;letter-spacing:.02em}",
     ".ug-home span{display:block;font-size:12px;opacity:.75;margin-top:2px;color:#f2ead3}",
@@ -57,7 +58,9 @@
     '<div class="ug-card" role="dialog" aria-modal="true" aria-label="Unstuck Games">' +
       '<a class="ug-home" href="' + HOME + '"><div><b>UNSTUCK GAMES</b>' +
       "<span>Good games get stuck. We unstick them.</span></div>" +
-      '<span class="ug-go" aria-hidden="true">⟶</span></a>' +
+      '<span class="ug-go" aria-hidden="true"><svg viewBox="0 0 30 14" fill="none" ' +
+      'stroke="#0d1a10" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">' +
+      '<path d="M1 7h26M21 2l6 5-6 5"/></svg></span></a>' +
       GAMES.map(function (g) {
         return '<a class="ug-row" href="' + g.href + '"' + (g.id === here ? ' aria-current="page"' : "") + ">" +
           '<span class="ug-ic" style="background:' + g.ink + '">' + g.icon + "</span>" +
