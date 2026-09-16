@@ -94,6 +94,135 @@ What exists in ideation and the teardown. Everything here is a candidate.
 - **Generation + dice:** the twelve, their quirks and their lines are pre-generated
   records; the runtime only rolls against them. No AI in the running game.
 
+## The staffer: a small field of competing forces
+
+Proposed, not decided. Revised 2026-09-16 with the second red team.
+
+### The experiment
+
+Not *can we write twelve believable characters* (SEREN shows we can), and not *can we
+simulate twelve agents* (that's mundane). The experiment is:
+
+> **Can twelve simple, persistent, differently motivated systems produce enough
+> consequential behaviour that the player starts believing there are twelve people in
+> the room?**
+
+That's harder than Lucy. Lucy is *ferret ↔ world*. The office is *person ↔ task*,
+*person ↔ world*, *person ↔ person* and *person ↔ remembered history*, and every decision
+changes the field for the next one.
+
+The proof won't be a metric. It'll be a playtester saying: **"Fucking Brenda. I KNEW she
+was going to make Martin do it."**
+
+### Where this sits between Majesty and SEREN
+
+- **Majesty builds the decision machinery first**, and the player invents the person from
+  repeated behaviour. The same 1,000 gold looks enormous to a Rogue and trivial to a
+  Paladin. Expressive, but thin: *the Rogue is pulled by money, the Gnome is pushed by
+  danger.*
+- **SEREN builds the rich person first**, and a model decides what they do live. That
+  supports Ossa Rell's secrets, trigger and escalation ladder, because a model interprets
+  it. **A deterministic office can't use that much.** Biography the arithmetic never reads
+  is decoration.
+- **Game #4 meets in the middle:** give the arithmetic just enough human-shaped structure
+  to act on, let deterministic decisions pile up, and let the player build their own model
+  of who each person is.
+
+**SEREN needs full living humans. This game needs little goblins.** (Jay.) Small, legible,
+persistent, and each one pulling in a few directions at once.
+
+**Appetites, not stats.** `Bravery: 7` describes Brenda. *Wants to be home by five* **pulls**
+Brenda. An appetite has a direction, and that's what makes it usable.
+
+### The atoms
+
+Six small kinds of thing. Every one has to cash out as a force on how a task looks to that
+person; if it can't, it doesn't go in the record.
+
+| Atom | What it is | How it cashes out |
+|---|---|---|
+| **appetite** | what attracts me | raises the value of tasks with that property (visible work, overtime pay, the god's own errands) |
+| **aversion** | what repels me | raises the perceived cost of a category (miracles, the basement, anything after 4:30) |
+| **want** | what I'm trying to make true | pulls toward tasks that move it and away from ones that block it; can be *today only* |
+| **belief** | what I think is true (may be wrong) | changes how I price a person or a task, whether or not it's true |
+| **relationship** | who changes my calculation | shifts the value of a task depending on who posted it and who else is on it |
+| **habit** | what I do when nothing stronger wins | the default at the bottom of the ladder, instead of plain wandering |
+
+Plus Majesty's two per-person numbers underneath everything: **greed** (how much a reward
+moves them) and **nerve** (how they misjudge danger).
+
+### Brenda, at 4:37
+
+```yaml
+name:   Brenda
+voice:  "Short sentences. Calls everyone 'love' except people she has decided about."
+tell:   "Checks the clock whenever someone says 'quick thing'."
+greed:  2
+nerve:  0.8
+
+want:         { line: "Get home by five: her daughter's recital is tonight.", today: true, weight: 5 }
+appetite:     { line: "Recognition.", on: "visible work", weight: 2 }
+aversion:     { line: "Anything to do with miracles, after Tuesday.", on: "miracle", weight: 3 }
+belief:       { line: "Martin got the promotion she was promised.", about: "martin", truth: false }
+relationship: { with: "martin", weight: -3 }   # Martin on a task makes it worse
+habit:        { what: "tidy the post room", when: "idle" }
+```
+
+A task arrives at 4:37: decent reward, easy, twenty minutes, Martin already on it.
+
+- The reward, through her greed: **attractive.**
+- The difficulty, through her nerve: **fine.**
+- The recital, which only exists today: **a big pull out of the building.**
+- Martin on it: **a push away**, powered by a belief that isn't even true.
+
+**All of Brenda is pulling in different directions, and it lands on no.** Not
+`greed × reward < difficulty`.
+
+### What the player sees, and what the sim knows
+
+The sim always holds the true reason. The player gets a surface, and builds the rest. The
+eye shows the legible part:
+
+```
+Brenda declined.
+  reward        attractive
+  difficulty    acceptable
+  time left     bad
+  personal      −28
+```
+
+The `personal −28` is where SEREN's visibility idea earns its place. Each hidden reason is a
+fact tagged `true` (the sim's), `suspected` (the player's theory), `known` (learned in play)
+or `false` (the player believes something wrong). Over days:
+
+- You notice she gets twitchy after 4:30. **Suspected:** Brenda hates late work.
+- **That's wrong.** She doesn't care about late work. *Today* was the recital.
+- Later she mentions the recital. The refusal becomes legible after the fact, and so does
+  the pattern you misread.
+
+**Inferring the wrong thing is a feature.** It's the player's model of a person being
+incomplete, which is exactly what knowing a real colleague is like.
+
+### Coupling: why twelve isn't twelve Lucys
+
+- **People change each other's maths.** Alice taking a task changes whether Brenda wants it.
+  Martin joining pushes Brenda off; for someone else he might be the reason to join.
+- **History changes thresholds.** If you did Brenda's job yourself yesterday, resentment
+  shifts today's numbers. The interactions log, only ever added to, is what the maths
+  reads.
+- **Wants move.** A want that's granted is replaced; a today-only want expires; a grudge
+  fades if nothing feeds it, like Lucy's habits.
+- **Parties aren't formed, they become likely.** People who pull toward each other end up
+  on the same task without any party interface, as in Majesty.
+
+### The guardrail we already paid for
+
+Ferret Bowling's portrait said "proud" 77% of the time because one rule quietly won every
+tie. Twelve interacting fields make that failure twelve times easier. **One cheap check
+belongs in the build from day one:** across many simulated days, how often does each person
+decline, and which force is doing it? If Brenda turns down 77% of everything and Martin is
+the reason every time, that's not a character, it's a bug wearing a cardigan.
+
 ## DECIDE — Jay's boundaries
 
 | # | Question | Options | Recommendation |
@@ -108,6 +237,7 @@ What exists in ideation and the teardown. Everything here is a candidate.
 | 8 | **Fixed twelve or generated?** | The same twelve every time · Generated per office | **Generated per office, persistent within it.** Your Brenda is not my Brenda. |
 | 9 | **How dark can it go?** | Cosy · Office-comedy bite · Genuinely bleak | **Office-comedy bite**, like Ferret Bowling's "adorable and weird, not chaos". |
 | 10 | **Platform first?** | Desktop browser · Mobile first | **Desktop browser.** A board of twelve people needs room; mobile after. |
+| 11 | **How much goes in a person?** | Majesty's two numbers only · Numbers plus the six atoms · A full SEREN-style biography | **Numbers plus the six atoms, about three active at once.** Enough to disagree with themselves; nothing the arithmetic can't read. |
 
 ## Not in this game
 
