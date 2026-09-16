@@ -408,6 +408,32 @@ function moodPose(): { pose: MoodPose; says: string } {
   return { pose: "curious", says: "She is waiting. She knows." };
 }
 
+/** The eye: nobody decided this. Only shown after the door has closed, so it can
+    never be used to steer a run — read it as forensics, not as a dashboard. */
+let eyeOpen = false;
+
+function workingHtml(s: RunSummary) {
+  const near = s.shortlist?.near ?? [];
+  const causes = s.events.filter((e) => e.cause && e.verb !== "wander").slice(-8).reverse();
+  const replay = JSON.stringify({ seed: session.seed, run: s.index + 1, prep: s.prep, squeakAt: s.squeakAt });
+  return `<div class="working">
+    <div class="wk-head">NOBODY DECIDED THIS<small>seeded dice and tag weights · no AI in here</small></div>
+    <div class="wk-grid">
+      <div><b>${session.seed}</b><span>world seed</span></div>
+      <div><b>${s.decisions}</b><span>decisions</span></div>
+      <div><b>${s.rolls}</b><span>rolls</span></div>
+      <div><b>${s.squeakAt === null ? "—" : Math.round(s.squeakAt / 10) + "s"}</b><span>you squeaked</span></div>
+    </div>
+    ${near.length ? `<div class="wk-sec">her last decision, and what she nearly did instead</div>
+      <div class="wk-near">${near.map((n) => `<div${n.what === s.shortlist!.picked ? ' class="on"' : ""}>
+        <i style="width:${Math.max(3, Math.round(n.weight * 100))}%"></i>
+        <span>${esc(n.what)}</span><em>${esc(n.why.replace("ritual:", "habit: "))}</em><b>${Math.round(n.weight * 100)}%</b></div>`).join("")}</div>` : ""}
+    <div class="wk-sec">what she did, and why the sim said so</div>
+    <ol class="wk-log">${causes.map((e) => `<li><span>${Math.round(e.tick / 10)}s</span>${esc(e.verb)}${e.target ? " · " + esc(shortName(e.target)) : ""}<em>${esc(e.cause.replace("ritual:", "habit: "))}</em></li>`).join("")}</ol>
+    <div class="wk-replay"><code>${esc(replay)}</code><button class="chip" data-copyrun>COPY REPLAY</button></div>
+  </div>`;
+}
+
 /** End of run: a big portrait of the mood she ended in, what happened, then back to the cage. */
 function renderModal() {
   const m = $("#endModal");
@@ -433,13 +459,14 @@ function renderModal() {
       <div class="says">${esc(says)}</div>
     </div>
     <div class="told">
-      <div class="when">run ${s.index + 1} · ${Math.round(s.ticks / 10)} seconds${s.god ? " · god mode" : ""}${s.prep.length ? ` · ${s.prep.map((i) => ITEMS[i].name.replace(/^A (handful of |wound-up |whispered )?/i, "").toLowerCase()).join(" + ")}` : ""}</div>
+      <div class="when"><button class="eye" data-eye title="Show the working">◉</button>run ${s.index + 1} · ${Math.round(s.ticks / 10)} seconds${s.god ? " · god mode" : ""}${s.prep.length ? ` · ${s.prep.map((i) => ITEMS[i].name.replace(/^A (handful of |wound-up |whispered )?/i, "").toLowerCase()).join(" + ")}` : ""}</div>
       <h2 id="endSentence">${esc(s.sentence)}</h2>
       <div class="head">what you learned${entries.length ? ` · ${entries.length} new` : ""}</div>
       <ul class="learned">${entries.map((e) => `<li class="${e.kind}">${e.kind !== "behaviour" ? `<b>${e.kind.toUpperCase()}</b> ` : ""}${esc(e.text)}</li>`).join("") || `<li>nothing new. she did her usual. she is very consistent.</li>`}</ul>
       ${took.length ? `<div class="head">she took</div><div class="treasures">${took.map((t) => `<div class="new"><i style="background:${INK[t.tags[0]] ?? "#8a5a2b"}"></i>${esc(shortName(t.name))}</div>`).join("")}</div>` : ""}
       ${notes.length ? `<div class="notes">${notes.map((n) => `<span>${esc(n)}</span>`).join("")}</div>` : ""}
       <div class="tomorrow">${out ? `tomorrow she'll be <b>${esc(LEFTOVER_TEXT[out.kind])}</b> · ${esc(out.why)}` : s.prep.includes("bath") ? "the bath washed the mood away. clean slate." : "tomorrow she'll be her ordinary self."}</div>
+      \${eyeOpen ? workingHtml(s) : ""}
       <button class="go" data-cage>BACK TO THE CAGE →</button>
     </div>
   </div>`;
@@ -484,6 +511,7 @@ function endRun() {
 }
 function backToCage() {
   if (phase !== "day") return;
+  eyeOpen = false;
   phase = "cage";
   renderAll();
 }
@@ -522,6 +550,12 @@ document.addEventListener("click", (e) => {
   } else if ("god" in d) { god = !god; if (!god) prep = prep.filter((x) => !ITEMS[x].godMode); renderRail(); buildThings(); }
   else if ("open" in d) openDoor();
   else if ("cage" in d) backToCage();
+  else if ("eye" in d) { eyeOpen = !eyeOpen; renderModal(); }
+  else if ("copyrun" in d) {
+    const s = last;
+    if (s) navigator.clipboard?.writeText(JSON.stringify({ seed: session.seed, run: s.index + 1, prep: s.prep, squeakAt: s.squeakAt }))
+      .then(() => { b.textContent = "COPIED"; });
+  }
   else if ("squeak" in d && run) { squeak(run); renderRail(); onEvents(); }
   else if (d.speed) { speed = Number(d.speed); renderRail(); }
   else if ("skip" in d && run) { while (!run.done) { prevPos = { x: run.x, y: run.y }; step(run); } endRun(); }
