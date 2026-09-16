@@ -466,7 +466,7 @@ function renderModal() {
       ${took.length ? `<div class="head">she took</div><div class="treasures">${took.map((t) => `<div class="new"><i style="background:${INK[t.tags[0]] ?? "#8a5a2b"}"></i>${esc(shortName(t.name))}</div>`).join("")}</div>` : ""}
       ${notes.length ? `<div class="notes">${notes.map((n) => `<span>${esc(n)}</span>`).join("")}</div>` : ""}
       <div class="tomorrow">${out ? `tomorrow she'll be <b>${esc(LEFTOVER_TEXT[out.kind])}</b> · ${esc(out.why)}` : s.prep.includes("bath") ? "the bath washed the mood away. clean slate." : "tomorrow she'll be her ordinary self."}</div>
-      \${eyeOpen ? workingHtml(s) : ""}
+      ${eyeOpen ? workingHtml(s) : ""}
       <button class="go" data-cage>BACK TO THE CAGE →</button>
     </div>
   </div>`;
