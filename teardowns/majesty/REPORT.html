@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>The Bounty File</title>
+<meta name="description" content="Majesty: The Fantasy Kingdom Sim (2000) — what was alive in it, why it stayed buried, and what we are taking.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;700&family=EB+Garamond:ital,wght@0,400;0,600;1,400&family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+  /* A dig site, not a fantasy game: bone paper, grave-cut letterforms, verdigris
+     for the living tissue and oxblood for the wounds. Single committed palette. */
+  :root{
+    --bone:#efe9dc; --bone2:#e4dcc9; --ink:#22201c; --dim:#6b6355;
+    --gold:#9a7b33; --verd:#2f6b5f; --blood:#8c3123; --stone:#cfc6b2;
+    --display:'Cinzel',Georgia,serif; --body:'EB Garamond',Georgia,serif; --mono:'IBM Plex Mono',monospace;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{margin:0;background:var(--bone);color:var(--ink);font-family:var(--body);font-size:19px;line-height:1.62;
+       -webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding:0 22px}
+  h1,h2,h3,.dsp{font-family:var(--display);font-weight:700;letter-spacing:.02em;margin:0}
+  a{color:var(--verd)}
+  em{font-style:italic}
+
+  /* masthead */
+  header.top{border-bottom:3px double var(--ink);padding:56px 0 26px;margin-bottom:34px}
+  .kick{font-family:var(--mono);font-size:11.5px;letter-spacing:.3em;color:var(--blood);text-transform:uppercase}
+  h1{font-size:clamp(44px,9vw,86px);line-height:.92;margin:14px 0 6px}
+  .sub{font-size:22px;font-style:italic;color:var(--dim);max-width:34ch}
+  .meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--dim);margin-top:22px}
+
+  /* the graveyard record */
+  .grave{border:2px solid var(--ink);background:var(--bone2);padding:22px 24px;margin:30px 0 8px}
+  .grave .lab{font-family:var(--mono);font-size:11px;letter-spacing:.28em;color:var(--blood)}
+  .grave dl{display:grid;grid-template-columns:auto 1fr;gap:8px 18px;margin:14px 0 0}
+  .grave dt{font-family:var(--display);font-weight:700;font-size:15px;letter-spacing:.1em;white-space:nowrap}
+  .grave dd{margin:0;font-size:17px}
+  .grave dd b{font-weight:600}
+  .grave .tomb{color:var(--blood)}
+
+  /* the thesis */
+  .thesis{border-left:5px solid var(--verd);padding:6px 0 6px 22px;margin:38px 0;font-size:24px;line-height:1.45}
+  .thesis b{color:var(--verd);font-weight:600}
+
+  section{padding:30px 0;border-top:1px solid var(--stone)}
+  h2{font-size:15px;letter-spacing:.24em;color:var(--blood);text-transform:uppercase;margin-bottom:6px}
+  h2 .n{color:var(--stone);margin-right:10px}
+  h3{font-size:27px;line-height:1.15;margin:0 0 12px}
+  p{margin:0 0 15px}
+  .lede{font-size:21px;color:var(--dim);font-style:italic;margin-bottom:20px}
+
+  /* quotes */
+  blockquote{margin:22px 0;padding:0 0 0 20px;border-left:3px solid var(--gold);font-style:italic;font-size:20px}
+  blockquote cite{display:block;margin-top:8px;font-style:normal;font-family:var(--mono);font-size:11.5px;
+    letter-spacing:.1em;color:var(--dim)}
+  blockquote cite a{color:var(--dim)}
+
+  /* tables */
+  .tbl{width:100%;border-collapse:collapse;margin:18px 0;font-size:16px}
+  .tbl th{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;text-align:left;
+    color:var(--dim);border-bottom:2px solid var(--ink);padding:6px 10px 6px 0}
+  .tbl td{padding:7px 10px 7px 0;border-bottom:1px solid var(--stone);vertical-align:top}
+  .tbl td.num,.tbl th.num{text-align:right;font-family:var(--mono);font-size:14px;font-variant-numeric:tabular-nums}
+  .scroll{overflow-x:auto}
+
+  /* the greed chart */
+  .chart{margin:22px 0 10px}
+  .chart .row{display:grid;grid-template-columns:132px 1fr 74px;align-items:center;gap:10px;margin-bottom:5px}
+  .chart .who{font-size:15.5px}
+  .chart .bar{height:15px;background:var(--verd);border:1px solid var(--ink)}
+  .chart .bar.low{background:var(--stone)}
+  .chart .val{font-family:var(--mono);font-size:12.5px;text-align:right;font-variant-numeric:tabular-nums;color:var(--dim)}
+  .chart .caption{font-size:15px;color:var(--dim);font-style:italic;margin-top:10px}
+
+  /* notes and callouts */
+  .note{background:var(--bone2);border:1px solid var(--stone);padding:16px 18px;margin:20px 0;font-size:16.5px}
+  .note .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;color:var(--blood);display:block;margin-bottom:6px}
+  .kv{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:14px;margin:20px 0}
+  .kv div{border-top:2px solid var(--ink);padding-top:9px}
+  .kv .big{font-family:var(--display);font-size:30px;line-height:1;display:block}
+  .kv .lbl{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;color:var(--dim);display:block;margin-top:5px}
+
+  ul,ol{margin:0 0 15px;padding-left:22px}
+  li{margin-bottom:7px}
+  .take{border:2px solid var(--verd);padding:20px 22px;margin:22px 0;background:#e9efe9}
+  .take h4{font-family:var(--display);font-size:19px;margin:0 0 8px;letter-spacing:.06em}
+  .leave{border:2px dashed var(--blood);padding:20px 22px;margin:22px 0}
+  .leave h4{font-family:var(--display);font-size:19px;margin:0 0 8px;letter-spacing:.06em;color:var(--blood)}
+
+  footer{border-top:3px double var(--ink);margin-top:40px;padding:26px 0 70px;font-size:15px;color:var(--dim)}
+  footer a{color:var(--dim)}
+  .caveats{font-size:15px;color:var(--dim)}
+  .caveats li{margin-bottom:5px}
+  @media (max-width:640px){
+    body{font-size:18px}
+    .chart .row{grid-template-columns:100px 1fr 62px}
+    .grave dl{grid-template-columns:1fr;gap:3px 0}
+    .grave dt{margin-top:10px}
+  }
+</style>
+</head>
+<body>
+
+<header class="top"><div class="wrap">
+  <div class="kick">Unstuck Games · Teardown · Game #4</div>
+  <h1>THE BOUNTY<br>FILE</h1>
+  <p class="sub">Majesty: The Fantasy Kingdom Sim, 2000. What was alive in it, why it stayed buried, and what we are taking.</p>
+  <div class="meta">CYBERLORE STUDIOS · HASBRO INTERACTIVE / MICROPROSE · 500,000 COPIES · IP NOW PARADOX · 14 YEARS SILENT</div>
+</div></header>
+
+<div class="wrap">
+
+  <div class="grave">
+    <span class="lab">THE GRAVEYARD</span>
+    <dl>
+      <dt class="tomb">Tombstone</dt>
+      <dd class="tomb"><b>Majesty (2000)</b> — the corpse we dug up. We take its organ.</dd>
+      <dt>Markers</dt>
+      <dd>
+        <b>Dungeon Keeper</b> — autonomous inhabitants with needs, moods, schedules<br>
+        <b>Very Small Kingdom</b> — a population small enough to know individually<br>
+        <b>Deadline Dungeon</b> — compressed time pressure, one-screen workplace absurdity<br>
+        <b>Gargantua</b> — the sleeping god, and the caretaker relationship to it
+      </dd>
+    </dl>
+  </div>
+
+  <p class="thesis">You could not give an order, only an <b>offer</b> — and because every hero priced that offer through its own greed, its own courage, and its own estimate of how far it could be bothered to walk, <b>the kingdom answered you in a voice that was not yours.</b></p>
+
+  <section>
+    <h2><span class="n">01</span> The mechanic, exactly</h2>
+    <h3>Two verbs. That is the entire control scheme.</h3>
+    <p class="lede">Not four. The research corrected our brief on the first page.</p>
+    <p>Majesty 1 has <b>Attack</b> and <b>Explore</b>. That is all. The Defence and Fear flags everyone half-remembers are from <em>Majesty 2</em> (2009), and the original's expressive range came from having fewer verbs, not more.</p>
+    <blockquote>An important key to success is learning how to motivate your heroes. Your main tools are Reward Flags… Your reward must be high enough to outweigh the rigors of the distance to be traveled and the dangers to be faced.<cite>Majesty Gold HD manual, p.43–45</cite></blockquote>
+    <p>That sentence is the whole game: <b>bounty versus distance versus danger, filtered through personal greed.</b> The rules around it are where the design gets ruthless.</p>
+
+    <div class="scroll"><table class="tbl">
+      <tr><th>Rule</th><th>What it does</th></tr>
+      <tr><td>Flags are <b>immovable</b></td><td>Once placed, it stays. You committed to a point in space.</td></tr>
+      <tr><td>Cancelling <b>destroys the gold</b></td><td>It does not return to the treasury. A misjudged bounty is a permanent write-off.</td></tr>
+      <tr><td>You cannot outspend the treasury</td><td>The cursor refuses; you can only pledge what you have.</td></tr>
+      <tr><td>Raising a bounty: <b>+100 per click, never down</b></td><td>Desperation is one-way and visible.</td></tr>
+      <tr><td>Payout is <b>split among everyone nearby</b></td><td>Including, in multiplayer, your opponent's heroes.</td></tr>
+      <tr><td>Attack flags <b>follow the target</b></td><td>Explore flags stay where you put them.</td></tr>
+      <tr><td>Live count of who is biting</td><td>The flag reports how many heroes are currently responding.</td></tr>
+      <tr><td>Latency by design</td><td>"It does take a little time… before heroes begin to take note."</td></tr>
+    </table></div>
+
+    <div class="note"><span class="lab">Why this matters to us</span>
+      Immovable and non-refundable is what makes a flag <em>a decision</em> rather than a cursor. Most modern versions of this idea let you drag the priority around freely, and it turns into a to-do list. Pledging money you cannot retrieve is the thing that makes you hesitate.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">02</span> The perception engine</h2>
+    <h3>Courage is not a stat. It is a tuned delusion.</h3>
+    <p>Each hero runs the same three questions and gets different answers, because the constants differ per class. Datamined from the shipped scripts.</p>
+    <ul>
+      <li><b>Greed, 1–26.</b> The hero multiplies your bounty by greed ÷ 4 before deciding whether it is interesting.</li>
+      <li><b>Self-estimation, 0.3–2.0.</b> How strong it believes <em>it</em> is.</li>
+      <li><b>Enemy-estimation, 1.9–0.5.</b> How strong it believes <em>the enemy</em> is.</li>
+    </ul>
+    <p>A Warrior of Discord thinks it is twice as strong as it is and its enemy half as strong — a fourfold delusion, in the brave direction. A Gnome runs the same machinery inverted and is roughly six times too frightened. <b>Nobody is given a "bravery" number. Bravery is an error in the arithmetic, and the error is the character.</b></p>
+
+    <div class="chart">
+      <div class="row"><span class="who">Rogue</span><span class="bar" style="width:100%"></span><span class="val">6,500</span></div>
+      <div class="row"><span class="who">Elf</span><span class="bar" style="width:88%"></span><span class="val">5,750</span></div>
+      <div class="row"><span class="who">Dwarf</span><span class="bar" style="width:77%"></span><span class="val">5,000</span></div>
+      <div class="row"><span class="who">Warrior</span><span class="bar" style="width:46%"></span><span class="val">3,000</span></div>
+      <div class="row"><span class="who">Wizard</span><span class="bar" style="width:42%"></span><span class="val">2,750</span></div>
+      <div class="row"><span class="who">Barbarian</span><span class="bar" style="width:35%"></span><span class="val">2,250</span></div>
+      <div class="row"><span class="who">Cultist</span><span class="bar low" style="width:19%"></span><span class="val">1,250</span></div>
+      <div class="row"><span class="who">Paladin</span><span class="bar low" style="width:12%"></span><span class="val">750</span></div>
+      <div class="row"><span class="who">Healer</span><span class="bar low" style="width:4%"></span><span class="val">250</span></div>
+      <p class="caption">What a 1,000 gold flag looks like to each class. Same coin, twenty-six-fold spread. This single table is the game's entire control surface.</p>
+    </div>
+
+    <p>And the flight rule underneath: heroes look for a potion or a heal only once they drop below their <b>HP threshold</b> — 15% for Paladins and Warriors of Discord, 35% for most, <b>65% for Gnomes</b>. A Gnome starts looking for the exit while still nearly two-thirds healthy. Again: not cowardice as a label, cowardice as a number in a comparison.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">03</span> The priority ladder</h2>
+    <h3>Your offer is an interrupt, not an option.</h3>
+    <p>Every class runs a strict-priority list. Threat reflex first. <b>Then, second, in every single class: check for interest in reward flags.</b> Above defending their own home. Above resting. Below that, a ladder of probability rolls — loot gravestones 100%, steal 95%, fight a wanderer 65%, visit the inn 35%, explore 20% — and at the very bottom of every list, one word:</p>
+    <p class="thesis" style="border-color:var(--stone);font-size:21px"><b>Wander.</b></p>
+    <p>Which reframes the game's most notorious flaw. <b>The idle hero is not a bug in the priority system. It is the bottom of it.</b> When your money fails to clear the danger-and-distance bar, the hero falls all the way down the ladder and mills about — and the manual says so out loud: <em>"don't be surprised to see some heroes simply mill about. This is your cue to give them something to do."</em></p>
+    <p>The emergent party system works the same way, and it is deliberate: Rangers roll "follow a Barbarian" at 90%, Healers follow Warriors at 75% and follow <em>your tax collector</em> at 50%, Monks guard Healers at 95%. <b>There is no party interface. Parties happen because four different classes independently decided to stand near the same person.</b> The community's advice is to build a Temple of Krolm near a Rangers Guild to make it statistically likely. You do not form a party; you arrange for one to become probable.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">04</span> The money</h2>
+    <h3>Paying your people is not a cost. It is circulation.</h3>
+    <div class="kv">
+      <div><span class="big">60–76%</span><span class="lbl">of every bounty returns to you</span></div>
+      <div><span class="big">40%</span><span class="lbl">guild tax when a hero reports in</span></div>
+      <div><span class="big">~75g</span><span class="lbl">a hero spawns with — three potions</span></div>
+      <div><span class="big">2ⁿ</span><span class="lbl">cost multiplier on duplicate guilds</span></div>
+    </div>
+    <p>Gold goes treasury → flag → hero → <em>your</em> shops and guilds → tax collector → treasury. A thousand-gold bounty really costs somewhere around 360. Players worked this out themselves and changed how they played:</p>
+    <blockquote>Now that I understand how the money works, I started using flags far more liberally because you get 64% of your money back after some time… the real long term cost of a 1000g flag is only 360g.<cite>samluk, Steam community economy guide</cite></blockquote>
+    <p>Two details are worth stealing outright. First, <b>heroes have two pockets</b>: gold they have declared at their guild, and gold they have not. They spend declared money first, and the undeclared kind escapes your tax entirely. Second, <b>non-human guilds cannot be taxed at all</b> — elves, dwarves and gnomes launder every coin — so the only way to get your money back from them is to sell them things. That is a shop-building incentive expressed as a racial trait rather than a tutorial pop-up.</p>
+    <p>And the failure mode is not arithmetic, it is monsters: gold that leaves the loop is destroyed, and <b>every 1,000 destroyed gold spawns a troll</b>. Your economy's punishment for leaking is something walking into town.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">05</span> What players felt</h2>
+    <h3>They did not say "strategy". They said "liberating", and "exasperating", and "I grieve".</h3>
+    <blockquote>The big deal about both The Sims and Majesty is that they simulate autonomous behavior by recognizing that <em>just because you want a person to do something, doesn't mean he'll actually do it</em>.<cite>GameSpot, 8.8/10, March 2000</cite></blockquote>
+    <blockquote>Instead of commanding and conquering in this game, you cajoled and hoped for the best… delightful when the "heroes" performed unexpectedly heroic actions, and exasperating when the "heroes" demonstrated precisely why sneer quotes were necessary.<cite>Steam review, 711 helpful votes</cite></blockquote>
+    <blockquote>Many folks have told us that after playing Majesty they have difficulty going back and playing RTS games, because they really want their units to act on their own.<cite>Jay Adan, Cyberlore, Macworld 2001</cite></blockquote>
+    <blockquote>I occasionally muttered about how it was hard to find good help these days, but for the most part I found it extremely liberating.<cite>TouchArcade, 2011 — headline: "You're Not The Boss Of Me"</cite></blockquote>
+    <p>And the origin story, from designer Jim DuBois, which is the studio's own thesis said twenty-six years earlier:</p>
+    <blockquote>I was playing The Settlers, and watching one of the workers going fishing, and noticed that I started assigning thoughts and personality to them, even though I knew they had very simple algorithms behind them… The stories that you tell in your head about what happens in a game are interesting and as important as what actually happens.<cite>Jim DuBois, Genesis Temple interview</cite></blockquote>
+  </section>
+
+  <section>
+    <h2><span class="n">06</span> Why it stayed buried</h2>
+    <h3>The sequel it needed was designed, prototyped, and killed by a bankruptcy.</h3>
+    <p><b>Majesty Legends (2003)</b> was Cyberlore's answer to every real complaint: walls so you could feel safe enough to build slowly, more flag verbs than attack and explore — a <em>capture</em> bounty, so rangers bring the giant spider back alive — and heroes recruiting their own followers. Adan's diagnosis of the original is the sharpest criticism anyone has made of it:</p>
+    <blockquote>Just when your kingdom had a feeling of stability and you had a chance to really play with it, the scenario would end… It became a little like watching an ant farm.<cite>Jay Adan, GameSpot Q&amp;A, May 2003</cite></blockquote>
+    <p>It never shipped. Publisher Hip Interactive went bankrupt; Cyberlore left the industry in September 2005 after thirteen years, self-funded to the end. Paradox bought the IP in 2007. The trademark is <b>live and renewed to 2029</b>, so this is a maintained, deliberately dormant asset — not an orphan.</p>
+    <h3 style="margin-top:26px">Then the 2009 sequel made everything better and the game worse.</h3>
+    <blockquote>Majesty 2 is a better designed game than the original in many respects — the balance is improved, the interface is less horrible, and the economy model is vastly superior. <em>Heroes are generally smarter in game terms, but lack the distinct personality that made forgetful wizards and lazy elves so memorable.</em><cite>Game Informer, 8/10</cite></blockquote>
+    <p><b>That is the whole lesson in two sentences.</b> The original's heroes were memorable <em>because</em> they were stupid in specific, legible ways. Smoothing them out produced a competent strategy game that nobody grieves. Majesty 2 also dropped the sandbox, cut guilds from four heroes to three, and added mission structure; the mobile version dropped the random map generator entirely, which one reviewer called <em>"a chicken without a head."</em></p>
+    <p>Twenty-six years on, the original still scores <b>92% on Steam</b> against the sequel's 74%. And the gap is being filled by other people right now — <em>Lessaria</em> (Oct 2025, 78%) and <em>Crown of Greed</em> (Mar 2026, 61%), sold together on a bundle page advertising "masterful indirect control." The market's own verdict on them, from a Paradox forum thread still running after eight years:</p>
+    <blockquote>Most still seem to miss the mark of what made the original special… A lot of us want more SIM elements, and less RTS.<cite>Paradox forums, May 2026</cite></blockquote>
+  </section>
+
+  <section>
+    <h2><span class="n">07</span> What actually hurt</h2>
+    <h3>No override. That is the whole autopsy.</h3>
+    <p>Every successful descendant of this idea kept an escape hatch. RimWorld has <b>Draft</b>. Dungeon Keeper has <b>Possess</b>. The Sims has a queue and a free-will slider. Dwarf Fortress has burrows and squads. <b>Majesty has nothing</b> — and that is simultaneously why it is remembered and why the genre never propagated: with no override, every flaw in the simulation becomes the player's grievance rather than the player's mistake.</p>
+    <p>The complaints follow from it exactly:</p>
+    <ul>
+      <li><b>The rogue swarm.</b> Your greediest hero answers first and dies first. The flag attracts in ascending order of greed, which is descending order of usefulness.</li>
+      <li><b>Flags punish experimentation.</b> Immovable, non-refundable, and the destroyed gold spawns trolls.</li>
+      <li><b>Difficulty that assumes control you do not have.</b> One much-liked review: <em>"it removes your control and then presents problems that require control."</em></li>
+      <li><b>The ending problem.</b> The scenario stops exactly when the kingdom becomes worth living in.</li>
+    </ul>
+    <p>The most famous bug is really a beautiful proof of the system: place a 100 gold bounty on an <em>enemy</em> Rogues' Guild and the enemy rogues demolish their own home to collect. Rogue loyalty is <b>0</b>. Greed is <b>26</b>. Nobody wrote that behaviour; the constants did.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">08</span> The transplant</h2>
+    <h3>What we take, and what stays in the ground.</h3>
+
+    <div class="take">
+      <h4>TAKE — the organ</h4>
+      <p><b>The priced offer, pledged at a point, that anyone may refuse.</b> With its three load-bearing properties intact: it cannot be moved, it cannot be withdrawn, and everyone nearby shares the payout. Plus the perception engine underneath — value seen through personal greed, danger seen through a personal delusion, both as plain numbers we can tune and show.</p>
+      <p><b>The two pockets.</b> Declared and undeclared money is a beautiful mechanic for an office: the work someone admits to, and the work they do not.</p>
+      <p><b>The idle state as the bottom of a ladder</b>, not an error. Someone standing by the kitchen doing nothing is the system telling you your offer was not worth it.</p>
+    </div>
+
+    <div class="leave">
+      <h4>LEAVE — in the ground</h4>
+      <p><b>The absence of an override.</b> Twenty-six years of evidence says a design with no escape hatch turns every simulation flaw into a grievance. Ours needs one — and in an office the honest one is <em>do it yourself</em>: you can always complete the task, at a cost, at midnight, while resentment accrues somewhere.</p>
+      <p><b>Difficulty that demands control you were denied.</b> Nothing in our version may require a precise intervention.</p>
+      <p><b>Smoothing the characters.</b> Majesty 2 proved that competent agents are forgettable ones. Our twelve should be stupid in specific, legible, nameable ways.</p>
+      <p><b>The scenario that ends when it gets good.</b> Adan's own complaint, unfixed for twenty-three years.</p>
+    </div>
+
+    <p>The transplant, stated plainly: <b>a manager cannot give an order either.</b> You post the task, raise the reward, appeal to someone's ego, bribe with pizza — or do it yourself at midnight. Twelve people with appetites rather than stats, a clock that does not stop, and a god asleep upstairs who cannot be woken and must be covered for.</p>
+    <p>One decision still open, and it changes the build: <b>is a run one day survived and replayed, or a continuing office that remembers who quit?</b></p>
+  </section>
+
+  <section>
+    <h2><span class="n">09</span> What we could not verify</h2>
+    <p class="lede">Filed honestly, because a teardown that hides its gaps is a sales brochure.</p>
+    <ul class="caveats">
+      <li>The hidden attribute numbers are <b>community datamining</b> of the shipped scripts, not developer documentation — internally consistent and corroborated three ways, but unofficial.</li>
+      <li>The greed arithmetic's rounding order is inferred from the engine's documented integer convention, not stated anywhere.</li>
+      <li>Shop tax is quoted as 40% in one source and 60% in another; the 60–76% flag return holds under both.</li>
+      <li>Both sales figures (300k in 2002, 500k in 2007) are self-reported by seller and buyer in marketing copy. No audited data exists.</li>
+      <li>Two trademark assignments are on record (Nov 2006, Nov 2010) whose documents could not be retrieved; the 2006 one predates the announced acquisition by eight months, unexplained.</li>
+      <li>No official Paradox statement on the franchise after 2012 was found, despite an eight-year-old forum thread asking for one. Absence of found evidence, not proof of absence.</li>
+      <li>The comparison of relatives in §07 is our own structural analysis, not sourced claims.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p><b>THE BOUNTY FILE</b> · Unstuck Games teardown, 16 September 2026 · Tombstone: Majesty: The Fantasy Kingdom Sim (Cyberlore Studios, 2000).</p>
+    <p>Sources include the Majesty Gold HD manual, the datamined fan wiki, Steam community datamining and economy guides, the modding SDK documentation, GameSpot (2000, 2009), Game Informer, GamesRadar, TouchArcade, Macworld's 2001 Cyberlore interview, the Genesis Temple interview with Jim DuBois, and Paradox forum threads 2018–2026. Direct quotations are attributed in place.</p>
+    <p>Nothing here is designed yet. Boundaries are Jay's, and they come next.</p>
+  </footer>
+</div>
+</body>
+</html>
