@@ -128,7 +128,7 @@ def new_session(seed=None, owner_token: str = "") -> dict:
     if OWNER_TOKEN and owner_token and secrets.compare_digest(owner_token, OWNER_TOKEN):
         sess["unlimited"] = True
     view = fog.view(state)
-    briefing = ai.narrate(view, None, first=True)
+    briefing = ai.narrate(view, None, first=True, since=0)
     charge(sess, briefing["meta"])
     sess["messages"].append({"role": "narrator", "text": briefing["text"], **_stamp(sess["state"]),
                              "meta": briefing["meta"]})
@@ -286,7 +286,11 @@ def _resolve(sess: dict, now, skipped_hours):
             })
     elif spend_ok(sess, "narrate") and not expired(sess):
         view = fog.view(s)
-        briefing = ai.narrate(view, int(skipped_hours) if skipped_hours else None, first=False)
+        # Rows already narrated are background; everything newer is this turn's story.
+        told = int(sess.get("narrated_rows") or 0)
+        briefing = ai.narrate(view, int(skipped_hours) if skipped_hours else None,
+                              first=False, since=told)
+        sess["narrated_rows"] = len(view.get("ledger") or [])
         charge(sess, briefing["meta"])
         sess["messages"].append({"role": "narrator", "text": briefing["text"], **_stamp(sess["state"]),
                                  "meta": briefing["meta"]})
