@@ -10,15 +10,22 @@
   var HOME = "https://unstuck-games.com/";
   var GAMES = [
     { id: "orbis", name: "Orbis", note: "an ant farm you cannot help", status: "PLAY NOW",
-      href: "https://unstuck-games.com/orbis/", ink: "#0f5c57", icon: "◎" },
+      href: "https://orbis.unstuck-games.com/", ink: "#0f5c57", icon: "◎" },
     { id: "elsewhere", name: "Elsewhere", note: "the world moves while you are gone", status: "EARLY ACCESS",
-      href: "https://unstuck-games.com/elsewhere/", ink: "#8a5a2b", icon: "◷" },
+      href: "https://elsewhere.unstuck-games.com/", ink: "#8a5a2b", icon: "◷" },
     { id: "badmonkeys", name: "Bad Monkeys", note: "she sheds every part when you leave", status: "ALPHA",
-      href: "https://unstuck-games.com/bad-monkeys/", ink: "#b4573f", icon: "✱" },
+      href: "https://badmonkeys.unstuck-games.com/", ink: "#b4573f", icon: "✱" },
     { id: "ferretbowling", name: "Ferret Bowling", note: "aim is a suggestion", status: "ALPHA",
-      href: "https://unstuck-games.com/ferret-bowling/", ink: "#d8352a", icon: "⌁" },
+      href: "https://ferretbowling.unstuck-games.com/", ink: "#d8352a", icon: "⌁" },
   ];
-  var here = (location.pathname.split("/")[1] || "").replace("bad-monkeys","badmonkeys").replace("ferret-bowling","ferretbowling");
+
+  // Which game we are on. The subdomain says so; the path is the fallback that keeps
+  // this honest on a local dev server and on the old URLs before they redirect.
+  var here = location.hostname.split(".")[0];
+  if (here === "unstuck-games" || here === "www" || here === "localhost" || here.indexOf("127.") === 0) {
+    here = location.pathname.split("/")[1] || "";
+  }
+  here = here.replace("bad-monkeys", "badmonkeys").replace("ferret-bowling", "ferretbowling");
 
   var css = document.createElement("style");
   css.textContent = [
