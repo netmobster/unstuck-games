@@ -29,13 +29,10 @@
     "border-radius:10px 7px 12px 8px;box-shadow:7px 8px 0 rgba(27,26,23,.55);overflow:hidden}",
     ".ug-home{display:flex;align-items:center;gap:12px;padding:15px 17px;background:#1b1a17;color:#ffd23f;text-decoration:none}",
     ".ug-home div{flex:1;min-width:0}",
-    ".ug-home .ug-go{flex:none;display:inline-flex;align-items:center;gap:7px;padding:9px 14px;background:#ffd23f;",
-    "color:#1b1a17;border:2.5px solid #1b1a17;border-radius:999px;box-shadow:3px 4px 0 #1b1a17;",
-    "font:700 11px/1 system-ui,-apple-system,'Segoe UI',sans-serif;letter-spacing:.14em;",
-    "white-space:nowrap;transition:transform .14s ease-out,box-shadow .14s ease-out}",
-    ".ug-home .ug-go svg{display:block;width:20px;height:10px;overflow:visible}",
-    ".ug-home:hover .ug-go{transform:translate(2px,-1px)}",
-    ".ug-home:active .ug-go{transform:translate(3px,4px);box-shadow:0 0 0 #1b1a17}",
+    ".ug-home .ug-go{flex:none;background:#ffd23f;color:#1b1a17;padding:9px 15px;",
+    "border:2px solid #1b1a17;border-radius:4px;font:700 13px/1 system-ui,-apple-system,sans-serif;",
+    "letter-spacing:.14em;white-space:nowrap}",
+    ".ug-home:hover .ug-go{background:#fff}",
     ".ug-home b{display:block;font-size:19px;letter-spacing:.02em}",
     ".ug-home div span{display:block;font-size:12px;opacity:.75;margin-top:2px;color:#f2ead3}",
     ".ug-row{display:flex;align-items:center;gap:11px;padding:11px 16px;text-decoration:none;color:inherit;",
@@ -61,9 +58,7 @@
     '<div class="ug-card" role="dialog" aria-modal="true" aria-label="Unstuck Games">' +
       '<a class="ug-home" href="' + HOME + '"><div><b>UNSTUCK GAMES</b>' +
       "<span>Good games get stuck. We unstick them.</span></div>" +
-      '<span class="ug-go">ALL GAMES<svg viewBox="0 0 22 10" fill="none" aria-hidden="true" ' +
-      'stroke="#1b1a17" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round">' +
-      '<path d="M1 5h18"/><path d="M14.5 1 19.5 5l-5 4"/></svg></span></a>' +
+      '<span class="ug-go">ALL GAMES</span></a>' +
       GAMES.map(function (g) {
         return '<a class="ug-row" href="' + g.href + '"' + (g.id === here ? ' aria-current="page"' : "") + ">" +
           '<span class="ug-ic" style="background:' + g.ink + '">' + g.icon + "</span>" +
