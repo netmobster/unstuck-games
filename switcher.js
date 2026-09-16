@@ -82,5 +82,24 @@
       open();
     }
   });
+  // Some pages (Orbis, the Elsewhere world) have no link home for the picker to
+  // hang off. Give those a small badge of their own, bottom-left, out of the way.
+  document.addEventListener("DOMContentLoaded", function () {
+    var hasHome = [].slice.call(document.querySelectorAll("a")).some(function (a) {
+      var u = (a.href || "").replace(/\/$/, "");
+      return u === HOME.replace(/\/$/, "") && !wrap.contains(a);
+    });
+    if (hasHome) return;
+    var b = document.createElement("button");
+    b.type = "button";
+    b.textContent = "UNSTUCK";
+    b.setAttribute("aria-label", "Unstuck Games — all games");
+    b.style.cssText = "position:fixed;left:14px;bottom:14px;z-index:9998;background:#1b1a17;color:#ffd23f;" +
+      "border:2px solid #ffd23f;border-radius:999px;padding:7px 14px;font:700 11px/1 system-ui,sans-serif;" +
+      "letter-spacing:.16em;cursor:pointer;box-shadow:3px 4px 0 rgba(27,26,23,.45)";
+    b.addEventListener("click", open);
+    document.body.appendChild(b);
+  });
+
   window.unstuckSwitcher = { open: open, close: shut };
 })();
