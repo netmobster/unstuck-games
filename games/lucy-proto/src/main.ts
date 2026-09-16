@@ -539,4 +539,21 @@ $("#debug").innerHTML = `<summary>playtest tools (not the game)</summary>
 
 renderAll();
 requestAnimationFrame(frame);
+
+// The alpha notice: shown once per browser. It is the only thing in here that
+// interrupts, so it says what is broken, what is Lucy, and where to complain.
+{
+  const dlg = document.getElementById("alphaDlg") as HTMLDialogElement | null;
+  const go = document.getElementById("alphaGo");
+  if (dlg && go) {
+    go.addEventListener("click", () => { try { dlg.close(); } catch { dlg.removeAttribute("open"); } });
+    try {
+      if (!localStorage.getItem("lucy:seen-alpha")) {
+        localStorage.setItem("lucy:seen-alpha", "1");
+        try { dlg.showModal(); } catch { dlg.setAttribute("open", ""); }
+      }
+    } catch { /* private window: skip it */ }
+  }
+}
+
 void W; void H;
