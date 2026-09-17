@@ -220,19 +220,95 @@ The fantasy setting, the RTS frame, guilds and temples, a campaign, difficulty t
 control you were denied, a week that ends just as the office gets interesting, characters
 smoothed into competence, unexplained refusals, and a single safe strategy.
 
-## P15. Open questions
+## P15. Settled — round 8 (17 Sep 2026)
 
-Jay's calls, not blockers for the TRD:
+The eight open questions, answered. Numbers are starting values to tune, not laws.
 
-1. **Disrespect and boredom as events:** exactly what counts, and how far each moves him.
-2. **The memo:** what it is built from, and how it's written without AI at runtime.
-3. **Turnover:** how many staff return each week.
-4. **Godly work:** what the tasks are.
-5. **The perk menu:** the actual perks and their side effects.
-6. **Ticket volume** and how a 6-minute day is paced (clock speed, surges).
-7. **Floor 5 time costs:** how long sitting with him or choosing his news takes.
-8. **Does the eye survive into a normal Friday** if playtests want it? (Currently: no.)
-9. **Name:** *A God Who Forgot* replaces CD's *A Sleeping God*; CD's files need updating.
+### Gargantua's mood: small drips, rare shocks
+
+Scale runs −100 (dead) to 0 (content) to +100 (furious); either end ends the week.
+
+| Event | Move |
+|---|---|
+| Boredom drift, when nothing godly or novel has reached him | **−1 per sim minute** |
+| A refusal of his that **he finds out about** | **+15**, toward fury |
+| Sitting with him | **10** toward content, from whichever side |
+| Godly work, landed | **25** toward content, from whichever side |
+
+Direction matters: boredom pushes him **down** toward fading, disrespect pushes him **up**
+toward fury, and care pulls from whichever side he is on back toward 0. **It should take a
+bad week to lose him, not one bad moment.**
+
+### The workload is his mood
+
+Task volume is driven by how he is. **Bored god → fewer tasks and a drifting office.
+Angry god → urgent, noisy work.**
+
+⚠️ **Guard rail:** that loop can spiral — bored means quiet means more bored. There is a
+**floor on task supply** (clients keep calling whatever mood he is in), and the office's
+own problems (the AC, the fridge) arrive on their own schedule. A dead day must still give
+the player something to post.
+
+### Floor 5 costs, out of a ~360-second day
+
+| Action | Cost |
+|---|---|
+| The elevator ride | **free** |
+| Sitting with him | **~45s** (about 12% of the day — a real sacrifice) |
+| Choosing what he hears | **~15s** |
+| Handing him godly work | **~30s** |
+
+While you are up there, floor 1 runs without you.
+
+### Godly work: old-god work
+
+**Actual divine acts, absurd in an office.** A small weather event over the car park. A
+prophecy about Q3. The parking barrier that judges. **Played completely deadpan** — the
+staff file the paperwork, nobody says the word "god", and the ticket system logs it as
+resolved.
+
+This is the strongest medicine for fading, and it is subject to the djinn (§P9).
+
+### The perk menu: six, plus two weird ones
+
+Priced from the budget, landing differently per person, each with a side effect.
+
+| Perk | Side effect |
+|---|---|
+| Pizza | Noise near him |
+| Early finish | They are gone when the late fire lands |
+| A day off | Removes them from tomorrow's board |
+| The good parking space | Whoever had it notices |
+| Public credit | Costs you with whoever did the work and did not get it |
+| "I owe you one" | A debt the staffer can call in, at their timing |
+| **The good chair** | Pettiness, escalating, from three other people |
+| **Your name on the org chart** | He may notice the chart changed |
+
+### The memo: a letter about Gargantua, not you
+
+Head office reviews **him**. You appear only in the gaps — what he has been like this week,
+what they have heard, whether the office looks like it runs. **Assembled from the ledger**
+and written offline in corporate voice: no AI while playing.
+
+It is colder and funnier than a report card, and worst when it is kind about him after a
+week you know was a disaster.
+
+### Turnover: 8–9 return
+
+Most faces are familiar on Monday, two or three are new, **anyone who quit is gone for
+good**, and Gargantua carries his own history.
+
+### The eye: unchanged
+
+**Only after a week ends early.** Normal weeks stay mysterious; asking people is how you
+learn them.
+
+## P16. Still open
+
+1. **Budget numbers:** the weekly base, what tickets pay, what a typical offer costs.
+2. **Quitting thresholds:** how much resentment, over how long.
+3. **Atom table size** for enough weekly variety (first guess: 60–100 per kind).
+4. **CD's files** still say *A Sleeping God*; the subtitle is now *A God Who Forgot*.
 
 ---
 
@@ -263,6 +339,8 @@ Jay's calls, not blockers for the TRD:
 
 - A day is **360 real seconds** covering a sim workday, 09:00–17:00 (8 sim hours), so one
   sim minute ≈ 0.75 real seconds. **Tuning value.**
+- Floor 5 actions cost sim time: sitting ~45s, choosing his news ~15s, godly work ~30s of
+  real time equivalent (§P15). The elevator itself is free.
 - The sim advances in fixed **ticks** (proposed: 1 tick = 1 sim minute, 480 per day).
   Rendering interpolates; the sim never reads wall time.
 - **Midnight** is a between-days phase, not ticks: doing it yourself at midnight resolves
@@ -398,11 +476,13 @@ score = pledged × greedFactor(greed)
 
 ### Gargantua's mood
 
-- **Boredom drift:** negative when nothing godly or novel has reached him recently, stronger
-  the smoother and more repetitive the office is.
-- **Disrespect:** positive when he *learns* a request of his was declined or ignored.
-  Burying news defers it; discovered cover-ups add extra.
-- **Care:** sitting with him and godly work pull toward 0 from either side.
+- **Boredom drift:** −1 per sim minute when nothing godly or novel has reached him, stronger
+  the smoother and more repetitive the office is. Pushes toward −100 (fading).
+- **Task supply reads `god.mood`** (bored → fewer, angry → noisier), with a **floor** so a
+  quiet day still offers work. Without the floor the boredom loop is self-reinforcing.
+- **Disrespect:** +15 when he *learns* a request of his was declined or ignored; pushes
+  toward +100 (fury). Burying news defers it; discovered cover-ups add extra.
+- **Care:** sitting with him +10, godly work +25, both pulling toward 0 from either side.
 - **Surfacing:** triggered by events that reach him (news told, noise from perks, a
   discovered decline), rolled on the `god` stream.
 - **Early end:** `mood ≤ −100` or `mood ≥ +100` ends the week.
