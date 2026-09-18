@@ -14,19 +14,26 @@ import os
 # Approximate on-demand US prices, USD per 1K tokens. Dev planning only — the real number
 # for a session is whatever the usage blocks add up to, which is what we actually record.
 PRICE = {
+    "nova-micro": (0.000035, 0.00014),
+    "nova-lite": (0.00006, 0.00024),
+    "nova-pro": (0.0008, 0.0032),
     "claude-opus": (0.015, 0.075),
     "claude-sonnet": (0.003, 0.015),
     "claude-haiku": (0.0008, 0.004),
 }
 
-# What this AWS account can actually invoke, probed 2026-09-17: Sonnet 4.5 and Haiku 4.5.
+# Nova for now, because it is the family this account can already invoke — Elsewhere has
+# been narrating on Nova Pro for a week. Claude needs the Anthropic use-case form
+# submitted in the Bedrock console, and Opus needs account access on top of that.
+# Model choice is one env var, so swapping back is not a blocker.
+# Probed 2026-09-17: Sonnet 4.5 and Haiku 4.5 list and refuse; Opus 5 / Sonnet 5 / Opus 4.8 refuse.
 # Opus 5, Sonnet 5 and Opus 4.8 are listed by the API and refused on Converse with
 # "not available for this account" — model access has to be granted in the Bedrock console
 # (or, for Opus, through AWS). Jay's decision stands: free gets the cheap one, paid gets
 # the best one available. Raise PAID to Opus the day it is enabled.
 TIERS = {
-    "free": os.environ.get("SEREN_MODEL_FREE", "us.anthropic.claude-haiku-4-5-20251001-v1:0"),
-    "paid": os.environ.get("SEREN_MODEL_PAID", "us.anthropic.claude-sonnet-4-5-20250929-v1:0"),
+    "free": os.environ.get("SEREN_MODEL_FREE", "us.amazon.nova-lite-v1:0"),
+    "paid": os.environ.get("SEREN_MODEL_PAID", "us.amazon.nova-pro-v1:0"),
 }
 
 # Per-session ceilings in USD. The paid one is Jay's ~$3; free is a tenth of that.

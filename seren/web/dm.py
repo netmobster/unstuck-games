@@ -19,6 +19,7 @@ comes back already written to the ledger. An instruction is not a control; a too
 from __future__ import annotations
 
 import json
+import re
 
 import corpus
 import dice
@@ -141,12 +142,22 @@ def system_prompt(campaign) -> str:
     return "\n\n---\n\n".join(layer for layer in layers if layer.strip())
 
 
+THINKING = re.compile(r"<thinking>.*?</thinking>\s*", re.S | re.I)
+
+
 def _run_tool(campaign, name: str, args: dict) -> dict:
     """Execute a tool. Every refusal comes back as a result, not an exception, so the DM
     learns what it did wrong inside the same turn."""
     try:
         if name == "roll":
             spec = args.pop("dice", "1d20")
+            who = str(args.get("who") or "").strip().lower()
+            at_table = [k for k, v in campaign.party().items()
+                        if isinstance(v, dict) and k not in ("round_synced", "xp")]
+            if who and at_table and who not in at_table and who not in ("dm", "world"):
+                return {"ok": False, "refused":
+                        f"`who` must be someone at this table: {', '.join(at_table)}. "
+                        "If the world is rolling, say who in the fiction is acting."}
             entry = dice.roll(campaign.ledger, spec, args)
             return {"ok": True, "entry": entry}
         if name == "fact":
@@ -225,6 +236,7 @@ def take_turn(campaign, history: list[dict], said: str) -> dict:
         messages.append({"role": "user", "content": results})
 
     text = llm.text_of(messages[-1]["content"]) if messages[-1]["role"] == "assistant" else ""
+    text = THINKING.sub("", text).strip()  # reasoning is not narration
     leaks = fog.check(text, dm_side) if text else []
     if leaks:
         # Held, not shown, and not silently swallowed.

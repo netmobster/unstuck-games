@@ -84,7 +84,20 @@ def roll(ledger: Path, spec: str, entry: dict | None = None) -> dict:
     if not entry.get("t"):
         raise Refused("every entry needs `t`: what kind of event this is (check, attack, save, cast…)")
 
-    n, faces, dmod = parse(spec)
+    # A d20 with nothing to beat is not a check — it is a number, and the verdict then has
+    # to come from the narrator, which is the whole thing we are stopping. The event
+    # vocabulary is open (state-formats §2.2), so this tests the dice, not the name.
+    NO_TARGET = ("damage", "heal", "encounter", "initiative", "temp_hp", "hit_dice", "death_save")
+    n_dice, faces, _ = parse(spec)
+    if faces == 20 and entry.get("t") not in NO_TARGET:
+        if not isinstance(entry.get("dc"), int) and not isinstance(entry.get("vs"), int):
+            raise Refused(
+                "a d20 roll needs `dc` (or `vs` for an attack): an integer target taken from "
+                "the object, the stat block or the rules — not chosen for drama. Say where it "
+                "came from in `note`."
+            )
+
+    n, faces, dmod = n_dice, faces, parse(spec)[2]
     dice = [RNG.randint(1, faces) for _ in range(n)]
 
     mods = entry.get("mods") or []
