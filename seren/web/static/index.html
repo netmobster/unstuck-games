@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>SEREN</title>
+<meta name="theme-color" content="#100d0b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;700&family=IBM+Plex+Serif:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* SEREN's own palette, from website/seren.css. The table is a place, not a console:
+   one wide column of prose with real margins, the world kept to the side, and the
+   machinery shown only where it is earned. */
+:root{
+  --ink:#100d0b; --ink-2:#17130f; --bone:#e8e1d6; --dust:#a39a8f; --dust-hi:#c4bcb1;
+  --copper:#b07a4e; --copper-hi:#c89060; --verdigris:#7f9b8c; --oxblood:#a8574b;
+  --hair:rgba(232,225,214,.09); --edge:rgba(232,225,214,.16); --edge-soft:rgba(232,225,214,.22);
+  --sans:'IBM Plex Sans',system-ui,sans-serif; --serif:'IBM Plex Serif',Georgia,serif;
+  --mono:'Space Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--serif);font-weight:300;
+  font-size:18px;line-height:1.62;-webkit-font-smoothing:antialiased}
+button,input,textarea{font:inherit;color:inherit}
+
+/* the room */
+.room{display:grid;grid-template-columns:minmax(0,1fr) 332px;grid-template-rows:auto minmax(0,1fr) auto;
+  grid-template-areas:"head aside" "story aside" "compose aside";height:100dvh}
+@media (max-width:1000px){
+  .room{grid-template-columns:minmax(0,1fr);grid-template-areas:"head" "story" "compose"}
+  .aside{display:none}
+  .aside.open{display:flex;position:fixed;inset:0;z-index:40;background:var(--ink)}
+}
+
+/* header: where you are, and when */
+.head{grid-area:head;display:flex;align-items:baseline;gap:18px;flex-wrap:wrap;
+  padding:20px clamp(20px,5vw,64px) 16px;border-bottom:1px solid var(--hair)}
+.mark{font-family:var(--mono);font-size:12px;letter-spacing:.34em;color:var(--copper)}
+.place{font-family:var(--sans);font-weight:300;font-size:19px;letter-spacing:.01em}
+.when{font-family:var(--mono);font-size:11.5px;letter-spacing:.18em;color:var(--dust);margin-left:auto}
+.head .worldbtn{display:none}
+@media (max-width:1000px){ .head .worldbtn{display:block;background:none;border:1px solid var(--edge);
+  border-radius:2px;padding:6px 11px;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--dust-hi)} }
+
+/* the story: one column, room to breathe */
+.story{grid-area:story;overflow-y:auto;overflow-x:hidden;
+  padding:clamp(26px,5vh,54px) clamp(20px,5vw,64px) 40px;scroll-behavior:smooth}
+.thread{max-width:36em;margin:0 auto;display:flex;flex-direction:column;gap:30px}
+.beat{white-space:pre-wrap;text-wrap:pretty}
+.beat.dm{font-size:19.5px;line-height:1.66}
+.beat.you{font-family:var(--sans);font-weight:300;font-size:16.5px;color:var(--dust-hi);
+  border-left:2px solid var(--copper);padding-left:18px}
+.beat.you b{display:block;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.22em;
+  color:var(--copper);margin-bottom:6px}
+.beat.note{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;color:var(--dust);
+  text-align:center;border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);padding:12px 0}
+
+/* a roll: the arithmetic, shown, because the numbers are the honesty */
+.roll{font-family:var(--mono);font-size:12.5px;letter-spacing:.06em;border:1px solid var(--edge);
+  border-left:3px solid var(--copper);padding:13px 16px;display:flex;flex-wrap:wrap;gap:14px;
+  align-items:baseline;background:var(--ink-2)}
+.roll .what{color:var(--dust-hi);flex:1;min-width:150px}
+.roll .num{color:var(--bone)}
+.roll .pass{color:var(--verdigris)}
+.roll .fail{color:var(--oxblood)}
+
+/* the world, kept to the side */
+.aside{grid-area:aside;border-left:1px solid var(--hair);overflow-y:auto;display:flex;flex-direction:column;
+  gap:26px;padding:24px 22px 32px}
+.panel h3{margin:0 0 10px;font-family:var(--mono);font-weight:400;font-size:10.5px;letter-spacing:.24em;
+  color:var(--dust)}
+.panel{font-family:var(--sans);font-weight:300;font-size:14.5px;line-height:1.5}
+.who{display:flex;flex-direction:column;gap:9px}
+.who div{display:flex;gap:10px;align-items:baseline;justify-content:space-between;
+  border-bottom:1px solid var(--hair);padding-bottom:8px}
+.who .hp{font-family:var(--mono);font-size:12px;color:var(--dust-hi)}
+.facts{display:flex;flex-direction:column;gap:8px;font-size:14px;color:var(--dust-hi)}
+.facts span{border-left:2px solid var(--edge-soft);padding-left:10px}
+.empty{color:var(--dust);font-style:italic}
+
+/* the composer: a wide, quiet field */
+.compose{grid-area:compose;border-top:1px solid var(--hair);padding:16px clamp(20px,5vw,64px) 22px;
+  background:linear-gradient(180deg,transparent,rgba(0,0,0,.22))}
+.composer{max-width:36em;margin:0 auto;display:flex;gap:12px;align-items:flex-end}
+textarea{flex:1;min-height:52px;max-height:200px;resize:none;background:var(--ink-2);
+  border:1px solid var(--edge);border-radius:2px;padding:14px 15px;font-family:var(--serif);
+  font-size:17px;line-height:1.5;outline:none}
+textarea:focus{border-color:var(--copper)}
+textarea::placeholder{color:var(--dust);font-style:italic}
+.send{flex:none;background:var(--copper);color:var(--ink);border:none;border-radius:2px;padding:15px 20px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.16em;cursor:pointer}
+.send:hover{background:var(--copper-hi)}
+.send:disabled{background:var(--edge);color:var(--dust);cursor:default}
+.hint{max-width:36em;margin:9px auto 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  color:var(--dust)}
+
+/* the DM thinking: a held breath, not a spinner */
+.waiting{display:flex;gap:7px;align-items:center;font-family:var(--mono);font-size:11px;
+  letter-spacing:.2em;color:var(--dust)}
+.waiting i{width:5px;height:5px;border-radius:50%;background:var(--copper);animation:pulse 1.4s ease-in-out infinite}
+.waiting i:nth-child(2){animation-delay:.2s}
+.waiting i:nth-child(3){animation-delay:.4s}
+@keyframes pulse{0%,100%{opacity:.25}50%{opacity:1}}
+@media (prefers-reduced-motion:reduce){.waiting i{animation:none;opacity:.6}}
+</style>
+</head>
+<body>
+  <main class="room">
+    <header class="head">
+      <span class="mark">SEREN</span>
+      <span class="place" id="place">&mdash;</span>
+      <span class="when" id="when"></span>
+      <button class="worldbtn" id="worldbtn" type="button">THE WORLD</button>
+    </header>
+
+    <section class="story" id="story">
+      <div class="thread" id="thread"></div>
+    </section>
+
+    <aside class="aside" id="aside">
+      <div class="panel">
+        <h3>THE PARTY</h3>
+        <div class="who" id="party"><span class="empty">nobody yet</span></div>
+      </div>
+      <div class="panel">
+        <h3>WHAT YOU KNOW</h3>
+        <div class="facts" id="facts"><span class="empty">nothing established</span></div>
+      </div>
+      <div class="panel">
+        <h3>THE SESSION</h3>
+        <div class="facts" id="meta"><span class="empty">not started</span></div>
+      </div>
+    </aside>
+
+    <footer class="compose">
+      <div class="composer">
+        <textarea id="say" rows="1" placeholder="Say or do anything. The dice decide what happens." aria-label="What you do"></textarea>
+        <button class="send" id="send" type="button">DO IT</button>
+      </div>
+      <div class="hint">THE DM NARRATES &middot; THE DICE DECIDE &middot; NOTHING IS RETCONNED</div>
+    </footer>
+  </main>
+<script type="module" src="/static/app.js"></script>
+</body>
+</html>
