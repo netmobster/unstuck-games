@@ -19,9 +19,14 @@ PRICE = {
     "claude-haiku": (0.0008, 0.004),
 }
 
+# What this AWS account can actually invoke, probed 2026-09-17: Sonnet 4.5 and Haiku 4.5.
+# Opus 5, Sonnet 5 and Opus 4.8 are listed by the API and refused on Converse with
+# "not available for this account" — model access has to be granted in the Bedrock console
+# (or, for Opus, through AWS). Jay's decision stands: free gets the cheap one, paid gets
+# the best one available. Raise PAID to Opus the day it is enabled.
 TIERS = {
-    "free": os.environ.get("SEREN_MODEL_FREE", "us.anthropic.claude-sonnet-5"),
-    "paid": os.environ.get("SEREN_MODEL_PAID", "us.anthropic.claude-opus-5"),
+    "free": os.environ.get("SEREN_MODEL_FREE", "us.anthropic.claude-haiku-4-5-20251001-v1:0"),
+    "paid": os.environ.get("SEREN_MODEL_PAID", "us.anthropic.claude-sonnet-4-5-20250929-v1:0"),
 }
 
 # Per-session ceilings in USD. The paid one is Jay's ~$3; free is a tenth of that.
@@ -70,7 +75,10 @@ def _client():
 
 
 def ready() -> bool:
-    if os.environ.get("SEREN_AI", "").lower() in ("off", "mock", "local"):
+    mode = os.environ.get("SEREN_AI", "").lower()
+    if mode in ("mock", "local"):
+        return True          # the loop runs; nothing is spent
+    if mode == "off":
         return False
     return _client() is not None
 
@@ -89,6 +97,9 @@ def converse(
     `messages` and the returned `content` are Converse shapes, so tool results can be
     appended and handed straight back for the next leg of the same turn.
     """
+    if os.environ.get("SEREN_AI", "").lower() in ("mock", "local"):
+        return _mock(messages, tier, spent)
+
     cap = cap_for(tier)
     if spent >= cap:
         raise CapReached(f"session cap reached: ${spent:.2f} of ${cap:.2f}")
@@ -142,3 +153,37 @@ def text_of(content: list[dict]) -> str:
 
 def tool_calls(content: list[dict]) -> list[dict]:
     return [b["toolUse"] for b in content if "toolUse" in b]
+
+
+def _mock(messages: list[dict], tier: str, spent: float) -> dict:
+    """A DM with no model behind it, for proving the loop without spending anything.
+
+    It behaves like the real one in the only ways that matter here: it asks for a roll
+    before it narrates, it never supplies an outcome, and it writes a fact. Set
+    SEREN_AI=mock.
+    """
+    already = any("toolResult" in b for m in messages if isinstance(m.get("content"), list)
+                  for b in m["content"] if isinstance(b, dict))
+    if not already:
+        return {
+            "role": "assistant", "content": [
+                {"text": "You crouch. The buckle is crusted and the light is going."},
+                {"toolUse": {"toolUseId": "mock-1", "name": "roll", "input": {
+                    "dice": "1d20", "t": "check", "who": "seren", "skill": "investigation",
+                    "ability": "int", "dc": 13, "mods": [["int", 2], ["prof", 2]],
+                    "note": "Reading a maker's mark on a buckle in failing light, without touching it. "
+                            "DC 13 off the object, not chosen for drama.",
+                }}},
+            ],
+            "stop_reason": "tool_use", "model": "mock", "input_tokens": 0, "output_tokens": 0,
+            "usd": 0.0, "spent": spent, "cap": cap_for(tier),
+        }
+    return {
+        "role": "assistant", "content": [{"text":
+            "The buckle is plain, and it has been mended once — a second pin, driven through "
+            "and filed flat by someone in a hurry. There is no mark. What there is, under the "
+            "crust, is a groove worn all the way round the leather, the kind a thing makes when "
+            "it has pulled against a collar for a very long time."}],
+        "stop_reason": "end_turn", "model": "mock", "input_tokens": 0, "output_tokens": 0,
+        "usd": 0.0, "spent": spent, "cap": cap_for(tier),
+    }
