@@ -20,6 +20,7 @@ from http.cookies import SimpleCookie
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
+import close as session_close
 import corpus
 import dm
 import gate
@@ -181,6 +182,21 @@ class Handler(BaseHTTPRequestHandler):
             view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
             view["beats"] = out["beats"]
             return self._json(200, view, cookie)
+
+        if path == "/api/close":
+            out = session_close.close(camp, sess["history"])
+            counts = out["counts"]
+            sess["history"] = []
+            camp.session += 1
+            return self._json(200, {
+                "beats": [
+                    {"kind": "note", "text": f"SESSION CLOSED — {counts['rolls']} rolls, "
+                                             f"{counts['facts_this_session']} facts, written to "
+                                             + ", ".join(out["written"])},
+                    {"kind": "dm", "text": out["log"]},
+                ],
+                **camp.player_view(),
+            }, cookie)
 
         return self._json(404, {"error": "no such thing"})
 
