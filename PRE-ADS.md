@@ -23,15 +23,21 @@ it is the register of what we are actually using and what each thing requires of
 | Alfa Slab One · Archivo · Caveat | every page | SIL Open Font Licence | CLEAR | Nothing. OFL permits commercial embedding and web use. |
 | CD's artwork (`ferret-bowling/assets/cd/`, sprites, homepage) | Ferret Bowling | commissioned, ours | CLEAR | Nothing, but get the arrangement in writing before money is involved. |
 | AWS Bedrock output (Elsewhere's narrator) | Elsewhere | AWS customer agreement | CLEAR | Nothing. Output belongs to the customer; no attribution required. |
+| SRD 5.2 articles (`library/srd-5.2/`) — the rules the Table's LIBRARY serves | SEREN | **CC BY 4.0** (SRD 5.2, Wizards of the Coast) | **CLEAR, once credited** | “This work includes material from the System Reference Document 5.2 by Wizards of the Coast LLC, available under CC BY 4.0.” The LIBRARY panel already carries the short form; the full notice goes in CREDITS before a paid build. |
 | Game names, characters, all written copy | everywhere | ours | CLEAR | Nothing. |
 
 ---
 
 ## Nothing blocks us
 
-As of 2026-09-16 there is exactly one obligation on the whole register: **credit
-J. Zazvurek for the ferret.** Everything else is ours, or is licensed in a way that asks
-nothing of us.
+As of 2026-09-17 there are two obligations on the whole register: **credit
+J. Zazvurek for the ferret**, and **credit Wizards of the Coast for SRD 5.2** if SEREN
+ships. Everything else is ours, or is licensed in a way that asks nothing of us.
+
+The SRD is the one to watch, because it is the only third-party asset that is *content
+the game reads out* rather than decoration — and because CC BY 4.0 requires the notice to
+travel with the work, not sit in a repo. SEREN's own rule already holds: the LIBRARY panel
+states the licence on the slip where the rules are read.
 
 That is a better position than most studios are in at this stage, and it is worth not
 losing. All the audio is Jay's own Suno work on a paid commercial plan, which is the

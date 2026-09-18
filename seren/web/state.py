@@ -10,6 +10,7 @@ the property that made SEREN trustworthy in the first place.
 from __future__ import annotations
 
 import json
+import os
 import re
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -183,6 +184,32 @@ class Campaign:
         return "\n\n".join(parts)
 
     # ── the player's side ────────────────────────────────────────────────────
+    def quests(self) -> list[dict]:
+        """Open loops, from the last session log. The close ceremony writes them; until
+        now nothing showed them to the player, which is where they are most wanted."""
+        logs = self._logs()
+        if not logs:
+            return []
+        out = []
+        for title, body in _sections(logs[-1].read_text(encoding="utf-8", errors="ignore")):
+            if "open loop" not in title.lower():
+                continue
+            for line in body.splitlines():
+                line = line.strip()
+                if line.startswith(("- ", "* ")):
+                    item = re.sub(r"[*`]", "", line[2:]).strip()
+                    if len(item) > 3:
+                        out.append({"text": item, "meta": ""})
+        return out[:8]
+
+    def _logs(self) -> list:
+        """The written sessions, in the order they were played."""
+        folder = self.root / "sessions"
+        if not folder.is_dir():
+            return []
+        return sorted((p for p in folder.glob("*.md") if p.stem != "README"),
+                      key=lambda p: _num(p.stem))
+
     def player_view(self) -> dict:
         """What the Table may show. The fog is enforced here, once, on the way out."""
         scene = self.scene()
@@ -194,26 +221,255 @@ class Campaign:
             if slug in ("round_synced", "xp") or not isinstance(block, dict):
                 continue
             hp = block.get("hp") if isinstance(block.get("hp"), dict) else {}
+            cur, mx = hp.get("current"), hp.get("max")
             standing.append({
                 "name": slug.replace("-", " ").title(),
-                "state": f"{hp.get('current', '?')} / {hp.get('max', '?')}",
+                "slug": slug,
+                "state": f"{cur} / {mx}" if cur is not None else "",
+                "hp": cur, "max": mx,
+                "conditions": block.get("conditions") or [],
+                "slots": block.get("slots") or {},
+                "uses": block.get("uses") or {},
+                "concentrating": (block.get("concentration") or {}).get("spell")
+                if isinstance(block.get("concentration"), dict) else None,
             })
 
+        all_facts = [f for f in dice.read(self.facts_file) if f.get("fact")]
         facts = []
-        for f in fog.player_facts(dice.read(self.facts_file)):
+        for f in fog.player_facts(all_facts):
             if f.get("fact"):
-                facts.append(f["fact"])
+                facts.append({"vis": (f.get("visibility") or "known").upper(), "text": f["fact"]})
+        hidden = len(all_facts) - len(facts)
 
-        rolls = [e for e in dice.read(self.ledger) if "roll" in e][-8:]
+        rolls = []
+        for e in dice.read(self.ledger):
+            if "roll" not in e:
+                continue
+            target = e.get("dc") if e.get("dc") is not None else e.get("vs")
+            ok = e.get("pass") if "pass" in e else e.get("hit")
+            rolls.append({
+                "id": e.get("id"),
+                "what": " · ".join(filter(None, [str(e.get("who") or ""), str(e.get("skill") or e.get("t") or "")])),
+                "vs": f"{e.get('total')} vs {target}" if target is not None else str(e.get("total")),
+                "res": "HELD" if ok else ("DID NOT" if ok is False else "—"),
+                "ok": ok,
+            })
+
+        present = [{"who": p["name"], "state": ", ".join(p["conditions"]) or "at the table", "hp": p["state"]}
+                   for p in standing]
+        for who in (allowed.get("also_present") or []):
+            present.append({"who": str(who), "state": "", "hp": ""})
+
         return {
             "place": allowed.get("where") or "somewhere",
             "when": f"SESSION {self.session}",
+            "round": allowed.get("round"),
+            "initiative": allowed.get("initiative") or [],
             "party": standing,
-            "facts": facts[-12:],
-            "also_present": allowed.get("also_present") or [],
-            "rolls": rolls,
+            "present": present,
+            "facts": facts[-14:],
+            "hidden": hidden,
+            "quests": self.quests(),
+            "rolls": rolls[-12:],
             "session": self.session,
             "turns": self.turns,
             "spent": f"${self.spent:.2f}",
             "cap": None,
         }
+
+    # ── the reference slips ──────────────────────────────────────────────────
+    def sheet(self) -> dict:
+        """The player's own character, from builds/<pc>.md. Read here, never written.
+
+        Which character is the player's is a campaign fact, not an engine one, so it
+        comes from the environment: SEREN_PC, defaulting to the campaign's first build.
+        """
+        pc = os.environ.get("SEREN_PC") or self._first_build()
+        text = self._read(f"builds/{pc}.md")
+        fm = _frontmatter(text)
+        if not fm:
+            return {}
+        ab = fm.get("abilities") if isinstance(fm.get("abilities"), dict) else {}
+        hp = fm.get("hp") if isinstance(fm.get("hp"), dict) else {}
+        slots = fm.get("spell_slots") if isinstance(fm.get("spell_slots"), dict) else {}
+        return {
+            "who": pc.replace("-", " ").title(),
+            "slug": pc,
+            "build": " · ".join(str(x) for x in [fm.get("class"), fm.get("subclass")] if x),
+            "species": fm.get("species") or "",
+            "abilities": [[k.upper(), ab[k], _mod(ab[k])] for k in ABILITIES if k in ab],
+            "ac": fm.get("ac"),
+            "hp_max": hp.get("max"),
+            "save_dc": fm.get("spell_save_dc"),
+            "slots": {str(k): v for k, v in slots.items()},
+            "prepared": _listed(text, "prepared") + _listed(text, "known"),
+        }
+
+    def _first_build(self) -> str:
+        base = self.root / "builds"
+        found = sorted(p.stem for p in base.glob("*.md")) if base.is_dir() else []
+        found = [f for f in found if f != "README"]
+        # the engine is named after her, and so is the campaign's own PC
+        return next((f for f in found if f == "seren"), found[0] if found else "")
+
+    def title(self) -> str:
+        """What the campaign calls itself — its first heading, minus any level note."""
+        for line in self._read("campaign.md").splitlines():
+            if line.startswith("# "):
+                return line[2:].split("—")[0].split(" - ")[0].strip()
+        return self.root.name.replace("-", " ").title()
+
+    def library(self) -> list[dict]:
+        """The manifest's resolved rows — what this party's rules actually are.
+
+        A manifest, not a copy (library-manifest.md says so in bold). Article text is
+        served when the corpus carries the library; otherwise the row still names the
+        article, which is the part the player needs to look it up.
+        """
+        text = self._read("library-manifest.md")
+        out = []
+        for line in text.splitlines():
+            cells = [c.strip() for c in line.strip().strip("|").split("|")] if line.strip().startswith("|") else []
+            if len(cells) != 4 or cells[0].startswith("---") or cells[0] in ("what", "**what**"):
+                continue
+            name = cells[0].strip("*").strip()
+            rel = cells[3].strip("`").strip()
+            if not name or not rel.endswith(".md"):
+                continue
+            out.append({"name": name, "kind": cells[1].strip("`"), "for": cells[2].strip("`"),
+                        "text": _article(self.root, rel)})
+        return out
+
+    def pages(self) -> list[dict]:
+        """The sessions already written. The rail's earlier chapters are these, verbatim."""
+        out = []
+        for path in self._logs():
+            text = path.read_text(encoding="utf-8", errors="ignore")
+            head = path.stem
+            items = []
+            for title, body in _sections(text):
+                if title.startswith("Session ") and head == path.stem:
+                    head = title
+                if "what happened" not in title.lower():
+                    continue
+                for para in body.split(chr(10) + chr(10)):
+                    para = para.strip()
+                    if para.startswith("#") or len(para) < 40:
+                        continue
+                    items.append({"t": "p", "text": re.sub(r"[*`]", "", para)})
+            out.append({"title": head, "when": "WRITTEN", "items": items})
+        return out
+
+
+def _sections(text: str) -> list[tuple[str, str]]:
+    """(heading, body) for every heading in a markdown file, at any level.
+
+    A section owns everything under it until a heading of its own level or higher, so a
+    part written as sub-scenes reads the same as one written as prose.
+    """
+    lines = text.splitlines()
+    heads = [(i, len(m.group(1)), m.group(2).strip())
+             for i, ln in enumerate(lines)
+             if (m := re.match(r"^(#{1,4}) +(.+)$", ln))]
+    out = []
+    for n, (at, level, title) in enumerate(heads):
+        end = len(lines)
+        for later_at, later_level, _ in heads[n + 1:]:
+            if later_level <= level:
+                end = later_at
+                break
+        body = chr(10).join(ln for ln in lines[at + 1:end] if not ln.startswith("#"))
+        out.append((title, body))
+    return out
+
+
+ABILITIES = ("str", "dex", "con", "int", "wis", "cha")
+
+
+def _mod(v) -> str:
+    try:
+        return f"{(int(v) - 10) // 2:+d}"
+    except (TypeError, ValueError):
+        return ""
+
+
+def _num(stem: str) -> tuple:
+    return (0, int(stem)) if stem.isdigit() else (1, 0)
+
+
+def _listed(text: str, key: str) -> list[str]:
+    """The items under a nested `key:` block. The flat frontmatter parser drops these,
+    and the sheet is exactly where they are wanted."""
+    lines = text.splitlines()
+    out, depth = [], None
+    for line in lines:
+        stripped = line.strip()
+        indent = len(line) - len(line.lstrip())
+        if depth is None:
+            if stripped.rstrip(":") == key and stripped.endswith(":"):
+                depth = indent
+            continue
+        if stripped.startswith("- "):
+            item = stripped[2:].split("#")[0].strip().strip('"').strip("'")
+            if item:
+                out.append(item)
+        elif stripped and indent <= depth:
+            break
+    return out
+
+
+def _article(root, rel: str) -> str:
+    """An SRD article's text, if the library travelled with the campaign.
+
+    Stripped of the licence comment and the frontmatter — the attribution belongs on the
+    panel, where it is stated once, not in the middle of a rule.
+    """
+    import corpus
+    for base in (root, root.parent.parent, corpus.ROOT):
+        path = base / rel
+        try:
+            if path.is_file():
+                return _prose(path.read_text(encoding="utf-8", errors="ignore"))
+        except OSError:
+            pass
+    return ""
+
+
+def _prose(text: str) -> str:
+    """Body text, with the wrapper removed and the section headings kept as sentences."""
+    while text.lstrip().startswith("<!--"):
+        at = text.find("-->")
+        if at < 0:
+            break
+        text = text[at + 3:]
+    body = text.lstrip()
+    if body.startswith("---"):
+        at = body.find(chr(10) + "---", 3)
+        body = body[at + 4:] if at > 0 else body
+    out = []
+    body = re.sub(r"[*_]{1,2}", "", body)   # the panel is not a markdown renderer
+    first = True
+    for para in body.split(chr(10)):
+        line = para.strip()
+        if not line:
+            continue
+        if line.startswith("|"):
+            cells = [c.strip().strip("*") for c in line.strip("|").split("|")]
+            if all(set(c) <= set("-: ") for c in cells):
+                continue
+            line = ": ".join(c for c in cells if c)
+            if not line:
+                continue
+            out.append(line)
+            continue
+        if line.startswith("#"):
+            title = line.lstrip("# ").strip()
+            if first:        # the row above already names the article
+                first = False
+                continue
+            out.append(title + ".")
+            continue
+        out.append(line)
+        if sum(len(x) for x in out) > 900:
+            break
+    return chr(10).join(out).strip()[:900]

@@ -192,8 +192,8 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
   <div class="lamp"></div>
 
   <aside class="rail">
-    <div class="campaign">A Wild<br>Sheep Chase</div>
-    <div class="meta">SESSION 2 · <span id="elapsed">41 MIN</span></div>
+    <div class="campaign" id="campaign">a campaign</div>
+    <div class="meta"><span id="sessionNo">SESSION 1</span> · <span id="elapsed">0 MIN</span><br><span id="spend" class="spend"></span></div>
     <nav class="chapters" id="chapters"></nav>
     <div class="dm">DM of record<br><b>Seren · deadpan</b></div>
     <button class="lampbtn" id="lamp"><i></i><span>LAMP HIGH · TURN DOWN</span></button>
@@ -206,8 +206,8 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
     <footer class="foot" id="foot"></footer>
 
     <div class="tray" id="tray" hidden>
-      <div class="top"><span>WISDOM · PERCEPTION</span><div><span>ADVANTAGE</span><button class="x" id="trayClose">×</button></div></div>
-      <div class="dice"><div class="die hi" id="dieHi">—</div><div class="die lo" id="dieLo">—</div><div class="maths" id="maths">2d20, higher + 5<b></b></div></div>
+      <div class="top"><span id="trayCheck">A CHECK</span><div><span id="trayAdv"></span><button class="x" id="trayClose">×</button></div></div>
+      <div class="dice"><div class="die hi" id="dieHi">—</div><div class="die lo" id="dieLo">—</div><div class="maths" id="maths">1d20<b></b></div></div>
       <button class="rollbtn" id="rollBtn">ROLL</button>
       <div class="status" id="trayStatus" hidden></div>
     </div>
@@ -215,19 +215,19 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
 
   <aside class="slips">
     <div class="slip" style="transform:rotate(-.6deg)">
-      <div class="row"><span class="name">Ser'en</span><span class="sub">druid 4 · Circle of Stars</span></div>
+      <div class="row"><span class="name" id="pcName">—</span><span class="sub" id="pcBuild"></span></div>
       <div class="vitals">
-        <div><div class="hpbar"><i style="width:100%"></i></div><small>27 / 27 · slots 2 / 2 · Wild Shape 2</small></div>
-        <div class="vchip"><b>15</b><span>AC</span></div>
-        <div class="vchip"><b>+5</b><span>SPELL</span></div>
+        <div><div class="hpbar"><i id="pcBar" style="width:100%"></i></div><small id="pcSmall"></small></div>
+        <div class="vchip"><b id="pcAc">—</b><span>AC</span></div>
+        <div class="vchip"><b id="pcDc">—</b><span>SPELL</span></div>
       </div>
-      <div class="fine" style="color:var(--ink)">Vial of Moonwell Water · unopened. Shield carried, not worn.</div>
+      <div class="fine" id="pcFine" style="color:var(--ink)"></div>
     </div>
 
     <div class="slip dark" style="transform:rotate(.4deg)">
-      <div class="row"><span class="kicker">NOW · AT THE CART</span><span class="aside">not in initiative</span></div>
+      <div class="row"><span class="kicker" id="nowWhere">NOW</span><span class="aside" id="nowRound">not in initiative</span></div>
       <div class="present" id="present"></div>
-      <div class="fine">Bless · +1d4 to attacks and saves · Grumble's concentration · CON +2, no War Caster — any damage is a real save.</div>
+      <div class="fine" id="nowFine"></div>
     </div>
 
     <div class="ref">
@@ -241,87 +241,124 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
 </div>
 
 <script>
-// ── data ─────────────────────────────────────────────────────────────────
-// Stream item types: p (narration) · said (the player) · ins (ruled insert,
-// the DM's mechanics voice) · ask (a roll Seren has requested).
-// Nothing here has a shape for clocks, beats, wants, or true/false tags.
-const scenes = [
-  { title: 'i · The sheep finds you', when: 'THE ROAD OUT OF GREENEST · MORNING', items: [
-    { t: 'p', text: 'A sheep is standing in the road. It is looking at you the way a clerk looks at a form. When Korth steps round it, it steps round Korth, and stands in the road again, and goes on looking.' },
-    { t: 'ins', label: "e001 · SER'EN", text: 'Speak with Animals · slot 1 spent', verdict: '—' },
-    { t: 'p', text: 'It says, with great patience, that it is not a sheep, that its name is Shinebright, and that it would be grateful if somebody would stop saying "good sheep" at it.' } ] },
-  { title: 'ii · Guz, at the ford', when: 'THE FORD · MIDDAY', items: [
-    { t: 'p', text: 'The man at the ford has a horse that is better than he is and a sack that is trying to leave. He introduces himself as Guz. He is not, he says, here for the sheep. He says this before anyone has mentioned a sheep.' },
-    { t: 'ins', label: 'e004 · GRUMBLE', text: 'Insight · d20 16 + 4 · 20 vs 14', verdict: 'HELD', ok: true },
-    { t: 'p', text: 'He is lying about one thing and it is not the sheep.' } ] },
-  { title: 'iii · The mill yard', when: "NOKE'S MILL · AFTERNOON", items: [
-    { t: 'p', text: 'Noke is in his own yard, alive, unresolved, and holding two halves of a wand as if they might yet agree to be one. He does not want a fight. He would like everyone to leave, and has said so in the tone of a man reading terms.' },
-    { t: 'ins', soft: true, label: '→ QUESTS', text: 'Thread opened · Guz has not said who is paying him.', note: 'Asked twice.' },
-    { t: 'said', text: 'We will think about it.' },
-    { t: 'p', text: 'The miller takes that as a yes. He gives you until market day.' } ] },
-  { title: "iv · The drover's road", when: 'AN HOUR PAST THE FORD · LATE AFTERNOON', items: [
-    { t: 'p', text: 'The cart has been here long enough for the wheel-lines to dry pale at the edges. Its tailboard is down. Nothing has been taken; something has been unloaded, and carried away on foot, and whoever did it went north through the gap in the hedge without troubling to close it.' },
-    { t: 'ins', label: 'e011 · KORTH', text: 'Reading the wheel-lines · d20 11 + 2, took the lower of two · 13 vs 12', note: '(dim light)', verdict: 'HELD', ok: true },
-    { t: 'p', text: 'Guz stays on his horse. The grey dog sits in the road between you and the hedge and watches the hedge, not you. Something in there stops breathing when you stop walking.' },
-    { t: 'ins', soft: true, label: '→ CODEX', text: "Known · The dog's collar is silver, and it is engraved.", note: 'Seen at ten feet.' },
-    { t: 'said', text: 'Nobody moves. Guz, that means you as well.' },
-    { t: 'ask', text: "Wisdom (Perception), Ser'en. Listening at the hedgerow.", note: 'WIS +3 · proficiency +2 · advantage from the dog', verdict: 'OPEN THE TRAY' } ] },
-];
-const LIVE = 3;
+// ── the table, wired to the engine ───────────────────────────────────────
+// Stream item types are unchanged: p (narration) · said (the player) · ins
+// (ruled insert, the DM's mechanics voice) · ask (a roll Seren has requested).
+// Every one of them is now built from a server beat. Nothing on this page
+// invents a number, a fact, or a verdict — the tray is a view of a roll.
+let scenes = [];      // the written sessions, then the live page
+let LIVE = 0;
 
 const state = {
-  scene: LIVE, panel: 'quests', rolled: false, start: Date.now() - 41 * 60000,
-  record: [
-    { id: 'e012', what: 'the hedge · breaking cover', vs: '5 vs 12', res: 'DID NOT', ok: false },
-    { id: 'e011', what: 'Korth · reading the wheel-lines', vs: '13 vs 12', res: 'HELD', ok: true },
-    { id: 'e010', what: 'Grumble · Bless', vs: 'slot 1', res: '—' },
-    { id: 'e009', what: "Ser'en · Speak with Animals", vs: 'slot 1', res: '—' } ],
-  quests: [
-    { text: 'Whose cart is it?', meta: 'opened this scene' },
-    { text: 'The collar is engraved and you have not read it.' },
-    { text: 'Guz has not said who is paying him.', meta: 'asked twice' },
-    { text: 'The miller wants an answer by market day.', meta: 'two days', owed: true } ],
-  present: [
-    { who: 'Korth', state: 'far side of the cart, silent', hp: '31/38' },
-    { who: 'Grumble', state: 'beside you · holding Bless', hp: '19/22' },
-    { who: 'Guz', state: 'mounted, twenty feet back' },
-    { who: 'The dog', state: 'in the road, watching the hedge' } ],
-  codex: [
-    { vis: 'KNOWN', text: 'The carter left the road on foot, north, in a hurry.' },
-    { vis: 'KNOWN', text: "The dog's collar is silver, and it is engraved." },
-    { vis: 'SUSPECTED', text: 'Whatever was on the cart was unloaded here, not stolen.' },
-    { vis: 'SUSPECTED', text: 'Guz is paid by someone in Greenest Crossing.' } ],
-  articles: [
-    { name: 'Goodberry', kind: '1st · transmutation', text: 'Ten berries. One berry restores 1 hit point and feeds a creature for a day.' },
-    { name: 'Speak with Animals', kind: '1st · divination · ritual', text: 'Comprehend and verbally communicate with beasts for ten minutes. It does not make them truthful, cooperative, or good at counting.' },
-    { name: 'Bless', kind: '1st · enchantment · concentration', text: 'Up to three creatures add 1d4 to attack rolls and saving throws for one minute.' },
-    { name: 'Grappled', kind: 'condition', text: 'Speed becomes 0. Ends if the grappler is incapacitated or you are moved out of reach.' },
-    { name: 'Wolf', kind: 'beast · CR ¼', text: 'AC 13 · HP 11 · pack tactics. Bite +4 to hit, 2d4+2 piercing, knocks prone on a failed DC 11 STR save.' } ],
-  query: '', notes: localStorage.getItem('seren.notes') ?? "Guz — will not name his employer. Asked twice.\nCollar: silver, engraved, dog won't let anyone near it.\nMiller wants an answer by market day (2 days).",
+  scene: 0, panel: 'quests', rolled: false, start: Date.now(),
+  campaign: '', place: '', session: 1, round: null, spent: '', cap: '',
+  record: [], quests: [], present: [], codex: [], party: [], articles: [], sheet: null,
+  hidden: 0, pending: null, busy: false,
+  query: '', notes: localStorage.getItem('seren.notes') ?? '',
 };
-
-const canned = {
-  'Ask Korth what he sees': [{ t: 'ins', soft: true, label: 'KORTH', text: 'Points at the hedge with his chin. Says "small," and then, after consideration, "not a wolf."' }],
-  'Speak with the dog': [
-    { t: 'ins', label: "e013 · SER'EN", text: 'Speak with Animals · slot 2 spent', verdict: '—' },
-    { t: 'p', text: 'The dog says the thing in the hedge is a boy, that the boy is hers, and that you are welcome to him. It says this without taking its eyes off the hedge.' } ],
-};
-const fallback = { t: 'p', text: 'The dog looks at you. It has decided you are the sensible one, which is not a compliment to anybody present.' };
 
 // ── helpers ──────────────────────────────────────────────────────────────
 const $ = id => document.getElementById(id);
 const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
 const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const sum = mods => (mods || []).reduce((n, m) => n + (parseInt((String(m).match(/[-+]\d+/) || ['0'])[0], 10) || 0), 0);
+const signed = n => (n >= 0 ? '+' : '') + n;
+
+async function api(path, body) {
+  const r = await fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) });
+  let d = {};
+  try { d = await r.json(); } catch (e) { d = {}; }
+  if (!r.ok) throw new Error(d.error || ('the table answered ' + r.status));
+  return d;
+}
+
+// ── beats → stream items ─────────────────────────────────────────────────
+// The label already names who rolled; the line should not say it twice.
+const skillOf = b => {
+  const what = String(b.what || '');
+  const who = String(b.who || '');
+  const bare = who && what.toLowerCase().startsWith(who.toLowerCase()) ? what.slice(who.length).replace(/^\s*·\s*/, '') : what;
+  return bare ? bare + ' · ' : '';
+};
+
+function rollItem(b) {
+  const many = (b.dice_all || []).length > 1;
+  const mods = (b.parts || []).join(' ');
+  const took = b.keeping === 'disadvantage' ? 'took the lower of two' : 'took the higher of two';
+  const maths = 'd20 ' + b.kept + (mods ? ' ' + mods : '') + (many ? ', ' + took : '');
+  const target = b.dc == null ? '' : ' · ' + b.total + ' vs ' + b.dc;
+  return {
+    t: 'ins', id: b.id,
+    label: (b.id || '') + ' · ' + String(b.who || '').toUpperCase(),
+    text: skillOf(b) + maths + target,
+    note: b.note || '',
+    verdict: b.pass === true ? 'HELD' : b.pass === false ? 'DID NOT' : '—',
+    ok: b.pass,
+  };
+}
+
+function beatItems(beats) {
+  const out = [];
+  (beats || []).forEach(b => {
+    if (b.kind === 'dm') out.push({ t: 'p', text: b.text });
+    else if (b.kind === 'roll') out.push(rollItem(b));
+    else if (b.kind === 'ask') out.push({
+      t: 'ask', text: b.what || b.check, note: (b.mods || []).join(' · '), verdict: 'OPEN THE TRAY', ask: b,
+    });
+    else if (b.kind === 'note') out.push({
+      t: 'ins', soft: true, label: b.panel === 'codex' ? '→ CODEX' : 'NOTE', text: b.text, verdict: '',
+    });
+  });
+  return out;
+}
+
+// ── taking what the server said ──────────────────────────────────────────
+function absorb(d, withItems) {
+  if (d.campaign) state.campaign = d.campaign;
+  if (d.place) state.place = d.place;
+  if (d.session != null) state.session = d.session;
+  state.round = d.round ?? null;
+  state.record = (d.rolls || []).slice().reverse();
+  state.quests = d.quests || [];
+  state.present = d.present || [];
+  state.codex = d.facts || [];
+  state.party = d.party || [];
+  if (d.hidden != null) state.hidden = d.hidden;
+  if (d.sheet) state.sheet = d.sheet;
+  if (d.library) state.articles = d.library;
+  if (d.spent) state.spent = d.spent;
+  if (d.cap) state.cap = d.cap;
+
+  const beats = d.beats || [];
+  const ask = beats.find(b => b.kind === 'ask');
+  if (ask) state.pending = ask;
+  if (!d.pending) state.pending = null;
+
+  if (withItems !== false) {
+    const items = scenes[LIVE].items, fresh = beatItems(beats);
+    // A result replaces the request it answers; nothing else in the stream is edited.
+    if (fresh.some(i => i.id)) {
+      for (let i = items.length - 1; i >= 0; i--) if (items[i].t === 'ask') items.splice(i, 1);
+    }
+    items.push(...fresh);
+  }
+  scenes[LIVE].when = String(state.place || '').toUpperCase();
+  paint();
+}
+
+function paint() { renderRail(); renderPage(); renderPresent(); renderSlips(); renderRef(); }
 
 // ── render ───────────────────────────────────────────────────────────────
 function renderRail() {
+  $('campaign').textContent = state.campaign || 'a campaign';
+  $('sessionNo').textContent = 'SESSION ' + state.session;
   const nav = $('chapters'); nav.innerHTML = '';
   scenes.forEach((s, i) => {
     const b = el('button', i === state.scene ? 'on' : '', esc(s.title));
     b.onclick = () => { state.scene = i; renderPage(); renderRail(); };
     nav.appendChild(b);
   });
-  $('elapsed').textContent = Math.max(41, Math.round((Date.now() - state.start) / 60000)) + ' MIN';
+  $('elapsed').textContent = Math.round((Date.now() - state.start) / 60000) + ' MIN';
 }
 
 function renderPage() {
@@ -335,38 +372,68 @@ function renderPage() {
       const d = el('div', 'ins' + (it.soft ? ' soft' : '') + (it.t === 'ask' ? ' ask' : ''));
       const v = it.ok === true ? 'held' : it.ok === false ? 'fail' : '';
       d.innerHTML = `<span class="lab">${esc(it.t === 'ask' ? 'ROLL ASKED' : it.label)}</span><span>${esc(it.text)} <span class="note">${esc(it.note)}</span></span><span class="verdict ${v}">${esc(it.verdict)}</span>`;
-      if (it.t === 'ask') d.onclick = openTray;
+      if (it.t === 'ask') d.onclick = () => openTray(it.ask);
       st.appendChild(d);
     }
   });
+  if (live) st.scrollTop = st.scrollHeight;
 
   const f = $('foot'); f.innerHTML = '';
   if (live) {
-    const chips = el('div', 'chips');
-    (state.rolled ? ['Help him up', 'Ask what is in the sack', 'Watch the dog'] : ['Roll it', 'Ask Korth what he sees', 'Speak with the dog']).forEach(l => {
-      const b = el('button', '', esc(l)); b.onclick = () => l === 'Roll it' ? openTray() : respond(l); chips.appendChild(b);
-    });
+    if (state.pending) {
+      const chips = el('div', 'chips');
+      const b = el('button', '', 'Roll it'); b.onclick = () => openTray(state.pending);
+      chips.appendChild(b); f.appendChild(chips);
+    }
     const c = el('div', 'composer');
-    const ta = el('textarea'); ta.rows = 1; ta.placeholder = 'What do you do?';
-    const say = el('button', 'say', 'Say it');
-    const submit = () => { const d = ta.value.trim(); if (!d) return; ta.value = ''; respond(d); };
+    const ta = el('textarea'); ta.rows = 1;
+    ta.placeholder = state.busy ? 'Seren is writing…' : state.pending ? 'She has asked for a roll.' : 'What do you do?';
+    ta.disabled = state.busy;
+    const say = el('button', 'say', state.busy ? '…' : 'Say it');
+    say.disabled = state.busy;
+    const submit = () => { const d = ta.value.trim(); if (!d || state.busy) return; ta.value = ''; respond(d); };
     say.onclick = submit; ta.onkeydown = e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); } };
-    c.append(ta, say); f.append(chips, c);
+    c.append(ta, say); f.append(c);
+    setTimeout(() => { if (!state.busy) ta.focus(); }, 0);
   } else f.appendChild(el('div', 'written', 'This page is written. Nothing here is retconned.'));
 
   const turn = el('div', 'turn');
   const prev = el('button', '', '‹ ' + esc(state.scene > 0 ? scenes[state.scene - 1].title : 'session start'));
-  const next = el('button', '', esc(state.scene < LIVE ? scenes[state.scene + 1].title : 'v · not yet written') + ' ›');
+  const next = el('button', '', esc(state.scene < LIVE ? scenes[state.scene + 1].title : 'not yet written') + ' ›');
   prev.disabled = state.scene === 0; next.disabled = state.scene === LIVE;
   prev.onclick = () => { state.scene--; renderPage(); renderRail(); };
   next.onclick = () => { state.scene++; renderPage(); renderRail(); };
-  turn.append(prev, el('span', '', 'page ' + (8 + state.scene)), next);
+  turn.append(prev, el('span', '', 'page ' + (state.scene + 1) + ' of ' + scenes.length), next);
   f.appendChild(turn);
 }
 
 function renderPresent() {
   const p = $('present'); p.innerHTML = '';
-  state.present.forEach(x => p.appendChild(el('div', '', `<b>${esc(x.who)}</b><span>${esc(x.state)}</span><em class="${x.hp ? '' : 'none'}">${esc(x.hp ?? '—')}</em>`)));
+  state.present.forEach(x => p.appendChild(el('div', '', `<b>${esc(x.who)}</b><span>${esc(x.state)}</span><em class="${x.hp ? '' : 'none'}">${esc(x.hp || '—')}</em>`)));
+  const here = String(state.place || 'somewhere');
+  $('nowWhere').textContent = 'NOW · ' + here.split(/[,.;]/)[0].trim().toUpperCase();
+  $('nowWhere').title = here;
+  $('nowRound').textContent = state.round == null ? 'not in initiative' : 'round ' + state.round;
+  const conc = state.party.filter(p => p.concentrating);
+  $('nowFine').textContent = conc.length
+    ? conc.map(p => `${p.name} is concentrating on ${p.concentrating}. Any damage is a real save.`).join(' ')
+    : 'Nobody is concentrating on anything.';
+}
+
+function renderSlips() {
+  const sh = state.sheet || {};
+  const mine = state.party.find(p => p.slug === sh.slug) || {};
+  $('pcName').textContent = sh.who || '—';
+  $('pcBuild').textContent = [sh.build, sh.species].filter(Boolean).join(' · ');
+  const cur = mine.hp, max = mine.max || sh.hp_max;
+  $('pcBar').style.width = (cur != null && max ? Math.max(0, Math.min(100, 100 * cur / max)) : 100) + '%';
+  const slots = Object.entries(mine.slots || {}).map(([lvl, n]) => `slots ${lvl}: ${n}`);
+  $('pcSmall').textContent = [cur != null ? `${cur} / ${max}` : '', ...slots].filter(Boolean).join(' · ');
+  $('pcAc').textContent = sh.ac ?? '—';
+  $('pcDc').textContent = sh.save_dc ?? '—';
+  const uses = Object.entries(mine.uses || {}).filter(([, n]) => n).map(([k, n]) => `${k.replace(/_/g, ' ')} ${n}`);
+  $('pcFine').textContent = uses.length ? uses.join(' · ') : 'Nothing held in reserve.';
+  $('spend').textContent = state.spent ? state.spent + ' of ' + state.cap : '';
 }
 
 const TABS = ['quests', 'party', 'sheet', 'record', 'codex', 'library', 'notes'];
@@ -375,44 +442,70 @@ function renderRef() {
   TABS.forEach(k => {
     const b = el('button', (k === state.panel ? 'on ' : '') + (k === 'record' ? 'record ' : '') + (k === 'record' && state.rolled && state.panel !== 'record' ? 'fresh' : ''));
     b.appendChild(el('div', '', k.toUpperCase()));
-    b.onclick = () => { state.panel = k; renderRef(); };
+    b.onclick = () => { state.panel = k; if (k === 'record') state.rolled = false; renderRef(); };
     r.appendChild(b);
   });
   const p = $('panel'); p.innerHTML = '';
   const k = state.panel, S = state;
-  const meta = { quests: `${S.quests.length} open · 1 owed`, party: 'two companions', sheet: 'druid 4', record: `${S.record.length + 9} rolls · nothing retconned`, codex: '9 known or suspected', library: '616 articles', notes: 'yours' };
-  $('panelTitle').textContent = k === 'sheet' ? "SHEET · SER'EN" : k.toUpperCase(); $('panelMeta').textContent = meta[k];
+  const owed = S.quests.length;
+  const meta = {
+    quests: owed ? owed + ' open' : 'nothing open',
+    party: S.party.length + ' at the table',
+    sheet: (S.sheet && S.sheet.build) || '',
+    record: S.record.length + ' rolls · nothing retconned',
+    codex: S.codex.length + ' known or suspected',
+    library: S.articles.length + ' articles',
+    notes: 'yours',
+  };
+  $('panelTitle').textContent = k === 'sheet' ? 'SHEET · ' + String((S.sheet || {}).who || '').toUpperCase() : k.toUpperCase();
+  $('panelMeta').textContent = meta[k] || '';
 
   if (k === 'quests') {
     const q = el('div', 'quests');
+    if (!S.quests.length) q.appendChild(el('div', '', 'Nothing is open. Open loops are written at the close of a session.'));
     S.quests.forEach(x => q.appendChild(el('div', x.owed ? 'owed' : '', `${esc(x.text)} <small>${esc(x.meta)}</small>`)));
-    p.appendChild(q);
+    p.append(q, el('div', 'foot', 'Written when a session closes, from the log. Seren does not decide what counts as open — the loops are what she failed to tie off.'));
   } else if (k === 'record') {
     const l = el('div', 'ledger');
-    S.record.forEach(x => l.appendChild(el('div', x.fresh ? 'fresh' : '', `<span class="id">${x.id}</span><span>${esc(x.what)}</span><span class="vs">${esc(x.vs)}</span><span class="res ${x.ok === true ? 'held' : x.ok === false ? 'fail' : ''}">${esc(x.res)}</span>`)));
-    p.append(l, el('div', 'foot', 'Every roll with its inputs and its target. If a number here disagrees with something you were told, the number is right.'));
+    if (!S.record.length) l.appendChild(el('div', '', 'No rolls yet this campaign.'));
+    S.record.forEach(x => l.appendChild(el('div', x.fresh ? 'fresh' : '', `<span class="id">${esc(x.id)}</span><span>${esc(x.what)}</span><span class="vs">${esc(x.vs)}</span><span class="res ${x.ok === true ? 'held' : x.ok === false ? 'fail' : ''}">${esc(x.res)}</span>`)));
+    p.append(l, el('div', 'foot', 'Every roll with its inputs and its target, straight from ledger.jsonl. If a number here disagrees with something you were told, the number is right.'));
   } else if (k === 'codex') {
     const c = el('div', 'codex');
-    S.codex.forEach(x => c.appendChild(el('div', '', `<span class="vis ${x.vis === 'SUSPECTED' ? 'susp' : ''}">${x.vis}</span>${esc(x.text)}`)));
-    p.append(c, el('div', 'foot', 'Two of the entries above are wrong. Nothing on this page will tell you which. <span style="color:var(--rule)">🔒 4 facts sit on the DM\'s side of the screen.</span>'));
+    if (!S.codex.length) c.appendChild(el('div', '', 'Nothing established yet.'));
+    S.codex.forEach(x => c.appendChild(el('div', '', `<span class="vis ${x.vis === 'SUSPECTED' ? 'susp' : ''}">${esc(x.vis)}</span>${esc(x.text)}`)));
+    p.append(c, el('div', 'foot', `Suspected is not known, and some of it is wrong. Nothing on this page will tell you which. <span style="color:var(--rule)">🔒 ${S.hidden} fact${S.hidden === 1 ? '' : 's'} sit on the DM's side of the screen.</span>`));
   } else if (k === 'party') {
-    p.append(el('div', 'party', `
-      <div><div class="row"><b class="who">Korth <span>· fighter 4</span></b><span class="sub">31 / 38</span></div><div class="res">Second Wind spent · Action Surge available · hit dice 3 of 4.</div><div class="did">Has not said anything since the ford. Went to the far side of the cart without being asked.</div></div>
-      <div><div class="row"><b class="who">Grumble <span>· cleric 4</span></b><span class="sub">19 / 22</span></div><div class="res">Slots 3 / 4 · Channel Divinity available · concentrating on Bless.</div><div class="did">“For about another minute, and then I'd like someone else to have a plan.”</div></div>`),
-      el('div', 'foot', 'What they have said and done. Never why — that is yours to write, in Notes.'));
+    const box = el('div', 'party');
+    S.party.forEach(x => {
+      const res = [
+        ...Object.entries(x.slots || {}).map(([lvl, n]) => `slots ${lvl}: ${n}`),
+        ...Object.entries(x.uses || {}).filter(([, n]) => n).map(([u, n]) => `${u.replace(/_/g, ' ')} ${n}`),
+      ].join(' · ');
+      box.appendChild(el('div', '', `<div class="row"><b class="who">${esc(x.name)}</b><span class="sub">${esc(x.state)}</span></div>`
+        + `<div class="res">${esc(res || 'nothing held in reserve')}</div>`
+        + `<div class="did">${esc((x.conditions || []).join(', ') || (x.concentrating ? 'concentrating on ' + x.concentrating : 'no conditions'))}</div>`));
+    });
+    p.append(box, el('div', 'foot', 'What they are carrying and what state they are in, from party.md. Never why — that is yours to write, in Notes.'));
   } else if (k === 'sheet') {
+    const sh = S.sheet || {};
     const a = el('div', 'abilities');
-    [['STR', 10, '+0'], ['DEX', 16, '+3'], ['CON', 14, '+2'], ['INT', 12, '+1'], ['WIS', 17, '+3'], ['CHA', 11, '+0']].forEach(([k, v, m]) => a.appendChild(el('div', '', `<small>${k}</small><b>${v}</b><i>${m}</i>`)));
+    (sh.abilities || []).forEach(([name, score, mod]) => a.appendChild(el('div', '', `<small>${esc(name)}</small><b>${esc(score)}</b><i>${esc(mod)}</i>`)));
+    p.append(a);
     const sp = el('div', 'spells');
-    ['Speak with Animals', 'Goodberry', 'Entangle', 'Healing Word', 'Bless'].forEach(n => { const b = el('button', '', n); b.onclick = () => { state.panel = 'library'; state.query = n; renderRef(); }; sp.appendChild(b); });
-    p.append(a, el('div', 'label', 'PREPARED'), sp, el('div', 'foot', 'Every spell opens its article in Library. Starry Form arrives at level 2 and is on the sheet.'));
+    (sh.prepared || []).forEach(n => { const b = el('button', '', esc(n)); b.onclick = () => { state.panel = 'library'; state.query = n; renderRef(); }; sp.appendChild(b); });
+    if ((sh.prepared || []).length) p.append(el('div', 'label', 'PREPARED AND KNOWN'), sp);
+    p.append(el('div', 'foot', 'From your build file. Every spell opens its article in Library.'));
   } else if (k === 'library') {
-    const inp = el('input', 'search'); inp.placeholder = 'Search 616 articles'; inp.value = S.query;
-    inp.oninput = () => { S.query = inp.value; list(); };
+    const inp = el('input', 'search'); inp.placeholder = 'Search ' + S.articles.length + ' articles'; inp.value = S.query;
     const arts = el('div', 'articles');
-    const list = () => { const q = S.query.toLowerCase(); arts.innerHTML = '';
-      S.articles.filter(x => !q || x.name.toLowerCase().includes(q) || x.text.toLowerCase().includes(q)).slice(0, 3)
-        .forEach(x => arts.appendChild(el('div', '', `<div class="row"><b>${esc(x.name)}</b><span>${esc(x.kind)}</span></div><p>${esc(x.text)}</p>`))); };
+    const list = () => {
+      const q = S.query.toLowerCase(); arts.innerHTML = '';
+      const hits = S.articles.filter(x => !q || (x.name + ' ' + x.kind + ' ' + (x.text || '')).toLowerCase().includes(q));
+      if (!hits.length) arts.appendChild(el('div', '', '<p>Nothing by that name in this party\'s manifest.</p>'));
+      hits.slice(0, 4).forEach(x => arts.appendChild(el('div', '', `<div class="row"><b>${esc(x.name)}</b><span>${esc(x.kind)}${x.for ? ' · ' + esc(x.for) : ''}</span></div><p>${esc(x.text || 'Resolved in the manifest; the article text is not in this corpus.')}</p>`)));
+    };
+    inp.oninput = () => { S.query = inp.value; list(); };
     list();
     p.append(inp, arts, el('div', 'foot', 'SRD 5.2 · CC BY 4.0 · rules are not secret; nothing here is withheld.'));
   } else if (k === 'notes') {
@@ -424,45 +517,83 @@ function renderRef() {
 
 // ── play ─────────────────────────────────────────────────────────────────
 function push(items) { scenes[LIVE].items.push(...items); renderPage(); }
-function respond(line) {
+
+async function respond(line) {
   push([{ t: 'said', text: line }]);
-  setTimeout(() => push(canned[line] || [fallback]), 700);
+  state.busy = true; renderPage();
+  try {
+    absorb(await api('/api/turn', { text: line }));
+  } catch (e) {
+    push([{ t: 'ins', label: 'THE TABLE', text: String(e.message || e), verdict: '—' }]);
+  } finally {
+    state.busy = false; renderPage();
+  }
 }
 
-// The tray: 2d20 with advantage, +5. The engine owns the randomness here;
-// Seren owns the DC (15). The result is written to the stream and to Record.
+// The tray: a view of a roll, never the roller. The faces spin until the server
+// answers; the numbers that settle are the ones written to the ledger.
 const tray = $('tray');
-function openTray() {
+let spin = null;
+
+function openTray(ask) {
+  if (!ask) return;
+  state.pending = ask;
   tray.hidden = false; tray.className = 'tray';
-  $('dieHi').textContent = '—'; $('dieLo').textContent = '—'; $('maths').innerHTML = '2d20, higher + 5<b></b>';
-  $('rollBtn').hidden = false; $('trayStatus').hidden = true;
+  const many = /advantage/i.test(ask.advantage || '') || /^2d20/.test(ask.dice || '');
+  $('trayCheck').textContent = String(ask.check || '').toUpperCase();
+  $('trayAdv').textContent = (ask.advantage || '').toUpperCase();
+  $('dieHi').textContent = '—'; $('dieLo').textContent = '—';
+  $('dieLo').style.display = many ? '' : 'none';
+  const n = sum(ask.mods);
+  $('maths').innerHTML = esc((many ? '2d20, ' + (/^dis/i.test(ask.advantage || '') ? 'lower' : 'higher') : '1d20') + ' ' + signed(n)) + '<b></b>';
+  $('rollBtn').hidden = false; $('rollBtn').disabled = false;
+  $('trayStatus').hidden = true;
 }
+
 $('trayClose').onclick = () => { clearInterval(spin); tray.hidden = true; };
-let spin;
-$('rollBtn').onclick = () => {
-  tray.classList.add('rolling'); $('rollBtn').hidden = true; $('trayStatus').hidden = false; $('trayStatus').textContent = 'ROLLING';
+
+$('rollBtn').onclick = async () => {
+  tray.classList.add('rolling');
+  $('rollBtn').hidden = true; $('trayStatus').hidden = false; $('trayStatus').textContent = 'ROLLING';
   const t0 = Date.now();
   spin = setInterval(() => {
-    const a = 1 + Math.floor(Math.random() * 20), b = 1 + Math.floor(Math.random() * 20);
-    $('dieHi').textContent = a; $('dieLo').textContent = b;
-    if (Date.now() - t0 < 950) return;
-    clearInterval(spin);
-    const hi = Math.max(a, b), lo = Math.min(a, b), total = hi + 5, ok = total >= 15;
-    tray.classList.replace('rolling', 'done');
-    $('dieHi').textContent = hi; $('dieLo').textContent = lo; $('maths').innerHTML = `${hi} + 5, higher of two<b>${total}</b>`;
-    $('trayStatus').textContent = "Written to Record as e014. The DC is Seren's; you will see it there.";
-    setTimeout(() => {
-      tray.hidden = true; state.rolled = true;
-      state.record.unshift({ id: 'e014', what: "Ser'en · listening at the hedgerow", vs: `${total} vs 15`, res: ok ? 'HELD' : 'DID NOT', ok, fresh: true });
-      const items = scenes[LIVE].items; items.splice(items.findIndex(i => i.t === 'ask'), 1);
-      items.push({ t: 'ins', label: "e014 · SER'EN", text: `Listening at the hedgerow · d20 ${hi} + 5, took the higher of two · ${total} vs 15`, note: '(advantage)', verdict: ok ? 'HELD' : 'DID NOT', ok },
-        ok ? { t: 'p', text: 'Breathing. One person, small, trying very hard to be a hedge. Under it, fainter, something in a sack that has given up trying to be anything.' }
-           : { t: 'p', text: "Wind in the hawthorn, and your own pulse, and the dog's. Whatever is in there is better at this than you are, and knows it." });
-      if (ok) { state.present.splice(3, 0, { who: 'The boy', state: 'in the hedge · you know he is there' }); state.quests.unshift({ text: 'Something in a sack, in the hedge, has stopped struggling.', meta: 'just now' }); }
-      renderPage(); renderPresent(); renderRef();
-    }, 1900);
+    $('dieHi').textContent = 1 + Math.floor(Math.random() * 20);
+    $('dieLo').textContent = 1 + Math.floor(Math.random() * 20);
   }, 70);
+
+  let d;
+  try {
+    d = await api('/api/roll');
+  } catch (e) {
+    clearInterval(spin); tray.classList.remove('rolling');
+    $('trayStatus').textContent = String(e.message || e);
+    $('rollBtn').hidden = false;
+    return;
+  }
+  // However long the DM took, the dice have at least rolled for a moment.
+  setTimeout(() => settle(d), Math.max(0, 950 - (Date.now() - t0)));
 };
+
+function settle(d) {
+  clearInterval(spin);
+  const b = (d.beats || []).find(x => x.kind === 'roll');
+  if (!b) { tray.hidden = true; absorb(d); return; }
+  const all = b.dice_all && b.dice_all.length ? b.dice_all : [b.kept];
+  const hi = Math.max(...all), lo = Math.min(...all), many = all.length > 1;
+  const n = sum(b.parts);
+  tray.classList.replace('rolling', 'done');
+  $('dieHi').textContent = b.kept; $('dieLo').textContent = many ? (b.kept === hi ? lo : hi) : '';
+  $('dieLo').style.display = many ? '' : 'none';
+  $('maths').innerHTML = esc(b.kept + ' ' + signed(n) + (many ? ', ' + (b.keeping === 'disadvantage' ? 'lower' : 'higher') + ' of two' : '')) + `<b>${esc(b.total)}</b>`;
+  $('trayStatus').textContent = `Written to Record as ${b.id}. The DC is Seren's; you will see it there.`;
+  setTimeout(() => {
+    tray.hidden = true;
+    state.rolled = true;
+    absorb(d);
+    if (state.record[0]) state.record[0].fresh = true;
+    renderRef();
+  }, 1900);
+}
 
 // Lamp: light / dark. Remembered per browser.
 const root = document.documentElement;
@@ -470,7 +601,25 @@ const setTheme = t => { root.dataset.theme = t; localStorage.setItem('seren.them
 setTheme(localStorage.getItem('seren.theme') || 'light');
 $('lamp').onclick = () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
 
-renderRail(); renderPage(); renderPresent(); renderRef();
+// ── the door ─────────────────────────────────────────────────────────────
+(async function open() {
+  scenes = [{ title: 'this session', when: '', items: [] }];
+  LIVE = 0;
+  paint();
+  let d;
+  try {
+    d = await api('/api/session');
+  } catch (e) {
+    scenes[LIVE].items.push({ t: 'ins', label: 'THE TABLE', text: String(e.message || e), verdict: '—' });
+    return paint();
+  }
+  const written = (d.pages || []).filter(p => p.items.length);
+  scenes = [...written, { title: 'this session', when: '', items: [] }];
+  LIVE = scenes.length - 1;
+  state.scene = LIVE;
+  absorb(d);
+})();
+
 setInterval(renderRail, 30000);
 </script>
 </body>

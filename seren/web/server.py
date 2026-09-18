@@ -162,6 +162,11 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/session":
             view = camp.player_view()
             view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
+            # Sent once, at the door: the parts of the table that are not in play.
+            view["pages"] = camp.pages()
+            view["sheet"] = camp.sheet()
+            view["library"] = camp.library()
+            view["campaign"] = camp.title()
             view["beats"] = [{"kind": "note", "text": f"SESSION {camp.session} — the table is set"}]
             if not corpus.ROOT.is_dir():
                 view["beats"].append({"kind": "note", "text": "NO CORPUS FOUND — set SEREN_CONTENT_DIR"})

@@ -8,3 +8,4 @@ games/*/reports/
 # SEREN campaign content is private: LIVE/ never ships, and the test campaign is built
 # on a DMs Guild adventure. The server reads it from SEREN_CONTENT_DIR, never from here.
 seren/content/
+__pycache__/
