@@ -53,7 +53,7 @@ def _session_for(sid: str) -> dict:
             root = campaign_dir()
             camp = state.Campaign(root=root, tier=TIER)
             camp.session = 1 + len(list((root / "sessions").glob("*.md"))) if (root / "sessions").is_dir() else 1
-            sess = {"campaign": camp, "history": []}
+            sess = {"campaign": camp, "history": [], "messages": [], "pending": None}
             _sessions[sid] = sess
         return sess
 
@@ -122,7 +122,9 @@ class Handler(BaseHTTPRequestHandler):
         if self._gated():
             return self._send(200, gate.PAGE.encode("utf-8"), "text/html; charset=utf-8")
 
-        if path in ("/", "/play", "/play/"):
+        if path in ("/", "/play", "/play/", "/table"):
+            return self._file(STATIC / "table.html")
+        if path == "/chat":
             return self._file(STATIC / "index.html")
         if path.startswith("/static/"):
             return self._file(STATIC / path[len("/static/"):])
@@ -178,9 +180,33 @@ class Handler(BaseHTTPRequestHandler):
             except Exception as exc:
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
             sess["history"] = out["messages"][-24:]  # a session's worth, trimmed at the edges
+            sess["pending"] = out.get("pending")
+            sess["messages"] = out["messages"]
             view = camp.player_view()
             view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
             view["beats"] = out["beats"]
+            view["pending"] = bool(out.get("pending"))
+            return self._json(200, view, cookie)
+
+        if path == "/api/roll":
+            # The player pressed the dice. The server rolls; the tray only ever shows
+            # numbers it was given (ROLL-MECHANIC.md).
+            pending = sess.get("pending")
+            if not pending:
+                return self._json(409, {"error": "nothing has been asked for"})
+            try:
+                out = dm.resume_roll(camp, sess.get("messages") or sess["history"], pending)
+            except llm.CapReached as exc:
+                return self._json(402, {"error": str(exc)})
+            except Exception as exc:
+                return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
+            sess["pending"] = out.get("pending")
+            sess["messages"] = out["messages"]
+            sess["history"] = out["messages"][-24:]
+            view = camp.player_view()
+            view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
+            view["beats"] = out["beats"]
+            view["pending"] = bool(out.get("pending"))
             return self._json(200, view, cookie)
 
         if path == "/api/close":

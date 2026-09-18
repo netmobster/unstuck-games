@@ -100,6 +100,18 @@ def roll(ledger: Path, spec: str, entry: dict | None = None) -> dict:
     n, faces, dmod = n_dice, faces, parse(spec)[2]
     dice = [RNG.randint(1, faces) for _ in range(n)]
 
+    # Advantage is two dice and one of them kept. The dropped die is recorded, never
+    # hidden: showing the maths is the whole point (ROLL-MECHANIC.md).
+    adv = str(entry.pop("advantage", "") or "").lower()
+    kept = None
+    if adv in ("advantage", "disadvantage") and n == 1:
+        second = RNG.randint(1, faces)
+        pair = [dice[0], second]
+        kept = max(pair) if adv == "advantage" else min(pair)
+        entry["dice_all"] = pair
+        entry["kept"] = adv
+        dice = [kept]
+
     mods = entry.get("mods") or []
     if not isinstance(mods, list) or any(
         not (isinstance(m, (list, tuple)) and len(m) == 2) for m in mods

@@ -1,0 +1,477 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Seren Table</title>
+<meta name="description" content="Seren's player-facing Table: a book page for the story, slips beside it for the state of play. Desktop. Invented Sheep Chase content.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── tokens ─────────────────────────────────────────────────────────────
+   The desk is dark; the reading surface is paper. Dark theme dims the lamp
+   rather than going black. Oxide = the DM's mechanics voice and "you".
+   Held (green) / did not (oxide) are the only verdict colours. */
+:root {
+  --desk:#3a2f26; --lamp:rgba(255,214,150,.26);
+  --paper:#efe4cc; --paper-hi:rgba(255,255,255,.4); --slip:#f3ead6; --slip-dark:#2a231b;
+  --ink:#2a231b; --soft:#7d6d55; --rule:#b8a688; --rule-soft:#d9cbae;
+  --oxide:#b6472c; --held:#4f7a4a; --gold:#8a6a2a; --bone:#efe4cc; --ember:#e07a58;
+  --desk-ink:#d9c9ad; --desk-ink-hi:#f0e4cc; --desk-ink-lo:#a8987c;
+  --serif:'Cormorant Garamond', Georgia, serif; --sans:'Work Sans', system-ui, sans-serif;
+  --noise:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .14 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  --fibre:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='f'><feTurbulence type='turbulence' baseFrequency='.02 .3' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .1  0 0 0 .07 0'/></filter><rect width='400' height='400' filter='url(%23f)'/></svg>");
+}
+[data-theme="dark"] {
+  --desk:#171210; --lamp:rgba(255,190,120,.14);
+  --paper:#cbbd9c; --paper-hi:rgba(255,255,255,.18); --slip:#d2c4a3; --slip-dark:#1d1712;
+  --ink:#241d15; --soft:#6a5b44; --rule:#a08d6c; --rule-soft:#bfb08e; --bone:#e6d8bb;
+  --desk-ink:#bfae90; --desk-ink-hi:#e6d8bb; --desk-ink-lo:#8a7a60;
+}
+
+* { box-sizing:border-box; }
+body { margin:0; background:var(--desk); font-family:var(--sans); color:var(--ink); }
+textarea, input { font-family:inherit; color:inherit; }
+textarea:focus, input:focus { outline:none; }
+button { font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; }
+
+@keyframes lamp { 0%,100% { opacity:1; } 42% { opacity:.93; } 63% { opacity:.97; } 78% { opacity:.9; } }
+@keyframes rise { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+@keyframes trayIn { from { opacity:0; transform:translate(-50%,24px) scale(.96); } to { opacity:1; transform:translate(-50%,0) scale(1); } }
+@keyframes dieRoll { 0% { transform:rotate(0) } 25% { transform:rotate(-14deg) translateY(-6px) } 50% { transform:rotate(11deg) translateY(2px) } 75% { transform:rotate(-6deg) translateY(-3px) } 100% { transform:rotate(0) } }
+@keyframes settle { 0% { transform:scale(1.18); box-shadow:0 0 0 0 rgba(224,122,88,.6) } 100% { transform:scale(1); box-shadow:0 0 0 18px rgba(224,122,88,0) } }
+@keyframes ribbonGlow { 0%,100% { filter:drop-shadow(0 6px 6px rgba(0,0,0,.4)) } 50% { filter:drop-shadow(0 6px 6px rgba(0,0,0,.4)) drop-shadow(0 0 10px rgba(224,122,88,.7)) } }
+
+/* ── the desk ── */
+.desk { min-height:100vh; min-width:1280px; position:relative; overflow:hidden; display:grid; grid-template-columns:190px minmax(0,1fr) 430px; gap:0 28px; padding:30px 34px; }
+.lamp { position:absolute; inset:0; pointer-events:none; animation:lamp 7s ease-in-out infinite;
+  background-image:radial-gradient(ellipse 70% 80% at 42% 30%, var(--lamp), rgba(255,214,150,0) 70%), radial-gradient(ellipse at 100% 100%, rgba(0,0,0,.55), transparent 60%), var(--fibre); }
+
+/* ── chapter rail ── */
+.rail { position:relative; padding:6px 0; display:flex; flex-direction:column; gap:20px; color:var(--desk-ink); }
+.rail .campaign { font-family:var(--serif); font-size:23px; font-weight:500; line-height:1.15; color:var(--desk-ink-hi); }
+.rail .meta { font-size:10.5px; letter-spacing:.14em; color:var(--desk-ink-lo); }
+.chapters { display:flex; flex-direction:column; gap:12px; margin-top:8px; font-family:var(--serif); font-size:17px; }
+.chapters button { text-align:left; color:var(--desk-ink-lo); border-left:2px solid transparent; padding-left:10px; margin-left:-12px; transition:color .3s; }
+.chapters button.on { color:var(--desk-ink-hi); border-left-color:var(--ember); }
+.rail .dm { margin-top:auto; font-size:11px; color:var(--desk-ink-lo); line-height:1.6; }
+.rail .dm b { font-weight:400; color:var(--desk-ink-hi); }
+.lampbtn { font-size:10.5px; letter-spacing:.12em; color:var(--desk-ink-lo); display:flex; align-items:center; gap:8px; }
+.lampbtn:hover { color:var(--desk-ink-hi); }
+.lampbtn i { width:8px; height:8px; border-radius:50%; background:var(--ember); box-shadow:0 0 8px var(--ember); }
+
+/* ── the page ── */
+.page { position:relative; min-height:840px; background-color:var(--paper);
+  background-image:var(--noise), linear-gradient(180deg, var(--paper-hi), rgba(255,255,255,0) 30%), radial-gradient(ellipse at 20% 0%, rgba(120,90,50,.1), transparent 60%), var(--fibre);
+  border-radius:2px 8px 8px 2px; box-shadow:0 40px 70px rgba(0,0,0,.55), 0 4px 10px rgba(0,0,0,.3), inset 14px 0 30px -20px rgba(60,40,20,.5);
+  padding:36px 60px 26px 66px; display:grid; grid-template-rows:auto 1fr auto; overflow:hidden; }
+.page .edge { position:absolute; left:0; top:0; bottom:0; width:10px; opacity:.7; background:repeating-linear-gradient(90deg, rgba(60,40,20,.18) 0 1px, transparent 1px 3px); }
+.head { display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--rule); padding-bottom:12px; }
+.head h1 { margin:0; font-family:var(--serif); font-size:32px; font-weight:500; }
+.head span { font-size:11.5px; color:var(--soft); letter-spacing:.06em; }
+
+.stream { padding-top:28px; font-family:var(--serif); font-size:21.5px; line-height:1.55; max-width:62ch; display:flex; flex-direction:column; gap:20px; }
+.stream > * { animation:rise .5s ease-out both; }
+.stream p { margin:0; }
+.stream p.said { font-style:italic; color:var(--soft); padding-left:18px; border-left:1px solid var(--rule-soft); }
+/* the ruled insert: the DM's mechanics voice */
+.ins { font-family:var(--sans); font-size:13.5px; border-top:1px solid var(--oxide); border-bottom:1px solid var(--oxide); padding:11px 0;
+  display:grid; grid-template-columns:118px 1fr auto; gap:16px; align-items:baseline; }
+.ins.soft { border-color:var(--soft); }
+.ins .lab { font-size:10.5px; letter-spacing:.12em; color:var(--oxide); font-weight:600; }
+.ins.soft .lab { color:var(--soft); }
+.ins .note { color:var(--soft); }
+.ins .verdict { font-weight:600; letter-spacing:.08em; font-size:11.5px; color:var(--soft); }
+.ins .verdict.held { color:var(--held); } .ins .verdict.fail { color:var(--oxide); }
+.ins.ask { cursor:pointer; } .ins.ask:hover { background:rgba(182,71,44,.06); }
+.ins.ask .verdict { color:var(--oxide); }
+
+.foot { display:flex; flex-direction:column; gap:12px; padding-top:22px; }
+.chips { display:flex; gap:8px; flex-wrap:wrap; }
+.chips button { font-family:var(--serif); font-size:16px; padding:6px 14px; border:1px solid var(--rule); border-radius:999px; background:rgba(255,255,255,.28); transition:all .2s; }
+.chips button:hover { background:var(--slip-dark); color:var(--bone); border-color:var(--slip-dark); }
+.composer { display:grid; grid-template-columns:1fr auto; gap:16px; align-items:end; padding-top:6px; }
+.composer textarea { width:100%; resize:none; field-sizing:content; min-height:44px; max-height:120px; background:transparent; border:0; border-bottom:1px solid var(--rule);
+  padding:6px 0 8px; font-family:var(--serif); font-size:20px; line-height:1.4;
+  background-image:linear-gradient(var(--oxide), var(--oxide)); background-repeat:no-repeat; background-position:0 100%; background-size:0% 1px; transition:background-size .4s; }
+.composer textarea:focus { background-size:100% 1px; }
+.say { background:var(--slip-dark); color:var(--bone); font-size:12.5px; font-weight:600; padding:10px 18px; border-radius:4px; margin-bottom:10px;
+  box-shadow:0 2px 0 rgba(0,0,0,.35), 0 6px 14px rgba(0,0,0,.25); transition:transform .15s, filter .15s; }
+.say:hover { filter:brightness(1.15); } .say:active { transform:translateY(1px); }
+.written { font-family:var(--serif); font-style:italic; font-size:17px; color:var(--soft); text-align:center; padding:10px 0 4px; }
+.turn { display:flex; justify-content:space-between; font-size:11.5px; color:var(--soft); padding-top:4px; }
+.turn button { color:inherit; } .turn button:hover { color:var(--ink); } .turn button:disabled { opacity:.45; cursor:default; }
+
+/* ── dice tray ── */
+.tray { position:absolute; left:50%; bottom:150px; transform:translateX(-50%); width:340px; background:var(--slip-dark); color:var(--bone); border-radius:14px; padding:18px 20px 16px;
+  box-shadow:0 30px 60px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08); animation:trayIn .45s cubic-bezier(.2,.8,.2,1) both; display:flex; flex-direction:column; gap:14px; font-family:var(--sans); }
+.tray[hidden] { display:none; }
+.tray .top { display:flex; justify-content:space-between; align-items:center; font-size:10.5px; letter-spacing:.14em; color:var(--ember); }
+.tray .top div { display:flex; align-items:center; gap:12px; } .tray .top div span { color:var(--desk-ink-lo); }
+.tray .x { width:22px; height:22px; border-radius:50%; border:1px solid rgba(240,228,204,.25); display:flex; align-items:center; justify-content:center; color:var(--desk-ink); font-size:13px; }
+.tray .x:hover { border-color:var(--bone); color:var(--bone); }
+.dice { display:flex; gap:12px; align-items:center; }
+.die { width:68px; height:68px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:34px; font-weight:600; }
+.die.hi { background:linear-gradient(160deg, #fff7e6, var(--bone)); color:var(--slip-dark); box-shadow:0 8px 16px rgba(0,0,0,.4), inset 0 -3px 0 rgba(0,0,0,.12); }
+.die.lo { background:#3a3128; color:var(--desk-ink-lo); font-weight:400; box-shadow:inset 0 2px 6px rgba(0,0,0,.4); }
+.tray.rolling .die.hi { animation:dieRoll .35s ease-in-out infinite; } .tray.rolling .die.lo { animation:dieRoll .4s ease-in-out infinite reverse; }
+.tray.done .die.hi { animation:settle .7s ease-out both; }
+.maths { flex:1; font-size:13px; line-height:1.5; color:var(--desk-ink); }
+.maths b { display:block; font-size:26px; color:var(--bone); font-family:var(--serif); font-weight:600; }
+.rollbtn { text-align:center; padding:11px; border-radius:999px; background:var(--oxide); color:var(--bone); font-size:12.5px; font-weight:600; letter-spacing:.1em; box-shadow:0 6px 14px rgba(0,0,0,.35); }
+.rollbtn:hover { filter:brightness(1.1); }
+.tray .status { text-align:center; font-size:12px; letter-spacing:.1em; color:var(--desk-ink-lo); line-height:1.5; }
+
+/* ── slips ── */
+.slips { position:relative; display:flex; flex-direction:column; gap:16px; padding-top:4px; min-height:0; }
+.slip { background-color:var(--slip); background-image:var(--noise); border-radius:3px; padding:16px 18px; display:flex; flex-direction:column; gap:10px;
+  box-shadow:0 12px 24px rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.6) inset; }
+.slip.dark { background:var(--slip-dark); color:var(--bone); box-shadow:0 12px 24px rgba(0,0,0,.5); }
+.slip .row { display:flex; justify-content:space-between; align-items:baseline; }
+.slip .name { font-family:var(--serif); font-size:23px; font-weight:500; }
+.slip .sub { font-size:11.5px; color:var(--soft); }
+.slip .kicker { font-size:10.5px; letter-spacing:.14em; color:var(--oxide); font-weight:600; white-space:nowrap; }
+.slip.dark .kicker { color:var(--ember); font-weight:400; }
+.slip .aside { font-size:11px; color:var(--soft); white-space:nowrap; } .slip.dark .aside { color:var(--desk-ink-lo); }
+.slip .fine { font-size:11.5px; color:var(--soft); line-height:1.5; border-top:1px solid var(--rule-soft); padding-top:8px; }
+.slip.dark .fine { color:var(--desk-ink); border-color:rgba(240,228,204,.14); }
+.slip .foot { margin-top:auto; font-size:11.5px; color:var(--soft); line-height:1.5; padding-top:0; }
+.vitals { display:grid; grid-template-columns:1fr auto auto; gap:18px; align-items:end; }
+.hpbar { height:6px; background:var(--rule-soft); border-radius:3px; box-shadow:inset 0 1px 2px rgba(0,0,0,.15); overflow:hidden; }
+.hpbar i { display:block; height:100%; background:var(--held); border-radius:3px; }
+.vitals small { display:block; font-size:11.5px; color:var(--soft); margin-top:5px; }
+.vchip { text-align:center; } .vchip b { display:block; font-family:var(--serif); font-size:27px; font-weight:400; } .vchip span { font-size:9.5px; letter-spacing:.14em; color:var(--soft); }
+.present { display:flex; flex-direction:column; gap:9px; font-size:13.5px; }
+.present div { display:grid; grid-template-columns:70px 1fr auto; gap:10px; animation:rise .5s ease-out both; }
+.present b { font-weight:600; } .present span { color:var(--desk-ink); } .present em { font-style:normal; color:#d6b25a; } .present em.none { color:var(--desk-ink-lo); }
+
+/* the reference slip and its ribbon bookmarks */
+.ref { position:relative; flex:1; min-height:300px; display:flex; flex-direction:column; padding-top:26px; }
+.ribbons { position:absolute; top:0; left:14px; right:14px; display:flex; gap:6px; z-index:2; }
+.ribbons button { flex:1; filter:drop-shadow(0 6px 6px rgba(0,0,0,.4)); }
+.ribbons button:hover { filter:drop-shadow(0 8px 8px rgba(0,0,0,.45)) brightness(1.08); }
+.ribbons button.fresh { animation:ribbonGlow 1.6s ease-in-out infinite; }
+.ribbons button div { height:26px; background:var(--rule); color:var(--slip-dark); font-size:9.5px; letter-spacing:.08em; font-weight:600; display:flex; align-items:flex-end; justify-content:center; padding-bottom:9px;
+  clip-path:polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%); transition:height .25s, background .25s; }
+.ribbons button.record div { background:var(--slip-dark); color:var(--desk-ink); }
+.ribbons button.on div { height:34px; background:var(--oxide); color:var(--bone); }
+.ref .slip { flex:1; padding-top:36px; min-height:0; overflow:hidden; }
+.panel { display:contents; }
+.quests { font-family:var(--serif); font-size:17.5px; line-height:1.4; display:flex; flex-direction:column; gap:8px; }
+.quests div { animation:rise .4s ease-out both; } .quests div.owed { color:var(--gold); }
+.quests small { font-family:var(--sans); font-size:11.5px; color:var(--soft); }
+.ledger { display:flex; flex-direction:column; font-size:12.5px; }
+.ledger div { display:grid; grid-template-columns:36px 1fr auto 54px; gap:8px; padding:8px 0; border-bottom:1px solid var(--rule-soft); animation:rise .4s ease-out both; }
+.ledger div.fresh { background:rgba(182,71,44,.08); }
+.ledger .id, .ledger .vs { color:var(--soft); } .ledger .res { font-weight:600; text-align:right; font-size:11px; letter-spacing:.06em; color:var(--soft); }
+.ledger .res.held { color:var(--held); } .ledger .res.fail { color:var(--oxide); }
+.codex { font-family:var(--serif); font-size:16.5px; line-height:1.4; display:flex; flex-direction:column; gap:9px; }
+.codex div { animation:rise .4s ease-out both; }
+.codex .vis { font-family:var(--sans); font-size:9.5px; letter-spacing:.12em; font-weight:600; margin-right:8px; color:var(--held); } .codex .vis.susp { color:var(--gold); }
+.party { display:flex; flex-direction:column; gap:12px; font-size:13px; }
+.party .who { font-family:var(--serif); font-size:18px; } .party .who span { font-weight:400; color:var(--soft); font-size:14px; }
+.party .res { color:var(--soft); line-height:1.5; } .party .did { font-family:var(--serif); font-style:italic; font-size:15.5px; margin-top:3px; }
+.abilities { display:grid; grid-template-columns:repeat(6,1fr); gap:6px; text-align:center; }
+.abilities div { background:rgba(255,255,255,.35); border-radius:6px; padding:8px 0; animation:rise .4s ease-out both; }
+.abilities small { display:block; font-size:9px; letter-spacing:.12em; color:var(--soft); } .abilities b { display:block; font-family:var(--serif); font-size:22px; font-weight:500; } .abilities i { font-style:normal; font-size:11px; color:var(--soft); }
+.label { font-size:10.5px; letter-spacing:.12em; color:var(--soft); margin-top:6px; }
+.spells { display:flex; flex-wrap:wrap; gap:6px; }
+.spells button { font-family:var(--serif); font-size:15px; padding:4px 11px; border:1px solid var(--rule); border-radius:999px; background:rgba(255,255,255,.3); }
+.spells button:hover { background:var(--slip-dark); color:var(--bone); }
+.search { width:100%; background:rgba(255,255,255,.4); border:1px solid var(--rule); border-radius:999px; padding:9px 14px; font-family:var(--serif); font-size:16px; }
+.articles { display:flex; flex-direction:column; gap:10px; }
+.articles div { border-top:1px solid var(--rule-soft); padding-top:8px; animation:rise .4s ease-out both; }
+.articles .row b { font-family:var(--serif); font-size:18px; font-weight:500; } .articles .row span { font-size:10.5px; color:var(--soft); }
+.articles p { margin:0; font-size:12.5px; color:var(--soft); line-height:1.5; }
+.notes { flex:1; width:100%; resize:none; background:transparent; border:0; font-family:var(--serif); font-size:17px; line-height:1.55;
+  background-image:repeating-linear-gradient(transparent 0 25px, var(--rule-soft) 25px 26px); background-attachment:local; }
+</style>
+</head>
+<body>
+<div class="desk">
+  <div class="lamp"></div>
+
+  <aside class="rail">
+    <div class="campaign">A Wild<br>Sheep Chase</div>
+    <div class="meta">SESSION 2 · <span id="elapsed">41 MIN</span></div>
+    <nav class="chapters" id="chapters"></nav>
+    <div class="dm">DM of record<br><b>Seren · deadpan</b></div>
+    <button class="lampbtn" id="lamp"><i></i><span>LAMP HIGH · TURN DOWN</span></button>
+  </aside>
+
+  <main class="page">
+    <div class="edge"></div>
+    <header class="head"><h1 id="title"></h1><span id="when"></span></header>
+    <section class="stream" id="stream"></section>
+    <footer class="foot" id="foot"></footer>
+
+    <div class="tray" id="tray" hidden>
+      <div class="top"><span>WISDOM · PERCEPTION</span><div><span>ADVANTAGE</span><button class="x" id="trayClose">×</button></div></div>
+      <div class="dice"><div class="die hi" id="dieHi">—</div><div class="die lo" id="dieLo">—</div><div class="maths" id="maths">2d20, higher + 5<b></b></div></div>
+      <button class="rollbtn" id="rollBtn">ROLL</button>
+      <div class="status" id="trayStatus" hidden></div>
+    </div>
+  </main>
+
+  <aside class="slips">
+    <div class="slip" style="transform:rotate(-.6deg)">
+      <div class="row"><span class="name">Ser'en</span><span class="sub">druid 4 · Circle of Stars</span></div>
+      <div class="vitals">
+        <div><div class="hpbar"><i style="width:100%"></i></div><small>27 / 27 · slots 2 / 2 · Wild Shape 2</small></div>
+        <div class="vchip"><b>15</b><span>AC</span></div>
+        <div class="vchip"><b>+5</b><span>SPELL</span></div>
+      </div>
+      <div class="fine" style="color:var(--ink)">Vial of Moonwell Water · unopened. Shield carried, not worn.</div>
+    </div>
+
+    <div class="slip dark" style="transform:rotate(.4deg)">
+      <div class="row"><span class="kicker">NOW · AT THE CART</span><span class="aside">not in initiative</span></div>
+      <div class="present" id="present"></div>
+      <div class="fine">Bless · +1d4 to attacks and saves · Grumble's concentration · CON +2, no War Caster — any damage is a real save.</div>
+    </div>
+
+    <div class="ref">
+      <div class="ribbons" id="ribbons"></div>
+      <div class="slip" style="transform:rotate(-.3deg)">
+        <div class="row"><span class="kicker" id="panelTitle"></span><span class="aside" id="panelMeta"></span></div>
+        <div class="panel" id="panel"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script>
+// ── data ─────────────────────────────────────────────────────────────────
+// Stream item types: p (narration) · said (the player) · ins (ruled insert,
+// the DM's mechanics voice) · ask (a roll Seren has requested).
+// Nothing here has a shape for clocks, beats, wants, or true/false tags.
+const scenes = [
+  { title: 'i · The sheep finds you', when: 'THE ROAD OUT OF GREENEST · MORNING', items: [
+    { t: 'p', text: 'A sheep is standing in the road. It is looking at you the way a clerk looks at a form. When Korth steps round it, it steps round Korth, and stands in the road again, and goes on looking.' },
+    { t: 'ins', label: "e001 · SER'EN", text: 'Speak with Animals · slot 1 spent', verdict: '—' },
+    { t: 'p', text: 'It says, with great patience, that it is not a sheep, that its name is Shinebright, and that it would be grateful if somebody would stop saying "good sheep" at it.' } ] },
+  { title: 'ii · Guz, at the ford', when: 'THE FORD · MIDDAY', items: [
+    { t: 'p', text: 'The man at the ford has a horse that is better than he is and a sack that is trying to leave. He introduces himself as Guz. He is not, he says, here for the sheep. He says this before anyone has mentioned a sheep.' },
+    { t: 'ins', label: 'e004 · GRUMBLE', text: 'Insight · d20 16 + 4 · 20 vs 14', verdict: 'HELD', ok: true },
+    { t: 'p', text: 'He is lying about one thing and it is not the sheep.' } ] },
+  { title: 'iii · The mill yard', when: "NOKE'S MILL · AFTERNOON", items: [
+    { t: 'p', text: 'Noke is in his own yard, alive, unresolved, and holding two halves of a wand as if they might yet agree to be one. He does not want a fight. He would like everyone to leave, and has said so in the tone of a man reading terms.' },
+    { t: 'ins', soft: true, label: '→ QUESTS', text: 'Thread opened · Guz has not said who is paying him.', note: 'Asked twice.' },
+    { t: 'said', text: 'We will think about it.' },
+    { t: 'p', text: 'The miller takes that as a yes. He gives you until market day.' } ] },
+  { title: "iv · The drover's road", when: 'AN HOUR PAST THE FORD · LATE AFTERNOON', items: [
+    { t: 'p', text: 'The cart has been here long enough for the wheel-lines to dry pale at the edges. Its tailboard is down. Nothing has been taken; something has been unloaded, and carried away on foot, and whoever did it went north through the gap in the hedge without troubling to close it.' },
+    { t: 'ins', label: 'e011 · KORTH', text: 'Reading the wheel-lines · d20 11 + 2, took the lower of two · 13 vs 12', note: '(dim light)', verdict: 'HELD', ok: true },
+    { t: 'p', text: 'Guz stays on his horse. The grey dog sits in the road between you and the hedge and watches the hedge, not you. Something in there stops breathing when you stop walking.' },
+    { t: 'ins', soft: true, label: '→ CODEX', text: "Known · The dog's collar is silver, and it is engraved.", note: 'Seen at ten feet.' },
+    { t: 'said', text: 'Nobody moves. Guz, that means you as well.' },
+    { t: 'ask', text: "Wisdom (Perception), Ser'en. Listening at the hedgerow.", note: 'WIS +3 · proficiency +2 · advantage from the dog', verdict: 'OPEN THE TRAY' } ] },
+];
+const LIVE = 3;
+
+const state = {
+  scene: LIVE, panel: 'quests', rolled: false, start: Date.now() - 41 * 60000,
+  record: [
+    { id: 'e012', what: 'the hedge · breaking cover', vs: '5 vs 12', res: 'DID NOT', ok: false },
+    { id: 'e011', what: 'Korth · reading the wheel-lines', vs: '13 vs 12', res: 'HELD', ok: true },
+    { id: 'e010', what: 'Grumble · Bless', vs: 'slot 1', res: '—' },
+    { id: 'e009', what: "Ser'en · Speak with Animals", vs: 'slot 1', res: '—' } ],
+  quests: [
+    { text: 'Whose cart is it?', meta: 'opened this scene' },
+    { text: 'The collar is engraved and you have not read it.' },
+    { text: 'Guz has not said who is paying him.', meta: 'asked twice' },
+    { text: 'The miller wants an answer by market day.', meta: 'two days', owed: true } ],
+  present: [
+    { who: 'Korth', state: 'far side of the cart, silent', hp: '31/38' },
+    { who: 'Grumble', state: 'beside you · holding Bless', hp: '19/22' },
+    { who: 'Guz', state: 'mounted, twenty feet back' },
+    { who: 'The dog', state: 'in the road, watching the hedge' } ],
+  codex: [
+    { vis: 'KNOWN', text: 'The carter left the road on foot, north, in a hurry.' },
+    { vis: 'KNOWN', text: "The dog's collar is silver, and it is engraved." },
+    { vis: 'SUSPECTED', text: 'Whatever was on the cart was unloaded here, not stolen.' },
+    { vis: 'SUSPECTED', text: 'Guz is paid by someone in Greenest Crossing.' } ],
+  articles: [
+    { name: 'Goodberry', kind: '1st · transmutation', text: 'Ten berries. One berry restores 1 hit point and feeds a creature for a day.' },
+    { name: 'Speak with Animals', kind: '1st · divination · ritual', text: 'Comprehend and verbally communicate with beasts for ten minutes. It does not make them truthful, cooperative, or good at counting.' },
+    { name: 'Bless', kind: '1st · enchantment · concentration', text: 'Up to three creatures add 1d4 to attack rolls and saving throws for one minute.' },
+    { name: 'Grappled', kind: 'condition', text: 'Speed becomes 0. Ends if the grappler is incapacitated or you are moved out of reach.' },
+    { name: 'Wolf', kind: 'beast · CR ¼', text: 'AC 13 · HP 11 · pack tactics. Bite +4 to hit, 2d4+2 piercing, knocks prone on a failed DC 11 STR save.' } ],
+  query: '', notes: localStorage.getItem('seren.notes') ?? "Guz — will not name his employer. Asked twice.\nCollar: silver, engraved, dog won't let anyone near it.\nMiller wants an answer by market day (2 days).",
+};
+
+const canned = {
+  'Ask Korth what he sees': [{ t: 'ins', soft: true, label: 'KORTH', text: 'Points at the hedge with his chin. Says "small," and then, after consideration, "not a wolf."' }],
+  'Speak with the dog': [
+    { t: 'ins', label: "e013 · SER'EN", text: 'Speak with Animals · slot 2 spent', verdict: '—' },
+    { t: 'p', text: 'The dog says the thing in the hedge is a boy, that the boy is hers, and that you are welcome to him. It says this without taking its eyes off the hedge.' } ],
+};
+const fallback = { t: 'p', text: 'The dog looks at you. It has decided you are the sensible one, which is not a compliment to anybody present.' };
+
+// ── helpers ──────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+
+// ── render ───────────────────────────────────────────────────────────────
+function renderRail() {
+  const nav = $('chapters'); nav.innerHTML = '';
+  scenes.forEach((s, i) => {
+    const b = el('button', i === state.scene ? 'on' : '', esc(s.title));
+    b.onclick = () => { state.scene = i; renderPage(); renderRail(); };
+    nav.appendChild(b);
+  });
+  $('elapsed').textContent = Math.max(41, Math.round((Date.now() - state.start) / 60000)) + ' MIN';
+}
+
+function renderPage() {
+  const s = scenes[state.scene], live = state.scene === LIVE;
+  $('title').textContent = s.title; $('when').textContent = s.when;
+  const st = $('stream'); st.innerHTML = '';
+  s.items.forEach(it => {
+    if (it.t === 'p') st.appendChild(el('p', '', esc(it.text)));
+    else if (it.t === 'said') st.appendChild(el('p', 'said', '“' + esc(it.text) + '”'));
+    else {
+      const d = el('div', 'ins' + (it.soft ? ' soft' : '') + (it.t === 'ask' ? ' ask' : ''));
+      const v = it.ok === true ? 'held' : it.ok === false ? 'fail' : '';
+      d.innerHTML = `<span class="lab">${esc(it.t === 'ask' ? 'ROLL ASKED' : it.label)}</span><span>${esc(it.text)} <span class="note">${esc(it.note)}</span></span><span class="verdict ${v}">${esc(it.verdict)}</span>`;
+      if (it.t === 'ask') d.onclick = openTray;
+      st.appendChild(d);
+    }
+  });
+
+  const f = $('foot'); f.innerHTML = '';
+  if (live) {
+    const chips = el('div', 'chips');
+    (state.rolled ? ['Help him up', 'Ask what is in the sack', 'Watch the dog'] : ['Roll it', 'Ask Korth what he sees', 'Speak with the dog']).forEach(l => {
+      const b = el('button', '', esc(l)); b.onclick = () => l === 'Roll it' ? openTray() : respond(l); chips.appendChild(b);
+    });
+    const c = el('div', 'composer');
+    const ta = el('textarea'); ta.rows = 1; ta.placeholder = 'What do you do?';
+    const say = el('button', 'say', 'Say it');
+    const submit = () => { const d = ta.value.trim(); if (!d) return; ta.value = ''; respond(d); };
+    say.onclick = submit; ta.onkeydown = e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); } };
+    c.append(ta, say); f.append(chips, c);
+  } else f.appendChild(el('div', 'written', 'This page is written. Nothing here is retconned.'));
+
+  const turn = el('div', 'turn');
+  const prev = el('button', '', '‹ ' + esc(state.scene > 0 ? scenes[state.scene - 1].title : 'session start'));
+  const next = el('button', '', esc(state.scene < LIVE ? scenes[state.scene + 1].title : 'v · not yet written') + ' ›');
+  prev.disabled = state.scene === 0; next.disabled = state.scene === LIVE;
+  prev.onclick = () => { state.scene--; renderPage(); renderRail(); };
+  next.onclick = () => { state.scene++; renderPage(); renderRail(); };
+  turn.append(prev, el('span', '', 'page ' + (8 + state.scene)), next);
+  f.appendChild(turn);
+}
+
+function renderPresent() {
+  const p = $('present'); p.innerHTML = '';
+  state.present.forEach(x => p.appendChild(el('div', '', `<b>${esc(x.who)}</b><span>${esc(x.state)}</span><em class="${x.hp ? '' : 'none'}">${esc(x.hp ?? '—')}</em>`)));
+}
+
+const TABS = ['quests', 'party', 'sheet', 'record', 'codex', 'library', 'notes'];
+function renderRef() {
+  const r = $('ribbons'); r.innerHTML = '';
+  TABS.forEach(k => {
+    const b = el('button', (k === state.panel ? 'on ' : '') + (k === 'record' ? 'record ' : '') + (k === 'record' && state.rolled && state.panel !== 'record' ? 'fresh' : ''));
+    b.appendChild(el('div', '', k.toUpperCase()));
+    b.onclick = () => { state.panel = k; renderRef(); };
+    r.appendChild(b);
+  });
+  const p = $('panel'); p.innerHTML = '';
+  const k = state.panel, S = state;
+  const meta = { quests: `${S.quests.length} open · 1 owed`, party: 'two companions', sheet: 'druid 4', record: `${S.record.length + 9} rolls · nothing retconned`, codex: '9 known or suspected', library: '616 articles', notes: 'yours' };
+  $('panelTitle').textContent = k === 'sheet' ? "SHEET · SER'EN" : k.toUpperCase(); $('panelMeta').textContent = meta[k];
+
+  if (k === 'quests') {
+    const q = el('div', 'quests');
+    S.quests.forEach(x => q.appendChild(el('div', x.owed ? 'owed' : '', `${esc(x.text)} <small>${esc(x.meta)}</small>`)));
+    p.appendChild(q);
+  } else if (k === 'record') {
+    const l = el('div', 'ledger');
+    S.record.forEach(x => l.appendChild(el('div', x.fresh ? 'fresh' : '', `<span class="id">${x.id}</span><span>${esc(x.what)}</span><span class="vs">${esc(x.vs)}</span><span class="res ${x.ok === true ? 'held' : x.ok === false ? 'fail' : ''}">${esc(x.res)}</span>`)));
+    p.append(l, el('div', 'foot', 'Every roll with its inputs and its target. If a number here disagrees with something you were told, the number is right.'));
+  } else if (k === 'codex') {
+    const c = el('div', 'codex');
+    S.codex.forEach(x => c.appendChild(el('div', '', `<span class="vis ${x.vis === 'SUSPECTED' ? 'susp' : ''}">${x.vis}</span>${esc(x.text)}`)));
+    p.append(c, el('div', 'foot', 'Two of the entries above are wrong. Nothing on this page will tell you which. <span style="color:var(--rule)">🔒 4 facts sit on the DM\'s side of the screen.</span>'));
+  } else if (k === 'party') {
+    p.append(el('div', 'party', `
+      <div><div class="row"><b class="who">Korth <span>· fighter 4</span></b><span class="sub">31 / 38</span></div><div class="res">Second Wind spent · Action Surge available · hit dice 3 of 4.</div><div class="did">Has not said anything since the ford. Went to the far side of the cart without being asked.</div></div>
+      <div><div class="row"><b class="who">Grumble <span>· cleric 4</span></b><span class="sub">19 / 22</span></div><div class="res">Slots 3 / 4 · Channel Divinity available · concentrating on Bless.</div><div class="did">“For about another minute, and then I'd like someone else to have a plan.”</div></div>`),
+      el('div', 'foot', 'What they have said and done. Never why — that is yours to write, in Notes.'));
+  } else if (k === 'sheet') {
+    const a = el('div', 'abilities');
+    [['STR', 10, '+0'], ['DEX', 16, '+3'], ['CON', 14, '+2'], ['INT', 12, '+1'], ['WIS', 17, '+3'], ['CHA', 11, '+0']].forEach(([k, v, m]) => a.appendChild(el('div', '', `<small>${k}</small><b>${v}</b><i>${m}</i>`)));
+    const sp = el('div', 'spells');
+    ['Speak with Animals', 'Goodberry', 'Entangle', 'Healing Word', 'Bless'].forEach(n => { const b = el('button', '', n); b.onclick = () => { state.panel = 'library'; state.query = n; renderRef(); }; sp.appendChild(b); });
+    p.append(a, el('div', 'label', 'PREPARED'), sp, el('div', 'foot', 'Every spell opens its article in Library. Starry Form arrives at level 2 and is on the sheet.'));
+  } else if (k === 'library') {
+    const inp = el('input', 'search'); inp.placeholder = 'Search 616 articles'; inp.value = S.query;
+    inp.oninput = () => { S.query = inp.value; list(); };
+    const arts = el('div', 'articles');
+    const list = () => { const q = S.query.toLowerCase(); arts.innerHTML = '';
+      S.articles.filter(x => !q || x.name.toLowerCase().includes(q) || x.text.toLowerCase().includes(q)).slice(0, 3)
+        .forEach(x => arts.appendChild(el('div', '', `<div class="row"><b>${esc(x.name)}</b><span>${esc(x.kind)}</span></div><p>${esc(x.text)}</p>`))); };
+    list();
+    p.append(inp, arts, el('div', 'foot', 'SRD 5.2 · CC BY 4.0 · rules are not secret; nothing here is withheld.'));
+  } else if (k === 'notes') {
+    const ta = el('textarea', 'notes'); ta.value = S.notes; ta.placeholder = 'Who owes whom, what the collar said, the name you did not catch…';
+    ta.oninput = () => { S.notes = ta.value; localStorage.setItem('seren.notes', ta.value); };
+    p.append(ta, el('div', 'foot', 'Yours. Kept in this browser. Seren never reads this slip.'));
+  }
+}
+
+// ── play ─────────────────────────────────────────────────────────────────
+function push(items) { scenes[LIVE].items.push(...items); renderPage(); }
+function respond(line) {
+  push([{ t: 'said', text: line }]);
+  setTimeout(() => push(canned[line] || [fallback]), 700);
+}
+
+// The tray: 2d20 with advantage, +5. The engine owns the randomness here;
+// Seren owns the DC (15). The result is written to the stream and to Record.
+const tray = $('tray');
+function openTray() {
+  tray.hidden = false; tray.className = 'tray';
+  $('dieHi').textContent = '—'; $('dieLo').textContent = '—'; $('maths').innerHTML = '2d20, higher + 5<b></b>';
+  $('rollBtn').hidden = false; $('trayStatus').hidden = true;
+}
+$('trayClose').onclick = () => { clearInterval(spin); tray.hidden = true; };
+let spin;
+$('rollBtn').onclick = () => {
+  tray.classList.add('rolling'); $('rollBtn').hidden = true; $('trayStatus').hidden = false; $('trayStatus').textContent = 'ROLLING';
+  const t0 = Date.now();
+  spin = setInterval(() => {
+    const a = 1 + Math.floor(Math.random() * 20), b = 1 + Math.floor(Math.random() * 20);
+    $('dieHi').textContent = a; $('dieLo').textContent = b;
+    if (Date.now() - t0 < 950) return;
+    clearInterval(spin);
+    const hi = Math.max(a, b), lo = Math.min(a, b), total = hi + 5, ok = total >= 15;
+    tray.classList.replace('rolling', 'done');
+    $('dieHi').textContent = hi; $('dieLo').textContent = lo; $('maths').innerHTML = `${hi} + 5, higher of two<b>${total}</b>`;
+    $('trayStatus').textContent = "Written to Record as e014. The DC is Seren's; you will see it there.";
+    setTimeout(() => {
+      tray.hidden = true; state.rolled = true;
+      state.record.unshift({ id: 'e014', what: "Ser'en · listening at the hedgerow", vs: `${total} vs 15`, res: ok ? 'HELD' : 'DID NOT', ok, fresh: true });
+      const items = scenes[LIVE].items; items.splice(items.findIndex(i => i.t === 'ask'), 1);
+      items.push({ t: 'ins', label: "e014 · SER'EN", text: `Listening at the hedgerow · d20 ${hi} + 5, took the higher of two · ${total} vs 15`, note: '(advantage)', verdict: ok ? 'HELD' : 'DID NOT', ok },
+        ok ? { t: 'p', text: 'Breathing. One person, small, trying very hard to be a hedge. Under it, fainter, something in a sack that has given up trying to be anything.' }
+           : { t: 'p', text: "Wind in the hawthorn, and your own pulse, and the dog's. Whatever is in there is better at this than you are, and knows it." });
+      if (ok) { state.present.splice(3, 0, { who: 'The boy', state: 'in the hedge · you know he is there' }); state.quests.unshift({ text: 'Something in a sack, in the hedge, has stopped struggling.', meta: 'just now' }); }
+      renderPage(); renderPresent(); renderRef();
+    }, 1900);
+  }, 70);
+};
+
+// Lamp: light / dark. Remembered per browser.
+const root = document.documentElement;
+const setTheme = t => { root.dataset.theme = t; localStorage.setItem('seren.theme', t); $('lamp').lastElementChild.textContent = t === 'dark' ? 'LAMP LOW · TURN UP' : 'LAMP HIGH · TURN DOWN'; };
+setTheme(localStorage.getItem('seren.theme') || 'light');
+$('lamp').onclick = () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+
+renderRail(); renderPage(); renderPresent(); renderRef();
+setInterval(renderRail, 30000);
+</script>
+</body>
+</html>
