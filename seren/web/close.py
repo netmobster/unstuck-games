@@ -42,7 +42,7 @@ numbers — the arithmetic is printed above your section by the server.
 
 def reconcile(campaign) -> dict:
     """The numbers, before anyone writes a sentence about them."""
-    ledger = dice.read(campaign.ledger)
+    ledger = _this_session(campaign)
     rolled = [e for e in ledger if "roll" in e]
     facts = [f for f in dice.read(campaign.facts_file) if f.get("s") == campaign.session]
     return {
@@ -82,7 +82,10 @@ def _block(campaign, counts: dict) -> str:
 
 def _evidence(campaign) -> str:
     """What the DM is allowed to write the log from: the record, and only the record."""
-    ledger = dice.read(campaign.ledger)[-40:]
+    # A held leak is the server's audit note about the DM, not something that happened at
+    # the table. Session 5's log called it a fog gate in front of the player; it is not the
+    # DM's to narrate, so it does not go in the evidence.
+    ledger = [e for e in _this_session(campaign) if e.get("t") not in ("leak", "session_close")][-40:]
     facts = [f for f in dice.read(campaign.facts_file) if f.get("s") == campaign.session]
     rows = []
     for e in ledger:
@@ -173,3 +176,12 @@ def close(campaign, history: list[dict]) -> dict:
               f"Session {campaign.session} closed: {counts['rolls']} rolls, "
               f"{counts['facts_this_session']} facts, promoted to canon.")
     return {"counts": counts, "log": body, "written": written}
+
+
+def _this_session(campaign) -> list[dict]:
+    """The ledger lines written since this session opened.
+
+    Lines from before `s` was recorded have no session on them; they belong to a session
+    that has already been closed, so they are not this one's to count or to narrate.
+    """
+    return [e for e in dice.read(campaign.ledger) if e.get("s") == campaign.session]

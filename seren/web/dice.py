@@ -120,6 +120,8 @@ def roll(ledger: Path, spec: str, entry: dict | None = None) -> dict:
     mod_total = sum(int(v) for _, v in mods)
 
     entry["id"] = "e%03d" % (_last_id(ledger, "e") + 1)
+    if entry.get("s") is not None:
+        entry["s"] = int(entry["s"])
     entry.setdefault("rd", None)
     entry["roll"] = dice[0] if n == 1 else sum(dice)
     entry["total"] = entry["roll"] + dmod + mod_total

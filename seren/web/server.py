@@ -53,7 +53,7 @@ def _session_for(sid: str) -> dict:
             root = campaign_dir()
             camp = state.Campaign(root=root, tier=TIER)
             camp.session = 1 + len(list((root / "sessions").glob("*.md"))) if (root / "sessions").is_dir() else 1
-            sess = {"campaign": camp, "history": [], "messages": [], "pending": None}
+            sess = {"campaign": camp, "history": [], "messages": [], "pending": None, "stream": []}
             _sessions[sid] = sess
         return sess
 
@@ -167,9 +167,14 @@ class Handler(BaseHTTPRequestHandler):
             view["sheet"] = camp.sheet()
             view["library"] = camp.library()
             view["campaign"] = camp.title()
-            view["beats"] = [{"kind": "note", "text": f"SESSION {camp.session} — the table is set"}]
+            opening = [{"kind": "note", "text": f"SESSION {camp.session} — the table is set"}]
             if not corpus.ROOT.is_dir():
-                view["beats"].append({"kind": "note", "text": "NO CORPUS FOUND — set SEREN_CONTENT_DIR"})
+                opening.append({"kind": "note", "text": "NO CORPUS FOUND — set SEREN_CONTENT_DIR"})
+            if not sess["stream"]:
+                sess["stream"] = opening
+            # Everything the player has been shown this session, so a refresh costs nothing.
+            view["beats"] = sess["stream"]
+            view["pending"] = bool(sess.get("pending"))
             return self._json(200, view, cookie)
 
         if path == "/api/turn":
@@ -185,6 +190,8 @@ class Handler(BaseHTTPRequestHandler):
             except Exception as exc:
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
             sess["history"] = out["messages"][-24:]  # a session's worth, trimmed at the edges
+            sess["stream"].append({"kind": "said", "text": said})
+            sess["stream"].extend(out["beats"])
             sess["pending"] = out.get("pending")
             sess["messages"] = out["messages"]
             view = camp.player_view()
@@ -208,6 +215,7 @@ class Handler(BaseHTTPRequestHandler):
             sess["pending"] = out.get("pending")
             sess["messages"] = out["messages"]
             sess["history"] = out["messages"][-24:]
+            sess["stream"].extend(out["beats"])
             view = camp.player_view()
             view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
             view["beats"] = out["beats"]
@@ -218,6 +226,9 @@ class Handler(BaseHTTPRequestHandler):
             out = session_close.close(camp, sess["history"])
             counts = out["counts"]
             sess["history"] = []
+            sess["messages"] = []
+            sess["pending"] = None
+            sess["stream"] = []
             camp.session += 1
             return self._json(200, {
                 "beats": [

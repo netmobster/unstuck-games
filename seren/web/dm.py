@@ -207,7 +207,12 @@ def _valid_actor(campaign, who: str) -> str | None:
     who = (who or "").strip().lower()
     at_table = [k for k, v in campaign.party().items()
                 if isinstance(v, dict) and k not in ("round_synced", "xp")]
-    if who and at_table and who not in at_table and who not in ("dm", "world"):
+    if not who:
+        # A roll with nobody attached cannot be read back later, and the Record row would
+        # say only "perception". The ledger is the audit trail; it needs a name.
+        return ("every roll needs `who`: the slug of whoever is acting"
+                + (f", one of {', '.join(at_table)}" if at_table else "") + ".")
+    if at_table and who not in at_table and who not in ("dm", "world"):
         return (f"`who` must be someone at this table: {', '.join(at_table)}. "
                 "If the world is rolling, say who in the fiction is acting.")
     return None
@@ -223,12 +228,14 @@ def _run_tool(campaign, name: str, args: dict) -> dict:
             if bad:
                 return {"ok": False, "refused": bad}
             args.pop("why", None)  # the player's words for it, not the ledger's
+            args["s"] = campaign.session   # which session this line belongs to
             return {"ok": True, "entry": dice.roll(campaign.ledger, spec, args)}
         if name == "fact":
             op = args.pop("op")
             return {"ok": True, "entry": dice.fact(campaign.facts_file, campaign.session, op, **args)}
         if name == "ruling":
             return {"ok": True, "entry": dice.note(campaign.ledger, "ruling", args.get("note", ""),
+                                                   s=campaign.session,
                                                    who=args.get("who"), scope=args.get("scope"))}
         return {"ok": False, "error": f"no such tool: {name}"}
     except dice.Refused as exc:
@@ -265,7 +272,8 @@ def _continue(campaign, messages: list[dict], beats: list[dict], carried: list[d
         if said:
             leaks = fog.check(said, campaign.dm_side())
             if leaks:
-                dice.note(campaign.ledger, "leak", "held by the fog gate: " + "; ".join(leaks))
+                dice.note(campaign.ledger, "leak", "held by the fog gate: " + "; ".join(leaks),
+                          s=campaign.session)
                 beats.append({"kind": "note", "text": fog.held_message(leaks)})
             else:
                 beats.append({"kind": "dm", "text": said})
@@ -316,6 +324,7 @@ def resume_roll(campaign, messages: list[dict], pending: dict) -> dict:
     args.pop("why", None)
     beats: list[dict] = []
     try:
+        args["s"] = campaign.session
         entry = dice.roll(campaign.ledger, spec, args)
         out = {"ok": True, "entry": entry}
         beats.append(roll_beat(entry))

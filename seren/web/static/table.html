@@ -50,6 +50,7 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
 /* ── chapter rail ── */
 .rail { position:relative; padding:6px 0; display:flex; flex-direction:column; gap:20px; color:var(--desk-ink); }
 .rail .campaign { font-family:var(--serif); font-size:23px; font-weight:500; line-height:1.15; color:var(--desk-ink-hi); }
+.lampbtn.close i { background:var(--oxide) }
 .rail .meta { font-size:10.5px; letter-spacing:.14em; color:var(--desk-ink-lo); }
 .chapters { display:flex; flex-direction:column; gap:12px; margin-top:8px; font-family:var(--serif); font-size:17px; }
 .chapters button { text-align:left; color:var(--desk-ink-lo); border-left:2px solid transparent; padding-left:10px; margin-left:-12px; transition:color .3s; }
@@ -197,6 +198,7 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
     <nav class="chapters" id="chapters"></nav>
     <div class="dm">DM of record<br><b>Seren · deadpan</b></div>
     <button class="lampbtn" id="lamp"><i></i><span>LAMP HIGH · TURN DOWN</span></button>
+    <button class="lampbtn close" id="closeBtn"><i></i><span>CLOSE THE SESSION</span></button>
   </aside>
 
   <main class="page">
@@ -301,6 +303,7 @@ function beatItems(beats) {
   const out = [];
   (beats || []).forEach(b => {
     if (b.kind === 'dm') out.push({ t: 'p', text: b.text });
+    else if (b.kind === 'said') out.push({ t: 'said', text: b.text });
     else if (b.kind === 'roll') out.push(rollItem(b));
     else if (b.kind === 'ask') out.push({
       t: 'ask', text: b.what || b.check, note: (b.mods || []).join(' · '), verdict: 'OPEN THE TRAY', ask: b,
@@ -594,6 +597,35 @@ function settle(d) {
     renderRef();
   }, 1900);
 }
+
+// Closing writes the session out — the log, the reconciliation, the facts promoted to
+// canon. It asks twice, because it is the one button on this page that changes the
+// campaign folder for good.
+let armed = false;
+$('closeBtn').onclick = async () => {
+  const label = $('closeBtn').lastElementChild;
+  if (!armed) {
+    armed = true;
+    label.textContent = 'PRESS AGAIN TO CLOSE ' + state.session;
+    setTimeout(() => { if (armed) { armed = false; label.textContent = 'CLOSE THE SESSION'; } }, 6000);
+    return;
+  }
+  armed = false; label.textContent = 'WRITING THE SESSION…';
+  $('closeBtn').disabled = true;
+  try {
+    const d = await api('/api/close');
+    const done = scenes[LIVE];
+    absorb(d);
+    done.title = 'Session ' + Math.max(1, (d.session || state.session) - 1);
+    scenes.push({ title: 'this session', when: '', items: [] });
+    LIVE = scenes.length - 1; state.scene = LIVE;
+    paint();
+  } catch (e) {
+    push([{ t: 'ins', label: 'THE TABLE', text: String(e.message || e), verdict: '—' }]);
+  } finally {
+    $('closeBtn').disabled = false; label.textContent = 'CLOSE THE SESSION';
+  }
+};
 
 // Lamp: light / dark. Remembered per browser.
 const root = document.documentElement;
