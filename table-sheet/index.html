@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Table Sheet — Unstuck Games</title>
+<meta name="description" content="Point it at your D&amp;D Beyond character and get the page you actually want at the table: what every spell does in plain English, what fits in one turn, and what on your sheet is going to fail mid-fight.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito+Sans:wght@400;700;800&family=IBM+Plex+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{--bg:#f2efe6;--card:#faf8f2;--ink:#16163a;--muted:#565672;--accent:#2b34d6;--acid:#e9f257;
+        --onAccent:#f2efe6;--rs:16px;--pill:999px;--fh:'Luckiest Guy',cursive;--fb:'Nunito Sans',sans-serif;
+        --fm:'IBM Plex Mono',ui-monospace,Consolas,monospace}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--fb);-webkit-font-smoothing:antialiased}
+  a{color:inherit}
+  h1,h2,h3{font-family:var(--fh);font-weight:400;margin:0}
+  p{margin:0}
+  .wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+  nav{background:var(--bg);border-bottom:2px solid var(--ink)}
+  nav .wrap{padding:14px 24px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+  .brand{display:flex;align-items:center;gap:10px;text-decoration:none}
+  .brand .word{font-family:var(--fh);font-size:28px;line-height:1}
+  .brand .word i{font-style:normal;color:var(--accent)}
+  .brand small{font-family:var(--fh);font-size:12px;letter-spacing:2px;color:var(--muted)}
+  .links{display:flex;gap:18px;align-items:center;flex-wrap:wrap;font-weight:800;font-size:14px;letter-spacing:.06em}
+  .links a{text-decoration:none}.links a:hover{color:var(--accent)}
+  .links .on{background:var(--ink);color:var(--bg);padding:6px 12px;border-radius:var(--pill)}
+  header.top{padding:56px 0 10px}
+  header.top .kicker{font-weight:800;font-size:13px;letter-spacing:.16em;color:var(--accent)}
+  header.top h1{font-size:clamp(40px,6.5vw,76px);line-height:.95;margin-top:10px}
+  .lede{font-size:20px;line-height:1.55;max-width:58ch;margin:18px 0 0}
+  .lede b{font-weight:800}
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:24px;padding:34px 0}
+  .card{background:var(--card);border:2px solid var(--ink);border-radius:var(--rs);padding:20px 22px;
+        box-shadow:5px 6px 0 rgba(22,22,58,.14)}
+  .card h3{font-size:22px;margin-bottom:8px}
+  .card p{font-size:16px;line-height:1.6}
+  .card p + p{margin-top:10px}
+  .rule{display:flex;gap:12px;align-items:flex-start;padding:12px 0;border-top:1.5px solid rgba(22,22,58,.14)}
+  .rule:first-of-type{border-top:0}
+  .rule b{font-family:var(--fh);font-weight:400;font-size:19px;color:var(--accent);line-height:1.1;flex:none;width:28px}
+  .rule span{font-size:16px;line-height:1.55}
+  .strip{background:var(--ink);color:var(--bg);border-radius:var(--rs);padding:26px 24px;margin:10px 0 40px}
+  .strip h2{font-size:clamp(24px,3vw,34px);line-height:1.05;color:var(--acid)}
+  .strip p{font-size:17px;line-height:1.6;max-width:62ch;margin:12px 0 0}
+  .strip code{display:block;font-family:var(--fm);font-size:15px;background:rgba(242,239,230,.08);
+              border:1.5px solid rgba(233,242,87,.35);border-radius:8px;padding:12px 14px;margin-top:14px;
+              color:var(--acid);overflow-x:auto;white-space:pre}
+  .strip .fine{font-size:14px;color:rgba(242,239,230,.7);margin-top:14px}
+  .quote{font-family:var(--fm);font-size:15px;line-height:1.6;background:var(--card);border:2px solid var(--ink);
+         border-left:8px solid var(--accent);border-radius:var(--rs);padding:18px 20px;margin:0 0 34px;
+         box-shadow:5px 6px 0 rgba(22,22,58,.14)}
+  .quote b{color:var(--accent)}
+  footer{border-top:2px solid var(--ink);padding:26px 0 50px;font-size:13px;color:var(--muted)}
+  footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+</style>
+</head>
+<body>
+
+<nav><div class="wrap">
+  <a class="brand" href="/"><span class="word"><i>U</i>NSTUCK</span><small>GAMES</small></a>
+  <div class="links">
+    <a href="/#games">Games</a>
+    <a href="/updates/">Updates</a>
+    <a href="/about/">About</a>
+    <a href="/contact/">Contact</a>
+  </div>
+</div></nav>
+
+<header class="top"><div class="wrap">
+  <div class="kicker">A CLAUDE SKILL · FREE · MIT</div>
+  <h1>Your sheet says<br>you have Moonbeam.</h1>
+  <p class="lede">It doesn't say the beam keeps burning for ten rounds without costing another action. Or that moving it costs your whole turn. Or that you're only allowed one spell slot per turn now. <b>Most players find that out by losing a fight.</b></p>
+  <p class="lede">Table Sheet reads your D&amp;D Beyond character and builds the page you actually wanted: every spell and feature in plain English, what fits in one turn, playbooks for the fights you keep having, and roleplay notes pulled from your own backstory.</p>
+</div></header>
+
+<div class="wrap">
+  <p class="quote">The first character we ran it on had <b>Revivify prepared and no diamond to cast it with</b>. The second had <b>two magic rings doing nothing</b>, because all three attunement slots were already full. Both players had been running those sheets for months.</p>
+</div>
+
+<div class="wrap cols">
+  <section class="card">
+    <h3>What you get</h3>
+    <p>One page, built for a phone at a dark table halfway through a fight.</p>
+    <div class="rule"><b>1</b><span><b>What fits in one turn.</b> Move, action, bonus action, reaction — and what your character can actually put in each.</span></div>
+    <div class="rule"><b>2</b><span><b>Your engine, explained properly.</b> The one resource everything else hangs off, with real numbers.</span></div>
+    <div class="rule"><b>3</b><span><b>Fight playbooks.</b> Opening round. One big enemy. A crowd. Someone's dying. They come for you.</span></div>
+    <div class="rule"><b>4</b><span><b>Every spell in plain words.</b> What it does, when to use it, and when it does nothing.</span></div>
+    <div class="rule"><b>5</b><span><b>How to play them.</b> Built from the personality, bonds and flaws you wrote yourself.</span></div>
+  </section>
+
+  <section class="card">
+    <h3>What it catches</h3>
+    <p>On the way through, it checks the sheet against itself and tells you what's going to fail at the table.</p>
+    <p>Components you don't have for spells you've prepared. Armour sitting in your pack instead of on your body. Magic items you never attuned. A spell prepared twice when the class already gives it free. Resources still spent from last session. Eight concentration spells when you can only run one.</p>
+    <p>None of it gets changed for you. It's your character.</p>
+  </section>
+
+  <section class="card">
+    <h3>What it won't do</h3>
+    <p><b>Republish the books.</b> Everything on the page is rewritten in plain language, for your character, from the sheet you point it at.</p>
+    <p><b>Touch your sheet.</b> It reports; you decide.</p>
+    <p><b>Keep your data.</b> The character stays on your machine. Somebody else's sheet needs a token from your own browser, and it's never stored.</p>
+  </section>
+</div>
+
+<div class="wrap">
+  <div class="strip">
+    <h2>Install it in two lines</h2>
+    <p>You need <a href="https://claude.com/claude-code" style="color:var(--acid)">Claude Code</a> and Node 18 or newer. Then paste a D&amp;D Beyond character link and ask for a table sheet.</p>
+    <code>/plugin marketplace add netmobster/unstuck-games
+/plugin install table-sheet@unstuck-games</code>
+    <p class="fine">Free, MIT licensed, and the whole thing is about 600 lines you can read yourself:
+      <a href="https://github.com/netmobster/unstuck-games/tree/main/plugins/table-sheet" style="color:var(--acid)">github.com/netmobster/unstuck-games</a>.
+      Not affiliated with Wizards of the Coast or D&amp;D Beyond.</p>
+  </div>
+</div>
+
+<footer><div class="wrap">
+  <span>UNSTUCK GAMES · <a href="/">Don't bullshit the player</a></span>
+  <span><a href="/contact/">Say hello</a> · <a href="https://gamesgotout.substack.com/" target="_blank" rel="noopener">Games That Got Out ↗</a></span>
+</div></footer>
+
+</body>
+</html>
