@@ -54,6 +54,11 @@ Then: *"Give me a minute."* — and the folder is written.
 7. **Where.** A named place, or leave it and the builder invents one. **Never a real
    setting's place names** — that is the boundary `campaign.md` is written around.
 8. **Session length.** One session, or a short arc. This sets the clocks, not the content.
+9. **Who is telling it.** The DM persona. SEREN's own rule is that *the persona is
+   derivable from the campaign*, so the builder derives one and shows it as the default —
+   Express just names it on the summary (*"told by: the Registrar"*), Custom offers the
+   twelve and lets you audition a line. The live instance is written to `DM-persona.md` in
+   `dm/persona-format.md` v2's shape.
 
 ---
 
@@ -65,9 +70,14 @@ table.
 | Dial | Low | High | What moves |
 |---|---|---|---|
 | **Absurdity** | grim | a sheep with opinions | Which antagonist postures and role tables are drawn from; whether the premise is allowed a talking animal, a clerical error, a god with a day job |
-| **Roleplay ↔ crawl** | people | places | How much of the pressure is a *person who wants something* versus a *place that is in the way*. At the crawl end, fronts attach to locations and the scene carries zones |
-| **Romp ↔ slow burn** | one session | a season | The fuse on every clock. A romp advances fronts every beat; a slow burn advances them when the party is elsewhere |
+| **Stakes** | personal | epic | The scale of every front — your debt, the vale, or the world. Sets what the impending doom actually *is* |
 | **Danger** | bruises | deaths | Starting DCs, antagonist level relative to the party, and whether `exit` on an antagonist is *killed* or *escapes* |
+| **People ↔ places** | conversation | corridors | Whether pressure is a *person who wants something* or a *place that is in the way*. At the places end, fronts attach to locations and the scene carries zones |
+| **Length** | one session | a season | Clock lengths, and nothing else |
+
+**Four became five.** *Romp versus slow burn* was doing two jobs: length and stakes. They
+come apart — a single session can be about the end of the world, and a season can be about
+an orchard. Express shows absurdity, stakes and danger, and rolls the other two.
 
 **The dials are inputs to the roll, not the roll.** Absurdity at maximum does not pick the
 sheep; it makes the sheep *possible* and then the dice decide.
@@ -129,6 +139,54 @@ has been declared visible.
 audited against their fronts (a front's own secret is never `known` at open), and the whole
 thing is refused rather than shipped half-right. Cheap to write, and it has to exist before
 the first stranger plays.
+
+---
+
+## Where a campaign lives
+
+**A folder, not rows.** The property SEREN trades on is a campaign you can read with your
+eyes and a ledger you can audit line by line; putting the state in a database costs exactly
+that. So the generator writes the same folder it always writes, under an account:
+
+```
+/srv/seren/
+  dm/  docs/  npcs/  library/      the shared corpus, read-only, every campaign sees it
+  players/<account-id>/<slug>/     one folder per campaign, in SEREN's formats
+```
+
+The database is only the **index**: account, which campaigns exist, when each was last
+played, spend to date. It never holds game state, and an account id is opaque — the email
+never appears in a path.
+
+**The auth is already specified, for another game.** Deadline Dungeon's TRD calls for an
+email magic link over SES with an HMAC-signed HttpOnly cookie and per-account folders.
+SEREN wants precisely that, so it gets built once and both use it (the library rule).
+Elsewhere's gate is the starting point; what is missing is the SES send and the token table.
+
+Three things arrive with accounts, none of which block the builder:
+
+1. **The spend cap moves to the account.** Per-session is fine behind one password and
+   useless when a stranger can open twenty sessions.
+2. **Live session state has to be written down.** The server holds it in memory today, so a
+   restart drops an in-flight roll — for everybody.
+3. **One writer per campaign.** Two tabs would both append to the ledger. A lock per
+   folder, and the second tab gets told why.
+
+---
+
+## ⚠️ What the DM can actually reach
+
+Worth stating plainly, because "the corpus is on disk" and "the corpus is in the prompt"
+are not the same thing. The system prompt is four layers: the contract, the state formats,
+*this campaign* (its `campaign.md`, persona, fronts and its own `canon/antagonists/`), and
+where things stand. **The 42 global role templates are not in it.** They are the builder's
+raw material; the builder draws from them and writes the chosen people into the campaign's
+own canon, and from then on the DM knows them.
+
+That leaves a gap at the table: a player walks into a tavern nobody scripted and Seren
+invents the barman from nothing instead of drawing one. The fix is a small tool — **`cast`**,
+which pulls a role template on demand and writes the result to canon so the barman exists
+afterwards and is the same barman next week. Add it to the build list.
 
 ---
 

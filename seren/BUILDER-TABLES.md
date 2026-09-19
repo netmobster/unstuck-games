@@ -6,7 +6,7 @@ then picks a world, then the trouble inside it.** That order is the whole design
 is a rules choice; an origin is a story choice, and it is the one that makes the character
 *theirs* before a single die is rolled.
 
-Six tables of twelve. Every row says **what it changes**, because a row that only changes
+Seven tables of twelve. Every row says **what it changes**, because a row that only changes
 adjectives is a costume.
 
 ---
@@ -179,7 +179,39 @@ everything else *within* it.
 
 ---
 
-## 7 · Roll everything
+## 7 · DM personas — twelve
+
+**Not the same axis as absurdity.** Absurdity decides what the world will permit; the
+persona decides who is telling you about it. A deadpan voice over an absurd world is *A
+Wild Sheep Chase*; a lyrical voice over the same world is a fairy tale.
+
+SEREN's own rule stands: *"the persona is derivable from campaign"* — so **the builder
+derives one and shows it as the default**, with these twelve as the override. The live
+instance is written to `DM-persona.md` in the campaign folder, in `dm/persona-format.md`
+v2's shape.
+
+| # | Persona | Tells it like | What it changes | Never |
+|---|---|---|---|---|
+| 1 | **The Registrar** | a clerk reading out a form | Short sentences, nouns, no adverbs | Raises its voice |
+| 2 | **The Chronicler** | somebody writing it down after the fact | Past tense, the long view, names dates | Hurries |
+| 3 | **The Publican** | the person behind the bar who saw it | Gossip first, geography second | Keeps a confidence |
+| 4 | **The Coroner** | cause, then effect, then the body | Clinical detail, no flinching | Comments on the morality |
+| 5 | **The Fabulist** | a tall story that happens to be true | Exaggerated scale, then a flat correction | Admits what it made up |
+| 6 | **The Preacher** | a sermon with the party in it | Cadence, repetition, second person | Lets a sin pass unnamed |
+| 7 | **The Archivist** | with footnotes you did not ask for | Cross-references its own facts | Guesses |
+| 8 | **The Gambler** | in odds and tells | Names what is at stake before each scene | Says a thing is certain |
+| 9 | **The Quartermaster** | in inventory | Counts everything, values everything | Describes weather |
+| 10 | **The Child** | plainly, and misses the point beautifully | Short, literal, unafraid | Explains a metaphor |
+| 11 | **The Machine** | procedurally, and it is unsettling | Numbered observations, no affect | Uses a simile |
+| 12 | **The Old Soldier** | like somebody who has seen this before | Understatement, practical detail | Dramatises a death |
+
+**Where it sits in the wizard:** Express does not ask — it derives one from trope and
+absurdity and names it on the summary screen (*"told by: the Registrar"*). Custom asks, and
+lets you audition a line before committing.
+
+---
+
+## 8 · Roll everything
 
 **A third path, beside Express and Custom: "Roll it."** One button, no screens. The trope
 goes first and the rest is rolled to fit it, because a trope-first roll produces a campaign
@@ -210,16 +242,24 @@ underneath for anyone who wants them.
 
 ---
 
-## 8 · The dials — four
+## 9 · The dials — five
 
-Unchanged from the brief, repeated here because they gate the tables above.
+**Four became five**, because one dial was doing two jobs. *Romp versus slow burn* is
+length; *fun romp versus epic quest* is **stakes**, and they come apart — a single session
+can be about the end of the world, and a long campaign can be about an orchard. Difficulty
+is a third thing again.
 
-| Dial | What it gates |
-|---|---|
-| **Absurdity** | Which postures and role tables are in scope; whether a talking sheep is possible |
-| **Roleplay ↔ crawl** | Whether trouble attaches to people or places (tables 2 and 3 shift weight) |
-| **Romp ↔ slow burn** | Clock lengths on every front |
-| **Danger** | DCs, antagonist level, and whether `exit` is *killed* or *escapes* |
+| Dial | Runs from | What it moves |
+|---|---|---|
+| **Absurdity** | grim → a sheep with opinions | Which postures and role tables are in scope; whether a talking sheep is possible |
+| **Stakes** | personal → epic | The scale of every front: your debt, the vale, or the world. Sets what the impending doom actually *is* |
+| **Danger** | bruises → deaths | DCs, antagonist level relative to the party, and whether `exit` is *killed* or *escapes* |
+| **People ↔ places** | conversation → corridors | Whether trouble attaches to a person or a location (tables 2 and 3 shift weight) |
+| **Length** | one session → a season | Clock lengths, and nothing else |
+
+**Express shows three** — absurdity, stakes, danger — and rolls the other two. Custom shows
+all five. Stakes is the one to put first: it is the dial a player has an opinion about
+before they have opinions about anything else.
 
 ---
 
