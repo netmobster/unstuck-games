@@ -126,7 +126,7 @@ PAGE = """<!doctype html>
     </form>
     <div class="no" id="no" role="status"></div>
 
-    <a class="back" href="/">← What is Elsewhere?</a>
+    <a class="back" href="https://unstuck-games.com/">← Unstuck Games</a>
   </div>
 <script>
 document.getElementById('f').onsubmit = async e => {
