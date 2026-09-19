@@ -37,13 +37,45 @@ _sessions: dict[str, dict] = {}
 _lock = threading.Lock()
 
 
-def campaign_dir() -> Path:
+# Until there is a login, everybody is the same player. The seam is the code path, not
+# the cookie: when auth lands it fills ACCOUNT in and nothing else changes.
+ACCOUNT = os.environ.get("SEREN_ACCOUNT", "solo")
+
+
+def campaign_slug() -> str:
     named = os.environ.get("SEREN_CAMPAIGN")
-    base = corpus.ROOT / "campaigns"
     if named:
-        return base / named
-    folders = sorted(p for p in base.iterdir() if p.is_dir()) if base.is_dir() else []
-    return folders[0] if folders else base / "none"
+        return named
+    base = corpus.ROOT / "campaigns"
+    folders = sorted(p.name for p in base.iterdir() if p.is_dir()) if base.is_dir() else []
+    return folders[0] if folders else "none"
+
+
+def campaign_dir() -> Path:
+    """This player's own copy, instantiated from the module the first time they play it."""
+    return state.player_campaign(corpus.ROOT, ACCOUNT, campaign_slug())
+
+
+def _live_file(root: Path) -> Path:
+    """Where an unfinished session waits between visits. Beside the campaign, not in it —
+    it is this play's memory, and the close ceremony is what turns it into a session log."""
+    return root / "state" / "session.json"
+
+
+def _save(sess: dict) -> None:
+    """Written after every turn. Small, whole-file, and last-write-wins by design."""
+    camp = sess["campaign"]
+    try:
+        _live_file(camp.root).write_text(json.dumps({
+            "session": camp.session,
+            "turns": camp.turns,
+            "spent": camp.spent,
+            "stream": sess["stream"][-120:],
+            "messages": sess["messages"][-24:],
+            "pending": sess["pending"],
+        }, ensure_ascii=False), encoding="utf-8")
+    except OSError:
+        pass  # a session that cannot be saved is still a session that can be played
 
 
 def _session_for(sid: str) -> dict:
@@ -54,6 +86,18 @@ def _session_for(sid: str) -> dict:
             camp = state.Campaign(root=root, tier=TIER)
             camp.session = 1 + len(list((root / "sessions").glob("*.md"))) if (root / "sessions").is_dir() else 1
             sess = {"campaign": camp, "history": [], "messages": [], "pending": None, "stream": []}
+            # Pick up where they left off, if they left off mid-session.
+            try:
+                saved = json.loads(_live_file(root).read_text(encoding="utf-8"))
+                if saved.get("session") == camp.session:
+                    camp.turns = saved.get("turns", 0)
+                    camp.spent = float(saved.get("spent") or 0.0)
+                    sess["stream"] = saved.get("stream") or []
+                    sess["messages"] = saved.get("messages") or []
+                    sess["history"] = sess["messages"][-24:]
+                    sess["pending"] = saved.get("pending")
+            except (OSError, ValueError):
+                pass
             _sessions[sid] = sess
         return sess
 
@@ -175,6 +219,7 @@ class Handler(BaseHTTPRequestHandler):
             # Everything the player has been shown this session, so a refresh costs nothing.
             view["beats"] = sess["stream"]
             view["pending"] = bool(sess.get("pending"))
+            _save(sess)
             return self._json(200, view, cookie)
 
         if path == "/api/turn":
@@ -198,6 +243,7 @@ class Handler(BaseHTTPRequestHandler):
             view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
             view["beats"] = out["beats"]
             view["pending"] = bool(out.get("pending"))
+            _save(sess)
             return self._json(200, view, cookie)
 
         if path == "/api/roll":
@@ -220,6 +266,7 @@ class Handler(BaseHTTPRequestHandler):
             view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
             view["beats"] = out["beats"]
             view["pending"] = bool(out.get("pending"))
+            _save(sess)
             return self._json(200, view, cookie)
 
         if path == "/api/close":
@@ -230,6 +277,10 @@ class Handler(BaseHTTPRequestHandler):
             sess["pending"] = None
             sess["stream"] = []
             camp.session += 1
+            try:
+                _live_file(camp.root).unlink(missing_ok=True)   # the log is the record now
+            except OSError:
+                pass
             return self._json(200, {
                 "beats": [
                     {"kind": "note", "text": f"SESSION CLOSED — {counts['rolls']} rolls, "
