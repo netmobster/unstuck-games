@@ -657,10 +657,9 @@ initVoice();
     const show = () => { try { dlg.showModal(); } catch { dlg.setAttribute("open", ""); } };
     go.addEventListener("click", () => { try { dlg.close(); } catch { dlg.removeAttribute("open"); } });
     document.getElementById("introBtn")?.addEventListener("click", show);
-    // A new key, so people who only ever saw the old alpha notice get the story once too.
-    try {
-      if (!localStorage.getItem("lucy:seen-intro")) { localStorage.setItem("lucy:seen-intro", "1"); show(); }
-    } catch { /* private window: skip it */ }
+    // Every load, not once per browser: it is the start screen, and "Wake her up" is
+    // also the click the browser needs before any sound can play.
+    show();
   }
 }
 
