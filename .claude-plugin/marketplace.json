@@ -1,0 +1,24 @@
+{
+  "name": "unstuck-games",
+  "owner": {
+    "name": "Unstuck Games",
+    "url": "https://unstuck-games.com"
+  },
+  "metadata": {
+    "description": "Skills from Unstuck Games. Stop bullshitting players.",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "table-sheet",
+      "source": "./plugins/table-sheet",
+      "description": "Turn a D&D Beyond character into a table-side play guide: what every spell and feature actually does, what fits in one turn, fight playbooks, roleplay notes, and the things that will fail at the table.",
+      "version": "0.1.0",
+      "author": { "name": "Unstuck Games" },
+      "homepage": "https://unstuck-games.com",
+      "license": "MIT",
+      "category": "games",
+      "keywords": ["dnd", "d&d", "dndbeyond", "tabletop", "rpg", "character sheet", "5e"]
+    }
+  ]
+}
