@@ -303,12 +303,43 @@ good**, and Gargantua carries his own history.
 **Only after a week ends early.** Normal weeks stay mysterious; asking people is how you
 learn them.
 
-## P16. Still open
+## P16. Settled — round 9 (2026-09-19)
 
-1. **Budget numbers:** the weekly base, what tickets pay, what a typical offer costs.
-2. **Quitting thresholds:** how much resentment, over how long.
-3. **Atom table size** for enough weekly variety (first guess: 60–100 per kind).
-4. **CD's files** still say *A Sleeping God*; the subtitle is now *A God Who Forgot*.
+Starting values, to tune in play.
+
+### Budget: the tickets are the economy
+
+| | |
+|---|---|
+| Weekly base from head office | **50** |
+| A finished client ticket pays | **15** |
+| A typical offer | 15–30 |
+| A perk | 20–60 |
+
+Head office gives you almost nothing. **You earn the week by keeping the dreary stream
+moving**, which is the trap: every minute spent on the god or on people is a minute not
+spent on the thing that pays for pizza. The review still sets the base, so a good Friday
+buys a slightly less desperate Monday.
+
+⚠️ Watch in playtest: with the task-supply floor (§P15) this should never reach zero
+income, but a bored-god week plus a quiet client week could starve the player of choices.
+If it does, raise the floor before raising the base.
+
+### Quitting: per person
+
+**Base threshold 100, moved up or down by the person's atoms** — thin-skinned people walk
+at ~70, the unflappable at ~140. Resentment **forgets 10 a day**. A slight is worth
+roughly 15–30. Reading who is close is the skill; the threshold itself is never shown.
+
+### Atom tables: 60 per kind
+
+Six kinds × 60 = **~360 atoms**, about three active on a person. A face rarely repeats
+inside a month of weeks. Generated offline; grown later where playtests show repeats.
+
+### The subtitle
+
+*A Sleeping God* stays where it is written (CD's files, older docs) until launch copy.
+The current subtitle is *A God Who Forgot*.
 
 ---
 
@@ -551,6 +582,6 @@ whether they quit. Quitters never return. New staff are drawn from atoms to refi
    player; trusting is fine until there's a reason not to).
 3. Save conflicts when the same account plays in two tabs: last-write-wins with a warning,
    or a lock.
-4. Atom table size for enough weekly variety (first guess: 60–100 atoms per kind).
+4. ~~Atom table size~~ — settled: 60 per kind (§P16).
 5. Whether magic-link email needs its own SES domain verification and DKIM before sending
    to strangers (sending to verified addresses works today).
