@@ -142,6 +142,60 @@ the first stranger plays.
 
 ---
 
+## Two systems, not one
+
+**Generate, then play.** They are separate passes with separate AI, and the handoff between
+them is a folder on disk:
+
+```
+the wizard's answers
+      │
+      ▼
+ GENERATOR  ──one pass, its own model, its own prompt──►  a campaign MODULE
+      │                                                         │
+      ▼                                                         ▼
+  the fog audit  (refuse, or pass)                    the table instantiates a LIVE copy
+                                                                │
+                                                                ▼
+                                                        SEREN plays it, turn by turn
+```
+
+Why it matters that these are two:
+
+- **The generator is not at the table.** It can take twenty seconds, use a bigger model, and
+  be told to think — none of which is acceptable mid-turn. It never speaks to the player.
+- **The audit sits in the gap.** A campaign is checked *after* it is written and *before*
+  anyone plays it, which is the only place that check can live.
+- **Nothing generated is live.** The output is inert until instantiated, so a bad roll costs
+  a regenerate, not a spoiled session.
+
+**SEREN already draws this line.** Its own tree separates `campaigns/modules/<slug>/` — the
+worked thing, templates, never played — from `LIVE/<campaign>/`, which is one party's
+instance with state in it. The generator writes a module. The table makes it live.
+
+---
+
+## The library that falls out of it
+
+Because a module is inert and reusable, **every good generated campaign is publishable.**
+That is a content library nobody has to write:
+
+- A player rolls something that sings, finishes it, and marks it **shareable**.
+- It is stripped back to the module (state, ledger and session logs are the player's, not
+  the campaign's) and offered to the next person as a named starter.
+- Each carries its provenance — the seed, the picks, the dials — so *"the same one, but
+  crueller"* is a re-roll with one dial moved, not a request to a human.
+
+**The first shop window is therefore free.** Roll a hundred, play the best six, publish
+those, and the front page has a shelf on it before we have written an adventure. The
+importer eventually feeds the same shelf from the other end.
+
+⚠️ **One rule attaches to this and it is not optional:** a published module carries no
+player's state and no player's name. The moment somebody's session log is in a shared
+folder, we have shipped a stranger's private play to the public.
+
+---
+
 ## Where a campaign lives
 
 **A folder, not rows.** The property SEREN trades on is a campaign you can read with your
