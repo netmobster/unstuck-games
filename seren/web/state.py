@@ -12,6 +12,7 @@ from __future__ import annotations
 import json
 import os
 import re
+import shutil
 from dataclasses import dataclass, field
 from pathlib import Path
 
@@ -473,3 +474,192 @@ def _prose(text: str) -> str:
         if sum(len(x) for x in out) > 900:
             break
     return chr(10).join(out).strip()[:900]
+
+
+# ── writing the state back ───────────────────────────────────────────────────
+
+def _inline(value) -> str:
+    """Render a value the way SEREN's own files do: inline maps and lists, plain scalars."""
+    if isinstance(value, dict):
+        return "{" + ", ".join(f"{k}: {_inline(v)}" for k, v in value.items()) + "}"
+    if isinstance(value, list):
+        return "[" + ", ".join(_inline(v) for v in value) + "]"
+    if value is None:
+        return "null"
+    if isinstance(value, bool):
+        return "true" if value else "false"
+    if isinstance(value, (int, float)):
+        return str(value)
+    text = str(value)
+    return f'"{text}"' if (":" in text or "#" in text or "," in text) else text
+
+
+def edit_block(text: str, block: str | None, key: str, value) -> str:
+    """Replace one key's value, in place, keeping indentation and any trailing comment.
+
+    `block` is a top-level key to look inside (a party member's slug); None edits a
+    top-level key (scene.md's `where`). Returns the text unchanged if the key is absent —
+    the caller checks, because silently inventing a line is how a state file rots.
+    """
+    lines = text.splitlines()
+    inside = block is None
+    for i, line in enumerate(lines):
+        stripped = line.strip()
+        if block is not None:
+            if re.match(rf"^{re.escape(block)}:\s*$", line):
+                inside = True
+                continue
+            if inside and line and not line[0].isspace() and not stripped.startswith("#"):
+                break  # the next top-level key: we have left the block
+        if not inside or not stripped or stripped.startswith("#"):
+            continue
+        m = re.match(rf"^(\s*){re.escape(key)}:(\s*)(.*)$", line)
+        if not m:
+            continue
+        rest = m.group(3)
+        comment = ""
+        depth, quote = 0, ""
+        for n, ch in enumerate(rest):  # a # inside a string or a map is not a comment
+            if quote:
+                quote = "" if ch == quote else quote
+            elif ch in "\"'":
+                quote = ch
+            elif ch in "[{":
+                depth += 1
+            elif ch in "]}":
+                depth -= 1
+            elif ch == "#" and depth == 0:
+                comment = rest[n:]
+                break
+        pad = "  " if comment else ""
+        lines[i] = f"{m.group(1)}{key}:{m.group(2)}{_inline(value)}{pad}{comment}".rstrip()
+        return chr(10).join(lines) + (chr(10) if text.endswith(chr(10)) else "")
+    return text
+
+
+class StateRefused(Exception):
+    """The change was not one the server will make. Same shape as dice.Refused."""
+
+
+STATE_OPS = ("hp", "condition", "slot", "use", "move", "present", "round")
+
+
+def apply_state(campaign, args: dict) -> dict:
+    """Apply one declared change to party.md or scene.md. Returns what actually changed.
+
+    The DM says what happened — seven hit points of damage, a slot spent, the party has
+    moved to the mill. It never says the resulting number; the server reads the current
+    value, does the arithmetic, clamps it, and writes it.
+    """
+    op = str(args.get("op") or "").strip().lower()
+    if op not in STATE_OPS:
+        raise StateRefused(f"`op` must be one of: {', '.join(STATE_OPS)}")
+
+    party_path = campaign.root / "state" / "party.md"
+    scene_path = campaign.root / "state" / "scene.md"
+
+    def _who() -> tuple[str, dict]:
+        slug = str(args.get("who") or "").strip().lower()
+        block = campaign.party().get(slug)
+        if not isinstance(block, dict):
+            raise StateRefused(f"`who` must be someone in party.md, not {slug or 'nobody'}")
+        return slug, block
+
+    if op == "hp":
+        slug, block = _who()
+        hp = dict(block.get("hp") or {})
+        delta = args.get("delta")
+        if not isinstance(delta, int):
+            raise StateRefused("`delta` must be an integer — negative for damage, positive for healing. "
+                               "Do not send the new total; the server works it out.")
+        before = int(hp.get("current") or 0)
+        top = int(hp.get("max") or before)
+        hp["current"] = max(0, min(top, before + delta))
+        text = edit_block(party_path.read_text(encoding="utf-8"), slug, "hp", hp)
+        party_path.write_text(text, encoding="utf-8", newline=chr(10))
+        return {"who": slug, "was": before, "now": hp["current"], "of": top, "what": "hp"}
+
+    if op == "condition":
+        slug, block = _who()
+        name = str(args.get("condition") or "").strip()
+        if not name:
+            raise StateRefused("`condition` must name the condition")
+        conditions = list(block.get("conditions") or [])
+        if args.get("remove"):
+            conditions = [c for c in conditions if str(c).lower() != name.lower()]
+        elif name.lower() not in [str(c).lower() for c in conditions]:
+            conditions.append(name)
+        text = edit_block(party_path.read_text(encoding="utf-8"), slug, "conditions", conditions)
+        party_path.write_text(text, encoding="utf-8", newline=chr(10))
+        return {"who": slug, "now": conditions, "what": "conditions"}
+
+    if op in ("slot", "use"):
+        slug, block = _who()
+        field = "slots" if op == "slot" else "uses"
+        key = str(args.get("key") or "").strip()
+        if not key:
+            raise StateRefused("`key` must name the slot level (1, 2…) or the resource (wild_shape)")
+        current = dict(block.get(field) or {})
+        if key not in current and key.isdigit() and int(key) in current:
+            key = int(key)
+        if key not in current:
+            raise StateRefused(f"{slug} has no {field} called {key}. What they have: "
+                               + (", ".join(str(k) for k in current) or "nothing"))
+        delta = args.get("delta", -1)
+        if not isinstance(delta, int):
+            raise StateRefused("`delta` must be an integer; -1 spends one")
+        before = int(current[key] or 0)
+        current[key] = max(0, before + delta)
+        text = edit_block(party_path.read_text(encoding="utf-8"), slug, field, current)
+        party_path.write_text(text, encoding="utf-8", newline=chr(10))
+        return {"who": slug, "what": f"{field}.{key}", "was": before, "now": current[key]}
+
+    if op == "move":
+        where = str(args.get("where") or "").strip()
+        if len(where) < 3:
+            raise StateRefused("`where` must say where they are now, in plain words")
+        text = edit_block(scene_path.read_text(encoding="utf-8"), None, "where", where)
+        scene_path.write_text(text, encoding="utf-8", newline=chr(10))
+        return {"what": "where", "now": where}
+
+    if op == "present":
+        who = str(args.get("who") or "").strip()
+        if not who:
+            raise StateRefused("`who` must name whoever arrived or left")
+        scene = campaign.scene()
+        field = "present" if who.lower() in campaign.party() else "also_present"
+        current = list(scene.get(field) or [])
+        if args.get("remove"):
+            current = [x for x in current if str(x).lower() != who.lower()]
+        elif who.lower() not in [str(x).lower() for x in current]:
+            current.append(who if field == "also_present" else who.lower())
+        text = edit_block(scene_path.read_text(encoding="utf-8"), None, field, current)
+        scene_path.write_text(text, encoding="utf-8", newline=chr(10))
+        return {"what": field, "now": current}
+
+    # round
+    value = args.get("round")
+    if value is not None and not isinstance(value, int):
+        raise StateRefused("`round` must be an integer, or null to leave initiative")
+    text = edit_block(scene_path.read_text(encoding="utf-8"), None, "round", value)
+    scene_path.write_text(text, encoding="utf-8", newline=chr(10))
+    return {"what": "round", "now": value}
+
+
+# ── one campaign per player ──────────────────────────────────────────────────
+
+def player_campaign(root: Path, account: str, slug: str) -> Path:
+    """The account's own copy of a campaign, made from the module the first time.
+
+    The seam for accounts, built before the accounts are: every path goes through here, so
+    when a real login exists it fills in `account` and nothing else changes. A module is
+    inert; a player's copy is where state moves.
+    """
+    live = root / "players" / account / slug
+    if live.is_dir():
+        return live
+    module = root / "campaigns" / slug
+    if module.is_dir():
+        live.parent.mkdir(parents=True, exist_ok=True)
+        shutil.copytree(module, live)
+    return live

@@ -27,6 +27,7 @@ import re
 import corpus
 import dice
 import fog
+import state
 import llm
 
 MAX_LEGS = 6  # tool round-trips inside one turn before we stop and narrate what we have
@@ -64,6 +65,13 @@ the player the numbers. Your prose shows them the world.
 holds anything carrying DM-side vocabulary, a clock bar, or a phrase lifted from the fronts
 and antagonist files. In the version you were written for, the panel was gated and the chat
 was not, and the chat is where every leak went.
+
+**You cannot edit the sheets either.** When the fiction moves a number — damage, healing, a
+condition, a slot or a limited use spent, the party moving, somebody arriving or leaving,
+initiative starting or ending — call the `state` tool and say the *change*. The server holds
+the current value and does the arithmetic, exactly as it does with the dice. **A cost you
+narrate and do not record did not happen**, and the player will find their hit points
+restored when they come back tomorrow.
 
 **Keep it to a beat.** Two or three paragraphs, then stop and let them act.
 
@@ -130,6 +138,36 @@ TOOLS = [
     },
     {
         "toolSpec": {
+            "name": "state",
+            "description": (
+                "Record what something cost: damage or healing, a condition on or off, a "
+                "spell slot or a limited use spent, the party moving, somebody arriving or "
+                "leaving, initiative starting or ending. Say the CHANGE, never the new "
+                "total — the server holds the current value and does the arithmetic, the "
+                "same way it holds the dice. Call this whenever the fiction has moved "
+                "something on a sheet; if you do not, it did not happen."
+            ),
+            "inputSchema": {"json": {
+                "type": "object",
+                "properties": {
+                    "op": {"type": "string",
+                           "enum": ["hp", "condition", "slot", "use", "move", "present", "round"]},
+                    "who": {"type": "string", "description": "party slug, or a name for present"},
+                    "delta": {"type": "integer",
+                              "description": "hp: negative for damage. slot/use: -1 spends one"},
+                    "condition": {"type": "string", "description": "for condition: its name"},
+                    "key": {"type": "string", "description": "for slot: the level. for use: the resource"},
+                    "where": {"type": "string", "description": "for move: where they are now"},
+                    "round": {"type": "integer", "description": "for round: the number, or omit to leave initiative"},
+                    "remove": {"type": "boolean", "description": "condition/present: take it off instead"},
+                    "note": {"type": "string", "description": "why, in a few words, for the ledger"},
+                },
+                "required": ["op"],
+            }},
+        }
+    },
+    {
+        "toolSpec": {
             "name": "ruling",
             "description": "A call the rules do not cover. Says out loud that you are making it.",
             "inputSchema": {"json": {
@@ -148,8 +186,12 @@ TOOLS = [
 
 def system_prompt(campaign) -> str:
     rules = corpus.rules()
+    pc = (campaign.sheet() or {}).get("slug") or ""
+    # Whose "I" it is. Obvious at a real table, and nothing here was saying it.
+    mine = (f'{chr(10)}{chr(10)}**The player is {pc}.** When they say "I", they mean {pc}. '
+            "Everyone else at the table is yours to speak for." if pc else "")
     layers = [
-        "# 1. The contract — this outranks everything below it\n" + (rules.get("dm") or ""),
+        "# 1. The contract — this outranks everything below it\n" + (rules.get("dm") or "") + mine,
         "# 2. The state formats you write into\n" + (rules.get("state_formats") or "")[:6000],
         "# 3. This campaign\n" + campaign.campaign_static(),
         "# 4. Where things stand\n" + campaign.state_layer(),
@@ -196,6 +238,25 @@ def roll_beat(entry: dict) -> dict:
         "pass": ok,
         "note": entry.get("note") or "",
     }
+
+
+def state_beat(entry: dict) -> dict:
+    """The soft insert: what it cost, in the mechanics voice, without a verdict."""
+    what = entry.get("what", "")
+    who = str(entry.get("who") or "").title()
+    if what == "hp":
+        text = f"{who} · {entry['now']} of {entry['of']} hit points"
+    elif what == "conditions":
+        text = f"{who} · " + (", ".join(entry["now"]) if entry["now"] else "no conditions")
+    elif what == "where":
+        text = str(entry.get("now"))
+    elif what in ("present", "also_present"):
+        text = "at the table · " + ", ".join(str(x) for x in entry.get("now") or [])
+    elif what == "round":
+        text = f"round {entry['now']}" if entry.get("now") is not None else "out of initiative"
+    else:
+        text = f"{who} · {what} · {entry.get('was')} → {entry.get('now')}"
+    return {"kind": "note", "panel": "now", "text": text}
 
 
 def fact_beat(entry: dict) -> dict | None:
@@ -263,11 +324,19 @@ def _run_tool(campaign, name: str, args: dict) -> dict:
         if name == "fact":
             op = args.pop("op")
             return {"ok": True, "entry": dice.fact(campaign.facts_file, campaign.session, op, **args)}
+        if name == "state":
+            changed = state.apply_state(campaign, args)
+            # The ledger carries it too: a consequence nobody can find later is a rumour.
+            dice.note(campaign.ledger, "state", args.get("note") or changed.get("what", ""),
+                      s=campaign.session, who=args.get("who"), change=changed)
+            return {"ok": True, "entry": changed}
         if name == "ruling":
             return {"ok": True, "entry": dice.note(campaign.ledger, "ruling", args.get("note", ""),
                                                    s=campaign.session,
                                                    who=args.get("who"), scope=args.get("scope"))}
         return {"ok": False, "error": f"no such tool: {name}"}
+    except state.StateRefused as exc:
+        return {"ok": False, "refused": str(exc)}
     except dice.Refused as exc:
         return {"ok": False, "refused": str(exc)}
     except Exception as exc:  # never kill a turn over a bad argument
@@ -328,6 +397,8 @@ def _continue(campaign, messages: list[dict], beats: list[dict], carried: list[d
                 shown = fact_beat(out["entry"])
                 if shown:
                     beats.append(shown)
+            if out.get("ok") and call["name"] == "state":
+                beats.append(state_beat(out["entry"]))
             results.append(_result_block(call, out))
 
         if ask:
