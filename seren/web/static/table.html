@@ -1,0 +1,658 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Seren Table</title>
+<meta name="description" content="Seren's player-facing Table: a book page for the story, slips beside it for the state of play. Desktop. Invented Sheep Chase content.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ── tokens ─────────────────────────────────────────────────────────────
+   The desk is dark; the reading surface is paper. Dark theme dims the lamp
+   rather than going black. Oxide = the DM's mechanics voice and "you".
+   Held (green) / did not (oxide) are the only verdict colours. */
+:root {
+  --desk:#3a2f26; --lamp:rgba(255,214,150,.26);
+  --paper:#efe4cc; --paper-hi:rgba(255,255,255,.4); --slip:#f3ead6; --slip-dark:#2a231b;
+  --ink:#2a231b; --soft:#7d6d55; --rule:#b8a688; --rule-soft:#d9cbae;
+  --oxide:#b6472c; --held:#4f7a4a; --gold:#8a6a2a; --bone:#efe4cc; --ember:#e07a58;
+  --desk-ink:#d9c9ad; --desk-ink-hi:#f0e4cc; --desk-ink-lo:#a8987c;
+  --serif:'Cormorant Garamond', Georgia, serif; --sans:'Work Sans', system-ui, sans-serif;
+  --noise:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0  0 0 0 0 0  0 0 0 0 0  0 0 0 .14 0'/></filter><rect width='240' height='240' filter='url(%23n)'/></svg>");
+  --fibre:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><filter id='f'><feTurbulence type='turbulence' baseFrequency='.02 .3' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 0 .35  0 0 0 0 .25  0 0 0 0 .1  0 0 0 .07 0'/></filter><rect width='400' height='400' filter='url(%23f)'/></svg>");
+}
+[data-theme="dark"] {
+  --desk:#171210; --lamp:rgba(255,190,120,.14);
+  --paper:#cbbd9c; --paper-hi:rgba(255,255,255,.18); --slip:#d2c4a3; --slip-dark:#1d1712;
+  --ink:#241d15; --soft:#6a5b44; --rule:#a08d6c; --rule-soft:#bfb08e; --bone:#e6d8bb;
+  --desk-ink:#bfae90; --desk-ink-hi:#e6d8bb; --desk-ink-lo:#8a7a60;
+}
+
+* { box-sizing:border-box; }
+body { margin:0; background:var(--desk); font-family:var(--sans); color:var(--ink); }
+textarea, input { font-family:inherit; color:inherit; }
+textarea:focus, input:focus { outline:none; }
+button { font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; }
+
+@keyframes lamp { 0%,100% { opacity:1; } 42% { opacity:.93; } 63% { opacity:.97; } 78% { opacity:.9; } }
+@keyframes rise { from { opacity:0; transform:translateY(8px); } to { opacity:1; transform:none; } }
+@keyframes trayIn { from { opacity:0; transform:translate(-50%,24px) scale(.96); } to { opacity:1; transform:translate(-50%,0) scale(1); } }
+@keyframes dieRoll { 0% { transform:rotate(0) } 25% { transform:rotate(-14deg) translateY(-6px) } 50% { transform:rotate(11deg) translateY(2px) } 75% { transform:rotate(-6deg) translateY(-3px) } 100% { transform:rotate(0) } }
+@keyframes settle { 0% { transform:scale(1.18); box-shadow:0 0 0 0 rgba(224,122,88,.6) } 100% { transform:scale(1); box-shadow:0 0 0 18px rgba(224,122,88,0) } }
+@keyframes ribbonGlow { 0%,100% { filter:drop-shadow(0 6px 6px rgba(0,0,0,.4)) } 50% { filter:drop-shadow(0 6px 6px rgba(0,0,0,.4)) drop-shadow(0 0 10px rgba(224,122,88,.7)) } }
+
+/* ── the desk ── */
+.desk { min-height:100vh; min-width:1280px; position:relative; overflow:hidden; display:grid; grid-template-columns:190px minmax(0,1fr) 430px; gap:0 28px; padding:30px 34px; }
+.lamp { position:absolute; inset:0; pointer-events:none; animation:lamp 7s ease-in-out infinite;
+  background-image:radial-gradient(ellipse 70% 80% at 42% 30%, var(--lamp), rgba(255,214,150,0) 70%), radial-gradient(ellipse at 100% 100%, rgba(0,0,0,.55), transparent 60%), var(--fibre); }
+
+/* ── chapter rail ── */
+.rail { position:relative; padding:6px 0; display:flex; flex-direction:column; gap:20px; color:var(--desk-ink); }
+.rail .campaign { font-family:var(--serif); font-size:23px; font-weight:500; line-height:1.15; color:var(--desk-ink-hi); }
+.lampbtn.close i { background:var(--oxide) }
+.rail .meta { font-size:10.5px; letter-spacing:.14em; color:var(--desk-ink-lo); }
+.chapters { display:flex; flex-direction:column; gap:12px; margin-top:8px; font-family:var(--serif); font-size:17px; }
+.chapters button { text-align:left; color:var(--desk-ink-lo); border-left:2px solid transparent; padding-left:10px; margin-left:-12px; transition:color .3s; }
+.chapters button.on { color:var(--desk-ink-hi); border-left-color:var(--ember); }
+.rail .dm { margin-top:auto; font-size:11px; color:var(--desk-ink-lo); line-height:1.6; }
+.rail .dm b { font-weight:400; color:var(--desk-ink-hi); }
+.lampbtn { font-size:10.5px; letter-spacing:.12em; color:var(--desk-ink-lo); display:flex; align-items:center; gap:8px; }
+.lampbtn:hover { color:var(--desk-ink-hi); }
+.lampbtn i { width:8px; height:8px; border-radius:50%; background:var(--ember); box-shadow:0 0 8px var(--ember); }
+
+/* ── the page ── */
+.page { position:relative; min-height:840px; background-color:var(--paper);
+  background-image:var(--noise), linear-gradient(180deg, var(--paper-hi), rgba(255,255,255,0) 30%), radial-gradient(ellipse at 20% 0%, rgba(120,90,50,.1), transparent 60%), var(--fibre);
+  border-radius:2px 8px 8px 2px; box-shadow:0 40px 70px rgba(0,0,0,.55), 0 4px 10px rgba(0,0,0,.3), inset 14px 0 30px -20px rgba(60,40,20,.5);
+  padding:36px 60px 26px 66px; display:grid; grid-template-rows:auto 1fr auto; overflow:hidden; }
+.page .edge { position:absolute; left:0; top:0; bottom:0; width:10px; opacity:.7; background:repeating-linear-gradient(90deg, rgba(60,40,20,.18) 0 1px, transparent 1px 3px); }
+.head { display:flex; justify-content:space-between; align-items:baseline; border-bottom:1px solid var(--rule); padding-bottom:12px; }
+.head h1 { margin:0; font-family:var(--serif); font-size:32px; font-weight:500; }
+.head span { font-size:11.5px; color:var(--soft); letter-spacing:.06em; }
+
+.stream { padding-top:28px; font-family:var(--serif); font-size:21.5px; line-height:1.55; max-width:62ch; display:flex; flex-direction:column; gap:20px; }
+.stream > * { animation:rise .5s ease-out both; }
+.stream p { margin:0; }
+.stream p.said { font-style:italic; color:var(--soft); padding-left:18px; border-left:1px solid var(--rule-soft); }
+/* the ruled insert: the DM's mechanics voice */
+.ins { font-family:var(--sans); font-size:13.5px; border-top:1px solid var(--oxide); border-bottom:1px solid var(--oxide); padding:11px 0;
+  display:grid; grid-template-columns:118px 1fr auto; gap:16px; align-items:baseline; }
+.ins.soft { border-color:var(--soft); }
+.ins .lab { font-size:10.5px; letter-spacing:.12em; color:var(--oxide); font-weight:600; }
+.ins.soft .lab { color:var(--soft); }
+.ins .note { color:var(--soft); }
+.ins .verdict { font-weight:600; letter-spacing:.08em; font-size:11.5px; color:var(--soft); }
+.ins .verdict.held { color:var(--held); } .ins .verdict.fail { color:var(--oxide); }
+.ins.ask { cursor:pointer; } .ins.ask:hover { background:rgba(182,71,44,.06); }
+.ins.ask .verdict { color:var(--oxide); }
+
+.foot { display:flex; flex-direction:column; gap:12px; padding-top:22px; }
+.chips { display:flex; gap:8px; flex-wrap:wrap; }
+.chips button { font-family:var(--serif); font-size:16px; padding:6px 14px; border:1px solid var(--rule); border-radius:999px; background:rgba(255,255,255,.28); transition:all .2s; }
+.chips button:hover { background:var(--slip-dark); color:var(--bone); border-color:var(--slip-dark); }
+.composer { display:grid; grid-template-columns:1fr auto; gap:16px; align-items:end; padding-top:6px; }
+.composer textarea { width:100%; resize:none; field-sizing:content; min-height:44px; max-height:120px; background:transparent; border:0; border-bottom:1px solid var(--rule);
+  padding:6px 0 8px; font-family:var(--serif); font-size:20px; line-height:1.4;
+  background-image:linear-gradient(var(--oxide), var(--oxide)); background-repeat:no-repeat; background-position:0 100%; background-size:0% 1px; transition:background-size .4s; }
+.composer textarea:focus { background-size:100% 1px; }
+.say { background:var(--slip-dark); color:var(--bone); font-size:12.5px; font-weight:600; padding:10px 18px; border-radius:4px; margin-bottom:10px;
+  box-shadow:0 2px 0 rgba(0,0,0,.35), 0 6px 14px rgba(0,0,0,.25); transition:transform .15s, filter .15s; }
+.say:hover { filter:brightness(1.15); } .say:active { transform:translateY(1px); }
+.written { font-family:var(--serif); font-style:italic; font-size:17px; color:var(--soft); text-align:center; padding:10px 0 4px; }
+.turn { display:flex; justify-content:space-between; font-size:11.5px; color:var(--soft); padding-top:4px; }
+.turn button { color:inherit; } .turn button:hover { color:var(--ink); } .turn button:disabled { opacity:.45; cursor:default; }
+
+/* ── dice tray ── */
+.tray { position:absolute; left:50%; bottom:150px; transform:translateX(-50%); width:340px; background:var(--slip-dark); color:var(--bone); border-radius:14px; padding:18px 20px 16px;
+  box-shadow:0 30px 60px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08); animation:trayIn .45s cubic-bezier(.2,.8,.2,1) both; display:flex; flex-direction:column; gap:14px; font-family:var(--sans); }
+.tray[hidden] { display:none; }
+.tray .top { display:flex; justify-content:space-between; align-items:center; font-size:10.5px; letter-spacing:.14em; color:var(--ember); }
+.tray .top div { display:flex; align-items:center; gap:12px; } .tray .top div span { color:var(--desk-ink-lo); }
+.tray .x { width:22px; height:22px; border-radius:50%; border:1px solid rgba(240,228,204,.25); display:flex; align-items:center; justify-content:center; color:var(--desk-ink); font-size:13px; }
+.tray .x:hover { border-color:var(--bone); color:var(--bone); }
+.dice { display:flex; gap:12px; align-items:center; }
+.die { width:68px; height:68px; border-radius:16px; display:flex; align-items:center; justify-content:center; font-family:var(--serif); font-size:34px; font-weight:600; }
+.die.hi { background:linear-gradient(160deg, #fff7e6, var(--bone)); color:var(--slip-dark); box-shadow:0 8px 16px rgba(0,0,0,.4), inset 0 -3px 0 rgba(0,0,0,.12); }
+.die.lo { background:#3a3128; color:var(--desk-ink-lo); font-weight:400; box-shadow:inset 0 2px 6px rgba(0,0,0,.4); }
+.tray.rolling .die.hi { animation:dieRoll .35s ease-in-out infinite; } .tray.rolling .die.lo { animation:dieRoll .4s ease-in-out infinite reverse; }
+.tray.done .die.hi { animation:settle .7s ease-out both; }
+.maths { flex:1; font-size:13px; line-height:1.5; color:var(--desk-ink); }
+.maths b { display:block; font-size:26px; color:var(--bone); font-family:var(--serif); font-weight:600; }
+.rollbtn { text-align:center; padding:11px; border-radius:999px; background:var(--oxide); color:var(--bone); font-size:12.5px; font-weight:600; letter-spacing:.1em; box-shadow:0 6px 14px rgba(0,0,0,.35); }
+.rollbtn:hover { filter:brightness(1.1); }
+.tray .status { text-align:center; font-size:12px; letter-spacing:.1em; color:var(--desk-ink-lo); line-height:1.5; }
+
+/* ── slips ── */
+.slips { position:relative; display:flex; flex-direction:column; gap:16px; padding-top:4px; min-height:0; }
+.slip { background-color:var(--slip); background-image:var(--noise); border-radius:3px; padding:16px 18px; display:flex; flex-direction:column; gap:10px;
+  box-shadow:0 12px 24px rgba(0,0,0,.45), 0 1px 0 rgba(255,255,255,.6) inset; }
+.slip.dark { background:var(--slip-dark); color:var(--bone); box-shadow:0 12px 24px rgba(0,0,0,.5); }
+.slip .row { display:flex; justify-content:space-between; align-items:baseline; }
+.slip .name { font-family:var(--serif); font-size:23px; font-weight:500; }
+.slip .sub { font-size:11.5px; color:var(--soft); }
+.slip .kicker { font-size:10.5px; letter-spacing:.14em; color:var(--oxide); font-weight:600; white-space:nowrap; }
+.slip.dark .kicker { color:var(--ember); font-weight:400; }
+.slip .aside { font-size:11px; color:var(--soft); white-space:nowrap; } .slip.dark .aside { color:var(--desk-ink-lo); }
+.slip .fine { font-size:11.5px; color:var(--soft); line-height:1.5; border-top:1px solid var(--rule-soft); padding-top:8px; }
+.slip.dark .fine { color:var(--desk-ink); border-color:rgba(240,228,204,.14); }
+.slip .foot { margin-top:auto; font-size:11.5px; color:var(--soft); line-height:1.5; padding-top:0; }
+.vitals { display:grid; grid-template-columns:1fr auto auto; gap:18px; align-items:end; }
+.hpbar { height:6px; background:var(--rule-soft); border-radius:3px; box-shadow:inset 0 1px 2px rgba(0,0,0,.15); overflow:hidden; }
+.hpbar i { display:block; height:100%; background:var(--held); border-radius:3px; }
+.vitals small { display:block; font-size:11.5px; color:var(--soft); margin-top:5px; }
+.vchip { text-align:center; } .vchip b { display:block; font-family:var(--serif); font-size:27px; font-weight:400; } .vchip span { font-size:9.5px; letter-spacing:.14em; color:var(--soft); }
+.present { display:flex; flex-direction:column; gap:9px; font-size:13.5px; }
+.present div { display:grid; grid-template-columns:70px 1fr auto; gap:10px; animation:rise .5s ease-out both; }
+.present b { font-weight:600; } .present span { color:var(--desk-ink); } .present em { font-style:normal; color:#d6b25a; } .present em.none { color:var(--desk-ink-lo); }
+
+/* the reference slip and its ribbon bookmarks */
+.ref { position:relative; flex:1; min-height:300px; display:flex; flex-direction:column; padding-top:26px; }
+.ribbons { position:absolute; top:0; left:14px; right:14px; display:flex; gap:6px; z-index:2; }
+.ribbons button { flex:1; filter:drop-shadow(0 6px 6px rgba(0,0,0,.4)); }
+.ribbons button:hover { filter:drop-shadow(0 8px 8px rgba(0,0,0,.45)) brightness(1.08); }
+.ribbons button.fresh { animation:ribbonGlow 1.6s ease-in-out infinite; }
+.ribbons button div { height:26px; background:var(--rule); color:var(--slip-dark); font-size:9.5px; letter-spacing:.08em; font-weight:600; display:flex; align-items:flex-end; justify-content:center; padding-bottom:9px;
+  clip-path:polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%); transition:height .25s, background .25s; }
+.ribbons button.record div { background:var(--slip-dark); color:var(--desk-ink); }
+.ribbons button.on div { height:34px; background:var(--oxide); color:var(--bone); }
+.ref .slip { flex:1; padding-top:36px; min-height:0; overflow:hidden; }
+.panel { display:contents; }
+.quests { font-family:var(--serif); font-size:17.5px; line-height:1.4; display:flex; flex-direction:column; gap:8px; }
+.quests div { animation:rise .4s ease-out both; } .quests div.owed { color:var(--gold); }
+.quests small { font-family:var(--sans); font-size:11.5px; color:var(--soft); }
+.ledger { display:flex; flex-direction:column; font-size:12.5px; }
+.ledger div { display:grid; grid-template-columns:36px 1fr auto 54px; gap:8px; padding:8px 0; border-bottom:1px solid var(--rule-soft); animation:rise .4s ease-out both; }
+.ledger div.fresh { background:rgba(182,71,44,.08); }
+.ledger .id, .ledger .vs { color:var(--soft); } .ledger .res { font-weight:600; text-align:right; font-size:11px; letter-spacing:.06em; color:var(--soft); }
+.ledger .res.held { color:var(--held); } .ledger .res.fail { color:var(--oxide); }
+.codex { font-family:var(--serif); font-size:16.5px; line-height:1.4; display:flex; flex-direction:column; gap:9px; }
+.codex div { animation:rise .4s ease-out both; }
+.codex .vis { font-family:var(--sans); font-size:9.5px; letter-spacing:.12em; font-weight:600; margin-right:8px; color:var(--held); } .codex .vis.susp { color:var(--gold); }
+.party { display:flex; flex-direction:column; gap:12px; font-size:13px; }
+.party .who { font-family:var(--serif); font-size:18px; } .party .who span { font-weight:400; color:var(--soft); font-size:14px; }
+.party .res { color:var(--soft); line-height:1.5; } .party .did { font-family:var(--serif); font-style:italic; font-size:15.5px; margin-top:3px; }
+.abilities { display:grid; grid-template-columns:repeat(6,1fr); gap:6px; text-align:center; }
+.abilities div { background:rgba(255,255,255,.35); border-radius:6px; padding:8px 0; animation:rise .4s ease-out both; }
+.abilities small { display:block; font-size:9px; letter-spacing:.12em; color:var(--soft); } .abilities b { display:block; font-family:var(--serif); font-size:22px; font-weight:500; } .abilities i { font-style:normal; font-size:11px; color:var(--soft); }
+.label { font-size:10.5px; letter-spacing:.12em; color:var(--soft); margin-top:6px; }
+.spells { display:flex; flex-wrap:wrap; gap:6px; }
+.spells button { font-family:var(--serif); font-size:15px; padding:4px 11px; border:1px solid var(--rule); border-radius:999px; background:rgba(255,255,255,.3); }
+.spells button:hover { background:var(--slip-dark); color:var(--bone); }
+.search { width:100%; background:rgba(255,255,255,.4); border:1px solid var(--rule); border-radius:999px; padding:9px 14px; font-family:var(--serif); font-size:16px; }
+.articles { display:flex; flex-direction:column; gap:10px; }
+.articles div { border-top:1px solid var(--rule-soft); padding-top:8px; animation:rise .4s ease-out both; }
+.articles .row b { font-family:var(--serif); font-size:18px; font-weight:500; } .articles .row span { font-size:10.5px; color:var(--soft); }
+.articles p { margin:0; font-size:12.5px; color:var(--soft); line-height:1.5; }
+.notes { flex:1; width:100%; resize:none; background:transparent; border:0; font-family:var(--serif); font-size:17px; line-height:1.55;
+  background-image:repeating-linear-gradient(transparent 0 25px, var(--rule-soft) 25px 26px); background-attachment:local; }
+</style>
+</head>
+<body>
+<div class="desk">
+  <div class="lamp"></div>
+
+  <aside class="rail">
+    <div class="campaign" id="campaign">a campaign</div>
+    <div class="meta"><span id="sessionNo">SESSION 1</span> · <span id="elapsed">0 MIN</span><br><span id="spend" class="spend"></span></div>
+    <nav class="chapters" id="chapters"></nav>
+    <div class="dm">DM of record<br><b>Seren · deadpan</b></div>
+    <button class="lampbtn" id="lamp"><i></i><span>LAMP HIGH · TURN DOWN</span></button>
+    <button class="lampbtn close" id="closeBtn"><i></i><span>CLOSE THE SESSION</span></button>
+  </aside>
+
+  <main class="page">
+    <div class="edge"></div>
+    <header class="head"><h1 id="title"></h1><span id="when"></span></header>
+    <section class="stream" id="stream"></section>
+    <footer class="foot" id="foot"></footer>
+
+    <div class="tray" id="tray" hidden>
+      <div class="top"><span id="trayCheck">A CHECK</span><div><span id="trayAdv"></span><button class="x" id="trayClose">×</button></div></div>
+      <div class="dice"><div class="die hi" id="dieHi">—</div><div class="die lo" id="dieLo">—</div><div class="maths" id="maths">1d20<b></b></div></div>
+      <button class="rollbtn" id="rollBtn">ROLL</button>
+      <div class="status" id="trayStatus" hidden></div>
+    </div>
+  </main>
+
+  <aside class="slips">
+    <div class="slip" style="transform:rotate(-.6deg)">
+      <div class="row"><span class="name" id="pcName">—</span><span class="sub" id="pcBuild"></span></div>
+      <div class="vitals">
+        <div><div class="hpbar"><i id="pcBar" style="width:100%"></i></div><small id="pcSmall"></small></div>
+        <div class="vchip"><b id="pcAc">—</b><span>AC</span></div>
+        <div class="vchip"><b id="pcDc">—</b><span>SPELL</span></div>
+      </div>
+      <div class="fine" id="pcFine" style="color:var(--ink)"></div>
+    </div>
+
+    <div class="slip dark" style="transform:rotate(.4deg)">
+      <div class="row"><span class="kicker" id="nowWhere">NOW</span><span class="aside" id="nowRound">not in initiative</span></div>
+      <div class="present" id="present"></div>
+      <div class="fine" id="nowFine"></div>
+    </div>
+
+    <div class="ref">
+      <div class="ribbons" id="ribbons"></div>
+      <div class="slip" style="transform:rotate(-.3deg)">
+        <div class="row"><span class="kicker" id="panelTitle"></span><span class="aside" id="panelMeta"></span></div>
+        <div class="panel" id="panel"></div>
+      </div>
+    </div>
+  </aside>
+</div>
+
+<script>
+// ── the table, wired to the engine ───────────────────────────────────────
+// Stream item types are unchanged: p (narration) · said (the player) · ins
+// (ruled insert, the DM's mechanics voice) · ask (a roll Seren has requested).
+// Every one of them is now built from a server beat. Nothing on this page
+// invents a number, a fact, or a verdict — the tray is a view of a roll.
+let scenes = [];      // the written sessions, then the live page
+let LIVE = 0;
+
+const state = {
+  scene: 0, panel: 'quests', rolled: false, start: Date.now(),
+  campaign: '', place: '', session: 1, round: null, spent: '', cap: '',
+  record: [], quests: [], present: [], codex: [], party: [], articles: [], sheet: null,
+  hidden: 0, pending: null, busy: false,
+  query: '', notes: localStorage.getItem('seren.notes') ?? '',
+};
+
+// ── helpers ──────────────────────────────────────────────────────────────
+const $ = id => document.getElementById(id);
+const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const sum = mods => (mods || []).reduce((n, m) => n + (parseInt((String(m).match(/[-+]\d+/) || ['0'])[0], 10) || 0), 0);
+const signed = n => (n >= 0 ? '+' : '') + n;
+
+async function api(path, body) {
+  const r = await fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) });
+  let d = {};
+  try { d = await r.json(); } catch (e) { d = {}; }
+  if (!r.ok) throw new Error(d.error || ('the table answered ' + r.status));
+  return d;
+}
+
+// ── beats → stream items ─────────────────────────────────────────────────
+// The label already names who rolled; the line should not say it twice.
+const skillOf = b => {
+  const what = String(b.what || '');
+  const who = String(b.who || '');
+  const bare = who && what.toLowerCase().startsWith(who.toLowerCase()) ? what.slice(who.length).replace(/^\s*·\s*/, '') : what;
+  return bare ? bare + ' · ' : '';
+};
+
+function rollItem(b) {
+  const many = (b.dice_all || []).length > 1;
+  const mods = (b.parts || []).join(' ');
+  const took = b.keeping === 'disadvantage' ? 'took the lower of two' : 'took the higher of two';
+  const maths = 'd20 ' + b.kept + (mods ? ' ' + mods : '') + (many ? ', ' + took : '');
+  const target = b.dc == null ? '' : ' · ' + b.total + ' vs ' + b.dc;
+  return {
+    t: 'ins', id: b.id,
+    label: (b.id || '') + ' · ' + String(b.who || '').toUpperCase(),
+    text: skillOf(b) + maths + target,
+    note: b.note || '',
+    verdict: b.pass === true ? 'HELD' : b.pass === false ? 'DID NOT' : '—',
+    ok: b.pass,
+  };
+}
+
+function beatItems(beats) {
+  const out = [];
+  (beats || []).forEach(b => {
+    if (b.kind === 'dm') out.push({ t: 'p', text: b.text });
+    else if (b.kind === 'said') out.push({ t: 'said', text: b.text });
+    else if (b.kind === 'roll') out.push(rollItem(b));
+    else if (b.kind === 'ask') out.push({
+      t: 'ask', text: b.what || b.check, note: (b.mods || []).join(' · '), verdict: 'OPEN THE TRAY', ask: b,
+    });
+    else if (b.kind === 'note') out.push({
+      t: 'ins', soft: true, label: b.panel === 'codex' ? '→ CODEX' : 'NOTE', text: b.text, verdict: '',
+    });
+  });
+  return out;
+}
+
+// ── taking what the server said ──────────────────────────────────────────
+function absorb(d, withItems) {
+  if (d.campaign) state.campaign = d.campaign;
+  if (d.place) state.place = d.place;
+  if (d.session != null) state.session = d.session;
+  state.round = d.round ?? null;
+  state.record = (d.rolls || []).slice().reverse();
+  state.quests = d.quests || [];
+  state.present = d.present || [];
+  state.codex = d.facts || [];
+  state.party = d.party || [];
+  if (d.hidden != null) state.hidden = d.hidden;
+  if (d.sheet) state.sheet = d.sheet;
+  if (d.library) state.articles = d.library;
+  if (d.spent) state.spent = d.spent;
+  if (d.cap) state.cap = d.cap;
+
+  const beats = d.beats || [];
+  const ask = beats.find(b => b.kind === 'ask');
+  if (ask) state.pending = ask;
+  if (!d.pending) state.pending = null;
+
+  if (withItems !== false) {
+    const items = scenes[LIVE].items, fresh = beatItems(beats);
+    // A result replaces the request it answers; nothing else in the stream is edited.
+    if (fresh.some(i => i.id)) {
+      for (let i = items.length - 1; i >= 0; i--) if (items[i].t === 'ask') items.splice(i, 1);
+    }
+    items.push(...fresh);
+  }
+  scenes[LIVE].when = String(state.place || '').toUpperCase();
+  paint();
+}
+
+function paint() { renderRail(); renderPage(); renderPresent(); renderSlips(); renderRef(); }
+
+// ── render ───────────────────────────────────────────────────────────────
+function renderRail() {
+  $('campaign').textContent = state.campaign || 'a campaign';
+  $('sessionNo').textContent = 'SESSION ' + state.session;
+  const nav = $('chapters'); nav.innerHTML = '';
+  scenes.forEach((s, i) => {
+    const b = el('button', i === state.scene ? 'on' : '', esc(s.title));
+    b.onclick = () => { state.scene = i; renderPage(); renderRail(); };
+    nav.appendChild(b);
+  });
+  $('elapsed').textContent = Math.round((Date.now() - state.start) / 60000) + ' MIN';
+}
+
+function renderPage() {
+  const s = scenes[state.scene], live = state.scene === LIVE;
+  $('title').textContent = s.title; $('when').textContent = s.when;
+  const st = $('stream'); st.innerHTML = '';
+  s.items.forEach(it => {
+    if (it.t === 'p') st.appendChild(el('p', '', esc(it.text)));
+    else if (it.t === 'said') st.appendChild(el('p', 'said', '“' + esc(it.text) + '”'));
+    else {
+      const d = el('div', 'ins' + (it.soft ? ' soft' : '') + (it.t === 'ask' ? ' ask' : ''));
+      const v = it.ok === true ? 'held' : it.ok === false ? 'fail' : '';
+      d.innerHTML = `<span class="lab">${esc(it.t === 'ask' ? 'ROLL ASKED' : it.label)}</span><span>${esc(it.text)} <span class="note">${esc(it.note)}</span></span><span class="verdict ${v}">${esc(it.verdict)}</span>`;
+      if (it.t === 'ask') d.onclick = () => openTray(it.ask);
+      st.appendChild(d);
+    }
+  });
+  if (live) st.scrollTop = st.scrollHeight;
+
+  const f = $('foot'); f.innerHTML = '';
+  if (live) {
+    if (state.pending) {
+      const chips = el('div', 'chips');
+      const b = el('button', '', 'Roll it'); b.onclick = () => openTray(state.pending);
+      chips.appendChild(b); f.appendChild(chips);
+    }
+    const c = el('div', 'composer');
+    const ta = el('textarea'); ta.rows = 1;
+    ta.placeholder = state.busy ? 'Seren is writing…' : state.pending ? 'She has asked for a roll.' : 'What do you do?';
+    ta.disabled = state.busy;
+    const say = el('button', 'say', state.busy ? '…' : 'Say it');
+    say.disabled = state.busy;
+    const submit = () => { const d = ta.value.trim(); if (!d || state.busy) return; ta.value = ''; respond(d); };
+    say.onclick = submit; ta.onkeydown = e => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submit(); } };
+    c.append(ta, say); f.append(c);
+    setTimeout(() => { if (!state.busy) ta.focus(); }, 0);
+  } else f.appendChild(el('div', 'written', 'This page is written. Nothing here is retconned.'));
+
+  const turn = el('div', 'turn');
+  const prev = el('button', '', '‹ ' + esc(state.scene > 0 ? scenes[state.scene - 1].title : 'session start'));
+  const next = el('button', '', esc(state.scene < LIVE ? scenes[state.scene + 1].title : 'not yet written') + ' ›');
+  prev.disabled = state.scene === 0; next.disabled = state.scene === LIVE;
+  prev.onclick = () => { state.scene--; renderPage(); renderRail(); };
+  next.onclick = () => { state.scene++; renderPage(); renderRail(); };
+  turn.append(prev, el('span', '', 'page ' + (state.scene + 1) + ' of ' + scenes.length), next);
+  f.appendChild(turn);
+}
+
+function renderPresent() {
+  const p = $('present'); p.innerHTML = '';
+  state.present.forEach(x => p.appendChild(el('div', '', `<b>${esc(x.who)}</b><span>${esc(x.state)}</span><em class="${x.hp ? '' : 'none'}">${esc(x.hp || '—')}</em>`)));
+  const here = String(state.place || 'somewhere');
+  $('nowWhere').textContent = 'NOW · ' + here.split(/[,.;]/)[0].trim().toUpperCase();
+  $('nowWhere').title = here;
+  $('nowRound').textContent = state.round == null ? 'not in initiative' : 'round ' + state.round;
+  const conc = state.party.filter(p => p.concentrating);
+  $('nowFine').textContent = conc.length
+    ? conc.map(p => `${p.name} is concentrating on ${p.concentrating}. Any damage is a real save.`).join(' ')
+    : 'Nobody is concentrating on anything.';
+}
+
+function renderSlips() {
+  const sh = state.sheet || {};
+  const mine = state.party.find(p => p.slug === sh.slug) || {};
+  $('pcName').textContent = sh.who || '—';
+  $('pcBuild').textContent = [sh.build, sh.species].filter(Boolean).join(' · ');
+  const cur = mine.hp, max = mine.max || sh.hp_max;
+  $('pcBar').style.width = (cur != null && max ? Math.max(0, Math.min(100, 100 * cur / max)) : 100) + '%';
+  const slots = Object.entries(mine.slots || {}).map(([lvl, n]) => `slots ${lvl}: ${n}`);
+  $('pcSmall').textContent = [cur != null ? `${cur} / ${max}` : '', ...slots].filter(Boolean).join(' · ');
+  $('pcAc').textContent = sh.ac ?? '—';
+  $('pcDc').textContent = sh.save_dc ?? '—';
+  const uses = Object.entries(mine.uses || {}).filter(([, n]) => n).map(([k, n]) => `${k.replace(/_/g, ' ')} ${n}`);
+  $('pcFine').textContent = uses.length ? uses.join(' · ') : 'Nothing held in reserve.';
+  $('spend').textContent = state.spent ? state.spent + ' of ' + state.cap : '';
+}
+
+const TABS = ['quests', 'party', 'sheet', 'record', 'codex', 'library', 'notes'];
+function renderRef() {
+  const r = $('ribbons'); r.innerHTML = '';
+  TABS.forEach(k => {
+    const b = el('button', (k === state.panel ? 'on ' : '') + (k === 'record' ? 'record ' : '') + (k === 'record' && state.rolled && state.panel !== 'record' ? 'fresh' : ''));
+    b.appendChild(el('div', '', k.toUpperCase()));
+    b.onclick = () => { state.panel = k; if (k === 'record') state.rolled = false; renderRef(); };
+    r.appendChild(b);
+  });
+  const p = $('panel'); p.innerHTML = '';
+  const k = state.panel, S = state;
+  const owed = S.quests.length;
+  const meta = {
+    quests: owed ? owed + ' open' : 'nothing open',
+    party: S.party.length + ' at the table',
+    sheet: (S.sheet && S.sheet.build) || '',
+    record: S.record.length + ' rolls · nothing retconned',
+    codex: S.codex.length + ' known or suspected',
+    library: S.articles.length + ' articles',
+    notes: 'yours',
+  };
+  $('panelTitle').textContent = k === 'sheet' ? 'SHEET · ' + String((S.sheet || {}).who || '').toUpperCase() : k.toUpperCase();
+  $('panelMeta').textContent = meta[k] || '';
+
+  if (k === 'quests') {
+    const q = el('div', 'quests');
+    if (!S.quests.length) q.appendChild(el('div', '', 'Nothing is open. Open loops are written at the close of a session.'));
+    S.quests.forEach(x => q.appendChild(el('div', x.owed ? 'owed' : '', `${esc(x.text)} <small>${esc(x.meta)}</small>`)));
+    p.append(q, el('div', 'foot', 'Written when a session closes, from the log. Seren does not decide what counts as open — the loops are what she failed to tie off.'));
+  } else if (k === 'record') {
+    const l = el('div', 'ledger');
+    if (!S.record.length) l.appendChild(el('div', '', 'No rolls yet this campaign.'));
+    S.record.forEach(x => l.appendChild(el('div', x.fresh ? 'fresh' : '', `<span class="id">${esc(x.id)}</span><span>${esc(x.what)}</span><span class="vs">${esc(x.vs)}</span><span class="res ${x.ok === true ? 'held' : x.ok === false ? 'fail' : ''}">${esc(x.res)}</span>`)));
+    p.append(l, el('div', 'foot', 'Every roll with its inputs and its target, straight from ledger.jsonl. If a number here disagrees with something you were told, the number is right.'));
+  } else if (k === 'codex') {
+    const c = el('div', 'codex');
+    if (!S.codex.length) c.appendChild(el('div', '', 'Nothing established yet.'));
+    S.codex.forEach(x => c.appendChild(el('div', '', `<span class="vis ${x.vis === 'SUSPECTED' ? 'susp' : ''}">${esc(x.vis)}</span>${esc(x.text)}`)));
+    p.append(c, el('div', 'foot', `Suspected is not known, and some of it is wrong. Nothing on this page will tell you which. <span style="color:var(--rule)">🔒 ${S.hidden} fact${S.hidden === 1 ? '' : 's'} sit on the DM's side of the screen.</span>`));
+  } else if (k === 'party') {
+    const box = el('div', 'party');
+    S.party.forEach(x => {
+      const res = [
+        ...Object.entries(x.slots || {}).map(([lvl, n]) => `slots ${lvl}: ${n}`),
+        ...Object.entries(x.uses || {}).filter(([, n]) => n).map(([u, n]) => `${u.replace(/_/g, ' ')} ${n}`),
+      ].join(' · ');
+      box.appendChild(el('div', '', `<div class="row"><b class="who">${esc(x.name)}</b><span class="sub">${esc(x.state)}</span></div>`
+        + `<div class="res">${esc(res || 'nothing held in reserve')}</div>`
+        + `<div class="did">${esc((x.conditions || []).join(', ') || (x.concentrating ? 'concentrating on ' + x.concentrating : 'no conditions'))}</div>`));
+    });
+    p.append(box, el('div', 'foot', 'What they are carrying and what state they are in, from party.md. Never why — that is yours to write, in Notes.'));
+  } else if (k === 'sheet') {
+    const sh = S.sheet || {};
+    const a = el('div', 'abilities');
+    (sh.abilities || []).forEach(([name, score, mod]) => a.appendChild(el('div', '', `<small>${esc(name)}</small><b>${esc(score)}</b><i>${esc(mod)}</i>`)));
+    p.append(a);
+    const sp = el('div', 'spells');
+    (sh.prepared || []).forEach(n => { const b = el('button', '', esc(n)); b.onclick = () => { state.panel = 'library'; state.query = n; renderRef(); }; sp.appendChild(b); });
+    if ((sh.prepared || []).length) p.append(el('div', 'label', 'PREPARED AND KNOWN'), sp);
+    p.append(el('div', 'foot', 'From your build file. Every spell opens its article in Library.'));
+  } else if (k === 'library') {
+    const inp = el('input', 'search'); inp.placeholder = 'Search ' + S.articles.length + ' articles'; inp.value = S.query;
+    const arts = el('div', 'articles');
+    const list = () => {
+      const q = S.query.toLowerCase(); arts.innerHTML = '';
+      const hits = S.articles.filter(x => !q || (x.name + ' ' + x.kind + ' ' + (x.text || '')).toLowerCase().includes(q));
+      if (!hits.length) arts.appendChild(el('div', '', '<p>Nothing by that name in this party\'s manifest.</p>'));
+      hits.slice(0, 4).forEach(x => arts.appendChild(el('div', '', `<div class="row"><b>${esc(x.name)}</b><span>${esc(x.kind)}${x.for ? ' · ' + esc(x.for) : ''}</span></div><p>${esc(x.text || 'Resolved in the manifest; the article text is not in this corpus.')}</p>`)));
+    };
+    inp.oninput = () => { S.query = inp.value; list(); };
+    list();
+    p.append(inp, arts, el('div', 'foot', 'SRD 5.2 · CC BY 4.0 · rules are not secret; nothing here is withheld.'));
+  } else if (k === 'notes') {
+    const ta = el('textarea', 'notes'); ta.value = S.notes; ta.placeholder = 'Who owes whom, what the collar said, the name you did not catch…';
+    ta.oninput = () => { S.notes = ta.value; localStorage.setItem('seren.notes', ta.value); };
+    p.append(ta, el('div', 'foot', 'Yours. Kept in this browser. Seren never reads this slip.'));
+  }
+}
+
+// ── play ─────────────────────────────────────────────────────────────────
+function push(items) { scenes[LIVE].items.push(...items); renderPage(); }
+
+async function respond(line) {
+  push([{ t: 'said', text: line }]);
+  state.busy = true; renderPage();
+  try {
+    absorb(await api('/api/turn', { text: line }));
+  } catch (e) {
+    push([{ t: 'ins', label: 'THE TABLE', text: String(e.message || e), verdict: '—' }]);
+  } finally {
+    state.busy = false; renderPage();
+  }
+}
+
+// The tray: a view of a roll, never the roller. The faces spin until the server
+// answers; the numbers that settle are the ones written to the ledger.
+const tray = $('tray');
+let spin = null;
+
+function openTray(ask) {
+  if (!ask) return;
+  state.pending = ask;
+  tray.hidden = false; tray.className = 'tray';
+  const many = /advantage/i.test(ask.advantage || '') || /^2d20/.test(ask.dice || '');
+  $('trayCheck').textContent = String(ask.check || '').toUpperCase();
+  $('trayAdv').textContent = (ask.advantage || '').toUpperCase();
+  $('dieHi').textContent = '—'; $('dieLo').textContent = '—';
+  $('dieLo').style.display = many ? '' : 'none';
+  const n = sum(ask.mods);
+  $('maths').innerHTML = esc((many ? '2d20, ' + (/^dis/i.test(ask.advantage || '') ? 'lower' : 'higher') : '1d20') + ' ' + signed(n)) + '<b></b>';
+  $('rollBtn').hidden = false; $('rollBtn').disabled = false;
+  $('trayStatus').hidden = true;
+}
+
+$('trayClose').onclick = () => { clearInterval(spin); tray.hidden = true; };
+
+$('rollBtn').onclick = async () => {
+  tray.classList.add('rolling');
+  $('rollBtn').hidden = true; $('trayStatus').hidden = false; $('trayStatus').textContent = 'ROLLING';
+  const t0 = Date.now();
+  spin = setInterval(() => {
+    $('dieHi').textContent = 1 + Math.floor(Math.random() * 20);
+    $('dieLo').textContent = 1 + Math.floor(Math.random() * 20);
+  }, 70);
+
+  let d;
+  try {
+    d = await api('/api/roll');
+  } catch (e) {
+    clearInterval(spin); tray.classList.remove('rolling');
+    $('trayStatus').textContent = String(e.message || e);
+    $('rollBtn').hidden = false;
+    return;
+  }
+  // However long the DM took, the dice have at least rolled for a moment.
+  setTimeout(() => settle(d), Math.max(0, 950 - (Date.now() - t0)));
+};
+
+function settle(d) {
+  clearInterval(spin);
+  const b = (d.beats || []).find(x => x.kind === 'roll');
+  if (!b) { tray.hidden = true; absorb(d); return; }
+  const all = b.dice_all && b.dice_all.length ? b.dice_all : [b.kept];
+  const hi = Math.max(...all), lo = Math.min(...all), many = all.length > 1;
+  const n = sum(b.parts);
+  tray.classList.replace('rolling', 'done');
+  $('dieHi').textContent = b.kept; $('dieLo').textContent = many ? (b.kept === hi ? lo : hi) : '';
+  $('dieLo').style.display = many ? '' : 'none';
+  $('maths').innerHTML = esc(b.kept + ' ' + signed(n) + (many ? ', ' + (b.keeping === 'disadvantage' ? 'lower' : 'higher') + ' of two' : '')) + `<b>${esc(b.total)}</b>`;
+  $('trayStatus').textContent = `Written to Record as ${b.id}. The DC is Seren's; you will see it there.`;
+  setTimeout(() => {
+    tray.hidden = true;
+    state.rolled = true;
+    absorb(d);
+    if (state.record[0]) state.record[0].fresh = true;
+    renderRef();
+  }, 1900);
+}
+
+// Closing writes the session out — the log, the reconciliation, the facts promoted to
+// canon. It asks twice, because it is the one button on this page that changes the
+// campaign folder for good.
+let armed = false;
+$('closeBtn').onclick = async () => {
+  const label = $('closeBtn').lastElementChild;
+  if (!armed) {
+    armed = true;
+    label.textContent = 'PRESS AGAIN TO CLOSE ' + state.session;
+    setTimeout(() => { if (armed) { armed = false; label.textContent = 'CLOSE THE SESSION'; } }, 6000);
+    return;
+  }
+  armed = false; label.textContent = 'WRITING THE SESSION…';
+  $('closeBtn').disabled = true;
+  try {
+    const d = await api('/api/close');
+    const done = scenes[LIVE];
+    absorb(d);
+    done.title = 'Session ' + Math.max(1, (d.session || state.session) - 1);
+    scenes.push({ title: 'this session', when: '', items: [] });
+    LIVE = scenes.length - 1; state.scene = LIVE;
+    paint();
+  } catch (e) {
+    push([{ t: 'ins', label: 'THE TABLE', text: String(e.message || e), verdict: '—' }]);
+  } finally {
+    $('closeBtn').disabled = false; label.textContent = 'CLOSE THE SESSION';
+  }
+};
+
+// Lamp: light / dark. Remembered per browser.
+const root = document.documentElement;
+const setTheme = t => { root.dataset.theme = t; localStorage.setItem('seren.theme', t); $('lamp').lastElementChild.textContent = t === 'dark' ? 'LAMP LOW · TURN UP' : 'LAMP HIGH · TURN DOWN'; };
+setTheme(localStorage.getItem('seren.theme') || 'light');
+$('lamp').onclick = () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'dark');
+
+// ── the door ─────────────────────────────────────────────────────────────
+(async function open() {
+  scenes = [{ title: 'this session', when: '', items: [] }];
+  LIVE = 0;
+  paint();
+  let d;
+  try {
+    d = await api('/api/session');
+  } catch (e) {
+    scenes[LIVE].items.push({ t: 'ins', label: 'THE TABLE', text: String(e.message || e), verdict: '—' });
+    return paint();
+  }
+  const written = (d.pages || []).filter(p => p.items.length);
+  scenes = [...written, { title: 'this session', when: '', items: [] }];
+  LIVE = scenes.length - 1;
+  state.scene = LIVE;
+  absorb(d);
+})();
+
+setInterval(renderRail, 30000);
+</script>
+</body>
+</html>
