@@ -66,6 +66,10 @@ and antagonist files. In the version you were written for, the panel was gated a
 was not, and the chat is where every leak went.
 
 **Keep it to a beat.** Two or three paragraphs, then stop and let them act.
+
+**Never break the table.** No sign-offs, no offers of further help, no "let me know if",
+no summarising what just happened as though reporting it. You are not answering a query;
+you are the room. End on the world, and leave the next move to them.
 """.strip()
 
 TOOLS = [
@@ -203,6 +207,32 @@ def fact_beat(entry: dict) -> dict | None:
 
 # ── tools ────────────────────────────────────────────────────────────────────
 
+# A model trained to be helpful ends on an offer of help. A DM does not, so the last
+# paragraph is dropped when it is one. The prompt asks first; this catches the rest.
+CHATTER = re.compile(
+    r"^(if you (have|need)|feel free|let me know|please let me know|i'?m here to help|"
+    r"would you like|do you (have|want)|what would you like|hope (this|that) helps)",
+    re.I,
+)
+
+
+def _no_chatter(text: str) -> str:
+    """The DM's last word should be the world's, not the assistant's."""
+    paras = [p.strip() for p in text.split(chr(10) + chr(10))]
+    while paras and (not paras[-1] or CHATTER.match(paras[-1])):
+        paras.pop()
+    return (chr(10) + chr(10)).join(paras).strip() or text.strip()
+
+
+def _valid_roll(args: dict) -> str | None:
+    """A check with no skill on it writes a Record row reading "korth · check", which is
+    not a thing anyone can look up afterwards. The ledger is the audit trail; name it."""
+    if str(args.get("t") or "").strip().lower() == "check" and not str(args.get("skill") or "").strip():
+        return ("a check needs `skill`: which one (perception, insight, athletics…). "
+                "If it is not a skill check, use the `t` that it actually is.")
+    return None
+
+
 def _valid_actor(campaign, who: str) -> str | None:
     who = (who or "").strip().lower()
     at_table = [k for k, v in campaign.party().items()
@@ -224,7 +254,7 @@ def _run_tool(campaign, name: str, args: dict) -> dict:
     try:
         if name == "roll":
             spec = args.pop("dice", "1d20")
-            bad = _valid_actor(campaign, str(args.get("who") or ""))
+            bad = _valid_actor(campaign, str(args.get("who") or "")) or _valid_roll(args)
             if bad:
                 return {"ok": False, "refused": bad}
             args.pop("why", None)  # the player's words for it, not the ledger's
@@ -268,7 +298,7 @@ def _continue(campaign, messages: list[dict], beats: list[dict], carried: list[d
         campaign.spent = reply["spent"]
         messages.append({"role": "assistant", "content": reply["content"]})
 
-        said = THINKING.sub("", llm.text_of(reply["content"])).strip()
+        said = _no_chatter(THINKING.sub("", llm.text_of(reply["content"])).strip())
         if said:
             leaks = fog.check(said, campaign.dm_side())
             if leaks:
@@ -287,7 +317,7 @@ def _continue(campaign, messages: list[dict], beats: list[dict], carried: list[d
         for call in calls:
             if call["name"] == "roll" and ask is None:
                 args = dict(call.get("input") or {})
-                bad = _valid_actor(campaign, str(args.get("who") or ""))
+                bad = _valid_actor(campaign, str(args.get("who") or "")) or _valid_roll(args)
                 if bad:
                     results.append(_result_block(call, {"ok": False, "refused": bad}))
                     continue
