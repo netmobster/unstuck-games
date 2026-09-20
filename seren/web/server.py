@@ -24,6 +24,7 @@ from pathlib import Path
 import close as session_close
 import audit
 import corpus
+import dice
 import dm
 import gate
 import llm
@@ -220,6 +221,11 @@ class Handler(BaseHTTPRequestHandler):
             if not corpus.ROOT.is_dir():
                 opening.append({"kind": "note", "text": "NO CORPUS FOUND — set SEREN_CONTENT_DIR"})
             if not sess["stream"]:
+                # A campaign nobody has played opens on the scene the weaver wrote, said by
+                # her, before anybody types anything.
+                said = camp.opening() if not dice.read(camp.ledger) else ""
+                if said:
+                    opening.append({"kind": "dm", "text": said})
                 sess["stream"] = opening
             # Everything the player has been shown this session, so a refresh costs nothing.
             view["beats"] = sess["stream"]
