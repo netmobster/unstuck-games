@@ -286,7 +286,10 @@ class Campaign:
         Which character is the player's is a campaign fact, not an engine one, so it
         comes from the environment: SEREN_PC, defaulting to the campaign's first build.
         """
-        pc = os.environ.get("SEREN_PC") or self._first_build()
+        # SEREN_PC names the player in a hand-built campaign; a woven one has its own
+        # character, and the environment must not override what the campaign contains.
+        named = os.environ.get("SEREN_PC") or ""
+        pc = named if (self.root / "builds" / f"{named}.md").is_file() else self._first_build()
         text = self._read(f"builds/{pc}.md")
         fm = _frontmatter(text)
         if not fm:

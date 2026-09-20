@@ -26,6 +26,7 @@ import audit
 import corpus
 import dice
 import dm
+import files
 import gate
 import llm
 import state
@@ -55,8 +56,22 @@ def campaign_slug() -> str:
     return folders[0] if folders else "none"
 
 
+def current_file() -> Path:
+    """Which campaign this account is playing. On disk, because the server restarts and the
+    player should not be quietly handed somebody else's world when it does."""
+    return corpus.ROOT / "players" / ACCOUNT / "current.txt"
+
+
 def campaign_dir() -> Path:
-    """This player's own copy, instantiated from the module the first time they play it."""
+    """This player's own copy: the one they last wove, or the module they started from."""
+    try:
+        chosen = current_file().read_text(encoding="utf-8").strip()
+    except OSError:
+        chosen = ""
+    if chosen:
+        live = corpus.ROOT / "players" / ACCOUNT / chosen
+        if live.is_dir():
+            return live
     return state.player_campaign(corpus.ROOT, ACCOUNT, campaign_slug())
 
 
@@ -322,6 +337,12 @@ class Handler(BaseHTTPRequestHandler):
                 slug = slug + "-" + secrets.token_hex(2)
                 live = root / slug
             shutil.copytree(module, live)
+
+            try:                       # remembered across restarts, and across tabs
+                current_file().parent.mkdir(parents=True, exist_ok=True)
+                files.write(current_file(), slug)
+            except OSError:
+                pass
 
             with _lock:
                 camp = state.Campaign(root=live, tier=TIER)
