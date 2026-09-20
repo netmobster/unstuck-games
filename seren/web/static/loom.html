@@ -120,8 +120,29 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
 .rules li::marker { color:var(--gilt); font-family:var(--display); font-size:13px; }
 .rules b { color:var(--bone); font-weight:400; }
 .rules i { font-style:italic; color:var(--bone); }
+.isnt { display:grid; grid-template-columns:1fr 1fr; gap:20px; border-top:1px solid var(--edge); border-bottom:1px solid var(--edge); padding:16px 0; }
+.isnt p { margin:6px 0 0; font-size:16px; line-height:1.4; color:var(--bone-lo); }
+.isnt b { color:var(--bone); font-weight:400; }
+.isnt .lab { color:var(--gilt); letter-spacing:.14em; }
+.isnt .lab.no { color:var(--mute); }
+@media (max-width:640px) { .isnt { grid-template-columns:1fr; } }
 .howlink { font-family:var(--sans); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); border-bottom:1px solid var(--mute-lo); padding-bottom:2px; }
 .howlink:hover { color:var(--bone); border-color:var(--bone); }
+
+/* the stakes, once they have their own beat */
+.later { padding-top:26px; display:flex; flex-direction:column; gap:4px; font-family:var(--sans); font-size:11px; color:var(--mute); }
+.later .k { color:var(--gilt); letter-spacing:.14em; }
+.tune { background:#0d1322; gap:18px; }
+.tune .tuneline { font-size:24px; line-height:1.35; max-width:900px; color:var(--bone-lo); }
+.tune .tunesub { margin:0; font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--mute); max-width:620px; }
+.tune .dials { width:min(760px, 92vw); display:flex; flex-direction:column; gap:20px; padding-top:6px; }
+.tune .row { display:grid; grid-template-columns:130px 1fr; gap:6px 22px; text-align:left; }
+.tune .row .nm { font-family:var(--display); font-size:12px; letter-spacing:.12em; color:var(--gilt); padding-top:2px; }
+.tune .row .track { display:grid; grid-template-columns:120px 1fr 120px; gap:12px; align-items:center;
+  font-family:var(--sans); font-size:11px; letter-spacing:.06em; color:var(--bone-lo); }
+.tune .row .track span:last-child { text-align:right; }
+.tune .row .moves { grid-column:2; text-align:left; font-family:var(--sans); font-size:12.5px; line-height:1.5; color:var(--mute); }
+.tuneacts { display:flex; gap:16px; align-items:center; padding-top:10px; }
 
 /* set beat */
 .set { position:fixed; inset:0; background:#0c0a08; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px; z-index:60; animation:rise 1.2s ease-out both; padding:60px; text-align:center; }
@@ -152,7 +173,7 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
         <button class="ghost" id="redealHers" style="padding:6px 12px;font-size:13px">Make her play another</button>
       </div>
     </div>
-    <div class="dials" id="dials"><span class="k" style="letter-spacing:.14em;color:var(--gilt)">The stakes · five dials</span></div>
+    <div class="later"><span class="k">The stakes</span><span>Five dials, after the hand is laid.</span></div>
   </section>
 
   <section class="laid">
@@ -189,23 +210,41 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
   <div class="modal how" role="dialog" aria-modal="true" aria-labelledby="howTitle">
     <div class="top k"><span>The house rules</span><span>read once</span></div>
     <h2 id="howTitle">How the hand works</h2>
+
+    <div class="isnt">
+      <div>
+        <span class="k lab">What this is</span>
+        <p>A hand of cards against Seren, and the winner is the campaign. You are not filling
+          in a form — <b>you are building a world out of the cards she deals you</b>, and she
+          keeps one card of her own.</p>
+      </div>
+      <div>
+        <span class="k lab no">What this is not</span>
+        <p>Not the game. Nothing here is played out — when the hand is laid it gets written
+          up, and <b>then</b> Seren sits down and runs it. Nothing here is a settings screen
+          either.</p>
+      </div>
+    </div>
+
     <ol class="rules">
       <li><b>She deals five of twelve.</b> The other seven stay in her hand. A different five
-        next time, which is the point — you are building from the hand you were dealt.</li>
+        next time, which is the point — you build from the hand you were dealt.</li>
       <li><b>Click a card to read it, then play it.</b> What it says under <i>what it changes</i>
-        is what it does to the campaign, not flavour. Play a card again to take it back.</li>
+        is what it does to the campaign, not flavour. Play a card again to take it back.
+        <i>Companions takes two.</i></li>
       <li><b>Name the trouble and she answers.</b> She plays the antagonist herself, face down.
         Turn it over. <i>Take it</i>, or <i>make her play another</i> — but that slot is hers.
         You never hold her cards.</li>
       <li><b>Her three offers, top left.</b> <i>Deal these again</i> is a fresh five for the slot
         you are on. <i>New hand</i> throws the whole table back and starts over.
-        <i>Play it out for me</i> means she plays every slot and you just watch.</li>
-      <li><b>The five dials are not settings.</b> They never pick a card. They tell whoever
-        writes the campaign how to write it — how absurd it may get, how big the stakes are,
-        how dangerous, whether trouble is people or places, how long it runs.
+        <i>Play it out for me</i> means she plays every slot and you watch.</li>
+      <li><b>Play your loom</b> when all seven are down. That does not build it yet — it takes
+        you to the stakes.</li>
+      <li><b>Tune it, then build it.</b> Five dials, each one named. They never pick a card;
+        they tell whoever writes the campaign <i>how</i> to write it — how absurd it may get,
+        how big, how dangerous, whether trouble is a person or a place, how long it runs.
         <i>Absurdity at the top does not choose the talking sheep. It makes one possible.</i>
-        Leaving them where they are is a perfectly good answer.</li>
-      <li><b>Play your loom</b> when all seven are down. That hands it on to be written.</li>
+        Leaving every one alone is a perfectly good answer. Then: <b>build my loom and play</b>.</li>
     </ol>
     <div class="acts"><button class="take" id="howGo">Deal me in</button></div>
   </div>
@@ -213,6 +252,19 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
 
 <div class="backdrop" id="backdrop" hidden>
   <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+</div>
+
+<div class="set tune" id="tune" hidden>
+  <span class="k" style="letter-spacing:.2em;color:var(--gilt)">Tune your loom</span>
+  <p class="tuneline" id="tuneSentence"></p>
+  <p class="tunesub">These never pick a card. The hand is dealt and it stands. This is what the
+    weaver is told about <i>how to write it</i> — and leaving every one of them alone is a
+    perfectly good answer.</p>
+  <div class="dials" id="dials"></div>
+  <div class="tuneacts">
+    <button class="ghost" id="untune">← Back to the table</button>
+    <button class="play" id="build">Build my loom and play</button>
+  </div>
 </div>
 
 <div class="set" id="set" hidden>
@@ -340,11 +392,16 @@ const DATA = {
     ]
   },
   dials: [
-    { id:'absurdity', low:'grim',        high:'a sheep with opinions', moves:'Which postures and role tables are in scope' },
-    { id:'stakes',    low:'personal',    high:'epic',                  moves:'The scale of every front' },
-    { id:'danger',    low:'bruises',     high:'deaths',                moves:'Starting DCs; whether exit is killed or escapes' },
-    { id:'people',    low:'conversation',high:'corridors',             moves:'Pressure is a person, or a place in the way' },
-    { id:'length',    low:'one session', high:'a season',              moves:'Clock lengths, and nothing else' }
+    { id:'absurdity', name:'Absurdity', low:'grim',         high:'a sheep with opinions',
+      moves:'Which antagonists and people are even in scope. At the top it does not choose the talking sheep — it makes one possible.' },
+    { id:'stakes',    name:'Stakes',    low:'personal',     high:'epic',
+      moves:'How big the trouble is allowed to get: your debt, the vale, or the world.' },
+    { id:'danger',    name:'Danger',    low:'bruises',      high:'deaths',
+      moves:'How hard the rolls are, and whether the antagonist dies or gets away.' },
+    { id:'people',    name:'Trouble is', low:'a person',    high:'a place',
+      moves:'Whether pressure comes from somebody who wants something, or somewhere in the way.' },
+    { id:'length',    name:'Length',    low:'one session',  high:'a season',
+      moves:'How long the clocks run. Nothing else.' }
   ]
 };
 const HAND_SIZE = 5;
@@ -360,7 +417,7 @@ const emptyPicks = () => ({ trope:null, origin:null, world:null, trouble:null, p
 let S = load() || {
   door: null, browse: 'trope', picks: emptyPicks(),
   dials: { absurdity:35, stakes:40, danger:45, people:50, length:30 },
-  hands: dealAll(), hers: null, flipped: false, open: null, set: false
+  hands: dealAll(), hers: null, flipped: false, open: null, tuning: false, set: false
 };
 
 function load() { try { return JSON.parse(localStorage.getItem(KEY)); } catch { return null; } }
@@ -458,16 +515,20 @@ function render() {
     $('redealHers').disabled = !S.flipped;
   }
 
-  // dials (build once)
-  if (!$('dials').dataset.built) {
+  // the dials live in the tune beat now, and are built the first time it opens
+  $('tune').hidden = !S.tuning;
+  if (S.tuning && !$('dials').dataset.built) {
     $('dials').dataset.built = 1;
     for (const d of DATA.dials) {
       const row = document.createElement('div'); row.className = 'row';
-      row.innerHTML = `<span>${esc(d.low)}</span><input type="range" min="0" max="100" value="${S.dials[d.id]}" title="${esc(d.moves)}"><span>${esc(d.high)}</span>`;
+      row.innerHTML = `<span class="nm">${esc(d.name)}</span>
+        <div class="track"><span>${esc(d.low)}</span><input type="range" min="0" max="100" value="${S.dials[d.id]}"><span>${esc(d.high)}</span></div>
+        <span class="moves">${esc(d.moves)}</span>`;
       row.querySelector('input').oninput = e => { S.dials[d.id] = +e.target.value; save(); };
       $('dials').appendChild(row);
     }
   }
+  if (S.tuning) $('tuneSentence').textContent = sentenceParts(fillInferred()).map(x => x.text).join(' ');
 
   // laid slots
   $('slots').innerHTML = CATS.map(cat => {
@@ -550,7 +611,9 @@ $('dealAgain').onclick = () => { const c = S.browse === HERS ? nextUnfilled(HERS
 $('newHand').onclick = () => { S.hands = dealAll(); S.picks = emptyPicks(); S.hers = null; S.flipped = false; S.browse = S.door === 'express' ? 'companions' : 'trope'; render(); };
 $('takeHers').onclick = () => { S.picks.posture = S.hers; S.browse = nextUnfilled(HERS); render(); };
 $('redealHers').onclick = () => rerollSlot(HERS);
-$('play').onclick = () => { S.set = true; render(); };
+$('play').onclick = () => { S.tuning = true; render(); };
+$('untune').onclick = () => { S.tuning = false; render(); };
+$('build').onclick = () => { S.tuning = false; S.set = true; render(); };
 $('unset').onclick = () => { S.set = false; render(); };
 $('backdrop').onclick = e => { if (e.target === $('backdrop')) { S.open = null; render(); } };
 document.addEventListener('keydown', e => {
