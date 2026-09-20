@@ -129,6 +129,16 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
 .howlink { font-family:var(--sans); font-size:10.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); border-bottom:1px solid var(--mute-lo); padding-bottom:2px; }
 .howlink:hover { color:var(--bone); border-color:var(--bone); }
 
+/* the corner the dials left behind */
+.corner { display:flex; flex-direction:column; align-items:flex-end; gap:18px; }
+.sound { display:flex; align-items:center; gap:10px; }
+.sound input[type=range] { width:96px; }
+.soundbtn { width:26px; height:26px; border-radius:50%; border:1px solid var(--mute-lo); color:var(--gilt);
+  display:flex; align-items:center; justify-content:center; font-size:13px; line-height:1; transition:all .2s; }
+.soundbtn:hover { border-color:var(--gilt); background:rgba(201,164,74,.12); }
+.soundbtn.off { color:var(--mute-lo); }
+.corner .later { align-items:flex-end; text-align:right; padding-top:0; }
+
 /* the stakes, once they have their own beat */
 .later { padding-top:26px; display:flex; flex-direction:column; gap:4px; font-family:var(--sans); font-size:11px; color:var(--mute); }
 .later .k { color:var(--gilt); letter-spacing:.14em; }
@@ -173,7 +183,13 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
         <button class="ghost" id="redealHers" style="padding:6px 12px;font-size:13px">Make her play another</button>
       </div>
     </div>
-    <div class="later"><span class="k">The stakes</span><span>Five dials, after the hand is laid.</span></div>
+    <div class="corner">
+      <div class="sound">
+        <button class="soundbtn" id="mute" title="Music on or off" aria-label="Music on or off"><span id="muteIcon">♪</span></button>
+        <input type="range" id="vol" min="0" max="100" value="30" title="Volume" aria-label="Music volume">
+      </div>
+      <div class="later"><span class="k">The stakes</span><span>Five dials, after the hand is laid.</span></div>
+    </div>
   </section>
 
   <section class="laid">
@@ -595,16 +611,97 @@ function render() {
   if (S.set) $('setSentence').textContent = sentenceParts(fillInferred()).map(x => x.text).join(' ');
 }
 
+/* ── music ──────────────────────────────────────────────────────────────────
+   Forest Pulse, under the cards. In over two seconds when the table opens, out
+   over five when the loom is built. The file has no gapless header, so the loop
+   is hand-made: a second element takes over before the first runs out. */
+const MKEY = 'seren.loom.sound';
+const LEVEL_DEFAULT = 0.30;
+const FADE_IN = 2.0, FADE_OUT = 5.0, XFADE = 1.6;
+const mset = (() => { try { return JSON.parse(localStorage.getItem(MKEY)) || {}; } catch (e) { return {}; } })();
+let level = typeof mset.level === 'number' ? mset.level : LEVEL_DEFAULT;
+let muted = !!mset.muted, started = false, fading = null, players = [], live = 0;
+
+function msave() { try { localStorage.setItem(MKEY, JSON.stringify({ level, muted })); } catch (e) {} }
+function target() { return muted ? 0 : level; }
+
+function build() {
+  players = [0, 1].map(() => {
+    const a = new Audio('/static/audio/forest-pulse.mp3');
+    a.preload = 'auto'; a.volume = 0;
+    return a;
+  });
+}
+
+function ramp(to, seconds, then) {
+  if (fading) clearInterval(fading);
+  const a = players[live], from = a.volume, t0 = performance.now();
+  fading = setInterval(() => {
+    const k = Math.min(1, (performance.now() - t0) / (seconds * 1000));
+    a.volume = Math.max(0, Math.min(1, from + (to - from) * k));
+    if (k >= 1) { clearInterval(fading); fading = null; if (then) then(); }
+  }, 40);
+}
+
+function startMusic() {
+  if (started || muted) return;
+  started = true;
+  if (!players.length) build();
+  const a = players[live];
+  a.volume = 0;
+  a.play().then(() => ramp(target(), FADE_IN)).catch(() => { started = false; });
+  watchLoop();
+}
+
+function watchLoop() {
+  // No LAME gapless header on this file, so <audio loop> would insert a gap. Hand the
+  // track to the other element a beat before the end and cross it over instead.
+  setInterval(() => {
+    const a = players[live];
+    if (!a || !a.duration || a.paused) return;
+    const left = a.duration - a.currentTime;
+    if (left > XFADE) return;
+    const b = players[1 - live];
+    if (b.paused) { b.currentTime = 0; b.volume = 0; b.play().catch(() => {}); }
+    const k = Math.max(0, Math.min(1, left / XFADE));
+    a.volume = target() * Math.sqrt(k);          // equal power, so the middle does not dip
+    b.volume = target() * Math.sqrt(1 - k);
+    if (left <= 0.08) { a.pause(); a.currentTime = 0; live = 1 - live; }
+  }, 80);
+}
+
+function fadeOutMusic() {
+  if (!started) return;
+  ramp(0, FADE_OUT, () => players.forEach(a => { a.pause(); a.currentTime = 0; }));
+  started = false;
+}
+
+function paintSound() {
+  $('mute').classList.toggle('off', muted);
+  $('muteIcon').textContent = muted ? '×' : '♪';
+  $('vol').value = Math.round(level * 100);
+}
+$('mute').onclick = () => {
+  muted = !muted; msave(); paintSound();
+  if (muted) { if (fading) clearInterval(fading); players.forEach(a => { a.pause(); }); started = false; }
+  else startMusic();
+};
+$('vol').oninput = e => {
+  level = +e.target.value / 100; muted = false; msave(); paintSound();
+  if (started && !fading) players[live].volume = target(); else startMusic();
+};
+paintSound();
+
 /* ── wiring ── */
 const HOW_KEY = 'seren.loom.how';
 const showHow = () => { $('howBack').hidden = false; };
 const hideHow = () => { $('howBack').hidden = true; try { localStorage.setItem(HOW_KEY, '1'); } catch (e) {} };
-$('howGo').onclick = hideHow;
+$('howGo').onclick = () => { hideHow(); startMusic(); };
 $('howAgain').onclick = showHow;
 $('howBack').onclick = e => { if (e.target === $('howBack')) hideHow(); };
 try { if (!localStorage.getItem(HOW_KEY)) showHow(); } catch (e) { /* private window: skip it */ }
 
-document.querySelectorAll('.door').forEach(b => b.onclick = () => { S.door = b.dataset.door; S.browse = S.door === 'express' ? 'companions' : 'trope'; render(); });
+document.querySelectorAll('.door').forEach(b => b.onclick = () => { startMusic(); S.door = b.dataset.door; S.browse = S.door === 'express' ? 'companions' : 'trope'; render(); });
 $('rollFromDoor').onclick = playItOut;
 $('playOut').onclick = playItOut;
 $('dealAgain').onclick = () => { const c = S.browse === HERS ? nextUnfilled(HERS) : S.browse; S.hands[c] = sample(DATA.cards[c], HAND_SIZE).map(x => x.id); render(); };
@@ -613,8 +710,8 @@ $('takeHers').onclick = () => { S.picks.posture = S.hers; S.browse = nextUnfille
 $('redealHers').onclick = () => rerollSlot(HERS);
 $('play').onclick = () => { S.tuning = true; render(); };
 $('untune').onclick = () => { S.tuning = false; render(); };
-$('build').onclick = () => { S.tuning = false; S.set = true; render(); };
-$('unset').onclick = () => { S.set = false; render(); };
+$('build').onclick = () => { S.tuning = false; S.set = true; fadeOutMusic(); render(); };
+$('unset').onclick = () => { S.set = false; startMusic(); render(); };
 $('backdrop').onclick = e => { if (e.target === $('backdrop')) { S.open = null; render(); } };
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;

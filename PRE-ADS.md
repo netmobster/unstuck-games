@@ -18,6 +18,7 @@ it is the register of what we are actually using and what each thing requires of
 | Asset | Where | Licence | Status | What we owe |
 |---|---|---|---|---|
 | `155115__jzazvurek__ferret.wav` — Lucy's voice | Ferret Bowling | **CC BY 4.0** ([source](https://freesound.org/people/J.Zazvurek/sounds/155115/)) | **CLEAR, once credited** | A visible credit to **J. Zazvurek**. Commercial use is allowed; attribution is not optional. |
+| `Forest Pulse.mp3` — the Loom's table music | SEREN | **Suno, paid commercial plan** — made by Jay (assumed, same provenance as the other two; correct this line if not) | CLEAR | Nothing required. |
 | `Nocturnal Drift.mp3` — house ambience | Ferret Bowling | **Suno, paid commercial plan** — made by Jay | CLEAR | Nothing required. Credit it to the studio like any other asset we made. |
 | `orbis/audio/*.mp3` — ambience and the two SFX beds | Orbis | **Suno, paid commercial plan** — made by Jay | CLEAR | Nothing. Confirmed by Jay 2026-09-16: these are his own generations, not the tombstone's audio. |
 | Alfa Slab One · Archivo · Caveat | every page | SIL Open Font Licence | CLEAR | Nothing. OFL permits commercial embedding and web use. |
