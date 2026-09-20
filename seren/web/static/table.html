@@ -431,11 +431,32 @@ function renderPage() {
 
   const f = $('foot'); f.innerHTML = '';
   if (live) {
+    // CD's table had chips above the composer. The wired version dropped them because
+    // hers were canned fiction; these are built from who is actually at this table, and
+    // they WRITE INTO the box rather than speaking for you — you still say it yourself.
+    const chips = el('div', 'chips');
     if (state.pending) {
-      const chips = el('div', 'chips');
-      const b = el('button', '', 'Roll it'); b.onclick = () => openTray(state.pending);
-      chips.appendChild(b); f.appendChild(chips);
+      const b = el('button', '', 'Roll it');
+      b.onclick = () => openTray(state.pending);
+      chips.appendChild(b);
     }
+    const mine = (state.sheet || {}).slug;
+    const others = state.party.filter(x => x.slug !== mine).slice(0, 2);
+    const offers = [['Look around', 'I take a moment to look around.']];
+    others.forEach(x => offers.push([`Ask ${x.name.split(' ')[0]}`,
+      `I ask ${x.name.split(' ')[0]} what they make of this.`]));
+    offers.push(['Wait and listen', 'I say nothing, and listen.']);
+    offers.slice(0, state.pending ? 2 : 3).forEach(([label, line]) => {
+      const b = el('button', '', esc(label));
+      b.onclick = () => {
+        const ta = f.querySelector('textarea');
+        if (!ta) return;
+        ta.value = line; ta.focus();
+        ta.setSelectionRange(ta.value.length, ta.value.length);
+      };
+      chips.appendChild(b);
+    });
+    f.appendChild(chips);
     const c = el('div', 'composer');
     const ta = el('textarea'); ta.rows = 1;
     ta.placeholder = state.busy ? 'Seren is writing…' : state.pending ? 'She has asked for a roll.' : 'What do you do?';
