@@ -134,7 +134,11 @@ TOOLS = [
             "name": "fact",
             "description": (
                 "Write to the knowledge record: establish something new, flip what the "
-                "party knows about it, or record a belief and whether it is right."
+                "party knows about it, or record a belief and whether it is right. "
+                "This is what is TRUE IN THE WORLD, not a log of the session: what a "
+                "player announced they want is not a fact, and nobody in the world is "
+                "called \"the user\". `true` and `false` are for what the party has not "
+                "found out — anything they watched happen is `known`."
             ),
             "inputSchema": {"json": {
                 "type": "object",

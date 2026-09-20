@@ -158,8 +158,16 @@ class Campaign:
             base = self.root / folder
             if base.is_dir():
                 chunks += [p.read_text(encoding="utf-8", errors="ignore") for p in base.glob("*.md")]
+        # `src: player` is excluded, and that exclusion is the point. A fact the player
+        # generated is something they watched themselves do; it is not DM-side knowledge,
+        # however it was tagged. Without this the gate compares the DM's narration against
+        # things the player said out loud a moment ago and holds her for quoting them —
+        # which is exactly what three turns of Jay's 2026-09-20 session did. Filtering here
+        # as well as refusing at the write is deliberate: campaigns already carry rows
+        # written before the refusal existed, and the ledger is append-only.
         hidden = [str(f.get("fact") or "") for f in dice.read(self.facts_file)
-                  if str(f.get("visibility") or f.get("to") or "").lower() not in fog.PLAYER_VISIBILITY]
+                  if str(f.get("visibility") or f.get("to") or "").lower() not in fog.PLAYER_VISIBILITY
+                  and str(f.get("src") or "").lower() != "player"]
         if hidden:
             chunks.append(chr(10).join(h for h in hidden if h))
         return chr(10).join(c for c in chunks if c)

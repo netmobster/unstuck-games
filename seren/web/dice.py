@@ -153,6 +153,13 @@ FACT_OPS = {
 }
 VISIBILITY = {"true", "known", "suspected", "false"}
 
+# Nobody in the world has heard of "the user". A fact naming the person holding the mouse
+# is a transcript line wearing a fact's clothes, and it poisons two things at once: the
+# knowledge record fills with things that are not about the world, and the fog gate — which
+# compares narration against DM-side material — starts holding the DM for quoting the
+# player back to himself. Both happened in Jay's session on 2026-09-20.
+TABLE_PERSON = re.compile(r"\bthe\s+(user|player)\b", re.I)
+
 
 def fact(facts: Path, session: int, op: str, **fields) -> dict:
     """Append to facts.jsonl: what is true, and who knows it.
@@ -171,6 +178,23 @@ def fact(facts: Path, session: int, op: str, **fields) -> dict:
         raise Refused("a flip that changes nothing is not a flip")
     if op == "believe" and not isinstance(fields.get("truth"), bool):
         raise Refused("`believe` needs truth: true or false — whether the party is right")
+
+    text = str(fields.get("fact") or "")
+    if TABLE_PERSON.search(text):
+        raise Refused(
+            "a fact says what is true in the world, and nobody in the world is called "
+            "\"the user\" or \"the player\". Name the character, or do not record it: "
+            "what somebody announced they want is not yet a fact about anything."
+        )
+    if str(fields.get("src") or "").lower() == "player":
+        vis = str(fields.get("visibility") or fields.get("to") or "").lower()
+        if vis in ("true", "false"):
+            raise Refused(
+                "a thing the player did in the open cannot be a secret. `src: player` "
+                "means they watched it happen, so the visibility is `known` — `true` and "
+                "`false` are for what the party has not found out. And if it is only that "
+                "they said what they want, it is not a fact at all yet."
+            )
 
     entry = {"id": "f%03d" % (_last_id(facts, "f") + 1), "s": int(session), "op": op}
     entry.update(fields)
