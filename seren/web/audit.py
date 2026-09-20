@@ -54,13 +54,16 @@ def check(camp: dict) -> list[str]:
     fronts = camp.get("fronts") or []
     if len(fronts) < 2:
         problems.append(f"{len(fronts)} fronts — write three, and make them want things from each other")
-    names = [str(f.get("name") or "").strip() for f in fronts if f.get("name")]
-    interlocks = [f for f in fronts
-                  if any(n and n.lower()[:12] in str(f.get("wants_from") or "").lower()
-                         for n in names if n.lower() != str(f.get("name") or "").lower())]
-    if fronts and not interlocks:
-        problems.append("every front points at the party; at least one must want something "
-                        "another front holds — name that front in `wants_from`")
+    # The rule is that at least one front wants something it cannot get from the party.
+    # Matching front names exactly was too literal — "the Harlan ledger" is an interlock even
+    # though it names a thing rather than a front — so the test is the honest one: does every
+    # single front point at the party?
+    def at_the_party(text: str) -> bool:
+        t = str(text or "").strip().lower()
+        return (not t) or t.startswith(("the party", "the players", "the pc", "party"))
+    if fronts and all(at_the_party(f.get("wants_from")) for f in fronts):
+        problems.append("every front points at the party; at least one must want something it "
+                        "can only get from another front — say what, and from whom")
     for f in fronts:
         if not str(f.get("impulse") or "").strip():
             problems.append(f"front {f.get('name', '?')!r} has no impulse")

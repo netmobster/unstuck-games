@@ -47,9 +47,13 @@ SCHEMA = """Return ONE json object and nothing else:
 
 RULES = """How to write it:
 
-- EXACTLY THREE FRONTS. At least one `wants_from` must name ANOTHER FRONT from your own
-  list — not "the party". A front that only points at the party is pressure; a front that
-  wants what another front holds is a world.
+- EXACTLY THREE FRONTS, and at least one of them must want something it can only get from
+  ANOTHER FRONT — never "the party". A front that only points at the party is pressure; a
+  front that wants what another front holds is a world. Worked example, three fronts:
+      "The Assay Office" wants_from: "the party" — they are hiding an unlicensed casting
+      "Corrin's people" wants_from: "The Assay Office — the ledger of who was assayed"
+      "The orchard families" wants_from: "Corrin's people — the debt they are owed"
+  Two of those three point somewhere other than the party. Do that.
 - EXACTLY SEVEN FACTS. Visibility is the load-bearing field:
     true      = so, and nobody at the table knows it. MOST OF YOURS ARE THIS.
     known     = the party established it in play. At the opening, at most one.
