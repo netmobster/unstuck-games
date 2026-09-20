@@ -273,3 +273,44 @@ for the §1 pressure line.
 6. **One line of pacing permission** in the contract
 7. ⚠️ **Then, and only then, the model A/B** — with a note recording what it was allowed
    to be credited for
+
+---
+
+# 8 · ⛔ Correcting §7 — determinism has a scope, and narrative is outside it
+
+**Jay, 2026-09-20, reading §7:** *"We don't need deterministic. Like IMPRINT, Seren is
+designed to exist in the mess. Rolling is deterministic, narrative is not."*
+
+**He is right and §7's framing was wrong.** It asked *"which of the six can be code"* and
+by asking it accepted that making them code was the goal. It is not. This project's
+determinism doctrine has a deliberately narrow scope:
+
+> ### Deterministic where a wrong answer breaks trust. Nowhere else.
+>
+> The dice, the verdict, the fog, the record. A DM that fudges a roll has betrayed the
+> player. **A DM that writes a flat paragraph has given them a worse evening**, and those
+> are not the same failure and must not get the same machinery.
+
+⭐ **And this explains the thing that had not been explained.** The prose got *flatter* as
+the controls got tighter — the fog gate widened, hidden facts entered `dm_side`, the fact
+tool grew refusals — and across the same period the narration drifted further toward
+reciting the record. **That is not a coincidence and it is not the model being lazy.**
+Restating what the panel already showed is the single output that cannot trip any gate we
+have ever built. Every prohibition added made it more attractive. **We optimised her
+toward silence and then complained she was quiet.**
+
+## The distinction that actually holds: *when*, not *whether*
+
+| | |
+|---|---|
+| **Before play — guarantee the materials** | A campaign whose room is empty, a persona with no moves: **refuse those at build time.** Deterministic, checkable, and it never touches a turn. The auditor already works exactly this way |
+| **During play — hand her materials, never police the prose** | The cast file, the chronicle of last session, the computed line that says nothing has arrived in three turns. ⭐ **These are things given, not rules imposed** — she cannot violate a fact she has been handed |
+| **The two existing gates stay exactly as they are** | The dice and the fog. Those are trust, they are narrow, and they were never the problem |
+
+⛔ **So: nothing new gates a turn.** The responsiveness count stays an instrument and never
+becomes a threshold. There is no check for boring, no refusal for flat, no minimum
+paragraph. A turn held for being badly written costs the player their turn and teaches the
+model to write less.
+
+> **Build-time refusals make the world worth narrating. Play-time additions give her
+> something to say. Neither one tells her how to say it.**
