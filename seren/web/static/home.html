@@ -3,135 +3,189 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>SEREN — You bring one character. It brings everyone else.</title>
-<meta name="description" content="A dungeon master that cannot fudge the dice. You play one character; SEREN runs the world, every NPC, and the companions beside you — inside a canon it never loses.">
+<title>SEREN — You brought one character. I have everyone else.</title>
+<meta name="description" content="Seren is a dungeon master. You play one character; she runs the world, every NPC and the companions beside you. The dice are code, the fog is code, and nothing is ever retconned.">
+<meta name="theme-color" content="#0d0c0b">
 <link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=IBM+Plex+Serif:ital,wght@0,300;0,400;0,500;1,400&family=IBM+Plex+Sans:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
 <style>
-/* SEREN's own palette, from the door: ash ground, bone text, one ember. */
+/* The homepage is a tour. Seren meets you at the door and walks you through her rooms,
+   in her voice. Sections carry data-room; the ember glyph (bottom right) is her presence
+   and changes as you move. Squint lives behind the last door as a modal. */
 :root{
   --ink:#0d0c0b; --ink-2:#141210; --ink-3:#1b1815;
   --bone:#e8e2d4; --bone-2:#9a9182; --bone-3:#6b6558;
-  --ember:#ff4d00; --ember-dim:#c2481a; --gold:#c2a46a; --held:#5c8a52;
+  --ember:#ff4d00; --ember-dim:#c2481a; --gold:#c2a46a; --held:#5c8a52; --lost:#a8574b;
   --rule:#2a2622; --rule-2:#3b352c;
-  --display:Cinzel,Georgia,serif; --serif:'IBM Plex Serif',Georgia,serif;
-  --sans:'IBM Plex Sans',system-ui,sans-serif; --mono:'Space Mono',ui-monospace,monospace;
+  --paper:#d8cba9; --paper-ink:#2a221a; --paper-dim:#6d5f4a; --paper-rule:#8a7a5f; --coral:#e0553a;
+  --display:Cinzel,Georgia,serif; --serif:Spectral,Georgia,serif; --mono:'Space Mono',ui-monospace,monospace;
 }
 *{box-sizing:border-box}
-body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--serif);line-height:1.6;
-  background-image:radial-gradient(ellipse 900px 500px at 50% -10%,rgba(255,77,0,.07),transparent 70%)}
-a{color:inherit}
-.k{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--ember)}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--serif);font-weight:300;line-height:1.6;
+  background-image:radial-gradient(ellipse 900px 520px at 50% -8%,rgba(255,77,0,.08),transparent 70%)}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--ember)}
+::selection{background:rgba(255,77,0,.35)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
+
 .wrap{max-width:1080px;margin:0 auto;padding-left:20px;padding-right:20px}
-section{padding-block:clamp(56px,7vw,96px);border-top:1px solid var(--rule)}
-h1,h2,h3{font-family:var(--display);font-weight:500;line-height:1.12;margin:0;text-wrap:balance}
-h2{font-size:clamp(26px,3.4vw,38px);margin-bottom:10px}
-h3{font-size:19px;letter-spacing:.02em}
-p{margin:14px 0 0;max-width:64ch}
-.lede{font-size:clamp(18px,2vw,21px);color:var(--bone-2)}
-.mono{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--bone-3);text-transform:uppercase}
+.k{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember)}
+.mono{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-3)}
+.cta{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
+  padding:13px 20px;border-radius:2px;background:var(--ember);color:#160b05;font-weight:700}
+.cta:hover{filter:brightness(1.12);color:#160b05}
+.cta.ghost{background:none;color:var(--bone-2);border:1px solid var(--rule-2);font-weight:400}
+.cta.ghost:hover{filter:none;border-color:var(--bone-2);color:var(--bone)}
+.acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:34px}
 
 /* masthead */
 header{position:sticky;top:0;z-index:10;background:rgba(13,12,11,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:14px}
-.brand{display:flex;align-items:center;gap:10px;text-decoration:none}
-.brand svg{width:26px;height:26px;display:block}
-.brand b{font-family:var(--display);font-size:16px;font-weight:600;letter-spacing:.16em}
-.cta{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;
-  padding:10px 18px;border-radius:2px;background:var(--ember);color:#160b05;font-weight:700;white-space:nowrap}
-.cta:hover{filter:brightness(1.12)}
-.cta.ghost{background:none;color:var(--bone-2);border:1px solid var(--rule-2);font-weight:400}
-.cta.ghost:hover{color:var(--bone);border-color:var(--bone-3)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.brand{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:.16em}
+header nav{display:flex;gap:26px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-2)}
+header nav a{white-space:nowrap}
+header nav .cta{padding:10px 18px}
 
-/* hero */
-.hero{border-top:0;padding-top:clamp(50px,7vw,90px)}
-.hero h1{font-size:clamp(34px,6vw,64px);letter-spacing:.01em}
-.hero .sub{font-family:var(--mono);font-size:12px;letter-spacing:.2em;color:var(--ember);text-transform:uppercase;margin-bottom:18px}
-.hero .lede{margin-top:22px;font-size:clamp(17px,2.1vw,20px);color:var(--bone-2);max-width:60ch}
-.acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:30px}
-.holds{margin-top:44px;border:1px solid var(--rule);border-radius:3px;background:var(--ink-2);padding:22px 24px}
-.holds ul{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:10px}
-.holds li{font-size:17px;color:var(--bone);padding-left:18px;position:relative}
-.holds li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:6px;border-radius:50%;background:var(--ember-dim)}
-.holds .fine{margin-top:16px;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;color:var(--bone-3);text-transform:uppercase}
+/* rooms */
+section{border-top:1px solid var(--rule)}
+section .wrap{padding-top:clamp(56px,7vw,96px);padding-bottom:clamp(56px,7vw,96px)}
+.room{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:48px;align-items:center}
+.room.flip > .copy{order:2}
+.room.flip > .show{order:1}
+.r{font-family:var(--display);font-weight:500;font-size:12px;letter-spacing:.24em;color:var(--gold)}
+h1,h2{margin:0;text-wrap:balance}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(36px,5.6vw,66px);line-height:1.1;margin-top:22px;max-width:16ch}
+.say{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(26px,3.2vw,38px);line-height:1.25;margin-top:16px}
+.copy p{font-size:16px;color:var(--bone-2);margin:18px 0 0;max-width:46ch}
+.more{display:inline-block;margin-top:22px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--ember);border-bottom:1px solid var(--ember-dim);padding-bottom:4px}
+.panel{border:1px solid var(--rule);border-radius:3px;background:var(--ink-2);padding:22px 24px;min-width:0;font-family:var(--mono);font-size:12.5px;line-height:1.8;color:var(--bone-2)}
+.panel .h{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-3);display:flex;justify-content:space-between;border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:12px}
+.panel .f{margin-top:12px;padding-top:10px;border-top:1px solid var(--rule);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-3)}
+.panel .row{display:grid;grid-template-columns:1fr auto;gap:12px}
+.held{background:repeating-linear-gradient(90deg,#3b352c 0 8px,#2a2622 8px 12px);color:transparent}
+.dc{background:var(--rule);color:var(--rule);padding:0 6px}
+.ok{color:var(--held)} .no{color:var(--lost)} .lit{color:var(--bone)}
 
-/* two-column compares */
-.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:28px}
-.card{border:1px solid var(--rule);border-radius:3px;padding:22px;background:var(--ink-2)}
-.card.them{opacity:.72}
-.card.us{border-color:var(--ember-dim);background:linear-gradient(180deg,rgba(255,77,0,.05),transparent 60%)}
-.card h3{margin-bottom:8px}
-.card p{font-size:16px;color:var(--bone-2)}
-.card ul{list-style:none;margin:16px 0 0;padding:0;display:flex;flex-direction:column;gap:10px;font-size:15.5px;color:var(--bone-2)}
-.card li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:baseline}
-.card li i{font-style:normal;color:var(--bone-3)}
-.card.us li i{color:var(--ember)}
+/* 0 · the door */
+.door .wrap{padding-top:clamp(70px,10vw,130px)}
+.door .lede{font-style:italic;font-size:clamp(19px,2.1vw,23px);color:var(--bone-2);margin:26px 0 0;max-width:34em}
+.door .fine{margin-top:56px;max-width:60ch;line-height:1.7}
 
-/* numbered points */
-.points{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px;margin-top:28px}
-.point .n{font-family:var(--mono);font-size:11px;color:var(--ember);letter-spacing:.14em}
-.point h3{margin:8px 0 0;font-size:18px}
-.point p{font-size:15.5px;color:var(--bone-2);margin-top:8px}
+/* I · the card table: a hand mid-deal */
+.fan{position:relative;height:300px;min-width:0;padding:0 24px}
+.card{position:absolute;width:128px;height:190px;background:var(--ink-2);border:1px solid var(--gold);border-radius:7px;padding:14px;
+  box-shadow:0 16px 36px rgba(0,0,0,.6);transform:rotate(var(--r));transform-origin:bottom center;animation:deal .7s cubic-bezier(.2,.8,.2,1) var(--d) both}
+.card .t{font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;color:var(--bone-2)}
+.card .n{font-size:19px;line-height:1.15;font-weight:400;margin-top:8px}
+.card .q{font-style:italic;font-size:12px;line-height:1.35;margin-top:8px;color:var(--bone-2)}
+.card.taken{background:var(--gold);color:#17140f}
+.card.taken .t{color:#17140f;display:flex;justify-content:space-between}
+.card.taken .n{font-weight:500;font-size:20px}
+.card.counter{background:var(--ink);border-color:var(--ember);box-shadow:0 0 30px rgba(255,77,0,.18),0 16px 36px rgba(0,0,0,.6)}
+.card.counter .t{font-family:var(--display);font-weight:500;color:var(--ember)}
+.fan .cap{position:absolute;left:0;bottom:0;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-3)}
+@keyframes deal{0%{opacity:0;transform:translate(160px,-120px) rotate(20deg)}100%{opacity:1;transform:translate(0,0) rotate(var(--r))}}
 
-/* the three layers */
-.layers{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:18px;margin-top:28px}
-.layer{border:1px solid var(--rule);border-radius:3px;padding:22px;background:var(--ink-2)}
-.layer .r{font-family:var(--display);font-size:13px;color:var(--ember);letter-spacing:.2em}
-.layer h3{margin:10px 0 0}
-.layer p{font-size:15.5px;color:var(--bone-2)}
+/* IV · the table: a page of the book */
+.page{background:var(--paper);color:var(--paper-ink);padding:28px 30px 22px;border-radius:2px;min-width:0;font-weight:400;
+  box-shadow:0 30px 60px rgba(0,0,0,.6),inset 0 0 80px rgba(120,90,50,.15)}
+.page .h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border-bottom:1px solid var(--paper-rule);padding-bottom:10px}
+.page .h b{font-weight:400;font-size:22px;line-height:1}
+.page .h span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+.page p{font-size:16.5px;line-height:1.55;margin:18px 0 0;text-wrap:pretty}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:20px}
+.chips span{border:1px solid var(--paper-rule);border-radius:999px;padding:7px 12px;font-size:13.5px;line-height:1}
+.ask{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--coral);padding:14px 0 8px;margin-top:10px}
+.ask i{font-size:17px;color:var(--paper-dim)}
+.ask i::after{content:"";display:inline-block;width:1px;height:1em;background:var(--paper-ink);margin-left:2px;vertical-align:-2px;animation:blink 1s step-end infinite}
+.ask b{background:var(--paper-ink);color:#e8dcc4;padding:7px 12px;border-radius:2px;font:400 10px/1 var(--mono);letter-spacing:.12em}
+@keyframes blink{0%,49%{opacity:1}50%,100%{opacity:0}}
 
-/* the timeline */
-.time{margin-top:28px;display:flex;flex-direction:column;gap:0}
-.beat{display:grid;grid-template-columns:120px 1fr;gap:20px;padding:14px 0;border-bottom:1px solid var(--rule)}
-.beat:last-child{border-bottom:0}
-.beat .when{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--bone-3);text-transform:uppercase;padding-top:4px}
-.beat .what{font-size:17px}
-.beat.last .what{color:var(--ember)}
+/* V · the record */
+.record{background:linear-gradient(180deg,rgba(255,77,0,.04),transparent 40%)}
+.record .r{color:var(--ember)}
+.owns{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:36px}
+.own{border:1px solid var(--rule);border-radius:3px;padding:20px;background:var(--ink-2);font-size:16.5px;line-height:1.7}
+.own .k{display:block;font-size:10.5px;letter-spacing:.18em;margin-bottom:12px}
+.own.nobody{border-color:var(--ember-dim);background:linear-gradient(180deg,rgba(255,77,0,.06),transparent)}
+.own em{display:block;font-size:14px;color:var(--bone-2);margin-top:10px;line-height:1.5}
+.ledger{margin-top:28px;padding:16px 20px;font-size:12px;line-height:1.9;overflow:hidden}
+.ledger .id{color:var(--ember)}
 
-/* run it twice */
-.runs{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:22px}
-.run{border:1px solid var(--rule);border-radius:3px;padding:22px;background:var(--ink-2)}
-.run .h{display:flex;justify-content:space-between;align-items:baseline;border-bottom:1px solid var(--rule);padding-bottom:10px}
-.run .h b{font-family:var(--display);font-size:15px;letter-spacing:.1em;font-weight:500}
-.run .h span{font-family:var(--mono);font-size:10.5px;color:var(--bone-3);letter-spacing:.1em}
-.run ol{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:12px}
-.run li{display:grid;grid-template-columns:20px 1fr;gap:10px;font-size:15.5px;color:var(--bone-2)}
-.run li b{font-family:var(--mono);font-size:11px;color:var(--ember);letter-spacing:.1em}
-.run .end{margin-top:16px;padding-top:12px;border-top:1px solid var(--rule);font-size:16px;color:var(--bone)}
-.bones{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
-.bone{border:1px solid var(--rule-2);border-radius:2px;padding:9px 14px;font-size:15px;color:var(--bone-2)}
-.bone b{color:var(--ember);font-family:var(--mono);font-size:11px;margin-right:8px}
+/* VI · fit */
+.fit{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;margin-top:30px;font-size:16px;color:var(--bone-2)}
+.fit .own{font-size:16px;line-height:1.6}
+.fit .own.dim{opacity:.75}
+.fit ul{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:9px}
+.fit li{display:grid;grid-template-columns:18px 1fr;gap:10px}
+.fit li i{font-style:normal}
 
-/* who owns what */
-.owns{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px;margin-top:26px}
-.own{border:1px solid var(--rule);border-radius:3px;padding:20px;background:var(--ink-2)}
-.own .k{display:block;margin-bottom:10px}
-.own.nobody{border-color:var(--ember-dim)}
-.own ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px;font-size:16px}
-.own p{font-size:14.5px;color:var(--bone-3);margin-top:14px}
+/* back at the door */
+.again .wrap{text-align:center;padding-top:clamp(70px,9vw,120px);padding-bottom:clamp(70px,9vw,120px)}
+.again h2{font-family:var(--display);font-weight:500;font-size:clamp(30px,4.2vw,48px);line-height:1.12}
+.again .acts{justify-content:center;margin-top:30px}
+.secret{margin:64px auto 0;display:flex;align-items:center;gap:14px;background:var(--ink-2);border:1px solid var(--rule-2);border-radius:2px;cursor:pointer;padding:14px 20px;color:var(--bone);text-align:left}
+.secret:hover{border-color:var(--gold);background:var(--ink-3)}
+.secret .flame{width:10px;height:10px;border-radius:50%;background:#ffb547;box-shadow:0 0 14px 4px rgba(255,170,60,.55);animation:candle 4s ease-in-out infinite;flex:none}
+.secret b{display:block;font-style:italic;font-weight:400;font-size:17px;line-height:1.2}
+.secret small{display:block;margin-top:4px;font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+@keyframes candle{0%,100%{opacity:.75;transform:scale(1)}30%{opacity:1;transform:scale(1.06) translateX(1px)}60%{opacity:.85;transform:scale(.97) translateX(-1px)}}
 
-/* fit */
-.fit{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:24px}
-.fit ul{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:9px;font-size:15.5px;color:var(--bone-2)}
-.fit li{display:grid;grid-template-columns:18px 1fr;gap:10px;align-items:baseline}
-.fit .yes i{color:var(--held);font-style:normal}
-.fit .no i{color:var(--ember-dim);font-style:normal}
+footer{border-top:1px solid var(--rule);padding:30px 20px;font-family:var(--mono);font-size:11px;line-height:1.6;letter-spacing:.1em;color:var(--bone-3)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:0}
+footer a{color:var(--bone-2)}
 
-/* the end */
-.end-cta{text-align:center;border-top:1px solid var(--rule)}
-.end-cta h2{font-size:clamp(28px,4vw,44px)}
-.end-cta .acts{justify-content:center}
-footer{border-top:1px solid var(--rule);padding-block:30px;font-family:var(--mono);font-size:11px;letter-spacing:.1em;color:var(--bone-3)}
-footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
-footer a{text-decoration:none}
-footer a:hover{color:var(--bone)}
+/* her presence: the ember glyph, following you room to room */
+.presence{position:fixed;right:18px;bottom:18px;z-index:9;display:flex;align-items:center;gap:12px;pointer-events:none;
+  background:rgba(13,12,11,.9);border:1px solid var(--rule);border-radius:999px;padding:8px 16px 8px 8px;backdrop-filter:blur(6px)}
+.presence svg{display:block;width:44px;height:44px;filter:drop-shadow(0 0 14px rgba(255,77,0,.35))}
+.presence .lit{transition:stroke-dasharray .9s ease,transform .9s ease;animation:ember 3s ease-in-out infinite}
+.presence .bite{transition:cx .9s ease,cy .9s ease}
+.presence div{font-family:var(--mono);font-size:9.5px;line-height:1.6;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-3)}
+.presence div span{color:var(--bone-2)}
+@keyframes ember{0%,100%{opacity:.5}50%{opacity:1}}
 
-@media (max-width:760px){
-  .pair,.runs,.fit{grid-template-columns:1fr}
-  .beat{grid-template-columns:1fr;gap:4px}
-}
+/* SQUINT · your seat at the table. Authored at 900×675 and scaled whole to the viewport,
+   so the notes stay pinned to the cards they point at. */
+.squint{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.94);display:none;place-items:center;padding:20px;animation:rise .4s both}
+.squint.open{display:grid}
+@keyframes rise{0%{opacity:0;transform:translateY(8px)}100%{opacity:1;transform:none}}
+.squint .frame{position:relative;border:1px solid #1c1714;border-radius:3px;overflow:hidden;background:#060504}
+.squint .scene{position:absolute;left:0;top:0;width:900px;height:675px;transform-origin:top left;color:var(--bone)}
+.squint .scene > *{position:absolute}
+.sq-lamplight{inset:0;background:radial-gradient(ellipse 70% 55% at 50% 30%,rgba(255,170,60,.22),rgba(255,120,20,.06) 45%,transparent 70%)}
+.sq-cord{left:449px;top:0;width:2px;height:60px;background:#1a1410}
+.sq-shade{left:404px;top:60px;width:92px;height:34px;background:linear-gradient(180deg,#2a1f14,#0d0906);border-radius:0 0 46px 46px/0 0 20px 20px;box-shadow:0 14px 40px 10px rgba(255,160,50,.35)}
+.sq-flame{left:418px;top:88px;width:64px;height:10px;border-radius:50%;background:rgba(255,205,120,.9);box-shadow:0 0 30px 14px rgba(255,170,60,.55);animation:candle 5s ease-in-out infinite}
+.sq-head{left:408px;top:115px;width:84px;height:96px;border-radius:50% 50% 45% 45%;background:radial-gradient(ellipse at 50% 20%,#1a120c,#050403 70%);box-shadow:inset -8px 0 14px rgba(255,150,50,.08),0 0 0 1px rgba(255,150,50,.05)}
+.sq-shoulders{left:300px;top:182px;width:300px;height:160px;border-radius:140px 140px 20px 20px;background:radial-gradient(ellipse at 50% 0%,#150e09,#050403 65%);box-shadow:inset 0 10px 24px rgba(255,150,50,.06)}
+.sq-table{left:-90px;right:-90px;top:243px;bottom:0;transform:perspective(600px) rotateX(48deg);transform-origin:top center;box-shadow:inset 0 40px 80px rgba(0,0,0,.6);
+  background:repeating-linear-gradient(92deg,rgba(0,0,0,.18) 0 3px,transparent 3px 11px,rgba(0,0,0,.1) 11px 14px),
+             repeating-linear-gradient(88deg,transparent 0 40px,rgba(255,200,120,.03) 40px 41px),
+             linear-gradient(180deg,#4a3320 0%,#2c1d11 45%,#120c07 100%)}
+.sq-pool{inset:0;background:radial-gradient(ellipse 45% 30% at 50% 48%,rgba(255,180,80,.18),transparent 70%);pointer-events:none}
+.sq-back{top:250px;width:34px;height:48px;border-radius:3px;background:linear-gradient(160deg,#3a2c1f,#1a130e);border:1px solid #4a3a2a;box-shadow:0 3px 8px rgba(0,0,0,.8)}
+.sq-pot{left:424px;top:351px;display:flex;gap:2px}
+.sq-pot span{width:16px;height:16px;border-radius:50%;background:radial-gradient(circle at 35% 35%,#e0c27a,#8a6a2e);box-shadow:0 2px 3px #000}
+.sq-pot span:last-child{margin-top:-6px}
+.sq-card{top:405px;width:150px;height:216px;border-radius:9px;background:linear-gradient(170deg,#efe3c4,#d8c9a2);border:1px solid #9c8b66;
+  box-shadow:0 18px 40px rgba(0,0,0,.7),inset 0 0 0 6px #e6d8b6;transform:rotate(var(--r));transform-origin:bottom center}
+.sq-card b{position:absolute;top:12px;left:14px;font:600 26px/1 var(--display)}
+.sq-card b + b{top:auto;left:auto;bottom:12px;right:14px;transform:rotate(180deg)}
+.sq-card i{position:absolute;top:44px;left:15px;font:400 9px/1 var(--mono);letter-spacing:.14em}
+.sq-note{font-family:var(--mono);font-size:11px;line-height:1.6;letter-spacing:.05em;color:#e8dcc0;text-shadow:0 1px 3px #000,0 0 12px #000}
+.sq-note b{font-weight:400;color:var(--gold)}
+.sq-kicker{left:0;right:0;top:16px;text-align:center;font-family:var(--mono);font-size:9.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-3)}
+.sq-title{left:24px;top:30px;font:500 26px/1 var(--display);letter-spacing:.2em;color:#e8d8b0;text-shadow:0 0 30px rgba(255,140,40,.4)}
+.sq-sub{left:24px;top:64px;font-style:italic;font-size:14px;line-height:1.4;color:var(--bone-2);max-width:24em}
+.sq-stakes{left:24px;top:600px;font-family:var(--mono);font-size:10px;line-height:1.7;color:var(--bone-3)}
+.sq-stakes span{color:var(--bone-2)}
+.sq-esc{top:12px;right:14px;background:none;border:0;color:var(--bone-3);font:400 12px/1 var(--mono);cursor:pointer;padding:6px}
+.sq-esc:hover{color:var(--bone)}
+
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
@@ -139,245 +193,170 @@ footer a:hover{color:var(--bone)}
 
 <header>
   <div class="wrap">
-    <a class="brand" href="/">
-      <svg viewBox="0 0 64 64" aria-hidden="true">
-        <circle cx="32" cy="32" r="25" fill="none" stroke="#2a2622" stroke-width="6" stroke-dasharray="16 5"/>
-        <circle cx="32" cy="32" r="25" fill="none" stroke="#ff4d00" stroke-width="6" stroke-dasharray="96 61" transform="rotate(-90 32 32)"/>
-        <circle cx="31" cy="33" r="14" fill="#e9e1d3"/><circle cx="40" cy="27" r="14" fill="#0d0c0b"/>
-      </svg>
-      <b>SEREN</b>
-    </a>
-    <a class="cta" href="/loom">Deal a campaign</a>
+    <a class="brand" href="/">SEREN</a>
+    <nav>
+      <a href="/loom">The Loom</a>
+      <a href="/contract">The Contract</a>
+      <a class="cta" href="/loom">Deal a hand</a>
+    </nav>
   </div>
 </header>
 
-<section class="hero">
+<!-- 0 · THE DOOR -->
+<section class="door" id="door" data-room="door" style="border-top:0">
   <div class="wrap">
-    <div class="sub">You bring one character. It brings everyone else.</div>
-    <h1>The world knows<br>what happened.</h1>
-    <p class="lede">SEREN is a dungeon master. You play one character. It runs the world, every NPC, and the two or three companions who make up the rest of the party — inside a canon it never loses. One human, one character, no other people at the table.</p>
+    <div class="k">Seren · a dungeon master</div>
+    <h1>You brought one character. Good. I have everyone else.</h1>
+    <p class="lede">Come in. I'll show you the rooms. It won't take long, and I would rather you saw them than read about them.</p>
     <div class="acts">
-      <a class="cta" href="/loom">Deal a campaign</a>
-      <a class="cta ghost" href="#difference">See how it works</a>
+      <a class="cta" href="/loom">Deal a hand</a>
+      <a class="cta ghost" href="#cards">Take the tour ↓</a>
     </div>
+    <p class="mono fine">One human, one character, nobody else at the table. She runs the world, every person in it, and the two companions beside you.</p>
+  </div>
+</section>
 
-    <div class="holds">
-      <span class="k">What Seren holds</span>
-      <ul>
-        <li>Ser'en knows Noke is dead. Kestrel does not.</li>
-        <li>The tower at Shinebright is unclaimed, and someone is counting the days.</li>
-        <li>The Ashgate compact holds, for now.</li>
-        <li>Threads left open. One of them is moving.</li>
-      </ul>
-      <div class="fine">Illustrative — but it has now been played</div>
+<!-- I · THE CARD TABLE -->
+<section id="cards" data-room="cards">
+  <div class="wrap room">
+    <div class="copy">
+      <div class="r">I · THE CARD TABLE</div>
+      <h2 class="say">We start here. I deal five, you take one. Seven times. Then I play one card back — your antagonist — and if you don't like it, make me play another.</h2>
+      <p>Trope, origin, world, trouble, antagonist, two companions, and who tells it. Five dials for how it should be written; none of them pick a card.</p>
+      <a class="more" href="/loom">The Loom →</a>
+    </div>
+    <div class="show fan">
+      <div class="card" style="left:4%;top:34px;--r:-12deg;--d:.1s"><div class="t">TROPE</div><div class="n">The debt comes due</div></div>
+      <div class="card taken" style="left:26%;top:14px;--r:-4deg;--d:.25s"><div class="t"><span>TROUBLE</span><span>● TAKEN</span></div><div class="n">A death</div></div>
+      <div class="card" style="left:48%;top:8px;--r:4deg;--d:.4s"><div class="t">TOLD BY</div><div class="n">The Coroner</div><div class="q">cause, then effect, then the body</div></div>
+      <div class="card counter" style="right:8%;top:30px;--r:11deg;--d:.9s"><div class="t">HER COUNTER</div><div class="n">Collector</div><div class="q">“You are interesting. I would like to keep you.”</div></div>
+      <div class="cap">5 of 12 · she held the rest</div>
     </div>
   </div>
 </section>
 
-<section id="difference">
-  <div class="wrap">
-    <span class="k">The difference</span>
-    <h2>SEREN doesn't execute a campaign. It runs one.</h2>
-    <p class="lede">You give it the bones — structure, beats, characters, factions, your own items and spells and rules. What happens between those bones is improvised at the table, by a DM that knows the world. Which means the same material never plays out the same way twice.</p>
-    <div class="pair">
-      <div class="card them">
-        <span class="mono">Conventional AI campaign tools</span>
-        <h3>A script with a narrator</h3>
-        <p>Three playthroughs. Three identical runs.</p>
-        <p>Every beat is pre-written, then performed. Go off-script and it loses the thread — or quietly forgets the script entirely.</p>
+<!-- II · THE LOOM -->
+<section id="loom" data-room="loom">
+  <div class="wrap room flip">
+    <div class="copy">
+      <div class="r">II · THE LOOM</div>
+      <h2 class="say">Give me ten seconds. I'm writing three fronts, an antagonist with a grudge against you in particular, and seven secrets. Two you'll know when you sit down. Five you won't.</h2>
+      <p>What she writes is a folder you could read with your eyes: a premise, fronts with clocks that run whether or not you act, and a visibility on every fact.</p>
+    </div>
+    <div class="show panel">
+      <div class="h"><span>facts.jsonl</span><span style="color:var(--gold)">the due debt</span></div>
+      <div style="display:flex;flex-direction:column;gap:9px;line-height:1.5">
+        <div class="row"><span class="lit">Lira told the barman not to serve him.</span><span style="color:var(--gold)">known</span></div>
+        <div class="row"><span>Mara's small debt was paid with someone else's coin.</span><span>suspected</span></div>
+        <div class="row"><span class="held">the true killer is not from the orchard counties</span><span style="color:var(--bone-3)">held</span></div>
+        <div class="row"><span class="held">the collector has already been paid, twice</span><span style="color:var(--bone-3)">held</span></div>
+        <div class="row"><span class="held">the scribe keeps a second ledger</span><span style="color:var(--bone-3)">held</span></div>
+        <div class="row"><span class="held">the debt was never Eldrin's</span><span style="color:var(--bone-3)">held</span></div>
+        <div class="row"><span class="held">the coroner signed the wrong name</span><span style="color:var(--bone-3)">held</span></div>
       </div>
-      <div class="card us">
-        <span class="mono">SEREN</span>
-        <h3>A DM who knows the world</h3>
-        <p>Three playthroughs. Same bones. Three different campaigns.</p>
-        <p>The anchors hold. The route between them is played, not recited — and whatever you do to it becomes permanent.</p>
-      </div>
+      <div class="f">7 secrets · 2 yours · 5 hers</div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <span class="k">The rest of the party</span>
-    <h2>They can disagree with you, and sometimes they're right.</h2>
-    <p class="lede">The hard part of playing alone is not the world. It is that nobody at the table surprises you. SEREN runs the two or three companions beside you as people, not as options — they want things, they have opinions about what you are doing, and they act on both.</p>
-    <div class="points">
-      <div class="point"><div class="n">01</div><h3>They do things you didn't ask for.</h3>
-        <p>A companion can go ahead without you, hold something back, or settle a problem in a way you would not have chosen. You find out afterwards, like anyone at a table would.</p></div>
-      <div class="point"><div class="n">02</div><h3>They are not a menu.</h3>
-        <p>You cannot pick their next line or spend them like a resource. They carry their own wants, and those wants do not always agree with yours.</p></div>
-      <div class="point"><div class="n">03</div><h3>They remember how you treated them.</h3>
-        <p>Trust is earned and spent. What you did in session four is still what you did, and the person who watched you do it has not forgotten.</p></div>
+<!-- III · THE AUDITOR'S DESK -->
+<section id="auditor" data-room="auditor">
+  <div class="wrap room">
+    <div class="copy">
+      <div class="r">III · THE AUDITOR'S DESK</div>
+      <h2 class="say">He isn't me. He's code. He reads what I wrote before you ever see it, and he has already sent one back. I don't argue with him. I can't.</h2>
+      <p>A model's opinion can advise; it cannot refuse. The auditor can. A campaign that fails him twice is refused, and you deal again.</p>
+    </div>
+    <div class="show panel">
+      <div class="h"><span>audit.check · pass 1 of 2</span></div>
+      <div><span class="ok">✓</span> seven facts, each with a visibility</div>
+      <div><span class="ok">✓</span> at least one secret is actually secret</div>
+      <div><span class="no">✗</span> 2 facts start <span class="lit">known</span> — the party has played nothing yet</div>
+      <div><span class="ok">✓</span> one front wants something only another front holds</div>
+      <div><span class="ok">✓</span> the antagonist has a name and a grudge</div>
+      <div><span class="no">✗</span> borrowed setting name: <span class="lit">'neverwinter'</span> — invent the places</div>
+      <div><span class="ok">✓</span> nobody in it is called Seren</div>
+      <div class="f" style="color:var(--gold)">sent back to the weaver · mended · passed</div>
     </div>
   </div>
 </section>
 
-<section>
-  <div class="wrap">
-    <span class="k">Off script</span>
-    <h2>No plan survives contact with the player.</h2>
-    <p class="lede">Going off script isn't a failure mode of tabletop. It is the whole appeal. You will always do the thing nobody prepared for — and a system that only knows the plan treats that as an error. SEREN takes the detour as canon and keeps building from there.</p>
-    <p class="mono" style="margin-top:26px">The move nobody prepared for — you ignore the tower entirely and befriend the rival's sister</p>
-    <div class="pair">
-      <div class="card them">
-        <span class="mono">A scripted system</span>
-        <ul>
-          <li><i>×</i>Steers you back toward the tower.</li>
-          <li><i>×</i>Invents a sister with no history and no stake.</li>
-          <li><i>×</i>Forgets her by next session.</li>
-          <li><i>×</i>Leaves the abandoned plot dangling forever.</li>
-        </ul>
-      </div>
-      <div class="card us">
-        <span class="mono">SEREN</span>
-        <ul>
-          <li><i>→</i>The sister becomes a real person, consistent with the family that was written.</li>
-          <li><i>→</i>The friendship enters canon, and the rival hears about it.</li>
-          <li><i>→</i>The tower stays unclaimed, and someone else moves on it.</li>
-          <li><i>→</i>The anchor still lands — by a route nobody would have written.</li>
-        </ul>
-      </div>
+<!-- IV · THE TABLE -->
+<section id="table" data-room="table">
+  <div class="wrap room flip">
+    <div class="copy">
+      <div class="r">IV · THE TABLE</div>
+      <h2 class="say">Sit. The book is open on the scene I wrote for you. Say what you do. When I need a roll I'll ask, and you press the dice — I never touch them.</h2>
+      <p>Every session is a page. Earlier sessions are earlier pages. The companions have their own wants and act on them; you find out afterwards, like anyone at a table would.</p>
+      <a class="more" href="/table">Sit down →</a>
+    </div>
+    <div class="show page">
+      <div class="h"><b>this session</b><span>The Due Debt · 1</span></div>
+      <p>In the heart of the guild city square, under the bright midday sun, Eldrin watches as Mara hurriedly pays off a small debt to a merchant, unaware of the much larger debt coming due. Lira, ever the meticulous scribe, records the transaction with a knowing glance towards Eldrin.</p>
+      <div class="chips"><span>Ask the merchant's name</span><span>Observe Mara's reaction</span></div>
+      <div class="ask"><i>What do you do?</i><b>SAY IT</b></div>
     </div>
   </div>
 </section>
 
-<section>
+<!-- V · THE RECORD -->
+<section class="record" id="record" data-room="record">
   <div class="wrap">
-    <span class="k">How it works</span>
-    <h2>Three things, deliberately kept apart.</h2>
-    <p class="lede">Most tools fuse the story, the rules and the current situation into one long conversation. SEREN separates them. That separation is the whole architecture — and the reason the system isn't bound to any single game.</p>
-    <div class="layers">
-      <div class="layer"><div class="r">I</div><h3>World</h3>
-        <p>Canon, characters, places, factions, history, secrets, the things that are simply true. Imported, or grown at the table.</p></div>
-      <div class="layer"><div class="r">II</div><h3>Ruleset</h3>
-        <p>D&amp;D 5e, with house rules treated as canon. A ruleset is a layer, not the foundation — which is why it can be swapped.</p></div>
-      <div class="layer"><div class="r">III</div><h3>State</h3>
-        <p>Every change the party caused, who witnessed it, what it cost, and what it set in motion. Live, and carried forward.</p></div>
-    </div>
-    <p>D&amp;D is where SEREN starts. It isn't where SEREN ends. Because the world, the rules and the live state are separate concerns, the architecture doesn't care which game you're playing.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <span class="k">Consequence</span>
-    <h2>A death in session four is still a death in session forty.</h2>
-    <p class="lede">One decision at the table doesn't resolve. It propagates — through people, places, factions and time — and the world goes on acting on it while nobody is looking.</p>
-    <div class="time">
-      <div class="beat"><div class="when">Session 4</div><div class="what">The party kills Noke.</div></div>
-      <div class="beat"><div class="when">Immediately</div><div class="what">Noke is dead. Permanently, and for everyone.</div></div>
-      <div class="beat"><div class="when">Same night</div><div class="what">Shinebright's future changes.</div></div>
-      <div class="beat"><div class="when">Day 3</div><div class="what">The tower stands unclaimed.</div></div>
-      <div class="beat"><div class="when">Day 31</div><div class="what">Local nobles begin to ask who owns it.</div></div>
-      <div class="beat last"><div class="when">Session 9</div><div class="what">A thread nobody wrote is waiting for you.</div></div>
-    </div>
-    <p>SEREN doesn't forget the consequences just because the session ended. Nobody had to log any of this.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <span class="k">Run it twice</span>
-    <h2>The same bones. A different campaign.</h2>
-    <p class="lede">Three anchors, written once. One person, playing them twice, months apart. Nothing below was authored — and both playthroughs are faithful to what was handed over.</p>
-    <div class="bones">
-      <span class="bone"><b>A</b>A rival wants the tower at Shinebright.</span>
-      <span class="bone"><b>B</b>Ser'en carries a debt she cannot pay.</span>
-      <span class="bone"><b>C</b>The Ashgate compact breaks before winter.</span>
-    </div>
-    <div class="runs">
-      <div class="run">
-        <div class="h"><b>Playthrough one</b><span>14 sessions</span></div>
-        <ol>
-          <li><b>A</b>The rival is bought off rather than killed. He becomes a landlord, and a problem.</li>
-          <li><b>B</b>The party clears Ser'en's debt for her. Now she owes them, and resents it.</li>
-          <li><b>C</b>The compact breaks in a council chamber, over a signature.</li>
-        </ol>
-        <div class="end">Winter arrives and there is no war. There is a lawsuit.</div>
-      </div>
-      <div class="run">
-        <div class="h"><b>Playthrough two</b><span>Same bones · 9 sessions</span></div>
-        <ol>
-          <li><b>A</b>The rival reaches the tower first. Four sessions are spent getting it back.</li>
-          <li><b>B</b>The debt is called in publicly. Ser'en leaves the party for six weeks to work it off.</li>
-          <li><b>C</b>The compact breaks over a body nobody meant to leave.</li>
-        </ol>
-        <div class="end">Winter arrives mid-siege, and the tower is the only shelter for miles.</div>
-      </div>
-    </div>
-    <p>Every anchor was honoured. Neither campaign was written. This is what a DM does, and it is what a script cannot.</p>
-  </div>
-</section>
-
-<section>
-  <div class="wrap">
-    <span class="k">Who owns what</span>
-    <h2>Nobody overrules the dice. Not the model, and not you.</h2>
-    <p class="lede">The split isn't judgement against bookkeeping. It is what can be known exactly against what has to be inferred — and one column that belongs to nobody.</p>
+    <div class="r">V · THE RECORD</div>
+    <h2 class="say" style="max-width:30em">And this is the part I cannot touch. The dice are rolled by the server and written down before I'm told what they were for. A secret I'm holding, the gate won't let me say — it holds the whole sentence rather than fix it.</h2>
     <div class="owns">
-      <div class="own"><span class="k">Seren owns</span>
-        <ul><li>Narration</li><li>NPC voice</li><li>Adjudication</li><li>Pacing</li><li>What a moment means</li><li>What it costs</li><li>What it reveals</li></ul>
-        <p>Everything that has to be inferred in the moment. This is the DM's work, and SEREN does it.</p></div>
-      <div class="own nobody"><span class="k">Nobody owns</span>
-        <ul><li>What is true</li><li>The dice</li><li>The result</li></ul>
-        <p>A roll can be interpreted. It cannot be reversed. One test: did the success or failure state change? If it did, someone cheated.</p></div>
-      <div class="own"><span class="k">You own</span>
-        <ul><li>Your character</li><li>Your choices</li><li>What you do about the consequences</li></ul>
-        <p>One character, played properly, in a world that will not bend to make you comfortable.</p></div>
+      <div class="own"><span class="k">Seren owns</span>Narration · every voice · the ruling · what a moment means · what it costs</div>
+      <div class="own nobody"><span class="k">Nobody owns</span>What is true · the dice · the result<em>A roll can be interpreted. It cannot be reversed.</em></div>
+      <div class="own"><span class="k">You own</span>Your character · your choices · what you do about the consequences</div>
     </div>
+    <div class="panel ledger">
+      <div><span class="id">e001</span>  STEALTH   d20=<span class="lit">9</span> +3 = <span class="lit">12</span>  vs <span class="dc">dc</span>  <span class="no">DID NOT</span>   <span style="color:var(--bone-3)">— the barman's hand stops on the glass</span></div>
+      <div><span class="id">e002</span>  PERSUADE  d20=<span class="lit">17</span> +1 = <span class="lit">18</span>  vs <span class="dc">dc</span>  <span class="ok">DID</span></div>
+    </div>
+    <a class="more" href="/contract">Read the contract →</a>
   </div>
 </section>
 
-<section>
+<!-- VI · BEFORE YOU SIT -->
+<section id="fit" data-room="fit">
   <div class="wrap">
-    <span class="k">Fit</span>
-    <h2>Who this is for, and who it isn't.</h2>
+    <div class="r">VI · BEFORE YOU SIT</div>
+    <h2 class="say" style="max-width:30em">I should be honest about who I'm for.</h2>
     <div class="fit">
-      <div class="card">
-        <span class="mono">Use this if</span>
-        <ul class="yes">
-          <li><i>→</i>You want to play this week and don't have a table.</li>
-          <li><i>→</i>You have a world you actually care about.</li>
-          <li><i>→</i>You want a campaign that runs for years, not a weekend.</li>
-          <li><i>→</i>You are tired of correcting the AI about your own canon.</li>
-          <li><i>→</i>You already have material and want it used.</li>
-          <li><i>→</i>Consequence matters more to you than novelty.</li>
-          <li><i>→</i>You want a game that will tell you no.</li>
+      <div class="own">
+        <span class="mono">Sit down if</span>
+        <ul>
+          <li><i class="ok">→</i>You want to play this week and don't have a table.</li>
+          <li><i class="ok">→</i>You want a campaign that runs for months, not a weekend.</li>
+          <li><i class="ok">→</i>Consequence matters more to you than novelty.</li>
+          <li><i class="ok">→</i>You want a game that will tell you no.</li>
         </ul>
       </div>
-      <div class="card them">
-        <span class="mono">Don't use this if</span>
-        <ul class="no">
-          <li><i>×</i>You want a one-shot adventure generated in a minute.</li>
-          <li><i>×</i>You want a rules lookup bot.</li>
-          <li><i>×</i>You are looking for generated art, maps or minis.</li>
-          <li><i>×</i>You want to be able to take a roll back.</li>
-          <li><i>×</i>You want the party to do exactly what you tell it.</li>
-          <li><i>×</i>You need every system supported today. This starts with 5e.</li>
+      <div class="own dim">
+        <span class="mono">Don't, if</span>
+        <ul>
+          <li><i style="color:var(--ember-dim)">×</i>You want a rules lookup bot.</li>
+          <li><i style="color:var(--ember-dim)">×</i>You're looking for generated art, maps or minis.</li>
+          <li><i style="color:var(--ember-dim)">×</i>You want to be able to take a roll back.</li>
+          <li><i style="color:var(--ember-dim)">×</i>You need every system today. This starts with 5e.</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<section>
+<!-- BACK AT THE DOOR -->
+<section class="again" id="again" data-room="again">
   <div class="wrap">
-    <span class="k">For creators</span>
-    <h2>You already built it. Nobody ever played it.</h2>
-    <p class="lede">Most campaigns don't die from bad ideas. They die from calendars. The world got finished, the group didn't survive the year, and the folder has been sitting there ever since — a bible, a map, forty pages of notes, and no way to find out whether any of it works.</p>
-    <p>SEREN reads what you already made. Hand it the bible, the notes, the wiki, the half-written sourcebook. It works out what things are called, what is true in your world, and what you have and haven't decided — and then it asks you the questions you never had to answer, because you never got to the table.</p>
-    <p>Then you play it. Not pitch it, not finish it. Play it, this week, as one character, and find out which parts land. The players you could never get to a table are the ones sitting beside you.</p>
-  </div>
-</section>
-
-<section class="end-cta">
-  <div class="wrap">
-    <h2>You bring one character.<br>It brings everyone else.</h2>
-    <p class="lede" style="margin-left:auto;margin-right:auto">Deal a hand at the Loom and it becomes a campaign — three fronts, an antagonist and seven secrets, only some of them yours to know. Then Seren sits down.</p>
+    <h2>That's the house. Shall we?</h2>
     <div class="acts">
-      <a class="cta" href="/loom">Deal a campaign</a>
+      <a class="cta" href="/loom">Deal a hand</a>
       <a class="cta ghost" href="/table">Back to the table</a>
     </div>
+    <button class="secret" type="button" id="open-squint">
+      <span class="flame"></span>
+      <span><b>There is one more door. Not yet.</b><small>our little secret · squint</small></span>
+    </button>
   </div>
 </section>
 
@@ -388,5 +367,94 @@ footer a:hover{color:var(--bone)}
   </div>
 </footer>
 
+<!-- HER PRESENCE -->
+<div class="presence" aria-hidden="true">
+  <svg viewBox="0 0 64 64">
+    <circle cx="32" cy="32" r="25" fill="none" stroke="#2a2622" stroke-width="6" stroke-dasharray="16 5"></circle>
+    <circle class="lit" id="arc" cx="32" cy="32" r="25" fill="none" stroke="#ff4d00" stroke-width="6" stroke-dasharray="30 127" transform="rotate(-90 32 32)"></circle>
+    <circle cx="31" cy="33" r="14" fill="#e9e1d3"></circle>
+    <circle class="bite" id="bite" cx="36.5" cy="24.2" r="14" fill="#0d0c0b"></circle>
+  </svg>
+  <div><span>Seren</span><br><em id="where" style="font-style:normal">at the door</em></div>
+</div>
+
+<!-- SQUINT · our little secret -->
+<div class="squint" id="squint" role="dialog" aria-modal="true" aria-label="Squint, coming soon">
+  <div class="frame" id="squint-frame">
+    <div class="scene" id="squint-scene">
+      <div class="sq-lamplight"></div>
+      <div class="sq-cord"></div>
+      <div class="sq-shade"></div>
+      <div class="sq-flame"></div>
+      <div class="sq-head"></div>
+      <div class="sq-shoulders"></div>
+      <div class="sq-table"></div>
+      <div class="sq-pool"></div>
+      <!-- their three, face down, small and far -->
+      <div class="sq-back" style="left:387px;transform:rotate(-6deg)"></div>
+      <div class="sq-back" style="left:428px"></div>
+      <div class="sq-back" style="left:469px;transform:rotate(6deg)"></div>
+      <div class="sq-pot"><span></span><span></span><span></span></div>
+      <!-- your three, face up, in your hand -->
+      <div class="sq-card" style="left:270px;--r:-14deg;color:#7a5a1e"><b>7</b><i>COINS</i><b>7</b></div>
+      <div class="sq-card" style="left:375px;--r:0deg;color:#6b2f2a"><b>7</b><i>CUPS</i><b>7</b></div>
+      <div class="sq-card" style="left:480px;--r:14deg;color:#2f4a2a"><b>2</b><i>RODS</i><b>2</b></div>
+      <!-- the notes: what you need to know, written on the scene -->
+      <div class="sq-kicker">our little secret · coming soon</div>
+      <div class="sq-title">SQUINT</div>
+      <div class="sq-sub">A tavern game for two, played inside Seren. You never play a card.</div>
+      <div class="sq-note" style="left:560px;top:190px;width:300px"><b>Theirs.</b> Three cards, face down. You will never see them — unless you pay double to <em>see</em>. And if you see and lose, they still never show. Not that hand. Not ever.</div>
+      <div class="sq-note" style="left:30px;top:300px;width:240px;text-align:right"><b>The post.</b> They put up 1, you put up 2, they speak first. The pot opens at 3 and only grows.</div>
+      <div class="sq-note" style="left:630px;top:300px;width:250px"><b>Your turn.</b> Raise, see, or fold. You may not stand still — once you owe nothing, the only way is forward or out.</div>
+      <div class="sq-note" style="left:20px;top:430px;width:185px;text-align:right"><b>Yours.</b> A pair of sevens. Whether that is good depends on what they think you have.</div>
+      <div class="sq-note" style="left:700px;top:430px;width:180px"><b>A knock</b> is free and means nothing. Unless, between the two of you, it does.</div>
+      <div class="sq-stakes">stakes: <span>one question, answered honestly</span><br>hand 3 of a race to 5 · Noke leads 2–0</div>
+      <button class="sq-esc" type="button" id="close-squint" aria-label="Close">esc</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Her presence: which room you are in drives the glyph and the caption.
+(function () {
+  const rooms = ['door','cards','loom','auditor','table','record','fit','again'];
+  const where = { door:'at the door', cards:'dealing', loom:'weaving', auditor:'waiting on the auditor',
+    table:'at the table', record:'hands off the record', fit:'being honest', again:'at the door again' };
+  const arc = document.getElementById('arc'), bite = document.getElementById('bite'), cap = document.getElementById('where');
+  function setRoom(room) {
+    const i = Math.max(0, rooms.indexOf(room));
+    const lit = Math.round(30 + (i / (rooms.length - 1)) * 127);      // the arc fills as the tour goes on
+    const a = (i / rooms.length) * Math.PI * 2 - Math.PI / 3;         // the bite turns to face each room
+    arc.setAttribute('stroke-dasharray', lit + ' ' + (157 - lit));
+    arc.setAttribute('transform', 'rotate(' + (-90 + i * 12) + ' 32 32)');
+    bite.setAttribute('cx', (32 + Math.cos(a) * 9).toFixed(1));
+    bite.setAttribute('cy', (32 + Math.sin(a) * 9).toFixed(1));
+    cap.textContent = where[room] || '';
+  }
+  const io = new IntersectionObserver(entries => {
+    const hit = entries.filter(e => e.isIntersecting).sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+    if (hit) setRoom(hit.target.getAttribute('data-room'));
+  }, { threshold: [0.25, 0.5] });
+  document.querySelectorAll('[data-room]').forEach(el => io.observe(el));
+})();
+
+// Squint: the scene is authored at 900×675 and scaled whole to fit the viewport.
+(function () {
+  const modal = document.getElementById('squint'), frame = document.getElementById('squint-frame'), scene = document.getElementById('squint-scene');
+  function fit() {
+    const s = Math.min(1, (window.innerWidth - 40) / 900, (window.innerHeight - 40) / 675);
+    scene.style.transform = 'scale(' + s + ')';
+    frame.style.width = Math.round(900 * s) + 'px';
+    frame.style.height = Math.round(675 * s) + 'px';
+  }
+  function open() { fit(); modal.classList.add('open'); document.getElementById('close-squint').focus(); }
+  function close() { modal.classList.remove('open'); document.getElementById('open-squint').focus(); }
+  document.getElementById('open-squint').addEventListener('click', open);
+  document.getElementById('close-squint').addEventListener('click', close);
+  modal.addEventListener('click', e => { if (e.target === modal) close(); });
+  window.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
+  window.addEventListener('resize', () => { if (modal.classList.contains('open')) fit(); });
+})();
+</script>
 </body>
 </html>
