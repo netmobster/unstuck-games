@@ -187,6 +187,55 @@ footer a{color:var(--bone-2)}
 .sq-esc:hover{color:var(--bone)}
 
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ── the account menu ───────────────────────────────────────────────────── */
+.who{position:relative}
+.who-btn{display:flex;align-items:center;gap:9px;background:none;border:1px solid var(--rule-2);
+  border-radius:2px;color:var(--bone-2);font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;padding:8px 12px;cursor:pointer;line-height:1}
+.who-btn:hover{border-color:var(--bone-2);color:var(--bone)}
+.who-btn .bars{display:inline-flex;flex-direction:column;gap:3px;width:13px}
+.who-btn .bars i{display:block;height:1.5px;background:currentColor;border-radius:1px}
+.who-btn .pip{width:20px;height:20px;border-radius:50%;background:var(--ember-dim);color:#160b05;
+  display:grid;place-items:center;font-size:10px;font-weight:700;letter-spacing:0;flex:none;overflow:hidden}
+.who-btn .pip img{width:100%;height:100%;object-fit:cover}
+.menu{position:absolute;right:0;top:calc(100% + 9px);width:252px;background:var(--ink-2);
+  border:1px solid var(--rule-2);border-radius:3px;padding:7px;z-index:60;
+  box-shadow:0 18px 44px rgba(0,0,0,.62);display:none}
+.menu.open{display:block}
+.menu .head{padding:9px 10px 11px;border-bottom:1px solid var(--rule);margin-bottom:6px}
+.menu .head b{display:block;font-family:var(--serif);font-weight:400;font-size:15px;color:var(--bone)}
+.menu .head span{display:block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;
+  color:var(--bone-3);margin-top:3px;word-break:break-all;text-transform:none}
+.menu a,.menu button.item{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  width:100%;box-sizing:border-box;text-align:left;background:none;border:0;cursor:pointer;
+  font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--bone-2);padding:9px 10px;border-radius:2px;line-height:1.4}
+.menu a:hover,.menu button.item:hover{background:var(--ink-3);color:var(--bone)}
+.menu .soon{pointer-events:none;color:var(--bone-3);opacity:.55}
+.menu .soon em{font-family:var(--serif);font-style:italic;font-size:11px;letter-spacing:0;
+  text-transform:none;color:var(--bone-3)}
+.menu hr{border:0;border-top:1px solid var(--rule);margin:6px 0}
+.menu .out{color:var(--lost)}
+@media (max-width:640px){.menu{width:min(252px,calc(100vw - 32px))}}
+/* ── settings ───────────────────────────────────────────────────────────── */
+.sheet{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.9);display:none;place-items:center;padding:20px}
+.sheet.open{display:grid}
+.sheet .card{width:min(520px,100%);background:var(--ink-2);border:1px solid var(--rule-2);
+  border-radius:3px;padding:26px 26px 22px;box-shadow:0 26px 70px rgba(0,0,0,.66)}
+.sheet h2{font-family:var(--display);font-size:20px;letter-spacing:.1em;margin:0 0 4px;font-weight:600}
+.sheet .sub{font-style:italic;color:var(--bone-2);margin:0 0 20px;font-size:14px}
+.sheet label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--bone-3);margin:0 0 6px}
+.sheet input{width:100%;box-sizing:border-box;background:var(--ink);border:1px solid var(--rule-2);
+  border-radius:2px;color:var(--bone);font:inherit;font-size:15px;padding:11px 12px;outline:none}
+.sheet input:focus{border-color:var(--gold)}
+.sheet .field{margin-bottom:17px}
+.sheet .note{font-size:13px;color:var(--bone-3);font-style:italic;margin:6px 0 0;line-height:1.5}
+.sheet .row{display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-top:22px}
+.sheet .said{margin-right:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
+  text-transform:uppercase;color:var(--held)}
+.sheet .plan{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--gold);border:1px solid var(--rule-2);border-radius:2px;padding:9px 11px;display:inline-block}
 </style>
 </head>
 <body>
@@ -197,7 +246,26 @@ footer a{color:var(--bone-2)}
     <nav>
       <a href="/loom">The Loom</a>
       <a href="/contract">The Contract</a>
-      <a class="cta" href="/loom">Deal a hand</a>
+      <a class="cta" id="nav-play" href="/table" hidden>Play now</a>
+      <a class="cta" id="nav-deal" href="/loom">Deal a hand</a>
+      <a class="cta ghost" id="nav-in" href="/auth/google" hidden>Sign in</a>
+      <div class="who" id="who" hidden>
+        <button class="who-btn" id="who-btn" aria-haspopup="true" aria-expanded="false">
+          <span class="pip" id="who-pip"></span>
+          <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+        </button>
+        <div class="menu" id="menu" role="menu">
+          <div class="head"><b id="who-name"></b><span id="who-mail"></span></div>
+          <a href="/table" role="menuitem">Play now</a>
+          <a href="/loom" role="menuitem">Deal a new hand</a>
+          <hr>
+          <a class="soon" role="menuitem">Sessions <em>save, pause, load — soon</em></a>
+          <a class="soon" role="menuitem">Preferences <em>soon</em></a>
+          <button class="item" id="m-settings" role="menuitem">Settings</button>
+          <hr>
+          <a class="out" href="/auth/logout" role="menuitem">Sign out</a>
+        </div>
+      </div>
     </nav>
   </div>
 </header>
@@ -209,7 +277,8 @@ footer a{color:var(--bone-2)}
     <h1>You brought one character. Good. I have everyone else.</h1>
     <p class="lede">Come in. I'll show you the rooms. It won't take long, and I would rather you saw them than read about them.</p>
     <div class="acts">
-      <a class="cta" href="/loom">Deal a hand</a>
+      <a class="cta" id="hero-play" href="/table" hidden>Play now</a>
+      <a class="cta" id="hero-deal" href="/loom">Deal a hand</a>
       <a class="cta ghost" href="#cards">Take the tour ↓</a>
     </div>
     <p class="mono fine">One human, one character, nobody else at the table. She runs the world, every person in it, and the two companions beside you.</p>
@@ -454,6 +523,107 @@ footer a{color:var(--bone-2)}
   modal.addEventListener('click', e => { if (e.target === modal) close(); });
   window.addEventListener('keydown', e => { if (e.key === 'Escape' && modal.classList.contains('open')) close(); });
   window.addEventListener('resize', () => { if (modal.classList.contains('open')) fit(); });
+})();
+</script>
+<div class="sheet" id="settings" role="dialog" aria-modal="true" aria-label="Settings">
+  <div class="card">
+    <h2>Settings</h2>
+    <p class="sub">Your account, and what it may spend.</p>
+    <div class="field">
+      <label for="set-name">Name at the table</label>
+      <input id="set-name" type="text" autocomplete="off" maxlength="80">
+    </div>
+    <div class="field">
+      <label for="set-key">Your own Anthropic key</label>
+      <input id="set-key" type="password" autocomplete="off" placeholder="sk-ant-…">
+      <p class="note">Optional. With a key of your own the session runs on it instead of ours,
+        and the spend cap stops being the thing between you and a long night. Leave it blank
+        and nothing changes. <b>We never show it back to you</b> — only whether one is set.</p>
+    </div>
+    <div class="field">
+      <label>Plan</label>
+      <div class="plan" id="set-plan">FREE</div>
+    </div>
+    <div class="row">
+      <span class="said" id="set-said"></span>
+      <button class="cta ghost" id="set-close" type="button">Close</button>
+      <button class="cta" id="set-save" type="button">Save</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// Who is here. The homepage is the only door that is always open, so it is the only
+// place that can offer a way in — and, once you are in, the way back to your table.
+(function () {
+  const $ = id => document.getElementById(id);
+  const menu = $('menu'), btn = $('who-btn'), sheet = $('settings');
+  let me = null;
+
+  function paint(m) {
+    me = m;
+    if (m.signed_in) {
+      $('who').hidden = false;
+      $('nav-play').hidden = false;
+      $('hero-play').hidden = false;
+      $('nav-deal').hidden = true;          // the menu carries it from here
+      $('hero-deal').classList.add('ghost');
+      $('who-name').textContent = m.name || m.account;
+      $('who-mail').textContent = m.email;
+      $('who-pip').innerHTML = m.picture
+        ? '<img alt="" src="' + m.picture + '" referrerpolicy="no-referrer">'
+        : (m.name || m.email || '?').trim().charAt(0).toUpperCase();
+      $('set-name').value = m.name || '';
+      $('set-plan').textContent = (m.plan || 'free').toUpperCase();
+      $('set-key').placeholder = m.has_key ? 'a key is set — type to replace it' : 'sk-ant-…';
+    } else if (m.google) {
+      $('nav-in').hidden = false;
+    }
+  }
+
+  function shut() { menu.classList.remove('open'); btn.setAttribute('aria-expanded', 'false'); }
+  btn.addEventListener('click', e => {
+    e.stopPropagation();
+    const open = menu.classList.toggle('open');
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+  });
+  document.addEventListener('click', e => { if (!menu.contains(e.target)) shut(); });
+  window.addEventListener('keydown', e => {
+    if (e.key !== 'Escape') return;
+    if (sheet.classList.contains('open')) { sheet.classList.remove('open'); return; }
+    shut();
+  });
+
+  $('m-settings').addEventListener('click', () => {
+    shut(); $('set-said').textContent = ''; sheet.classList.add('open'); $('set-name').focus();
+  });
+  $('set-close').addEventListener('click', () => sheet.classList.remove('open'));
+  sheet.addEventListener('click', e => { if (e.target === sheet) sheet.classList.remove('open'); });
+
+  $('set-save').addEventListener('click', async () => {
+    const body = { name: $('set-name').value.trim() };
+    const key = $('set-key').value.trim();
+    if (key) body.api_key = key;               // blank means leave it alone, not erase it
+    try {
+      const r = await fetch('/api/me', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+      if (!r.ok) throw new Error(r.status);
+      const out = await r.json();
+      $('set-key').value = '';
+      $('set-key').placeholder = out.has_key ? 'a key is set — type to replace it' : 'sk-ant-…';
+      $('who-name').textContent = out.name || me.account;
+      $('set-said').style.color = 'var(--held)';
+      $('set-said').textContent = 'Saved';
+      setTimeout(() => { $('set-said').textContent = ''; }, 2600);
+    } catch (err) {
+      $('set-said').style.color = 'var(--lost)';
+      $('set-said').textContent = 'Did not save';
+    }
+  });
+
+  fetch('/api/me').then(r => r.json()).then(paint).catch(() => {});
 })();
 </script>
 </body>

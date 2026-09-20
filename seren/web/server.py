@@ -311,6 +311,21 @@ class Handler(BaseHTTPRequestHandler):
     def do_POST(self):
         path = self.path.split("?")[0]
 
+        if path == "/api/me":
+            # Settings. Only a signed-in person may change anything, and only their own
+            # three fields — accounts.set_fields is the allow-list, not this handler.
+            slug = self._account()
+            if not accounts.by_slug(corpus.ROOT, slug):
+                return self._json(401, {"error": "sign in first"})
+            body = self._body()
+            row = accounts.set_fields(
+                corpus.ROOT, slug,
+                **{k: str(body[k])[:400] for k in ("name", "api_key") if k in body}
+            ) or {}
+            return self._json(200, {"ok": True, "name": row.get("name", ""),
+                                    "plan": row.get("plan", "free"),
+                                    "has_key": bool(row.get("api_key"))})
+
         if path == "/api/gate":
             ok = gate.check(str(self._body().get("password") or ""))
             if not ok:
