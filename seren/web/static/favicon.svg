@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <!-- SEREN's own mark, from the door: a bitten moon inside a broken ring.
+       Sized for a tab, so the ring is thicker and the gaps fewer than on the gate. -->
+  <rect width="64" height="64" rx="12" fill="#0d0c0b"/>
+  <circle cx="32" cy="32" r="25" fill="none" stroke="#2a2622" stroke-width="6" stroke-dasharray="16 5"/>
+  <circle cx="32" cy="32" r="25" fill="none" stroke="#ff4d00" stroke-width="6"
+          stroke-dasharray="96 61" transform="rotate(-90 32 32)"/>
+  <circle cx="31" cy="33" r="14" fill="#e9e1d3"/>
+  <circle cx="40" cy="27" r="14" fill="#0d0c0b"/>
+</svg>
