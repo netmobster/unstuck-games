@@ -104,6 +104,22 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
 .turn { display:flex; justify-content:space-between; font-size:11.5px; color:var(--soft); padding-top:4px; }
 .turn button { color:inherit; } .turn button:hover { color:var(--ink); } .turn button:disabled { opacity:.45; cursor:default; }
 
+/* the music, in the rail */
+.player { display:flex; flex-direction:column; gap:7px; }
+.player .row { display:flex; align-items:center; gap:6px; }
+.pbtn { color:var(--desk-ink-lo); font-size:11px; line-height:1; padding:4px 5px; border-radius:3px; transition:color .2s, background .2s; }
+.pbtn:hover { color:var(--desk-ink-hi); background:rgba(255,255,255,.06); }
+.pbtn.play { color:var(--ember); font-size:12px; }
+.pbtn.drawer { margin-left:auto; }
+.player .now { font-family:var(--sans); font-size:10px; letter-spacing:.08em; color:var(--desk-ink-lo);
+  white-space:nowrap; overflow:hidden; text-overflow:ellipsis; max-width:92px; }
+.player input[type=range] { width:100%; accent-color:var(--ember); height:3px; }
+.tracks { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:2px; }
+.tracks button { font-family:var(--sans); font-size:10.5px; letter-spacing:.04em; color:var(--desk-ink-lo);
+  padding:4px 6px; border-radius:3px; width:100%; text-align:left; }
+.tracks button:hover { color:var(--desk-ink-hi); background:rgba(255,255,255,.06); }
+.tracks button.on { color:var(--ember); }
+
 /* the house rules */
 .backdrop { position:fixed; inset:0; background:rgba(10,8,6,.72); display:flex; align-items:center; justify-content:center; z-index:60; padding:24px; overflow:auto; }
 .backdrop[hidden] { display:none !important; }
@@ -246,6 +262,17 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
     <div class="dm">DM of record<br><b>Seren · deadpan</b></div>
     <button class="lampbtn" id="lamp"><i></i><span>LAMP HIGH · TURN DOWN</span></button>
     <button class="lampbtn close" id="closeBtn"><i></i><span>CLOSE THE SESSION</span></button>
+    <div class="player" id="player">
+      <div class="row">
+        <button class="pbtn" id="mPrev" title="Previous" aria-label="Previous track">‹‹</button>
+        <button class="pbtn play" id="mPlay" title="Play or stop" aria-label="Play or stop">▶</button>
+        <button class="pbtn" id="mNext" title="Next" aria-label="Next track">››</button>
+        <span class="now" id="mNow">Silence</span>
+        <button class="pbtn drawer" id="mList" title="All tracks" aria-label="Show all tracks">▾</button>
+      </div>
+      <input type="range" id="mVol" min="0" max="100" value="30" aria-label="Volume">
+      <ul class="tracks" id="mTracks" hidden></ul>
+    </div>
     <button class="howlink" id="howAgain">house rules</button>
   </aside>
 
@@ -707,6 +734,72 @@ $('closeBtn').onclick = async () => {
     $('closeBtn').disabled = false; label.textContent = 'CLOSE THE SESSION';
   }
 };
+
+// ── music ─────────────────────────────────────────────────────────────────
+// Four tracks, one element. A session runs long, so this is a player rather than a loop:
+// one ends, the next starts. Fades are two seconds in, two on a change, five on stop.
+const TRACKS = [
+  { name: 'Forest Pulse', file: 'forest-pulse.mp3' },
+  { name: 'Abyssal Drift', file: 'abyssal-drift.mp3' },
+  { name: 'Open Hands', file: 'open-hands.mp3' },
+  { name: 'Noctroom Whimsy', file: 'noctroom-whimsy.mp3' },
+];
+const MKEY = 'seren.table.music';
+const m = (() => { try { return JSON.parse(localStorage.getItem(MKEY)) || {}; } catch (e) { return {}; } })();
+let track = Number.isInteger(m.track) ? m.track : 0;
+let mLevel = typeof m.level === 'number' ? m.level : 0.3;
+let audio = null, mFade = null, playing = false;
+
+const msave = () => { try { localStorage.setItem(MKEY, JSON.stringify({ track, level: mLevel })); } catch (e) {} };
+
+function mRamp(to, seconds, then) {
+  if (mFade) clearInterval(mFade);
+  if (!audio) return;
+  const from = audio.volume, t0 = performance.now();
+  mFade = setInterval(() => {
+    const k = Math.min(1, (performance.now() - t0) / (seconds * 1000));
+    audio.volume = Math.max(0, Math.min(1, from + (to - from) * k));
+    if (k >= 1) { clearInterval(mFade); mFade = null; if (then) then(); }
+  }, 40);
+}
+
+function mPaint() {
+  $('mPlay').textContent = playing ? '■' : '▶';
+  $('mNow').textContent = playing ? TRACKS[track].name : 'Silence';
+  $('mVol').value = Math.round(mLevel * 100);
+  $('mTracks').innerHTML = TRACKS.map((t, i) =>
+    `<li><button data-i="${i}" class="${i === track && playing ? 'on' : ''}">${esc(t.name)}</button></li>`).join('');
+  $('mTracks').querySelectorAll('button').forEach(b => b.onclick = () => mPlay(+b.dataset.i));
+}
+
+function mPlay(i) {
+  const changing = audio && playing && i !== track;
+  track = ((i % TRACKS.length) + TRACKS.length) % TRACKS.length;
+  msave();
+  const start = () => {
+    if (audio) { audio.pause(); }
+    audio = new Audio('/static/audio/' + TRACKS[track].file);
+    audio.volume = 0;
+    audio.onended = () => mPlay(track + 1);      // one ends, the next begins
+    audio.play().then(() => { playing = true; mRamp(mLevel, 2); mPaint(); })
+                .catch(() => { playing = false; mPaint(); });
+  };
+  changing ? mRamp(0, 2, start) : start();
+  mPaint();
+}
+
+function mStop() {
+  if (!audio) { playing = false; return mPaint(); }
+  mRamp(0, 5, () => { if (audio) audio.pause(); playing = false; mPaint(); });
+  playing = false; mPaint();
+}
+
+$('mPlay').onclick = () => playing ? mStop() : mPlay(track);
+$('mNext').onclick = () => mPlay(track + 1);
+$('mPrev').onclick = () => mPlay(track - 1);
+$('mList').onclick = () => { $('mTracks').hidden = !$('mTracks').hidden; $('mList').textContent = $('mTracks').hidden ? '▾' : '▴'; };
+$('mVol').oninput = e => { mLevel = +e.target.value / 100; msave(); if (audio && playing && !mFade) audio.volume = mLevel; };
+mPaint();
 
 // The house rules, once per browser and on demand after that.
 const HOW_KEY = 'seren.table.how';
