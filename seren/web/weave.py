@@ -60,6 +60,8 @@ RULES = """How to write it:
 - NO BORROWED SETTING. No Faerûn, Cormyr, Waterdeep, Greyhawk, Barovia, or any name from a
   published adventure. Invent the places.
 - NOBODY IS PURE. Say in the grudge what the antagonist is right about.
+- NOBODY IS CALLED SEREN. That is the dungeon master's name, not a character's. Do not use
+  it for the player, a companion, an antagonist, a place or a family.
 - The opening is a SCENE: one concrete image, somebody present, something already moving.
 - Use the cards you were dealt. All of them. Do not swap one out for a better idea."""
 
