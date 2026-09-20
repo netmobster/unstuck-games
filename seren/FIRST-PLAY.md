@@ -98,3 +98,43 @@ still dear because its campaign.md alone is 51,000 characters.
   in the Record with their inputs and targets.
 - The fog on facts: four of seven secrets invisible at the table.
 - The chips, written for the scene by a small model that saw only what the player saw.
+
+---
+
+# 2026-09-20 · the gate is now holding the player's own words
+
+**Jay, mid-morning, second session.** Better prose — *"markedly better than last night, not
+Opus level, but BETTER"* — and then three turns in a row refused:
+
+> NOTE — The table goes quiet for a second. (a phrase lifted from the DM side: *"The user
+> has demanded a written copy to be delivered by a ho…"*)
+
+All three held phrases are **the DM restating what Jay just did**. Nothing secret leaked.
+The gate caught her paraphrasing the player back to himself and called it a leak.
+
+⭐ **This is a regression from last night's `dm_side` fix, not a new bug.** Hidden facts
+belong in `dm_side` — that fix was right and stays. But the campaign's `facts.jsonl` now
+also accumulates entries derived from *the player's own actions*, and those entries are in
+`dm_side` too. So the comparison is asking "did she say something only the DM knows?" while
+the DM-side material contains things **the player himself said out loud two seconds ago**.
+The gate cannot currently tell those apart.
+
+**Where to fix it, in order of preference:**
+
+1. **Provenance on facts.** A fact written from a player action is not DM-side knowledge and
+   should never enter the comparison set. Needs a source field on the fact and a filter in
+   `dm_side()`. This is the correct fix and it is small.
+2. **Exclude the player's own last message** from the material before comparing. Cheap,
+   narrower, and would have caught all three of these.
+3. ⛔ **Do not loosen the phrase matcher.** The matcher is the control. Making it forgiving
+   to fix a provenance bug trades a false positive for a false negative, and a false
+   negative is a leak.
+
+**Also noticed, separate issue:** Jay — *"this seems to be the same opener and player
+character as before, just with 'debt' as the change."* Two woven campaigns produced
+near-identical openings and a near-identical PC. The Loom deals thousands of combinations;
+the weaver is collapsing them. **Worth checking whether the hand is reaching the prompt at
+all, or reaching it and being ignored** — those are different faults with different fixes.
+
+**Both are pre-playtest blockers, not pre-auth blockers.** Filed 2026-09-20 while auth,
+multi-user and session saving were in flight, at Jay's direction.
