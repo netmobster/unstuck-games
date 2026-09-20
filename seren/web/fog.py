@@ -73,6 +73,9 @@ TABLE_TALK = [
     (re.compile(r"\b(?:passes|fails|beats|meets)\s+the\s+(?:check|roll)\b", re.I),
      "the verdict, restated — the insert already said it"),
     (re.compile(r"\bproficiency bonus\b|\bhit dice\b", re.I), "the character sheet, read out"),
+    # Nobody at a table has ever met an NPC. They met a man with a ledger.
+    (re.compile(r"\bNPCs?\b", re.I), "the word NPC, which nobody in the world has heard"),
+    (re.compile(r"\byour character\b|\bthe player\b", re.I), "the player, addressed as a player"),
 ]
 
 MIN_PHRASE = 28  # shorter strings collide with ordinary prose
