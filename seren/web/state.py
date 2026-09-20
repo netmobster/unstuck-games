@@ -321,6 +321,19 @@ class Campaign:
                 return line[2:].split("—")[0].split(" - ")[0].strip()
         return self.root.name.replace("-", " ").title()
 
+    def opening(self) -> str:
+        """The first thing said at a table nobody has sat at yet.
+
+        The weaver writes one — a scene, present tense, something already moving — and it
+        was going unread: the table opened on a room and waited for the player to speak
+        first. This is Seren's line, and it costs nothing to say.
+        """
+        text = self._read("campaign.md")
+        for title, body in _sections(text):
+            if title.strip().lower() == "the opening":
+                return body.strip()
+        return ""
+
     def library(self) -> list[dict]:
         """The manifest's resolved rows — what this party's rules actually are.
 
