@@ -42,6 +42,9 @@ CAPS = {
     "paid": float(os.environ.get("SEREN_CAP_PAID", "3.00")),
 }
 
+# A cached read costs a tenth of a fresh input token on Nova.
+CACHE_READ = 0.1
+
 MAX_TOKENS = int(os.environ.get("SEREN_MAX_TOKENS", "1400"))
 
 
@@ -62,6 +65,11 @@ def _price_for(model: str) -> tuple[float, float]:
         if key in model:
             return pair
     return (0.003, 0.015)
+
+
+def cache_blocks(static: str, volatile: str) -> list:
+    """The static half, a cache point, then the half that changes every turn."""
+    return [{"text": static}, {"cachePoint": {"type": "default"}}, {"text": volatile}]
 
 
 def estimate_usd(model: str, in_tok: int, out_tok: int) -> float:
@@ -116,17 +124,27 @@ def converse(
         raise RuntimeError("no bedrock client")
 
     model = model_for(tier)
+    # `system` may be a string, or a list of blocks with a cache point in it.
+    blocks = system if isinstance(system, list) else [{"text": system}]
     kwargs: dict = {
         "modelId": model,
         "messages": messages,
-        "system": [{"text": system}],
+        "system": blocks,
         "inferenceConfig": {"maxTokens": MAX_TOKENS, "temperature": temperature},
     }
     if tools:
         kwargs["toolConfig"] = {"tools": tools}
 
     try:
-        resp = client.converse(**kwargs)
+        try:
+            resp = client.converse(**kwargs)
+        except Exception:
+            # A cache point the model will not take must not cost us the turn.
+            if any("cachePoint" in b for b in kwargs["system"]):
+                kwargs["system"] = [b for b in kwargs["system"] if "text" in b]
+                resp = client.converse(**kwargs)
+            else:
+                raise
     except Exception as exc:
         # Same lesson as Elsewhere: some models are only reachable through a regional
         # inference profile, and the error says so rather than the model being missing.
@@ -140,13 +158,18 @@ def converse(
     out = resp.get("output", {}).get("message", {})
     usage = resp.get("usage") or {}
     inn, outt = int(usage.get("inputTokens") or 0), int(usage.get("outputTokens") or 0)
-    usd = round(estimate_usd(model, inn, outt), 6)
+    # Tokens read back from the cache are billed at a tenth; tokens written to it at the
+    # ordinary input rate. Counting them as plain input would overstate a session by 4x.
+    cached = int(usage.get("cacheReadInputTokens") or 0)
+    written = int(usage.get("cacheWriteInputTokens") or 0)
+    usd = round(estimate_usd(model, inn + written, outt) + estimate_usd(model, cached, 0) * CACHE_READ, 6)
     return {
         "role": out.get("role", "assistant"),
         "content": out.get("content", []),
         "stop_reason": resp.get("stopReason"),
         "model": model,
         "input_tokens": inn,
+        "cached_tokens": cached,
         "output_tokens": outt,
         "usd": usd,
         "spent": round(spent + usd, 6),

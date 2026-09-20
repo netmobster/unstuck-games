@@ -146,13 +146,23 @@ class Campaign:
         return _frontmatter(self._read("state/party.md"))
 
     def dm_side(self) -> str:
-        """Everything the player must never see, concatenated for the leak check."""
+        """Everything the player must never see, concatenated for the leak check.
+
+        Including the facts they may not see. The four visibilities are the campaign's
+        secrets, and until now they were not in the material the gate compares against —
+        so `true` and `false` facts could be narrated straight at the player and nothing
+        downstream would object.
+        """
         chunks = [self._read(name) for name in DM_SIDE_FILES]
         for folder in DM_SIDE_DIRS:
             base = self.root / folder
             if base.is_dir():
                 chunks += [p.read_text(encoding="utf-8", errors="ignore") for p in base.glob("*.md")]
-        return "\n".join(c for c in chunks if c)
+        hidden = [str(f.get("fact") or "") for f in dice.read(self.facts_file)
+                  if str(f.get("visibility") or f.get("to") or "").lower() not in fog.PLAYER_VISIBILITY]
+        if hidden:
+            chunks.append(chr(10).join(h for h in hidden if h))
+        return chr(10).join(c for c in chunks if c)
 
     def campaign_static(self) -> str:
         """The layer that does not change during a session: premise, persona, fronts."""
