@@ -217,25 +217,6 @@ footer a{color:var(--bone-2)}
 .menu hr{border:0;border-top:1px solid var(--rule);margin:6px 0}
 .menu .out{color:var(--lost)}
 @media (max-width:640px){.menu{width:min(252px,calc(100vw - 32px))}}
-/* ── settings ───────────────────────────────────────────────────────────── */
-.sheet{position:fixed;inset:0;z-index:70;background:rgba(0,0,0,.9);display:none;place-items:center;padding:20px}
-.sheet.open{display:grid}
-.sheet .card{width:min(520px,100%);background:var(--ink-2);border:1px solid var(--rule-2);
-  border-radius:3px;padding:26px 26px 22px;box-shadow:0 26px 70px rgba(0,0,0,.66)}
-.sheet h2{font-family:var(--display);font-size:20px;letter-spacing:.1em;margin:0 0 4px;font-weight:600}
-.sheet .sub{font-style:italic;color:var(--bone-2);margin:0 0 20px;font-size:14px}
-.sheet label{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--bone-3);margin:0 0 6px}
-.sheet input{width:100%;box-sizing:border-box;background:var(--ink);border:1px solid var(--rule-2);
-  border-radius:2px;color:var(--bone);font:inherit;font-size:15px;padding:11px 12px;outline:none}
-.sheet input:focus{border-color:var(--gold)}
-.sheet .field{margin-bottom:17px}
-.sheet .note{font-size:13px;color:var(--bone-3);font-style:italic;margin:6px 0 0;line-height:1.5}
-.sheet .row{display:flex;gap:10px;align-items:center;justify-content:flex-end;margin-top:22px}
-.sheet .said{margin-right:auto;font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--held)}
-.sheet .plan{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--gold);border:1px solid var(--rule-2);border-radius:2px;padding:9px 11px;display:inline-block}
 </style>
 </head>
 <body>
@@ -260,8 +241,9 @@ footer a{color:var(--bone-2)}
           <a href="/loom" role="menuitem">Deal a new hand</a>
           <hr>
           <a href="/shelf" role="menuitem">Your campaigns</a>
-          <a class="soon" role="menuitem">Preferences <em>soon</em></a>
-          <button class="item" id="m-settings" role="menuitem">Settings</button>
+          <a href="/account#profile" role="menuitem">Profile</a>
+          <a href="/account#preferences" role="menuitem">Preferences</a>
+          <a href="/account#settings" role="menuitem">Settings</a>
           <hr>
           <a class="out" href="/auth/logout" role="menuitem">Sign out</a>
         </div>
@@ -525,39 +507,13 @@ footer a{color:var(--bone-2)}
   window.addEventListener('resize', () => { if (modal.classList.contains('open')) fit(); });
 })();
 </script>
-<div class="sheet" id="settings" role="dialog" aria-modal="true" aria-label="Settings">
-  <div class="card">
-    <h2>Settings</h2>
-    <p class="sub">Your account, and what it may spend.</p>
-    <div class="field">
-      <label for="set-name">Name at the table</label>
-      <input id="set-name" type="text" autocomplete="off" maxlength="80">
-    </div>
-    <div class="field">
-      <label for="set-key">Your own Anthropic key</label>
-      <input id="set-key" type="password" autocomplete="off" placeholder="sk-ant-…">
-      <p class="note">Optional. With a key of your own the session runs on it instead of ours,
-        and the spend cap stops being the thing between you and a long night. Leave it blank
-        and nothing changes. <b>We never show it back to you</b> — only whether one is set.</p>
-    </div>
-    <div class="field">
-      <label>Plan</label>
-      <div class="plan" id="set-plan">FREE</div>
-    </div>
-    <div class="row">
-      <span class="said" id="set-said"></span>
-      <button class="cta ghost" id="set-close" type="button">Close</button>
-      <button class="cta" id="set-save" type="button">Save</button>
-    </div>
-  </div>
-</div>
 
 <script>
 // Who is here. The homepage is the only door that is always open, so it is the only
 // place that can offer a way in — and, once you are in, the way back to your table.
 (function () {
   const $ = id => document.getElementById(id);
-  const menu = $('menu'), btn = $('who-btn'), sheet = $('settings');
+  const menu = $('menu'), btn = $('who-btn');
   let me = null;
 
   function paint(m) {
@@ -573,9 +529,6 @@ footer a{color:var(--bone-2)}
       $('who-pip').innerHTML = m.picture
         ? '<img alt="" src="' + m.picture + '" referrerpolicy="no-referrer">'
         : (m.name || m.email || '?').trim().charAt(0).toUpperCase();
-      $('set-name').value = m.name || '';
-      $('set-plan').textContent = (m.plan || 'free').toUpperCase();
-      $('set-key').placeholder = m.has_key ? 'a key is set — type to replace it' : 'sk-ant-…';
     } else if (m.google) {
       $('nav-in').hidden = false;
     }
@@ -588,40 +541,8 @@ footer a{color:var(--bone-2)}
     btn.setAttribute('aria-expanded', open ? 'true' : 'false');
   });
   document.addEventListener('click', e => { if (!menu.contains(e.target)) shut(); });
-  window.addEventListener('keydown', e => {
-    if (e.key !== 'Escape') return;
-    if (sheet.classList.contains('open')) { sheet.classList.remove('open'); return; }
-    shut();
-  });
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') shut(); });
 
-  $('m-settings').addEventListener('click', () => {
-    shut(); $('set-said').textContent = ''; sheet.classList.add('open'); $('set-name').focus();
-  });
-  $('set-close').addEventListener('click', () => sheet.classList.remove('open'));
-  sheet.addEventListener('click', e => { if (e.target === sheet) sheet.classList.remove('open'); });
-
-  $('set-save').addEventListener('click', async () => {
-    const body = { name: $('set-name').value.trim() };
-    const key = $('set-key').value.trim();
-    if (key) body.api_key = key;               // blank means leave it alone, not erase it
-    try {
-      const r = await fetch('/api/me', {
-        method: 'POST', headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
-      if (!r.ok) throw new Error(r.status);
-      const out = await r.json();
-      $('set-key').value = '';
-      $('set-key').placeholder = out.has_key ? 'a key is set — type to replace it' : 'sk-ant-…';
-      $('who-name').textContent = out.name || me.account;
-      $('set-said').style.color = 'var(--held)';
-      $('set-said').textContent = 'Saved';
-      setTimeout(() => { $('set-said').textContent = ''; }, 2600);
-    } catch (err) {
-      $('set-said').style.color = 'var(--lost)';
-      $('set-said').textContent = 'Did not save';
-    }
-  });
 
   fetch('/api/me').then(r => r.json()).then(paint).catch(() => {});
 })();

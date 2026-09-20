@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Account</title>
+<meta name="description" content="Who you are at this table, what this browser remembers, and what your sessions may spend.">
+<meta name="theme-color" content="#0d0c0b">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Spectral:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d0c0b; --ink-2:#141210; --ink-3:#1b1815;
+  --bone:#e8e2d4; --bone-2:#9a9182; --bone-3:#6b6558;
+  --ember:#ff4d00; --ember-dim:#c2481a; --gold:#c2a46a; --held:#5c8a52; --lost:#a8574b;
+  --rule:#2a2622; --rule-2:#3b352c;
+  --display:Cinzel,Georgia,serif; --serif:Spectral,Georgia,serif; --mono:'Space Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--serif);font-weight:300;
+     line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
+.wrap{width:min(760px,100%);margin:0 auto;padding:0 24px}
+.k{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember)}
+
+header{border-bottom:1px solid var(--rule)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:58px;width:min(1180px,100%)}
+.brand{font-family:var(--display);font-weight:600;letter-spacing:.22em;font-size:15px;text-decoration:none}
+header nav{display:flex;gap:20px;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+           text-transform:uppercase;color:var(--bone-2)}
+header nav a{text-decoration:none}
+header nav a:hover{color:var(--ember)}
+
+.top{padding:42px 0 10px}
+.top h1{font-family:var(--display);font-weight:600;font-size:clamp(26px,3.2vw,34px);letter-spacing:.04em;margin:8px 0 8px}
+.top p{margin:0;color:var(--bone-2);font-style:italic}
+
+section{border-top:1px solid var(--rule);padding:32px 0}
+section:last-of-type{padding-bottom:80px}
+h2{font-family:var(--display);font-weight:600;font-size:21px;letter-spacing:.06em;margin:0 0 4px}
+.sub{color:var(--bone-2);font-style:italic;margin:0 0 24px;font-size:15px}
+
+.rows{display:flex;flex-direction:column;gap:2px}
+.row{display:flex;align-items:center;gap:16px;justify-content:space-between;
+     padding:13px 0;border-bottom:1px solid var(--rule)}
+.row:last-child{border-bottom:0}
+.row .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
+          color:var(--bone-3);flex:none;width:170px}
+.row .val{flex:1;min-width:0;word-break:break-word;color:var(--bone)}
+.row .val.dim{color:var(--bone-2)}
+
+.field{margin:0 0 20px}
+label.lab{display:block;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+          text-transform:uppercase;color:var(--bone-3);margin:0 0 7px}
+input[type=text],input[type=password]{width:100%;background:var(--ink-2);border:1px solid var(--rule-2);
+  border-radius:2px;color:var(--bone);font:inherit;font-size:15px;padding:11px 12px;outline:none}
+input:focus{border-color:var(--gold)}
+.note{font-size:13.5px;color:var(--bone-3);font-style:italic;margin:7px 0 0;line-height:1.55}
+.note b{font-style:normal;color:var(--bone-2)}
+
+.seg{display:inline-flex;border:1px solid var(--rule-2);border-radius:2px;overflow:hidden}
+.seg button{background:none;border:0;color:var(--bone-3);font-family:var(--mono);font-size:10.5px;
+            letter-spacing:.14em;text-transform:uppercase;padding:9px 15px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--ink-3);color:var(--bone)}
+.seg button:hover{color:var(--bone)}
+
+input[type=range]{width:190px;accent-color:var(--ember-dim)}
+
+.cta{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+     background:var(--ember);color:#160b05;border:none;border-radius:2px;padding:11px 18px;
+     cursor:pointer;font-weight:700}
+.cta:hover{filter:brightness(1.12)}
+.cta.ghost{background:none;color:var(--bone-2);border:1px solid var(--rule-2);font-weight:400}
+.cta.ghost:hover{border-color:var(--bone-2);color:var(--bone)}
+.acts{display:flex;gap:10px;align-items:center;margin-top:8px}
+.said{font-family:var(--mono);font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--held)}
+.said.bad{color:var(--lost)}
+.plan{font-family:var(--mono);font-size:11px;letter-spacing:.12em;text-transform:uppercase;
+      color:var(--gold);border:1px solid var(--rule-2);border-radius:2px;padding:6px 10px;display:inline-block}
+
+.out{margin-top:10px}
+.out a{color:var(--lost);font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;
+       text-transform:uppercase;text-decoration:none}
+.out a:hover{text-decoration:underline}
+
+.gate{padding:70px 0;text-align:center}
+.gate p{color:var(--bone-2);font-style:italic;margin:0 0 22px}
+@media (max-width:620px){
+  .row{flex-direction:column;align-items:flex-start;gap:5px}
+  .row .lab{width:auto}
+  .wrap{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">SEREN</a>
+    <nav>
+      <a href="/shelf">Your campaigns</a>
+      <a href="/table">The table</a>
+      <a href="/">The house</a>
+    </nav>
+  </div>
+</header>
+
+<div id="app">
+  <div class="wrap top"><div class="k">Your account</div><h1>Loading…</h1></div>
+</div>
+
+<script>
+(function () {
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  };
+
+  // Preferences live in this browser, not on the account, and the page says so rather
+  // than implying a sync that does not exist. Volume is a property of where you are
+  // sitting; it has no business following you to another machine.
+  var PREFS = {
+    theme:      { key: 'seren.theme',       fallback: 'light' },
+    tableMusic: { key: 'seren.table.music', fallback: null },
+    loomSound:  { key: 'seren.loom.sound',  fallback: null }
+  };
+  function readJSON(key, dflt) {
+    try { var v = localStorage.getItem(key); return v ? JSON.parse(v) : dflt; }
+    catch (e) { return dflt; }
+  }
+  function write(key, value) {
+    try { localStorage.setItem(key, typeof value === 'string' ? value : JSON.stringify(value)); }
+    catch (e) { /* a private window is allowed to refuse; the page still works */ }
+  }
+
+  function when(ts) {
+    if (!ts) return '—';
+    return new Date(ts * 1000).toLocaleDateString(undefined,
+      { year: 'numeric', month: 'long', day: 'numeric' });
+  }
+
+  function render(me) {
+    if (!me.signed_in) {
+      $('app').innerHTML =
+        '<div class="wrap top"><div class="k">Your account</div>' +
+        '<h1>Nobody is signed in.</h1>' +
+        '<p>An account is what keeps your campaigns yours. Without one this browser is ' +
+        'playing as the house.</p></div>' +
+        '<div class="wrap gate">' +
+        (me.google ? '<a class="cta" href="/auth/google" style="text-decoration:none">Sign in with Google</a>'
+                   : '<p>Sign-in is not configured on this server.</p>') +
+        '</div>';
+      return;
+    }
+
+    var vol = readJSON(PREFS.tableMusic.key, {}) || {};
+    var loom = readJSON(PREFS.loomSound.key, {}) || {};
+    var theme = (function () { try { return localStorage.getItem('seren.theme') || 'light'; }
+                               catch (e) { return 'light'; } })();
+    var auto = (function () { try { return localStorage.getItem('seren.music.autoplay') !== '0'; }
+                              catch (e) { return true; } })();
+
+    $('app').innerHTML =
+      '<div class="wrap top">' +
+        '<div class="k">Your account</div>' +
+        '<h1>' + esc(me.name || me.account) + '</h1>' +
+        '<p>Who you are at this table, what this browser remembers, and what a session may spend.</p>' +
+      '</div>' +
+
+      '<div class="wrap"><section id="profile">' +
+        '<h2>Profile</h2>' +
+        '<p class="sub">Google\'s, not ours. We never saw a password and never will.</p>' +
+        '<div class="rows">' +
+          '<div class="row"><div class="lab">Signed in as</div><div class="val">' + esc(me.email) + '</div></div>' +
+          '<div class="row"><div class="lab">Display name</div><div class="val">' + esc(me.name || '—') + '</div></div>' +
+          '<div class="row"><div class="lab">Campaign folder</div><div class="val dim">players/' + esc(me.account) + '</div></div>' +
+          '<div class="row"><div class="lab">At the table since</div><div class="val dim">' + when(me.since) + '</div></div>' +
+        '</div>' +
+        '<div class="out"><a href="/auth/logout">Sign out</a></div>' +
+      '</section>' +
+
+      '<section id="preferences">' +
+        '<h2>Preferences</h2>' +
+        '<p class="sub">These live in <b>this browser</b>. They do not follow you to another ' +
+        'machine, because a volume knob is a property of where you are sitting. The levels ' +
+        'below are where each surface starts; changing it there changes it here.</p>' +
+        '<div class="rows">' +
+          '<div class="row"><div class="lab">The lamp</div><div class="val">' +
+            '<span class="seg" id="theme">' +
+              '<button data-t="light" aria-pressed="' + (theme === 'light') + '">High</button>' +
+              '<button data-t="dark" aria-pressed="' + (theme === 'dark') + '">Low</button>' +
+            '</span></div></div>' +
+          '<div class="row"><div class="lab">Autoplay music</div><div class="val">' +
+            '<span class="seg" id="auto">' +
+              '<button data-a="1" aria-pressed="' + auto + '">On</button>' +
+              '<button data-a="0" aria-pressed="' + (!auto) + '">Off</button>' +
+            '</span>' +
+            '<p class="note">Starts when you sit down, or on your first click if you have ' +
+            'already read the house rules. <b>A browser will not play audio before you touch ' +
+            'the page</b>, so it can never start on its own before you arrive.</p></div></div>' +
+          '<div class="row"><div class="lab">Volume at the table</div><div class="val">' +
+            '<input type="range" id="tvol" min="0" max="100" value="' +
+              Math.round((vol.level != null ? vol.level : 0.5) * 100) + '"></div></div>' +
+          '<div class="row"><div class="lab">Volume at the loom</div><div class="val">' +
+            '<input type="range" id="lvol" min="0" max="100" value="' +
+              Math.round((loom.level != null ? loom.level : 0.5) * 100) + '"></div></div>' +
+          '<div class="row"><div class="lab">The house rules</div><div class="val">' +
+            '<button class="cta ghost" id="resetHow">Show them again</button>' +
+            '<span class="said" id="howSaid" style="margin-left:10px"></span></div></div>' +
+        '</div>' +
+      '</section>' +
+
+      '<section id="settings">' +
+        '<h2>Settings</h2>' +
+        '<p class="sub">What a session may spend, and whose bill it goes on.</p>' +
+        '<div class="field">' +
+          '<label class="lab" for="name">Name at the table</label>' +
+          '<input id="name" type="text" maxlength="80" value="' + esc(me.name || '') + '">' +
+        '</div>' +
+        '<div class="field">' +
+          '<label class="lab" for="key">Your own Anthropic key</label>' +
+          '<input id="key" type="password" autocomplete="off" placeholder="' +
+            (me.has_key ? 'a key is set — type to replace it' : 'sk-ant-…') + '">' +
+          '<p class="note">Optional. With a key of your own a session runs on it instead of ' +
+          'ours, and the spend cap stops being the only thing between you and a long night. ' +
+          'Leave it blank and nothing changes. <b>We never show it back to you</b> — only ' +
+          'whether one is set.</p>' +
+        '</div>' +
+        '<div class="field">' +
+          '<label class="lab">Plan</label>' +
+          '<div class="plan">' + esc((me.plan || 'free').toUpperCase()) + '</div>' +
+        '</div>' +
+        '<div class="acts">' +
+          '<button class="cta" id="save">Save</button>' +
+          '<span class="said" id="said"></span>' +
+        '</div>' +
+      '</section></div>';
+
+    // ── preferences, written straight through ──────────────────────────────
+    Array.prototype.forEach.call($('theme').querySelectorAll('button'), function (b) {
+      b.addEventListener('click', function () {
+        Array.prototype.forEach.call($('theme').querySelectorAll('button'), function (o) {
+          o.setAttribute('aria-pressed', String(o === b));
+        });
+        write('seren.theme', b.dataset.t);
+      });
+    });
+    Array.prototype.forEach.call($('auto').querySelectorAll('button'), function (b) {
+      b.addEventListener('click', function () {
+        Array.prototype.forEach.call($('auto').querySelectorAll('button'), function (o) {
+          o.setAttribute('aria-pressed', String(o === b));
+        });
+        write('seren.music.autoplay', b.dataset.a);
+      });
+    });
+    $('tvol').addEventListener('change', function () {
+      var cur = readJSON(PREFS.tableMusic.key, {}) || {};
+      cur.level = Number(this.value) / 100;
+      write(PREFS.tableMusic.key, cur);
+    });
+    $('lvol').addEventListener('change', function () {
+      var cur = readJSON(PREFS.loomSound.key, {}) || {};
+      cur.level = Number(this.value) / 100;
+      write(PREFS.loomSound.key, cur);
+    });
+    $('resetHow').addEventListener('click', function () {
+      try {
+        localStorage.removeItem('seren.table.how');
+        localStorage.removeItem('seren.loom.how');
+        $('howSaid').textContent = 'They will open next time';
+      } catch (e) { $('howSaid').textContent = 'This browser said no'; }
+      setTimeout(function () { $('howSaid').textContent = ''; }, 3000);
+    });
+
+    // ── settings, written to the account ───────────────────────────────────
+    $('save').addEventListener('click', function () {
+      var body = { name: $('name').value.trim() };
+      var k = $('key').value.trim();
+      if (k) body.api_key = k;           // blank means leave it alone, never erase it
+      fetch('/api/me', {
+        method: 'POST', headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      }).then(function (r) {
+        if (!r.ok) throw new Error(r.status);
+        return r.json();
+      }).then(function (out) {
+        $('key').value = '';
+        $('key').placeholder = out.has_key ? 'a key is set — type to replace it' : 'sk-ant-…';
+        $('said').className = 'said';
+        $('said').textContent = 'Saved';
+        setTimeout(function () { $('said').textContent = ''; }, 2600);
+      }).catch(function () {
+        $('said').className = 'said bad';
+        $('said').textContent = 'Did not save';
+      });
+    });
+
+    if (location.hash) {
+      var el = document.querySelector(location.hash);
+      if (el) el.scrollIntoView();
+    }
+  }
+
+  fetch('/api/me').then(function (r) { return r.json(); }).then(render).catch(function () {
+    $('app').innerHTML = '<div class="wrap top"><div class="k">Your account</div>' +
+      '<h1>That could not be read.</h1><p>A server problem, not yours.</p></div>';
+  });
+})();
+</script>
+<script src="/static/account.js"></script>
+</body>
+</html>

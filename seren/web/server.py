@@ -277,6 +277,7 @@ class Handler(BaseHTTPRequestHandler):
                 "picture": (row or {}).get("picture", ""),
                 "plan": (row or {}).get("plan", "free"),
                 "has_key": bool((row or {}).get("api_key")),
+                "since": (row or {}).get("created_at", 0),
             })
 
         if path in ("/", "/home"):
@@ -293,6 +294,9 @@ class Handler(BaseHTTPRequestHandler):
         if self._gated():
             return self._send(200, gate.page(auth.enabled()).encode("utf-8"),
                               "text/html; charset=utf-8")
+
+        if path in ("/account", "/account/", "/settings", "/profile", "/preferences"):
+            return self._file(STATIC / "account.html")
 
         if path in ("/shelf", "/shelf/", "/campaigns"):
             return self._file(STATIC / "shelf.html")

@@ -705,13 +705,27 @@ $('vol').oninput = e => {
 paintSound();
 
 /* ── wiring ── */
+// Autoplay is one preference read by both surfaces, not two that can drift. Default on,
+// which is what the loom already did; the table never did, and the switch is the point.
+// Browsers refuse audio without a gesture, so it hangs off the first real one: dismissing
+// the house rules, or — for somebody who dismissed them weeks ago — their first click.
+const AUTOPLAY_KEY = 'seren.music.autoplay';
+const autoplayOn = () => { try { return localStorage.getItem(AUTOPLAY_KEY) !== '0'; } catch (e) { return true; } };
+function onFirstGesture(fn) {
+  const once = () => { document.removeEventListener('click', once, true); fn(); };
+  document.addEventListener('click', once, true);
+}
+
 const HOW_KEY = 'seren.loom.how';
 const showHow = () => { $('howBack').hidden = false; };
 const hideHow = () => { $('howBack').hidden = true; try { localStorage.setItem(HOW_KEY, '1'); } catch (e) {} };
-$('howGo').onclick = () => { hideHow(); startMusic(); };
+$('howGo').onclick = () => { hideHow(); if (autoplayOn()) startMusic(); };
 $('howAgain').onclick = showHow;
 $('howBack').onclick = e => { if (e.target === $('howBack')) hideHow(); };
-try { if (!localStorage.getItem(HOW_KEY)) showHow(); } catch (e) { /* private window: skip it */ }
+try {
+  if (!localStorage.getItem(HOW_KEY)) showHow();
+  else if (autoplayOn()) onFirstGesture(startMusic);
+} catch (e) { /* private window: skip it */ }
 
 $('playOut').onclick = playItOut;
 $('dealAgain').onclick = () => { const c = S.browse === HERS ? nextUnfilled(HERS) : S.browse; S.hands[c] = sample(DATA.cards[c], HAND_SIZE).map(x => x.id); render(); };
