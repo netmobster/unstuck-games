@@ -17,6 +17,7 @@ from dataclasses import dataclass, field
 from pathlib import Path
 
 import dice
+import files
 import fog
 
 # Scene keys the player may see. An allow-list, because a deny-list is one schema change
@@ -576,7 +577,7 @@ def apply_state(campaign, args: dict) -> dict:
         top = int(hp.get("max") or before)
         hp["current"] = max(0, min(top, before + delta))
         text = edit_block(party_path.read_text(encoding="utf-8"), slug, "hp", hp)
-        party_path.write_text(text, encoding="utf-8", newline=chr(10))
+        files.write(party_path, text)
         return {"who": slug, "was": before, "now": hp["current"], "of": top, "what": "hp"}
 
     if op == "condition":
@@ -590,7 +591,7 @@ def apply_state(campaign, args: dict) -> dict:
         elif name.lower() not in [str(c).lower() for c in conditions]:
             conditions.append(name)
         text = edit_block(party_path.read_text(encoding="utf-8"), slug, "conditions", conditions)
-        party_path.write_text(text, encoding="utf-8", newline=chr(10))
+        files.write(party_path, text)
         return {"who": slug, "now": conditions, "what": "conditions"}
 
     if op in ("slot", "use"):
@@ -611,7 +612,7 @@ def apply_state(campaign, args: dict) -> dict:
         before = int(current[key] or 0)
         current[key] = max(0, before + delta)
         text = edit_block(party_path.read_text(encoding="utf-8"), slug, field, current)
-        party_path.write_text(text, encoding="utf-8", newline=chr(10))
+        files.write(party_path, text)
         return {"who": slug, "what": f"{field}.{key}", "was": before, "now": current[key]}
 
     if op == "move":
@@ -619,7 +620,7 @@ def apply_state(campaign, args: dict) -> dict:
         if len(where) < 3:
             raise StateRefused("`where` must say where they are now, in plain words")
         text = edit_block(scene_path.read_text(encoding="utf-8"), None, "where", where)
-        scene_path.write_text(text, encoding="utf-8", newline=chr(10))
+        files.write(scene_path, text)
         return {"what": "where", "now": where}
 
     if op == "present":
@@ -634,7 +635,7 @@ def apply_state(campaign, args: dict) -> dict:
         elif who.lower() not in [str(x).lower() for x in current]:
             current.append(who if field == "also_present" else who.lower())
         text = edit_block(scene_path.read_text(encoding="utf-8"), None, field, current)
-        scene_path.write_text(text, encoding="utf-8", newline=chr(10))
+        files.write(scene_path, text)
         return {"what": field, "now": current}
 
     # round
@@ -642,7 +643,7 @@ def apply_state(campaign, args: dict) -> dict:
     if value is not None and not isinstance(value, int):
         raise StateRefused("`round` must be an integer, or null to leave initiative")
     text = edit_block(scene_path.read_text(encoding="utf-8"), None, "round", value)
-    scene_path.write_text(text, encoding="utf-8", newline=chr(10))
+    files.write(scene_path, text)
     return {"what": "round", "now": value}
 
 
