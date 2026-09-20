@@ -111,6 +111,15 @@ PAGE = """<!doctype html>
          background:#c2a46a;color:#17140f;border:none;border-radius:2px;cursor:pointer}
   button:hover{background:#e8e2d4}
   .no{margin-top:14px;min-height:20px;color:#b4573f;font-style:italic}
+  .goog{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;
+        background:#e8e2d4;color:#17140f;border:none;border-radius:2px;cursor:pointer;
+        font-family:Cinzel,Georgia,serif;letter-spacing:.1em;font-size:14px;padding:13px 18px;
+        text-decoration:none;box-sizing:border-box}
+  .goog:hover{background:#fff}
+  .goog svg{width:18px;height:18px;flex:none}
+  .or{display:flex;align-items:center;gap:12px;color:#6d665b;font-size:12px;
+      letter-spacing:.16em;font-family:Cinzel,Georgia,serif;margin:22px 0 16px}
+  .or::before,.or::after{content:"";flex:1;height:1px;background:#2a2622}
         padding:12px 13px;min-height:84px;resize:vertical;outline:none}
 </style></head>
 <body>
@@ -119,6 +128,7 @@ PAGE = """<!doctype html>
     <h1>SEREN</h1>
     <p class="what">A dungeon master that cannot fudge the dice. It narrates; the rolls are made by the server and written down before anyone knows what they are for.</p>
     <p class="why">Every turn is written live by a model that costs real money to run, and the table is still being built. So for now the door is shut.</p>
+    <!--GOOGLE-->
     <div class="have">HAVE A PASSWORD?</div>
     <form id="f" autocomplete="off">
       <input id="p" type="password" placeholder="password" aria-label="Password" autofocus>
@@ -148,3 +158,17 @@ document.getElementById('f').onsubmit = async e => {
 <script src="/switcher.js" defer></script>
 </body></html>
 """
+
+
+GOOGLE_BLOCK = """    <a class="goog" href="/auth/google">
+      <svg viewBox="0 0 48 48" aria-hidden="true"><path fill="#4285F4" d="M45 24.3c0-1.6-.1-2.7-.4-3.9H24v7.1h12c-.2 1.8-1.5 4.6-4.4 6.4l6.7 5.2c4-3.7 6.3-9.1 6.3-15.6z"/><path fill="#34A853" d="M24 46c5.8 0 10.6-1.9 14.2-5.2l-6.7-5.2c-1.8 1.3-4.2 2.1-7.4 2.1-5.7 0-10.5-3.7-12.2-8.9l-7 5.4C8.4 41.2 15.6 46 24 46z"/><path fill="#FBBC05" d="M11.8 28.8c-.5-1.3-.7-2.7-.7-4.1s.3-2.9.7-4.1l-7-5.4A22 22 0 0 0 2 24.7c0 3.6.9 6.9 2.4 9.9l7.4-5.8z"/><path fill="#EA4335" d="M24 10.6c4 0 6.7 1.7 8.3 3.2l6-5.9C34.6 4.5 29.8 2 24 2 15.6 2 8.4 6.8 4.8 14.5l7 5.4c1.7-5.2 6.5-8.9 12.2-8.9z"/></svg>
+      SIGN IN WITH GOOGLE
+    </a>
+    <div class="or">OR</div>
+"""
+
+
+def page(google: bool = False) -> str:
+    """The door. With Google on it when Google is configured, because a guest will never
+    have the shared password and should not be told to ask for one."""
+    return PAGE.replace("<!--GOOGLE-->", GOOGLE_BLOCK if google else "")
