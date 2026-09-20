@@ -192,7 +192,12 @@ def write_module(out: Path, camp: dict, picks: dict, dials: dict, cards: dict, s
 **Told like:** {voice.get('line', 'a clerk reading out a form')}
 **Which means:** {voice.get('changes', 'Short sentences, nouns, no adverbs')}
 
-This is the voice, not the content. It changes how a thing is said and never what is true.
+**This is a voice, not a person.** You narrate *like* this; you are not standing in the
+room. Nobody in the world can see you, speak to you, or refer to you. If the campaign needs
+a coroner, a registrar or a publican in the fiction, that is a different person with their
+own name — and they are not you.
+
+It changes how a thing is said and never what is true.
 """)
 
     fronts = camp.get("fronts") or []
