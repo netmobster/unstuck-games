@@ -97,7 +97,7 @@ def _save(sess: dict) -> None:
             "turns": camp.turns,
             "spent": camp.spent,
             "stream": sess["stream"][-120:],
-            "messages": sess["messages"][-24:],
+            "messages": dm.trim(sess["messages"], 12),
             "pending": sess["pending"],
         }, ensure_ascii=False), encoding="utf-8")
     except OSError:
@@ -123,7 +123,7 @@ def _session_for(account: str, sid: str) -> dict:
                     camp.spent = float(saved.get("spent") or 0.0)
                     sess["stream"] = saved.get("stream") or []
                     sess["messages"] = saved.get("messages") or []
-                    sess["history"] = sess["messages"][-24:]
+                    sess["history"] = dm.trim(sess["messages"])
                     sess["pending"] = saved.get("pending")
             except (OSError, ValueError):
                 pass
@@ -277,6 +277,7 @@ class Handler(BaseHTTPRequestHandler):
                 "picture": (row or {}).get("picture", ""),
                 "plan": (row or {}).get("plan", "free"),
                 "has_key": bool((row or {}).get("api_key")),
+                "since": (row or {}).get("created_at", 0),
             })
 
         if path in ("/", "/home"):
@@ -293,6 +294,9 @@ class Handler(BaseHTTPRequestHandler):
         if self._gated():
             return self._send(200, gate.page(auth.enabled()).encode("utf-8"),
                               "text/html; charset=utf-8")
+
+        if path in ("/account", "/account/", "/settings", "/profile", "/preferences"):
+            return self._file(STATIC / "account.html")
 
         if path in ("/shelf", "/shelf/", "/campaigns"):
             return self._file(STATIC / "shelf.html")
@@ -431,7 +435,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self._json(402, {"error": str(exc)})
             except Exception as exc:
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
-            sess["history"] = out["messages"][-24:]  # a session's worth, trimmed at the edges
+            sess["history"] = dm.trim(out["messages"])   # cut on a turn boundary, never mid-turn
             sess["stream"].append({"kind": "said", "text": said})
             sess["stream"].extend(out["beats"])
             sess["pending"] = out.get("pending")
@@ -458,7 +462,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
             sess["pending"] = out.get("pending")
             sess["messages"] = out["messages"]
-            sess["history"] = out["messages"][-24:]
+            sess["history"] = dm.trim(out["messages"])
             sess["stream"].extend(out["beats"])
             view = camp.player_view()
             view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
@@ -531,7 +535,8 @@ class Handler(BaseHTTPRequestHandler):
             }, cookie)
 
         if path == "/api/close":
-            out = session_close.close(camp, sess["history"])
+            # The stream carries the player's own words; the chronicle is written in them.
+            out = session_close.close(camp, sess["history"], sess.get("stream") or [])
             counts = out["counts"]
             sess["history"] = []
             sess["messages"] = []
@@ -547,6 +552,9 @@ class Handler(BaseHTTPRequestHandler):
                     {"kind": "note", "text": f"SESSION CLOSED — {counts['rolls']} rolls, "
                                              f"{counts['facts_this_session']} facts, written to "
                                              + ", ".join(out["written"])},
+                ] + ([{"kind": "note", "text": "THE CHRONICLE"},
+                      {"kind": "dm", "text": out["chronicle"]}] if out.get("chronicle") else []) + [
+                    {"kind": "note", "text": "THE RECORD"},
                     {"kind": "dm", "text": out["log"]},
                 ],
                 **camp.player_view(),

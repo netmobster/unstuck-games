@@ -14,6 +14,7 @@ there for whoever has a terminal.
 
 from __future__ import annotations
 
+import json
 import re
 import shutil
 import time
@@ -95,8 +96,17 @@ def summary(folder: Path, playing: bool = False) -> dict:
         text = ""
     sessions_dir = folder / "sessions"
     played = len(list(sessions_dir.glob("*.md"))) if sessions_dir.is_dir() else 0
-    live = folder / "state" / "session.json"
     ledger = folder / "state" / "ledger.jsonl"
+
+    # "Session open" meant "session.json exists", and that file is written the moment a
+    # table is opened — so every campaign on the shelf claimed an open session, including
+    # ones nobody had said a word to. It means mid-scene or it means nothing.
+    unfinished = False
+    try:
+        live = json.loads((folder / "state" / "session.json").read_text(encoding="utf-8"))
+        unfinished = int(live.get("turns") or 0) > 0 and bool(live.get("stream"))
+    except (OSError, ValueError, TypeError):
+        pass
 
     try:
         touched = int(max(p.stat().st_mtime for p in (folder / "state").glob("*")))
@@ -113,7 +123,7 @@ def summary(folder: Path, playing: bool = False) -> dict:
         "hand": (re.search(r"\*\*The hand:\*\*\s*(.+)", text) or [None, ""])[1].strip()
                 if "**The hand:**" in text else "",
         "sessions": played,
-        "unfinished": live.is_file(),
+        "unfinished": unfinished,
         "rolls": sum(1 for _ in ledger.open(encoding="utf-8")) if ledger.is_file() else 0,
         "touched": touched,
         "archived": (folder / ARCHIVED).is_file(),

@@ -802,14 +802,28 @@ $('mVol').oninput = e => { mLevel = +e.target.value / 100; msave(); if (audio &&
 mPaint();
 
 // The house rules, once per browser and on demand after that.
+// Autoplay is one preference read by both surfaces, not two that can drift. Default on,
+// which is what the loom already did; the table never did, and the switch is the point.
+// Browsers refuse audio without a gesture, so it hangs off the first real one: dismissing
+// the house rules, or — for somebody who dismissed them weeks ago — their first click.
+const AUTOPLAY_KEY = 'seren.music.autoplay';
+const autoplayOn = () => { try { return localStorage.getItem(AUTOPLAY_KEY) !== '0'; } catch (e) { return true; } };
+function onFirstGesture(fn) {
+  const once = () => { document.removeEventListener('click', once, true); fn(); };
+  document.addEventListener('click', once, true);
+}
+
 const HOW_KEY = 'seren.table.how';
 const showHow = () => { $('howBack').hidden = false; };
 const hideHow = () => { $('howBack').hidden = true; try { localStorage.setItem(HOW_KEY, '1'); } catch (e) {} };
-$('howGo').onclick = hideHow;
+$('howGo').onclick = () => { hideHow(); if (autoplayOn()) mPlay(track); };
 $('howAgain').onclick = showHow;
 $('howBack').onclick = e => { if (e.target === $('howBack')) hideHow(); };
 document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('howBack').hidden) hideHow(); });
-try { if (!localStorage.getItem(HOW_KEY)) showHow(); } catch (e) {}
+try {
+  if (!localStorage.getItem(HOW_KEY)) showHow();
+  else if (autoplayOn()) onFirstGesture(() => mPlay(track));   // they have read the rules already
+} catch (e) {}
 
 // Lamp: light / dark. Remembered per browser.
 const root = document.documentElement;
@@ -838,5 +852,6 @@ $('lamp').onclick = () => setTheme(root.dataset.theme === 'dark' ? 'light' : 'da
 
 setInterval(renderRail, 30000);
 </script>
+<script src="/static/account.js"></script>
 </body>
 </html>
