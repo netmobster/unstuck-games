@@ -19,6 +19,7 @@ import os
 import re
 from pathlib import Path
 
+import files
 import llm
 
 # A skeleton is longer than a turn of play, and the table's cap would truncate it mid-fact.
@@ -162,7 +163,7 @@ def write_module(out: Path, camp: dict, picks: dict, dials: dict, cards: dict, s
     hand = " · ".join(str((cards.get(c) or {}).get("name", "")) for c in
                       ("trope", "origin", "world", "trouble", "posture") if cards.get(c))
     comps = camp.get("companions") or []
-    (out / "campaign.md").write_text(
+    files.write(out / "campaign.md",
         f"""<!-- Woven from a hand at the Loom. A module: inert until somebody plays it. -->
 # {camp.get('title', 'Untitled')}
 
@@ -181,7 +182,7 @@ def write_module(out: Path, camp: dict, picks: dict, dials: dict, cards: dict, s
 
 ## The opening
 {camp.get('opening', '')}
-""", encoding="utf-8", newline=nl)
+""")
 
     fronts = camp.get("fronts") or []
     body = (nl + nl).join(
@@ -192,11 +193,11 @@ def write_module(out: Path, camp: dict, picks: dict, dials: dict, cards: dict, s
 
 """ + nl.join(f"{i+1}. {step}" for i, step in enumerate(f.get("clock") or []))
         for f in fronts)
-    (out / "fronts.md").write_text("# Fronts" + nl + nl + body + nl, encoding="utf-8", newline=nl)
+    files.write(out / "fronts.md", "# Fronts" + nl + nl + body + nl)
 
     a = camp.get("antagonist") or {}
     slug = slugify(a.get("name"), "antagonist")
-    (out / "canon" / "antagonists" / f"{slug}.md").write_text(
+    files.write(out / "canon" / "antagonists" / f"{slug}.md",
         f"""---
 name: "{a.get('name','')}"
 slug: "{slug}"
@@ -208,8 +209,7 @@ posture: {a.get('posture','')}
 **Grudge.** {a.get('grudge','')}
 
 **Escalation.**
-""" + nl.join(f"- {step}" for step in (a.get("escalation") or [])) + nl,
-        encoding="utf-8", newline=nl)
+""" + nl.join(f"- {step}" for step in (a.get("escalation") or [])) + nl)
 
     with (out / "state" / "facts.jsonl").open("w", encoding="utf-8", newline=nl) as fh:
         for i, f in enumerate(camp.get("facts") or [], start=1):
@@ -220,7 +220,7 @@ posture: {a.get('posture','')}
                                 ensure_ascii=False) + nl)
 
     present = ", ".join(slugify(c.get("name"), "companion") for c in comps)
-    (out / "state" / "scene.md").write_text(
+    files.write(out / "state" / "scene.md",
         f"""---
 where:    "{camp.get('where','')}"
 present:  [pc{', ' + present if present else ''}]
@@ -231,12 +231,11 @@ foes:     {{}}
 ---
 
 # Scene — session 1, unopened
-""", encoding="utf-8", newline=nl)
+""")
 
     # The provenance the brief asks for: the same hand, one dial moved, is a re-weave.
-    (out / "hand.json").write_text(json.dumps(
+    files.write(out / "hand.json", json.dumps(
         {"picks": picks, "dials": dials, "seed": seed,
          "cards": {k: (v if isinstance(v, list) else (v or {}).get("name"))
-                   for k, v in cards.items()}}, indent=1, ensure_ascii=False),
-        encoding="utf-8", newline=nl)
+                   for k, v in cards.items()}}, indent=1, ensure_ascii=False))
     return out
