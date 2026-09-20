@@ -206,3 +206,70 @@ receipt whatever writes it, and that bug is ours.
 ⭐ **The one-line version, for the phone:** *the web port inherited SEREN's whole
 integrity apparatus and none of its craft apparatus, because the craft lived in the
 persona file and I replaced the persona file with a label.*
+
+---
+
+# 7 · The six as runtime invariants
+
+**Added 2026-09-20 after the red team read §§1–6.** Their sequencing point and mine agree
+— restore the five model-independent differences first, then compare models on the sixth,
+*"only then does he know what he is buying."* ⛔ **A better model run today would paper
+over five missing things and be credited for all of them**, and the project would acquire
+a silent dependence on one model's initiative. That is the failure mode to avoid, and it
+is worth more than the time it costs.
+
+Their other contribution is a distinction this document needed and did not have:
+
+> ### World persistence ≠ world responsiveness.
+>
+> SEREN can remember perfectly that you spilled the drink and still fail utterly at being
+> a world in which spilling the drink **does something.**
+
+Everything we ported is persistence. Every one of §§1–5 is responsiveness.
+
+## ⭐ So: which of these can be code?
+
+The red team asked for **runtime invariants rather than prompt patches**, which is this
+project's own rule — *an instruction is not a control* — applied to craft for the first
+time. **It does not apply evenly, and pretending it does would be the more comfortable
+answer.**
+
+| | can it be enforced? | how |
+|---|---|---|
+| **§2 no cast** | ⭐ **yes, fully** | the weaver must emit ≥3 named locals in `present:` with an appetite each; **the auditor refuses a campaign without them.** Same shape as the checks that already refuse a campaign with no antagonist grudge |
+| **§6 persona is a label** | ⭐ **yes, fully** | the auditor parses `DM-persona.md` and **refuses a persona carrying fewer than three moves in `when X → do Y` shape.** A style label cannot pass |
+| **§1 no interruption** | ⚠️ **yes, as pressure** | the server counts turns since anything arrived. At three, it appends a computed line to the volatile layer: *nothing has arrived in three turns; something arrives now.* **Not a standing instruction that decays — a fact recomputed every turn** |
+| **§4 no pacing** | ⚠️ **partly** | a turn that resolves everything cannot be detected reliably. But *permission* to leave something unresolved can be stated once, and its absence is why the model resolves everything |
+| **§3 unfunctional detail** | ⛔ **no** | this is craft. A move can ask for it; only a better model does it unasked |
+| **§5 answer the content** | ⛔ **no** | same. It is a Registrar move and it is also a thing capable models simply do |
+
+**Three of six become real controls. Two are prompt craft. One is half each.** ⚠️ Anyone
+claiming all six can be made deterministic is selling something.
+
+## ⭐ And one instrument, which is neither
+
+Responsiveness has a countable proxy: **how many named entities other than the player
+character do something in a turn.** The server knows the roster — `present:` — and it
+reads every word the DM writes, because the fog gate already does.
+
+So it can count, per turn, and keep the number. ⛔ **Not as a gate.** Holding a turn for
+being boring costs the player their turn and would be a worse bug than the one it fixes.
+**As an instrument**, in the ledger, the way Squint's deviation profile measures a
+temperament without governing it — and, at zero for three turns running, as the trigger
+for the §1 pressure line.
+
+> **A world with a responsiveness of zero for three turns is asleep, and the server is the
+> only thing in this architecture that can notice.**
+
+## What this changes about the order of work
+
+1. **Persona v2 in the weaver** + **the auditor refusing label-personas** — §6
+2. **A staged opening scene** + **the auditor refusing an empty room** — §2
+3. **The cast file the DM reads every turn** — §2 and Jay's consistency concern are the
+   same bug: nothing anywhere records how a character speaks
+4. **Turn-boundary trimming** — the memory window cuts conversations in half at `[-24:]`,
+   which is about six player turns and can sever a tool result from its call
+5. **The responsiveness counter**, then **the interruption pressure line** it triggers
+6. **One line of pacing permission** in the contract
+7. ⚠️ **Then, and only then, the model A/B** — with a note recording what it was allowed
+   to be credited for
