@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Loom · a hand against Seren</title>
+<meta name="description" content="SEREN's campaign builder as a card game: Seren deals five of twelve per category, you play, she counters with the antagonist. Flat HTML, no dependencies.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --felt:#0f1728; --felt-hi:#141f38; --card:#1a2540; --card-lo:#111a2e; --edge:#3a4664; --edge-lo:#2a3450;
+  --gilt:#c9a44a; --gilt-hi:#e3c06a; --bone:#e9dcb5; --bone-lo:#b8ab8a; --mute:#7d8aa8; --mute-lo:#4a5570;
+  --serif:'IM Fell English', Georgia, serif; --display:'Cinzel Decorative', serif; --sans:'Work Sans', system-ui, sans-serif;
+}
+* { box-sizing:border-box; }
+html, body { height:100%; }
+body { margin:0; background:var(--felt); color:var(--bone); font-family:var(--serif); overflow-x:hidden; overflow-y:auto;
+  background-image:radial-gradient(ellipse 1100px 600px at 50% 110%, rgba(201,164,74,.16), transparent 70%), radial-gradient(ellipse 800px 400px at 50% -10%, rgba(120,140,200,.12), transparent 70%); }
+button { font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; }
+button:disabled { cursor:default; opacity:.4; }
+button:focus-visible { outline:2px solid var(--gilt); outline-offset:3px; }
+input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
+.k { font-family:var(--sans); font-size:10px; letter-spacing:.14em; text-transform:uppercase; }
+.dk { font-family:var(--display); font-size:12px; letter-spacing:.14em; color:var(--gilt); }
+.ghost { padding:8px 14px; border:1px solid var(--mute-lo); border-radius:2px; font-size:14px; color:var(--bone-lo); transition:all .2s; }
+.ghost:hover:not(:disabled) { border-color:var(--bone); color:var(--bone); }
+.ghost.gilt { border-color:var(--gilt); color:var(--gilt); }
+.ghost.gilt:hover:not(:disabled) { background:var(--gilt); color:var(--felt); }
+.solid { padding:6px 12px; border-radius:2px; background:var(--gilt); color:var(--felt); font-size:13px; }
+.solid:hover:not(:disabled) { background:var(--gilt-hi); }
+
+@keyframes rise { from { opacity:0; transform:translateY(10px); } to { opacity:1; transform:none; } }
+@keyframes lift { from { opacity:0; transform:scale(.94) translateY(16px); } to { opacity:1; transform:none; } }
+@keyframes deal { from { opacity:0; transform:translateY(70px) rotate(-8deg); } to { opacity:1; transform:var(--rest, none); } }
+@keyframes flip { 0% { transform:rotateY(0); } 50% { transform:rotateY(90deg); } 100% { transform:rotateY(0); } }
+
+/* ── layout ── */
+.table { min-height:100vh; padding:30px 56px 28px; display:grid; grid-template-rows:auto minmax(0,1fr) auto; gap:10px; max-width:1600px; margin:0 auto; }
+
+/* Seren's side */
+.seren { display:grid; grid-template-columns:1fr 300px 1fr; gap:24px; align-items:start; }
+.seren .voice { display:flex; flex-direction:column; gap:10px; }
+.seren p { margin:0; font-size:19px; font-style:italic; color:var(--bone-lo); line-height:1.35; max-width:400px; min-height:52px; }
+.seren .acts { display:flex; gap:10px; flex-wrap:wrap; }
+.counter { display:flex; flex-direction:column; align-items:center; gap:8px; }
+.counter .slot { width:140px; height:190px; border-radius:8px; border:1px dashed var(--mute-lo); display:flex; align-items:center; justify-content:center; text-align:center; padding:16px; font-size:14px; font-style:italic; color:var(--mute); }
+.counter .card { width:140px; height:190px; border-radius:8px; border:2px solid var(--gilt); padding:14px; display:flex; flex-direction:column; justify-content:space-between; text-align:left; box-shadow:0 20px 40px rgba(0,0,0,.6); animation:deal .5s ease-out both; background:linear-gradient(160deg, var(--card), var(--card-lo)); }
+.counter .card.down { background:repeating-linear-gradient(45deg, #1a2540 0 6px, #141c33 6px 12px); }
+.counter .card.flipping { animation:flip .5s ease-in-out both; }
+.counter .card .name { font-size:22px; line-height:1.1; }
+.counter .card .line { font-size:13px; font-style:italic; color:var(--bone-lo); line-height:1.3; }
+.counter .acts { display:flex; gap:8px; }
+.dials { display:flex; flex-direction:column; gap:9px; font-family:var(--sans); font-size:10px; letter-spacing:.1em; color:var(--mute); padding-top:26px; }
+.dials .row { display:grid; grid-template-columns:82px 1fr 110px; gap:10px; align-items:center; }
+.dials .row span:last-child { text-align:right; }
+
+/* the table centre */
+.laid { display:flex; flex-direction:column; justify-content:center; align-items:center; gap:14px; padding:6px 0; }
+.slots { display:flex; justify-content:center; gap:14px; flex-wrap:wrap; }
+.slot-card { width:158px; height:104px; border-radius:8px; border:1px solid var(--edge-lo); background:rgba(255,255,255,.02); padding:12px 12px 10px; text-align:left; display:flex; flex-direction:column; justify-content:space-between; box-shadow:0 14px 28px rgba(0,0,0,.5); transition:border-color .2s, transform .2s; }
+.slot-card:hover { border-color:var(--gilt); transform:translateY(-3px); }
+.slot-card.filled { border-color:var(--gilt); background:linear-gradient(160deg, var(--card), var(--card-lo)); animation:lift .4s ease-out both; }
+.slot-card.hers { opacity:.55; }
+.slot-card .name { font-size:17px; line-height:1.1; }
+.slot-card .act { color:var(--mute); }
+.sentence { margin:0; text-align:center; font-size:22px; line-height:1.35; max-width:980px; text-wrap:pretty; }
+.sentence .blank { color:var(--mute-lo); }
+.play { padding:14px 34px; border-radius:2px; background:var(--gilt); color:var(--felt); font-family:var(--display); font-size:13px; letter-spacing:.14em; box-shadow:0 10px 30px rgba(201,164,74,.3); transition:background .2s; }
+.play:hover:not(:disabled) { background:var(--gilt-hi); }
+
+/* your hand */
+.hand { display:flex; flex-direction:column; gap:10px; }
+.hand .head { display:flex; justify-content:space-between; align-items:baseline; }
+.fan { display:flex; justify-content:center; height:226px; align-items:flex-end; perspective:1000px; }
+.hcard { width:180px; height:214px; margin:0 -8px; border-radius:10px; border:1px solid var(--edge); background:linear-gradient(160deg, var(--card), var(--card-lo)); padding:18px 16px 16px; text-align:left; display:flex; flex-direction:column; gap:8px; transform:var(--rest); transform-origin:bottom center; box-shadow:0 20px 40px rgba(0,0,0,.6); animation:deal .5s ease-out both; transition:transform .25s, border-color .2s; position:relative; }
+.hcard:hover { transform:translateY(-30px) rotate(0deg) scale(1.04); z-index:2; border-color:var(--gilt); }
+.hcard.on { background:var(--gilt); color:var(--felt); border-color:var(--gilt); }
+.hcard.on .line { color:#4a3a10; }
+.hcard .top { display:flex; justify-content:space-between; }
+.hcard .name { font-size:22px; line-height:1.1; }
+.hcard .line { font-size:14.5px; font-style:italic; color:var(--bone-lo); line-height:1.3; }
+
+/* doors */
+.doors { position:fixed; inset:0; overflow:auto; background:rgba(10,15,28,.92); display:flex; flex-wrap:wrap; align-content:center; align-items:center; justify-content:center; gap:36px; row-gap:28px; animation:rise .4s ease-out both; z-index:20; padding:40px; }
+.door { width:300px; height:min(400px, 60vh); border-radius:14px; border:2px solid var(--gilt); background:var(--felt-hi); padding:30px 28px; text-align:left; display:flex; flex-direction:column; gap:12px; justify-content:flex-end; box-shadow:0 30px 60px rgba(0,0,0,.7); transition:transform .25s; }
+.door:hover { transform:rotate(0deg) translateY(-10px) !important; }
+.door.express { transform:rotate(-4deg); }
+.door.custom { transform:rotate(4deg); background:var(--gilt); color:var(--felt); }
+.door .big { font-size:36px; line-height:1.05; }
+.door .sub { font-size:16px; font-style:italic; color:var(--bone-lo); line-height:1.35; }
+.door.custom .sub { color:#4a3a10; }
+.doors .roll { flex:0 0 100%; align-self:center; max-width:max-content; margin:0 auto; }
+
+/* modal */
+.backdrop { position:fixed; inset:0; background:rgba(0,0,0,.62); display:flex; align-items:center; justify-content:center; z-index:50; animation:rise .25s ease-out both; }
+.modal { width:620px; max-width:92vw; background:var(--felt-hi); border:2px solid var(--gilt); border-radius:12px; padding:40px 44px 34px; display:flex; flex-direction:column; gap:18px; box-shadow:0 40px 90px rgba(0,0,0,.7); animation:lift .3s cubic-bezier(.2,.8,.2,1) both; }
+.modal .top { display:flex; justify-content:space-between; color:var(--gilt); }
+.modal h2 { margin:0; font-size:44px; font-weight:400; line-height:1.02; }
+.modal .line { margin:0; font-size:24px; font-style:italic; line-height:1.3; color:var(--bone-lo); }
+.modal .changes { border-top:1px solid var(--edge); padding-top:14px; display:grid; grid-template-columns:130px 1fr; gap:14px; font-family:var(--sans); font-size:13.5px; line-height:1.5; }
+.modal .changes .k { color:var(--gilt); padding-top:3px; }
+.modal .sample { background:rgba(201,164,74,.1); padding:14px 18px; border-radius:4px; font-size:19px; font-style:italic; line-height:1.35; }
+.modal .acts { display:flex; gap:10px; justify-content:flex-end; padding-top:6px; font-family:var(--sans); font-size:11px; letter-spacing:.12em; }
+.modal .acts button { padding:11px 20px; border-radius:999px; }
+.modal .acts .back { border:1px solid var(--edge); color:var(--bone-lo); }
+.modal .acts .take { background:var(--gilt); color:var(--felt); font-weight:600; }
+
+/* set beat */
+.set { position:fixed; inset:0; background:#0c0a08; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px; z-index:60; animation:rise 1.2s ease-out both; padding:60px; text-align:center; }
+.set p { margin:0; font-size:36px; line-height:1.3; max-width:900px; text-wrap:pretty; }
+.set small { font-family:var(--sans); font-size:12px; letter-spacing:.06em; color:var(--mute); max-width:520px; line-height:1.6; }
+[hidden] { display:none !important; }
+</style>
+</head>
+<body>
+
+<main class="table" id="table">
+  <section class="seren">
+    <div class="voice">
+      <span class="dk">Seren</span>
+      <p id="says"></p>
+      <div class="acts">
+        <button class="ghost gilt" id="dealAgain">Deal these again</button>
+        <button class="ghost" id="newHand">I don't like any of these. New hand.</button>
+        <button class="ghost" id="playOut">Play it out for me</button>
+      </div>
+    </div>
+    <div class="counter">
+      <span class="k" style="color:var(--mute)">Her counter · the antagonist</span>
+      <div id="counter"></div>
+      <div class="acts" id="counterActs" hidden>
+        <button class="solid" id="takeHers">Take it</button>
+        <button class="ghost" id="redealHers" style="padding:6px 12px;font-size:13px">Make her play another</button>
+      </div>
+    </div>
+    <div class="dials" id="dials"><span class="k" style="letter-spacing:.14em;color:var(--gilt)">The stakes · five dials</span></div>
+  </section>
+
+  <section class="laid">
+    <div class="slots" id="slots"></div>
+    <p class="sentence" id="sentence"></p>
+    <button class="play" id="play" disabled>0 of 7 laid</button>
+  </section>
+
+  <section class="hand">
+    <div class="head">
+      <span class="dk" id="handLabel">Your hand</span>
+      <span class="k" id="handHint" style="color:var(--mute)"></span>
+    </div>
+    <div class="fan" id="fan"></div>
+  </section>
+</main>
+
+<div class="doors" id="doors">
+  <button class="door express" data-door="express">
+    <span class="dk" style="font-size:10px">Express</span>
+    <span class="big">A quick hand</span>
+    <span class="sub">She deals companions and trouble. She plays the rest herself.</span>
+  </button>
+  <button class="door custom" data-door="custom">
+    <span class="dk" style="font-size:10px;color:var(--felt)">Custom</span>
+    <span class="big">The full game</span>
+    <span class="sub">Seven deals. You lead with the trope; she counters with the antagonist.</span>
+  </button>
+  <button class="ghost roll" id="rollFromDoor">Or: let her play it out, and I'll just watch</button>
+</div>
+
+<div class="backdrop" id="backdrop" hidden>
+  <div class="modal" id="modal" role="dialog" aria-modal="true"></div>
+</div>
+
+<div class="set" id="set" hidden>
+  <span class="k" style="letter-spacing:.2em;color:#e07a58">Your loom is set</span>
+  <p id="setSentence"></p>
+  <small>Handing off. The weaver writes the module, the auditor deals it out and checks no secret is showing, and then Seren sits down. This is where the next step begins.</small>
+  <button class="ghost" id="unset" style="margin-top:20px;font-family:var(--sans);font-size:10.5px;letter-spacing:.14em">← Back to the table</button>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════════════════════════
+   THE LOOM · a hand against Seren
+   One file. The deal IS the generator: five of twelve per category, so
+   the space a player sees is different every sitting. See LOOM-HANDOFF.md.
+   ═══════════════════════════════════════════════════════════════════════ */
+const DATA = {
+  cats: [
+    { id:'trope',     label:'TROPE',     q:'What is your game about?',        hint:'the spine · the sentence the parts add up to' },
+    { id:'origin',    label:'ORIGIN',    q:'Where did you come from?',        hint:'origin first, powers second' },
+    { id:'world',     label:'WORLD',     q:'Who can arrest you?',             hint:'a frame, not a setting' },
+    { id:'trouble',   label:'TROUBLE',   q:'What kind of trouble?',           hint:'a front shape, not a plot' },
+    { id:'posture',   label:'ANTAGONIST',q:'How do they treat you?',          hint:'manner · the corpus has motive' },
+    { id:'companions',label:'COMPANIONS',q:'Who is beside you?',              hint:'pick two · one verb, one friction' },
+    { id:'persona',   label:'TOLD BY',   q:'Who is telling it?',              hint:'derived by default · audition a line' }
+  ],
+  express: ['companions','trouble'],
+  cards: {
+    trope: [
+      { id:'taken',    name:'Taken in',                 line:'A street rat, saved by somebody who did not have to', changes:'Debt or trained · a mentor gone or going · the world that made you', frag:'A street rat, taken in by somebody who did not have to', pulls:{origin:['debt','trained'],posture:['fallen','parent'],trouble:['reckoning','disappearance']} },
+      { id:'heir',     name:'The reluctant heir',       line:'It is yours, and you did not want it', changes:'Legacy · a succession · a Parent or Rival', frag:'An heir who did not want it', pulls:{origin:['legacy'],posture:['parent','rival'],trouble:['succession']} },
+      { id:'order',    name:'Last of the order',        line:'Everyone who taught you is dead', changes:'Sole survivor · a reckoning · a Fallen hero who was one of yours', frag:'The last of an order whose teachers are all dead', pulls:{origin:['survivor'],posture:['fallen'],trouble:['reckoning']} },
+      { id:'appr',     name:'The apprentice outgrows',  line:'You are better than them now, and they know', changes:'Trained or made · a Rival · the maker still in the world', frag:'An apprentice who has outgrown the master', pulls:{origin:['trained','made'],posture:['rival'],trouble:['theft']} },
+      { id:'debtdue',  name:'The debt comes due',       line:'The terms were always going to be read out loud', changes:'Bargain or debt · a Merchant or Collector · a hard clock', frag:'Somebody whose debt has come due', pulls:{origin:['bargain','debt'],posture:['merchant','collector'],trouble:['debt']} },
+      { id:'revenge',  name:'Revenge, and the cost',    line:'You will get them. That is not the question', changes:'Mistake or survivor · a Schemer · facts that turn out false', frag:'Somebody who will get them, whatever it costs', pulls:{origin:['mistake','survivor'],posture:['schemer'],trouble:['death']} },
+      { id:'fish',     name:'Fish out of water',        line:'Nothing here works the way it did at home', changes:'Exile · hostile authority · social trouble', frag:'A stranger for whom nothing here works', pulls:{origin:['exile'],posture:['tyrant','bureaucrat'],trouble:['arrival']} },
+      { id:'prophecy', name:'The prophecy, misread',    line:'You were chosen for something. Not that thing', changes:'Chosen · a Zealot who read it differently · a false belief', frag:'The chosen one, chosen for the wrong thing', pulls:{origin:['chosen'],posture:['zealot'],trouble:['arrival']} },
+      { id:'unfin',    name:'Unfinished business',      line:'They left something half-done and it is still moving', changes:'Legacy or returned · a spread or an arrival', frag:'Somebody finishing what another left half-done', pulls:{origin:['legacy','returned'],posture:['survivor'],trouble:['spread','arrival']} },
+      { id:'family',   name:'Found family',             line:'You collected these people and cannot spend them', changes:'Any origin · companions outweigh the trouble · a siege', frag:'Somebody who collected these people and cannot spend them', pulls:{origin:[],posture:['collector'],trouble:['siege']} },
+      { id:'home',     name:'Home, and what is left',   line:'You went back. It did not wait', changes:'Returned or exile · a delve or spread in a place you know', frag:'Somebody who went home and found it did not wait', pulls:{origin:['returned','exile'],posture:['parent'],trouble:['delve','spread']} },
+      { id:'impostor', name:'The impostor becomes real',line:'You were pretending until it mattered', changes:'Made or accident · a heist · a Believer-in-you', frag:'An impostor who was pretending until it mattered', pulls:{origin:['made','accident'],posture:['believer'],trouble:['heist']} }
+    ],
+    origin: [
+      { id:'accident', name:'Accident',      line:'You were standing in the wrong place when something went wrong', changes:'A true fact nobody else knows; one front already knows your name', frag:'by accident' },
+      { id:'legacy',   name:'Legacy',        line:"It was your mother's, and now it is yours", changes:'An item with provenance; an antagonist with a claim on it', frag:'carrying a legacy' },
+      { id:'chosen',   name:'Chosen',        line:'Something picked you, and it did not ask', changes:'A patron front that wants something back; a recurring obligation', frag:'chosen without being asked' },
+      { id:'trained',  name:'Trained',       line:'You put in the ten years. Nobody gave you anything', changes:'The only clean sheet — higher starting skill, no hook of its own', frag:'trained the hard way' },
+      { id:'made',     name:'Made',          line:'You were built, bred or brought back for a purpose', changes:'Your maker is a front; a false fact you believe about yourself', frag:'made for a purpose' },
+      { id:'blood',    name:'Bloodline',     line:'It was in you before you knew', changes:'A relative on the board; a secret that starts suspected', frag:'with it in the blood' },
+      { id:'bargain',  name:'Bargain',       line:'You agreed to terms you have not finished reading', changes:'A creditor with a schedule — the hardest clock, and it is yours', frag:'bound by a bargain half-read' },
+      { id:'survivor', name:'Sole survivor', line:'Everyone else who was there is dead', changes:'A place you cannot go back to; one NPC who blames you', frag:'the only one who walked out' },
+      { id:'exile',    name:'Exile',         line:'You are not allowed home, and the reason is on paper', changes:'Authority starts hostile; travel costs more', frag:'exiled on paper' },
+      { id:'debt',     name:'Debt',          line:'Someone paid for you, and they are patient', changes:'A front that would rather use you than fight you', frag:'paid for by somebody patient' },
+      { id:'mistake',  name:'Mistake',       line:'The trouble here is, in part, your fault', changes:"The opening front's origin is your own true fact", frag:'partly to blame' },
+      { id:'returned', name:'Returned',      line:'You came back from somewhere people do not', changes:'A gap the DM may fill; one fact about you is false', frag:'back from somewhere people do not return' }
+    ],
+    world: [
+      { id:'vale',     name:'Vale with a magic police', line:'Every spell is a licensing question', changes:'Casting in public is a social move with consequences', frag:'a vale with a magic police' },
+      { id:'port',     name:'Free port',               line:'Everything is for sale, including the law', changes:'Bribery is a first-class action; nobody is loyal for free', frag:'a free port' },
+      { id:'road',     name:'The frontier road',       line:'Help is three days away, always', changes:'No reinforcements; a failed scene compounds', frag:'the frontier road' },
+      { id:'guild',    name:'Guild city',              line:"Doing anything is somebody's monopoly", changes:'Every plan needs a permission; fronts are institutions', frag:'a guild city' },
+      { id:'monast',   name:'Monastery-state',         line:'The rules are holy, and enforced by believers', changes:'Lying is expensive; hospitality is guaranteed', frag:'a monastery-state' },
+      { id:'coast',    name:'Drowned coast',           line:'The sea took half and is coming back', changes:'Travel timed by tides — a natural clock', frag:'the drowned coast' },
+      { id:'warren',   name:'The warren',              line:'People live under, and what is under them is older', changes:'Vertical distance replaces horizontal; delve always available', frag:'the warren' },
+      { id:'ash',      name:'Ash plain, post-war',     line:'Everyone present did something in the war', changes:'Every NPC has a true fact about their past', frag:'the ash plain' },
+      { id:'pilgrim',  name:'Pilgrim country',         line:'The road is full of strangers with a reason', changes:'Anonymity: infiltration easy, tracking hard', frag:'pilgrim country' },
+      { id:'archive',  name:'The archive city',        line:'The truth is filed somewhere, and filing is power', changes:'Investigation has a place to go; secrets are objects', frag:'the archive city' },
+      { id:'march',    name:'The cold march',          line:'Weather is a front and it does not negotiate', changes:'A survival cost per day; shelter is a resource', frag:'the cold march' },
+      { id:'orchard',  name:'Orchard counties',        line:'Quiet, rich, everyone is related', changes:'A social map instead of a dungeon map; violence is scandal', frag:'the orchard counties' }
+    ],
+    trouble: [
+      { id:'theft',     name:'A theft',         line:'Something is gone and the hole is the wrong shape', changes:'Fronts race you; the object moves', frag:'a theft' },
+      { id:'disappearance', name:'A disappearance', line:'A person, and nobody agrees when', changes:"Investigation clocks; the missing person's own agenda", frag:'a disappearance' },
+      { id:'arrival',   name:'An arrival',      line:'Something came, and it is still here', changes:'The escalation ladder runs on its own schedule', frag:'an arrival' },
+      { id:'debt',      name:'A debt',          line:'You owe, or somebody owes for you', changes:'A social clock instead of a violent one', frag:'a debt' },
+      { id:'escort',    name:'An escort',       line:'Get them there. They will not help', changes:'The map is the adventure; ambush structure', frag:'an escort' },
+      { id:'siege',     name:'A siege',         line:'It is coming here, and here is where you live', changes:'Resources, walls, who you can spare', frag:'a siege' },
+      { id:'death',     name:'A death',         line:'Somebody did it and is still in the room', changes:'Suspected facts carry the whole game', frag:'a death' },
+      { id:'heist',     name:'A heist',         line:'It is inside, behind people good at their jobs', changes:'Plan then execute; a failed roll changes the plan, not the outcome', frag:'a heist' },
+      { id:'delve',     name:'A delve',         line:'The way down is open again', changes:'Zones in scene.md; the place is the antagonist', frag:'a delve' },
+      { id:'spread',    name:'A spread',        line:'It is getting worse and it is not a person', changes:'The clock is the enemy; nobody to negotiate with', frag:'a spread' },
+      { id:'succession',name:'A succession',    line:'The old one is dying and everyone has a candidate', changes:'Three fronts want one chair; alliance is the mechanic', frag:'a succession' },
+      { id:'reckoning', name:'A reckoning',     line:'Something from before has come to settle', changes:'Ties to an origin — the strongest opening when they line up', frag:'a reckoning' }
+    ],
+    posture: [
+      { id:'tyrant',    name:'Tyrant',          line:'“This is mine and you are in it”', changes:'Public, official, uses law before force', frag:'a tyrant' },
+      { id:'zealot',    name:'Zealot',          line:'“You would agree if you understood”', changes:'Cannot be bribed; can be argued with, once', frag:'a zealot' },
+      { id:'schemer',   name:'Schemer',         line:'You meet the plan before the person', changes:'Appears as consequences for three scenes', frag:'a schemer' },
+      { id:'rival',     name:'Rival',           line:'“I was doing this first”', changes:"Matches the party's methods; scales with them", frag:'a rival' },
+      { id:'collector', name:'Collector',       line:'“You are interesting. I would like to keep you”', changes:'Capture, not kill — a cell is the fail state', frag:'a collector' },
+      { id:'bureaucrat',name:'Bureaucrat',      line:'“Your paperwork is not in order”', changes:'Obstruction without violence; wins by delay', frag:'a bureaucrat' },
+      { id:'fallen',    name:'Fallen hero',     line:'“I did what you are doing. This is where it goes”', changes:"The party's own record, used against them", frag:'a fallen hero' },
+      { id:'parent',    name:'Parent',          line:'“I am protecting mine”', changes:'Sympathetic, and refuses to stop', frag:'a parent protecting their own' },
+      { id:'merchant',  name:'Merchant',        line:'“Everything is negotiable, including this”', changes:'Every scene has a price, and the prices are real', frag:'a merchant' },
+      { id:'believer',  name:'Believer in you', line:'“You will come round. I can wait”', changes:'Never fights at full strength; unnerving', frag:'somebody who believes in you' },
+      { id:'survivor',  name:'Survivor',        line:'“You do not know what it cost to be here”', changes:'Takes no risks; escapes early and returns', frag:'a survivor' },
+      { id:'sentiment', name:'Sentimentalist',  line:'“It did not have to be like this”', changes:'Keeps a token from every fight; will mourn you', frag:'a sentimentalist' }
+    ],
+    companions: [
+      { id:'korth',   name:'Korth',            line:'goes first, silently', changes:'Never explains, so nobody plans', frag:'Korth' },
+      { id:'grumble', name:'Grumble',          line:'talks to everything', changes:'Cannot keep a secret for one scene', frag:'Grumble' },
+      { id:'ossa',    name:'Ossa',             line:'counts and remembers', changes:'Says the true number in front of the wrong person', frag:'Ossa' },
+      { id:'quarter', name:'The quartermaster',line:'has one of everything', changes:'Wants it back, itemised', frag:'the quartermaster' },
+      { id:'novice',  name:'The novice',       line:'volunteers', changes:'Is not ready, and knows it', frag:'the novice' },
+      { id:'retired', name:'The retired one',  line:'sees it coming', changes:'Will not draw a weapon, and says why once', frag:'the retired one' },
+      { id:'heir',    name:'The heir',         line:'opens doors by existing', changes:'Is recognised everywhere, including where you did not want that', frag:'the heir' },
+      { id:'dog',     name:'The dog',          line:'knows', changes:'Cannot tell you, unless somebody speaks with animals', frag:'a dog' },
+      { id:'fence',   name:'The fence',        line:'prices anything', changes:'Will sell your location, and says so up front', frag:'the fence' },
+      { id:'pilgrim', name:'The pilgrim',      line:'walks through anything', changes:'Stops to do the right thing at the worst moment', frag:'the pilgrim' },
+      { id:'scribe',  name:'The scribe',       line:'writes it down', changes:'The record is evidence, and other people want it', frag:'a scribe' },
+      { id:'debtor',  name:'The debtor',       line:'pays their way', changes:'Someone is following them, and it is not you', frag:'the debtor' }
+    ],
+    persona: [
+      { id:'registrar',  name:'The Registrar',    line:'a clerk reading out a form', changes:'Short sentences, nouns, no adverbs · never raises its voice', frag:'the Registrar', sample:'Door. Locked. Two sets of prints, one leaving.' },
+      { id:'chronicler', name:'The Chronicler',   line:'somebody writing it down after', changes:'Past tense, the long view, names dates · never hurries', frag:'the Chronicler', sample:'It was the ninth of the month when the door was found locked, and it would matter later.' },
+      { id:'publican',   name:'The Publican',     line:'the person behind the bar who saw it', changes:'Gossip first, geography second · never keeps a confidence', frag:'the Publican', sample:'Locked, was it? Well. Ask who had the key last, and it wasn\'t the clerk, whatever she says.' },
+      { id:'coroner',    name:'The Coroner',      line:'cause, then effect, then the body', changes:'Clinical detail, no flinching · never comments on the morality', frag:'the Coroner', sample:'The bolt was thrown from inside. The window was not. Therefore.' },
+      { id:'fabulist',   name:'The Fabulist',     line:'a tall story that happens to be true', changes:'Exaggerated scale, then a flat correction · never admits what it made up', frag:'the Fabulist', sample:'A door the size of a cathedral, locked with a thousand bolts. One bolt. But a stiff one.' },
+      { id:'preacher',   name:'The Preacher',     line:'a sermon with the party in it', changes:'Cadence, repetition, second person · never lets a sin pass unnamed', frag:'the Preacher', sample:'You came to the door. You found it locked. You did not ask why it was locked. You will.' },
+      { id:'archivist',  name:'The Archivist',    line:'with footnotes you did not ask for', changes:'Cross-references its own facts · never guesses', frag:'the Archivist', sample:'The door is locked (see: the key, session one; the clerk, who denies it).' },
+      { id:'gambler',    name:'The Gambler',      line:'in odds and tells', changes:'Names what is at stake before each scene · never says a thing is certain', frag:'the Gambler', sample:'Locked door. Evens somebody is behind it. Worse odds if they heard you.' },
+      { id:'qm',         name:'The Quartermaster',line:'in inventory', changes:'Counts everything, values everything · never describes weather', frag:'the Quartermaster', sample:'One door, oak, locked. One bolt, iron. Two sets of prints. Zero keys on your person.' },
+      { id:'child',      name:'The Child',        line:'plainly, and misses the point beautifully', changes:'Short, literal, unafraid · never explains a metaphor', frag:'the Child', sample:'The door is locked. Somebody locked it. They must not want you to come in.' },
+      { id:'machine',    name:'The Machine',      line:'procedurally, and it is unsettling', changes:'Numbered observations, no affect · never uses a simile', frag:'the Machine', sample:'1. Door: locked. 2. Prints: two sets. 3. One set is yours.' },
+      { id:'soldier',    name:'The Old Soldier',  line:'like somebody who has seen this before', changes:'Understatement, practical detail · never dramatises a death', frag:'the Old Soldier', sample:'Locked. They usually are. Check the hinges before the lock.' }
+    ]
+  },
+  dials: [
+    { id:'absurdity', low:'grim',        high:'a sheep with opinions', moves:'Which postures and role tables are in scope' },
+    { id:'stakes',    low:'personal',    high:'epic',                  moves:'The scale of every front' },
+    { id:'danger',    low:'bruises',     high:'deaths',                moves:'Starting DCs; whether exit is killed or escapes' },
+    { id:'people',    low:'conversation',high:'corridors',             moves:'Pressure is a person, or a place in the way' },
+    { id:'length',    low:'one session', high:'a season',              moves:'Clock lengths, and nothing else' }
+  ]
+};
+const HAND_SIZE = 5;
+const KEY = 'seren.loom.v1';
+const EXPRESS = DATA.express;          // categories Express asks for
+const HERS = 'posture';                // the slot Seren plays
+const CATS = DATA.cats;
+const card = (cat, id) => id ? DATA.cards[cat].find(c => c.id === id) : null;
+const rnd = a => a[Math.floor(Math.random() * a.length)];
+const sample = (arr, n) => { const a = arr.slice(), o = []; while (a.length && o.length < n) o.push(a.splice(Math.floor(Math.random() * a.length), 1)[0]); return o; };
+const emptyPicks = () => ({ trope:null, origin:null, world:null, trouble:null, posture:null, persona:null, companions:[] });
+
+let S = load() || {
+  door: null, browse: 'trope', picks: emptyPicks(),
+  dials: { absurdity:35, stakes:40, danger:45, people:50, length:30 },
+  hands: dealAll(), hers: null, flipped: false, open: null, set: false
+};
+
+function load() { try { return JSON.parse(localStorage.getItem(KEY)); } catch { return null; } }
+function save() { localStorage.setItem(KEY, JSON.stringify(S)); }
+function dealAll() { const h = {}; for (const c of CATS) h[c.id] = sample(DATA.cards[c.id], HAND_SIZE).map(x => x.id); return h; }
+function asked(cat) { return S.door !== 'express' || EXPRESS.includes(cat); }
+function filled(cat, p = S.picks) { return cat === 'companions' ? p.companions.length >= 2 : !!p[cat]; }
+function complete() { return CATS.every(c => !asked(c.id) || filled(c.id)); }
+function nextUnfilled(from) {
+  const order = CATS.map(c => c.id).filter(c => asked(c) && c !== HERS);
+  const i = order.indexOf(from);
+  for (let k = 1; k <= order.length; k++) { const c = order[(i + k) % order.length]; if (!filled(c)) return c; }
+  return from;
+}
+
+/* ── mechanics ── */
+function pick(cat, id) {
+  const p = S.picks;
+  if (cat === 'companions') {
+    if (p.companions.includes(id)) p.companions = p.companions.filter(x => x !== id);
+    else { if (p.companions.length >= 2) p.companions.shift(); p.companions.push(id); }
+  } else p[cat] = p[cat] === id ? null : id;
+  // Seren counters once the trouble is named
+  if (cat === 'trouble' && p.trouble && !p.posture && !S.hers) { S.hers = rnd(DATA.cards.posture).id; S.flipped = false; }
+  S.open = null;
+  if (filled(cat)) S.browse = nextUnfilled(cat);
+  render();
+}
+function rerollSlot(cat) {                 // "Reroll one thing": a fresh deal for that slot, one drawn from it
+  S.hands[cat] = sample(DATA.cards[cat], HAND_SIZE).map(x => x.id);
+  const pool = S.hands[cat].map(id => card(cat, id));
+  if (cat === 'companions') S.picks.companions = sample(pool, 2).map(x => x.id);
+  else if (cat === HERS) { S.hers = rnd(DATA.cards.posture.filter(c => c.id !== S.picks.posture)).id; S.flipped = false; S.picks.posture = null; }
+  else { const others = pool.filter(c => c.id !== S.picks[cat]); S.picks[cat] = rnd(others.length ? others : pool).id; }
+  render();
+}
+function playItOut() {                     // "Roll everything": trope first, the rest rolled to fit it
+  const trope = rnd(DATA.cards.trope);
+  const pull = cat => { const ids = trope.pulls[cat] || []; const pool = ids.length && Math.random() < .75 ? ids.map(id => card(cat, id)) : DATA.cards[cat]; return rnd(pool).id; };
+  S.picks = { trope: trope.id, origin: pull('origin'), world: rnd(DATA.cards.world).id, trouble: pull('trouble'), posture: pull('posture'), persona: rnd(DATA.cards.persona).id, companions: sample(DATA.cards.companions, 2).map(x => x.id) };
+  S.door = S.door || 'custom'; S.hers = S.picks.posture; S.flipped = true; S.open = null;
+  render();
+}
+function fillInferred() {                  // Express: the slots Seren infers are rolled at Play
+  const q = { ...S.picks, companions: S.picks.companions.slice() };
+  for (const c of CATS) if (!asked(c.id) && !filled(c.id, q)) q[c.id] = rnd(DATA.cards[c.id]).id;
+  return q;
+}
+function sentenceParts(p) {
+  const g = (cat, key = 'frag') => { const c = card(cat, p[cat]); return c ? c[key] : null; };
+  const comps = p.companions.map(id => card('companions', id).frag);
+  const F = (cat, text) => ({ cat, text, filled: true }), B = (cat, text) => ({ cat, text, filled: false });
+  return [
+    g('trope') ? F('trope', g('trope') + ',') : B('trope', asked('trope') ? 'Somebody,' : 'Somebody (Seren decides),'),
+    g('origin') ? F('origin', g('origin') + ',') : B('origin', asked('origin') ? '— from somewhere —' : '— origin inferred —'),
+    g('world') ? F('world', 'in ' + g('world') + ',') : B('world', asked('world') ? 'in a place,' : 'in a place Seren picks,'),
+    g('trouble') ? F('trouble', 'facing ' + g('trouble') + ',') : B('trouble', 'facing some kind of trouble,'),
+    comps.length === 2 ? F('companions', 'with ' + comps[0] + ' and ' + comps[1] + ' in tow,') : comps.length === 1 ? F('companions', 'with ' + comps[0] + ' and one more in tow,') : B('companions', 'with nobody yet in tow,'),
+    g('posture') ? F('posture', 'against ' + g('posture') + ' —') : B('posture', 'against whoever Seren plays —'),
+    g('persona') ? F('persona', 'told by ' + g('persona') + '.') : B('persona', asked('persona') ? 'told by a voice not yet chosen.' : 'told by a voice Seren derives.')
+  ];
+}
+
+/* ── render ── */
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;' }[c]));
+function render() {
+  save();
+  const p = S.picks, cur = CATS.find(c => c.id === S.browse), hers = card('posture', S.hers);
+  $('doors').hidden = !!S.door;
+  $('set').hidden = !S.set;
+
+  // Seren's line
+  let says = '';
+  if (!S.door) says = '';
+  else if (S.browse === 'trouble' && !p.trouble) says = 'Name the trouble and I will show you who is behind it.';
+  else if (hers && !S.flipped) says = 'I have played. Turn it over when you are ready.';
+  else if (hers && !p.posture) says = 'That is who you are up against. Take it, or make me play again.';
+  else if (complete()) says = 'That is a game. Shall we?';
+  else says = cur ? cur.q + ' Five things, dealt.' : '';
+  $('says').textContent = says;
+
+  // her counter
+  const c = $('counter');
+  if (!hers) { c.innerHTML = '<div class="slot">She plays once you have named the trouble</div>'; $('counterActs').hidden = true; }
+  else {
+    c.innerHTML = `<button class="card ${S.flipped ? '' : 'down'}" id="flip">
+      <span class="dk" style="font-size:10px">${S.flipped ? 'Antagonist' : 'Face down'}</span>
+      <span class="name">${S.flipped ? esc(hers.name) : ''}</span>
+      <span class="line">${S.flipped ? esc(hers.line) : 'tap to turn'}</span></button>`;
+    $('flip').onclick = () => { S.flipped = true; render(); $('flip') && $('flip').classList.add('flipping'); };
+    $('counterActs').hidden = false;
+    $('takeHers').disabled = !S.flipped || p.posture === S.hers;
+    $('redealHers').disabled = !S.flipped;
+  }
+
+  // dials (build once)
+  if (!$('dials').dataset.built) {
+    $('dials').dataset.built = 1;
+    for (const d of DATA.dials) {
+      const row = document.createElement('div'); row.className = 'row';
+      row.innerHTML = `<span>${esc(d.low)}</span><input type="range" min="0" max="100" value="${S.dials[d.id]}" title="${esc(d.moves)}"><span>${esc(d.high)}</span>`;
+      row.querySelector('input').oninput = e => { S.dials[d.id] = +e.target.value; save(); };
+      $('dials').appendChild(row);
+    }
+  }
+
+  // laid slots
+  $('slots').innerHTML = CATS.map(cat => {
+    const isHers = cat.id === HERS, ask = asked(cat.id), f = filled(cat.id);
+    let name;
+    if (cat.id === 'companions') { const cs = p.companions.map(id => card('companions', id).name); name = cs.length ? cs.join(' & ') : (ask ? 'nobody yet' : '—'); }
+    else { const k = card(cat.id, p[cat.id]); name = k ? k.name : (isHers ? 'her play' : ask ? 'not yet' : 'Seren infers'); }
+    const act = f ? '↻ deal again' : isHers ? 'hers' : ask ? 'empty' : 'Seren plays it';
+    return `<button class="slot-card ${f ? 'filled' : ''} ${!ask || (isHers && !f) ? 'hers' : ''}" data-cat="${cat.id}" ${!ask ? 'disabled' : ''}>
+      <span class="k" style="color:var(--gilt)">${cat.label}</span><span class="name">${esc(name)}</span><span class="k act">${act}</span></button>`;
+  }).join('');
+  $('slots').querySelectorAll('.slot-card').forEach(b => b.onclick = () => {
+    const cat = b.dataset.cat;
+    if (filled(cat)) rerollSlot(cat); else if (cat !== HERS) { S.browse = cat; render(); }
+  });
+
+  // sentence + play
+  $('sentence').innerHTML = sentenceParts(p).map(x => `<span class="${x.filled ? '' : 'blank'}">${esc(x.text)}</span>`).join(' ');
+  const n = CATS.filter(c => asked(c.id) && filled(c.id)).length, total = CATS.filter(c => asked(c.id)).length;
+  $('play').disabled = !complete();
+  $('play').textContent = complete() ? 'Play your loom' : `${n} of ${total} laid`;
+
+  // your hand
+  const handCat = S.browse === HERS ? nextUnfilled(HERS) : S.browse;
+  $('handLabel').textContent = 'Your hand · ' + (CATS.find(c => c.id === handCat) || {}).label;
+  $('handHint').textContent = handCat === 'companions' ? `Pick two · ${p.companions.length} of 2` : `${HAND_SIZE} of 12 · she held the rest`;
+  const ids = S.hands[handCat] || [];
+  $('fan').innerHTML = ids.map((id, i) => {
+    const k = card(handCat, id), on = handCat === 'companions' ? p.companions.includes(id) : p[handCat] === id;
+    const rest = `rotate(${(i - (ids.length - 1) / 2) * 5}deg) translateY(${Math.abs(i - (ids.length - 1) / 2) * 8}px)`;
+    return `<button class="hcard ${on ? 'on' : ''}" data-id="${id}" style="--rest:${rest};animation-delay:${i * 70}ms">
+      <span class="top dk" style="font-size:9.5px;${on ? 'color:var(--felt)' : ''}"><span>${CATS.find(c => c.id === handCat).label}</span><span>${on ? '● taken' : ''}</span></span>
+      <span class="name">${esc(k.name)}</span><span class="line">${esc(k.line)}</span></button>`;
+  }).join('');
+  $('fan').querySelectorAll('.hcard').forEach(b => b.onclick = () => { S.open = { cat: handCat, id: b.dataset.id }; render(); });
+
+  // modal
+  $('backdrop').hidden = !S.open;
+  if (S.open) {
+    const k = card(S.open.cat, S.open.id), cat = CATS.find(c => c.id === S.open.cat);
+    const on = S.open.cat === 'companions' ? p.companions.includes(k.id) : p[S.open.cat] === k.id;
+    $('modal').innerHTML = `
+      <div class="top k"><span>${cat.label} · ${esc(cat.hint)}</span><span>${DATA.cards[cat.id].indexOf(k) + 1} / 12</span></div>
+      <h2>${esc(k.name)}</h2>
+      <p class="line">${esc(k.line)}</p>
+      <div class="changes"><span class="k">${cat.id === 'companions' ? 'The friction' : 'What it changes'}</span><span>${esc(k.changes)}</span></div>
+      ${k.sample ? `<div class="sample">“${esc(k.sample)}”</div>` : ''}
+      <div class="acts"><button class="back" id="mBack">Put it back</button><button class="take" id="mTake">${on ? 'Take it back' : 'Play it'}</button></div>`;
+    $('mBack').onclick = () => { S.open = null; render(); };
+    $('mTake').onclick = () => pick(S.open.cat, S.open.id);
+  }
+  if (S.set) $('setSentence').textContent = sentenceParts(fillInferred()).map(x => x.text).join(' ');
+}
+
+/* ── wiring ── */
+document.querySelectorAll('.door').forEach(b => b.onclick = () => { S.door = b.dataset.door; S.browse = S.door === 'express' ? 'companions' : 'trope'; render(); });
+$('rollFromDoor').onclick = playItOut;
+$('playOut').onclick = playItOut;
+$('dealAgain').onclick = () => { const c = S.browse === HERS ? nextUnfilled(HERS) : S.browse; S.hands[c] = sample(DATA.cards[c], HAND_SIZE).map(x => x.id); render(); };
+$('newHand').onclick = () => { S.hands = dealAll(); S.picks = emptyPicks(); S.hers = null; S.flipped = false; S.browse = S.door === 'express' ? 'companions' : 'trope'; render(); };
+$('takeHers').onclick = () => { S.picks.posture = S.hers; S.browse = nextUnfilled(HERS); render(); };
+$('redealHers').onclick = () => rerollSlot(HERS);
+$('play').onclick = () => { S.set = true; render(); };
+$('unset').onclick = () => { S.set = false; render(); };
+$('backdrop').onclick = e => { if (e.target === $('backdrop')) { S.open = null; render(); } };
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && S.open) { S.open = null; render(); } });
+render();
+</script>
+</body>
+</html>

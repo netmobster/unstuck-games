@@ -168,6 +168,8 @@ class Handler(BaseHTTPRequestHandler):
 
         if path in ("/", "/play", "/play/", "/table"):
             return self._file(STATIC / "table.html")
+        if path in ("/loom", "/loom/"):
+            return self._file(STATIC / "loom.html")
         if path == "/chat":
             return self._file(STATIC / "index.html")
         if path.startswith("/static/"):
