@@ -154,6 +154,45 @@ ignored** — different bugs, different fixes. Not yet investigated.
 
 ---
 
+# ⭐ The test fixture — Jay, 2026-09-20, from the road
+
+> *"I think we build a modal then the first test run is one scene in one location with a
+> cast that's defined before the campaign starts. To prove narration and state."*
+> *"Modal on how system works and that the one scene is all we are testing for."*
+
+**One scene. One location. A hand-authored cast, written before anything is woven.** The
+whole of it exists to answer two questions and no others: **does she narrate a world, and
+does the state come out right.**
+
+⭐ **Why this is the right instrument.** Every AI finding on this page came from Jay
+playing a whole woven campaign and reporting a feeling. That is expensive, slow, and
+confounded — the campaign, the persona, the model and the code all vary at once. A fixture
+holds everything still except the one thing being changed.
+
+**It also sidesteps the thing that has been blocking measurement:** we cannot judge a
+narration fix while the room is empty, and we cannot fill the room without the weaver, and
+the weaver is one of the things under test. **A fixture with a hand-written cast breaks
+that circle immediately.**
+
+**What it needs:**
+
+- a campaign folder with **one** location, **3–5 named people** with a `Want` each, and no
+  fronts to advance — those are tested separately
+- ⭐ **a modal, shown first**, saying plainly how the system works and **that one scene is
+  the whole of what is being tested.** A tester who thinks they are playing a campaign
+  will report the wrong bugs
+- the same table, the same gates, the same tools — **nothing special-cased**, or it proves
+  nothing about the real thing
+- a fixed seed and a fixed opening, so two runs differ only by what changed
+
+⚠️ **It is a fixture, not a demo.** It never ships to a player, the way CC's `_SAMPLE`
+never shipped.
+
+**Status: agreed, not built.** It goes first when the AI work resumes, because everything
+after it is measurable and everything before it is not.
+
+---
+
 # The model question
 
 **Status 2026-09-20:** Bedrock use-case form submitted by Jay at ~14:30. Until it lands,

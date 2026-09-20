@@ -97,7 +97,7 @@ def _save(sess: dict) -> None:
             "turns": camp.turns,
             "spent": camp.spent,
             "stream": sess["stream"][-120:],
-            "messages": sess["messages"][-24:],
+            "messages": dm.trim(sess["messages"], 12),
             "pending": sess["pending"],
         }, ensure_ascii=False), encoding="utf-8")
     except OSError:
@@ -123,7 +123,7 @@ def _session_for(account: str, sid: str) -> dict:
                     camp.spent = float(saved.get("spent") or 0.0)
                     sess["stream"] = saved.get("stream") or []
                     sess["messages"] = saved.get("messages") or []
-                    sess["history"] = sess["messages"][-24:]
+                    sess["history"] = dm.trim(sess["messages"])
                     sess["pending"] = saved.get("pending")
             except (OSError, ValueError):
                 pass
@@ -431,7 +431,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self._json(402, {"error": str(exc)})
             except Exception as exc:
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
-            sess["history"] = out["messages"][-24:]  # a session's worth, trimmed at the edges
+            sess["history"] = dm.trim(out["messages"])   # cut on a turn boundary, never mid-turn
             sess["stream"].append({"kind": "said", "text": said})
             sess["stream"].extend(out["beats"])
             sess["pending"] = out.get("pending")
@@ -458,7 +458,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
             sess["pending"] = out.get("pending")
             sess["messages"] = out["messages"]
-            sess["history"] = out["messages"][-24:]
+            sess["history"] = dm.trim(out["messages"])
             sess["stream"].extend(out["beats"])
             view = camp.player_view()
             view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
