@@ -187,13 +187,16 @@ class Handler(BaseHTTPRequestHandler):
                 "door": gate.enabled(),
             })
 
+        if path in ("/", "/home"):
+            return self._file(STATIC / "home.html")
+
         if path in ("/gate", "/gate/"):
             return self._send(200, gate.PAGE.encode("utf-8"), "text/html; charset=utf-8")
 
         if self._gated():
             return self._send(200, gate.PAGE.encode("utf-8"), "text/html; charset=utf-8")
 
-        if path in ("/", "/play", "/play/", "/table"):
+        if path in ("/play", "/play/", "/table"):
             return self._file(STATIC / "table.html")
         if path in ("/loom", "/loom/"):
             return self._file(STATIC / "loom.html")
