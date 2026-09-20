@@ -104,6 +104,26 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
 .turn { display:flex; justify-content:space-between; font-size:11.5px; color:var(--soft); padding-top:4px; }
 .turn button { color:inherit; } .turn button:hover { color:var(--ink); } .turn button:disabled { opacity:.45; cursor:default; }
 
+/* the house rules */
+.backdrop { position:fixed; inset:0; background:rgba(10,8,6,.72); display:flex; align-items:center; justify-content:center; z-index:60; padding:24px; overflow:auto; }
+.backdrop[hidden] { display:none !important; }
+.modal.how { width:min(640px,94vw); background:var(--slip); background-image:var(--noise); border-radius:4px; padding:30px 34px 26px;
+  display:flex; flex-direction:column; gap:14px; box-shadow:0 40px 80px rgba(0,0,0,.6); }
+.modal.how .top { display:flex; justify-content:space-between; align-items:baseline; }
+.modal.how h2 { margin:0; font-family:var(--serif); font-size:34px; font-weight:500; }
+.modal.how .lede { margin:0; font-family:var(--serif); font-size:19px; line-height:1.45; color:var(--soft); }
+.modal.how .rules { margin:0; padding-left:20px; display:flex; flex-direction:column; gap:10px;
+  font-family:var(--serif); font-size:17px; line-height:1.45; color:var(--soft); }
+.modal.how .rules::marker, .modal.how .rules li::marker { color:var(--oxide); }
+.modal.how .rules b { color:var(--ink); font-weight:600; }
+.modal.how .rules i { color:var(--ink); }
+.modal.how .acts { display:flex; justify-content:flex-end; padding-top:4px; }
+.modal.how .take { background:var(--slip-dark); color:var(--bone); font-family:var(--sans); font-size:11px; letter-spacing:.14em;
+  padding:11px 22px; border-radius:3px; }
+.modal.how .take:hover { filter:brightness(1.15); }
+.howlink { font-family:var(--sans); font-size:10.5px; letter-spacing:.12em; color:var(--desk-ink-lo); text-align:left; }
+.howlink:hover { color:var(--desk-ink-hi); }
+
 /* ── dice tray ── */
 .tray { position:absolute; left:50%; bottom:150px; transform:translateX(-50%); width:340px; background:var(--slip-dark); color:var(--bone); border-radius:14px; padding:18px 20px 16px;
   box-shadow:0 30px 60px rgba(0,0,0,.6), inset 0 1px 0 rgba(255,255,255,.08); animation:trayIn .45s cubic-bezier(.2,.8,.2,1) both; display:flex; flex-direction:column; gap:14px; font-family:var(--sans); }
@@ -190,6 +210,32 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
 </style>
 </head>
 <body>
+<div class="backdrop" id="howBack" hidden>
+  <div class="modal how" role="dialog" aria-modal="true" aria-labelledby="howTitle">
+    <div class="top"><span class="kicker">The house rules</span><span class="aside">read once</span></div>
+    <h2 id="howTitle">How the table works</h2>
+    <p class="lede">You bring one character. Seren brings everyone else, and she cannot fudge
+      the dice — the server rolls them and writes them down before she is told what happened.</p>
+    <ol class="rules">
+      <li><b>Say what you do</b>, in your own words, at the bottom of the page. Not commands —
+        talk to her the way you would talk to a person running a game.</li>
+      <li><b>When it could go either way, she asks for a roll.</b> A ruled line appears and
+        <i>you</i> press the dice. She never sees the number before you do, and the target is
+        set before the roll — you find out what it was afterwards, in Record.</li>
+      <li><b>Record is the truth.</b> Every roll, its inputs and its target, in order. If a
+        number there disagrees with something you were told, the number is right.</li>
+      <li><b>Codex is what you know</b>, marked <i>known</i> or <i>suspected</i>. Some of it is
+        wrong. The count at the bottom is how many facts sit on her side of the screen —
+        she will not hand those over, and nothing you type will make her.</li>
+      <li><b>The ribbons</b> hold the rest: your quests, the party, your sheet, the rules
+        library, and Notes, which are yours alone — she never reads them.</li>
+      <li><b>Close the session</b> when you are done. She writes the log, the arithmetic is
+        checked by the server, and what you learned becomes canon for next time.</li>
+    </ol>
+    <div class="acts"><button class="take" id="howGo">Sit down</button></div>
+  </div>
+</div>
+
 <div class="desk">
   <div class="lamp"></div>
 
@@ -200,6 +246,7 @@ button { font:inherit; color:inherit; background:none; border:0; padding:0; curs
     <div class="dm">DM of record<br><b>Seren · deadpan</b></div>
     <button class="lampbtn" id="lamp"><i></i><span>LAMP HIGH · TURN DOWN</span></button>
     <button class="lampbtn close" id="closeBtn"><i></i><span>CLOSE THE SESSION</span></button>
+    <button class="howlink" id="howAgain">house rules</button>
   </aside>
 
   <main class="page">
@@ -627,6 +674,16 @@ $('closeBtn').onclick = async () => {
     $('closeBtn').disabled = false; label.textContent = 'CLOSE THE SESSION';
   }
 };
+
+// The house rules, once per browser and on demand after that.
+const HOW_KEY = 'seren.table.how';
+const showHow = () => { $('howBack').hidden = false; };
+const hideHow = () => { $('howBack').hidden = true; try { localStorage.setItem(HOW_KEY, '1'); } catch (e) {} };
+$('howGo').onclick = hideHow;
+$('howAgain').onclick = showHow;
+$('howBack').onclick = e => { if (e.target === $('howBack')) hideHow(); };
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && !$('howBack').hidden) hideHow(); });
+try { if (!localStorage.getItem(HOW_KEY)) showHow(); } catch (e) {}
 
 // Lamp: light / dark. Remembered per browser.
 const root = document.documentElement;

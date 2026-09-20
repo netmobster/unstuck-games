@@ -219,11 +219,53 @@ posture: {a.get('posture','')}
                                  "why": f.get("why", ""), "src": "module"},
                                 ensure_ascii=False) + nl)
 
+    # ── the people, so the table has somebody at it ──────────────────────────
+    pc = camp.get("pc") or {}
+    pc_slug = slugify(pc.get("name"), "you")
+    who = [(pc_slug, 10, {"1": 2})] + [(slugify(c.get("name"), "companion"), 9, {}) for c in comps]
+    party = ["<!-- Woven. Stats are provisional: level 1, standard array, and honest about it. -->",
+             "---", "round_synced: null", "xp:", "  current: 0", "  next:    300", ""]
+    for slug, hp, slots in who:
+        party += [f"{slug}:",
+                  f"  hp:            {{current: {hp}, max: {hp}, temp: 0}}",
+                  "  conditions:    []",
+                  "  concentration: {spell: null, since_round: null}",
+                  f"  slots:         {{{', '.join(f'{k}: {v}' for k, v in slots.items())}}}",
+                  "  uses:          {}",
+                  "  exhaustion:    0",
+                  "  hit_dice:      {remaining: 1, die: d8}", ""]
+    party += ["---", "", "# Party — as woven, before anybody has played a turn"]
+    files.write(out / "state" / "party.md", nl.join(party) + nl)
+
+    (out / "builds").mkdir(exist_ok=True)
+    files.write(out / "builds" / f"{pc_slug}.md", f"""<!-- Woven with the campaign. Provisional: a real sheet comes from a build or an import. -->
+---
+pc:      {pc_slug}
+level:   1
+class:   "{pc.get('class', 'Fighter')}"
+proficiency_bonus: 2
+
+abilities: {{str: 13, dex: 14, con: 14, int: 10, wis: 12, cha: 8}}
+ac: 13
+hp:      {{max: 10, hit_die: d8}}
+spell_save_dc: 12
+spell_slots: {{1: 2}}
+
+spells:
+  prepared:
+    - "as your class allows"
+---
+
+# {pc.get('name', 'You')}
+
+{pc.get('why_here', '')}
+""")
+
     present = ", ".join(slugify(c.get("name"), "companion") for c in comps)
     files.write(out / "state" / "scene.md",
         f"""---
 where:    "{camp.get('where','')}"
-present:  [pc{', ' + present if present else ''}]
+present:  [{pc_slug}{", " + present if present else ""}]
 also_present: []
 round:    null
 initiative: []
