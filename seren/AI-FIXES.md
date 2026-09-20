@@ -193,6 +193,42 @@ after it is measurable and everything before it is not.
 
 ---
 
+# ✅ The chronicle — built 2026-09-20
+
+**What it is.** A second artifact at session close, for a different reader. The **log** is
+the record, ordered and complete, for the DM next session. The **chronicle** is the
+evening, for the player.
+
+⭐ **Written in the player's own register**, which is the thing lifted from Elsewhere. Its
+engine keeps the player's phrasing verbatim on every ledger row for exactly this, and says
+why in a comment: *"'hopefully not dying too much' is a voice, and the story should sound
+like the world talking back to THAT person. Never paraphrased, never cleaned up."*
+
+**How it reads them:** from the session stream, not the ledger. ⚠️ Free text does not
+belong in the ledger — it would land in `_evidence()` and in the material the fog gate
+compares against, which is precisely how a player's own words became a "leak" earlier the
+same day.
+
+**Shape:** one call, at close, `temperature=0.85`, fog-gated like everything else she says.
+Writes `sessions/<n>-chronicle.md` and returns it; the table shows **THE CHRONICLE**, then
+**THE RECORD**.
+
+**Measured:** $0.0018 for a three-turn session on Nova Pro.
+
+## ⚠️ And the honest part
+
+The first real run restated the player's actions — *"you inquired of the scribe… you
+dropped to one knee and began to shimmy"* — which is the delta report's §5 and §1 in a
+new place. Rule 2 of the prompt says *people, not events*; it listed events. It did obey
+the mechanics rule completely: no dice, no numbers, not once.
+
+> ⭐ **The chronicle is the strongest candidate in the whole system for the expensive
+> model.** It runs **once per session**, so the cost argument that governs per-turn
+> narration does not apply to it at all, and it is the one surface where the fog gate is
+> not fighting her — by then the player has earned it.
+
+---
+
 # The model question
 
 **Status 2026-09-20:** Bedrock use-case form submitted by Jay at ~14:30. Until it lands,

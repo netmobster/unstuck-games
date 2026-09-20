@@ -531,7 +531,8 @@ class Handler(BaseHTTPRequestHandler):
             }, cookie)
 
         if path == "/api/close":
-            out = session_close.close(camp, sess["history"])
+            # The stream carries the player's own words; the chronicle is written in them.
+            out = session_close.close(camp, sess["history"], sess.get("stream") or [])
             counts = out["counts"]
             sess["history"] = []
             sess["messages"] = []
@@ -547,6 +548,9 @@ class Handler(BaseHTTPRequestHandler):
                     {"kind": "note", "text": f"SESSION CLOSED — {counts['rolls']} rolls, "
                                              f"{counts['facts_this_session']} facts, written to "
                                              + ", ".join(out["written"])},
+                ] + ([{"kind": "note", "text": "THE CHRONICLE"},
+                      {"kind": "dm", "text": out["chronicle"]}] if out.get("chronicle") else []) + [
+                    {"kind": "note", "text": "THE RECORD"},
                     {"kind": "dm", "text": out["log"]},
                 ],
                 **camp.player_view(),

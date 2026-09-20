@@ -40,6 +40,31 @@ numbers — the arithmetic is printed above your section by the server.
 """.strip()
 
 
+CHRONICLE_PROMPT = """
+Write the chronicle of this session: what happened, as a story.
+
+**This is not the log.** The log is written separately, in order, for the record. This is
+the thing the player reads afterwards and recognises as their evening.
+
+Rules, and they are the whole brief:
+
+1. **Write in their register.** Their own words are below, verbatim. If they were arch,
+   be arch. If they were plain, be plain. If they called a thing a horn-less goat, it is a
+   horn-less goat and it is never "a hornless caprine". You are the world talking back to
+   THAT person, not to a player in general.
+2. **People, not events.** What changed in somebody. Who decided something about them.
+   Who will remember this. A chronicle that lists what occurred has failed.
+3. **No dice, no numbers, no mechanics, not one.** Not a DC, not a check, not a total, not
+   the word roll. The arithmetic is printed elsewhere and it is not the story.
+4. **Invent nothing.** Everything you write happened, and the record below is all of it.
+   You may say what a thing meant; you may not say a thing that is not there.
+5. **Three or four short paragraphs.** End on what is still open — not a cliffhanger, not
+   a question to the player, just the thing that did not finish.
+
+No heading, no preamble, no sign-off. Begin with the story.
+""".strip()
+
+
 def reconcile(campaign) -> dict:
     """The numbers, before anyone writes a sentence about them."""
     ledger = _this_session(campaign)
@@ -133,7 +158,56 @@ def promote(campaign, counts: dict) -> list[str]:
     return [str(out.relative_to(campaign.root))]
 
 
-def close(campaign, history: list[dict]) -> dict:
+def _voice(stream: list) -> str:
+    """The player's own lines, verbatim, for the chronicle to write in their register.
+
+    Lifted from Elsewhere, which keeps the player's phrasing on every ledger row for this
+    exact purpose: *"'hopefully not dying too much' is a voice, and the story should sound
+    like the world talking back to THAT person. Never paraphrased, never cleaned up."*
+
+    ⚠️ Read from the session stream rather than the ledger. The ledger records events with
+    consequences and free text does not belong in it — it would land in `_evidence()` and
+    in the material the fog gate compares against, which is how a player's own words became
+    a "leak" on 2026-09-20.
+    """
+    said = [str(b.get("text") or "").strip() for b in (stream or [])
+            if b.get("kind") == "said"]
+    said = [t for t in said if t]
+    if not said:
+        return ""
+    nl = chr(10)
+    head = ["# What the player said, this session, in their own words",
+            "# Their register is the chronicle's register.", ""]
+    return nl.join(head + ["- " + t[:300] for t in said[-40:]])
+
+
+def chronicle(campaign, stream: list) -> str:
+    """One call, once a session. The one place the gate is not fighting her."""
+    if not llm.ready():
+        return ""
+    evidence = _evidence(campaign)
+    voice = _voice(stream)
+    gap = chr(10) * 2
+    try:
+        reply = llm.converse(
+            system=CHRONICLE_PROMPT,
+            messages=[{"role": "user", "content": [{"text": evidence + (gap + voice if voice else "")}]}],
+            tier=campaign.tier, spent=campaign.spent, temperature=0.85,
+        )
+        campaign.spent = reply["spent"]
+        text = llm.text_of(reply["content"]).strip()
+    except Exception as exc:
+        return f"*(The chronicle could not be written: {type(exc).__name__}.)*"
+
+    # It is player-facing, so it goes through the same gate as everything else she says.
+    leaks = fog.check(text, campaign.dm_side())
+    if leaks:
+        return ("*(The chronicle was held by the fog gate: " + "; ".join(leaks[:2])
+                + ". Nothing else about the session is affected.)*")
+    return text
+
+
+def close(campaign, history: list[dict], stream: list | None = None) -> dict:
     """Run the close. Returns the log, the counts, and what was written where."""
     counts = reconcile(campaign)
     written = []
@@ -170,12 +244,22 @@ def close(campaign, history: list[dict]) -> dict:
     path = folder / f"{campaign.session}.md"
     path.write_text(body + "\n", encoding="utf-8")
     written.append(str(path.relative_to(campaign.root)))
+
+    # The chronicle is a separate artifact for a separate reader: the log is the record and
+    # this is the evening. Written second so a failure here cannot cost the log.
+    story = chronicle(campaign, stream or [])
+    if story:
+        cpath = folder / f"{campaign.session}-chronicle.md"
+        head = f"# Session {campaign.session} — the chronicle"
+        cpath.write_text(chr(10).join([head, "", story, ""]), encoding="utf-8")
+        written.append(str(cpath.relative_to(campaign.root)))
+
     written += promote(campaign, counts)
 
     dice.note(campaign.ledger, "session_close",
               f"Session {campaign.session} closed: {counts['rolls']} rolls, "
               f"{counts['facts_this_session']} facts, promoted to canon.")
-    return {"counts": counts, "log": body, "written": written}
+    return {"counts": counts, "log": body, "chronicle": story, "written": written}
 
 
 def _this_session(campaign) -> list[dict]:
