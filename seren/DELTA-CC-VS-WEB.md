@@ -314,3 +314,56 @@ model to write less.
 
 > **Build-time refusals make the world worth narrating. Play-time additions give her
 > something to say. Neither one tells her how to say it.**
+
+---
+
+# 9 · ⭐ The architecture, stated properly: code computes, the model interprets
+
+**Jay, 2026-09-20:** *"It's why rolling is in python? And things in code is probably MORE
+relevant with web… we can likely math a lot, and present the 'work' to an AI to interpret
+vs having AI do all the lifting."*
+
+**This is the house method and it was already written down** — *pre-generate the records
+with AI, select with math and seeds at runtime* — and it had been applied to the dice and
+to nothing else.
+
+> ### Code decides what happened. The model says what it was like.
+
+⭐ **And it matters MORE on the web, not less.** In Claude Code the narrator was strong
+enough to improvise the world *and* the voice. On a cheap model the code has to carry the
+world, and the model only supplies the voice — which is the half it is actually good at.
+**Every structural thing we make the model responsible for is a thing a cheap model will
+drop, and we will then blame the model for dropping.**
+
+## ⛔ The proof, found while writing this: nothing ticks a front clock
+
+Every woven campaign carries three fronts. The auditor **refuses a front without a clock
+of at least two stages** (`audit.py:70`). The contract tells the DM a beat should move
+one. And there is **no code anywhere in `seren/web/` that advances a clock.** Searched for
+it; it does not exist.
+
+The clocks are advanced when the model remembers to advance them, and the model remembers
+six player turns.
+
+> **So the fronts are decoration. Three agendas with progress bars that nothing moves.**
+>
+> That is not a prose problem, a persona problem or a model problem. **That is the answer
+> to "where did the world go" — it was never wound up.**
+
+## What belongs on which side
+
+| the model should not be deciding | because code can, and code does not forget |
+|---|---|
+| whether a front advanced | a clock tick is a condition test against the ledger and the scene |
+| who is in the room | a roster, weighted and seeded, the way every other Unstuck game picks |
+| whether something interrupts this turn | a counter: turns since anything arrived |
+| who reacts, and how hard | relationship state × what they want × what just happened |
+| what the player fails to notice | the fog already computes the `true`/`false` half; this is the same machinery pointed at perception |
+
+⭐ **In every row, the model still writes the sentence.** It is handed *"the village clock
+reached 3 — the reeve posts the notice"* and it writes the reeve, the paper, the nail, and
+who stops to read it. **It is not asked to remember that a clock exists.**
+
+⚠️ **This also fixes the memory ceiling without enlarging the window.** A world that
+computes its own state does not need the narrator to hold it — which is the whole reason
+the dice went into Python in the first place, generalised to everything that is not voice.
