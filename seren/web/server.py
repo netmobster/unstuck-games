@@ -9,6 +9,10 @@ two things that must not be trusted to instructions — the dice and the fog —
     SEREN_CAMPAIGN      which campaign folder to play (default the only one)
     SEREN_PASSWORD      the shared door; unset means no door
     SEREN_TIER          free | paid — which model and which cap
+    SEREN_ACCOUNT       who nobody is: the folder used when no one has signed in
+    SEREN_GOOGLE_CLIENT_ID / _SECRET    sign in with Google; unset means the door only
+    SEREN_SESSION_SECRET                signs the who-are-you cookie; unset signs
+                                        everybody out on every restart
 """
 from __future__ import annotations
 
@@ -17,12 +21,15 @@ import os
 import secrets
 import shutil
 import threading
+import urllib.parse
 from http.cookies import SimpleCookie
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 import close as session_close
+import accounts
 import audit
+import auth
 import chips
 import corpus
 import dice
@@ -43,11 +50,9 @@ _sessions: dict[str, dict] = {}
 _lock = threading.Lock()
 
 
-# Until there is a login, everybody is the same player. The seam is the code path, not
-# the cookie: when auth lands it fills ACCOUNT in and nothing else changes.
-ACCOUNT = os.environ.get("SEREN_ACCOUNT", "solo")
-
-
+# Nobody signed in is still somebody: local work and the old single-player behaviour both
+# run as SEREN_ACCOUNT. Every path below takes the account as an argument rather than
+# reading a global, because two people can now be at two tables in the same process.
 def campaign_slug() -> str:
     named = os.environ.get("SEREN_CAMPAIGN")
     if named:
@@ -57,23 +62,23 @@ def campaign_slug() -> str:
     return folders[0] if folders else "none"
 
 
-def current_file() -> Path:
+def current_file(account: str) -> Path:
     """Which campaign this account is playing. On disk, because the server restarts and the
     player should not be quietly handed somebody else's world when it does."""
-    return corpus.ROOT / "players" / ACCOUNT / "current.txt"
+    return corpus.ROOT / "players" / account / "current.txt"
 
 
-def campaign_dir() -> Path:
+def campaign_dir(account: str) -> Path:
     """This player's own copy: the one they last wove, or the module they started from."""
     try:
-        chosen = current_file().read_text(encoding="utf-8").strip()
+        chosen = current_file(account).read_text(encoding="utf-8").strip()
     except OSError:
         chosen = ""
     if chosen:
-        live = corpus.ROOT / "players" / ACCOUNT / chosen
+        live = corpus.ROOT / "players" / account / chosen
         if live.is_dir():
             return live
-    return state.player_campaign(corpus.ROOT, ACCOUNT, campaign_slug())
+    return state.player_campaign(corpus.ROOT, account, campaign_slug())
 
 
 def _live_file(root: Path) -> Path:
@@ -98,11 +103,14 @@ def _save(sess: dict) -> None:
         pass  # a session that cannot be saved is still a session that can be played
 
 
-def _session_for(sid: str) -> dict:
+def _session_for(account: str, sid: str) -> dict:
+    # Keyed by both: one browser can be signed in as somebody else tomorrow, and two
+    # people sharing a machine must never share a table.
+    key = f"{account}\x00{sid}"
     with _lock:
-        sess = _sessions.get(sid)
+        sess = _sessions.get(key)
         if sess is None:
-            root = campaign_dir()
+            root = campaign_dir(account)
             camp = state.Campaign(root=root, tier=TIER)
             camp.session = 1 + len(list((root / "sessions").glob("*.md"))) if (root / "sessions").is_dir() else 1
             sess = {"campaign": camp, "history": [], "messages": [], "pending": None, "stream": []}
@@ -118,7 +126,7 @@ def _session_for(sid: str) -> dict:
                     sess["pending"] = saved.get("pending")
             except (OSError, ValueError):
                 pass
-            _sessions[sid] = sess
+            _sessions[key] = sess
         return sess
 
 
@@ -167,8 +175,40 @@ class Handler(BaseHTTPRequestHandler):
             return got.value, False
         return secrets.token_hex(8), True
 
+    def _account(self) -> str:
+        """Whose table this request is at. A signed cookie, or the solo account."""
+        slug = auth.whoami(self.headers.get("Cookie") or "")
+        if slug and accounts.by_slug(corpus.ROOT, slug):
+            return slug
+        return accounts.solo_slug()
+
+    def _signed_in(self) -> bool:
+        return self._account() != accounts.solo_slug()
+
+    def _host(self) -> str:
+        # nginx terminates TLS and tells us the name it was asked for.
+        return (self.headers.get("X-Forwarded-Host")
+                or self.headers.get("Host") or f"{HOST}:{PORT}").split(",")[0].strip()
+
+    def _secure(self) -> bool:
+        host = self._host()
+        return not (host.startswith("localhost") or host.startswith("127."))
+
+    def _redirect(self, to: str, extra=None):
+        self.send_response(302)
+        self.send_header("Location", to)
+        self.send_header("Cache-Control", "no-store")
+        for key, value in extra or []:
+            self.send_header(key, value)
+        self.end_headers()
+
     def _gated(self) -> bool:
-        """True when the door is shut against this request."""
+        """True when the door is shut against this request.
+
+        Signing in with Google is a way through the door, not a thing behind it — Andy has
+        a Google account and will never have the shared password."""
+        if self._signed_in():
+            return False
         return gate.enabled() and not gate.cookie_ok(self.headers.get("Cookie") or "")
 
     # ── routes ───────────────────────────────────────────────────────────────
@@ -179,12 +219,56 @@ class Handler(BaseHTTPRequestHandler):
             return self._json(200, {
                 "ok": True,
                 "corpus": corpus.health(),
-                "campaign": str(campaign_dir()),
+                "campaign": str(campaign_dir(self._account())),
                 "bedrock": llm.ready(),
                 "tier": TIER,
                 "model": llm.model_for(TIER),
                 "cap": llm.cap_for(TIER),
                 "door": gate.enabled(),
+                "google": auth.enabled(),
+                "accounts": accounts.count(corpus.ROOT),
+            })
+
+        # ── signing in ───────────────────────────────────────────────────────
+        if path in ("/auth/google", "/auth/google/"):
+            if not auth.enabled():
+                return self._json(503, {"error": "google sign-in is not configured"})
+            query = urllib.parse.parse_qs(self.path.partition("?")[2])
+            where, jar = auth.begin(self._host(), (query.get("next") or ["/"])[0])
+            return self._redirect(where, [jar])
+
+        if path == "/auth/google/callback":
+            query = urllib.parse.parse_qs(self.path.partition("?")[2])
+            cookies = self.headers.get("Cookie") or ""
+            nxt = auth.check_state((query.get("state") or [""])[0], cookies)
+            if nxt is None:
+                # Either somebody else started this, or it sat too long. Both mean no.
+                return self._redirect("/?signin=stale")
+            code = (query.get("code") or [""])[0]
+            if not code:
+                return self._redirect("/?signin=cancelled")
+            person = auth.exchange(code, self._host())
+            if not person:
+                return self._redirect("/?signin=failed")
+            row = accounts.upsert(corpus.ROOT, person["sub"], person["email"],
+                                  person["name"], person["picture"])
+            return self._redirect(nxt, [auth.cookie_header(row["slug"], self._secure())])
+
+        if path in ("/auth/logout", "/auth/logout/"):
+            return self._redirect("/", [auth.clear_header()])
+
+        if path == "/api/me":
+            slug = self._account()
+            row = accounts.by_slug(corpus.ROOT, slug)
+            return self._json(200, {
+                "signed_in": bool(row),
+                "google": auth.enabled(),
+                "account": slug,
+                "email": (row or {}).get("email", ""),
+                "name": (row or {}).get("name", ""),
+                "picture": (row or {}).get("picture", ""),
+                "plan": (row or {}).get("plan", "free"),
+                "has_key": bool((row or {}).get("api_key")),
             })
 
         if path in ("/", "/home"):
@@ -195,10 +279,12 @@ class Handler(BaseHTTPRequestHandler):
             return self._file(STATIC / "contract.html")
 
         if path in ("/gate", "/gate/"):
-            return self._send(200, gate.PAGE.encode("utf-8"), "text/html; charset=utf-8")
+            return self._send(200, gate.page(auth.enabled()).encode("utf-8"),
+                              "text/html; charset=utf-8")
 
         if self._gated():
-            return self._send(200, gate.PAGE.encode("utf-8"), "text/html; charset=utf-8")
+            return self._send(200, gate.page(auth.enabled()).encode("utf-8"),
+                              "text/html; charset=utf-8")
 
         if path in ("/play", "/play/", "/table"):
             return self._file(STATIC / "table.html")
@@ -234,9 +320,10 @@ class Handler(BaseHTTPRequestHandler):
         if self._gated():
             return self._json(401, {"error": "the door is shut"})
 
+        account = self._account()
         sid, fresh = self._sid()
         cookie = [("Set-Cookie", f"{SID_COOKIE}={sid}; Path=/; SameSite=Lax; HttpOnly")] if fresh else None
-        sess = _session_for(sid)
+        sess = _session_for(account, sid)
         camp = sess["campaign"]
 
         if path == "/api/session":
@@ -345,7 +432,7 @@ class Handler(BaseHTTPRequestHandler):
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
 
             slug = weave.slugify(campaign_obj.get("title"), "a-campaign")
-            root = corpus.ROOT / "players" / ACCOUNT
+            root = corpus.ROOT / "players" / account
             module = root / "modules" / slug
             weave.write_module(module, campaign_obj, picks, dials, cards, body.get("seed"))
 
@@ -357,8 +444,8 @@ class Handler(BaseHTTPRequestHandler):
             shutil.copytree(module, live)
 
             try:                       # remembered across restarts, and across tabs
-                current_file().parent.mkdir(parents=True, exist_ok=True)
-                files.write(current_file(), slug)
+                current_file(account).parent.mkdir(parents=True, exist_ok=True)
+                files.write(current_file(account), slug)
             except OSError:
                 pass
 
@@ -401,8 +488,10 @@ class Handler(BaseHTTPRequestHandler):
 
 
 def main():
-    print(f"seren on http://{HOST}:{PORT}  corpus={corpus.ROOT}  campaign={campaign_dir().name}")
-    print(f"  door={'on' if gate.enabled() else 'OFF'}  bedrock={llm.ready()}  tier={TIER} -> {llm.model_for(TIER)}")
+    solo = accounts.solo_slug()
+    print(f"seren on http://{HOST}:{PORT}  corpus={corpus.ROOT}  campaign={campaign_dir(solo).name}")
+    print(f"  door={'on' if gate.enabled() else 'OFF'}  google={auth.enabled()}  "
+          f"accounts={accounts.count(corpus.ROOT)}  bedrock={llm.ready()}  tier={TIER} -> {llm.model_for(TIER)}")
     ThreadingHTTPServer((HOST, PORT), Handler).serve_forever()
 
 
