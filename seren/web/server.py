@@ -15,17 +15,20 @@ from __future__ import annotations
 import json
 import os
 import secrets
+import shutil
 import threading
 from http.cookies import SimpleCookie
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 
 import close as session_close
+import audit
 import corpus
 import dm
 import gate
 import llm
 import state
+import weave
 
 HOST = os.environ.get("SEREN_HOST", "127.0.0.1")
 PORT = int(os.environ.get("SEREN_PORT", "8790"))
@@ -270,6 +273,62 @@ class Handler(BaseHTTPRequestHandler):
             view["pending"] = bool(out.get("pending"))
             _save(sess)
             return self._json(200, view, cookie)
+
+        if path == "/api/weave":
+            # The Loom hands over what it dealt; nothing here re-rolls it.
+            body = self._body()
+            picks = body.get("picks") or {}
+            cards = body.get("cards") or {}
+            dials = body.get("dials") or {}
+            if not cards.get("trope") or not cards.get("trouble"):
+                return self._json(400, {"error": "that hand is not finished"})
+            if not llm.ready():
+                return self._json(503, {"error": "the weaver is not connected (no Bedrock)"})
+
+            try:
+                out = weave.weave(picks, dials, cards, tier=TIER)
+                campaign_obj, spent = out["campaign"], out["spent"]
+                problems = audit.check(campaign_obj)
+                mended = False
+                if problems:
+                    # One fix pass: the auditor's complaints go back to the weaver before
+                    # anybody is asked to deal again.
+                    out = weave.mend(campaign_obj, problems, picks, dials, cards, tier=TIER)
+                    campaign_obj, mended = out["campaign"], True
+                    spent += out["spent"]
+                    problems = audit.check(campaign_obj)
+                if problems:
+                    return self._json(422, {"error": "the auditor refused it",
+                                            "problems": problems, "spent": round(spent, 4)})
+            except llm.CapReached as exc:
+                return self._json(402, {"error": str(exc)})
+            except Exception as exc:
+                return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
+
+            slug = weave.slugify(campaign_obj.get("title"), "a-campaign")
+            root = corpus.ROOT / "players" / ACCOUNT
+            module = root / "modules" / slug
+            weave.write_module(module, campaign_obj, picks, dials, cards, body.get("seed"))
+
+            # A module is inert. Playing it means instantiating a copy that may have state.
+            live = root / slug
+            if live.is_dir():
+                slug = slug + "-" + secrets.token_hex(2)
+                live = root / slug
+            shutil.copytree(module, live)
+
+            with _lock:
+                camp = state.Campaign(root=live, tier=TIER)
+                camp.session = 1
+                sess.update({"campaign": camp, "history": [], "messages": [],
+                             "pending": None, "stream": []})
+            _save(sess)
+            return self._json(200, {
+                "ok": True, "slug": slug, "title": campaign_obj.get("title"),
+                "premise": campaign_obj.get("premise"), "opening": campaign_obj.get("opening"),
+                "where": campaign_obj.get("where"), "mended": mended,
+                "spent": round(spent, 4), "play": "/table",
+            }, cookie)
 
         if path == "/api/close":
             out = session_close.close(camp, sess["history"])
