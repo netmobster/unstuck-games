@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SEREN — The Contract</title>
+<meta name="description" content="What Seren may decide, what nobody may decide, and the four things she is not allowed to do — each one enforced by code rather than by instruction.">
+<meta name="theme-color" content="#0d0c0b">
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* The same house as the homepage: ash ground, bone text, one ember. This page is the
+   thing the tour points at — the rules she cannot break, and why each is code. */
+:root{
+  --ink:#0d0c0b; --ink-2:#141210; --ink-3:#1b1815;
+  --bone:#e8e2d4; --bone-2:#9a9182; --bone-3:#6b6558;
+  --ember:#ff4d00; --ember-dim:#c2481a; --gold:#c2a46a; --held:#5c8a52; --lost:#a8574b;
+  --rule:#2a2622; --rule-2:#3b352c;
+  --display:Cinzel,Georgia,serif; --serif:Spectral,Georgia,serif; --mono:'Space Mono',ui-monospace,monospace;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--serif);font-weight:300;line-height:1.6;
+  background-image:radial-gradient(ellipse 900px 520px at 50% -8%,rgba(255,77,0,.08),transparent 70%)}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--ember)}
+::selection{background:rgba(255,77,0,.35)}
+:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
+
+.wrap{max-width:900px;margin:0 auto;padding-left:20px;padding-right:20px}
+.k{font-family:var(--mono);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember)}
+.mono{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-3)}
+.cta{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
+  padding:13px 20px;border-radius:2px;background:var(--ember);color:#160b05;font-weight:700}
+.cta:hover{filter:brightness(1.12);color:#160b05}
+.cta.ghost{background:none;color:var(--bone-2);border:1px solid var(--rule-2);font-weight:400}
+.cta.ghost:hover{filter:none;border-color:var(--bone-2);color:var(--bone)}
+
+header{position:sticky;top:0;z-index:10;background:rgba(13,12,11,.88);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px;max-width:1080px}
+.brand{font-family:var(--display);font-weight:600;font-size:16px;letter-spacing:.16em}
+header nav{display:flex;gap:26px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-2)}
+header nav .cta{padding:10px 18px}
+
+.top .wrap{padding-top:clamp(56px,8vw,96px);padding-bottom:clamp(34px,5vw,54px)}
+h1{font-family:var(--display);font-weight:500;font-size:clamp(34px,5vw,56px);line-height:1.1;margin:20px 0 0;max-width:18ch;text-wrap:balance}
+.say{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(19px,2.2vw,24px);line-height:1.4;color:var(--bone-2);margin:22px 0 0;max-width:40em}
+section{border-top:1px solid var(--rule)}
+section .wrap{padding-top:clamp(44px,6vw,72px);padding-bottom:clamp(44px,6vw,72px)}
+h2{font-family:var(--display);font-weight:500;font-size:clamp(22px,2.8vw,30px);line-height:1.15;margin:0;text-wrap:balance}
+p{font-size:17px;color:var(--bone-2);margin:16px 0 0;max-width:62ch}
+p.lit{color:var(--bone)}
+code{font-family:var(--mono);font-size:.84em;background:rgba(255,255,255,.05);padding:1px 6px;border-radius:2px;color:var(--bone)}
+
+.rules{display:flex;flex-direction:column;gap:16px;margin-top:30px}
+.rule{border:1px solid var(--rule);border-radius:3px;background:var(--ink-2);padding:22px 24px}
+.rule .n{font-family:var(--display);font-size:12px;letter-spacing:.22em;color:var(--gold)}
+.rule h3{font-family:var(--display);font-weight:500;font-size:20px;line-height:1.2;margin:8px 0 0}
+.rule p{margin-top:12px;max-width:none}
+.rule .how{margin-top:14px;padding-top:12px;border-top:1px solid var(--rule);font-family:var(--mono);font-size:11px;
+  letter-spacing:.08em;line-height:1.7;color:var(--bone-3)}
+.rule .how b{color:var(--held);font-weight:400}
+
+.owns{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px;margin-top:30px}
+.own{border:1px solid var(--rule);border-radius:3px;padding:20px;background:var(--ink-2);font-size:16.5px;line-height:1.7}
+.own .k{display:block;font-size:10.5px;letter-spacing:.18em;margin-bottom:12px}
+.own.nobody{border-color:var(--ember-dim);background:linear-gradient(180deg,rgba(255,77,0,.06),transparent)}
+.own em{display:block;font-size:14px;color:var(--bone-2);margin-top:10px;line-height:1.5;font-style:normal}
+
+.vis{margin-top:26px;border:1px solid var(--rule);border-radius:3px;overflow:hidden}
+.vis div{display:grid;grid-template-columns:120px 1fr;gap:16px;padding:13px 20px;font-size:15.5px;border-bottom:1px solid var(--rule)}
+.vis div:last-child{border-bottom:0}
+.vis b{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:400;color:var(--gold)}
+.vis .hidden b{color:var(--bone-3)}
+.vis span{color:var(--bone-2)}
+
+.end .wrap{text-align:center}
+.end h2{font-size:clamp(24px,3.4vw,36px)}
+.acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px;justify-content:center}
+footer{border-top:1px solid var(--rule);padding:30px 20px;font-family:var(--mono);font-size:11px;line-height:1.6;letter-spacing:.1em;color:var(--bone-3)}
+footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:0;max-width:1080px}
+footer a{color:var(--bone-2)}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">SEREN</a>
+    <nav>
+      <a href="/">The house</a>
+      <a href="/loom">The Loom</a>
+      <a class="cta" href="/loom">Deal a hand</a>
+    </nav>
+  </div>
+</header>
+
+<section class="top" style="border-top:0">
+  <div class="wrap">
+    <div class="k">The contract</div>
+    <h1>The parts of me that are not me.</h1>
+    <p class="say">Every table has a person who could quietly bend it and doesn't. You have no way of knowing whether I am that person — so the four things that matter are not left to my character. They are code, and they refuse me the same way they refuse you.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Four things I cannot do</h2>
+    <p>Each one is enforced somewhere I cannot reach. An instruction is not a control: a rule I am merely asked to follow is a rule I can be talked out of, and so can any model.</p>
+
+    <div class="rules">
+      <div class="rule">
+        <div class="n">I</div>
+        <h3>I cannot roll the dice.</h3>
+        <p>When something could go either way I ask for a check and say what it is for. The server rolls it, writes the line, and only then tells me the number. The target was set before the roll and I do not get to move it afterwards.</p>
+        <div class="how"><b>How:</b> the roll and the ledger line are one operation. A roll that arrives with an outcome already in it is refused — so is a d20 with nothing to beat.</div>
+      </div>
+
+      <div class="rule">
+        <div class="n">II</div>
+        <h3>I cannot un-roll one.</h3>
+        <p>The Record holds every roll with its inputs and its target, in the order they happened. Nothing is edited after the fact. If a number there disagrees with something I told you, the number is right and I was wrong.</p>
+        <div class="how"><b>How:</b> an append-only ledger. The verdict is computed from the arithmetic, not asserted — a true total with a kind verdict is the shape of softening, and it is rejected.</div>
+      </div>
+
+      <div class="rule">
+        <div class="n">III</div>
+        <h3>I cannot tell you what you have not found out.</h3>
+        <p>Every fact in your campaign carries a visibility. The ones you have not earned are not mine to hand over, however you ask, and however reasonable the moment makes it seem.</p>
+        <div class="how"><b>How:</b> a gate reads what I write before it reaches you and compares it against everything on my side of the screen — fronts, antagonists, and every hidden fact. On a leak it <b>holds the whole message</b> rather than editing it: a redacted sentence is a puzzle with the answer printed underneath.</div>
+      </div>
+
+      <div class="rule">
+        <div class="n">IV</div>
+        <h3>I cannot write a campaign nobody checked.</h3>
+        <p>What I weave at the Loom is read by an auditor before you ever sit down. He is not me and he is not a model — he is code, and a model's opinion can advise where his can refuse.</p>
+        <div class="how"><b>He checks:</b> every fact has a real visibility · almost nothing starts <em>known</em> · at least one front wants something only another front holds · the antagonist has a name and a grudge · nobody borrowed a setting · nobody in it is called Seren. <b>Two failures and the campaign is refused.</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Who owns what</h2>
+    <p>This is not a split between judgement and bookkeeping. It is a split between what can be known exactly and what has to be inferred — and one column that belongs to nobody at all.</p>
+    <div class="owns">
+      <div class="own"><span class="k">Seren owns</span>Narration · every voice · the ruling · pacing · what a moment means · what it costs · what it reveals</div>
+      <div class="own nobody"><span class="k">Nobody owns</span>What is true · the dice · the result<em>A roll can be interpreted. It cannot be reversed. One test: did the success or failure state change? If it did, somebody cheated.</em></div>
+      <div class="own"><span class="k">You own</span>Your character · your choices · what you do about the consequences</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The four visibilities</h2>
+    <p>Every fact in the world carries one. This is the whole of how a secret stays a secret, and it is why the Codex can be wrong without lying to you.</p>
+    <div class="vis">
+      <div><b>known</b><span>You established it in play. It is yours, and the table shows it.</span></div>
+      <div><b>suspected</b><span>You have a reason to think it. You may be wrong, and nothing on the page will tell you which.</span></div>
+      <div class="hidden"><b>true</b><span>So — and you have no idea. Most of a campaign's secrets live here, on my side of the gate.</span></div>
+      <div class="hidden"><b>false</b><span>You believe it and it is not so. I am not allowed to correct you, and I am not allowed to lean on it either.</span></div>
+    </div>
+    <p>The count at the bottom of your Codex is how many facts sit on my side. You are told the number, never the contents — because a system that resolves its own ambiguity produces nothing worth believing.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What I am still bad at</h2>
+    <p class="lit">Honesty about the controls is cheap if the rest is quiet. So: the prose is the weakest part of me today. I reach for the ledger when I have nothing to say, and I have been known to restate what you just did instead of telling you what it caused.</p>
+    <p>The controls above hold regardless — they are code, and they do not care how well the sentence reads. But if you sit down this week and find me flat, that is the true state of it, and it is the thing being worked on.</p>
+  </div>
+</section>
+
+<section class="end">
+  <div class="wrap">
+    <h2>Shall we?</h2>
+    <div class="acts">
+      <a class="cta" href="/loom">Deal a hand</a>
+      <a class="cta ghost" href="/table">Back to the table</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>SEREN · an <a href="https://unstuck-games.com/">Unstuck Games</a> build</span>
+    <span>Rules from SRD 5.2, CC BY 4.0, Wizards of the Coast</span>
+  </div>
+</footer>
+
+</body>
+</html>

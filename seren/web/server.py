@@ -190,6 +190,10 @@ class Handler(BaseHTTPRequestHandler):
         if path in ("/", "/home"):
             return self._file(STATIC / "home.html")
 
+        # The contract is public too: what she cannot do is the argument for sitting down.
+        if path in ("/contract", "/contract/"):
+            return self._file(STATIC / "contract.html")
+
         if path in ("/gate", "/gate/"):
             return self._send(200, gate.PAGE.encode("utf-8"), "text/html; charset=utf-8")
 
