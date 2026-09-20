@@ -23,6 +23,7 @@ from pathlib import Path
 
 import close as session_close
 import audit
+import chips
 import corpus
 import dice
 import dm
@@ -119,6 +120,13 @@ def _session_for(sid: str) -> dict:
                 pass
             _sessions[sid] = sess
         return sess
+
+
+def _chips(sess) -> list:
+    """Three things to try next, from the stream the player can see — and nothing else."""
+    seen = [b.get("text", "") for b in sess.get("stream", [])[-6:]
+            if b.get("kind") in ("dm", "said")]
+    return chips.suggest((chr(10) + chr(10)).join(seen))
 
 
 class Handler(BaseHTTPRequestHandler):
@@ -245,6 +253,7 @@ class Handler(BaseHTTPRequestHandler):
             # Everything the player has been shown this session, so a refresh costs nothing.
             view["beats"] = sess["stream"]
             view["pending"] = bool(sess.get("pending"))
+            view["chips"] = [] if view["pending"] else _chips(sess)
             _save(sess)
             return self._json(200, view, cookie)
 
@@ -269,6 +278,7 @@ class Handler(BaseHTTPRequestHandler):
             view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
             view["beats"] = out["beats"]
             view["pending"] = bool(out.get("pending"))
+            view["chips"] = [] if view["pending"] else _chips(sess)
             _save(sess)
             return self._json(200, view, cookie)
 
@@ -292,6 +302,7 @@ class Handler(BaseHTTPRequestHandler):
             view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
             view["beats"] = out["beats"]
             view["pending"] = bool(out.get("pending"))
+            view["chips"] = [] if view["pending"] else _chips(sess)
             _save(sess)
             return self._json(200, view, cookie)
 

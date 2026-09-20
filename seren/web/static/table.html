@@ -374,6 +374,7 @@ function absorb(d, withItems) {
   state.present = d.present || [];
   state.codex = d.facts || [];
   state.party = d.party || [];
+  if (d.chips) state.chips = d.chips;
   if (d.hidden != null) state.hidden = d.hidden;
   if (d.sheet) state.sheet = d.sheet;
   if (d.library) state.articles = d.library;
@@ -440,13 +441,24 @@ function renderPage() {
       b.onclick = () => openTray(state.pending);
       chips.appendChild(b);
     }
+    // Three written for this scene by a small model that saw only what you saw. If it
+    // had nothing to say, the plain ones below stand in.
+    (state.chips || []).forEach(line => {
+      const b = el('button', '', esc(line));
+      b.onclick = () => {
+        const ta = f.querySelector('textarea');
+        if (!ta) return;
+        ta.value = line; ta.focus(); ta.setSelectionRange(ta.value.length, ta.value.length);
+      };
+      chips.appendChild(b);
+    });
     const mine = (state.sheet || {}).slug;
     const others = state.party.filter(x => x.slug !== mine).slice(0, 2);
     const offers = [['Look around', 'I take a moment to look around.']];
     others.forEach(x => offers.push([`Ask ${x.name.split(' ')[0]}`,
       `I ask ${x.name.split(' ')[0]} what they make of this.`]));
     offers.push(['Wait and listen', 'I say nothing, and listen.']);
-    offers.slice(0, state.pending ? 2 : 3).forEach(([label, line]) => {
+    offers.slice(0, (state.chips || []).length ? 0 : (state.pending ? 2 : 3)).forEach(([label, line]) => {
       const b = el('button', '', esc(label));
       b.onclick = () => {
         const ta = f.querySelector('textarea');
