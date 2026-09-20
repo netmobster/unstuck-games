@@ -184,6 +184,17 @@ def write_module(out: Path, camp: dict, picks: dict, dials: dict, cards: dict, s
 {camp.get('opening', '')}
 """)
 
+    # The persona was dealt at the Loom and then thrown away: campaign_static() reads
+    # DM-persona.md, and a woven campaign had none — so she narrated in nobody's voice.
+    voice = cards.get("persona") or {}
+    files.write(out / "DM-persona.md", f"""# {voice.get('name', 'The Registrar')}
+
+**Told like:** {voice.get('line', 'a clerk reading out a form')}
+**Which means:** {voice.get('changes', 'Short sentences, nouns, no adverbs')}
+
+This is the voice, not the content. It changes how a thing is said and never what is true.
+""")
+
     fronts = camp.get("fronts") or []
     body = (nl + nl).join(
         f"""## {f.get('name','')}
