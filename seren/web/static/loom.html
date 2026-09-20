@@ -148,6 +148,16 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
 .set { position:fixed; inset:0; background:#0c0a08; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px; z-index:60; animation:rise 1.2s ease-out both; padding:60px; text-align:center; }
 .set p { margin:0; font-size:36px; line-height:1.3; max-width:900px; text-wrap:pretty; }
 .set small { font-family:var(--sans); font-size:12px; letter-spacing:.06em; color:var(--mute); max-width:520px; line-height:1.6; }
+.set .wov { max-width:760px; display:flex; flex-direction:column; gap:12px; }
+.set .wov h3 { margin:0; font-family:var(--display); font-size:26px; font-weight:400; color:var(--gilt); letter-spacing:.06em; }
+.set .prem { font-size:21px; line-height:1.4; color:var(--bone-lo); margin:0; }
+.set .open { font-size:19px; line-height:1.45; margin:0; color:var(--bone); border-left:1px solid var(--edge); padding-left:18px; text-align:left; }
+.set .refused { list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:8px; max-width:660px;
+  font-family:var(--sans); font-size:13.5px; line-height:1.5; color:var(--bone-lo); text-align:left; }
+.set .refused li { border-left:2px solid var(--gilt); padding-left:12px; }
+.setacts { display:flex; gap:16px; align-items:center; padding-top:8px; }
+.setacts .play { text-decoration:none; display:inline-block; }
+.weaving { animation:bob 2.2s ease-in-out infinite; }
 [hidden] { display:none !important; }
 </style>
 </head>
@@ -262,10 +272,19 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
 </div>
 
 <div class="set" id="set" hidden>
-  <span class="k" style="letter-spacing:.2em;color:#e07a58">Your loom is set</span>
+  <span class="k" style="letter-spacing:.2em;color:#e07a58" id="setKicker">Your loom is set</span>
   <p id="setSentence"></p>
-  <small>Handing off. The weaver writes the module, the auditor deals it out and checks no secret is showing, and then Seren sits down. This is where the next step begins.</small>
-  <button class="ghost" id="unset" style="margin-top:20px;font-family:var(--sans);font-size:10.5px;letter-spacing:.14em">← Back to the table</button>
+  <small id="setNote">The weaver is writing it. The auditor reads it before anybody sits down.</small>
+  <div class="wov" id="wov" hidden>
+    <h3 id="wovTitle"></h3>
+    <p class="prem" id="wovPremise"></p>
+    <p class="open" id="wovOpening"></p>
+  </div>
+  <ul class="refused" id="refused" hidden></ul>
+  <div class="setacts">
+    <button class="ghost" id="unset" style="font-family:var(--sans);font-size:10.5px;letter-spacing:.14em">← Back to the table</button>
+    <a class="play" id="sit" href="/table" hidden>Sit down at the table</a>
+  </div>
 </div>
 
 <script>
@@ -696,8 +715,58 @@ $('rollDials').onclick = () => {
   $('dials').querySelectorAll('input').forEach((el, i) => { el.value = S.dials[DATA.dials[i].id]; });
   save();
 };
-$('build').onclick = () => { S.tuning = false; S.set = true; fadeOutMusic(); render(); };
-$('unset').onclick = () => { S.set = false; startMusic(); render(); };
+function handOver() {
+  // Everything the weaver needs: the cards as dealt, in their own words, and the stakes.
+  const p = fillInferred();
+  const one = cat => { const c = card(cat, p[cat]); return c ? { name: c.name, line: c.line, changes: c.changes } : null; };
+  return {
+    picks: p,
+    dials: S.dials,
+    cards: {
+      trope: one('trope'), origin: one('origin'), world: one('world'), trouble: one('trouble'),
+      posture: one('posture'), persona: one('persona'),
+      companions: p.companions.map(id => { const c = card('companions', id); return { name: c.name, line: c.line, changes: c.changes }; })
+    }
+  };
+}
+
+async function buildIt() {
+  S.tuning = false; S.set = true; fadeOutMusic(); render();
+  $('wov').hidden = true; $('refused').hidden = true; $('sit').hidden = true;
+  $('setKicker').textContent = 'Weaving';
+  $('setNote').className = 'weaving';
+  $('setNote').textContent = 'The weaver is writing it. The auditor reads it before anybody sits down.';
+  $('unset').disabled = true;
+  let r, d;
+  try {
+    r = await fetch('/api/weave', { method: 'POST', headers: { 'Content-Type': 'application/json' },
+                                    body: JSON.stringify(handOver()) });
+    d = await r.json();
+  } catch (e) {
+    d = { error: String(e && e.message || e) };
+  }
+  $('unset').disabled = false;
+  $('setNote').className = '';
+  if (d && d.ok) {
+    $('setKicker').textContent = 'Your loom is woven';
+    $('wovTitle').textContent = d.title || '';
+    $('wovPremise').textContent = d.premise || '';
+    $('wovOpening').textContent = d.opening || '';
+    $('setNote').textContent = (d.mended ? 'The auditor sent it back once and it was mended. ' : '')
+      + 'Written, audited, and dealt out as yours. Seren has not read your hand — only the campaign it became.';
+    $('wov').hidden = false; $('sit').hidden = false;
+  } else if (d && d.problems) {
+    $('setKicker').textContent = 'The auditor refused it';
+    $('setNote').textContent = 'Twice. Your hand is untouched — deal one card again and try once more.';
+    $('refused').innerHTML = d.problems.map(x => `<li>${esc(x)}</li>`).join('');
+    $('refused').hidden = false;
+  } else {
+    $('setKicker').textContent = 'It did not weave';
+    $('setNote').textContent = (d && d.error) || 'Something went wrong on the way to the weaver.';
+  }
+}
+$('build').onclick = buildIt;
+$('unset').onclick = () => { S.set = false; $('wov').hidden = true; $('refused').hidden = true; startMusic(); render(); };
 $('backdrop').onclick = e => { if (e.target === $('backdrop')) { S.open = null; render(); } };
 document.addEventListener('keydown', e => {
   if (e.key !== 'Escape') return;
