@@ -52,12 +52,27 @@ BANNED_PATTERNS = [
 PLAYER_VISIBILITY = {"known", "suspected"}
 
 # The DM speaks in the fiction. Nobody in the world has heard of a DC (DM.md §1.1).
+SKILLS = ("stealth|perception|insight|investigation|athletics|acrobatics|persuasion|"
+          "deception|intimidation|survival|arcana|history|nature|religion|medicine|"
+          "performance|sleight of hand|animal handling|initiative")
+
 TABLE_TALK = [
-    (re.compile(r"\bDC\s*\d+", re.I), "a DC, said out loud"),
+    # "DC 15" was caught and "a DC of 15" was not, which is how the first played session
+    # ended up with the target number in the narration. The word alone is enough.
+    (re.compile(r"\bDC\b", re.I), "a DC, said out loud"),
     (re.compile(r"\bd20\b|\bd\s?20\b", re.I), "the die, named"),
     (re.compile(r"\bsaving throw\b", re.I), "a saving throw, named"),
     (re.compile(r"\bmodifier\b", re.I), "a modifier, named"),
     (re.compile(r"\badvantage\b|\bdisadvantage\b", re.I), "advantage, named"),
+    # The ledger, read aloud. The Record says all of this already, in two words.
+    (re.compile(rf"\b(?:{SKILLS})\s+check\b", re.I), "a check, named"),
+    (re.compile(r"\bskill check\b|\bability check\b", re.I), "a check, named"),
+    (re.compile(r"\broll(?:s|ed|ing)?\s+(?:a|an|of)\s+\d+", re.I), "the number rolled, said out loud"),
+    (re.compile(r"\broll of \d+", re.I), "the number rolled, said out loud"),
+    (re.compile(r"\btotal(?:s|ling)?\s+(?:of\s+)?\d+", re.I), "the total, said out loud"),
+    (re.compile(r"\b(?:passes|fails|beats|meets)\s+the\s+(?:check|roll)\b", re.I),
+     "the verdict, restated — the insert already said it"),
+    (re.compile(r"\bproficiency bonus\b|\bhit dice\b", re.I), "the character sheet, read out"),
 ]
 
 MIN_PHRASE = 28  # shorter strings collide with ordinary prose

@@ -207,14 +207,18 @@ def system_prompt(campaign) -> str:
     # Whose "I" it is. Obvious at a real table, and nothing here was saying it.
     mine = (f'{chr(10)}{chr(10)}**The player is {pc}.** When they say "I", they mean {pc}. '
             "Everyone else at the table is yours to speak for." if pc else "")
-    layers = [
+    # Everything above the cache point is identical for the whole session; everything
+    # below it changes with the state. Bedrock charges a fraction to read the top back.
+    static = "\n\n---\n\n".join(layer for layer in [
         "# 1. The contract — this outranks everything below it\n" + (rules.get("dm") or "") + mine,
         "# 2. The state formats you write into\n" + (rules.get("state_formats") or "")[:6000],
         "# 3. This campaign\n" + campaign.campaign_static(),
+    ] if layer.strip())
+    volatile = "\n\n---\n\n".join(layer for layer in [
         "# 4. Where things stand\n" + campaign.state_layer(),
         AMENDMENT,
-    ]
-    return "\n\n---\n\n".join(layer for layer in layers if layer.strip())
+    ] if layer.strip())
+    return llm.cache_blocks(static, volatile)
 
 
 # ── what the player is shown ─────────────────────────────────────────────────
