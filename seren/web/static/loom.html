@@ -81,17 +81,6 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
 .hcard .name { font-size:22px; line-height:1.1; }
 .hcard .line { font-size:14.5px; font-style:italic; color:var(--bone-lo); line-height:1.3; }
 
-/* doors */
-.doors { position:fixed; inset:0; overflow:auto; background:rgba(10,15,28,.92); display:flex; flex-wrap:wrap; align-content:center; align-items:center; justify-content:center; gap:36px; row-gap:28px; animation:rise .4s ease-out both; z-index:20; padding:40px; }
-.door { width:300px; height:min(400px, 60vh); border-radius:14px; border:2px solid var(--gilt); background:var(--felt-hi); padding:30px 28px; text-align:left; display:flex; flex-direction:column; gap:12px; justify-content:flex-end; box-shadow:0 30px 60px rgba(0,0,0,.7); transition:transform .25s; }
-.door:hover { transform:rotate(0deg) translateY(-10px) !important; }
-.door.express { transform:rotate(-4deg); }
-.door.custom { transform:rotate(4deg); background:var(--gilt); color:var(--felt); }
-.door .big { font-size:36px; line-height:1.05; }
-.door .sub { font-size:16px; font-style:italic; color:var(--bone-lo); line-height:1.35; }
-.door.custom .sub { color:#4a3a10; }
-.doors .roll { flex:0 0 100%; align-self:center; max-width:max-content; margin:0 auto; }
-
 /* modal */
 .backdrop { position:fixed; inset:0; background:rgba(0,0,0,.62); display:flex; align-items:center; justify-content:center; z-index:50; animation:rise .25s ease-out both; }
 .modal { width:620px; max-width:92vw; background:var(--felt-hi); border:2px solid var(--gilt); border-radius:12px; padding:40px 44px 34px; display:flex; flex-direction:column; gap:18px; box-shadow:0 40px 90px rgba(0,0,0,.7); animation:lift .3s cubic-bezier(.2,.8,.2,1) both; }
@@ -208,20 +197,6 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
   </section>
 </main>
 
-<div class="doors" id="doors">
-  <button class="door express" data-door="express">
-    <span class="dk" style="font-size:10px">Express</span>
-    <span class="big">A quick hand</span>
-    <span class="sub">She deals companions and trouble. She plays the rest herself.</span>
-  </button>
-  <button class="door custom" data-door="custom">
-    <span class="dk" style="font-size:10px;color:var(--felt)">Custom</span>
-    <span class="big">The full game</span>
-    <span class="sub">Seven deals. You lead with the trope; she counters with the antagonist.</span>
-  </button>
-  <button class="ghost roll" id="rollFromDoor">Or: let her play it out, and I'll just watch</button>
-</div>
-
 <div class="backdrop" id="howBack" hidden>
   <div class="modal how" role="dialog" aria-modal="true" aria-labelledby="howTitle">
     <div class="top k"><span>The house rules</span><span>read once</span></div>
@@ -253,7 +228,8 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
         You never hold her cards.</li>
       <li><b>Her three offers, top left.</b> <i>Deal these again</i> is a fresh five for the slot
         you are on. <i>New hand</i> throws the whole table back and starts over.
-        <i>Play it out for me</i> means she plays every slot and you watch.</li>
+        <i>Play it out for me</i> means she plays the whole hand and you watch — the quickest
+        way in, if you would rather be surprised than asked.</li>
       <li><b>Play your loom</b> when all seven are down. That does not build it yet — it takes
         you to the stakes.</li>
       <li><b>Tune it, then build it.</b> Five dials, each one named. They never pick a card;
@@ -279,6 +255,7 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
   <div class="dials" id="dials"></div>
   <div class="tuneacts">
     <button class="ghost" id="untune">← Back to the table</button>
+    <button class="ghost gilt" id="rollDials">Roll the stakes</button>
     <button class="play" id="build">Build my loom and play</button>
   </div>
 </div>
@@ -306,7 +283,6 @@ const DATA = {
     { id:'companions',label:'COMPANIONS',q:'Who is beside you?',              hint:'pick two · one verb, one friction' },
     { id:'persona',   label:'TOLD BY',   q:'Who is telling it?',              hint:'derived by default · audition a line' }
   ],
-  express: ['companions','trouble'],
   cards: {
     trope: [
       { id:'taken',    name:'Taken in',                 line:'A street rat, saved by somebody who did not have to', changes:'Debt or trained · a mentor gone or going · the world that made you', frag:'A street rat, taken in by somebody who did not have to', pulls:{origin:['debt','trained'],posture:['fallen','parent'],trouble:['reckoning','disappearance']} },
@@ -422,7 +398,6 @@ const DATA = {
 };
 const HAND_SIZE = 5;
 const KEY = 'seren.loom.v1';
-const EXPRESS = DATA.express;          // categories Express asks for
 const HERS = 'posture';                // the slot Seren plays
 const CATS = DATA.cats;
 const card = (cat, id) => id ? DATA.cards[cat].find(c => c.id === id) : null;
@@ -431,15 +406,21 @@ const sample = (arr, n) => { const a = arr.slice(), o = []; while (a.length && o
 const emptyPicks = () => ({ trope:null, origin:null, world:null, trouble:null, posture:null, persona:null, companions:[] });
 
 let S = load() || {
-  door: null, browse: 'trope', picks: emptyPicks(),
+  door: 'custom', browse: 'trope', picks: emptyPicks(),
   dials: { absurdity:35, stakes:40, danger:45, people:50, length:30 },
   hands: dealAll(), hers: null, flipped: false, open: null, tuning: false, set: false
 };
 
-function load() { try { return JSON.parse(localStorage.getItem(KEY)); } catch { return null; } }
+function load() {
+  try {
+    const was = JSON.parse(localStorage.getItem(KEY));
+    if (was && was.door !== 'custom') { was.door = 'custom'; if (was.browse === 'companions') was.browse = 'trope'; }
+    return was;                       // Express is gone; old saves join the full game
+  } catch { return null; }
+}
 function save() { localStorage.setItem(KEY, JSON.stringify(S)); }
 function dealAll() { const h = {}; for (const c of CATS) h[c.id] = sample(DATA.cards[c.id], HAND_SIZE).map(x => x.id); return h; }
-function asked(cat) { return S.door !== 'express' || EXPRESS.includes(cat); }
+function asked() { return true; }     // every slot is asked: Express is gone, and 'play it out for me' covers what it was for
 function filled(cat, p = S.picks) { return cat === 'companions' ? p.companions.length >= 2 : !!p[cat]; }
 function complete() { return CATS.every(c => !asked(c.id) || filled(c.id)); }
 function nextUnfilled(from) {
@@ -487,13 +468,13 @@ function sentenceParts(p) {
   const comps = p.companions.map(id => card('companions', id).frag);
   const F = (cat, text) => ({ cat, text, filled: true }), B = (cat, text) => ({ cat, text, filled: false });
   return [
-    g('trope') ? F('trope', g('trope') + ',') : B('trope', asked('trope') ? 'Somebody,' : 'Somebody (Seren decides),'),
-    g('origin') ? F('origin', g('origin') + ',') : B('origin', asked('origin') ? '— from somewhere —' : '— origin inferred —'),
-    g('world') ? F('world', 'in ' + g('world') + ',') : B('world', asked('world') ? 'in a place,' : 'in a place Seren picks,'),
+    g('trope') ? F('trope', g('trope') + ',') : B('trope', 'Somebody,'),
+    g('origin') ? F('origin', g('origin') + ',') : B('origin', '— from somewhere —'),
+    g('world') ? F('world', 'in ' + g('world') + ',') : B('world', 'in a place,'),
     g('trouble') ? F('trouble', 'facing ' + g('trouble') + ',') : B('trouble', 'facing some kind of trouble,'),
     comps.length === 2 ? F('companions', 'with ' + comps[0] + ' and ' + comps[1] + ' in tow,') : comps.length === 1 ? F('companions', 'with ' + comps[0] + ' and one more in tow,') : B('companions', 'with nobody yet in tow,'),
     g('posture') ? F('posture', 'against ' + g('posture') + ' —') : B('posture', 'against whoever Seren plays —'),
-    g('persona') ? F('persona', 'told by ' + g('persona') + '.') : B('persona', asked('persona') ? 'told by a voice not yet chosen.' : 'told by a voice Seren derives.')
+    g('persona') ? F('persona', 'told by ' + g('persona') + '.') : B('persona', 'told by a voice not yet chosen.')
   ];
 }
 
@@ -504,7 +485,6 @@ const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&':'&amp;', '<':'&lt;', '
 function render() {
   save();
   const p = S.picks, cur = CATS.find(c => c.id === S.browse), hers = card('posture', S.hers);
-  $('doors').hidden = !!S.door;
   $('set').hidden = !S.set;
 
   // Seren's line
@@ -701,15 +681,20 @@ $('howAgain').onclick = showHow;
 $('howBack').onclick = e => { if (e.target === $('howBack')) hideHow(); };
 try { if (!localStorage.getItem(HOW_KEY)) showHow(); } catch (e) { /* private window: skip it */ }
 
-document.querySelectorAll('.door').forEach(b => b.onclick = () => { startMusic(); S.door = b.dataset.door; S.browse = S.door === 'express' ? 'companions' : 'trope'; render(); });
-$('rollFromDoor').onclick = playItOut;
 $('playOut').onclick = playItOut;
 $('dealAgain').onclick = () => { const c = S.browse === HERS ? nextUnfilled(HERS) : S.browse; S.hands[c] = sample(DATA.cards[c], HAND_SIZE).map(x => x.id); render(); };
-$('newHand').onclick = () => { S.hands = dealAll(); S.picks = emptyPicks(); S.hers = null; S.flipped = false; S.browse = S.door === 'express' ? 'companions' : 'trope'; render(); };
+$('newHand').onclick = () => { S.hands = dealAll(); S.picks = emptyPicks(); S.hers = null; S.flipped = false; S.browse = 'trope'; render(); };
 $('takeHers').onclick = () => { S.picks.posture = S.hers; S.browse = nextUnfilled(HERS); render(); };
 $('redealHers').onclick = () => rerollSlot(HERS);
 $('play').onclick = () => { S.tuning = true; render(); };
 $('untune').onclick = () => { S.tuning = false; render(); };
+$('rollDials').onclick = () => {
+  // Rolling the stakes is the same move as rolling the hand. Values land on tens, so a
+  // rolled dial reads as a decision rather than a twitchy 63.
+  for (const d of DATA.dials) S.dials[d.id] = Math.floor(Math.random() * 11) * 10;
+  $('dials').querySelectorAll('input').forEach((el, i) => { el.value = S.dials[DATA.dials[i].id]; });
+  save();
+};
 $('build').onclick = () => { S.tuning = false; S.set = true; fadeOutMusic(); render(); };
 $('unset').onclick = () => { S.set = false; startMusic(); render(); };
 $('backdrop').onclick = e => { if (e.target === $('backdrop')) { S.open = null; render(); } };
