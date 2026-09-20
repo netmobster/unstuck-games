@@ -54,6 +54,37 @@
          border-left:8px solid var(--accent);border-radius:var(--rs);padding:18px 20px;margin:0 0 34px;
          box-shadow:5px 6px 0 rgba(22,22,58,.14)}
   .quote b{color:var(--accent)}
+  /* live demo preview */
+  .demo{padding:10px 0 34px}
+  .demo h2{font-size:clamp(24px,3vw,34px);margin-bottom:6px}
+  .demo .say{font-size:17px;line-height:1.6;max-width:60ch;margin:0 0 18px}
+  .screen{position:relative;border:2px solid var(--ink);border-radius:var(--rs);background:var(--card);
+          box-shadow:5px 6px 0 rgba(22,22,58,.14);overflow:hidden;cursor:pointer;padding:0;width:100%;
+          display:block;text-align:left;font:inherit;color:inherit}
+  .screen:hover{box-shadow:5px 6px 0 var(--accent)}
+  .screen .bar{display:flex;align-items:center;gap:8px;padding:10px 14px;border-bottom:2px solid var(--ink);background:var(--bg)}
+  .screen .dot{width:11px;height:11px;border-radius:50%;background:var(--ink);opacity:.25}
+  .screen .addr{font-family:var(--fm);font-size:12px;color:var(--muted);margin-left:8px}
+  .screen .port{display:block;position:relative;height:420px;overflow:hidden;background:var(--card)}
+  .screen iframe{position:absolute;top:0;left:0;width:1400px;height:1400px;border:0;
+                 transform:scale(.62);transform-origin:top left;pointer-events:none}
+  .screen .hint{display:block;position:absolute;left:0;right:0;bottom:0;padding:34px 16px 14px;text-align:center;
+                font-family:var(--fh);font-size:20px;color:var(--ink);
+                background:linear-gradient(to bottom,rgba(250,248,242,0),var(--card) 62%)}
+  .screen .hint span{background:var(--acid);border:2px solid var(--ink);border-radius:var(--pill);padding:8px 18px;display:inline-block}
+  @media (max-width:620px){ .screen .port{height:300px} .screen iframe{transform:scale(.42)} }
+  /* modal */
+  dialog.sheet{width:min(1100px,94vw);height:88vh;padding:0;border:2px solid var(--ink);border-radius:var(--rs);
+               background:var(--card);overflow:hidden}
+  dialog.sheet::backdrop{background:rgba(22,22,58,.66)}
+  dialog.sheet .head{display:flex;align-items:center;justify-content:space-between;gap:14px;padding:12px 16px;
+                     border-bottom:2px solid var(--ink);background:var(--bg);flex-wrap:wrap}
+  dialog.sheet .head b{font-family:var(--fh);font-weight:400;font-size:19px}
+  dialog.sheet .head .acts{display:flex;gap:10px;align-items:center}
+  dialog.sheet .head a,dialog.sheet .head button{font-family:var(--fh);font-size:15px;border-radius:var(--pill);
+       padding:8px 16px;border:2px solid var(--ink);background:var(--card);color:var(--ink);cursor:pointer;text-decoration:none}
+  dialog.sheet .head a:hover,dialog.sheet .head button:hover{background:var(--acid)}
+  dialog.sheet iframe{width:100%;height:calc(88vh - 57px);border:0;display:block;background:var(--card)}
   footer{border-top:2px solid var(--ink);padding:26px 0 50px;font-size:13px;color:var(--muted)}
   footer .wrap{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
 </style>
@@ -80,6 +111,28 @@
 <div class="wrap">
   <p class="quote">The first character we ran it on had <b>Revivify prepared and no diamond to cast it with</b>. The second had <b>two magic rings doing nothing</b>, because all three attunement slots were already full. Both players had been running those sheets for months.</p>
 </div>
+
+<div class="wrap demo">
+  <h2>Here's one it made</h2>
+  <p class="say">A real generated page for an 11th-level druid, from a public D&amp;D Beyond character. Click it and poke around — it's the actual output, not a picture of it.</p>
+  <button class="screen" id="openDemo" type="button" aria-haspopup="dialog">
+    <span class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="addr">unstuck-games.com/table-sheet/demo/</span></span>
+    <span class="port"><iframe src="/table-sheet/demo/" title="Example table sheet" loading="lazy" tabindex="-1" scrolling="no"></iframe>
+      <span class="hint"><span>Open the example →</span></span>
+    </span>
+  </button>
+</div>
+
+<dialog class="sheet" id="demoModal" aria-label="Example table sheet">
+  <div class="head">
+    <b>Ser'en — Druid 11 · generated from her D&amp;D Beyond sheet</b>
+    <span class="acts">
+      <a href="/table-sheet/demo/" target="_blank" rel="noopener">Open in a tab ↗</a>
+      <button type="button" id="closeDemo">Close</button>
+    </span>
+  </div>
+  <iframe id="demoFrame" title="Example table sheet, full size" src="about:blank"></iframe>
+</dialog>
 
 <div class="wrap cols">
   <section class="card">
@@ -124,5 +177,23 @@
   <span><a href="/contact/">Say hello</a> · <a href="https://gamesgotout.substack.com/" target="_blank" rel="noopener">Games That Got Out ↗</a></span>
 </div></footer>
 
+<script>
+(function(){
+  var open = document.getElementById('openDemo');
+  var modal = document.getElementById('demoModal');
+  var frame = document.getElementById('demoFrame');
+  var close = document.getElementById('closeDemo');
+  if(!open || !modal || !frame || typeof modal.showModal !== 'function') return;
+
+  open.addEventListener('click', function(){
+    if(frame.getAttribute('src') === 'about:blank') frame.setAttribute('src','/table-sheet/demo/');
+    modal.showModal();
+  });
+  close.addEventListener('click', function(){ modal.close(); });
+  // Click the backdrop to close: the dialog itself fills the box, so anything
+  // landing on the element rather than its contents is outside the panel.
+  modal.addEventListener('click', function(e){ if(e.target === modal) modal.close(); });
+})();
+</script>
 </body>
 </html>
