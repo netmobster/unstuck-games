@@ -175,15 +175,22 @@ class Handler(BaseHTTPRequestHandler):
             return got.value, False
         return secrets.token_hex(8), True
 
+    def _signed_in_slug(self) -> str:
+        """The account named by a valid cookie, and nothing else.
+
+        Kept separate from _account on purpose. The solo fallback can name a real account
+        — SEREN_ACCOUNT=jay and an adopted folder called jay are the same string — so
+        "which account is this request for" and "has this person proved who they are" are
+        different questions, and anything that writes must ask the second one."""
+        slug = auth.whoami(self.headers.get("Cookie") or "")
+        return slug if slug and accounts.by_slug(corpus.ROOT, slug) else ""
+
     def _account(self) -> str:
         """Whose table this request is at. A signed cookie, or the solo account."""
-        slug = auth.whoami(self.headers.get("Cookie") or "")
-        if slug and accounts.by_slug(corpus.ROOT, slug):
-            return slug
-        return accounts.solo_slug()
+        return self._signed_in_slug() or accounts.solo_slug()
 
     def _signed_in(self) -> bool:
-        return self._account() != accounts.solo_slug()
+        return bool(self._signed_in_slug())
 
     def _host(self) -> str:
         # nginx terminates TLS and tells us the name it was asked for.
@@ -259,7 +266,7 @@ class Handler(BaseHTTPRequestHandler):
 
         if path == "/api/me":
             slug = self._account()
-            row = accounts.by_slug(corpus.ROOT, slug)
+            row = accounts.by_slug(corpus.ROOT, slug) if self._signed_in_slug() else None
             return self._json(200, {
                 "signed_in": bool(row),
                 "google": auth.enabled(),
@@ -314,8 +321,8 @@ class Handler(BaseHTTPRequestHandler):
         if path == "/api/me":
             # Settings. Only a signed-in person may change anything, and only their own
             # three fields — accounts.set_fields is the allow-list, not this handler.
-            slug = self._account()
-            if not accounts.by_slug(corpus.ROOT, slug):
+            slug = self._signed_in_slug()
+            if not slug:
                 return self._json(401, {"error": "sign in first"})
             body = self._body()
             row = accounts.set_fields(
