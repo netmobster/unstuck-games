@@ -37,6 +37,7 @@ import dm
 import files
 import gate
 import llm
+import shelf
 import state
 import weave
 
@@ -293,6 +294,20 @@ class Handler(BaseHTTPRequestHandler):
             return self._send(200, gate.page(auth.enabled()).encode("utf-8"),
                               "text/html; charset=utf-8")
 
+        if path in ("/shelf", "/shelf/", "/campaigns"):
+            return self._file(STATIC / "shelf.html")
+
+        if path == "/api/campaigns":
+            account = self._account()
+            try:
+                current = current_file(account).read_text(encoding="utf-8").strip()
+            except OSError:
+                current = ""
+            return self._json(200, {"account": account,
+                                    "signed_in": bool(self._signed_in_slug()),
+                                    "current": current,
+                                    "campaigns": shelf.listing(corpus.ROOT, account, current)})
+
         if path in ("/play", "/play/", "/table"):
             return self._file(STATIC / "table.html")
         if path in ("/loom", "/loom/"):
@@ -347,6 +362,37 @@ class Handler(BaseHTTPRequestHandler):
         cookie = [("Set-Cookie", f"{SID_COOKIE}={sid}; Path=/; SameSite=Lax; HttpOnly")] if fresh else None
         sess = _session_for(account, sid)
         camp = sess["campaign"]
+
+        if path in ("/api/campaign", "/api/campaign/archive", "/api/campaign/discard"):
+            body = self._body()
+            folder = shelf.find(corpus.ROOT, account, str(body.get("slug") or ""))
+            if folder is None:
+                return self._json(404, {"error": "no campaign of yours by that name"})
+
+            if path == "/api/campaign/archive":
+                on = bool(body.get("archived"))
+                return self._json(200, {"ok": True, "archived": shelf.archive(folder, on)}, cookie)
+
+            if path == "/api/campaign/discard":
+                # Two locks: say the word, and do not be sitting at it.
+                if not body.get("confirm"):
+                    return self._json(400, {"error": "discarding a campaign needs confirm: true"})
+                try:
+                    playing = current_file(account).read_text(encoding="utf-8").strip()
+                except OSError:
+                    playing = ""
+                if playing == folder.name:
+                    return self._json(409, {"error": "that is the campaign you are at. "
+                                                     "Pick another one first."})
+                return self._json(200, {"ok": True, "trash": shelf.discard(corpus.ROOT, account, folder)}, cookie)
+
+            # Sit down at it: the pointer on disk, and every cached table for this account
+            # dropped so the next request builds from the campaign they just chose.
+            files.write(current_file(account), folder.name)
+            with _lock:
+                for key in [k for k in _sessions if k.split(chr(0))[0] == account]:
+                    _sessions.pop(key, None)
+            return self._json(200, {"ok": True, "slug": folder.name, "play": "/table"}, cookie)
 
         if path == "/api/session":
             view = camp.player_view()

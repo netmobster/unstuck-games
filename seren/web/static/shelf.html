@@ -1,0 +1,312 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Your Campaigns</title>
+<meta name="description" content="Every world this account has woven, and which one you are sitting at.">
+<meta name="theme-color" content="#0d0c0b">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d0c0b; --ink-2:#141210; --ink-3:#1b1815;
+  --bone:#e8e2d4; --bone-2:#9a9182; --bone-3:#6b6558;
+  --ember:#ff4d00; --ember-dim:#c2481a; --gold:#c2a46a; --held:#5c8a52; --lost:#a8574b;
+  --rule:#2a2622; --rule-2:#3b352c;
+  --display:Cinzel,Georgia,serif; --serif:Spectral,Georgia,serif; --mono:'Space Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--serif);font-weight:300;
+     line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
+.wrap{width:min(1180px,100%);margin:0 auto;padding:0 28px}
+.k{font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--ember)}
+.mono{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-3)}
+
+header{border-bottom:1px solid var(--rule);position:sticky;top:0;background:rgba(13,12,11,.94);
+       backdrop-filter:blur(7px);z-index:20}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.brand{font-family:var(--display);font-weight:600;letter-spacing:.22em;font-size:15px}
+header nav{display:flex;gap:22px;align-items:center;font-family:var(--mono);font-size:10.5px;
+           letter-spacing:.14em;text-transform:uppercase;color:var(--bone-2)}
+header nav a:hover{color:var(--ember)}
+.cta{font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+     white-space:nowrap;background:var(--ember);color:#160b05;border:none;border-radius:2px;
+     padding:10px 17px;cursor:pointer;display:inline-block;font-weight:700}
+.cta:hover{filter:brightness(1.12)}
+.cta.ghost{background:none;color:var(--bone-2);border:1px solid var(--rule-2);font-weight:400}
+.cta.ghost:hover{filter:none;border-color:var(--bone-2);color:var(--bone)}
+.cta.quiet{background:none;color:var(--bone-3);border:1px solid var(--rule);font-weight:400;padding:8px 13px}
+.cta.quiet:hover{color:var(--bone-2);border-color:var(--rule-2)}
+.cta.danger:hover{color:var(--lost);border-color:var(--lost)}
+.cta[disabled]{opacity:.4;pointer-events:none}
+
+.top{padding:40px 0 26px}
+.top h1{font-family:var(--display);font-weight:600;font-size:clamp(26px,3.4vw,38px);letter-spacing:.04em;
+        margin:9px 0 8px;text-wrap:balance}
+.top p{margin:0;color:var(--bone-2);font-style:italic;max-width:62ch}
+
+.two{display:grid;grid-template-columns:minmax(300px,1fr) minmax(0,1.45fr);gap:30px;
+     align-items:start;padding-bottom:70px}
+
+/* ── the list ─────────────────────────────────────────────────────────── */
+.list{display:flex;flex-direction:column;gap:9px}
+.list .band{display:flex;align-items:center;gap:10px;margin:16px 0 3px}
+.list .band:first-child{margin-top:0}
+.list .band::after{content:"";flex:1;height:1px;background:var(--rule)}
+.row{width:100%;text-align:left;background:var(--ink-2);border:1px solid var(--rule);
+     border-radius:3px;padding:14px 15px;cursor:pointer;font:inherit;color:inherit;
+     display:block;transition:border-color .12s,background .12s}
+.row:hover{border-color:var(--rule-2);background:var(--ink-3)}
+.row[aria-current="true"]{border-color:var(--ember-dim);background:var(--ink-3)}
+.row h3{font-family:var(--display);font-weight:400;font-size:17px;letter-spacing:.02em;
+        margin:0 0 5px;color:var(--bone);line-height:1.3}
+.row .meta{display:flex;flex-wrap:wrap;gap:9px;align-items:center;font-family:var(--mono);
+           font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--bone-3)}
+.tag{border:1px solid var(--rule-2);border-radius:2px;padding:2px 6px;line-height:1.5}
+.tag.here{border-color:var(--ember-dim);color:var(--ember)}
+.tag.open{border-color:var(--gold);color:var(--gold)}
+.tag.away{border-color:var(--rule-2);color:var(--bone-3)}
+.row.is-archived h3,.row.is-archived .meta{opacity:.5}
+
+/* ── the summary ──────────────────────────────────────────────────────── */
+.panel{background:var(--ink-2);border:1px solid var(--rule);border-radius:3px;
+       padding:30px 30px 26px;position:sticky;top:84px}
+.panel h2{font-family:var(--display);font-weight:600;font-size:clamp(22px,2.6vw,30px);
+          letter-spacing:.03em;margin:8px 0 12px;text-wrap:balance}
+.panel .premise{font-size:17px;line-height:1.62;color:var(--bone);margin:0 0 22px}
+.panel .hand{font-family:var(--mono);font-size:10px;letter-spacing:.1em;color:var(--bone-3);
+             text-transform:uppercase;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+             padding:11px 0;margin:0 0 22px;line-height:1.9}
+.block{margin:0 0 20px}
+.block .lab{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;
+            color:var(--ember);margin:0 0 6px}
+.block p{margin:0;color:var(--bone-2);line-height:1.6}
+.block ul{margin:0;padding:0;list-style:none}
+.block li{color:var(--bone-2);padding:3px 0 3px 14px;position:relative}
+.block li::before{content:"·";position:absolute;left:2px;color:var(--gold)}
+.opening{font-style:italic;color:var(--bone-2);border-left:2px solid var(--rule-2);
+         padding:2px 0 2px 15px;margin:0}
+.acts{display:flex;flex-wrap:wrap;gap:9px;align-items:center;margin-top:26px;
+      padding-top:22px;border-top:1px solid var(--rule)}
+.acts .spacer{flex:1}
+.said{font-family:var(--mono);font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--held)}
+.said.bad{color:var(--lost)}
+
+.empty{border:1px dashed var(--rule-2);border-radius:3px;padding:42px 30px;text-align:center}
+.empty p{color:var(--bone-2);font-style:italic;margin:0 0 20px}
+.skel{color:var(--bone-3);font-style:italic;padding:30px 0}
+
+/* ── confirm ──────────────────────────────────────────────────────────── */
+.ask{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.9);display:none;place-items:center;padding:20px}
+.ask.open{display:grid}
+.ask .card{width:min(460px,100%);background:var(--ink-2);border:1px solid var(--rule-2);
+           border-radius:3px;padding:26px}
+.ask h3{font-family:var(--display);font-size:18px;letter-spacing:.06em;margin:0 0 10px;font-weight:600}
+.ask p{color:var(--bone-2);margin:0 0 8px;line-height:1.6}
+.ask .row2{display:flex;gap:9px;justify-content:flex-end;margin-top:22px}
+
+@media (max-width:860px){
+  .two{grid-template-columns:1fr;gap:22px}
+  .panel{position:static}
+  .wrap{padding:0 16px}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="/">SEREN</a>
+    <nav>
+      <a href="/">The House</a>
+      <a href="/loom">Deal a new hand</a>
+      <a class="cta ghost" href="/table">Back to the table</a>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap top">
+  <div class="k">Your campaigns</div>
+  <h1 id="head">Your worlds, and one of them has your chair in it.</h1>
+  <p>Every campaign this account has woven. Pick one and I will remember it was that one —
+     through a refresh, through a restart, and through whatever else you go and do today.</p>
+</div>
+
+<div class="wrap two">
+  <div class="list" id="list"><div class="skel">Reading the shelf…</div></div>
+  <div id="panel"></div>
+</div>
+
+<div class="ask" id="ask" role="dialog" aria-modal="true" aria-labelledby="ask-h">
+  <div class="card">
+    <h3 id="ask-h">Discard this campaign?</h3>
+    <p id="ask-what"></p>
+    <p class="mono" style="text-transform:none;letter-spacing:.04em;font-size:12px;line-height:1.7">
+      It leaves the shelf and goes to <b>.trash</b> on the server. Its rolls and its
+      session logs go with it, intact — the record of a played campaign is the one thing
+      here that is never quietly destroyed. Somebody with a terminal can bring it back.</p>
+    <div class="row2">
+      <button class="cta ghost" id="ask-no" type="button">Keep it</button>
+      <button class="cta" id="ask-yes" type="button">Discard</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const listEl = $('list'), panelEl = $('panel'), ask = $('ask');
+  let rows = [], current = '', picked = null, pendingDiscard = null;
+
+  const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g,
+    c => ({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;' }[c]));
+
+  function when(ts) {
+    if (!ts) return 'never opened';
+    const days = Math.floor((Date.now() / 1000 - ts) / 86400);
+    if (days <= 0) return 'today';
+    if (days === 1) return 'yesterday';
+    if (days < 30) return days + ' days ago';
+    return new Date(ts * 1000).toLocaleDateString(undefined, { month: 'short', day: 'numeric' });
+  }
+
+  function tags(c) {
+    const t = [];
+    if (c.playing) t.push('<span class="tag here">Your chair</span>');
+    if (c.unfinished) t.push('<span class="tag open">Session open</span>');
+    if (c.archived) t.push('<span class="tag away">Archived</span>');
+    return t.join('');
+  }
+
+  function drawList() {
+    if (!rows.length) {
+      listEl.innerHTML = '<div class="empty"><p>Nothing on the shelf yet. ' +
+        'Every world here starts as a hand of cards.</p>' +
+        '<a class="cta" href="/loom">Deal a hand</a></div>';
+      panelEl.innerHTML = '';
+      return;
+    }
+    let html = '', band = null;
+    rows.forEach((c, i) => {
+      const b = c.archived ? 'Archived' : 'On the shelf';
+      if (b !== band) { band = b; html += '<div class="band mono">' + b + '</div>'; }
+      html += '<button class="row' + (c.archived ? ' is-archived' : '') + '" data-i="' + i + '"' +
+        ' aria-current="' + (picked === c.slug) + '">' +
+        '<h3>' + esc(c.title) + '</h3>' +
+        '<div class="meta">' + tags(c) +
+        '<span>' + (c.sessions === 1 ? '1 session' : c.sessions + ' sessions') + '</span>' +
+        '<span>' + (c.rolls === 1 ? '1 roll' : c.rolls + ' rolls') + '</span>' +
+        '<span>' + when(c.touched) + '</span></div></button>';
+    });
+    listEl.innerHTML = html;
+    listEl.querySelectorAll('.row').forEach(el => {
+      el.addEventListener('click', () => { picked = rows[+el.dataset.i].slug; drawList(); drawPanel(); });
+    });
+  }
+
+  function drawPanel() {
+    const c = rows.find(r => r.slug === picked);
+    if (!c) { panelEl.innerHTML = ''; return; }
+    const mates = c.companions.length
+      ? '<div class="block"><div class="lab">Who is with you</div><ul>' +
+        c.companions.map(m => '<li>' + esc(m) + '</li>').join('') + '</ul></div>'
+      : '';
+    panelEl.innerHTML =
+      '<div class="panel">' +
+      '<div class="k">' + (c.playing ? 'Where you left off' : 'A world you wove') + '</div>' +
+      '<h2>' + esc(c.title) + '</h2>' +
+      (c.premise ? '<p class="premise">' + esc(c.premise) + '</p>' : '') +
+      (c.hand ? '<p class="hand">' + esc(c.hand) + '</p>' : '') +
+      (c.player ? '<div class="block"><div class="lab">You are</div><p>' + esc(c.player) + '</p></div>' : '') +
+      mates +
+      (c.opening ? '<div class="block"><div class="lab">It opens</div><p class="opening">' + esc(c.opening) + '</p></div>' : '') +
+      '<div class="acts">' +
+        '<button class="cta" id="p-play">' + (c.playing && c.unfinished ? 'Resume' : c.playing ? 'Sit down' : 'Play this one') + '</button>' +
+        '<button class="cta quiet" id="p-arch">' + (c.archived ? 'Put back on the shelf' : 'Archive') + '</button>' +
+        '<span class="spacer"></span>' +
+        '<span class="said" id="p-said"></span>' +
+        '<button class="cta quiet danger" id="p-bin"' + (c.playing ? ' disabled title="Pick another campaign first"' : '') + '>Discard</button>' +
+      '</div></div>';
+
+    $('p-play').addEventListener('click', () => choose(c));
+    $('p-arch').addEventListener('click', () => flag(c, !c.archived));
+    $('p-bin').addEventListener('click', () => {
+      pendingDiscard = c;
+      $('ask-what').innerHTML = '<b>' + esc(c.title) + '</b> — ' +
+        (c.sessions ? c.sessions + (c.sessions === 1 ? ' session' : ' sessions') + ' played' : 'never played') +
+        ', ' + c.rolls + ' rolls on the record.';
+      ask.classList.add('open');
+      $('ask-no').focus();
+    });
+  }
+
+  function say(text, bad) {
+    const el = $('p-said');
+    if (!el) return;
+    el.className = 'said' + (bad ? ' bad' : '');
+    el.textContent = text;
+    if (!bad) setTimeout(() => { if ($('p-said')) $('p-said').textContent = ''; }, 2600);
+  }
+
+  async function post(url, body) {
+    const r = await fetch(url, {
+      method: 'POST', headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    });
+    const out = await r.json().catch(() => ({}));
+    if (!r.ok) throw new Error(out.error || r.status);
+    return out;
+  }
+
+  async function choose(c) {
+    try { await post('/api/campaign', { slug: c.slug }); location.href = '/table'; }
+    catch (e) { say(String(e.message), true); }
+  }
+
+  async function flag(c, on) {
+    try { await post('/api/campaign/archive', { slug: c.slug, archived: on }); await load(); }
+    catch (e) { say(String(e.message), true); }
+  }
+
+  $('ask-no').addEventListener('click', () => { ask.classList.remove('open'); pendingDiscard = null; });
+  ask.addEventListener('click', e => { if (e.target === ask) { ask.classList.remove('open'); pendingDiscard = null; } });
+  window.addEventListener('keydown', e => { if (e.key === 'Escape') ask.classList.remove('open'); });
+  $('ask-yes').addEventListener('click', async () => {
+    const c = pendingDiscard;
+    ask.classList.remove('open');
+    if (!c) return;
+    try { await post('/api/campaign/discard', { slug: c.slug, confirm: true }); picked = null; await load(); }
+    catch (e) { say(String(e.message), true); }
+  });
+
+  async function load() {
+    const d = await (await fetch('/api/campaigns')).json();
+    rows = d.campaigns || [];
+    current = d.current || '';
+    if (!picked || !rows.some(r => r.slug === picked)) {
+      picked = (rows.find(r => r.playing) || rows[0] || {}).slug || null;
+    }
+    const n = rows.filter(r => !r.archived).length;
+    const words = ['No', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven',
+                   'Eight', 'Nine', 'Ten', 'Eleven', 'Twelve'];
+    const head = document.getElementById('head');
+    if (!n) head.textContent = 'Nothing on the shelf yet.';
+    else if (n === 1) head.textContent = 'One world, and your chair is in it.';
+    else head.textContent = (words[n] || n) + ' worlds, and one of them has your chair in it.';
+    drawList(); drawPanel();
+  }
+
+  load().catch(() => {
+    listEl.innerHTML = '<div class="empty"><p>The shelf could not be read. ' +
+      'That is a server problem, not yours.</p><a class="cta ghost" href="/">Back to the house</a></div>';
+  });
+})();
+</script>
+</body>
+</html>
