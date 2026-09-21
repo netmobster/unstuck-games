@@ -1,0 +1,948 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Squint</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Spectral:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0d0c0b; --ink-2:#141210; --ink-3:#1b1815;
+  --bone:#e8e2d4; --bone-2:#9a9182; --bone-3:#6b6558;
+  --ember:#ff4d00; --ember-dim:#c2481a; --gold:#c2a46a; --held:#5c8a52; --lost:#a8574b;
+  --rule:#2a2622; --rule-2:#3b352c;
+  --paper:#d8cba9; --paper-ink:#2a221a; --paper-dim:#6d5f4a; --paper-rule:#8a7a5f;
+  --coin:#c2a46a; --cup:#b4573f; --rod:#8a7a5f; --blade:#8ba0a8;
+  --display:Cinzel,Georgia,serif; --serif:Spectral,Georgia,serif; --mono:'Space Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--ink);color:var(--bone);font-family:var(--serif);font-weight:300;
+     line-height:1.55;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;cursor:pointer}
+:focus-visible{outline:2px solid var(--ember);outline-offset:2px}
+
+/* the lamp over the table */
+.room{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse 70% 55% at 50% 38%, rgba(255,160,60,.10), transparent 70%)}
+
+.wrap{position:relative;z-index:1;width:min(900px,100%);margin:0 auto;padding:0 18px}
+
+header{border-bottom:1px solid var(--rule)}
+header .bar{display:flex;align-items:center;justify-content:space-between;height:48px;gap:12px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-weight:600;letter-spacing:.24em;font-size:15px}
+.brand small{display:block;font-family:var(--mono);font-size:8.5px;letter-spacing:.2em;
+  color:var(--bone-3);font-weight:400;margin-top:2px}
+.series{display:flex;align-items:center;gap:14px;font-family:var(--mono);font-size:10px;
+  letter-spacing:.14em;text-transform:uppercase;color:var(--bone-3)}
+.zoom{display:inline-flex;align-items:center;border:1px solid var(--rule-2);border-radius:2px;overflow:hidden}
+.zoom button{background:none;border:0;color:var(--bone-3);font-family:var(--mono);font-size:13px;
+  line-height:1;padding:6px 9px;cursor:pointer}
+.zoom button:hover{color:var(--bone);background:var(--ink-3)}
+.zoom span{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--bone-3);
+  padding:0 2px;min-width:34px;text-align:center}
+.pips{display:flex;gap:4px}
+.pip{width:9px;height:9px;border-radius:50%;border:1px solid var(--rule-2)}
+.pip.me{background:var(--ember)}
+.pip.them{background:var(--bone-2)}
+
+/* ── table ─────────────────────────────────────────────────────────────── */
+.felt{display:grid;grid-template-rows:auto auto auto;gap:11px;padding:14px 0 0}
+.side{border:1px solid var(--rule);border-radius:3px;background:var(--ink-2);padding:12px 13px}
+.side .who{display:flex;align-items:baseline;justify-content:space-between;gap:10px;margin-bottom:11px}
+.name{font-family:var(--display);font-size:17px;letter-spacing:.07em}
+.tag{font-family:var(--mono);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-3)}
+.tag b{color:var(--gold);font-weight:400}
+
+.hand{display:flex;gap:7px;flex-wrap:wrap}
+.card{width:54px;height:80px;border-radius:4px;flex:none;position:relative;
+  display:grid;place-items:center;transition:transform .18s,box-shadow .18s}
+.card.face{background:var(--paper);color:var(--paper-ink);
+  box-shadow:0 4px 14px rgba(0,0,0,.5), inset 0 0 0 1px rgba(0,0,0,.15)}
+.card.facedown{background:linear-gradient(150deg,#1d1a16,#141210);
+  box-shadow:0 4px 14px rgba(0,0,0,.5), inset 0 0 0 1px var(--rule-2)}
+.card.facedown::after{content:"";position:absolute;inset:7px;border:1px solid var(--rule-2);border-radius:2px}
+.card .v{font-family:var(--display);font-size:22px;font-weight:600;line-height:1}
+.card .s{position:absolute;bottom:6px;font-size:13px;line-height:1}
+.card .s.coins{color:var(--coin)} .card .s.cups{color:var(--cup)}
+.card .s.rods{color:var(--rod)}   .card .s.blades{color:var(--blade)}
+.card.dim{opacity:.35;filter:grayscale(.6)}
+.rank{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--gold);margin-top:9px;min-height:14px}
+
+/* centre */
+.mid{display:flex;align-items:center;justify-content:space-between;gap:10px 16px;flex-wrap:wrap;
+  border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:11px 2px}
+.mid > *{min-width:0}
+.pot{display:flex;align-items:baseline;gap:9px}
+.pot .n{font-family:var(--display);font-size:30px;font-weight:600;color:var(--ember);line-height:1}
+.pot .l{font-family:var(--mono);font-size:9.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--bone-3)}
+.owe{font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--bone-2);text-align:right}
+.owe b{color:var(--bone)}
+
+.says{font-style:italic;color:var(--bone);min-height:1.4em;font-size:16px;margin:0;flex:1 1 240px}
+.says.none{color:var(--bone-3)}
+
+/* this hand, move by move */
+.beats{border:1px solid var(--rule);border-radius:3px;background:var(--ink-2);margin-top:14px;
+  overflow:hidden}
+.beats .hd{display:flex;align-items:baseline;justify-content:space-between;gap:10px;
+  padding:10px 14px;border-bottom:1px solid var(--rule)}
+.beats .hd span{font-family:var(--mono);font-size:9px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--ember)}
+.beats .hd em{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--bone-3);font-style:normal}
+.beats ol{list-style:none;margin:0;padding:0;max-height:176px;overflow:auto}
+.beats li{display:grid;grid-template-columns:52px 1fr auto auto;gap:12px;align-items:baseline;
+  padding:8px 13px;border-bottom:1px solid var(--rule);font-size:14.5px}
+.beats li:last-child{border-bottom:0}
+.beats li.you{background:rgba(255,77,0,.045)}
+.beats .w{font-family:var(--mono);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-3)}
+.beats li.you .w{color:var(--ember)}
+.beats .a{color:var(--bone)}
+.beats .a i{color:var(--bone-2);font-size:13.5px}
+.beats .c{font-family:var(--mono);font-size:10.5px;color:var(--bone-2);text-align:right;min-width:34px}
+.beats .p{font-family:var(--mono);font-size:10.5px;color:var(--gold);text-align:right;min-width:42px}
+.beats .none{padding:14px;color:var(--bone-3);font-style:italic;font-size:14px}
+
+/* actions */
+.acts{display:flex;gap:6px;flex-wrap:wrap;align-items:center;padding:12px 0 20px}
+.act{font-family:var(--mono);font-size:10.5px;letter-spacing:.13em;text-transform:uppercase;
+  background:none;color:var(--bone-2);border:1px solid var(--rule-2);border-radius:2px;padding:10px 13px}
+.act:hover:not(:disabled){border-color:var(--bone-2);color:var(--bone)}
+.act.primary{background:var(--ember);color:#160b05;border-color:var(--ember);font-weight:700}
+.act.primary:hover:not(:disabled){filter:brightness(1.12)}
+.act.see{border-color:var(--gold);color:var(--gold)}
+.act.see:hover:not(:disabled){background:var(--gold);color:#17140f}
+.act:disabled{opacity:.28;cursor:not-allowed}
+.act .sub{display:block;font-size:8.5px;letter-spacing:.1em;color:inherit;opacity:.65;margin-top:3px}
+.raises{margin-left:auto;font-family:var(--mono);font-size:9px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--bone-3)}
+
+/* ── rail ──────────────────────────────────────────────────────────────── */
+.rail{border-top:1px solid var(--rule);padding:18px 0 40px;display:grid;
+  grid-template-columns:1fr 1fr;gap:20px}
+.rail h3{font-family:var(--mono);font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--ember);margin:0 0 10px}
+.log{list-style:none;margin:0;padding:0;font-size:14px;max-height:260px;overflow:auto}
+.log li{padding:7px 0;border-bottom:1px solid var(--rule);color:var(--bone-2)}
+.log li b{color:var(--bone);font-weight:400}
+.log li.win b{color:var(--held)} .log li.loss b{color:var(--lost)}
+.log .never{color:var(--gold);font-style:italic}
+.stake{background:var(--ink-2);border:1px solid var(--rule);border-radius:3px;padding:15px 16px}
+.stake p{margin:0 0 10px;color:var(--bone-2);font-size:14.5px}
+.purse{margin:12px 0 12px;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.purse div{display:flex;justify-content:space-between;gap:12px;align-items:baseline;
+  padding:7px 0;border-bottom:1px solid var(--rule)}
+.purse div:last-child{border-bottom:0}
+.purse span{font-family:var(--mono);font-size:9.5px;letter-spacing:.13em;text-transform:uppercase;color:var(--bone-3)}
+.purse b{font-family:var(--display);font-size:17px;font-weight:600;color:var(--bone)}
+.purse .jack b{color:var(--ember);font-size:22px}
+.jackbox{border:1px solid var(--gold);border-radius:3px;background:var(--ink-3);
+  padding:14px 15px;width:100%}
+.jackbox p{margin:0 0 11px;color:var(--bone);font-size:15px}
+.jackbox .opts{display:flex;gap:7px;flex-wrap:wrap}
+.rungs{list-style:none;margin:0 0 18px;padding:0}
+.rungs li{display:flex;gap:12px;align-items:baseline;padding:9px 11px;border:1px solid var(--rule);
+  border-radius:2px;margin-bottom:6px;cursor:pointer}
+.rungs li:hover{border-color:var(--bone-3)}
+.rungs li[aria-selected="true"]{border-color:var(--gold);background:var(--ink-3)}
+.rungs .n{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--bone-3);min-width:16px}
+.rungs .t{color:var(--bone);font-size:15px}
+.rungs .d{color:var(--bone-3);font-size:13px;margin-left:auto;text-align:right;font-style:italic}
+.purse .net b{color:var(--gold)}
+.purse .net b.up{color:var(--held)} .purse .net b.down{color:var(--lost)}
+.stake .w{font-family:var(--display);font-size:16px;color:var(--bone);letter-spacing:.03em}
+.fine{font-family:var(--mono);font-size:9px;letter-spacing:.1em;color:var(--bone-3);
+  line-height:1.8;text-transform:none;word-break:break-all}
+
+/* ── modal ─────────────────────────────────────────────────────────────── */
+.back{position:fixed;inset:0;z-index:60;background:rgba(0,0,0,.93);display:none;
+  place-items:center;padding:20px;overflow:auto}
+.back.open{display:grid}
+.modal{width:min(560px,100%);background:var(--ink-2);border:1px solid var(--rule-2);
+  border-radius:3px;padding:28px}
+.modal h2{font-family:var(--display);font-weight:600;font-size:23px;letter-spacing:.06em;margin:0 0 6px}
+.modal .lede{font-style:italic;color:var(--bone-2);margin:0 0 20px}
+.modal ol{margin:0 0 20px;padding-left:20px;color:var(--bone-2)}
+.modal li{margin:0 0 9px}
+.modal li b{color:var(--bone);font-weight:500}
+.modal input[type=text]{width:100%;background:var(--ink);border:1px solid var(--rule-2);
+  border-radius:2px;color:var(--bone);font:inherit;font-size:16px;padding:11px 12px;outline:none}
+.modal input:focus{border-color:var(--gold)}
+.modal label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--bone-3);margin:0 0 7px}
+.modal .row{display:flex;gap:9px;justify-content:flex-end;margin-top:22px;flex-wrap:wrap}
+.ranks{list-style:none;margin:0 0 20px;padding:0}
+.ranks li{border-bottom:1px solid var(--rule);padding:10px 0}
+.ranks li:last-child{border-bottom:0}
+.ranks .r1{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.ranks .r1 b{font-family:var(--display);font-size:16px;font-weight:600;letter-spacing:.03em;color:var(--bone)}
+.ranks .r1 em{font-family:var(--mono);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--gold);font-style:normal;white-space:nowrap}
+.ranks .r2{color:var(--bone-2);font-size:14.5px;margin-top:3px}
+.ranks .eg{font-family:var(--mono);font-size:12px;color:var(--bone-3)}
+.reveal{display:flex;gap:26px;flex-wrap:wrap;margin:6px 0 18px}
+.reveal .col{flex:1;min-width:190px}
+.reveal .col > .tag{display:block;margin-bottom:8px}
+.verdict{font-family:var(--display);font-size:20px;letter-spacing:.05em;margin:14px 0 6px}
+.verdict.win{color:var(--held)} .verdict.loss{color:var(--lost)}
+.wholost{color:var(--bone);font-size:15.5px;margin:4px 0 0;padding:12px 14px;
+  border-left:2px solid var(--gold);background:var(--ink-3);border-radius:0 2px 2px 0}
+.hidden-hand{border:1px dashed var(--rule-2);border-radius:3px;padding:20px 16px;text-align:center;
+  color:var(--gold);font-style:italic;line-height:1.6}
+
+@media (max-width:760px){
+  .rail{grid-template-columns:1fr}
+  .wrap{padding:0 12px}
+  .raises{margin-left:0;width:100%}
+  .owe{text-align:left}
+}
+@media (max-width:520px){
+  .card{width:40px;height:59px}
+  .card .v{font-size:16px}
+  .beats li{grid-template-columns:44px 1fr auto auto;gap:8px;font-size:12px}
+  .act{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+<div class="room"></div>
+
+<header><div class="wrap bar" style="display:flex">
+  <div class="brand">SQUINT<small>THREE CARDS · NONE OF THEM PLAYED</small></div>
+  <div class="series">
+    <span>NOKE</span><span class="pips" id="pipsThem"></span>
+    <span style="color:var(--rule-2)">·</span>
+    <span class="pips" id="pipsMe"></span><span>YOU</span>
+    <span class="zoom" role="group" aria-label="Text size">
+        <button id="zOut" aria-label="Smaller" type="button">&minus;</button>
+        <span id="zNow">100%</span>
+        <button id="zIn" aria-label="Bigger" type="button">+</button>
+      </span>
+      <button class="act" id="rulesBtn" style="padding:7px 11px">Rules</button>
+  </div>
+</div></header>
+
+<div class="wrap felt">
+
+  <div class="side">
+    <div class="who">
+      <span class="name">Noke</span>
+      <span class="tag" id="themTag"></span>
+    </div>
+    <div class="hand" id="themHand"></div>
+    <div class="rank" id="themRank"></div>
+  </div>
+
+  <div class="mid">
+    <div class="pot"><span class="n" id="pot">0</span><span class="l">in the pot</span></div>
+    <p class="says none" id="says">&nbsp;</p>
+    <div class="owe" id="owe"></div>
+  </div>
+
+  <div class="side">
+    <div class="who">
+      <span class="name">You</span>
+      <span class="tag" id="meTag"></span>
+    </div>
+    <div class="hand" id="meHand"></div>
+    <div class="rank" id="meRank"></div>
+  </div>
+
+  <div class="beats">
+    <div class="hd"><span id="beatsTitle">This hand</span><em>MOVE · COST · POT</em></div>
+    <ol id="beats"><li class="none">Not dealt yet.</li></ol>
+  </div>
+
+  <div class="acts" id="acts"></div>
+</div>
+
+<div class="wrap rail">
+  <div>
+    <h3>The series</h3>
+    <ul class="log" id="log"><li style="border:0;color:var(--bone-3);font-style:italic">Nothing yet.</li></ul>
+  </div>
+  <div>
+    <h3>The stake</h3>
+    <div class="stake">
+      <p class="w" id="stakeWords">—</p>
+      <div class="purse">
+        <div class="jack"><span>The jackpot</span><b id="cJack">0</b></div>
+        <div><span>You have put in</span><b id="cMe">0</b></div>
+        <div><span>You have taken back</span><b id="cWon">0</b></div>
+        <div class="net"><span>Ahead / behind</span><b id="cNet">0</b></div>
+      </div>
+      <p class="fine" style="text-transform:none;letter-spacing:.02em;font-size:12.5px;line-height:1.7">
+        There is no purse to run dry — the coin only sizes a hand. <b style="color:var(--bone-2)">The
+        stake above rides on the series</b>, and the jackpot goes with it.
+        <b style="color:var(--bone-2)">Walking away forfeits everything you have put in. Agreeing
+        to stop splits it.</b></p>
+      <p style="margin:0 0 14px">Written in words, not numbers. <b style="font-weight:400;color:var(--bone)">The game does not adjudicate what it means.</b> You do.</p>
+      <p class="fine" id="fingerprint"></p>
+    </div>
+  </div>
+</div>
+
+<!-- ── modals ────────────────────────────────────────────────────────── -->
+<div class="back" id="startBack">
+  <div class="modal">
+    <h2>Squint</h2>
+    <p class="lede">Two players. Three cards each. <b style="font-weight:500;color:var(--bone)">You never play a card.</b> The whole game is betting about what you hold.</p>
+    <ol>
+      <li><b>The dealer puts up 1, the other puts up 2.</b> The dealer speaks first — that is what the smaller stake buys.</li>
+      <li><b>You may not stand still.</b> Once you owe nothing, your only moves are to raise, to see, or to fold.</li>
+      <li><b>Two raises each, per hand.</b> When both are spent, only fold and see remain. That is what bounds a hand.</li>
+      <li><b>See</b> costs double what you owe. Both hands turn over. <b>If you see and lose, they never show.</b> Not that hand, not later.</li>
+      <li><b>Blind</b> — before you look, you may declare. You stake half, and <b>you cannot be seen.</b> Look whenever you like; you are then open, at full stakes.</li>
+      <li><b>Knock</b> the table any time. It costs nothing and does nothing, and <b>the rules do not say what it means.</b> He can knock too. Neither of you has been told what it is for.</li>
+    </ol>
+    <label>What rides on the series?</label>
+    <ul class="rungs" id="rungs"></ul>
+    <label for="stakeIn">In your own words</label>
+    <input id="stakeIn" type="text" maxlength="90" value="one question, answered honestly">
+    <p class="fine" style="text-transform:none;letter-spacing:.02em;font-size:12.5px;line-height:1.7;margin-top:9px">
+      The coin only sizes a hand. <b style="color:var(--bone-2)">This is what the series is for</b>,
+      and the game will not adjudicate what it means — that is between the two of you.</p>
+    <div class="row"><button class="act primary" id="startGo">Cut for the deal</button></div>
+  </div>
+</div>
+
+<div class="back" id="handBack"><div class="modal" id="handModal"></div></div>
+<div class="back" id="rulesBack"><div class="modal" id="rulesModal"></div></div>
+
+<script>
+'use strict';
+const $ = id => document.getElementById(id);
+
+/* ── the deck ───────────────────────────────────────────────────────────
+   40 cards: 1–10 in Coins, Cups, Rods, Blades. Shuffled from a secret number
+   whose fingerprint is shown before the first card and whose value is revealed
+   when the series ends — so the deal can be checked afterwards by anyone. */
+const SUITS = [['coins','●'],['cups','▽'],['rods','❙'],['blades','◆']];
+const RANKS = ['Running flush','Prial','Flush','Run','Pair','High card'];
+
+let SEED = 0, RNG = null;
+function mulberry(a){return function(){a|=0;a=a+0x6D2B79F5|0;let t=Math.imul(a^a>>>15,1|a);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296;};}
+function fingerprint(n){let h=2166136261;const s=String(n);for(let i=0;i<s.length;i++){h^=s.charCodeAt(i);h=Math.imul(h,16777619);}return (h>>>0).toString(16).padStart(8,'0');}
+
+function freshDeck(){
+  const d=[];
+  for(const [s] of SUITS) for(let v=1;v<=10;v++) d.push({v,s});
+  for(let i=d.length-1;i>0;i--){const j=Math.floor(RNG()*(i+1));[d[i],d[j]]=[d[j],d[i]];}
+  return d;
+}
+
+/* ── ranking. The order is the rarity, counted in a 40-card deck, not
+   inherited: flush beats run, and a running flush beats a prial.
+   Runs do not wrap — 1-2-3 up to 8-9-10. 9-10-1 is nothing. */
+function score(cards){
+  const v=cards.map(c=>c.v).sort((a,b)=>b-a);
+  const suited=cards.every(c=>c.s===cards[0].s);
+  const asc=[...v].sort((a,b)=>a-b);
+  const run=asc[1]===asc[0]+1 && asc[2]===asc[1]+1;
+  const prial=v[0]===v[1]&&v[1]===v[2];
+  const pair=v[0]===v[1]||v[1]===v[2];
+  let cat;
+  if(run&&suited) cat=0; else if(prial) cat=1; else if(suited) cat=2;
+  else if(run) cat=3; else if(pair) cat=4; else cat=5;
+  let tie=v;
+  if(cat===4){const p=v[0]===v[1]?v[0]:v[1];const k=v.find(x=>x!==p);tie=[p,p,k];}
+  return {cat,name:RANKS[cat],tie};
+}
+function beats(a,b){                       // >0 a wins, <0 b wins, 0 tie
+  if(a.cat!==b.cat) return b.cat-a.cat;
+  for(let i=0;i<3;i++) if(a.tie[i]!==b.tie[i]) return a.tie[i]-b.tie[i];
+  return 0;
+}
+
+/* ── state ─────────────────────────────────────────────────────────────── */
+const G = {
+  stakeWords:'', wonMe:0, wonThem:0, hand:0, dealer:'them',
+  pot:0, inMe:0, inThem:0, turn:'me', raisesMe:0, raisesThem:0,
+  blindMe:false, blindThem:false, lookedMe:true,
+  me:[], them:[], log:[], beats:[], committedMe:0, committedThem:0, won:0, lost:0, jackpot:0, jackRefused:0, jackAgreed:0, rung:3, series:1, over:false, busy:false, knocks:0, choosing:false, settled:false
+};
+
+const ante = who => (who==='me' ? (G.blindMe?1:0) : (G.blindThem?1:0));
+
+/* What it costs this player to stay in right now. */
+function owed(who){
+  const mine = who==='me'?G.inMe:G.inThem, theirs = who==='me'?G.inThem:G.inMe;
+  let d = Math.max(0, theirs-mine);
+  if(who==='me'&&G.blindMe) d=Math.max(0,Math.floor(d/2));
+  if(who==='them'&&G.blindThem) d=Math.max(0,Math.floor(d/2));
+  return d;
+}
+const raisesLeft = who => 2-(who==='me'?G.raisesMe:G.raisesThem);
+const bothSpent  = () => G.raisesMe>=2 && G.raisesThem>=2;
+
+/* ── Noke ───────────────────────────────────────────────────────────────
+   He is not playing the odds and he is not bluffing for fun. He plays the cards
+   as cards until something pushes him — then it escalates, and the escalation
+   tracks the pressure rather than the hand. Derived from the ten decisions in
+   the prediction key: he folds when it is about cards, and he escalates when he
+   is made to wait or looked past. */
+function nokeStrength(){
+  const s=score(G.them);
+  return [0.97,0.93,0.82,0.74,0.48,0.22][s.cat] + (s.tie[0]/200);
+}
+function nokeMove(){
+  const str = G.blindThem ? 0.45 : nokeStrength();
+  const toStay = owed('them');
+  const cornered = G.wonMe===4;                        // one loss from losing it
+  // ⭐ Knocking is mechanically nothing. It is not socially nothing. He escalates at
+  //    being made to wait, and a man tapping a table at him is exactly that — so the
+  //    knock reaches him through his temperament rather than through the rules.
+  const rapped = G.knocksHand||0;
+  const matchPoint = G.wonThem===4 || G.wonMe===4;
+  const lookedPast = G.blindMe && !G.lookedMe;         // she will not look at him
+  // ⛔ Seeing is legal whether or not you owe something — the same rule the player's
+  //    See button was getting wrong. Requiring toStay>0 here meant that whenever he owed
+  //    nothing he could only raise or fold, so he burned the raise cap every hand and
+  //    the table was permanently at "only fold or see". That is the wall Jay kept hitting.
+  const canSee = !G.blindMe;
+  const pot = G.pot;
+
+  // Rapped at twice or more: he stops answering the cards and answers you.
+  if(rapped>=2 && raisesLeft('them')>0 && RNG()<0.55)
+    return {op:'raise', n:Math.min(3,rapped), line:pick(['You can stop doing that.','I heard it the first time.','Yes. All right. '+rapped+'.'])};
+  if(rapped>=2 && str<0.3 && RNG()<0.3)
+    return {op:'fold', line:pick(['Have it. I am not sitting here being drummed at.','No. Take it.'])};
+
+  // Being played blind at is the thing that does it.
+  if(lookedPast && raisesLeft('them')>0 && (matchPoint||RNG()<0.55))
+    return {op:'raise', n:3, line:pick(['You will not even look at me.','Not looking is a decision. Three.','You would rather not know. Three.'])};
+
+  // Cornered: one loss from losing the series. Not a bluff, and he says why.
+  if(cornered && raisesLeft('them')>0 && RNG()<0.8)
+    return {op:'raise', n:3, line:pick(['I have been walked to the end of a thing before. Three.','Nineteen years. Three.','No. Not this one — three.'])};
+
+  // Match point: he buys knowing, not the pot.
+  if(matchPoint && canSee && toStay>=4 && RNG()<0.7)
+    return {op:'see', line:pick(['I would rather know.','I have had enough of not knowing.','Show me. I will pay for it.'])};
+
+  // Being shoved at, level on the series: he matches where cold play folds.
+  const shoved = toStay>0 && G.wonMe===G.wonThem && toStay>=3;
+  if(shoved && str<0.5 && RNG()<0.65)
+    return {op:'match', line:pick(['No.','You would like me gone quickly.','Not yet.'])};
+
+  // Otherwise the cards are just cards, and he is unremarkable.
+  const odds = str, price = toStay/(pot+toStay||1);
+  if(toStay===0){
+    if(odds>0.82 && raisesLeft('them')>0) return {op:'raise', n:odds>0.92?3:1, line:pick(['','That will do.','I will have that.'])};
+    if(canSee && odds>0.42) return {op:'see', line:pick(['Go on then.','Fine. Show me.','Let us have a look at you.'])};
+    return {op:'fold', line:pick(['Take it.','Yours.',''])};
+  }
+  if(odds>0.86 && raisesLeft('them')>0) return {op:'raise', n:2, line:pick(['And two.','Two more.'])};
+  // ⛔ This sat AFTER the match check, so he matched first every time and never once saw
+  //    across 44 measured actions. A man who only folds or pushes is not a read — and
+  //    seeing is how a hand ends, so never seeing is what kept the table at the wall.
+  if(canSee && odds>0.66) return {op:'see', line:pick(['Show me.','Let us have it, then.','Enough. Turn them over.'])};
+  if(odds>price+0.18) return {op:'match', line:pick(['','Right.','Mm.'])};
+  if(canSee && odds>0.45 && RNG()<0.4) return {op:'see', line:pick(['I will pay to stop guessing.','Go on.'])};
+  return {op:'fold', line:pick(['Take it.','That one is yours.','No.',''])};
+}
+const pick = a => a[Math.floor(RNG()*a.length)];
+
+/* "he takes 14 but his hand was lower value than mine" — it was, and it still won,
+   because a run is rarer than three unconnected high cards. The game was right and
+   silent, and silent is the same as wrong. So now it says the reason. */
+const NAMED = ['a running flush','a prial','a flush','a run','a pair','high card'];
+function why(a, b){
+  if(a.cat !== b.cat){
+    const hi = a.cat<b.cat ? a : b, lo = a.cat<b.cat ? b : a;
+    return NAMED[hi.cat][0].toUpperCase()+NAMED[hi.cat].slice(1)+' beats '+NAMED[lo.cat]+
+           ' — however the numbers look. It is the rarer hand.';
+  }
+  if(a.cat===4){
+    if(a.tie[0]!==b.tie[0]) return 'Two pairs. The higher pair takes it: '+Math.max(a.tie[0],b.tie[0])+'s over '+Math.min(a.tie[0],b.tie[0])+'s.';
+    return 'The same pair both sides, so it falls to the odd card: '+Math.max(a.tie[2],b.tie[2])+' over '+Math.min(a.tie[2],b.tie[2])+'.';
+  }
+  for(let i=0;i<3;i++) if(a.tie[i]!==b.tie[i])
+    return 'Both hold '+NAMED[a.cat]+'. It falls to the '+['highest','second','third'][i]+' card: '+Math.max(a.tie[i],b.tie[i])+' over '+Math.min(a.tie[i],b.tie[i])+'.';
+  return 'Dead level — and a tie goes to the player who was seen, not the one who paid.';
+}
+
+/* ── rendering ─────────────────────────────────────────────────────────── */
+function cardEl(c, faceUp){
+  const d=document.createElement('div');
+  if(!faceUp){ d.className='card facedown'; return d; }
+  const [s,g]=SUITS.find(x=>x[0]===c.s);
+  d.className='card face';
+  d.innerHTML='<span class="v">'+c.v+'</span><span class="s '+s+'">'+g+'</span>';
+  return d;
+}
+function paint(){
+  $('pot').textContent=G.pot;
+  paintRail();
+  $('stakeWords').textContent=G.stakeWords||'—';
+  $('pipsMe').innerHTML   = [0,1,2,3,4].map(i=>'<span class="pip '+(i<G.wonMe?'me':'')+'"></span>').join('');
+  $('pipsThem').innerHTML = [0,1,2,3,4].map(i=>'<span class="pip '+(i<G.wonThem?'them':'')+'"></span>').join('');
+
+  const mh=$('meHand'); mh.innerHTML='';
+  G.me.forEach(c=>mh.appendChild(cardEl(c, G.lookedMe)));
+  const th=$('themHand'); th.innerHTML='';
+  G.them.forEach(()=>th.appendChild(cardEl(null,false)));
+
+  $('meRank').textContent   = G.lookedMe && G.me.length ? score(G.me).name : (G.me.length?'face down — you have not looked':'');
+  $('themRank').textContent = '';
+  $('meTag').innerHTML   = (G.dealer==='me'?'<b>DEALER</b> · ':'') + (G.blindMe?'BLIND · ':'') + 'IN ' + G.inMe;
+  $('themTag').innerHTML = (G.dealer==='them'?'<b>DEALER</b> · ':'') + (G.blindThem?'BLIND · ':'') + 'IN ' + G.inThem;
+
+  const o=owed('me');
+  $('owe').innerHTML = G.over ? '' : (o>0 ? 'To stay <b>'+o+'</b> · to see <b>'+(o*2)+'</b>'
+                                          : 'You owe nothing. <b>You may not stand still.</b>');
+  drawActs();
+  drawLog();
+  drawBeats();
+}
+/* ⭐ Every move, both players, in order, with what it cost and what the pot became.
+   Jay, playing it: "it's not making sense to me somehow" — and it did not, because the
+   one spoken line replaced itself each turn, so the sequence existed nowhere. A game
+   whose whole subject is a record should show its record. */
+function beat(who, what, cost, line){
+  G.beats.push({who, what, cost, line: line||'', pot: G.pot});
+  drawBeats();
+}
+function drawBeats(){
+  const el=$('beats'), t=$('beatsTitle');
+  if(t) t.textContent = G.hand ? ('Hand '+G.hand+' · '+(G.dealer==='me'?'you deal':'he deals')) : 'This hand';
+  if(!el) return;
+  if(!G.beats.length){ el.innerHTML='<li class="none">Not dealt yet.</li>'; return; }
+  el.innerHTML = G.beats.map(b=>
+    '<li class="'+(b.who==='me'?'you':'him')+'">'+
+      '<span class="w">'+(b.who==='me'?'You':'Noke')+'</span>'+
+      '<span class="a">'+esc(b.what)+(b.line?' <i>“'+esc(b.line)+'”</i>':'')+'</span>'+
+      '<span class="c">'+(b.cost?('−'+b.cost):'')+'</span>'+
+      '<span class="p">'+b.pot+'</span>'+
+    '</li>').join('');
+  el.scrollTop = el.scrollHeight;
+}
+
+function say(t, quiet){
+  const e=$('says');
+  e.textContent = t || ' ';
+  e.className = 'says' + (t&&!quiet?'':' none');
+}
+function drawLog(){
+  const l=$('log');
+  if(!G.log.length){ l.innerHTML='<li style="border:0;color:var(--bone-3);font-style:italic">Nothing yet.</li>'; return; }
+  l.innerHTML = G.log.map(r=>'<li class="'+r.k+'"><b>'+r.t+'</b>'+(r.n?' <span class="never">'+r.n+'</span>':'')+'</li>').reverse().join('');
+}
+
+function btn(label,sub,cls,fn,on){
+  const b=document.createElement('button');
+  b.className='act '+(cls||'');
+  b.innerHTML=label+(sub?'<span class="sub">'+sub+'</span>':'');
+  b.disabled=!on; if(on) b.onclick=fn;
+  return b;
+}
+function drawActs(){
+  const a=$('acts'); a.innerHTML='';
+  if(G.over){ a.appendChild(btn('Play again','','primary',()=>location.reload(),true)); return; }
+  if(!G.me.length) return;
+  if(G.choosing){
+    // Before you look, you may declare blind. That decision comes before any bet.
+    a.appendChild(btn('Look at them','play open','primary',()=>{G.choosing=false;G.lookedMe=true;G.blindMe=false;begin();},true));
+    a.appendChild(btn('Play blind','half stakes · cannot be seen','',()=>{G.choosing=false;G.lookedMe=false;G.blindMe=true;say('You leave them face down.');begin();},true));
+    return;
+  }
+  const mine = G.turn==='me' && !G.busy;
+  const o=owed('me');
+
+  if(!G.lookedMe) a.appendChild(btn('Look','you become open','',()=>{G.lookedMe=true;G.blindMe=false;beat('me','looked — open now',0);say('You turn them over.');paint();},mine||!G.busy));
+  a.appendChild(btn('Fold','they take the pot','',()=>{beat('me','folded',0);endHand('them','you folded');},mine));
+  a.appendChild(btn('Match', o>0?('pay '+o):'nothing owed','',()=>act('match'),mine&&o>0));
+  const rl=raisesLeft('me');
+  [1,2,3].forEach(n=>a.appendChild(btn('Raise '+n, o>0?('pay '+o+' +'+n):('+'+n),'',()=>act('raise',n),mine&&rl>0)));
+  // ⛔ "Once you owe nothing, your only moves are to raise, to see, or to fold."
+  //    SEE IS ONE OF THE THREE. Requiring something to be owed before you could see it
+  //    was my error, and it produced five states where Fold was the only legal move —
+  //    which turns "you may not stand still" into "you must give up". Seeing when you
+  //    owe nothing costs double nothing, and ends the hand, which is the point.
+  const freeSee = o===0;
+  const canSee = mine && !G.blindThem;
+  const seeSub = G.blindThem ? 'he is blind — he cannot be seen'
+               : freeSee ? 'costs nothing · both turn over'
+               : ('pay '+(o*2)+' · both turn over');
+  a.appendChild(btn('See',seeSub,'see',()=>act('see'),canSee));
+  // A blind player cannot be seen — but with your raises gone and nothing owed, that
+  // would leave you only a fold. So the blind ends: capped betting is what he bought
+  // it against, and the cap has arrived.
+  if(mine && G.blindThem && o===0 && raisesLeft('me')===0){
+    a.appendChild(btn('Make him look','his blind cannot outlast the betting','',()=>{
+      G.blindThem=false;
+      beat('them','must look — the raises are gone',0);
+      say('He turns his three over to himself, reads them, and puts them back down.');
+      paint();
+    }, true));
+  }
+
+  a.appendChild(btn('Knock','costs nothing, means nothing','',()=>{
+    G.knocks++; G.knocksHand=(G.knocksHand||0)+1;
+    beat('me','knocked the table',0);
+    // ⭐ The rules define no meaning. He looks for one anyway, and gets it wrong,
+    //    and that is the only place a meaning could ever come from.
+    // He answers it. Not always, and never with an explanation.
+    const back = G.knocks===1 ? 0.35 : 0.55;
+    if(RNG()<back){
+      setTimeout(()=>{ beat('them','knocks back',0); say('He knocks the table once, back at you.',true); paint(); }, 520);
+    } else if(G.knocksHand>=2){
+      // ⛔ NOT a move out of turn. Letting him act here would hand him a raise he was
+      //    never given the turn for — a rules break wearing a character's coat. The
+      //    knock still reaches him: it goes into `rapped`, and his NEXT move answers it.
+      say(['He stops looking at his cards and looks at your hand.',
+           'He puts one finger on the table, near where you knocked, and leaves it there.',
+           'He waits. He is very good at waiting, and he is not enjoying it.'
+          ][Math.min(G.knocksHand,3)-1] || 'He says nothing at all.', true);
+    } else {
+      say(['You knock the table. He looks at it, then at you.',
+           'You knock. He watches your hand this time, not your face.',
+           'You knock. He does not answer it.',
+           'You knock. Something in his shoulders changes and does not change back.'
+          ][Math.min(G.knocks,4)-1] || 'You knock. He lets it sit.', true);
+    }
+  }, !G.over && G.me.length>0));
+
+  const r=document.createElement('span'); r.className='raises';
+  r.textContent='RAISES LEFT — YOU '+rl+' · NOKE '+raisesLeft('them')+(bothSpent()?' · ONLY FOLD OR SEE NOW':'');
+  a.appendChild(r);
+}
+
+/* ── play ──────────────────────────────────────────────────────────────── */
+function pay(who,n){
+  if(who==='me'){ G.inMe+=n; G.committedMe+=n; } else { G.inThem+=n; G.committedThem+=n; }
+  G.pot+=n;
+}
+
+function act(op,n){
+  if(G.busy) return;
+  const o=owed('me');
+  if(op==='match'){ pay('me',o); beat('me','matched',o); say(''); pass(); }
+  if(op==='raise'){ pay('me',o+n); G.raisesMe++; beat('me','raised '+n,o+n); say(''); pass(); }
+  if(op==='see'){ pay('me',o*2); beat('me', o>0?'paid to see':'turned them over', o*2); showdown('me'); }
+  paint();
+}
+function pass(){ G.turn='them'; paint(); G.busy=true; setTimeout(theirTurn, 620); }
+
+function theirTurn(){
+  const m=nokeMove();
+  const o=owed('them');
+
+  // The rules define no meaning for the knock. He has one anyway, and he will never
+  // tell you what it is: he knocks before the moves that come from being pushed —
+  // not before the moves that come from good cards. It is on the ledger both times.
+  const fromPressure = (m.op==='raise' && m.n===3) || (m.op==='see' && (G.wonMe===4||G.wonThem===4));
+  if(fromPressure && RNG()<0.75){
+    beat('them','knocks the table',0);
+  } else if(m.op!=='fold' && RNG()<0.06){
+    beat('them','knocks the table',0);          // and sometimes for nothing, so it is not a tell you can trust absolutely
+  }
+  const did = {fold:'He folds.', match:o>0?('He matches — '+o+'.'):'He stays.',
+               raise:'He raises '+m.n+'.',
+               // owing nothing, seeing is free — "he pays 0 to see" is not a sentence
+               see:o>0 ? ('He pays '+(o*2)+' to see.') : 'He turns them over.'}[m.op];
+  // The deed first, then the line if he has one. Silence is his; confusion is ours.
+  const tell = () => say(m.line ? did+'  “'+m.line+'”' : did, !m.line);
+  if(m.op==='fold'){ beat('them','folded',0,m.line); G.busy=false; tell(); return endHand('me','he folded'); }
+  if(m.op==='match'){ pay('them',o); beat('them', o>0?'matched':'stayed', o, m.line); }
+  if(m.op==='raise'){ pay('them',o+m.n); G.raisesThem++; beat('them','raised '+m.n, o+m.n, m.line); }
+  if(m.op==='see'){ pay('them',o*2); beat('them', o>0?'paid to see':'turned them over', o*2, m.line); G.busy=false; tell(); return showdown('them'); }
+  tell();
+  G.turn='me'; G.busy=false; paint();
+}
+
+/* ⭐ The mechanic the whole game rests on: if you pay to see and lose, you are
+   told that you lost and nothing else. What they held is not yours to know. */
+function showdown(seer){
+  G.busy=true;
+  const paid = (seer==='me' ? G.inMe : G.inThem) > (seer==='me' ? G.inThem : G.inMe);
+  const a=score(G.me), b=score(G.them), d=beats(a,b);
+  const seenWins = d===0 ? true : (seer==='me' ? d<0 : d>0);   // ties go to the seen
+  const winner = seenWins ? (seer==='me'?'them':'me') : seer;
+  const iWon = winner==='me';
+  const showTheirs = !(seer==='me' && !iWon);                   // never, if you saw and lost
+
+  const m=$('handModal');
+  m.innerHTML =
+    '<h2>'+(paid ? (seer==='me'?'You paid to see.':'He paid to see.')
+                 : (seer==='me'?'You turned them over.':'He turned them over.'))+'</h2>'+
+    '<p class="lede">'+(d===0?'A tie — and a tie goes to the one who was seen.':'')+'</p>'+
+    '<div class="reveal">'+
+      '<div class="col"><span class="tag">YOU · '+a.name+'</span><div class="hand" id="rvMe"></div></div>'+
+      '<div class="col"><span class="tag">NOKE'+(showTheirs?' · '+b.name:'')+'</span>'+
+        (showTheirs?'<div class="hand" id="rvThem"></div>'
+                   :'<div class="hidden-hand">He takes the pot and puts the three cards back in the deck face down.<br><br><b>You paid to find out, and you are told only that you lost.</b><br>Not this hand. Not later.</div>')+
+      '</div>'+
+    '</div>'+
+    (showTheirs ? '<p class="wholost">'+esc(why(a,b))+'</p>' : '')+
+    '<div class="verdict '+(iWon?'win':'loss')+'">'+(iWon?'You take '+G.pot+'.':'He takes '+G.pot+'.')+'</div>'+
+    '<div class="row"><button class="act primary" id="handGo">Next hand</button></div>';
+  $('rvMe') && G.me.forEach(c=>$('rvMe').appendChild(cardEl(c,true)));
+  $('rvThem') && G.them.forEach(c=>$('rvThem').appendChild(cardEl(c,true)));
+  $('handGo').onclick=()=>{ $('handBack').classList.remove('open'); settle(winner, seer==='me'?(iWon?'you saw, and won':'you saw, and lost'):(iWon?'he saw, and lost':'he saw, and won'), !showTheirs); };
+  $('handBack').classList.add('open');
+}
+
+function endHand(winner, how){ G.busy=true; settle(winner, how, false); }
+
+function settle(winner, how, neverShown){
+  // A hand pays out once. Two clicks on Next, or a fold racing a showdown, must not
+  // score twice — the autoplay harness found exactly that.
+  // ⚠️ Release the lock BEFORE the guard: an early return that skips it deadlocks the
+  // table, which is the bug the first version of this guard introduced.
+  G.busy=false;
+  if(G.settled) return;
+  G.settled=true;
+  if(winner==='me'){ G.wonMe++; G.won+=G.pot; } else { G.wonThem++; G.lost+=G.pot; }
+  beat(winner, (winner==='me'?'take the pot — ':'takes the pot — ')+how + (neverShown?' · he never showed':''), 0);
+  G.log.push({k:winner==='me'?'win':'loss',
+              t:'Hand '+G.hand+' — '+(winner==='me'?'you':'Noke')+' took '+G.pot+', '+how,
+              n:neverShown?'he never showed':''});
+  G.busy=false;
+  if(G.wonMe>=5||G.wonThem>=5) return finish();
+  setTimeout(betweenHands, 420);
+}
+
+/* ⭐ The jackpot is the one thing in Squint that is NEGOTIATED rather than bet. Both must
+   agree; refusing is free; the winner of the SERIES takes it. So whoever is ahead has every
+   reason to refuse, and proposing against your own position is therefore the deviation —
+   and the deviation is the character. (BRIEFING §3.3, OPEN-QUESTIONS C1.) */
+function betweenHands(){
+  const a=$('acts'); a.innerHTML='';
+  const box=document.createElement('div');
+  box.className='jackbox';
+  box.innerHTML='<p><b style="font-weight:500">Between hands.</b> Either of you may propose '+
+    'adding to the jackpot. <b style="font-weight:500">It only happens if he agrees</b>, and '+
+    'refusing costs nothing. Whoever takes the series takes the jackpot.</p>'+
+    '<div class="opts" id="jopts"></div>';
+  a.appendChild(box);
+  const opts=box.querySelector('#jopts');
+  [1,2,3,5].forEach(n=>{
+    const b=document.createElement('button');
+    b.className='act';
+    b.innerHTML='Propose '+n+'<span class="sub">each, if he agrees</span>';
+    b.onclick=()=>proposeJackpot(n);
+    opts.appendChild(b);
+  });
+  const stop=document.createElement('button');
+  stop.className='act';
+  stop.innerHTML='Agree to stop<span class="sub">splits what is in</span>';
+  stop.onclick=()=>proposeStop();
+  opts.appendChild(stop);
+  const walk=document.createElement('button');
+  walk.className='act';
+  walk.innerHTML='Walk away<span class="sub">forfeits everything</span>';
+  walk.onclick=()=>walkAway();
+  opts.appendChild(walk);
+  const skip=document.createElement('button');
+  skip.className='act primary';
+  skip.textContent='Deal the next hand';
+  skip.onclick=()=>deal();
+  opts.appendChild(skip);
+  say('', true);
+  paintRail();
+}
+
+function nokeJackpot(n){
+  // Ahead, he has least reason to agree. Behind, most. One from losing, he wants a bigger end.
+  let yes = 0.25 + (G.wonThem - G.wonMe)*0.22 - n*0.04;
+  if(G.wonMe===4) yes += 0.28;
+  if(G.knocks>=3) yes -= 0.15;
+  return RNG() < Math.max(0.05, Math.min(0.9, yes));
+}
+
+function afterProposal(){
+  const b=document.createElement('button');
+  b.className='act primary'; b.textContent='Deal the next hand'; b.onclick=()=>deal();
+  $('acts').appendChild(b);
+}
+
+function proposeJackpot(n){
+  $('acts').innerHTML=''; say('You put it to him.', true);
+  setTimeout(()=>{
+    if(nokeJackpot(n)){
+      G.jackpot += n*2; G.committedMe += n; G.committedThem += n; G.jackAgreed++;
+      say(pick(['“All right. In.”','“Yes. Make it worth the evening.”','“Agreed.”']));
+      G.log.push({k:'', t:'Jackpot — you proposed '+n+' each, he agreed. It stands at '+G.jackpot+'.', n:''});
+    } else {
+      G.jackRefused++;
+      say(pick(['“No. I am comfortable.”','“I would rather not.”','“Ask me when it is closer.”']));
+      G.log.push({k:'', t:'Jackpot — you proposed '+n+' each. He refused; it cost you nothing.', n:''});
+    }
+    paintRail(); drawLog(); afterProposal();
+  }, 700);
+}
+
+function proposeStop(){
+  $('acts').innerHTML=''; say('You offer to call it.', true);
+  setTimeout(()=>{
+    // Ahead, he has no reason to agree to a split.
+    const yes = RNG() < Math.max(0.05, 0.45 + (G.wonMe - G.wonThem)*0.18);
+    if(yes){
+      G.log.push({k:'', t:'You both agreed to stop. The jackpot of '+G.jackpot+' was split.', n:''});
+      return finish('stopped');
+    }
+    say(pick(['“No. We finish it.”','“You are not leaving on level terms.”','“Deal them.”']));
+    G.log.push({k:'', t:'You offered to stop. He refused.', n:''});
+    drawLog(); afterProposal();
+  }, 700);
+}
+
+function walkAway(){
+  if(!confirm('Walking away forfeits everything you have put in — '+G.committedMe+
+              ', and the stake. He takes it. Are you standing up?')) return;
+  G.log.push({k:'loss', t:'You stood up and walked away. Everything committed is forfeit.', n:''});
+  finish('walked');
+}
+
+/* The rail numbers, paintable when no hand is live. */
+function paintRail(){
+  if(!$('cJack')) return;
+  const net = G.won - G.committedMe;
+  $('cJack').textContent = G.jackpot;
+  $('cMe').textContent   = G.committedMe;
+  $('cWon').textContent  = G.won;
+  $('cNet').textContent  = (net>0?'+':'')+net;
+  $('cNet').className    = net>0?'up':(net<0?'down':'');
+}
+
+function finish(how){
+  G.over=true;
+  const iWon = how==='walked' ? false : (how==='stopped' ? null : G.wonMe>=5);
+  const m=$('handModal');
+  if(iWon===true) G.won += G.jackpot;
+  else if(iWon===null) G.won += Math.floor(G.jackpot/2);
+  const head = iWon===null ? 'You called it, and he agreed.'
+             : how==='walked' ? 'You stood up.'
+             : iWon ? 'You took the series.' : 'He took the series.';
+  m.innerHTML='<h2>'+head+'</h2>'+
+    '<p class="lede">'+G.wonMe+' to '+G.wonThem+'.</p>'+
+    (G.jackpot ? '<p style="color:var(--bone)">The jackpot stood at <b style="color:var(--ember);font-weight:600">'+
+      G.jackpot+'</b>. '+(iWon===null?'Split, by agreement.':(iWon?'Yours.':'His.'))+'</p>' : '')+
+    (G.jackRefused ? '<p class="fine" style="text-transform:none;letter-spacing:.02em;font-size:12.5px;line-height:1.7">HE REFUSED THE JACKPOT '+
+      G.jackRefused+(G.jackRefused===1?' TIME':' TIMES')+(G.jackAgreed?' AND AGREED '+G.jackAgreed:'')+
+      '. WHEN A MAN AGREES TO MAKE A THING BIGGER, HE IS TELLING YOU WHERE HE THINKS HE STANDS.</p>' : '')+
+    '<p style="color:var(--bone)">The stake was <b style="font-weight:500">'+esc(G.stakeWords)+'</b>, and the game does not adjudicate what that means. '+
+    (iWon===null?'Nobody collects it.':(iWon?'It is yours to collect.':'It is his to collect.'))+'</p>'+
+    (how!=='walked' ? '<p style="color:var(--bone-2)">'+(iWon?'He wants another. ':'You may want another. ')+
+      '<b style="color:var(--bone);font-weight:500">The loser usually does, and the winner can walk</b> — which is where the stake climbs.</p>' : '')+
+    '<p class="fine" style="margin-top:18px">THE DEAL, NOW CHECKABLE — secret number <b style="color:var(--gold)">'+SEED+'</b>, fingerprint <b style="color:var(--gold)">'+fingerprint(SEED)+'</b>, published before the first card. Nothing was restacked.</p>'+
+    (G.knocks?'<p class="fine">YOU KNOCKED THE TABLE '+G.knocks+(G.knocks===1?' TIME. IT MEANT WHATEVER YOU MEANT BY IT.':' TIMES. THEY MEANT WHATEVER YOU MEANT BY THEM.')+'</p>':'')+
+    '<div class="row"><button class="act primary" onclick="location.reload()">Another series</button></div>';
+  $('handBack').classList.add('open');
+  paint();
+}
+
+function deal(){
+  G.hand++;
+  G.dealer = G.dealer==='me' ? 'them' : 'me';
+  const d=freshDeck();
+  G.me=d.slice(0,3); G.them=d.slice(3,6);
+  G.pot=0; G.inMe=0; G.inThem=0; G.raisesMe=0; G.raisesThem=0; G.settled=false; G.beats=[]; G.knocksHand=0;
+  G.blindMe=false; G.blindThem=RNG()<0.18; G.lookedMe=true;
+  // The dealer puts up 1, the other puts up 2. The dealer speaks first.
+  const dealerSays = G.dealer==='me' ? 'deal, and put up' : 'deals, and puts up';
+  pay(G.dealer, 1);  beat(G.dealer, dealerSays, 1);
+  const other = G.dealer==='me'?'them':'me';
+  pay(other, 2);     beat(other, other==='me' ? 'put up' : 'puts up', 2);
+  G.turn = G.dealer;
+  say(G.blindThem ? 'He puts his three down without looking at them.' : '', true);
+
+  G.lookedMe=false; G.choosing=true;
+  paint();
+  $('meRank').textContent='face down — look at them, or declare blind';
+}
+function begin(){
+  paint();
+  if(G.turn==='them'){ G.busy=true; setTimeout(theirTurn,620); }
+}
+
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/* ── boot ──────────────────────────────────────────────────────────────── */
+/* Size is the reader's, not mine. `zoom` scales the whole layout rather than only the
+   type, so the cards and the ledger keep their proportions — and it survives a reload. */
+(function(){
+  const KEY='squint.zoom';
+  let z = 1;
+  try { z = parseFloat(localStorage.getItem(KEY)) || 1; } catch(e){}
+  function apply(){
+    z = Math.max(0.7, Math.min(1.8, Math.round(z*20)/20));
+    document.documentElement.style.zoom = z;
+    $('zNow').textContent = Math.round(z*100)+'%';
+    try { localStorage.setItem(KEY, String(z)); } catch(e){}
+  }
+  $('zIn').onclick  = () => { z += 0.1; apply(); };
+  $('zOut').onclick = () => { z -= 0.1; apply(); };
+  apply();
+})();
+
+$('rulesBtn').onclick=()=>{
+  const HELP = [
+    ['Running flush','three in a row, all one suit','5 6 7 of Cups','about 1 hand in 300'],
+    ['Prial','three of the same number','7 7 7','about 1 in 250'],
+    ['Flush','three of one suit, any numbers','2 9 5 of Rods','about 1 in 22'],
+    ['Run','three in a row, suits do not matter','8 9 10','about 1 in 21'],
+    ['Pair','two of the same number','4 4 9','about 1 in 5'],
+    ['High card','none of the above','2 7 10','2 hands in every 3']
+  ];
+  $('rulesModal').innerHTML='<h2>What beats what</h2>'+
+    '<p class="lede">Best at the top. <b style="font-style:normal;color:var(--bone);font-weight:500">The order is rarity</b> — the harder a hand is to be dealt, the more it beats. Big numbers do not win. Unlikely shapes do.</p>'+
+    '<ul class="ranks">'+
+    HELP.map(function(r){ return '<li><div class="r1"><b>'+r[0]+'</b><em>'+r[3]+'</em></div>'+
+      '<div class="r2">'+r[1]+' &nbsp;·&nbsp; <span class="eg">'+r[2]+'</span></div></li>'; }).join('')+
+    '</ul>'+
+    '<p style="color:var(--bone-2)"><b style="color:var(--bone);font-weight:500">A flush beats a run, and a running flush beats a prial.</b> Other three-card games put those the other way round. In a forty-card deck this is simply which is harder to hold — counted, not inherited.</p>'+
+    '<p style="color:var(--bone-2)"><b style="color:var(--bone);font-weight:500">Runs do not wrap.</b> 1-2-3 up to 8-9-10. 9-10-1 is nothing at all.</p>'+
+    '<p style="color:var(--bone-2)">Two hands of the same kind break on the highest card, then the second, then the third. <b style="color:var(--bone);font-weight:500">A dead tie goes to whoever was seen</b> — not to the one who paid to look.</p>'+
+    '<div class="row"><button class="act primary" id="rulesClose">Back to it</button></div>';
+  $('rulesClose') && ($('rulesClose').onclick=function(){ $('rulesBack').classList.remove('open'); });
+  $('rulesBack').classList.add('open');
+};
+$('rulesBack').onclick=e=>{ if(e.target===$('rulesBack')) $('rulesBack').classList.remove('open'); };
+
+$('startGo').onclick=()=>{
+  G.stakeWords = $('stakeIn').value.trim() || 'one question, answered honestly';
+  SEED = (Date.now() ^ Math.floor(Math.random()*4294967296)) >>> 0;
+  RNG = mulberry(SEED);
+  $('fingerprint').textContent='THE DEAL IS SHUFFLED FROM A SECRET NUMBER. ITS FINGERPRINT, PUBLISHED NOW: '+fingerprint(SEED)+' — THE NUMBER ITSELF IS REVEALED WHEN THE SERIES ENDS, SO THE DEAL CAN BE CHECKED AFTERWARDS.';
+  $('startBack').classList.remove('open');
+  G.dealer='me';            // flips on the first deal, so Noke deals hand 1
+  deal();
+};
+/* The stake ladder, BRIEFING §3.3. Every legend in this shape — Midir and Eochaid,
+   Yudhishthira, Odin and Vafthrudnir — is about the rung somebody reached that they had
+   no right to. So the last one is on the list, and it is not a joke. */
+const RUNGS = [
+  ['Coin',        'a few marks across the table',        'nothing that matters'],
+  ['A possession','something of yours he can hold',      'you will miss it'],
+  ['A favour',    'one thing asked, later, unspecified', 'he decides when'],
+  ['An answer',   'one question, answered honestly',     'he chooses the question'],
+  ['A secret',    'a thing you have told nobody',        'you cannot take it back'],
+  ['Not yours',   'something that was never yours to wager', 'do not']
+];
+(function(){
+  const ul=$('rungs');
+  RUNGS.forEach((r,i)=>{
+    const li=document.createElement('li');
+    li.setAttribute('aria-selected', String(i===3));
+    li.innerHTML='<span class="n">'+(i+1)+'</span><span class="t">'+r[0]+'</span><span class="d">'+r[2]+'</span>';
+    li.onclick=()=>{
+      G.rung=i;
+      [...ul.children].forEach((c,j)=>c.setAttribute('aria-selected', String(j===i)));
+      $('stakeIn').value = r[1];
+    };
+    ul.appendChild(li);
+  });
+})();
+
+$('startBack').classList.add('open');
+paint();
+</script>
+</body>
+</html>
