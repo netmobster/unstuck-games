@@ -119,7 +119,87 @@ the room was empty.
 
 ---
 
-# Next, in order
+# ⛔ Second run, 2026-09-20 — Jay played it, and it is worse than one turn suggested
+
+**Not flat prose. Something else, and it has a name:**
+
+> ### She is not running a game. She is writing a short story with the player's character in it.
+
+## What happened
+
+> *"Wick carefully examines the box… He notices a small latch… He gently presses it… Wick
+> reaches in to touch the crystal, and as his fingers make contact, the room is suddenly
+> filled with a bright, blinding light… they find themselves in a completely different
+> place."*
+
+1. ⛔ **She played several of Wick's turns for him**, deciding what he examined, noticed,
+   pressed and touched. **The player types, and she takes the character off them.**
+2. ⛔ **She left the room.** The fixture is one room; that is its entire premise. She
+   invented a glowing box, a crystal, and a teleport, in turn two.
+3. **75 facts** across a handful of turns, almost all of them transcript — *"the rain
+   outside picks up"*, *"the stove takes both coal and wood"*.
+
+## ⭐ And the thing the state caught, which is new
+
+```
+where: "The weighbridge house at Corrow Gap. Night, hard rain, the road shut."
+```
+
+**The scene never moved.** Moving the party requires a `state` call she did not make, so
+the server correctly refused — **and she narrated the teleport anyway.**
+
+> **The prose and the record now disagree, and the record is right.**
+
+⚠️ **That is a new failure mode.** Not a leak, not flat writing: **fiction that contradicts
+the world it claims to describe.** The fog gate has nothing to say about it, because
+nothing was revealed — something was invented.
+
+## ⛔ And my instrument was flattering me
+
+It reported **6 named actors out of a possible 4**, every turn, including that one. The
+`ROSTER` listed surname fragments separately, so *"Hesper Vane"* scored two and *"Tam
+Rowle"* scored two.
+
+**Replaying Jay's actual turn against the corrected instrument:**
+
+```
+acted=0/4 (nobody)   pc-as-subject=1
+```
+
+**Nobody in the room did anything at all**, in a turn my instrument had called a six.
+⭐ **An instrument that flatters is worse than no instrument**, and this one flattered for
+three turns before a human looked at the screen and said it was wrong.
+
+**Now counted per turn:** named actors out of four · **PC-as-subject** · beat count · fact
+count · turns since anything arrived. And it prints
+`SHE IS PLAYING THE PLAYER` when that count reaches two, because that is the fault and the
+prose is not.
+
+## Also fixed: the table itself
+
+`.page` is a three-row grid (head / stream / composer) and `min-height` let the middle row
+**grow** rather than scroll — so the composer walked down the page and the UI moved under
+the player between turns. The page is now bounded to the viewport and the transcript
+scrolls inside its own frame. *(This one is in `web/static/table.html`, not the fixture —
+it is a real bug and it was never about the AI.)*
+
+---
+
+# ⚠️ Revised next steps
+
+1. ⛔ **Stop her playing the player.** The contract already forbids it in plain words and
+   she does it anyway — **so it wants a control, not a rule.** The narration already passes
+   through a gate; counting sentences whose subject is the PC is the same shape.
+2. ⛔ **Stop her leaving the room.** The state refuses to move; the prose should be held to
+   the same refusal. ⭐ **The `where` on record is checkable against what she wrote**, which
+   makes this the rare craft problem with an exact test.
+3. **A fact is about the world.** Weather is not a fact.
+4. **Hold her to the beat length.**
+5. **Then re-run both recorded turns** and compare.
+
+---
+
+# Next, in order (superseded by the revised list above)
 
 1. ⛔ **Stop her playing Wick.** Almost certainly needs a control rather than a rule, since
    the rule exists and is being broken. The narration already passes through the fog gate;

@@ -133,23 +133,44 @@ they did not give you, and something moves."""
     dm.system_prompt = system_prompt
 
     # ── 4 · the instrument. Counts; never gates. ─────────────────────────────
-    ROSTER = ["hesper", "vane", "tam", "rowle", "nib", "oksa"]
+    # ⚠️ People, not tokens. The first version listed surname fragments separately, so
+    #    "Hesper Vane" scored 2 and "Tam Rowle" scored 2 — and every turn reported 6
+    #    named actors out of a possible 4. An instrument that flatters is worse than none.
+    ROSTER = {"hesper-vane": r"hesper|vane", "tam-rowle": r"tam\b|rowle",
+              "nib": r"\bnib\b", "oksa": r"\boksa\b"}
     _take = dm.take_turn
 
     def take_turn(campaign, history, said):
         out = _take(campaign, history, said)
         prose = " ".join(b.get("text", "") for b in out.get("beats", [])
                          if b.get("kind") == "dm")
-        acted = sorted({n for n in ROSTER if re.search(rf"\b{n}\b", prose, re.I)})
+        acted = sorted(who for who, pat in ROSTER.items() if re.search(pat, prose, re.I))
         QUIET["n"] = 0 if len(acted) >= 2 else QUIET["n"] + 1
+
+        # ⛔ Is she running the player's character? One sentence with the PC as subject is
+        #    narrating a consequence. Five is her taking his turn, which Jay hit on turn 2.
+        pc = (campaign.sheet() or {}).get("name") or "Wick"
+        subj = len(re.findall(pc + r"\s+\w+s\b", prose))
+        subj += len(re.findall(r"\bHe\s+(?:nods|reaches|considers|glances|turns|wonders|"
+                               r"notices|presses|examines|steps|takes|decides)\b", prose))
+        # ⚠️ And is the prose still in the room the state says it is in?
+        where = str((campaign.scene() or {}).get("where") or "")
+        facts_now = len(dice.read(campaign.facts_file))
+
         try:
             dice.note(campaign.ledger, "responsiveness",
-                      f"{len(acted)} named present acted: {', '.join(acted) or 'nobody'}",
-                      s=campaign.session, quiet_turns=QUIET["n"])
+                      f"{len(acted)} of 4 named present acted: {', '.join(acted) or 'nobody'}",
+                      s=campaign.session, quiet_turns=QUIET["n"], pc_as_subject=subj)
         except Exception:
             pass
-        print(f"  [instrument] named-who-acted={len(acted)} ({', '.join(acted) or 'nobody'})"
-              f"  quiet_turns={QUIET['n']}", flush=True)
+        print(f"  [instrument] acted={len(acted)}/4 ({', '.join(acted) or 'nobody'})"
+              f"  pc-as-subject={subj}  beats={len(out.get('beats', []))}"
+              f"  facts={facts_now}  quiet={QUIET['n']}", flush=True)
+        if subj >= 2:
+            print("               ^ SHE IS PLAYING THE PLAYER. "
+                  "That is the fault, not the prose.", flush=True)
+        if where:
+            print(f"               room on record: {where[:58]}", flush=True)
         return out
 
     dm.take_turn = take_turn
