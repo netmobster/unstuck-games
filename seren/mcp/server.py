@@ -183,6 +183,19 @@ def seren_recall(session: int) -> str:
     return _run(T.recall, session)
 
 
+# ── drop-ins ─────────────────────────────────────────────────────────────────
+
+@mcp.tool(description="People, places and threats that can be brought into this campaign mid-session.")
+def seren_dropins() -> str:
+    return _run(T.dropins)
+
+
+@mcp.tool(description=("Bring a drop-in into the open campaign. It arrives in the world, not the "
+                       "scene: you get its hooks and use one when the story allows."))
+def seren_bring(dropin: str) -> str:
+    return _run(T.bring, dropin)
+
+
 # ── writes ───────────────────────────────────────────────────────────────────
 
 @mcp.tool(description=("Ask for dice when the outcome is in doubt. The server rolls and writes "

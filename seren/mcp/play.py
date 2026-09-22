@@ -324,6 +324,59 @@ class Table:
         self._wrote(fact=False)
         return {"ruled": out}
 
+    # ── drop-ins (MARKETPLACE-IDEAS.md: "the one contract every drop-in follows") ──
+    def dropins(self) -> dict:
+        out = []
+        for p in sorted(DROPINS.glob("*.md")):
+            fm, _ = _dropin(p)
+            out.append({"slug": fm.get("slug") or p.stem, "kind": fm.get("kind"),
+                        "name": fm.get("name"), "pitch": fm.get("pitch"), "fits": fm.get("fits")})
+        return {"dropins": out[:PAGE]}
+
+    def bring(self, slug: str) -> dict:
+        """Load a drop-in into the open campaign, mid-session.
+
+        Public half → canon/characters/ (player-visible, searchable).
+        Private half and exits → canon/antagonists/, which the ENGINE counts as DM-side, so
+        seren_secrets returns it and fog.check compares narration against it from now on.
+        The hooks go back to the DM: a door, not an instruction to use it this turn.
+        """
+        camp = self._need()
+        path = DROPINS / f"{re.sub(r'[^a-z0-9-]', '', slug.lower())}.md"
+        if not path.is_file():
+            raise Refused(f"there is no drop-in called {slug!r}. Call seren_dropins to see them.")
+        fm, sections = _dropin(path)
+        hits = injection_scan(path.read_text(encoding="utf-8", errors="ignore"))
+        if hits:
+            raise Refused("this drop-in was not loaded: it contains text aimed at a model rather "
+                          "than a player (" + "; ".join(hits[:3]) + "). It needs a human to look at it.")
+        levels = (fm.get("fits") or {}).get("levels") or [1, 20]
+        level = _party_level(camp)
+        if level and not (levels[0] <= level <= levels[-1]):
+            raise Refused(f"{fm.get('name')} fits levels {levels[0]}–{levels[-1]}; this party is "
+                          f"level {level}. Not loaded.")
+        name = fm.get("name") or slug
+        public = camp.root / "canon" / "characters" / f"{fm.get('slug') or slug}.md"
+        private = camp.root / "canon" / "antagonists" / f"{fm.get('slug') or slug}.md"
+        if public.exists() or private.exists():
+            raise Refused(f"{name} is already in this campaign.")
+        public.parent.mkdir(parents=True, exist_ok=True)
+        private.parent.mkdir(parents=True, exist_ok=True)
+        public.write_text(f"# {name}\n\n*{fm.get('pitch', '')}*\n\n{sections.get('public', '')}\n",
+                          encoding="utf-8")
+        private.write_text(
+            f"---\nname: \"{name}\"\nslug: \"{fm.get('slug') or slug}\"\ntier: drop-in\n---\n\n"
+            f"{sections.get('private', '')}\n\n## Exits\n\n{sections.get('exits', '')}\n",
+            encoding="utf-8")
+        dice.note(camp.ledger, "dropin", f"{name} brought into the campaign ({fm.get('author', '?')}).",
+                  s=camp.session)
+        self._wrote(fact=False)
+        return {"arrived": name, "kind": fm.get("kind"),
+                "hooks": sections.get("enters", ""),
+                "read_this": ("They are in the world now, not yet in the scene. Pick a hook when the "
+                              "story allows; there is no hurry. Their private side is in "
+                              "seren_secrets, under the same rule as everything else there.")}
+
     # ── the call log ─────────────────────────────────────────────────────────
     def log_call(self, tool: str, refused: bool) -> None:
         """One line per tool call: which tool, when, refused or not.
@@ -410,8 +463,14 @@ class Table:
         if not narration:
             return []
         flags = []
-        leaks = fog.check(narration, camp.dm_side())
+        dm_side = camp.dm_side()
+        leaks = fog.check(narration, dm_side)
         leaks = [l for l in leaks if not _table_talk(l)]
+        # fog.check matches whole LINES of the DM side. Markdown wraps mid-sentence and
+        # starts lines with labels ("**Knows.** The grain factor…"), so a secret narrated
+        # word for word can still match no line. Found 2026-09-22 with Mother Aldous.
+        # Sentence-level overlap closes that; the engine is not changed.
+        leaks += _sentence_leaks(narration, dm_side)
         if leaks:
             flags.append("possible leak: " + "; ".join(leaks[:3]))
         pc = (camp.sheet() or {}).get("who") or ""
@@ -491,6 +550,78 @@ for. Never decide what {pc} does, says, notices or feels: describe the world, th
 
 Two or three paragraphs a turn, then stop and leave the next move to the player.
 """.strip()
+
+
+# ── drop-in helpers ──────────────────────────────────────────────────────────
+
+DROPINS = HERE / "dropins"
+
+# The injection scan (WEBSITE.md §6). Text aimed at a model, not a player. It will not
+# catch everything; the marketplace threat model decides whether it is enough. Run on
+# first-party drop-ins too, so the check exists before strangers can publish.
+INJECTION = [
+    (re.compile(r"\bignore (?:all |any |your |the )?(?:previous|prior|above|rules|instructions)\b", re.I), "tells the model to ignore its instructions"),
+    (re.compile(r"\b(?:assistant|claude|chatgpt|the model|language model|system prompt)\b", re.I), "addresses the model"),
+    (re.compile(r"\bseren_[a-z_]+\b|\btool(?:s)? call\b|\bcall the\b", re.I), "names a tool or asks for a call"),
+    (re.compile(r"https?://|www\.", re.I), "contains a link"),
+    (re.compile(r"\b(?:gmail|email|inbox|drive|calendar|slack)\b", re.I), "mentions the player's other services"),
+]
+
+
+_STOP = set("the a an and or but of to in on at by for with from that this was were is are be "
+            "been has have had not no his her their they them she he it its into than then there "
+            "what who when where which while about over under after before".split())
+
+
+def _words(text: str) -> set:
+    return {w for w in re.findall(r"[a-z']{4,}", text.lower()) if w not in _STOP}
+
+
+def _sentence_leaks(narration: str, dm_side: str, need: float = 0.7, min_words: int = 6) -> list[str]:
+    """DM-side sentences whose content words mostly appear in the narration."""
+    said = _words(narration)
+    flat = re.sub(r"[*_`#>|-]+", " ", dm_side.replace("\n", " "))
+    out = []
+    for s in re.split(r"(?<=[.!?])\s+", flat):
+        w = _words(s)
+        if len(w) >= min_words and len(w & said) / len(w) >= need:
+            out.append(f'a DM-side sentence, mostly restated: "{s.strip()[:70]}…"')
+            if len(out) >= 3:
+                break
+    return out
+
+
+def injection_scan(text: str) -> list[str]:
+    return [why for pat, why in INJECTION if pat.search(text)]
+
+
+def _dropin(path: Path) -> tuple[dict, dict]:
+    import yaml
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    m = re.match(r"^---\s*\n(.*?)\n---\s*\n", text, re.S)
+    fm = (yaml.safe_load(m.group(1)) or {}) if m else {}
+    body = text[m.end():] if m else text
+    sections, cur = {}, None
+    for line in body.splitlines():
+        if line.startswith("## "):
+            cur = line[3:].strip().lower()
+            sections[cur] = []
+        elif cur:
+            sections[cur].append(line)
+    return fm, {k: "\n".join(v).strip() for k, v in sections.items()}
+
+
+def _party_level(camp) -> int | None:
+    import yaml
+    slug = (camp.sheet() or {}).get("slug")
+    p = camp.root / "builds" / f"{slug}.md"
+    if not slug or not p.is_file():
+        return None
+    m = re.search(r"^---\s*\n(.*?)\n---", p.read_text(encoding="utf-8", errors="ignore"), re.S | re.M)
+    try:
+        return int((yaml.safe_load(m.group(1)) or {}).get("level")) if m else None
+    except (TypeError, ValueError):
+        return None
 
 
 # ── helpers ──────────────────────────────────────────────────────────────────
