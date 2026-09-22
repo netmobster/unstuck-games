@@ -159,6 +159,33 @@ check("dropin: injection scan passes Mother Aldous",
       not play.injection_scan((HERE / "dropins" / "mother-aldous.md").read_text(encoding="utf-8")))
 d.lock.release()
 
+# 14 · the judge: its verdicts reach the DM once, on the next tool result
+import judge  # noqa: E402
+j = play.Table(account="tester", holder="check:judge")
+j.open(stage.SLUG, takeover=True)
+check("judge: regex is the default with no key", j.judge.name == "regex")
+j.sync({"narration": ["Wick nods at Hesper. Wick reaches for the satchel and opens it."]})
+notes = j.take_notes()
+check("judge: acting for the PC becomes a note to the DM", any("Wick" in n and "player's" in n for n in notes), str(notes)[:90])
+check("judge: a note is delivered once", j.take_notes() == [])
+j.sync({"narration": ["Nib shrugs. The scale creaks under the floor."]})
+check("judge: clean narration, no note", j.take_notes() == [])
+
+
+class _Loud(judge.Judge):
+    name = "loud"
+    def ask(self, state, questions):
+        return [judge.Verdict(q.id, 0.95, self.name) for q in questions]
+
+
+j.judge = _Loud()
+try:
+    j.fact({"op": "establish", "fact": "The rain outside picks up.", "visibility": "known", "src": "play"})
+    check("judge: a confident 'noise' verdict refuses the fact", False)
+except play.Refused as exc:
+    check("judge: a confident 'noise' verdict refuses the fact", "session noise" in str(exc))
+j.lock.release()
+
 # 12 · the scorer finds each failure it claims to, in a session written to be bad
 import score  # noqa: E402
 bad = play.Table(account="intruder", holder="check:bad")

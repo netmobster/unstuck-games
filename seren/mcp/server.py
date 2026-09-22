@@ -76,6 +76,9 @@ def _out(payload: Any) -> str:
     ask = T.asks()
     if ask:
         payload["seren_asks"] = ask
+    notes = T.take_notes()
+    if notes:
+        payload["seren_notes"] = notes     # the judge, to the DM: read before the next line
     return json.dumps(payload, ensure_ascii=False, indent=1, default=str)
 
 

@@ -39,6 +39,8 @@ Afterwards: `.venv/Scripts/python score.py .stage/players/tester/the-weighbridge
 | `stage.py` | a disposable content dir: rules, SRD library, the Weighbridge on two shelves |
 | `check.py` | 34 properties the spec promises, no model involved |
 | `wire.py` | a real MCP client over stdio: lists, prompts, calls |
+| `judge.py` | typed questions about narration, answered with a probability. Regex today; Jev's slot is written, its adapter isn't |
+| `judge_eval.py` | 13 hand-labelled lines, real and reworded. The test Jev has to pass before it replaces regex |
 | `score.py` | the seven objective failures from red team #2, off a played session |
 | `MATRIX.md` | the runbook: 8 scripted turns (red team #2), 8 secret attacks (red team #3) |
 | `box/` | setup for a separate `/srv/seren-mcp` on the box: a worktree, a venv, a **disabled** unit |
@@ -56,7 +58,7 @@ Afterwards: `.venv/Scripts/python score.py .stage/players/tester/the-weighbridge
 
 ## Verified (2026-09-22)
 
-- `check.py`: **34/34.** Isolation, fog on every read, refusals as results, the handback
+- `check.py`: **39/39.** Isolation, fog on every read, refusals as results, the handback
   asks and flags, the facts brake, the lock and takeover, dice, the rendered table's leak
   check, close (a leaking chronicle is sent back), rules lookup, drop-ins (public half
   searchable, private half secret, flagged when narrated, injection scan), and the scorer
@@ -82,3 +84,19 @@ Afterwards: `.venv/Scripts/python score.py .stage/players/tester/the-weighbridge
 3. **The engine's `player_view` drops non-party people in `present`.** The Weighbridge
    cast never appeared on the table. Fixed in `tableview.data`; the web table has the
    same gap.
+
+## The judge (2026-09-22)
+
+The handback's checks — acting for the PC, prose against state, a restated secret, a
+fact that is noise, a drop-in that addresses a model — are typed questions in `judge.py`,
+answered by whoever is plugged in. **Verdicts go two places:** the ledger, and a
+`seren_notes` line on the DM's next tool result, so she reads the correction before her
+next line.
+
+**Regex today: 7/13 on `judge_eval.py`** — every clean line right, **0/5 on the reworded
+faults.** That gap is the case for a System One model (Jev). Jev replaces regex only if it
+catches the reworded rows without flagging the clean ones.
+
+**To switch it on:** Jay sets up access and puts the key in `SEREN_JEV_KEY`; CC writes the
+adapter in `JevJudge.ask` against TypeSafe's docs, then sets `SEREN_JEV_READY=1`. Until
+both, nothing calls it.

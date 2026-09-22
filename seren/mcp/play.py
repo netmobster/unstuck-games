@@ -28,6 +28,7 @@ WEB = HERE.parent / "web"
 if str(WEB) not in sys.path:
     sys.path.insert(0, str(WEB))
 
+import judge            # noqa: E402  (this folder)
 import close as _close  # noqa: E402  (engine)
 import dice             # noqa: E402
 import fog              # noqa: E402
@@ -128,6 +129,8 @@ class Table:
     refused_move: str = ""                             # the last `where` the state refused
     asked: int = 0
     answered: int = 0
+    judge: "judge.Judge" = field(default_factory=lambda: judge.pick())
+    notes: list = field(default_factory=list)          # judge → DM, on the next tool result
 
     # ── shelf ────────────────────────────────────────────────────────────────
     def shelf(self, page: int = 1) -> dict:
@@ -286,6 +289,13 @@ class Table:
                 "somebody answered about a stove are not facts. Record only what the next "
                 "session would be wrong without."
             )
+        # The judge's one refusal, and only when it is confident. The regex judge abstains
+        # (it cannot tell weather from a clue), so today the row-count brake above decides.
+        v = self.judge.ask({"fact": str(args.get("fact") or "")}, [judge.FACT_IS_NOISE])[0]
+        if v.p is not None and v.p >= judge.REFUSE_AT:
+            raise Refused("that reads as session noise, not a fact about the world "
+                          f"(p={v.p:.2f}, {v.by}). If the next session would be wrong without it, "
+                          "say why in `how` and send it again.")
         op = str(args.pop("op", "") or "")
         fields = {k: v for k, v in args.items() if v is not None}
         try:
@@ -346,7 +356,11 @@ class Table:
         if not path.is_file():
             raise Refused(f"there is no drop-in called {slug!r}. Call seren_dropins to see them.")
         fm, sections = _dropin(path)
-        hits = injection_scan(path.read_text(encoding="utf-8", errors="ignore"))
+        raw = path.read_text(encoding="utf-8", errors="ignore")
+        hits = injection_scan(raw)
+        v = self.judge.ask({"text": raw}, [judge.ADDRESSES_MODEL])[0]
+        if not hits and v.p is not None and v.p >= judge.FLAG_AT:
+            hits = [f"the judge thinks it addresses a model (p={v.p:.2f}, {v.by})"]
         if hits:
             raise Refused("this drop-in was not loaded: it contains text aimed at a model rather "
                           "than a player (" + "; ".join(hits[:3]) + "). It needs a human to look at it.")
@@ -473,21 +487,34 @@ class Table:
         leaks += _sentence_leaks(narration, dm_side)
         if leaks:
             flags.append("possible leak: " + "; ".join(leaks[:3]))
+
+        # The questions a System One model answers better than regex (judge.py). Whoever
+        # answers, the verdicts become flags in the ledger AND notes the DM reads on its next
+        # tool result: detection that feeds back is a control, not only an instrument.
         pc = (camp.sheet() or {}).get("who") or ""
-        if pc:
-            first = pc.split()[0]
-            subj = len(re.findall(rf"\b{re.escape(first)}\s+\w+s\b", narration))
-            if subj >= 2:
-                flags.append(f"playing the player: {first} is the subject {subj} times")
-        if self.refused_move:
-            words = [w for w in re.findall(r"[a-z]{5,}", self.refused_move.lower())]
-            if any(w in narration.lower() for w in words):
-                flags.append(f"prose against state: narration describes a move the state refused "
-                             f"({self.refused_move[:60]})")
-            self.refused_move = ""
+        where = str((camp.scene() or {}).get("where") or "")
+        hidden = [str(f.get("fact")) for f in dice.read(camp.facts_file)
+                  if str(f.get("visibility") or f.get("to") or "").lower() not in fog.PLAYER_VISIBILITY
+                  and f.get("fact")]
+        state_in = {"narration": narration, "pc": pc, "where": where,
+                    "refused_move": self.refused_move, "hidden": hidden}
+        verdicts = self.judge.ask(state_in, [judge.ACTS_FOR_PC, judge.CONTRADICTS_RECORD,
+                                             judge.RESTATES_SECRET])
+        labels = {"acts_for_pc": "playing the player", "contradicts_record": "prose against state",
+                  "restates_secret": "possible leak"}
+        for v in verdicts:
+            if v.p is not None and v.p >= judge.FLAG_AT:
+                flags.append(f"{labels[v.id]}: {v.why or 'p=%.2f' % v.p} [{v.by}]")
+        self.notes += [n for n in judge.notes_for(verdicts, pc.split(" ")[0]) if n not in self.notes]
+        self.refused_move = ""
         if flags:
             dice.note(camp.ledger, "instrument", " | ".join(flags), s=camp.session)
         return flags
+
+    def take_notes(self) -> list[str]:
+        """What the judge wants the DM to read, once. Attached to the next tool result."""
+        out, self.notes = self.notes, []
+        return out
 
     # ── close ────────────────────────────────────────────────────────────────
     def close(self, hb: dict) -> dict:
@@ -546,6 +573,8 @@ for. Never decide what {pc} does, says, notices or feels: describe the world, th
   leaving. Say the change, never the total. **If it comes back refused, it did not happen.**
 - `seren_fact` — what is true in the world. Not weather, not small talk.
 - `seren_sync` — when a tool result carries `seren_asks`, answer it with this, straight away.
+- `seren_notes` — when a tool result carries these, they are about your last narration. Read
+  them before you write the next line, and correct course inside the fiction.
 - `seren_close` — when the player stops: the chronicle, a short summary, decisions, threads.
 
 Two or three paragraphs a turn, then stop and leave the next move to the player.
