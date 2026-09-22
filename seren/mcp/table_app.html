@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seren Table</title>
+<!--
+  The inline table: an MCP Apps view (ui://seren/table.html). Rendered by the host in a
+  sandboxed iframe beside the chat, where the client supports MCP Apps.
+
+  It speaks only the three messages the ext-apps spec confirms: `ui/initialize`,
+  `ui/notifications/initialized`, and `tools/call` proxied through the host. It pulls its
+  own data by calling `seren_table_data` (app-only), rather than waiting for a host push
+  whose method name we have not verified. Refresh re-pulls.
+
+  Everything it shows has already passed the server's fog check. It never sees DM-side data.
+-->
+<style>
+:root{
+  --bg:#f6f4ef; --ink:#23201b; --soft:#6d665b; --rule:#ddd6c8; --card:#fffdf8;
+  --held:#2f6b43; --fail:#9a3b2c; --accent:#7a5a2a;
+  font:14px/1.45 ui-serif, Georgia, "Times New Roman", serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#1b1a17;--ink:#ece6da;--soft:#a39b8c;--rule:#3a362f;--card:#24221e;--held:#7cc295;--fail:#e0876f;--accent:#d4ad6a}
+}
+:root[data-theme="dark"]{--bg:#1b1a17;--ink:#ece6da;--soft:#a39b8c;--rule:#3a362f;--card:#24221e;--held:#7cc295;--fail:#e0876f;--accent:#d4ad6a}
+body{margin:0;background:var(--bg);color:var(--ink);padding:12px 14px}
+header{display:flex;align-items:baseline;justify-content:space-between;gap:8px;border-bottom:1px solid var(--rule);padding-bottom:6px}
+h1{font-size:15px;margin:0;letter-spacing:.02em}
+.where{color:var(--soft);font-style:italic;margin:6px 0 10px}
+button{font:inherit;font-size:12px;background:none;border:1px solid var(--rule);color:var(--ink);border-radius:4px;padding:2px 8px;cursor:pointer}
+button:focus-visible{outline:2px solid var(--accent);outline-offset:1px}
+section{margin:10px 0}
+h2{font:600 11px/1.2 ui-sans-serif,system-ui,sans-serif;text-transform:uppercase;letter-spacing:.08em;color:var(--soft);margin:0 0 4px}
+.row{display:flex;justify-content:space-between;gap:10px;padding:3px 0;border-bottom:1px dotted var(--rule)}
+.num{font-variant-numeric:tabular-nums;font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12.5px}
+.held{color:var(--held)} .fail{color:var(--fail)}
+.vis{font:600 10px ui-sans-serif,system-ui,sans-serif;letter-spacing:.06em;color:var(--accent);margin-right:6px}
+.note{color:var(--soft);font-size:12.5px}
+</style>
+</head>
+<body>
+<header><h1 id="title">The Seren Table</h1><button id="refresh" type="button">Refresh</button></header>
+<p class="where" id="where">Waiting for the table…</p>
+<section><h2>Party</h2><div id="party"></div></section>
+<section><h2>Present</h2><div id="present"></div></section>
+<section><h2>Dice</h2><div id="rolls"></div></section>
+<section><h2>What you know</h2><div id="facts"></div><p class="note" id="hidden"></p></section>
+<script>
+(function(){
+  var next = 1, waiting = {};
+  function rpc(method, params){
+    var id = next++;
+    return new Promise(function(ok, bad){
+      waiting[id] = {ok: ok, bad: bad};
+      window.parent.postMessage({jsonrpc: "2.0", id: id, method: method, params: params || {}}, "*");
+    });
+  }
+  function notify(method, params){
+    window.parent.postMessage({jsonrpc: "2.0", method: method, params: params || {}}, "*");
+  }
+  window.addEventListener("message", function(ev){
+    var m = ev.data || {};
+    if (m.id && waiting[m.id]){
+      var w = waiting[m.id]; delete waiting[m.id];
+      m.error ? w.bad(m.error) : w.ok(m.result);
+    }
+  });
+  function el(tag, cls, text){ var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function rows(id, items, make){
+    var box = document.getElementById(id); box.textContent = "";
+    if (!items || !items.length){ box.appendChild(el("p", "note", "Nothing yet.")); return; }
+    items.forEach(function(it){ box.appendChild(make(it)); });
+  }
+  function draw(v){
+    if (v.held){ document.getElementById("where").textContent = v.held; return; }
+    document.getElementById("title").textContent = v.title || "The Seren Table";
+    document.getElementById("where").textContent = (v.place || "") + (v.round ? " · round " + v.round : "");
+    rows("party", v.party, function(p){
+      var r = el("div", "row"); r.appendChild(el("span", null, p.name + (p.conditions && p.conditions.length ? " — " + p.conditions.join(", ") : "")));
+      r.appendChild(el("span", "num", p.state || "")); return r; });
+    rows("present", v.present, function(p){ var r = el("div", "row"); r.appendChild(el("span", null, p.who)); r.appendChild(el("span", "note", p.state || "")); return r; });
+    rows("rolls", (v.rolls || []).slice().reverse(), function(x){
+      var r = el("div", "row"); r.appendChild(el("span", null, x.what));
+      r.appendChild(el("span", "num " + (x.ok === true ? "held" : x.ok === false ? "fail" : ""), x.vs + " · " + x.res)); return r; });
+    rows("facts", v.facts, function(f){ var r = el("div"); r.appendChild(el("span", "vis", f.vis)); r.appendChild(document.createTextNode(f.text)); return r; });
+    document.getElementById("hidden").textContent = v.hidden ? v.hidden + " thing(s) you have not found out yet." : "";
+  }
+  function pull(){
+    rpc("tools/call", {name: "seren_table_data", arguments: {}}).then(function(res){
+      var text = (res && res.content && res.content[0] && res.content[0].text) || "{}";
+      try { draw(JSON.parse(text)); } catch(e){ document.getElementById("where").textContent = "The table could not be read."; }
+    }, function(){ document.getElementById("where").textContent = "The table is not reachable from this app."; });
+  }
+  document.getElementById("refresh").addEventListener("click", pull);
+  rpc("ui/initialize", {appCapabilities: {}, clientInfo: {name: "seren-table", version: "0.1.0"}}).then(function(res){
+    var theme = res && res.hostContext && res.hostContext.theme;
+    if (theme === "dark" || theme === "light") document.documentElement.setAttribute("data-theme", theme);
+    notify("ui/notifications/initialized");
+    pull();
+  }, function(){ pull(); });
+})();
+</script>
+</body>
+</html>

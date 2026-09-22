@@ -1,0 +1,18 @@
+# seren-mcp, phase 1 staging. Localhost only: nginx does not route to it and nothing outside
+# the box can reach it until auth exists (MCP-SERVER.md §Auth). Installed disabled.
+[Unit]
+Description=SEREN MCP server (phase 1, localhost only)
+After=network.target
+
+[Service]
+WorkingDirectory=/srv/seren-mcp/seren/mcp
+Environment=SEREN_CONTENT_DIR=/srv/seren-mcp/stage
+Environment=SEREN_ACCOUNT=tester
+Environment=SEREN_PC=wick
+ExecStartPre=/srv/seren-mcp/seren/mcp/.venv/bin/python stage.py --to /srv/seren-mcp/stage --keep
+ExecStart=/srv/seren-mcp/seren/mcp/.venv/bin/python server.py --http 8793
+Restart=on-failure
+User=root
+
+[Install]
+WantedBy=multi-user.target

@@ -46,7 +46,14 @@ async def main() -> int:
             res = await s.call_tool("seren_state", {"op": "move", "where": "x"})
             body = json.loads(res.content[0].text)
             print(f"refused {bool(body.get('refused'))}  asks: {body.get('seren_asks', {}).get('send')}")
-            ok = len(tools) == 14 and {"seren", "seren-close"} <= set(prompts)
+            res = await s.list_resources()
+            uis = [str(r.uri) for r in res.resources if str(r.uri).startswith("ui://")]
+            print(f"ui      {uis}")
+            res = await s.call_tool("seren_table_data", {})
+            view = json.loads(res.content[0].text)
+            print(f"table   {view.get('title')} @ {view.get('place', '')[:40]} · {len(view.get('party', []))} in party · held={'held' in view}")
+            ok = (len(tools) >= 14 and {"seren", "seren-close"} <= set(prompts)
+                  and "ui://seren/table.html" in uis and "party" in view)
             print("WIRE OK" if ok else "WIRE FAIL")
             return 0 if ok else 1
 

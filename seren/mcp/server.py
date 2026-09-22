@@ -22,6 +22,7 @@ from typing import Any, Literal, Optional
 HERE = Path(__file__).resolve().parent
 sys.path.insert(0, str(HERE))
 
+from mcp.server.apps import Apps  # noqa: E402
 from mcp.server.mcpserver import MCPServer  # noqa: E402
 
 import play   # noqa: E402
@@ -30,14 +31,42 @@ import tableview as table  # noqa: E402
 ACCOUNT = os.environ.get("SEREN_ACCOUNT", "tester")
 T = play.Table(account=ACCOUNT, holder=f"mcp:{ACCOUNT}:{os.getpid()}")
 
-mcp = MCPServer(
-    "seren",
-    title="SEREN",
-    instructions=("SEREN is a solo tabletop RPG. You are the Dungeon Master; this server holds "
-                  "the dice, the state and the record. Start with the /seren prompt, or call "
-                  "seren_shelf then seren_open."),
-    version="0.1.0-phase0",
-)
+# The inline table (MCP Apps). Tools bound to it are registered on APPS, and APPS must be
+# fully populated before MCPServer consumes it, so the server is built in main().
+APPS = Apps()
+TABLE_URI = "ui://seren/table.html"
+
+
+class _Deferred:
+    """Collects @mcp.tool / @mcp.prompt registrations until the server exists."""
+    def __init__(self):
+        self.calls = []
+
+    def tool(self, **kw):
+        return lambda fn: (self.calls.append(("tool", fn, kw)), fn)[1]
+
+    def prompt(self, **kw):
+        return lambda fn: (self.calls.append(("prompt", fn, kw)), fn)[1]
+
+
+mcp = _Deferred()
+
+
+def build() -> MCPServer:
+    server = MCPServer(
+        "seren",
+        title="SEREN",
+        instructions=("SEREN is a solo tabletop RPG. You are the Dungeon Master; this server "
+                      "holds the dice, the state and the record. Start with the /seren prompt, "
+                      "or call seren_shelf then seren_open."),
+        version="0.1.0-phase0",
+        extensions=[APPS],
+    )
+    for kind, fn, kw in mcp.calls:
+        getattr(server, kind)(**kw)(fn)
+    return server
+
+
 
 
 def _out(payload: Any) -> str:
@@ -201,17 +230,32 @@ def seren_ruling(note: str, who: Optional[str] = None, scope: Optional[str] = No
 
 # ── the table ────────────────────────────────────────────────────────────────
 
-@mcp.tool(description="The player's table: sheet, HP, dice, what the party knows. Returns where to open it.")
+@APPS.tool(resource_uri=TABLE_URI, name="seren_table",
+           description=("The player's table: party, dice, what they know. Shown beside the chat "
+                        "where the client supports it; otherwise returns a file to open."))
 def seren_table() -> str:
     return _run(table.publish, T)
+
+
+@APPS.tool(resource_uri=TABLE_URI, visibility=["app"], name="seren_table_data",
+           description="The table's data, for the table view itself. Player-visible only.")
+def seren_table_data() -> str:
+    try:
+        return json.dumps(table.data(T), ensure_ascii=False, default=str)
+    except play.Refused as exc:
+        return json.dumps({"held": str(exc)})
+
+
+APPS.add_html_resource(TABLE_URI, (HERE / "table_app.html").read_text(encoding="utf-8"),
+                       name="seren-table", title="The Seren Table", prefers_border=True)
 
 
 def main() -> None:
     if "--http" in sys.argv:
         port = int(sys.argv[sys.argv.index("--http") + 1])
-        mcp.run("streamable-http", host="127.0.0.1", port=port)
+        build().run("streamable-http", host="127.0.0.1", port=port)
     else:
-        mcp.run("stdio")
+        build().run("stdio")
 
 
 if __name__ == "__main__":

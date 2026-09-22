@@ -13,6 +13,7 @@ link, and as an MCP Apps `ui://` resource where the client supports it.
 """
 from __future__ import annotations
 
+import json
 import os
 import re
 import sys
@@ -56,6 +57,37 @@ def publish(t: "play.Table") -> dict:
     path = camp.root / "table.html"
     return {"table": path.as_uri(), "size_kb": round(len(page) / 1024),
             "tell_the_player": "Your table is ready. Open it beside this chat."}
+
+
+# ── the inline table's data ──────────────────────────────────────────────────
+
+def data(t: "play.Table") -> dict:
+    """What the inline table (table_app.html) draws: the engine's own player_view, which is
+    where the web table's fog is enforced, then checked again before it leaves.
+
+    ⛔ Same rule as the rendered table: if the check finds anything, the view is held, not
+    trimmed. A partial table that leaked is still a table that leaked.
+    """
+    camp = t._need()
+    view = camp.player_view()
+    view["title"] = camp.title()
+    # The engine's player_view lists the party and `also_present`, but not non-party names in
+    # scene `present` — so the fixture's cast, who are in the room on record, never showed.
+    # The web table has the same gap; fixed here, in this layer, not in the engine.
+    shown = {str(p.get("who") or "").lower() for p in view.get("present") or []}
+    party = set(camp.party().keys())
+    for slug in (camp.scene().get("present") or []):
+        name = str(slug).replace("-", " ").title()
+        if str(slug).lower() not in party and name.lower() not in shown:
+            view["present"].append({"who": name, "state": "", "hp": ""})
+    for k in ("spent", "cap", "turns"):          # web-only bookkeeping; nothing to show here
+        view.pop(k, None)
+    text = json.dumps(view, ensure_ascii=False)
+    leaks = [l for l in play.fog.check(text, camp.dm_side()) if not play._table_talk(l)]
+    if leaks:
+        return {"held": "The table is not shown right now: something on it the player must "
+                        "not see. Play on; the record is unaffected."}
+    return view
 
 
 # ── rules lookup ─────────────────────────────────────────────────────────────

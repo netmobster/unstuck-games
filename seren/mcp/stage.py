@@ -12,19 +12,24 @@ somebody to fail to reach.
 from __future__ import annotations
 
 import json
+import os
 import shutil
 import sys
 from pathlib import Path
 
 HERE = Path(__file__).resolve().parent
 SEREN = HERE.parent
-REAL = SEREN / "content"
+# The rules and the SRD library are not in git (seren/content/ is ignored). Locally they are
+# in seren/content; on the box they are in /srv/seren, read and never written.
+REAL = Path(os.environ.get("SEREN_SRC_CONTENT") or SEREN / "content")
 FIXTURE = SEREN / "fixture" / "campaign"
 STAGE = HERE / ".stage"
 SLUG = "the-weighbridge"
 
 
-def stage(dest: Path = STAGE) -> Path:
+def stage(dest: Path = STAGE, keep: bool = False) -> Path:
+    if keep and (dest / "players").is_dir():
+        return dest          # a restart must not wipe a session in progress
     if dest.exists():
         shutil.rmtree(dest)
     (dest / "dm").mkdir(parents=True)
@@ -49,7 +54,8 @@ def desktop_config(dest: Path) -> dict:
 
 
 if __name__ == "__main__":
-    d = stage()
+    to = Path(sys.argv[sys.argv.index("--to") + 1]) if "--to" in sys.argv else STAGE
+    d = stage(to, keep="--keep" in sys.argv)
     print(f"staged  {d}")
     print("Claude Desktop → Settings → Developer → Edit config, merge this in:")
     print(json.dumps(desktop_config(d), indent=2))
