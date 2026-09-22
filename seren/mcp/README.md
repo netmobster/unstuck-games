@@ -37,7 +37,7 @@ Afterwards: `.venv/Scripts/python score.py .stage/players/tester/the-weighbridge
 | `cc_table/` | vendored from `SEREN/scripts` @ `0c01479`: `render_table.py` (2 small changes, marked) and `table.py` (unchanged) |
 | `dropins/` | first-party drop-ins. One so far: **Mother Aldous** |
 | `stage.py` | a disposable content dir: rules, SRD library, the Weighbridge on two shelves |
-| `check.py` | 34 properties the spec promises, no model involved |
+| `check.py` | 39 properties the spec promises, no model involved |
 | `wire.py` | a real MCP client over stdio: lists, prompts, calls |
 | `judge.py` | typed questions about narration, answered with a probability. Regex today; Jev's slot is written, its adapter isn't |
 | `judge_eval.py` | 13 hand-labelled lines, real and reworded. The test Jev has to pass before it replaces regex |
