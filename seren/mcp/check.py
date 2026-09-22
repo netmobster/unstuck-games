@@ -136,5 +136,26 @@ check("close: log, chronicle and canon written", len(written) >= 2, ", ".join(wr
 r = tableview.rules_lookup("grappled")
 check("rules: SRD lookup finds an article", bool(r["results"]), r["results"][0]["article"] if r["results"] else "")
 
+# 12 · the scorer finds each failure it claims to, in a session written to be bad
+import score  # noqa: E402
+bad = play.Table(account="intruder", holder="check:bad")
+bad.open(stage.SLUG)
+bad.refused_move = "the old mill across the ridge"
+bad.sync({
+    "player": ["How many hit points do I still have?"],
+    "narration": [
+        "Wick nods at Nib and reaches for the satchel. Wick opens the clasp. He glances at Hesper.",
+        "A blade slashes across Wick's arm and blood runs to his wrist.",
+        "Wick walks out into the rain and across the ridge to the old mill, where Brother Ulverton waits.",
+        "Hesper murmurs that the garrison shut the Gap, not the weather.",
+    ],
+})
+bad.log_call("sync", False)
+res = score.score(ROOT / "players" / "intruder" / stage.SLUG)
+f = {k: v["count"] for k, v in res["failures"].items()}
+for key in ("played the PC", "invented facts", "ignored state", "exposed secrets",
+            "failed a required read", "failed a required write", "narrated a refused action"):
+    check(f"scorer: finds '{key}'", f[key] >= 1, str(res["failures"][key]["examples"][:1]))
+
 print(f"\n{'ALL PASS' if not FAILED else str(len(FAILED)) + ' FAILED'}  (stage: {ROOT})")
 sys.exit(1 if FAILED else 0)

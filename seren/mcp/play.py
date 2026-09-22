@@ -324,6 +324,21 @@ class Table:
         self._wrote(fact=False)
         return {"ruled": out}
 
+    # ── the call log ─────────────────────────────────────────────────────────
+    def log_call(self, tool: str, refused: bool) -> None:
+        """One line per tool call: which tool, when, refused or not.
+
+        ⛔ Never the arguments. A fact's text or a secrets result in a log is the plot, read
+        by whoever reads logs. The scorer needs the order of calls, not their content.
+        """
+        if not self.campaign:
+            return
+        path = self.campaign.root / "sessions" / f"{self.campaign.session}-calls.jsonl"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        with path.open("a", encoding="utf-8") as fh:
+            fh.write(json.dumps({"at": time.strftime("%Y-%m-%dT%H:%M:%S"), "tool": tool,
+                                 "refused": refused}) + "\n")
+
     # ── the handback ─────────────────────────────────────────────────────────
     def _wrote(self, fact: bool) -> None:
         self.writes_since_sync += 1

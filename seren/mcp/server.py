@@ -52,9 +52,12 @@ def _out(payload: Any) -> str:
 
 def _run(fn, *a, **kw) -> str:
     try:
-        return _out(fn(*a, **kw))
+        result = fn(*a, **kw)
     except play.Refused as exc:
+        T.log_call(fn.__name__, True)
         return _out({"refused": str(exc)})
+    T.log_call(fn.__name__, isinstance(result, dict) and "refused" in result)
+    return _out(result)
 
 
 # ── prompts ──────────────────────────────────────────────────────────────────
