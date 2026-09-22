@@ -32,7 +32,7 @@ The SelfActual MCP (`mcp.selfactual.ai/mcp`) taught us these, some of them the h
 | **Wide lists overflow the response** (300+ tasks) | every list is bounded and paged. `seren_look ledger` returns the last 20, not all of them |
 | **A `fields` filter that does not filter is a leak** (SAI-532: list calls returned every body, gated ones included) | DM-side data comes from **one tool only**, `seren_secrets`. No read tool has a mode that includes it. Tested, not assumed |
 | **The model reads tool descriptions as instructions** | descriptions are short, say when to call the tool, and never contain campaign content |
-| **Few tools, well named, beat many** | 14 tools, all prefixed `seren_` so they are findable among a player's other connectors |
+| **Few tools, well named, beat many** | 14 tools, all prefixed `seren_` so they are findable among a player's other connectors. *(Phase 0 build: 17 — plus `seren_table_data`, app-only, and `seren_dropins` / `seren_bring` from MARKETPLACE-IDEAS.md. See `../mcp/README.md`.)* |
 
 ---
 
