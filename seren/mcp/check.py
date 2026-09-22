@@ -63,6 +63,9 @@ blob = json.dumps([t.look(w) for w in ("scene", "party", "sheet", "facts", "ledg
 leaked = [h for h in hidden if h and h[:40] in blob]
 check("fog: reads and briefing carry no hidden fact", not leaked, "; ".join(x[:50] for x in leaked))
 check("fog: seren_secrets returns them", len(hidden) >= 3)
+found = json.dumps(t.search("garrison runner boots shut"), ensure_ascii=False).lower()
+check("fog: search does not return a cast member's private Knows", "garrison" not in found,
+      "cast Knows sections carry secrets in their own words")
 
 # 3 · refusal is a result, and it asks for the narration
 r = t.change({"op": "move", "where": "x"})

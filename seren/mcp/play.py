@@ -222,6 +222,8 @@ class Table:
         hits = []
         for path, label in _player_sources(camp.root):
             text = path.read_text(encoding="utf-8", errors="ignore")
+            if label.startswith("canon/characters/"):
+                text = _public_part(text)
             for para in re.split(r"\n\s*\n", text):
                 low = para.lower()
                 score = sum(low.count(w) for w in words)
@@ -527,6 +529,25 @@ def _player_sources(root: Path):
         yield p, str(rel).replace("\\", "/")
     for p in sorted((root / "sessions").glob("*-chronicle.md")) if (root / "sessions").is_dir() else []:
         yield p, f"sessions/{p.name}"
+
+
+# A cast file's private sections. Hesper Vane's `Knows` says the Gap was shut by the
+# garrison, which is one of the fixture's three hidden facts, in different words. The
+# engine does not count cast files as DM-side, so fog.check never sees them, and an exact
+# match between the two would never fire. Found 2026-09-22 building seren_search, which
+# labels everything it returns player-visible.
+PRIVATE_SECTIONS = ("knows", "wants", "if pushed", "will not do", "secret", "secrets")
+
+
+def _public_part(text: str) -> str:
+    """A cast file minus what that person keeps to themselves: the name, the job, the voice."""
+    out, keep = [], True
+    for line in text.splitlines():
+        if line.startswith("## "):
+            keep = line[3:].strip().lower() not in PRIVATE_SECTIONS
+        if keep:
+            out.append(line)
+    return chr(10).join(out)
 
 
 def _last_chronicle(root: Path) -> str:
