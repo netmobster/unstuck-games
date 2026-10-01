@@ -354,3 +354,26 @@ mean nights in that pool.
 3. If attack dies in the toggle study, **do we cut it or give it a job** (for example, attacking is the only way to kill a tracker that's on your trail)?
 4. Is **"one tick earlier"** the right success metric when the honest answer turns out to be "three ticks"? Or should the ending report whichever it was?
 5. Is anything in §4 **too clever for a player to feel**? If nobody can read the belief map without a Scout warren, does the search AI matter beyond its outcomes?
+
+---
+
+## 11 · Update, 17:55 ET: the held-out evidence run
+
+**161,290 games on seeds 100,000+**, which the tuner never saw. The tuned rules are in
+`src/tuned.js`. They met 15 of 16 targets on the tuning seeds and **13 of 16 held out**. Full
+page: `reports/REPORT.html`.
+
+| Held out | Result |
+|---|---|
+| No rule dominates | ✓ The best rule (move-at-3) averages 2.25 nights and reaches night 3 in 42% of runs. Always-stay 0.85, attack-always 1.45 |
+| Skill pays ≥1 night | ✕ **0.79** for the best hybrid (3.04). **The expert: 3.44, so 1.2.** The hybrids overfit the tuning seeds (1.1 → 0.79) |
+| One tick late ≥25% | ✕ **~16% for good play, flat across 1, 2 and 3 ticks earlier.** It measures *moving at all*, not timing |
+| Curve, verbs, transit risk, attack | ✓ Night 1 96% · night 3 67% · night 5 13% · 0.9 moves and 2.2 attacks a night · deaths 50% found / 48% transit |
+
+**Answers to our own §9 and §10:**
+- **Attack earns its place.** Removing it costs good play 0.35–0.5 nights. Keep it.
+- **Siege-halts-growth is the load-bearing rule.** Without it, always-stay goes to 3.69 nights and attack-always to 4.01.
+- **⚠ Warrens don't differentiate.** With the bonus at 0%, the best player loses only 0.2 nights, and every policy splits its time by kind identically (C 47 / D 29 / S 24). Red-team question 4: **no, not yet.**
+- **⚠ The expert is a nomad.** It stays 45% of the time and moves 3 times a night, and 60% of its deaths are in transit. Optimal play is "keep moving", which drifts from the brief's "stay until the last safe moment".
+- **Hearing barely matters,** and **trackers on trails are worse than belief-chasers.**
+- **Transit speed is a cliff,** with a working value of 3. **Night length is the skill dial.**

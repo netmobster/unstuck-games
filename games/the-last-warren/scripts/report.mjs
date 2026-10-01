@@ -25,7 +25,7 @@ const out = { cfg, seeds: SEEDS, when: new Date().toISOString() };
 // 1. every policy, at scale, with twins
 console.log('1. roster'); out.roster = await study(cfg, all, SEEDS, true);
 console.log('   expert'); Object.assign(out.roster, await study(cfg, ['expert'], Math.min(SEEDS, 600), true));
-out.verdict = judge(out.roster, { strict: true });
+out.verdict = judge(Object.fromEntries(Object.entries(out.roster).filter(([k]) => k !== 'expert')), { strict: true });
 console.log('   verdict', out.verdict.score.toFixed(3), out.verdict.best);
 
 // 2. which progression mechanics bend the curve: each one off in turn
