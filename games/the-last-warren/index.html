@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Last Warren</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,800;62..125,900&family=Literata:ital,opsz,wght@0,7..72,400;1,7..72,400&family=Martian+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+  <header class="bar">
+    <h1><span class="moss">The Last</span> Warren</h1>
+    <div class="clock">
+      <span class="lbl">NIGHT</span><b id="night">1</b>
+      <div class="dawn" title="ticks until dawn"><div id="dawnfill"></div></div>
+      <span class="lbl" id="ticks">0 / 45</span>
+    </div>
+    <div class="tools">
+      <label class="lbl" for="seed">SEED</label><input id="seed" type="number" value="1" min="1">
+      <select id="cfgsel" aria-label="Rules"><option value="tuned">Tuned rules</option><option value="defaults">Starting rules</option></select>
+      <button id="newrun" type="button">New run</button>
+      <select id="watch" aria-label="Watch a policy play"><option value="">You play</option></select>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="boardwrap">
+      <canvas id="board" aria-label="The map"></canvas>
+      <div class="hint" id="hint">Click a warren to run for it. Click a hunter in reach to attack. <kbd>Space</kbd> stays one tick; hold it to keep staying.</div>
+    </div>
+
+    <aside class="side">
+      <div class="verbs">
+        <button id="stay" class="verb stay" type="button">Stay <small>space</small></button>
+        <button id="attackbtn" class="verb atk" type="button" disabled>Attack <small>A</small></button>
+      </div>
+      <div class="block">
+        <div class="lbl">THE TROOP</div>
+        <div class="big"><b id="size">4</b> <span id="where" class="dim">in a warren</span></div>
+        <div class="rows">
+          <div class="row"><span>Strength (defending)</span><b id="sdef">—</b></div>
+          <div class="row"><span>Noise</span><b id="noise">—</b></div>
+          <div class="row"><span>Status</span><b id="status">hidden</b></div>
+        </div>
+        <div class="spec" id="spec"></div>
+      </div>
+      <div class="block">
+        <div class="lbl">HUNTERS <span id="hcount"></span></div>
+        <div id="hunters" class="hunters"></div>
+      </div>
+      <div class="block">
+        <div class="lbl">LOG</div>
+        <ol id="log" class="log"></ol>
+      </div>
+      <div class="block legend">
+        <span><i class="sw t-open"></i>open</span><span><i class="sw t-road"></i>road, fast and loud</span>
+        <span><i class="sw t-forest"></i>forest, slow and quiet</span><span><i class="sw t-lake"></i>lake: you swim, they can't</span>
+        <span><i class="sw t-mtn"></i>mountain: blocks feet and eyes</span>
+      </div>
+    </aside>
+  </main>
+</div>
+
+<dialog id="draft">
+  <div class="lbl">DAWN · NIGHT <span id="dn"></span> SURVIVED</div>
+  <h2 id="dawnline">You got under before the light.</h2>
+  <p class="dim" id="remnantline"></p>
+  <div id="boons" class="boons"></div>
+</dialog>
+
+<dialog id="ending">
+  <div class="lbl">THE LAST WARREN FELL</div>
+  <h2 id="endline"></h2>
+  <p id="endmore" class="dim"></p>
+  <details class="eye"><summary>Show the working</summary><pre id="working"></pre></details>
+  <div class="row-btns"><button id="again" type="button">Same seed again</button><button id="next" type="button">Next seed</button></div>
+</dialog>
+
+<script type="module" src="ui.js"></script>
+</body>
+</html>
