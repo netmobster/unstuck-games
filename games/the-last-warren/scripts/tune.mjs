@@ -6,6 +6,7 @@ import { makePool, evaluate } from './pool.mjs';
 import { aggregate, judge } from './metrics.mjs';
 import { roster } from '../src/policies.js';
 import { DEFAULTS } from '../src/sim.js';
+import { TUNED } from '../src/tuned.js';
 import { writeFileSync, mkdirSync } from 'node:fs';
 
 const ROUNDS = +(process.argv[2] || 300), SEEDS = +(process.argv[3] || 120), STRICT = process.argv.includes('--strict'), FROM = (process.argv.find(a => a.startsWith('--from=')) || '').slice(7);
@@ -15,6 +16,8 @@ const SPACE = {
   attackRange: [1, 2, 'int'], lossK: [0.3, 1.0], transitSpeed: [2, 3, 'int'], hearK: [0.7, 1.7],
   remnant: [0.25, 0.6], carryDecay: [0.85, 0.97], diffusion: [0.06, 0.2], respawnDelay: [5, 20, 'int'],
   transit: ['exposed', 'tracks', 'bleed'],
+  combatNoise: [1.0, 1.8], defenseDepart: [0, 6, 'int'], watchReact: [0, 1.2], watchCap: [2, 10, 'int'],
+  growth: [1, 1, 'int'],
 };
 let rs = 12345; const R = () => { rs ^= rs << 13; rs ^= rs >>> 17; rs ^= rs << 5; return (rs >>> 0) / 4294967296; };
 function sample() {
@@ -48,7 +51,7 @@ async function score(cfg) {
 }
 
 const t0 = Date.now();
-const startCfg = FROM ? JSON.parse((await import('node:fs')).readFileSync(FROM, 'utf8')).top[0].cfg : Object.fromEntries(Object.keys(SPACE).map(k => [k, DEFAULTS[k]]));
+const startCfg = FROM ? JSON.parse((await import('node:fs')).readFileSync(FROM, 'utf8')).top[0].cfg : Object.fromEntries(Object.keys(SPACE).map(k => [k, k in TUNED ? TUNED[k] : DEFAULTS[k]]));
 results.push(await score(startCfg));
 console.log(FROM ? 'start' : 'defaults', results[0].score, JSON.stringify(results[0].checks.filter(c => c.pen > 0)));
 let best = results[0];

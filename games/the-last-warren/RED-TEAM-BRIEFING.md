@@ -377,3 +377,28 @@ page: `reports/REPORT.html`.
 - **⚠ The expert is a nomad.** It stays 45% of the time and moves 3 times a night, and 60% of its deaths are in transit. Optimal play is "keep moving", which drifts from the brief's "stay until the last safe moment".
 - **Hearing barely matters,** and **trackers on trails are worse than belief-chasers.**
 - **Transit speed is a cliff,** with a working value of 3. **Night length is the skill dial.**
+
+## 12 · Update, 18:15 ET: v4 (Jay's calls: kinds trade off; both edges)
+
+**Rules added:**
+- **Combat** warrens are loud (noise ×1.4).
+- **Scout** warrens have thin walls (no fortify).
+- **Defense** warrens are slow to leave (−2 movement points on departure).
+- **Growth** goes +1, then +2 after 10 ticks in one place, then +3 after 20.
+- **Every tick you're located,** the hunters near the ring bank 0.21 movement points (capped at 8) for when you bolt.
+
+Retuned on 219,600 games, then held out on another 161,290.
+
+| Held out | v3 | v4 |
+|---|---|---|
+| Miss score / targets met | 0.685 · 13/16 | **0.424 · 13/16** |
+| Skill gap, best hybrid · expert | 0.79 · 1.2 | **0.98 · 1.4** |
+| Best hybrid reaches night 5 | 13% | **27%** |
+| Expert stays / moves a night / attacks a night | 45% / 2.9 / 0.5 | 49% / 2.5 / 0.7 |
+| Always-stay · attack-always | 0.85 · 1.45 | 1.42 · 2.06 |
+| One-tick-late (always-stay, at 1/2/3 ticks) | 51/50/49%, flat | **21/27/30%, earlier is better** |
+
+**Still open:**
+- **Warrens:** the dumb policies are blind to kind, so the machines can't measure whether a Warren *feels* like a different self. **That moves to the human playtest.**
+- **Transit is slightly too deadly for skilled play:** 65% of their deaths, against a 60% cap.
+- **The search tuned the watch reaction way down.** At 0.5 it made late bolts unwinnable.

@@ -9,6 +9,7 @@ const cv = $('board'), ctx = cv.getContext('2d');
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const C = {}; for (const k of ['bg', 'ink', 'dim', 'moss', 'blood', 'gold', 'open', 'road', 'forest', 'forestdot', 'lake', 'mtn', 'line']) C[k] = css('--' + k);
 const ROSTER = roster(true);
+const TRADE = { C: 'strong, loud', S: 'sees them, thin walls', D: 'holds, slow to leave' };
 for (const name of Object.keys(ROSTER)) { const o = document.createElement('option'); o.value = name; o.textContent = 'Watch: ' + name; $('watch').appendChild(o); }
 
 let g, cs = 30, hover = -1, actions = [], timer = null, cfg;
@@ -73,7 +74,7 @@ function draw() {
     }
     ctx.stroke(); ctx.setLineDash([]);
     const you = v.troopTicksTo(hw.i), them = v.hunterTicksTo(hw.i);
-    label((hw.x + .5) * cs, (hw.y - .6) * cs, `${KIND_NAME[hw.kind]} · ${hw.depth} · you ${you.toFixed(0)}t · them ${isFinite(them) ? them.toFixed(0) + 't' : '—'}`, them <= you ? C.blood : C.moss);
+    label((hw.x + .5) * cs, (hw.y - .6) * cs, `${KIND_NAME[hw.kind]} (${TRADE[hw.kind]}) · ${hw.depth} · you ${you.toFixed(0)}t · them ${isFinite(them) ? them.toFixed(0) + 't' : '—'}`, them <= you ? C.blood : C.moss);
   }
   // the ring, once they know where you are
   if (g.troop.warren != null && located(g)) {
@@ -121,6 +122,10 @@ function panel() {
   $('where').textContent = w ? `in a ${w.depth} ${KIND_NAME[w.kind]} warren` : `in the open → ${KIND_NAME[g.warrens[t.dest].kind]} warren`;
   $('sdef').textContent = troopStrength(g, 'defend').toFixed(0);
   $('noise').textContent = troopNoise(g).toFixed(1);
+  const accel = g.cfg.accelAt ? g.cfg.accelAt.filter(a => (t.stayRun || 0) >= a).length : 0;
+  $('growth').textContent = t.warren == null ? 'not while moving' : t.besieged ? 'halted (siege)' : `+${g.cfg.growth + accel} a tick` + (g.cfg.accelAt && accel < g.cfg.accelAt.length ? ` · +${g.cfg.growth + accel + 1} in ${g.cfg.accelAt[accel] - (t.stayRun || 0)}` : '');
+  $('watched').textContent = t.watch ? `${t.watch} tick${t.watch === 1 ? '' : 's'}: they'll react faster` : '—';
+  $('watched').style.color = t.watch ? C.blood : '';
   $('status').textContent = g.over ? 'gone' : t.besieged ? 'SIEGE · not growing' : located(g) ? 'located' : t.warren == null ? 'running' : 'hidden';
   $('status').style.color = t.besieged || located(g) ? C.blood : '';
   $('spec').innerHTML = ['C', 'S', 'D'].map(k => `<div class="s"><span>${KIND_NAME[k]}</span><div class="t"><div style="width:${100 * Math.max(t.spec[k], w && w.kind === k ? 1 : 0)}%"></div></div><span>+${Math.round(100 * g.cfg.warrenBonus * Math.max(t.spec[k], w && w.kind === k ? 1 : 0))}%</span></div>`).join('');

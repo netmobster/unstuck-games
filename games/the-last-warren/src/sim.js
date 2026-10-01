@@ -39,6 +39,13 @@ export const DEFAULTS = {
   musterDist: 3,           // once you're located they gather this far out until they're enough         // hunters assault when the group within 3 >= aggression x your strength
   siegeHaltsGrowth: true,  // held in a warren, the troop stops growing
   diffusion: 0.12,
+  // v4: kinds trade off, and the edge sharpens
+  combatNoise: 1.4,        // Combat warrens are loud
+  scoutFortify: false,     // Scout warrens have thin walls (no fortify)
+  defenseDepart: 3,        // leaving a Defense warren costs this many movement points
+  accelAt: [10, 20],       // growth +1, then +2 after 10 ticks in one place, +3 after 20
+  watchReact: 0.5,         // per tick you've been watched, hunters near the ring bank this many points when you bolt
+  watchCap: 6,
   // progression toggles
   remnant: 0.4,            // share of troop kept at dawn (0 = off: start fresh at startTroop)
   draft: true,
@@ -93,12 +100,12 @@ export function newGame(seed, cfgIn = {}, mapOpts = {}) {
   g.conceal = new Float64Array(N); g.concealU = new Float64Array(N);
   for (let i = 0; i < N; i++) {
     const w = g.warrenAt[i];
-    if (w != null) { g.conceal[i] = g.concealU[i] = cfg.depthNoise[g.warrens[w].depth]; continue; }
+    if (w != null) { g.conceal[i] = g.concealU[i] = cfg.depthNoise[g.warrens[w].depth] * (g.warrens[w].kind === 'C' ? cfg.combatNoise : 1); continue; }
     const tn = cfg.terrainNoise[tiles[i]] ?? 1;
     g.conceal[i] = cfg.transitNoise * tn; g.concealU[i] = cfg.transitNoise * Math.max(1, tn);
   }
   const home = g.warrens[Math.floor(rnd(seed, 'home') * g.warrens.length)];
-  g.troop = { x: home.x, y: home.y, size: cfg.startTroop, warren: home.id, path: null, pi: 0, mp: 0, besieged: false,
+  g.troop = { x: home.x, y: home.y, size: cfg.startTroop, warren: home.id, path: null, pi: 0, mp: 0, besieged: false, stayRun: 0, watch: 0,
               dest: null, spec: { C: 0, S: 0, D: 0 }, seenBy: 0, since: 0 };
   beginNight(g);
   return g;
@@ -169,7 +176,7 @@ export function hunterTicks(g, h, cell) {
 export function troopNoise(g) {
   const t = g.troop, c = g.cfg;
   let n = Math.sqrt(t.size);
-  if (t.warren != null) n *= c.depthNoise[g.warrens[t.warren].depth];
+  if (t.warren != null) n *= c.depthNoise[g.warrens[t.warren].depth] * (g.warrens[t.warren].kind === 'C' ? c.combatNoise : 1);
   else n *= c.transitNoise * c.terrainNoise[g.tiles[cellOf(g, t)]] * (1 - 0.3 * t.spec.S);
   if (g.boons.hush) n *= 0.8;
   return n;
@@ -182,7 +189,10 @@ function bonus(g, k) {
 export function troopStrength(g, mode) {
   const t = g.troop;
   let s = t.size * (1 + bonus(g, 'C'));
-  if (t.warren != null && mode === 'defend') s *= g.cfg.fortify * (1 + bonus(g, 'D')) * (g.boons.walls ? 1.2 : 1);
+  if (t.warren != null && mode === 'defend') {
+    const thin = g.warrens[t.warren].kind === 'S' && !g.cfg.scoutFortify;
+    s *= (thin ? 1 : g.cfg.fortify) * (1 + bonus(g, 'D')) * (g.boons.walls ? 1.2 : 1);
+  }
   if (mode === 'attack') s *= g.cfg.ambush * (g.boons.teeth ? 1.2 : 1);
   return s;
 }
@@ -233,7 +243,9 @@ export function step(g, action = { type: 'stay' }) {
   // 2. the troop: grow where it stands, or walk
   if (t.warren != null) {
     const v = g.warrens[t.warren];
-    if (!(t.besieged && c.siegeHaltsGrowth)) t.size += c.growth + (g.boons.brood && g.T % 3 === 0 ? 1 : 0);
+    t.stayRun = (t.stayRun || 0) + 1;
+    const accel = c.accelAt ? c.accelAt.filter(a => t.stayRun > a).length : 0;
+    if (!(t.besieged && c.siegeHaltsGrowth)) t.size += c.growth + accel + (g.boons.brood && g.T % 3 === 0 ? 1 : 0);
     for (const k of ['C', 'S', 'D']) t.spec[k] = k === v.kind ? Math.min(1, t.spec[k] + c.attune) : t.spec[k] * c.carryDecay;
     g.history.warrenTicks[v.id] = (g.history.warrenTicks[v.id] || 0) + 1;
     g.stats.stayTicks++; ns.stayTicks++; g.stats.kindTicks[v.kind]++;
@@ -259,6 +271,7 @@ export function step(g, action = { type: 'stay' }) {
   if (t.warren != null) {
     const was = t.besieged;
     t.besieged = located(g) && g.hunters.some(h => Math.abs(h.x - t.x) + Math.abs(h.y - t.y) <= c.musterDist);
+    t.watch = located(g) ? (t.watch || 0) + 1 : 0;
     if (t.besieged && !was) g.events.push({ t: 'siege' });
   } else t.besieged = false;
 
@@ -272,10 +285,16 @@ export function step(g, action = { type: 'stay' }) {
 }
 
 function startMove(g, to) {
-  const t = g.troop, dest = g.warrens[to];
+  const t = g.troop, dest = g.warrens[to], from = g.warrens[t.warren];
   const f = troopField(g, dest.i);
   if (f[cellOf(g, t)] === Infinity) return;
-  t.warren = null; t.dest = to; t.mp = 0;
+  // bolting while watched: the hunters near the ring are already moving
+  if (located(g) && t.watch > 0) {
+    const bank = Math.min(g.cfg.watchCap, g.cfg.watchReact * t.watch);
+    for (const h of g.hunters) if (Math.abs(h.x - t.x) + Math.abs(h.y - t.y) <= g.cfg.musterDist + 2) h.mp += bank;
+  }
+  t.warren = null; t.dest = to; t.stayRun = 0; t.watch = 0;
+  t.mp = from && from.kind === 'D' ? -g.cfg.defenseDepart : 0;
   g.stats.moves++; g.stats.nights[g.night - 1].moves++;
   g.events.push({ t: 'move', to });
 }
@@ -290,6 +309,7 @@ function walk(g) {
   }
   const f = dijkstra(g.W, g.H, i => { const c = g.tCost(i); return c === Infinity ? c : c + Math.round(danger[i]); }, dest.i);
   t.mp += g.cfg.transitSpeed + (g.boons.legs ? 1 : 0);
+  if (t.mp <= 0) return; // still climbing out of a Defense warren
   for (let guard = 0; guard < 8; guard++) {
     const here = cellOf(g, t);
     if (here === dest.i) { arrive(g); return; }
@@ -563,7 +583,7 @@ export function takeBoon(g, id) {
   g.pendingDraft = null;
   g.stats.boons.push(id);
   const t = g.troop;
-  if (id === 'deepen') { if (t.warren != null) g.warrens[t.warren].depth = 'deep'; return; }
+  if (id === 'deepen') { if (t.warren != null) { g.warrens[t.warren].depth = 'deep'; reconceal(g, g.warrens[t.warren]); } return; }
   if (id === 'dig') { digBeside(g); return; }
   g.boons[id] = true;
 }
@@ -580,7 +600,12 @@ function digBeside(g) {
   if (best < 0) return;
   const kinds = ['C', 'S', 'D'];
   const v = { id: g.warrens.length, x: best % g.W, y: (best / g.W) | 0, kind: kinds[Math.floor(rnd(g.seed, 'dig', g.night) * 3)], depth: 'mid', name: null, why: 'dug at dawn', i: best };
-  g.warrens.push(v); g.warrenAt[best] = v.id;
+  g.warrens.push(v); g.warrenAt[best] = v.id; reconceal(g, v);
+}
+function reconceal(g, w) {
+  // the per-cell concealment table is shared with clones: copy before writing
+  g.conceal = new Float64Array(g.conceal); g.concealU = new Float64Array(g.concealU);
+  g.conceal[w.i] = g.concealU[w.i] = g.cfg.depthNoise[w.depth] * (w.kind === 'C' ? g.cfg.combatNoise : 1);
 }
 
 export { KIND_NAME, COST };

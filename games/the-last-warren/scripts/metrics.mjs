@@ -58,6 +58,9 @@ export function judge(agg, { attack = true, strict = false } = {}) {
     checks.push({ id: 'attack-not-dominant', want: 'attack-always is >= 1 night behind the best', got: B.meanNights - (agg['attack-always']?.meanNights ?? 0), pen: Math.max(0, 1 - (B.meanNights - (agg['attack-always']?.meanNights ?? 0))) * 1.5 });
   }
   if (strict) {
+    const pols = names.filter(n => n !== 'random' && n !== 'always-stay');
+    const spread = Math.max(...['C', 'S', 'D'].map(k => Math.max(...pols.map(n => agg[n].kindShare[k])) - Math.min(...pols.map(n => agg[n].kindShare[k]))));
+    checks.push({ id: 'kinds-matter', want: 'how players split time by warren kind differs by >= 15 points between strategies', got: spread, pen: Math.max(0, 0.15 - spread) * 3 });
     checks.push({ id: 'curve-n3', want: 'best player reaches night 3 in 40-70% of runs', got: B.reach3, pen: Math.max(0, 0.4 - B.reach3) * 3 + Math.max(0, B.reach3 - 0.7) * 3 });
     checks.push({ id: 'curve-n5', want: 'best player reaches night 5 in 10-30% of runs', got: B.reach5, pen: Math.max(0, 0.1 - B.reach5) * 3 + Math.max(0, B.reach5 - 0.3) * 3 });
     checks.push({ id: 'skill-pays-1', want: 'best player beats best one-rule policy by >= 1 night', got: B.meanNights - S.meanNights, pen: Math.max(0, 1 - (B.meanNights - S.meanNights)) * 2 });
