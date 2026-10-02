@@ -139,7 +139,14 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
   font-family:var(--sans); font-size:11px; letter-spacing:.06em; color:var(--bone-lo); }
 .tune .row .track span:last-child { text-align:right; }
 .tune .row .moves { grid-column:2; text-align:left; font-family:var(--sans); font-size:12.5px; line-height:1.5; color:var(--mute); }
-.tuneacts { display:flex; gap:16px; align-items:center; padding-top:10px; }
+.tuneacts { display:flex; gap:16px; align-items:center; padding-top:10px; flex-wrap:wrap; }
+/* the hand, for Claude Code: the same hand the weaver would get, to copy or download */
+.tocc { display:flex; flex-direction:column; gap:10px; width:min(760px, 92vw); border-top:1px solid var(--mute-lo); padding-top:16px; }
+.tocc p { margin:0; font-family:var(--sans); font-size:13.5px; line-height:1.6; color:var(--mute); max-width:620px; }
+.tocc code { color:var(--bone-lo); }
+.tocc textarea { width:100%; min-height:150px; background:transparent; color:var(--bone-lo); border:1px solid var(--mute-lo); border-radius:2px; padding:10px; font:12px/1.5 ui-monospace, monospace; resize:vertical; }
+.tocc .acts { display:flex; gap:12px; align-items:center; flex-wrap:wrap; }
+.tocc .said { font-family:var(--sans); font-size:12px; color:var(--gilt); }
 
 /* set beat */
 .set { position:fixed; inset:0; background:#0c0a08; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:26px; z-index:60; animation:rise 1.2s ease-out both; padding:60px; text-align:center; }
@@ -274,6 +281,19 @@ input[type=range] { width:100%; margin:0; accent-color:var(--gilt); }
     <button class="ghost" id="untune">← Back to the table</button>
     <button class="ghost gilt" id="rollDials">Roll the stakes</button>
     <button class="play" id="build">Build my loom and play</button>
+    <button class="ghost gilt" id="toCC">Weave it in Claude Code</button>
+  </div>
+  <div class="tocc" id="tocc" hidden>
+    <span class="k" style="color:var(--gilt)">Your hand, for Claude Code</span>
+    <p>Nothing is woven here. This is the hand exactly as dealt, with your stakes. In Claude Code,
+      say <code>weave this hand</code> and paste it, or point it at the file. Seren writes the
+      campaign there and you play it there.</p>
+    <textarea id="handText" readonly aria-label="Your hand as JSON"></textarea>
+    <div class="acts">
+      <button class="ghost gilt" id="copyHand">Copy the hand</button>
+      <button class="ghost" id="saveHand">Download hand.json</button>
+      <span class="said" id="handSaid" role="status"></span>
+    </div>
   </div>
 </div>
 
@@ -552,7 +572,7 @@ function render() {
       row.innerHTML = `<span class="nm">${esc(d.name)}</span>
         <div class="track"><span>${esc(d.low)}</span><input type="range" min="0" max="100" value="${S.dials[d.id]}"><span>${esc(d.high)}</span></div>
         <span class="moves">${esc(d.moves)}</span>`;
-      row.querySelector('input').oninput = e => { S.dials[d.id] = +e.target.value; save(); };
+      row.querySelector('input').oninput = e => { S.dials[d.id] = +e.target.value; save(); if (!$('tocc').hidden) $('handText').value = handForCC(); };
       $('dials').appendChild(row);
     }
   }
@@ -809,6 +829,28 @@ async function buildIt() {
   }
 }
 $('build').onclick = buildIt;
+
+// Weave it in Claude Code: the same handOver() the weaver gets, marked so CC knows the shape.
+function handForCC() {
+  return JSON.stringify({ format: 'seren-hand/1', dealt: new Date().toISOString(), ...handOver() }, null, 1);
+}
+$('toCC').onclick = () => {
+  $('handText').value = handForCC(); $('handSaid').textContent = '';
+  $('tocc').hidden = false; $('handText').scrollIntoView({ behavior: 'smooth', block: 'center' });
+};
+$('copyHand').onclick = async () => {
+  const t = $('handText');
+  try { await navigator.clipboard.writeText(t.value); $('handSaid').textContent = 'Copied. Paste it into Claude Code.'; }
+  catch (e) { t.focus(); t.select(); $('handSaid').textContent = 'Selected. Press Ctrl+C.'; }
+};
+$('saveHand').onclick = () => {
+  const name = 'hand-' + (handOver().picks.trope || 'loom') + '.json';
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([$('handText').value], { type: 'application/json' }));
+  a.download = name; document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  $('handSaid').textContent = 'Saved as ' + name + '.';
+};
 $('again').onclick = () => { $('again').hidden = true; buildIt(); };
 $('unset').onclick = () => { S.set = false; $('wov').hidden = true; $('refused').hidden = true; startMusic(); render(); };
 $('backdrop').onclick = e => { if (e.target === $('backdrop')) { S.open = null; render(); } };
