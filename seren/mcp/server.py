@@ -82,6 +82,13 @@ def _out(payload: Any) -> str:
     return json.dumps(payload, ensure_ascii=False, indent=1, default=str)
 
 
+def _write(fn, *a, **kw) -> str:
+    """A write, then the table redrawn, so an open table tab is never behind the record."""
+    out = _run(fn, *a, **kw)
+    table.redraw(T)
+    return out
+
+
 def _run(fn, *a, **kw) -> str:
     try:
         result = fn(*a, **kw)
@@ -141,7 +148,7 @@ def seren_open(campaign: str, takeover: bool = False) -> str:
 def seren_sync(narration: Optional[list[str]] = None, player: Optional[list[str]] = None,
                introduced: Optional[list[str]] = None, decisions: Optional[list[str]] = None,
                threads: Optional[list[str]] = None, dm_notes: Optional[list[str]] = None) -> str:
-    return _run(T.sync, dict(narration=narration, player=player, introduced=introduced,
+    return _write(T.sync, dict(narration=narration, player=player, introduced=introduced,
                              decisions=decisions, threads=threads, dm_notes=dm_notes))
 
 
@@ -152,7 +159,7 @@ def seren_close(chronicle: str, summary: str = "", decisions: Optional[list[str]
                 threads: Optional[list[str]] = None, introduced: Optional[list[str]] = None,
                 narration: Optional[list[str]] = None, player: Optional[list[str]] = None,
                 dm_notes: Optional[list[str]] = None) -> str:
-    return _run(T.close, dict(chronicle=chronicle, summary=summary, decisions=decisions,
+    return _write(T.close, dict(chronicle=chronicle, summary=summary, decisions=decisions,
                               threads=threads, introduced=introduced, narration=narration,
                               player=player, dm_notes=dm_notes))
 
@@ -196,7 +203,7 @@ def seren_dropins() -> str:
 @mcp.tool(description=("Bring a drop-in into the open campaign. It arrives in the world, not the "
                        "scene: you get its hooks and use one when the story allows."))
 def seren_bring(dropin: str) -> str:
-    return _run(T.bring, dropin)
+    return _write(T.bring, dropin)
 
 
 # ── writes ───────────────────────────────────────────────────────────────────
@@ -208,7 +215,7 @@ def seren_roll(dice: str, t: str, note: str, who: Optional[str] = None, skill: O
                ability: Optional[str] = None, dc: Optional[int] = None, vs: Optional[int] = None,
                advantage: Optional[Literal["advantage", "disadvantage"]] = None,
                mods: Optional[list[list[Any]]] = None, why: Optional[str] = None) -> str:
-    return _run(T.roll, dict(dice=dice, t=t, note=note, who=who, skill=skill, ability=ability,
+    return _write(T.roll, dict(dice=dice, t=t, note=note, who=who, skill=skill, ability=ability,
                              dc=dc, vs=vs, advantage=advantage, mods=mods, why=why))
 
 
@@ -224,7 +231,7 @@ def seren_fact(op: Literal["establish", "flip", "believe"], fact: str,
     args = dict(op=op, fact=fact, visibility=visibility, to=to, truth=truth, how=how, src=src, note=note)
     if from_ is not None:
         args["from"] = from_
-    return _run(T.fact, args)
+    return _write(T.fact, args)
 
 
 @mcp.tool(description=("Record what something cost: hp, a condition, a slot or use, a move, "
@@ -235,21 +242,28 @@ def seren_state(op: Literal["hp", "condition", "slot", "use", "move", "present",
                 condition: Optional[str] = None, key: Optional[str] = None,
                 where: Optional[str] = None, round: Optional[int] = None,
                 remove: Optional[bool] = None, note: Optional[str] = None) -> str:
-    return _run(T.change, dict(op=op, who=who, delta=delta, condition=condition, key=key,
+    return _write(T.change, dict(op=op, who=who, delta=delta, condition=condition, key=key,
                                where=where, round=round, remove=remove, note=note))
 
 
 @mcp.tool(description="A call the rules do not cover. Says out loud that you are making it.")
 def seren_ruling(note: str, who: Optional[str] = None, scope: Optional[str] = None) -> str:
-    return _run(T.ruling, dict(note=note, who=who, scope=scope))
+    return _write(T.ruling, dict(note=note, who=who, scope=scope))
 
 
 # ── the table ────────────────────────────────────────────────────────────────
 
-@APPS.tool(resource_uri=TABLE_URI, name="seren_table",
-           description=("The player's table: party, dice, what they know. Shown beside the chat "
-                        "where the client supports it; otherwise returns a file to open."))
+@mcp.tool(description=("The player's table: party, dice, what they know. Returns a local link "
+                       "to give the player; it redraws after every write and reloads itself. "
+                       "Use this one by default."))
 def seren_table() -> str:
+    return _run(table.publish, T)
+
+
+@APPS.tool(resource_uri=TABLE_URI, name="seren_table_view",
+           description=("The same table as an inline panel, only for clients that show MCP Apps "
+                        "panels. Claude Desktop chat does not: use seren_table there."))
+def seren_table_view() -> str:
     return _run(table.publish, T)
 
 

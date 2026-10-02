@@ -121,6 +121,39 @@ except play.Refused:
 page, leaks = tableview.render(t.campaign.root)
 check("table: renders clean", page is not None, f"{len(leaks)} leaks" if leaks else f"{len(page)//1024} KB")
 
+# 9b · the live table: a local link, the poll armed, a redraw after a write, held when leaked
+import re as _re               # noqa: E402
+import time as _time           # noqa: E402
+import urllib.request as _url  # noqa: E402
+
+
+def _get(path: str) -> str:
+    # 30s, not 5: a fresh 800 KB page on this machine can stall or be reset on first read
+    # (2026-10-02; most likely the antivirus). The page itself polls /stamp, a few bytes.
+    return _url.urlopen(pub["table"].rsplit("/", 1)[0] + path, timeout=30).read().decode("utf-8")
+
+
+def _stamp() -> str:
+    return _get("/stamp").strip()
+
+
+pub = tableview.publish(t)
+check("live table: publish returns a local http link", str(pub.get("table", "")).startswith("http://127.0.0.1:"),
+      str(pub.get("table")))
+body = _get("/table")
+s1 = _stamp()
+check("live table: served with the self-poll armed and the SRD attribution",
+      "fetch('stamp'" in body and "System Reference Document 5.2" in body and s1 in body)
+_time.sleep(1.1)                                   # the stamp is to the second
+t.roll({"dice": "1d20", "t": "check", "dc": 10, "note": "check.py live", "who": "wick"})
+tableview.redraw(t)
+s2 = _stamp()
+check("live table: a write redraws it", s1 and s2 and s1 != s2, f"{s1[:28]} -> {s2[:28]}")
+(t.campaign.root / "table.html").unlink()          # what render() does when the check finds a leak
+check("live table: no file means 'not drawn', never a stale page",
+      "isn't drawn" in _get("/table") and _stamp() == "held")
+tableview.redraw(t)
+
 # 10 · close: a leaking chronicle is sent back; a clean one closes
 try:
     t.close({"chronicle": f"It rained. {hidden[0]}", "summary": "x"})

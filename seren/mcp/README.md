@@ -30,14 +30,14 @@ Afterwards: `.venv/Scripts/python score.py .stage/players/tester/the-weighbridge
 
 | file | what |
 |---|---|
-| `server.py` | the MCP server: 17 tools, 2 prompts, 1 UI resource. stdio, or `--http PORT` on localhost |
+| `server.py` | the MCP server: 18 tools, 2 prompts, 1 UI resource. stdio, or `--http PORT` on localhost |
 | `play.py` | everything it does, with no MCP in it: shelf, lock, views, secrets, writes, the handback, close, drop-ins |
-| `tableview.py` | the table: CC's renderer + leak check (file), and the inline view's data |
+| `tableview.py` | the table: CC's renderer + leak check, served live on 127.0.0.1 (redraws on every write, the tab polls `/stamp`), and the inline view's data |
 | `table_app.html` | the inline table (MCP Apps `ui://seren/table.html`) |
 | `cc_table/` | vendored from `SEREN/scripts` @ `0c01479`: `render_table.py` (2 small changes, marked) and `table.py` (unchanged) |
 | `dropins/` | first-party drop-ins. One so far: **Mother Aldous** |
 | `stage.py` | a disposable content dir: rules, SRD library, the Weighbridge on two shelves |
-| `check.py` | 39 properties the spec promises, no model involved |
+| `check.py` | 44 properties the spec promises, no model involved |
 | `wire.py` | a real MCP client over stdio: lists, prompts, calls |
 | `judge.py` | typed questions about narration, answered with a probability. Regex today; Jev's slot is written, its adapter isn't |
 | `judge_eval.py` | 13 hand-labelled lines, real and reworded. The test Jev has to pass before it replaces regex |
@@ -52,7 +52,7 @@ Afterwards: `.venv/Scripts/python score.py .stage/players/tester/the-weighbridge
 | session | `seren_shelf` · `seren_open` · `seren_sync` · `seren_close` |
 | reads | `seren_look` · `seren_search` · `seren_rules` · `seren_recall` · `seren_secrets` (the only DM-side one) |
 | writes | `seren_roll` · `seren_fact` · `seren_state` · `seren_ruling` |
-| table | `seren_table` · `seren_table_data` (app-only) |
+| table | `seren_table` (a live local link, the default) · `seren_table_view` (the inline panel) · `seren_table_data` (app-only) |
 | drop-ins | `seren_dropins` · `seren_bring` |
 | prompts | `/seren` · `/seren-close` |
 
@@ -71,6 +71,27 @@ Afterwards: `.venv/Scripts/python score.py .stage/players/tester/the-weighbridge
 
 **Not verified:** any real model playing it. That's phase 0's gate, and it's Jay's.
 **Not verified:** the inline table inside a real MCP Apps host.
+
+## The live table (2026-10-02)
+
+**First real play, in Claude Desktop chat:** the game ran, but the inline table didn't. The
+`seren_table` call never reached the server (Desktop's log shows shelf, open, secrets and
+nothing else) and timed out after 4 minutes. Desktop chat does not show MCP Apps panels.
+
+So `seren_table` is now a plain tool. It draws the table, runs the leak check, and returns
+`http://127.0.0.1:8794/table`. After every write (roll, fact, state, ruling, sync, bring,
+close) the table is redrawn, and the open tab polls `/stamp` (a few bytes) and reloads when it
+changes. The panel moved to `seren_table_view`, for clients that show one.
+
+- **One file, one route, localhost only.** A held table has no file, so the tab says "not
+  drawn" rather than showing a stale page.
+- **Exclusive bind.** On Windows `SO_REUSEADDR` lets two processes share a port. With
+  Desktop and Claude Code both running seren, the second one takes the next port instead.
+- **It polls `/stamp`, not the page.** The renderer's own poll re-fetches the whole ~840 KB
+  page every 4 s; on this machine a stream that size stalled or was reset, most likely by the
+  antivirus.
+- Verified: `check.py` 44 checks, all passing, three runs; `wire.py` OK; a real browser tab
+  reloaded itself after an hp change.
 
 ## Found while building (worth knowing outside this folder)
 

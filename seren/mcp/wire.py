@@ -52,8 +52,12 @@ async def main() -> int:
             res = await s.call_tool("seren_table_data", {})
             view = json.loads(res.content[0].text)
             print(f"table   {view.get('title')} @ {view.get('place', '')[:40]} · {len(view.get('party', []))} in party · held={'held' in view}")
+            res = await s.call_tool("seren_table", {})
+            link = json.loads(res.content[0].text).get("table") or ""
+            print(f"link    {link}")
             ok = (len(tools) >= 14 and {"seren", "seren-close"} <= set(prompts)
-                  and "ui://seren/table.html" in uis and "party" in view)
+                  and "ui://seren/table.html" in uis and "party" in view
+                  and link.startswith("http://127.0.0.1:"))
             print("WIRE OK" if ok else "WIRE FAIL")
             return 0 if ok else 1
 
