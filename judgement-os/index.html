@@ -1,0 +1,958 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Judgement OS</title>
+<meta name="description" content="Judgement OS: a second opinion for your Claude Code skills, only when they need one. The rule picks, a judge is asked only when the rule can't tell, you settle real disagreements, every path is logged.">
+<meta name="theme-color" content="#060504">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* ============================================================
+   JUDGEMENT OS — one page: the room, the deal, two receipts,
+   the paperwork, download. "How it works", the plugin sheets
+   and "For devs" are modals.
+
+   Switches live on <body>:
+     data-wink="footnote|flag|corrected"   how the "OS" joke lands
+     data-motion="on|off"                  lamp swing + flicker
+   Everything reads from the tokens below.
+   ============================================================ */
+:root{
+  /* the room (dark) */
+  --ink:#060504; --bone:#e8e2d4; --bone-2:#9a9182; --bone-3:#a9a090; --rule:#1c1714; --rule-2:#3b352c;
+  --accent:#c2a46a; --title:#e8d8b0; --glow:255,170,60;
+  /* the paper (light) */
+  --paper:#ebe4d5; --paper-2:#e4dbc8; --paper-ink:#14110e; --paper-text:#2a241d; --paper-dim:#645a4c; --paper-rule:#d6cbb5; --paper-dash:#b9ad94; --paper-accent:#7a5c22;
+  --receipt:#f1e9d6;
+  --display:Cinzel,Georgia,serif; --serif:Spectral,Georgia,serif; --mono:'Space Mono',ui-monospace,monospace;
+}
+
+*{box-sizing:border-box}
+html{background:var(--ink);scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--bone);font:300 1.0625rem/1.6 var(--serif);-webkit-font-smoothing:antialiased}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--title)}
+button{font:inherit;color:inherit}
+code{font-family:var(--mono);font-size:.84em;letter-spacing:.02em;background:rgba(127,110,80,.16);padding:1px 5px;border-radius:3px}
+::selection{background:rgba(var(--glow),.3)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+[hidden]{display:none!important}
+section[id]{scroll-margin-top:72px}
+
+.wrap{max-width:1440px;margin:0 auto;padding-left:clamp(16px,4vw,56px);padding-right:clamp(16px,4vw,56px)}
+.k{font:400 .65625rem/1.5 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--bone-2)}
+.r{font:500 .75rem/1.4 var(--display);letter-spacing:.24em;color:var(--accent)}
+h2{margin:16px 0 0;font:500 clamp(1.75rem,3.6vw,2.75rem)/1.15 var(--display);color:var(--title);text-wrap:balance;max-width:18ch}
+.sub{margin:12px 0 0;font:italic 400 clamp(1.125rem,2vw,1.375rem)/1.4 var(--serif);color:var(--bone-2);max-width:36em;text-wrap:pretty}
+.cta{display:inline-block;font:700 .71875rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;padding:13px 20px;border-radius:2px;background:var(--accent);color:#160b05;border:1px solid var(--accent);cursor:pointer}
+.cta:hover{filter:brightness(1.12);color:#160b05}
+.cta.ghost{background:none;color:var(--bone-2);border-color:var(--rule-2);font-weight:400}
+.cta.ghost:hover{filter:none;border-color:var(--bone-2);color:var(--bone)}
+.acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}
+.linkbtn{appearance:none;border:0;background:none;cursor:pointer;padding:6px 0;font:inherit;letter-spacing:inherit;text-transform:inherit;color:inherit}
+
+/* masthead */
+.mast{position:sticky;top:0;z-index:10;background:rgba(6,5,4,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
+.brand{font:600 .9375rem/1 var(--display);letter-spacing:.22em;color:var(--title);white-space:nowrap}
+.mast nav{display:flex;gap:8px 22px;align-items:center;flex-wrap:wrap;font:400 .6875rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--bone-2)}
+.mast nav a,.mast nav .linkbtn{white-space:nowrap;padding:6px 0;color:var(--bone-2)}
+.mast nav a:hover,.mast nav .linkbtn:hover{color:var(--title)}
+.size{display:inline-flex;gap:6px;margin-left:4px}
+.size button{cursor:pointer;font:400 .6875rem/1 var(--mono);letter-spacing:.08em;color:var(--bone-2);background:none;border:1px solid var(--rule-2);border-radius:3px;padding:6px 8px}
+.size button:hover{color:var(--bone);border-color:#6b6558}
+
+/* the room: one dark scene behind the hero, the deal and the receipts */
+.room{position:relative;background:var(--ink)}
+.scene{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.table{position:absolute;left:-10%;right:-10%;bottom:0;height:620px;transform:perspective(700px) rotateX(50deg);transform-origin:top center;
+  box-shadow:inset 0 40px 90px rgba(0,0,0,.65);
+  background:repeating-linear-gradient(92deg,rgba(0,0,0,.12) 0 3px,transparent 3px 11px,rgba(0,0,0,.07) 11px 14px),
+             repeating-linear-gradient(88deg,transparent 0 40px,rgba(255,200,120,.02) 40px 41px),
+             linear-gradient(180deg,#1a120a 0%,#3a2816 28%,#4a3320 48%,#2c1d11 72%,#120c07 100%)}
+.shade-out{position:absolute;left:0;right:0;bottom:0;height:620px;
+  background:linear-gradient(180deg,#060504 0%,rgba(6,5,4,.75) 10%,rgba(6,5,4,0) 30%,rgba(6,5,4,0) 72%,#060504 100%),
+             radial-gradient(ellipse 58% 90% at 60% 55%,rgba(6,5,4,0) 35%,rgba(6,5,4,.9) 100%)}
+.lamp{position:absolute;left:60%;top:0;width:0;height:0;transform-origin:0 0;animation:swing 7s ease-in-out infinite}
+.lamp .light{position:absolute;left:-1000px;top:-700px;width:2000px;height:2600px;animation:lamp 5s ease-in-out infinite;
+  background:radial-gradient(ellipse 30% 18% at 50% 73%,rgba(var(--glow),.13),transparent 70%),
+             radial-gradient(ellipse 34% 15% at 50% 31%,rgba(var(--glow),.26),rgba(var(--glow),.07) 45%,transparent 72%)}
+.lamp .cord{position:absolute;left:-1px;top:0;width:2px;height:72px;background:#1a1410}
+.lamp .shade{position:absolute;left:-46px;top:72px;width:92px;height:34px;background:linear-gradient(180deg,#2a1f14,#0d0906);border-radius:0 0 46px 46px/0 0 20px 20px;box-shadow:0 14px 40px 10px rgba(var(--glow),.35)}
+.lamp .flame{position:absolute;left:-32px;top:100px;width:64px;height:10px;border-radius:50%;background:rgba(255,205,120,.9);box-shadow:0 0 30px 14px rgba(var(--glow),.55);animation:candle 5s ease-in-out infinite}
+body[data-motion="off"] .lamp,body[data-motion="off"] .lamp .light,body[data-motion="off"] .lamp .flame{animation:none}
+@keyframes swing{0%,100%{transform:rotate(-4.5deg)}50%{transform:rotate(4.5deg)}}
+@keyframes candle{0%,100%{opacity:.85;transform:scaleX(1)}23%{opacity:1;transform:scaleX(1.06)}41%{opacity:.68;transform:scaleX(.96)}58%{opacity:.96;transform:scaleX(1.02)}77%{opacity:.78;transform:scaleX(.98)}}
+@keyframes lamp{0%,100%{opacity:.9}23%{opacity:1}41%{opacity:.8}58%{opacity:.97}77%{opacity:.86}}
+
+/* I · the room */
+.hero{position:relative;min-height:max(560px,78svh)}
+.hero .wrap{padding-top:clamp(72px,12vh,150px);padding-bottom:96px}
+h1{margin:18px 0 0;font:500 clamp(2.5rem,7.4vw,6.5rem)/1 var(--display);letter-spacing:.14em;color:var(--title);text-shadow:0 0 30px rgba(var(--glow),.4)}
+.wink{display:none}
+body[data-wink="footnote"] .wink-footnote,body[data-wink="flag"] .wink-flag,body[data-wink="corrected"] .wink-corrected{display:block}
+.star{font-size:.4em;vertical-align:top;position:relative;top:.1em;color:var(--accent)}
+.fn{margin:14px 0 0;font:400 .65625rem/1.6 var(--mono);letter-spacing:.14em;color:var(--bone-2)}
+.flag{font:400 .22em/1 var(--mono);letter-spacing:.06em;color:var(--accent);border:1px solid rgba(194,164,106,.5);border-radius:4px;padding:.45em .7em;text-shadow:none;position:relative;top:-.9em;margin-left:.35em}
+.struck{text-decoration:line-through;text-decoration-thickness:.06em;text-decoration-color:var(--accent);color:var(--bone-2);text-shadow:none}
+.correction{margin:14px 0 0;font:italic 400 1.25rem/1.4 var(--serif);color:var(--accent)}
+.say{margin:26px 0 0;max-width:22em;font:italic 400 clamp(1.625rem,3.2vw,2.5rem)/1.2 var(--serif);color:var(--bone);text-wrap:balance}
+.voice{max-width:36em;margin-top:28px;display:grid;gap:14px;font-size:clamp(1.0625rem,1.6vw,1.1875rem);color:var(--bone-3);text-wrap:pretty}
+.voice p{margin:0}
+.voice .line{color:var(--bone)}
+
+/* II · the deal */
+.deal .wrap{padding-top:40px;padding-bottom:80px}
+.hand{display:flex;flex-wrap:wrap;justify-content:center;gap:26px;margin-top:56px}
+.card{appearance:none;border:0;background:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;width:12.5rem;height:19rem;perspective:1100px;border-radius:10px;text-align:left}
+.card:nth-child(1){transform:rotate(-3deg)}
+.card:nth-child(2){transform:rotate(1.5deg)}
+.card:nth-child(3){transform:rotate(-1deg)}
+.card:nth-child(4){transform:rotate(2.5deg)}
+.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover .card-inner,.card:focus-within .card-inner,.card.is-pinned .card-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.back{background:linear-gradient(160deg,#3a2c1f,#1a130e);border:1px solid #4a3a2a;box-shadow:0 18px 40px rgba(0,0,0,.7),inset 0 0 0 5px rgba(255,200,120,.07);display:grid;place-items:center}
+.rings{width:66px;height:66px;border-radius:50%;border:1px solid rgba(226,196,130,.3);display:grid;place-items:center}
+.rings i{width:32px;height:32px;border-radius:50%;border:1px solid rgba(226,196,130,.3);display:grid;place-items:center}
+.rings i::after{content:"";width:6px;height:6px;border-radius:50%;background:rgba(226,196,130,.55)}
+.face.front{transform:rotateY(180deg);background:linear-gradient(170deg,#efe3c4,#d8c9a2);border:1px solid #9c8b66;box-shadow:0 18px 40px rgba(0,0,0,.7),inset 0 0 0 6px #e6d8b6;color:#2a221a;padding:24px 20px 20px}
+.face.front .n{position:absolute;top:13px;left:15px;font:600 1.375rem/1 var(--display)}
+.face.front .n.flip{top:auto;left:auto;bottom:13px;right:15px;transform:rotate(180deg)}
+.face.front .t{margin-top:28px;font:500 .78125rem/1.25 var(--display);letter-spacing:.16em;text-transform:uppercase}
+.face.front p{margin:12px 0 0;font:italic 400 .84375rem/1.4 var(--serif);color:#3a3024;text-wrap:pretty}
+.trig{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px}
+.trig span{font:400 .59375rem/1.4 var(--mono);letter-spacing:.03em;color:#4a3f30;background:rgba(42,34,26,.09);padding:2px 6px;border-radius:3px}
+.card .more{position:absolute;left:20px;bottom:17px;font:400 .59375rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--paper-accent);border-bottom:1px solid rgba(122,92,34,.45);padding-bottom:2px}
+.card .more:hover{color:var(--paper-ink)}
+.help{margin:34px 0 0;text-align:center;font:400 .625rem/1.6 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--bone-2)}
+
+/* two receipts */
+.receipts .wrap{padding-top:20px;padding-bottom:110px}
+.rcpts{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,320px),1fr));gap:30px 36px;margin-top:48px;max-width:980px}
+.rcpt{background:var(--receipt);color:var(--paper-text);padding:24px 24px 28px;border-radius:4px;box-shadow:0 22px 50px rgba(0,0,0,.6);font:400 .71875rem/1.6 var(--mono)}
+.rcpt:nth-child(1){transform:rotate(-1deg)}
+.rcpt:nth-child(2){transform:rotate(1deg)}
+.rcpt-head{display:flex;justify-content:space-between;gap:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-dim);padding-bottom:12px;border-bottom:1px dashed var(--paper-dash)}
+.rcpt-rows{display:grid;grid-template-columns:minmax(84px,104px) 1fr;gap:6px 14px;padding:14px 0;border-bottom:1px dashed var(--paper-dash)}
+.rcpt-rows span:nth-child(odd){color:var(--paper-dim)}
+.rcpt-foot{padding-top:14px;font:500 .875rem/1.3 var(--display);letter-spacing:.14em;color:var(--paper-ink)}
+.door{margin-top:56px;width:100%;max-width:980px;text-align:left;display:flex;justify-content:space-between;align-items:center;gap:16px 28px;flex-wrap:wrap;padding:26px 28px;border:1px solid var(--rule-2);border-radius:12px;background:rgba(255,255,255,.02);color:var(--bone);cursor:pointer}
+.door:hover{border-color:var(--accent);background:rgba(194,164,106,.06)}
+.door-title{display:block;font:500 1.375rem/1.2 var(--display);color:var(--title)}
+.door-sub{display:block;margin-top:8px;font-size:.9375rem;line-height:1.5;color:var(--bone-3);text-wrap:pretty}
+.door-go{font:400 .6875rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--accent);white-space:nowrap}
+
+/* the lights come up */
+.lights{height:200px;background:linear-gradient(180deg,#060504 0%,#1d1711 28%,#6e6150 62%,#ebe4d5 100%)}
+
+/* III · the paperwork (paper) */
+.paper{background:var(--paper);color:var(--paper-text);font-weight:400}
+.paper .wrap{padding-top:8px;padding-bottom:96px}
+.paper .r,.paper-accent{color:var(--paper-accent)}
+.paper h2{color:var(--paper-ink)}
+.paper .sub{color:var(--paper-dim)}
+.paper strong,.modal strong{font-weight:400;color:var(--paper-ink)}
+.meta{margin:18px 0 0;font:400 .65625rem/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+.block{margin-top:72px}
+h3{margin:0;font:500 1.5rem/1.2 var(--display);letter-spacing:.04em;color:var(--paper-ink)}
+.lede{margin:6px 0 0;font:italic 400 1.0625rem/1.4 var(--serif);color:var(--paper-dim);max-width:60ch;text-wrap:pretty}
+.note{margin:18px 0 0;font-size:.9375rem;line-height:1.6;max-width:70ch;text-wrap:pretty}
+.note.dim{font-style:italic;color:var(--paper-dim)}
+.sub-k{margin:26px 0 0;font:400 .65625rem/1.6 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--paper-accent)}
+.sub-k.dim{color:var(--paper-dim)}
+.mlink{font:400 .6875rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--paper-accent);border-bottom:1px solid rgba(122,92,34,.45);padding-bottom:3px}
+.mlink:hover{color:var(--paper-ink)}
+
+.why{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:14px;margin-top:22px}
+.why div{padding:20px 22px;border:1px solid var(--paper-rule);border-radius:12px;background:rgba(255,255,255,.18);display:grid;gap:10px;align-content:start}
+.idx{font:700 .6875rem/1 var(--mono);letter-spacing:.14em;color:var(--paper-accent)}
+.why span:last-child{font-size:1rem;line-height:1.45;color:var(--paper-ink);text-wrap:pretty}
+
+.split{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:28px 56px;align-items:start}
+.steps{margin:0;padding:0;list-style:none;border-bottom:1px solid var(--paper-rule)}
+.steps li{display:grid;grid-template-columns:34px 1fr;gap:4px 16px;padding:14px 0;border-top:1px solid var(--paper-rule)}
+.steps .idx{line-height:1.7;letter-spacing:.1em}
+.steps b{display:block;font-weight:400;font-size:1rem;line-height:1.45;color:var(--paper-ink)}
+.steps p{margin:3px 0 0;font-size:.9375rem;line-height:1.55;text-wrap:pretty}
+.chip{display:inline-block;margin-top:8px;font:400 .6875rem/1.5 var(--mono);background:var(--paper-ink);color:var(--bone);padding:4px 9px;border-radius:4px;max-width:100%;overflow-wrap:anywhere}
+
+.sec{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:22px}
+.sec div{padding:20px 22px;border:1px solid var(--paper-rule);border-radius:12px;display:grid;gap:8px;align-content:start}
+.sec div.dim{border-style:dashed;border-color:var(--paper-dash);color:var(--paper-dim)}
+.sec .sub-k{margin:0}
+.sec span:last-child{font-size:.9375rem;line-height:1.55;text-wrap:pretty}
+
+.ledger{margin-top:22px;border-bottom:1px solid var(--paper-rule);max-width:980px}
+.ledger div{display:grid;grid-template-columns:1fr auto;gap:8px 20px;align-items:center;padding:12px 0;border-top:1px solid var(--paper-rule);font-size:.96875rem;line-height:1.5}
+.tag{display:inline-block;font:400 .59375rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:5px 8px;border-radius:3px;white-space:nowrap}
+.tag.measured{background:var(--paper-ink);color:var(--bone)}
+.tag.built{background:var(--paper-accent);color:#f5efe2}
+.tag.building,.tag.running{border:1px solid var(--paper-accent);color:var(--paper-accent)}
+.tag.planned,.tag.soon{border:1px dashed var(--paper-dim);color:var(--paper-dim)}
+.tag.live{background:var(--paper-ink);color:var(--bone)}
+
+.box{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,280px),1fr));gap:14px;margin-top:22px}
+.tile{text-align:left;cursor:pointer;padding:20px 20px 18px;border:1px solid var(--paper-rule);border-radius:12px;background:rgba(255,255,255,.18);color:var(--paper-text);display:flex;flex-direction:column;gap:8px;min-height:150px}
+.tile:hover{border-color:var(--paper-accent);background:rgba(255,255,255,.42)}
+.tile.hi{border-color:var(--paper-accent);background:rgba(255,255,255,.3)}
+.tile.static{cursor:default;border-style:dashed;border-color:var(--paper-dash);background:none}
+.tile.static:hover{border-color:var(--paper-dash)}
+.tile-head{display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.tile-name{font:700 1rem/1.2 var(--mono);color:var(--paper-ink)}
+.tile-ver{font:400 .65625rem/1.2 var(--mono);color:var(--paper-dim)}
+.tile-what{font-size:.9375rem;line-height:1.5;text-wrap:pretty}
+.tile-go{margin-top:auto;font:400 .625rem/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--paper-accent)}
+.tile.static .tile-go{color:var(--paper-dim)}
+.totals{margin:16px 0 0;font:400 .6875rem/1.7 var(--mono);letter-spacing:.08em;color:var(--paper-dim)}
+
+/* IV · download */
+.dl{background:var(--paper-2);border-top:1px solid var(--paper-rule)}
+.dl .wrap{padding-top:72px;padding-bottom:96px}
+.editions{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));gap:24px;margin-top:44px}
+.edition{display:flex;flex-direction:column;gap:14px;padding:28px 28px 26px;border:1px dashed var(--paper-dash);border-radius:14px;background:rgba(255,255,255,.14)}
+.edition.live{border:1px solid var(--paper-accent);background:rgba(255,255,255,.3);box-shadow:0 18px 40px rgba(20,17,14,.12)}
+.edition .tag{align-self:flex-start}
+.edition h3{font-size:1.375rem;letter-spacing:.02em;text-wrap:balance}
+.edition .who{margin:0;font:italic 400 1rem/1.4 var(--serif);color:var(--paper-dim)}
+.edition .what{margin:0;font-size:.9375rem;line-height:1.55;text-wrap:pretty}
+.install{margin:6px 0 0;padding:16px 18px;border-radius:10px;background:var(--paper-ink);color:var(--bone);font:400 .75rem/1.6 var(--mono);overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+.edition .acts{margin-top:auto;align-items:center;gap:10px 16px}
+.copy{cursor:pointer;font:400 .6875rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:12px 16px;border-radius:2px;border:1px solid var(--paper-accent);background:none;color:var(--paper-accent)}
+.copy:hover{background:rgba(122,92,34,.1);color:var(--paper-ink)}
+.edition.live .copy{font-weight:700;border-color:var(--accent);background:var(--accent);color:#160b05}
+.edition.live .copy:hover{filter:brightness(1.08)}
+.small{font:400 .65625rem/1.5 var(--mono);letter-spacing:.08em;color:var(--paper-dim)}
+.needs{font-size:.875rem;line-height:1.5}
+.needs a{color:var(--paper-accent);text-decoration:underline;text-underline-offset:3px}
+.needs a:hover{color:var(--paper-ink)}
+
+footer{background:var(--paper-2);color:var(--paper-dim);border-top:1px solid var(--paper-rule)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px;font:400 .625rem/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase}
+
+/* modals: a faded, blurred room behind a big sheet (10% margins) */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(6,5,4,.72);backdrop-filter:blur(7px);-webkit-backdrop-filter:blur(7px);animation:fadeIn .25s ease-out;padding:clamp(10px,8vh,80px) clamp(10px,10vw,200px);display:flex}
+.modal-box{flex:1;min-width:0;display:flex;flex-direction:column;background:var(--paper);color:var(--paper-text);font-weight:400;border-radius:14px;box-shadow:0 30px 80px rgba(0,0,0,.6);overflow:hidden;animation:riseIn .3s ease-out}
+.modal-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;padding:22px clamp(18px,3vw,36px) 0}
+.modal-head .r{color:var(--paper-accent)}
+.modal-title{display:block;margin-top:8px;font:500 clamp(1.25rem,2.2vw,1.625rem)/1.2 var(--display);color:var(--paper-ink);text-wrap:balance}
+.x{flex:none;width:38px;height:38px;border-radius:50%;border:1px solid var(--paper-rule);background:none;cursor:pointer;font:400 1.125rem/1 var(--mono);color:var(--paper-dim)}
+.x:hover{color:var(--paper-ink);border-color:var(--paper-accent)}
+.tabs{display:flex;flex-wrap:wrap;gap:2px 4px;padding:16px clamp(18px,3vw,36px) 0;border-bottom:1px solid var(--paper-rule)}
+.tabs [role=tab]{appearance:none;border:0;background:none;cursor:pointer;font:400 .71875rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:12px 14px 11px;margin-bottom:-1px;color:var(--paper-dim);border-bottom:2px solid transparent}
+.tabs [role=tab]:hover{color:var(--paper-ink)}
+.tabs [role=tab][aria-selected=true]{color:var(--paper-ink);border-bottom-color:var(--paper-accent)}
+.modal-body{flex:1;min-height:0;overflow:auto;padding:28px clamp(18px,3vw,36px) 44px}
+.modal-body .lede{margin:0;line-height:1.45}
+.modal .split{gap:28px 48px}
+.center{flex:1;min-height:0;display:grid;place-items:center;padding:28px clamp(18px,3vw,36px) 44px;text-align:center}
+.center > div{display:grid;gap:14px;justify-items:center;max-width:32em}
+.center h2{margin:0;font-size:clamp(1.5rem,3vw,2.25rem);color:var(--paper-ink)}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+
+/* rows: a mono key, then prose. Variants only change the columns. */
+.tbl{margin-top:18px;border-bottom:1px solid var(--paper-rule)}
+.row{display:grid;grid-template-columns:minmax(96px,150px) 1fr;gap:2px 20px;padding:11px 0;border-top:1px solid var(--paper-rule)}
+.tbl.narrow .row{grid-template-columns:minmax(80px,110px) 1fr}
+.tbl.wide .row{grid-template-columns:minmax(150px,200px) 1fr}
+.tbl.rules .row{grid-template-columns:1fr minmax(120px,210px)}
+.tbl.three .row{grid-template-columns:repeat(auto-fit,minmax(min(100%,200px),1fr));gap:4px 24px;padding:12px 0}
+.tbl.three .head{border-top:0;padding:8px 0 10px;font:400 .65625rem/1.6 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+.row .key{font:400 .71875rem/1.6 var(--mono);letter-spacing:.04em;color:var(--paper-ink)}
+.row .v{font-size:.96875rem;line-height:1.5}
+.row .v.dim{color:var(--paper-dim)}
+.row .when{display:block;font:400 .65625rem/1.6 var(--mono);letter-spacing:.03em;color:var(--paper-dim);margin-bottom:2px}
+.row .res{font:400 .71875rem/1.6 var(--mono);letter-spacing:.04em;color:var(--paper-ink)}
+.row .res b{font-weight:700}
+.plug-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.plug-h .name{font:700 1rem/1.3 var(--mono);color:var(--paper-ink)}
+.plug-h .ver{font:400 .65625rem/1.3 var(--mono);color:var(--paper-dim)}
+.plug-h .tag-line{font:italic 400 1.125rem/1.3 var(--serif);color:var(--paper-ink)}
+.lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,240px),1fr));gap:18px 36px;margin-top:14px;font-size:.9375rem;line-height:1.55}
+.list{margin:10px 0 0;padding-left:20px;display:grid;gap:8px;font-size:.96875rem;line-height:1.55}
+.pre{margin:18px 0 0;padding:18px 20px;border-radius:10px;background:var(--paper-ink);color:var(--bone);font:400 .75rem/1.6 var(--mono);overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere}
+
+/* the flow diagram */
+.flow{position:relative;padding:26px 26px 26px 28px;border-radius:12px;background:var(--paper-ink);color:var(--bone);font:400 .78125rem/1.5 var(--mono);box-shadow:0 18px 40px rgba(20,17,14,.18)}
+.flow .spine{position:absolute;left:38px;top:40px;bottom:40px;width:1px;background:var(--rule-2)}
+.flow ol{margin:0;padding:0;list-style:none;display:grid;gap:18px}
+.flow li{position:relative;display:grid;grid-template-columns:20px 1fr auto;gap:0 14px;align-items:center}
+.flow .dot{width:9px;height:9px;border-radius:50%;background:var(--bone-2);justify-self:center;box-shadow:0 0 0 4px var(--paper-ink)}
+.flow .dot.on{background:var(--accent)}
+.flow .dot.q{background:var(--paper-ink);border:1px solid var(--accent)}
+.flow .dot.you{background:var(--title)}
+.flow .dim{color:var(--bone-2)}
+.flow .yes{display:block;color:var(--bone-2)}
+.flow .no{color:var(--bone-2);text-align:right}
+.flow .you-txt{color:var(--title)}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body data-wink="footnote" data-motion="on">
+
+<header class="mast">
+  <div class="wrap">
+    <a class="brand" href="#top">JUDGEMENT OS</a>
+    <nav aria-label="Sections">
+      <a href="#deal">The deal</a>
+      <button type="button" class="linkbtn" data-open="m-how" data-tab="flow">How it works</button>
+      <a href="#paper">The paperwork</a>
+      <a href="#download">Download</a>
+      <button type="button" class="linkbtn" data-open="m-devs">For devs</button>
+      <span class="size" role="group" aria-label="Text size"><button type="button" id="fs-down" aria-label="Smaller text">A−</button><button type="button" id="fs-up" aria-label="Larger text">A+</button></span>
+    </nav>
+  </div>
+</header>
+
+<div class="room" id="top">
+  <div class="scene" aria-hidden="true">
+    <div class="table"></div>
+    <div class="shade-out"></div>
+    <div class="lamp"><div class="light"></div><div class="cord"></div><div class="shade"></div><div class="flame"></div></div>
+  </div>
+
+  <!-- I · THE ROOM -->
+  <section class="hero">
+    <div class="wrap">
+      <div class="k">For people who build or run Claude Code skills</div>
+
+      <!-- The name, three ways. Pick one with data-wink on <body>. -->
+      <div class="wink wink-footnote">
+        <h1>JUDGEMENT OS<span class="star">*</span></h1>
+        <p class="fn">*Not an operating system.</p>
+      </div>
+      <div class="wink wink-flag">
+        <h1>JUDGEMENT<span class="flag">--os</span></h1>
+        <p class="fn">a flag, not an operating system</p>
+      </div>
+      <div class="wink wink-corrected">
+        <h1>JUDGEMENT <span class="struck">OS</span></h1>
+        <p class="correction">a second opinion, with a receipt</p>
+      </div>
+
+      <p class="say">A second opinion for your Claude Code skills, only when they need one.</p>
+      <div class="voice">
+        <p>You came for a skill. Sit down.</p>
+        <p>A skill makes its normal decision in code. When that code can tell the answer might depend on context, and only then, it asks a judge: a model that knows the person it's working for, given one bounded question. The judge advises; it can't act. If it disagrees with real confidence, you settle it. Every path is logged, and any failure falls back to the code's own pick.</p>
+        <p class="line">Judgement is an escalation, not the way the skill runs. When there's nothing to judge, the cost is two log lines.</p>
+      </div>
+      <div class="acts">
+        <a class="cta" href="#deal">Turn the cards ↓</a>
+        <button type="button" class="cta ghost" data-open="m-how" data-tab="flow">How it works</button>
+        <a class="cta ghost" href="#download">Download ↓</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- II · THE DEAL -->
+  <section class="deal" id="deal">
+    <div class="wrap">
+      <div class="r">II · THE DEAL</div>
+      <h2>You thought you were getting a skill.</h2>
+      <p class="sub">Four things came with it. Turn them over.</p>
+
+      <div class="hand">
+        <button class="card" type="button" aria-pressed="false" aria-label="The rule">
+          <div class="card-inner">
+            <div class="face back"><div class="rings"><i></i></div></div>
+            <div class="face front">
+              <b class="n">I</b><b class="n flip">I</b>
+              <div class="t">The rule</div>
+              <p>Picks the default in code. Free, instant, the same answer every time. It also runs one test: could context change this?</p>
+              <div class="trig"><span>in code</span><span>instant</span><span>consult only if</span></div>
+              <a class="more" href="#flow" data-open="m-how" data-tab="flow">the flow →</a>
+            </div>
+          </div>
+        </button>
+        <button class="card" type="button" aria-pressed="false" aria-label="The judge">
+          <div class="card-inner">
+            <div class="face back"><div class="rings"><i></i></div></div>
+            <div class="face front">
+              <b class="n">II</b><b class="n flip">II</b>
+              <div class="t">The judge</div>
+              <p>Asked only when the rule's own test says context could change the answer. One bounded question. It advises; it can't act.</p>
+              <div class="trig"><span>proceed</span><span>clarify</span><span>challenge</span><span>redirect</span></div>
+              <a class="more" href="#answer" data-open="m-how" data-tab="answer">the answer →</a>
+            </div>
+          </div>
+        </button>
+        <button class="card" type="button" aria-pressed="false" aria-label="You">
+          <div class="card-inner">
+            <div class="face back"><div class="rings"><i></i></div></div>
+            <div class="face front">
+              <b class="n">III</b><b class="n flip">III</b>
+              <div class="t">You</div>
+              <p>Shown only a medium- or high-confidence disagreement, as one question. Everything else stays quiet.</p>
+              <div class="trig"><span>low · logged</span><span>medium · shown</span><span>high · shown</span></div>
+              <a class="more" href="#answer" data-open="m-how" data-tab="answer">what reaches you →</a>
+            </div>
+          </div>
+        </button>
+        <button class="card" type="button" aria-pressed="false" aria-label="The log">
+          <div class="card-inner">
+            <div class="face back"><div class="rings"><i></i></div></div>
+            <div class="face front">
+              <b class="n">IV</b><b class="n flip">IV</b>
+              <div class="t">The log</div>
+              <p>Every path: what the rule picked, why the judge was or wasn't asked, what it said, how it ended.</p>
+              <div class="trig"><span>open</span><span>verdict</span><span>close</span><span>append-only</span></div>
+              <a class="more" href="#judges" data-open="m-how" data-tab="judges">the log as a page →</a>
+            </div>
+          </div>
+        </button>
+      </div>
+      <p class="help">hover to turn · tap on a phone · click to keep one up · the small line opens the detail</p>
+    </div>
+  </section>
+
+  <!-- TWO RECEIPTS -->
+  <section class="receipts" id="receipts">
+    <div class="wrap">
+      <div class="r">TWO RECEIPTS</div>
+      <h2>Five seconds.</h2>
+      <p class="sub">One morning with nothing to judge. One request where the judge earned it. Both real, both from the log.</p>
+
+      <div class="rcpts">
+        <div class="rcpt">
+          <div class="rcpt-head"><span>Judgement OS · receipt</span><span>2 Oct · 06:51</span></div>
+          <div class="rcpt-rows">
+            <span>decision</span><span>a daily planning choice</span>
+            <span>the rule</span><span>picked</span>
+            <span>the judge</span><span>not asked. Nothing called for one.</span>
+            <span>cost</span><span>two log lines</span>
+          </div>
+          <div class="rcpt-foot">NOTHING TO JUDGE</div>
+        </div>
+        <div class="rcpt">
+          <div class="rcpt-head"><span>Judgement OS · receipt</span><span>1 Oct · a test</span></div>
+          <div class="rcpt-rows">
+            <span>request</span><span>“a page for the SA team's D&amp;D night”</span>
+            <span>the rule</span><span>saw work and gaming at once. Tied. Fell back to the default style.</span>
+            <span>the judge</span><span>challenge · medium</span>
+            <span>suggestion</span><span>the gaming style</span>
+            <span>why</span><span>“the subject is a D&amp;D night, and ‘SA’ only names whose table it is.”</span>
+          </div>
+          <div class="rcpt-foot">THE JUDGE EARNS IT</div>
+        </div>
+      </div>
+
+      <button type="button" class="door" data-open="m-how" data-tab="flow">
+        <span><span class="door-title">How it works</span><span class="door-sub">The flow, the judge's answer, the four decisions that exist, what holds it, and how to judge the judges.</span></span>
+        <span class="door-go">Open →</span>
+      </button>
+    </div>
+  </section>
+</div>
+
+<div class="lights" aria-hidden="true"></div>
+
+<!-- III · THE PAPERWORK -->
+<section class="paper" id="paper">
+  <div class="wrap">
+    <div class="r">III · THE PAPERWORK</div>
+    <h2>The lights come up.</h2>
+    <p class="sub">That was the show. This is what's different, how to add it to a skill of your own, what the judge can't do, and the numbers.</p>
+    <p class="meta">2 October 2026 · counts, never percentages</p>
+
+    <div class="block" style="margin-top:64px">
+      <h3>Why it's different</h3>
+      <div class="why">
+        <div><span class="idx">01</span><span>No LLM call unless the rule asks for one.</span></div>
+        <div><span class="idx">02</span><span>A deterministic fallback. Any failure means the rule's pick stands.</span></div>
+        <div><span class="idx">03</span><span>One bounded question, with the context labelled as data.</span></div>
+        <div><span class="idx">04</span><span>A judge that can't act.</span></div>
+        <div><span class="idx">05</span><span>A log of every decision.</span></div>
+      </div>
+    </div>
+
+    <div class="block split" id="spec">
+      <div>
+        <h3>Add it to your own skill</h3>
+        <p class="lede">Eight steps, from the integration spec. The skill keeps its own rule; the Judgement OS brings the judge, the checks and the log.</p>
+        <p class="note">Your skill provides the decision's id, the default pick in code, the consult-only-if rule in code, the bounded question, and how a disagreement reaches the person. The Judgement OS provides the judge, checks on every answer, the append-only log and its counts, the open, verdict and close commands, and the results page.</p>
+        <!-- Drop the spec URL in and un-hide this line. -->
+        <p class="note" hidden><a class="mlink" href="#" target="_blank" rel="noopener">Read the spec ↗</a></p>
+      </div>
+      <ol class="steps">
+        <li><span class="idx">01</span><div><b>The decision script.</b><p>A script in your plugin that takes the decision's inputs and prints the default, whether to consult, why, and the question. Pure code, tested.</p><span class="chip">{ "default", "consult", "consultWhy", "question" }</span></div></li>
+        <li><span class="idx">02</span><div><b>Find the Judgement OS.</b><p>Installed plugins don't sit side by side, so a relative path won't reach. Not found: use the default and log nothing. The skill must work without it.</p><span class="chip">node find-plugin.js labs scripts/record.js</span></div></li>
+        <li><span class="idx">03</span><div><b>Open the call.</b><p>Logs the pick and why the judge was or wasn't asked. Every path logs this line.</p><span class="chip">record.js open --decision &lt;file&gt; --run live --point &lt;your.decision&gt;</span></div></li>
+        <li><span class="idx">04</span><div><b>Ask the judge, only if consult.</b><p>One agent call, the question word for word.</p><span class="chip">subagent_type: "labs:second-opinion"</span></div></li>
+        <li><span class="idx">05</span><div><b>Record the answer through a file. Never the shell.</b><p>A heredoc ends early on an answer that contains a line saying EOF. If the recorder prints <code>invalid</code>, the judge gave no answer: use the default.</p><span class="chip">record.js verdict --call &lt;id&gt; --file &lt;answer&gt;</span></div></li>
+        <li><span class="idx">06</span><div><b>Settle.</b><p>Only a challenge, clarify or redirect at medium or high confidence reaches the person, as one question. Everything else is silent.</p><span class="chip">medium | high → one question</span></div></li>
+        <li><span class="idx">07</span><div><b>Close the call.</b><p>What was used, and how it was settled: by the rule, by a name, by the person, by the picker, typed, or dismissed.</p><span class="chip">record.js close --call &lt;id&gt; --final &lt;used&gt; --settled-by &lt;how&gt;</span></div></li>
+        <li><span class="idx">08</span><div><b>Fail safe.</b><p>Any failure in steps 2 to 7 falls back to the default and the skill carries on. Judgement never stops a skill.</p><span class="chip">→ the rule's pick</span></div></li>
+      </ol>
+    </div>
+
+    <div class="block">
+      <h3>Security model</h3>
+      <p class="lede">The judge is an untrusted advisor. What protects you is that it can't do anything.</p>
+      <div class="sec">
+        <div><span class="sub-k">Read only</span><span>One tool, one file. It reads; it never writes, sends or runs anything.</span></div>
+        <div><span class="sub-k">Checked in code</span><span>Every answer is checked before anyone sees it: valid JSON, a confidence, a fact behind any non-proceed verdict, nothing from your private topics.</span></div>
+        <div><span class="sub-k">Never through a shell</span><span>Model text travels by file. It is never pasted into a command.</span></div>
+        <div><span class="sub-k">Private topics stay out</span><span>Filtered before the question is built, and an answer that touches them is thrown away.</span></div>
+        <div><span class="sub-k">No authority</span><span>None over sending, deploying, writing your data, merging, or the guard rules. It recommends; a person settles.</span></div>
+        <div class="dim"><span class="sub-k dim">Not yet</span><span>A judge timeout. Until it ships, a slow judge makes the skill wait. Labelling context as data reduces injection; it doesn't prevent it.</span></div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>The receipts</h3>
+      <p class="lede">What's measured, what's built, what's still a plan. Counts, never percentages.</p>
+      <div class="ledger">
+        <div><span><strong>6</strong> recorded test cases. On the one with nothing to judge, the rule stayed out. On the other 5, two different judge models answered.</span><span class="tag measured">Measured</span></div>
+        <div><span><strong>12</strong> real judge answers, each in 3 to 8 seconds.</span><span class="tag measured">Measured</span></div>
+        <div><span><strong>0</strong> private topics reached a judge across the recorded cases.</span><span class="tag measured">Measured</span></div>
+        <div><span><strong>2</strong> red-team reviews, both approving.</span><span class="tag measured">Measured</span></div>
+        <div><span><strong>4</strong> marked decisions built and installed, the newest two since 2 Oct.</span><span class="tag built">Built</span></div>
+        <div><span><strong>107</strong> tests across the six scripts behind them, all passing.</span><span class="tag built">Built</span></div>
+        <div><span>Private topics kept from the judge on every decision: the newest ones today, all four before release.</span><span class="tag building">Building</span></div>
+        <div><span>Daily use since 2 Oct, with a week-one check-in on 9 Oct. On day one the rule handled it alone.</span><span class="tag running">Running</span></div>
+        <div><span>A timeout, so a slow judge can't hold a skill up.</span><span class="tag planned">Planned</span></div>
+      </div>
+    </div>
+
+    <div class="block" id="installed">
+      <h3>What's in the box</h3>
+      <p class="lede">Two editions from one source. The judge is the core; the rest are the skills it judges for. Open a part for its sheet: what it does, and what runs without being asked.</p>
+      <div class="box">
+        <button type="button" class="tile hi" data-open="m-plugins" data-tab="labs"><span class="tile-head"><span class="tile-name">labs</span><span class="tile-ver">both editions</span></span><span class="tile-what"><strong>Judgement Powered Skills:</strong> the judge, its recorder and its log</span><span class="tile-go">Open the sheet →</span></button>
+        <button type="button" class="tile" data-open="m-plugins" data-tab="day"><span class="tile-head"><span class="tile-name">day</span><span class="tile-ver">both editions</span></span><span class="tile-what">A phased start to the day and check-ins, from your task list or your selfActual vault</span><span class="tile-go">Open the sheet →</span></button>
+        <button type="button" class="tile" data-open="m-plugins" data-tab="sexyhtml"><span class="tile-head"><span class="tile-name">sexyhtml</span><span class="tile-ver">both editions</span></span><span class="tile-what"><code>/sexyhtml</code> picks a house style and a shape for a finished page, asking the judge when it's unclear</span><span class="tile-go">Open the sheet →</span></button>
+        <button type="button" class="tile" data-open="m-plugins" data-tab="comms"><span class="tile-head"><span class="tile-name">comms</span><span class="tile-ver">both editions</span></span><span class="tile-what"><strong>The send gate</strong> and humanify in both; vault messages, reminders and <code>/ping</code> in the selfActual Edition</span><span class="tile-go">Open the sheet →</span></button>
+        <button type="button" class="tile" data-open="m-plugins" data-tab="guard"><span class="tile-head"><span class="tile-name">guard</span><span class="tile-ver">both editions</span></span><span class="tile-what">Hard rules as hooks: deny or ask, on every command, edit and connector call</span><span class="tile-go">Open the sheet →</span></button>
+        <button type="button" class="tile" data-open="m-plugins" data-tab="sa"><span class="tile-head"><span class="tile-name">sa</span><span class="tile-ver">selfActual Edition</span></span><span class="tile-what">Gears, loops and modes through one router, fetched from your selfActual vault; your tasks and sessions</span><span class="tile-go">Open the sheet →</span></button>
+        <button type="button" class="tile" data-open="m-plugins" data-tab="ug"><span class="tile-head"><span class="tile-name">dice</span><span class="tile-ver">both editions</span></span><span class="tile-what">Real dice for tabletop games: any notation, advantage, damage, ability scores</span><span class="tile-go">Open the sheet →</span></button>
+      </div>
+      <p class="totals">Each edition's exact contents ship with its release notes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- IV · DOWNLOAD -->
+<section class="paper dl" id="download">
+  <div class="wrap">
+    <div class="r">IV · DOWNLOAD</div>
+    <h2>Two builds, one source.</h2>
+    <p class="sub">The same Judgement OS. One works from a profile you write yourself; the other also reads your own selfActual vault. Both are public, and they sit side by side.</p>
+
+    <div class="editions">
+      <div class="edition">
+        <span class="tag soon">Coming soon</span>
+        <h3>Judgement OS: General Edition</h3>
+        <p class="who">Any Claude Code user.</p>
+        <p class="what">The Judgement OS and its demos. The judge works from a profile you write for yourself. It never needs selfActual.</p>
+        <pre class="install" id="install-general">&lt;install command&gt;</pre>
+        <div class="acts">
+          <button type="button" class="copy" data-copy="install-general">Copy install</button>
+          <span class="small">one marketplace · public</span>
+        </div>
+      </div>
+      <div class="edition">
+        <span class="tag soon">Coming soon</span>
+        <h3>Judgement OS: selfActual Edition</h3>
+        <p class="who">People with a selfActual account. Anyone can install it.</p>
+        <p class="what">The same, plus context from your own selfActual vault. Without an account it just does less, and whenever it can't sign in it says so and points to selfactual.ai.</p>
+        <pre class="install" id="install-sa">&lt;install command&gt;</pre>
+        <div class="acts">
+          <button type="button" class="copy" data-copy="install-sa">Copy install</button>
+          <span class="needs">Needs a selfActual account. Don't have one? <a href="https://selfactual.ai" target="_blank" rel="noopener">selfactual.ai</a></span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <span>Judgement OS · Jeremy “Jay” Wright // <a href="https://echofiles.substack.com" target="_blank" rel="noopener">echofiles.substack.com</a> for more // wearecleardigital at gmail.com</span>
+    <span>*Not an operating system</span>
+  </div>
+</footer>
+
+<!-- ============================================================
+     MODALS. Open with data-open="<id>" (+ data-tab="<panel>").
+     ============================================================ -->
+
+<!-- How it works -->
+<div class="modal" id="m-how" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="m-how-title">
+    <div class="modal-head">
+      <div><span class="r">HOW IT WORKS</span><span class="modal-title" id="m-how-title">Judgement is an escalation, not the way the skill runs.</span></div>
+      <button type="button" class="x" data-close aria-label="Close">×</button>
+    </div>
+    <div class="tabs" role="tablist" aria-label="How it works">
+      <button type="button" role="tab" data-tab="flow" aria-selected="true">The flow</button>
+      <button type="button" role="tab" data-tab="answer" aria-selected="false">The answer</button>
+      <button type="button" role="tab" data-tab="decisions" aria-selected="false">The four decisions</button>
+      <button type="button" role="tab" data-tab="holds" aria-selected="false">What holds it</button>
+      <button type="button" role="tab" data-tab="judges" aria-selected="false">Judge the judges</button>
+    </div>
+    <div class="modal-body">
+
+      <section data-panel="flow" class="split">
+        <div>
+          <p class="lede">A skill is a procedure. Most of its steps are mechanical. A few are judgement calls, where the right answer depends on who's at the keyboard and what's going on with them. Those steps get <strong>marked</strong>.</p>
+          <div class="tbl narrow" style="margin-top:20px">
+            <div class="row"><b class="key">rule</b><div class="v">Picks the default in code. Free, instant, the same answer every time. It also decides whether context could change it.</div></div>
+            <div class="row"><b class="key">judge</b><div class="v">Asked only when the rule's own test says context could change the answer. It reads one profile file and one bounded question, and answers with a verdict and how sure it is.</div></div>
+            <div class="row"><b class="key">you</b><div class="v">Shown only a medium- or high-confidence disagreement, as one question. A hunch never reaches you.</div></div>
+            <div class="row"><b class="key">log</b><div class="v">Every path: what the rule picked, why the judge was or wasn't asked, what it said, how it ended.</div></div>
+          </div>
+          <p class="note">Any failure (no answer, a malformed answer, no labs plugin) means the rule's pick stands. When there's nothing to judge, the cost is two log lines.</p>
+        </div>
+        <div class="flow" aria-label="The flow of a marked decision">
+          <div class="spine" aria-hidden="true"></div>
+          <ol>
+            <li><span class="dot"></span><span>a skill step</span></li>
+            <li><span class="dot on"></span><span>marked decision <span class="dim">── the rule picks</span></span></li>
+            <li><span class="dot q"></span><span>could context change it?<span class="yes">yes ↓</span></span><span class="no">no ──▶ the rule's pick</span></li>
+            <li><span class="dot on"></span><span>the judge: one question</span></li>
+            <li><span class="dot q"></span><span>disagrees, and means it?<span class="yes">yes ↓</span></span><span class="no">no ──▶ the rule's pick</span></li>
+            <li><span class="dot you"></span><span class="you-txt">you decide</span></li>
+            <li><span class="dot"></span><span>the log <span class="dim">── every path</span></span></li>
+          </ol>
+        </div>
+      </section>
+
+      <section data-panel="answer" class="split" hidden>
+        <div>
+          <p class="lede">The judge sees nothing the code didn't put in the question. It answers in one shape, and the recorder checks that shape in code before anything can show.</p>
+<pre class="pre">{"verdict":"proceed|clarify|challenge|redirect",
+ "confidence":"low|medium|high",
+ "why":"one sentence",
+ "fact":"what it rests on",
+ "suggestion":"the alternative, or null"}</pre>
+          <div class="tbl narrow">
+            <div class="row"><b class="key">proceed</b><div class="v">The pick is fine. The right answer whenever context changes nothing.</div></div>
+            <div class="row"><b class="key">clarify</b><div class="v">It depends on something only you know. <code>why</code> is the question.</div></div>
+            <div class="row"><b class="key">challenge</b><div class="v">A different option fits better.</div></div>
+            <div class="row"><b class="key">redirect</b><div class="v">This decision is the wrong thing to be doing right now.</div></div>
+          </div>
+        </div>
+        <div>
+          <p class="sub-k" style="margin-top:0">What reaches you</p>
+          <div class="tbl wide" style="margin-top:8px">
+            <div class="row"><b class="key">proceed · or anything low</b><div class="v dim">Nothing shown. Logged.</div></div>
+            <div class="row"><b class="key">challenge · medium or high</b><div class="v">One question: the suggestion or the default.</div></div>
+            <div class="row"><b class="key">clarify · medium or high</b><div class="v">The judge's <code>why</code> is the question.</div></div>
+            <div class="row"><b class="key">redirect · medium or high</b><div class="v">“Do X instead?”, with both options.</div></div>
+            <div class="row"><b class="key">invalid · or no answer</b><div class="v dim">The default, silently.</div></div>
+          </div>
+          <p class="note">The recorder checks every answer: valid JSON, a confidence, a <code>fact</code> behind any non-proceed verdict, nothing from your private topics. Anything else is logged as invalid and the rule's pick stands.</p>
+        </div>
+      </section>
+
+      <section data-panel="decisions" hidden>
+        <p class="lede">Four marked decisions are built and installed. It's a pattern, not a single trick. In each one the rule's pick is the normal path and the judge is the escalation.</p>
+        <div class="tbl three" style="margin-top:20px">
+          <div class="row head"><span>decision</span><span>the rule's pick</span><span>asks the judge when</span></div>
+          <div class="row"><b class="key">a daily planning choice</b><div class="v">The option used most in the last seven runs, ties to the most recent. When the rule is sure, the skill says what it picked in one line and keeps going.</div><div class="v">It's late in the day, something is blocked and waiting on someone, or the handoff names a project the pick ignores.</div></div>
+          <div class="row"><b class="key">which design system a page uses</b><div class="v">A default style, a work style for work, a gaming style for gaming. A named style always wins.</div><div class="v">A request reads as both work and gaming, or you say “judge it”.</div></div>
+          <div class="row"><b class="key">which voice a draft is in</b><div class="v">From where the draft is going: a newsletter, a pitch, a bit, a story. With nothing to go on, it asks you.</div><div class="v">Two registers fit, or the draft reads differently from where it's going. The judge sees counts about the draft, never the draft.</div></div>
+          <div class="row"><b class="key">which shape a page takes</b><div class="v">Report, checklist, picker, explainer, one-pager or a multiple-choice report, from the request and how many decisions and steps the page carries.</div><div class="v">Two shapes fit. When style and shape both need the judge, the two calls run in one message: one wait.</div></div>
+        </div>
+        <p class="note">In the two newest decisions, no profile on the machine means the rule decides, and a request touching your private topics never reaches the judge. All four get this before release.</p>
+      </section>
+
+      <section data-panel="holds" hidden>
+        <p class="lede">“Instruction” means a model is asked to do it, and nothing checks that it did. We say which is which.</p>
+        <div class="split" style="margin-top:22px;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr))">
+          <div>
+            <p class="sub-k" style="margin-top:0">Held by code</p>
+            <ul class="list">
+              <li>The default pick, and when to ask.</li>
+              <li>Your private topics filtered out of the question.</li>
+              <li>The checks on every answer, the private topics included.</li>
+              <li>The log: its scripts write it, and the guard blocks direct edits.</li>
+              <li>The blind order in <code>/labs:try</code>, and the refusal of a second pick.</li>
+            </ul>
+          </div>
+          <div>
+            <p class="sub-k dim" style="margin-top:0">Held by instruction only</p>
+            <ul class="list">
+              <li>The judge reads only its one file.</li>
+              <li>Low and proceed answers stay hidden.</li>
+              <li>Answers never pass through a shell.</li>
+              <li>You settle every shown disagreement.</li>
+              <li>A shadow judge never changes the outcome.</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note" style="margin-top:22px">Before a judge sits at a decision with consequences, rows move from the right column to the left. The red-team briefing has the full claims table and the attacks against it.</p>
+        <p class="note dim" style="margin-top:12px">Not yet: a judge timeout. A slow judge makes the skill wait. Nothing here is bulletproof, and the page doesn't say it is.</p>
+      </section>
+
+      <section data-panel="judges" class="split" hidden>
+        <div>
+          <p class="lede">The judge is tested like anything else, and you can run the tests yourself.</p>
+          <div class="tbl">
+            <div class="row"><b class="key">/labs:try</b><div class="v">Blind. Any morning, two models, labels hidden until you pick one.</div></div>
+            <div class="row"><b class="key">/labs:cases</b><div class="v">Recorded cases through both judges, each answer checked against what the case expects.</div></div>
+            <div class="row"><b class="key">/labs:results</b><div class="v">The log as a page. Every marked decision gets a row. Counts, never a score.</div></div>
+            <div class="row"><b class="key">/labs:guide</b><div class="v">A five-step checklist for testing it yourself. Step four is trying to break it.</div></div>
+          </div>
+        </div>
+        <div>
+          <p class="sub-k" style="margin-top:0">What the recorded cases found</p>
+          <ul class="list">
+            <li>6 recorded test cases. On the one with nothing to judge, the rule stayed out. On the other 5, two different judge models answered.</li>
+            <li>12 real judge answers, each in 3 to 8 seconds.</li>
+            <li>0 private topics reached a judge across the recorded cases.</li>
+            <li>2 red-team reviews, both approving. Where the second said more than the code does, those claims are off this page.</li>
+          </ul>
+          <p class="note dim">The log counts agreement and overrides. That's all it measures. No accuracy scores, no percentages.</p>
+        </div>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- The plugin sheets -->
+<div class="modal" id="m-plugins" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="m-plugins-title">
+    <div class="modal-head">
+      <div><span class="r">WHAT'S IN THE BOX</span><span class="modal-title" id="m-plugins-title">The plugins in detail.</span></div>
+      <button type="button" class="x" data-close aria-label="Close">×</button>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Plugins">
+      <button type="button" role="tab" data-tab="day" aria-selected="true">day</button>
+      <button type="button" role="tab" data-tab="sa" aria-selected="false">sa</button>
+      <button type="button" role="tab" data-tab="comms" aria-selected="false">comms</button>
+      <button type="button" role="tab" data-tab="guard" aria-selected="false">guard</button>
+      <button type="button" role="tab" data-tab="ug" aria-selected="false">dice</button>
+      <button type="button" role="tab" data-tab="sexyhtml" aria-selected="false">sexyhtml</button>
+      <button type="button" role="tab" data-tab="labs" aria-selected="false">labs</button>
+    </div>
+    <div class="modal-body">
+
+      <section data-panel="day">
+        <div class="plug-h"><span class="name">day</span><span class="tag-line">Your day, one phase at a time</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">boot</b><div class="v"><span class="when">“boot”, “boot up”, “morning”</span>A short brief from your tasks, one pick for the day's style (a marked decision), then one phase at a time, each one skippable</div></div>
+          <div class="row"><b class="key">checkin</b><div class="v"><span class="when">the clock saying it's due; “check in”</span>Mid-day or end of day: what's held and what's still open</div></div>
+          <div class="row"><b class="key">flag</b><div class="v"><span class="when">/flag</span>When the work finishes, end with one question and push one line to your phone</div></div>
+        </div>
+        <p class="note"><strong>Where your tasks come from:</strong> a <code>TASKS.md</code> in the General Edition, your selfActual vault in the selfActual Edition.</p>
+        <p class="note" style="margin-top:12px"><strong>Hook:</strong> <code>clock.js</code> stamps the local time on each prompt and says when a check-in is due.</p>
+      </section>
+
+      <section data-panel="sa" hidden>
+        <div class="plug-h"><span class="name">sa</span><span class="tag-line">selfActual Edition only</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">sa</b><div class="v"><span class="when">voice: the router</span>Picks one gear, loop or mode from what you said, fetches it from your selfActual vault, and becomes it</div></div>
+          <div class="row"><b class="key">gear</b><div class="v"><span class="when">typed</span>Run one by name; bare lists the menu</div></div>
+          <div class="row"><b class="key">cue</b><div class="v"><span class="when">typed, or a prompt that starts with <code>::</code></span>A fixed-text menu: help, try one, status</div></div>
+          <div class="row"><b class="key">open · close · board · task</b><div class="v"><span class="when">voice</span>Your sessions and tasks, in your vault</div></div>
+          <div class="row"><b class="key">profile</b><div class="v"><span class="when">voice</span>Loads your profile at the depth the work needs</div></div>
+        </div>
+        <p class="note">The gears live in your vault, not in the package. Without a selfActual account it can't sign in, so it says so and points you to <a class="mlink" href="https://selfactual.ai" target="_blank" rel="noopener">selfactual.ai</a>.</p>
+      </section>
+
+      <section data-panel="comms" hidden>
+        <div class="plug-h"><span class="name">comms</span><span class="tag-line">Drafts, messages and the send gate</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">humanify</b><div class="v"><span class="when">both editions</span>A de-tic pass for drafts written with AI in the room, in registers you write yourself. Picks the register from where the draft is going; a marked decision when two fit.</div></div>
+          <div class="row"><b class="key">ping</b><div class="v"><span class="when">selfActual Edition</span>Checks your connectors, then lists <strong>unread</strong> vault messages. Marks nothing read.</div></div>
+          <div class="row"><b class="key">messages</b><div class="v"><span class="when">selfActual Edition</span>Read, send and mark messages in your vault. Sending: draft → show → explicit yes → send.</div></div>
+          <div class="row"><b class="key">forcc</b><div class="v"><span class="when">selfActual Edition</span>Reminders you leave for Claude Code, raised at every boot until they're done</div></div>
+        </div>
+        <p class="note"><strong>Hook: the send gate</strong> (both editions). Outbound Slack and vault messages are <strong>denied without a pass.</strong> A message you type yourself that says “send”, “send it” or “approved” grants one pass, good for 15 minutes. Drafts pass.</p>
+      </section>
+
+      <section data-panel="guard" hidden>
+        <div class="plug-h"><span class="name">guard</span><span class="tag-line">Hard rules as code</span></div>
+        <p class="note" style="margin-top:14px">One script, <code>guard.js</code>, on shell commands, file writes and every connector call, with its own tests (<code>node guard.js --test</code>).</p>
+        <div class="tbl rules">
+          <div class="row"><div class="v">Deploy scripts, <code>terraform apply</code>, process-manager restarts</div><div class="res"><b>deny</b>: print it for you</div></div>
+          <div class="row"><div class="v">Force push, <code>reset --hard</code>, <code>clean -f</code>, <code>branch -D</code>, <code>push --delete</code>, <code>rm -rf</code>, <code>Remove-Item -Recurse</code></div><div class="res"><b>ask</b></div></div>
+          <div class="row"><div class="v">A token or key (GitHub, Anthropic, Stripe live, AWS, Slack, private key) in a write or a call</div><div class="res"><b>ask</b></div></div>
+          <div class="row"><div class="v">Direct edits to the Judgement OS log</div><div class="res"><b>deny</b>: its scripts only</div></div>
+          <div class="row"><div class="v">Writing, copying or deleting the send pass</div><div class="res"><b>deny</b>: only you issue it</div></div>
+        </div>
+        <p class="note">Rules that name your own systems, such as your repos' main branches or your servers, are yours to add. A crash in the guard never blocks work. <strong>Skill:</strong> <code>guard</code> explains a block when one happens.</p>
+      </section>
+
+      <section data-panel="ug" hidden>
+        <div class="plug-h"><span class="name">dice</span><span class="tag-line">From the games plugin, dice only</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">roll</b><div class="v"><span class="when">“roll”, “roll for initiative”, any dice notation</span>Real dice: <code>1d20+5</code>, advantage and disadvantage, damage, ability scores. It never makes a result up.</div></div>
+        </div>
+      </section>
+
+      <section data-panel="sexyhtml" hidden>
+        <div class="plug-h"><span class="name">sexyhtml</span><span class="tag-line">Finished pages in a house style</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">sexyhtml</b><div class="v">The router. A finished HTML page in a house style. It loads <code>artifact-design</code> (and <code>dataviz</code> or <code>artifact-diagramming</code> when needed). Interactive pages end in a copy button. <strong>Never a score out of anything.</strong></div></div>
+          <div class="row"><b class="key">style</b><div class="v"><span class="when">a marked decision</span>Picks the style from what the page is about; a named style always wins. The judge is asked when a request reads two ways at once, or you say “judge it”.</div></div>
+          <div class="row"><b class="key">shape</b><div class="v"><span class="when">a marked decision</span>Report, checklist, picker, explainer, one-pager or a MultiChoice report, from the request and how many decisions and steps the page carries. When style and shape both need the judge, one wait.</div></div>
+        </div>
+        <p class="sub-k">Styles</p>
+        <div class="tbl" style="margin-top:8px">
+          <div class="row"><b class="key">echo-jay</b><div class="v"><strong>The default:</strong> light and industrial, gold and steel blue, chamfered corners, made for the sidebar.</div></div>
+          <div class="row"><b class="key">judgement-os</b><div class="v">This page. The lamp-lit room, then the paper.</div></div>
+          <div class="row"><b class="key">sa</b><div class="v"><span class="when">selfActual Edition</span>The selfActual design system: paper and ink, with evidence tags.</div></div>
+        </div>
+      </section>
+
+      <section data-panel="labs" hidden>
+        <div class="plug-h"><span class="name">labs</span><span class="tag-line">Judgement Powered Skills</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">boot</b><div class="v"><span class="when">typed: /labs:boot</span>The daily boot with its marked decision, the style. The rule names a style in one line and asks only about energy; the style question comes back only when the judge disagrees at medium or high.</div></div>
+          <div class="row"><b class="key">try</b><div class="v"><span class="when">typed: /labs:try</span>Judge the judges, blind: any morning, two models, labels hidden until you pick one.</div></div>
+          <div class="row"><b class="key">cases</b><div class="v"><span class="when">typed: /labs:cases</span>Recorded cases through both judges, each answer checked against what the case expects.</div></div>
+          <div class="row"><b class="key">results</b><div class="v"><span class="when">typed: /labs:results</span>The log as a page. Every marked decision gets a row. Counts, never a score.</div></div>
+          <div class="row"><b class="key">guide</b><div class="v"><span class="when">“LABS guide”</span>A five-step checklist for testing it yourself. Step four is trying to break it.</div></div>
+        </div>
+        <p class="note"><strong>The judge</strong> is an agent, <code>second-opinion</code>, with one tool (Read) and one file to read. It answers in a fixed shape: a verdict, a confidence, why, the fact it rests on, and a suggestion. <strong>The recorder</strong> checks every answer in code before anything can show it. <strong>The log</strong> is append-only, and only its scripts write it.</p>
+        <p class="note"><button type="button" class="linkbtn mlink" data-open="m-how" data-tab="flow">How it works →</button></p>
+      </section>
+
+    </div>
+  </div>
+</div>
+
+<!-- For devs: a placeholder until the developer pages exist -->
+<div class="modal" id="m-devs" hidden>
+  <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="m-devs-title">
+    <div class="modal-head">
+      <div><span class="r">FOR DEVS</span></div>
+      <button type="button" class="x" data-close aria-label="Close">×</button>
+    </div>
+    <div class="center">
+      <div>
+        <span class="tag soon">Coming soon</span>
+        <h2 id="m-devs-title">Nothing here yet.</h2>
+        <p class="lede">The developer pages are being written. Until then, the eight steps in the paperwork are the recipe.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ------------------------------------------------------------
+// The deal: hover turns a card over (CSS). A click pins it face up.
+// The small line inside a card opens a modal instead of pinning.
+// ------------------------------------------------------------
+document.querySelectorAll('.card').forEach(function (card) {
+  card.addEventListener('click', function (e) {
+    if (e.target.closest('[data-open]')) return;
+    var up = card.classList.toggle('is-pinned');
+    card.setAttribute('aria-pressed', String(up));
+  });
+});
+
+// ------------------------------------------------------------
+// Text size: A− / A+ scale the root font size (everything is in rem).
+// Remembered in this browser under 'jos-fs'.
+// ------------------------------------------------------------
+(function () {
+  var KEY = 'jos-fs', steps = [0.9, 1, 1.12, 1.25, 1.4], i = 1;
+  try { var s = Number(localStorage.getItem(KEY)); if (steps.indexOf(s) >= 0) i = steps.indexOf(s); } catch (e) {}
+  function set(n) {
+    i = Math.max(0, Math.min(steps.length - 1, n));
+    document.documentElement.style.fontSize = (16 * steps[i]) + 'px';
+    try { localStorage.setItem(KEY, String(steps[i])); } catch (e) {}
+  }
+  set(i);
+  document.getElementById('fs-down').addEventListener('click', function () { set(i - 1); });
+  document.getElementById('fs-up').addEventListener('click', function () { set(i + 1); });
+})();
+
+// ------------------------------------------------------------
+// Modals. Any element with data-open="<modal id>" opens that modal;
+// data-tab="<panel>" picks a tab inside it. Esc, the × and the
+// backdrop close. Tabs are role=tab buttons over [data-panel] sections.
+// ------------------------------------------------------------
+(function () {
+  var openId = null;
+
+  function showTab(modal, name) {
+    var tabs = modal.querySelectorAll('[role=tab]');
+    if (!tabs.length) return;
+    var found = false;
+    tabs.forEach(function (t) { if (t.getAttribute('data-tab') === name) found = true; });
+    if (!found) name = tabs[0].getAttribute('data-tab');
+    tabs.forEach(function (t) {
+      var on = t.getAttribute('data-tab') === name;
+      t.setAttribute('aria-selected', String(on));
+      t.tabIndex = on ? 0 : -1;
+    });
+    modal.querySelectorAll('[data-panel]').forEach(function (p) { p.hidden = p.getAttribute('data-panel') !== name; });
+    var body = modal.querySelector('.modal-body'); if (body) body.scrollTop = 0;
+  }
+
+  function open(id, tab) {
+    close();
+    var modal = document.getElementById(id);
+    if (!modal) return;
+    modal.hidden = false;
+    openId = id;
+    document.body.style.overflow = 'hidden';
+    if (tab) showTab(modal, tab);
+    var x = modal.querySelector('.x'); if (x) x.focus();
+  }
+
+  function close() {
+    if (!openId) return;
+    var modal = document.getElementById(openId);
+    if (modal) modal.hidden = true;
+    openId = null;
+    document.body.style.overflow = '';
+  }
+
+  document.addEventListener('click', function (e) {
+    var opener = e.target.closest('[data-open]');
+    if (opener) { e.preventDefault(); e.stopPropagation(); open(opener.getAttribute('data-open'), opener.getAttribute('data-tab')); return; }
+    if (e.target.closest('[data-close]')) { close(); return; }
+    var tab = e.target.closest('[role=tab]');
+    if (tab) { showTab(tab.closest('.modal'), tab.getAttribute('data-tab')); return; }
+    if (e.target.classList.contains('modal')) close();   // the backdrop
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') close();
+    var tab = e.target.closest && e.target.closest('[role=tab]');
+    if (!tab) return;
+    var tabs = Array.prototype.slice.call(tab.closest('.tabs').querySelectorAll('[role=tab]')), k = tabs.indexOf(tab);
+    var n = e.key === 'ArrowRight' ? k + 1 : e.key === 'ArrowLeft' ? k - 1 : e.key === 'Home' ? 0 : e.key === 'End' ? tabs.length - 1 : null;
+    if (n === null) return;
+    e.preventDefault();
+    var next = tabs[(n + tabs.length) % tabs.length];
+    showTab(next.closest('.modal'), next.getAttribute('data-tab'));
+    next.focus();
+  });
+
+  // #how, #flow, #answer, #decisions, #holds, #judges open the How it works modal.
+  var HOW = ['flow', 'answer', 'decisions', 'holds', 'judges'];
+  function fromHash() {
+    var h = location.hash.replace(/^#/, '');
+    if (h === 'how') open('m-how', 'flow');
+    else if (HOW.indexOf(h) >= 0) open('m-how', h);
+  }
+  window.addEventListener('hashchange', fromHash);
+  fromHash();
+})();
+
+// ------------------------------------------------------------
+// Copy install: copies the text of the <pre> named in data-copy.
+// ------------------------------------------------------------
+document.querySelectorAll('[data-copy]').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var pre = document.getElementById(btn.getAttribute('data-copy'));
+    var text = pre ? pre.textContent.trim() : '', label = btn.textContent;
+    function done() { btn.textContent = 'Copied'; setTimeout(function () { btn.textContent = label; }, 1600); }
+    if (navigator.clipboard && text) navigator.clipboard.writeText(text).then(done, done); else done();
+  });
+});
+</script>
+</body>
+</html>
