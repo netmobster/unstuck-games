@@ -20,6 +20,7 @@
     <nav>
       <a href="#deal">The deal</a>
       <a href="#dossier">The dossier</a>
+      <span class="size" role="group" aria-label="Text size"><button type="button" id="fs-down" aria-label="Smaller text">A−</button><button type="button" id="fs-up" aria-label="Larger text">A+</button></span>
     </nav>
   </div>
 </header>
@@ -117,6 +118,17 @@
             </div>
           </div>
         </button>
+        <button class="card" type="button" aria-pressed="false" aria-label="A second opinion">
+          <div class="card-inner">
+            <div class="face back"><div class="rings"><i></i></div></div>
+            <div class="face front">
+              <b class="n">VI</b><b class="n flip">VI</b>
+              <div class="t">A second opinion</div>
+              <p>When my rules don't know enough, a judge gets one question. It only interrupts you when it disagrees and means it.</p>
+              <div class="trig"><span>“judge it”</span><span>/labs:try</span><span>/labs:boot</span></div>
+            </div>
+          </div>
+        </button>
       </div>
       <p class="help">hover to turn · tap on a phone · click to keep one up</p>
     </div>
@@ -127,26 +139,26 @@
 
 <!-- III · THE DOSSIER -->
 <section class="dossier" id="dossier">
-  <div class="wrap">
-    <div class="block" style="margin-top:0">
+  <div class="wrap sheet">
+    <div class="block wide" style="margin-top:0">
       <div class="r">III · THE DOSSIER</div>
       <h2>The lights come up.</h2>
       <p class="sub">That was the show. This is the paperwork: what's installed, what each thing does, where it lives and how to change it.</p>
       <p class="meta">October 2026 · a private repo</p>
     </div>
 
-    <div class="block first">
+    <div class="block first wide">
       <h3>The shape in one picture</h3>
 <pre class="pre">                 YOU (one builder, one laptop)
                      │  types / talks / pastes
                      ▼
- ┌──────────────────────── Claude Code ─────────────────────────┐
- │  INSTRUCTIONS   global rules · project rules · profile digest │
- │                 · memory                                      │
- │  HOOKS          every prompt: clock · :: router · send-pass   │
- │                 every tool call: guard · send gate            │
- │  ECHO-X PLUGINS day · sa · comms · guard · ug · make          │
- └───────┬──────────────────────┬────────────────────┬──────────┘
+ ┌──────────────────────── Claude Code ────────────────────────────┐
+ │  INSTRUCTIONS   global rules · project rules · profile digest   │
+ │                 · memory                                        │
+ │  HOOKS          every prompt: clock · :: router · send-pass     │
+ │                 every tool call: guard · send gate              │
+ │  ECHO-X PLUGINS day · sa · comms · guard · ug · sexyhtml · labs │
+ └───────┬──────────────────────┬────────────────────┬─────────────┘
          │ reads/writes         │ connectors         │ git
          ▼                      ▼                    ▼
   a local state folder    vault · chat · mail    my repos
@@ -183,18 +195,32 @@
         <div class="row"><b class="key">day</b><span class="dim">0.1.1</span><span class="v">The day loop: boot, check-ins, habits, flag, clock, the guide</span></div>
         <div class="row"><b class="key">sa</b><span class="dim">0.1.1</span><span class="v">Gears, loops and modes through one router; <code>::</code>; profile tiers; vault session commands</span></div>
         <div class="row"><b class="key">comms</b><span class="dim">0.1.2</span><span class="v"><code>/ping</code>, vault messages, FOR CC reminders, a private team channel, humanify, <strong>the send gate</strong></span></div>
-        <div class="row"><b class="key">guard</b><span class="dim">0.1.1</span><span class="v">Jay's hard rules as hooks</span></div>
-        <div class="row"><b class="key">ug</b><span class="dim">0.1.0</span><span class="v">Plays, Elsewhere, Seren, Ser'en's table</span></div>
-        <div class="row"><b class="key">make</b><span class="dim">0.1.0</span><span class="v"><code>/sexy-html</code> with house styles</span></div>
+        <div class="row"><b class="key">guard</b><span class="dim">0.1.2</span><span class="v">Jay's hard rules as hooks</span></div>
+        <div class="row"><b class="key">ug</b><span class="dim">0.1.1</span><span class="v">Plays, Elsewhere, Seren, Ser'en's table</span></div>
+        <div class="row"><b class="key">sexyhtml</b><span class="dim">0.5.0</span><span class="v"><code>/sexyhtml</code> picks a house style, with the Judgement OS when it's unclear; or <code>:jay</code> · <code>:sa</code> · <code>:seren</code> · <code>:echo-x</code></span></div>
+        <div class="row"><b class="key">labs</b><span class="dim">0.3.0</span><span class="v"><strong>The Judgement OS:</strong> a second-opinion judge at marked decisions, its recorder and its log</span></div>
         <div class="row"><b class="key">table-sheet</b><span class="dim">0.1.0</span><span class="v">From the <strong>public</strong> <code>unstuck-games</code> marketplace: D&amp;D Beyond to a table guide</span></div>
       </div>
-      <p class="totals">Totals: 25 skills (26 with table-sheet) · 4 hooks · 48 library files</p>
+      <p class="totals">Totals: 35 skills (36 with table-sheet) · 4 plugins with hooks · 40 library files</p>
     </div>
 
     <div class="block">
-      <h3>The plugins in detail</h3>
+      <h3>What runs without being asked</h3>
+      <div class="tbl hooks">
+        <div class="row"><b class="key">every prompt</b><div class="key">clock.js<small>legacy · the settings file</small></div><div class="v">Toronto time, check-in due. <strong>Live until switch-over.</strong></div></div>
+        <div class="row"><b class="key">every prompt</b><div class="key">clock.js<small>day</small></div><div class="v">Same. <strong>Silent while the legacy one exists.</strong></div></div>
+        <div class="row"><b class="key">every prompt</b><div class="key">cue-hook.js<small>sa</small></div><div class="v">A prompt starting <code>::</code> → the CUE menu, printed verbatim</div></div>
+        <div class="row"><b class="key">every prompt</b><div class="key">send-gate.js --prompt<small>comms</small></div><div class="v">If your <strong>whole</strong> message is “send” / “send it” / “approved” → one send pass (15 min)</div></div>
+        <div class="row"><b class="key">every tool call</b><div class="key">guard.js<small>guard</small></div><div class="v">Deny or ask on the 11 hard rules</div></div>
+        <div class="row"><b class="key">every MCP call</b><div class="key">send-gate.js<small>comms</small></div><div class="v">Outbound message → <strong>denied</strong> without a pass. Exempt: Slack DMs <strong>to you</strong>.</div></div>
+      </div>
+    </div>
 
-      <div class="plug">
+    <div class="block wide">
+      <h3>The plugins in detail</h3>
+      <div class="tabs" role="tablist" aria-label="Plugins" hidden><button type="button" role="tab" id="tab-day" aria-controls="plug-day" aria-selected="true">day</button><button type="button" role="tab" id="tab-sa" aria-controls="plug-sa" aria-selected="false">sa</button><button type="button" role="tab" id="tab-comms" aria-controls="plug-comms" aria-selected="false">comms</button><button type="button" role="tab" id="tab-guard" aria-controls="plug-guard" aria-selected="false">guard</button><button type="button" role="tab" id="tab-ug" aria-controls="plug-ug" aria-selected="false">ug</button><button type="button" role="tab" id="tab-sexyhtml" aria-controls="plug-sexyhtml" aria-selected="false">sexyhtml</button><button type="button" role="tab" id="tab-labs" aria-controls="plug-labs" aria-selected="false">labs</button></div>
+
+      <div class="plug" id="plug-day" role="tabpanel" aria-labelledby="tab-day" tabindex="0">
         <div class="plug-h"><code>day</code><span>Jay as operator</span></div>
         <div class="tbl">
           <div class="row"><b class="key">boot</b><div class="v"><span class="when">“boot”, “boot up”, “morning”</span>Brief, reminders, a daily reading; one pick (style and energy); one phase at a time; ends with a language card</div></div>
@@ -207,7 +233,7 @@
         <p class="note"><strong>Scripts</strong> (moved from a local folder, unchanged except for paths): <code>day.js</code> (the only writer of <code>day.json</code>), <code>habits.js</code> (the only writer of <code>habits.jsonl</code>), <code>surfaced.js</code> (the reading and the language card), <code>profile-stale.js</code>, <code>clock.js</code>.</p>
       </div>
 
-      <div class="plug">
+      <div class="plug" id="plug-sa" role="tabpanel" aria-labelledby="tab-sa" tabindex="0">
         <div class="plug-h"><code>sa</code><span>SelfActual and Imprint</span></div>
         <div class="tbl">
           <div class="row"><b class="key">sa</b><div class="v"><span class="when">voice: the router</span>Picks one gear, loop or mode from what Jay said, reads it from the library, becomes it</div></div>
@@ -229,7 +255,7 @@
         
       </div>
 
-      <div class="plug">
+      <div class="plug" id="plug-comms" role="tabpanel" aria-labelledby="tab-comms" tabindex="0">
         <div class="plug-h"><code>comms</code><span>Messages and the send gate</span></div>
         <div class="tbl">
           <div class="row"><b class="key">ping</b><div class="v">Checks connectors and re-dials failed ones, checks the vault, then lists <strong>unread</strong> vault messages. Marks nothing read.</div></div>
@@ -242,15 +268,16 @@
         <p class="note dim">Why deny instead of ask: the permission mode I work in approves an “ask” automatically. Found the hard way on 1 Oct, when a test DM went out.</p>
       </div>
 
-      <div class="plug">
+      <div class="plug" id="plug-guard" role="tabpanel" aria-labelledby="tab-guard" tabindex="0">
         <div class="plug-h"><code>guard</code><span>Hard rules as code</span></div>
-        <p class="note" style="margin-top:14px">One script, <code>guard.js</code>, on Bash, PowerShell, file writes and every MCP call. <strong>31 tests pass</strong> (<code>node guard.js --test</code>).</p>
+        <p class="note" style="margin-top:14px">One script, <code>guard.js</code>, on Bash, PowerShell, file writes and every MCP call. <strong>34 tests pass</strong> (<code>node guard.js --test</code>).</p>
         <div class="tbl rules" style="margin-top:18px">
           <div class="row"><div class="v"><code>deploy-*.sh</code>, <code>terraform apply</code>, <code>pm2 restart/reload/start/stop/delete</code>, <code>aws ssm send-command</code></div><div class="res"><b>deny</b>: print it for Jay</div></div>
           <div class="row"><div class="v"><code>git commit/push/merge</code> in a company repo on <code>main</code></div><div class="res"><b>deny</b>: branch first</div></div>
           <div class="row"><div class="v">Editing files in a company repo on <code>main</code></div><div class="res"><b>ask</b></div></div>
           <div class="row"><div class="v">Force push, <code>reset --hard</code>, <code>clean -f</code>, <code>branch -D</code>, <code>push --delete</code>, <code>rm -rf</code>, <code>Remove-Item -Recurse</code></div><div class="res"><b>ask</b></div></div>
           <div class="row"><div class="v">Direct edits to the local state files</div><div class="res"><b>deny</b>: use the scripts</div></div>
+          <div class="row"><div class="v">Direct edits to the Judgement OS log</div><div class="res"><b>deny</b>: its scripts only</div></div>
           <div class="row"><div class="v">A token or key (GitHub, Anthropic, Stripe live, AWS, Slack, private key) in a write or a call</div><div class="res"><b>ask</b></div></div>
           <div class="row"><div class="v">Bulk profile reads that would pull private sections</div><div class="res"><b>deny</b></div></div>
           <div class="row"><div class="v">Silo-gated profile section</div><div class="res"><b>deny</b> in a work folder, <b>ask</b> elsewhere</div></div>
@@ -262,7 +289,7 @@
         <p class="note">“Company repo” means anything in the company folder. ECHO-X and your other projects aren't branch-guarded. A crash in the guard never blocks work. <strong>Skill:</strong> <code>guard</code> explains a block when one happens.</p>
       </div>
 
-      <div class="plug">
+      <div class="plug" id="plug-ug" role="tabpanel" aria-labelledby="tab-ug" tabindex="0">
         <div class="plug-h"><code>ug</code><span>Unstuck Games</span></div>
         <div class="tbl">
           <div class="row"><b class="key">play</b><div class="v">9 plays: would-you-rather, two-truths, aita, desert-island, rank-these, mad-libs, story-chain, young-name, guess-what-imprint-thinks. No game named → it pitches one.</div></div>
@@ -273,29 +300,64 @@
         <p class="note">Plus <code>table-sheet@unstuck-games</code>, installed separately (public, MIT).</p>
       </div>
 
-      <div class="plug">
-        <div class="plug-h"><code>make</code><span>Finished pages in a house style</span></div>
+      <div class="plug" id="plug-sexyhtml" role="tabpanel" aria-labelledby="tab-sexyhtml" tabindex="0">
+        <div class="plug-h"><code>sexyhtml</code><span>Finished pages in a house style</span></div>
         <div class="tbl">
-          <div class="row"><b class="key">sexy-html</b><div class="v">A finished HTML page in a house style. It loads <code>artifact-design</code> (and <code>dataviz</code> or <code>artifact-diagramming</code> when needed). Interactive pages end in a copy button. <strong>Never a score out of anything.</strong></div></div>
+          <div class="row"><b class="key">sexyhtml</b><div class="v">The router: Jay's own style by default, the SelfActual style for work, Seren for gaming, and a named style always wins. When a request reads as two things at once, the Judgement OS gets a say. A finished HTML page in a house style. It loads <code>artifact-design</code> (and <code>dataviz</code> or <code>artifact-diagramming</code> when needed). Interactive pages end in a copy button. <strong>Never a score out of anything.</strong></div></div>
         </div>
         <p class="sub-k">Styles</p>
         <div class="tbl">
           <div class="row"><b class="key">seren</b><div class="v"><strong>Ready:</strong> tokens from the Seren site (ink, bone, copper, verdigris; Plex and Space Mono; dark-first)</div></div>
-          <div class="row"><b class="key">sa</b><div class="v"><strong>Waiting</strong> on the Claude Design export</div></div>
-          <div class="row"><b class="key">jay</b><div class="v"><strong>Not defined.</strong> It gets designed with Jay.</div></div>
+          <div class="row"><b class="key">sa</b><div class="v"><strong>Ready:</strong> the selfActual design system from Claude Design (paper and ink, evidence tags, Caprasimo and Figtree). Every SA page uses it.</div></div>
+          <div class="row"><b class="key">echo-x</b><div class="v"><strong>Ready:</strong> this page. The lamp-lit room, then the paper dossier.</div></div>
+          <div class="row"><b class="key">jay</b><div class="v"><strong>Ready, and the default:</strong> ECHO-JAY, Jay's own system from Claude Design. Light and industrial, gold and steel blue, chamfered corners, made for the sidebar.</div></div>
         </div>
+      </div>
+
+      <div class="plug" id="plug-labs" role="tabpanel" aria-labelledby="tab-labs" tabindex="0">
+        <div class="plug-h"><code>labs</code><span>The Judgement OS</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">boot</b><div class="v"><span class="when">typed: /labs:boot</span>The daily boot with one marked decision, the style pick. Code picks; the judge is asked only when the day looks unusual.</div></div>
+          <div class="row"><b class="key">try</b><div class="v"><span class="when">typed: /labs:try</span>Judge the judges, blind: any morning, two models, labels hidden until you pick one.</div></div>
+          <div class="row"><b class="key">cases</b><div class="v"><span class="when">typed: /labs:cases</span>Recorded mornings through both judges, each answer checked against what the case expects.</div></div>
+          <div class="row"><b class="key">results</b><div class="v"><span class="when">typed: /labs:results</span>The log as a page. Counts, never a score.</div></div>
+          <div class="row"><b class="key">guide</b><div class="v"><span class="when">“LABS guide”</span>A five-step checklist for testing it yourself. Step four is trying to break it.</div></div>
+        </div>
+        <p class="note"><strong>The judge</strong> is an agent, <code>second-opinion</code>, with one tool (Read) and one file to read. It answers in a fixed shape: a verdict, a confidence, why, the fact it rests on, and a suggestion. <strong>The recorder</strong> checks every answer in code before anything can show it. <strong>The log</strong> is append-only, and only its scripts write it.</p>
       </div>
     </div>
 
-    <div class="block">
-      <h3>What runs without being asked</h3>
-      <div class="tbl hooks">
-        <div class="row"><b class="key">every prompt</b><div class="key">clock.js<small>legacy · the settings file</small></div><div class="v">Toronto time, check-in due. <strong>Live until switch-over.</strong></div></div>
-        <div class="row"><b class="key">every prompt</b><div class="key">clock.js<small>day</small></div><div class="v">Same. <strong>Silent while the legacy one exists.</strong></div></div>
-        <div class="row"><b class="key">every prompt</b><div class="key">cue-hook.js<small>sa</small></div><div class="v">A prompt starting <code>::</code> → the CUE menu, printed verbatim</div></div>
-        <div class="row"><b class="key">every prompt</b><div class="key">send-gate.js --prompt<small>comms</small></div><div class="v">If your <strong>whole</strong> message is “send” / “send it” / “approved” → one send pass (15 min)</div></div>
-        <div class="row"><b class="key">every tool call</b><div class="key">guard.js<small>guard</small></div><div class="v">Deny or ask on the 11 hard rules</div></div>
-        <div class="row"><b class="key">every MCP call</b><div class="key">send-gate.js<small>comms</small></div><div class="v">Outbound message → <strong>denied</strong> without a pass. Exempt: Slack DMs <strong>to you</strong>.</div></div>
+    <div class="block wide">
+      <h3>When the rules don't know enough</h3>
+      <div class="split">
+        <div>
+          <p class="lede">Most of ECHO-X is plain procedure. A few steps are judgement calls, where the right answer depends on who's at the keyboard and what kind of day it is. Those are <strong>marked decisions</strong>.</p>
+          <ol class="list">
+            <li><strong>The rule picks first.</strong> Code makes the default, and decides whether context could change it. Usually it can't, and nothing else happens.</li>
+            <li><strong>A judge gets one bounded question.</strong> Only when the rule asks. It reads one profile file and nothing else.</li>
+            <li><strong>You settle real disagreements.</strong> Only a medium- or high-confidence disagreement reaches you, as one question. A hunch is logged and never shown.</li>
+            <li><strong>Every path leaves a receipt:</strong> the pick, why the judge was asked, its answer, and what happened.</li>
+          </ol>
+          <p class="note">It recommends; it never authorises. Sending, deploying and writing the vault stay with the guard and the send gate.</p>
+        </div>
+<pre class="pre">  a skill step
+       │
+  marked decision ──── the rule picks
+       │
+  could context change it? ── no ──▶ the rule's pick
+       │ yes
+  the judge: one question
+       │
+  disagrees, and means it? ── no ──▶ the rule's pick
+       │ yes
+  you decide
+       │
+  the log</pre>
+      </div>
+      <p class="sub-k">The two marked decisions so far</p>
+      <div class="tbl">
+        <div class="row"><b class="key">boot style</b><div class="v"><span class="when">asks when it's late, a project is blocked, a P0 is due with a blocker, or the handoff names a project the pick ignores</span>The style used most in the last seven boots</div></div>
+        <div class="row"><b class="key">page style</b><div class="v"><span class="when">asks when a request reads as both work and gaming, or you say “judge it”</span>Jay's own style by default, the SelfActual style for work, Seren for gaming</div></div>
       </div>
     </div>
 
@@ -305,7 +367,7 @@
 <pre class="pre">ECHO-X/                               a private repo
   .claude-plugin/marketplace.json     the marketplace (synced by build-catalog)
   plugins/
-    day/  sa/  comms/  guard/  ug/  make/
+    day/  sa/  comms/  guard/  ug/  sexyhtml/  labs/
       .claude-plugin/plugin.json
       skills/&lt;name&gt;/SKILL.md
       hooks/hooks.json                day, sa, comms, guard
@@ -313,14 +375,18 @@
     sa/library/                       gears, loops, modes (a snapshot)
     sa/reference/catalog.md           generated: what :: help prints
     ug/library/plays/
-    make/styles/                      seren.md, sa.md, jay.md
+    sexyhtml/skills/                  sexyhtml · sa · seren · echo-x · jay
+    sexyhtml/design/                  selfactual · echo-jay (from Claude Design)
+    labs/                             the Judgement OS: judge, recorder, cases
   scripts/build-catalog.js            regenerates the catalog and marketplace entries
   docs/
     PLAN.md                           decisions log and open questions
     SYSTEM.md                         the whole-system map
     PLUGINS.md                        every plugin in detail
     CD-BRIEF.md                       the design brief this page answers
+    labs/                             the Judgement OS spec, briefing, red team
   TASKS.md                            the ECHO-X task list
+  IDEAS.md                            filed, not decided
   site/                               this page
     onboarding.html                   the field guide (published as an artifact)
     oss-survey-2026-10-01.md          open-source survey
