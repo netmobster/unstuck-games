@@ -2,7 +2,10 @@
 // or with --full a standalone .html file. Modules are concatenated in dependency order with
 // their import/export syntax stripped, and the CD brief is inlined into its tab.
 //   node scripts/bundle.mjs <out.html> [--full]
-import { readFileSync, writeFileSync } from 'node:fs';
+import { readFileSync, writeFileSync, mkdtempSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 const here = p => new URL('../' + p, import.meta.url);
 const read = p => readFileSync(here(p), 'utf8');
 const ORDER = ['src/rng.js', 'src/map.js', 'src/sim.js', 'src/policies.js', 'src/tuned.js', 'src/lineage.js', 'ui.js'];
@@ -19,6 +22,11 @@ for (const f of ORDER) {
   }
   js += `\n// ---- ${f}\n` + src;
 }
+// refuse to write a bundle that doesn't parse (a lost escape once shipped a dead page)
+const tmp = join(mkdtempSync(join(tmpdir(), 'lw-')), 'bundle.mjs');
+writeFileSync(tmp, js);
+try { execFileSync(process.execPath, ['--check', tmp], { stdio: 'pipe' }); }
+catch (e) { console.error(String(e.stderr || e)); process.exit(1); }
 const html = read('index.html');
 const body = html.slice(html.indexOf('<body>') + 6, html.lastIndexOf('</body>'))
   .replace('<!--BRIEF-->', read('cd-brief.html'))

@@ -108,6 +108,8 @@ dialog h2{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:
 .brief .scroll{overflow-x:auto}
 .brief .swatch{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:6px;border:1px solid var(--line)}
 @media (max-width:900px){ .tabs{margin-left:0} }
+
+.earlier{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:22px;text-transform:uppercase;margin:32px 0 6px;color:var(--dim)}
 </style>
 </head>
 <body>
@@ -812,6 +814,9 @@ function step(g, action = { type: 'stay' }) {
 
   // 4. the hunters sense, believe, move
   sense(g);
+  const loc = located(g);
+  if (loc && !g._wasLocated) g.events.push({ t: 'located' });
+  g._wasLocated = loc;
   g._ready = undefined;
   for (const h of g.hunters) moveHunter(g, h);
 
@@ -1370,6 +1375,9 @@ let g, cs = 30, hover = -1, actions = [], timer = null, cfg;
 const LKEY = 'lw.line.v1';
 function loadLine() { try { const l = JSON.parse(localStorage.getItem(LKEY)); if (l && l.v === 1) return l; } catch {} return null; }
 function saveLine(l) { try { localStorage.setItem(LKEY, JSON.stringify(l)); } catch {} }
+const AKEY = 'lw.lines.v1';
+function archived() { try { return JSON.parse(localStorage.getItem(AKEY)) || []; } catch { return []; } }
+function archive(l) { if (!l || !l.chronicle.length) return; try { const a = archived(); a.push(l); localStorage.setItem(AKEY, JSON.stringify(a.slice(-20))); } catch {} }
 let line = loadLine();
 if (!line || line.ended) { line = newLine(Date.now() % 100000 + 1); saveLine(line); }
 const watching = () => !!$('watch').value;
@@ -1505,6 +1513,7 @@ function narrate(evs) {
     if (e.t === 'move') say(`Run for the ${KIND_NAME[g.warrens[e.to].kind]} warren.`);
     else if (e.t === 'arrive-warren') say(`Under again: a ${g.warrens[e.id].depth} ${KIND_NAME[g.warrens[e.id].kind]} warren.`, 'good');
     else if (e.t === 'seen') say('Seen.', 'bad');
+    else if (e.t === 'located') say(g.troop.warren != null ? 'Heard. They know which warren you’re in.' : 'They have you.', 'bad');
     else if (e.t === 'siege') say('They know where you are. The ring is forming.', 'bad');
     else if (e.t === 'arrive') say(`A ${HUNTER_KINDS[e.kind].label.toLowerCase()} arrives at the edge.`);
     else if (e.t === 'fight') say(e.won ? `${e.mode === 'attack' ? 'You went out and won' : 'They came in and lost'}: ${e.mine.toFixed(0)} against ${e.theirs.toFixed(0)}. ${e.lost} of yours lost.` : `${e.mine.toFixed(0)} against ${e.theirs.toFixed(0)}.`, e.won ? 'good' : 'bad');
@@ -1568,7 +1577,7 @@ function heirPick() {
   if (failed) {
     const ended = recordGeneration(line, g, sentence, null);
     box.innerHTML = `<p class="lineend">${line.name} ${roman(line.gen)} never saw a dawn. The line of ${line.name} ends ${line.gen === 1 ? 'where it began' : `after ${line.gen} generations`}. That was the last warren.</p><button type="button" id="newline">Found a new line</button>`;
-    line = ended; saveLine(line); chronicle();
+    line = ended; saveLine(line); archive(line); chronicle();
     $('newline').addEventListener('click', () => { line = newLine(Date.now() % 100000 + 1); saveLine(line); $('ending').close(); const s = g.seed + 1; $('seed').value = s; start(s); });
     return;
   }
@@ -1587,8 +1596,9 @@ function chronicle() {
   c.innerHTML = `<h2>The line of ${line.name}${line.ended ? ' <span class="dim">· ended</span>' : ''}</h2>` +
     `<p class="dim">${line.ended ? `It ran ${line.chronicle.length} generation${line.chronicle.length === 1 ? '' : 's'}.` : `Generation ${roman(line.gen)} is out there now${line.heir ? `, ${describe(line.heir)}` : ''}.`}</p>` +
     (rows.length ? `<ol class="gens">${rows.map(r => `<li><div class="gn">${r.name}<span>${r.nights} night${r.nights === 1 ? '' : 's'} · seed ${r.seed}</span></div><p>${r.sentence}</p>${r.inherited || r.passed ? `<p class="dim small">${r.inherited ? 'Born ' + r.inherited + '. ' : ''}${r.passed ? 'Passed on: ' + r.passed + '.' : ''}</p>` : ''}</li>`).join('')}</ol>` : '<p class="dim">No generation has fallen yet.</p>') +
-    `<button type="button" id="abandon">Abandon this line and found a new one</button>`;
-  $('abandon').addEventListener('click', () => { if ($('abandon').dataset.armed) { line = newLine(Date.now() % 100000 + 1); saveLine(line); chronicle(); lineBar(); start(+$('seed').value || 1); } else { $('abandon').dataset.armed = 1; $('abandon').textContent = 'Click again to abandon it'; } });
+    `<button type="button" id="abandon">Abandon this line and found a new one</button>` +
+    (() => { const a = archived().filter(l => l.founded !== line.founded).reverse(); return a.length ? `<h3 class="earlier">Earlier lines</h3><ol class="gens">${a.map(l => `<li><div class="gn">The line of ${l.name}<span>${l.chronicle.length} generation${l.chronicle.length === 1 ? '' : 's'}${l.abandoned ? ' · abandoned' : ''}</span></div><p class="dim small">${l.chronicle.map(r => `${r.name}: ${r.nights} night${r.nights === 1 ? '' : 's'}`).join(' · ')}</p><p>${l.chronicle.at(-1).sentence}</p></li>`).join('')}</ol>` : ''; })();
+  $('abandon').addEventListener('click', () => { if ($('abandon').dataset.armed) { archive({ ...line, ended: true, abandoned: true }); line = newLine(Date.now() % 100000 + 1); saveLine(line); chronicle(); lineBar(); start(+$('seed').value || 1); } else { $('abandon').dataset.armed = 1; $('abandon').textContent = 'Click again to abandon it'; } });
 }
 // The twin: same world, same choices, but run one tick before the end. Honest because
 // every roll is hashed by (seed, tick), so nothing else in the world changes.

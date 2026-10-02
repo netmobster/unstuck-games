@@ -100,3 +100,5 @@ dialog h2{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:
 .brief .scroll{overflow-x:auto}
 .brief .swatch{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:6px;border:1px solid var(--line)}
 @media (max-width:900px){ .tabs{margin-left:0} }
+
+.earlier{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:22px;text-transform:uppercase;margin:32px 0 6px;color:var(--dim)}

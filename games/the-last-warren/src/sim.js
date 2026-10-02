@@ -271,6 +271,9 @@ export function step(g, action = { type: 'stay' }) {
 
   // 4. the hunters sense, believe, move
   sense(g);
+  const loc = located(g);
+  if (loc && !g._wasLocated) g.events.push({ t: 'located' });
+  g._wasLocated = loc;
   g._ready = undefined;
   for (const h of g.hunters) moveHunter(g, h);
 
