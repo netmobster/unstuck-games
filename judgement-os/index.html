@@ -261,6 +261,32 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
 /* Only "How it works" is the big sheet (the microsite). The plugin sheets and "For devs" are ordinary dialogs, about half the width. */
 .modal.sm{justify-content:center;align-items:flex-start}
 .modal.sm .modal-box{flex:0 1 auto;width:clamp(min(100%,560px),50vw,100%);max-height:100%}
+/* the splash: a paper sheet at the door. First visit only (remembered under 'jos-splash-v1');
+   #about and the footer's footnote bring it back. Normal dialog size, like the other sheets. */
+.splash-box{position:relative}
+.splash-box .x{position:absolute;top:14px;right:14px;z-index:1;background:var(--paper)}
+.splash-body{padding-top:30px;text-align:center}
+.splash-top{display:grid;justify-items:center;gap:10px;max-width:34em;margin:0 auto}
+.splash-mark{width:3.5rem;height:3.5rem;color:var(--paper-accent)}
+.splash-name{font:600 .875rem/1 var(--display);letter-spacing:.24em;color:var(--paper-accent)}
+.splash-h{margin:4px 0 0;max-width:none;font:500 clamp(1.375rem,3.2vw,1.875rem)/1.2 var(--display);color:var(--paper-ink);text-wrap:balance}
+.splash-lede{margin:0;font-size:.9375rem;color:var(--paper-text);line-height:1.5;text-wrap:pretty}
+@media (max-width:640px){#m-splash{padding:10px}.splash-body{padding-left:16px;padding-right:16px}}
+.quads{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,13.5rem),1fr));gap:12px;margin-top:24px;text-align:left}
+.quad{min-width:0;padding:14px 16px 13px;border-radius:8px;border:1px solid var(--paper-rule);background:var(--paper-2)}
+.quad.no{background:none;border-style:dashed;border-color:var(--paper-dash)}
+.quad h3{margin:0;font:700 .65625rem/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--paper-accent)}
+.quad.no h3{color:var(--paper-dim)}
+.quad ul{margin:8px 0 0;padding:0;list-style:none;display:grid;gap:7px}
+.quad li{position:relative;padding-left:1.15em;font-size:.9375rem;line-height:1.4;color:var(--paper-text)}
+.quad li::before{content:'+';position:absolute;left:0;top:0;font-family:var(--mono);color:var(--paper-accent)}
+.quad.no li::before{content:'\2013';color:var(--paper-dim)}
+.splash-acts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:24px}
+.splash-acts .cta.ghost{color:var(--paper-dim);border-color:var(--paper-rule)}
+.splash-acts .cta.ghost:hover{color:var(--paper-ink);border-color:var(--paper-accent)}
+.splash-fn{margin:18px 0 0;font:400 .65625rem/1.6 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--paper-dim)}
+footer .linkbtn{padding:0;color:inherit;cursor:pointer}
+footer .linkbtn:hover{color:var(--paper-ink)}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
@@ -584,13 +610,55 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
 <footer>
   <div class="wrap">
     <span>Judgement OS · Jeremy “Jay” Wright // <a href="https://echofiles.substack.com" target="_blank" rel="noopener">echofiles.substack.com</a> for more // wearecleardigital at gmail.com</span>
-    <span>*Not an operating system</span>
+    <button type="button" class="linkbtn" data-open="m-splash">*Not an operating system</button>
   </div>
 </footer>
 
 <!-- ============================================================
      MODALS. Open with data-open="<id>" (+ data-tab="<panel>").
      ============================================================ -->
+
+<!-- The splash: first visit only, then the footer's footnote or #about -->
+<div class="modal sm" id="m-splash" hidden>
+  <div class="modal-box splash-box" role="dialog" aria-modal="true" aria-labelledby="m-splash-title">
+    <button type="button" class="x" data-close aria-label="Close">×</button>
+    <div class="modal-body splash-body">
+      <div class="splash-top">
+        <svg class="splash-mark" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M19 31h26l13 29H6z" fill="currentColor" opacity=".16"/><path d="M24 31h16l7 29H17z" fill="currentColor" opacity=".16"/><path d="M32 2v17" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"/><path d="M13 26c0-10 38-10 38 0v3c0 4.5-38 4.5-38 0z" fill="currentColor"/><circle cx="32" cy="50" r="4.5" fill="currentColor"/></svg>
+        <span class="splash-name">JUDGEMENT OS*</span>
+        <h2 class="splash-h" id="m-splash-title">A second opinion, only when your skills need one.</h2>
+        <p class="splash-lede">Your skills keep making their normal calls in code. When the code can tell an answer might depend on you, two judges who know how you work weigh in, and you hear about it only when both disagree.</p>
+      </div>
+      <div class="quads">
+        <section class="quad"><h3>What this is</h3><ul>
+          <li>A rule that decides, and two judges asked only when it can't tell.</li>
+          <li>One profile you write, and one bounded question. That's all a judge sees.</li>
+          <li>Every call logged, and counted.</li>
+        </ul></section>
+        <section class="quad no"><h3>What this isn't</h3><ul>
+          <li>An agent. The judges read; they never send, deploy, write or merge.</li>
+          <li>Memory. The judges know your profile, not your chat history.</li>
+          <li>Fast, yet. A judge takes 40 seconds or more.</li>
+        </ul></section>
+        <section class="quad"><h3>Use this if</h3><ul>
+          <li>You build or run your own Claude Code skills.</li>
+          <li>Some of their steps are judgement calls that depend on who's at the keyboard.</li>
+          <li>You'd rather settle a real disagreement than have AI quietly overrule you.</li>
+        </ul></section>
+        <section class="quad no"><h3>Don't use this if</h3><ul>
+          <li>Your skills are all mechanical steps. There's nothing to judge.</li>
+          <li>You won't write a profile. Without one, no judge is ever asked.</li>
+          <li>You want AI to decide for you. It advises; you settle.</li>
+        </ul></section>
+      </div>
+      <div class="splash-acts">
+        <button type="button" class="cta" data-close>Come in</button>
+        <button type="button" class="cta ghost" data-open="m-how" data-tab="flow">How it works</button>
+      </div>
+      <p class="splash-fn">*No, really. Not actually an OS.</p>
+    </div>
+  </div>
+</div>
 
 <!-- How it works -->
 <div class="modal" id="m-how" hidden>
@@ -917,6 +985,7 @@ document.querySelectorAll('.card').forEach(function (card) {
 
   function close() {
     if (!openId) return;
+    if (openId === 'm-splash') { try { localStorage.setItem('jos-splash-v1', '1'); } catch (e) {} }
     var modal = document.getElementById(openId);
     if (modal) modal.hidden = true;
     openId = null;
@@ -945,15 +1014,20 @@ document.querySelectorAll('.card').forEach(function (card) {
     next.focus();
   });
 
-  // #how, #flow, #answer, #decisions, #holds, #judges open the How it works modal.
+  // #how, #flow, #answer, #decisions, #holds, #judges open the How it works modal. #about opens the splash.
   var HOW = ['flow', 'answer', 'decisions', 'holds', 'judges'];
   function fromHash() {
     var h = location.hash.replace(/^#/, '');
-    if (h === 'how') open('m-how', 'flow');
+    if (h === 'about') open('m-splash');
+    else if (h === 'how') open('m-how', 'flow');
     else if (HOW.indexOf(h) >= 0) open('m-how', h);
   }
   window.addEventListener('hashchange', fromHash);
   fromHash();
+  // The splash greets a first visit, never one that came in on a link to something specific.
+  var seen = false;
+  try { seen = !!localStorage.getItem('jos-splash-v1'); } catch (e) {}
+  if (!seen && !location.hash) open('m-splash');
 })();
 
 // ------------------------------------------------------------
