@@ -1,0 +1,105 @@
+<h2>Brief for Claude Design</h2>
+<p class="dim">The Last Warren · Unstuck Games · 2 Oct 2026. The game in the Play tab is <b>functionally complete and tuned</b>. It was built function-first, as the Unstuck method says, and it's yours to make beautiful. This tab is everything you need to do that without breaking it.</p>
+
+<h3>What it is</h3>
+<p><b>A tower defense game where you are the thing trying not to be found.</b> You're a troop hiding in a network of warrens. Every tick you gain one person and every hunter moves one step. You choose to <b>stay</b> (grow, but they close in), <b>run</b> for another warren (exposed in the open), or <b>attack</b> a hunter in reach. Nights escalate. When your warren falls, a survivor carries one heirloom into the next generation of your <b>line</b>. When a generation fails to see its first dawn, the line ends: that was the last warren.</p>
+<p>The feeling to design for: <i>"I could stay three more ticks and get much stronger, but I'm gambling that they won't reach me."</i> And then: <i>"Fuck, I should have moved one tick earlier."</i></p>
+<p><b>Tombstone:</b> Tokyo Jungle (2012). We took its organ (where you settle decides who you become) and burned the rest: no animals, no city, no action combat, no unlocks. Please don't bring them back visually either. It's a burrow at night, not a nature documentary.</p>
+
+<h3>Mood</h3>
+<ul>
+  <li><b>Night, underground, being hunted.</b> Tension, not gore. Quiet until it isn't.</li>
+  <li><b>A survey map someone is reading by lamplight</b>, which is where the current palette comes from. A full rethink is welcome as long as the meanings below survive.</li>
+  <li><b>Deadpan words.</b> The prose is short and dry: <i>"Seen." "The ring is forming."</i> Keep that voice.</li>
+  <li><b>Embarrassingly simple was the prototype rule.</b> Readable at a glance beats ornate. The board has to read in under a second at 14px cells.</li>
+</ul>
+
+<h3>The colour meanings, which must survive any restyle</h3>
+<div class="scroll"><table>
+  <thead><tr><th>Meaning</th><th>Now</th><th>Used for</th></tr></thead>
+  <tbody>
+    <tr><td><b>You / alive</b></td><td><span class="swatch" style="background:#8fbf63"></span>moss <code>#8fbf63</code></td><td>The troop, its count, the current warren's ring, your route preview, your tracks</td></tr>
+    <tr><td><b>Them / danger</b></td><td><span class="swatch" style="background:#e2654c"></span>blood <code>#e2654c</code></td><td>Hunters, the siege ring, "located", bad log lines, a race you'd lose</td></tr>
+    <tr><td><b>Knowledge / time</b></td><td><span class="swatch" style="background:#d2b052"></span>gold <code>#d2b052</code></td><td>The dawn bar, the hunters' belief heat map (Scout only), boons, the line's name</td></tr>
+    <tr><td>Terrain</td><td><span class="swatch" style="background:#2a3122"></span>open · <span class="swatch" style="background:#5b5440"></span>road · <span class="swatch" style="background:#1d3a1f"></span>forest · <span class="swatch" style="background:#1f3a52"></span>lake · <span class="swatch" style="background:#55594e"></span>mountain</td><td>The ground. It must stay recessive under everything above</td></tr>
+  </tbody>
+</table></div>
+
+<h3>What's fixed and what's yours</h3>
+<div class="scroll"><table>
+  <thead><tr><th>Fixed: please don't change</th><th>Yours</th></tr></thead>
+  <tbody><tr>
+    <td><ul>
+      <li>The rules and every number. They're tuned on about 800,000 simulated games</li>
+      <li>The board grid (28×18 cells) and that the game is tick-by-tick</li>
+      <li>What the player can see, as listed under "Every state" below. The game is complete information, apart from the belief map, which only Scout warrens show</li>
+      <li>The ending is <b>a sentence, not a score</b>. Never a "62%", a star rating or a progress bar about how well someone did</li>
+      <li>"Show the working": the seed and replay stay one click away</li>
+    </ul></td>
+    <td><ul>
+      <li>All visual design: type, palette within the meanings, layout, the panels, the dialogs</li>
+      <li>Every sprite and tile (manifest below)</li>
+      <li>Motion: tick pacing, the transit animation, the siege ring, dawn</li>
+      <li>How the lineage and chronicle look (a family tree? a ledger? a burrow map?)</li>
+      <li><b>Mobile.</b> It's desktop-only today and needs a real design, not a reflow</li>
+    </ul></td>
+  </tr></tbody>
+</table></div>
+
+<h3>Screens</h3>
+<ol>
+  <li><b>Play.</b> The board (a canvas) beside a side panel: the verbs, the troop, the hunters, the log, a legend. The header holds the line name, the night, the dawn bar and the tabs.</li>
+  <li><b>Dawn draft</b> (dialog). "Night N survived". The remnant line. Three boons; pick one.</li>
+  <li><b>The warren fell</b> (dialog). The ending sentence, then the twin line (<i>"Running one tick earlier would have seen dawn."</i>), then the heirloom pick: up to three, pick one. If the line ended, it says so and offers "Found a new line". "Show the working" sits below.</li>
+  <li><b>Chronicle.</b> The line's name, then each generation: name (for example <i>Bramble III</i>), nights, seed, the ending sentence, what it was born with and what it passed on.</li>
+  <li><b>CD brief</b> (this page). It can stay plain.</li>
+</ol>
+
+<h3>Every state the board shows</h3>
+<div class="scroll"><table>
+  <thead><tr><th>Thing</th><th>States</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Troop token</td><td>hidden in a warren · located (they know) · besieged (not growing) · in transit · dead</td><td>Always shows the head count, from 1 to about 150. In transit it's drawn hollow and dashed today</td></tr>
+    <tr><td>Warren mouth</td><td>kind <b>C / S / D</b> × depth <b>deep / mid / shallow</b> · current · hovered · dug this run</td><td>Depth is the line weight today (deep is thick, shallow is dashed). Kind is a letter today and should become a glyph</td></tr>
+    <tr><td>Hunter</td><td>4 kinds: <b>sweeper</b> (square), <b>tracker</b> (triangle), <b>listener</b> (ring), <b>hound</b> (diamond) · in reach (ringed) · on your trail (gold pip)</td><td>Shape is the kind, so it's never colour alone. All of them are "them" colour</td></tr>
+    <tr><td>The ring</td><td>visible once you're located and a siege is forming</td><td>A dashed diamond, 3 blocks out. This is the "decide now" moment, so make it felt</td></tr>
+    <tr><td>Route preview</td><td>on hovering a warren: the path, plus a label "<i>Kind (gift, cost) · depth · you 6t · them 13t</i>"</td><td>Moss when you'd win the race, blood when they'd get there first</td></tr>
+    <tr><td>Belief heat</td><td>only while scouting: a gold heat per cell, 0 to 1</td><td>"Where they think you are." It should read as knowledge, not danger</td></tr>
+    <tr><td>Tracks</td><td>pips that fade over 14 ticks</td><td>Off in the tuned rules (only the "tracks" variant lays them), but keep the style</td></tr>
+    <tr><td>Terrain</td><td>open · road · forest · lake · mountain</td><td>Forest and mountain block sight, so they should look like they do</td></tr>
+  </tbody>
+</table></div>
+
+<h3>Asset manifest (transparent SVGs, as the method asks)</h3>
+<p>The canvas draws these at the cell size, which runs from <b>14px to about 40px</b>. Please deliver <b>transparent SVGs, <code>viewBox="0 0 64 64"</code>, anchored at the centre</b>, with no text baked in (counts and labels are drawn live). Use layers where a state is a layer.</p>
+<div class="scroll"><table>
+  <thead><tr><th>Asset</th><th>Variants</th><th>Layers / states</th></tr></thead>
+  <tbody>
+    <tr><td><code>tile-{open,road,forest,lake,mountain}.svg</code></td><td>2–3 variants each, so the ground doesn't tile visibly</td><td>Optional edge pieces for road and lake</td></tr>
+    <tr><td><code>warren-{C,S,D}-{deep,mid,shallow}.svg</code></td><td>9</td><td><code>base</code> · <code>glyph</code> · <code>ring-current</code> · <code>ring-hover</code></td></tr>
+    <tr><td><code>troop.svg</code></td><td>1</td><td><code>body</code> · <code>body-transit</code> · <code>located</code> · <code>besieged</code> · <code>dead</code> (the count is drawn on top)</td></tr>
+    <tr><td><code>hunter-{sweeper,tracker,listener,hound}.svg</code></td><td>4</td><td><code>body</code> · <code>in-reach</code> · <code>on-trail</code> · <code>mustering</code></td></tr>
+    <tr><td><code>ring.svg</code></td><td>1, scalable</td><td>Drawn at 7×7 cells around the troop</td></tr>
+    <tr><td><code>track.svg</code></td><td>1</td><td>Opacity is animated by the game</td></tr>
+    <tr><td>Icons for the 8 boons</td><td>brood · hush · teeth · walls · legs · dig deeper · dig · scatter</td><td>For the draft and the heirloom cards</td></tr>
+    <tr><td>Heirlooms</td><td>Combat-born · Scout-born · Defense-born · an inherited boon</td><td>Same family as the boon icons</td></tr>
+  </tbody>
+</table></div>
+
+<h3>Interaction</h3>
+<ul>
+  <li><b>Space</b> stays one tick, and holding it keeps staying. <b>A</b> attacks the weakest hunter in reach. <b>Click a warren</b> to run; <b>click a ringed hunter</b> to attack. Hover a warren to see the race.</li>
+  <li>Transit plays itself out at about 220ms a tick once you've committed. That's the "OH FUCK" stretch, so pace it on purpose.</li>
+  <li>A run takes <b>about 3 minutes</b> of real time, and around 70% of ticks are tense. There's almost no downtime to fill.</li>
+</ul>
+
+<h3>Questions for you</h3>
+<ol>
+  <li>Mobile: tabs, a bottom sheet, or something else? Three verbs and a board ought to fit a thumb.</li>
+  <li>How do we make <b>"Watched N ticks"</b> legible on the board, not just in the panel? The longer they watch, the faster they react when you bolt.</li>
+  <li>The line: should the chronicle look like a family tree, a ledger, or a burrow map?</li>
+  <li>Do the warren kinds need their own visual language (Combat loud, Scout thin-walled, Defense slow to leave), so the trade-off is visible at a glance?</li>
+</ol>
+
+<h3>Files</h3>
+<p><code>games/the-last-warren/</code> on branch <code>ideas/the-last-warren</code>. The art seam is <code>ui.js</code> (all drawing is in <code>draw()</code>) and <code>style.css</code>. The rules live in <code>src/</code>, and nothing there needs touching for a restyle. Background reading: <code>RED-TEAM-BRIEFING.md</code> for the rules and maths, and <code>reports/REPORT.html</code> for the evidence.</p>

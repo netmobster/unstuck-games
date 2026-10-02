@@ -76,3 +76,22 @@ test('a stationary troop grows by one a tick unless besieged', () => {
 test('every hunter kind is known', () => {
   for (let s = 1; s < 40; s++) { const g = runGame(s, {}, R['hybrid-3-1.8']); for (const h of g.hunters) assert.ok(HUNTER_KINDS[h.kind]); }
 });
+
+import { newLine, lineCfg, heirlooms, recordGeneration } from '../src/lineage.js';
+import { TUNED } from '../src/tuned.js';
+test('lineage: one heirloom passes, the family is remembered, a night-1 death ends the line', () => {
+  let line = newLine(7);
+  let g = runGame(5, { ...TUNED, ...lineCfg(line) }, R['hybrid-3-1.8']);
+  assert.ok(g.result.nights >= 1, 'seed 5 should see a dawn');
+  const opts = heirlooms(g);
+  assert.ok(opts.length >= 1 && opts.length <= 3);
+  line = recordGeneration(line, g, 'a sentence', opts[0]);
+  assert.equal(line.gen, 2); assert.equal(line.chronicle.length, 1); assert.ok(line.heir);
+  const c = lineCfg(line);
+  assert.ok(c.heir && c.lineage && c.lineage.C + c.lineage.S + c.lineage.D > 0);
+  const g2 = newGame(6, { ...TUNED, ...c });
+  if (c.heir.attune) assert.equal(g2.troop.spec[c.heir.attune], 1);
+  // a generation that never sees a dawn ends the line
+  const dead = runGame(6, { ...TUNED, ...c }, R['always-stay']);
+  if (dead.result.nights === 0) { const ended = recordGeneration(line, dead, 'x', null); assert.equal(ended.ended, true); }
+});

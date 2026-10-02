@@ -1,0 +1,1681 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Last Warren</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,800;62..125,900&family=Literata:ital,opsz,wght@0,7..72,400;1,7..72,400&family=Martian+Mono:wght@400;600&display=swap">
+<style>/* Night over the survey sheet. Same family as the tombstone file: moss is the troop,
+   blood is the hunters, gold is what you know. Dark-first: the game is played at night. */
+:root{
+  --bg:#12150e; --panel:#1a1e15; --line:#30362a; --ink:#e3e6d4; --dim:#97a088;
+  --moss:#8fbf63; --blood:#e2654c; --gold:#d2b052;
+  --open:#2a3122; --road:#5b5440; --forest:#1d3a1f; --forestdot:#2f5a2c; --lake:#1f3a52; --mtn:#55594e;
+  --display:'Archivo','Arial Narrow',Arial,sans-serif; --body:'Literata',Georgia,serif; --mono:'Martian Mono',ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px}
+.app{display:flex;flex-direction:column;min-height:100%;padding-inline:16px;padding-block:0 16px;max-width:1400px;margin:0 auto}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-block:12px;border-bottom:1px solid var(--line)}
+h1{font-family:var(--display);font-weight:900;font-stretch:62%;font-size:30px;text-transform:uppercase;margin:0;letter-spacing:.01em}
+.moss{color:var(--moss)}
+.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
+.clock{display:flex;align-items:center;gap:10px}
+.clock b{font-family:var(--display);font-weight:900;font-size:26px;font-stretch:70%}
+.dawn{width:140px;height:8px;background:var(--line)}
+.dawn div{height:100%;width:0;background:var(--gold);transition:width .15s}
+.tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-left:auto}
+input,select,button{font-family:var(--mono);font-size:11px;background:var(--panel);color:var(--ink);border:1px solid var(--line);padding:6px 8px}
+input{width:72px}
+button{cursor:pointer;letter-spacing:.06em}
+button:hover:not(:disabled){border-color:var(--ink)}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--moss);outline-offset:2px}
+button:disabled{opacity:.4;cursor:default}
+
+.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;padding-top:14px;align-items:start}
+.boardwrap{min-width:0}
+canvas{display:block;width:100%;height:auto;border:1px solid var(--line);cursor:crosshair;image-rendering:auto}
+.hint{font-size:13px;color:var(--dim);margin-top:8px;font-style:italic}
+kbd{font-family:var(--mono);font-size:10px;border:1px solid var(--line);padding:1px 5px;font-style:normal}
+
+.side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.verbs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.verb{font-family:var(--display);font-weight:900;font-stretch:70%;font-size:24px;text-transform:uppercase;padding:10px 8px;border-width:2px}
+.verb small{display:block;font-family:var(--mono);font-size:9px;font-weight:400;letter-spacing:.15em;color:var(--dim)}
+.verb.stay{border-color:var(--moss);color:var(--moss)}
+.verb.atk{border-color:var(--blood);color:var(--blood)}
+.block{background:var(--panel);border:1px solid var(--line);padding:12px 14px}
+.big{font-family:var(--display);font-stretch:75%;font-size:20px;margin:4px 0 8px}
+.big b{font-size:40px;font-weight:900;color:var(--moss);font-stretch:62%}
+.dim{color:var(--dim)}
+.rows .row{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:11px;padding-block:4px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.rows .row b{font-weight:600}
+.spec{display:grid;gap:4px;margin-top:10px}
+.spec .s{display:grid;grid-template-columns:62px 1fr 34px;gap:8px;align-items:center;font-family:var(--mono);font-size:10px;color:var(--dim)}
+.spec .t{height:7px;background:var(--line)} .spec .t div{height:100%;background:var(--moss)}
+.hunters{display:grid;gap:4px;margin-top:6px}
+.hunters .h{display:grid;grid-template-columns:16px 1fr auto;gap:8px;align-items:center;font-family:var(--mono);font-size:11px}
+.hunters .h i{width:10px;height:10px;background:var(--blood);display:inline-block}
+.log{margin:6px 0 0;padding-left:18px;font-size:13px;max-height:180px;overflow:auto}
+.log li{margin-bottom:3px} .log li.bad{color:var(--blood)} .log li.good{color:var(--moss)} .log li.gold{color:var(--gold)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-family:var(--mono);font-size:10px;color:var(--dim)}
+.sw{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px}
+.t-open{background:var(--open)} .t-road{background:var(--road)} .t-forest{background:var(--forest)} .t-lake{background:var(--lake)} .t-mtn{background:var(--mtn)}
+
+dialog{background:var(--panel);color:var(--ink);border:2px solid var(--ink);max-width:560px;width:calc(100% - 32px);padding:22px 24px}
+dialog::backdrop{background:rgba(5,6,4,.7)}
+dialog h2{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:28px;line-height:1.1;margin:8px 0 10px;text-wrap:balance}
+.boons{display:grid;gap:8px;margin-top:12px}
+.boons button{text-align:left;font-family:var(--body);font-size:14px;padding:12px 14px;border-color:var(--gold)}
+.boons button b{font-family:var(--display);font-stretch:75%;font-size:17px;color:var(--gold);text-transform:uppercase;letter-spacing:.04em;margin-right:6px}
+.eye summary{font-family:var(--mono);font-size:11px;color:var(--gold);cursor:pointer;margin-top:10px}
+.eye pre{font-family:var(--mono);font-size:10.5px;white-space:pre-wrap;color:var(--dim);max-height:240px;overflow:auto}
+.row-btns{display:flex;gap:8px;margin-top:16px}
+
+@media (max-width:900px){ .main{grid-template-columns:minmax(0,1fr)} .tools{margin-left:0} }
+@media (prefers-reduced-motion: reduce){ .dawn div{transition:none} }
+
+/* lineage, tabs, pages */
+.line{display:flex;align-items:baseline;gap:8px;font-family:var(--mono);font-size:12px}
+.line b{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;color:var(--gold);letter-spacing:.02em}
+.line .dim{font-size:11px}
+.tabs{display:flex;gap:4px;margin-left:auto}
+.tab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid var(--line);padding:6px 12px;color:var(--dim)}
+.tab[aria-selected="true"]{color:var(--ink);border-color:var(--ink)}
+.app>.tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:10px;margin-left:0}
+.page{padding-block:22px 40px;max-width:820px}
+.page h2{font-family:var(--display);font-weight:900;font-stretch:65%;font-size:40px;text-transform:uppercase;line-height:1;margin:0 0 8px}
+.gens{list-style:none;margin:18px 0;padding:0;display:grid;gap:10px}
+.gens li{background:var(--panel);border:1px solid var(--line);padding:12px 16px}
+.gens .gn{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;color:var(--gold);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.gens .gn span{font-family:var(--mono);font-size:10.5px;color:var(--dim);font-weight:400;letter-spacing:.06em}
+.gens p{margin:6px 0 0}
+.small{font-size:12.5px}
+.heirs{margin-top:14px}
+.heirs button{border-color:var(--moss)} .heirs button b{color:var(--moss)}
+.lineend{font-family:var(--display);font-stretch:80%;font-size:20px;color:var(--blood);line-height:1.25}
+#abandon{margin-top:8px;border-color:var(--blood);color:var(--blood)}
+.brief{max-width:900px;font-size:15px;line-height:1.6}
+.brief h2{margin-top:6px} .brief h3{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:22px;text-transform:uppercase;margin:28px 0 8px;color:var(--gold)}
+.brief p,.brief li{max-width:72ch} .brief ul,.brief ol{padding-left:20px}
+.brief table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}
+.brief th{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);text-align:left;border-bottom:1px solid var(--ink);padding:6px 10px 6px 0}
+.brief td{border-bottom:1px solid var(--line);padding:7px 10px 7px 0;vertical-align:top}
+.brief code{font-family:var(--mono);font-size:12px;color:var(--gold)}
+.brief .scroll{overflow-x:auto}
+.brief .swatch{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:6px;border:1px solid var(--line)}
+@media (max-width:900px){ .tabs{margin-left:0} }
+</style>
+</head>
+<body>
+<div class="app">
+  <header class="bar">
+    <h1><span class="moss">The Last</span> Warren</h1>
+    <div class="line"><span class="lbl">LINE</span><b id="linename">—</b><span class="dim" id="lineheir"></span></div>
+    <div class="clock">
+      <span class="lbl">NIGHT</span><b id="night">1</b>
+      <div class="dawn" title="ticks until dawn"><div id="dawnfill"></div></div>
+      <span class="lbl" id="ticks">0 / 54</span>
+    </div>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button type="button" role="tab" class="tab" data-tab="play" aria-selected="true">Play</button>
+      <button type="button" role="tab" class="tab" data-tab="chron" aria-selected="false">Chronicle</button>
+      <button type="button" role="tab" class="tab" data-tab="brief" aria-selected="false">CD brief</button>
+    </nav>
+  </header>
+
+  <div class="tools">
+    <label class="lbl" for="seed">SEED</label><input id="seed" type="number" value="1" min="1">
+    <select id="cfgsel" aria-label="Rules"><option value="tuned">Tuned rules</option><option value="defaults">Starting rules</option></select>
+    <button id="newrun" type="button">New run</button>
+    <select id="watch" aria-label="Watch a policy play"><option value="">You play</option></select>
+  </div>
+
+  <main class="main" id="tab-play" role="tabpanel">
+    <div class="boardwrap">
+      <canvas id="board" aria-label="The map"></canvas>
+      <div class="hint" id="hint">Click a warren to run for it. Click a hunter in reach to attack. <kbd>Space</kbd> stays one tick; hold it to keep staying.</div>
+    </div>
+
+    <aside class="side">
+      <div class="verbs">
+        <button id="stay" class="verb stay" type="button">Stay <small>space</small></button>
+        <button id="attackbtn" class="verb atk" type="button" disabled>Attack <small>A</small></button>
+      </div>
+      <div class="block">
+        <div class="lbl">THE TROOP</div>
+        <div class="big"><b id="size">4</b> <span id="where" class="dim">in a warren</span></div>
+        <div class="rows">
+          <div class="row"><span>Strength (defending)</span><b id="sdef">—</b></div>
+          <div class="row"><span>Noise</span><b id="noise">—</b></div>
+          <div class="row"><span>Growing</span><b id="growth">—</b></div>
+          <div class="row"><span>Watched</span><b id="watched">—</b></div>
+          <div class="row"><span>Status</span><b id="status">hidden</b></div>
+        </div>
+        <div class="spec" id="spec"></div>
+      </div>
+      <div class="block">
+        <div class="lbl">HUNTERS <span id="hcount"></span></div>
+        <div id="hunters" class="hunters"></div>
+      </div>
+      <div class="block">
+        <div class="lbl">LOG</div>
+        <ol id="log" class="log"></ol>
+      </div>
+      <div class="block legend">
+        <span><i class="sw t-open"></i>open</span><span><i class="sw t-road"></i>road, fast and loud</span>
+        <span><i class="sw t-forest"></i>forest, slow and quiet</span><span><i class="sw t-lake"></i>lake: you swim, they can't</span>
+        <span><i class="sw t-mtn"></i>mountain: blocks feet and eyes</span>
+        <span><b>C</b> Combat: +30% strength, but loud</span><span><b>S</b> Scout: see where they think you are, but thin walls</span><span><b>D</b> Defense: +30% holding, but slow to leave</span>
+      </div>
+    </aside>
+  </main>
+
+  <section class="page" id="tab-chron" role="tabpanel" hidden><div id="chronicle"></div></section>
+
+  <section class="page brief" id="tab-brief" role="tabpanel" hidden>
+    <h2>Brief for Claude Design</h2>
+<p class="dim">The Last Warren · Unstuck Games · 2 Oct 2026. The game in the Play tab is <b>functionally complete and tuned</b>. It was built function-first, as the Unstuck method says, and it's yours to make beautiful. This tab is everything you need to do that without breaking it.</p>
+
+<h3>What it is</h3>
+<p><b>A tower defense game where you are the thing trying not to be found.</b> You're a troop hiding in a network of warrens. Every tick you gain one person and every hunter moves one step. You choose to <b>stay</b> (grow, but they close in), <b>run</b> for another warren (exposed in the open), or <b>attack</b> a hunter in reach. Nights escalate. When your warren falls, a survivor carries one heirloom into the next generation of your <b>line</b>. When a generation fails to see its first dawn, the line ends: that was the last warren.</p>
+<p>The feeling to design for: <i>"I could stay three more ticks and get much stronger, but I'm gambling that they won't reach me."</i> And then: <i>"Fuck, I should have moved one tick earlier."</i></p>
+<p><b>Tombstone:</b> Tokyo Jungle (2012). We took its organ (where you settle decides who you become) and burned the rest: no animals, no city, no action combat, no unlocks. Please don't bring them back visually either. It's a burrow at night, not a nature documentary.</p>
+
+<h3>Mood</h3>
+<ul>
+  <li><b>Night, underground, being hunted.</b> Tension, not gore. Quiet until it isn't.</li>
+  <li><b>A survey map someone is reading by lamplight</b>, which is where the current palette comes from. A full rethink is welcome as long as the meanings below survive.</li>
+  <li><b>Deadpan words.</b> The prose is short and dry: <i>"Seen." "The ring is forming."</i> Keep that voice.</li>
+  <li><b>Embarrassingly simple was the prototype rule.</b> Readable at a glance beats ornate. The board has to read in under a second at 14px cells.</li>
+</ul>
+
+<h3>The colour meanings, which must survive any restyle</h3>
+<div class="scroll"><table>
+  <thead><tr><th>Meaning</th><th>Now</th><th>Used for</th></tr></thead>
+  <tbody>
+    <tr><td><b>You / alive</b></td><td><span class="swatch" style="background:#8fbf63"></span>moss <code>#8fbf63</code></td><td>The troop, its count, the current warren's ring, your route preview, your tracks</td></tr>
+    <tr><td><b>Them / danger</b></td><td><span class="swatch" style="background:#e2654c"></span>blood <code>#e2654c</code></td><td>Hunters, the siege ring, "located", bad log lines, a race you'd lose</td></tr>
+    <tr><td><b>Knowledge / time</b></td><td><span class="swatch" style="background:#d2b052"></span>gold <code>#d2b052</code></td><td>The dawn bar, the hunters' belief heat map (Scout only), boons, the line's name</td></tr>
+    <tr><td>Terrain</td><td><span class="swatch" style="background:#2a3122"></span>open · <span class="swatch" style="background:#5b5440"></span>road · <span class="swatch" style="background:#1d3a1f"></span>forest · <span class="swatch" style="background:#1f3a52"></span>lake · <span class="swatch" style="background:#55594e"></span>mountain</td><td>The ground. It must stay recessive under everything above</td></tr>
+  </tbody>
+</table></div>
+
+<h3>What's fixed and what's yours</h3>
+<div class="scroll"><table>
+  <thead><tr><th>Fixed: please don't change</th><th>Yours</th></tr></thead>
+  <tbody><tr>
+    <td><ul>
+      <li>The rules and every number. They're tuned on about 800,000 simulated games</li>
+      <li>The board grid (28×18 cells) and that the game is tick-by-tick</li>
+      <li>What the player can see, as listed under "Every state" below. The game is complete information, apart from the belief map, which only Scout warrens show</li>
+      <li>The ending is <b>a sentence, not a score</b>. Never a "62%", a star rating or a progress bar about how well someone did</li>
+      <li>"Show the working": the seed and replay stay one click away</li>
+    </ul></td>
+    <td><ul>
+      <li>All visual design: type, palette within the meanings, layout, the panels, the dialogs</li>
+      <li>Every sprite and tile (manifest below)</li>
+      <li>Motion: tick pacing, the transit animation, the siege ring, dawn</li>
+      <li>How the lineage and chronicle look (a family tree? a ledger? a burrow map?)</li>
+      <li><b>Mobile.</b> It's desktop-only today and needs a real design, not a reflow</li>
+    </ul></td>
+  </tr></tbody>
+</table></div>
+
+<h3>Screens</h3>
+<ol>
+  <li><b>Play.</b> The board (a canvas) beside a side panel: the verbs, the troop, the hunters, the log, a legend. The header holds the line name, the night, the dawn bar and the tabs.</li>
+  <li><b>Dawn draft</b> (dialog). "Night N survived". The remnant line. Three boons; pick one.</li>
+  <li><b>The warren fell</b> (dialog). The ending sentence, then the twin line (<i>"Running one tick earlier would have seen dawn."</i>), then the heirloom pick: up to three, pick one. If the line ended, it says so and offers "Found a new line". "Show the working" sits below.</li>
+  <li><b>Chronicle.</b> The line's name, then each generation: name (for example <i>Bramble III</i>), nights, seed, the ending sentence, what it was born with and what it passed on.</li>
+  <li><b>CD brief</b> (this page). It can stay plain.</li>
+</ol>
+
+<h3>Every state the board shows</h3>
+<div class="scroll"><table>
+  <thead><tr><th>Thing</th><th>States</th><th>Notes</th></tr></thead>
+  <tbody>
+    <tr><td>Troop token</td><td>hidden in a warren · located (they know) · besieged (not growing) · in transit · dead</td><td>Always shows the head count, from 1 to about 150. In transit it's drawn hollow and dashed today</td></tr>
+    <tr><td>Warren mouth</td><td>kind <b>C / S / D</b> × depth <b>deep / mid / shallow</b> · current · hovered · dug this run</td><td>Depth is the line weight today (deep is thick, shallow is dashed). Kind is a letter today and should become a glyph</td></tr>
+    <tr><td>Hunter</td><td>4 kinds: <b>sweeper</b> (square), <b>tracker</b> (triangle), <b>listener</b> (ring), <b>hound</b> (diamond) · in reach (ringed) · on your trail (gold pip)</td><td>Shape is the kind, so it's never colour alone. All of them are "them" colour</td></tr>
+    <tr><td>The ring</td><td>visible once you're located and a siege is forming</td><td>A dashed diamond, 3 blocks out. This is the "decide now" moment, so make it felt</td></tr>
+    <tr><td>Route preview</td><td>on hovering a warren: the path, plus a label "<i>Kind (gift, cost) · depth · you 6t · them 13t</i>"</td><td>Moss when you'd win the race, blood when they'd get there first</td></tr>
+    <tr><td>Belief heat</td><td>only while scouting: a gold heat per cell, 0 to 1</td><td>"Where they think you are." It should read as knowledge, not danger</td></tr>
+    <tr><td>Tracks</td><td>pips that fade over 14 ticks</td><td>Off in the tuned rules (only the "tracks" variant lays them), but keep the style</td></tr>
+    <tr><td>Terrain</td><td>open · road · forest · lake · mountain</td><td>Forest and mountain block sight, so they should look like they do</td></tr>
+  </tbody>
+</table></div>
+
+<h3>Asset manifest (transparent SVGs, as the method asks)</h3>
+<p>The canvas draws these at the cell size, which runs from <b>14px to about 40px</b>. Please deliver <b>transparent SVGs, <code>viewBox="0 0 64 64"</code>, anchored at the centre</b>, with no text baked in (counts and labels are drawn live). Use layers where a state is a layer.</p>
+<div class="scroll"><table>
+  <thead><tr><th>Asset</th><th>Variants</th><th>Layers / states</th></tr></thead>
+  <tbody>
+    <tr><td><code>tile-{open,road,forest,lake,mountain}.svg</code></td><td>2–3 variants each, so the ground doesn't tile visibly</td><td>Optional edge pieces for road and lake</td></tr>
+    <tr><td><code>warren-{C,S,D}-{deep,mid,shallow}.svg</code></td><td>9</td><td><code>base</code> · <code>glyph</code> · <code>ring-current</code> · <code>ring-hover</code></td></tr>
+    <tr><td><code>troop.svg</code></td><td>1</td><td><code>body</code> · <code>body-transit</code> · <code>located</code> · <code>besieged</code> · <code>dead</code> (the count is drawn on top)</td></tr>
+    <tr><td><code>hunter-{sweeper,tracker,listener,hound}.svg</code></td><td>4</td><td><code>body</code> · <code>in-reach</code> · <code>on-trail</code> · <code>mustering</code></td></tr>
+    <tr><td><code>ring.svg</code></td><td>1, scalable</td><td>Drawn at 7×7 cells around the troop</td></tr>
+    <tr><td><code>track.svg</code></td><td>1</td><td>Opacity is animated by the game</td></tr>
+    <tr><td>Icons for the 8 boons</td><td>brood · hush · teeth · walls · legs · dig deeper · dig · scatter</td><td>For the draft and the heirloom cards</td></tr>
+    <tr><td>Heirlooms</td><td>Combat-born · Scout-born · Defense-born · an inherited boon</td><td>Same family as the boon icons</td></tr>
+  </tbody>
+</table></div>
+
+<h3>Interaction</h3>
+<ul>
+  <li><b>Space</b> stays one tick, and holding it keeps staying. <b>A</b> attacks the weakest hunter in reach. <b>Click a warren</b> to run; <b>click a ringed hunter</b> to attack. Hover a warren to see the race.</li>
+  <li>Transit plays itself out at about 220ms a tick once you've committed. That's the "OH FUCK" stretch, so pace it on purpose.</li>
+  <li>A run takes <b>about 3 minutes</b> of real time, and around 70% of ticks are tense. There's almost no downtime to fill.</li>
+</ul>
+
+<h3>Questions for you</h3>
+<ol>
+  <li>Mobile: tabs, a bottom sheet, or something else? Three verbs and a board ought to fit a thumb.</li>
+  <li>How do we make <b>"Watched N ticks"</b> legible on the board, not just in the panel? The longer they watch, the faster they react when you bolt.</li>
+  <li>The line: should the chronicle look like a family tree, a ledger, or a burrow map?</li>
+  <li>Do the warren kinds need their own visual language (Combat loud, Scout thin-walled, Defense slow to leave), so the trade-off is visible at a glance?</li>
+</ol>
+
+<h3>Files</h3>
+<p><code>games/the-last-warren/</code> on branch <code>ideas/the-last-warren</code>. The art seam is <code>ui.js</code> (all drawing is in <code>draw()</code>) and <code>style.css</code>. The rules live in <code>src/</code>, and nothing there needs touching for a restyle. Background reading: <code>RED-TEAM-BRIEFING.md</code> for the rules and maths, and <code>reports/REPORT.html</code> for the evidence.</p>
+
+  </section>
+</div>
+
+<dialog id="draft">
+  <div class="lbl">DAWN · NIGHT <span id="dn"></span> SURVIVED</div>
+  <h2 id="dawnline">You got under before the light.</h2>
+  <p class="dim" id="remnantline"></p>
+  <div id="boons" class="boons"></div>
+</dialog>
+
+<dialog id="ending">
+  <div class="lbl">THE WARREN FELL</div>
+  <h2 id="endline"></h2>
+  <p id="endmore" class="dim"></p>
+  <div id="heirs" class="boons heirs"></div>
+  <details class="eye"><summary>Show the working</summary><pre id="working"></pre></details>
+  <div class="row-btns"><button id="again" type="button">Same seed again</button><button id="next" type="button">Next seed</button></div>
+</dialog>
+
+<script type="module">
+// ---- src/rng.js
+// Stateless, hashed randomness. Every roll is a pure function of (seed, ...tags), so a
+// twin run that changes one player decision does not shift any other roll in the world.
+// That is what makes "would moving one tick earlier have saved it?" an honest question.
+
+function mix(h, k) {
+  k = Math.imul(k, 0xcc9e2d51); k = (k << 15) | (k >>> 17); k = Math.imul(k, 0x1b873593);
+  h ^= k; h = (h << 13) | (h >>> 19); return (Math.imul(h, 5) + 0xe6546b64) | 0;
+}
+function fin(h) {
+  h ^= h >>> 16; h = Math.imul(h, 0x85ebca6b); h ^= h >>> 13; h = Math.imul(h, 0xc2b2ae35);
+  return (h ^ (h >>> 16)) >>> 0;
+}
+const tagCache = new Map();
+function tagNum(t) {
+  if (typeof t === 'number') return t | 0;
+  let v = tagCache.get(t);
+  if (v === undefined) { v = 0; for (let i = 0; i < t.length; i++) v = mix(v, t.charCodeAt(i)); tagCache.set(t, v); }
+  return v;
+}
+
+/** uint32 from a seed and any number of numeric/string tags */
+function hash(seed, ...tags) {
+  let h = seed | 0;
+  for (const t of tags) h = mix(h, tagNum(t));
+  return fin(h);
+}
+/** float in [0,1) */
+function rnd(seed, ...tags) { return hash(seed, ...tags) / 4294967296; }
+
+/** A sequential generator for map building, where order is fixed and nothing replays. */
+function stream(seed) {
+  let s = hash(seed, 'stream') || 1;
+  return () => { s ^= s << 13; s ^= s >>> 17; s ^= s << 5; return (s >>> 0) / 4294967296; };
+}
+
+// ---- src/map.js
+// The map: a hand, some dials, a seed. Shaped like a SEREN campaign module so that the
+// campaign creator can later supply the hand and weave names/reasons into the same file
+// (see MAP-FORMAT.md). Procedural generation fills every field the creator would.
+
+
+const T = { OPEN: '.', ROAD: '=', FOREST: 'f', LAKE: '~', MOUNTAIN: '^' };
+
+// Movement-point cost to ENTER a tile. Everyone banks 2 points a tick (hounds 3), so open
+// ground is one block a tick, roads two, forest two-thirds, a lake swim a third.
+const COST = {
+  troop:  { '.': 2, '=': 1, 'f': 3, '~': 6, '^': Infinity },
+  hunter: { '.': 2, '=': 1, 'f': 3, '~': Infinity, '^': Infinity },
+};
+
+// THE HAND: twelve frames, SEREN-style. A frame is not scenery; each sets the dials.
+// Dials are 0..1 and every one changes a number in the generator, never just a word.
+const FRAMES = {
+  'The low fields':     { water: .25, relief: .2,  cover: .3,  roads: .5,  warrens: .5 },
+  'The drowned coast':  { water: .7,  relief: .2,  cover: .25, roads: .3,  warrens: .5 },
+  'The cold march':     { water: .2,  relief: .7,  cover: .2,  roads: .2,  warrens: .4 },
+  'The old wood':       { water: .2,  relief: .25, cover: .75, roads: .2,  warrens: .55 },
+  'The hedged country': { water: .2,  relief: .2,  cover: .5,  roads: .7,  warrens: .6 },
+  'The broken hills':   { water: .3,  relief: .6,  cover: .45, roads: .3,  warrens: .5 },
+  'The fen':            { water: .6,  relief: .1,  cover: .55, roads: .15, warrens: .45 },
+  'The quarry towns':   { water: .15, relief: .5,  cover: .15, roads: .75, warrens: .6 },
+  'The burned heath':   { water: .15, relief: .3,  cover: .1,  roads: .4,  warrens: .45 },
+  'The river bends':    { water: .55, relief: .3,  cover: .4,  roads: .5,  warrens: .55 },
+  'The high moor':      { water: .3,  relief: .45, cover: .15, roads: .25, warrens: .4 },
+  'The last commons':   { water: .3,  relief: .3,  cover: .4,  roads: .4,  warrens: .5 },
+};
+const FRAME_NAMES = Object.keys(FRAMES);
+
+const KINDS = ['C', 'S', 'D'];
+const KIND_NAME = { C: 'Combat', S: 'Scout', D: 'Defense' };
+const DEPTHS = ['deep', 'mid', 'shallow'];
+
+function valueNoise(w, h, cell, rand) {
+  const gw = Math.ceil(w / cell) + 2, gh = Math.ceil(h / cell) + 2;
+  const g = Array.from({ length: gw * gh }, () => rand());
+  const out = new Float64Array(w * h);
+  const sm = t => t * t * (3 - 2 * t);
+  for (let y = 0; y < h; y++) for (let x = 0; x < w; x++) {
+    const fx = x / cell, fy = y / cell, x0 = Math.floor(fx), y0 = Math.floor(fy);
+    const tx = sm(fx - x0), ty = sm(fy - y0);
+    const a = g[y0 * gw + x0], b = g[y0 * gw + x0 + 1], c = g[(y0 + 1) * gw + x0], d = g[(y0 + 1) * gw + x0 + 1];
+    out[y * w + x] = (a * (1 - tx) + b * tx) * (1 - ty) + (c * (1 - tx) + d * tx) * ty;
+  }
+  return out;
+}
+function fbm(w, h, rand) {
+  const a = valueNoise(w, h, 7, rand), b = valueNoise(w, h, 3.5, rand), c = valueNoise(w, h, 1.8, rand);
+  const o = new Float64Array(w * h);
+  for (let i = 0; i < o.length; i++) o[i] = a[i] * 0.6 + b[i] * 0.3 + c[i] * 0.1;
+  return o;
+}
+function quantile(arr, q) { const s = Array.from(arr).sort((a, b) => a - b); return s[Math.min(s.length - 1, Math.floor(q * s.length))]; }
+
+/**
+ * Generate a map. `opts` may carry { frame, dials, w, h, warrenCount }.
+ * Retries internally until the map is sound (connected, warrens reachable, spawns valid).
+ */
+function generateMap(seed, opts = {}) {
+  const frame = opts.frame ?? FRAME_NAMES[seed % FRAME_NAMES.length];
+  const dials = { ...FRAMES[frame], ...(opts.dials || {}) };
+  for (let attempt = 0; attempt < 40; attempt++) {
+    const m = tryMap(seed, attempt, frame, dials, opts);
+    if (m) return m;
+  }
+  throw new Error('map generation failed for seed ' + seed);
+}
+
+function tryMap(seed, attempt, frame, dials, opts) {
+  const w = opts.w ?? 28, h = opts.h ?? 18, N = w * h;
+  const rand = stream(seed * 977 + attempt);
+  const elev = fbm(w, h, rand), wet = fbm(w, h, rand);
+  const tiles = new Array(N).fill(T.OPEN);
+  const mThr = quantile(elev, 1 - (0.03 + 0.17 * dials.relief));
+  const lThr = quantile(elev, 0.02 + 0.16 * dials.water);
+  const fThr = quantile(wet, 1 - (0.08 + 0.42 * dials.cover));
+  for (let i = 0; i < N; i++) {
+    if (elev[i] >= mThr) tiles[i] = T.MOUNTAIN;
+    else if (elev[i] <= lThr) tiles[i] = T.LAKE;
+    else if (wet[i] >= fThr) tiles[i] = T.FOREST;
+  }
+  // Warrens: spread out, off the edges, on open ground or forest.
+  const want = opts.warrenCount ?? Math.round(5 + 4 * dials.warrens);
+  const warrens = [];
+  const cand = [];
+  for (let y = 2; y < h - 2; y++) for (let x = 2; x < w - 2; x++) {
+    const t = tiles[y * w + x]; if (t === T.OPEN || t === T.FOREST) cand.push([x, y]);
+  }
+  for (let tries = 0; tries < 600 && warrens.length < want; tries++) {
+    const [x, y] = cand[Math.floor(rand() * cand.length)];
+    if (warrens.some(v => Math.abs(v.x - x) + Math.abs(v.y - y) < 6)) continue;
+    warrens.push({ x, y });
+  }
+  if (warrens.length < Math.max(4, want - 1)) return null;
+  // Kinds evenly dealt then shuffled; depths rolled.
+  const kinds = warrens.map((_, i) => KINDS[i % 3]);
+  for (let i = kinds.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); [kinds[i], kinds[j]] = [kinds[j], kinds[i]]; }
+  warrens.forEach((v, i) => {
+    v.id = i; v.kind = kinds[i]; v.depth = DEPTHS[Math.floor(rand() * 3)];
+    tiles[v.y * w + v.x] = T.OPEN; // a warren mouth is always ground you can stand on
+    v.name = null; v.why = null;    // the weave fills these
+  });
+  // Roads: a minimum spanning tree over warrens, plus extra links by the roads dial,
+  // laid along the cheapest overland route. Roads are fast and loud.
+  const roadCost = i => tiles[i] === T.MOUNTAIN ? Infinity : tiles[i] === T.LAKE ? 12 : tiles[i] === T.FOREST ? 4 : 2;
+  const edges = [];
+  for (let a = 0; a < warrens.length; a++) for (let b = a + 1; b < warrens.length; b++)
+    edges.push([Math.abs(warrens[a].x - warrens[b].x) + Math.abs(warrens[a].y - warrens[b].y), a, b]);
+  edges.sort((p, q) => p[0] - q[0]);
+  const parent = warrens.map((_, i) => i), find = i => parent[i] === i ? i : (parent[i] = find(parent[i]));
+  const links = [];
+  for (const [, a, b] of edges) {
+    if (find(a) !== find(b)) { parent[find(a)] = find(b); links.push([a, b]); }
+    else if (rand() < dials.roads * 0.25) links.push([a, b]);
+  }
+  const roadShare = dials.roads;
+  for (const [a, b] of links) {
+    if (rand() > 0.25 + 0.75 * roadShare) continue;
+    const path = cheapestPath(w, h, roadCost, warrens[a].y * w + warrens[a].x, warrens[b].y * w + warrens[b].x);
+    if (!path) continue;
+    for (const i of path) if (tiles[i] === T.OPEN || tiles[i] === T.FOREST) tiles[i] = T.ROAD;
+  }
+  warrens.forEach(v => { if (tiles[v.y * w + v.x] === T.ROAD) tiles[v.y * w + v.x] = T.OPEN; });
+  // Spawns: edge cells hunters can stand on.
+  const spawns = [];
+  for (let x = 0; x < w; x++) for (const y of [0, h - 1]) spawns.push([x, y]);
+  for (let y = 1; y < h - 1; y++) for (const x of [0, w - 1]) spawns.push([x, y]);
+  const okSpawns = spawns.filter(([x, y]) => COST.hunter[tiles[y * w + x]] < Infinity);
+  const map = {
+    format: 'warren-map/1', seed, hand: { frame }, dials, w, h,
+    tiles: Array.from({ length: h }, (_, y) => tiles.slice(y * w, y * w + w).join('')),
+    warrens, spawns: okSpawns, weave: null,
+  };
+  if (!soundness(map)) return null;
+  return map;
+}
+
+/** Every warren reachable by the troop from every other, and by hunters from the spawns. */
+function soundness(map) {
+  const tiles = flat(map);
+  const { w, h } = map;
+  const tf = costFn(tiles, 'troop'), hf = costFn(tiles, 'hunter');
+  const d0 = dijkstra(w, h, tf, idx(map, map.warrens[0]));
+  if (map.warrens.some(v => d0[idx(map, v)] === Infinity)) return false;
+  if (map.spawns.length < 8) return false;
+  // hunters need to reach most warrens (a warren hunters can't reach would be a fortress)
+  const dh = dijkstra(w, h, hf, map.warrens.map(v => idx(map, v)));
+  const reach = map.spawns.filter(([x, y]) => dh[y * w + x] < Infinity);
+  if (reach.length < 8) return false;
+  map.spawns = reach;
+  for (const v of map.warrens) {
+    const dv = dijkstra(w, h, hf, idx(map, v));
+    if (!reach.some(([x, y]) => dv[y * w + x] < Infinity)) return false;
+  }
+  return true;
+}
+
+const idx = (map, p) => p.y * map.w + p.x;
+function flat(map) { return map.tiles.join('').split(''); }
+function costFn(tiles, who) { const c = COST[who]; return i => c[tiles[i]]; }
+
+/** Dijkstra from one or many sources; returns Float64Array of costs (cost of entering cells). */
+function dijkstra(w, h, cost, sources) {
+  const N = w * h, dist = new Float64Array(N).fill(Infinity);
+  // bucket queue: costs are small integers
+  const buckets = [];
+  const push = (d, i) => { (buckets[d] || (buckets[d] = [])).push(i); };
+  for (const s of [].concat(sources)) { dist[s] = 0; push(0, s); }
+  for (let d = 0; d < buckets.length; d++) {
+    const b = buckets[d]; if (!b) continue;
+    for (let k = 0; k < b.length; k++) {
+      const i = b[k]; if (dist[i] !== d) continue;
+      const x = i % w, y = (i / w) | 0;
+      if (x > 0) relax(i - 1); if (x < w - 1) relax(i + 1); if (y > 0) relax(i - w); if (y < h - 1) relax(i + w);
+      function relax(j) { const c = cost(j); if (c === Infinity) return; const nd = d + c; if (nd < dist[j]) { dist[j] = nd; push(nd, j); } }
+    }
+    buckets[d] = null;
+  }
+  return dist;
+}
+
+function cheapestPath(w, h, cost, from, to) {
+  const d = dijkstra(w, h, cost, to);
+  if (d[from] === Infinity) return null;
+  const path = [from]; let cur = from;
+  while (cur !== to) {
+    const x = cur % w, y = (cur / w) | 0; let best = -1, bd = Infinity;
+    for (const j of [x > 0 ? cur - 1 : -1, x < w - 1 ? cur + 1 : -1, y > 0 ? cur - w : -1, y < h - 1 ? cur + w : -1]) {
+      if (j < 0) continue; const v = d[j] + (j === to ? 0 : 0);
+      if (v < bd) { bd = v; best = j; }
+    }
+    if (best < 0 || bd >= d[cur]) return null;
+    cur = best; path.push(cur);
+  }
+  return path;
+}
+
+// ---- src/sim.js
+// THE LAST WARREN — deterministic simulation.
+// Pure: no DOM, no clock, no Math.random. step() returns events; the page and the sweep
+// runner both read the same state. Same seed + same decisions = same world.
+
+
+// ---------------------------------------------------------------------------------------
+// Config. Every number the sweeps perturb lives here.
+const DEFAULTS = {
+  nightLen: 45,            // ticks to dawn
+  maxNights: 8,
+  startTroop: 4,
+  growth: 1,               // people per tick while staying in a warren
+  warrenBonus: 0.3,        // the +30%
+  attune: 0.25,            // specialty gained per tick in a warren (0..1)
+  carryDecay: 0.92,        // carried specialty multiplier per tick away from its warren
+  fortify: 1.25,           // any warren is a fortified position
+  depthNoise: { deep: 0.45, mid: 0.7, shallow: 1.0 },
+  transitNoise: 1.0,
+  terrainNoise: { '.': 1.0, '=': 1.4, 'f': 0.6, '~': 1.2 },
+  hearK: 1.15,             // hearing radius = hearK * sqrt(size) * noise * kind.hear
+  transit: 'exposed',      // 'exposed' | 'tracks' | 'bleed'
+  trackLife: 14,
+  bleedEvery: 2,
+  attack: true,
+  attackRange: 2,
+  lossK: 0.45,             // casualties = lossK x their strength / your per-person strength
+  transitSpeed: 3,         // troop movement points per tick on the road (hunters 2, hounds 3)
+  dangerAvoid: 6,          // route cost added per cell next to a hunter
+  ambush: 1.2,
+  hunterBase: 7,
+  hunterNightScale: 0.32,  // hunter strength *= 1 + scale*(night-1)
+  hunterStart: 2,          // hunters at dusk on night 1
+  hunterPerNight: 1,       // extra at dusk per later night
+  reinforceEvery: 12,      // one more arrives every N ticks
+  respawnDelay: 10,
+  aggression: 1.0,
+  musterDist: 3,           // once you're located they gather this far out until they're enough         // hunters assault when the group within 3 >= aggression x your strength
+  siegeHaltsGrowth: true,  // held in a warren, the troop stops growing
+  diffusion: 0.12,
+  // v4: kinds trade off, and the edge sharpens
+  combatNoise: 1.4,        // Combat warrens are loud
+  scoutFortify: false,     // Scout warrens have thin walls (no fortify)
+  defenseDepart: 3,        // leaving a Defense warren costs this many movement points
+  accelAt: [10, 20],       // growth +1, then +2 after 10 ticks in one place, +3 after 20
+  watchReact: 0.5,         // per tick you've been watched, hunters near the ring bank this many points when you bolt
+  watchCap: 6,
+  // lineage: what this generation inherits, and what the hunters remember of the family
+  heir: null,              // { attune: 'C'|'S'|'D' } or { boon: id }
+  lineage: null,           // { C, S, D } ticks the line has spent in each kind, all generations
+  familyK: 2,              // prior weight on the kinds the family favours
+  // progression toggles
+  remnant: 0.4,            // share of troop kept at dawn (0 = off: start fresh at startTroop)
+  draft: true,
+  learn: true,
+  kinds: true,
+};
+
+const HUNTER_KINDS = {
+  sweeper:  { str: 1.0, speed: 2, sight: 5, hear: 1.0, label: 'Sweeper' },
+  tracker:  { str: 0.9, speed: 2, sight: 4, hear: 1.0, label: 'Tracker', trails: true },
+  listener: { str: 0.8, speed: 2, sight: 3, hear: 1.9, label: 'Listener', unmuffled: true },
+  hound:    { str: 1.3, speed: 3, sight: 4, hear: 0.8, label: 'Hound' },
+};
+function rosterFor(night, cfg) {
+  if (!cfg.kinds) return ['sweeper'];
+  return ['sweeper', 'tracker', 'listener', 'hound'].slice(0, Math.min(4, night));
+}
+
+// THE DAWN DRAFT. A pre-written table; dice pick three, the player keeps one.
+const BOONS = [
+  { id: 'brood',  text: 'Brood. Grow one extra every third tick.' },
+  { id: 'hush',   text: 'Hush. Everything you do is a fifth quieter.' },
+  { id: 'teeth',  text: 'Teeth. +20% in any fight you start.' },
+  { id: 'walls',  text: 'Walls. +20% defending a warren.' },
+  { id: 'legs',   text: 'Legs. One more movement point a tick in transit.' },
+  { id: 'deepen', text: 'Dig deeper. Your current warren becomes deep.' },
+  { id: 'dig',    text: 'Dig a new warren beside the one you\'re in.' },
+  { id: 'scatter',text: 'Scatter. Hunters forget half of what they believe at dusk.' },
+];
+
+// ---------------------------------------------------------------------------------------
+function newGame(seed, cfgIn = {}, mapOpts = {}) {
+  const cfg = { ...DEFAULTS, ...cfgIn };
+  const map = cfgIn.map || generateMap(seed, mapOpts);
+  const tiles = flat(map);
+  const W = map.w, H = map.h, N = W * H;
+  const g = {
+    seed, cfg, map, tiles, W, H, N,
+    hCost: costFn(tiles, 'hunter'), tCost: costFn(tiles, 'troop'),
+    fieldCache: new Map(),      // hunter-cost distance fields keyed by root cell
+    troopFieldCache: new Map(),
+    night: 1, tick: 0, T: 0, over: false, result: null,
+    warrens: map.warrens.map(v => ({ ...v, i: idx(map, v) })),
+    troop: null, hunters: [], nextHunterId: 0, respawnQueue: [],
+    belief: new Float64Array(N), tracks: new Float64Array(N).fill(-1e9),
+    boons: {}, history: { warrenTicks: {} }, events: [], log: [],
+    stats: newStats(),
+  };
+  g.warrenAt = {}; for (const v of g.warrens) g.warrenAt[v.i] = v.id;
+  g.nb = Array.from({ length: N }, (_, i) => neighbours(g, i).filter(j => g.tCost(j) < Infinity));
+  // per-cell concealment a hunter would assume (x sqrt(size) x hearK x kind.hear)
+  g.conceal = new Float64Array(N); g.concealU = new Float64Array(N);
+  for (let i = 0; i < N; i++) {
+    const w = g.warrenAt[i];
+    if (w != null) { g.conceal[i] = g.concealU[i] = cfg.depthNoise[g.warrens[w].depth] * (g.warrens[w].kind === 'C' ? cfg.combatNoise : 1); continue; }
+    const tn = cfg.terrainNoise[tiles[i]] ?? 1;
+    g.conceal[i] = cfg.transitNoise * tn; g.concealU[i] = cfg.transitNoise * Math.max(1, tn);
+  }
+  const home = g.warrens[Math.floor(rnd(seed, 'home') * g.warrens.length)];
+  g.troop = { x: home.x, y: home.y, size: cfg.startTroop, warren: home.id, path: null, pi: 0, mp: 0, besieged: false, stayRun: 0, watch: 0,
+              dest: null, spec: { C: 0, S: 0, D: 0 }, seenBy: 0, since: 0 };
+  if (cfg.heir?.attune) g.troop.spec[cfg.heir.attune] = 1;
+  if (cfg.heir?.boon) { g.warrenAt = g.warrenAt || {}; applyBoon(g, cfg.heir.boon); g.stats.boons.push(cfg.heir.boon + ' (inherited)'); }
+  beginNight(g);
+  return g;
+}
+
+function newStats() {
+  return { nights: [], moves: 0, attacks: 0, fights: 0, fightsWon: 0, stayTicks: 0, transitTicks: 0,
+           kindTicks: { C: 0, S: 0, D: 0 }, death: null, peak: 0, boons: [], decisions: [] };
+}
+function nightStats() { return { stayTicks: 0, transitTicks: 0, moves: 0, attacks: 0, fights: 0, endSize: 0, survived: false }; }
+
+function beginNight(g) {
+  const { cfg } = g;
+  g.tick = 0;
+  g.hunters = []; g.respawnQueue = [];
+  g.tracks.fill(-1e9);
+  if (g.troop) g.troop.besieged = false;
+  g.stats.nights.push(nightStats());
+  const n = cfg.hunterStart + cfg.hunterPerNight * (g.night - 1);
+  for (let k = 0; k < n; k++) spawnHunter(g, k);
+  // The prior: hunters know you live in a warren. If they learn, your habits weigh it.
+  g.belief.fill(0);
+  const hist = g.history.warrenTicks, tot = Object.values(hist).reduce((a, b) => a + b, 0);
+  // and they know the family: the kinds your line has favoured, across every generation
+  const fam = cfg.lineage, ftot = fam ? (fam.C || 0) + (fam.S || 0) + (fam.D || 0) : 0;
+  for (const v of g.warrens) {
+    const habit = cfg.learn && tot > 0 ? 4 * (hist[v.id] || 0) / tot : 0;
+    const family = ftot > 0 ? cfg.familyK * (fam[v.kind] || 0) / ftot : 0;
+    g.belief[v.i] = 1 + habit + family;
+  }
+  if (g.boons.scatter) for (let i = 0; i < g.N; i++) g.belief[i] = g.belief[i] * 0.5 + 0.5 / g.warrens.length * (g.belief[i] > 0 ? 1 : 0);
+  normalize(g.belief);
+  g.events.push({ t: 'dusk', night: g.night, hunters: n });
+}
+
+function spawnHunter(g, k) {
+  const roster = rosterFor(g.night, g.cfg);
+  const id = g.nextHunterId++;
+  const kind = roster[hashPick(g, 'kind', id, roster.length)];
+  const sp = g.map.spawns[hashPick(g, 'spawn', id, g.map.spawns.length)];
+  const K = HUNTER_KINDS[kind];
+  const h = { id, kind, x: sp[0], y: sp[1], mp: 0, target: -1, retargetAt: 0, trail: false,
+              str: g.cfg.hunterBase * K.str * (1 + g.cfg.hunterNightScale * (g.night - 1)) };
+  g.hunters.push(h);
+  return h;
+}
+function hashPick(g, tag, id, n) { return Math.floor(rnd(g.seed, tag, g.night, id) * n); }
+
+// ---------------------------------------------------------------------------------------
+// Fields and distances
+
+function hunterField(g, cell) {
+  let f = g.fieldCache.get(cell);
+  if (!f) { f = dijkstra(g.W, g.H, g.hCost, cell); g.fieldCache.set(cell, f); }
+  return f;
+}
+function troopField(g, cell) {
+  let f = g.troopFieldCache.get(cell);
+  if (!f) { f = dijkstra(g.W, g.H, g.tCost, cell); g.troopFieldCache.set(cell, f); }
+  return f;
+}
+const cellOf = (g, p) => p.y * g.W + p.x;
+/** ticks for a hunter to reach a cell */
+function hunterTicks(g, h, cell) {
+  return hunterField(g, cell)[cellOf(g, h)] / HUNTER_KINDS[h.kind].speed;
+}
+
+// ---------------------------------------------------------------------------------------
+// Troop properties
+
+function troopNoise(g) {
+  const t = g.troop, c = g.cfg;
+  let n = Math.sqrt(t.size);
+  if (t.warren != null) n *= c.depthNoise[g.warrens[t.warren].depth] * (g.warrens[t.warren].kind === 'C' ? c.combatNoise : 1);
+  else n *= c.transitNoise * c.terrainNoise[g.tiles[cellOf(g, t)]] * (1 - 0.3 * t.spec.S);
+  if (g.boons.hush) n *= 0.8;
+  return n;
+}
+function bonus(g, k) {
+  const t = g.troop;
+  const here = t.warren != null && g.warrens[t.warren].kind === k ? 1 : 0;
+  return g.cfg.warrenBonus * Math.max(here, t.spec[k]);
+}
+function troopStrength(g, mode) {
+  const t = g.troop;
+  let s = t.size * (1 + bonus(g, 'C'));
+  if (t.warren != null && mode === 'defend') {
+    const thin = g.warrens[t.warren].kind === 'S' && !g.cfg.scoutFortify;
+    s *= (thin ? 1 : g.cfg.fortify) * (1 + bonus(g, 'D')) * (g.boons.walls ? 1.2 : 1);
+  }
+  if (mode === 'attack') s *= g.cfg.ambush * (g.boons.teeth ? 1.2 : 1);
+  return s;
+}
+
+// ---------------------------------------------------------------------------------------
+// The view a policy (or the page) is allowed: everything visible on the board. The belief
+// map is included only when the troop is scouting.
+function view(g) {
+  const t = g.troop, here = cellOf(g, t);
+  const scouting = (t.warren != null && g.warrens[t.warren].kind === 'S') || t.spec.S > 0.5;
+  return {
+    g, night: g.night, tick: g.tick, nightLen: g.cfg.nightLen, troop: t, here,
+    hunters: g.hunters, warrens: g.warrens, attack: g.cfg.attack, scouting,
+    belief: scouting ? g.belief : null,
+    nearestHunterTicks() { let m = Infinity; for (const h of g.hunters) m = Math.min(m, hunterTicks(g, h, here)); return m; },
+    hunterTicksTo(cell) { let m = Infinity; for (const h of g.hunters) m = Math.min(m, hunterTicks(g, h, cell)); return m; },
+    troopTicksTo(cell) { return troopField(g, cell)[here] / (g.cfg.transitSpeed + (g.boons.legs ? 1 : 0)); },
+    attackable() {
+      if (!g.cfg.attack || t.warren == null) return [];
+      return g.hunters.filter(h => Math.abs(h.x - t.x) + Math.abs(h.y - t.y) <= g.cfg.attackRange);
+    },
+    strength: mode => troopStrength(g, mode),
+  };
+}
+
+// ---------------------------------------------------------------------------------------
+// One tick. `action` is { type: 'stay' } | { type: 'move', to: warrenId } |
+// { type: 'attack', hunter: id }. Ignored while in transit (you are committed).
+function step(g, action = { type: 'stay' }) {
+  if (g.over) return [];
+  g.events = [];
+  const t = g.troop, c = g.cfg, ns = g.stats.nights[g.night - 1];
+  g.tick++; g.T++;
+
+  // 1. the player's choice
+  if (t.warren != null) {
+    if (action.type === 'move' && action.to !== t.warren && g.warrens[action.to]) startMove(g, action.to);
+    else if (action.type === 'attack' && c.attack) {
+      const h = g.hunters.find(x => x.id === action.hunter);
+      if (h && Math.abs(h.x - t.x) + Math.abs(h.y - t.y) <= c.attackRange) {
+        g.stats.attacks++; ns.attacks++;
+        fight(g, [h], 'attack');
+        if (g.over) return g.events;
+      }
+    }
+  }
+
+  // 2. the troop: grow where it stands, or walk
+  if (t.warren != null) {
+    const v = g.warrens[t.warren];
+    t.stayRun = (t.stayRun || 0) + 1;
+    const accel = c.accelAt ? c.accelAt.filter(a => t.stayRun > a).length : 0;
+    if (!(t.besieged && c.siegeHaltsGrowth)) t.size += c.growth + accel + (g.boons.brood && g.T % 3 === 0 ? 1 : 0);
+    for (const k of ['C', 'S', 'D']) t.spec[k] = k === v.kind ? Math.min(1, t.spec[k] + c.attune) : t.spec[k] * c.carryDecay;
+    g.history.warrenTicks[v.id] = (g.history.warrenTicks[v.id] || 0) + 1;
+    g.stats.stayTicks++; ns.stayTicks++; g.stats.kindTicks[v.kind]++;
+  } else {
+    walk(g);
+    for (const k of ['C', 'S', 'D']) t.spec[k] *= c.carryDecay;
+    g.stats.transitTicks++; ns.transitTicks++;
+    if (c.transit === 'bleed' && g.tick % c.bleedEvery === 0 && t.size > 1) t.size--;
+  }
+  g.stats.peak = Math.max(g.stats.peak, t.size);
+
+  // 3. contact after the troop moves (walking into them counts)
+  if (contact(g)) return g.events;
+
+  // 4. the hunters sense, believe, move
+  sense(g);
+  g._ready = undefined;
+  for (const h of g.hunters) moveHunter(g, h);
+
+  // 5. contact after they move
+  if (contact(g)) return g.events;
+  // located, with the ring forming: that's a siege, and nobody grows under siege
+  if (t.warren != null) {
+    const was = t.besieged;
+    t.besieged = located(g) && g.hunters.some(h => Math.abs(h.x - t.x) + Math.abs(h.y - t.y) <= c.musterDist);
+    t.watch = located(g) ? (t.watch || 0) + 1 : 0;
+    if (t.besieged && !was) g.events.push({ t: 'siege' });
+  } else t.besieged = false;
+
+  // 6. reinforcements and respawns
+  if (g.tick % c.reinforceEvery === 0) { const h = spawnHunter(g); g.events.push({ t: 'arrive', id: h.id, kind: h.kind }); }
+  g.respawnQueue = g.respawnQueue.filter(r => { if (r <= g.tick) { spawnHunter(g); return false; } return true; });
+
+  // 7. dawn
+  if (g.tick >= c.nightLen) dawn(g);
+  return g.events;
+}
+
+function startMove(g, to) {
+  const t = g.troop, dest = g.warrens[to], from = g.warrens[t.warren];
+  const f = troopField(g, dest.i);
+  if (f[cellOf(g, t)] === Infinity) return;
+  // bolting while watched: the hunters near the ring are already moving
+  if (located(g) && t.watch > 0) {
+    const bank = Math.min(g.cfg.watchCap, g.cfg.watchReact * t.watch);
+    for (const h of g.hunters) if (Math.abs(h.x - t.x) + Math.abs(h.y - t.y) <= g.cfg.musterDist + 2) h.mp += bank;
+  }
+  t.warren = null; t.dest = to; t.stayRun = 0; t.watch = 0;
+  t.mp = from && from.kind === 'D' ? -g.cfg.defenseDepart : 0;
+  g.stats.moves++; g.stats.nights[g.night - 1].moves++;
+  g.events.push({ t: 'move', to });
+}
+function walk(g) {
+  const t = g.troop, dest = g.warrens[t.dest];
+  // route around the hunters you can see: recomputed every tick
+  const danger = new Float64Array(g.N);
+  for (const h of g.hunters) for (let dy = -2; dy <= 2; dy++) for (let dx = -2; dx <= 2; dx++) {
+    const x = h.x + dx, y = h.y + dy, md = Math.abs(dx) + Math.abs(dy);
+    if (md > 2 || x < 0 || y < 0 || x >= g.W || y >= g.H) continue;
+    danger[y * g.W + x] += g.cfg.dangerAvoid * (md === 0 ? 3 : md === 1 ? 2 : 1);
+  }
+  const f = dijkstra(g.W, g.H, i => { const c = g.tCost(i); return c === Infinity ? c : c + Math.round(danger[i]); }, dest.i);
+  t.mp += g.cfg.transitSpeed + (g.boons.legs ? 1 : 0);
+  if (t.mp <= 0) return; // still climbing out of a Defense warren
+  for (let guard = 0; guard < 8; guard++) {
+    const here = cellOf(g, t);
+    if (here === dest.i) { arrive(g); return; }
+    const nxt = downhill(g, f, here); if (nxt < 0) return;
+    const cost = g.tCost(nxt);
+    if (cost > t.mp) { t.mp = Math.min(t.mp, 6); break; }
+    t.mp -= cost;
+    if (g.cfg.transit === 'tracks') g.tracks[here] = g.T;
+    t.x = nxt % g.W; t.y = (nxt / g.W) | 0;
+  }
+  if (cellOf(g, t) === dest.i) arrive(g);
+}
+function arrive(g) {
+  const t = g.troop; t.warren = t.dest; t.dest = null; t.mp = 0;
+  g.events.push({ t: 'arrive-warren', id: t.warren });
+}
+function downhill(g, f, cur) {
+  const x = cur % g.W, y = (cur / g.W) | 0; let best = -1, bd = f[cur];
+  if (x > 0 && f[cur - 1] < bd) { bd = f[cur - 1]; best = cur - 1; }
+  if (x < g.W - 1 && f[cur + 1] < bd) { bd = f[cur + 1]; best = cur + 1; }
+  if (y > 0 && f[cur - g.W] < bd) { bd = f[cur - g.W]; best = cur - g.W; }
+  if (y < g.H - 1 && f[cur + g.W] < bd) { bd = f[cur + g.W]; best = cur + g.W; }
+  return best;
+}
+
+// ---------------------------------------------------------------------------------------
+// The search. A shared Bayesian belief over where the troop is. Each tick: what every
+// hunter saw and heard (or didn't) multiplies it, then it diffuses by a motion model.
+
+function los(g, x0, y0, x1, y1) {
+  // returns remaining "sight budget" cost: Infinity if a mountain blocks; forest costs 2
+  let dx = Math.abs(x1 - x0), dy = Math.abs(y1 - y0), sx = x0 < x1 ? 1 : -1, sy = y0 < y1 ? 1 : -1, err = dx - dy, x = x0, y = y0, cost = 0;
+  while (x !== x1 || y !== y1) {
+    const e2 = 2 * err; if (e2 > -dy) { err -= dy; x += sx; } if (e2 < dx) { err += dx; y += sy; }
+    if (x === x1 && y === y1) break;
+    const tl = g.tiles[y * g.W + x];
+    if (tl === '^') return Infinity;
+    if (tl === 'f') cost += 2;
+  }
+  return cost;
+}
+function sees(g, h, x, y) {
+  const K = HUNTER_KINDS[h.kind];
+  const d = Math.abs(h.x - x) + Math.abs(h.y - y);
+  if (d > K.sight + 1) return false;
+  const tl = g.tiles[y * g.W + x];
+  const extra = los(g, h.x, h.y, x, y) + (tl === 'f' ? 2 : 0);
+  return d + extra <= K.sight;
+}
+
+function sense(g) {
+  const t = g.troop, c = g.cfg, b = g.belief;
+  const here = cellOf(g, t), inWarren = t.warren != null;
+  const noise = troopNoise(g);
+  let seen = false;
+  t.seenBy = 0;
+  for (const h of g.hunters) {
+    const K = HUNTER_KINDS[h.kind];
+    // sight: the troop above ground can be seen
+    if (!inWarren && sees(g, h, t.x, t.y)) { seen = true; t.seenBy++; }
+    // hearing: a roll against a logistic in distance
+    const tn = !inWarren ? (c.terrainNoise[g.tiles[here]] ?? 1) : 1;
+    const r = c.hearK * noise * K.hear * (K.unmuffled && tn < 1 ? 1 / tn : 1);
+    const d = Math.abs(h.x - t.x) + Math.abs(h.y - t.y);
+    const pTrue = 1 / (1 + Math.exp((d - r) / 0.75));
+    const heard = rnd(g.seed, 'hear', g.night, g.tick, h.id) < pTrue;
+    // Bayesian update over every cell for this hunter's hearing result
+    const est = Math.sqrt(t.size) * (g.boons.hush ? 0.8 : 1); // hunters can count: they know how long you've had
+    const cc = K.unmuffled ? g.concealU : g.conceal, kk = c.hearK * est * K.hear;
+    for (let i = 0; i < g.N; i++) {
+      if (b[i] < 1e-12) continue;
+      const di = Math.abs(h.x - (i % g.W)) + Math.abs(h.y - ((i / g.W) | 0));
+      const ri = kk * cc[i];
+      const p = 1 / (1 + Math.exp((di - ri) / 0.75));
+      b[i] *= heard ? p : (1 - 0.9 * p);
+    }
+    if (heard) g.events.push({ t: 'heard', id: h.id });
+    // negative sight evidence: open cells it can see are probably empty (warrens are underground)
+    const R = K.sight;
+    for (let dy = -R; dy <= R; dy++) for (let dx = -R; dx <= R; dx++) {
+      const x = h.x + dx, y = h.y + dy;
+      if (x < 0 || y < 0 || x >= g.W || y >= g.H) continue;
+      const i = y * g.W + x;
+      if (b[i] < 1e-12 || g.warrenAt[i] != null) continue;
+      if (sees(g, h, x, y) && !(seen && i === here)) b[i] *= 0.08;
+    }
+    // poking into an adjacent warren mouth
+    for (const v of g.warrens) if (Math.abs(v.x - h.x) + Math.abs(v.y - h.y) <= 1 && !(inWarren && v.id === t.warren)) b[v.i] *= 0.05;
+    // trackers read the ground
+    if (K.trails && c.transit === 'tracks') {
+      const hi = cellOf(g, h);
+      h.trail = g.T - g.tracks[hi] < c.trackLife || neighbours(g, hi).some(j => g.T - g.tracks[j] < c.trackLife);
+    } else h.trail = false;
+  }
+  if (seen) { b.fill(0); b[here] = 1; g.events.push({ t: 'seen' }); }
+  diffuse(g);
+  normalize(b);
+  if (seen) for (const h of g.hunters) h.retargetAt = 0;
+}
+
+function neighbours(g, i) {
+  const x = i % g.W, y = (i / g.W) | 0, out = [];
+  if (x > 0) out.push(i - 1); if (x < g.W - 1) out.push(i + 1); if (y > 0) out.push(i - g.W); if (y < g.H - 1) out.push(i + g.W);
+  return out;
+}
+function diffuse(g) {
+  const b = g.belief, m = g.cfg.diffusion, nb = new Float64Array(g.N);
+  for (let i = 0; i < g.N; i++) {
+    if (b[i] === 0) continue;
+    const ns = g.nb[i];
+    nb[i] += b[i] * (1 - m);
+    const share = b[i] * m / (ns.length || 1);
+    if (!ns.length) nb[i] += b[i] * m; else for (const j of ns) nb[j] += share;
+  }
+  // a troop in the open will go to ground: belief slowly pools back into warrens
+  let pool = 0;
+  for (let i = 0; i < g.N; i++) if (g.warrenAt[i] == null) { const d = nb[i] * 0.04; nb[i] -= d; pool += d; }
+  for (const v of g.warrens) nb[v.i] += pool / g.warrens.length;
+  g.belief.set(nb);
+}
+function normalize(b) { let s = 0; for (let i = 0; i < b.length; i++) s += b[i]; if (s > 0) for (let i = 0; i < b.length; i++) b[i] /= s; }
+
+// Targets: sweepers split the map into sectors and sweep their own; trackers follow a
+// trail when they have one and chase the global peak when they don't; listeners and
+// hounds chase the peak. Everyone discounts by distance.
+function chooseTarget(g, h) {
+  const b = g.belief, W = g.W;
+  const sweepers = g.hunters.filter(x => x.kind === 'sweeper');
+  let lo = 0, hi = W;
+  if (h.kind === 'sweeper' && sweepers.length > 1) {
+    const k = sweepers.indexOf(h), n = sweepers.length;
+    lo = Math.floor(k * W / n); hi = Math.floor((k + 1) * W / n);
+  }
+  let best = -1, bv = -1, mass = 0;
+  for (let i = 0; i < g.N; i++) {
+    const x = i % W; if (x < lo || x >= hi) continue;
+    mass += b[i];
+    if (b[i] < 1e-9) continue;
+    const d = Math.abs(h.x - x) + Math.abs(h.y - ((i / W) | 0));
+    // other hunters already near a cell make it less attractive (spread out)
+    let crowd = 0; for (const o of g.hunters) if (o !== h && o.target >= 0 && Math.abs((o.target % W) - x) + Math.abs(((o.target / W) | 0) - ((i / W) | 0)) < 3) crowd++;
+    const v = b[i] / (1 + d / 9) / (1 + crowd);
+    if (v > bv && hunterField(g, i)[cellOf(g, h)] < Infinity) { bv = v; best = i; }
+  }
+  if (best < 0 || (h.kind === 'sweeper' && mass < 0.02)) {
+    // empty sector: help the global search
+    for (let i = 0; i < g.N; i++) { if (b[i] < 1e-9) continue; const d = Math.abs(h.x - (i % W)) + Math.abs(h.y - ((i / W) | 0)); const v = b[i] / (1 + d / 9); if (v > bv && hunterField(g, i)[cellOf(g, h)] < Infinity) { bv = v; best = i; } }
+  }
+  return best;
+}
+
+function located(g) { return g.belief[g.troop.y * g.W + g.troop.x] > 0.5; }
+function musterReady(g) {
+  const t = g.troop;
+  const group = g.hunters.filter(h => Math.abs(h.x - t.x) + Math.abs(h.y - t.y) <= g.cfg.musterDist + 1);
+  return group.reduce((a, h) => a + h.str, 0) >= g.cfg.aggression * troopStrength(g, 'defend');
+}
+function moveHunter(g, h) {
+  const K = HUNTER_KINDS[h.kind];
+  const t = g.troop;
+  const dT = Math.abs(h.x - t.x) + Math.abs(h.y - t.y);
+  // the muster: don't walk in alone. Hold at the ring until the group is enough.
+  if (t.warren != null && located(g) && dT <= g.cfg.musterDist && !(g._ready ??= musterReady(g))) return;
+  h.mp += K.speed;
+  for (let guard = 0; guard < 6; guard++) {
+    const here = cellOf(g, h);
+    let nxt = -1;
+    if (h.trail) {
+      // follow the freshest neighbouring track
+      let bt = g.tracks[here];
+      for (const j of neighbours(g, here)) if (g.tracks[j] > bt && g.hCost(j) < Infinity) { bt = g.tracks[j]; nxt = j; }
+      if (nxt < 0) { // end of the trail: the troop went to ground near here
+        for (const v of g.warrens) { const d = Math.abs(v.x - h.x) + Math.abs(v.y - h.y); if (d <= 4) g.belief[v.i] += 0.15 / (1 + d); }
+        normalize(g.belief); h.trail = false; h.retargetAt = 0;
+      }
+    }
+    if (nxt < 0) {
+      if (g.tick >= h.retargetAt || h.target < 0 || here === h.target) { h.target = chooseTarget(g, h); h.retargetAt = g.tick + 3; }
+      if (h.target < 0) return;
+      nxt = downhill(g, hunterField(g, h.target), here);
+      if (nxt < 0) { h.retargetAt = 0; return; }
+    }
+    const cost = g.hCost(nxt);
+    if (cost > h.mp) { h.mp = Math.min(h.mp, 3); return; }
+    h.mp -= cost; h.x = nxt % g.W; h.y = (nxt / g.W) | 0;
+    const nd = Math.abs(h.x - t.x) + Math.abs(h.y - t.y);
+    if (nd <= (t.warren != null ? 1 : 0)) return; // reached you: stop
+    if (t.warren != null && located(g) && nd <= g.cfg.musterDist && !(g._ready ??= musterReady(g))) return;
+  }
+}
+
+// ---------------------------------------------------------------------------------------
+// Contact and fights
+
+// A hunter that reaches you does not fight alone. It holds, and everyone now knows where
+// you are. When the group within three blocks is strong enough, they go in together.
+function contact(g) {
+  const t = g.troop, c = g.cfg;
+  const d = h => Math.abs(h.x - t.x) + Math.abs(h.y - t.y);
+  const reach = t.warren != null ? 1 : 0; // in transit they have to land on you
+  const onYou = g.hunters.filter(h => d(h) <= reach);
+  if (!onYou.length) return false;
+  const group = g.hunters.filter(h => d(h) <= 3);
+  const theirs = group.reduce((a, h) => a + h.str, 0);
+  if (theirs >= c.aggression * troopStrength(g, 'defend')) { fight(g, group, 'defend'); return g.over; }
+  if (!t.besieged) g.events.push({ t: 'siege', by: onYou.map(h => h.id) });
+  t.besieged = true;
+  g.belief.fill(0); g.belief[cellOf(g, t)] = 1;
+  for (const h of g.hunters) if (d(h) > 1) h.retargetAt = 0;
+  return false;
+}
+
+function fight(g, hs, mode) {
+  const t = g.troop, ns = g.stats.nights[g.night - 1];
+  g.stats.fights++; ns.fights++;
+  const mine = troopStrength(g, mode === 'attack' ? 'attack' : 'defend');
+  const theirs = hs.reduce((a, h) => a + h.str, 0);
+  const r1 = 0.75 + 0.5 * rnd(g.seed, 'f1', g.night, g.tick, hs[0].id);
+  const r2 = 0.75 + 0.5 * rnd(g.seed, 'f2', g.night, g.tick, hs[0].id);
+  const where = t.warren != null ? 'warren' : 'transit';
+  if (mine * r1 >= theirs * r2) {
+    const perPerson = mine / t.size;
+    const lost = Math.min(t.size - 1, Math.round(g.cfg.lossK * theirs * r2 / perPerson));
+    t.size -= lost;
+    g.stats.fightsWon++;
+    for (const h of hs) { g.hunters.splice(g.hunters.indexOf(h), 1); g.respawnQueue.push(g.tick + g.cfg.respawnDelay); }
+    g.events.push({ t: 'fight', won: true, mode, where, lost, killed: hs.map(h => h.id), mine, theirs });
+  } else {
+    g.events.push({ t: 'fight', won: false, mode, where, mine, theirs });
+    end(g, { cause: mode === 'attack' ? 'attack' : where === 'warren' ? 'found' : 'transit', size: t.size, hunters: hs.map(h => h.kind) });
+    return;
+  }
+  // a fight is loud: everyone now knows exactly where you are
+  g.belief.fill(0); g.belief[cellOf(g, t)] = 1;
+  for (const h of g.hunters) h.retargetAt = 0;
+}
+
+function end(g, death) {
+  g.over = true;
+  g.stats.death = { ...death, night: g.night, tick: g.tick, T: g.T };
+  g.stats.nights[g.night - 1].endSize = g.troop.size;
+  g.result = { nights: g.night - 1, death: g.stats.death };
+  g.events.push({ t: 'end', ...g.stats.death });
+}
+
+// ---------------------------------------------------------------------------------------
+// Dawn: keep a remnant, draft a boon, and the next night is worse.
+function dawn(g) {
+  const t = g.troop, c = g.cfg, ns = g.stats.nights[g.night - 1];
+  ns.survived = true; ns.endSize = t.size;
+  if (t.warren == null) arrive(g); // they get under before the light
+  g.events.push({ t: 'dawn', night: g.night, size: t.size });
+  if (g.night >= c.maxNights) { g.over = true; g.result = { nights: g.night, death: null }; g.events.push({ t: 'end', cause: 'survived' }); return; }
+  t.size = c.remnant > 0 ? Math.max(c.startTroop, Math.round(t.size * c.remnant)) : c.startTroop;
+  g.pendingDraft = c.draft ? draftOffer(g) : null;
+  g.night++;
+  beginNight(g);
+}
+
+function draftOffer(g) {
+  const pool = BOONS.map(b => b.id).filter(id => !g.boons[id] || id === 'dig' || id === 'deepen');
+  const out = [];
+  for (let k = 0; out.length < 3 && k < 50; k++) {
+    const id = pool[Math.floor(rnd(g.seed, 'draft', g.night, k) * pool.length)];
+    if (!out.includes(id)) out.push(id);
+  }
+  return out;
+}
+function takeBoon(g, id) {
+  if (!g.pendingDraft || !g.pendingDraft.includes(id)) return;
+  g.pendingDraft = null;
+  g.stats.boons.push(id);
+  applyBoon(g, id);
+}
+function applyBoon(g, id) {
+  const t = g.troop;
+  if (id === 'deepen') { if (t.warren != null) { g.warrens[t.warren].depth = 'deep'; reconceal(g, g.warrens[t.warren]); } return; }
+  if (id === 'dig') { digBeside(g); return; }
+  g.boons[id] = true;
+}
+function digBeside(g) {
+  const t = g.troop, f = troopField(g, cellOf(g, t));
+  let best = -1, bd = -1;
+  for (let i = 0; i < g.N; i++) {
+    if (g.warrenAt[i] != null || f[i] === Infinity || !'.f'.includes(g.tiles[i])) continue;
+    const x = i % g.W, y = (i / g.W) | 0, d = Math.abs(x - t.x) + Math.abs(y - t.y);
+    if (d < 4 || d > 7) continue;
+    const near = Math.min(...g.warrens.map(v => Math.abs(v.x - x) + Math.abs(v.y - y)));
+    if (near > bd) { bd = near; best = i; }
+  }
+  if (best < 0) return;
+  const kinds = ['C', 'S', 'D'];
+  const v = { id: g.warrens.length, x: best % g.W, y: (best / g.W) | 0, kind: kinds[Math.floor(rnd(g.seed, 'dig', g.night) * 3)], depth: 'mid', name: null, why: 'dug at dawn', i: best };
+  g.warrens.push(v); g.warrenAt[best] = v.id; reconceal(g, v);
+}
+function reconceal(g, w) {
+  // the per-cell concealment table is shared with clones: copy before writing
+  g.conceal = new Float64Array(g.conceal); g.concealU = new Float64Array(g.concealU);
+  g.conceal[w.i] = g.concealU[w.i] = g.cfg.depthNoise[w.depth] * (w.kind === 'C' ? g.cfg.combatNoise : 1);
+}
+
+
+/** A copy cheap enough for lookahead: terrain caches are shared, everything that moves is copied. */
+function cloneGame(g, seedSalt = 0) {
+  return {
+    ...g,
+    seed: seedSalt ? (g.seed ^ Math.imul(seedSalt, 0x9e3779b1)) : g.seed,
+    troop: { ...g.troop, spec: { ...g.troop.spec } },
+    hunters: g.hunters.map(h => ({ ...h })),
+    respawnQueue: [...g.respawnQueue],
+    belief: new Float64Array(g.belief), tracks: new Float64Array(g.tracks),
+    boons: { ...g.boons }, history: { warrenTicks: { ...g.history.warrenTicks } },
+    warrens: g.warrens.map(w => ({ ...w })), warrenAt: { ...g.warrenAt },
+    stats: { ...g.stats, nights: g.stats.nights.map(n => ({ ...n })), kindTicks: { ...g.stats.kindTicks }, boons: [...g.stats.boons] },
+    events: [], pendingDraft: null,
+  };
+}
+
+// ---- src/policies.js
+// Dumb players. Not AI: each is a one-line rule, so if one of them dominates, the
+// mechanic is the problem, not the opponent. Every policy is (view) => action, plus a
+// boon preference for the dawn draft.
+
+
+/** Where to run: the warren the hunters will take longest to reach, net of how long it
+ * takes us to get there. Deep warrens are worth a little extra. */
+function bestDestination(v, opts = {}) {
+  const { warrens, troop } = v;
+  const prefer = opts.prefer; // optional kind preference
+  let best = null, bs = -Infinity;
+  for (const w of warrens) {
+    if (w.id === troop.warren) continue;
+    const go = v.troopTicksTo(w.i);
+    if (!isFinite(go)) continue;
+    const them = v.hunterTicksTo(w.i);
+    // arrive before them, and arrive somewhere they'll take a while to reach
+    let s = Math.min(them, 30) - 1.3 * go;
+    if (w.depth === 'deep') s += 2; else if (w.depth === 'shallow') s -= 1.5;
+    if (prefer && w.kind === prefer) s += 3;
+    if (v.belief) s -= 40 * v.belief[w.i];  // a scout knows where they'll look
+    if (s > bs) { bs = s; best = w; }
+  }
+  if (best) best = Object.assign(Object.create(best), { margin: bs });
+  return best;
+}
+// Run only if somewhere is worth running to (they won't be there first).
+const MOVE = (v, o) => { const d = bestDestination(v, o); return d && d.margin > -2 ? { type: 'move', to: d.id } : { type: 'stay' }; };
+const STAY = { type: 'stay' };
+
+function weakestAttackable(v, margin) {
+  const mine = v.strength('attack');
+  const opts = v.attackable().filter(h => mine >= margin * h.str).sort((a, b) => a.str - b.str);
+  return opts[0] || null;
+}
+
+const POLICIES = {
+  stay: () => () => () => STAY,
+
+  every: (N) => () => {
+    let since = 0;
+    return v => { if (v.troop.warren == null) return STAY; since++; if (since >= N) { since = 0; return MOVE(v); } return STAY; };
+  },
+
+  near: (X) => () => v => (v.troop.warren != null && v.nearestHunterTicks() <= X ? MOVE(v) : STAY),
+
+  grow: (X) => () => v => {
+    if (v.troop.warren == null) return STAY;
+    if (v.troop.size < X) return STAY;
+    return v.nearestHunterTicks() <= 3 ? MOVE(v) : STAY;
+  },
+
+  attack: () => () => v => { const h = v.attackable()[0]; return h ? { type: 'attack', hunter: h.id } : STAY; },
+
+  // stay; fight what you can beat; run from what you can't
+  hybrid: (X, margin = 1.3) => () => v => {
+    if (v.troop.warren == null) return STAY;
+    const h = weakestAttackable(v, margin);
+    if (h) return { type: 'attack', hunter: h.id };
+    const near = v.hunters.filter(x => v.g && Math.abs(x.x - v.troop.x) + Math.abs(x.y - v.troop.y) <= X + 2);
+    const threat = near.reduce((a, x) => a + x.str, 0);
+    if (v.nearestHunterTicks() <= X && threat * margin > v.strength('defend')) return MOVE(v);
+    return STAY;
+  },
+
+  // the hybrid, plus: when scouting, also move when they are about to look here
+  scout: (X, margin = 1.3, B = 0.25) => () => {
+    const base = POLICIES.hybrid(X, margin)();
+    return v => {
+      const a = base(v);
+      if (a.type !== 'stay' || v.troop.warren == null) return a;
+      if (v.belief && v.belief[v.here] > B && v.nearestHunterTicks() <= X * 2.5) return MOVE(v, { prefer: 'S' });
+      // go and scout when nobody's close and we don't know what they think
+      if (!v.belief && v.tick % 15 === 0 && v.nearestHunterTicks() > 8) return MOVE(v, { prefer: 'S' });
+      return a;
+    };
+  },
+
+  random: () => () => v => {
+    if (v.troop.warren == null) return STAY;
+    const r = rnd(v.g.seed, 'rp', v.g.T);
+    const h = v.attackable()[0];
+    if (h && r < 0.5) return { type: 'attack', hunter: h.id };
+    return r < 0.1 ? MOVE(v) : STAY;
+  },
+};
+
+// Boon taste: the same for everyone unless a policy has a reason to differ.
+const BOON_ORDER = ['hush', 'brood', 'walls', 'deepen', 'teeth', 'legs', 'scatter', 'dig'];
+function pickBoon(offer, order = BOON_ORDER) {
+  return [...offer].sort((a, b) => order.indexOf(a) - order.indexOf(b))[0];
+}
+
+/** Named roster for sweeps: name -> factory */
+function roster(attackOn = true) {
+  const r = {
+    'always-stay': POLICIES.stay(),
+    'move-every-6': POLICIES.every(6), 'move-every-10': POLICIES.every(10), 'move-every-16': POLICIES.every(16),
+    'move-at-3': POLICIES.near(3), 'move-at-5': POLICIES.near(5), 'move-at-8': POLICIES.near(8),
+    'grow-to-15': POLICIES.grow(15), 'grow-to-30': POLICIES.grow(30),
+    'random': POLICIES.random(),
+  };
+  if (attackOn) r['attack-always'] = POLICIES.attack();
+  for (const X of [3, 5, 8]) for (const m of [1.0, 1.3, 1.8]) r[`hybrid-${X}-${m}`] = POLICIES.hybrid(X, m);
+  for (const X of [3, 5]) for (const m of [1.3, 1.8]) r[`scout-${X}-${m}`] = POLICIES.scout(X, m);
+  return r;
+}
+const SINGLE_RULE = ['always-stay', 'move-every-6', 'move-every-10', 'move-every-16', 'move-at-3', 'move-at-5', 'move-at-8', 'grow-to-15', 'grow-to-30', 'attack-always', 'random'];
+
+// ---- src/tuned.js
+// The tuned rules, v4 (kinds trade off; growth accelerates while you stay; bolting while
+// watched gives the hunters a head start). Strict refinement from v3, 2026-10-01:
+// 60 configs x 24 policies x 150 seeds + twins = 219,600 games. v3's rules are in git history.
+// nightLen 54 (+20% on 45): Jay, 2 Oct, for playtesting. Checked by scripts/check-lineage.mjs.
+const TUNED = {"hunterBase":7.215,"hunterNightScale":0.287,"hunterStart":2,"hunterPerNight":1,"reinforceEvery":12,"aggression":0.997,"fortify":1.17,"ambush":0.914,"attackRange":2,"lossK":0.3,"transitSpeed":3,"hearK":1.35,"remnant":0.285,"carryDecay":0.92,"diffusion":0.171,"respawnDelay":10,"transit":"exposed","combatNoise":1.4,"defenseDepart":2,"watchReact":0.209,"watchCap":8,"growth":1,"nightLen":54};
+const TUNED_NOTE = 'v4 strict refinement, 2026-10-01';
+
+// ---- src/lineage.js
+// Lineage: Tokyo Jungle's generations, without the power creep.
+// Each run is a generation of a named line. When it falls, one heirloom passes to the
+// next: never more than one, and it replaces the last. The hunters remember the family
+// (the kinds the line has favoured weigh their opening guess). The line ends when a
+// generation fails to see its first dawn: that was the last warren.
+// Pure data in, data out. The page keeps the line in localStorage.
+
+
+const NAMES = ['Bramble', 'Sedge', 'Hazel', 'Rowan', 'Thistle', 'Fen', 'Tansy', 'Burdock', 'Sorrel', 'Yarrow', 'Holm', 'Wort'];
+const ROMAN = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX'];
+const roman = n => ROMAN[n - 1] || String(n);
+const KIND_WORD = { C: 'Combat', S: 'Scout', D: 'Defense' };
+
+function newLine(seed) {
+  return { v: 1, name: NAMES[hash(seed, 'line') % NAMES.length], founded: seed, gen: 1, heir: null, kinds: { C: 0, S: 0, D: 0 }, chronicle: [], ended: false };
+}
+
+/** The rules this generation plays under. */
+function lineCfg(line) {
+  if (!line || line.ended) return {};
+  const fam = line.kinds.C + line.kinds.S + line.kinds.D > 0 ? { ...line.kinds } : null;
+  return { heir: line.heir, lineage: fam };
+}
+
+/** Up to three heirlooms the fallen generation can pass on. */
+function heirlooms(g) {
+  const out = [];
+  const k = g.stats.kindTicks, top = ['C', 'S', 'D'].sort((a, b) => k[b] - k[a])[0];
+  if (k[top] > 0) out.push({ attune: top, label: `${KIND_WORD[top]}-born`, text: `Start attuned to ${KIND_WORD[top]}: the +30% without having to live in one first.` });
+  const held = g.stats.boons.filter(b => !b.endsWith('(inherited)'));
+  for (const id of [...new Set(held)].reverse().slice(0, 2)) {
+    const b = BOONS.find(x => x.id === id); if (!b) continue;
+    const [name, ...rest] = b.text.split('. ');
+    out.push({ boon: id, label: `${name}, inherited`, text: `Start the first night with it. ${rest.join('. ')}` });
+  }
+  if (!out.length) out.push({ none: true, label: 'Nothing but the name', text: 'They got away with their lives.' });
+  return out;
+}
+
+/** Write the generation into the chronicle and pass the heirloom. Returns the new line. */
+function recordGeneration(line, g, sentence, pick) {
+  const nights = g.result?.nights ?? 0;
+  const next = structuredClone(line);
+  for (const kk of ['C', 'S', 'D']) next.kinds[kk] += g.stats.kindTicks[kk];
+  next.chronicle.push({ gen: line.gen, name: `${line.name} ${roman(line.gen)}`, seed: g.seed, nights, sentence, inherited: line.heir ? describe(line.heir) : null, passed: pick && !pick.none ? describe(pick) : null });
+  if (nights === 0) { next.ended = true; next.endedAt = line.gen; return next; }
+  next.gen = line.gen + 1;
+  next.heir = pick && !pick.none ? (pick.attune ? { attune: pick.attune } : { boon: pick.boon }) : null;
+  return next;
+}
+function describe(h) {
+  if (h.attune) return `${KIND_WORD[h.attune]}-born`;
+  if (h.boon) { const b = BOONS.find(x => x.id === h.boon); return b ? b.text.split('. ')[0] : h.boon; }
+  return '';
+}
+
+// ---- ui.js
+// The page. Reads sim state, draws it, turns clicks into actions. No rules live here.
+
+const $ = id => document.getElementById(id);
+const cv = $('board'), ctx = cv.getContext('2d');
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const C = {}; for (const k of ['bg', 'ink', 'dim', 'moss', 'blood', 'gold', 'open', 'road', 'forest', 'forestdot', 'lake', 'mtn', 'line']) C[k] = css('--' + k);
+const ROSTER = roster(true);
+const TRADE = { C: 'strong, loud', S: 'sees them, thin walls', D: 'holds, slow to leave' };
+for (const name of Object.keys(ROSTER)) { const o = document.createElement('option'); o.value = name; o.textContent = 'Watch: ' + name; $('watch').appendChild(o); }
+
+let g, cs = 30, hover = -1, actions = [], timer = null, cfg;
+
+// ---------------------------------------------------------------- the line (kept in this browser)
+const LKEY = 'lw.line.v1';
+function loadLine() { try { const l = JSON.parse(localStorage.getItem(LKEY)); if (l && l.v === 1) return l; } catch {} return null; }
+function saveLine(l) { try { localStorage.setItem(LKEY, JSON.stringify(l)); } catch {} }
+let line = loadLine();
+if (!line || line.ended) { line = newLine(Date.now() % 100000 + 1); saveLine(line); }
+const watching = () => !!$('watch').value;
+
+function cfgNow() { return { ...($('cfgsel').value === 'tuned' ? TUNED : {}), ...(watching() ? {} : lineCfg(line)) }; }
+function start(seed) {
+  clearInterval(timer); timer = null;
+  cfg = cfgNow();
+  g = newGame(seed, cfg); actions = [];
+  $('log').innerHTML = '';
+  if (!watching()) say(`${line.name} ${roman(line.gen)}${line.heir ? ', ' + describe(line.heir) : ''}.`, 'gold');
+  say(`Night 1. ${g.map.hand.frame}. ${g.hunters.length} hunters at the edges.`, 'gold');
+  lineBar(); chronicle();
+  layout(); draw(); panel();
+  if ($('watch').value) watchLoop();
+}
+function layout() {
+  const wrap = cv.parentElement.clientWidth;
+  cs = Math.max(8, Math.floor(wrap / g.W));
+  const dpr = window.devicePixelRatio || 1;
+  cv.width = g.W * cs * dpr; cv.height = g.H * cs * dpr;
+  cv.style.width = g.W * cs + 'px'; cv.style.height = g.H * cs + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+// ---------------------------------------------------------------- drawing
+function cellRnd(i, k) { let h = (i * 2654435761 + k * 40503) >>> 0; h ^= h >>> 13; h = Math.imul(h, 0x5bd1e995) >>> 0; return (h % 1000) / 1000; }
+function draw() {
+  const { W, H } = g;
+  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W * cs, H * cs);
+  for (let i = 0; i < g.N; i++) {
+    const x = (i % W) * cs, y = ((i / W) | 0) * cs, t = g.tiles[i];
+    ctx.fillStyle = t === '~' ? C.lake : t === '^' ? C.mtn : t === 'f' ? C.forest : t === '=' ? C.road : C.open;
+    ctx.fillRect(x, y, cs, cs);
+    if (t === 'f') { ctx.fillStyle = C.forestdot; for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.arc(x + cs * (0.2 + 0.6 * cellRnd(i, k)), y + cs * (0.2 + 0.6 * cellRnd(i, k + 7)), cs * 0.13, 0, 7); ctx.fill(); } }
+    if (t === '^') { ctx.fillStyle = 'rgba(0,0,0,.25)'; ctx.beginPath(); ctx.moveTo(x + cs * .15, y + cs * .85); ctx.lineTo(x + cs * .5, y + cs * .18); ctx.lineTo(x + cs * .85, y + cs * .85); ctx.fill(); }
+    if (t === '~') { ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.beginPath(); ctx.moveTo(x + cs * .2, y + cs * .55); ctx.quadraticCurveTo(x + cs * .5, y + cs * .35, x + cs * .8, y + cs * .55); ctx.stroke(); }
+  }
+  // what they believe (only if you are scouting)
+  const v = view(g);
+  if (v.belief) {
+    let mx = 0; for (let i = 0; i < g.N; i++) mx = Math.max(mx, v.belief[i]);
+    for (let i = 0; i < g.N; i++) { const b = v.belief[i] / (mx || 1); if (b < 0.04) continue; ctx.fillStyle = `rgba(210,176,82,${0.12 + 0.55 * b})`; ctx.fillRect((i % W) * cs + 1, ((i / W) | 0) * cs + 1, cs - 2, cs - 2); }
+  }
+  // your own tracks
+  for (let i = 0; i < g.N; i++) { const age = g.T - g.tracks[i]; if (age < g.cfg.trackLife) { ctx.fillStyle = `rgba(143,191,99,${0.35 * (1 - age / g.cfg.trackLife)})`; ctx.beginPath(); ctx.arc((i % W + .5) * cs, ((i / W | 0) + .5) * cs, cs * .1, 0, 7); ctx.fill(); } }
+  // warrens
+  for (const w of g.warrens) {
+    const x = (w.x + .5) * cs, y = (w.y + .5) * cs, r = cs * .4;
+    ctx.fillStyle = '#0c0e09'; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
+    ctx.lineWidth = w.depth === 'deep' ? 3.5 : w.depth === 'mid' ? 2 : 1;
+    ctx.strokeStyle = w.id === g.troop.warren ? C.moss : C.ink; ctx.setLineDash(w.depth === 'shallow' ? [2, 2] : []);
+    ctx.stroke(); ctx.setLineDash([]);
+    if (!(w.x === g.troop.x && w.y === g.troop.y)) { ctx.fillStyle = C.ink; ctx.font = `600 ${Math.round(cs * .36)}px ${css('--mono')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(w.kind, x, y + 1); }
+  }
+  // route preview to the hovered warren
+  const hw = g.warrens.find(w => w.i === hover);
+  if (hw && g.troop.warren != null && hw.id !== g.troop.warren && !g.over) {
+    const f = dijkstra(g.W, g.H, g.tCost, hw.i);
+    let cur = v.here; ctx.strokeStyle = C.moss; ctx.setLineDash([4, 4]); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo((cur % W + .5) * cs, ((cur / W | 0) + .5) * cs);
+    for (let k = 0; k < 200 && cur !== hw.i; k++) {
+      let nb = -1, bd = f[cur]; for (const j of g.nb[cur]) if (f[j] < bd) { bd = f[j]; nb = j; }
+      if (nb < 0) break; cur = nb; ctx.lineTo((cur % W + .5) * cs, ((cur / W | 0) + .5) * cs);
+    }
+    ctx.stroke(); ctx.setLineDash([]);
+    const you = v.troopTicksTo(hw.i), them = v.hunterTicksTo(hw.i);
+    label((hw.x + .5) * cs, (hw.y - .6) * cs, `${KIND_NAME[hw.kind]} (${TRADE[hw.kind]}) · ${hw.depth} · you ${you.toFixed(0)}t · them ${isFinite(them) ? them.toFixed(0) + 't' : '—'}`, them <= you ? C.blood : C.moss);
+  }
+  // the ring, once they know where you are
+  if (g.troop.warren != null && located(g)) {
+    ctx.strokeStyle = C.blood; ctx.setLineDash([3, 5]); ctx.lineWidth = 1.5;
+    const R = g.cfg.musterDist; const x = (g.troop.x + .5) * cs, y = (g.troop.y + .5) * cs;
+    ctx.beginPath(); ctx.moveTo(x, y - (R + .5) * cs); ctx.lineTo(x + (R + .5) * cs, y); ctx.lineTo(x, y + (R + .5) * cs); ctx.lineTo(x - (R + .5) * cs, y); ctx.closePath(); ctx.stroke(); ctx.setLineDash([]);
+  }
+  // hunters
+  const inReach = new Set(v.attackable().map(h => h.id));
+  for (const h of g.hunters) {
+    const x = (h.x + .5) * cs, y = (h.y + .5) * cs, r = cs * .3;
+    ctx.fillStyle = C.blood; ctx.strokeStyle = C.blood; ctx.lineWidth = 2; ctx.beginPath();
+    if (h.kind === 'sweeper') ctx.rect(x - r, y - r, 2 * r, 2 * r);
+    else if (h.kind === 'tracker') { ctx.moveTo(x, y - r * 1.2); ctx.lineTo(x + r * 1.1, y + r); ctx.lineTo(x - r * 1.1, y + r); ctx.closePath(); }
+    else if (h.kind === 'hound') { ctx.moveTo(x, y - r * 1.3); ctx.lineTo(x + r * 1.1, y); ctx.lineTo(x, y + r * 1.3); ctx.lineTo(x - r * 1.1, y); ctx.closePath(); }
+    else { ctx.arc(x, y, r, 0, 7); }
+    if (h.kind === 'listener') ctx.stroke(); else ctx.fill();
+    if (inReach.has(h.id)) { ctx.strokeStyle = C.ink; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x, y, r * 1.8, 0, 7); ctx.stroke(); }
+    if (h.trail) { ctx.fillStyle = C.gold; ctx.beginPath(); ctx.arc(x + r, y - r, 3, 0, 7); ctx.fill(); }
+  }
+  // the troop
+  const tx = (g.troop.x + .5) * cs, ty = (g.troop.y + .5) * cs;
+  ctx.fillStyle = g.over && g.stats.death ? C.blood : C.moss;
+  ctx.beginPath(); ctx.arc(tx, ty, cs * .46, 0, 7);
+  if (g.troop.warren == null) { ctx.fillStyle = C.bg; ctx.fill(); ctx.strokeStyle = C.moss; ctx.lineWidth = 2.5; ctx.setLineDash([3, 3]); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = C.moss; }
+  else ctx.fill(), ctx.fillStyle = C.bg;
+  ctx.font = `800 ${Math.round(cs * .42)}px ${css('--mono')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+  ctx.fillText(g.troop.size, tx, ty + 1);
+}
+function label(x, y, text, color) {
+  ctx.font = `600 11px ${css('--mono')}`; const w = ctx.measureText(text).width + 12;
+  const lx = Math.min(Math.max(4, x - w / 2), g.W * cs - w - 4), ly = Math.max(4, y - 18);
+  ctx.fillStyle = 'rgba(12,14,9,.92)'; ctx.fillRect(lx, ly, w, 20); ctx.strokeStyle = color; ctx.lineWidth = 1; ctx.strokeRect(lx, ly, w, 20);
+  ctx.fillStyle = color; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(text, lx + 6, ly + 10);
+}
+
+// ---------------------------------------------------------------- panel
+function panel() {
+  const t = g.troop, v = view(g);
+  $('night').textContent = g.night;
+  $('ticks').textContent = `${g.tick} / ${g.cfg.nightLen}`;
+  $('dawnfill').style.width = (100 * g.tick / g.cfg.nightLen) + '%';
+  $('size').textContent = t.size;
+  const w = t.warren != null ? g.warrens[t.warren] : null;
+  $('where').textContent = w ? `in a ${w.depth} ${KIND_NAME[w.kind]} warren` : `in the open → ${KIND_NAME[g.warrens[t.dest].kind]} warren`;
+  $('sdef').textContent = troopStrength(g, 'defend').toFixed(0);
+  $('noise').textContent = troopNoise(g).toFixed(1);
+  const accel = g.cfg.accelAt ? g.cfg.accelAt.filter(a => (t.stayRun || 0) >= a).length : 0;
+  $('growth').textContent = t.warren == null ? 'not while moving' : t.besieged ? 'halted (siege)' : `+${g.cfg.growth + accel} a tick` + (g.cfg.accelAt && accel < g.cfg.accelAt.length ? ` · +${g.cfg.growth + accel + 1} in ${g.cfg.accelAt[accel] - (t.stayRun || 0)}` : '');
+  $('watched').textContent = t.watch ? `${t.watch} tick${t.watch === 1 ? '' : 's'}: they'll react faster` : '—';
+  $('watched').style.color = t.watch ? C.blood : '';
+  $('status').textContent = g.over ? 'gone' : t.besieged ? 'SIEGE · not growing' : located(g) ? 'located' : t.warren == null ? 'running' : 'hidden';
+  $('status').style.color = t.besieged || located(g) ? C.blood : '';
+  $('spec').innerHTML = ['C', 'S', 'D'].map(k => `<div class="s"><span>${KIND_NAME[k]}</span><div class="t"><div style="width:${100 * Math.max(t.spec[k], w && w.kind === k ? 1 : 0)}%"></div></div><span>+${Math.round(100 * g.cfg.warrenBonus * Math.max(t.spec[k], w && w.kind === k ? 1 : 0))}%</span></div>`).join('');
+  $('hcount').textContent = `· ${g.hunters.length}`;
+  $('hunters').innerHTML = g.hunters.map(h => `<div class="h"><i style="${h.kind === 'listener' ? 'background:none;border:2px solid ' + C.blood + ';border-radius:50%' : h.kind === 'tracker' ? 'clip-path:polygon(50% 0,100% 100%,0 100%)' : h.kind === 'hound' ? 'clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)' : ''}"></i><span>${HUNTER_KINDS[h.kind].label}${h.trail ? ' · on your trail' : ''}</span><b>${h.str.toFixed(0)}</b></div>`).join('');
+  $('attackbtn').disabled = !v.attackable().length || g.over;
+  $('stay').disabled = g.over;
+  $('scout-note')?.remove();
+}
+
+const LOG_MAX = 60;
+function say(text, cls = '') { const li = document.createElement('li'); li.textContent = text; if (cls) li.className = cls; $('log').prepend(li); while ($('log').children.length > LOG_MAX) $('log').lastChild.remove(); }
+function narrate(evs) {
+  for (const e of evs) {
+    if (e.t === 'move') say(`Run for the ${KIND_NAME[g.warrens[e.to].kind]} warren.`);
+    else if (e.t === 'arrive-warren') say(`Under again: a ${g.warrens[e.id].depth} ${KIND_NAME[g.warrens[e.id].kind]} warren.`, 'good');
+    else if (e.t === 'seen') say('Seen.', 'bad');
+    else if (e.t === 'siege') say('They know where you are. The ring is forming.', 'bad');
+    else if (e.t === 'arrive') say(`A ${HUNTER_KINDS[e.kind].label.toLowerCase()} arrives at the edge.`);
+    else if (e.t === 'fight') say(e.won ? `${e.mode === 'attack' ? 'You went out and won' : 'They came in and lost'}: ${e.mine.toFixed(0)} against ${e.theirs.toFixed(0)}. ${e.lost} of yours lost.` : `${e.mine.toFixed(0)} against ${e.theirs.toFixed(0)}.`, e.won ? 'good' : 'bad');
+    else if (e.t === 'dusk') say(`Night ${e.night}. ${e.hunters} hunters at the edges.`, 'gold');
+  }
+}
+
+// ---------------------------------------------------------------- acting
+function act(a) {
+  if (g.over || g.pendingDraft) return;
+  actions.push({ T: g.T + 1, a });
+  const night = g.night;
+  const evs = step(g, a);
+  narrate(evs);
+  if (g.night !== night && !g.over) dawnDialog(night);
+  draw(); panel();
+  if (g.over) endDialog();
+  else if (g.troop.warren == null && !timer && !$('watch').value) { timer = setInterval(() => { if (g.troop.warren != null || g.over || g.pendingDraft) { clearInterval(timer); timer = null; return; } act({ type: 'stay' }); }, 220); }
+}
+function dawnDialog(n) {
+  $('dn').textContent = n;
+  $('remnantline').textContent = g.cfg.remnant > 0 ? `${g.troop.size} of you go into night ${g.night}. Hunters remember where you hid.` : '';
+  const offer = g.pendingDraft;
+  if (!offer) return;
+  if ($('watch').value) { takeBoon(g, pickBoon(offer)); return; }
+  $('boons').innerHTML = offer.map(id => { const b = BOONS.find(x => x.id === id); const [name, ...rest] = b.text.split('. '); return `<button type="button" data-b="${id}"><b>${name}</b>${rest.join('. ')}</button>`; }).join('');
+  $('draft').showModal();
+}
+$('boons').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; takeBoon(g, b.dataset.b); say(`Took ${b.dataset.b}.`, 'gold'); $('draft').close(); draw(); panel(); });
+
+function endDialog() {
+  clearInterval(timer); timer = null;
+  const d = g.stats.death, s = g.stats;
+  if (!d) { $('endline').textContent = `${g.cfg.maxNights} nights. The warren is still there.`; $('endmore').textContent = ''; }
+  else {
+    const w = g.troop.warren != null ? g.warrens[g.troop.warren] : null;
+    const left = g.cfg.nightLen - d.tick;
+    const NUM = ['a', 'a', 'two', 'three', 'four', 'five', 'six'];
+    const parts = Object.entries(d.hunters.reduce((a, k) => (a[k] = (a[k] || 0) + 1, a), {})).map(([k, n]) => `${NUM[n] ?? n} ${HUNTER_KINDS[k].label.toLowerCase()}${n > 1 ? 's' : ''}`);
+    const who = parts.length > 1 ? parts.slice(0, -1).join(', ') + ' and ' + parts.at(-1) : parts[0];
+    const how = d.cause === 'found' ? `Found where you stayed, a ${w.depth} ${KIND_NAME[w.kind]} warren` : d.cause === 'transit' ? 'Caught in the open between warrens' : 'You went out to fight and did not come back';
+    $('endline').textContent = `Night ${d.night}, ${left} tick${left === 1 ? '' : 's'} before dawn. ${how}, ${d.size} strong, by ${who}.`;
+    $('endmore').textContent = `You moved ${s.moves} time${s.moves === 1 ? '' : 's'} and fought ${s.fights}. The most you ever were: ${s.peak}.` + twinLine(d);
+  }
+  $('working').textContent = working();
+  heirPick();
+  $('ending').showModal();
+}
+
+// ---------------------------------------------------------------- lineage at the end of a run
+function lineBar() {
+  $('linename').textContent = watching() ? 'watching' : `${line.name} ${roman(line.gen)}`;
+  $('lineheir').textContent = watching() ? '' : line.heir ? describe(line.heir) : 'no heirloom';
+}
+function heirPick() {
+  const box = $('heirs');
+  if (watching()) { box.innerHTML = ''; $('again').hidden = false; $('next').hidden = false; return; }
+  $('again').hidden = true; $('next').hidden = true;
+  const sentence = $('endline').textContent;
+  const failed = (g.result?.nights ?? 0) === 0;
+  if (failed) {
+    const ended = recordGeneration(line, g, sentence, null);
+    box.innerHTML = `<p class="lineend">${line.name} ${roman(line.gen)} never saw a dawn. The line of ${line.name} ends ${line.gen === 1 ? 'where it began' : `after ${line.gen} generations`}. That was the last warren.</p><button type="button" id="newline">Found a new line</button>`;
+    line = ended; saveLine(line); chronicle();
+    $('newline').addEventListener('click', () => { line = newLine(Date.now() % 100000 + 1); saveLine(line); $('ending').close(); const s = g.seed + 1; $('seed').value = s; start(s); });
+    return;
+  }
+  const opts = heirlooms(g);
+  box.innerHTML = `<div class="lbl">WHO GOT AWAY · WHAT DO THEY CARRY TO ${line.name.toUpperCase()} ${roman(line.gen + 1)}?</div>` +
+    opts.map((o, i) => `<button type="button" data-h="${i}"><b>${o.label}</b>${o.text}</button>`).join('') +
+    `<p class="dim small">One heirloom only, and it replaces the last. The hunters will remember which warrens your family favours.</p>`;
+  box.querySelectorAll('button[data-h]').forEach(b => b.addEventListener('click', () => {
+    line = recordGeneration(line, g, sentence, opts[+b.dataset.h]); saveLine(line); chronicle();
+    $('ending').close(); const s = g.seed + 1; $('seed').value = s; start(s);
+  }));
+}
+function chronicle() {
+  const c = $('chronicle'); if (!c) return;
+  const rows = [...line.chronicle].reverse();
+  c.innerHTML = `<h2>The line of ${line.name}${line.ended ? ' <span class="dim">· ended</span>' : ''}</h2>` +
+    `<p class="dim">${line.ended ? `It ran ${line.chronicle.length} generation${line.chronicle.length === 1 ? '' : 's'}.` : `Generation ${roman(line.gen)} is out there now${line.heir ? `, ${describe(line.heir)}` : ''}.`}</p>` +
+    (rows.length ? `<ol class="gens">${rows.map(r => `<li><div class="gn">${r.name}<span>${r.nights} night${r.nights === 1 ? '' : 's'} · seed ${r.seed}</span></div><p>${r.sentence}</p>${r.inherited || r.passed ? `<p class="dim small">${r.inherited ? 'Born ' + r.inherited + '. ' : ''}${r.passed ? 'Passed on: ' + r.passed + '.' : ''}</p>` : ''}</li>`).join('')}</ol>` : '<p class="dim">No generation has fallen yet.</p>') +
+    `<button type="button" id="abandon">Abandon this line and found a new one</button>`;
+  $('abandon').addEventListener('click', () => { if ($('abandon').dataset.armed) { line = newLine(Date.now() % 100000 + 1); saveLine(line); chronicle(); lineBar(); start(+$('seed').value || 1); } else { $('abandon').dataset.armed = 1; $('abandon').textContent = 'Click again to abandon it'; } });
+}
+// The twin: same world, same choices, but run one tick before the end. Honest because
+// every roll is hashed by (seed, tick), so nothing else in the world changes.
+function twinLine(d) {
+  if (d.cause !== 'found') return '';
+  const saved = k => {
+    const t = newGame(g.seed, cfg); const pol = ROSTER['hybrid-5-1.3']();
+    const map = new Map(actions.map(x => [x.T, x.a]));
+    while (!t.over && t.night <= d.night) {
+      if (t.pendingDraft) takeBoon(t, g.stats.boons[t.night - 1] && t.pendingDraft.includes(g.stats.boons[t.night - 1]) ? g.stats.boons[t.night - 1] : pickBoon(t.pendingDraft));
+      const T = t.T + 1; let a;
+      if (T < d.T - k) a = map.get(T) || { type: 'stay' };
+      else if (T === d.T - k) { const dd = bestDestination(view(t)); a = dd ? { type: 'move', to: dd.id } : { type: 'stay' }; }
+      else a = pol(view(t));
+      step(t, a);
+      if (t.stats.nights[d.night - 1]?.survived) return true;
+    }
+    return false;
+  };
+  const s1 = saved(1);
+  return s1 ? ' Running one tick earlier would have seen dawn.' : saved(3) ? ' One tick earlier wasn\'t enough. Three would have been.' : ' Running earlier would not have saved it.';
+}
+function working() {
+  return `seed ${g.seed} · ${g.map.hand.frame} · rules: ${$('cfgsel').value}
+night ${g.night}, tick ${g.tick} (global ${g.T})
+dials ${JSON.stringify(g.map.dials)}
+boons ${g.stats.boons.join(', ') || 'none'}
+fights ${g.stats.fights} (won ${g.stats.fightsWon}) · moves ${g.stats.moves} · attacks ${g.stats.attacks}
+ticks staying ${g.stats.stayTicks} · in transit ${g.stats.transitTicks}
+by warren kind: C ${g.stats.kindTicks.C} · S ${g.stats.kindTicks.S} · D ${g.stats.kindTicks.D}
+death ${JSON.stringify(g.stats.death)}
+replay ${actions.filter(x => x.a.type !== 'stay').map(x => `${x.T}:${x.a.type[0]}${x.a.to ?? x.a.hunter ?? ''}`).join(' ')}`;
+}
+
+function watchLoop() {
+  clearInterval(timer);
+  const pol = ROSTER[$('watch').value]();
+  timer = setInterval(() => {
+    if (g.over) { clearInterval(timer); timer = null; return; }
+    if (g.pendingDraft) takeBoon(g, pickBoon(g.pendingDraft));
+    const a = pol(view(g)); const night = g.night;
+    narrate(step(g, a)); actions.push({ T: g.T, a });
+    if (g.night !== night) say(`Dawn. Night ${night} survived.`, 'good');
+    draw(); panel(); if (g.over) endDialog();
+  }, 140);
+}
+
+// ---------------------------------------------------------------- input
+function cellAt(e) { const r = cv.getBoundingClientRect(); const x = Math.floor((e.clientX - r.left) / cs), y = Math.floor((e.clientY - r.top) / cs); return x >= 0 && y >= 0 && x < g.W && y < g.H ? y * g.W + x : -1; }
+cv.addEventListener('mousemove', e => { const c = cellAt(e); if (c !== hover) { hover = c; draw(); } });
+cv.addEventListener('mouseleave', () => { hover = -1; draw(); });
+cv.addEventListener('click', e => {
+  if ($('watch').value) return;
+  const c = cellAt(e); if (c < 0) return;
+  const v = view(g);
+  const h = v.attackable().find(h => h.y * g.W + h.x === c);
+  if (h) return act({ type: 'attack', hunter: h.id });
+  const w = g.warrens.find(w => w.i === c);
+  if (w && g.troop.warren != null && w.id !== g.troop.warren) return act({ type: 'move', to: w.id });
+});
+$('stay').addEventListener('click', () => act({ type: 'stay' }));
+$('attackbtn').addEventListener('click', () => { const h = view(g).attackable().sort((a, b) => a.str - b.str)[0]; if (h) act({ type: 'attack', hunter: h.id }); });
+document.addEventListener('keydown', e => {
+  if (e.target.matches('input,select') || document.querySelector('dialog[open]')) return;
+  if (e.code === 'Space') { e.preventDefault(); act({ type: 'stay' }); }
+  if (e.key === 'a' || e.key === 'A') $('attackbtn').click();
+});
+$('newrun').addEventListener('click', () => start(+$('seed').value || 1));
+$('watch').addEventListener('change', () => start(+$('seed').value || 1));
+$('cfgsel').addEventListener('change', () => start(+$('seed').value || 1));
+$('again').addEventListener('click', () => { $('ending').close(); start(g.seed); });
+$('next').addEventListener('click', () => { $('ending').close(); $('seed').value = g.seed + 1; start(g.seed + 1); });
+window.addEventListener('resize', () => { layout(); draw(); });
+start(1);
+
+// ---------------------------------------------------------------- tabs, and the ending can't be dismissed without a choice
+document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+  for (const id of ['play', 'chron', 'brief']) $('tab-' + id).hidden = id !== b.dataset.tab;
+  $('tab-play').style.display = b.dataset.tab === 'play' ? '' : 'none';
+  document.querySelector('.tools').style.display = b.dataset.tab === 'play' ? '' : 'none';
+  if (b.dataset.tab === 'play') { layout(); draw(); }
+}));
+$('ending').addEventListener('cancel', e => { if (!watching()) e.preventDefault(); });
+// the CD brief: inlined in the artifact build; fetched next to the page when run locally
+if ($('tab-brief').innerHTML.includes('<!--BRIEF-->')) fetch('cd-brief.html').then(r => r.ok ? r.text() : '').then(t => { if (t) $('tab-brief').innerHTML = t; }).catch(() => {});
+
+</script>
+</body>
+</html>

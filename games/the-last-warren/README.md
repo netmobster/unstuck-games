@@ -71,3 +71,15 @@ node scripts/report.mjs reports/tune-strict-*.json 2000   # the full evidence ru
 - **Targets** (`scripts/metrics.mjs` → `judge`): no one-rule policy dominates · skill pays ·
   night 1 is learnable · a curve across nights · all three verbs used · transit is a risk,
   not suicide · always-stay is not safe · attack earns its place · the one-tick-late rate.
+
+## Lineage and the single-file build (2 Oct)
+
+- **Nights are 54 ticks** (+20%, Jay's call for playtesting). `scripts/check-lineage.mjs`: every
+  policy loses a little, and the skill gap widens from 1.06 to 1.20 nights.
+- **Lineage** (`src/lineage.js`): each run is a generation of a named line, kept in the browser.
+  - When it falls, you pick **one heirloom** for the next generation: an attunement to a kind, or a held boon. Only one carries, so there's no power creep. Heirlooms measure at about ±0.1–0.2 nights, except **Walls, which is a trap**: it tempts you to stay, and the hybrids drop 0.3 nights.
+  - **The hunters remember the family.** Their opening guess is weighted toward the kinds the line favours.
+  - **A generation that never sees a dawn ends the line.**
+- **Tabs:** Play · Chronicle · CD brief (`cd-brief.html`).
+- **One file:** `node scripts/bundle.mjs dist-the-last-warren.html --full` writes the whole game as a
+  single `.html` that opens with a double-click: no server, no module loading.

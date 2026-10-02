@@ -3,6 +3,7 @@ import { newGame, step, view, takeBoon, troopNoise, troopStrength, located, HUNT
 import { roster, bestDestination, pickBoon } from './src/policies.js';
 import { KIND_NAME, dijkstra } from './src/map.js';
 import { TUNED } from './src/tuned.js';
+import { newLine, lineCfg, heirlooms, recordGeneration, describe, roman } from './src/lineage.js';
 
 const $ = id => document.getElementById(id);
 const cv = $('board'), ctx = cv.getContext('2d');
@@ -14,19 +15,29 @@ for (const name of Object.keys(ROSTER)) { const o = document.createElement('opti
 
 let g, cs = 30, hover = -1, actions = [], timer = null, cfg;
 
-function cfgNow() { return $('cfgsel').value === 'tuned' ? { ...TUNED } : {}; }
+// ---------------------------------------------------------------- the line (kept in this browser)
+const LKEY = 'lw.line.v1';
+function loadLine() { try { const l = JSON.parse(localStorage.getItem(LKEY)); if (l && l.v === 1) return l; } catch {} return null; }
+function saveLine(l) { try { localStorage.setItem(LKEY, JSON.stringify(l)); } catch {} }
+let line = loadLine();
+if (!line || line.ended) { line = newLine(Date.now() % 100000 + 1); saveLine(line); }
+const watching = () => !!$('watch').value;
+
+function cfgNow() { return { ...($('cfgsel').value === 'tuned' ? TUNED : {}), ...(watching() ? {} : lineCfg(line)) }; }
 function start(seed) {
   clearInterval(timer); timer = null;
   cfg = cfgNow();
   g = newGame(seed, cfg); actions = [];
   $('log').innerHTML = '';
+  if (!watching()) say(`${line.name} ${roman(line.gen)}${line.heir ? ', ' + describe(line.heir) : ''}.`, 'gold');
   say(`Night 1. ${g.map.hand.frame}. ${g.hunters.length} hunters at the edges.`, 'gold');
+  lineBar(); chronicle();
   layout(); draw(); panel();
   if ($('watch').value) watchLoop();
 }
 function layout() {
   const wrap = cv.parentElement.clientWidth;
-  cs = Math.max(14, Math.floor(wrap / g.W));
+  cs = Math.max(8, Math.floor(wrap / g.W));
   const dpr = window.devicePixelRatio || 1;
   cv.width = g.W * cs * dpr; cv.height = g.H * cs * dpr;
   cv.style.width = g.W * cs + 'px'; cv.style.height = g.H * cs + 'px';
@@ -188,7 +199,45 @@ function endDialog() {
     $('endmore').textContent = `You moved ${s.moves} time${s.moves === 1 ? '' : 's'} and fought ${s.fights}. The most you ever were: ${s.peak}.` + twinLine(d);
   }
   $('working').textContent = working();
+  heirPick();
   $('ending').showModal();
+}
+
+// ---------------------------------------------------------------- lineage at the end of a run
+function lineBar() {
+  $('linename').textContent = watching() ? 'watching' : `${line.name} ${roman(line.gen)}`;
+  $('lineheir').textContent = watching() ? '' : line.heir ? describe(line.heir) : 'no heirloom';
+}
+function heirPick() {
+  const box = $('heirs');
+  if (watching()) { box.innerHTML = ''; $('again').hidden = false; $('next').hidden = false; return; }
+  $('again').hidden = true; $('next').hidden = true;
+  const sentence = $('endline').textContent;
+  const failed = (g.result?.nights ?? 0) === 0;
+  if (failed) {
+    const ended = recordGeneration(line, g, sentence, null);
+    box.innerHTML = `<p class="lineend">${line.name} ${roman(line.gen)} never saw a dawn. The line of ${line.name} ends ${line.gen === 1 ? 'where it began' : `after ${line.gen} generations`}. That was the last warren.</p><button type="button" id="newline">Found a new line</button>`;
+    line = ended; saveLine(line); chronicle();
+    $('newline').addEventListener('click', () => { line = newLine(Date.now() % 100000 + 1); saveLine(line); $('ending').close(); const s = g.seed + 1; $('seed').value = s; start(s); });
+    return;
+  }
+  const opts = heirlooms(g);
+  box.innerHTML = `<div class="lbl">WHO GOT AWAY · WHAT DO THEY CARRY TO ${line.name.toUpperCase()} ${roman(line.gen + 1)}?</div>` +
+    opts.map((o, i) => `<button type="button" data-h="${i}"><b>${o.label}</b>${o.text}</button>`).join('') +
+    `<p class="dim small">One heirloom only, and it replaces the last. The hunters will remember which warrens your family favours.</p>`;
+  box.querySelectorAll('button[data-h]').forEach(b => b.addEventListener('click', () => {
+    line = recordGeneration(line, g, sentence, opts[+b.dataset.h]); saveLine(line); chronicle();
+    $('ending').close(); const s = g.seed + 1; $('seed').value = s; start(s);
+  }));
+}
+function chronicle() {
+  const c = $('chronicle'); if (!c) return;
+  const rows = [...line.chronicle].reverse();
+  c.innerHTML = `<h2>The line of ${line.name}${line.ended ? ' <span class="dim">· ended</span>' : ''}</h2>` +
+    `<p class="dim">${line.ended ? `It ran ${line.chronicle.length} generation${line.chronicle.length === 1 ? '' : 's'}.` : `Generation ${roman(line.gen)} is out there now${line.heir ? `, ${describe(line.heir)}` : ''}.`}</p>` +
+    (rows.length ? `<ol class="gens">${rows.map(r => `<li><div class="gn">${r.name}<span>${r.nights} night${r.nights === 1 ? '' : 's'} · seed ${r.seed}</span></div><p>${r.sentence}</p>${r.inherited || r.passed ? `<p class="dim small">${r.inherited ? 'Born ' + r.inherited + '. ' : ''}${r.passed ? 'Passed on: ' + r.passed + '.' : ''}</p>` : ''}</li>`).join('')}</ol>` : '<p class="dim">No generation has fallen yet.</p>') +
+    `<button type="button" id="abandon">Abandon this line and found a new one</button>`;
+  $('abandon').addEventListener('click', () => { if ($('abandon').dataset.armed) { line = newLine(Date.now() % 100000 + 1); saveLine(line); chronicle(); lineBar(); start(+$('seed').value || 1); } else { $('abandon').dataset.armed = 1; $('abandon').textContent = 'Click again to abandon it'; } });
 }
 // The twin: same world, same choices, but run one tick before the end. Honest because
 // every roll is hashed by (seed, tick), so nothing else in the world changes.
@@ -263,3 +312,15 @@ $('again').addEventListener('click', () => { $('ending').close(); start(g.seed);
 $('next').addEventListener('click', () => { $('ending').close(); $('seed').value = g.seed + 1; start(g.seed + 1); });
 window.addEventListener('resize', () => { layout(); draw(); });
 start(1);
+
+// ---------------------------------------------------------------- tabs, and the ending can't be dismissed without a choice
+document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', String(x === b)));
+  for (const id of ['play', 'chron', 'brief']) $('tab-' + id).hidden = id !== b.dataset.tab;
+  $('tab-play').style.display = b.dataset.tab === 'play' ? '' : 'none';
+  document.querySelector('.tools').style.display = b.dataset.tab === 'play' ? '' : 'none';
+  if (b.dataset.tab === 'play') { layout(); draw(); }
+}));
+$('ending').addEventListener('cancel', e => { if (!watching()) e.preventDefault(); });
+// the CD brief: inlined in the artifact build; fetched next to the page when run locally
+if ($('tab-brief').innerHTML.includes('<!--BRIEF-->')) fetch('cd-brief.html').then(r => r.ok ? r.text() : '').then(t => { if (t) $('tab-brief').innerHTML = t; }).catch(() => {});

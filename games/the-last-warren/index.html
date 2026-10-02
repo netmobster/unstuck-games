@@ -13,20 +13,27 @@
 <div class="app">
   <header class="bar">
     <h1><span class="moss">The Last</span> Warren</h1>
+    <div class="line"><span class="lbl">LINE</span><b id="linename">—</b><span class="dim" id="lineheir"></span></div>
     <div class="clock">
       <span class="lbl">NIGHT</span><b id="night">1</b>
       <div class="dawn" title="ticks until dawn"><div id="dawnfill"></div></div>
-      <span class="lbl" id="ticks">0 / 45</span>
+      <span class="lbl" id="ticks">0 / 54</span>
     </div>
-    <div class="tools">
-      <label class="lbl" for="seed">SEED</label><input id="seed" type="number" value="1" min="1">
-      <select id="cfgsel" aria-label="Rules"><option value="tuned">Tuned rules</option><option value="defaults">Starting rules</option></select>
-      <button id="newrun" type="button">New run</button>
-      <select id="watch" aria-label="Watch a policy play"><option value="">You play</option></select>
-    </div>
+    <nav class="tabs" role="tablist" aria-label="Sections">
+      <button type="button" role="tab" class="tab" data-tab="play" aria-selected="true">Play</button>
+      <button type="button" role="tab" class="tab" data-tab="chron" aria-selected="false">Chronicle</button>
+      <button type="button" role="tab" class="tab" data-tab="brief" aria-selected="false">CD brief</button>
+    </nav>
   </header>
 
-  <main class="main">
+  <div class="tools">
+    <label class="lbl" for="seed">SEED</label><input id="seed" type="number" value="1" min="1">
+    <select id="cfgsel" aria-label="Rules"><option value="tuned">Tuned rules</option><option value="defaults">Starting rules</option></select>
+    <button id="newrun" type="button">New run</button>
+    <select id="watch" aria-label="Watch a policy play"><option value="">You play</option></select>
+  </div>
+
+  <main class="main" id="tab-play" role="tabpanel">
     <div class="boardwrap">
       <canvas id="board" aria-label="The map"></canvas>
       <div class="hint" id="hint">Click a warren to run for it. Click a hunter in reach to attack. <kbd>Space</kbd> stays one tick; hold it to keep staying.</div>
@@ -65,6 +72,12 @@
       </div>
     </aside>
   </main>
+
+  <section class="page" id="tab-chron" role="tabpanel" hidden><div id="chronicle"></div></section>
+
+  <section class="page brief" id="tab-brief" role="tabpanel" hidden>
+    <!--BRIEF-->
+  </section>
 </div>
 
 <dialog id="draft">
@@ -75,9 +88,10 @@
 </dialog>
 
 <dialog id="ending">
-  <div class="lbl">THE LAST WARREN FELL</div>
+  <div class="lbl">THE WARREN FELL</div>
   <h2 id="endline"></h2>
   <p id="endmore" class="dim"></p>
+  <div id="heirs" class="boons heirs"></div>
   <details class="eye"><summary>Show the working</summary><pre id="working"></pre></details>
   <div class="row-btns"><button id="again" type="button">Same seed again</button><button id="next" type="button">Next seed</button></div>
 </dialog>

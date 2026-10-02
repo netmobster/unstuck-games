@@ -46,6 +46,10 @@ export const DEFAULTS = {
   accelAt: [10, 20],       // growth +1, then +2 after 10 ticks in one place, +3 after 20
   watchReact: 0.5,         // per tick you've been watched, hunters near the ring bank this many points when you bolt
   watchCap: 6,
+  // lineage: what this generation inherits, and what the hunters remember of the family
+  heir: null,              // { attune: 'C'|'S'|'D' } or { boon: id }
+  lineage: null,           // { C, S, D } ticks the line has spent in each kind, all generations
+  familyK: 2,              // prior weight on the kinds the family favours
   // progression toggles
   remnant: 0.4,            // share of troop kept at dawn (0 = off: start fresh at startTroop)
   draft: true,
@@ -107,6 +111,8 @@ export function newGame(seed, cfgIn = {}, mapOpts = {}) {
   const home = g.warrens[Math.floor(rnd(seed, 'home') * g.warrens.length)];
   g.troop = { x: home.x, y: home.y, size: cfg.startTroop, warren: home.id, path: null, pi: 0, mp: 0, besieged: false, stayRun: 0, watch: 0,
               dest: null, spec: { C: 0, S: 0, D: 0 }, seenBy: 0, since: 0 };
+  if (cfg.heir?.attune) g.troop.spec[cfg.heir.attune] = 1;
+  if (cfg.heir?.boon) { g.warrenAt = g.warrenAt || {}; applyBoon(g, cfg.heir.boon); g.stats.boons.push(cfg.heir.boon + ' (inherited)'); }
   beginNight(g);
   return g;
 }
@@ -129,9 +135,12 @@ function beginNight(g) {
   // The prior: hunters know you live in a warren. If they learn, your habits weigh it.
   g.belief.fill(0);
   const hist = g.history.warrenTicks, tot = Object.values(hist).reduce((a, b) => a + b, 0);
+  // and they know the family: the kinds your line has favoured, across every generation
+  const fam = cfg.lineage, ftot = fam ? (fam.C || 0) + (fam.S || 0) + (fam.D || 0) : 0;
   for (const v of g.warrens) {
     const habit = cfg.learn && tot > 0 ? 4 * (hist[v.id] || 0) / tot : 0;
-    g.belief[v.i] = 1 + habit;
+    const family = ftot > 0 ? cfg.familyK * (fam[v.kind] || 0) / ftot : 0;
+    g.belief[v.i] = 1 + habit + family;
   }
   if (g.boons.scatter) for (let i = 0; i < g.N; i++) g.belief[i] = g.belief[i] * 0.5 + 0.5 / g.warrens.length * (g.belief[i] > 0 ? 1 : 0);
   normalize(g.belief);
@@ -582,6 +591,9 @@ export function takeBoon(g, id) {
   if (!g.pendingDraft || !g.pendingDraft.includes(id)) return;
   g.pendingDraft = null;
   g.stats.boons.push(id);
+  applyBoon(g, id);
+}
+function applyBoon(g, id) {
   const t = g.troop;
   if (id === 'deepen') { if (t.warren != null) { g.warrens[t.warren].depth = 'deep'; reconceal(g, g.warrens[t.warren]); } return; }
   if (id === 'dig') { digBeside(g); return; }
