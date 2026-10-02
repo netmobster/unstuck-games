@@ -1,0 +1,156 @@
+/* ECHO-X HOME — one page in three thirds: the room, the deal, the dossier.
+   Edit the tokens here; everything reads from them.
+   Switches live on <body>: data-glow="amber|phosphor", data-swing="on|off", data-flicker="on|off". */
+:root{
+  --ink:#060504; --bone:#e8e2d4; --bone-2:#9a9182; --bone-3:#6b6558; --rule:#1c1714; --rule-2:#3b352c;
+  --glow-rgb:255,170,60; --accent:#c2a46a; --title:#e8d8b0; --flame:rgba(255,205,120,.9);
+  --paper:#ebe4d5; --paper-ink:#14110e; --paper-text:#2a241d; --paper-dim:#6f6557; --paper-rule:#d6cbb5; --paper-accent:#7a5c22;
+  --display:Cinzel,Georgia,serif; --serif:Spectral,Georgia,serif; --mono:'Space Mono',ui-monospace,monospace;
+}
+body[data-glow="phosphor"]{--glow-rgb:120,255,170; --accent:#8fcf9a; --title:#d6f0d6; --flame:rgba(200,255,215,.9)}
+
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--bone);font:300 17px/1.6 var(--serif)}
+a{color:inherit;text-decoration:none}
+a:hover{color:var(--title)}
+code{font-family:var(--mono);font-size:.84em;letter-spacing:.02em;background:rgba(127,110,80,.16);padding:1px 5px;border-radius:3px}
+::selection{background:rgba(var(--glow-rgb),.3)}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+
+.wrap{max-width:1120px;margin:0 auto;padding-left:24px;padding-right:24px}
+.k{font-family:var(--mono);font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--bone-3)}
+.r{font:500 12px/1.4 var(--display);letter-spacing:.24em;color:var(--accent)}
+.cta{font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;white-space:nowrap;
+  padding:13px 20px;border-radius:2px;background:var(--accent);color:#160b05;font-weight:700}
+.cta:hover{filter:brightness(1.12);color:#160b05}
+.cta.ghost{background:none;color:var(--bone-2);border:1px solid var(--rule-2);font-weight:400}
+.cta.ghost:hover{filter:none;border-color:var(--bone-2);color:var(--bone)}
+.acts{display:flex;gap:12px;flex-wrap:wrap;margin-top:40px}
+
+/* masthead */
+.mast{position:sticky;top:0;z-index:10;background:rgba(6,5,4,.86);backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
+.mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:14px;padding-bottom:14px}
+.brand{font:600 15px/1 var(--display);letter-spacing:.22em;color:var(--title)}
+.mast nav{display:flex;gap:26px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--bone-2)}
+.mast nav a{white-space:nowrap}
+
+/* the room: one dark scene behind thirds I and II */
+.room{position:relative;background:var(--ink)}
+.scene{position:absolute;inset:0;overflow:hidden;pointer-events:none}
+.table{position:absolute;left:-10%;right:-10%;bottom:0;height:620px;transform:perspective(700px) rotateX(50deg);transform-origin:top center;
+  box-shadow:inset 0 40px 90px rgba(0,0,0,.65);
+  background:repeating-linear-gradient(92deg,rgba(0,0,0,.12) 0 3px,transparent 3px 11px,rgba(0,0,0,.07) 11px 14px),
+             repeating-linear-gradient(88deg,transparent 0 40px,rgba(255,200,120,.02) 40px 41px),
+             linear-gradient(180deg,#1a120a 0%,#3a2816 28%,#4a3320 48%,#2c1d11 72%,#120c07 100%)}
+.shade-out{position:absolute;left:0;right:0;bottom:0;height:620px;
+  background:linear-gradient(180deg,#060504 0%,rgba(6,5,4,.75) 10%,rgba(6,5,4,0) 30%,rgba(6,5,4,0) 72%,#060504 100%),
+             radial-gradient(ellipse 58% 90% at 60% 55%,rgba(6,5,4,0) 35%,rgba(6,5,4,.9) 100%)}
+.lamp{position:absolute;left:60%;top:0;width:0;height:0;transform-origin:0 0;animation:swing 7s ease-in-out infinite}
+.lamp .light{position:absolute;left:-1000px;top:-700px;width:2000px;height:2600px;animation:lamp 5s ease-in-out infinite;
+  background:radial-gradient(ellipse 30% 18% at 50% 73%,rgba(var(--glow-rgb),.13),transparent 70%),
+             radial-gradient(ellipse 34% 15% at 50% 31%,rgba(var(--glow-rgb),.26),rgba(var(--glow-rgb),.07) 45%,transparent 72%)}
+.lamp .cord{position:absolute;left:-1px;top:0;width:2px;height:72px;background:#1a1410}
+.lamp .shade{position:absolute;left:-46px;top:72px;width:92px;height:34px;background:linear-gradient(180deg,#2a1f14,#0d0906);
+  border-radius:0 0 46px 46px/0 0 20px 20px;box-shadow:0 14px 40px 10px rgba(var(--glow-rgb),.35)}
+.lamp .flame{position:absolute;left:-32px;top:100px;width:64px;height:10px;border-radius:50%;background:var(--flame);
+  box-shadow:0 0 30px 14px rgba(var(--glow-rgb),.55);animation:candle 5s ease-in-out infinite}
+body[data-swing="off"] .lamp{animation:none}
+body[data-flicker="off"] .lamp .light,body[data-flicker="off"] .lamp .flame{animation:none}
+@keyframes swing{0%,100%{transform:rotate(-4.5deg)}50%{transform:rotate(4.5deg)}}
+@keyframes candle{0%,100%{opacity:.85;transform:scaleX(1)}23%{opacity:1;transform:scaleX(1.06)}41%{opacity:.68;transform:scaleX(.96)}58%{opacity:.96;transform:scaleX(1.02)}77%{opacity:.78;transform:scaleX(.98)}}
+@keyframes lamp{0%,100%{opacity:.9}23%{opacity:1}41%{opacity:.8}58%{opacity:.97}77%{opacity:.86}}
+
+/* I · the room */
+.hero{position:relative;min-height:max(560px,78svh)}
+.hero .wrap{padding-top:clamp(72px,12vh,150px);padding-bottom:96px}
+h1{margin:18px 0 0;font:500 clamp(56px,9vw,112px)/1 var(--display);letter-spacing:.18em;color:var(--title);text-shadow:0 0 30px rgba(var(--glow-rgb),.4)}
+.say{margin:26px 0 0;max-width:20em;font:italic 400 clamp(26px,3.4vw,42px)/1.2 var(--serif);color:var(--bone);text-wrap:balance}
+.voice{max-width:34em;margin-top:28px;display:grid;gap:14px;font-size:clamp(17px,1.6vw,19px);color:#a9a090;text-wrap:pretty}
+.voice p{margin:0}
+
+/* II · the deal */
+.deal{position:relative}
+.deal .wrap{padding-top:40px;padding-bottom:100px}
+.deal h2{margin:16px 0 0;font:500 clamp(28px,3.6vw,44px)/1.15 var(--display);color:var(--title);text-wrap:balance;max-width:16ch}
+.sub{margin:12px 0 0;font:italic 400 clamp(18px,2vw,22px)/1.4 var(--serif);color:var(--bone-2)}
+.hand{display:flex;flex-wrap:wrap;justify-content:center;gap:26px;margin-top:56px}
+.card{appearance:none;border:0;background:none;padding:0;margin:0;font:inherit;color:inherit;cursor:pointer;width:200px;height:300px;perspective:1100px;border-radius:10px}
+.card:nth-child(1){transform:rotate(-3deg)}
+.card:nth-child(2){transform:rotate(1.5deg)}
+.card:nth-child(3){transform:rotate(-1deg)}
+.card:nth-child(4){transform:rotate(2.5deg)}
+.card:nth-child(5){transform:rotate(-2deg)}
+.card-inner{position:relative;width:100%;height:100%;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.2,.7,.2,1)}
+.card:hover .card-inner,.card:focus-visible .card-inner,.card.is-pinned .card-inner{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.face.back{background:linear-gradient(160deg,#3a2c1f,#1a130e);border:1px solid #4a3a2a;box-shadow:0 18px 40px rgba(0,0,0,.7),inset 0 0 0 5px rgba(255,200,120,.07);display:grid;place-items:center}
+.rings{width:66px;height:66px;border-radius:50%;border:1px solid rgba(226,196,130,.3);display:grid;place-items:center}
+.rings i{width:32px;height:32px;border-radius:50%;border:1px solid rgba(226,196,130,.3);display:grid;place-items:center}
+.rings i::after{content:"";width:6px;height:6px;border-radius:50%;background:rgba(226,196,130,.55)}
+.face.front{transform:rotateY(180deg);background:linear-gradient(170deg,#efe3c4,#d8c9a2);border:1px solid #9c8b66;
+  box-shadow:0 18px 40px rgba(0,0,0,.7),inset 0 0 0 6px #e6d8b6;color:#2a221a;text-align:left;padding:24px 20px 20px}
+.face.front .n{position:absolute;top:13px;left:15px;font:600 22px/1 var(--display)}
+.face.front .n.flip{top:auto;left:auto;bottom:13px;right:15px;transform:rotate(180deg)}
+.face.front .t{margin-top:28px;font:500 12.5px/1.25 var(--display);letter-spacing:.16em;text-transform:uppercase}
+.face.front p{margin:12px 0 0;font:italic 400 13.5px/1.4 var(--serif);color:#3a3024;text-wrap:pretty}
+.trig{display:flex;flex-wrap:wrap;gap:5px;margin-top:14px}
+.trig span{font:400 9.5px/1.4 var(--mono);letter-spacing:.03em;color:#4a3f30;background:rgba(42,34,26,.09);padding:2px 6px;border-radius:3px}
+.help{margin:34px 0 0;text-align:center;font-family:var(--mono);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--bone-3)}
+
+/* the lights come up */
+.lights{height:240px;background:linear-gradient(180deg,#060504 0%,#1d1711 28%,#6e6150 62%,#ebe4d5 100%)}
+
+/* III · the dossier */
+.dossier{background:var(--paper);color:var(--paper-text);font-weight:400}
+.dossier .wrap{padding-top:24px;padding-bottom:96px}
+.dossier .r{color:var(--paper-accent)}
+.dossier h2{margin:16px 0 0;font:500 clamp(28px,3.6vw,44px)/1.15 var(--display);color:var(--paper-ink);text-wrap:balance}
+.dossier .sub{color:var(--paper-dim);max-width:30em;text-wrap:pretty}
+.dossier strong{font-weight:400;color:var(--paper-ink)}
+.dossier a{color:var(--paper-accent);text-decoration:underline;text-underline-offset:3px}
+.dossier a:hover{color:var(--paper-ink)}
+.meta{margin:18px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--paper-dim)}
+.block{max-width:880px;margin-top:84px}
+.block.first{margin-top:72px}
+h3{margin:0;font:500 24px/1.2 var(--display);letter-spacing:.04em;color:var(--paper-ink)}
+.lede{margin:6px 0 0;font:italic 400 17px/1.4 var(--serif);color:var(--paper-dim)}
+.note{margin:18px 0 0;font-size:15px;line-height:1.6;max-width:70ch;text-wrap:pretty}
+.note+.note{margin-top:12px}
+.note.dim{font-style:italic;color:var(--paper-dim)}
+.sub-k{margin:26px 0 0;font-family:var(--mono);font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--paper-accent)}
+.sub-k+.tbl{margin-top:8px}
+.pre{margin:22px 0 0;padding:22px 24px;border-radius:10px;background:var(--paper-ink);color:var(--bone);font:400 12.5px/1.6 var(--mono);overflow:auto;box-shadow:0 18px 40px rgba(20,17,14,.18)}
+.notes{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:28px 36px;margin-top:26px;font-size:15.5px;line-height:1.55}
+.notes b{display:block;font-weight:400;font-style:italic;font-size:18px;color:var(--paper-ink);margin-bottom:6px}
+.list{margin:22px 0 0;padding-left:26px;font-size:15.5px;line-height:1.6;display:grid;gap:10px;max-width:66ch;text-wrap:pretty}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px 36px;margin-top:22px;font-size:15px;line-height:1.6}
+.two p{margin:0;text-wrap:pretty}
+.lib{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:18px 36px;margin-top:14px;font-size:15px;line-height:1.55}
+.totals{margin:16px 0 0;font-family:var(--mono);font-size:11px;letter-spacing:.08em;line-height:1.7;color:var(--paper-dim)}
+
+/* rows: a mono key, then prose. Variants only change the columns. */
+.tbl{margin-top:22px;border-bottom:1px solid var(--paper-rule)}
+.row{display:grid;grid-template-columns:minmax(104px,150px) 1fr;gap:2px 20px;padding:11px 0;border-top:1px solid var(--paper-rule)}
+.tbl.installed .row{grid-template-columns:minmax(90px,130px) 56px 1fr}
+.tbl.rules .row{grid-template-columns:1fr minmax(130px,220px)}
+.tbl.hooks .row{grid-template-columns:minmax(110px,130px) minmax(130px,190px) 1fr}
+.tbl.sched .row{grid-template-columns:minmax(150px,230px) minmax(80px,100px) 1fr}
+.row .key{font:400 11.5px/1.6 var(--mono);letter-spacing:.04em;color:var(--paper-ink)}
+.row .key small{display:block;font-size:inherit;color:var(--paper-dim)}
+.row .dim{font:400 11.5px/1.6 var(--mono);color:var(--paper-dim)}
+.row .v{font-size:15.5px;line-height:1.5}
+.row .v .when{display:block;font:400 10.5px/1.6 var(--mono);letter-spacing:.03em;color:var(--paper-dim);margin-bottom:2px}
+.row .res{font:400 11.5px/1.6 var(--mono);letter-spacing:.04em;color:var(--paper-ink)}
+.plug{margin-top:40px}
+.plug+.plug{margin-top:56px}
+.plug-h{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap}
+.plug-h code{font-size:14px}
+.plug-h span{font:italic 400 18px/1.3 var(--serif);color:var(--paper-ink)}
+.plug .tbl{margin-top:14px}
+
+footer{border-top:1px solid var(--paper-rule)}
+footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:wrap;padding-top:22px;padding-bottom:22px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--paper-dim)}
+.dossier footer a{text-decoration:none}
+
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}

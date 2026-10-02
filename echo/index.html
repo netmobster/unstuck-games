@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ECHO-X HOME</title>
+<meta name="description" content="ECHO-X: Jay's core tools, built once, reached from several surfaces. The room, the deal, the dossier.">
+<meta name="theme-color" content="#060504">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="echo-x.css">
+</head>
+<!-- Switches: data-glow="amber|phosphor" · data-swing="on|off" · data-flicker="on|off" -->
+<body data-glow="amber" data-swing="on" data-flicker="on">
+
+<header class="mast">
+  <div class="wrap">
+    <a class="brand" href="#top">ECHO-X</a>
+    <nav>
+      <a href="#deal">The deal</a>
+      <a href="#dossier">The dossier</a>
+    </nav>
+  </div>
+</header>
+
+<div class="room">
+  <div class="scene" aria-hidden="true">
+    <div class="table"></div>
+    <div class="shade-out"></div>
+    <div class="lamp">
+      <div class="light"></div>
+      <div class="cord"></div>
+      <div class="shade"></div>
+      <div class="flame"></div>
+    </div>
+  </div>
+
+  <!-- I · THE ROOM -->
+  <section class="hero" id="top">
+    <div class="wrap">
+      <div class="k">Jay's core tools, built once, reached from several surfaces</div>
+      <h1>ECHO-X</h1>
+      <p class="say">Just say what you want.</p>
+      <div class="voice">
+        <p>You came for a plugin. Sit down.</p>
+        <p>I'm Jay's tools, built once and kept in one place. I'm not waiting for a command. I'm listening for what you mean. Say “boot up” and the day starts. Say “grumpy on this” and I change. Ask “any messages?” and I go and look.</p>
+        <p>The slash is a shortcut, for when you already know the word. When you don't, there's a door that always opens.</p>
+      </div>
+      <div class="acts">
+        <a class="cta" href="#deal">Turn the cards ↓</a>
+        
+      </div>
+    </div>
+  </section>
+
+  <!-- II · THE DEAL -->
+  <section class="deal" id="deal">
+    <div class="wrap">
+      <div class="r">II · THE DEAL</div>
+      <h2>You thought you were getting a plugin.</h2>
+      <p class="sub">These came with it. Turn them over.</p>
+
+      <div class="hand">
+        <button class="card" type="button" aria-pressed="false" aria-label="Just say it">
+          <div class="card-inner">
+            <div class="face back"><div class="rings"><i></i></div></div>
+            <div class="face front">
+              <b class="n">I</b><b class="n flip">I</b>
+              <div class="t">Just say it</div>
+              <p>You don't need the word. I'm listening for the meaning, and the right skill wakes.</p>
+              <div class="trig"><span>“boot up”</span><span>“grumpy on this”</span><span>“let's play”</span><span>“any messages?”</span></div>
+            </div>
+          </div>
+        </button>
+        <button class="card" type="button" aria-pressed="false" aria-label="The way out">
+          <div class="card-inner">
+            <div class="face back"><div class="rings"><i></i></div></div>
+            <div class="face front">
+              <b class="n">II</b><b class="n flip">II</b>
+              <div class="t">The way out</div>
+              <p>Lost? Two colons. I'll tell you what's here, what's broken, and run one for you.</p>
+              <div class="trig"><span>:: help</span><span>:: status</span><span>:: try</span></div>
+            </div>
+          </div>
+        </button>
+        <button class="card" type="button" aria-pressed="false" aria-label="Hard rules">
+          <div class="card-inner">
+            <div class="face back"><div class="rings"><i></i></div></div>
+            <div class="face front">
+              <b class="n">III</b><b class="n flip">III</b>
+              <div class="t">Hard rules</div>
+              <p>Some things I won't do, however you ask. Deploys. Main. Your keys. Nothing leaves until you type “send”, and then it goes once.</p>
+              <div class="trig"><span>deploy-*.sh</span><span>git push on main</span><span>rm -rf</span><span>a live key</span><span>“send”</span></div>
+            </div>
+          </div>
+        </button>
+        <button class="card" type="button" aria-pressed="false" aria-label="The day">
+          <div class="card-inner">
+            <div class="face back"><div class="rings"><i></i></div></div>
+            <div class="face front">
+              <b class="n">IV</b><b class="n flip">IV</b>
+              <div class="t">The day</div>
+              <p>I keep it moving. The clock says when: boot, check in, score the habits, one question when the work is done.</p>
+              <div class="trig"><span>“boot up”</span><span>“check in”</span><span>“habits”</span><span>/flag</span></div>
+            </div>
+          </div>
+        </button>
+        <button class="card" type="button" aria-pressed="false" aria-label="The library">
+          <div class="card-inner">
+            <div class="face back"><div class="rings"><i></i></div></div>
+            <div class="face front">
+              <b class="n">V</b><b class="n flip">V</b>
+              <div class="t">The library</div>
+              <p>Fifteen gears, fifteen loops, four modes. Name one and I become it.</p>
+              <div class="trig"><span>scout</span><span>grumpy</span><span>devils-advocate</span><span>root-cause</span><span>night</span></div>
+            </div>
+          </div>
+        </button>
+      </div>
+      <p class="help">hover to turn · tap on a phone · click to keep one up</p>
+    </div>
+  </section>
+</div>
+
+<div class="lights" aria-hidden="true"></div>
+
+<!-- III · THE DOSSIER -->
+<section class="dossier" id="dossier">
+  <div class="wrap">
+    <div class="block" style="margin-top:0">
+      <div class="r">III · THE DOSSIER</div>
+      <h2>The lights come up.</h2>
+      <p class="sub">That was the show. This is the paperwork: what's installed, what each thing does, where it lives and how to change it.</p>
+      <p class="meta">October 2026 · a private repo</p>
+    </div>
+
+    <div class="block first">
+      <h3>The shape in one picture</h3>
+<pre class="pre">                 YOU (one builder, one laptop)
+                     │  types / talks / pastes
+                     ▼
+ ┌──────────────────────── Claude Code ─────────────────────────┐
+ │  INSTRUCTIONS   global rules · project rules · profile digest │
+ │                 · memory                                      │
+ │  HOOKS          every prompt: clock · :: router · send-pass   │
+ │                 every tool call: guard · send gate            │
+ │  ECHO-X PLUGINS day · sa · comms · guard · ug · make          │
+ └───────┬──────────────────────┬────────────────────┬──────────┘
+         │ reads/writes         │ connectors         │ git
+         ▼                      ▼                    ▼
+  a local state folder    vault · chat · mail    my repos
+                          calendar · docs …</pre>
+      
+    </div>
+
+    <div class="block">
+      <h3>How to use it</h3>
+      <div class="notes">
+        <div><b>Just say what you want.</b>Each plugin has skills that listen for their own kind of request. “Boot up”, “grumpy on this”, “let's play”, “any messages?” all work with no command.</div>
+        <div><b>Slash commands are shortcuts.</b>Type <code>/</code> then the plugin name (<code>/sa:</code>, <code>/day:</code>…) and the app lists what's there.</div>
+        <div><b>Lost? Type <code>::</code></b>That's the CUE menu: <code>:: help</code> lists everything installed, and <code>:: status</code> says what's broken.</div>
+        <div><b>The field guide</b>The checklist for trying it all and switching over. Open it with <code>/day:guide</code>.</div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>A day through the system</h3>
+      <ol class="list">
+        <li><strong>Open a session.</strong> The clock stamps your first message.</li>
+        <li><strong>“Boot up”</strong> → <code>day:boot</code>: brief, reminders, a daily reading, then style and energy, phases, a language card.</li>
+        <li><strong>Work.</strong> Say what you want. “Grumpy on this” → <code>sa</code> becomes grumpy. “Root cause the CRLF thing” → a loop with git as evidence. <code>guard</code> watches every command and edit.</li>
+        <li><strong>Messages.</strong> “Ping” → connections and unread. Drafting a reply → you see it → you type <code>send</code> → it goes, once.</li>
+        <li><strong>13:00 / 16:00:</strong> the clock says a check-in is due → <code>day:checkin</code> (held items, open habits, tasks).</li>
+        <li><strong>“Close it out”</strong> → <code>sa:close</code>: git check, session log, task reconcile, the rename line. <strong>Never archive.</strong></li>
+      </ol>
+    </div>
+
+    <div class="block">
+      <h3>What's installed</h3>
+      <p class="lede">All at user scope and enabled, from the local <code>echo-x</code> marketplace.</p>
+      <div class="tbl installed">
+        <div class="row"><b class="key">day</b><span class="dim">0.1.1</span><span class="v">The day loop: boot, check-ins, habits, flag, clock, the guide</span></div>
+        <div class="row"><b class="key">sa</b><span class="dim">0.1.1</span><span class="v">Gears, loops and modes through one router; <code>::</code>; profile tiers; vault session commands</span></div>
+        <div class="row"><b class="key">comms</b><span class="dim">0.1.2</span><span class="v"><code>/ping</code>, vault messages, FOR CC reminders, a private team channel, humanify, <strong>the send gate</strong></span></div>
+        <div class="row"><b class="key">guard</b><span class="dim">0.1.1</span><span class="v">Jay's hard rules as hooks</span></div>
+        <div class="row"><b class="key">ug</b><span class="dim">0.1.0</span><span class="v">Plays, Elsewhere, Seren, Ser'en's table</span></div>
+        <div class="row"><b class="key">make</b><span class="dim">0.1.0</span><span class="v"><code>/sexy-html</code> with house styles</span></div>
+        <div class="row"><b class="key">table-sheet</b><span class="dim">0.1.0</span><span class="v">From the <strong>public</strong> <code>unstuck-games</code> marketplace: D&amp;D Beyond to a table guide</span></div>
+      </div>
+      <p class="totals">Totals: 25 skills (26 with table-sheet) · 4 hooks · 48 library files</p>
+    </div>
+
+    <div class="block">
+      <h3>The plugins in detail</h3>
+
+      <div class="plug">
+        <div class="plug-h"><code>day</code><span>Jay as operator</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">boot</b><div class="v"><span class="when">“boot”, “boot up”, “morning”</span>Brief, reminders, a daily reading; one pick (style and energy); one phase at a time; ends with a language card</div></div>
+          <div class="row"><b class="key">checkin</b><div class="v"><span class="when">the clock hook saying it's due; “check in”</span>Mid-day or end-of-day: held items, open habits, tasks; EOD asks about the reading and the language card</div></div>
+          <div class="row"><b class="key">habits</b><div class="v"><span class="when">“habits”, “score my habits”, a pasted block</span><code>show</code> what's open · <code>page</code> to score · <code>log</code> a paste. <strong>New on 1 Oct:</strong> habits used to be reachable only through boot</div></div>
+          <div class="row"><b class="key">flag</b><div class="v"><span class="when">/flag</span>When the work finishes, end with one question and push one line to the phone</div></div>
+          <div class="row"><b class="key">guide</b><div class="v"><span class="when">“field guide”, “onboarding”, “what can ECHO-X do”</span>Opens the field guide artifact</div></div>
+        </div>
+        <p class="note"><strong>Hook:</strong> <code>clock.js</code> on every prompt stamps Toronto time and says when a check-in is due. <strong>Cutover guard:</strong> it stays silent while the old hook in the settings file exists, so there's never a double stamp.</p>
+        <p class="note"><strong>Scripts</strong> (moved from a local folder, unchanged except for paths): <code>day.js</code> (the only writer of <code>day.json</code>), <code>habits.js</code> (the only writer of <code>habits.jsonl</code>), <code>surfaced.js</code> (the reading and the language card), <code>profile-stale.js</code>, <code>clock.js</code>.</p>
+      </div>
+
+      <div class="plug">
+        <div class="plug-h"><code>sa</code><span>SelfActual and Imprint</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">sa</b><div class="v"><span class="when">voice: the router</span>Picks one gear, loop or mode from what Jay said, reads it from the library, becomes it</div></div>
+          <div class="row"><b class="key">gear</b><div class="v"><span class="when">typed</span><code>/sa:gear scout</code>, fuzzy names; bare lists the menu</div></div>
+          <div class="row"><b class="key">cue</b><div class="v"><span class="when">typed, plus the :: hook</span>Fixed-text menu: HELP (the catalog), TRY (run one), STATUS (day, connectors, vault), README</div></div>
+          <div class="row"><b class="key">profile</b><div class="v"><span class="when">voice</span>Tiers <code>small</code> / <code>general</code> / <code>full</code> from a local digest, with the staleness check; or one section by name</div></div>
+          <div class="row"><b class="key">open · close · board · task</b><div class="v"><span class="when">voice</span>Ported from the old <code>/sa:*</code> commands</div></div>
+          <div class="row"><b class="key">orient</b><div class="v"><span class="when">typed</span>Prints the catalog</div></div>
+        </div>
+        <p class="sub-k">The library</p>
+        <p class="note" style="margin-top:8px"><code>library/</code>, a snapshot of the Imprint gear library.</p>
+        <div class="lib">
+          <div><strong>Gears, 15 on the menu:</strong> brief, closer, cue, default, devils-advocate, foundry, grumpy, handoff, interview, orient, portrait, pressure-test, prioritize-me, scout, whiteboard</div>
+          <div><strong>Loops, 15:</strong> architect, debrief, forge, gauntlet, localize, locate, patch, pattern, read, reality-check, reformat, retro, root-cause, scaffold, stakeholder</div>
+          <div><strong>Modes, 4:</strong> goofy, night, rest, therapy. Therapy asks before shifting in a work folder.</div>
+          <div><strong>Hidden parts, 5:</strong> thread, editor, audience, voice-check, realign. Loop stages only, never on the menu (Jay, 1 Oct).</div>
+        </div>
+        <p class="note" style="margin-top:22px"><strong>Hook:</strong> <code>cue-hook.js</code>. A prompt that <strong>starts</strong> with <code>::</code> goes to CUE. A <code>::</code> mid-message (a pasted doc) does nothing. That's CUE's one security test.</p>
+        
+      </div>
+
+      <div class="plug">
+        <div class="plug-h"><code>comms</code><span>Messages and the send gate</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">ping</b><div class="v">Checks connectors and re-dials failed ones, checks the vault, then lists <strong>unread</strong> vault messages. Marks nothing read.</div></div>
+          <div class="row"><b class="key">messages</b><div class="v">Read, send, mark-read and broadcast on the vault rail. Sending: draft → show → explicit yes → send.</div></div>
+          <div class="row"><b class="key">forcc</b><div class="v">List, add or complete <code>FOR CC</code> / <code>ASSIGN CC</code> tasks (same title rules as boot, paged at 75)</div></div>
+          <div class="row"><b class="key">poll</b><div class="v">A private team channel: read, summarise, draft. Posts nothing.</div></div>
+          <div class="row"><b class="key">humanify</b><div class="v">The de-tic pass for drafts</div></div>
+        </div>
+        <p class="note"><strong>Hook: the send gate.</strong> Any <code>slack_send_message</code>, <code>slack_schedule_message</code>, vault <code>send_message</code>, <code>broadcast_message</code> or <code>respond_to_feedback</code> is <strong>denied without a pass.</strong> A whole message of “send”, “send it” or “approved” grants one send pass, good for 15 minutes and only issued by a message Jay types himself. Drafts pass. Exempt: Slack DMs to you. 21 tests.</p>
+        <p class="note dim">Why deny instead of ask: the permission mode I work in approves an “ask” automatically. Found the hard way on 1 Oct, when a test DM went out.</p>
+      </div>
+
+      <div class="plug">
+        <div class="plug-h"><code>guard</code><span>Hard rules as code</span></div>
+        <p class="note" style="margin-top:14px">One script, <code>guard.js</code>, on Bash, PowerShell, file writes and every MCP call. <strong>31 tests pass</strong> (<code>node guard.js --test</code>).</p>
+        <div class="tbl rules" style="margin-top:18px">
+          <div class="row"><div class="v"><code>deploy-*.sh</code>, <code>terraform apply</code>, <code>pm2 restart/reload/start/stop/delete</code>, <code>aws ssm send-command</code></div><div class="res"><b>deny</b>: print it for Jay</div></div>
+          <div class="row"><div class="v"><code>git commit/push/merge</code> in a company repo on <code>main</code></div><div class="res"><b>deny</b>: branch first</div></div>
+          <div class="row"><div class="v">Editing files in a company repo on <code>main</code></div><div class="res"><b>ask</b></div></div>
+          <div class="row"><div class="v">Force push, <code>reset --hard</code>, <code>clean -f</code>, <code>branch -D</code>, <code>push --delete</code>, <code>rm -rf</code>, <code>Remove-Item -Recurse</code></div><div class="res"><b>ask</b></div></div>
+          <div class="row"><div class="v">Direct edits to the local state files</div><div class="res"><b>deny</b>: use the scripts</div></div>
+          <div class="row"><div class="v">A token or key (GitHub, Anthropic, Stripe live, AWS, Slack, private key) in a write or a call</div><div class="res"><b>ask</b></div></div>
+          <div class="row"><div class="v">Bulk profile reads that would pull private sections</div><div class="res"><b>deny</b></div></div>
+          <div class="row"><div class="v">Silo-gated profile section</div><div class="res"><b>deny</b> in a work folder, <b>ask</b> elsewhere</div></div>
+          <div class="row"><div class="v"><code>list_tasks</code> with no status, or <code>limit</code> &gt; 200</div><div class="res"><b>deny</b> (overflow)</div></div>
+          <div class="row"><div class="v"><code>archive_session</code></div><div class="res"><b>ask</b></div></div>
+          <div class="row"><div class="v">Writing, copying or deleting the send pass</div><div class="res"><b>deny</b>: only Jay issues it</div></div>
+          <div class="row"><div class="v">Any write to my co-founder's vault</div><div class="res"><b>ask</b></div></div>
+        </div>
+        <p class="note">“Company repo” means anything in the company folder. ECHO-X and your other projects aren't branch-guarded. A crash in the guard never blocks work. <strong>Skill:</strong> <code>guard</code> explains a block when one happens.</p>
+      </div>
+
+      <div class="plug">
+        <div class="plug-h"><code>ug</code><span>Unstuck Games</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">play</b><div class="v">9 plays: would-you-rather, two-truths, aita, desert-island, rank-these, mad-libs, story-chain, young-name, guess-what-imprint-thinks. No game named → it pitches one.</div></div>
+          <div class="row"><b class="key">elsewhere</b><div class="v">The Elsewhere game</div></div>
+          <div class="row"><b class="key">seren</b><div class="v"><strong>The door only.</strong> Checks the SEREN repo, lists the <code>RUN-ME</code>s, hands Jay the start line for a fresh session there. The DM never runs here.</div></div>
+          <div class="row"><b class="key">seren-table</b><div class="v">Opens Ser'en's table sheet and answers from it; the DM's rulings win</div></div>
+        </div>
+        <p class="note">Plus <code>table-sheet@unstuck-games</code>, installed separately (public, MIT).</p>
+      </div>
+
+      <div class="plug">
+        <div class="plug-h"><code>make</code><span>Finished pages in a house style</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">sexy-html</b><div class="v">A finished HTML page in a house style. It loads <code>artifact-design</code> (and <code>dataviz</code> or <code>artifact-diagramming</code> when needed). Interactive pages end in a copy button. <strong>Never a score out of anything.</strong></div></div>
+        </div>
+        <p class="sub-k">Styles</p>
+        <div class="tbl">
+          <div class="row"><b class="key">seren</b><div class="v"><strong>Ready:</strong> tokens from the Seren site (ink, bone, copper, verdigris; Plex and Space Mono; dark-first)</div></div>
+          <div class="row"><b class="key">sa</b><div class="v"><strong>Waiting</strong> on the Claude Design export</div></div>
+          <div class="row"><b class="key">jay</b><div class="v"><strong>Not defined.</strong> It gets designed with Jay.</div></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>What runs without being asked</h3>
+      <div class="tbl hooks">
+        <div class="row"><b class="key">every prompt</b><div class="key">clock.js<small>legacy · the settings file</small></div><div class="v">Toronto time, check-in due. <strong>Live until switch-over.</strong></div></div>
+        <div class="row"><b class="key">every prompt</b><div class="key">clock.js<small>day</small></div><div class="v">Same. <strong>Silent while the legacy one exists.</strong></div></div>
+        <div class="row"><b class="key">every prompt</b><div class="key">cue-hook.js<small>sa</small></div><div class="v">A prompt starting <code>::</code> → the CUE menu, printed verbatim</div></div>
+        <div class="row"><b class="key">every prompt</b><div class="key">send-gate.js --prompt<small>comms</small></div><div class="v">If your <strong>whole</strong> message is “send” / “send it” / “approved” → one send pass (15 min)</div></div>
+        <div class="row"><b class="key">every tool call</b><div class="key">guard.js<small>guard</small></div><div class="v">Deny or ask on the 11 hard rules</div></div>
+        <div class="row"><b class="key">every MCP call</b><div class="key">send-gate.js<small>comms</small></div><div class="v">Outbound message → <strong>denied</strong> without a pass. Exempt: Slack DMs <strong>to you</strong>.</div></div>
+      </div>
+    </div>
+
+
+    <div class="block">
+      <h3>Where things live</h3>
+<pre class="pre">ECHO-X/                               a private repo
+  .claude-plugin/marketplace.json     the marketplace (synced by build-catalog)
+  plugins/
+    day/  sa/  comms/  guard/  ug/  make/
+      .claude-plugin/plugin.json
+      skills/&lt;name&gt;/SKILL.md
+      hooks/hooks.json                day, sa, comms, guard
+      scripts/                        the hook and helper scripts
+    sa/library/                       gears, loops, modes (a snapshot)
+    sa/reference/catalog.md           generated: what :: help prints
+    ug/library/plays/
+    make/styles/                      seren.md, sa.md, jay.md
+  scripts/build-catalog.js            regenerates the catalog and marketplace entries
+  docs/
+    PLAN.md                           decisions log and open questions
+    SYSTEM.md                         the whole-system map
+    PLUGINS.md                        every plugin in detail
+    CD-BRIEF.md                       the design brief this page answers
+  TASKS.md                            the ECHO-X task list
+  site/                               this page
+    onboarding.html                   the field guide (published as an artifact)
+    oss-survey-2026-10-01.md          open-source survey
+    tools/gear-picker.html            the 1 Oct picker</pre>
+      <div class="two">
+        <p><strong>Jay's data never lives in a plugin.</strong> A local state folder holds the day file, the day history, the habit log, the habit rows, the daily reading, the language card and the profile digest.</p>
+        <p><strong>Hooks run from this folder; skills from a cache.</strong> Hook edits went live mid-session on 1 Oct. Skills reach new sessions after step 6 below.</p>
+      </div>
+    </div>
+
+    <div class="block">
+      <h3>Changing a plugin</h3>
+      <ol class="list" style="gap:8px;max-width:60ch">
+        <li>Edit in the repo.</li>
+        <li>Bump that plugin's <code>version</code> in its <code>plugin.json</code>.</li>
+        <li><code>node scripts/build-catalog.js</code></li>
+        <li><code>claude plugin validate --strict .</code> (and the plugin folder)</li>
+        <li>Commit and push.</li>
+        <li><code>claude plugin marketplace update echo-x</code>, then <code>claude plugin update &lt;name&gt;@echo-x</code></li>
+        <li>New sessions pick it up.</li>
+      </ol>
+    </div>
+  </div>
+
+  <footer>
+    <div class="wrap">
+      <span>ECHO-X · Unstuck Games</span>
+      
+    </div>
+  </footer>
+</section>
+
+<script src="echo-x.js"></script>
+</body>
+</html>
