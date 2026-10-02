@@ -6,6 +6,12 @@
 <title>Judgement OS</title>
 <meta name="description" content="Judgement OS: a second opinion for your Claude Code skills, only when they need one. The rule picks, a judge is asked only when the rule can't tell, you settle real disagreements, every path is logged.">
 <meta name="theme-color" content="#060504">
+<!-- The favicon, inline so this stays one file. The same drawing ships as brand/favicon.svg + PNGs. -->
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2314110e'/><path d='M19 31h26l13 29H6z' fill='%23c2a46a' opacity='.2'/><path d='M24 31h16l7 29H17z' fill='%23c2a46a' opacity='.2'/><path d='M32 2v17' stroke='%23c2a46a' stroke-width='3.5' stroke-linecap='round'/><path d='M13 26c0-10 38-10 38 0v3c0 4.5-38 4.5-38 0z' fill='%23c2a46a'/><circle cx='32' cy='50' r='4.5' fill='%23c2a46a'/></svg>">
+<!-- PNG fallbacks for browsers that don't read SVG icons, and the iOS home-screen icon (brand kit README). -->
+<link rel="icon" type="image/png" sizes="32x32" href="brand/favicon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="brand/favicon-16.png">
+<link rel="apple-touch-icon" href="brand/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600&family=Spectral:ital,wght@0,300;0,400;1,300;1,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
@@ -57,7 +63,8 @@ h2{margin:16px 0 0;font:500 clamp(1.75rem,3.6vw,2.75rem)/1.15 var(--display);col
 /* masthead */
 .mast{position:sticky;top:0;z-index:10;background:rgba(6,5,4,.86);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--rule)}
 .mast .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px 24px;padding-top:14px;padding-bottom:14px;flex-wrap:wrap}
-.brand{font:600 .9375rem/1 var(--display);letter-spacing:.22em;color:var(--title);white-space:nowrap}
+.brand{display:inline-flex;align-items:center;gap:10px;font:600 .9375rem/1 var(--display);letter-spacing:.22em;color:var(--title);white-space:nowrap}
+.brand svg{flex:none}
 .mast nav{display:flex;gap:8px 22px;align-items:center;flex-wrap:wrap;font:400 .6875rem/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--bone-2)}
 .mast nav a,.mast nav .linkbtn{white-space:nowrap;padding:6px 0;color:var(--bone-2)}
 .mast nav a:hover,.mast nav .linkbtn:hover{color:var(--title)}
@@ -251,6 +258,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
 .center{flex:1;min-height:0;display:grid;place-items:center;padding:28px clamp(18px,3vw,36px) 44px;text-align:center}
 .center > div{display:grid;gap:14px;justify-items:center;max-width:32em}
 .center h2{margin:0;font-size:clamp(1.5rem,3vw,2.25rem);color:var(--paper-ink)}
+/* Only "How it works" is the big sheet (the microsite). The plugin sheets and "For devs" are ordinary dialogs, about half the width. */
+.modal.sm{justify-content:center;align-items:flex-start}
+.modal.sm .modal-box{flex:0 1 auto;width:clamp(min(100%,560px),50vw,100%);max-height:100%}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
 @keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
 
@@ -297,7 +307,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
 
 <header class="mast">
   <div class="wrap">
-    <a class="brand" href="#top">JUDGEMENT OS</a>
+    <a class="brand" href="#top"><svg width="20" height="20" viewBox="0 0 64 64" fill="none" aria-hidden="true"><path d="M19 31h26l13 29H6z" fill="#c2a46a" opacity=".2"/><path d="M24 31h16l7 29H17z" fill="#c2a46a" opacity=".2"/><path d="M32 2v17" stroke="#c2a46a" stroke-width="3.5" stroke-linecap="round"/><path d="M13 26c0-10 38-10 38 0v3c0 4.5-38 4.5-38 0z" fill="#c2a46a"/><circle cx="32" cy="50" r="4.5" fill="#c2a46a"/></svg><span>JUDGEMENT OS</span></a>
     <nav aria-label="Sections">
       <a href="#deal">The deal</a>
       <button type="button" class="linkbtn" data-open="m-how" data-tab="flow">How it works</button>
@@ -717,7 +727,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
 </div>
 
 <!-- The plugin sheets -->
-<div class="modal" id="m-plugins" hidden>
+<div class="modal sm" id="m-plugins" hidden>
   <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="m-plugins-title">
     <div class="modal-head">
       <div><span class="r">WHAT'S IN THE BOX</span><span class="modal-title" id="m-plugins-title">The plugins in detail.</span></div>
@@ -821,7 +831,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
 </div>
 
 <!-- For devs: a placeholder until the developer pages exist -->
-<div class="modal" id="m-devs" hidden>
+<div class="modal sm" id="m-devs" hidden>
   <div class="modal-box" role="dialog" aria-modal="true" aria-labelledby="m-devs-title">
     <div class="modal-head">
       <div><span class="r">FOR DEVS</span></div>
@@ -851,20 +861,21 @@ document.querySelectorAll('.card').forEach(function (card) {
 });
 
 // ------------------------------------------------------------
-// Text size: A− / A+ scale the root font size (everything is in rem).
-// Remembered in this browser under 'jos-fs'.
+// Text size: A− / A+ step the root font size by 10% a press, as far as you
+// like either way, no floor and no ceiling (Jay: "up/down ad infinitum").
+// Everything is in rem. Remembered in this browser under 'jos-fs-n'.
 // ------------------------------------------------------------
 (function () {
-  var KEY = 'jos-fs', steps = [0.9, 1, 1.12, 1.25, 1.4], i = 1;
-  try { var s = Number(localStorage.getItem(KEY)); if (steps.indexOf(s) >= 0) i = steps.indexOf(s); } catch (e) {}
-  function set(n) {
-    i = Math.max(0, Math.min(steps.length - 1, n));
-    document.documentElement.style.fontSize = (16 * steps[i]) + 'px';
-    try { localStorage.setItem(KEY, String(steps[i])); } catch (e) {}
+  var KEY = 'jos-fs-n', n = 0;
+  try { var s = parseInt(localStorage.getItem(KEY), 10); if (!isNaN(s)) n = s; } catch (e) {}
+  function set(k) {
+    n = k;
+    document.documentElement.style.fontSize = (16 * Math.pow(1.1, n)) + 'px';
+    try { localStorage.setItem(KEY, String(n)); } catch (e) {}
   }
-  set(i);
-  document.getElementById('fs-down').addEventListener('click', function () { set(i - 1); });
-  document.getElementById('fs-up').addEventListener('click', function () { set(i + 1); });
+  set(n);
+  document.getElementById('fs-down').addEventListener('click', function () { set(n - 1); });
+  document.getElementById('fs-up').addEventListener('click', function () { set(n + 1); });
 })();
 
 // ------------------------------------------------------------
