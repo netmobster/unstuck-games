@@ -863,10 +863,10 @@ document.querySelectorAll('.card').forEach(function (card) {
 // ------------------------------------------------------------
 // Text size: A− / A+ step the root font size by 10% a press, as far as you
 // like either way, no floor and no ceiling (Jay: "up/down ad infinitum").
-// Everything is in rem. Remembered in this browser under 'jos-fs-n'.
+// Everything is in rem. Remembered in this browser under 'jos-fs-v2'. Opens two ticks up.
 // ------------------------------------------------------------
 (function () {
-  var KEY = 'jos-fs-n', n = 0;
+  var KEY = 'jos-fs-v2', n = 2;   // default: two ticks up (16px x 1.1^2 = 19.4px). New key, so saved sizes start fresh at it.
   try { var s = parseInt(localStorage.getItem(KEY), 10); if (!isNaN(s)) n = s; } catch (e) {}
   function set(k) {
     n = k;
