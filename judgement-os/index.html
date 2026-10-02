@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Judgement OS</title>
-<meta name="description" content="Judgement OS: a second opinion for your Claude Code skills, only when they need one. The rule picks, a judge is asked only when the rule can't tell, you settle real disagreements, every path is logged.">
+<meta name="description" content="Judgement OS: a second opinion for your Claude Code skills, only when they need one. The rule picks, two judges are asked only when the rule can't tell, you settle the disagreements they share, every path is logged.">
 <meta name="theme-color" content="#060504">
 <!-- The favicon, inline so this stays one file. The same drawing ships as brand/favicon.svg + PNGs. -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%2314110e'/><path d='M19 31h26l13 29H6z' fill='%23c2a46a' opacity='.2'/><path d='M24 31h16l7 29H17z' fill='%23c2a46a' opacity='.2'/><path d='M32 2v17' stroke='%23c2a46a' stroke-width='3.5' stroke-linecap='round'/><path d='M13 26c0-10 38-10 38 0v3c0 4.5-38 4.5-38 0z' fill='%23c2a46a'/><circle cx='32' cy='50' r='4.5' fill='%23c2a46a'/></svg>">
@@ -348,7 +348,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
       <p class="say">A second opinion for your Claude Code skills, only when they need one.</p>
       <div class="voice">
         <p>You came for a skill. Sit down.</p>
-        <p>A skill makes its normal decision in code. When that code can tell the answer might depend on context, and only then, it asks a judge: a model that knows the person it's working for, given one bounded question. The judge advises; it can't act. If it disagrees with real confidence, you settle it. Every path is logged, and any failure falls back to the code's own pick.</p>
+        <p>A skill makes its normal decision in code. When that code can tell the answer might depend on context, and only then, it asks two judges: a small model and a big one that know the person they're working for, each given the same bounded question. They advise; they can't act. If both disagree with real confidence, you settle it. Every path is logged, and any failure falls back to the code's own pick.</p>
         <p class="line">Judgement is an escalation, not the way the skill runs. When there's nothing to judge, the cost is two log lines.</p>
       </div>
       <div class="acts">
@@ -379,13 +379,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
             </div>
           </div>
         </button>
-        <button class="card" type="button" aria-pressed="false" aria-label="The judge">
+        <button class="card" type="button" aria-pressed="false" aria-label="The judges">
           <div class="card-inner">
             <div class="face back"><div class="rings"><i></i></div></div>
             <div class="face front">
               <b class="n">II</b><b class="n flip">II</b>
-              <div class="t">The judge</div>
-              <p>Asked only when the rule's own test says context could change the answer. One bounded question. It advises; it can't act.</p>
+              <div class="t">The judges</div>
+              <p>Two models, asked only when the rule's own test says context could change the answer. One bounded question. They advise; they can't act.</p>
               <div class="trig"><span>proceed</span><span>clarify</span><span>challenge</span><span>redirect</span></div>
               <a class="more" href="#answer" data-open="m-how" data-tab="answer">the answer →</a>
             </div>
@@ -397,8 +397,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
             <div class="face front">
               <b class="n">III</b><b class="n flip">III</b>
               <div class="t">You</div>
-              <p>Shown only a medium- or high-confidence disagreement, as one question. Everything else stays quiet.</p>
-              <div class="trig"><span>low · logged</span><span>medium · shown</span><span>high · shown</span></div>
+              <p>Shown only a disagreement both judges share, at medium or high confidence, as one question. Everything else stays quiet.</p>
+              <div class="trig"><span>low · logged</span><span>one judge · logged</span><span>both · shown</span></div>
               <a class="more" href="#answer" data-open="m-how" data-tab="answer">what reaches you →</a>
             </div>
           </div>
@@ -424,7 +424,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
   <section class="receipts" id="receipts">
     <div class="wrap">
       <div class="r">TWO RECEIPTS</div>
-      <h2>Five seconds.</h2>
+      <h2>One quiet, one earned.</h2>
       <p class="sub">One morning with nothing to judge. One request where the judge earned it. Both real, both from the log.</p>
 
       <div class="rcpts">
@@ -483,18 +483,18 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
     <div class="block split" id="spec">
       <div>
         <h3>Add it to your own skill</h3>
-        <p class="lede">Eight steps, from the integration spec. The skill keeps its own rule; the Judgement OS brings the judge, the checks and the log.</p>
-        <p class="note">Your skill provides the decision's id, the default pick in code, the consult-only-if rule in code, the bounded question, and how a disagreement reaches the person. The Judgement OS provides the judge, checks on every answer, the append-only log and its counts, the open, verdict and close commands, and the results page.</p>
+        <p class="lede">Eight steps, from the integration spec. The skill keeps its own rule; the Judgement OS brings the judges, the checks and the log.</p>
+        <p class="note">Your skill provides the decision's id, the default pick in code, the consult-only-if rule in code, the bounded question, and how a disagreement reaches the person. The Judgement OS provides the judges, checks on every answer, the interrupt rule, the append-only log and its counts, the open, verdict, combine and close commands, and the results page.</p>
         <!-- Drop the spec URL in and un-hide this line. -->
         <p class="note" hidden><a class="mlink" href="#" target="_blank" rel="noopener">Read the spec ↗</a></p>
       </div>
       <ol class="steps">
         <li><span class="idx">01</span><div><b>The decision script.</b><p>A script in your plugin that takes the decision's inputs and prints the default, whether to consult, why, and the question. Pure code, tested.</p><span class="chip">{ "default", "consult", "consultWhy", "question" }</span></div></li>
         <li><span class="idx">02</span><div><b>Find the Judgement OS.</b><p>Installed plugins don't sit side by side, so a relative path won't reach. Not found: use the default and log nothing. The skill must work without it.</p><span class="chip">node find-plugin.js labs scripts/record.js</span></div></li>
-        <li><span class="idx">03</span><div><b>Open the call.</b><p>Logs the pick and why the judge was or wasn't asked. Every path logs this line.</p><span class="chip">record.js open --decision &lt;file&gt; --run live --point &lt;your.decision&gt;</span></div></li>
-        <li><span class="idx">04</span><div><b>Ask the judge, only if consult.</b><p>One agent call, the question word for word.</p><span class="chip">subagent_type: "labs:second-opinion"</span></div></li>
-        <li><span class="idx">05</span><div><b>Record the answer through a file. Never the shell.</b><p>A heredoc ends early on an answer that contains a line saying EOF. If the recorder prints <code>invalid</code>, the judge gave no answer: use the default.</p><span class="chip">record.js verdict --call &lt;id&gt; --file &lt;answer&gt;</span></div></li>
-        <li><span class="idx">06</span><div><b>Settle.</b><p>Only a challenge, clarify or redirect at medium or high confidence reaches the person, as one question. Everything else is silent.</p><span class="chip">medium | high → one question</span></div></li>
+        <li><span class="idx">03</span><div><b>Open the call.</b><p>Logs the pick and why the judges were or weren't asked. Every path logs this line.</p><span class="chip">record.js open --decision &lt;file&gt; --run live --point &lt;your.decision&gt;</span></div></li>
+        <li><span class="idx">04</span><div><b>Ask both judges, only if consult.</b><p>Two agent calls in one message, one per model, the question word for word: one wait.</p><span class="chip">subagent_type: "labs:second-opinion" · small + big</span></div></li>
+        <li><span class="idx">05</span><div><b>Record each answer through a file. Never the shell.</b><p>A heredoc ends early on an answer that contains a line saying EOF. An answer the recorder marks <code>invalid</code> counts as no answer.</p><span class="chip">record.js verdict --call &lt;id&gt; --role small|big --file &lt;answer&gt;</span></div></li>
+        <li><span class="idx">06</span><div><b>Combine, then settle.</b><p>The recorder applies the interrupt rule. By default the person hears about it only when both judges disagree, each at medium or high confidence, and a judge past the timeout counts as no answer. What it shows becomes one question; everything else is silent.</p><span class="chip">record.js combine --call &lt;id&gt;</span></div></li>
         <li><span class="idx">07</span><div><b>Close the call.</b><p>What was used, and how it was settled: by the rule, by a name, by the person, by the picker, typed, or dismissed.</p><span class="chip">record.js close --call &lt;id&gt; --final &lt;used&gt; --settled-by &lt;how&gt;</span></div></li>
         <li><span class="idx">08</span><div><b>Fail safe.</b><p>Any failure in steps 2 to 7 falls back to the default and the skill carries on. Judgement never stops a skill.</p><span class="chip">→ the rule's pick</span></div></li>
       </ol>
@@ -509,7 +509,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
         <div><span class="sub-k">Never through a shell</span><span>Model text travels by file. It is never pasted into a command.</span></div>
         <div><span class="sub-k">Private topics stay out</span><span>Filtered before the question is built, and an answer that touches them is thrown away.</span></div>
         <div><span class="sub-k">No authority</span><span>None over sending, deploying, writing your data, merging, or the guard rules. It recommends; a person settles.</span></div>
-        <div class="dim"><span class="sub-k dim">Not yet</span><span>A judge timeout. Until it ships, a slow judge makes the skill wait. Labelling context as data reduces injection; it doesn't prevent it.</span></div>
+        <div class="dim"><span class="sub-k dim">Not yet</span><span>Cutting a slow judge off. A late answer no longer counts, but the skill still waits for it. Labelling context as data reduces injection; it doesn't prevent it.</span></div>
       </div>
     </div>
 
@@ -518,14 +518,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
       <p class="lede">What's measured, what's built, what's still a plan. Counts, never percentages.</p>
       <div class="ledger">
         <div><span><strong>6</strong> recorded test cases. On the one with nothing to judge, the rule stayed out. On the other 5, two different judge models answered.</span><span class="tag measured">Measured</span></div>
-        <div><span><strong>12</strong> real judge answers, each in 3 to 8 seconds.</span><span class="tag measured">Measured</span></div>
+        <div><span><strong>15</strong> real judge answers timed. 12 were logged at 3 to 8 seconds in one test session; 3 direct calls took 49 to 52. Which is typical isn't settled.</span><span class="tag measured">Measured</span></div>
         <div><span><strong>0</strong> private topics reached a judge across the recorded cases.</span><span class="tag measured">Measured</span></div>
         <div><span><strong>2</strong> red-team reviews, both approving.</span><span class="tag measured">Measured</span></div>
         <div><span><strong>4</strong> marked decisions built and installed, the newest two since 2 Oct.</span><span class="tag built">Built</span></div>
-        <div><span><strong>107</strong> tests across the six scripts behind them, all passing.</span><span class="tag built">Built</span></div>
+        <div><span><strong>138</strong> tests across the seven scripts behind them, all passing.</span><span class="tag built">Built</span></div>
+        <div><span>Two judges on every consulted call. You hear about it only when both disagree.</span><span class="tag built">Built</span></div>
         <div><span>Private topics kept from the judge on every decision: the newest ones today, all four before release.</span><span class="tag building">Building</span></div>
         <div><span>Daily use since 2 Oct, with a week-one check-in on 9 Oct. On day one the rule handled it alone.</span><span class="tag running">Running</span></div>
-        <div><span>A timeout, so a slow judge can't hold a skill up.</span><span class="tag planned">Planned</span></div>
+        <div><span>A judge timeout. A late answer already doesn't count; cutting the wait itself short is next.</span><span class="tag building">Building</span></div>
       </div>
     </div>
 
@@ -612,8 +613,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
           <p class="lede">A skill is a procedure. Most of its steps are mechanical. A few are judgement calls, where the right answer depends on who's at the keyboard and what's going on with them. Those steps get <strong>marked</strong>.</p>
           <div class="tbl narrow" style="margin-top:20px">
             <div class="row"><b class="key">rule</b><div class="v">Picks the default in code. Free, instant, the same answer every time. It also decides whether context could change it.</div></div>
-            <div class="row"><b class="key">judge</b><div class="v">Asked only when the rule's own test says context could change the answer. It reads one profile file and one bounded question, and answers with a verdict and how sure it is.</div></div>
-            <div class="row"><b class="key">you</b><div class="v">Shown only a medium- or high-confidence disagreement, as one question. A hunch never reaches you.</div></div>
+            <div class="row"><b class="key">judges</b><div class="v">Two of them, a small model and a big one, asked only when the rule's own test says context could change the answer. Each reads one profile file and one bounded question, and answers with a verdict and how sure it is.</div></div>
+            <div class="row"><b class="key">you</b><div class="v">Shown a disagreement only when both judges share it, each at medium or high confidence, as one question. A hunch, or one judge alone, never reaches you.</div></div>
             <div class="row"><b class="key">log</b><div class="v">Every path: what the rule picked, why the judge was or wasn't asked, what it said, how it ended.</div></div>
           </div>
           <p class="note">Any failure (no answer, a malformed answer, no labs plugin) means the rule's pick stands. When there's nothing to judge, the cost is two log lines.</p>
@@ -624,8 +625,8 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
             <li><span class="dot"></span><span>a skill step</span></li>
             <li><span class="dot on"></span><span>marked decision <span class="dim">── the rule picks</span></span></li>
             <li><span class="dot q"></span><span>could context change it?<span class="yes">yes ↓</span></span><span class="no">no ──▶ the rule's pick</span></li>
-            <li><span class="dot on"></span><span>the judge: one question</span></li>
-            <li><span class="dot q"></span><span>disagrees, and means it?<span class="yes">yes ↓</span></span><span class="no">no ──▶ the rule's pick</span></li>
+            <li><span class="dot on"></span><span>two judges: one question</span></li>
+            <li><span class="dot q"></span><span>both disagree, and mean it?<span class="yes">yes ↓</span></span><span class="no">no ──▶ the rule's pick</span></li>
             <li><span class="dot you"></span><span class="you-txt">you decide</span></li>
             <li><span class="dot"></span><span>the log <span class="dim">── every path</span></span></li>
           </ol>
@@ -634,7 +635,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
 
       <section data-panel="answer" class="split" hidden>
         <div>
-          <p class="lede">The judge sees nothing the code didn't put in the question. It answers in one shape, and the recorder checks that shape in code before anything can show.</p>
+          <p class="lede">Each judge sees nothing the code didn't put in the question. It answers in one shape, and the recorder checks that shape in code before anything can show.</p>
 <pre class="pre">{"verdict":"proceed|clarify|challenge|redirect",
  "confidence":"low|medium|high",
  "why":"one sentence",
@@ -650,10 +651,10 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
         <div>
           <p class="sub-k" style="margin-top:0">What reaches you</p>
           <div class="tbl wide" style="margin-top:8px">
-            <div class="row"><b class="key">proceed · or anything low</b><div class="v dim">Nothing shown. Logged.</div></div>
-            <div class="row"><b class="key">challenge · medium or high</b><div class="v">One question: the suggestion or the default.</div></div>
-            <div class="row"><b class="key">clarify · medium or high</b><div class="v">The judge's <code>why</code> is the question.</div></div>
-            <div class="row"><b class="key">redirect · medium or high</b><div class="v">“Do X instead?”, with both options.</div></div>
+            <div class="row"><b class="key">proceed · anything low · one judge alone</b><div class="v dim">Nothing shown. Logged.</div></div>
+            <div class="row"><b class="key">challenge · both, medium or high</b><div class="v">One question: the suggestion (both, when the judges differ) or the default.</div></div>
+            <div class="row"><b class="key">clarify · both, medium or high</b><div class="v">The big judge's <code>why</code> is the question.</div></div>
+            <div class="row"><b class="key">redirect · both, medium or high</b><div class="v">“Do X instead?”, with both options.</div></div>
             <div class="row"><b class="key">invalid · or no answer</b><div class="v dim">The default, silently.</div></div>
           </div>
           <p class="note">The recorder checks every answer: valid JSON, a confidence, a <code>fact</code> behind any non-proceed verdict, nothing from your private topics. Anything else is logged as invalid and the rule's pick stands.</p>
@@ -667,7 +668,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
           <div class="row"><b class="key">a daily planning choice</b><div class="v">The option used most in the last seven runs, ties to the most recent. When the rule is sure, the skill says what it picked in one line and keeps going.</div><div class="v">It's late in the day, something is blocked and waiting on someone, or the handoff names a project the pick ignores.</div></div>
           <div class="row"><b class="key">which design system a page uses</b><div class="v">A default style, a work style for work, a gaming style for gaming. A named style always wins.</div><div class="v">A request reads as both work and gaming, or you say “judge it”.</div></div>
           <div class="row"><b class="key">which voice a draft is in</b><div class="v">From where the draft is going: a newsletter, a pitch, a bit, a story. With nothing to go on, it asks you.</div><div class="v">Two registers fit, or the draft reads differently from where it's going. The judge sees counts about the draft, never the draft.</div></div>
-          <div class="row"><b class="key">which shape a page takes</b><div class="v">Report, checklist, picker, explainer, one-pager or a multiple-choice report, from the request and how many decisions and steps the page carries.</div><div class="v">Two shapes fit. When style and shape both need the judge, the two calls run in one message: one wait.</div></div>
+          <div class="row"><b class="key">which shape a page takes</b><div class="v">Report, checklist, picker, explainer, one-pager or a multiple-choice report, from the request and how many decisions and steps the page carries.</div><div class="v">Two shapes fit. When style and shape both need the judges, all four calls run in one message: one wait.</div></div>
         </div>
         <p class="note">In the two newest decisions, no profile on the machine means the rule decides, and a request touching your private topics never reaches the judge. All four get this before release.</p>
       </section>
@@ -681,6 +682,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
               <li>The default pick, and when to ask.</li>
               <li>Your private topics filtered out of the question.</li>
               <li>The checks on every answer, the private topics included.</li>
+              <li>What reaches you: the recorder combines both answers under the interrupt rule and the timeout.</li>
               <li>The log: its scripts write it, and the guard blocks direct edits.</li>
               <li>The blind order in <code>/labs:try</code>, and the refusal of a second pick.</li>
             </ul>
@@ -689,15 +691,15 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
             <p class="sub-k dim" style="margin-top:0">Held by instruction only</p>
             <ul class="list">
               <li>The judge reads only its one file.</li>
-              <li>Low and proceed answers stay hidden.</li>
+              <li>Only what the recorder says to show is shown.</li>
               <li>Answers never pass through a shell.</li>
               <li>You settle every shown disagreement.</li>
-              <li>A shadow judge never changes the outcome.</li>
+              <li>Both judges get the question, word for word.</li>
             </ul>
           </div>
         </div>
         <p class="note" style="margin-top:22px">Before a judge sits at a decision with consequences, rows move from the right column to the left. The red-team briefing has the full claims table and the attacks against it.</p>
-        <p class="note dim" style="margin-top:12px">Not yet: a judge timeout. A slow judge makes the skill wait. Nothing here is bulletproof, and the page doesn't say it is.</p>
+        <p class="note dim" style="margin-top:12px">Not yet: cutting a slow judge off. A late answer doesn't count, but the skill still waits for it. Nothing here is bulletproof, and the page doesn't say it is.</p>
       </section>
 
       <section data-panel="judges" class="split" hidden>
@@ -714,7 +716,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
           <p class="sub-k" style="margin-top:0">What the recorded cases found</p>
           <ul class="list">
             <li>6 recorded test cases. On the one with nothing to judge, the rule stayed out. On the other 5, two different judge models answered.</li>
-            <li>12 real judge answers, each in 3 to 8 seconds.</li>
+            <li>15 real judge answers timed: 12 logged at 3 to 8 seconds in one test session, 3 direct calls at 49 to 52. Which is typical isn't settled yet.</li>
             <li>0 private topics reached a judge across the recorded cases.</li>
             <li>2 red-team reviews, both approving. Where the second said more than the code does, those claims are off this page.</li>
           </ul>
@@ -803,7 +805,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
         <div class="tbl">
           <div class="row"><b class="key">sexyhtml</b><div class="v">The router. A finished HTML page in a house style. It loads <code>artifact-design</code> (and <code>dataviz</code> or <code>artifact-diagramming</code> when needed). Interactive pages end in a copy button. <strong>Never a score out of anything.</strong></div></div>
           <div class="row"><b class="key">style</b><div class="v"><span class="when">a marked decision</span>Picks the style from what the page is about; a named style always wins. The judge is asked when a request reads two ways at once, or you say “judge it”.</div></div>
-          <div class="row"><b class="key">shape</b><div class="v"><span class="when">a marked decision</span>Report, checklist, picker, explainer, one-pager or a MultiChoice report, from the request and how many decisions and steps the page carries. When style and shape both need the judge, one wait.</div></div>
+          <div class="row"><b class="key">shape</b><div class="v"><span class="when">a marked decision</span>Report, checklist, picker, explainer, one-pager or a MultiChoice report, from the request and how many decisions and steps the page carries. When style and shape both need the judges, one wait.</div></div>
         </div>
         <p class="sub-k">Styles</p>
         <div class="tbl" style="margin-top:8px">
@@ -816,13 +818,13 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
       <section data-panel="labs" hidden>
         <div class="plug-h"><span class="name">labs</span><span class="tag-line">Judgement Powered Skills</span></div>
         <div class="tbl">
-          <div class="row"><b class="key">boot</b><div class="v"><span class="when">typed: /labs:boot</span>The daily boot with its marked decision, the style. The rule names a style in one line and asks only about energy; the style question comes back only when the judge disagrees at medium or high.</div></div>
+          <div class="row"><b class="key">boot</b><div class="v"><span class="when">typed: /labs:boot</span>The daily boot with its marked decision, the style. The rule names a style in one line and asks only about energy; the style question comes back only when both judges disagree at medium or high.</div></div>
           <div class="row"><b class="key">try</b><div class="v"><span class="when">typed: /labs:try</span>Judge the judges, blind: any morning, two models, labels hidden until you pick one.</div></div>
           <div class="row"><b class="key">cases</b><div class="v"><span class="when">typed: /labs:cases</span>Recorded cases through both judges, each answer checked against what the case expects.</div></div>
           <div class="row"><b class="key">results</b><div class="v"><span class="when">typed: /labs:results</span>The log as a page. Every marked decision gets a row. Counts, never a score.</div></div>
           <div class="row"><b class="key">guide</b><div class="v"><span class="when">“LABS guide”</span>A five-step checklist for testing it yourself. Step four is trying to break it.</div></div>
         </div>
-        <p class="note"><strong>The judge</strong> is an agent, <code>second-opinion</code>, with one tool (Read) and one file to read. It answers in a fixed shape: a verdict, a confidence, why, the fact it rests on, and a suggestion. <strong>The recorder</strong> checks every answer in code before anything can show it. <strong>The log</strong> is append-only, and only its scripts write it.</p>
+        <p class="note"><strong>The judges</strong> are one agent, <code>second-opinion</code>, run on two models, with one tool (Read) and one file to read. It answers in a fixed shape: a verdict, a confidence, why, the fact it rests on, and a suggestion. <strong>The recorder</strong> checks every answer in code before anything can show it. <strong>The log</strong> is append-only, and only its scripts write it.</p>
         <p class="note"><button type="button" class="linkbtn mlink" data-open="m-how" data-tab="flow">How it works →</button></p>
       </section>
 
