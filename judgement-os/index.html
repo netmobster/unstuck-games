@@ -518,11 +518,11 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
       <p class="lede">What's measured, what's built, what's still a plan. Counts, never percentages.</p>
       <div class="ledger">
         <div><span><strong>6</strong> recorded test cases. On the one with nothing to judge, the rule stayed out. On the other 5, two different judge models answered.</span><span class="tag measured">Measured</span></div>
-        <div><span><strong>15</strong> real judge answers timed. 12 were logged at 3 to 8 seconds in one test session; 3 direct calls took 49 to 52. Which is typical isn't settled.</span><span class="tag measured">Measured</span></div>
+        <div><span><strong>40+</strong> seconds for every judge answer watched so far; three direct calls took 49 to 52. Making it faster is a later job.</span><span class="tag measured">Measured</span></div>
         <div><span><strong>0</strong> private topics reached a judge across the recorded cases.</span><span class="tag measured">Measured</span></div>
         <div><span><strong>2</strong> red-team reviews, both approving.</span><span class="tag measured">Measured</span></div>
         <div><span><strong>4</strong> marked decisions built and installed, the newest two since 2 Oct.</span><span class="tag built">Built</span></div>
-        <div><span><strong>138</strong> tests across the seven scripts behind them, all passing.</span><span class="tag built">Built</span></div>
+        <div><span><strong>147</strong> tests across the eight scripts behind them, all passing.</span><span class="tag built">Built</span></div>
         <div><span>Two judges on every consulted call. You hear about it only when both disagree.</span><span class="tag built">Built</span></div>
         <div><span>Private topics kept from the judge on every decision: the newest ones today, all four before release.</span><span class="tag building">Building</span></div>
         <div><span>Daily use since 2 Oct, with a week-one check-in on 9 Oct. On day one the rule handled it alone.</span><span class="tag running">Running</span></div>
@@ -559,7 +559,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
         <span class="tag soon">Coming soon</span>
         <h3>Judgement OS: General Edition</h3>
         <p class="who">Any Claude Code user.</p>
-        <p class="what">The Judgement OS and its demos. The judge works from a profile you write for yourself. It never needs selfActual.</p>
+        <p class="what">The Judgement OS and its demos. The judges work from a profile you write for yourself: <code>/labs:profile</code> starts you off, and they stay quiet until it's filled in. It never needs selfActual.</p>
         <pre class="install" id="install-general">&lt;install command&gt;</pre>
         <div class="acts">
           <button type="button" class="copy" data-copy="install-general">Copy install</button>
@@ -716,7 +716,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
           <p class="sub-k" style="margin-top:0">What the recorded cases found</p>
           <ul class="list">
             <li>6 recorded test cases. On the one with nothing to judge, the rule stayed out. On the other 5, two different judge models answered.</li>
-            <li>15 real judge answers timed: 12 logged at 3 to 8 seconds in one test session, 3 direct calls at 49 to 52. Which is typical isn't settled yet.</li>
+            <li>Every judge answer watched so far took 40 seconds or more; three direct calls took 49 to 52.</li>
             <li>0 private topics reached a judge across the recorded cases.</li>
             <li>2 red-team reviews, both approving. Where the second said more than the code does, those claims are off this page.</li>
           </ul>
@@ -821,6 +821,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:12px 24px;flex-wrap:
           <div class="row"><b class="key">boot</b><div class="v"><span class="when">typed: /labs:boot</span>The daily boot with its marked decision, the style. The rule names a style in one line and asks only about energy; the style question comes back only when both judges disagree at medium or high.</div></div>
           <div class="row"><b class="key">try</b><div class="v"><span class="when">typed: /labs:try</span>Judge the judges, blind: any morning, two models, labels hidden until you pick one.</div></div>
           <div class="row"><b class="key">cases</b><div class="v"><span class="when">typed: /labs:cases</span>Recorded cases through both judges, each answer checked against what the case expects.</div></div>
+          <div class="row"><b class="key">profile</b><div class="v"><span class="when">typed: /labs:profile</span>The one file your judges read. Writes a starter if there's none, never over yours, and helps you fill it in a question at a time. No judge is asked until it's done.</div></div>
           <div class="row"><b class="key">results</b><div class="v"><span class="when">typed: /labs:results</span>The log as a page. Every marked decision gets a row. Counts, never a score.</div></div>
           <div class="row"><b class="key">guide</b><div class="v"><span class="when">“LABS guide”</span>A five-step checklist for testing it yourself. Step four is trying to break it.</div></div>
         </div>
