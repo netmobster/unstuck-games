@@ -1,5 +1,5 @@
 // The page. Reads sim state, draws it, turns clicks into actions. No rules live here.
-import { newGame, step, view, takeBoon, troopNoise, troopStrength, located, HUNTER_KINDS, BOONS, DEFAULTS } from './src/sim.js';
+import { newGame, step, view, takeBoon, troopNoise, troopStrength, located, HUNTER_KINDS, BOONS, DEFAULTS, inTransit, holding, canSpend, sizeBuys, winChance } from './src/sim.js';
 import { roster, bestDestination, pickBoon } from './src/policies.js';
 import { KIND_NAME, dijkstra } from './src/map.js';
 import { TUNED } from './src/tuned.js';
@@ -10,7 +10,10 @@ const cv = $('board'), ctx = cv.getContext('2d');
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const C = {}; for (const k of ['bg', 'ink', 'dim', 'moss', 'blood', 'gold', 'open', 'road', 'forest', 'forestdot', 'lake', 'mtn', 'line']) C[k] = css('--' + k);
 const ROSTER = roster(true);
-const TRADE = { C: 'strong, loud', S: 'sees them, thin walls', D: 'holds, slow to leave' };
+const TRADE = { C: 'strong, loud', S: 'sees them, thin walls', D: 'holds, slow to leave', N: 'grows fast, loud' };
+const GIFT = { C: '+30% strength in any fight', S: 'You see where they think you are', D: '+30% when they come in', N: '+1 extra person every tick' };
+const COST = { C: 'Loud: noise ×1.4', S: 'Thin walls: no fortify bonus', D: 'Slow to leave: you lose your first tick climbing out', N: 'Loud: noise ×1.5' };
+const TERRAIN = { '.': 'open ground: seen and heard', '=': 'road: fast and loud', 'f': 'forest: hidden and quiet', '~': 'lake: slow swim, they can’t follow', '^': 'mountain' };
 for (const name of Object.keys(ROSTER)) { const o = document.createElement('option'); o.value = name; o.textContent = 'Watch: ' + name; $('watch').appendChild(o); }
 
 let g, cs = 30, hover = -1, actions = [], timer = null, cfg;
@@ -78,8 +81,9 @@ function draw() {
     if (!(w.x === g.troop.x && w.y === g.troop.y)) { ctx.fillStyle = C.ink; ctx.font = `600 ${Math.round(cs * .36)}px ${css('--mono')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(w.kind, x, y + 1); }
   }
   // route preview to the hovered warren
-  const hw = g.warrens.find(w => w.i === hover);
-  if (hw && g.troop.warren != null && hw.id !== g.troop.warren && !g.over) {
+  const hwW = g.warrens.find(w => w.i === hover);
+  const hw = hwW || (hover >= 0 && g.tCost(hover) < Infinity ? { i: hover, x: hover % W, y: (hover / W) | 0, open: true } : null);
+  if (hw && !inTransit(g.troop) && hw.i !== v.here && !g.over && isFinite(v.troopTicksTo(hw.i))) {
     const f = dijkstra(g.W, g.H, g.tCost, hw.i);
     let cur = v.here; ctx.strokeStyle = C.moss; ctx.setLineDash([4, 4]); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo((cur % W + .5) * cs, ((cur / W | 0) + .5) * cs);
     for (let k = 0; k < 200 && cur !== hw.i; k++) {
@@ -88,7 +92,8 @@ function draw() {
     }
     ctx.stroke(); ctx.setLineDash([]);
     const you = v.troopTicksTo(hw.i), them = v.hunterTicksTo(hw.i);
-    label((hw.x + .5) * cs, (hw.y - .6) * cs, `${KIND_NAME[hw.kind]} (${TRADE[hw.kind]}) · ${hw.depth} · you ${you.toFixed(0)}t · them ${isFinite(them) ? them.toFixed(0) + 't' : '—'}`, them <= you ? C.blood : C.moss);
+    const what = hw.open ? TERRAIN[g.tiles[hw.i]] + ' · hold here' : `${KIND_NAME[hw.kind]} (${TRADE[hw.kind]}) · ${hw.depth}`;
+    label((hw.x + .5) * cs, (hw.y - .6) * cs, `${what} · you ${you.toFixed(0)}t · them ${isFinite(them) ? them.toFixed(0) + 't' : '—'}`, them <= you ? C.blood : C.moss);
   }
   // the ring, once they know where you are
   if (g.troop.warren != null && located(g)) {
@@ -96,6 +101,9 @@ function draw() {
     const R = g.cfg.musterDist; const x = (g.troop.x + .5) * cs, y = (g.troop.y + .5) * cs;
     ctx.beginPath(); ctx.moveTo(x, y - (R + .5) * cs); ctx.lineTo(x + (R + .5) * cs, y); ctx.lineTo(x, y + (R + .5) * cs); ctx.lineTo(x - (R + .5) * cs, y); ctx.closePath(); ctx.stroke(); ctx.setLineDash([]);
   }
+  // your decoys (running, loud) and rearguards (left behind, waiting)
+  for (const dc of g.decoys) { const x = (dc.x + .5) * cs, y = (dc.y + .5) * cs; ctx.strokeStyle = C.moss; ctx.setLineDash([2, 3]); ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, cs * .3, 0, 7); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = C.moss; ctx.font = `600 ${Math.round(cs * .3)}px ${css('--mono')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('d', x, y + 1); }
+  for (const rg of g.rearguards) { const x = (rg.x + .5) * cs, y = (rg.y + .5) * cs, r = cs * .26; ctx.fillStyle = C.moss; ctx.globalAlpha = .75; ctx.fillRect(x - r, y - r, 2 * r, 2 * r); ctx.globalAlpha = 1; ctx.fillStyle = C.bg; ctx.font = `700 ${Math.round(cs * .3)}px ${css('--mono')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(rg.size, x, y + 1); }
   // hunters
   const inReach = new Set(v.attackable().map(h => h.id));
   for (const h of g.hunters) {
@@ -113,7 +121,7 @@ function draw() {
   const tx = (g.troop.x + .5) * cs, ty = (g.troop.y + .5) * cs;
   ctx.fillStyle = g.over && g.stats.death ? C.blood : C.moss;
   ctx.beginPath(); ctx.arc(tx, ty, cs * .46, 0, 7);
-  if (g.troop.warren == null) { ctx.fillStyle = C.bg; ctx.fill(); ctx.strokeStyle = C.moss; ctx.lineWidth = 2.5; ctx.setLineDash([3, 3]); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = C.moss; }
+  if (g.troop.warren == null) { ctx.fillStyle = C.bg; ctx.fill(); ctx.strokeStyle = C.moss; ctx.lineWidth = 2.5; if (inTransit(g.troop)) ctx.setLineDash([3, 3]); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = C.moss; }
   else ctx.fill(), ctx.fillStyle = C.bg;
   ctx.font = `800 ${Math.round(cs * .42)}px ${css('--mono')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
   ctx.fillText(g.troop.size, tx, ty + 1);
@@ -133,7 +141,17 @@ function panel() {
   $('dawnfill').style.width = (100 * g.tick / g.cfg.nightLen) + '%';
   $('size').textContent = t.size;
   const w = t.warren != null ? g.warrens[t.warren] : null;
-  $('where').textContent = w ? `in a ${w.depth} ${KIND_NAME[w.kind]} warren` : `in the open → ${KIND_NAME[g.warrens[t.dest].kind]} warren`;
+  $('where').textContent = w ? `in a ${w.depth} ${KIND_NAME[w.kind]} warren` : inTransit(t) ? (t.dest != null ? `running → ${KIND_NAME[g.warrens[t.dest].kind]} warren` : 'running → open ground') : `holding · ${TERRAIN[g.tiles[t.y * g.W + t.x]]}`;
+  if (w) {
+    $('wcard').hidden = false;
+    $('wkind').textContent = `${KIND_NAME[w.kind]} · ${w.depth}`;
+    $('wgift').textContent = GIFT[w.kind];
+    $('wcost').textContent = COST[w.kind];
+    $('wdepth').textContent = { deep: 'Deep: hides your noise well (×0.45)', mid: 'Mid: hides some noise (×0.7)', shallow: 'Shallow: hides nothing (×1)' }[w.depth];
+  } else $('wcard').hidden = true;
+  const sb = sizeBuys(g), pc = x => Math.round(100 * x) + '%';
+  $('buys').textContent = holding(t) || inTransit(t) ? 'No walls out here: anything that reaches you fights you.' : sb.beat ? `Holding here you’d beat ${sb.beat} sweeper${sb.beat === 1 ? '' : 's'} (${pc(sb.pBeat)}), not ${sb.beat + 1} (${pc(sb.pNext)}).` : `You wouldn’t beat even one sweeper (${pc(sb.pNext)}).`;
+  for (const k of ['decoy', 'rearguard', 'scout', 'dig']) $('sp-' + k).disabled = g.over || !canSpend(g, k);
   $('sdef').textContent = troopStrength(g, 'defend').toFixed(0);
   $('noise').textContent = troopNoise(g).toFixed(1);
   const accel = g.cfg.accelAt ? g.cfg.accelAt.filter(a => (t.stayRun || 0) >= a).length : 0;
@@ -145,7 +163,9 @@ function panel() {
   $('spec').innerHTML = ['C', 'S', 'D'].map(k => `<div class="s"><span>${KIND_NAME[k]}</span><div class="t"><div style="width:${100 * Math.max(t.spec[k], w && w.kind === k ? 1 : 0)}%"></div></div><span>+${Math.round(100 * g.cfg.warrenBonus * Math.max(t.spec[k], w && w.kind === k ? 1 : 0))}%</span></div>`).join('');
   $('hcount').textContent = `· ${g.hunters.length}`;
   $('hunters').innerHTML = g.hunters.map(h => `<div class="h"><i style="${h.kind === 'listener' ? 'background:none;border:2px solid ' + C.blood + ';border-radius:50%' : h.kind === 'tracker' ? 'clip-path:polygon(50% 0,100% 100%,0 100%)' : h.kind === 'hound' ? 'clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)' : ''}"></i><span>${HUNTER_KINDS[h.kind].label}${h.trail ? ' · on your trail' : ''}</span><b>${h.str.toFixed(0)}</b></div>`).join('');
-  $('attackbtn').disabled = !v.attackable().length || g.over;
+  const tgt = v.attackable().sort((a, b) => a.str - b.str)[0];
+  $('attackbtn').disabled = !tgt || g.over;
+  $('attackodds').textContent = tgt ? `${Math.round(100 * winChance(troopStrength(g, 'attack'), tgt.str))}% vs ${HUNTER_KINDS[tgt.kind].label.toLowerCase()}` : 'A';
   $('stay').disabled = g.over;
   $('scout-note')?.remove();
 }
@@ -155,6 +175,14 @@ function say(text, cls = '') { const li = document.createElement('li'); li.textC
 function narrate(evs) {
   for (const e of evs) {
     if (e.t === 'move') say(`Run for the ${KIND_NAME[g.warrens[e.to].kind]} warren.`);
+    else if (e.t === 'go') say('Out into the open.');
+    else if (e.t === 'hold') say(e.forest ? 'Still, in the trees. Not growing.' : 'Holding in the open. Not growing, and easy to see.', e.forest ? 'good' : 'bad');
+    else if (e.t === 'spend') say({ decoy: `${e.cost} of you break away loud, the other way.`, rearguard: `${e.cost} of you stay behind.`, scout: `${e.cost} of you go to look.`, dig: `${e.cost} of you dig.` }[e.kind], 'gold');
+    else if (e.t === 'dug') say(`A new ${KIND_NAME[e.kind]} warren, shallow, dug in the dark.`, 'good');
+    else if (e.t === 'decoy-seen') say('They’ve seen the decoy. They think it’s you.', 'good');
+    else if (e.t === 'decoy-caught') say('The decoy is caught. They know now.', 'bad');
+    else if (e.t === 'decoy-gone') say('The decoy goes to ground.');
+    else if (e.t === 'rearguard') say(e.won ? 'The rearguard held, and loudly. They think you’re back there.' : 'The rearguard fell. It bought you time.', e.won ? 'good' : 'bad');
     else if (e.t === 'arrive-warren') say(`Under again: a ${g.warrens[e.id].depth} ${KIND_NAME[g.warrens[e.id].kind]} warren.`, 'good');
     else if (e.t === 'seen') say('Seen.', 'bad');
     else if (e.t === 'located') say(g.troop.warren != null ? 'Heard. They know which warren you’re in.' : 'They have you.', 'bad');
@@ -175,7 +203,7 @@ function act(a) {
   if (g.night !== night && !g.over) dawnDialog(night);
   draw(); panel();
   if (g.over) endDialog();
-  else if (g.troop.warren == null && !timer && !$('watch').value) { timer = setInterval(() => { if (g.troop.warren != null || g.over || g.pendingDraft) { clearInterval(timer); timer = null; return; } act({ type: 'stay' }); }, 220); }
+  else if (inTransit(g.troop) && !timer && !$('watch').value) { timer = setInterval(() => { if (!inTransit(g.troop) || g.over || g.pendingDraft) { clearInterval(timer); timer = null; return; } const k = g._spendNext; g._spendNext = null; act(k ? { type: k } : { type: 'stay' }); }, 220); }
 }
 function dawnDialog(n) {
   $('dn').textContent = n;
@@ -300,15 +328,20 @@ cv.addEventListener('click', e => {
   const v = view(g);
   const h = v.attackable().find(h => h.y * g.W + h.x === c);
   if (h) return act({ type: 'attack', hunter: h.id });
+  if (inTransit(g.troop)) return;
   const w = g.warrens.find(w => w.i === c);
-  if (w && g.troop.warren != null && w.id !== g.troop.warren) return act({ type: 'move', to: w.id });
+  if (w && w.id !== g.troop.warren) return act({ type: 'move', to: w.id });
+  if (!w && g.tCost(c) < Infinity && c !== v.here) return act({ type: 'go', cell: c });
 });
 $('stay').addEventListener('click', () => act({ type: 'stay' }));
+for (const k of ['decoy', 'rearguard', 'scout', 'dig']) $('sp-' + k).addEventListener('click', () => { if (canSpend(g, k)) { const was = inTransit(g.troop); if (was) { g._spendNext = k; } else act({ type: k }); } });
 $('attackbtn').addEventListener('click', () => { const h = view(g).attackable().sort((a, b) => a.str - b.str)[0]; if (h) act({ type: 'attack', hunter: h.id }); });
 document.addEventListener('keydown', e => {
   if (e.target.matches('input,select') || document.querySelector('dialog[open]')) return;
   if (e.code === 'Space') { e.preventDefault(); act({ type: 'stay' }); }
   if (e.key === 'a' || e.key === 'A') $('attackbtn').click();
+  const sk = { d: 'decoy', r: 'rearguard', s: 'scout', g: 'dig' }[e.key.toLowerCase()];
+  if (sk) $('sp-' + sk).click();
 });
 $('newrun').addEventListener('click', () => start(+$('seed').value || 1));
 $('watch').addEventListener('change', () => start(+$('seed').value || 1));
@@ -329,3 +362,5 @@ document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () =>
 $('ending').addEventListener('cancel', e => { if (!watching()) e.preventDefault(); });
 // the CD brief: inlined in the artifact build; fetched next to the page when run locally
 if ($('tab-brief').innerHTML.includes('<!--BRIEF-->')) fetch('cd-brief.html').then(r => r.ok ? r.text() : '').then(t => { if (t) $('tab-brief').innerHTML = t; }).catch(() => {});
+// read-only handle for debugging and automated playtests (never used by the game itself)
+window.__lw = { get g() { return g; }, get line() { return line; } };

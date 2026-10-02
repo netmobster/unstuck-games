@@ -31,8 +31,8 @@ export const FRAMES = {
 };
 export const FRAME_NAMES = Object.keys(FRAMES);
 
-export const KINDS = ['C', 'S', 'D'];
-export const KIND_NAME = { C: 'Combat', S: 'Scout', D: 'Defense' };
+export const KINDS = ['C', 'S', 'D', 'N'];
+export const KIND_NAME = { C: 'Combat', S: 'Scout', D: 'Defense', N: 'Nursery' };
 export const DEPTHS = ['deep', 'mid', 'shallow'];
 
 function valueNoise(w, h, cell, rand) {
@@ -97,7 +97,7 @@ function tryMap(seed, attempt, frame, dials, opts) {
   }
   if (warrens.length < Math.max(4, want - 1)) return null;
   // Kinds evenly dealt then shuffled; depths rolled.
-  const kinds = warrens.map((_, i) => KINDS[i % 3]);
+  const kinds = warrens.map((_, i) => KINDS[i % KINDS.length]);
   for (let i = kinds.length - 1; i > 0; i--) { const j = Math.floor(rand() * (i + 1)); [kinds[i], kinds[j]] = [kinds[j], kinds[i]]; }
   warrens.forEach((v, i) => {
     v.id = i; v.kind = kinds[i]; v.depth = DEPTHS[Math.floor(rand() * 3)];

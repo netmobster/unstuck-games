@@ -7,8 +7,8 @@ const median = a => { if (!a.length) return 0; const s = [...a].sort((x, y) => x
 export function aggregate(recs) {
   const n = recs.length, nightsPlayed = recs.map(r => r.nights + (r.survivedAll ? 0 : 1));
   const causes = {}; for (const r of recs) causes[r.cause] = (causes[r.cause] || 0) + 1;
-  const kinds = { C: 0, S: 0, D: 0 }; for (const r of recs) for (const k in kinds) kinds[k] += r.kindTicks[k];
-  const kt = kinds.C + kinds.S + kinds.D || 1;
+  const kinds = { C: 0, S: 0, D: 0, N: 0 }; for (const r of recs) for (const k in kinds) kinds[k] += r.kindTicks[k] || 0;
+  const kt = kinds.C + kinds.S + kinds.D + kinds.N || 1;
   const reach = k => recs.filter(r => r.nights >= k).length / n;
   const ticks = recs.reduce((a, r) => a + r.stayTicks + r.transitTicks, 0) || 1;
   const found = recs.filter(r => r.cause === 'found' && r.twin1 != null);
@@ -23,7 +23,7 @@ export function aggregate(recs) {
     stayShare: recs.reduce((a, r) => a + r.stayTicks, 0) / ticks,
     peak: mean(recs.map(r => r.peak)),
     sizeAtDeath: mean(recs.filter(r => !r.survivedAll).map(r => r.sizeAtEnd)),
-    kindShare: { C: kinds.C / kt, S: kinds.S / kt, D: kinds.D / kt },
+    kindShare: { C: kinds.C / kt, S: kinds.S / kt, D: kinds.D / kt, N: kinds.N / kt },
     twin1: found.length ? found.filter(r => r.twin1).length / found.length : null,
     twin2: found.length ? found.filter(r => r.twin2).length / found.length : null,
     twin3: found.length ? found.filter(r => r.twin3).length / found.length : null,
@@ -59,7 +59,7 @@ export function judge(agg, { attack = true, strict = false } = {}) {
   }
   if (strict) {
     const pols = names.filter(n => n !== 'random' && n !== 'always-stay');
-    const spread = Math.max(...['C', 'S', 'D'].map(k => Math.max(...pols.map(n => agg[n].kindShare[k])) - Math.min(...pols.map(n => agg[n].kindShare[k]))));
+    const spread = Math.max(...['C', 'S', 'D', 'N'].map(k => Math.max(...pols.map(n => agg[n].kindShare[k])) - Math.min(...pols.map(n => agg[n].kindShare[k]))));
     checks.push({ id: 'kinds-matter', want: 'how players split time by warren kind differs by >= 15 points between strategies', got: spread, pen: Math.max(0, 0.15 - spread) * 3 });
     checks.push({ id: 'curve-n3', want: 'best player reaches night 3 in 40-70% of runs', got: B.reach3, pen: Math.max(0, 0.4 - B.reach3) * 3 + Math.max(0, B.reach3 - 0.7) * 3 });
     checks.push({ id: 'curve-n5', want: 'best player reaches night 5 in 10-30% of runs', got: B.reach5, pen: Math.max(0, 0.1 - B.reach5) * 3 + Math.max(0, B.reach5 - 0.3) * 3 });

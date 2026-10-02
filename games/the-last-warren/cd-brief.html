@@ -2,7 +2,7 @@
 <p class="dim">The Last Warren · Unstuck Games · 2 Oct 2026. The game in the Play tab is <b>functionally complete and tuned</b>. It was built function-first, as the Unstuck method says, and it's yours to make beautiful. This tab is everything you need to do that without breaking it.</p>
 
 <h3>What it is</h3>
-<p><b>A tower defense game where you are the thing trying not to be found.</b> You're a troop hiding in a network of warrens. Every tick you gain one person and every hunter moves one step. You choose to <b>stay</b> (grow, but they close in), <b>run</b> for another warren (exposed in the open), or <b>attack</b> a hunter in reach. Nights escalate. When your warren falls, a survivor carries one heirloom into the next generation of your <b>line</b>. When a generation fails to see its first dawn, the line ends: that was the last warren.</p>
+<p><b>A tower defense game where you are the thing trying not to be found.</b> You're a troop hiding in a network of warrens. Every tick you gain people and every hunter moves one step. You choose to <b>stay</b> (grow, but they close in), <b>run</b> for another warren or <b>go</b> to any square and hold there (exposed in the open, hidden in forest), <b>attack</b> a hunter in reach, or <b>spend people</b>: a decoy, a rearguard, a scouting party, a new warren dug where you stand. Nights escalate. When your warren falls, a survivor carries one heirloom into the next generation of your <b>line</b>. When a generation fails to see its first dawn, the line ends: that was the last warren.</p>
 <p>The feeling to design for: <i>"I could stay three more ticks and get much stronger, but I'm gambling that they won't reach me."</i> And then: <i>"Fuck, I should have moved one tick earlier."</i></p>
 <p><b>Tombstone:</b> Tokyo Jungle (2012). We took its organ (where you settle decides who you become) and burned the rest: no animals, no city, no action combat, no unlocks. Please don't bring them back visually either. It's a burrow at night, not a nature documentary.</p>
 
@@ -59,11 +59,13 @@
 <div class="scroll"><table>
   <thead><tr><th>Thing</th><th>States</th><th>Notes</th></tr></thead>
   <tbody>
-    <tr><td>Troop token</td><td>hidden in a warren · located (they know) · besieged (not growing) · in transit · dead</td><td>Always shows the head count, from 1 to about 150. In transit it's drawn hollow and dashed today</td></tr>
-    <tr><td>Warren mouth</td><td>kind <b>C / S / D</b> × depth <b>deep / mid / shallow</b> · current · hovered · dug this run</td><td>Depth is the line weight today (deep is thick, shallow is dashed). Kind is a letter today and should become a glyph</td></tr>
+    <tr><td>Troop token</td><td>hidden in a warren · located (they know) · besieged (not growing) · in transit · <b>holding in the open</b> · <b>holding in forest</b> · dead</td><td>Always shows the head count, from 1 to about 150. Today: solid in a warren, a hollow solid ring when holding, a hollow dashed ring when running</td></tr>
+    <tr><td>Decoy</td><td>running · seen (they think it's you) · caught · gone to ground</td><td>Part of you, loud, running the other way. Today it's a small dashed ring marked "d". At most one at a time</td></tr>
+    <tr><td>Rearguard</td><td>waiting · fighting · held · fell</td><td>Part of you, left behind; it fights the first hunter to reach it. Today it's a small square with its head count</td></tr>
+    <tr><td>Warren mouth</td><td>kind <b>C / S / D / N</b> (Combat, Scout, Defense, Nursery) × depth <b>deep / mid / shallow</b> · current · hovered · dug this run</td><td>Depth is the line weight today (deep is thick, shallow is dashed). Kind is a letter today and should become a glyph</td></tr>
     <tr><td>Hunter</td><td>4 kinds: <b>sweeper</b> (square), <b>tracker</b> (triangle), <b>listener</b> (ring), <b>hound</b> (diamond) · in reach (ringed) · on your trail (gold pip)</td><td>Shape is the kind, so it's never colour alone. All of them are "them" colour</td></tr>
     <tr><td>The ring</td><td>visible once you're located and a siege is forming</td><td>A dashed diamond, 3 blocks out. This is the "decide now" moment, so make it felt</td></tr>
-    <tr><td>Route preview</td><td>on hovering a warren: the path, plus a label "<i>Kind (gift, cost) · depth · you 6t · them 13t</i>"</td><td>Moss when you'd win the race, blood when they'd get there first</td></tr>
+    <tr><td>Route preview</td><td>on hovering <b>any square</b>: the path, plus a label. For a warren, "<i>Kind (gift, cost) · depth · you 6t · them 13t</i>"; for ground, "<i>forest: hidden and quiet · hold here · you 3t · them 9t</i>"</td><td>Moss when you'd win the race, blood when they'd get there first</td></tr>
     <tr><td>Belief heat</td><td>only while scouting: a gold heat per cell, 0 to 1</td><td>"Where they think you are." It should read as knowledge, not danger</td></tr>
     <tr><td>Tracks</td><td>pips that fade over 14 ticks</td><td>Off in the tuned rules (only the "tracks" variant lays them), but keep the style</td></tr>
     <tr><td>Terrain</td><td>open · road · forest · lake · mountain</td><td>Forest and mountain block sight, so they should look like they do</td></tr>
@@ -82,13 +84,22 @@
     <tr><td><code>ring.svg</code></td><td>1, scalable</td><td>Drawn at 7×7 cells around the troop</td></tr>
     <tr><td><code>track.svg</code></td><td>1</td><td>Opacity is animated by the game</td></tr>
     <tr><td>Icons for the 8 boons</td><td>brood · hush · teeth · walls · legs · dig deeper · dig · scatter</td><td>For the draft and the heirloom cards</td></tr>
+    <tr><td><code>spend-{decoy,rearguard,scout,dig}.svg</code></td><td>4</td><td>Button icons. Each one costs people, so the icon should read as "part of us goes"</td></tr>
+    <tr><td><code>decoy.svg</code> · <code>rearguard.svg</code></td><td>2</td><td>Board tokens, the same family as the troop. Decoy states: <code>running</code> · <code>seen</code>. Rearguard states: <code>waiting</code> · <code>fighting</code></td></tr>
     <tr><td>Heirlooms</td><td>Combat-born · Scout-born · Defense-born · an inherited boon</td><td>Same family as the boon icons</td></tr>
   </tbody>
 </table></div>
 
+<h3>The side panel, as of v5</h3>
+<ul>
+  <li><b>This warren:</b> kind, gift (moss), cost (blood), and what the depth does to your noise. It's hidden when you're not in one.</li>
+  <li><b>What your size buys:</b> a sentence such as <i>"Holding here you'd beat 2 sweepers (64%), not 3 (31%)"</i>. The Attack button carries its own odds.</li>
+  <li><b>Four spend buttons:</b> Decoy −4, Rearguard −5, Scout −3, Dig here −8. They're greyed out when you can't afford one or the moment is wrong. These want icons, and they're the most new-to-the-player thing on the screen.</li>
+</ul>
+
 <h3>Interaction</h3>
 <ul>
-  <li><b>Space</b> stays one tick, and holding it keeps staying. <b>A</b> attacks the weakest hunter in reach. <b>Click a warren</b> to run; <b>click a ringed hunter</b> to attack. Hover a warren to see the race.</li>
+  <li><b>Space</b> stays one tick, and holding it keeps staying. <b>A</b> attacks the weakest hunter in reach. <b>Click a warren</b> to run for it, or <b>any square</b> to go there and hold; <b>click a ringed hunter</b> to attack. <b>D R S G</b> spend people. Hover anywhere to see the race.</li>
   <li>Transit plays itself out at about 220ms a tick once you've committed. That's the "OH FUCK" stretch, so pace it on purpose.</li>
   <li>A run takes <b>about 3 minutes</b> of real time, and around 70% of ticks are tense. There's almost no downtime to fill.</li>
 </ul>

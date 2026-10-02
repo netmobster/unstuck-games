@@ -6,7 +6,7 @@ import { expert } from '../src/expert.js';
 let R = null;
 parentPort.on('message', ({ id, cfg, policy, seeds, twins }) => {
   try {
-    R ||= { ...roster(true), expert: expert() };
+    R ||= { ...roster(true), expert: expert(), 'expert-v4': expert({ verbs: 'v4' }) };
     const factory = R[policy];
     if (!factory) throw new Error('no policy ' + policy);
     const out = [];

@@ -36,13 +36,19 @@
   <main class="main" id="tab-play" role="tabpanel">
     <div class="boardwrap">
       <canvas id="board" aria-label="The map"></canvas>
-      <div class="hint" id="hint">Click a warren to run for it. Click a hunter in reach to attack. <kbd>Space</kbd> stays one tick; hold it to keep staying.</div>
+      <div class="hint" id="hint">Click a warren to run for it, or any square to go there and hold (forest hides you). Click a ringed hunter to attack. <kbd>Space</kbd> stays a tick; hold it to keep staying. Spend people with <kbd>D</kbd> <kbd>R</kbd> <kbd>S</kbd> <kbd>G</kbd>.</div>
     </div>
 
     <aside class="side">
       <div class="verbs">
         <button id="stay" class="verb stay" type="button">Stay <small>space</small></button>
-        <button id="attackbtn" class="verb atk" type="button" disabled>Attack <small>A</small></button>
+        <button id="attackbtn" class="verb atk" type="button" disabled>Attack <small id="attackodds">A</small></button>
+      </div>
+      <div class="spends">
+        <button id="sp-decoy" type="button" title="4 people break away, loud, and run the other way (D)">Decoy <small>−4 · D</small></button>
+        <button id="sp-rearguard" type="button" title="5 people stay behind and fight the first hunter to reach them (R)">Rearguard <small>−5 · R</small></button>
+        <button id="sp-scout" type="button" title="3 people go to look: see their belief map for 10 ticks (S)">Scout <small>−3 · S</small></button>
+        <button id="sp-dig" type="button" title="8 people dig a shallow warren right here, of the kind you're most attuned to. Only while holding in the open (G)">Dig here <small>−8 · G</small></button>
       </div>
       <div class="block">
         <div class="lbl">THE TROOP</div>
@@ -54,7 +60,15 @@
           <div class="row"><span>Watched</span><b id="watched">—</b></div>
           <div class="row"><span>Status</span><b id="status">hidden</b></div>
         </div>
+        <p class="buys" id="buys"></p>
         <div class="spec" id="spec"></div>
+      </div>
+      <div class="block wcard" id="wcard">
+        <div class="lbl">THIS WARREN</div>
+        <div class="wk" id="wkind"></div>
+        <div class="wl gift" id="wgift"></div>
+        <div class="wl cost" id="wcost"></div>
+        <div class="wl" id="wdepth"></div>
       </div>
       <div class="block">
         <div class="lbl">HUNTERS <span id="hcount"></span></div>
@@ -68,7 +82,8 @@
         <span><i class="sw t-open"></i>open</span><span><i class="sw t-road"></i>road, fast and loud</span>
         <span><i class="sw t-forest"></i>forest, slow and quiet</span><span><i class="sw t-lake"></i>lake: you swim, they can't</span>
         <span><i class="sw t-mtn"></i>mountain: blocks feet and eyes</span>
-        <span><b>C</b> Combat: +30% strength, but loud</span><span><b>S</b> Scout: see where they think you are, but thin walls</span><span><b>D</b> Defense: +30% holding, but slow to leave</span>
+        <span><b>C</b> Combat: +30% strength, but loud</span><span><b>S</b> Scout: see where they think you are, but thin walls</span><span><b>D</b> Defense: +30% holding, but slow to leave</span><span><b>N</b> Nursery: +1 extra a tick, but loud</span>
+        <span>◌ d decoy · ■ rearguard · ○ you, holding · ◌ you, running</span>
       </div>
     </aside>
   </main>

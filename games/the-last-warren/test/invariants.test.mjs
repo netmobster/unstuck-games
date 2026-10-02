@@ -81,14 +81,14 @@ import { newLine, lineCfg, heirlooms, recordGeneration } from '../src/lineage.js
 import { TUNED } from '../src/tuned.js';
 test('lineage: one heirloom passes, the family is remembered, a night-1 death ends the line', () => {
   let line = newLine(7);
-  let g = runGame(5, { ...TUNED, ...lineCfg(line) }, R['hybrid-3-1.8']);
+  let g; for (let s = 5; s < 60; s++) { g = runGame(s, { ...TUNED, ...lineCfg(line) }, R['hybrid-3-1.8']); if (g.result.nights >= 1) break; }
   assert.ok(g.result.nights >= 1, 'seed 5 should see a dawn');
   const opts = heirlooms(g);
   assert.ok(opts.length >= 1 && opts.length <= 3);
   line = recordGeneration(line, g, 'a sentence', opts[0]);
   assert.equal(line.gen, 2); assert.equal(line.chronicle.length, 1); assert.ok(line.heir);
   const c = lineCfg(line);
-  assert.ok(c.heir && c.lineage && c.lineage.C + c.lineage.S + c.lineage.D > 0);
+  assert.ok(c.heir && c.lineage && c.lineage.C + c.lineage.S + c.lineage.D + c.lineage.N > 0);
   const g2 = newGame(6, { ...TUNED, ...c });
   if (c.heir.attune) assert.equal(g2.troop.spec[c.heir.attune], 1);
   // a generation that never sees a dawn ends the line

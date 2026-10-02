@@ -40,7 +40,7 @@ export function summarise(g) {
     peak: s.peak,
     moves: s.moves, attacks: s.attacks, fights: s.fights, fightsWon: s.fightsWon,
     stayTicks: s.stayTicks, transitTicks: s.transitTicks,
-    kindTicks: s.kindTicks, boons: s.boons,
+    kindTicks: s.kindTicks, boons: s.boons, holdTicks: s.holdTicks || 0, spends: s.spends || {},
     night1: s.nights[0]?.survived ?? false,
   };
 }

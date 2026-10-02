@@ -102,3 +102,12 @@ dialog h2{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:
 @media (max-width:900px){ .tabs{margin-left:0} }
 
 .earlier{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:22px;text-transform:uppercase;margin:32px 0 6px;color:var(--dim)}
+
+/* v5: spends, this warren, what size buys */
+.spends{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.spends button{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:15px;text-transform:uppercase;color:var(--gold);border-color:var(--gold);padding:7px 6px;text-align:left}
+.spends button small{display:block;font-family:var(--mono);font-size:9px;font-weight:400;letter-spacing:.1em;color:var(--dim);text-transform:none}
+.buys{font-size:13px;color:var(--ink);margin:10px 0 0;line-height:1.4}
+.wcard .wk{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;text-transform:uppercase;margin:4px 0 6px}
+.wcard .wl{font-size:13px;line-height:1.4;padding-block:3px;border-bottom:1px solid var(--line)}
+.wcard .gift{color:var(--moss)} .wcard .cost{color:var(--blood)}

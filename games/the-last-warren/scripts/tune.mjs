@@ -17,7 +17,7 @@ const SPACE = {
   remnant: [0.25, 0.6], carryDecay: [0.85, 0.97], diffusion: [0.06, 0.2], respawnDelay: [5, 20, 'int'],
   transit: ['exposed', 'tracks', 'bleed'],
   combatNoise: [1.0, 1.8], defenseDepart: [0, 6, 'int'], watchReact: [0, 1.2], watchCap: [2, 10, 'int'],
-  growth: [1, 1, 'int'],
+  growth: [1, 1, 'int'], nurseryNoise: [1.0, 2.0], nurseryGrowth: [1, 2, 'int'], nightLen: [54, 54, 'int'],
 };
 let rs = 12345; const R = () => { rs ^= rs << 13; rs ^= rs >>> 17; rs ^= rs << 5; return (rs >>> 0) / 4294967296; };
 function sample() {

@@ -14,13 +14,13 @@ export const roman = n => ROMAN[n - 1] || String(n);
 const KIND_WORD = { C: 'Combat', S: 'Scout', D: 'Defense' };
 
 export function newLine(seed) {
-  return { v: 1, name: NAMES[hash(seed, 'line') % NAMES.length], founded: seed, gen: 1, heir: null, kinds: { C: 0, S: 0, D: 0 }, chronicle: [], ended: false };
+  return { v: 1, name: NAMES[hash(seed, 'line') % NAMES.length], founded: seed, gen: 1, heir: null, kinds: { C: 0, S: 0, D: 0, N: 0 }, chronicle: [], ended: false };
 }
 
 /** The rules this generation plays under. */
 export function lineCfg(line) {
   if (!line || line.ended) return {};
-  const fam = line.kinds.C + line.kinds.S + line.kinds.D > 0 ? { ...line.kinds } : null;
+  const fam = line.kinds.C + line.kinds.S + line.kinds.D + (line.kinds.N || 0) > 0 ? { ...line.kinds } : null;
   return { heir: line.heir, lineage: fam };
 }
 
@@ -43,7 +43,7 @@ export function heirlooms(g) {
 export function recordGeneration(line, g, sentence, pick) {
   const nights = g.result?.nights ?? 0;
   const next = structuredClone(line);
-  for (const kk of ['C', 'S', 'D']) next.kinds[kk] += g.stats.kindTicks[kk];
+  for (const kk of ['C', 'S', 'D', 'N']) next.kinds[kk] = (next.kinds[kk] || 0) + (g.stats.kindTicks[kk] || 0);
   next.chronicle.push({ gen: line.gen, name: `${line.name} ${roman(line.gen)}`, seed: g.seed, nights, sentence, inherited: line.heir ? describe(line.heir) : null, passed: pick && !pick.none ? describe(pick) : null });
   if (nights === 0) { next.ended = true; next.endedAt = line.gen; return next; }
   next.gen = line.gen + 1;
