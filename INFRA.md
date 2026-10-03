@@ -39,6 +39,7 @@ files needed to rebuild the box from nothing are in [`infra/`](infra/).
 | `elsewhere.unstuck-games.com` | Elsewhere page; the world at `/play` behind a password | files from `elsewhere/`, plus the Elsewhere service |
 | `deadline.unstuck-games.com` | Deadline Dungeon (game #4): holding page, design docs | files from `deadline-dungeon/` |
 | `last-warren.unstuck-games.com` | The Last Warren (game #5): page; the game at `/play/` | files from `the-last-warren/`; `/play/` is a single-file build of `games/the-last-warren/` |
+| `elsible.unstuck-games.com` | Elsible: the deal prototype (deck v4) | `elsible/site/`, built by `python elsible/prototype/build.py --publish` |
 | `seren.unstuck-games.com` | SEREN, the AI-DM table, behind a password | the SEREN service; content from `/srv/seren`, never the repo |
 
 **Old links still work.** `unstuck-games.com/orbis/…`, `/bad-monkeys/…`, `/ferret-bowling/…`

@@ -1,0 +1,370 @@
+<title>Elsible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: a reader's table. Dealer's card at the head, the hand's sentence in the middle, your five cards fanned at the foot. */
+:root{
+  --ink:#100d0b; --cloth:#16100f;
+  --bone:#e8e1d6; --dust:#a39a8f; --dust-hi:#c4bcb1;
+  --copper:#b07a4e; --copper-hi:#c89060; --gilt:#d6a46a; --ember:#e07a58;
+  --hair:rgba(232,225,214,.09); --edge:rgba(232,225,214,.16);
+  --sans:'IBM Plex Sans', system-ui, sans-serif;
+  --serif:'IBM Plex Serif', Georgia, serif;
+  --mono:'Space Mono', ui-monospace, monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--ink)}
+body{margin:0;background:radial-gradient(110% 70% at 50% 0%, #2a1b18 0%, var(--cloth) 45%, var(--ink) 100%) fixed;color:var(--bone);font-family:var(--sans);font-weight:300;line-height:1.55;font-size:16px;padding-inline:16px;padding-block:0 40px}
+::selection{background:var(--copper);color:var(--ink)}
+.wrap{max-width:1040px;margin:0 auto}
+.label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dust)}
+.label.gilt{color:var(--gilt)} .label.ember{color:var(--ember)}
+button.b{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 13px;border-radius:2px;cursor:pointer;border:1px solid var(--edge);background:transparent;color:var(--dust-hi)}
+button.b:hover{color:var(--bone);border-color:var(--dust)}
+button.b.go{background:var(--copper);color:var(--ink);border-color:var(--copper)}
+button.b.go:hover{background:var(--copper-hi)}
+button.b:disabled{opacity:.35;cursor:not-allowed}
+button:focus-visible{outline:1px solid var(--gilt);outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;padding-block:16px 0}
+.top .left{display:grid;gap:6px}
+.mark{font-family:var(--serif);font-size:22px}
+.mark em{font-style:italic;color:var(--gilt)}
+.say{font-family:var(--serif);font-style:italic;color:var(--dust-hi);font-size:15px;margin:0}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.dealer{display:grid;justify-items:center;gap:8px;margin-top:-8px}
+.mini{width:110px;aspect-ratio:5/7.2;border-radius:8px;position:relative}
+.back{background:
+  radial-gradient(circle at 50% 50%, transparent 0 18%, rgba(214,164,106,.18) 18.5% 19.5%, transparent 20%),
+  repeating-linear-gradient(45deg, rgba(214,164,106,.10) 0 1px, transparent 1px 12px),
+  repeating-linear-gradient(-45deg, rgba(214,164,106,.10) 0 1px, transparent 1px 12px),
+  linear-gradient(160deg, #3a1d22, #1f1012);
+  border:1px solid rgba(214,164,106,.45);box-shadow:inset 0 0 0 5px #1a0e10, inset 0 0 0 6px rgba(214,164,106,.35)}
+.mini.back{display:grid;place-items:center;text-align:center;padding:10px;font-family:var(--serif);font-style:italic;font-size:11.5px;color:var(--dust-hi);line-height:1.35}
+.face{background:linear-gradient(180deg,#f1e8d8,#e2d5bf);color:#2a1d16;border:1px solid #c9b48f;box-shadow:inset 0 0 0 4px #f1e8d8, inset 0 0 0 5px #b8945f;display:flex;flex-direction:column;gap:5px;padding:12px 10px}
+.face .s{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:#8a6a43;text-align:center}
+.face .n{font-family:var(--serif);font-weight:500;font-size:15px;line-height:1.15;text-align:center;text-wrap:balance}
+.face .l{font-family:var(--serif);font-style:italic;font-size:12px;line-height:1.3;text-align:center;color:#4a3627}
+.face .c{margin-top:auto;font-size:10px;line-height:1.35;color:#5d4634;border-top:1px solid #c9b48f;padding-top:6px;text-align:center}
+.mini.face.played{animation:flipin .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes flipin{from{transform:rotateY(90deg)}to{transform:none}}
+.slots{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:22px}
+.slot{border:1px solid var(--edge);border-radius:4px;padding:8px 9px;background:rgba(16,13,11,.55);cursor:pointer;text-align:left;color:inherit;font:inherit;display:grid;gap:3px;min-height:64px}
+.slot .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gilt)}
+.slot .v{font-family:var(--serif);font-size:13px;line-height:1.2;color:var(--bone)}
+.slot .v.empty{color:var(--dust);font-style:italic}
+.slot.cur{border-color:var(--gilt);box-shadow:0 0 0 1px var(--gilt)}
+.slot.dealerslot{cursor:default;border-style:dashed}
+.sentence{font-family:var(--serif);font-size:clamp(18px,2.4vw,24px);line-height:1.45;text-align:center;max-width:820px;margin:22px auto 0;color:var(--dust-hi);text-wrap:balance}
+.sentence b{font-weight:400;color:var(--bone)}
+.sentence i{color:var(--dust)}
+.weavebar{display:flex;justify-content:center;margin-top:16px}
+.handhead{display:flex;justify-content:space-between;align-items:baseline;margin-top:30px;border-top:1px solid var(--hair);padding-top:12px}
+.fan{display:flex;justify-content:center;gap:12px;padding:18px 4px 6px;flex-wrap:nowrap;overflow-x:auto}
+.card{flex:0 0 150px;aspect-ratio:5/7.2;border-radius:10px;border:0;padding:0;cursor:pointer;font:inherit;text-align:left;transition:transform .25s ease, box-shadow .25s ease;animation:dealin .45s cubic-bezier(.2,.8,.2,1) both}
+.card:nth-child(1){transform:rotate(-5deg) translateY(10px)}.card:nth-child(2){transform:rotate(-2.5deg) translateY(3px)}.card:nth-child(4){transform:rotate(2.5deg) translateY(3px)}.card:nth-child(5){transform:rotate(5deg) translateY(10px)}
+.card:hover{transform:translateY(-12px)!important}
+.card.taken{transform:translateY(-16px)!important;box-shadow:0 0 0 2px var(--gilt), 0 14px 30px rgba(0,0,0,.5)}
+.card .face{height:100%;border-radius:10px;padding:14px 12px}
+.card .n{font-size:17px}.card .l{font-size:13px}.card .c{font-size:11px}
+@keyframes dealin{from{opacity:0;translate:0 -24px}to{opacity:1;translate:0 0}}
+.card:nth-child(2){animation-delay:.06s}.card:nth-child(3){animation-delay:.12s}.card:nth-child(4){animation-delay:.18s}.card:nth-child(5){animation-delay:.24s}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px;align-items:center}
+.foot label{font-size:13px;color:var(--dust);display:flex;gap:8px;align-items:center}
+/* the woven page */
+.woven{display:grid;justify-items:center;gap:16px;padding-block:40px 20px;text-align:center}
+.woven h1{font-family:var(--serif);font-weight:400;font-size:clamp(24px,3.4vw,36px);line-height:1.3;margin:0;max-width:820px;text-wrap:balance;color:#efe2c2}
+.note{font-size:13px;color:#8fa0c8;max-width:560px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:6px;text-align:left}
+.steps li{font-size:14px;color:var(--dust);display:flex;gap:10px;align-items:center}
+.steps li i{width:8px;height:8px;border-radius:50%;border:1px solid var(--dust);display:inline-block}
+.steps li.now{color:var(--bone)} .steps li.now i{background:var(--gilt);border-color:var(--gilt);animation:pulse 1.2s infinite}
+.steps li.done{color:var(--dust-hi)} .steps li.done i{background:var(--copper);border-color:var(--copper)}
+.steps li.failed{color:var(--ember)} .steps li.failed i{background:var(--ember);border-color:var(--ember)}
+@keyframes pulse{50%{opacity:.4}}
+.title{font-family:var(--serif);font-size:clamp(22px,3vw,30px);letter-spacing:.14em;text-transform:uppercase;color:var(--gilt);margin:8px 0 0}
+.life{max-width:680px;text-align:left;display:grid;gap:12px;font-family:var(--serif);font-size:17px;line-height:1.65;color:#e9dfcc}
+.life p{margin:0}
+.people{max-width:680px;width:100%;display:grid;gap:8px;text-align:left}
+.person{border-left:1px solid var(--copper);padding:2px 0 2px 14px}
+.person b{font-family:var(--serif);font-weight:500;color:var(--bone)}
+.person span{display:block;font-size:14px;color:var(--dust-hi)}
+.morning{max-width:680px;text-align:left;border-left:2px solid var(--gilt);padding-left:16px;font-family:var(--serif);font-size:17px;font-weight:500;color:#f0e4c8}
+.andthen{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--gilt)}
+.problems{max-width:600px;text-align:left;color:var(--ember);font-size:13px;margin:0;padding-left:18px}
+textarea#hand{width:100%;max-width:680px;min-height:80px;background:var(--ink);color:var(--dust-hi);border:1px solid var(--edge);font-family:var(--mono);font-size:11px;padding:8px}
+@media (max-width:760px){.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.card{flex-basis:132px}.dealer{margin-top:10px}}
+@media (prefers-reduced-motion:reduce){.card,.mini.face.played,.steps li.now i{animation:none}}
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script>
+const CORE = /*DECK*/null;
+const BUSINESS = /*PACK*/null;
+const PICKED = ["role","world","other","circle","told_by","modifier"];
+const KEY = "elsible-v3";
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+let S = load() || fresh();
+function fresh(){ return {packs:[], cur:"role", offers:{}, picks:{}, dealer:null, refused:[], dials:{absurdity:40,stakes:50,cost:50,people:50,length:40}, weave:null}; }
+function load(){ try{ const s = JSON.parse(localStorage.getItem(KEY)||"null"); return s && s.picks ? s : null; }catch(e){ return null; } }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+function deck(){
+  const d = JSON.parse(JSON.stringify(CORE));
+  if(S.packs.includes("business")) for(const [slot,cards] of Object.entries(BUSINESS.cards)) (d.cards[slot] = d.cards[slot]||[]).push(...cards);
+  return d;
+}
+let D = deck();
+let SLOT = Object.fromEntries(D.slots.map(s=>[s.id,s]));
+let BY = Object.fromEntries(Object.entries(D.cards).map(([s,p])=>[s,Object.fromEntries(p.map(c=>[c.id,c]))]));
+function rebuild(){ D = deck(); SLOT = Object.fromEntries(D.slots.map(s=>[s.id,s])); BY = Object.fromEntries(Object.entries(D.cards).map(([s,p])=>[s,Object.fromEntries(p.map(c=>[c.id,c]))])); }
+
+function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function dealSlot(slot){ S.offers[slot] = shuffle(D.cards[slot].map(c=>c.id)).slice(0,5); }
+function need(slot){ return SLOT[slot].count||1; }
+function filled(slot){ const p = S.picks[slot]||[]; return SLOT[slot].optional ? true : p.length >= need(slot); }
+function lifeSet(){ return PICKED.every(filled); }
+function nextEmpty(){ return PICKED.find(s => !SLOT[s].optional && !filled(s)) || (S.picks.modifier ? null : (S.cur==="modifier"?null:"modifier")); }
+
+/* The dealer plays a complication once the life is set, leaning toward what the hand makes likely. */
+function dealerPlays(){
+  const pool = D.cards.pressure.filter(c=>!S.refused.includes(c.id));
+  if(!pool.length){ S.refused = []; return dealerPlays(); }
+  const aff = c => { let n=0; for(const [ls,ids] of Object.entries(S.picks)) for(const id of ids){ const lc = BY[ls][id]; if(((lc.pulls||{}).pressure||[]).includes(c.id)) n++; if(((c.pulls||{})[ls]||[]).includes(id)) n++; } return n; };
+  const w = pool.map(c=>1+2*aff(c)); let r = Math.random()*w.reduce((a,b)=>a+b,0);
+  for(let i=0;i<pool.length;i++){ r-=w[i]; if(r<=0) return pool[i].id; }
+  return pool[pool.length-1].id;
+}
+
+function name(slot, i=0){ const id=(S.picks[slot]||[])[i]; return id ? BY[slot][id].name : null; }
+function sentenceHTML(){
+  const b = x => `<b>${esc(x)}</b>`, it = x => `<i>${esc(x)}</i>`;
+  const role = name("role"), world = name("world"), other = name("other");
+  const circ = (S.picks.circle||[]).map(id=>BY.circle[id].name.toLowerCase());
+  const mod = name("modifier"), told = name("told_by"), press = S.dealer ? BY.pressure[S.dealer].name.toLowerCase() : null;
+  return `${role ? b(role) : it("Someone")} ${world ? "in "+b(world.toLowerCase()) : it("somewhere")}, `
+    + `${other ? "with "+b(other.toLowerCase())+" at the centre" : it("with someone at the centre")}, `
+    + `${circ.length ? b(circ.join(" and "))+" around you" : it("nobody yet around you")}`
+    + `${mod ? "; "+b(mod.toLowerCase()) : ""}; `
+    + `${press ? "and now "+b(press) : it("and then...")} — `
+    + `${told ? "told by "+b(told.toLowerCase()) : it("told by a voice not yet chosen")}.`;
+}
+function sentenceText(){ const t = document.createElement("div"); t.innerHTML = sentenceHTML(); return t.textContent; }
+
+function faceHTML(slot, c, cls=""){
+  return `<div class="face ${cls}"><span class="s">${esc(SLOT[slot].label)}</span><span class="n">${esc(c.name)}</span><span class="l">${esc(c.line)}</span><span class="c">${esc(c.changes)}</span></div>`;
+}
+
+function render(){
+  if(S.weave) return renderWoven();
+  if(!S.offers[S.cur]) { dealSlot(S.cur); save(); }
+  const dealerCard = S.dealer ? BY.pressure[S.dealer] : null;
+  const slotsHTML = [...PICKED, "pressure"].map(id=>{
+    const s = SLOT[id];
+    if(id==="pressure") return `<div class="slot dealerslot"><span class="k">${esc(s.label)}</span><span class="v ${dealerCard?"":"empty"}">${dealerCard?esc(dealerCard.name):"the dealer's card"}</span></div>`;
+    const ids = S.picks[id]||[], v = ids.map(x=>BY[id][x].name).join(" & ");
+    return `<button class="slot ${S.cur===id?"cur":""}" data-slot="${id}"><span class="k">${esc(s.label)}</span><span class="v ${v?"":"empty"}">${v?esc(v):(s.optional?"optional":"not yet")}</span></button>`;
+  }).join("");
+  const s = SLOT[S.cur], taken = S.picks[S.cur]||[];
+  const fan = S.offers[S.cur].map(id=>`<button class="card ${taken.includes(id)?"taken":""}" data-id="${esc(id)}" aria-pressed="${taken.includes(id)}" aria-label="${esc(BY[S.cur][id].name)}">${faceHTML(S.cur, BY[S.cur][id])}</button>`).join("");
+  const ask = need(S.cur)>1 ? "pick two" : (s.optional ? "pick one, or leave it" : "pick one");
+  $("#app").innerHTML = `
+    <div class="top">
+      <div class="left"><span class="mark">Els<em>ible</em></span><p class="say">${esc(s.q)} Five cards, dealt.</p>
+        <div class="btns"><button class="b" id="again">Deal them again</button><button class="b" id="newhand">New hand</button><button class="b" id="auto">Play it out for me</button></div></div>
+      <div class="dealer"><span class="label">the dealer · a complication</span>
+        ${dealerCard ? `<div class="mini face played">${faceHTML("pressure", dealerCard).replace(/^<div class="face ">|<\/div>$/g,"")}</div><button class="b" id="another">Make her play another</button>`
+                     : `<div class="mini back">She plays once your life is set</div>`}
+      </div>
+    </div>
+    <div class="slots">${slotsHTML}</div>
+    <p class="sentence">${sentenceHTML()}</p>
+    <div class="weavebar"><button class="b go" id="weave" ${lifeSet() && S.dealer ? "" : "disabled"}>Weave my life</button></div>
+    <div class="handhead"><span class="label gilt">Your hand · ${esc(s.label)}</span><span class="label">${ask} · five of ${D.cards[S.cur].length}, she holds the rest</span></div>
+    <div class="fan" id="fan">${fan}</div>
+    <div class="foot"><label><input type="checkbox" id="biz" ${S.packs.includes("business")?"checked":""}> add the business pack</label><span class="label">a working sketch · not the design</span></div>`;
+  document.querySelectorAll(".slot[data-slot]").forEach(el=>el.onclick=()=>{ S.cur = el.dataset.slot; save(); render(); });
+  document.querySelectorAll("#fan .card").forEach(el=>el.onclick=()=>take(el.dataset.id));
+  $("#again").onclick = ()=>{ dealSlot(S.cur); S.picks[S.cur] = []; afterChange(); };
+  $("#newhand").onclick = ()=>{ const packs = S.packs; S = fresh(); S.packs = packs; save(); render(); };
+  $("#auto").onclick = playItOut;
+  const an = $("#another"); if(an) an.onclick = ()=>{ S.refused.push(S.dealer); S.dealer = dealerPlays(); save(); render(); };
+  $("#weave").onclick = ()=>{ S.weave = {state:"weaving"}; save(); renderWoven(); weave(); };
+  $("#biz").onchange = e=>{ S.packs = e.target.checked ? ["business"] : []; rebuild(); S.offers = {}; for(const sl of PICKED) S.picks[sl] = (S.picks[sl]||[]).filter(id=>BY[sl][id]); if(S.dealer && !BY.pressure[S.dealer]) S.dealer = null; save(); render(); };
+}
+
+function take(id){
+  const n = need(S.cur), cur = S.picks[S.cur]||[];
+  if(cur.includes(id)) S.picks[S.cur] = cur.filter(x=>x!==id);
+  else S.picks[S.cur] = n>1 ? (cur.length<n ? [...cur,id] : [...cur.slice(1),id]) : [id];
+  if((S.picks[S.cur]||[]).length >= n){ const nx = PICKED.find(sl => sl!==S.cur && !(S.picks[sl]||[]).length && !SLOT[sl].optional); if(nx) S.cur = nx; }
+  afterChange();
+}
+function afterChange(){
+  if(lifeSet() && !S.dealer) S.dealer = dealerPlays();
+  if(!lifeSet()) { /* the dealer waits for a complete life */ }
+  save(); render();
+}
+function playItOut(){
+  for(const sl of PICKED){
+    if(!S.offers[sl]) dealSlot(sl);
+    const n = need(sl);
+    if(SLOT[sl].optional){ S.picks[sl] = Math.random()<.5 ? [S.offers[sl][0]] : []; continue; }
+    S.picks[sl] = shuffle(S.offers[sl]).slice(0,n);
+  }
+  S.dealer = null; S.refused = []; S.dealer = dealerPlays();
+  save(); render();
+}
+
+/* ---------------- the weave ---------------- */
+function handLines(){
+  const L = [];
+  for(const sl of PICKED) for(const id of (S.picks[sl]||[])){ const c = BY[sl][id]; L.push(`- ${SLOT[sl].label} (${sl}): ${c.name} - "${c.line}" - in play: ${c.changes}`); }
+  const p = BY.pressure[S.dealer]; L.push(`- AND NOW (pressure, played by the dealer): ${p.name} - "${p.line}" - in play: ${p.changes}`);
+  return L.join("\n");
+}
+function refLines(slot){ return D.cards[slot].map(c=>`- ${c.id}: ${c.name} - ${c.line}`).join("\n"); }
+
+function weavePrompt(){
+  const told = BY.told_by[(S.picks.told_by||[])[0]];
+  return `You are the weaver for Elsible, a story game. The player was dealt a random hand of cards and picked from it; the dealer then played a complication. Your job: turn these very real, possibly odd options into ONE coherent life the player is about to step into, and decide what is moving underneath it. Random combinations must make sense: braid them, don't list them.
+
+THE HAND
+${handLines()}
+
+THE DIALS (0-100, shape the writing, never mention them): absurdity ${S.dials.absurdity}, stakes ${S.dials.stakes}, cost ${S.dials.cost}, crowd ${S.dials.people}, length ${S.dials.length}
+
+THE NARRATOR'S VOICE (colour the visible prose with it): ${told.name} - ${told.line} - ${told.changes}
+
+REFERENCE FOR THE HIDDEN HALF (pick the best fit for this hand, then make it specific):
+Undercurrents:
+${refLines("undercurrent")}
+Secrets:
+${refLines("secret")}
+
+Write the life of a REAL PERSON, not a type: a first name, a past that explains why they are here, what they want, and the people around them with real history between them. The person at the centre (THE OTHER card) is described only by how they treat the player; never call them a love interest. Two circle people, named, each with history. The dealer's complication must already be pressing on this life. Hint at drama; never state a plot or a twist. All people fictional. PG-13.
+
+Reply with ONLY this JSON:
+{"title": "two to five words, evocative",
+ "you": {"name": "first name", "past": "one sentence", "want": "one sentence"},
+ "life": ["paragraph 1, second person, who you are and what your days are made of, 50-80 words", "paragraph 2, where you are, who is watching, and the complication pressing in, 50-80 words"],
+ "people": [{"name":"", "who":"which card (the Other / a circle card)", "with_you":"one sentence of history between you"}],
+ "first_morning": "one sentence that puts the player physically into the first morning, present tense",
+ "hidden": {"undercurrent_id":"an id from the list", "undercurrent":"what is moving underneath, specific to this life, 1-2 sentences", "secret_id":"an id from the list", "secret":"who is hiding what, specific, 1 sentence", "if_nobody_intervenes":"1 sentence", "signals":["three small pieces of evidence the narrator could surface in play"]}}
+The "hidden" block is never shown to the player: nothing in title, you, life, people or first_morning may reveal it.`;
+}
+
+function auditPrompt(w){
+  return `You are the auditor for Elsible. The weaver turned a random hand into a life. Check it against the hand and send it back mended if needed.
+
+THE HAND
+${handLines()}
+
+THE WEAVE
+${JSON.stringify(w)}
+
+Check: (1) every card is honoured, including both circle cards, the narrator's voice and the dealer's complication; (2) the parts the player sees (title, you, life, people, first_morning) do not reveal or hint too directly at the hidden block; (3) names and facts are consistent everywhere; (4) the person is specific, not a stock type; (5) the Other is described by how they treat the player, never as a love interest; (6) PG-13.
+
+Reply with ONLY this JSON:
+{"ok": true or false, "problems": ["short description of each problem found, empty if ok"], "mended": null if ok, otherwise the COMPLETE corrected weave in exactly the same shape}`;
+}
+
+function setStep(n, failed){ document.querySelectorAll(".steps li").forEach((li,i)=>{ li.classList.toggle("done", i<n); li.classList.toggle("now", i===n && !failed); li.classList.toggle("failed", i===n && !!failed); }); }
+
+async function weave(){
+  let sample = null;
+  try{ sample = await claude.use("sample"); }catch(e){ sample = null; }
+  if(!sample){ S.weave = {state:"plain", data: plainWeave()}; save(); renderWoven(); return; }
+  try{
+    setStep(0);
+    const w = await sample.json(weavePrompt(), {modelTier:"default", cache:false});
+    if(!w || !w.title || !w.life || !w.hidden) throw {code:"invalid_json", message:"missing fields"};
+    setStep(1);
+    let a = null;
+    try{ a = await sample.json(auditPrompt(w), {modelTier:"default", cache:false}); }catch(e){ a = null; }
+    const mended = a && a.ok === false && a.mended && a.mended.title && a.mended.life ? a.mended : null;
+    S.weave = {state:"woven", data: mended || w, audit: a ? {ok: !!a.ok, problems: a.problems||[], mended: !!mended} : {skipped:true}};
+    save(); setStep(3); renderWoven();
+  }catch(e){
+    const code = e && e.code;
+    if(code === "not_granted" || code === "sampling_disabled"){ S.weave = {state:"plain", data: plainWeave()}; }
+    else S.weave = {state:"failed", error: (e && (e.message || e.code)) || "the weaver did not answer"};
+    save(); renderWoven();
+  }
+}
+
+function plainWeave(){
+  const p = sl => (S.picks[sl]||[]).map(id=>BY[sl][id]);
+  const role=p("role")[0], world=p("world")[0], other=p("other")[0], circ=p("circle"), press=BY.pressure[S.dealer];
+  return {title: `${world.name.replace(/^The /,"")}, and then`, you:{name:"You", past: role.line+".", want:"Something this place has not given you yet."},
+    life:[`${role.name}. ${role.line}. ${role.changes.split(" · ")[0]}.`, `${world.name}: ${world.line.toLowerCase()}. ${press.name} — ${press.line.toLowerCase()}.`],
+    people:[{name: other.name, who:"the Other", with_you: other.line}, ...circ.map(c=>({name:c.name, who:"the circle", with_you:c.line}))],
+    first_morning:"The morning starts like any other.", hidden:null};
+}
+
+function renderWoven(){
+  const W = S.weave, st = W.state, data = W.data;
+  const steps = `<ol class="steps"><li><i></i>The weaver writes it</li><li><i></i>The auditor reads it, and may send it back</li><li><i></i>It is dealt out as yours</li></ol>`;
+  let body = "", kicker = "Weaving", note = "The weaver is writing your life. The auditor reads it before you step in.";
+  if(st==="failed"){ kicker = "It did not weave"; note = W.error; }
+  if(st==="plain"){ kicker = "Your life, plainly"; note = "Claude wasn't available to this page, so this is assembled from the cards alone, with no weaver and no auditor."; }
+  if(st==="woven"){
+    kicker = "Your life is woven";
+    note = W.audit && W.audit.mended ? "The auditor sent it back once and it was mended. Written, audited, and dealt out as yours." :
+           W.audit && W.audit.skipped ? "Written and dealt out as yours. The auditor could not be reached this time." :
+           "Written, audited, and dealt out as yours. The weaver wrote what is underneath; you will find it by what it does.";
+  }
+  if(data){
+    body = `<p class="title">${esc(data.title)}</p>
+      <div class="life">${(data.life||[]).map(p=>`<p>${esc(p)}</p>`).join("")}${data.you && data.you.name!=="You" ? `<p><b style="font-weight:500">${esc(data.you.name)}</b>. ${esc(data.you.past)} ${esc(data.you.want)}</p>`:""}</div>
+      <div class="people">${(data.people||[]).map(p=>`<div class="person"><b>${esc(p.name)}</b><span>${esc(p.with_you)}</span></div>`).join("")}</div>
+      <div class="morning">${esc(data.first_morning)}</div>
+      <span class="andthen">and then...</span>`;
+  }
+  $("#app").innerHTML = `<div class="woven">
+    <span class="label ember">${esc(kicker)}</span>
+    <h1>${sentenceHTML()}</h1>
+    <p class="note">${esc(note)}</p>
+    ${steps}
+    ${W.audit && W.audit.problems && W.audit.problems.length ? `<ul class="problems">${W.audit.problems.map(p=>`<li>auditor: ${esc(p)}</li>`).join("")}</ul>`:""}
+    ${body}
+    <div class="btns">
+      <button class="b" id="back">Back to the table</button>
+      ${st==="failed"||st==="woven"||st==="plain" ? `<button class="b" id="reweave">Weave it again</button>`:""}
+      ${st==="woven"||st==="plain" ? `<button class="b go" id="copy">Weave it in Claude Code</button>`:""}
+    </div>
+    <p class="note" id="copied"></p>
+    <textarea id="hand" readonly hidden aria-label="Your hand as JSON"></textarea>
+  </div>`;
+  if(st==="weaving") setStep(0); else if(st==="failed") setStep(0,true); else setStep(3);
+  $("#back").onclick = ()=>{ S.weave = null; save(); render(); };
+  const rw = $("#reweave"); if(rw) rw.onclick = ()=>{ S.weave = {state:"weaving"}; save(); renderWoven(); weave(); };
+  const c = $("#copy"); if(c) c.onclick = async ()=>{
+    const txt = JSON.stringify(handJSON(), null, 1), ta = $("#hand");
+    try{ await navigator.clipboard.writeText(txt); $("#copied").textContent = "Copied. It holds the hidden half, so don't read it: paste it straight into Claude Code with \"weave this hand\"."; }
+    catch(e){ ta.hidden = false; ta.value = txt; ta.focus(); ta.select(); $("#copied").textContent = "Selected. Copy it and paste it straight into Claude Code."; }
+  };
+}
+
+function handJSON(){
+  const cards = {}, picks = {};
+  for(const sl of [...PICKED, "pressure"]){
+    const ids = sl==="pressure" ? [S.dealer] : (S.picks[sl]||[]), multi = need(sl)>1;
+    const face = id => ({name:BY[sl][id].name, line:BY[sl][id].line, changes:BY[sl][id].changes});
+    picks[sl] = multi ? ids : (ids[0]||null);
+    cards[sl] = multi ? ids.map(face) : (ids[0] ? face(ids[0]) : null);
+  }
+  const w = S.weave && S.weave.data;
+  return {format:"seren-hand/1", deck:"story", packs:S.packs, dealt:new Date().toISOString(), source:"elsible-prototype",
+          picks, dealer:{slot:"pressure", played:S.dealer, refused:S.refused}, dials:S.dials, cards,
+          sentence: sentenceText(),
+          weave: w ? {title:w.title, you:w.you, life:w.life, people:w.people, first_morning:w.first_morning} : null,
+          hidden: w ? w.hidden : null, audit: S.weave ? S.weave.audit||null : null};
+}
+
+render();
+</script>
