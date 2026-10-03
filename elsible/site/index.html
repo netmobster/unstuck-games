@@ -137,9 +137,13 @@ section.block { padding: 72px 0; }
 .grant.gift { background: var(--ivory); box-shadow: 0 0 0 2px var(--ivory), 0 0 0 3px var(--brass), 0 10px 24px rgba(0,0,0,.45); }
 .djinn .fine { margin-top: 22px; font-style: italic; font-size: calc(17px * var(--fs)); line-height: 1.45; color: var(--ash); max-width: 42em; text-wrap: pretty; }
 
-/* the door, in four */
+/* the door, in four, beside the Elsible door itself: the logo's arch and keyhole, the full height of the section */
 .steps.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .steps.four .step { min-height: 0; }
+.doorlay { display: grid; grid-template-columns: clamp(110px, 11vw, 170px) minmax(0, 1fr); gap: clamp(32px, 4vw, 64px); align-items: stretch; }
+.doormark { position: relative; min-height: 320px; border: clamp(9px, .9vw, 14px) solid var(--ivory); border-bottom: 0; border-radius: 999px 999px 0 0; }
+.doormark::after { content: ''; position: absolute; left: 50%; translate: -50% 0; width: 17%; top: 46%; bottom: 0; background: var(--ivory); box-shadow: 0 0 46px 6px rgba(236,211,166,.26); }
+.block h2 em { font-style: italic; font-family: var(--text); font-weight: 500; color: var(--ash); }
 
 /* the reader's lines */
 .lines { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 40px; }
@@ -176,6 +180,8 @@ footer a { color: var(--ivory); }
   .djinn { grid-template-columns: 1fr; padding: 26px 20px; gap: 22px; }
   .djinn .back { width: 72px; height: 116px; }
   .grants { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .doorlay { grid-template-columns: 1fr; gap: 28px; }
+  .doormark { width: 72px; height: 120px; min-height: 0; border-width: 7px; }
   .top nav { display: none; }
   .held { width: 92px; height: 150px; }
 }
@@ -282,8 +288,11 @@ footer a { color: var(--ivory); }
   <hr class="rule">
 
   <section class="block" id="door">
+   <div class="doorlay">
+    <div class="doormark" aria-hidden="true"></div>
+    <div>
     <div class="kicker">The doorkeeper</div>
-    <h2>Between the table and the story, there’s a door.</h2>
+    <h2>Where anything <em>else...</em> is possible.</h2>
     <p class="lede">The reader only deals. Your narrator only tells. In between, the doorkeeper opens your envelope, turns her card if you sealed it in, and writes the life you’re about to live, out of sight. That’s why nothing in your envelope is secret: the secrets don’t exist until the door.</p>
     <div class="steps four">
       <div class="step" style="rotate:-1deg"><div class="shade"></div><div class="n">I</div><h3>You hand it over</h3><p>Your envelope: the cards you kept, the complication she played, and her last card if you sealed it in.</p></div>
@@ -291,6 +300,8 @@ footer a { color: var(--ivory); }
       <div class="step" style="rotate:-.6deg"><div class="shade"></div><div class="n">III</div><h3>Your life is written</h3><p>Out of sight, random cards become one real person: a name, a past, what they want, the people around them. It’s read back and checked until every piece holds, and the half you don’t get told is set underneath.</p></div>
       <div class="step" style="rotate:.8deg"><div class="shade"></div><div class="n">IV</div><h3>The door opens</h3><p>You’re shown the life you’re stepping into, and one line into your first morning. From there the story belongs to your narrator, and to what you do.</p></div>
     </div>
+    </div>
+   </div>
   </section>
 
   <hr class="rule">
