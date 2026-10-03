@@ -99,6 +99,29 @@ journalctl -u unstuck-contact -n 15 --no-pager
 echo "== messages kept: $(ls /srv/contact 2>/dev/null | wc -l)"
 '@ }
 
+$Steps['door-install'] = @{ box = 'new'; what = 'Installs and starts the playtest door (services/door.py). Needs /unstuck/door/DOOR_PASSWORD in Parameter Store first; makes the signing secret on the box once'; script = @'
+set -e
+cd /srv/unstuck
+python3 infra/unstuck-env.py door --ensure DOOR_SECRET
+grep -q '^DOOR_PASSWORD=' /etc/door.env || { echo "No DOOR_PASSWORD yet: add /unstuck/door/DOOR_PASSWORD in Parameter Store, then run this again."; exit 1; }
+cp infra/systemd/unstuck-door.service /etc/systemd/system/
+systemctl daemon-reload
+systemctl enable unstuck-door
+systemctl restart unstuck-door
+sleep 1
+echo "door: $(systemctl is-active unstuck-door)"
+curl -s -o /dev/null -w 'a visitor with no pass gets %{http_code} (401 is right)\n' -H 'Host: last-warren.unstuck-games.com' http://127.0.0.1:8771/door/check
+'@ }
+
+$Steps['nginx'] = @{ box = 'new'; what = 'Puts the repo''s nginx config in place, tests it, and reloads. Nothing is reloaded if the test fails'; script = @'
+set -e
+cp /etc/nginx/conf.d/unstuck.conf /tmp/unstuck.conf.before
+cp /srv/unstuck/infra/nginx/unstuck.conf /etc/nginx/conf.d/unstuck.conf
+if ! nginx -t; then cp /tmp/unstuck.conf.before /etc/nginx/conf.d/unstuck.conf; echo "The test failed. The old config is back in place and nothing was reloaded."; exit 1; fi
+systemctl reload nginx
+echo "nginx reloaded"
+'@ }
+
 $Steps['seren-snapshot'] = @{ box = 'old'; what = 'Stops SEREN on the old box, packs /srv/seren and /etc/seren.env, uploads them to the new bucket (a one-hour upload link). SEREN stays stopped there, so nothing is written to the old copy.'; script = @'
 set -e
 systemctl stop seren

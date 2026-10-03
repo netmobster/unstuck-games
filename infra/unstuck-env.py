@@ -3,12 +3,14 @@
 
     sudo python3 /srv/unstuck/infra/unstuck-env.py seren
     sudo python3 /srv/unstuck/infra/unstuck-env.py seren --rotate SEREN_COOKIE_SECRET SEREN_SESSION_SECRET
+    sudo python3 /srv/unstuck/infra/unstuck-env.py door --ensure DOOR_SECRET
 
 Each parameter under /unstuck/<service>/ becomes NAME="value" in /etc/<service>.env. It
 replaces a line with the same name and leaves every other line alone, so a file carried
 over from the old box keeps its settings. A name given to --rotate gets a fresh random
 value made here, which means that secret only ever exists on the box (a rotated cookie
-secret signs everyone out once, which is the point).
+secret signs everyone out once, which is the point). A name given to --ensure is made the same
+way, but only when the file doesn't have it yet, so running the step again signs nobody out.
 
 The file is root-only. systemd reads it before it drops to ec2-user. The output lists the
 names written and where each came from, never the values.
@@ -46,6 +48,7 @@ def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("service")
     ap.add_argument("--rotate", nargs="*", default=[], metavar="NAME")
+    ap.add_argument("--ensure", nargs="*", default=[], metavar="NAME")
     args = ap.parse_args()
 
     path = f"/etc/{args.service}.env"
@@ -53,6 +56,10 @@ def main() -> int:
     values = {k: ("parameter store", v) for k, v in from_store(args.service).items()}
     for k in args.rotate:
         values[k] = ("made here", secrets.token_hex(32))
+    have = {m.group(1) for m in map(NAME.match, lines) if m}
+    for k in args.ensure:
+        if k not in have and k not in values:
+            values[k] = ("made here", secrets.token_hex(32))
 
     kept, seen = [], set()
     for line in lines:
