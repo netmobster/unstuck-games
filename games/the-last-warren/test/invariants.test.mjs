@@ -77,21 +77,40 @@ test('every hunter kind is known', () => {
   for (let s = 1; s < 40; s++) { const g = runGame(s, {}, R['hybrid-3-1.8']); for (const h of g.hunters) assert.ok(HUNTER_KINDS[h.kind]); }
 });
 
-import { newLine, lineCfg, heirlooms, recordGeneration } from '../src/lineage.js';
+import { newLine, lineCfg, heirlooms, recordGeneration, heirSlots } from '../src/lineage.js';
 import { TUNED } from '../src/tuned.js';
 test('lineage: one heirloom passes, the family is remembered, a night-1 death ends the line', () => {
   let line = newLine(7);
   let g; for (let s = 5; s < 60; s++) { g = runGame(s, { ...TUNED, ...lineCfg(line) }, R['hybrid-3-1.8']); if (g.result.nights >= 1) break; }
   assert.ok(g.result.nights >= 1, 'seed 5 should see a dawn');
   const opts = heirlooms(g);
-  assert.ok(opts.length >= 1 && opts.length <= 3);
-  line = recordGeneration(line, g, 'a sentence', opts[0]);
+  assert.ok(opts.length >= 1); const slots = Math.min(3, g.result.nights); assert.ok(slots >= 1 && slots <= 3);
+  line = recordGeneration(line, g, 'a sentence', [opts[0]]);
   assert.equal(line.gen, 2); assert.equal(line.chronicle.length, 1); assert.ok(line.heir);
   const c = lineCfg(line);
   assert.ok(c.heir && c.lineage && c.lineage.C + c.lineage.S + c.lineage.D + c.lineage.N > 0);
   const g2 = newGame(6, { ...TUNED, ...c });
-  if (c.heir.attune) assert.equal(g2.troop.spec[c.heir.attune], 1);
+  for (const h of c.heir) if (h.attune) assert.equal(g2.troop.spec[h.attune], 1);
   // a generation that never sees a dawn ends the line
   const dead = runGame(6, { ...TUNED, ...c }, R['always-stay']);
   if (dead.result.nights === 0) { const ended = recordGeneration(line, dead, 'x', null); assert.equal(ended.ended, true); }
+});
+
+test('warrens remember you: going back keeps most of your growth speed', () => {
+  const g = newGame(13, { hunterStart: 0, reinforceEvery: 999 });
+  const home = g.troop.warren;
+  for (let k = 0; k < 15; k++) step(g, { type: 'stay' });
+  assert.equal(g.settled[home], 15);
+  const other = g.warrens.find(w => w.id !== home);
+  step(g, { type: 'move', to: other.id });
+  assert.equal(g.settled[home], 12, 'leaving costs 3');
+});
+
+test('heirlooms: one slot per night survived, up to three', () => {
+  let line = newLine(9), g;
+  for (let s = 1; s < 200; s++) { g = runGame(s, { ...TUNED }, R['hybrid-3-1.8']); if (g.result.nights >= 3) break; }
+  assert.equal(heirSlots(g), Math.min(3, g.result.nights));
+  const opts = heirlooms(g);
+  line = recordGeneration(line, g, 's', opts.slice(0, 5));
+  assert.ok(line.heir.length <= heirSlots(g));
 });

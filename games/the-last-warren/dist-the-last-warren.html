@@ -119,6 +119,9 @@ dialog h2{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:
 .wcard .wk{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;text-transform:uppercase;margin:4px 0 6px}
 .wcard .wl{font-size:13px;line-height:1.4;padding-block:3px;border-bottom:1px solid var(--line)}
 .wcard .gift{color:var(--moss)} .wcard .cost{color:var(--blood)}
+
+.heirs button[aria-pressed="true"]{background:var(--moss);color:var(--bg)} .heirs button[aria-pressed="true"] b{color:var(--bg)}
+.heirs .passon{border-color:var(--gold);color:var(--gold);font-family:var(--display);font-weight:800;font-stretch:75%;font-size:16px;text-transform:uppercase;text-align:center}
 </style>
 </head>
 <body>
@@ -633,6 +636,7 @@ const DEFAULTS = {
   holdNoise: 0.7,          // holding still outside a warren: quieter than walking
   cost: { decoy: 4, scout: 3, dig: 8, rearguard: 5 },
   decoyLife: 10, decoyNoise: 1.4, scoutLife: 10,
+  leaveCost: 3,            // settled ticks a warren forgets when you leave it
   heir: null,              // { attune: 'C'|'S'|'D' } or { boon: id }
   lineage: null,           // { C, S, D } ticks the line has spent in each kind, all generations
   familyK: 2,              // prior weight on the kinds the family favours
@@ -696,10 +700,13 @@ function newGame(seed, cfgIn = {}, mapOpts = {}) {
   }
   const home = g.warrens[Math.floor(rnd(seed, 'home') * g.warrens.length)];
   g.decoys = []; g.rearguards = []; g.nextEntId = 0; g.reserve = 0;
+  g.settled = {};          // warren id -> ticks you've lived there this run. Warrens remember you.
   g.troop = { x: home.x, y: home.y, size: cfg.startTroop, warren: home.id, destCell: null, path: null, pi: 0, mp: 0, besieged: false, stayRun: 0, watch: 0, scoutUntil: -1,
               dest: null, spec: { C: 0, S: 0, D: 0 }, seenBy: 0, since: 0 };
-  if (cfg.heir?.attune) g.troop.spec[cfg.heir.attune] = 1;
-  if (cfg.heir?.boon) { g.warrenAt = g.warrenAt || {}; applyBoon(g, cfg.heir.boon); g.stats.boons.push(cfg.heir.boon + ' (inherited)'); }
+  for (const h of [].concat(cfg.heir || [])) {
+    if (h.attune) g.troop.spec[h.attune] = 1;
+    if (h.boon) { applyBoon(g, h.boon); g.stats.boons.push(h.boon + ' (inherited)'); }
+  }
   beginNight(g);
   return g;
 }
@@ -846,7 +853,8 @@ function step(g, action = { type: 'stay' }) {
   if (t.warren != null) {
     const v = g.warrens[t.warren];
     t.stayRun = (t.stayRun || 0) + 1;
-    const accel = c.accelAt ? c.accelAt.filter(a => t.stayRun > a).length : 0;
+    const settled = g.settled[v.id] = (g.settled[v.id] || 0) + 1;
+    const accel = c.accelAt ? c.accelAt.filter(a => settled > a).length : 0;
     if (!(t.besieged && c.siegeHaltsGrowth)) t.size += c.growth + accel + (v.kind === 'N' ? c.nurseryGrowth : 0) + (g.boons.brood && g.T % 3 === 0 ? 1 : 0);
     for (const k of ['C', 'S', 'D']) t.spec[k] = k === v.kind ? Math.min(1, t.spec[k] + c.attune) : t.spec[k] * c.carryDecay;
     g.history.warrenTicks[v.id] = (g.history.warrenTicks[v.id] || 0) + 1;
@@ -907,6 +915,7 @@ function startGo(g, cell) {
     const bank = Math.min(g.cfg.watchCap, g.cfg.watchReact * t.watch);
     for (const h of g.hunters) if (Math.abs(h.x - t.x) + Math.abs(h.y - t.y) <= g.cfg.musterDist + 2) h.mp += bank;
   }
+  if (from) g.settled[from.id] = Math.max(0, (g.settled[from.id] || 0) - g.cfg.leaveCost); // leaving costs a little
   t.warren = null; t.dest = to; t.destCell = cell; t.stayRun = 0; t.watch = 0; t.besieged = false;
   t.mp = from && from.kind === 'D' ? -g.cfg.defenseDepart : 0;
   g.stats.moves++; g.stats.nights[g.night - 1].moves++;
@@ -1259,7 +1268,7 @@ function cloneGame(g, seedSalt = 0) {
     respawnQueue: [...g.respawnQueue],
     belief: new Float64Array(g.belief), tracks: new Float64Array(g.tracks),
     boons: { ...g.boons }, history: { warrenTicks: { ...g.history.warrenTicks } },
-    warrens: g.warrens.map(w => ({ ...w })), warrenAt: { ...g.warrenAt },
+    warrens: g.warrens.map(w => ({ ...w })), warrenAt: { ...g.warrenAt }, settled: { ...g.settled },
     stats: { ...g.stats, nights: g.stats.nights.map(n => ({ ...n })), kindTicks: { ...g.stats.kindTicks }, boons: [...g.stats.boons], spends: { ...g.stats.spends } },
     decoys: g.decoys.map(d => ({ ...d })), rearguards: g.rearguards.map(r => ({ ...r })),
     tiles: g.tiles,
@@ -1518,13 +1527,17 @@ function lineCfg(line) {
   return { heir: line.heir, lineage: fam };
 }
 
-/** Up to three heirlooms the fallen generation can pass on. */
+/** How many heirlooms this generation may pass on: one per night survived, up to three. */
+const heirSlots = g => Math.min(3, g.result?.nights ?? 0);
+
+/** What the fallen generation could pass on. The player keeps heirSlots(g) of them. */
 function heirlooms(g) {
   const out = [];
-  const k = g.stats.kindTicks, top = ['C', 'S', 'D'].sort((a, b) => k[b] - k[a])[0];
-  if (k[top] > 0) out.push({ attune: top, label: `${KIND_WORD[top]}-born`, text: `Start attuned to ${KIND_WORD[top]}: the +30% without having to live in one first.` });
-  const held = g.stats.boons.filter(b => !b.endsWith('(inherited)'));
-  for (const id of [...new Set(held)].reverse().slice(0, 2)) {
+  const k = g.stats.kindTicks;
+  for (const kk of ['C', 'S', 'D'].filter(x => k[x] > 0).sort((a, b) => k[b] - k[a]))
+    out.push({ attune: kk, label: `${KIND_WORD[kk]}-born`, text: `Start attuned to ${KIND_WORD[kk]}: the +30% without having to live in one first.` });
+  const held = g.stats.boons.map(b => b.replace(' (inherited)', ''));
+  for (const id of [...new Set(held)].reverse()) {
     const b = BOONS.find(x => x.id === id); if (!b) continue;
     const [name, ...rest] = b.text.split('. ');
     out.push({ boon: id, label: `${name}, inherited`, text: `Start the first night with it. ${rest.join('. ')}` });
@@ -1538,13 +1551,15 @@ function recordGeneration(line, g, sentence, pick) {
   const nights = g.result?.nights ?? 0;
   const next = structuredClone(line);
   for (const kk of ['C', 'S', 'D', 'N']) next.kinds[kk] = (next.kinds[kk] || 0) + (g.stats.kindTicks[kk] || 0);
-  next.chronicle.push({ gen: line.gen, name: `${line.name} ${roman(line.gen)}`, seed: g.seed, nights, sentence, inherited: line.heir ? describe(line.heir) : null, passed: pick && !pick.none ? describe(pick) : null });
+  const picks = [].concat(pick || []).filter(p => p && !p.none).slice(0, heirSlots(g));
+  next.chronicle.push({ gen: line.gen, name: `${line.name} ${roman(line.gen)}`, seed: g.seed, nights, sentence, inherited: line.heir ? describe(line.heir) : null, passed: picks.length ? describe(picks) : null });
   if (nights === 0) { next.ended = true; next.endedAt = line.gen; return next; }
   next.gen = line.gen + 1;
-  next.heir = pick && !pick.none ? (pick.attune ? { attune: pick.attune } : { boon: pick.boon }) : null;
+  next.heir = picks.length ? picks.map(p => p.attune ? { attune: p.attune } : { boon: p.boon }) : null;
   return next;
 }
 function describe(h) {
+  if (Array.isArray(h)) return h.map(describe).join(', ');
   if (h.attune) return `${KIND_WORD[h.attune]}-born`;
   if (h.boon) { const b = BOONS.find(x => x.id === h.boon); return b ? b.text.split('. ')[0] : h.boon; }
   return '';
@@ -1712,8 +1727,10 @@ function panel() {
   $('sdef').textContent = troopStrength(g, 'defend').toFixed(0);
   $('reserve').textContent = g.reserve ? `${g.reserve} asleep · spends draw from here first` : 'none yet · grows at dawn';
   $('noise').textContent = troopNoise(g).toFixed(1);
-  const accel = g.cfg.accelAt ? g.cfg.accelAt.filter(a => (t.stayRun || 0) >= a).length : 0;
-  $('growth').textContent = t.warren == null ? 'not while moving' : t.besieged ? 'halted (siege)' : `+${g.cfg.growth + accel} a tick` + (g.cfg.accelAt && accel < g.cfg.accelAt.length ? ` · +${g.cfg.growth + accel + 1} in ${g.cfg.accelAt[accel] - (t.stayRun || 0)}` : '');
+  const settled = t.warren != null ? (g.settled[t.warren] || 0) : 0;
+  const accel = g.cfg.accelAt ? g.cfg.accelAt.filter(a => settled >= a).length : 0;
+  const nurs = t.warren != null && g.warrens[t.warren].kind === 'N' ? g.cfg.nurseryGrowth : 0;
+  $('growth').textContent = t.warren == null ? 'not while moving' : t.besieged ? 'halted (siege)' : `+${g.cfg.growth + accel + nurs} a tick` + (g.cfg.accelAt && accel < g.cfg.accelAt.length ? ` · +${g.cfg.growth + accel + nurs + 1} in ${g.cfg.accelAt[accel] - settled}` : '') + (settled ? ` · settled ${settled}` : '');
   $('watched').textContent = t.watch ? `${t.watch} tick${t.watch === 1 ? '' : 's'}: they'll react faster` : '—';
   $('watched').style.color = t.watch ? C.blood : '';
   $('status').textContent = g.over ? 'gone' : t.besieged ? 'SIEGE · not growing' : located(g) ? 'located' : t.warren == null ? 'running' : 'hidden';
@@ -1812,14 +1829,22 @@ function heirPick() {
     $('newline').addEventListener('click', () => { line = newLine(Date.now() % 100000 + 1); saveLine(line); $('ending').close(); const s = g.seed + 1; $('seed').value = s; start(s); });
     return;
   }
-  const opts = heirlooms(g);
+  const opts = heirlooms(g), slots = heirSlots(g), chosen = new Set();
   box.innerHTML = `<div class="lbl">WHO GOT AWAY · WHAT DO THEY CARRY TO ${line.name.toUpperCase()} ${roman(line.gen + 1)}?</div>` +
-    opts.map((o, i) => `<button type="button" data-h="${i}"><b>${o.label}</b>${o.text}</button>`).join('') +
-    `<p class="dim small">One heirloom only, and it replaces the last. The hunters will remember which warrens your family favours.</p>`;
+    `<p class="dim small">${g.result.nights} night${g.result.nights === 1 ? '' : 's'} survived: choose up to ${slots} heirloom${slots === 1 ? '' : 's'}. They replace whatever this generation inherited. The hunters will remember which warrens your family favours.</p>` +
+    opts.map((o, i) => `<button type="button" data-h="${i}" aria-pressed="false"><b>${o.label}</b>${o.text}</button>`).join('') +
+    `<button type="button" id="passon" class="passon">Pass on nothing</button>`;
+  const pass = $('passon');
   box.querySelectorAll('button[data-h]').forEach(b => b.addEventListener('click', () => {
-    line = recordGeneration(line, g, sentence, opts[+b.dataset.h]); saveLine(line); chronicle();
-    $('ending').close(); const s = g.seed + 1; $('seed').value = s; start(s);
+    const i = +b.dataset.h;
+    if (chosen.has(i)) chosen.delete(i); else if (chosen.size < slots) chosen.add(i); else return;
+    b.setAttribute('aria-pressed', String(chosen.has(i)));
+    pass.textContent = chosen.size ? `Pass on ${chosen.size} of ${slots}` : 'Pass on nothing';
   }));
+  pass.addEventListener('click', () => {
+    line = recordGeneration(line, g, sentence, [...chosen].map(i => opts[i])); saveLine(line); chronicle();
+    $('ending').close(); const s = g.seed + 1; $('seed').value = s; start(s);
+  });
 }
 function chronicle() {
   const c = $('chronicle'); if (!c) return;

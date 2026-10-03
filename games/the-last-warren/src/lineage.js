@@ -24,13 +24,17 @@ export function lineCfg(line) {
   return { heir: line.heir, lineage: fam };
 }
 
-/** Up to three heirlooms the fallen generation can pass on. */
+/** How many heirlooms this generation may pass on: one per night survived, up to three. */
+export const heirSlots = g => Math.min(3, g.result?.nights ?? 0);
+
+/** What the fallen generation could pass on. The player keeps heirSlots(g) of them. */
 export function heirlooms(g) {
   const out = [];
-  const k = g.stats.kindTicks, top = ['C', 'S', 'D'].sort((a, b) => k[b] - k[a])[0];
-  if (k[top] > 0) out.push({ attune: top, label: `${KIND_WORD[top]}-born`, text: `Start attuned to ${KIND_WORD[top]}: the +30% without having to live in one first.` });
-  const held = g.stats.boons.filter(b => !b.endsWith('(inherited)'));
-  for (const id of [...new Set(held)].reverse().slice(0, 2)) {
+  const k = g.stats.kindTicks;
+  for (const kk of ['C', 'S', 'D'].filter(x => k[x] > 0).sort((a, b) => k[b] - k[a]))
+    out.push({ attune: kk, label: `${KIND_WORD[kk]}-born`, text: `Start attuned to ${KIND_WORD[kk]}: the +30% without having to live in one first.` });
+  const held = g.stats.boons.map(b => b.replace(' (inherited)', ''));
+  for (const id of [...new Set(held)].reverse()) {
     const b = BOONS.find(x => x.id === id); if (!b) continue;
     const [name, ...rest] = b.text.split('. ');
     out.push({ boon: id, label: `${name}, inherited`, text: `Start the first night with it. ${rest.join('. ')}` });
@@ -44,13 +48,15 @@ export function recordGeneration(line, g, sentence, pick) {
   const nights = g.result?.nights ?? 0;
   const next = structuredClone(line);
   for (const kk of ['C', 'S', 'D', 'N']) next.kinds[kk] = (next.kinds[kk] || 0) + (g.stats.kindTicks[kk] || 0);
-  next.chronicle.push({ gen: line.gen, name: `${line.name} ${roman(line.gen)}`, seed: g.seed, nights, sentence, inherited: line.heir ? describe(line.heir) : null, passed: pick && !pick.none ? describe(pick) : null });
+  const picks = [].concat(pick || []).filter(p => p && !p.none).slice(0, heirSlots(g));
+  next.chronicle.push({ gen: line.gen, name: `${line.name} ${roman(line.gen)}`, seed: g.seed, nights, sentence, inherited: line.heir ? describe(line.heir) : null, passed: picks.length ? describe(picks) : null });
   if (nights === 0) { next.ended = true; next.endedAt = line.gen; return next; }
   next.gen = line.gen + 1;
-  next.heir = pick && !pick.none ? (pick.attune ? { attune: pick.attune } : { boon: pick.boon }) : null;
+  next.heir = picks.length ? picks.map(p => p.attune ? { attune: p.attune } : { boon: p.boon }) : null;
   return next;
 }
 export function describe(h) {
+  if (Array.isArray(h)) return h.map(describe).join(', ');
   if (h.attune) return `${KIND_WORD[h.attune]}-born`;
   if (h.boon) { const b = BOONS.find(x => x.id === h.boon); return b ? b.text.split('. ')[0] : h.boon; }
   return '';

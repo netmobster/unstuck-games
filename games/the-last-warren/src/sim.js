@@ -53,6 +53,7 @@ export const DEFAULTS = {
   holdNoise: 0.7,          // holding still outside a warren: quieter than walking
   cost: { decoy: 4, scout: 3, dig: 8, rearguard: 5 },
   decoyLife: 10, decoyNoise: 1.4, scoutLife: 10,
+  leaveCost: 3,            // settled ticks a warren forgets when you leave it
   heir: null,              // { attune: 'C'|'S'|'D' } or { boon: id }
   lineage: null,           // { C, S, D } ticks the line has spent in each kind, all generations
   familyK: 2,              // prior weight on the kinds the family favours
@@ -116,10 +117,13 @@ export function newGame(seed, cfgIn = {}, mapOpts = {}) {
   }
   const home = g.warrens[Math.floor(rnd(seed, 'home') * g.warrens.length)];
   g.decoys = []; g.rearguards = []; g.nextEntId = 0; g.reserve = 0;
+  g.settled = {};          // warren id -> ticks you've lived there this run. Warrens remember you.
   g.troop = { x: home.x, y: home.y, size: cfg.startTroop, warren: home.id, destCell: null, path: null, pi: 0, mp: 0, besieged: false, stayRun: 0, watch: 0, scoutUntil: -1,
               dest: null, spec: { C: 0, S: 0, D: 0 }, seenBy: 0, since: 0 };
-  if (cfg.heir?.attune) g.troop.spec[cfg.heir.attune] = 1;
-  if (cfg.heir?.boon) { g.warrenAt = g.warrenAt || {}; applyBoon(g, cfg.heir.boon); g.stats.boons.push(cfg.heir.boon + ' (inherited)'); }
+  for (const h of [].concat(cfg.heir || [])) {
+    if (h.attune) g.troop.spec[h.attune] = 1;
+    if (h.boon) { applyBoon(g, h.boon); g.stats.boons.push(h.boon + ' (inherited)'); }
+  }
   beginNight(g);
   return g;
 }
@@ -266,7 +270,8 @@ export function step(g, action = { type: 'stay' }) {
   if (t.warren != null) {
     const v = g.warrens[t.warren];
     t.stayRun = (t.stayRun || 0) + 1;
-    const accel = c.accelAt ? c.accelAt.filter(a => t.stayRun > a).length : 0;
+    const settled = g.settled[v.id] = (g.settled[v.id] || 0) + 1;
+    const accel = c.accelAt ? c.accelAt.filter(a => settled > a).length : 0;
     if (!(t.besieged && c.siegeHaltsGrowth)) t.size += c.growth + accel + (v.kind === 'N' ? c.nurseryGrowth : 0) + (g.boons.brood && g.T % 3 === 0 ? 1 : 0);
     for (const k of ['C', 'S', 'D']) t.spec[k] = k === v.kind ? Math.min(1, t.spec[k] + c.attune) : t.spec[k] * c.carryDecay;
     g.history.warrenTicks[v.id] = (g.history.warrenTicks[v.id] || 0) + 1;
@@ -327,6 +332,7 @@ function startGo(g, cell) {
     const bank = Math.min(g.cfg.watchCap, g.cfg.watchReact * t.watch);
     for (const h of g.hunters) if (Math.abs(h.x - t.x) + Math.abs(h.y - t.y) <= g.cfg.musterDist + 2) h.mp += bank;
   }
+  if (from) g.settled[from.id] = Math.max(0, (g.settled[from.id] || 0) - g.cfg.leaveCost); // leaving costs a little
   t.warren = null; t.dest = to; t.destCell = cell; t.stayRun = 0; t.watch = 0; t.besieged = false;
   t.mp = from && from.kind === 'D' ? -g.cfg.defenseDepart : 0;
   g.stats.moves++; g.stats.nights[g.night - 1].moves++;
@@ -680,7 +686,7 @@ export function cloneGame(g, seedSalt = 0) {
     respawnQueue: [...g.respawnQueue],
     belief: new Float64Array(g.belief), tracks: new Float64Array(g.tracks),
     boons: { ...g.boons }, history: { warrenTicks: { ...g.history.warrenTicks } },
-    warrens: g.warrens.map(w => ({ ...w })), warrenAt: { ...g.warrenAt },
+    warrens: g.warrens.map(w => ({ ...w })), warrenAt: { ...g.warrenAt }, settled: { ...g.settled },
     stats: { ...g.stats, nights: g.stats.nights.map(n => ({ ...n })), kindTicks: { ...g.stats.kindTicks }, boons: [...g.stats.boons], spends: { ...g.stats.spends } },
     decoys: g.decoys.map(d => ({ ...d })), rearguards: g.rearguards.map(r => ({ ...r })),
     tiles: g.tiles,

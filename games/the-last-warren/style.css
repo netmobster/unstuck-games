@@ -111,3 +111,6 @@ dialog h2{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:
 .wcard .wk{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;text-transform:uppercase;margin:4px 0 6px}
 .wcard .wl{font-size:13px;line-height:1.4;padding-block:3px;border-bottom:1px solid var(--line)}
 .wcard .gift{color:var(--moss)} .wcard .cost{color:var(--blood)}
+
+.heirs button[aria-pressed="true"]{background:var(--moss);color:var(--bg)} .heirs button[aria-pressed="true"] b{color:var(--bg)}
+.heirs .passon{border-color:var(--gold);color:var(--gold);font-family:var(--display);font-weight:800;font-stretch:75%;font-size:16px;text-transform:uppercase;text-align:center}

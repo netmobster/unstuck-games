@@ -3,7 +3,7 @@ import { newGame, step, view, takeBoon, troopNoise, troopStrength, located, HUNT
 import { roster, bestDestination, pickBoon } from './src/policies.js';
 import { KIND_NAME, dijkstra } from './src/map.js';
 import { TUNED } from './src/tuned.js';
-import { newLine, lineCfg, heirlooms, recordGeneration, describe, roman } from './src/lineage.js';
+import { newLine, lineCfg, heirlooms, recordGeneration, describe, roman, heirSlots } from './src/lineage.js';
 
 const $ = id => document.getElementById(id);
 const cv = $('board'), ctx = cv.getContext('2d');
@@ -164,8 +164,10 @@ function panel() {
   $('sdef').textContent = troopStrength(g, 'defend').toFixed(0);
   $('reserve').textContent = g.reserve ? `${g.reserve} asleep · spends draw from here first` : 'none yet · grows at dawn';
   $('noise').textContent = troopNoise(g).toFixed(1);
-  const accel = g.cfg.accelAt ? g.cfg.accelAt.filter(a => (t.stayRun || 0) >= a).length : 0;
-  $('growth').textContent = t.warren == null ? 'not while moving' : t.besieged ? 'halted (siege)' : `+${g.cfg.growth + accel} a tick` + (g.cfg.accelAt && accel < g.cfg.accelAt.length ? ` · +${g.cfg.growth + accel + 1} in ${g.cfg.accelAt[accel] - (t.stayRun || 0)}` : '');
+  const settled = t.warren != null ? (g.settled[t.warren] || 0) : 0;
+  const accel = g.cfg.accelAt ? g.cfg.accelAt.filter(a => settled >= a).length : 0;
+  const nurs = t.warren != null && g.warrens[t.warren].kind === 'N' ? g.cfg.nurseryGrowth : 0;
+  $('growth').textContent = t.warren == null ? 'not while moving' : t.besieged ? 'halted (siege)' : `+${g.cfg.growth + accel + nurs} a tick` + (g.cfg.accelAt && accel < g.cfg.accelAt.length ? ` · +${g.cfg.growth + accel + nurs + 1} in ${g.cfg.accelAt[accel] - settled}` : '') + (settled ? ` · settled ${settled}` : '');
   $('watched').textContent = t.watch ? `${t.watch} tick${t.watch === 1 ? '' : 's'}: they'll react faster` : '—';
   $('watched').style.color = t.watch ? C.blood : '';
   $('status').textContent = g.over ? 'gone' : t.besieged ? 'SIEGE · not growing' : located(g) ? 'located' : t.warren == null ? 'running' : 'hidden';
@@ -264,14 +266,22 @@ function heirPick() {
     $('newline').addEventListener('click', () => { line = newLine(Date.now() % 100000 + 1); saveLine(line); $('ending').close(); const s = g.seed + 1; $('seed').value = s; start(s); });
     return;
   }
-  const opts = heirlooms(g);
+  const opts = heirlooms(g), slots = heirSlots(g), chosen = new Set();
   box.innerHTML = `<div class="lbl">WHO GOT AWAY · WHAT DO THEY CARRY TO ${line.name.toUpperCase()} ${roman(line.gen + 1)}?</div>` +
-    opts.map((o, i) => `<button type="button" data-h="${i}"><b>${o.label}</b>${o.text}</button>`).join('') +
-    `<p class="dim small">One heirloom only, and it replaces the last. The hunters will remember which warrens your family favours.</p>`;
+    `<p class="dim small">${g.result.nights} night${g.result.nights === 1 ? '' : 's'} survived: choose up to ${slots} heirloom${slots === 1 ? '' : 's'}. They replace whatever this generation inherited. The hunters will remember which warrens your family favours.</p>` +
+    opts.map((o, i) => `<button type="button" data-h="${i}" aria-pressed="false"><b>${o.label}</b>${o.text}</button>`).join('') +
+    `<button type="button" id="passon" class="passon">Pass on nothing</button>`;
+  const pass = $('passon');
   box.querySelectorAll('button[data-h]').forEach(b => b.addEventListener('click', () => {
-    line = recordGeneration(line, g, sentence, opts[+b.dataset.h]); saveLine(line); chronicle();
-    $('ending').close(); const s = g.seed + 1; $('seed').value = s; start(s);
+    const i = +b.dataset.h;
+    if (chosen.has(i)) chosen.delete(i); else if (chosen.size < slots) chosen.add(i); else return;
+    b.setAttribute('aria-pressed', String(chosen.has(i)));
+    pass.textContent = chosen.size ? `Pass on ${chosen.size} of ${slots}` : 'Pass on nothing';
   }));
+  pass.addEventListener('click', () => {
+    line = recordGeneration(line, g, sentence, [...chosen].map(i => opts[i])); saveLine(line); chronicle();
+    $('ending').close(); const s = g.seed + 1; $('seed').value = s; start(s);
+  });
 }
 function chronicle() {
   const c = $('chronicle'); if (!c) return;
