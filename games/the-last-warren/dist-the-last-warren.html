@@ -1567,12 +1567,21 @@ function archive(l) { if (!l || !l.chronicle.length) return; try { const a = arc
 let line = loadLine();
 if (!line || line.ended) { line = newLine(Date.now() % 100000 + 1); saveLine(line); }
 const watching = () => !!$('watch').value;
+const RKEY = 'lw.run.v1';
+let picks = [];
+function saveRun() {
+  if (watching() || !g || g.over) return;
+  try { localStorage.setItem(RKEY, JSON.stringify({ v: 1, seed: g.seed, rules: $('cfgsel').value, founded: line.founded, gen: line.gen, actions: actions.map(x => x.a), picks })); } catch {}
+}
+function clearRun() { try { localStorage.removeItem(RKEY); } catch {} }
+function loadRun() { try { const r = JSON.parse(localStorage.getItem(RKEY)); return r && r.v === 1 ? r : null; } catch { return null; } }
 
 function cfgNow() { return { ...($('cfgsel').value === 'tuned' ? TUNED : {}), ...(watching() ? {} : lineCfg(line)) }; }
 function start(seed) {
   clearInterval(timer); timer = null;
   cfg = cfgNow();
-  g = newGame(seed, cfg); actions = [];
+  g = newGame(seed, cfg); actions = []; picks = [];
+  if (!watching()) clearRun();
   $('log').innerHTML = '';
   if (!watching()) say(`${line.name} ${roman(line.gen)}${line.heir ? ', ' + describe(line.heir) : ''}.`, 'gold');
   say(`Night 1. ${g.map.hand.frame}. ${g.hunters.length} hunters at the edges.`, 'gold');
@@ -1741,7 +1750,8 @@ function act(a) {
   narrate(evs);
   if (g.night !== night && !g.over) dawnDialog(night);
   draw(); panel();
-  if (g.over) endDialog();
+  saveRun();
+  if (g.over) { clearRun(); endDialog(); }
   else if (inTransit(g.troop) && !timer && !$('watch').value) { timer = setInterval(() => { if (!inTransit(g.troop) || g.over || g.pendingDraft) { clearInterval(timer); timer = null; return; } const k = g._spendNext; g._spendNext = null; act(k ? { type: k } : { type: 'stay' }); }, 220); }
 }
 function dawnDialog(n) {
@@ -1753,7 +1763,7 @@ function dawnDialog(n) {
   $('boons').innerHTML = offer.map(id => { const b = BOONS.find(x => x.id === id); const [name, ...rest] = b.text.split('. '); return `<button type="button" data-b="${id}"><b>${name}</b>${rest.join('. ')}</button>`; }).join('');
   $('draft').showModal();
 }
-$('boons').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; takeBoon(g, b.dataset.b); say(`Took ${b.dataset.b}.`, 'gold'); $('draft').close(); draw(); panel(); });
+$('boons').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; takeBoon(g, b.dataset.b); picks.push(b.dataset.b); saveRun(); say(`Took ${b.dataset.b}.`, 'gold'); $('draft').close(); draw(); panel(); });
 
 function endDialog() {
   clearInterval(timer); timer = null;
@@ -1888,7 +1898,26 @@ $('cfgsel').addEventListener('change', () => start(+$('seed').value || 1));
 $('again').addEventListener('click', () => { $('ending').close(); start(g.seed); });
 $('next').addEventListener('click', () => { $('ending').close(); $('seed').value = g.seed + 1; start(g.seed + 1); });
 window.addEventListener('resize', () => { layout(); draw(); });
-start(1);
+function resume() {
+  const r = loadRun();
+  if (!r || r.founded !== line.founded || r.gen !== line.gen || !r.actions.length) return false;
+  $('cfgsel').value = r.rules; $('seed').value = r.seed;
+  start(r.seed);
+  let pi = 0;
+  for (const a of r.actions) {
+    if (g.pendingDraft) { const id = r.picks[pi++]; if (!id) break; takeBoon(g, id); picks.push(id); }
+    actions.push({ T: g.T + 1, a });
+    step(g, a);
+    if (g.over) break;
+  }
+  if (g.over) { clearRun(); return false; }
+  $('log').innerHTML = '';
+  say(`Resumed ${line.name} ${roman(line.gen)}: night ${g.night}, tick ${g.tick}, ${g.troop.size} strong.`, 'gold');
+  layout(); draw(); panel(); saveRun();
+  if (g.pendingDraft) dawnDialog(g.night - 1);
+  return true;
+}
+if (!resume()) start(1);
 
 // ---------------------------------------------------------------- tabs, and the ending can't be dismissed without a choice
 document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => {
