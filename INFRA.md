@@ -7,6 +7,27 @@ Jay's desktop; none of that is true any more.
 EC2 instance that holds a checkout of this repo. Deploying is `git pull` on the box. The
 files needed to rebuild the box from nothing are in [`infra/`](infra/).
 
+> **Moving, 3 Oct 2026.** The games are moving one at a time to a new box in a new AWS
+> account, after the laptop compromise. Until the move finishes, the sections below
+> describe the **old** box.
+>
+> | | New | Old |
+> |---|---|---|
+> | Account | `968053968391`, sign-in `https://968053968391.signin.aws.amazon.com/console`, IAM user `jay` | `970376923067` |
+> | Box | `i-071b14e3c340dca70`, t4g.small, Amazon Linux 2023 arm64 | `i-0da082b463daa7314` |
+> | Elastic IP | `18.225.22.191` | `3.23.50.161` |
+> | Role | `unstuck-web`: SSM, Nova on Bedrock, SES send, `/unstuck/*` in Parameter Store, its bucket | `unstuck-web` |
+> | Firewall | `sg-01399df85b8ad952a`: 80 and 443 only | the same |
+> | Bucket | `unstuck-box-968053968391`: private, versioned. Snapshots carried between boxes go in `transfer/` | none |
+> | Database | Aurora Postgres 17 `unstuck-db`, serverless v2. It pauses to zero when idle, is private, and only the box can reach it | none |
+> | Budget | "Unstuck monthly", $25 | |
+>
+> - **Build:** [`infra/bootstrap.sh`](infra/bootstrap.sh) is the box's EC2 user data.
+> - **Steps on the box:** [`infra/box.ps1`](infra/box.ps1) runs one named step over SSM. It
+>   dry-runs by default and needs `-Live` to send, and a person runs it.
+> - **Secrets:** [`infra/unstuck-env.py`](infra/unstuck-env.py) writes `/etc/<service>.env` on
+>   the box from Parameter Store, and makes cookie secrets there.
+
 ## Addresses
 
 | Address | What | Served as |
@@ -17,10 +38,11 @@ files needed to rebuild the box from nothing are in [`infra/`](infra/).
 | `ferretbowling.unstuck-games.com` | Ferret Bowling page; the game at `/play/` | files from `ferret-bowling/` |
 | `elsewhere.unstuck-games.com` | Elsewhere page; the world at `/play` behind a password | files from `elsewhere/`, plus the Elsewhere service |
 | `deadline.unstuck-games.com` | Deadline Dungeon (game #4): holding page, design docs | files from `deadline-dungeon/` |
+| `last-warren.unstuck-games.com` | The Last Warren (game #5): page; the game at `/play/` | files from `the-last-warren/`; `/play/` is a single-file build of `games/the-last-warren/` |
 | `seren.unstuck-games.com` | SEREN, the AI-DM table, behind a password | the SEREN service; content from `/srv/seren`, never the repo |
 
 **Old links still work.** `unstuck-games.com/orbis/…`, `/bad-monkeys/…`, `/ferret-bowling/…`
-and `/elsewhere/…` permanently redirect to the same path on the game's own address.
+`/elsewhere/…` and `/the-last-warren/…` permanently redirect to the same path on the game's own address.
 
 **Shared files.** `switcher.js` (the studio picker), `kit-waitlist.js` and `favicon.svg`
 live at the repo root and nginx serves them on every game address.
@@ -31,10 +53,10 @@ live at the repo root and nginx serves them on every game address.
 |---|---|
 | Instance | EC2 t4g.small `i-0da082b463daa7314`, **us-east-2** (Ohio) |
 | Public IP | Elastic IP `3.23.50.161` |
-| DNS | IONOS: **one A record per name** (apex, `www`, `orbis`, `badmonkeys`, `ferretbowling`, `elsewhere`, `deadline`), all to the Elastic IP. **There is no wildcard**, so a new game needs its own record before its certificate. |
+| DNS | IONOS: **one A record per name** (apex, `www`, `orbis`, `badmonkeys`, `ferretbowling`, `elsewhere`, `deadline`, `seren`, `last-warren`), all to the Elastic IP. **There is no wildcard**, so a new game needs its own record before its certificate. |
 | Firewall | Security group allows 80 and 443 only. **No SSH** — every remote command goes through SSM `send-command`. |
 | Identity | Instance role `unstuck-web`: SSM, `bedrock:InvokeModel`, `ses:SendEmail`. No keys on disk. |
-| TLS | One Let's Encrypt certificate for all eight names, `certbot certonly --webroot -w /srv/unstuck`. Renews on its own timer; every host serves `/.well-known/acme-challenge/` from the same folder so renewal keeps working. |
+| TLS | One Let's Encrypt certificate for all nine names, `certbot certonly --webroot -w /srv/unstuck`. Renews on its own timer; every host serves `/.well-known/acme-challenge/` from the same folder so renewal keeps working. |
 
 ## Services
 
@@ -64,6 +86,9 @@ aws ssm send-command --region us-east-2 --instance-ids i-0da082b463daa7314 \
 - **Games with a build step** (Ferret Bowling): build locally first
   (`bun run build` in `games/lucy-proto`, output goes to `ferret-bowling/play/`) and commit
   the output.
+- **The Last Warren:** `node scripts/bundle.mjs ../../the-last-warren/play/index.html --full`
+  in `games/the-last-warren`, then commit `the-last-warren/play/index.html`. One file, no
+  build tools, everything inlined.
 - **Elsewhere server code** (`elsewhere/web/*.py`, including the password page): also
   `systemctl restart elsewhere`.
 - **SEREN server code** (`seren/web/*`): also `systemctl restart seren`. Its content
@@ -84,7 +109,7 @@ aws ssm send-command --region us-east-2 --instance-ids i-0da082b463daa7314 \
    `/etc/systemd/system/`. Create `/etc/elsewhere.env` from the example with real values.
    Create `/srv/cache` and `/srv/contact`, owned by `ec2-user`.
 5. Issue the certificate:
-   `certbot certonly --webroot -w /srv/unstuck --cert-name unstuck-games.com -d unstuck-games.com -d www.unstuck-games.com -d orbis.unstuck-games.com -d badmonkeys.unstuck-games.com -d ferretbowling.unstuck-games.com -d elsewhere.unstuck-games.com -d deadline.unstuck-games.com -d seren.unstuck-games.com`
+   `certbot certonly --webroot -w /srv/unstuck --cert-name unstuck-games.com -d unstuck-games.com -d www.unstuck-games.com -d orbis.unstuck-games.com -d badmonkeys.unstuck-games.com -d ferretbowling.unstuck-games.com -d elsewhere.unstuck-games.com -d deadline.unstuck-games.com -d seren.unstuck-games.com -d last-warren.unstuck-games.com`
    (nginx must be running for this, so start it with the TLS server blocks commented out,
    then restore them.)
 6. `systemctl enable --now elsewhere unstuck-contact unstuck-feed.timer`, then

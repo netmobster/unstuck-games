@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1280">
+<title>The Last Warren — the line of Sorrel</title>
+<meta name="description" content="A tower defense game where you are the thing trying not to be found. Here is what happened to one family. You can make another.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Reenie+Beanie&family=Nanum+Pen+Script&family=La+Belle+Aurore&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alegreya:ital,wght@0,400..800;1,400..800&family=Alegreya+SC:wght@400;500;700&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="desk">
+  <div class="lamp"></div>
+
+  <header class="wrap hdr">
+    <a class="brand" href="#top">The Last Warren</a>
+    <nav>
+      <a href="#diary">The diary</a><a href="#decided">What we decided</a><a href="#how">How it works</a><a href="#money">$5</a><a href="#letter">One email</a>
+      <a class="studio" href="https://unstuck-games.com/">Unstuck · Game #5</a>
+    </nav>
+    <span class="tag">In playtest</span>
+  </header>
+
+  <!-- ① THE STORY · the book. Sheets are right-hand pages; front = odd page, back = the next even page. -->
+  <section id="diary">
+    <div class="book" id="top" data-labels='["Night 1 · dusk","Seen","The decoy","Dawn","The fall","Sorrel II · III"]'>
+      <div class="vignette"></div>
+
+      <!-- inside cover -->
+      <div class="page left">
+        <div class="hand" style="font-size:58px;line-height:1;margin-top:70px">the line of Sorrel</div>
+        <div class="hand" style="font-size:28px;line-height:1.2;color:var(--graphite);margin-top:10px">kept by whoever is left.</div>
+        <p class="footnote" style="font-size:15px;margin-top:150px;max-width:23em">One of us writes. When that one is gone, the next one writes. The night writes one sentence of its own, at the end, and we copy it in.</p>
+        <div style="position:absolute;left:54px;right:36px;bottom:22px;display:flex;justify-content:space-between;gap:12px;font:500 10px var(--sc);letter-spacing:.12em;color:var(--graphite)"><span>a tower defense game where you are the thing trying not to be found</span><span style="white-space:nowrap">an Unstuck game · in playtest</span></div>
+      </div>
+
+      <!-- last page (under all the sheets) -->
+      <div class="page right">
+        <p class="closing">If none of us sees a dawn, this book closes.</p>
+        <div class="closing-hand">That was the last warren.</div>
+        <p class="invite">Here is what happened to one family. You can make another.</p>
+        <div class="btns">
+          <a class="btn" href="play/?watch&amp;seed=1">Watch a night →</a>
+          <a class="btn ghost" href="#letter">Leave your name</a>
+        </div>
+        <div class="footnote" style="margin-top:14px">The bot plays seed 1. You can take over at any tick.</div>
+        <span class="no">11</span>
+      </div>
+
+      <!-- sheet 0 · pages 1 / 2 -->
+      <div class="sheet">
+        <div class="face front page right">
+          <div class="marg"><span>night 1</span><svg class="tally" width="34" height="16" viewBox="0 0 40 18" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" fill="none"><path d="M5 2v14M12 2v14M19 2v14M26 2v14"/></svg><span>→ 19</span><span>nursery<br>shallow</span><span>2 sweepers</span><span class="decision">decision: STAY</span></div>
+          <div style="display:flex;align-items:baseline;gap:14px"><span class="title">Sorrel I</span><span class="small-hand" style="font-size:20px">night 1 · dusk</span></div>
+          <div class="entry big">We were four at dusk.<br>There are nineteen of us now.<br><br>They found the coast before we did.</div>
+          <span class="no">1</span>
+        </div>
+        <div class="face back page left">
+          <div class="marg"><span>tick 31</span><span>watched<br>3 ticks</span><span>ring<br>forming</span><span class="red">no growth</span></div>
+          <div class="entry">We stayed because the ring was still far off. By the time it reached the eastern trees, there were eleven more of us.</div>
+          <div class="entry">Tick 31. Seen. They have stopped three blocks out and are waiting for enough of them. We have stopped growing.</div>
+          <div class="entry"><span class="struck">They can’t hear us through the lake.</span> They can.</div>
+          <span class="no">2</span>
+        </div>
+      </div>
+
+      <!-- sheet 1 · pages 3 / 4 -->
+      <div class="sheet">
+        <div class="face front page right">
+          <div class="marg" style="top:110px"><span>sweepers ×2</span><span>tracker ×1<br>on our prints</span><span>listener<br>coming</span></div>
+          <div class="small-hand">where they stand</div>
+          <div class="map" style="transform:rotate(-1.2deg)"><lw-board scene="located" cell="12.57" still="true"></lw-board><div class="tape l"></div><div class="tape r"></div></div>
+          <div class="caption">the ring. three blocks. they wait for enough of them.</div>
+          <span class="no">3</span>
+        </div>
+        <div class="face back page left">
+          <div class="marg" style="top:120px"><span>tick 33</span><span class="red">decoy −4</span><span>19 → 15</span><span>run<br>13 ticks</span><span class="decision">RUN</span></div>
+          <div class="entry">Tick 33. We sent four of us east, loud, the way we told them to be. They turned.</div>
+          <div class="entry">We ran the other way, into the open, for the deep warren in the south. Thirteen ticks. In the open everything hears us.</div>
+          <span class="no">4</span>
+        </div>
+      </div>
+
+      <!-- sheet 2 · pages 5 / 6 -->
+      <div class="sheet">
+        <div class="face front page right">
+          <div class="small-hand">the decoy</div>
+          <div class="map" style="transform:rotate(.8deg)"><lw-board scene="decoy" cell="12.57" still="true"></lw-board><div class="tape l"></div><div class="tape r"></div></div>
+          <div class="caption">four of us went east so the rest could go south.</div>
+          <p class="footnote">A decoy is loud and runs the other way. It is taken, or goes to ground.</p>
+          <span class="no">5</span>
+        </div>
+        <div class="face back page left">
+          <div class="marg" style="top:120px"><span>dawn</span><span>23 → 9</span><span>boon<br><span style="color:var(--ink)">HUSH</span></span><span>night 2<br>trackers</span></div>
+          <div class="entry">Dawn. They turned for the edges. We counted: twenty-three.</div>
+          <div class="entry">Two in five of us go on. The rest are the reason there is a next page.</div>
+          <div class="entry">We chose hush. Tomorrow there are more of them, and a new kind, and they start where we hid tonight.</div>
+          <span class="no">6</span>
+        </div>
+      </div>
+
+      <!-- sheet 3 · pages 7 / 8 -->
+      <div class="sheet">
+        <div class="face front page right">
+          <div style="display:flex;align-items:baseline;gap:14px"><span class="title" style="font-size:40px">Night 2</span><span class="small-hand" style="font-size:18px">nine of us at dusk</span></div>
+          <div class="entry" style="font-size:26px;max-width:350px;margin-top:18px">The trackers have come. They follow where we were. We are quieter now.</div>
+          <div class="map small" style="transform:rotate(1.4deg)"><lw-board scene="scout" cell="9" still="true"></lw-board><div class="tape l" style="width:54px;height:18px"></div></div>
+          <div class="caption" style="font-size:23px;margin-top:18px;max-width:350px">From the Scout warren we can see what they believe: a gold smear over the nursery, where we are not.</div>
+          <span class="no">7</span>
+        </div>
+        <div class="face back page left">
+          <div class="small-hand" style="font-size:20px;line-height:1.3">Night 3. Nine ticks before dawn.</div>
+          <p class="sentence">Found where you stayed, a shallow Combat warren, 41 strong, by two sweepers and a tracker.</p>
+          <div class="alone">We should have run.</div>
+          <div class="smudge"></div>
+          <span class="no">8</span>
+        </div>
+      </div>
+
+      <!-- sheet 4 · pages 9 / 10 -->
+      <div class="sheet">
+        <div class="face front page right">
+          <div class="small-hand hand2" style="font-size:24px;color:var(--ink2)">where she stayed</div>
+          <div class="map" style="transform:rotate(-.6deg)"><lw-board scene="fell" cell="12.57" still="true"></lw-board><div class="tape l"></div><div class="tape r"></div></div>
+          <div class="caption hand2" style="font-size:23px;margin-top:22px">— Sorrel II. We are four. She left us Teeth.</div>
+          <p class="footnote">One heirloom carries for each dawn she saw. Teeth: +30% strength, for life. Never more than one thing per dawn, so no line grows mighty; it grows old.</p>
+          <span class="no">9</span>
+        </div>
+        <div class="face back page left">
+          <div class="marg hand2" style="top:110px;font-family:var(--h2);color:var(--ink2);font-size:14px;gap:14px"><span>night 2</span><span>20</span><span class="red">caught</span><span class="hand3" style="margin-top:70px;font-size:13px">night 1<br>19<br>hush</span></div>
+          <div class="entry h2">Night 2. Sixteen ticks before dawn.</div>
+          <p class="sentence" style="max-width:320px;margin-top:10px">Caught in the open, 20 strong, by two trackers.</p>
+          <div class="entry h2" style="font-size:21px;margin-top:12px">We ran at the wrong time too. There is no twin for running.</div>
+          <div class="entry h3" style="margin-top:48px">Sorrel III. Born with Hush. Nineteen of us. We are writing this at the nursery mouth, where they always look first.</div>
+          <span class="no">10</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="turn">
+      <button type="button" class="prev">‹</button>
+      <div class="dots"></div>
+      <button type="button" class="next">›</button>
+    </div>
+    <div class="hint">Turn the page, or wait: it turns itself.</div>
+  </section>
+
+  <!-- ② THE DECISIONS -->
+  <section id="decided" class="wrap sec">
+    <div class="sec-head"><span class="h">What we decided</span><span class="k">decision · reason · consequence</span></div>
+    <div class="torn3">
+      <div class="torn a">
+        <div class="side">stay</div>
+        <div class="verb">Stay</div>
+        <div class="line">We had four. The Nursery would give us another every tick. The sweepers were still three blocks away.</div>
+        <div class="line so">So we stayed.</div>
+        <p class="rule"><b>Rule</b> · +1 a tick in a warren. Twice the troop is one and a half times the sound. Once they have you they stop three blocks out and wait for enough of them; under siege you don’t grow.</p>
+      </div>
+      <div class="torn b">
+        <div class="side">run</div>
+        <div class="verb">Run</div>
+        <div class="line">They had watched the eastern mouth for nine ticks. We could have grown stronger. We chose the road anyway.</div>
+        <div class="line red">They were waiting for us.</div>
+        <p class="rule"><b>Rule</b> · in the open you are seen, heard and tracked, and caught if a hunter lands on your square. A little faster than everything but hounds. Forest hides and slows; lakes they can’t cross. Hover the map: it shows the race before you commit.</p>
+      </div>
+      <div class="torn c">
+        <div class="side">attack</div>
+        <div class="verb">Attack</div>
+        <div class="line">The hound was close enough. We had nineteen.</div>
+        <div class="line">We killed it.</div>
+        <div class="line red">Then the others knew exactly where we were.</div>
+        <p class="rule"><b>Rule</b> · a sally on one hunter within two blocks, ×1.2 from ambush. Win and the group dies and you lose some of yours; lose and that is the night. Either way, everything now knows your cell.</p>
+      </div>
+    </div>
+
+    <div class="foldrow">
+      <div class="foldout">
+        <div class="creases"></div>
+        <div class="head"><span class="h">the drowned coast · the race</span><span class="k">fold-out · seed 1</span></div>
+        <div class="board"><lw-board scene="hidden" cell="24"></lw-board></div>
+        <p>Hover a square: our ticks against theirs, in our colour if we win the race, theirs if we don’t. Click to run there. The hunters move when we move.</p>
+      </div>
+      <div class="slips">
+        <div class="slip a"><div class="head"><span class="verb">Decoy</span><span class="cost">−4</span></div><div class="line">Four of us went east, loud. They turned. We went south.</div><p>Loud; runs the other way; taken, or goes to ground.</p></div>
+        <div class="slip b"><div class="head"><span class="verb">Rearguard</span><span class="cost">−5</span></div><div class="line">Five of us stayed at the road and met the sweeper. They held one tick. One tick was what we needed.</div><p>Stays behind; fights what comes; buys ticks.</p></div>
+        <div class="slip c"><div class="head"><span class="verb">Scout</span><span class="cost">−3</span></div><div class="line">Three of us went up to look. Now we can see what they believe: gold, over the nursery, where we are not.</div><p>Shows their belief map, the way a Scout warren does.</p></div>
+        <div class="slip d"><div class="head"><span class="verb">Dig</span><span class="cost">−8</span></div><div class="line">Eight of us dug. A new mouth, four blocks from anything they know. Tomorrow they will not start here.</div><p>A new warren where you stand; or dig the one you’re in deeper.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ③ HOW IT WORKS -->
+  <section id="how" class="wrap sec">
+    <div class="sec-head"><span class="h">How it works</span><span class="k">we break character here, a little</span></div>
+    <div class="spread">
+      <div class="gutter"></div>
+      <div class="pg l">
+        <div class="kicker">The rules</div>
+        <div class="tick">Every tick: <b>+1 person</b> · <b>+1 hunter step</b></div>
+        <div class="aside">if we’re in a warren and not under siege. a night is fifty-four ticks.</div>
+        <div class="kicker">The verbs</div>
+        <div class="verbs">
+          <b>Stay</b><span>grow stronger, become easier to find</span>
+          <b>Run</b><span>escape, but exposed in transit</span>
+          <b>Attack</b><span>remove a hunter, reveal yourself</span>
+          <b>Scout</b><span>learn where they believe you are <span class="cost">−3</span></span>
+          <span class="dim"><b>and spend</b></span><span class="dim">decoy <span class="cost">−4</span> · rearguard <span class="cost">−5</span> · dig <span class="cost">−8</span></span>
+        </div>
+        <div class="kicker">The hunters · one more kind each night</div>
+        <div class="hunters">
+          <svg viewBox="0 0 16 16"><path d="M4 2.5h8a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H4a1.5 1.5 0 0 1-1.5-1.5V4A1.5 1.5 0 0 1 4 2.5z"/></svg><span>Sweepers</span><span class="arrow">→</span>
+          <svg viewBox="0 0 16 16"><path d="M8 2L14.5 13.5H1.5Z"/></svg><span>Trackers</span><span class="arrow">→</span>
+          <svg viewBox="0 0 16 16"><path d="M8 2a6 6 0 1 0 0.01 0zm0 2.7a3.3 3.3 0 1 1-0.01 0z" fill-rule="evenodd"/></svg><span>Listeners</span><span class="arrow">→</span>
+          <svg viewBox="0 0 16 16"><path d="M8 1.2L14.8 8 8 14.8 1.2 8Z"/></svg><span>Hounds</span>
+        </div>
+        <p class="body dim">They cut the ground into strips; they follow where you were; they hear through the trees; they catch runners. Two at dusk on night one, one more each night, another every twelve ticks. They share one belief about where you are and search it together. At dawn they turn for the edges.</p>
+        <div class="kicker">The working</div>
+        <p class="body working">Every roll is hashed by seed, tick and who. Change one decision and only what follows from it changes, so every “found where you stayed” has a twin: the same night, leaving one tick earlier. Thirty cores play about 1,300 nights a second, and the rules aren’t done until at least a quarter of those deaths were one tick late. Any seed replays. The bot plays any policy you name.</p>
+        <div class="note">measured, not guessed.</div>
+        <span class="no">12</span>
+      </div>
+      <div class="pg r">
+        <div class="kicker">Dawn</div>
+        <p class="body">Keep two in five, never fewer than four. Draft one of three boons: <i>brood · hush · teeth · walls · legs · dig deeper · dig · scatter</i>. They start the next night where you hid.</p>
+        <div class="kicker">The line</div>
+        <p class="body">When a generation falls, one heirloom carries for each dawn it saw, three at most: a kind it was born to, or a boon it held. The hunters remember the family: their first guess is where your mothers hid. A generation that never sees a dawn ends the line.</p>
+        <div class="three">A night takes a few minutes.<br>A line can survive across generations.<br>Every night is seeded and replayable.</div>
+        <div class="kicker">The chronicle so far</div>
+        <div class="chron">
+          <div class="row"><span class="who">Sorrel I</span><span>2 nights · Found where you stayed, 41 strong. <span class="dim">Passed on Teeth.</span></span></div>
+          <div class="row"><span class="who">Sorrel II</span><span>1 night · Caught in the open, 20 strong. <span class="dim">Passed on Hush.</span></span></div>
+          <div class="row"><span class="who">Sorrel III</span><span>out there now · 19 strong, in a shallow Nursery warren.</span></div>
+        </div>
+        <span class="no">13</span>
+      </div>
+    </div>
+
+    <div class="money" id="money">
+      <div class="card five">
+        <div class="head"><span class="price">$5</span><span class="per">a month · every Unstuck game</span><span class="free">free is the whole game</span></div>
+        <p>No ads anywhere. No power. <b>God Mode</b> here lets you replay the night from the twin’s tick, the one where leaving would have seen dawn. Same seed, same dice, your hands this time. One ad a day turns it on for an hour; after that, another hour, no ad, as often as you like until tomorrow.</p>
+        <div class="lists"><div><b>You get</b><br>No ads, anywhere<br>God Mode always on<br>Every Unstuck game</div><div><b>Never</b><br>Energy or lives<br>A second ad<br>Pay to continue</div></div>
+      </div>
+      <div class="card letter" id="letter">
+        <div class="letter-h">One letter when the warren opens.</div>
+        <p class="letter-p">And the odd note on the next Unstuck game. Nothing from them.</p>
+        <form id="kit-form"><input type="email" name="email" required placeholder="your@letter.box" aria-label="Email"><button class="btn" type="submit">Leave your name</button></form>
+        <div class="kit" id="kit-note">Kit sends a confirm link first. Unsubscribe anytime.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="wrap foot">
+    <p><span class="label">The graveyard</span><br>Tombstone: Tokyo Jungle (2012). You can’t stay, because staying runs out. You can’t leave cheaply, because leaving is where you die. Where you settle decides what the next generation is. Markers: Agar.io · Rodent’s Revenge · Hitman GO · Invisible, Inc. · Anomaly: Warzone Earth.</p>
+    <p class="right"><span class="name">The Last Warren</span><br>an Unstuck game · the fifth · in playtest<br><a href="https://unstuck-games.com/">Don’t bullshit the player</a> · not a company yet</p>
+  </footer>
+</div>
+
+<script src="board.js"></script>
+<script src="book.js"></script>
+<script src="kit.js"></script>
+<script src="/switcher.js" defer></script>
+</body>
+</html>
