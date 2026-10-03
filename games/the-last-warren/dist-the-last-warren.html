@@ -167,6 +167,7 @@ dialog h2{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:
         <div class="big"><b id="size">4</b> <span id="where" class="dim">in a warren</span></div>
         <div class="rows">
           <div class="row"><span>Strength (defending)</span><b id="sdef">—</b></div>
+          <div class="row"><span>Reserve</span><b id="reserve">—</b></div>
           <div class="row"><span>Noise</span><b id="noise">—</b></div>
           <div class="row"><span>Growing</span><b id="growth">—</b></div>
           <div class="row"><span>Watched</span><b id="watched">—</b></div>
@@ -299,6 +300,7 @@ dialog h2{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:
 <ul>
   <li><b>This warren:</b> kind, gift (moss), cost (blood), and what the depth does to your noise. It's hidden when you're not in one.</li>
   <li><b>What your size buys:</b> a sentence such as <i>"Holding here you'd beat 2 sweepers (64%), not 3 (31%)"</i>. The Attack button carries its own odds.</li>
+  <li><b>The reserve:</b> at dawn, the ones who don't wake with you go to ground and sleep in the burrows. The reserve grows night after night, and spends draw on it first. It's the family, made visible.</li>
   <li><b>Four spend buttons:</b> Decoy −4, Rearguard −5, Scout −3, Dig here −8. They're greyed out when you can't afford one or the moment is wrong. These want icons, and they're the most new-to-the-player thing on the screen.</li>
 </ul>
 
@@ -693,7 +695,7 @@ function newGame(seed, cfgIn = {}, mapOpts = {}) {
     g.conceal[i] = cfg.transitNoise * tn; g.concealU[i] = cfg.transitNoise * Math.max(1, tn);
   }
   const home = g.warrens[Math.floor(rnd(seed, 'home') * g.warrens.length)];
-  g.decoys = []; g.rearguards = []; g.nextEntId = 0;
+  g.decoys = []; g.rearguards = []; g.nextEntId = 0; g.reserve = 0;
   g.troop = { x: home.x, y: home.y, size: cfg.startTroop, warren: home.id, destCell: null, path: null, pi: 0, mp: 0, besieged: false, stayRun: 0, watch: 0, scoutUntil: -1,
               dest: null, spec: { C: 0, S: 0, D: 0 }, seenBy: 0, since: 0 };
   if (cfg.heir?.attune) g.troop.spec[cfg.heir.attune] = 1;
@@ -1193,7 +1195,12 @@ function dawn(g) {
   if (t.warren == null) goToGround(g); // they get under before the light
   g.events.push({ t: 'dawn', night: g.night, size: t.size });
   if (g.night >= c.maxNights) { g.over = true; g.result = { nights: g.night, death: null }; g.events.push({ t: 'end', cause: 'survived' }); return; }
-  t.size = c.remnant > 0 ? Math.max(c.startTroop, Math.round(t.size * c.remnant)) : c.startTroop;
+  // the ones who don't wake with you aren't lost: they go to ground, and the family reserve grows
+  const woke = c.remnant > 0 ? Math.max(c.startTroop, Math.round(t.size * c.remnant)) : c.startTroop;
+  const slept = Math.max(0, t.size - woke);
+  g.reserve += slept; g.stats.reservePeak = Math.max(g.stats.reservePeak || 0, g.reserve);
+  g.events.push({ t: 'to-ground', woke, slept, reserve: g.reserve });
+  t.size = woke;
   g.pendingDraft = c.draft ? draftOffer(g) : null;
   g.night++;
   beginNight(g);
@@ -1265,7 +1272,7 @@ function cloneGame(g, seedSalt = 0) {
 // v5: spending people. Size stops being a counter and becomes options.
 function canSpend(g, kind) {
   const t = g.troop, c = g.cfg, cost = c.cost[kind];
-  if (g.over || cost == null || t.size - cost < 2) return false;
+  if (g.over || cost == null || g.reserve + t.size - cost < 2) return false;
   if (kind === 'scout') return !inTransit(t) && t.scoutUntil < g.T;
   if (kind === 'dig') {
     if (!holding(t)) return false;
@@ -1280,7 +1287,9 @@ function canSpend(g, kind) {
 function spend(g, kind) {
   if (!canSpend(g, kind)) return;
   const t = g.troop, c = g.cfg, cost = c.cost[kind];
-  t.size -= cost; g.stats.spends[kind]++;
+  // the reserve pays first; the troop pays the rest
+  const fromReserve = Math.min(g.reserve, cost);
+  g.reserve -= fromReserve; t.size -= cost - fromReserve; g.stats.spends[kind]++;
   if (kind === 'decoy') {
     // run loud for the warren the hunters will take longest to reach, away from you
     let best = null, bs = -Infinity;
@@ -1701,6 +1710,7 @@ function panel() {
   $('buys').textContent = holding(t) || inTransit(t) ? 'No walls out here: anything that reaches you fights you.' : sb.beat ? `Holding here you’d beat ${sb.beat} sweeper${sb.beat === 1 ? '' : 's'} (${pc(sb.pBeat)}), not ${sb.beat + 1} (${pc(sb.pNext)}).` : `You wouldn’t beat even one sweeper (${pc(sb.pNext)}).`;
   for (const k of ['decoy', 'rearguard', 'scout', 'dig']) $('sp-' + k).disabled = g.over || !canSpend(g, k);
   $('sdef').textContent = troopStrength(g, 'defend').toFixed(0);
+  $('reserve').textContent = g.reserve ? `${g.reserve} asleep · spends draw from here first` : 'none yet · grows at dawn';
   $('noise').textContent = troopNoise(g).toFixed(1);
   const accel = g.cfg.accelAt ? g.cfg.accelAt.filter(a => (t.stayRun || 0) >= a).length : 0;
   $('growth').textContent = t.warren == null ? 'not while moving' : t.besieged ? 'halted (siege)' : `+${g.cfg.growth + accel} a tick` + (g.cfg.accelAt && accel < g.cfg.accelAt.length ? ` · +${g.cfg.growth + accel + 1} in ${g.cfg.accelAt[accel] - (t.stayRun || 0)}` : '');
@@ -1756,7 +1766,7 @@ function act(a) {
 }
 function dawnDialog(n) {
   $('dn').textContent = n;
-  $('remnantline').textContent = g.cfg.remnant > 0 ? `${g.troop.size} of you go into night ${g.night}. Hunters remember where you hid.` : '';
+  $('remnantline').textContent = `${g.troop.size} of you wake for night ${g.night}. The rest go to ground: ${g.reserve} sleeping in the burrows, ready to be spent. The hunters remember where you hid.`;
   const offer = g.pendingDraft;
   if (!offer) return;
   if ($('watch').value) { takeBoon(g, pickBoon(offer)); return; }

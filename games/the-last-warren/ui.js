@@ -162,6 +162,7 @@ function panel() {
   $('buys').textContent = holding(t) || inTransit(t) ? 'No walls out here: anything that reaches you fights you.' : sb.beat ? `Holding here you’d beat ${sb.beat} sweeper${sb.beat === 1 ? '' : 's'} (${pc(sb.pBeat)}), not ${sb.beat + 1} (${pc(sb.pNext)}).` : `You wouldn’t beat even one sweeper (${pc(sb.pNext)}).`;
   for (const k of ['decoy', 'rearguard', 'scout', 'dig']) $('sp-' + k).disabled = g.over || !canSpend(g, k);
   $('sdef').textContent = troopStrength(g, 'defend').toFixed(0);
+  $('reserve').textContent = g.reserve ? `${g.reserve} asleep · spends draw from here first` : 'none yet · grows at dawn';
   $('noise').textContent = troopNoise(g).toFixed(1);
   const accel = g.cfg.accelAt ? g.cfg.accelAt.filter(a => (t.stayRun || 0) >= a).length : 0;
   $('growth').textContent = t.warren == null ? 'not while moving' : t.besieged ? 'halted (siege)' : `+${g.cfg.growth + accel} a tick` + (g.cfg.accelAt && accel < g.cfg.accelAt.length ? ` · +${g.cfg.growth + accel + 1} in ${g.cfg.accelAt[accel] - (t.stayRun || 0)}` : '');
@@ -217,7 +218,7 @@ function act(a) {
 }
 function dawnDialog(n) {
   $('dn').textContent = n;
-  $('remnantline').textContent = g.cfg.remnant > 0 ? `${g.troop.size} of you go into night ${g.night}. Hunters remember where you hid.` : '';
+  $('remnantline').textContent = `${g.troop.size} of you wake for night ${g.night}. The rest go to ground: ${g.reserve} sleeping in the burrows, ready to be spent. The hunters remember where you hid.`;
   const offer = g.pendingDraft;
   if (!offer) return;
   if ($('watch').value) { takeBoon(g, pickBoon(offer)); return; }

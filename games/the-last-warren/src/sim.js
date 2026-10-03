@@ -115,7 +115,7 @@ export function newGame(seed, cfgIn = {}, mapOpts = {}) {
     g.conceal[i] = cfg.transitNoise * tn; g.concealU[i] = cfg.transitNoise * Math.max(1, tn);
   }
   const home = g.warrens[Math.floor(rnd(seed, 'home') * g.warrens.length)];
-  g.decoys = []; g.rearguards = []; g.nextEntId = 0;
+  g.decoys = []; g.rearguards = []; g.nextEntId = 0; g.reserve = 0;
   g.troop = { x: home.x, y: home.y, size: cfg.startTroop, warren: home.id, destCell: null, path: null, pi: 0, mp: 0, besieged: false, stayRun: 0, watch: 0, scoutUntil: -1,
               dest: null, spec: { C: 0, S: 0, D: 0 }, seenBy: 0, since: 0 };
   if (cfg.heir?.attune) g.troop.spec[cfg.heir.attune] = 1;
@@ -615,7 +615,12 @@ function dawn(g) {
   if (t.warren == null) goToGround(g); // they get under before the light
   g.events.push({ t: 'dawn', night: g.night, size: t.size });
   if (g.night >= c.maxNights) { g.over = true; g.result = { nights: g.night, death: null }; g.events.push({ t: 'end', cause: 'survived' }); return; }
-  t.size = c.remnant > 0 ? Math.max(c.startTroop, Math.round(t.size * c.remnant)) : c.startTroop;
+  // the ones who don't wake with you aren't lost: they go to ground, and the family reserve grows
+  const woke = c.remnant > 0 ? Math.max(c.startTroop, Math.round(t.size * c.remnant)) : c.startTroop;
+  const slept = Math.max(0, t.size - woke);
+  g.reserve += slept; g.stats.reservePeak = Math.max(g.stats.reservePeak || 0, g.reserve);
+  g.events.push({ t: 'to-ground', woke, slept, reserve: g.reserve });
+  t.size = woke;
   g.pendingDraft = c.draft ? draftOffer(g) : null;
   g.night++;
   beginNight(g);
@@ -688,7 +693,7 @@ export function cloneGame(g, seedSalt = 0) {
 // v5: spending people. Size stops being a counter and becomes options.
 export function canSpend(g, kind) {
   const t = g.troop, c = g.cfg, cost = c.cost[kind];
-  if (g.over || cost == null || t.size - cost < 2) return false;
+  if (g.over || cost == null || g.reserve + t.size - cost < 2) return false;
   if (kind === 'scout') return !inTransit(t) && t.scoutUntil < g.T;
   if (kind === 'dig') {
     if (!holding(t)) return false;
@@ -703,7 +708,9 @@ export function canSpend(g, kind) {
 function spend(g, kind) {
   if (!canSpend(g, kind)) return;
   const t = g.troop, c = g.cfg, cost = c.cost[kind];
-  t.size -= cost; g.stats.spends[kind]++;
+  // the reserve pays first; the troop pays the rest
+  const fromReserve = Math.min(g.reserve, cost);
+  g.reserve -= fromReserve; t.size -= cost - fromReserve; g.stats.spends[kind]++;
   if (kind === 'decoy') {
     // run loud for the warren the hunters will take longest to reach, away from you
     let best = null, bs = -Infinity;
