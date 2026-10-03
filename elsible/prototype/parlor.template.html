@@ -9,6 +9,10 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<script>
+// The reader's chosen text size, before anything draws: steps from this page's default, shared with the home page.
+try { var s = parseInt(localStorage.getItem('elsible.textsize') || '0', 10) || 0; document.documentElement.style.setProperty('--zs', String(Math.pow(1.1, s))); } catch (e) {}
+</script>
 <style>
 /* ---------- Elsible: the Parlor (design: Claude Design, 3 Oct 2026; system: elsible/) ----------
    Palette: velvet #1a2320 · cloth #202b27 · candle ivory #ecd3a6 · ash #c9b893 · brass #b08d57
@@ -30,6 +34,16 @@ button { font: inherit; cursor: pointer; color: inherit; }
 button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid var(--ivory); outline-offset: 3px; }
 
 .page { max-width: 1240px; margin: 0 auto; padding: 26px 40px 0; display: flex; flex-direction: column; gap: 34px; min-height: 100vh; }
+
+/* text size: A− and A+ scale the table and the door together, one size a click, either way without end.
+   Where there's room it starts 20% bigger; on a laptop it starts at the design size, so the hand stays on screen. */
+:root { --zbase: 1; }
+@media (min-width: 1500px) and (min-height: 1000px) { :root { --zbase: 1.2; } }
+.page, .door { zoom: calc(var(--zbase) * var(--zs, 1)); }
+.page { min-height: calc(100vh / (var(--zbase) * var(--zs, 1))); }   /* zoomed, still exactly one screen tall */
+.fontctl { position: fixed; right: 14px; bottom: calc(14px + env(safe-area-inset-bottom, 0px)); z-index: 60; display: flex; gap: 6px; }
+.fontctl button { background: var(--cloth); color: var(--ivory); border: 1px solid var(--brass); border-radius: 999px; min-width: 46px; height: 38px; padding: 0 13px; font-family: var(--display); font-size: 16px; line-height: 1; box-shadow: 0 6px 16px rgba(0,0,0,.45); }
+.fontctl button:hover { border-color: var(--ivory); background: #26332d; }
 
 /* header */
 .top { display: flex; align-items: center; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
@@ -252,6 +266,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
     <div class="hand-head"><span class="which" id="handName"></span><span class="q" id="handQ"></span><span class="count" id="handCount"></span></div>
     <div class="hand" id="hand"></div>
   </section>
+</div>
 
   <!-- Your door -->
   <div class="veil hidden" id="veil">
@@ -298,6 +313,10 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
       </div>
     </div>
   </div>
+
+<div class="fontctl" role="group" aria-label="Text size">
+  <button type="button" data-fs="-1" aria-label="Smaller text">A−</button>
+  <button type="button" data-fs="1" aria-label="Larger text">A+</button>
 </div>
 
 <script>
@@ -563,6 +582,18 @@ document.addEventListener('keydown', e => { if (e.key === 'Escape' && S.door) AC
   const ok = saved && saved.hands && saved.hands.story && SLOTS.every(s => (saved.hands[s.id] || []).every(id => known(s.id, id)));
   if (ok) { S = { ...S, ...saved, picks: { circle: [], ...saved.picks }, dials: { ...S.dials, ...saved.dials } }; if (!saved.tilts) S.tilts = rollTilts(); render(); }
   else dealAll();
+})();
+
+// A− and A+: one size a click (10%), either way, without end. Saved as steps from this page's
+// default, so the home page follows the same choice from its own default.
+(function () {
+  const KEY = 'elsible.textsize', STEP = 1.1;
+  let steps = 0; try { steps = parseInt(localStorage.getItem(KEY) || '0', 10) || 0; } catch (e) {}
+  const apply = () => document.documentElement.style.setProperty('--zs', String(Math.pow(STEP, steps)));
+  document.querySelectorAll('.fontctl [data-fs]').forEach(b => b.addEventListener('click', () => {
+    steps += +b.dataset.fs; try { localStorage.setItem(KEY, String(steps)); } catch (e) {} apply();
+  }));
+  apply();
 })();
 </script>
 <script src="/switcher.js" defer></script>
