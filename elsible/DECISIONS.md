@@ -2,6 +2,34 @@
 
 What was decided and why, dated. Newest first.
 
+## 2026-10-03 — CC — The sealed envelope, and Claude Design's first pass
+
+Claude Design built a parlor and a home page from the briefs. CC played the parlor and read both
+(the read-back: https://claude.ai/artifact/5Vx133aRJN5NKL5MM7PRyh). These are Jay's answers, and
+one call he made in chat. **This entry supersedes the ones below where they differ.**
+
+1. **The web hands you a sealed envelope; the doorkeeper weaves.** The parlor deals and your cards
+   go into an envelope. Claude Code is the doorkeeper: it opens the envelope, weaves and audits out
+   of the player's sight, and reveals the life at the door. *Supersedes* 2 Oct #11 (the web writes
+   the reveal). *Why:* the AWS account moved to a new box this morning without Bedrock (a bug is
+   filed), so nothing can weave on the web today. And it holds up on its own terms: nothing secret
+   exists until the door, the web needs no model, and it is what Claude Design built. Jay: *"It
+   works narratively, and technically, and we can build today without needing bedrock."*
+2. **The first part is finished before play is built.** The deal, the envelope, the doorkeeper and
+   the reveal get played end to end and signed off by Jay first. Jay: *"Why would we move on if the
+   first part isn't done?"*
+3. **The reader's last card is a djinn.** Your cards are the wish; her face-down card is how it is
+   granted: what you wanted, better, or worse. *"You pick your cards, but there's always a bit of
+   unknown."* The doorkeeper turns it at the door. How it works is open (the Djinn Card page).
+   *Changes* the read-back's objection to "upright or reversed is decided when the door opens":
+   under the djinn that is the grant, not the ending, so it stands.
+4. **The premise is a second go.** Jay's wording for the home page: *"A life, maybe yours, taken at
+   the other fork."* It is not necessarily your life. The deck never asks for your real one, and
+   every Other stays invented (2 Oct #10).
+5. **Dice stay, at knife-edge moments only.** The home page says "Nothing to roll."
+6. **Contact is an unstuck-games.com address.**
+7. **The invitation to pack writers stays** on the home page.
+
 ## 2026-10-03 — CC — Elsible moves to unstuck-games, and builds local
 
 Elsible started inside the SEREN repo (branch `seren/story-deck`), because the engine it plays on
