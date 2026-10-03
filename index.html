@@ -177,6 +177,24 @@ body[data-mode="stuck"] .game .name{font-family:'Inter',sans-serif!important;fon
 .fb-lab{font-family:'Alfa Slab One',serif;font-size:10px;letter-spacing:.14em;color:#d8352a}
 .fb-item{font-family:Caveat,cursive;font-size:19px;line-height:1.1;color:#2b241d}
 .fb-more{font-family:Caveat,cursive;font-size:17px;color:#8a5a2b}
+.game.live.warren{grid-column:1/-1;min-height:360px;background:#1f1109;color:#e3d6bc;text-decoration:none;
+  display:flex;align-items:center;gap:28px;flex-wrap:wrap;padding:30px clamp(20px,3vw,34px)}
+.game.live.warren:hover{color:#e3d6bc;transform:translateY(-6px);box-shadow:0 30px 60px rgba(31,17,9,.45)}
+.game.live.warren .copy{flex:1;min-width:280px;display:flex;flex-direction:column;gap:10px}
+.game.live.warren .name{font-family:'Alfa Slab One',serif;font-size:clamp(28px,4vw,44px);line-height:1;color:#e3d6bc}
+.game.live.warren .hook{max-width:46ch;line-height:1.55;margin:0;color:#e3d6bc}
+.game.live.warren .play{align-self:flex-start;background:#e3d6bc;color:#1f1109;font-family:'Alfa Slab One',serif;
+  font-size:17px;padding:12px 20px;border-radius:3px}
+.game.live.warren:hover .play{background:#9e3a2c;color:#e3d6bc}
+.game.live.warren .genre,.game.live.warren .foot{color:#9b8a70}
+.game.live.warren .soon{background:#9e3a2c;color:#e3d6bc;border-color:#9e3a2c}
+.lw-page{display:flex;flex-direction:column;gap:6px;width:min(300px,100%);padding:26px 22px 26px 46px;
+  background:#efe6d2 url(the-last-warren/assets/page-right.jpg) center/cover;color:#2a211a;
+  transform:rotate(1.2deg);box-shadow:0 18px 40px rgba(0,0,0,.5)}
+.lw-lab{font:700 11px/1 'Courier Prime',monospace;letter-spacing:.2em;color:#5c4e3f;margin-bottom:4px}
+.lw-note{font:700 13px/1.35 'Courier Prime',monospace;color:#2a211a}
+.lw-red{font:700 13px/1.35 'Courier Prime',monospace;color:#9e3a2c}
+.lw-last{font-family:'Special Elite',monospace;font-size:19px;color:#5a2e14;margin-top:10px}
 /* live game: featured, full width, running the actual game behind the card */
 .game.live{grid-column:1/-1;min-height:420px;background:#080d12;color:#e6f0f0;text-decoration:none;cursor:pointer}
 .game.live:hover{color:#e6f0f0;transform:translateY(-6px);box-shadow:0 30px 60px rgba(8,13,18,.45)}
@@ -469,7 +487,7 @@ const COPY = {
     gamesKicker: "ONE PLAYABLE · ONE EARLY ACCESS · ONE ALPHA · ONE NEXT UP · THREE ON DECK · SIX ONE DAY", gamesTitle: "Games that got out.",
     nextKicker: "ALPHA · GAME #3 · TOMBSTONE: GALÁPAGOS: MENDEL'S ESCAPE", nextHook: "A launcher game about a long animal. You don't aim Lucy. You prepare Lucy.", nextGo: "Play the alpha →",
     deckKicker: "ON DECK", deckSub: "Next in line.", dayKicker: "ONE DAY", daySub: "Real hooks. Not yet.",
-    gamesSub: "Orbis got out first. Elsewhere is out, in your browser, behind a door while it's rough. Bad Monkeys is in alpha: playable, placeholder content, rough edges on purpose. Ferret Bowling is in alpha too, and Lucy has a hoard. Deadline Dungeon is in design. The rest are working titles with real hooks: one original, four corpses worth resurrecting, two clean mechanical specimens. Each one ships when it's fun, and not one minute before.", soon: "COMING SOON", live: "PLAY NOW", early: "EARLY ACCESS", building: "ALPHA",
+    gamesSub: "Orbis got out first. Elsewhere is out, in your browser, behind a door while it's rough. Bad Monkeys is in alpha: playable, placeholder content, rough edges on purpose. Ferret Bowling is in alpha too, and Lucy has a hoard. The Last Warren is in playtest, and you are the one being hunted. Deadline Dungeon is in design. The rest are working titles with real hooks: one original, four corpses worth resurrecting, two clean mechanical specimens. Each one ships when it's fun, and not one minute before.", soon: "COMING SOON", live: "PLAY NOW", early: "EARLY ACCESS", building: "ALPHA",
     manKicker: "THE FOUNDING PRINCIPLE",
     manifesto: ["Find something fun.", "Make it ours.", "Make it good.", "Don't bullshit the player.", "Ship another one."],
     faqTitle: "Questions you should be asking.",
@@ -548,7 +566,8 @@ const LIVE = [
   { kind: "play", name: "ORBIS", stuckName: "Orbit Merge: Idle Galaxy Tycoon", href: "https://orbis.unstuck-games.com/", genre: "AMBIENT · ORBITAL ANT FARM", hook: "A little universe you watch evolve. Two dials change the conditions, never the outcome. Leave it running. Fall asleep to it.", play: "Play", foot: "DNA: 90s FISH SCREENSAVER × IDLE ORBITER · MADE TO FALL ASLEEP TO" },
   { kind: "early", name: "ELSEWHERE", stuckName: "Kingdom Raid: Idle Lords", href: "https://elsewhere.unstuck-games.com/", genre: "IDLE RPG · YOUR ABSENCE IS THE MECHANIC", hook: "Two minutes a day. Three neighbours who each want something, and one set of eyes. Type anything — pretend to be sheep, sell imaginary wool — and it becomes a real order, rolled by a deterministic engine. You will lose. The interesting part is how.", play: "Play in your browser →", foot: "EARLY ACCESS · PASSWORD-GATED WHILE IT IS ROUGH · TOMBSTONE: A DEAD IDLE RPG" },
   { kind: "building", name: "BAD MONKEYS", stuckName: "Space Monkey Merge: Galaxy Tycoon", href: "https://badmonkeys.unstuck-games.com/", genre: "ABSENCE SIM · NOT ALWAYS BETTER, ALWAYS WEIRDER", hook: "You're Jame, a mechanic from Alberta. She's Not Betsy. You land, fix a planet's problem with whatever she bolted on while you were gone, say one thing on your way out, and leave. She takes it literally.", play: "Read her file →", foot: "ALPHA · PLACEHOLDER CONTENT · TOMBSTONE: UNIVERSAL PAPERCLIPS · GAME #2" },
-  { kind: "lucy", name: "FERRET BOWLING", stuckName: "Ferret Blast: Merge & Fling 3D", href: "https://ferretbowling.unstuck-games.com/", genre: "LAUNCHER GAME · AIM IS A SUGGESTION", hook: "You do not steer Lucy. You pack her cage, open the door, and find out who she is today. She explores, steals, sulks, naps, and builds a hoard under the couch. You write it down.", play: "Play the alpha →", foot: "ALPHA · TOMBSTONE: GALÁPAGOS: MENDEL'S ESCAPE · GAME #3" }
+  { kind: "lucy", name: "FERRET BOWLING", stuckName: "Ferret Blast: Merge & Fling 3D", href: "https://ferretbowling.unstuck-games.com/", genre: "LAUNCHER GAME · AIM IS A SUGGESTION", hook: "You do not steer Lucy. You pack her cage, open the door, and find out who she is today. She explores, steals, sulks, naps, and builds a hoard under the couch. You write it down.", play: "Play the alpha →", foot: "ALPHA · TOMBSTONE: GALÁPAGOS: MENDEL'S ESCAPE · GAME #3" },
+  { kind: "warren", soon: "PLAYTEST", name: "THE LAST WARREN", stuckName: "Bunny Defense: Burrow Kingdom", href: "https://last-warren.unstuck-games.com/", genre: "TOWER DEFENSE · YOU ARE THE THING BEING HUNTED", hook: "Every tick your family grows by one, and every hunter takes a step. Stay, run, hold in the trees, or spend some of them to buy time. A run ends in a sentence. The next generation reads it.", play: "Read the diary →", foot: "PLAYTEST · TOMBSTONE: TOKYO JUNGLE · GAME #5" }
 ];
 
 const ORBIS_MARK = `<svg viewBox="0 0 100 100" fill="none" aria-hidden="true"><ellipse cx="50" cy="50" rx="42" ry="22" stroke="currentColor" stroke-opacity="0.35" stroke-width="0.8"/><circle cx="50" cy="50" r="14" stroke="currentColor" stroke-width="1.2"/><circle cx="50" cy="50" r="9" fill="currentColor" fill-opacity="0.15"/><g class="spin"><circle cx="92" cy="50" r="4" fill="currentColor"/><circle cx="92" cy="50" r="6.5" fill="currentColor" fill-opacity="0.22"/></g></svg>`;
@@ -584,7 +603,7 @@ function render() {
   LIVE.forEach((g, i) => {
     const card = $$('#liveGrid .game.live')[i];
     card.querySelector('.genre').textContent = stuck() ? 'HYPER-CASUAL · LIVEOPS' : g.genre;
-    card.querySelector('.soon').textContent = g.kind === 'early' ? t.early : g.kind === 'building' ? t.building : t.live;
+    card.querySelector('.soon').textContent = g.soon ? g.soon : g.kind === 'early' ? t.early : g.kind === 'building' ? t.building : t.live;
     card.querySelector('.name').textContent = stuck() ? g.stuckName : g.name;
     card.querySelector('.hook').textContent = stuck() ? 'Free to play. In-app purchases from $0.99 to $99.99. Contains ads. Energy required.' : g.hook;
     card.querySelector('.play').textContent = stuck() ? 'Install for rewards' : g.play;
@@ -695,6 +714,23 @@ $('#liveGrid').innerHTML = LIVE.map(g => g.kind === 'building' ? `
       <span class="bm-chip" style="right:0;top:48%">GRAIN AUGER · 40 FT</span>
       <span class="bm-chip" style="left:4%;bottom:10%">DOG · UNLISTED</span>
       <span class="bm-scrib">she's fine</span>
+    </div>
+  </a>` : g.kind === 'warren' ? `
+  <a class="game live warren" href="${g.href}">
+    <div class="top"><span class="genre"></span><span class="soon"></span></div>
+    <div class="copy">
+      <div class="name"></div>
+      <p class="hook"></p>
+      <span class="play"></span>
+      <div class="foot"></div>
+    </div>
+    <div class="lw-page" aria-hidden="true">
+      <span class="lw-lab">THE LINE OF SORREL</span>
+      <span class="lw-note">night 1 · dusk · 19 strong</span>
+      <span class="lw-note">a shallow Nursery · decision: STAY</span>
+      <span class="lw-note">tick 31 · seen</span>
+      <span class="lw-red">decoy −4 · 19 → 15 · RUN</span>
+      <span class="lw-last">We should have run.</span>
     </div>
   </a>` : g.kind === 'lucy' ? `
   <a class="game live lucy" href="${g.href}">
