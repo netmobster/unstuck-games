@@ -2508,7 +2508,10 @@ function resume() {
   if (g.pendingDraft) dawnDialog(g.night - 1);
   return true;
 }
-if (!resume()) start(1);
+// ?watch[=bot]&seed=N: the site's "Watch a night" link. A bot plays; your line is not touched.
+const qs = new URLSearchParams(location.search);
+if (qs.has('watch')) { const b = qs.get('watch'); $('watch').value = ROSTER[b] ? b : 'hybrid-3-1.8'; const s = +qs.get('seed') || 1; $('seed').value = s; start(s); }
+else if (!resume()) start(1);
 requestAnimationFrame(frame);
 
 // the CD brief: inlined in the artifact build; fetched next to the page when run locally
