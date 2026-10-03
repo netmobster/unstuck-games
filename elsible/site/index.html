@@ -105,6 +105,32 @@ section.block { padding: 72px 0; }
 .prose .you { display: block; margin-top: 1.2em; font-style: italic; color: var(--ash); }
 .prose .you::before { content: '› '; color: var(--brass); }
 
+/* her last card, turned: what it might have done */
+.back { border-radius: 8px; background-color: var(--cloth); border: 1px solid var(--brass);
+  background-image: repeating-linear-gradient(45deg, rgba(236,211,166,.13) 0 1px, transparent 1px 9px), repeating-linear-gradient(-45deg, rgba(236,211,166,.13) 0 1px, transparent 1px 9px);
+  box-shadow: inset 0 0 0 4px var(--cloth), inset 0 0 0 5px rgba(176,141,87,.6), 0 12px 28px rgba(0,0,0,.5);
+  display: flex; align-items: center; justify-content: center; }
+.back i { font-size: 13px; color: var(--ivory); }
+.djinn { margin-top: 56px; display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 34px; align-items: start; border-radius: 16px; border: 1px solid rgba(176,141,87,.35); padding: 34px 34px 30px; background: rgba(13,18,16,.35); }
+.djinn .back { width: 96px; height: 156px; rotate: -5deg; margin-top: 6px; }
+.djinn h3 { margin: 0 0 14px; font-family: var(--display); font-weight: 400; font-size: clamp(26px, 2.6vw, 34px); line-height: 1.1; text-wrap: pretty; }
+.djinn .say { font-size: 19px; line-height: 1.45; max-width: 700px; text-wrap: pretty; }
+.djinn .say a { color: var(--ivory); text-underline-offset: 3px; }
+.djinn .might { margin-top: 26px; }
+.grants { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 12px; }
+.grant { position: relative; overflow: hidden; border-radius: 10px; background: var(--face); color: var(--velvet); border: 1px solid var(--brass); padding: 16px 14px; display: flex; flex-direction: column; gap: 8px; box-shadow: 0 10px 24px rgba(0,0,0,.45); }
+.grant .shade { position: absolute; left: -20%; right: -20%; top: -30%; height: 56%; pointer-events: none; background: radial-gradient(ellipse at 50% 0%, rgba(8,12,10,.2), transparent 70%); }
+.grant > * { position: relative; }
+.grant .n { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; opacity: .8; }
+.grant b { font-family: var(--display); font-weight: 400; font-size: 17px; line-height: 1.1; }
+.grant p { font-style: italic; font-size: 15px; line-height: 1.35; }
+.grant.gift { background: var(--ivory); box-shadow: 0 0 0 2px var(--ivory), 0 0 0 3px var(--brass), 0 10px 24px rgba(0,0,0,.45); }
+.djinn .fine { margin-top: 22px; font-style: italic; font-size: 17px; line-height: 1.45; color: var(--ash); max-width: 720px; text-wrap: pretty; }
+
+/* the door, in four */
+.steps.four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.steps.four .step { min-height: 0; }
+
 /* the reader's lines */
 .lines { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 40px; }
 .line-card { border-radius: 12px; border: 1px solid rgba(176,141,87,.3); padding: 26px 26px 22px; display: flex; flex-direction: column; gap: 14px; background: rgba(13,18,16,.35); }
@@ -136,7 +162,10 @@ footer a { color: var(--ivory); }
   .loop { min-height: 460px; padding: 34px 16px 0; }
   .loop .spread { grid-template-columns: repeat(4, minmax(0, 1fr)); }
   .mini .t { font-size: 10.5px; }
-  .cols3, .lines, .steps, .passage { grid-template-columns: 1fr; }
+  .cols3, .lines, .steps, .steps.four, .passage { grid-template-columns: 1fr; }
+  .djinn { grid-template-columns: 1fr; padding: 26px 20px; gap: 22px; }
+  .djinn .back { width: 72px; height: 116px; }
+  .grants { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .top nav { display: none; }
   .held { width: 92px; height: 150px; }
 }
@@ -152,7 +181,7 @@ footer a { color: var(--ivory); }
 
   <header class="top">
     <a class="brand" href="/"><svg width="15" height="25" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="5"/><rect x="25" y="52" width="10" height="46" fill="#ecd3a6"/></svg><span>Elsible</span></a>
-    <nav><a href="#how">How it holds</a><a href="#session">A session</a><a href="#reader">The reader</a><a href="#steps">Playing</a></nav>
+    <nav><a href="#how">How it holds</a><a href="#session">A session</a><a href="#reader">The reader</a><a href="#door">The door</a><a href="#steps">Playing</a></nav>
   </header>
 
   <section class="hero">
@@ -208,6 +237,23 @@ footer a { color: var(--ivory); }
         <p>He doesn’t answer, which, you’ll realise later, was the answer. The group chat has already noticed where you’re sitting. It has opinions. One of them is a photo.</p>
       </div>
     </div>
+
+    <div class="djinn">
+      <div class="back" aria-hidden="true"><i>and then...</i></div>
+      <div>
+        <h3>You can turn the card, but it costs you.</h3>
+        <p class="say">At the door the reader offers one more card, face down. Leave it with her and you get the life you picked. Seal it in and the <a href="#door">doorkeeper</a> turns it: now and then a gift, mostly a price. You’re told which way up it landed. Never what it changed.</p>
+        <div class="kicker might">In this story, it might have been</div>
+        <div class="grants">
+          <div class="grant gift"><div class="shade"></div><div class="n">Upright</div><b>A gift</b><p>You’ve been a bridesmaid at this venue twice before. You know which doors lock, and who has the keys.</p></div>
+          <div class="grant"><div class="shade"></div><div class="n">Reversed</div><b>A secret turns</b><p>His mother already knows it’s fake. She’s letting it run to see what you’ll do.</p></div>
+          <div class="grant"><div class="shade"></div><div class="n">Reversed</div><b>A card bends</b><p>The group chat isn’t on your side. Someone in it set this up, and the photo was taken before you sat down.</p></div>
+          <div class="grant"><div class="shade"></div><div class="n">Reversed</div><b>The life tilts</b><p>The wedding is off by Saturday morning, and the whole family thinks you know why.</p></div>
+          <div class="grant"><div class="shade"></div><div class="n">Reversed</div><b>Everything at once</b><p>The group chat is live-streaming, your ex is the best man, and his mother has booked the engagement photos.</p></div>
+        </div>
+        <p class="fine">None of it is scripted. Every life is woven fresh and no two come out alike, and whatever the card costs, what you do about it is yours. Your choices are the story.</p>
+      </div>
+    </div>
   </section>
 
   <hr class="rule">
@@ -220,6 +266,20 @@ footer a { color: var(--ivory); }
       <div class="line-card"><div class="when">When you sit</div><div class="say">Sit. Seven cards make a life. For each I deal you five, and you keep one; two, for the people around you. The kind of story first; everyone knows the kind they want, they just don’t say it out loud.</div></div>
       <div class="line-card"><div class="when">When you refuse her card</div><div class="say">Picky. Fine. That’s three refused. The fourth is still mine.</div></div>
       <div class="line-card"><div class="when">At the door</div><div class="say">One more, face down. Seal it in and the doorkeeper turns it: what you wished for, or a price for it. Mostly a price. Or leave it with me.</div></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="block" id="door">
+    <div class="kicker">The doorkeeper</div>
+    <h2>Between the table and the story, there’s a door.</h2>
+    <p class="lede">The reader only deals. Your narrator only tells. In between, the doorkeeper opens your envelope, turns her card if you sealed it in, and writes the life you’re about to live, out of sight. That’s why nothing in your envelope is secret: the secrets don’t exist until the door.</p>
+    <div class="steps four">
+      <div class="step" style="rotate:-1deg"><div class="shade"></div><div class="n">I</div><h3>You hand it over</h3><p>Your envelope: the cards you kept, the complication she played, and her last card if you sealed it in.</p></div>
+      <div class="step" style="rotate:1.2deg"><div class="shade"></div><div class="n">II</div><h3>Her card turns</h3><p>If you sealed it in. You’re told upright or reversed, and nothing else. Upright is a gift. Reversed is a price, and you’ll spend the story looking for it.</p></div>
+      <div class="step" style="rotate:-.6deg"><div class="shade"></div><div class="n">III</div><h3>Your life is written</h3><p>Out of sight, random cards become one real person: a name, a past, what they want, the people around them. It’s read back and checked until every piece holds, and the half you don’t get told is set underneath.</p></div>
+      <div class="step" style="rotate:.8deg"><div class="shade"></div><div class="n">IV</div><h3>The door opens</h3><p>You’re shown the life you’re stepping into, and one line into your first morning. From there the story belongs to your narrator, and to what you do.</p></div>
     </div>
   </section>
 
