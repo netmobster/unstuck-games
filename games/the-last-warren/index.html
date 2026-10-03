@@ -63,6 +63,18 @@
       </aside>
     </div>
 
+    <div class="clockline" id="clockline" data-mode="turns">
+      <span>Time</span>
+      <button type="button" id="clock-turns" aria-pressed="true" title="Each tick waits for you">Manual</button>
+      <button type="button" id="clock-clock" aria-pressed="false" title="The ticks keep coming whether you act or not. Doing nothing is staying">Auto · P</button>
+      <span class="clock-only sep">·</span>
+      <button type="button" class="clock-only" id="clock-slow" aria-pressed="false">Slow</button>
+      <button type="button" class="clock-only" id="clock-normal" aria-pressed="true">Normal</button>
+      <button type="button" class="clock-only" id="clock-fast" aria-pressed="false">Fast</button>
+      <span class="clock-only bar" id="clock-bar"><span class="fill" id="clock-fill"></span></span>
+      <span class="clock-only left" id="clock-left"></span>
+    </div>
+
     <div class="verbs">
       <button class="verb stay" id="stay" type="button"><span class="word">STAY</span><span class="key">SPACE · HOLD</span></button>
       <button class="verb attack" id="attack" type="button"><span class="word">ATTACK</span><span class="key" id="attack-key">A · NONE IN REACH</span></button>
