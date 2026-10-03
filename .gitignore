@@ -9,3 +9,7 @@ games/*/reports/
 # on a DMs Guild adventure. The server reads it from SEREN_CONTENT_DIR, never from here.
 seren/content/
 __pycache__/
+
+# Elsible: campaigns played locally never ship; the prototype page is built from the deck
+elsible/LIVE/
+elsible/prototype/elsible.html

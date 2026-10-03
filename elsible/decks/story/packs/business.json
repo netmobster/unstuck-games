@@ -1,0 +1,81 @@
+{
+ "pack": "business",
+ "about": "The business pack (3 Oct 2026): what the core deck had tilted toward after Rina's VC story. Merged in with --pack business.",
+ "cards": {
+  "role": [
+   {
+    "id": "investor",
+    "name": "The investor",
+    "line": "You decide who gets money, and everyone knows it",
+    "changes": "Every warm word to you might be a pitch · diligence is a reason to ask anything"
+   },
+   {
+    "id": "founder",
+    "name": "The founder",
+    "line": "You built it, and it is starting to own you",
+    "changes": "Every friendship is also a reference"
+   }
+  ],
+  "world": [
+   {
+    "id": "startup",
+    "name": "The startup",
+    "line": "Twelve people, one runway, no walls",
+    "changes": "Work and life are the same room · everything ships tonight"
+   },
+   {
+    "id": "firm",
+    "name": "The firm",
+    "line": "The hours are long and the floors are numbered",
+    "changes": "Hierarchy is literal · a mistake is billable"
+   }
+  ],
+  "pressure": [
+   {
+    "id": "audit",
+    "name": "The audit",
+    "line": "Someone is checking the story",
+    "changes": "Every lie costs more as the clock runs"
+   },
+   {
+    "id": "raise",
+    "name": "The raise",
+    "line": "The money comes with people attached",
+    "changes": "Every yes is owed to someone"
+   },
+   {
+    "id": "merger",
+    "name": "The merger",
+    "line": "Two houses, one name at the end",
+    "changes": "Somebody's people will not survive it"
+   }
+  ],
+  "undercurrent": [
+   {
+    "id": "pitch",
+    "name": "The pitch got personal",
+    "line": "It was business, until it was not",
+    "changes": "The deal and the feeling want different endings",
+    "signals": [
+     "they remember a detail from a meeting you thought was only business",
+     "a message that arrives after hours and isn't about the work",
+     "someone in the room notices how you two talk",
+     "the paperwork asks a question you don't want to answer honestly"
+    ],
+    "if_full": [
+     "the deal closes and the feeling is never said",
+     "it comes out at the worst possible meeting, in front of everyone"
+    ],
+    "if_resolved": "the job and the feeling are separated, and one of them is given up on purpose"
+   }
+  ],
+  "secret": [
+   {
+    "id": "conflict",
+    "name": "Conflict of interest",
+    "line": "If you fall for them, you cannot back them",
+    "changes": "The job and the feeling cannot both win"
+   }
+  ]
+ }
+}
