@@ -88,6 +88,17 @@ set -e
 cd /srv/unstuck && git pull --ff-only && git log --oneline -1
 '@ }
 
+$Steps['feed'] = @{ box = 'new'; what = 'Fills the updates-page feed cache now, instead of waiting for the daily timer'; script = @'
+systemctl start unstuck-feed.service
+sleep 2
+ls -la /srv/cache/feed.json && head -c 160 /srv/cache/feed.json; echo
+'@ }
+
+$Steps['contact-log'] = @{ box = 'new'; what = 'Read-only: the contact service''s last lines (did SES send, or keep it on disk only?) and the messages it holds'; script = @'
+journalctl -u unstuck-contact -n 15 --no-pager
+echo "== messages kept: $(ls /srv/contact 2>/dev/null | wc -l)"
+'@ }
+
 $Steps['seren-snapshot'] = @{ box = 'old'; what = 'Stops SEREN on the old box, packs /srv/seren and /etc/seren.env, uploads them to the new bucket (a one-hour upload link). SEREN stays stopped there, so nothing is written to the old copy.'; script = @'
 set -e
 systemctl stop seren

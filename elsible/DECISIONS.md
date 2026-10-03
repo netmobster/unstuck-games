@@ -16,6 +16,12 @@ for the new account's Bedrock quotas.
    are still public in this repo.
 3. **Pushing is per ask.** Decision 2 below still holds: this push was asked for, and the next
    one needs asking for too.
+4. **Later that day: a holding page at the root, a place on the switcher, and the prototype
+   moved to `/play/`.** Jay: *"just build elsible in as a blank page on the switcher, another CC
+   is building it and will build those pages."* Every Unstuck game has its page at the root and
+   its game at `/play/`, and Elsible follows that now. `build.py --publish` writes
+   `elsible/site/play/index.html`. The holding page is `elsible/site/index.html`, for the session
+   building Elsible to replace.
 
 ## 2026-10-03 — CC — Elsible moves to unstuck-games, and builds local
 
