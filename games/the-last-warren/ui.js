@@ -12,7 +12,7 @@ const C = {}; for (const k of ['bg', 'ink', 'dim', 'moss', 'blood', 'gold', 'ope
 const ROSTER = roster(true);
 const TRADE = { C: 'strong, loud', S: 'sees them, thin walls', D: 'holds, slow to leave', N: 'grows fast, loud' };
 const GIFT = { C: '+30% strength in any fight', S: 'You see where they think you are', D: '+30% when they come in', N: '+1 extra person every tick' };
-const COST = { C: 'Loud: noise ×1.4', S: 'Thin walls: no fortify bonus', D: 'Slow to leave: you lose your first tick climbing out', N: 'Loud: noise ×1.5' };
+const KIND_COST = { C: 'Loud: noise ×1.4', S: 'Thin walls: no fortify bonus', D: 'Slow to leave: you lose your first tick climbing out', N: 'Loud: noise ×1.5' };
 const TERRAIN = { '.': 'open ground: seen and heard', '=': 'road: fast and loud', 'f': 'forest: hidden and quiet', '~': 'lake: slow swim, they can’t follow', '^': 'mountain' };
 for (const name of Object.keys(ROSTER)) { const o = document.createElement('option'); o.value = name; o.textContent = 'Watch: ' + name; $('watch').appendChild(o); }
 
@@ -146,7 +146,7 @@ function panel() {
     $('wcard').hidden = false;
     $('wkind').textContent = `${KIND_NAME[w.kind]} · ${w.depth}`;
     $('wgift').textContent = GIFT[w.kind];
-    $('wcost').textContent = COST[w.kind];
+    $('wcost').textContent = KIND_COST[w.kind];
     $('wdepth').textContent = { deep: 'Deep: hides your noise well (×0.45)', mid: 'Mid: hides some noise (×0.7)', shallow: 'Shallow: hides nothing (×1)' }[w.depth];
   } else $('wcard').hidden = true;
   const sb = sizeBuys(g), pc = x => Math.round(100 * x) + '%';
