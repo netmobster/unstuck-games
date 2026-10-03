@@ -2,6 +2,36 @@
 
 What was decided and why, dated. Newest first.
 
+## 2026-10-03 — CC — The djinn card, and who builds the parlor
+
+Jay's answers on the Djinn Card page (https://claude.ai/artifact/QYPBKiY89Bw3DUYrgZXr6F).
+**This entry supersedes the ones below where they differ.**
+
+1. **Turning her card is the player's choice.** At the end of the deal she offers her last card:
+   seal it into the envelope, or leave it with her. Left, you get the life you picked, *ish*: the
+   doorkeeper still makes the pieces fit, and the dials change how the cards are read, never which
+   cards you hold.
+2. **Sealed, the doorkeeper rolls how hard it bites.** Jay's severity ladder:
+   1. a boon: purely additive and surprising (a gift, or a detail like the age you start at);
+   2. the hidden half turns against you;
+   3. one of your cards bends;
+   4. the whole life tilts;
+   5. every card turned to its extreme.
+
+   *Djinn rules: mostly worse.* Turning is a cost, with a chance of a boon. The default roll is
+   2d3−1 (1 and 5 one in nine each, 3 one in three), to tune after test 1. The doorkeeper rolls;
+   the player never does.
+3. **At the door you're told upright or reversed, not what it changed.** Upright is the boon,
+   reversed is a cost. *Why (Jay):* "add tension, the player is LOOKING for the cost, but doesn't
+   know what it is."
+4. **Three roles, one voice each.** The reader is just the cards. The doorkeeper is just the
+   transition. The narrator picked under Told by is the DM. *Why (Jay):* Seren had a stretch where
+   the narrator and the AI both talked as characters.
+5. **The parlor first, and CC builds it.** Claude Design is done unless new assets are needed. CC
+   takes its files into `elsible/site/` and makes the fixes itself. The door gets built after Jay
+   signs the parlor off. Jay: *"You keep wanting to pass stuff back and I'm not sure why?"*
+6. **The contact address is jay@unstuck-games.com** (it takes mail: MX at IONOS, checked).
+
 ## 2026-10-03 — CC — The sealed envelope, and Claude Design's first pass
 
 Claude Design built a parlor and a home page from the briefs. CC played the parlor and read both
@@ -29,6 +59,27 @@ one call he made in chat. **This entry supersedes the ones below where they diff
 5. **Dice stay, at knife-edge moments only.** The home page says "Nothing to roll."
 6. **Contact is an unstuck-games.com address.**
 7. **The invitation to pack writers stays** on the home page.
+
+## 2026-10-03 — CC, the server move — the deal prototype goes up at elsible.unstuck-games.com
+
+Jay asked for the push: *"Yes: push the committed deck-v4 state and put the deal prototype up as
+a static page."* It's the first game on the new box. SEREN was first in the order, but it waits
+for the new account's Bedrock quotas.
+
+1. **What's live is the deal prototype from deck v4, as a static page.** Away from claude.ai the
+   weave falls back to the plain version, so the site runs no AI. The web model is still decided
+   at go-live (decision 11 below).
+2. **`build.py --publish` writes `elsible/site/index.html`, and that's committed.** The subdomain
+   serves `elsible/site/` and nothing else, so the docs and engine stay off the address. They
+   are still public in this repo.
+3. **Pushing is per ask.** Decision 2 below still holds: this push was asked for, and the next
+   one needs asking for too.
+4. **Later that day: a holding page at the root, a place on the switcher, and the prototype
+   moved to `/play/`.** Jay: *"just build elsible in as a blank page on the switcher, another CC
+   is building it and will build those pages."* Every Unstuck game has its page at the root and
+   its game at `/play/`, and Elsible follows that now. `build.py --publish` writes
+   `elsible/site/play/index.html`. The holding page is `elsible/site/index.html`, for the session
+   building Elsible to replace.
 
 ## 2026-10-03 — CC — Elsible moves to unstuck-games, and builds local
 

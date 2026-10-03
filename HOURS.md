@@ -16,6 +16,28 @@ Split below is CC's estimate against Jay's ~4:00 total: **Orbis ~1:45 · Game #2
 
 ---
 
+## Game #5 — THE LAST WARREN (tombstone: Tokyo Jungle · markers: Agar.io, Rodent's Revenge, Hitman GO, Invisible Inc., Anomaly)
+
+**Clock started 2026-10-01 ~16:10 ET** (name + red-team brief pasted). The idea and brief were made with the red team before the clock and are **not counted**.
+
+| Milestone | Jay-time (cumulative) | Date |
+|---|---|---|
+| Brief + provisional tombstone filed | ~0:05 | 2026-10-01 |
+| Tombstone chosen from a researched shortlist (Tokyo Jungle) | ~0:08 | 2026-10-01 |
+| Tombstone page (artifact) | ~0:10 | 2026-10-01 |
+| Boundaries: 15 decisions in four rounds, plus the progression call | ~0:20 | 2026-10-01 |
+| Playable prototype + deterministic sim + sweep machine | ~0:20 (no Jay-time; machine work) | 2026-10-01 |
+| Tuned by the numbers (strict targets) | | |
+| First Jay playtest | | |
+| First "fuck, one tick earlier" | | |
+| Ship candidate | | |
+
+| Date | Jay-time | Machine work | What Jay did |
+|---|---|---|---|
+| 2026-10-01 | ~0:20 | Tombstone research agent, graveyard record + page; map generator, Bayesian search AI, four hunter kinds, nights + remnant/draft/learning, 13 dumb policies + lookahead expert, worker-pool sweeps (~1,300 games/s), twin replays, invariants, playable page, a strict tuner | Pasted name and brief, picked the tombstone, asked for the page, answered 15 boundary questions, added "progression needs other mechanics" and "use SEREN's creator for maps" |
+
+---
+
 ## Game #3 — FERRET BOWLING: LUCY EDITION (tombstone: Galápagos: Mendel's Escape · DNA also from Learn to Fly, Shopping Cart Hero)
 
 **Clock started 2026-09-14 ~19:10 ET** ("READY FOR OUR NEXT GAME?!").

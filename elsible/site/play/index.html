@@ -1,0 +1,374 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elsible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&family=Space+Mono:wght@400;700&display=swap">
+<style>
+/* Layout: a reader's table. Dealer's card at the head, the hand's sentence in the middle, your five cards fanned at the foot. */
+:root{
+  --ink:#100d0b; --cloth:#16100f;
+  --bone:#e8e1d6; --dust:#a39a8f; --dust-hi:#c4bcb1;
+  --copper:#b07a4e; --copper-hi:#c89060; --gilt:#d6a46a; --ember:#e07a58;
+  --hair:rgba(232,225,214,.09); --edge:rgba(232,225,214,.16);
+  --sans:'IBM Plex Sans', system-ui, sans-serif;
+  --serif:'IBM Plex Serif', Georgia, serif;
+  --mono:'Space Mono', ui-monospace, monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{background:var(--ink)}
+body{margin:0;background:radial-gradient(110% 70% at 50% 0%, #2a1b18 0%, var(--cloth) 45%, var(--ink) 100%) fixed;color:var(--bone);font-family:var(--sans);font-weight:300;line-height:1.55;font-size:16px;padding-inline:16px;padding-block:0 40px}
+::selection{background:var(--copper);color:var(--ink)}
+.wrap{max-width:1040px;margin:0 auto}
+.label{font-family:var(--mono);font-size:10.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--dust)}
+.label.gilt{color:var(--gilt)} .label.ember{color:var(--ember)}
+button.b{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;padding:9px 13px;border-radius:2px;cursor:pointer;border:1px solid var(--edge);background:transparent;color:var(--dust-hi)}
+button.b:hover{color:var(--bone);border-color:var(--dust)}
+button.b.go{background:var(--copper);color:var(--ink);border-color:var(--copper)}
+button.b.go:hover{background:var(--copper-hi)}
+button.b:disabled{opacity:.35;cursor:not-allowed}
+button:focus-visible{outline:1px solid var(--gilt);outline-offset:2px}
+.top{display:flex;justify-content:space-between;align-items:flex-start;gap:16px;flex-wrap:wrap;padding-block:16px 0}
+.top .left{display:grid;gap:6px}
+.mark{font-family:var(--serif);font-size:22px}
+.mark em{font-style:italic;color:var(--gilt)}
+.say{font-family:var(--serif);font-style:italic;color:var(--dust-hi);font-size:15px;margin:0}
+.btns{display:flex;gap:8px;flex-wrap:wrap}
+.dealer{display:grid;justify-items:center;gap:8px;margin-top:-8px}
+.mini{width:110px;aspect-ratio:5/7.2;border-radius:8px;position:relative}
+.back{background:
+  radial-gradient(circle at 50% 50%, transparent 0 18%, rgba(214,164,106,.18) 18.5% 19.5%, transparent 20%),
+  repeating-linear-gradient(45deg, rgba(214,164,106,.10) 0 1px, transparent 1px 12px),
+  repeating-linear-gradient(-45deg, rgba(214,164,106,.10) 0 1px, transparent 1px 12px),
+  linear-gradient(160deg, #3a1d22, #1f1012);
+  border:1px solid rgba(214,164,106,.45);box-shadow:inset 0 0 0 5px #1a0e10, inset 0 0 0 6px rgba(214,164,106,.35)}
+.mini.back{display:grid;place-items:center;text-align:center;padding:10px;font-family:var(--serif);font-style:italic;font-size:11.5px;color:var(--dust-hi);line-height:1.35}
+.face{background:linear-gradient(180deg,#f1e8d8,#e2d5bf);color:#2a1d16;border:1px solid #c9b48f;box-shadow:inset 0 0 0 4px #f1e8d8, inset 0 0 0 5px #b8945f;display:flex;flex-direction:column;gap:5px;padding:12px 10px}
+.face .s{font-family:var(--mono);font-size:8.5px;letter-spacing:.16em;text-transform:uppercase;color:#8a6a43;text-align:center}
+.face .n{font-family:var(--serif);font-weight:500;font-size:15px;line-height:1.15;text-align:center;text-wrap:balance}
+.face .l{font-family:var(--serif);font-style:italic;font-size:12px;line-height:1.3;text-align:center;color:#4a3627}
+.face .c{margin-top:auto;font-size:10px;line-height:1.35;color:#5d4634;border-top:1px solid #c9b48f;padding-top:6px;text-align:center}
+.mini.face.played{animation:flipin .6s cubic-bezier(.2,.8,.2,1)}
+@keyframes flipin{from{transform:rotateY(90deg)}to{transform:none}}
+.slots{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:8px;margin-top:22px}
+.slot{border:1px solid var(--edge);border-radius:4px;padding:8px 9px;background:rgba(16,13,11,.55);cursor:pointer;text-align:left;color:inherit;font:inherit;display:grid;gap:3px;min-height:64px}
+.slot .k{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;text-transform:uppercase;color:var(--gilt)}
+.slot .v{font-family:var(--serif);font-size:13px;line-height:1.2;color:var(--bone)}
+.slot .v.empty{color:var(--dust);font-style:italic}
+.slot.cur{border-color:var(--gilt);box-shadow:0 0 0 1px var(--gilt)}
+.slot.dealerslot{cursor:default;border-style:dashed}
+.sentence{font-family:var(--serif);font-size:clamp(18px,2.4vw,24px);line-height:1.45;text-align:center;max-width:820px;margin:22px auto 0;color:var(--dust-hi);text-wrap:balance}
+.sentence b{font-weight:400;color:var(--bone)}
+.sentence i{color:var(--dust)}
+.weavebar{display:flex;justify-content:center;margin-top:16px}
+.handhead{display:flex;justify-content:space-between;align-items:baseline;margin-top:30px;border-top:1px solid var(--hair);padding-top:12px}
+.fan{display:flex;justify-content:center;gap:12px;padding:18px 4px 6px;flex-wrap:nowrap;overflow-x:auto}
+.card{flex:0 0 150px;aspect-ratio:5/7.2;border-radius:10px;border:0;padding:0;cursor:pointer;font:inherit;text-align:left;transition:transform .25s ease, box-shadow .25s ease;animation:dealin .45s cubic-bezier(.2,.8,.2,1) both}
+.card:nth-child(1){transform:rotate(-5deg) translateY(10px)}.card:nth-child(2){transform:rotate(-2.5deg) translateY(3px)}.card:nth-child(4){transform:rotate(2.5deg) translateY(3px)}.card:nth-child(5){transform:rotate(5deg) translateY(10px)}
+.card:hover{transform:translateY(-12px)!important}
+.card.taken{transform:translateY(-16px)!important;box-shadow:0 0 0 2px var(--gilt), 0 14px 30px rgba(0,0,0,.5)}
+.card .face{height:100%;border-radius:10px;padding:14px 12px}
+.card .n{font-size:17px}.card .l{font-size:13px}.card .c{font-size:11px}
+@keyframes dealin{from{opacity:0;translate:0 -24px}to{opacity:1;translate:0 0}}
+.card:nth-child(2){animation-delay:.06s}.card:nth-child(3){animation-delay:.12s}.card:nth-child(4){animation-delay:.18s}.card:nth-child(5){animation-delay:.24s}
+.foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-top:18px;align-items:center}
+.foot label{font-size:13px;color:var(--dust);display:flex;gap:8px;align-items:center}
+/* the woven page */
+.woven{display:grid;justify-items:center;gap:16px;padding-block:40px 20px;text-align:center}
+.woven h1{font-family:var(--serif);font-weight:400;font-size:clamp(24px,3.4vw,36px);line-height:1.3;margin:0;max-width:820px;text-wrap:balance;color:#efe2c2}
+.note{font-size:13px;color:#8fa0c8;max-width:560px}
+.steps{list-style:none;margin:0;padding:0;display:grid;gap:6px;text-align:left}
+.steps li{font-size:14px;color:var(--dust);display:flex;gap:10px;align-items:center}
+.steps li i{width:8px;height:8px;border-radius:50%;border:1px solid var(--dust);display:inline-block}
+.steps li.now{color:var(--bone)} .steps li.now i{background:var(--gilt);border-color:var(--gilt);animation:pulse 1.2s infinite}
+.steps li.done{color:var(--dust-hi)} .steps li.done i{background:var(--copper);border-color:var(--copper)}
+.steps li.failed{color:var(--ember)} .steps li.failed i{background:var(--ember);border-color:var(--ember)}
+@keyframes pulse{50%{opacity:.4}}
+.title{font-family:var(--serif);font-size:clamp(22px,3vw,30px);letter-spacing:.14em;text-transform:uppercase;color:var(--gilt);margin:8px 0 0}
+.life{max-width:680px;text-align:left;display:grid;gap:12px;font-family:var(--serif);font-size:17px;line-height:1.65;color:#e9dfcc}
+.life p{margin:0}
+.people{max-width:680px;width:100%;display:grid;gap:8px;text-align:left}
+.person{border-left:1px solid var(--copper);padding:2px 0 2px 14px}
+.person b{font-family:var(--serif);font-weight:500;color:var(--bone)}
+.person span{display:block;font-size:14px;color:var(--dust-hi)}
+.morning{max-width:680px;text-align:left;border-left:2px solid var(--gilt);padding-left:16px;font-family:var(--serif);font-size:17px;font-weight:500;color:#f0e4c8}
+.andthen{font-family:var(--serif);font-style:italic;font-size:22px;color:var(--gilt)}
+.problems{max-width:600px;text-align:left;color:var(--ember);font-size:13px;margin:0;padding-left:18px}
+textarea#hand{width:100%;max-width:680px;min-height:80px;background:var(--ink);color:var(--dust-hi);border:1px solid var(--edge);font-family:var(--mono);font-size:11px;padding:8px}
+@media (max-width:760px){.slots{grid-template-columns:repeat(2,minmax(0,1fr))}.card{flex-basis:132px}.dealer{margin-top:10px}}
+@media (prefers-reduced-motion:reduce){.card,.mini.face.played,.steps li.now i{animation:none}}
+</style>
+
+<div class="wrap" id="app"></div>
+
+<script>
+const CORE = {"deck": "story", "version": 4, "about": "Elsible's deck v4 (3 Oct 2026): normal life first, the researched tropes face up and dealt first. The hidden half is the twist the weave writes for this trope, this life: each trope card carries the weave's guide (signals, if nobody intervenes, if somebody does).", "deal": {"per_slot": 5}, "slots": [{"id": "trope", "label": "THE STORY", "q": "What kind of story?", "hint": "the trope, face up", "count": 1}, {"id": "role", "label": "WHO YOU ARE", "q": "Who are you?", "hint": "a life already moving", "count": 1}, {"id": "world", "label": "WHERE", "q": "Where is this life?", "hint": "who's watching", "count": 1}, {"id": "other", "label": "THE OTHER", "q": "Who's at the centre?", "hint": "how they treat you · always fictional", "count": 1}, {"id": "circle", "label": "THE CIRCLE", "q": "Who's around you?", "hint": "pick two", "count": 2}, {"id": "told_by", "label": "TOLD BY", "q": "Who's telling it?", "hint": "the narrator's voice", "count": 1}, {"id": "modifier", "label": "THE BURN", "q": "How does it burn?", "hint": "optional", "count": 1, "optional": true}, {"id": "pressure", "label": "AND NOW", "q": "The dealer plays a complication", "hint": "make her play another", "count": 1, "dealer": true}, {"id": "secret", "label": "UNDERNEATH", "q": "Who's hiding what?", "hint": "internal: the weave's reference, never dealt", "reference": true}], "dials": [{"id": "absurdity", "name": "Absurdity", "low": "played straight", "high": "a court in your head"}, {"id": "stakes", "name": "Stakes", "low": "one evening", "high": "a whole life"}, {"id": "cost", "name": "Cost", "low": "your pride", "high": "your job, your name"}, {"id": "people", "name": "Crowd", "low": "just the two of you", "high": "everyone watching"}, {"id": "length", "name": "Length", "low": "one night", "high": "a season"}], "cards": {"trope": [{"id": "enemies", "name": "Enemies to lovers", "line": "You need the person you came here to beat", "changes": "Every scene serves two agendas", "hidden": {"signals": ["they defend something you care about when you're not there to see it", "the grudge turns out to have a second side", "your own side asks you to do something that would hurt them", "you're relieved when they win something small"], "if_nobody_intervenes": ["you meet across the table at the decisive moment, still enemies, and it hurts", "your side wins, and you're the one who has to tell them"], "if_somebody_does": "you choose them over your own side, and pay for it in public"}}, {"id": "fake", "name": "Fake dating", "line": "An arrangement, with rules", "changes": "Breaking a rule raises tension", "hidden": {"signals": ["a rule of the arrangement gets broken and nobody mentions it", "someone outside the arrangement believes it completely", "a gesture that wasn't for show", "the end date gets mentioned, and nobody laughs"], "if_nobody_intervenes": ["the arrangement ends on schedule, and only one of you meant it", "it's exposed as fake in front of the people it was for"], "if_somebody_does": "the arrangement is ended early, honestly, and what's left is real or nothing"}}, {"id": "second", "name": "Second chance", "line": "The one that got away is back in town", "changes": "The old wound is a fact from day one", "hidden": {"signals": ["the old wound gets named, lightly, by someone else", "they still do the small thing they used to do", "the reason they left was not the reason you were told", "an old friend chooses a side"], "if_nobody_intervenes": ["the same mistake, made again, in the same place", "they leave again, and this time you watch it happen"], "if_somebody_does": "the real reason is said out loud, and you decide what it changes"}}, {"id": "friends", "name": "Friends to lovers", "line": "The best thing in your life, and you might break it", "changes": "Jealousy shows what's at stake", "hidden": {"signals": ["someone else wants them, and says so", "a joke between you that lands differently this time", "a friend asks a question you answer too fast", "you notice where they sit when they come into a room"], "if_nobody_intervenes": ["someone else gets there first, and the friendship survives, worse", "it's said by accident, at the worst time, and can't be taken back"], "if_somebody_does": "one of you says it deliberately, and the friendship becomes whatever comes next"}}, {"id": "contract", "name": "Marriage of convenience", "line": "On paper it's practical. That's the deal", "changes": "Tenderness slips past the terms", "hidden": {"signals": ["a kindness the contract didn't ask for", "someone asks how long it's meant to last", "the terms get broken in a small way, and it feels like a gift", "leaving becomes possible"], "if_nobody_intervenes": ["the contract runs out and both of you sign the end", "partners in everything except the one thing"], "if_somebody_does": "someone stays when the contract says they're free to go, and says why"}}, {"id": "forbidden", "name": "Forbidden love", "line": "There's a rule, and it has teeth", "changes": "Every meeting is a risk someone can see", "hidden": {"signals": ["the rule gets enforced on somebody else, and it's brutal", "a meeting that nobody was supposed to see", "someone who could report it chooses not to, for now", "the barrier turns out to have a price"], "if_nobody_intervenes": ["it's discovered, by the worst possible person", "one of you gives it up quietly to protect the other"], "if_somebody_does": "it goes public on purpose, and the rule has to answer"}}, {"id": "betrayal", "name": "Betrayal", "line": "You trusted them first", "changes": "Trust is built where you can see it", "hidden": {"signals": ["trust built where everyone can see it", "a small lie, explained away well", "something of yours ends up where it shouldn't be", "someone else warns you, and you don't believe them"], "if_nobody_intervenes": ["the betrayal lands, and you're the last to know", "you find out, and they never learn that you did"], "if_somebody_does": "it's caught before it lands, and you decide what they're owed"}}, {"id": "impostor", "name": "The impostor", "line": "You were pretending until it mattered", "changes": "They fall for the person, not the mask", "hidden": {"signals": ["someone uses a name that isn't quite yours", "a detail from the life you claimed doesn't fit", "they start loving the person under the mask", "someone from the real past arrives"], "if_nobody_intervenes": ["the mask comes off in public, not by your choice", "the mask becomes the person, and the old one is gone"], "if_somebody_does": "you take the mask off yourself, to the one person who matters"}}, {"id": "longcon", "name": "The long con", "line": "You're here to take something", "changes": "The con only works if you mean it", "hidden": {"signals": ["the plan needs one more favour than planned", "the mark does something kind that makes it harder", "a partner in the plan gets impatient", "you start to mean what you say to them"], "if_nobody_intervenes": ["the score lands, and you lose the mark", "the con collapses and takes both of you down"], "if_somebody_does": "you choose: the score or the mark, out loud, to one of them"}}, {"id": "mole", "name": "The mole", "line": "Inside, with two loyalties", "changes": "Both sides want proof", "hidden": {"signals": ["both sides ask for proof in the same week", "the people you report on start to trust you", "a message from your handler arrives at a bad moment", "someone else is also lying, and you can tell"], "if_nobody_intervenes": ["you're caught, by the side you came to love", "you stay inside both sides until it costs someone you care about"], "if_somebody_does": "you burn one side yourself, and choose which"}}, {"id": "rise", "name": "Rise and fall", "line": "You want it, and you'll get it", "changes": "Getting it costs something you didn't price", "hidden": {"signals": ["you get something you wanted, and it costs more than you priced", "an old friend stops calling", "the people above you start treating you as one of them", "you hear yourself say something the old you would hate"], "if_nobody_intervenes": ["you reach the top, and there's nobody there you like", "you fall, in public, and find out who stayed"], "if_somebody_does": "you walk away from it, or refuse it, before it finishes you"}}, {"id": "family", "name": "Found family", "line": "Strangers who became yours", "changes": "The people outweigh the trouble", "hidden": {"signals": ["a rescue nobody asked for", "someone from your old life wants you back", "a meal that becomes a tradition", "one of them is in trouble and doesn't tell you"], "if_nobody_intervenes": ["the group scatters, and nobody chose it", "one of them is lost, and the rest hold"], "if_somebody_does": "you choose them over blood or the old life, out loud"}}, {"id": "pitch", "name": "Mixing business and pleasure", "line": "It was work, until it wasn't", "changes": "The job and the feeling want different endings", "hidden": {"signals": ["they remember a detail from a meeting you thought was only business", "a message that arrives after hours and isn't about the work", "someone in the room notices how you two talk", "the paperwork asks a question you don't want to answer honestly"], "if_nobody_intervenes": ["the deal closes and the feeling is never said", "it comes out at the worst possible meeting, in front of everyone"], "if_somebody_does": "the job and the feeling are separated, and one of them is given up on purpose"}}, {"id": "fileon", "name": "The file on them", "line": "You were looking into them. You kept looking", "changes": "Every fact you find is also a reason to like them", "hidden": {"signals": ["the record has a gap, and the gap is interesting", "someone who knew them before talks too warmly, or too carefully", "you catch yourself looking for reasons to keep looking", "they mention something you only know because you were looking"], "if_nobody_intervenes": ["they find out you were looking, from someone else", "you close the file, and know more than you can ever admit"], "if_somebody_does": "you tell them what you were doing before anyone else can"}}], "role": [{"id": "newhire", "name": "The new hire", "line": "First week, and everyone already has a version of you", "changes": "Names before loyalties · first impressions stick", "want": "to belong here", "conflict": "who you'll turn into to fit in"}, {"id": "returner", "name": "The one who came back", "line": "You left town. Now you're home", "changes": "Everyone remembers a version of you", "want": "to prove you're different now", "conflict": "the old you is still here"}, {"id": "bestfriend", "name": "The best friend", "line": "Always the confidant, never the lead", "changes": "You know everyone's secrets but your own", "want": "a story of your own", "conflict": "loyalty"}, {"id": "parent", "name": "The single parent", "line": "Someone small depends on you completely", "changes": "Your time is never yours", "want": "one thing just for you", "conflict": "guilt every time you take it"}, {"id": "bridesmaid", "name": "The bridesmaid", "line": "Again", "changes": "Always in the photos, never the point of them", "want": "to stop being the plus-one in your own life", "conflict": "you're happy for them. Mostly"}, {"id": "bodyguard", "name": "The bodyguard", "line": "Paid to stand close and see nothing", "changes": "You hear everything and can say nothing", "want": "to do the job and go home", "conflict": "it stopped being just a job"}, {"id": "assistant", "name": "The assistant", "line": "In every room, and nobody sees you", "changes": "Power is borrowed, and you know where it lives", "want": "a seat at the table", "conflict": "what you'd trade for it"}, {"id": "heir", "name": "The heir to the family business", "line": "It's yours, and you didn't want it", "changes": "Every choice is also about the family", "want": "a life you chose", "conflict": "the people counting on you"}, {"id": "nurse", "name": "The night-shift nurse", "line": "You see people at their worst, at 3am", "changes": "Calm in a crisis, a mess in daylight", "want": "someone to look after you for once", "conflict": "you don't know how to be looked after"}, {"id": "influencer", "name": "The influencer", "line": "Your life is public, and it's not quite true", "changes": "Everything is content until it isn't", "want": "something real", "conflict": "the real thing would end the brand"}, {"id": "ghostwriter", "name": "The ghostwriter", "line": "You write other people's lives for a living", "changes": "You notice the gaps in people's stories", "want": "your name on something", "conflict": "you're better at being invisible"}, {"id": "detective", "name": "The detective", "line": "It's your job to find out", "changes": "You can ask anyone anything, and they know why", "want": "the truth", "conflict": "what the truth will cost someone you like"}, {"id": "wokeup", "name": "The one who woke up somewhere else", "line": "You opened your eyes in someone else's life", "changes": "Everyone expects you to know them", "want": "to get back", "conflict": "you're starting to like it here"}], "world": [{"id": "office", "name": "The office", "line": "Open plan, glass walls, one kitchen", "changes": "Everyone sees who talks to who"}, {"id": "town", "name": "The small town", "line": "You can't buy milk without being asked about it", "changes": "No secrets last a week"}, {"id": "college", "name": "College", "line": "Four years, one campus, everyone deciding who they are", "changes": "Rooms are shared, drama is public"}, {"id": "building", "name": "The apartment building", "line": "Thin walls, one laundry room, forty neighbours", "changes": "You know their routines; they know yours"}, {"id": "weddingwknd", "name": "The wedding weekend", "line": "Three days, one venue, everyone you know", "changes": "Seating charts are politics"}, {"id": "lakehouse", "name": "The lake house", "line": "One summer, one house, too many people", "changes": "Nobody can leave, nobody wants to"}, {"id": "hospital", "name": "The hospital", "line": "Long shifts, high stakes, a coffee machine that's always broken", "changes": "Life and death before lunch"}, {"id": "tour", "name": "The tour", "line": "A band, a bus, forty cities in sixty days", "changes": "No privacy, no days off"}, {"id": "reality", "name": "The reality show", "line": "Cameras everywhere, and a vote on Sunday", "changes": "Everything you do is edited"}, {"id": "restaurant", "name": "The family restaurant", "line": "Three generations, one kitchen, a lot of shouting", "changes": "Business and family are the same argument"}, {"id": "city", "name": "The city at night", "line": "Everyone's anonymous until they aren't", "changes": "Help and harm are one street apart"}, {"id": "otherworld", "name": "Another world", "line": "A world that isn't yours, that seems to know you", "changes": "Nothing works the way you expect"}, {"id": "oldhouse", "name": "The old house", "line": "It's been in the family a long time. So has something else", "changes": "Doors you shouldn't open, opened"}], "other": [{"id": "doesntknow", "name": "The one who doesn't know", "line": "They have no idea what you are to them", "changes": "Deflects praise · every confession is unprompted"}, {"id": "tests", "name": "The one who tests you", "line": "“Show me who you are”", "changes": "They only move on honest answers"}, {"id": "leverage", "name": "The one who knows your secret", "line": "They could ruin you, and they haven't", "changes": "They start ahead of you"}, {"id": "decided", "name": "The one who's already decided about you", "line": "Sure of you, one way or the other", "changes": "Changing their mind takes something big"}, {"id": "believer", "name": "The one who believes in you", "line": "“You'll come round. I can wait”", "changes": "Patience is their pressure"}, {"id": "left", "name": "The one who left", "line": "They had a reason, and never said it", "changes": "It starts cold and the wound is real"}, {"id": "boss", "name": "The boss", "line": "They sign your reviews", "changes": "Every kindness is also a power move"}, {"id": "rival", "name": "The rival", "line": "Only one of you gets it", "changes": "Helping them costs you"}, {"id": "grumpy", "name": "Grumpy to your sunshine", "line": "They're rude to everyone. Slightly less to you", "changes": "Warmth comes in small, rare doses"}, {"id": "warned", "name": "The one everyone warned you about", "line": "Their reputation arrives first", "changes": "Every kindness looks like a trick"}, {"id": "needs", "name": "The one who needs you", "line": "They can't do this alone, and they hate that", "changes": "Helping costs you something every time"}, {"id": "remembers", "name": "The one who remembers you differently", "line": "They knew you before, and you don't remember it", "changes": "Every memory they share is a test"}], "circle": [{"id": "saw", "name": "The friend who saw it first", "line": "Called it months ago", "changes": "Their warning comes true once"}, {"id": "rival2", "name": "The other one who wants them", "line": "Same person, different plan", "changes": "Their chances rise when yours stall"}, {"id": "groupchat", "name": "The group chat", "line": "Everyone has an opinion, instantly", "changes": "Nothing stays private for long"}, {"id": "rule", "name": "The one with the rule", "line": "“Two unanswered texts, then stop”", "changes": "A rule you'll break, and they'll notice"}, {"id": "committee", "name": "The committee in your head", "line": "Your moods, all voting", "changes": "They argue out loud · one may act on impulse"}, {"id": "confidant", "name": "The confidant", "line": "Someone you tell everything, drafts included", "changes": "Draft with them, send to the Other"}, {"id": "ex", "name": "The ex", "line": "Still around, still kind, still a problem", "changes": "A history the Other will hear about"}, {"id": "kid", "name": "The kid", "line": "Small, honest, always listening", "changes": "Says the true thing in front of everyone"}, {"id": "oldfriend", "name": "The old friend", "line": "Knew you before all this", "changes": "Remembers who you were, and says so"}, {"id": "sibling", "name": "The sibling", "line": "Shares your history and your blame", "changes": "On your side, until they aren't"}, {"id": "roommate", "name": "The roommate", "line": "Knows when you came home, and who with", "changes": "No secret survives the kitchen"}, {"id": "mom", "name": "The parent who calls every day", "line": "Loves you. Has notes", "changes": "Your choices get a review"}, {"id": "dog", "name": "The dog", "line": "Follows you everywhere", "changes": "Knows who to trust before you do"}], "told_by": [{"id": "bestie", "name": "Your best friend, telling it later", "line": "over drinks, years from now", "changes": "Warm, teasing, knows how it ends · never takes your side completely"}, {"id": "gossip", "name": "The gossip column", "line": "breathless and three steps ahead", "changes": "Names, scandal, exclamation · never misses a look"}, {"id": "podcast", "name": "The true-crime podcast", "line": "slow, careful, a little ominous", "changes": "Timestamps and evidence · never says who did it too early"}, {"id": "diary", "name": "Your diary", "line": "first person, late at night", "changes": "Honest, embarrassing, private · never edits itself"}, {"id": "romcom", "name": "The rom-com narrator", "line": "warm, knowing, a little smug", "changes": "Sees the meet-cute coming · never lets you miss a beat"}, {"id": "documentary", "name": "The nature documentary", "line": "hushed, observational, deadpan", "changes": "Describes you like a rare animal · never interferes"}, {"id": "noir", "name": "The noir detective", "line": "rain, cigarettes, regret", "changes": "Short, hard sentences · never trusts anyone"}, {"id": "campfire", "name": "The campfire story", "line": "low voice, long pauses", "changes": "Builds dread slowly · never explains the noise"}, {"id": "toast", "name": "The wedding toast", "line": "affectionate, slightly drunk", "changes": "Tells the embarrassing parts on purpose · never finishes a tangent"}, {"id": "texts", "name": "The group chat transcript", "line": "messages, typos, reactions", "changes": "Everyone talking at once · never in the right order"}], "modifier": [{"id": "slowburn", "name": "Slow burn", "line": "Not yet. Not yet", "changes": "Tension rises slower · the point of no return stays locked longer"}, {"id": "hurt", "name": "Hurt / comfort", "line": "Someone is carrying a wound", "changes": "A hidden hurt, a tending scene, and a telling"}, {"id": "onebed", "name": "Forced proximity", "line": "Stuck together. One room. One bed", "changes": "Nobody can leave the scene"}, {"id": "clock", "name": "A ticking clock", "line": "The time left is always in view", "changes": "Every scene costs time"}, {"id": "errors", "name": "A comedy of errors", "line": "Everything goes wrong in the funniest order", "changes": "Misunderstandings compound before they clear"}, {"id": "lying", "name": "Everyone's lying a little", "line": "Nobody tells the whole truth", "changes": "Every fact starts as a rumour"}, {"id": "triangle", "name": "A love triangle", "line": "There's a third person, and they're not wrong", "changes": "Choosing costs someone"}, {"id": "opposites", "name": "Opposites attract", "line": "You disagree about everything", "changes": "Every argument is also flirting"}], "pressure": [{"id": "deadline", "name": "The deadline", "line": "Something closes on a date", "changes": "The days are counted out loud"}, {"id": "plusone", "name": "The plus-one", "line": "You need a date by Saturday", "changes": "Lies about relationships start here"}, {"id": "promotion", "name": "The promotion", "line": "Only one of you gets it", "changes": "Every conversation is also a pitch"}, {"id": "screenshot", "name": "The screenshot", "line": "It's already in the group chat", "changes": "The clock runs on the gossip, not on you"}, {"id": "inheritance", "name": "The inheritance", "line": "The will is read on Friday", "changes": "Everyone wants something, including from you"}, {"id": "powercut", "name": "The power cut", "line": "Nobody leaves until the lights come back", "changes": "Forced proximity, candles running low"}, {"id": "visitor", "name": "The visitor", "line": "Someone arrived who knows the truth about you", "changes": "They haven't said it yet"}, {"id": "missing", "name": "The disappearance", "line": "Someone's gone, and you were the last to see them", "changes": "Everyone has a theory, including about you"}, {"id": "wrongtext", "name": "The wrong text", "line": "You sent it to the wrong person", "changes": "Now they know, and they haven't said"}, {"id": "move", "name": "The move", "line": "One of you is leaving in a month", "changes": "Every day is counted"}, {"id": "reunion", "name": "The reunion", "line": "Ten years, one room, everyone you used to be", "changes": "Old versions of you walk in the door"}, {"id": "funeral", "name": "The funeral", "line": "Everyone in black, saying what they shouldn't", "changes": "Old grudges, no exit"}], "secret": [{"id": "notwho", "name": "Not who they said", "line": "The name is borrowed", "changes": "The reveal changes everything"}, {"id": "taken", "name": "Already taken", "line": "There's someone else", "changes": "Turns any story forbidden"}, {"id": "reporting", "name": "Reporting back", "line": "Someone close is telling someone else", "changes": "A friendship is the one that breaks"}, {"id": "didit", "name": "They did it", "line": "The thing everyone's looking for, they did", "changes": "Every kindness from them is also cover"}, {"id": "started", "name": "You started it", "line": "The trouble began with you, and nobody knows", "changes": "Being found out is the point of no return"}, {"id": "family", "name": "The family tie", "line": "You're related, and nobody's said so", "changes": "Every resemblance is a clue"}, {"id": "money", "name": "The money", "line": "Someone here is broke, or owes, and is hiding it", "changes": "Every generous gesture is a bluff"}, {"id": "time", "name": "Not much time", "line": "Someone here is running out of it", "changes": "Every scene with them might be the last"}, {"id": "nothing", "name": "Nothing", "line": "Nobody's hiding anything", "changes": "You're the one expected to break"}]}};
+const BUSINESS = {"pack": "business", "about": "The business pack (3 Oct 2026): what the core deck had tilted toward after Rina's VC story. Merged in with --pack business.", "cards": {"role": [{"id": "investor", "name": "The investor", "line": "You decide who gets money, and everyone knows it", "changes": "Every warm word to you might be a pitch · diligence is a reason to ask anything"}, {"id": "founder", "name": "The founder", "line": "You built it, and it is starting to own you", "changes": "Every friendship is also a reference"}], "world": [{"id": "startup", "name": "The startup", "line": "Twelve people, one runway, no walls", "changes": "Work and life are the same room · everything ships tonight"}, {"id": "firm", "name": "The firm", "line": "The hours are long and the floors are numbered", "changes": "Hierarchy is literal · a mistake is billable"}], "pressure": [{"id": "audit", "name": "The audit", "line": "Someone is checking the story", "changes": "Every lie costs more as the clock runs"}, {"id": "raise", "name": "The raise", "line": "The money comes with people attached", "changes": "Every yes is owed to someone"}, {"id": "merger", "name": "The merger", "line": "Two houses, one name at the end", "changes": "Somebody's people will not survive it"}], "undercurrent": [{"id": "pitch", "name": "The pitch got personal", "line": "It was business, until it was not", "changes": "The deal and the feeling want different endings", "signals": ["they remember a detail from a meeting you thought was only business", "a message that arrives after hours and isn't about the work", "someone in the room notices how you two talk", "the paperwork asks a question you don't want to answer honestly"], "if_full": ["the deal closes and the feeling is never said", "it comes out at the worst possible meeting, in front of everyone"], "if_resolved": "the job and the feeling are separated, and one of them is given up on purpose"}], "secret": [{"id": "conflict", "name": "Conflict of interest", "line": "If you fall for them, you cannot back them", "changes": "The job and the feeling cannot both win"}]}};
+const PICKED = ["role","world","other","circle","told_by","modifier"];
+const KEY = "elsible-v3";
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+let S = load() || fresh();
+function fresh(){ return {packs:[], cur:"role", offers:{}, picks:{}, dealer:null, refused:[], dials:{absurdity:40,stakes:50,cost:50,people:50,length:40}, weave:null}; }
+function load(){ try{ const s = JSON.parse(localStorage.getItem(KEY)||"null"); return s && s.picks ? s : null; }catch(e){ return null; } }
+function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S)); }catch(e){} }
+
+function deck(){
+  const d = JSON.parse(JSON.stringify(CORE));
+  if(S.packs.includes("business")) for(const [slot,cards] of Object.entries(BUSINESS.cards)) (d.cards[slot] = d.cards[slot]||[]).push(...cards);
+  return d;
+}
+let D = deck();
+let SLOT = Object.fromEntries(D.slots.map(s=>[s.id,s]));
+let BY = Object.fromEntries(Object.entries(D.cards).map(([s,p])=>[s,Object.fromEntries(p.map(c=>[c.id,c]))]));
+function rebuild(){ D = deck(); SLOT = Object.fromEntries(D.slots.map(s=>[s.id,s])); BY = Object.fromEntries(Object.entries(D.cards).map(([s,p])=>[s,Object.fromEntries(p.map(c=>[c.id,c]))])); }
+
+function shuffle(a){ a = a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function dealSlot(slot){ S.offers[slot] = shuffle(D.cards[slot].map(c=>c.id)).slice(0,5); }
+function need(slot){ return SLOT[slot].count||1; }
+function filled(slot){ const p = S.picks[slot]||[]; return SLOT[slot].optional ? true : p.length >= need(slot); }
+function lifeSet(){ return PICKED.every(filled); }
+function nextEmpty(){ return PICKED.find(s => !SLOT[s].optional && !filled(s)) || (S.picks.modifier ? null : (S.cur==="modifier"?null:"modifier")); }
+
+/* The dealer plays a complication once the life is set, leaning toward what the hand makes likely. */
+function dealerPlays(){
+  const pool = D.cards.pressure.filter(c=>!S.refused.includes(c.id));
+  if(!pool.length){ S.refused = []; return dealerPlays(); }
+  const aff = c => { let n=0; for(const [ls,ids] of Object.entries(S.picks)) for(const id of ids){ const lc = BY[ls][id]; if(((lc.pulls||{}).pressure||[]).includes(c.id)) n++; if(((c.pulls||{})[ls]||[]).includes(id)) n++; } return n; };
+  const w = pool.map(c=>1+2*aff(c)); let r = Math.random()*w.reduce((a,b)=>a+b,0);
+  for(let i=0;i<pool.length;i++){ r-=w[i]; if(r<=0) return pool[i].id; }
+  return pool[pool.length-1].id;
+}
+
+function name(slot, i=0){ const id=(S.picks[slot]||[])[i]; return id ? BY[slot][id].name : null; }
+function sentenceHTML(){
+  const b = x => `<b>${esc(x)}</b>`, it = x => `<i>${esc(x)}</i>`;
+  const role = name("role"), world = name("world"), other = name("other");
+  const circ = (S.picks.circle||[]).map(id=>BY.circle[id].name.toLowerCase());
+  const mod = name("modifier"), told = name("told_by"), press = S.dealer ? BY.pressure[S.dealer].name.toLowerCase() : null;
+  return `${role ? b(role) : it("Someone")} ${world ? "in "+b(world.toLowerCase()) : it("somewhere")}, `
+    + `${other ? "with "+b(other.toLowerCase())+" at the centre" : it("with someone at the centre")}, `
+    + `${circ.length ? b(circ.join(" and "))+" around you" : it("nobody yet around you")}`
+    + `${mod ? "; "+b(mod.toLowerCase()) : ""}; `
+    + `${press ? "and now "+b(press) : it("and then...")} — `
+    + `${told ? "told by "+b(told.toLowerCase()) : it("told by a voice not yet chosen")}.`;
+}
+function sentenceText(){ const t = document.createElement("div"); t.innerHTML = sentenceHTML(); return t.textContent; }
+
+function faceHTML(slot, c, cls=""){
+  return `<div class="face ${cls}"><span class="s">${esc(SLOT[slot].label)}</span><span class="n">${esc(c.name)}</span><span class="l">${esc(c.line)}</span><span class="c">${esc(c.changes)}</span></div>`;
+}
+
+function render(){
+  if(S.weave) return renderWoven();
+  if(!S.offers[S.cur]) { dealSlot(S.cur); save(); }
+  const dealerCard = S.dealer ? BY.pressure[S.dealer] : null;
+  const slotsHTML = [...PICKED, "pressure"].map(id=>{
+    const s = SLOT[id];
+    if(id==="pressure") return `<div class="slot dealerslot"><span class="k">${esc(s.label)}</span><span class="v ${dealerCard?"":"empty"}">${dealerCard?esc(dealerCard.name):"the dealer's card"}</span></div>`;
+    const ids = S.picks[id]||[], v = ids.map(x=>BY[id][x].name).join(" & ");
+    return `<button class="slot ${S.cur===id?"cur":""}" data-slot="${id}"><span class="k">${esc(s.label)}</span><span class="v ${v?"":"empty"}">${v?esc(v):(s.optional?"optional":"not yet")}</span></button>`;
+  }).join("");
+  const s = SLOT[S.cur], taken = S.picks[S.cur]||[];
+  const fan = S.offers[S.cur].map(id=>`<button class="card ${taken.includes(id)?"taken":""}" data-id="${esc(id)}" aria-pressed="${taken.includes(id)}" aria-label="${esc(BY[S.cur][id].name)}">${faceHTML(S.cur, BY[S.cur][id])}</button>`).join("");
+  const ask = need(S.cur)>1 ? "pick two" : (s.optional ? "pick one, or leave it" : "pick one");
+  $("#app").innerHTML = `
+    <div class="top">
+      <div class="left"><span class="mark">Els<em>ible</em></span><p class="say">${esc(s.q)} Five cards, dealt.</p>
+        <div class="btns"><button class="b" id="again">Deal them again</button><button class="b" id="newhand">New hand</button><button class="b" id="auto">Play it out for me</button></div></div>
+      <div class="dealer"><span class="label">the dealer · a complication</span>
+        ${dealerCard ? `<div class="mini face played">${faceHTML("pressure", dealerCard).replace(/^<div class="face ">|<\/div>$/g,"")}</div><button class="b" id="another">Make her play another</button>`
+                     : `<div class="mini back">She plays once your life is set</div>`}
+      </div>
+    </div>
+    <div class="slots">${slotsHTML}</div>
+    <p class="sentence">${sentenceHTML()}</p>
+    <div class="weavebar"><button class="b go" id="weave" ${lifeSet() && S.dealer ? "" : "disabled"}>Weave my life</button></div>
+    <div class="handhead"><span class="label gilt">Your hand · ${esc(s.label)}</span><span class="label">${ask} · five of ${D.cards[S.cur].length}, she holds the rest</span></div>
+    <div class="fan" id="fan">${fan}</div>
+    <div class="foot"><label><input type="checkbox" id="biz" ${S.packs.includes("business")?"checked":""}> add the business pack</label><span class="label">a working sketch · not the design</span></div>`;
+  document.querySelectorAll(".slot[data-slot]").forEach(el=>el.onclick=()=>{ S.cur = el.dataset.slot; save(); render(); });
+  document.querySelectorAll("#fan .card").forEach(el=>el.onclick=()=>take(el.dataset.id));
+  $("#again").onclick = ()=>{ dealSlot(S.cur); S.picks[S.cur] = []; afterChange(); };
+  $("#newhand").onclick = ()=>{ const packs = S.packs; S = fresh(); S.packs = packs; save(); render(); };
+  $("#auto").onclick = playItOut;
+  const an = $("#another"); if(an) an.onclick = ()=>{ S.refused.push(S.dealer); S.dealer = dealerPlays(); save(); render(); };
+  $("#weave").onclick = ()=>{ S.weave = {state:"weaving"}; save(); renderWoven(); weave(); };
+  $("#biz").onchange = e=>{ S.packs = e.target.checked ? ["business"] : []; rebuild(); S.offers = {}; for(const sl of PICKED) S.picks[sl] = (S.picks[sl]||[]).filter(id=>BY[sl][id]); if(S.dealer && !BY.pressure[S.dealer]) S.dealer = null; save(); render(); };
+}
+
+function take(id){
+  const n = need(S.cur), cur = S.picks[S.cur]||[];
+  if(cur.includes(id)) S.picks[S.cur] = cur.filter(x=>x!==id);
+  else S.picks[S.cur] = n>1 ? (cur.length<n ? [...cur,id] : [...cur.slice(1),id]) : [id];
+  if((S.picks[S.cur]||[]).length >= n){ const nx = PICKED.find(sl => sl!==S.cur && !(S.picks[sl]||[]).length && !SLOT[sl].optional); if(nx) S.cur = nx; }
+  afterChange();
+}
+function afterChange(){
+  if(lifeSet() && !S.dealer) S.dealer = dealerPlays();
+  if(!lifeSet()) { /* the dealer waits for a complete life */ }
+  save(); render();
+}
+function playItOut(){
+  for(const sl of PICKED){
+    if(!S.offers[sl]) dealSlot(sl);
+    const n = need(sl);
+    if(SLOT[sl].optional){ S.picks[sl] = Math.random()<.5 ? [S.offers[sl][0]] : []; continue; }
+    S.picks[sl] = shuffle(S.offers[sl]).slice(0,n);
+  }
+  S.dealer = null; S.refused = []; S.dealer = dealerPlays();
+  save(); render();
+}
+
+/* ---------------- the weave ---------------- */
+function handLines(){
+  const L = [];
+  for(const sl of PICKED) for(const id of (S.picks[sl]||[])){ const c = BY[sl][id]; L.push(`- ${SLOT[sl].label} (${sl}): ${c.name} - "${c.line}" - in play: ${c.changes}`); }
+  const p = BY.pressure[S.dealer]; L.push(`- AND NOW (pressure, played by the dealer): ${p.name} - "${p.line}" - in play: ${p.changes}`);
+  return L.join("\n");
+}
+function refLines(slot){ return D.cards[slot].map(c=>`- ${c.id}: ${c.name} - ${c.line}`).join("\n"); }
+
+function weavePrompt(){
+  const told = BY.told_by[(S.picks.told_by||[])[0]];
+  return `You are the weaver for Elsible, a story game. The player was dealt a random hand of cards and picked from it; the dealer then played a complication. Your job: turn these very real, possibly odd options into ONE coherent life the player is about to step into, and decide what is moving underneath it. Random combinations must make sense: braid them, don't list them.
+
+THE HAND
+${handLines()}
+
+THE DIALS (0-100, shape the writing, never mention them): absurdity ${S.dials.absurdity}, stakes ${S.dials.stakes}, cost ${S.dials.cost}, crowd ${S.dials.people}, length ${S.dials.length}
+
+THE NARRATOR'S VOICE (colour the visible prose with it): ${told.name} - ${told.line} - ${told.changes}
+
+REFERENCE FOR THE HIDDEN HALF (pick the best fit for this hand, then make it specific):
+Undercurrents:
+${refLines("undercurrent")}
+Secrets:
+${refLines("secret")}
+
+Write the life of a REAL PERSON, not a type: a first name, a past that explains why they are here, what they want, and the people around them with real history between them. The person at the centre (THE OTHER card) is described only by how they treat the player; never call them a love interest. Two circle people, named, each with history. The dealer's complication must already be pressing on this life. Hint at drama; never state a plot or a twist. All people fictional. PG-13.
+
+Reply with ONLY this JSON:
+{"title": "two to five words, evocative",
+ "you": {"name": "first name", "past": "one sentence", "want": "one sentence"},
+ "life": ["paragraph 1, second person, who you are and what your days are made of, 50-80 words", "paragraph 2, where you are, who is watching, and the complication pressing in, 50-80 words"],
+ "people": [{"name":"", "who":"which card (the Other / a circle card)", "with_you":"one sentence of history between you"}],
+ "first_morning": "one sentence that puts the player physically into the first morning, present tense",
+ "hidden": {"undercurrent_id":"an id from the list", "undercurrent":"what is moving underneath, specific to this life, 1-2 sentences", "secret_id":"an id from the list", "secret":"who is hiding what, specific, 1 sentence", "if_nobody_intervenes":"1 sentence", "signals":["three small pieces of evidence the narrator could surface in play"]}}
+The "hidden" block is never shown to the player: nothing in title, you, life, people or first_morning may reveal it.`;
+}
+
+function auditPrompt(w){
+  return `You are the auditor for Elsible. The weaver turned a random hand into a life. Check it against the hand and send it back mended if needed.
+
+THE HAND
+${handLines()}
+
+THE WEAVE
+${JSON.stringify(w)}
+
+Check: (1) every card is honoured, including both circle cards, the narrator's voice and the dealer's complication; (2) the parts the player sees (title, you, life, people, first_morning) do not reveal or hint too directly at the hidden block; (3) names and facts are consistent everywhere; (4) the person is specific, not a stock type; (5) the Other is described by how they treat the player, never as a love interest; (6) PG-13.
+
+Reply with ONLY this JSON:
+{"ok": true or false, "problems": ["short description of each problem found, empty if ok"], "mended": null if ok, otherwise the COMPLETE corrected weave in exactly the same shape}`;
+}
+
+function setStep(n, failed){ document.querySelectorAll(".steps li").forEach((li,i)=>{ li.classList.toggle("done", i<n); li.classList.toggle("now", i===n && !failed); li.classList.toggle("failed", i===n && !!failed); }); }
+
+async function weave(){
+  let sample = null;
+  try{ sample = await claude.use("sample"); }catch(e){ sample = null; }
+  if(!sample){ S.weave = {state:"plain", data: plainWeave()}; save(); renderWoven(); return; }
+  try{
+    setStep(0);
+    const w = await sample.json(weavePrompt(), {modelTier:"default", cache:false});
+    if(!w || !w.title || !w.life || !w.hidden) throw {code:"invalid_json", message:"missing fields"};
+    setStep(1);
+    let a = null;
+    try{ a = await sample.json(auditPrompt(w), {modelTier:"default", cache:false}); }catch(e){ a = null; }
+    const mended = a && a.ok === false && a.mended && a.mended.title && a.mended.life ? a.mended : null;
+    S.weave = {state:"woven", data: mended || w, audit: a ? {ok: !!a.ok, problems: a.problems||[], mended: !!mended} : {skipped:true}};
+    save(); setStep(3); renderWoven();
+  }catch(e){
+    const code = e && e.code;
+    if(code === "not_granted" || code === "sampling_disabled"){ S.weave = {state:"plain", data: plainWeave()}; }
+    else S.weave = {state:"failed", error: (e && (e.message || e.code)) || "the weaver did not answer"};
+    save(); renderWoven();
+  }
+}
+
+function plainWeave(){
+  const p = sl => (S.picks[sl]||[]).map(id=>BY[sl][id]);
+  const role=p("role")[0], world=p("world")[0], other=p("other")[0], circ=p("circle"), press=BY.pressure[S.dealer];
+  return {title: `${world.name.replace(/^The /,"")}, and then`, you:{name:"You", past: role.line+".", want:"Something this place has not given you yet."},
+    life:[`${role.name}. ${role.line}. ${role.changes.split(" · ")[0]}.`, `${world.name}: ${world.line.toLowerCase()}. ${press.name} — ${press.line.toLowerCase()}.`],
+    people:[{name: other.name, who:"the Other", with_you: other.line}, ...circ.map(c=>({name:c.name, who:"the circle", with_you:c.line}))],
+    first_morning:"The morning starts like any other.", hidden:null};
+}
+
+function renderWoven(){
+  const W = S.weave, st = W.state, data = W.data;
+  const steps = `<ol class="steps"><li><i></i>The weaver writes it</li><li><i></i>The auditor reads it, and may send it back</li><li><i></i>It is dealt out as yours</li></ol>`;
+  let body = "", kicker = "Weaving", note = "The weaver is writing your life. The auditor reads it before you step in.";
+  if(st==="failed"){ kicker = "It did not weave"; note = W.error; }
+  if(st==="plain"){ kicker = "Your life, plainly"; note = "Claude wasn't available to this page, so this is assembled from the cards alone, with no weaver and no auditor."; }
+  if(st==="woven"){
+    kicker = "Your life is woven";
+    note = W.audit && W.audit.mended ? "The auditor sent it back once and it was mended. Written, audited, and dealt out as yours." :
+           W.audit && W.audit.skipped ? "Written and dealt out as yours. The auditor could not be reached this time." :
+           "Written, audited, and dealt out as yours. The weaver wrote what is underneath; you will find it by what it does.";
+  }
+  if(data){
+    body = `<p class="title">${esc(data.title)}</p>
+      <div class="life">${(data.life||[]).map(p=>`<p>${esc(p)}</p>`).join("")}${data.you && data.you.name!=="You" ? `<p><b style="font-weight:500">${esc(data.you.name)}</b>. ${esc(data.you.past)} ${esc(data.you.want)}</p>`:""}</div>
+      <div class="people">${(data.people||[]).map(p=>`<div class="person"><b>${esc(p.name)}</b><span>${esc(p.with_you)}</span></div>`).join("")}</div>
+      <div class="morning">${esc(data.first_morning)}</div>
+      <span class="andthen">and then...</span>`;
+  }
+  $("#app").innerHTML = `<div class="woven">
+    <span class="label ember">${esc(kicker)}</span>
+    <h1>${sentenceHTML()}</h1>
+    <p class="note">${esc(note)}</p>
+    ${steps}
+    ${W.audit && W.audit.problems && W.audit.problems.length ? `<ul class="problems">${W.audit.problems.map(p=>`<li>auditor: ${esc(p)}</li>`).join("")}</ul>`:""}
+    ${body}
+    <div class="btns">
+      <button class="b" id="back">Back to the table</button>
+      ${st==="failed"||st==="woven"||st==="plain" ? `<button class="b" id="reweave">Weave it again</button>`:""}
+      ${st==="woven"||st==="plain" ? `<button class="b go" id="copy">Weave it in Claude Code</button>`:""}
+    </div>
+    <p class="note" id="copied"></p>
+    <textarea id="hand" readonly hidden aria-label="Your hand as JSON"></textarea>
+  </div>`;
+  if(st==="weaving") setStep(0); else if(st==="failed") setStep(0,true); else setStep(3);
+  $("#back").onclick = ()=>{ S.weave = null; save(); render(); };
+  const rw = $("#reweave"); if(rw) rw.onclick = ()=>{ S.weave = {state:"weaving"}; save(); renderWoven(); weave(); };
+  const c = $("#copy"); if(c) c.onclick = async ()=>{
+    const txt = JSON.stringify(handJSON(), null, 1), ta = $("#hand");
+    try{ await navigator.clipboard.writeText(txt); $("#copied").textContent = "Copied. It holds the hidden half, so don't read it: paste it straight into Claude Code with \"weave this hand\"."; }
+    catch(e){ ta.hidden = false; ta.value = txt; ta.focus(); ta.select(); $("#copied").textContent = "Selected. Copy it and paste it straight into Claude Code."; }
+  };
+}
+
+function handJSON(){
+  const cards = {}, picks = {};
+  for(const sl of [...PICKED, "pressure"]){
+    const ids = sl==="pressure" ? [S.dealer] : (S.picks[sl]||[]), multi = need(sl)>1;
+    const face = id => ({name:BY[sl][id].name, line:BY[sl][id].line, changes:BY[sl][id].changes});
+    picks[sl] = multi ? ids : (ids[0]||null);
+    cards[sl] = multi ? ids.map(face) : (ids[0] ? face(ids[0]) : null);
+  }
+  const w = S.weave && S.weave.data;
+  return {format:"seren-hand/1", deck:"story", packs:S.packs, dealt:new Date().toISOString(), source:"elsible-prototype",
+          picks, dealer:{slot:"pressure", played:S.dealer, refused:S.refused}, dials:S.dials, cards,
+          sentence: sentenceText(),
+          weave: w ? {title:w.title, you:w.you, life:w.life, people:w.people, first_morning:w.first_morning} : null,
+          hidden: w ? w.hidden : null, audit: S.weave ? S.weave.audit||null : null};
+}
+
+render();
+</script>

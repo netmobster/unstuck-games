@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Elsible · Unstuck Games</title>
+<meta name="description" content="You were dealt a life, and then... Storytelling with an AI narrator. In design.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;1,400&family=Space+Mono&display=swap">
+<style>
+/* A holding page. The session building Elsible replaces it with the real one. */
+:root { --ink:#100d0b; --cloth:#16100f; --bone:#e8e1d6; --dust:#a39a8f; --copper:#b07a4e; color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; min-height: 100%; background: var(--ink); color: var(--bone); }
+body { min-height: 100vh; display: grid; place-items: center; padding: 16px;
+  background: radial-gradient(110% 70% at 50% 0%, #2a1b18 0%, var(--cloth) 45%, var(--ink) 100%) fixed; }
+main { text-align: center; }
+h1 { font: 400 clamp(44px, 9vw, 76px)/1 "IBM Plex Serif", Georgia, serif; margin: 0 0 14px; }
+h1 i { color: var(--copper); }
+p { font: italic 400 18px/1.5 "IBM Plex Serif", Georgia, serif; color: var(--dust); margin: 0 0 28px; }
+.small { font: 400 11px/1.6 "Space Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--dust); }
+.small a { color: var(--copper); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Els<i>ible</i></h1>
+  <p>You were dealt a life, and then…</p>
+  <div class="small">In design · <a href="/play/">try the deal</a></div>
+</main>
+<script src="/switcher.js" defer></script>
+</body>
+</html>
