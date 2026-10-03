@@ -1,0 +1,116 @@
+/* Night over the survey sheet. Same family as the tombstone file: moss is the troop,
+   blood is the hunters, gold is what you know. Dark-first: the game is played at night. */
+:root{
+  --bg:#12150e; --panel:#1a1e15; --line:#30362a; --ink:#e3e6d4; --dim:#97a088;
+  --moss:#8fbf63; --blood:#e2654c; --gold:#d2b052;
+  --open:#2a3122; --road:#5b5440; --forest:#1d3a1f; --forestdot:#2f5a2c; --lake:#1f3a52; --mtn:#55594e;
+  --display:'Archivo','Arial Narrow',Arial,sans-serif; --body:'Literata',Georgia,serif; --mono:'Martian Mono',ui-monospace,Consolas,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px}
+.app{display:flex;flex-direction:column;min-height:100%;padding-inline:16px;padding-block:0 16px;max-width:1400px;margin:0 auto}
+.bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-block:12px;border-bottom:1px solid var(--line)}
+h1{font-family:var(--display);font-weight:900;font-stretch:62%;font-size:30px;text-transform:uppercase;margin:0;letter-spacing:.01em}
+.moss{color:var(--moss)}
+.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
+.clock{display:flex;align-items:center;gap:10px}
+.clock b{font-family:var(--display);font-weight:900;font-size:26px;font-stretch:70%}
+.dawn{width:140px;height:8px;background:var(--line)}
+.dawn div{height:100%;width:0;background:var(--gold);transition:width .15s}
+.tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-left:auto}
+input,select,button{font-family:var(--mono);font-size:11px;background:var(--panel);color:var(--ink);border:1px solid var(--line);padding:6px 8px}
+input{width:72px}
+button{cursor:pointer;letter-spacing:.06em}
+button:hover:not(:disabled){border-color:var(--ink)}
+button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--moss);outline-offset:2px}
+button:disabled{opacity:.4;cursor:default}
+
+.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;padding-top:14px;align-items:start}
+.boardwrap{min-width:0}
+canvas{display:block;width:100%;height:auto;border:1px solid var(--line);cursor:crosshair;image-rendering:auto}
+.hint{font-size:13px;color:var(--dim);margin-top:8px;font-style:italic}
+kbd{font-family:var(--mono);font-size:10px;border:1px solid var(--line);padding:1px 5px;font-style:normal}
+
+.side{display:flex;flex-direction:column;gap:12px;min-width:0}
+.verbs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.verb{font-family:var(--display);font-weight:900;font-stretch:70%;font-size:24px;text-transform:uppercase;padding:10px 8px;border-width:2px}
+.verb small{display:block;font-family:var(--mono);font-size:9px;font-weight:400;letter-spacing:.15em;color:var(--dim)}
+.verb.stay{border-color:var(--moss);color:var(--moss)}
+.verb.atk{border-color:var(--blood);color:var(--blood)}
+.block{background:var(--panel);border:1px solid var(--line);padding:12px 14px}
+.big{font-family:var(--display);font-stretch:75%;font-size:20px;margin:4px 0 8px}
+.big b{font-size:40px;font-weight:900;color:var(--moss);font-stretch:62%}
+.dim{color:var(--dim)}
+.rows .row{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:11px;padding-block:4px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
+.rows .row b{font-weight:600}
+.spec{display:grid;gap:4px;margin-top:10px}
+.spec .s{display:grid;grid-template-columns:62px 1fr 34px;gap:8px;align-items:center;font-family:var(--mono);font-size:10px;color:var(--dim)}
+.spec .t{height:7px;background:var(--line)} .spec .t div{height:100%;background:var(--moss)}
+.hunters{display:grid;gap:4px;margin-top:6px}
+.hunters .h{display:grid;grid-template-columns:16px 1fr auto;gap:8px;align-items:center;font-family:var(--mono);font-size:11px}
+.hunters .h i{width:10px;height:10px;background:var(--blood);display:inline-block}
+.log{margin:6px 0 0;padding-left:18px;font-size:13px;max-height:180px;overflow:auto}
+.log li{margin-bottom:3px} .log li.bad{color:var(--blood)} .log li.good{color:var(--moss)} .log li.gold{color:var(--gold)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-family:var(--mono);font-size:10px;color:var(--dim)}
+.sw{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px}
+.t-open{background:var(--open)} .t-road{background:var(--road)} .t-forest{background:var(--forest)} .t-lake{background:var(--lake)} .t-mtn{background:var(--mtn)}
+
+dialog{background:var(--panel);color:var(--ink);border:2px solid var(--ink);max-width:560px;width:calc(100% - 32px);padding:22px 24px}
+dialog::backdrop{background:rgba(5,6,4,.7)}
+dialog h2{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:28px;line-height:1.1;margin:8px 0 10px;text-wrap:balance}
+.boons{display:grid;gap:8px;margin-top:12px}
+.boons button{text-align:left;font-family:var(--body);font-size:14px;padding:12px 14px;border-color:var(--gold)}
+.boons button b{font-family:var(--display);font-stretch:75%;font-size:17px;color:var(--gold);text-transform:uppercase;letter-spacing:.04em;margin-right:6px}
+.eye summary{font-family:var(--mono);font-size:11px;color:var(--gold);cursor:pointer;margin-top:10px}
+.eye pre{font-family:var(--mono);font-size:10.5px;white-space:pre-wrap;color:var(--dim);max-height:240px;overflow:auto}
+.row-btns{display:flex;gap:8px;margin-top:16px}
+
+@media (max-width:900px){ .main{grid-template-columns:minmax(0,1fr)} .tools{margin-left:0} }
+@media (prefers-reduced-motion: reduce){ .dawn div{transition:none} }
+
+/* lineage, tabs, pages */
+.line{display:flex;align-items:baseline;gap:8px;font-family:var(--mono);font-size:12px}
+.line b{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;color:var(--gold);letter-spacing:.02em}
+.line .dim{font-size:11px}
+.tabs{display:flex;gap:4px;margin-left:auto}
+.tab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid var(--line);padding:6px 12px;color:var(--dim)}
+.tab[aria-selected="true"]{color:var(--ink);border-color:var(--ink)}
+.app>.tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:10px;margin-left:0}
+.page{padding-block:22px 40px;max-width:820px}
+.page h2{font-family:var(--display);font-weight:900;font-stretch:65%;font-size:40px;text-transform:uppercase;line-height:1;margin:0 0 8px}
+.gens{list-style:none;margin:18px 0;padding:0;display:grid;gap:10px}
+.gens li{background:var(--panel);border:1px solid var(--line);padding:12px 16px}
+.gens .gn{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;color:var(--gold);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.gens .gn span{font-family:var(--mono);font-size:10.5px;color:var(--dim);font-weight:400;letter-spacing:.06em}
+.gens p{margin:6px 0 0}
+.small{font-size:12.5px}
+.heirs{margin-top:14px}
+.heirs button{border-color:var(--moss)} .heirs button b{color:var(--moss)}
+.lineend{font-family:var(--display);font-stretch:80%;font-size:20px;color:var(--blood);line-height:1.25}
+#abandon{margin-top:8px;border-color:var(--blood);color:var(--blood)}
+.brief{max-width:900px;font-size:15px;line-height:1.6}
+.brief h2{margin-top:6px} .brief h3{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:22px;text-transform:uppercase;margin:28px 0 8px;color:var(--gold)}
+.brief p,.brief li{max-width:72ch} .brief ul,.brief ol{padding-left:20px}
+.brief table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}
+.brief th{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);text-align:left;border-bottom:1px solid var(--ink);padding:6px 10px 6px 0}
+.brief td{border-bottom:1px solid var(--line);padding:7px 10px 7px 0;vertical-align:top}
+.brief code{font-family:var(--mono);font-size:12px;color:var(--gold)}
+.brief .scroll{overflow-x:auto}
+.brief .swatch{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:6px;border:1px solid var(--line)}
+@media (max-width:900px){ .tabs{margin-left:0} }
+
+.earlier{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:22px;text-transform:uppercase;margin:32px 0 6px;color:var(--dim)}
+
+/* v5: spends, this warren, what size buys */
+.spends{display:grid;grid-template-columns:1fr 1fr;gap:6px}
+.spends button{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:15px;text-transform:uppercase;color:var(--gold);border-color:var(--gold);padding:7px 6px;text-align:left}
+.spends button small{display:block;font-family:var(--mono);font-size:9px;font-weight:400;letter-spacing:.1em;color:var(--dim);text-transform:none}
+.buys{font-size:13px;color:var(--ink);margin:10px 0 0;line-height:1.4}
+.wcard .wk{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;text-transform:uppercase;margin:4px 0 6px}
+.wcard .wl{font-size:13px;line-height:1.4;padding-block:3px;border-bottom:1px solid var(--line)}
+.wcard .gift{color:var(--moss)} .wcard .cost{color:var(--blood)}
+
+.heirs button[aria-pressed="true"]{background:var(--moss);color:var(--bg)} .heirs button[aria-pressed="true"] b{color:var(--bg)}
+.heirs .passon{border-color:var(--gold);color:var(--gold);font-family:var(--display);font-weight:800;font-stretch:75%;font-size:16px;text-transform:uppercase;text-align:center}

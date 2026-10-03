@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Last Warren · Unstuck Games</title>
+<meta name="description" content="A tower defense game where you are the thing trying not to be found. Grow, hide, run, and spend your family to buy time. Tombstone: Tokyo Jungle.">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400..800&family=Big+Shoulders+Stencil+Display:wght@400..900&display=swap">
+<style>
+/* Holding page in CD's "Burrow" look until CD's public page replaces it. */
+:root { --bg:#070806; --ink:#e4ddcc; --mute:#8f8a76; --line:rgba(228,221,204,.10); --moss:#8fbf63; --blood:#e2654c; --gold:#d2b052;
+  --fs:"Big Shoulders Stencil Display", Impact, sans-serif; --fm:"JetBrains Mono", ui-monospace, Consolas, monospace; color-scheme: dark; }
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); }
+body { font: 400 14px/1.6 var(--fm); -webkit-font-smoothing: antialiased; }
+a { color: var(--gold); }
+:focus-visible { outline: 1.5px solid var(--gold); outline-offset: 3px; }
+main { max-width: 760px; margin: 0 auto; padding: 72px 24px 80px; }
+.kick { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--mute); }
+h1 { font: 800 clamp(64px, 14vw, 132px)/.86 var(--fs); letter-spacing: .01em; text-transform: uppercase; margin: 18px 0 18px; }
+h1 span { color: var(--moss); text-shadow: 0 0 28px rgba(143,191,99,.35); }
+.lede { font-size: 17px; max-width: 46ch; }
+.play { display: inline-flex; align-items: baseline; gap: 12px; margin: 30px 0 8px; font: 800 44px/1 var(--fs); letter-spacing: .05em; color: var(--moss); text-decoration: none; text-shadow: 0 0 18px rgba(143,191,99,.35); }
+.play:hover { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 8px; }
+.play small { font: 400 11px var(--fm); letter-spacing: .1em; color: var(--mute); text-shadow: none; }
+.rows { margin: 40px 0 0; border-top: 1px solid var(--line); }
+.rows div { display: grid; grid-template-columns: 140px 1fr; gap: 16px; padding: 12px 0; border-bottom: 1px solid var(--line); }
+.rows dt { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); margin: 0; }
+.rows dd { margin: 0; }
+.them { color: var(--blood); } .gold { color: var(--gold); }
+footer { margin-top: 48px; font-size: 11px; color: var(--mute); }
+@media (max-width: 560px) { .rows div { grid-template-columns: 1fr; gap: 2px; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="kick">Unstuck Games · game #5 · playtest</div>
+  <h1><span>The last</span><br>warren</h1>
+  <p class="lede">A tower defense game where you are the thing trying not to be found. Every tick you grow and every hunter takes a step. Stay, run, hold in the trees, or spend your family to buy time.</p>
+  <a class="play" href="/play/">Play <small>in your browser · about 3 minutes a run</small></a>
+  <dl class="rows">
+    <div><dt>The question</dt><dd>How much stronger do I need to be before I move?</dd></div>
+    <div><dt>The feeling</dt><dd class="them">“I should have moved one tick earlier.”</dd></div>
+    <div><dt>The line</dt><dd>Each run is a generation. A survivor carries an heirloom to the next. When a generation never sees a dawn, that was the last warren.</dd></div>
+    <div><dt>Tombstone</dt><dd class="gold">Tokyo Jungle (2012): where you settle decides what you become.</dd></div>
+  </dl>
+  <footer>The hunters search on what they heard and saw, not on where you are. Nothing here is a score: a run ends in a sentence.</footer>
+</main>
+<script src="/switcher.js" defer></script>
+</body>
+</html>

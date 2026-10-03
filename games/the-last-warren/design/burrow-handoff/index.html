@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=1440">
+<title>The Last Warren · Burrow</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400..800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil+Display:wght@400..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,400..900&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Stencil+One&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+
+  <!-- review only: step through the board moments. Delete this block in the game. -->
+  <div class="moments" id="moments"></div>
+
+  <header class="hdr">
+    <div class="brand">The Last Warren</div>
+    <div class="pair"><span>Line</span><span class="line-name">Sorrel I</span><span>· no heirloom</span></div>
+    <div class="pair"><span>Night</span><span class="night" id="night">1</span></div>
+    <nav>
+      <a href="#" aria-current="page">Play</a>
+      <a href="#">Chronicle</a>
+      <a href="#">CD brief</a>
+    </nav>
+  </header>
+  <div class="dawn">
+    <div class="track"><div class="fill" id="dawn-fill" style="width:0%"></div></div>
+    <span class="count"><span id="dawn-ticks">0</span> / 54 to dawn</span>
+  </div>
+
+  <div class="layout">
+    <lw-board id="board" scene="located" cell="36"></lw-board>
+
+    <aside class="panel">
+      <div class="troop">
+        <div class="count" id="count">19</div>
+        <div class="where" id="where">in a shallow Nursery warren</div>
+      </div>
+      <div class="status them" id="status">located</div>
+      <dl class="stats">
+        <dt>strength</dt><dd id="strength">19</dd>
+        <dt>noise</dt><dd id="noise">6.1</dd>
+        <dt>growing</dt><dd id="growing">+1 a tick · +2 in 10</dd>
+        <dt>watched</dt><dd class="gold" id="watched">3 ticks</dd>
+      </dl>
+      <p class="odds" id="odds">Holding here you’d beat 1 sweeper (71%), not 2 (24%).</p>
+
+      <div class="section warren" id="warren">
+        <div class="name"><svg width="26" height="26" viewBox="0 0 24 24" id="warren-glyph"></svg><span id="warren-name">Nursery · shallow</span></div>
+        <div class="gift" id="warren-gift">+1 extra person every tick</div>
+        <div class="cost" id="warren-cost">Loud: noise ×1.5</div>
+        <div class="depth" id="warren-depth">Shallow: hides nothing (×1)</div>
+      </div>
+
+      <div class="section hunters">
+        <div class="label">Hunters · <span id="hunter-count">4</span></div>
+        <div id="hunters"></div>
+      </div>
+
+      <div class="section log" id="log"></div>
+    </aside>
+  </div>
+
+  <div class="verbs">
+    <button class="verb stay" data-key=" "><span class="word">STAY</span><span class="key">SPACE · HOLD</span></button>
+    <button class="verb attack" data-key="a" id="attack"><span class="word">ATTACK</span><span class="key" id="attack-key">A · 71%</span></button>
+    <span class="gap"></span>
+    <button class="verb spend" data-key="d" id="spend-decoy"><span class="word">DECOY</span><span class="key">−4 D</span></button>
+    <button class="verb spend" data-key="r" id="spend-rearguard"><span class="word">REARGUARD</span><span class="key">−5 R</span></button>
+    <button class="verb spend" data-key="s" id="spend-scout"><span class="word">SCOUT</span><span class="key">−3 S</span></button>
+    <button class="verb spend" data-key="g" id="spend-dig"><span class="word">DIG HERE</span><span class="key">−8 G</span></button>
+  </div>
+
+  <div class="foot">
+    <p>Click a warren to run for it, any square to go there and hold. Click a ringed hunter to attack. Hover for the race. Forest hides you; lakes they can’t cross.</p>
+    <button class="working-toggle" id="working-toggle" aria-expanded="false">Show the working</button>
+  </div>
+  <div class="working" id="working">
+    <span>Seed</span><input value="1" aria-label="Seed">
+    <select aria-label="Rules"><option>Tuned rules</option><option>Tracks variant</option></select>
+    <select aria-label="Player"><option>You play</option><option>Bot plays</option></select>
+    <button class="btn">New run</button>
+    <button class="ghost">Replay this night</button>
+  </div>
+
+</div>
+
+<script src="board.js"></script>
+<script src="demo.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

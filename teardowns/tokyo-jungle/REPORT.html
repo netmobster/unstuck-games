@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Last Warren — Tombstone</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,800;62..125,900&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Martian+Mono:wght@400;600&display=swap">
+<style>
+  /* A field survey of a burrow: grey-green survey paper by day, the warren at night.
+     Moss is the living troop, blood is the hunters, gold marks testimony.
+     Layout: one reading column with the graveyard record up top and a live board as the thesis. */
+  :root{
+    --paper:#e3e4d8; --paper2:#d5d8c6; --ink:#1c1f17; --dim:#5a604f; --line:#b5b9a4;
+    --moss:#3d6a2b; --mossbg:#d6e0c8; --blood:#a2301f; --gold:#856a1c;
+    --display:'Archivo','Arial Narrow',Arial,sans-serif;
+    --body:'Literata',Georgia,serif;
+    --mono:'Martian Mono',ui-monospace,Consolas,monospace;
+  }
+  @media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+    --paper:#14170f; --paper2:#1d2117; --ink:#e3e6d4; --dim:#9aa08a; --line:#353a2b;
+    --moss:#8fbf63; --mossbg:#1f2b17; --blood:#e2654c; --gold:#c9a64b; color-scheme:dark }}
+  :root[data-theme="dark"]{
+    --paper:#14170f; --paper2:#1d2117; --ink:#e3e6d4; --dim:#9aa08a; --line:#353a2b;
+    --moss:#8fbf63; --mossbg:#1f2b17; --blood:#e2654c; --gold:#c9a64b; color-scheme:dark }
+
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:18.5px;line-height:1.62;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:0}
+  a{color:var(--moss)}
+  a:focus-visible,button:focus-visible{outline:2px solid var(--moss);outline-offset:3px}
+  h1,h2,h3,h4{font-family:var(--display);margin:0;text-wrap:balance}
+  p{margin:0 0 15px}
+
+  /* masthead */
+  header.top{border-bottom:3px double var(--ink);padding-block:52px 26px}
+  .kick{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--blood)}
+  h1{font-size:clamp(52px,12vw,112px);font-weight:900;font-stretch:62%;line-height:.86;letter-spacing:-.01em;text-transform:uppercase;margin:14px 0 10px}
+  h1 .last{color:var(--moss)}
+  .sub{font-size:21px;font-style:italic;color:var(--dim);max-width:36ch}
+  .meta{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--dim);margin-top:20px}
+
+  /* the board */
+  .board{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center;margin:34px 0 8px}
+  .grid{display:grid;grid-template-columns:repeat(9,1fr);gap:3px;aspect-ratio:1;max-width:100%;background:var(--line);border:2px solid var(--ink);padding:3px}
+  .cell{background:var(--paper);position:relative;display:grid;place-items:center;font-family:var(--mono);font-size:10px;color:var(--dim)}
+  .cell.w{background:var(--paper2)}
+  .cell.w::before{content:attr(data-k);position:absolute;top:2px;left:4px;font-size:9px;letter-spacing:.05em}
+  .dot{border-radius:50%;display:grid;place-items:center;font-family:var(--mono);font-weight:600;line-height:1}
+  .troop{background:var(--moss);color:var(--paper);width:82%;height:82%;font-size:clamp(9px,1.6vw,13px);transition:transform .2s}
+  .troop.move{outline:2px dashed var(--moss);outline-offset:2px;background:transparent;color:var(--moss)}
+  .hunter{background:var(--blood);width:46%;height:46%}
+  .caught .troop{background:var(--blood);color:var(--paper)}
+  .readout{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--dim)}
+  .readout .row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-block:7px;font-variant-numeric:tabular-nums}
+  .readout .row b{color:var(--ink);font-weight:600}
+  .verb{font-family:var(--display);font-weight:900;font-stretch:70%;font-size:clamp(46px,8vw,72px);line-height:1;text-transform:uppercase;margin:6px 0 14px;color:var(--moss);min-height:1em}
+  .verb.run{color:var(--gold)} .verb.dead{color:var(--blood)}
+  .legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;font-family:var(--mono);font-size:10.5px;color:var(--dim)}
+  .legend i{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px;vertical-align:-1px}
+  .ctl{margin-top:14px;display:flex;gap:8px}
+  .ctl button{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--ink);border:1.5px solid var(--ink);padding:7px 12px;cursor:pointer}
+  .ctl button:hover{background:var(--ink);color:var(--paper)}
+  .boardcap{font-size:14.5px;font-style:italic;color:var(--dim);margin:6px 0 0}
+
+  /* the graveyard record */
+  .grave{border:2px solid var(--ink);background:var(--paper2);padding:20px 22px;margin:34px 0 8px}
+  .grave .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;color:var(--blood)}
+  .grave dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px 20px;margin:14px 0 0}
+  .grave dt{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:15px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;padding-top:2px}
+  .grave dd{margin:0;font-size:16.5px}
+  .grave dd b{font-weight:600}
+  .grave .tomb{color:var(--blood);font-size:19px}
+  .grave .dna{color:var(--dim)}
+
+  .thesis{border-left:5px solid var(--moss);padding:4px 0 4px 22px;margin:38px 0;font-size:23px;line-height:1.45}
+  .thesis b{color:var(--moss);font-weight:600}
+
+  section{padding-block:30px;border-top:1px solid var(--line)}
+  h2{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.24em;color:var(--blood);text-transform:uppercase;margin-bottom:8px}
+  h2 .n{color:var(--dim);margin-right:10px}
+  h3{font-size:clamp(28px,4.4vw,38px);font-weight:800;font-stretch:72%;line-height:1.05;text-transform:uppercase;margin:0 0 14px}
+  .lede{font-size:20px;color:var(--dim);font-style:italic;margin-bottom:18px}
+  blockquote{margin:22px 0;padding-left:20px;border-left:3px solid var(--gold);font-style:italic;font-size:20px}
+  blockquote cite{display:block;margin-top:8px;font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim)}
+  ul,ol{margin:0 0 15px;padding-left:22px} li{margin-bottom:7px}
+
+  .scroll{overflow-x:auto}
+  .tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:16px}
+  .tbl th{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;text-align:left;color:var(--dim);border-bottom:2px solid var(--ink);padding:6px 12px 6px 0}
+  .tbl td{padding:8px 12px 8px 0;border-bottom:1px solid var(--line);vertical-align:top}
+  .tbl td:last-child{font-weight:600}
+  .tbl td.arrow{color:var(--dim);font-family:var(--mono);padding-right:12px}
+
+  .beats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:20px 0}
+  .beats div{border-top:3px solid var(--ink);padding-top:10px}
+  .beats .bn{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--dim)}
+  .beats h4{font-size:22px;font-weight:900;font-stretch:70%;text-transform:uppercase;margin:4px 0 6px}
+  .beats p{font-size:15.5px;margin:0}
+  .beats .burn{border-top-color:var(--blood)} .beats .burn h4{color:var(--blood)}
+  .beats .live{border-top-color:var(--moss)} .beats .live h4{color:var(--moss)}
+
+  .take{border:2px solid var(--moss);background:var(--mossbg);padding:18px 22px;margin:22px 0}
+  .leave{border:2px dashed var(--blood);padding:18px 22px;margin:22px 0}
+  .take h4,.leave h4{font-size:19px;font-weight:800;font-stretch:80%;letter-spacing:.06em;text-transform:uppercase;margin:0 0 10px}
+  .leave h4{color:var(--blood)} .take h4{color:var(--moss)}
+  .leave ul,.take ul{margin:0}
+  .note{background:var(--paper2);border:1px solid var(--line);padding:14px 18px;margin:18px 0;font-size:15.5px}
+  .note .lab{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--blood);display:block;margin-bottom:6px}
+
+  .qs{counter-reset:q;list-style:none;padding:0}
+  .qs li{counter-increment:q;display:grid;grid-template-columns:2.2em minmax(0,1fr);gap:4px;padding-block:8px;border-bottom:1px solid var(--line)}
+  .qs li::before{content:counter(q);font-family:var(--display);font-weight:900;font-size:22px;line-height:1.1;color:var(--dim)}
+  .qs li.new::before{color:var(--moss)}
+  .qs .tag{font-family:var(--mono);font-size:9.5px;letter-spacing:.14em;color:var(--moss);margin-left:6px}
+
+  footer{border-top:3px double var(--ink);margin-top:36px;padding-block:24px 70px;font-size:14.5px;color:var(--dim)}
+  footer a{color:var(--dim)}
+
+  @media (max-width:680px){
+    body{font-size:17.5px}
+    .board{grid-template-columns:minmax(0,1fr)}
+    .beats{grid-template-columns:repeat(2,minmax(0,1fr))}
+    .grave dl{grid-template-columns:minmax(0,1fr);gap:2px 0}
+    .grave dt{margin-top:10px}
+  }
+  @media (prefers-reduced-motion: reduce){ .troop{transition:none} }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <div class="kick">Unstuck Games · Tombstone file · Game in the graveyard</div>
+    <h1><span class="last">The Last</span><br>Warren</h1>
+    <p class="sub">A tower defense game where you are the thing trying not to be found.</p>
+    <div class="meta">FILED 2026-10-01 · TOMBSTONE CHOSEN BY JAY · BRIEF: RED TEAM · STATUS: BOUNDARIES NEXT</div>
+  </header>
+
+  <div class="board" aria-label="A live demonstration of the core loop">
+    <div>
+      <div class="grid" id="grid" role="img" aria-label="Nine by nine board: a green troop in a warren, red hunters closing in one block per tick"></div>
+      <div class="legend">
+        <span><i style="background:var(--moss)"></i>troop (+1 a tick)</span>
+        <span><i style="background:var(--blood)"></i>hunter (1 block a tick)</span>
+        <span><i style="background:var(--paper2);border:1px solid var(--line);border-radius:0"></i>warren · C / S / D</span>
+      </div>
+    </div>
+    <div>
+      <div class="readout">
+        <div class="kick" style="letter-spacing:.2em">The dangerous button</div>
+        <div class="verb" id="verb">STAY</div>
+        <div class="row"><span>TICK</span><b id="r-tick">0</b></div>
+        <div class="row"><span>TROOP</span><b id="r-troop">1</b></div>
+        <div class="row"><span>WARREN</span><b id="r-warren">Combat</b></div>
+        <div class="row"><span>NEAREST HUNTER</span><b id="r-near">—</b></div>
+        <div class="row"><span>HUNTERS</span><b id="r-hunters">2</b></div>
+      </div>
+      <div class="ctl">
+        <button type="button" id="b-pause">Pause</button>
+        <button type="button" id="b-next">New board</button>
+      </div>
+      <p class="boardcap">A dumb policy plays itself: stay until a hunter is three blocks out, then run for the farthest warren. Another hunter arrives every ten ticks. Watch it stay one tick too long.</p>
+    </div>
+  </div>
+
+  <div class="grave">
+    <div class="lab">THE GRAVEYARD</div>
+    <dl>
+      <dt>Tombstone</dt><dd class="tomb"><b>Tokyo Jungle</b> (2012) — dead on PS3, still mourned</dd>
+      <dt>Markers</dt>
+      <dd><b>Agar.io</b> — growth makes you a bigger, slower target; splitting exposes you<br>
+          <b>Rodent's Revenge</b> — the clock that brings more hunters<br>
+          <b>Hitman GO</b> — when you move, everything moves<br>
+          <b>Invisible, Inc.</b> — the alarm that only goes up<br>
+          <b>Anomaly: Warzone Earth</b> — tower defense, direction of travel reversed</dd>
+      <dt>DNA only</dt>
+      <dd class="dna"><b>Eufloria</b> — nodes that grow, transit that exposes (alive, re-released Dec 2025)<br>
+          <b>Robots / Daleks</b> — every hunter steps toward you, every turn (folk software, alive)</dd>
+    </dl>
+  </div>
+
+  <p class="thesis">You can't stay, because staying runs out. You can't leave cheaply, because leaving is where you die. And <b>where you finally settle decides what the next generation is.</b></p>
+
+  <section>
+    <h2><span class="n">I</span>The verdict</h2>
+    <h3>The organ was never the Pomeranian</h3>
+    <p>Tokyo Jungle's living organ isn't the animals, the city or the combat. The red team found the organ inside tower defense: <em>accumulated strength creates exposure.</em> Tokyo Jungle is a corpse that already had it. It already made the player the thing being hunted, and it already made settling a decision about who you become.</p>
+    <p>It buried all of that under a novelty premise, a Pomeranian in post-human Shibuya, and the premise is what the world remembered.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">II</span>The record</h2>
+    <div class="scroll"><table class="tbl">
+      <tbody>
+        <tr><td style="font-weight:400;color:var(--dim);font-family:var(--mono);font-size:11px;letter-spacing:.12em">GAME</td><td>Tokyo Jungle · PS3 · 2012</td></tr>
+        <tr><td style="font-weight:400;color:var(--dim);font-family:var(--mono);font-size:11px;letter-spacing:.12em">MADE BY</td><td>Crispy's! with Sony's Japan Studio</td></tr>
+        <tr><td style="font-weight:400;color:var(--dim);font-family:var(--mono);font-size:11px;letter-spacing:.12em">STATUS</td><td>Never ported off PS3, and digital-only in the West. Japan Studio was dissolved in 2021 and Crispy's! has been dormant since about 2015. Today it's only playable as a streamed PS3 title on PS Plus Premium, or through a PC build that fans recompiled.</td></tr>
+      </tbody>
+    </table></div>
+    <blockquote>Please, someone... Anyone, bring back TOKYO JUNGLE.<cite>RESETERA THREAD TITLE · 10 NOV 2024</cite></blockquote>
+  </section>
+
+  <section>
+    <h2><span class="n">III</span>How it played</h2>
+    <h3>The parts that matter here</h3>
+    <ul>
+      <li><b>Survival mode is the game.</b> You play an animal and its descendants across in-game years.</li>
+      <li><b>Hunger drains constantly.</b> You can't hold still, because food forces you across the map.</li>
+      <li><b>Territory is claimed, not owned.</b> You mark spots in an area to claim it, and that's what lets you breed there.</li>
+      <li><b>Breeding is the save point.</b> The mate's quality decides the litter. The litter is the next generation, your pack and in practice your lives.</li>
+      <li><b>Age is a second clock.</b> Breed before it runs out, or the line ends.</li>
+      <li><b>Predators hunt and prey hides.</b> You're safe in cover and exposed in the open.</li>
+    </ul>
+    <div class="note"><span class="lab">CAVEAT</span>These details come from the research pass, not a full teardown. Check them before anything here is quoted publicly.</div>
+  </section>
+
+  <section>
+    <h2><span class="n">IV</span>Why it died</h2>
+    <h3>Platform, not design</h3>
+    <p>It was a PS3 exclusive, digital-only in the West, from a small studio attached to a first-party division that no longer exists. Nobody owns the job of bringing it back, so nobody does.</p>
+    <p>The premise was the hook and also the ceiling. It's remembered as the Pomeranian game, not as the stay-or-go machine underneath.</p>
+  </section>
+
+  <section>
+    <h2><span class="n">V</span>The four beats</h2>
+    <div class="beats">
+      <div><span class="bn">TOMBSTONE</span><h4>What was alive</h4><p>Settle or move, under pressure, and the settling shapes the next generation.</p></div>
+      <div class="burn"><span class="bn">CREMATION</span><h4>What burns</h4><p>The animals, the city, action combat, the hunger bar, the unlocks, the score.</p></div>
+      <div class="live"><span class="bn">TRANSPLANT</span><h4>What survives</h4><p>The nest becomes the Warren, the litter becomes the troop, and the predators become the hunters.</p></div>
+      <div><span class="bn">UNSTUCK</span><h4>Where it lands</h4><p>Dots on a grid, a counter going up, hunters stepping one block a tick.</p></div>
+    </div>
+
+    <div class="leave">
+      <h4>Cremation · what we refuse to reproduce</h4>
+      <ul>
+        <li><b>Animals and post-apocalyptic Tokyo.</b> The setting is the corpse's face, and it stays dead.</li>
+        <li><b>Real-time action combat and stealth in the grass.</b> We are tick-based and visible.</li>
+        <li><b>Hunger as a survival meter.</b> Our pressure comes from the hunters, not from a bar.</li>
+        <li><b>Species unlocks, costumes, collectibles and DLC.</b> None of it.</li>
+        <li><b>Mate-quality RNG</b> as a slot machine for stats.</li>
+        <li><b>A score at the end.</b> Tokyo Jungle ranked your survival in years. We pay off in what happened.</li>
+      </ul>
+    </div>
+
+    <div class="scroll"><table class="tbl">
+      <thead><tr><th>Tokyo Jungle</th><th></th><th>The Last Warren</th></tr></thead>
+      <tbody>
+        <tr><td>Claimed territory and a nest</td><td class="arrow">→</td><td>The Warren</td></tr>
+        <tr><td>The litter, the pack</td><td class="arrow">→</td><td>The troop: one entity, +1 a tick</td></tr>
+        <tr><td>Where you breed shapes the next generation</td><td class="arrow">→</td><td>The Warren's specialty shapes what the troop becomes</td></tr>
+        <tr><td>Hunger forces you to move</td><td class="arrow">→</td><td>Hunters closing in force you to move</td></tr>
+        <tr><td>Crossing open ground between territories</td><td class="arrow">→</td><td>Transit: the troop exposed between Warrens</td></tr>
+        <tr><td>The line ends</td><td class="arrow">→</td><td>The last warren falls</td></tr>
+      </tbody>
+    </table></div>
+  </section>
+
+  <section>
+    <h2><span class="n">VI</span>What nobody used properly</h2>
+    <h3>A Warren is a version of yourself</h3>
+    <p>Tokyo Jungle tied where you settle to what you become. Then it spent that idea on stat bonuses nobody looked at, behind a premise everybody looked at.</p>
+    <div class="take">
+      <h4>What The Last Warren takes</h4>
+      <p style="margin:0">That idea goes at the centre. A Warren isn't a location: Combat, Scout and Defense each make the troop into something different. Moving means choosing a different self under pressure, and every tick asks the same question: <b>how much stronger do I need to be before I move?</b></p>
+    </div>
+    <p><b>Our own DNA</b>, from the library rather than the graveyard: <b>Orbis</b> (deterministic sim, invariants, sweeps, the causality probe) · <b>Elsewhere</b> (the world advances whether you're ready or not) · <b>Deadline Dungeon</b> (decisions emerge from mechanics, not upgrade ladders) · <b>Ferret Bowling</b> (the eye: show the working after the fact).</p>
+  </section>
+
+  <section>
+    <h2><span class="n">VII</span>Open questions</h2>
+    <p class="lede">For the first prototype to answer, not to design in advance.</p>
+    <ol class="qs">
+      <li><span><b>Is complete information fun?</b> If STAY / MOVE / ATTACK isn't interesting on a visible board, fog won't save it.</span></li>
+      <li><span><b>How vulnerable is transit?</b> If moving is painless there's no tension. If it's suicidal, the player stays. The game needs a real "fuck it, RUN".</span></li>
+      <li><span><b>What does "found" mean?</b> A fight, death, a siege, or being revealed.</span></li>
+      <li><span><b>Do Warrens change how you play</b>, or does one just make you statistically better?</span></li>
+      <li><span><b>Does attack earn its place?</b> STAY vs MOVE may be the whole game. The prototype is allowed to kill attack.</span></li>
+      <li class="new"><span><b>Is there a second clock?</b><span class="tag">FROM THE TOMBSTONE</span> Tokyo Jungle had two, hunger and age. We have one, the hunters.</span></li>
+      <li class="new"><span><b>Does the troop carry anything between Warrens?</b><span class="tag">FROM THE TOMBSTONE</span> Does a troop that leaves a Combat Warren stay combat-shaped, fade, or reset?</span></li>
+      <li class="new"><span><b>What does the ending say?</b><span class="tag">FROM THE TOMBSTONE</span> When the last warren falls, the payoff is the sentence about how it fell, not the ticks survived.</span></li>
+    </ol>
+  </section>
+
+  <footer>
+    Unstuck Games · <em>Don't bullshit the player.</em> · Sources: Wikipedia (Tokyo Jungle, Rodent's Revenge, Anomaly: Warzone Earth, Hoplite) · <a href="https://www.resetera.com/threads/please-someone-anyone-bring-back-tokyo-jungle.1032306/">ResetEra</a> · <a href="https://www.saveagario.com/2023/07/miniclip-why-are-you-so-bad-agario-pc.html">saveagario.com</a> · <a href="https://www.videogameschronicle.com/news/four-square-enix-montreal-mobile-games-including-deus-ex-go-are-shutting-down/">VGC</a> · <a href="https://store.steampowered.com/app/3254570/Eufloria_Classic/">Steam: Eufloria Classic</a>
+  </footer>
+</div>
+
+<script>
+(function(){
+  const N=9, grid=document.getElementById('grid');
+  const $=id=>document.getElementById(id);
+  const KINDS={C:'Combat',S:'Scout',D:'Defense'};
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let seed=7, st, timer=null, paused=false;
+  function rnd(){ seed=(seed*1103515245+12345)&0x7fffffff; return seed/0x7fffffff; }
+  const dist=(a,b)=>Math.abs(a.x-b.x)+Math.abs(a.y-b.y);
+  function edge(){ const s=Math.floor(rnd()*4), i=Math.floor(rnd()*N);
+    return s===0?{x:i,y:0}:s===1?{x:N-1,y:i}:s===2?{x:i,y:N-1}:{x:0,y:i}; }
+  function init(){
+    const w=[{x:4,y:4,k:'C'},{x:1,y:1,k:'S'},{x:7,y:2,k:'D'},{x:2,y:7,k:'D'},{x:7,y:7,k:'S'}];
+    st={tick:0,troop:1,pos:{x:4,y:4},home:w[0],target:null,warrens:w,hunters:[edge(),edge()],verb:'STAY',dead:false,deadAt:0};
+  }
+  function step(p,t){ const dx=t.x-p.x, dy=t.y-p.y;
+    if(Math.abs(dx)>=Math.abs(dy)&&dx!==0) return {x:p.x+Math.sign(dx),y:p.y};
+    if(dy!==0) return {x:p.x,y:p.y+Math.sign(dy)}; return {x:p.x,y:p.y}; }
+  function near(){ return st.hunters.length?Math.min(...st.hunters.map(h=>dist(h,st.pos))):99; }
+  function tick(){
+    if(st.dead){ if(++st.deadAt>4){ seed=(seed*7+3)&0x7fffffff; init(); } render(); return; }
+    st.tick++;
+    if(st.target){ st.pos=step(st.pos,st.target);
+      if(st.pos.x===st.target.x&&st.pos.y===st.target.y){ st.home=st.target; st.target=null; st.verb='STAY'; }
+    } else {
+      st.troop++;
+      if(near()<=3){ // run for the warren farthest from the hunters
+        let best=null,bs=-1;
+        for(const w of st.warrens){ if(w===st.home) continue;
+          const s=Math.min(...st.hunters.map(h=>dist(h,w))); if(s>bs){bs=s;best=w;} }
+        st.target=best; st.home=null; st.verb='RUN';
+      }
+    }
+    st.hunters=st.hunters.map(h=>step(h,st.pos));
+    if(st.tick%10===0) st.hunters.push(edge());
+    if(st.hunters.some(h=>h.x===st.pos.x&&h.y===st.pos.y)){ st.dead=true; st.verb=st.target?'CAUGHT':'FOUND'; }
+    if(st.tick>=80){ seed=(seed*7+3)&0x7fffffff; init(); }
+    render();
+  }
+  function render(){
+    let html='';
+    for(let y=0;y<N;y++) for(let x=0;x<N;x++){
+      const w=st.warrens.find(v=>v.x===x&&v.y===y);
+      let inner='';
+      if(st.pos.x===x&&st.pos.y===y) inner=`<span class="dot troop${st.target?' move':''}">${st.troop}</span>`;
+      else if(st.hunters.some(h=>h.x===x&&h.y===y)) inner='<span class="dot hunter"></span>';
+      html+=`<div class="cell${w?' w':''}"${w?` data-k="${w.k}"`:''}>${inner}</div>`;
+    }
+    grid.innerHTML=html; grid.classList.toggle('caught',st.dead);
+    const v=$('verb'); v.textContent=st.verb; v.className='verb'+(st.verb==='RUN'?' run':st.dead?' dead':'');
+    $('r-tick').textContent=st.tick; $('r-troop').textContent=st.troop;
+    $('r-warren').textContent=st.target?'in transit':KINDS[st.home.k];
+    const n=near(); $('r-near').textContent=n===99?'—':n+(n===1?' block':' blocks');
+    $('r-hunters').textContent=st.hunters.length;
+  }
+  function play(){ clearInterval(timer); timer=setInterval(tick,650); }
+  $('b-pause').addEventListener('click',()=>{ paused=!paused; $('b-pause').textContent=paused?'Play':'Pause'; paused?clearInterval(timer):play(); });
+  $('b-next').addEventListener('click',()=>{ seed=(seed*31+11)&0x7fffffff; init(); render(); });
+  init();
+  if(reduce){ for(let i=0;i<12;i++) tick(); paused=true; $('b-pause').textContent='Play'; } else { render(); play(); }
+})();
+</script>
+</body>
+</html>
