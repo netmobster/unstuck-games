@@ -264,122 +264,250 @@ dialog h2 { font: 700 30px/1.08 var(--fs); letter-spacing: .03em; margin: 10px 0
   <section class="page" id="tab-chron" role="tabpanel" hidden><div id="chronicle"></div></section>
   <section class="page brief" id="tab-brief" role="tabpanel" hidden>
     <h2>Brief for Claude Design</h2>
-<p class="dim">The Last Warren · Unstuck Games · 2 Oct 2026. The game in the Play tab is <b>functionally complete and tuned</b>. It was built function-first, as the Unstuck method says, and it's yours to make beautiful. This tab is everything you need to do that without breaking it.</p>
+<p class="mute">The Last Warren · Unstuck Games · updated 2 Oct 2026, 22:10 ET, after your Burrow handoff. Three parts:</p>
+<ol>
+  <li><b>What changed since your last brief.</b> Read this first.</li>
+  <li><b>The whole game, at red-team depth:</b> every rule, the maths, the search AI, the tuned numbers, and what the machines found.</li>
+  <li><b>The standing brief:</b> what's fixed and what's yours, every state, the asset manifest, and what to design next.</li>
+</ol>
 
-<h3>What it is</h3>
-<p><b>A tower defense game where you are the thing trying not to be found.</b> You're a troop hiding in a network of warrens. Every tick you gain people and every hunter moves one step. You choose to <b>stay</b> (grow, but they close in), <b>run</b> for another warren or <b>go</b> to any square and hold there (exposed in the open, hidden in forest), <b>attack</b> a hunter in reach, or <b>spend people</b>: a decoy, a rearguard, a scouting party, a new warren dug where you stand. Nights escalate. When your warren falls, a survivor carries one heirloom into the next generation of your <b>line</b>. When a generation fails to see its first dawn, the line ends: that was the last warren.</p>
-<p>The feeling to design for: <i>"I could stay three more ticks and get much stronger, but I'm gambling that they won't reach me."</i> And then: <i>"Fuck, I should have moved one tick earlier."</i></p>
-<p><b>Tombstone:</b> Tokyo Jungle (2012). We took its organ (where you settle decides who you become) and burned the rest: no animals, no city, no action combat, no unlocks. Please don't bring them back visually either. It's a burrow at night, not a nature documentary.</p>
+<h3>1 · What changed since your Burrow handoff</h3>
 
-<h3>Mood</h3>
+<p><b>Ported as you wrote it.</b></p>
 <ul>
-  <li><b>Night, underground, being hunted.</b> Tension, not gore. Quiet until it isn't.</li>
-  <li><b>A survey map someone is reading by lamplight</b>, which is where the current palette comes from. A full rethink is welcome as long as the meanings below survive.</li>
-  <li><b>Deadpan words.</b> The prose is short and dry: <i>"Seen." "The ring is forming."</i> Keep that voice.</li>
-  <li><b>Embarrassingly simple was the prototype rule.</b> Readable at a glance beats ornate. The board has to read in under a second at 14px cells.</li>
+  <li><b><code>board.js</code> runs unchanged.</b> <code>ui.js</code> builds your board state from the live game every animation frame and calls <code>LWBoard.draw</code>, and the terrain layer is rebuilt when the map or the cell size changes. Everything in your paint order works off real state:
+    <ul>
+      <li>terrain, belief heat (Scout only), tracks, the route (hover preview or committed transit);</li>
+      <li>warrens by kind and depth, the siege ring (draws in, then pulses; solid when besieged);</li>
+      <li>the four gazes, the watched threads and pips;</li>
+      <li>hunters (in reach, on your trail, mustering), the decoy (and <code>seen</code>), the rearguard (and <code>fighting</code>, for 0.9s after a fight event);</li>
+      <li>the troop states, and the light: warm when located, dark when dead, dawn during the retreat.</li>
+    </ul></li>
+  <li><b>Your tokens and type:</b> <code>style.css</code> is your sheet section by section, with the moments stepper removed. JetBrains Mono and Big Shoulders Stencil Display.</li>
+  <li><b>Your panel, verbs strip, foot and "show the working"</b>, with the game's real copy.</li>
 </ul>
 
-<h3>The colour meanings, which must survive any restyle</h3>
+<p><b>Adapted, and why.</b></p>
+<ul>
+  <li><b>The page is fluid, not fixed at 1440.</b> The board takes the width it's given, at 8–40px a cell (your fractions hold). The panel is 356px beside it, and below 1100px it stacks under the board.</li>
+  <li><b>Reduced motion</b>, which you flagged as unhandled: time freezes at 0, so there's no breathing, pulse or gaze sweep, but the ring is drawn complete and every state cue stays.</li>
+  <li><b>The log is the game's, not the mock's.</b> Your voice was adopted where it fit: <i>"Decoy out. −4. It breaks west." "They take it." "Besieged. Not growing." "Dawn in 3. They turn for the edges."</i> It's chronological and numbered, shows the last 9 lines, and the latest is at full opacity.</li>
+  <li><b>"Show the working"</b> holds seed, rules, player (You play / Bot: …) and New run. <b>"Replay this night" was cut</b>; Jay didn't pick it.</li>
+  <li><b>"Holding · exposed" (in the open) is blood.</b> Your mock had all holding as moss, but out of the trees you're seen and heard, so it's danger. "Holding · hidden" in forest stays moss.</li>
+  <li><b>Your SVG token files are filed, not wired in.</b> The canvas draws the same symbols procedurally. They're kept in <code>design/burrow-handoff/assets/</code> for the dialogs and any sprite path later.</li>
+</ul>
+
+<p><b>New since your mock: gameplay that changed what the screen shows.</b></p>
+<ul>
+  <li><b>The dawn retreat:</b> in the last 3 ticks the hunters step <i>away</i> and the log says so. Your <code>light.dawn</code> wash is driven by exactly those ticks.</li>
+  <li><b>Odds everywhere.</b> The odds line now reads <i>"In the open you'd beat 3 sweepers (57%), not 4 (12%)."</i> out of a warren, and prefixes attack odds when a hunter is in reach: <i>"Attacking the hound you'd win (58%). …"</i></li>
+  <li><b>Intent and verdicts.</b> A click says what you meant before it happens: <i>"Making for the trees to hide. 3 ticks." "Running for the deep Scout warren. 9 ticks." "Into the water, where they can't follow."</i> The hover chip ends in a verdict: <i>probably safer than here · about as safe as here · risky · they'll get there first</i>.
+    <ul><li>⚠ <b>The chips are long now</b>, for example <i>"Defense (holds, slow to leave) · shallow · you 8t · them 8t · they'll get there first"</i>. That's a design problem for you: two lines, an icon for the verdict, or shorter kind words.</li></ul></li>
+  <li><b>The reserve:</b> a <code>reserve</code> row in the stats ("31 asleep"). At dawn the ones who don't wake go to ground; spends draw on them first. It's the family, made visible, and it has no visual on the board yet.</li>
+  <li><b>Warrens remember you:</b> "growing" now reads <i>"+2 a tick · +3 in 4 · settled 16"</i>. Each warren keeps its own settled count, and leaving one costs it 3.</li>
+  <li><b>Heirlooms are multi-select:</b> one per night survived, up to three. The end screen toggles them on (moss wash) and then "Pass on 2 of 3". The dialogs are in your voice but not designed by you.</li>
+  <li><b>Resume:</b> a closed tab resumes exactly where it was. The log's first line says so: <i>"Resumed Bramble I: night 2, tick 6, 22 strong."</i></li>
+</ul>
+
+<h3>2 · The whole game, red-team grade</h3>
+<p class="mute">Code: <code>games/the-last-warren/</code> on <code>ideas/the-last-warren</code>. Tombstone: <b>Tokyo Jungle</b> (2012). Its organ is that where you settle decides what you become. The values below are the tuned rules (<code>src/tuned.js</code>).</p>
+
+<p><b>Time and space.</b></p>
+<ul>
+  <li>A 28×18 grid. A night is 54 ticks, with at most 8 nights.</li>
+  <li>Entering a tile costs movement points: open 2, road 1, forest 3, lake 6 for the troop and impassable for hunters, mountain impassable.</li>
+  <li>Points banked per tick: troop in transit 3, hunters 2, hounds 3.</li>
+  <li>Maps are seeded: value-noise terrain from 5 dials (water, relief, cover, roads, warrens), set by 12 frames.</li>
+  <li>Warrens are dealt evenly across 4 kinds and rolled for depth, with roads along a minimum spanning tree between them.</li>
+</ul>
+
+<p><b>The tick, in order.</b></p>
+<ol>
+  <li>Your action.</li>
+  <li>Growth or movement.</li>
+  <li>Contact.</li>
+  <li>The hunters sense, update the belief, then move (or retreat, in the last 3 ticks).</li>
+  <li>Contact again, and siege status.</li>
+  <li>Reinforcements: one every 11 ticks. Killed hunters respawn after 12.</li>
+  <li>Dawn at tick 54.</li>
+</ol>
+
+<p><b>The troop.</b></p>
+<ul>
+  <li><b>Growth in a warren:</b> +1 a tick, rising to +2 once that warren is settled 10 ticks and +3 at 20. Nursery adds +1 more. A siege halts growth.</li>
+  <li><b>Specialty:</b> attunes at +0.25 a tick toward the warren's kind and decays ×0.88 a tick otherwise.</li>
+  <li><b>Bonus by kind:</b> <code>bonus_k = 0.30 × max(in a k-warren ? 1 : 0, carried_k)</code></li>
+  <li><b>Strength:</b>
+    <ul>
+      <li><code>size × (1 + C)</code> in general;</li>
+      <li>defending a warren: <code>× fortify(1.04, none in Scout) × (1 + D) × [walls 1.2]</code>;</li>
+      <li>attacking: <code>× ambush(0.99) × [teeth 1.2]</code>.</li>
+    </ul></li>
+  <li><b>Noise:</b> <code>√size × depth</code>, where depth is deep 0.45, mid 0.7, shallow 1, multiplied by Combat ×1.44 or Nursery ×1.61. In the open: <code>√size × terrain(open 1, road 1.4, forest 0.6, lake 1.2) × (1 − 0.3·S) × (holding ? 0.7 : 1)</code>.</li>
+</ul>
+
+<p><b>Warren kinds trade off.</b></p>
+<ul>
+  <li><b>Combat:</b> +30% strength, but loud.</li>
+  <li><b>Scout:</b> shows you their belief map, but has thin walls (no fortify).</li>
+  <li><b>Defense:</b> +30% when they come in, but slow to leave (−2 movement points on your first step).</li>
+  <li><b>Nursery:</b> +1 extra person a tick, but loud.</li>
+</ul>
+
+<p><b>Hunters.</b></p>
+<ul>
+  <li><b>Strength:</b> <code>7.73 × kind × (1 + 0.287 × (night − 1))</code></li>
+  <li><b>Sweeper:</b> ×1.0, sight 5, sweeps its own sector of the map.</li>
+  <li><b>Tracker</b> (night 2+): ×0.9, sight 4, follows your tracks.</li>
+  <li><b>Listener</b> (night 3+): ×0.8, sight 3, hearing ×1.9, unmuffled by forest.</li>
+  <li><b>Hound</b> (night 4+): ×1.3, speed 3.</li>
+  <li><b>Numbers:</b> 2 at dusk on night 1, +1 a night, plus the reinforcements.</li>
+</ul>
+
+<p><b>The search AI: a shared Bayesian belief over all 504 cells.</b></p>
+<ul>
+  <li><b>The dusk prior:</b> warrens only, weighted by your habits (×4 your share of ticks per warren) and by the family (×2 the line's share per kind).</li>
+  <li><b>Hearing, for each hunter each tick:</b> a real roll against <code>σ((r − d)/0.75)</code>, with <code>r = 1.27 × noise × hear</code>. Decoys add their own chance to be heard, and the hunter can't tell which it heard. Then the belief updates: <code>b_i ×= heard ? p_i : 1 − 0.9 p_i</code>.</li>
+  <li><b>Sight:</b> Bresenham line of sight. Mountains block it; forest costs 2 sight per cell and 2 more if you're standing in it.
+    <ul>
+      <li>Seen: the belief collapses to your cell.</li>
+      <li>A decoy seen: it collapses to the decoy, the false lead.</li>
+      <li>Every empty open cell they can see: ×0.08. Warrens are never cleared by sight.</li>
+      <li>A warren mouth a hunter pokes into: ×0.05.</li>
+    </ul></li>
+  <li><b>Motion model:</b> 17% of each cell's mass diffuses to its neighbours, and 4% of open-ground mass pools back into warrens.</li>
+  <li><b>Targets:</b> belief divided by distance, divided by crowding. Sweepers keep to their sectors; trackers follow fresh tracks (14 ticks).</li>
+  <li><b>Located</b> means the belief at your cell is above 0.5.</li>
+</ul>
+
+<p><b>Contact, the muster and siege: the rule that holds the game up.</b></p>
+<ul>
+  <li>In a warren they must be within 1 to contact you. In transit they must land on your square. Holding in the open, any contact is a fight.</li>
+  <li>Once you're located they <b>muster at 3 blocks</b>, and only go in when <code>Σ group strength ≥ 1.01 × your defending strength</code>.</li>
+  <li><b>Siege</b> is being located with a hunter within 3. It halts growth, and the "watched" count runs.</li>
+  <li><b>The fight:</b> <code>mine × U(.75, 1.25) ≥ theirs × U(.75, 1.25)</code>. If you win, they all die and you lose <code>0.30 × theirs / per-person</code>. If you lose, the run ends. Either way the fight is loud.</li>
+  <li><b>Attack:</b> one hunter within 2 blocks.</li>
+</ul>
+
+<p><b>Spending people</b> (from the reserve first, then the troop; the troop never drops below 2).</p>
+<ul>
+  <li><b>Decoy −4,</b> any time, one alive at a time: runs loud for the warren the hunters will take longest to reach, for 10 ticks.</li>
+  <li><b>Rearguard −5,</b> any time, one at a time: fights the first hunter to reach it. If it wins, the hunter dies; if it falls, the hunter has lost 4 movement points. The fight is loud either way, so it's a false lead.</li>
+  <li><b>Scout −3,</b> while stopped: shows their belief for 10 ticks.</li>
+  <li><b>Dig −8,</b> only while holding, 3 or more squares from a warren: a shallow warren of your strongest attunement, or a Nursery if you have none.</li>
+</ul>
+
+<p><b>Dawn and the line.</b></p>
+<ul>
+  <li>33% of the troop wakes for the next night; the rest go to ground as the reserve.</li>
+  <li><b>The draft:</b> dice deal 3 of 8 boons and you keep 1. The boons are brood, hush, teeth, walls, legs, dig deeper, dig and scatter.</li>
+  <li><b>The line:</b> each run is a generation. When a run falls you pass on one heirloom per night survived, up to 3: an attunement (Combat-, Scout- or Defense-born) or a boon you held. A generation that dies on night 1 ends the line.</li>
+</ul>
+
+<p><b>The machines.</b></p>
+<ul>
+  <li><b>Hashed, stateless dice:</b> every roll is <code>hash(seed, purpose, night, tick, id)</code>, so a twin replay changes only what it chose to change.</li>
+  <li><b>11 invariants,</b> all passing.</li>
+  <li><b>A worker-pool sweep runner,</b> at about 1,300 games a second.</li>
+  <li><b>Dumb policies:</b> always-stay, move-every-N, move-at-X, grow-to-X, attack-always and random, plus hybrids and a scout hybrid.</li>
+  <li><b>A lookahead expert,</b> 14 ticks ahead on salted dice, with and without the new verbs.</li>
+  <li><b>A strict tuner</b> judging against 17 written targets.</li>
+  <li><b>About a million games</b> across tuning and evidence.</li>
+</ul>
+
+<p><b>What the machines say now</b> (held out, 800 seeds; 200 for the experts; mean nights survived).</p>
+<div class="scroll"><table>
+  <thead><tr><th>Player</th><th>Nights</th><th>Reaches night 5</th><th>Note</th></tr></thead>
+  <tbody>
+    <tr><td>always stay</td><td>1.01</td><td>0%</td><td>Every run dies found</td></tr>
+    <tr><td>attack always</td><td>1.61</td><td>3%</td><td></td></tr>
+    <tr><td>run at 3 ticks (best one-rule)</td><td>1.75</td><td>2%</td><td></td></tr>
+    <tr><td>best hybrid</td><td>2.50</td><td>5%</td><td>Doesn't use the spend verbs</td></tr>
+    <tr><td>expert, old verbs only</td><td>2.94</td><td>10%</td><td></td></tr>
+    <tr><td><b>expert, all verbs</b></td><td><b>4.29</b></td><td><b>41%</b></td><td>Decoy about 2.7/night, rearguard about 1.8/night</td></tr>
+  </tbody>
+</table></div>
+
+<p><b>What they found, and what's still weak.</b></p>
+<ul>
+  <li><b>Siege-halts-growth is the dam.</b> Turn it off and staying wins outright, at about 7 nights.</li>
+  <li><b>Attack earns its place,</b> at about 0.9 nights to good play.</li>
+  <li><b>New hunter kinds</b> are the strongest escalation.</li>
+  <li><b>Spending the family is now the skill that matters most</b> (expert 2.94 → 4.29).</li>
+  <li><b>Transit speed is a cliff:</b> at 2, running dies.</li>
+  <li><b>Weak points to attack:</b>
+    <ul>
+      <li>the hunters know your exact size;</li>
+      <li>the skill ceiling is our own code;</li>
+      <li>"one tick earlier" is a wide window for good play, and a knife edge only for the greedy;</li>
+      <li>dig and hiding are barely used by the expert, about 1% of its time;</li>
+      <li>three heirlooms can add about half a night;</li>
+      <li>whether Warrens <i>feel</i> like different selves is still a human question.</li>
+    </ul></li>
+  <li><b>The full write-up:</b> <code>RED-TEAM-BRIEFING.md</code> (§1–12) and <code>reports/</code>.</li>
+</ul>
+
+<h3>3 · The standing brief</h3>
+<p><b>What it is.</b> A tower defense game where you are the thing trying not to be found. You stay to grow, run or hold to hide, attack what's in reach, and spend your family to buy time. Then the line goes on. The feeling to design for: <i>"I could stay three more ticks and get much stronger, but I'm gambling that they won't reach me."</i> And then: <i>"Fuck, I should have moved one tick earlier."</i></p>
+
+<p><b>Colour meanings that must survive any restyle</b> (your Burrow values).</p>
 <div class="scroll"><table>
   <thead><tr><th>Meaning</th><th>Now</th><th>Used for</th></tr></thead>
   <tbody>
-    <tr><td><b>You / alive</b></td><td><span class="swatch" style="background:#8fbf63"></span>moss <code>#8fbf63</code></td><td>The troop, its count, the current warren's ring, your route preview, your tracks</td></tr>
-    <tr><td><b>Them / danger</b></td><td><span class="swatch" style="background:#e2654c"></span>blood <code>#e2654c</code></td><td>Hunters, the siege ring, "located", bad log lines, a race you'd lose</td></tr>
-    <tr><td><b>Knowledge / time</b></td><td><span class="swatch" style="background:#d2b052"></span>gold <code>#d2b052</code></td><td>The dawn bar, the hunters' belief heat map (Scout only), boons, the line's name</td></tr>
-    <tr><td>Terrain</td><td><span class="swatch" style="background:#2a3122"></span>open · <span class="swatch" style="background:#5b5440"></span>road · <span class="swatch" style="background:#1d3a1f"></span>forest · <span class="swatch" style="background:#1f3a52"></span>lake · <span class="swatch" style="background:#55594e"></span>mountain</td><td>The ground. It must stay recessive under everything above</td></tr>
+    <tr><td><b>You / alive</b></td><td><span class="swatch" style="background:#8fbf63"></span>moss <code>#8fbf63</code></td><td>The troop, your warren's ring, a race you'd win, your tracks, STAY, decoy, rearguard, log lines about you</td></tr>
+    <tr><td><b>Them / danger</b></td><td><span class="swatch" style="background:#e2654c"></span>blood <code>#e2654c</code></td><td>Hunters, gazes, the siege ring, located, holding exposed, ATTACK, a race you'd lose</td></tr>
+    <tr><td><b>Knowledge / time</b></td><td><span class="swatch" style="background:#d2b052"></span>gold <code>#d2b052</code></td><td>The dawn line and dawn light, belief heat, watched threads and pips, the line's name, boons</td></tr>
   </tbody>
 </table></div>
 
-<h3>What's fixed and what's yours</h3>
-<div class="scroll"><table>
-  <thead><tr><th>Fixed: please don't change</th><th>Yours</th></tr></thead>
-  <tbody><tr>
-    <td><ul>
-      <li>The rules and every number. They're tuned on about 800,000 simulated games</li>
-      <li>The board grid (28×18 cells) and that the game is tick-by-tick</li>
-      <li>What the player can see, as listed under "Every state" below. The game is complete information, apart from the belief map, which only Scout warrens show</li>
-      <li>The ending is <b>a sentence, not a score</b>. Never a "62%", a star rating or a progress bar about how well someone did</li>
-      <li>"Show the working": the seed and replay stay one click away</li>
-    </ul></td>
-    <td><ul>
-      <li>All visual design: type, palette within the meanings, layout, the panels, the dialogs</li>
-      <li>Every sprite and tile (manifest below)</li>
-      <li>Motion: tick pacing, the transit animation, the siege ring, dawn</li>
-      <li>How the lineage and chronicle look (a family tree? a ledger? a burrow map?)</li>
-      <li><b>Mobile.</b> It's desktop-only today and needs a real design, not a reflow</li>
-    </ul></td>
-  </tr></tbody>
-</table></div>
-
-<h3>Screens</h3>
-<ol>
-  <li><b>Play.</b> The board (a canvas) beside a side panel: the verbs, the troop, the hunters, the log, a legend. The header holds the line name, the night, the dawn bar and the tabs.</li>
-  <li><b>Dawn draft</b> (dialog). "Night N survived". The remnant line. Three boons; pick one.</li>
-  <li><b>The warren fell</b> (dialog). The ending sentence, then the twin line (<i>"Running one tick earlier would have seen dawn."</i>), then the heirloom pick: up to three, pick one. If the line ended, it says so and offers "Found a new line". "Show the working" sits below.</li>
-  <li><b>Chronicle.</b> The line's name, then each generation: name (for example <i>Bramble III</i>), nights, seed, the ending sentence, what it was born with and what it passed on.</li>
-  <li><b>CD brief</b> (this page). It can stay plain.</li>
-</ol>
-
-<h3>Every state the board shows</h3>
-<div class="scroll"><table>
-  <thead><tr><th>Thing</th><th>States</th><th>Notes</th></tr></thead>
-  <tbody>
-    <tr><td>Troop token</td><td>hidden in a warren · located (they know) · besieged (not growing) · in transit · <b>holding in the open</b> · <b>holding in forest</b> · dead</td><td>Always shows the head count, from 1 to about 150. Today: solid in a warren, a hollow solid ring when holding, a hollow dashed ring when running</td></tr>
-    <tr><td>Decoy</td><td>running · seen (they think it's you) · caught · gone to ground</td><td>Part of you, loud, running the other way. Today it's a small dashed ring marked "d". At most one at a time</td></tr>
-    <tr><td>Rearguard</td><td>waiting · fighting · held · fell</td><td>Part of you, left behind; it fights the first hunter to reach it. Today it's a small square with its head count</td></tr>
-    <tr><td>Warren mouth</td><td>kind <b>C / S / D / N</b> (Combat, Scout, Defense, Nursery) × depth <b>deep / mid / shallow</b> · current · hovered · dug this run</td><td>Depth is the line weight today (deep is thick, shallow is dashed). Kind is a letter today and should become a glyph</td></tr>
-    <tr><td>Hunter</td><td>4 kinds: <b>sweeper</b> (square), <b>tracker</b> (triangle), <b>listener</b> (ring), <b>hound</b> (diamond) · in reach (ringed) · on your trail (gold pip)</td><td>Shape is the kind, so it's never colour alone. All of them are "them" colour</td></tr>
-    <tr><td>The ring</td><td>visible once you're located and a siege is forming</td><td>A dashed diamond, 3 blocks out. This is the "decide now" moment, so make it felt</td></tr>
-    <tr><td>Route preview</td><td>on hovering <b>any square</b>: the path, plus a label. For a warren, "<i>Kind (gift, cost) · depth · you 6t · them 13t</i>"; for ground, "<i>forest: hidden and quiet · hold here · you 3t · them 9t</i>"</td><td>Moss when you'd win the race, blood when they'd get there first</td></tr>
-    <tr><td>Belief heat</td><td>only while scouting: a gold heat per cell, 0 to 1</td><td>"Where they think you are." It should read as knowledge, not danger</td></tr>
-    <tr><td>Tracks</td><td>pips that fade over 14 ticks</td><td>Off in the tuned rules (only the "tracks" variant lays them), but keep the style</td></tr>
-    <tr><td>Terrain</td><td>open · road · forest · lake · mountain</td><td>Forest and mountain block sight, so they should look like they do</td></tr>
-  </tbody>
-</table></div>
-
-<h3>Asset manifest (transparent SVGs, as the method asks)</h3>
-<p>The canvas draws these at the cell size, which runs from <b>14px to about 40px</b>. Please deliver <b>transparent SVGs, <code>viewBox="0 0 64 64"</code>, anchored at the centre</b>, with no text baked in (counts and labels are drawn live). Use layers where a state is a layer.</p>
-<div class="scroll"><table>
-  <thead><tr><th>Asset</th><th>Variants</th><th>Layers / states</th></tr></thead>
-  <tbody>
-    <tr><td><code>tile-{open,road,forest,lake,mountain}.svg</code></td><td>2–3 variants each, so the ground doesn't tile visibly</td><td>Optional edge pieces for road and lake</td></tr>
-    <tr><td><code>warren-{C,S,D}-{deep,mid,shallow}.svg</code></td><td>9</td><td><code>base</code> · <code>glyph</code> · <code>ring-current</code> · <code>ring-hover</code></td></tr>
-    <tr><td><code>troop.svg</code></td><td>1</td><td><code>body</code> · <code>body-transit</code> · <code>located</code> · <code>besieged</code> · <code>dead</code> (the count is drawn on top)</td></tr>
-    <tr><td><code>hunter-{sweeper,tracker,listener,hound}.svg</code></td><td>4</td><td><code>body</code> · <code>in-reach</code> · <code>on-trail</code> · <code>mustering</code></td></tr>
-    <tr><td><code>ring.svg</code></td><td>1, scalable</td><td>Drawn at 7×7 cells around the troop</td></tr>
-    <tr><td><code>track.svg</code></td><td>1</td><td>Opacity is animated by the game</td></tr>
-    <tr><td>Icons for the 8 boons</td><td>brood · hush · teeth · walls · legs · dig deeper · dig · scatter</td><td>For the draft and the heirloom cards</td></tr>
-    <tr><td><code>spend-{decoy,rearguard,scout,dig}.svg</code></td><td>4</td><td>Button icons. Each one costs people, so the icon should read as "part of us goes"</td></tr>
-    <tr><td><code>decoy.svg</code> · <code>rearguard.svg</code></td><td>2</td><td>Board tokens, the same family as the troop. Decoy states: <code>running</code> · <code>seen</code>. Rearguard states: <code>waiting</code> · <code>fighting</code></td></tr>
-    <tr><td>Heirlooms</td><td>Combat-born · Scout-born · Defense-born · an inherited boon</td><td>Same family as the boon icons</td></tr>
-  </tbody>
-</table></div>
-
-<h3>The side panel, as of v5</h3>
+<p><b>Fixed: please don't change.</b></p>
 <ul>
-  <li><b>This warren:</b> kind, gift (moss), cost (blood), and what the depth does to your noise. It's hidden when you're not in one.</li>
-  <li><b>What your size buys:</b> a sentence such as <i>"Holding here you'd beat 2 sweepers (64%), not 3 (31%)"</i>. The Attack button carries its own odds.</li>
-  <li><b>The reserve:</b> at dawn, the ones who don't wake with you go to ground and sleep in the burrows. The reserve grows night after night, and spends draw on it first. It's the family, made visible.</li>
-  <li><b>Four spend buttons:</b> Decoy −4, Rearguard −5, Scout −3, Dig here −8. They're greyed out when you can't afford one or the moment is wrong. These want icons, and they're the most new-to-the-player thing on the screen.</li>
+  <li>The rules and every number.</li>
+  <li>The 28×18 grid, and the game being tick-by-tick.</li>
+  <li>What the player can see: complete information, apart from belief heat, which is Scout-only.</li>
+  <li>The ending is <b>a sentence, never a score</b>.</li>
+  <li>"Show the working" stays one click away.</li>
 </ul>
 
-<h3>Interaction</h3>
-<ul>
-  <li><b>Space</b> stays one tick, and holding it keeps staying. <b>A</b> attacks the weakest hunter in reach. <b>Click a warren</b> to run for it, or <b>any square</b> to go there and hold; <b>click a ringed hunter</b> to attack. <b>D R S G</b> spend people. Hover anywhere to see the race.</li>
-  <li>Transit plays itself out at about 220ms a tick once you've committed. That's the "OH FUCK" stretch, so pace it on purpose.</li>
-  <li>A run takes <b>about 3 minutes</b> of real time, and around 70% of ticks are tense. There's almost no downtime to fill.</li>
-</ul>
-
-<h3>Questions for you</h3>
+<p><b>Yours, and what to design next</b>, in rough order of need.</p>
 <ol>
-  <li>Mobile: tabs, a bottom sheet, or something else? Three verbs and a board ought to fit a thumb.</li>
-  <li>How do we make <b>"Watched N ticks"</b> legible on the board, not just in the panel? The longer they watch, the faster they react when you bolt.</li>
-  <li>The line: should the chronicle look like a family tree, a ledger, or a burrow map?</li>
-  <li>Do the warren kinds need their own visual language (Combat loud, Scout thin-walled, Defense slow to leave), so the trade-off is visible at a glance?</li>
+  <li><b>The two dialogs.</b>
+    <ul>
+      <li><b>Dawn draft:</b> 3 boons, pick 1, plus the reserve sentence.</li>
+      <li><b>The warren fell:</b> the sentence, then the twin line (<i>"Running one tick earlier would have seen dawn."</i>), then the heirloom multi-pick (up to 3), or <i>"…That was the last warren."</i> with "Found a new line".</li>
+    </ul></li>
+  <li><b>The hover chip at its new length:</b> the verdict word, and the kind trade-off.</li>
+  <li><b>The reserve on the board:</b> the family asleep in the burrows. Today it's only a stats row.</li>
+  <li><b>The chronicle:</b> a family tree, a ledger, or a burrow map, with "earlier lines" beneath.</li>
+  <li><b>Icons:</b> the 8 boons, the heirloom marks (Combat-, Scout- and Defense-born), and possibly the four spends.</li>
+  <li><b>Mobile:</b> it stacks at the moment but isn't designed. The verbs strip ought to fit a thumb.</li>
 </ol>
 
-<h3>Files</h3>
-<p><code>games/the-last-warren/</code> on branch <code>ideas/the-last-warren</code>. The art seam is <code>ui.js</code> (all drawing is in <code>draw()</code>) and <code>style.css</code>. The rules live in <code>src/</code>, and nothing there needs touching for a restyle. Background reading: <code>RED-TEAM-BRIEFING.md</code> for the rules and maths, and <code>reports/REPORT.html</code> for the evidence.</p>
+<p><b>Every state the board shows.</b></p>
+<div class="scroll"><table>
+  <thead><tr><th>Thing</th><th>States</th></tr></thead>
+  <tbody>
+    <tr><td>Troop</td><td>warren · holding in the open · holding in forest · transit · dead · located · besieged · watched N</td></tr>
+    <tr><td>Warren</td><td>kind C / S / D / N × depth deep / mid / shallow · current · hovered · dug this run (shallow)</td></tr>
+    <tr><td>Hunter</td><td>sweeper / tracker / listener / hound · searching (gaze) · in reach · on your trail · mustering · retreating at dawn</td></tr>
+    <tr><td>Ring</td><td>forming (draws in) · pulsing · solid (besieged)</td></tr>
+    <tr><td>Route chip</td><td>hover with verdict (moss or blood) · transit countdown</td></tr>
+    <tr><td>Decoy</td><td>running · seen ("They take it.") · caught · gone to ground</td></tr>
+    <tr><td>Rearguard</td><td>waiting · fighting · held · fell</td></tr>
+    <tr><td>Belief heat</td><td>Scout warren, or a scout party for 10 ticks</td></tr>
+    <tr><td>Light</td><td>warm (located) · dark (dead) · dawn (the last 3 ticks)</td></tr>
+  </tbody>
+</table></div>
+
+<p><b>Interaction.</b></p>
+<ul>
+  <li><b>Space</b> stays a tick (hold it to repeat). <b>A</b> attacks the weakest in reach. <b>D R S G</b> spend.</li>
+  <li><b>Click</b> a warren to run, any square to hold, or a ringed hunter to attack. Hover anywhere for the race.</li>
+  <li>Transit plays itself out at 220ms a tick.</li>
+  <li>A run takes about 3 minutes, and most of its ticks are tense.</li>
+</ul>
+
+<p><b>Files.</b> The art seam is <code>board.js</code> (yours) plus <code>ui.js → boardState()</code> (the mapping from game to board) and <code>style.css</code>. The rules are in <code>src/</code>; leave them be. Your handoff is filed at <code>design/burrow-handoff/</code>.</p>
 
   </section>
 </div>
@@ -975,8 +1103,8 @@ const DEFAULTS = {
   hunterPerNight: 1,       // extra at dusk per later night
   reinforceEvery: 12,      // one more arrives every N ticks
   respawnDelay: 10,
-  aggression: 1.0,
-  musterDist: 3,           // once you're located they gather this far out until they're enough         // hunters assault when the group within 3 >= aggression x your strength
+  aggression: 1.0,         // hunters assault when the group within 3 >= aggression x your strength
+  musterDist: 3,           // once you're located they gather this far out until they're enough
   siegeHaltsGrowth: true,  // held in a warren, the troop stops growing
   diffusion: 0.12,
   // v4: kinds trade off, and the edge sharpens
@@ -993,8 +1121,8 @@ const DEFAULTS = {
   holdNoise: 0.7,          // holding still outside a warren: quieter than walking
   cost: { decoy: 4, scout: 3, dig: 8, rearguard: 5 },
   decoyLife: 10, decoyNoise: 1.4, scoutLife: 10,
-  leaveCost: 3,
-  retreatTicks: 3,         // in the last ticks before dawn the hunters turn for the edges            // settled ticks a warren forgets when you leave it
+  leaveCost: 3,            // settled ticks a warren forgets when you leave it
+  retreatTicks: 3,         // in the last ticks before dawn the hunters turn for the edges
   heir: null,              // { attune: 'C'|'S'|'D' } or { boon: id }
   lineage: null,           // { C, S, D } ticks the line has spent in each kind, all generations
   familyK: 2,              // prior weight on the kinds the family favours
@@ -1949,7 +2077,7 @@ const ROSTER = roster(true);
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const TRADE = { C: 'strong, loud', S: 'sees them, thin walls', D: 'holds, slow to leave', N: 'grows fast, loud' };
 const GIFT = { C: '+30% strength in any fight', S: 'You see where they think you are', D: '+30% when they come in', N: '+1 extra person every tick' };
-const KIND_COST = { C: 'Loud: noise ×1.4', S: 'Thin walls: no fortify bonus', D: 'Slow to leave: you lose your first tick climbing out', N: 'Loud: noise ×1.5' };
+const KIND_COST = { C: 'Loud: noise ×1.4', S: 'Thin walls: no fortify bonus', D: 'Slow to leave: your first step out is slow', N: 'Loud: noise ×1.6' };
 const DEPTH_NOTE = { deep: 'Deep: hides your noise well (×0.45)', mid: 'Mid: hides some noise (×0.7)', shallow: 'Shallow: hides nothing (×1)' };
 const GROUND = { '.': 'open ground', '=': 'the road', 'f': 'the trees', '~': 'the water', '^': 'the rocks' };
 const GROUND_CHIP = { '.': 'open: exposed', '=': 'road: fast and loud', 'f': 'forest: hidden and quiet', '~': 'lake: they can’t follow', '^': 'mountain' };

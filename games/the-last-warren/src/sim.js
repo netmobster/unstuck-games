@@ -35,8 +35,8 @@ export const DEFAULTS = {
   hunterPerNight: 1,       // extra at dusk per later night
   reinforceEvery: 12,      // one more arrives every N ticks
   respawnDelay: 10,
-  aggression: 1.0,
-  musterDist: 3,           // once you're located they gather this far out until they're enough         // hunters assault when the group within 3 >= aggression x your strength
+  aggression: 1.0,         // hunters assault when the group within 3 >= aggression x your strength
+  musterDist: 3,           // once you're located they gather this far out until they're enough
   siegeHaltsGrowth: true,  // held in a warren, the troop stops growing
   diffusion: 0.12,
   // v4: kinds trade off, and the edge sharpens
@@ -53,8 +53,8 @@ export const DEFAULTS = {
   holdNoise: 0.7,          // holding still outside a warren: quieter than walking
   cost: { decoy: 4, scout: 3, dig: 8, rearguard: 5 },
   decoyLife: 10, decoyNoise: 1.4, scoutLife: 10,
-  leaveCost: 3,
-  retreatTicks: 3,         // in the last ticks before dawn the hunters turn for the edges            // settled ticks a warren forgets when you leave it
+  leaveCost: 3,            // settled ticks a warren forgets when you leave it
+  retreatTicks: 3,         // in the last ticks before dawn the hunters turn for the edges
   heir: null,              // { attune: 'C'|'S'|'D' } or { boon: id }
   lineage: null,           // { C, S, D } ticks the line has spent in each kind, all generations
   familyK: 2,              // prior weight on the kinds the family favours

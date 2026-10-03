@@ -14,7 +14,7 @@ const ROSTER = roster(true);
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const TRADE = { C: 'strong, loud', S: 'sees them, thin walls', D: 'holds, slow to leave', N: 'grows fast, loud' };
 const GIFT = { C: '+30% strength in any fight', S: 'You see where they think you are', D: '+30% when they come in', N: '+1 extra person every tick' };
-const KIND_COST = { C: 'Loud: noise ×1.4', S: 'Thin walls: no fortify bonus', D: 'Slow to leave: you lose your first tick climbing out', N: 'Loud: noise ×1.5' };
+const KIND_COST = { C: 'Loud: noise ×1.4', S: 'Thin walls: no fortify bonus', D: 'Slow to leave: your first step out is slow', N: 'Loud: noise ×1.6' };
 const DEPTH_NOTE = { deep: 'Deep: hides your noise well (×0.45)', mid: 'Mid: hides some noise (×0.7)', shallow: 'Shallow: hides nothing (×1)' };
 const GROUND = { '.': 'open ground', '=': 'the road', 'f': 'the trees', '~': 'the water', '^': 'the rocks' };
 const GROUND_CHIP = { '.': 'open: exposed', '=': 'road: fast and loud', 'f': 'forest: hidden and quiet', '~': 'lake: they can’t follow', '^': 'mountain' };
