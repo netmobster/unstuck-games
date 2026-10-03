@@ -2,6 +2,21 @@
 
 What was decided and why, dated. Newest first.
 
+## 2026-10-03 — CC, the server move — the deal prototype goes up at elsible.unstuck-games.com
+
+Jay asked for the push: *"Yes: push the committed deck-v4 state and put the deal prototype up as
+a static page."* It's the first game on the new box. SEREN was first in the order, but it waits
+for the new account's Bedrock quotas.
+
+1. **What's live is the deal prototype from deck v4, as a static page.** Away from claude.ai the
+   weave falls back to the plain version, so the site runs no AI. The web model is still decided
+   at go-live (decision 11 below).
+2. **`build.py --publish` writes `elsible/site/index.html`, and that's committed.** The subdomain
+   serves `elsible/site/` and nothing else, so the docs and engine stay off the address. They
+   are still public in this repo.
+3. **Pushing is per ask.** Decision 2 below still holds: this push was asked for, and the next
+   one needs asking for too.
+
 ## 2026-10-03 — CC — Elsible moves to unstuck-games, and builds local
 
 Elsible started inside the SEREN repo (branch `seren/story-deck`), because the engine it plays on
