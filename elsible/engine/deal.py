@@ -182,7 +182,7 @@ def deal(d: dict, seed: int | None = None, picks: dict | None = None, not_dealer
 def sentence(h: dict) -> str:
     """The hand as one sentence, the way the Loom writes it as you pick."""
     c = h["cards"]
-    bits = [f"{c['role']['name']} — {c['role']['line'].rstrip('.').lower()} —", f"in {c['world']['name'].lower()},"]
+    bits = ([f"{c['trope']['name']}:"] if c.get("trope") else []) +            [f"{c['role']['name'].lower()} — {c['role']['line'].rstrip('.').lower()} —", f"in {c['world']['name'].lower()},"]
     bits.append(f"with {c['other']['name'].lower()} at the centre,")
     bits.append("and " + " and ".join(x["name"].lower() for x in c["circle"]) + " around you;")
     if c.get("modifier"):

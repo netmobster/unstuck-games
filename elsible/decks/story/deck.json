@@ -1,43 +1,50 @@
 {
  "deck": "story",
- "version": 3,
- "about": "Elsible's core deck (3 Oct 2026, back to the Loom's feel; docs/elsible.md section 6). Generic and deliberately incomplete: packs come later (decks/story/packs/). Five cards a slot, never locked. The player picks; the dealer plays a complication back; the weave writes what is underneath, using the undercurrents and secrets here as reference.",
+ "version": 4,
+ "about": "Elsible's deck v4 (3 Oct 2026): normal life first, the researched tropes face up and dealt first. The hidden half is the twist the weave writes for this trope, this life: each trope card carries the weave's guide (signals, if nobody intervenes, if somebody does).",
  "deal": {
   "per_slot": 5
  },
  "slots": [
   {
+   "id": "trope",
+   "label": "THE STORY",
+   "q": "What kind of story?",
+   "hint": "the trope, face up",
+   "count": 1
+  },
+  {
    "id": "role",
    "label": "WHO YOU ARE",
-   "q": "Who are you here?",
-   "hint": "a life already in motion",
+   "q": "Who are you?",
+   "hint": "a life already moving",
    "count": 1
   },
   {
    "id": "world",
    "label": "WHERE",
    "q": "Where is this life?",
-   "hint": "who is watching, and the rules",
+   "hint": "who's watching",
    "count": 1
   },
   {
    "id": "other",
    "label": "THE OTHER",
-   "q": "Who is at the centre?",
+   "q": "Who's at the centre?",
    "hint": "how they treat you · always fictional",
    "count": 1
   },
   {
    "id": "circle",
    "label": "THE CIRCLE",
-   "q": "Who is around you?",
+   "q": "Who's around you?",
    "hint": "pick two",
    "count": 2
   },
   {
    "id": "told_by",
    "label": "TOLD BY",
-   "q": "Who is telling it?",
+   "q": "Who's telling it?",
    "hint": "the narrator's voice",
    "count": 1
   },
@@ -58,16 +65,9 @@
    "dealer": true
   },
   {
-   "id": "undercurrent",
-   "label": "UNDERNEATH",
-   "q": "What is moving underneath?",
-   "hint": "internal: the weave's reference, never dealt",
-   "reference": true
-  },
-  {
    "id": "secret",
    "label": "UNDERNEATH",
-   "q": "What is someone hiding?",
+   "q": "Who's hiding what?",
    "hint": "internal: the weave's reference, never dealt",
    "reference": true
   }
@@ -105,317 +105,514 @@
   }
  ],
  "cards": {
-  "role": [
+  "trope": [
    {
-    "id": "stayed",
-    "name": "The one who stayed",
-    "line": "Everyone else left. You kept the lights on",
-    "changes": "You know every story here, and you are in most of them",
-    "pulls": {
-     "world": [
-      "town",
-      "island"
+    "id": "enemies",
+    "name": "Enemies to lovers",
+    "line": "You need the person you came here to beat",
+    "changes": "Every scene serves two agendas",
+    "hidden": {
+     "signals": [
+      "they defend something you care about when you're not there to see it",
+      "the grudge turns out to have a second side",
+      "your own side asks you to do something that would hurt them",
+      "you're relieved when they win something small"
      ],
-     "circle": [
-      "oldfriend"
-     ]
+     "if_nobody_intervenes": [
+      "you meet across the table at the decisive moment, still enemies, and it hurts",
+      "your side wins, and you're the one who has to tell them"
+     ],
+     "if_somebody_does": "you choose them over your own side, and pay for it in public"
     }
    },
    {
-    "id": "returner",
-    "name": "The one who came back",
-    "line": "You left. Now you are here again",
-    "changes": "Everyone remembers a version of you · old debts are live",
-    "pulls": {
-     "other": [
-      "left",
-      "remembers"
+    "id": "fake",
+    "name": "Fake dating",
+    "line": "An arrangement, with rules",
+    "changes": "Breaking a rule raises tension",
+    "hidden": {
+     "signals": [
+      "a rule of the arrangement gets broken and nobody mentions it",
+      "someone outside the arrangement believes it completely",
+      "a gesture that wasn't for show",
+      "the end date gets mentioned, and nobody laughs"
      ],
-     "world": [
-      "town"
-     ]
-    }
-   },
-   {
-    "id": "arrival",
-    "name": "The new arrival",
-    "line": "You just got here, and everyone already has a version of you",
-    "changes": "You learn names before you learn loyalties · first impressions stick",
-    "pulls": {
-     "world": [
-      "academy",
-      "estate"
+     "if_nobody_intervenes": [
+      "the arrangement ends on schedule, and only one of you meant it",
+      "it's exposed as fake in front of the people it was for"
      ],
-     "circle": [
-      "rule"
-     ]
-    }
-   },
-   {
-    "id": "heir",
-    "name": "The heir",
-    "line": "It is yours, and you did not want it",
-    "changes": "Every choice is also about the family · the past is in the furniture",
-    "pulls": {
-     "world": [
-      "estate",
-      "court"
-     ],
-     "circle": [
-      "sibling"
-     ]
+     "if_somebody_does": "the arrangement is ended early, honestly, and what's left is real or nothing"
     }
    },
    {
     "id": "second",
-    "name": "The second child",
-    "line": "Not the heir. Never the heir",
-    "changes": "You notice what the favourite misses · nobody expects much of you",
-    "pulls": {
-     "world": [
-      "estate",
-      "court"
+    "name": "Second chance",
+    "line": "The one that got away is back in town",
+    "changes": "The old wound is a fact from day one",
+    "hidden": {
+     "signals": [
+      "the old wound gets named, lightly, by someone else",
+      "they still do the small thing they used to do",
+      "the reason they left was not the reason you were told",
+      "an old friend chooses a side"
      ],
-     "circle": [
-      "sibling"
-     ]
+     "if_nobody_intervenes": [
+      "the same mistake, made again, in the same place",
+      "they leave again, and this time you watch it happen"
+     ],
+     "if_somebody_does": "the real reason is said out loud, and you decide what it changes"
     }
    },
    {
-    "id": "understudy",
-    "name": "The understudy",
-    "line": "You learned someone else's life by heart, and tonight it is yours",
-    "changes": "You know the lines; you don't know the people",
-    "pulls": {
-     "world": [
-      "festival",
-      "court"
-     ]
+    "id": "friends",
+    "name": "Friends to lovers",
+    "line": "The best thing in your life, and you might break it",
+    "changes": "Jealousy shows what's at stake",
+    "hidden": {
+     "signals": [
+      "someone else wants them, and says so",
+      "a joke between you that lands differently this time",
+      "a friend asks a question you answer too fast",
+      "you notice where they sit when they come into a room"
+     ],
+     "if_nobody_intervenes": [
+      "someone else gets there first, and the friendship survives, worse",
+      "it's said by accident, at the worst time, and can't be taken back"
+     ],
+     "if_somebody_does": "one of you says it deliberately, and the friendship becomes whatever comes next"
     }
    },
    {
-    "id": "keeper",
-    "name": "The keeper of confidences",
-    "line": "People tell you things. You have never told anyone",
-    "changes": "Every confidence is leverage you swore not to use",
-    "pulls": {
-     "world": [
-      "town",
-      "hotel"
-     ]
+    "id": "contract",
+    "name": "Marriage of convenience",
+    "line": "On paper it's practical. That's the deal",
+    "changes": "Tenderness slips past the terms",
+    "hidden": {
+     "signals": [
+      "a kindness the contract didn't ask for",
+      "someone asks how long it's meant to last",
+      "the terms get broken in a small way, and it feels like a gift",
+      "leaving becomes possible"
+     ],
+     "if_nobody_intervenes": [
+      "the contract runs out and both of you sign the end",
+      "partners in everything except the one thing"
+     ],
+     "if_somebody_does": "someone stays when the contract says they're free to go, and says why"
     }
    },
    {
-    "id": "runaway",
-    "name": "The runaway",
-    "line": "You left something unfinished and a name behind",
-    "changes": "Someone is still looking · you answer to a borrowed name",
-    "pulls": {
-     "world": [
-      "city",
-      "ship",
-      "frontier"
-     ]
+    "id": "forbidden",
+    "name": "Forbidden love",
+    "line": "There's a rule, and it has teeth",
+    "changes": "Every meeting is a risk someone can see",
+    "hidden": {
+     "signals": [
+      "the rule gets enforced on somebody else, and it's brutal",
+      "a meeting that nobody was supposed to see",
+      "someone who could report it chooses not to, for now",
+      "the barrier turns out to have a price"
+     ],
+     "if_nobody_intervenes": [
+      "it's discovered, by the worst possible person",
+      "one of you gives it up quietly to protect the other"
+     ],
+     "if_somebody_does": "it goes public on purpose, and the rule has to answer"
     }
+   },
+   {
+    "id": "betrayal",
+    "name": "Betrayal",
+    "line": "You trusted them first",
+    "changes": "Trust is built where you can see it",
+    "hidden": {
+     "signals": [
+      "trust built where everyone can see it",
+      "a small lie, explained away well",
+      "something of yours ends up where it shouldn't be",
+      "someone else warns you, and you don't believe them"
+     ],
+     "if_nobody_intervenes": [
+      "the betrayal lands, and you're the last to know",
+      "you find out, and they never learn that you did"
+     ],
+     "if_somebody_does": "it's caught before it lands, and you decide what they're owed"
+    }
+   },
+   {
+    "id": "impostor",
+    "name": "The impostor",
+    "line": "You were pretending until it mattered",
+    "changes": "They fall for the person, not the mask",
+    "hidden": {
+     "signals": [
+      "someone uses a name that isn't quite yours",
+      "a detail from the life you claimed doesn't fit",
+      "they start loving the person under the mask",
+      "someone from the real past arrives"
+     ],
+     "if_nobody_intervenes": [
+      "the mask comes off in public, not by your choice",
+      "the mask becomes the person, and the old one is gone"
+     ],
+     "if_somebody_does": "you take the mask off yourself, to the one person who matters"
+    }
+   },
+   {
+    "id": "longcon",
+    "name": "The long con",
+    "line": "You're here to take something",
+    "changes": "The con only works if you mean it",
+    "hidden": {
+     "signals": [
+      "the plan needs one more favour than planned",
+      "the mark does something kind that makes it harder",
+      "a partner in the plan gets impatient",
+      "you start to mean what you say to them"
+     ],
+     "if_nobody_intervenes": [
+      "the score lands, and you lose the mark",
+      "the con collapses and takes both of you down"
+     ],
+     "if_somebody_does": "you choose: the score or the mark, out loud, to one of them"
+    }
+   },
+   {
+    "id": "mole",
+    "name": "The mole",
+    "line": "Inside, with two loyalties",
+    "changes": "Both sides want proof",
+    "hidden": {
+     "signals": [
+      "both sides ask for proof in the same week",
+      "the people you report on start to trust you",
+      "a message from your handler arrives at a bad moment",
+      "someone else is also lying, and you can tell"
+     ],
+     "if_nobody_intervenes": [
+      "you're caught, by the side you came to love",
+      "you stay inside both sides until it costs someone you care about"
+     ],
+     "if_somebody_does": "you burn one side yourself, and choose which"
+    }
+   },
+   {
+    "id": "rise",
+    "name": "Rise and fall",
+    "line": "You want it, and you'll get it",
+    "changes": "Getting it costs something you didn't price",
+    "hidden": {
+     "signals": [
+      "you get something you wanted, and it costs more than you priced",
+      "an old friend stops calling",
+      "the people above you start treating you as one of them",
+      "you hear yourself say something the old you would hate"
+     ],
+     "if_nobody_intervenes": [
+      "you reach the top, and there's nobody there you like",
+      "you fall, in public, and find out who stayed"
+     ],
+     "if_somebody_does": "you walk away from it, or refuse it, before it finishes you"
+    }
+   },
+   {
+    "id": "family",
+    "name": "Found family",
+    "line": "Strangers who became yours",
+    "changes": "The people outweigh the trouble",
+    "hidden": {
+     "signals": [
+      "a rescue nobody asked for",
+      "someone from your old life wants you back",
+      "a meal that becomes a tradition",
+      "one of them is in trouble and doesn't tell you"
+     ],
+     "if_nobody_intervenes": [
+      "the group scatters, and nobody chose it",
+      "one of them is lost, and the rest hold"
+     ],
+     "if_somebody_does": "you choose them over blood or the old life, out loud"
+    }
+   },
+   {
+    "id": "pitch",
+    "name": "Mixing business and pleasure",
+    "line": "It was work, until it wasn't",
+    "changes": "The job and the feeling want different endings",
+    "hidden": {
+     "signals": [
+      "they remember a detail from a meeting you thought was only business",
+      "a message that arrives after hours and isn't about the work",
+      "someone in the room notices how you two talk",
+      "the paperwork asks a question you don't want to answer honestly"
+     ],
+     "if_nobody_intervenes": [
+      "the deal closes and the feeling is never said",
+      "it comes out at the worst possible meeting, in front of everyone"
+     ],
+     "if_somebody_does": "the job and the feeling are separated, and one of them is given up on purpose"
+    }
+   },
+   {
+    "id": "fileon",
+    "name": "The file on them",
+    "line": "You were looking into them. You kept looking",
+    "changes": "Every fact you find is also a reason to like them",
+    "hidden": {
+     "signals": [
+      "the record has a gap, and the gap is interesting",
+      "someone who knew them before talks too warmly, or too carefully",
+      "you catch yourself looking for reasons to keep looking",
+      "they mention something you only know because you were looking"
+     ],
+     "if_nobody_intervenes": [
+      "they find out you were looking, from someone else",
+      "you close the file, and know more than you can ever admit"
+     ],
+     "if_somebody_does": "you tell them what you were doing before anyone else can"
+    }
+   }
+  ],
+  "role": [
+   {
+    "id": "newhire",
+    "name": "The new hire",
+    "line": "First week, and everyone already has a version of you",
+    "changes": "Names before loyalties · first impressions stick",
+    "want": "to belong here",
+    "conflict": "who you'll turn into to fit in"
+   },
+   {
+    "id": "returner",
+    "name": "The one who came back",
+    "line": "You left town. Now you're home",
+    "changes": "Everyone remembers a version of you",
+    "want": "to prove you're different now",
+    "conflict": "the old you is still here"
+   },
+   {
+    "id": "bestfriend",
+    "name": "The best friend",
+    "line": "Always the confidant, never the lead",
+    "changes": "You know everyone's secrets but your own",
+    "want": "a story of your own",
+    "conflict": "loyalty"
+   },
+   {
+    "id": "parent",
+    "name": "The single parent",
+    "line": "Someone small depends on you completely",
+    "changes": "Your time is never yours",
+    "want": "one thing just for you",
+    "conflict": "guilt every time you take it"
+   },
+   {
+    "id": "bridesmaid",
+    "name": "The bridesmaid",
+    "line": "Again",
+    "changes": "Always in the photos, never the point of them",
+    "want": "to stop being the plus-one in your own life",
+    "conflict": "you're happy for them. Mostly"
+   },
+   {
+    "id": "bodyguard",
+    "name": "The bodyguard",
+    "line": "Paid to stand close and see nothing",
+    "changes": "You hear everything and can say nothing",
+    "want": "to do the job and go home",
+    "conflict": "it stopped being just a job"
+   },
+   {
+    "id": "assistant",
+    "name": "The assistant",
+    "line": "In every room, and nobody sees you",
+    "changes": "Power is borrowed, and you know where it lives",
+    "want": "a seat at the table",
+    "conflict": "what you'd trade for it"
+   },
+   {
+    "id": "heir",
+    "name": "The heir to the family business",
+    "line": "It's yours, and you didn't want it",
+    "changes": "Every choice is also about the family",
+    "want": "a life you chose",
+    "conflict": "the people counting on you"
+   },
+   {
+    "id": "nurse",
+    "name": "The night-shift nurse",
+    "line": "You see people at their worst, at 3am",
+    "changes": "Calm in a crisis, a mess in daylight",
+    "want": "someone to look after you for once",
+    "conflict": "you don't know how to be looked after"
+   },
+   {
+    "id": "influencer",
+    "name": "The influencer",
+    "line": "Your life is public, and it's not quite true",
+    "changes": "Everything is content until it isn't",
+    "want": "something real",
+    "conflict": "the real thing would end the brand"
+   },
+   {
+    "id": "ghostwriter",
+    "name": "The ghostwriter",
+    "line": "You write other people's lives for a living",
+    "changes": "You notice the gaps in people's stories",
+    "want": "your name on something",
+    "conflict": "you're better at being invisible"
+   },
+   {
+    "id": "detective",
+    "name": "The detective",
+    "line": "It's your job to find out",
+    "changes": "You can ask anyone anything, and they know why",
+    "want": "the truth",
+    "conflict": "what the truth will cost someone you like"
    },
    {
     "id": "wokeup",
-    "name": "The one who woke up elsewhere",
+    "name": "The one who woke up somewhere else",
     "line": "You opened your eyes in someone else's life",
-    "changes": "Everyone expects you to know them · some memories are not yours",
-    "pulls": {
-     "world": [
-      "otherworld"
-     ],
-     "other": [
-      "remembers"
-     ]
-    }
-   },
-   {
-    "id": "caretaker",
-    "name": "The caretaker",
-    "line": "Someone depends on you completely",
-    "changes": "Your time is never yours · leaving is not simple",
-    "pulls": {
-     "circle": [
-      "child"
-     ],
-     "world": [
-      "town",
-      "estate"
-     ]
-    }
-   },
-   {
-    "id": "gift",
-    "name": "The one with the gift",
-    "line": "You can do something nobody else here can",
-    "changes": "It is wanted, and so are you",
-    "pulls": {
-     "world": [
-      "otherworld",
-      "academy",
-      "court"
-     ]
-    }
-   },
-   {
-    "id": "ruined",
-    "name": "The ruined name",
-    "line": "You were someone once. The papers said otherwise",
-    "changes": "People recognise you before they know you",
-    "pulls": {
-     "world": [
-      "city",
-      "hotel"
-     ],
-     "circle": [
-      "room"
-     ]
-    }
-   },
-   {
-    "id": "fixer",
-    "name": "The fixer",
-    "line": "People call you when it has already gone wrong",
-    "changes": "You arrive mid-crisis · you know where the bodies are",
-    "pulls": {
-     "world": [
-      "city",
-      "court"
-     ]
-    }
+    "changes": "Everyone expects you to know them",
+    "want": "to get back",
+    "conflict": "you're starting to like it here"
    }
   ],
   "world": [
    {
+    "id": "office",
+    "name": "The office",
+    "line": "Open plan, glass walls, one kitchen",
+    "changes": "Everyone sees who talks to who"
+   },
+   {
     "id": "town",
     "name": "The small town",
-    "line": "You cannot buy milk without being asked about it",
-    "changes": "No anonymity · gossip moves faster than you"
+    "line": "You can't buy milk without being asked about it",
+    "changes": "No secrets last a week"
    },
    {
-    "id": "estate",
-    "name": "The great house",
-    "line": "A family, its house, and everyone who serves it",
-    "changes": "Upstairs and downstairs never quite meet · every door is someone's"
+    "id": "college",
+    "name": "College",
+    "line": "Four years, one campus, everyone deciding who they are",
+    "changes": "Rooms are shared, drama is public"
    },
    {
-    "id": "court",
-    "name": "The court",
-    "line": "Who stands near the chair is the whole game",
-    "changes": "Seating is a statement · favour can be withdrawn by noon"
+    "id": "building",
+    "name": "The apartment building",
+    "line": "Thin walls, one laundry room, forty neighbours",
+    "changes": "You know their routines; they know yours"
    },
    {
-    "id": "festival",
-    "name": "The festival",
-    "line": "Ten days, a thousand strangers, nobody's real name",
-    "changes": "Masks are normal · nothing here is supposed to follow you home"
+    "id": "weddingwknd",
+    "name": "The wedding weekend",
+    "line": "Three days, one venue, everyone you know",
+    "changes": "Seating charts are politics"
    },
    {
-    "id": "ship",
-    "name": "The crossing",
-    "line": "Weeks at sea, and nowhere else to go",
-    "changes": "Everyone you meet today, you will meet again tomorrow"
+    "id": "lakehouse",
+    "name": "The lake house",
+    "line": "One summer, one house, too many people",
+    "changes": "Nobody can leave, nobody wants to"
+   },
+   {
+    "id": "hospital",
+    "name": "The hospital",
+    "line": "Long shifts, high stakes, a coffee machine that's always broken",
+    "changes": "Life and death before lunch"
+   },
+   {
+    "id": "tour",
+    "name": "The tour",
+    "line": "A band, a bus, forty cities in sixty days",
+    "changes": "No privacy, no days off"
+   },
+   {
+    "id": "reality",
+    "name": "The reality show",
+    "line": "Cameras everywhere, and a vote on Sunday",
+    "changes": "Everything you do is edited"
+   },
+   {
+    "id": "restaurant",
+    "name": "The family restaurant",
+    "line": "Three generations, one kitchen, a lot of shouting",
+    "changes": "Business and family are the same argument"
    },
    {
     "id": "city",
     "name": "The city at night",
-    "line": "A city that never asks your name",
-    "changes": "Anonymity cuts both ways · help and harm are one street apart"
-   },
-   {
-    "id": "academy",
-    "name": "The academy",
-    "line": "Old rules, older rivalries, and a ranking on the wall",
-    "changes": "Everyone is ranked, and everyone watches the ranking"
+    "line": "Everyone's anonymous until they aren't",
+    "changes": "Help and harm are one street apart"
    },
    {
     "id": "otherworld",
-    "name": "The other world",
-    "line": "A world that is not yours, that seems to know you",
-    "changes": "Nothing works the way you expect · some things work better"
+    "name": "Another world",
+    "line": "A world that isn't yours, that seems to know you",
+    "changes": "Nothing works the way you expect"
    },
    {
-    "id": "frontier",
-    "name": "The frontier town",
-    "line": "Help is days away, always",
-    "changes": "People are who they say they are, until they are not"
-   },
-   {
-    "id": "island",
-    "name": "The island",
-    "line": "Small, beautiful, and everyone came here for a reason",
-    "changes": "The ferry runs twice a week · there is no leaving tonight"
-   },
-   {
-    "id": "after",
-    "name": "After the war",
-    "line": "Everyone present did something in it",
-    "changes": "The past is everywhere and nobody says it"
-   },
-   {
-    "id": "hotel",
-    "name": "The grand hotel",
-    "line": "Everyone is passing through. Some for years",
-    "changes": "Staff see everything · guests forget that"
+    "id": "oldhouse",
+    "name": "The old house",
+    "line": "It's been in the family a long time. So has something else",
+    "changes": "Doors you shouldn't open, opened"
    }
   ],
   "other": [
    {
     "id": "doesntknow",
-    "name": "The one who does not know",
+    "name": "The one who doesn't know",
     "line": "They have no idea what you are to them",
-    "changes": "Deflects praise · every disclosure is unprompted"
+    "changes": "Deflects praise · every confession is unprompted"
    },
    {
     "id": "tests",
     "name": "The one who tests you",
     "line": "“Show me who you are”",
-    "changes": "The bond moves only on honest answers"
+    "changes": "They only move on honest answers"
    },
    {
     "id": "leverage",
-    "name": "The one with the leverage",
-    "line": "They know your secret",
-    "changes": "They start ahead of you in tension"
+    "name": "The one who knows your secret",
+    "line": "They could ruin you, and they haven't",
+    "changes": "They start ahead of you"
    },
    {
     "id": "decided",
-    "name": "The one who already decided",
-    "line": "Sure about you, one way or the other",
-    "changes": "Changing their mind takes a locked beat"
+    "name": "The one who's already decided about you",
+    "line": "Sure of you, one way or the other",
+    "changes": "Changing their mind takes something big"
    },
    {
     "id": "believer",
     "name": "The one who believes in you",
-    "line": "“You will come round. I can wait”",
+    "line": "“You'll come round. I can wait”",
     "changes": "Patience is their pressure"
    },
    {
     "id": "left",
     "name": "The one who left",
     "line": "They had a reason, and never said it",
-    "changes": "The bond starts low and the wound is a fact"
+    "changes": "It starts cold and the wound is real"
    },
    {
-    "id": "power",
-    "name": "The one with power over you",
-    "line": "Your fate is partly in their hands",
-    "changes": "Every kindness is also a move"
+    "id": "boss",
+    "name": "The boss",
+    "line": "They sign your reviews",
+    "changes": "Every kindness is also a power move"
    },
    {
-    "id": "samething",
-    "name": "The one who wants the same thing",
+    "id": "rival",
+    "name": "The rival",
     "line": "Only one of you gets it",
-    "changes": "Helping them costs you · the scoreboard is shared"
+    "changes": "Helping them costs you"
    },
    {
-    "id": "saved",
-    "name": "The one who saved your life",
-    "line": "You owe them, and they have never asked",
-    "changes": "Gratitude and suspicion feel the same"
+    "id": "grumpy",
+    "name": "Grumpy to your sunshine",
+    "line": "They're rude to everyone. Slightly less to you",
+    "changes": "Warmth comes in small, rare doses"
    },
    {
     "id": "warned",
@@ -426,40 +623,40 @@
    {
     "id": "needs",
     "name": "The one who needs you",
-    "line": "They cannot do this alone, and they hate that",
-    "changes": "Helping them costs you something each time"
+    "line": "They can't do this alone, and they hate that",
+    "changes": "Helping costs you something every time"
    },
    {
     "id": "remembers",
     "name": "The one who remembers you differently",
     "line": "They knew you before, and you don't remember it",
-    "changes": "Every memory they share is a test you might fail"
+    "changes": "Every memory they share is a test"
    }
   ],
   "circle": [
    {
     "id": "saw",
     "name": "The friend who saw it first",
-    "line": "Called it, months ago",
+    "line": "Called it months ago",
     "changes": "Their warning comes true once"
    },
    {
-    "id": "rival",
-    "name": "The rival",
-    "line": "Wants the same person",
-    "changes": "Their bond rises when yours stalls"
+    "id": "rival2",
+    "name": "The other one who wants them",
+    "line": "Same person, different plan",
+    "changes": "Their chances rise when yours stall"
    },
    {
-    "id": "room",
-    "name": "The whole room",
-    "line": "Everyone is watching",
-    "changes": "Reputation as a public bond"
+    "id": "groupchat",
+    "name": "The group chat",
+    "line": "Everyone has an opinion, instantly",
+    "changes": "Nothing stays private for long"
    },
    {
     "id": "rule",
     "name": "The one with the rule",
-    "line": "“Two unanswered messages, then stop”",
-    "changes": "A rule you will break, and the circle notices"
+    "line": "“Two unanswered texts, then stop”",
+    "changes": "A rule you'll break, and they'll notice"
    },
    {
     "id": "committee",
@@ -471,13 +668,7 @@
     "id": "confidant",
     "name": "The confidant",
     "line": "Someone you tell everything, drafts included",
-    "changes": "Draft with them, send to the Other · they keep the facts straight"
-   },
-   {
-    "id": "vouched",
-    "name": "The one who vouched for you",
-    "line": "You are here because they said so",
-    "changes": "Whatever you do lands on their name too"
+    "changes": "Draft with them, send to the Other"
    },
    {
     "id": "ex",
@@ -486,9 +677,9 @@
     "changes": "A history the Other will hear about"
    },
    {
-    "id": "child",
-    "name": "The child",
-    "line": "Small, honest, and always listening",
+    "id": "kid",
+    "name": "The kid",
+    "line": "Small, honest, always listening",
     "changes": "Says the true thing in front of everyone"
    },
    {
@@ -498,90 +689,90 @@
     "changes": "Remembers who you were, and says so"
    },
    {
-    "id": "animal",
-    "name": "The animal",
-    "line": "It follows you everywhere",
-    "changes": "It knows before people do · it cannot tell you"
-   },
-   {
     "id": "sibling",
     "name": "The sibling",
     "line": "Shares your history and your blame",
-    "changes": "Takes your side, until they don't"
+    "changes": "On your side, until they aren't"
+   },
+   {
+    "id": "roommate",
+    "name": "The roommate",
+    "line": "Knows when you came home, and who with",
+    "changes": "No secret survives the kitchen"
+   },
+   {
+    "id": "mom",
+    "name": "The parent who calls every day",
+    "line": "Loves you. Has notes",
+    "changes": "Your choices get a review"
+   },
+   {
+    "id": "dog",
+    "name": "The dog",
+    "line": "Follows you everywhere",
+    "changes": "Knows who to trust before you do"
    }
   ],
   "told_by": [
    {
-    "id": "registrar",
-    "name": "The Registrar",
-    "line": "a clerk reading out a form",
-    "changes": "Short sentences, nouns, no adverbs · never raises its voice"
+    "id": "bestie",
+    "name": "Your best friend, telling it later",
+    "line": "over drinks, years from now",
+    "changes": "Warm, teasing, knows how it ends · never takes your side completely"
    },
    {
-    "id": "chronicler",
-    "name": "The Chronicler",
-    "line": "somebody writing it down after",
-    "changes": "Past tense, the long view, names dates · never hurries"
+    "id": "gossip",
+    "name": "The gossip column",
+    "line": "breathless and three steps ahead",
+    "changes": "Names, scandal, exclamation · never misses a look"
    },
    {
-    "id": "publican",
-    "name": "The Publican",
-    "line": "the person behind the bar who saw it",
-    "changes": "Gossip first, geography second · never keeps a confidence"
+    "id": "podcast",
+    "name": "The true-crime podcast",
+    "line": "slow, careful, a little ominous",
+    "changes": "Timestamps and evidence · never says who did it too early"
    },
    {
-    "id": "coroner",
-    "name": "The Coroner",
-    "line": "cause, then effect, then the body",
-    "changes": "Clinical detail, no flinching · never comments on the morality"
+    "id": "diary",
+    "name": "Your diary",
+    "line": "first person, late at night",
+    "changes": "Honest, embarrassing, private · never edits itself"
    },
    {
-    "id": "fabulist",
-    "name": "The Fabulist",
-    "line": "a tall story that happens to be true",
-    "changes": "Exaggerated scale, then a flat correction · never admits what it made up"
+    "id": "romcom",
+    "name": "The rom-com narrator",
+    "line": "warm, knowing, a little smug",
+    "changes": "Sees the meet-cute coming · never lets you miss a beat"
    },
    {
-    "id": "preacher",
-    "name": "The Preacher",
-    "line": "a sermon with you in it",
-    "changes": "Cadence, repetition, second person · never lets a sin pass unnamed"
+    "id": "documentary",
+    "name": "The nature documentary",
+    "line": "hushed, observational, deadpan",
+    "changes": "Describes you like a rare animal · never interferes"
    },
    {
-    "id": "archivist",
-    "name": "The Archivist",
-    "line": "with footnotes you did not ask for",
-    "changes": "Cross-references its own facts · never guesses"
+    "id": "noir",
+    "name": "The noir detective",
+    "line": "rain, cigarettes, regret",
+    "changes": "Short, hard sentences · never trusts anyone"
    },
    {
-    "id": "gambler",
-    "name": "The Gambler",
-    "line": "in odds and tells",
-    "changes": "Names what is at stake before each scene · never says a thing is certain"
+    "id": "campfire",
+    "name": "The campfire story",
+    "line": "low voice, long pauses",
+    "changes": "Builds dread slowly · never explains the noise"
    },
    {
-    "id": "qm",
-    "name": "The Quartermaster",
-    "line": "in inventory",
-    "changes": "Counts everything, values everything · never describes weather"
+    "id": "toast",
+    "name": "The wedding toast",
+    "line": "affectionate, slightly drunk",
+    "changes": "Tells the embarrassing parts on purpose · never finishes a tangent"
    },
    {
-    "id": "child",
-    "name": "The Child",
-    "line": "plainly, and misses the point beautifully",
-    "changes": "Short, literal, unafraid · never explains a metaphor"
-   },
-   {
-    "id": "machine",
-    "name": "The Machine",
-    "line": "procedurally, and it is unsettling",
-    "changes": "Numbered observations, no affect · never uses a simile"
-   },
-   {
-    "id": "soldier",
-    "name": "The Old Soldier",
-    "line": "like somebody who has seen this before",
-    "changes": "Understatement, practical detail · never dramatises a death"
+    "id": "texts",
+    "name": "The group chat transcript",
+    "line": "messages, typos, reactions",
+    "changes": "Everyone talking at once · never in the right order"
    }
   ],
   "modifier": [
@@ -593,33 +784,45 @@
    },
    {
     "id": "hurt",
-    "name": "Hurt and comfort",
-    "line": "Somebody is carrying a wound",
-    "changes": "A hidden injury, a tending scene, and a telling"
+    "name": "Hurt / comfort",
+    "line": "Someone is carrying a wound",
+    "changes": "A hidden hurt, a tending scene, and a telling"
    },
    {
-    "id": "oneway",
-    "name": "Only one way out",
-    "line": "Snowed in, locked down, stuck",
-    "changes": "Nobody can leave the scene · proximity is forced"
+    "id": "onebed",
+    "name": "Forced proximity",
+    "line": "Stuck together. One room. One bed",
+    "changes": "Nobody can leave the scene"
    },
    {
-    "id": "lying",
-    "name": "Everyone is lying a little",
-    "line": "Nobody here tells the whole truth",
-    "changes": "Every fact starts as suspected"
+    "id": "clock",
+    "name": "A ticking clock",
+    "line": "The time left is always in view",
+    "changes": "Every scene costs time"
    },
    {
     "id": "errors",
     "name": "A comedy of errors",
-    "line": "Things go wrong in the funniest possible order",
-    "changes": "Misunderstandings compound before they resolve"
+    "line": "Everything goes wrong in the funniest order",
+    "changes": "Misunderstandings compound before they clear"
    },
    {
-    "id": "clock",
-    "name": "A clock you can hear",
-    "line": "The time left is always in view",
-    "changes": "Every scene costs a tick"
+    "id": "lying",
+    "name": "Everyone's lying a little",
+    "line": "Nobody tells the whole truth",
+    "changes": "Every fact starts as a rumour"
+   },
+   {
+    "id": "triangle",
+    "name": "A love triangle",
+    "line": "There's a third person, and they're not wrong",
+    "changes": "Choosing costs someone"
+   },
+   {
+    "id": "opposites",
+    "name": "Opposites attract",
+    "line": "You disagree about everything",
+    "changes": "Every argument is also flirting"
    }
   ],
   "pressure": [
@@ -630,28 +833,34 @@
     "changes": "The days are counted out loud"
    },
    {
-    "id": "wedding",
-    "name": "The wedding",
-    "line": "Everyone you know, in one place, for a week",
-    "changes": "The room watches · reputation is a bond"
+    "id": "plusone",
+    "name": "The plus-one",
+    "line": "You need a date by Saturday",
+    "changes": "Lies about relationships start here"
    },
    {
-    "id": "scandal",
-    "name": "The scandal",
-    "line": "It is already out, and it is getting bigger",
+    "id": "promotion",
+    "name": "The promotion",
+    "line": "Only one of you gets it",
+    "changes": "Every conversation is also a pitch"
+   },
+   {
+    "id": "screenshot",
+    "name": "The screenshot",
+    "line": "It's already in the group chat",
     "changes": "The clock runs on the gossip, not on you"
    },
    {
     "id": "inheritance",
     "name": "The inheritance",
     "line": "The will is read on Friday",
-    "changes": "Everyone wants something from the dead, and from you"
+    "changes": "Everyone wants something, including from you"
    },
    {
-    "id": "storm",
-    "name": "The storm",
-    "line": "Nobody leaves until it passes",
-    "changes": "Proximity is forced · tempers and candles run low"
+    "id": "powercut",
+    "name": "The power cut",
+    "line": "Nobody leaves until the lights come back",
+    "changes": "Forced proximity, candles running low"
    },
    {
     "id": "visitor",
@@ -660,263 +869,34 @@
     "changes": "They haven't said it yet"
    },
    {
-    "id": "vote",
-    "name": "The vote",
-    "line": "Everyone here will choose, and soon",
-    "changes": "Every conversation is also a campaign"
-   },
-   {
-    "id": "debt",
-    "name": "The debt",
-    "line": "Someone is owed, and they are collecting",
-    "changes": "A social clock instead of a violent one"
-   },
-   {
-    "id": "vanished",
+    "id": "missing",
     "name": "The disappearance",
-    "line": "Someone is gone, and you were the last to see them",
+    "line": "Someone's gone, and you were the last to see them",
     "changes": "Everyone has a theory, including about you"
    },
    {
-    "id": "letter",
-    "name": "The letter",
-    "line": "It arrived for the wrong person, and you read it",
-    "changes": "Now you know something you shouldn't"
+    "id": "wrongtext",
+    "name": "The wrong text",
+    "line": "You sent it to the wrong person",
+    "changes": "Now they know, and they haven't said"
    },
    {
-    "id": "contest",
-    "name": "The contest",
-    "line": "There is a table of results, and it is public",
-    "changes": "Every week is a ranking"
+    "id": "move",
+    "name": "The move",
+    "line": "One of you is leaving in a month",
+    "changes": "Every day is counted"
+   },
+   {
+    "id": "reunion",
+    "name": "The reunion",
+    "line": "Ten years, one room, everyone you used to be",
+    "changes": "Old versions of you walk in the door"
    },
    {
     "id": "funeral",
     "name": "The funeral",
     "line": "Everyone in black, saying what they shouldn't",
-    "changes": "Old grudges are aired · nobody can walk out"
-   }
-  ],
-  "undercurrent": [
-   {
-    "id": "fileon",
-    "name": "The file on them",
-    "line": "You were looking into them. You kept looking",
-    "changes": "Every fact you find is also a reason to like them",
-    "signals": [
-     "the record has a gap, and the gap is interesting",
-     "someone who knew them before talks too warmly, or too carefully",
-     "you catch yourself looking for reasons to keep looking",
-     "they mention something you only know because you were looking"
-    ],
-    "if_full": [
-     "they find out you were looking, from someone else",
-     "you close the file, and know more than you can ever admit"
-    ],
-    "if_resolved": "you tell them what you were doing before anyone else can"
-   },
-   {
-    "id": "enemies",
-    "name": "Keep your enemies close",
-    "line": "You need the person you came to beat",
-    "changes": "Every scene serves two agendas",
-    "signals": [
-     "they defend something you care about when you're not there to see it",
-     "the grudge turns out to have a second side",
-     "your own side asks you to do something that would hurt them",
-     "you're relieved when they win something small"
-    ],
-    "if_full": [
-     "you meet across the table at the decisive moment, still enemies, and it hurts",
-     "your side wins, and you're the one who has to tell them"
-    ],
-    "if_resolved": "you choose them over your own side, and pay for it in public"
-   },
-   {
-    "id": "fake",
-    "name": "Pretend until it is not",
-    "line": "An arrangement, with rules",
-    "changes": "Breaking a rule raises tension",
-    "signals": [
-     "a rule of the arrangement gets broken and nobody mentions it",
-     "someone outside the arrangement believes it completely",
-     "a gesture that wasn't for show",
-     "the end date gets mentioned, and nobody laughs"
-    ],
-    "if_full": [
-     "the arrangement ends on schedule, and only one of you meant it",
-     "it's exposed as fake in front of the people it was for"
-    ],
-    "if_resolved": "the arrangement is ended early, honestly, and what's left is real or nothing"
-   },
-   {
-    "id": "second",
-    "name": "The one that got away, back",
-    "line": "Same town, same wound",
-    "changes": "The old wound is a fact from day one",
-    "signals": [
-     "the old wound gets named, lightly, by someone else",
-     "they still do the small thing they used to do",
-     "the reason they left was not the reason you were told",
-     "an old friend chooses a side"
-    ],
-    "if_full": [
-     "the same mistake, made again, in the same place",
-     "they leave again, and this time you watch it happen"
-    ],
-    "if_resolved": "the real reason is said out loud, and you decide what it changes"
-   },
-   {
-    "id": "friends",
-    "name": "Friends, for now",
-    "line": "The best thing in your life, and you might break it",
-    "changes": "Jealousy reveals the stakes",
-    "signals": [
-     "someone else wants them, and says so",
-     "a joke between you that lands differently this time",
-     "a friend asks a question you answer too fast",
-     "you notice where they sit when they come into a room"
-    ],
-    "if_full": [
-     "someone else gets there first, and the friendship survives, worse",
-     "it's said by accident, at the worst time, and can't be taken back"
-    ],
-    "if_resolved": "one of you says it deliberately, and the friendship becomes whatever comes next"
-   },
-   {
-    "id": "contract",
-    "name": "A marriage of convenience",
-    "line": "The contract says separate lives",
-    "changes": "Tenderness slips past the terms",
-    "signals": [
-     "a kindness the contract didn't ask for",
-     "someone asks how long it's meant to last",
-     "the terms get broken in a small way, and it feels like a gift",
-     "leaving becomes possible"
-    ],
-    "if_full": [
-     "the contract runs out and both of you sign the end",
-     "partners in everything except the one thing"
-    ],
-    "if_resolved": "someone stays when the contract says they're free to go, and says why"
-   },
-   {
-    "id": "forbidden",
-    "name": "Not allowed",
-    "line": "There is a rule, and it has teeth",
-    "changes": "Every meeting is a risk somebody can see",
-    "signals": [
-     "the rule gets enforced on somebody else, and it's brutal",
-     "a meeting that nobody was supposed to see",
-     "someone who could report it chooses not to, for now",
-     "the barrier turns out to have a price"
-    ],
-    "if_full": [
-     "it's discovered, by the worst possible person",
-     "one of you gives it up quietly to protect the other"
-    ],
-    "if_resolved": "it goes public on purpose, and the rule has to answer"
-   },
-   {
-    "id": "betrayal",
-    "name": "The knife you handed them",
-    "line": "You trusted them first",
-    "changes": "Trust is built where you can see it",
-    "signals": [
-     "trust built where everyone can see it",
-     "a small lie, explained away well",
-     "something of yours ends up where it shouldn't be",
-     "someone else warns you, and you don't believe them"
-    ],
-    "if_full": [
-     "the betrayal lands, and you're the last to know",
-     "you find out, and they never learn that you did"
-    ],
-    "if_resolved": "it's caught before it lands, and you decide what they're owed"
-   },
-   {
-    "id": "impostor",
-    "name": "The impostor becomes real",
-    "line": "You were pretending until it mattered",
-    "changes": "They love the person, not the mask",
-    "signals": [
-     "someone uses a name that isn't quite yours",
-     "a detail from the life you claimed doesn't fit",
-     "they start loving the person under the mask",
-     "someone from the real past arrives"
-    ],
-    "if_full": [
-     "the mask comes off in public, not by your choice",
-     "the mask becomes the person, and the old one is gone"
-    ],
-    "if_resolved": "you take the mask off yourself, to the one person who matters"
-   },
-   {
-    "id": "longcon",
-    "name": "The long con",
-    "line": "You are here to take something",
-    "changes": "The con needs real feeling to work",
-    "signals": [
-     "the plan needs one more favour than planned",
-     "the mark does something kind that makes it harder",
-     "a partner in the plan gets impatient",
-     "you start to mean what you say to them"
-    ],
-    "if_full": [
-     "the score lands, and you lose the mark",
-     "the con collapses and takes both of you down"
-    ],
-    "if_resolved": "you choose: the score or the mark, out loud, to one of them"
-   },
-   {
-    "id": "mole",
-    "name": "The mole",
-    "line": "Inside, with two loyalties",
-    "changes": "Both sides demand proof",
-    "signals": [
-     "both sides ask for proof in the same week",
-     "the people you report on start to trust you",
-     "a message from your handler arrives at a bad moment",
-     "someone else is also lying, and you can tell"
-    ],
-    "if_full": [
-     "you're caught, by the side you came to love",
-     "you stay inside both sides until it costs someone you care about"
-    ],
-    "if_resolved": "you burn one side yourself, and choose which"
-   },
-   {
-    "id": "rise",
-    "name": "Rise and fall",
-    "line": "You want it, and you will get it",
-    "changes": "Getting it costs something you did not price",
-    "signals": [
-     "you get something you wanted, and it costs more than you priced",
-     "an old friend stops calling",
-     "the people above you start treating you as one of them",
-     "you hear yourself say something the old you would hate"
-    ],
-    "if_full": [
-     "you reach the top, and there's nobody there you like",
-     "you fall, in public, and find out who stayed"
-    ],
-    "if_resolved": "you walk away from it, or refuse it, before it finishes you"
-   },
-   {
-    "id": "family",
-    "name": "Found family",
-    "line": "You collected these people and cannot spend them",
-    "changes": "The circle outweighs the trouble",
-    "signals": [
-     "a rescue nobody asked for",
-     "someone from your old life wants you back",
-     "a meal that becomes a tradition",
-     "one of them is in trouble and doesn't tell you"
-    ],
-    "if_full": [
-     "the group scatters, and nobody chose it",
-     "one of them is lost, and the rest hold"
-    ],
-    "if_resolved": "you choose them over blood or the old life, out loud"
+    "changes": "Old grudges, no exit"
    }
   ],
   "secret": [
@@ -924,40 +904,46 @@
     "id": "notwho",
     "name": "Not who they said",
     "line": "The name is borrowed",
-    "changes": "The reveal is the midpoint"
+    "changes": "The reveal changes everything"
    },
    {
-    "id": "promised",
-    "name": "Already promised",
-    "line": "There is someone else",
+    "id": "taken",
+    "name": "Already taken",
+    "line": "There's someone else",
     "changes": "Turns any story forbidden"
    },
    {
-    "id": "both",
-    "name": "Playing both sides",
-    "line": "Someone close reports back",
-    "changes": "A circle bond is the one that burns"
+    "id": "reporting",
+    "name": "Reporting back",
+    "line": "Someone close is telling someone else",
+    "changes": "A friendship is the one that breaks"
    },
    {
     "id": "didit",
     "name": "They did it",
-    "line": "The thing everyone is looking for, they did",
+    "line": "The thing everyone's looking for, they did",
     "changes": "Every kindness from them is also cover"
    },
    {
     "id": "started",
     "name": "You started it",
     "line": "The trouble began with you, and nobody knows",
-    "changes": "Discovery is the point of no return"
+    "changes": "Being found out is the point of no return"
    },
    {
-    "id": "blood",
+    "id": "family",
     "name": "The family tie",
-    "line": "You are related, and nobody has said so",
+    "line": "You're related, and nobody's said so",
     "changes": "Every resemblance is a clue"
    },
    {
-    "id": "dying",
+    "id": "money",
+    "name": "The money",
+    "line": "Someone here is broke, or owes, and is hiding it",
+    "changes": "Every generous gesture is a bluff"
+   },
+   {
+    "id": "time",
     "name": "Not much time",
     "line": "Someone here is running out of it",
     "changes": "Every scene with them might be the last"
@@ -965,8 +951,8 @@
    {
     "id": "nothing",
     "name": "Nothing",
-    "line": "Nobody is hiding anything",
-    "changes": "The player is the one expected to break"
+    "line": "Nobody's hiding anything",
+    "changes": "You're the one expected to break"
    }
   ]
  }

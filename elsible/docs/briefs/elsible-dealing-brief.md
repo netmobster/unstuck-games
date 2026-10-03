@@ -2,6 +2,10 @@
 
 # Elsible — the dealing system
 
+> **⚠ The cards in this brief are superseded.** Deck v4 (3 Oct, afternoon) is normal life first, with the
+> researched tropes face up and dealt first: [`elsible-cards.md`](elsible-cards.md) is the card data. The deal
+> mechanics below still hold, plus one new slot: **The story** (the trope), picked first.
+
 **For Claude Design, 3 Oct 2026.** A **system** brief: how the deal works, how it differs from
 Seren's Loom, and every card. **Nothing here is design.** The card tables below are generated from
 `decks/story/deck.json` (v3) and `decks/story/packs/business.json`, so they match what
