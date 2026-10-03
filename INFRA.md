@@ -7,6 +7,27 @@ Jay's desktop; none of that is true any more.
 EC2 instance that holds a checkout of this repo. Deploying is `git pull` on the box. The
 files needed to rebuild the box from nothing are in [`infra/`](infra/).
 
+> **Moving, 3 Oct 2026.** The games are moving one at a time to a new box in a new AWS
+> account, after the laptop compromise. Until the move finishes, the sections below
+> describe the **old** box.
+>
+> | | New | Old |
+> |---|---|---|
+> | Account | `968053968391`, sign-in `https://968053968391.signin.aws.amazon.com/console`, IAM user `jay` | `970376923067` |
+> | Box | `i-071b14e3c340dca70`, t4g.small, Amazon Linux 2023 arm64 | `i-0da082b463daa7314` |
+> | Elastic IP | `18.225.22.191` | `3.23.50.161` |
+> | Role | `unstuck-web`: SSM, Nova on Bedrock, SES send, `/unstuck/*` in Parameter Store, its bucket | `unstuck-web` |
+> | Firewall | `sg-01399df85b8ad952a`: 80 and 443 only | the same |
+> | Bucket | `unstuck-box-968053968391`: private, versioned. Snapshots carried between boxes go in `transfer/` | none |
+> | Database | Aurora Postgres 17 `unstuck-db`, serverless v2. It pauses to zero when idle, is private, and only the box can reach it | none |
+> | Budget | "Unstuck monthly", $25 | |
+>
+> - **Build:** [`infra/bootstrap.sh`](infra/bootstrap.sh) is the box's EC2 user data.
+> - **Steps on the box:** [`infra/box.ps1`](infra/box.ps1) runs one named step over SSM. It
+>   dry-runs by default and needs `-Live` to send, and a person runs it.
+> - **Secrets:** [`infra/unstuck-env.py`](infra/unstuck-env.py) writes `/etc/<service>.env` on
+>   the box from Parameter Store, and makes cookie secrets there.
+
 ## Addresses
 
 | Address | What | Served as |
