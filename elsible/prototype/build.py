@@ -1,8 +1,8 @@
 """Build the Elsible prototype page: the template with the deck and packs embedded.
 
     python elsible/prototype/build.py            writes elsible/prototype/elsible.html (not committed)
-    python elsible/prototype/build.py --publish  also writes elsible/site/index.html, which is
-                                                 committed and is what elsible.unstuck-games.com serves
+    python elsible/prototype/build.py --publish  also writes elsible/site/play/index.html, which is
+                                                 committed and is what elsible.unstuck-games.com/play/ serves
 
 Open the result in a browser to try the deal locally (the weave falls back to the plain version
 outside claude.ai), or publish it as a claude.ai artifact with the `sample` capability so
@@ -26,7 +26,7 @@ if "--publish" in sys.argv:
     if "charset" not in page[:2000].lower():
         page = ('<!doctype html>\n<html lang="en">\n<meta charset="utf-8">\n'
                 '<meta name="viewport" content="width=device-width, initial-scale=1">\n') + page
-    site = os.path.join(ROOT, "site", "index.html")
+    site = os.path.join(ROOT, "site", "play", "index.html")
     os.makedirs(os.path.dirname(site), exist_ok=True)
     io.open(site, "w", encoding="utf-8", newline="\n").write(page)
-    print("published", site, "- commit it; elsible.unstuck-games.com serves elsible/site/")
+    print("published", site, "- commit it; elsible.unstuck-games.com/play/ serves it")

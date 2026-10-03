@@ -21,6 +21,8 @@
       href: "https://deadline.unstuck-games.com/", ink: "#2e2a24", icon: "5" },
     { id: "last-warren", name: "The Last Warren", note: "you are the thing they are looking for", status: "PLAYTEST",
       href: "https://last-warren.unstuck-games.com/", ink: "#5f8a3e", icon: "◍" },
+    { id: "elsible", name: "Elsible", note: "you were dealt a life, and then", status: "IN DESIGN",
+      href: "https://elsible.unstuck-games.com/", ink: "#b07a4e", icon: "♢" },
   ];
 
   // Which game we are on. The subdomain says so; the path is the fallback that keeps
