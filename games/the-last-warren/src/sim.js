@@ -53,7 +53,8 @@ export const DEFAULTS = {
   holdNoise: 0.7,          // holding still outside a warren: quieter than walking
   cost: { decoy: 4, scout: 3, dig: 8, rearguard: 5 },
   decoyLife: 10, decoyNoise: 1.4, scoutLife: 10,
-  leaveCost: 3,            // settled ticks a warren forgets when you leave it
+  leaveCost: 3,
+  retreatTicks: 3,         // in the last ticks before dawn the hunters turn for the edges            // settled ticks a warren forgets when you leave it
   heir: null,              // { attune: 'C'|'S'|'D' } or { boon: id }
   lineage: null,           // { C, S, D } ticks the line has spent in each kind, all generations
   familyK: 2,              // prior weight on the kinds the family favours
@@ -298,7 +299,9 @@ export function step(g, action = { type: 'stay' }) {
   if (loc && !g._wasLocated) g.events.push({ t: 'located' });
   g._wasLocated = loc;
   g._ready = undefined;
-  for (const h of g.hunters) moveHunter(g, h);
+  const retreating = g.tick > c.nightLen - c.retreatTicks;
+  if (retreating && g.tick === c.nightLen - c.retreatTicks + 1) g.events.push({ t: 'retreat', left: c.nightLen - g.tick + 1 });
+  for (const h of g.hunters) retreating ? retreatHunter(g, h) : moveHunter(g, h);
 
   // 5. contact after they move
   if (contact(g)) return g.events;
@@ -519,6 +522,18 @@ function chooseTarget(g, h) {
   return best;
 }
 
+// dawn is coming: step away from the troop, toward the edges
+function retreatHunter(g, h) {
+  const K = HUNTER_KINDS[h.kind], f = hunterField(g, cellOf(g, g.troop));
+  h.mp += K.speed; h.target = -1;
+  for (let guard = 0; guard < 6; guard++) {
+    const here = cellOf(g, h); let best = -1, bd = f[here];
+    for (const j of neighbours(g, here)) if (g.hCost(j) < Infinity && f[j] > bd && f[j] < Infinity) { bd = f[j]; best = j; }
+    if (best < 0) return;
+    const cost = g.hCost(best); if (cost > h.mp) return;
+    h.mp -= cost; h.x = best % g.W; h.y = (best / g.W) | 0;
+  }
+}
 export function located(g) { return g.belief[g.troop.y * g.W + g.troop.x] > 0.5; }
 function musterReady(g) {
   const t = g.troop;

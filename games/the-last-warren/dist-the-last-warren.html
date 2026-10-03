@@ -5,207 +5,263 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Last Warren</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,800;62..125,900&family=Literata:ital,opsz,wght@0,7..72,400;1,7..72,400&family=Martian+Mono:wght@400;600&display=swap">
-<style>/* Night over the survey sheet. Same family as the tombstone file: moss is the troop,
-   blood is the hunters, gold is what you know. Dark-first: the game is played at night. */
-:root{
-  --bg:#12150e; --panel:#1a1e15; --line:#30362a; --ink:#e3e6d4; --dim:#97a088;
-  --moss:#8fbf63; --blood:#e2654c; --gold:#d2b052;
-  --open:#2a3122; --road:#5b5440; --forest:#1d3a1f; --forestdot:#2f5a2c; --lake:#1f3a52; --mtn:#55594e;
-  --display:'Archivo','Arial Narrow',Arial,sans-serif; --body:'Literata',Georgia,serif; --mono:'Martian Mono',ui-monospace,Consolas,monospace;
-  color-scheme:dark;
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400..800&family=Big+Shoulders+Stencil+Display:wght@400..900&display=swap">
+<style>/* The Last Warren · "Burrow" (Claude Design, 2 Oct 2026; handoff in design/burrow-handoff/).
+   Black ground, moss / blood / gold as faint glow, almost no chrome. Stencil for the sentence
+   that matters, mono for everything else, hairlines instead of boxes, one meaning per colour.
+   Ported from the handoff's style.css; the dialogs, chronicle, brief and phone width are new
+   here, in the same voice. The pre-Burrow sheet is design/style-pre-burrow.css. */
+
+:root {
+  --bg: #070806;            /* page */
+  --ground: #08090a;        /* the board (also LWBoard.THEME.ground) */
+  --ink: #e4ddcc;           /* text */
+  --mute: #8f8a76;          /* labels, secondary text */
+  --line: rgba(228, 221, 204, .10);
+  --moss: #8fbf63;          /* you / alive */
+  --blood: #e2654c;         /* them / danger */
+  --gold: #d2b052;          /* knowledge / time */
+  --glow-moss: rgba(143, 191, 99, .35);
+  --glow-blood: rgba(226, 101, 76, .35);
+  --glow-gold: rgba(210, 176, 82, .35);
+  --fs: "Big Shoulders Stencil Display", "Big Shoulders Stencil", "Saira Stencil One", Impact, sans-serif;
+  --fm: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --radius: 3px;
+  color-scheme: dark;
 }
-*{box-sizing:border-box}
-html,body{height:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px}
-.app{display:flex;flex-direction:column;min-height:100%;padding-inline:16px;padding-block:0 16px;max-width:1400px;margin:0 auto}
-.bar{display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px;padding-block:12px;border-bottom:1px solid var(--line)}
-h1{font-family:var(--display);font-weight:900;font-stretch:62%;font-size:30px;text-transform:uppercase;margin:0;letter-spacing:.01em}
-.moss{color:var(--moss)}
-.lbl{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--dim);text-transform:uppercase}
-.clock{display:flex;align-items:center;gap:10px}
-.clock b{font-family:var(--display);font-weight:900;font-size:26px;font-stretch:70%}
-.dawn{width:140px;height:8px;background:var(--line)}
-.dawn div{height:100%;width:0;background:var(--gold);transition:width .15s}
-.tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-left:auto}
-input,select,button{font-family:var(--mono);font-size:11px;background:var(--panel);color:var(--ink);border:1px solid var(--line);padding:6px 8px}
-input{width:72px}
-button{cursor:pointer;letter-spacing:.06em}
-button:hover:not(:disabled){border-color:var(--ink)}
-button:focus-visible,select:focus-visible,input:focus-visible{outline:2px solid var(--moss);outline-offset:2px}
-button:disabled{opacity:.4;cursor:default}
 
-.main{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:18px;padding-top:14px;align-items:start}
-.boardwrap{min-width:0}
-canvas{display:block;width:100%;height:auto;border:1px solid var(--line);cursor:crosshair;image-rendering:auto}
-.hint{font-size:13px;color:var(--dim);margin-top:8px;font-style:italic}
-kbd{font-family:var(--mono);font-size:10px;border:1px solid var(--line);padding:1px 5px;font-style:normal}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--ink); }
+body { font: 400 12.5px/1.5 var(--fm); -webkit-font-smoothing: antialiased; }
+button { font: inherit; color: inherit; background: none; border: 0; padding: 0; cursor: pointer; }
+button:disabled { cursor: default; }
+a { color: var(--mute); text-decoration: none; }
+a:hover { color: var(--ink); }
+:focus-visible { outline: 1.5px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+.mute { color: var(--mute); }
+.label { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
 
-.side{display:flex;flex-direction:column;gap:12px;min-width:0}
-.verbs{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.verb{font-family:var(--display);font-weight:900;font-stretch:70%;font-size:24px;text-transform:uppercase;padding:10px 8px;border-width:2px}
-.verb small{display:block;font-family:var(--mono);font-size:9px;font-weight:400;letter-spacing:.15em;color:var(--dim)}
-.verb.stay{border-color:var(--moss);color:var(--moss)}
-.verb.atk{border-color:var(--blood);color:var(--blood)}
-.block{background:var(--panel);border:1px solid var(--line);padding:12px 14px}
-.big{font-family:var(--display);font-stretch:75%;font-size:20px;margin:4px 0 8px}
-.big b{font-size:40px;font-weight:900;color:var(--moss);font-stretch:62%}
-.dim{color:var(--dim)}
-.rows .row{display:flex;justify-content:space-between;gap:10px;font-family:var(--mono);font-size:11px;padding-block:4px;border-bottom:1px solid var(--line);font-variant-numeric:tabular-nums}
-.rows .row b{font-weight:600}
-.spec{display:grid;gap:4px;margin-top:10px}
-.spec .s{display:grid;grid-template-columns:62px 1fr 34px;gap:8px;align-items:center;font-family:var(--mono);font-size:10px;color:var(--dim)}
-.spec .t{height:7px;background:var(--line)} .spec .t div{height:100%;background:var(--moss)}
-.hunters{display:grid;gap:4px;margin-top:6px}
-.hunters .h{display:grid;grid-template-columns:16px 1fr auto;gap:8px;align-items:center;font-family:var(--mono);font-size:11px}
-.hunters .h i{width:10px;height:10px;background:var(--blood);display:inline-block}
-.log{margin:6px 0 0;padding-left:18px;font-size:13px;max-height:180px;overflow:auto}
-.log li{margin-bottom:3px} .log li.bad{color:var(--blood)} .log li.good{color:var(--moss)} .log li.gold{color:var(--gold)}
-.legend{display:flex;flex-wrap:wrap;gap:6px 12px;font-family:var(--mono);font-size:10px;color:var(--dim)}
-.sw{display:inline-block;width:10px;height:10px;margin-right:5px;vertical-align:-1px}
-.t-open{background:var(--open)} .t-road{background:var(--road)} .t-forest{background:var(--forest)} .t-lake{background:var(--lake)} .t-mtn{background:var(--mtn)}
+.app { max-width: 1440px; margin: 0 auto; }
 
-dialog{background:var(--panel);color:var(--ink);border:2px solid var(--ink);max-width:560px;width:calc(100% - 32px);padding:22px 24px}
-dialog::backdrop{background:rgba(5,6,4,.7)}
-dialog h2{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:28px;line-height:1.1;margin:8px 0 10px;text-wrap:balance}
-.boons{display:grid;gap:8px;margin-top:12px}
-.boons button{text-align:left;font-family:var(--body);font-size:14px;padding:12px 14px;border-color:var(--gold)}
-.boons button b{font-family:var(--display);font-stretch:75%;font-size:17px;color:var(--gold);text-transform:uppercase;letter-spacing:.04em;margin-right:6px}
-.eye summary{font-family:var(--mono);font-size:11px;color:var(--gold);cursor:pointer;margin-top:10px}
-.eye pre{font-family:var(--mono);font-size:10.5px;white-space:pre-wrap;color:var(--dim);max-height:240px;overflow:auto}
-.row-btns{display:flex;gap:8px;margin-top:16px}
+/* ── header: one line of small caps, the title in stencil ─────────────── */
+.hdr { display: flex; flex-wrap: wrap; align-items: baseline; gap: 10px 34px; padding: 18px 28px 12px; font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); }
+.hdr .brand { font: 600 24px/1 var(--fs); letter-spacing: .04em; color: var(--ink); }
+.hdr .pair { display: flex; gap: 10px; align-items: baseline; }
+.hdr .line-name { color: var(--gold); font-weight: 600; text-shadow: 0 0 14px var(--glow-gold); }
+.hdr .night { color: var(--ink); font-weight: 700; font-size: 14px; }
+.hdr nav { margin-left: auto; display: flex; gap: 22px; }
+.hdr nav a[aria-current="page"] { color: var(--ink); }
 
-@media (max-width:900px){ .main{grid-template-columns:minmax(0,1fr)} .tools{margin-left:0} }
-@media (prefers-reduced-motion: reduce){ .dawn div{transition:none} }
+/* dawn: a 2px gold line across the full width. Time is knowledge, so gold. */
+.dawn { display: flex; align-items: center; gap: 12px; padding: 0 28px; }
+.dawn .track { flex: 1; height: 2px; background: rgba(210, 176, 82, .14); overflow: hidden; }
+.dawn .fill { height: 100%; background: var(--gold); box-shadow: 0 0 10px rgba(210, 176, 82, .6); transition: width .6s ease; }
+.dawn .count { font-size: 11px; color: var(--gold); white-space: nowrap; }
 
-/* lineage, tabs, pages */
-.line{display:flex;align-items:baseline;gap:8px;font-family:var(--mono);font-size:12px}
-.line b{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;color:var(--gold);letter-spacing:.02em}
-.line .dim{font-size:11px}
-.tabs{display:flex;gap:4px;margin-left:auto}
-.tab{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;background:transparent;border:1px solid var(--line);padding:6px 12px;color:var(--dim)}
-.tab[aria-selected="true"]{color:var(--ink);border-color:var(--ink)}
-.app>.tools{display:flex;flex-wrap:wrap;align-items:center;gap:8px;padding-top:10px;margin-left:0}
-.page{padding-block:22px 40px;max-width:820px}
-.page h2{font-family:var(--display);font-weight:900;font-stretch:65%;font-size:40px;text-transform:uppercase;line-height:1;margin:0 0 8px}
-.gens{list-style:none;margin:18px 0;padding:0;display:grid;gap:10px}
-.gens li{background:var(--panel);border:1px solid var(--line);padding:12px 16px}
-.gens .gn{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;color:var(--gold);display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-.gens .gn span{font-family:var(--mono);font-size:10.5px;color:var(--dim);font-weight:400;letter-spacing:.06em}
-.gens p{margin:6px 0 0}
-.small{font-size:12.5px}
-.heirs{margin-top:14px}
-.heirs button{border-color:var(--moss)} .heirs button b{color:var(--moss)}
-.lineend{font-family:var(--display);font-stretch:80%;font-size:20px;color:var(--blood);line-height:1.25}
-#abandon{margin-top:8px;border-color:var(--blood);color:var(--blood)}
-.brief{max-width:900px;font-size:15px;line-height:1.6}
-.brief h2{margin-top:6px} .brief h3{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:22px;text-transform:uppercase;margin:28px 0 8px;color:var(--gold)}
-.brief p,.brief li{max-width:72ch} .brief ul,.brief ol{padding-left:20px}
-.brief table{border-collapse:collapse;width:100%;font-size:13px;margin:8px 0}
-.brief th{font-family:var(--mono);font-size:9.5px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);text-align:left;border-bottom:1px solid var(--ink);padding:6px 10px 6px 0}
-.brief td{border-bottom:1px solid var(--line);padding:7px 10px 7px 0;vertical-align:top}
-.brief code{font-family:var(--mono);font-size:12px;color:var(--gold)}
-.brief .scroll{overflow-x:auto}
-.brief .swatch{display:inline-block;width:12px;height:12px;vertical-align:-1px;margin-right:6px;border:1px solid var(--line)}
-@media (max-width:900px){ .tabs{margin-left:0} }
+/* ── body: board + a text column ──────────────────────────────────────── */
+.layout { display: grid; grid-template-columns: minmax(0, 1fr) 356px; gap: 28px; padding: 16px 28px 10px; align-items: start; }
+.boardwrap { min-width: 0; line-height: 0; }
+.boardwrap canvas { display: block; cursor: crosshair; }
 
-.earlier{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:22px;text-transform:uppercase;margin:32px 0 6px;color:var(--dim)}
+.panel { display: flex; flex-direction: column; gap: 18px; min-width: 0; padding-top: 4px; }
+.panel .section { padding-top: 14px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 5px; }
 
-/* v5: spends, this warren, what size buys */
-.spends{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-.spends button{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:15px;text-transform:uppercase;color:var(--gold);border-color:var(--gold);padding:7px 6px;text-align:left}
-.spends button small{display:block;font-family:var(--mono);font-size:9px;font-weight:400;letter-spacing:.1em;color:var(--dim);text-transform:none}
-.buys{font-size:13px;color:var(--ink);margin:10px 0 0;line-height:1.4}
-.wcard .wk{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;text-transform:uppercase;margin:4px 0 6px}
-.wcard .wl{font-size:13px;line-height:1.4;padding-block:3px;border-bottom:1px solid var(--line)}
-.wcard .gift{color:var(--moss)} .wcard .cost{color:var(--blood)}
+.troop .count { font: 700 112px/.86 var(--fs); letter-spacing: .01em; color: var(--moss); text-shadow: 0 0 28px var(--glow-moss); font-variant-numeric: tabular-nums; }
+.troop .count.dead { color: var(--ink); text-shadow: none; }
+.troop .where { margin-top: 8px; }
+.status { font: 700 26px/1 var(--fs); letter-spacing: .05em; text-transform: uppercase; }
+.status.you { color: var(--moss); text-shadow: 0 0 18px var(--glow-moss); }
+.status.them { color: var(--blood); text-shadow: 0 0 18px var(--glow-blood); }
+.status.ink { color: var(--ink); }
+.stats { display: grid; grid-template-columns: auto 1fr; gap: 2px 14px; margin: 0; }
+.stats dt { color: var(--mute); }
+.stats dd { margin: 0; font-variant-numeric: tabular-nums; }
+.stats .gold { color: var(--gold); }
+.odds { margin: 0; text-wrap: pretty; }
 
-.heirs button[aria-pressed="true"]{background:var(--moss);color:var(--bg)} .heirs button[aria-pressed="true"] b{color:var(--bg)}
-.heirs .passon{border-color:var(--gold);color:var(--gold);font-family:var(--display);font-weight:800;font-stretch:75%;font-size:16px;text-transform:uppercase;text-align:center}
+.warren .name { display: flex; align-items: center; gap: 10px; }
+.warren .name span { font: 700 22px/1 var(--fs); letter-spacing: .05em; text-transform: uppercase; }
+.warren .gift { color: var(--moss); }
+.warren .cost { color: var(--blood); }
+.warren .depth { color: var(--mute); }
+.warren svg { color: var(--ink); flex: none; }
+
+.hunters .row { display: grid; grid-template-columns: 14px auto minmax(0, 1fr) auto; align-items: center; gap: 10px; }
+.hunters .row svg { filter: drop-shadow(0 0 4px rgba(226, 101, 76, .6)); }
+.hunters .row .state { font-size: 11px; color: var(--blood); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.hunters .row .n { color: var(--blood); text-align: right; font-variant-numeric: tabular-nums; }
+
+.log { gap: 3px; }
+.log .row { display: grid; grid-template-columns: 22px 1fr; gap: 6px; font-size: 12px; line-height: 1.45; text-wrap: pretty; opacity: .6; }
+.log .row:last-child { opacity: 1; }
+.log .row .i { color: var(--mute); font-variant-numeric: tabular-nums; }
+.log .you { color: var(--moss); }
+.log .them { color: var(--blood); }
+.log .gold { color: var(--gold); }
+.log .ink { color: var(--ink); }
+
+/* ── verbs: a strip of stencil words, no boxes ─────────────────────────── */
+.verbs { display: flex; flex-wrap: wrap; align-items: baseline; gap: 12px 34px; margin: 0 28px; padding: 12px 0 8px; border-top: 1px solid var(--line); }
+.verb { display: flex; align-items: baseline; gap: 10px; color: var(--ink); transition: opacity .2s; }
+.verb .word { font: 700 32px/1 var(--fs); letter-spacing: .05em; }
+.verb .key { font-size: 11px; letter-spacing: .1em; color: var(--mute); }
+.verb.stay { color: var(--moss); text-shadow: 0 0 16px var(--glow-moss); }
+.verb.stay .key { color: inherit; opacity: .8; }
+.verb.attack { color: var(--blood); text-shadow: 0 0 16px var(--glow-blood); }
+.verb.attack .key { color: inherit; opacity: .85; }
+.verb.spend .word { font-size: 24px; font-weight: 600; }
+.verb:disabled { opacity: .3; }
+.verb:not(:disabled):hover .word, .verb.flash .word { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 6px; }
+.verbs .gap { flex: 1; }
+
+.foot { display: flex; align-items: baseline; gap: 20px; padding: 6px 28px 20px; font-size: 11px; line-height: 1.6; color: var(--mute); }
+.foot p { margin: 0; flex: 1; }
+.foot .working-toggle { letter-spacing: .08em; text-transform: uppercase; color: var(--gold); white-space: nowrap; }
+
+/* "show the working": one click away, never in the way */
+.working { display: none; align-items: center; gap: 14px; flex-wrap: wrap; padding: 0 28px 20px; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--mute); }
+.working.open { display: flex; }
+.working input, .working select { height: 26px; font: 500 12px var(--fm); color: var(--ink); background: transparent; border: 0; border-bottom: 1px solid var(--line); }
+.working input { width: 80px; padding: 0 8px; }
+.working select { font-size: 11px; letter-spacing: .08em; text-transform: uppercase; max-width: 220px; }
+.working select option { background: var(--bg); }
+.btn { font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--ink); border: 1px solid var(--ink); border-radius: var(--radius); padding: 5px 10px; font-size: 11px; }
+
+/* ── dialogs: the same voice. Stencil for the sentence, choices as hairline rows ── */
+dialog { background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: var(--radius); max-width: 620px; width: calc(100% - 32px); padding: 26px 28px; box-shadow: 0 0 60px rgba(0, 0, 0, .8); }
+dialog::backdrop { background: rgba(4, 5, 4, .78); }
+dialog h2 { font: 700 30px/1.08 var(--fs); letter-spacing: .03em; margin: 10px 0 12px; text-wrap: balance; }
+#ending h2 { color: var(--ink); }
+#draft h2 { color: var(--gold); text-shadow: 0 0 18px var(--glow-gold); }
+.choices { display: flex; flex-direction: column; margin-top: 14px; border-top: 1px solid var(--line); }
+.choices button { text-align: left; padding: 11px 2px; border-bottom: 1px solid var(--line); display: grid; grid-template-columns: minmax(120px, auto) 1fr; gap: 14px; align-items: baseline; }
+.choices button b { font: 700 20px/1 var(--fs); letter-spacing: .05em; text-transform: uppercase; color: var(--gold); }
+.choices button:hover b { text-decoration: underline; text-decoration-thickness: 2px; text-underline-offset: 5px; }
+.heirs button b { color: var(--moss); }
+.heirs button[aria-pressed="true"] { background: rgba(143, 191, 99, .08); }
+.heirs button[aria-pressed="true"] b { text-shadow: 0 0 14px var(--glow-moss); }
+.heirs .passon { display: block; text-align: center; color: var(--gold); font: 700 22px/1 var(--fs); letter-spacing: .06em; text-transform: uppercase; padding: 14px 0; }
+.heirs .note { font-size: 11.5px; color: var(--mute); margin: 10px 0 0; }
+.lineend { font: 700 22px/1.2 var(--fs); letter-spacing: .03em; color: var(--blood); text-shadow: 0 0 16px var(--glow-blood); margin: 6px 0 12px; }
+#newline { color: var(--gold); font: 700 22px/1 var(--fs); letter-spacing: .06em; text-transform: uppercase; }
+.eye summary { cursor: pointer; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--gold); margin-top: 14px; }
+.eye pre { font: 400 11px/1.55 var(--fm); white-space: pre-wrap; color: var(--mute); max-height: 240px; overflow: auto; }
+.row-btns { display: flex; gap: 10px; margin-top: 16px; }
+
+/* ── chronicle and brief pages ───────────────────────────────────────── */
+.page { padding: 22px 28px 60px; max-width: 900px; }
+.page h2 { font: 700 44px/1 var(--fs); letter-spacing: .03em; text-transform: uppercase; margin: 0 0 8px; color: var(--gold); text-shadow: 0 0 22px var(--glow-gold); }
+.gens { list-style: none; margin: 20px 0; padding: 0; border-top: 1px solid var(--line); }
+.gens li { padding: 14px 0; border-bottom: 1px solid var(--line); }
+.gens .gn { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font: 700 22px/1 var(--fs); letter-spacing: .04em; color: var(--moss); }
+.gens .gn span { font: 400 11px/1.4 var(--fm); letter-spacing: .08em; color: var(--mute); text-transform: uppercase; }
+.gens p { margin: 6px 0 0; }
+.small { font-size: 11.5px; }
+.earlier { font: 700 24px/1 var(--fs); letter-spacing: .05em; text-transform: uppercase; color: var(--mute); margin: 34px 0 4px; }
+#abandon { margin-top: 10px; color: var(--blood); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; }
+.brief { font-size: 13px; line-height: 1.65; }
+.brief h3 { font: 700 22px/1.1 var(--fs); letter-spacing: .05em; text-transform: uppercase; margin: 30px 0 8px; color: var(--ink); }
+.brief p, .brief li { max-width: 74ch; }
+.brief ul, .brief ol { padding-left: 20px; }
+.brief .scroll { overflow-x: auto; }
+.brief table { border-collapse: collapse; width: 100%; font-size: 12px; margin: 8px 0; }
+.brief th { font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--mute); text-align: left; border-bottom: 1px solid var(--line); padding: 6px 10px 6px 0; font-weight: 400; }
+.brief td { border-bottom: 1px solid var(--line); padding: 7px 10px 7px 0; vertical-align: top; }
+.brief code { color: var(--gold); }
+.brief .swatch { display: inline-block; width: 11px; height: 11px; vertical-align: -1px; margin-right: 6px; border: 1px solid var(--line); }
+
+/* ── narrower than the board wants: stack, smaller type ───────────────── */
+@media (max-width: 1100px) {
+  .layout { grid-template-columns: minmax(0, 1fr); }
+  .troop .count { font-size: 80px; }
+}
+@media (max-width: 640px) {
+  .hdr, .dawn, .foot, .working, .page { padding-left: 16px; padding-right: 16px; }
+  .layout { padding: 12px 16px 10px; }
+  .verbs { margin: 0 16px; gap: 10px 20px; }
+  .verb .word { font-size: 26px; } .verb.spend .word { font-size: 20px; }
+  .hdr nav { margin-left: 0; }
+  .foot { flex-direction: column; gap: 8px; }
+}
 </style>
 </head>
 <body>
 <div class="app">
-  <header class="bar">
-    <h1><span class="moss">The Last</span> Warren</h1>
-    <div class="line"><span class="lbl">LINE</span><b id="linename">—</b><span class="dim" id="lineheir"></span></div>
-    <div class="clock">
-      <span class="lbl">NIGHT</span><b id="night">1</b>
-      <div class="dawn" title="ticks until dawn"><div id="dawnfill"></div></div>
-      <span class="lbl" id="ticks">0 / 54</span>
-    </div>
-    <nav class="tabs" role="tablist" aria-label="Sections">
-      <button type="button" role="tab" class="tab" data-tab="play" aria-selected="true">Play</button>
-      <button type="button" role="tab" class="tab" data-tab="chron" aria-selected="false">Chronicle</button>
-      <button type="button" role="tab" class="tab" data-tab="brief" aria-selected="false">CD brief</button>
+
+  <header class="hdr">
+    <div class="brand">The Last Warren</div>
+    <div class="pair"><span>Line</span><span class="line-name" id="linename">—</span><span id="lineheir">· no heirloom</span></div>
+    <div class="pair"><span>Night</span><span class="night" id="night">1</span></div>
+    <nav role="tablist" aria-label="Sections">
+      <a href="#play" role="tab" class="tab" data-tab="play" aria-current="page">Play</a>
+      <a href="#chronicle" role="tab" class="tab" data-tab="chron">Chronicle</a>
+      <a href="#brief" role="tab" class="tab" data-tab="brief">CD brief</a>
     </nav>
   </header>
 
-  <div class="tools">
-    <label class="lbl" for="seed">SEED</label><input id="seed" type="number" value="1" min="1">
-    <select id="cfgsel" aria-label="Rules"><option value="tuned">Tuned rules</option><option value="defaults">Starting rules</option></select>
-    <button id="newrun" type="button">New run</button>
-    <select id="watch" aria-label="Watch a policy play"><option value="">You play</option></select>
-  </div>
-
-  <main class="main" id="tab-play" role="tabpanel">
-    <div class="boardwrap">
-      <canvas id="board" aria-label="The map"></canvas>
-      <div class="hint" id="hint">Click a warren to run for it, or any square to go there and hold (forest hides you). Click a ringed hunter to attack. <kbd>Space</kbd> stays a tick; hold it to keep staying. Spend people with <kbd>D</kbd> <kbd>R</kbd> <kbd>S</kbd> <kbd>G</kbd>.</div>
+  <section id="tab-play" role="tabpanel">
+    <div class="dawn">
+      <div class="track"><div class="fill" id="dawn-fill" style="width:0%"></div></div>
+      <span class="count"><span id="dawn-ticks">0</span> / <span id="dawn-len">54</span> to dawn</span>
     </div>
 
-    <aside class="side">
-      <div class="verbs">
-        <button id="stay" class="verb stay" type="button">Stay <small>space</small></button>
-        <button id="attackbtn" class="verb atk" type="button" disabled>Attack <small id="attackodds">A</small></button>
-      </div>
-      <div class="spends">
-        <button id="sp-decoy" type="button" title="4 people break away, loud, and run the other way (D)">Decoy <small>−4 · D</small></button>
-        <button id="sp-rearguard" type="button" title="5 people stay behind and fight the first hunter to reach them (R)">Rearguard <small>−5 · R</small></button>
-        <button id="sp-scout" type="button" title="3 people go to look: see their belief map for 10 ticks (S)">Scout <small>−3 · S</small></button>
-        <button id="sp-dig" type="button" title="8 people dig a shallow warren right here, of the kind you're most attuned to. Only while holding in the open (G)">Dig here <small>−8 · G</small></button>
-      </div>
-      <div class="block">
-        <div class="lbl">THE TROOP</div>
-        <div class="big"><b id="size">4</b> <span id="where" class="dim">in a warren</span></div>
-        <div class="rows">
-          <div class="row"><span>Strength (defending)</span><b id="sdef">—</b></div>
-          <div class="row"><span>Reserve</span><b id="reserve">—</b></div>
-          <div class="row"><span>Noise</span><b id="noise">—</b></div>
-          <div class="row"><span>Growing</span><b id="growth">—</b></div>
-          <div class="row"><span>Watched</span><b id="watched">—</b></div>
-          <div class="row"><span>Status</span><b id="status">hidden</b></div>
+    <div class="layout">
+      <div class="boardwrap" id="boardwrap"><canvas id="board" aria-label="The map"></canvas></div>
+
+      <aside class="panel">
+        <div class="troop">
+          <div class="count" id="count">4</div>
+          <div class="where" id="where">in a warren</div>
         </div>
-        <p class="buys" id="buys"></p>
-        <div class="spec" id="spec"></div>
-      </div>
-      <div class="block wcard" id="wcard">
-        <div class="lbl">THIS WARREN</div>
-        <div class="wk" id="wkind"></div>
-        <div class="wl gift" id="wgift"></div>
-        <div class="wl cost" id="wcost"></div>
-        <div class="wl" id="wdepth"></div>
-      </div>
-      <div class="block">
-        <div class="lbl">HUNTERS <span id="hcount"></span></div>
-        <div id="hunters" class="hunters"></div>
-      </div>
-      <div class="block">
-        <div class="lbl">LOG</div>
-        <ol id="log" class="log"></ol>
-      </div>
-      <div class="block legend">
-        <span><i class="sw t-open"></i>open</span><span><i class="sw t-road"></i>road, fast and loud</span>
-        <span><i class="sw t-forest"></i>forest, slow and quiet</span><span><i class="sw t-lake"></i>lake: you swim, they can't</span>
-        <span><i class="sw t-mtn"></i>mountain: blocks feet and eyes</span>
-        <span><b>C</b> Combat: +30% strength, but loud</span><span><b>S</b> Scout: see where they think you are, but thin walls</span><span><b>D</b> Defense: +30% holding, but slow to leave</span><span><b>N</b> Nursery: +1 extra a tick, but loud</span>
-        <span>◌ d decoy · ■ rearguard · ○ you, holding · ◌ you, running</span>
-      </div>
-    </aside>
-  </main>
+        <div class="status you" id="status">hidden</div>
+        <dl class="stats">
+          <dt>strength</dt><dd id="strength">—</dd>
+          <dt>noise</dt><dd id="noise">—</dd>
+          <dt>growing</dt><dd id="growing">—</dd>
+          <dt>watched</dt><dd class="gold" id="watched">—</dd>
+          <dt>reserve</dt><dd id="reserve">—</dd>
+        </dl>
+        <p class="odds" id="odds"></p>
+
+        <div class="section warren" id="warren">
+          <div class="name"><svg width="26" height="26" viewBox="0 0 24 24" id="warren-glyph" aria-hidden="true"></svg><span id="warren-name">—</span></div>
+          <div class="gift" id="warren-gift"></div>
+          <div class="cost" id="warren-cost"></div>
+          <div class="depth" id="warren-depth"></div>
+        </div>
+
+        <div class="section hunters">
+          <div class="label">Hunters · <span id="hunter-count">0</span></div>
+          <div id="hunters"></div>
+        </div>
+
+        <div class="section log" id="log"></div>
+      </aside>
+    </div>
+
+    <div class="verbs">
+      <button class="verb stay" id="stay" type="button"><span class="word">STAY</span><span class="key">SPACE · HOLD</span></button>
+      <button class="verb attack" id="attack" type="button"><span class="word">ATTACK</span><span class="key" id="attack-key">A · NONE IN REACH</span></button>
+      <span class="gap"></span>
+      <button class="verb spend" id="sp-decoy" type="button" title="4 of you break away, loud, and run the other way"><span class="word">DECOY</span><span class="key">−4 D</span></button>
+      <button class="verb spend" id="sp-rearguard" type="button" title="5 of you stay behind and fight the first hunter to reach them"><span class="word">REARGUARD</span><span class="key">−5 R</span></button>
+      <button class="verb spend" id="sp-scout" type="button" title="3 of you go to look: see where they think you are for 10 ticks"><span class="word">SCOUT</span><span class="key">−3 S</span></button>
+      <button class="verb spend" id="sp-dig" type="button" title="8 of you dig a shallow warren here, of the kind you're most attuned to. Only while holding in the open"><span class="word">DIG HERE</span><span class="key">−8 G</span></button>
+    </div>
+
+    <div class="foot">
+      <p>Click a warren to run for it, any square to go there and hold. Click a ringed hunter to attack. Hover for the race. Forest hides you; lakes they can’t cross. Spends draw from the reserve first.</p>
+      <button class="working-toggle" id="working-toggle" type="button" aria-expanded="false">Show the working</button>
+    </div>
+    <div class="working" id="workingbar">
+      <label for="seed">Seed</label><input id="seed" type="number" value="1" min="1">
+      <select id="cfgsel" aria-label="Rules"><option value="tuned">Tuned rules</option><option value="defaults">Starting rules</option></select>
+      <select id="watch" aria-label="Player"><option value="">You play</option></select>
+      <button class="btn" id="newrun" type="button">New run</button>
+    </div>
+  </section>
 
   <section class="page" id="tab-chron" role="tabpanel" hidden><div id="chronicle"></div></section>
-
   <section class="page brief" id="tab-brief" role="tabpanel" hidden>
     <h2>Brief for Claude Design</h2>
 <p class="dim">The Last Warren · Unstuck Games · 2 Oct 2026. The game in the Play tab is <b>functionally complete and tuned</b>. It was built function-first, as the Unstuck method says, and it's yours to make beautiful. This tab is everything you need to do that without breaking it.</p>
@@ -329,21 +385,322 @@ dialog h2{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:
 </div>
 
 <dialog id="draft">
-  <div class="lbl">DAWN · NIGHT <span id="dn"></span> SURVIVED</div>
+  <div class="label">Dawn · night <span id="dn"></span> survived</div>
   <h2 id="dawnline">You got under before the light.</h2>
-  <p class="dim" id="remnantline"></p>
-  <div id="boons" class="boons"></div>
+  <p class="mute" id="remnantline"></p>
+  <div id="boons" class="choices"></div>
 </dialog>
 
 <dialog id="ending">
-  <div class="lbl">THE WARREN FELL</div>
+  <div class="label">The warren fell</div>
   <h2 id="endline"></h2>
-  <p id="endmore" class="dim"></p>
-  <div id="heirs" class="boons heirs"></div>
+  <p id="endmore" class="mute"></p>
+  <div id="heirs" class="choices heirs"></div>
   <details class="eye"><summary>Show the working</summary><pre id="working"></pre></details>
-  <div class="row-btns"><button id="again" type="button">Same seed again</button><button id="next" type="button">Next seed</button></div>
+  <div class="row-btns"><button id="again" class="btn" type="button">Same seed again</button><button id="next" class="btn" type="button">Next seed</button></div>
 </dialog>
 
+<script>/* board.js — The Last Warren · "Burrow" board renderer.
+   Plain canvas 2D, no dependencies, no build step. Port target: the draw() seam in ui.js.
+   Everything is drawn from a plain state object (shape documented in README.md → "Board state").
+
+   Paint order inside LWBoard.draw():
+     terrain (cached layer) → belief heat → tracks → route → warrens → siege ring → hunter gaze
+     → watched threads → hunters → decoy → rearguard → troop → light (vignette, warm edges, dawn) → label chip
+*/
+(function () {
+  const W = 28, H = 18;
+
+  // ---- tokens: the three meanings + the ground. Change here, everything follows. ----
+  const THEME = {
+    ground: '#08090a',          // the board itself
+    ink: '#e4ddcc',             // neutral marks (warren outlines, counts, grid crosses)
+    moss: '#8fbf63',            // you / alive
+    blood: '#e2654c',           // them / danger
+    gold: '#d2b052',            // knowledge / time
+    forestTint: 'rgba(143,191,99,.06)', forestInk: 'rgba(143,191,99,.55)',
+    lakeTint: 'rgba(110,140,180,.07)', lakeInk: 'rgba(130,160,200,.5)',
+    mountainTint: 'rgba(220,210,190,.04)', mountainInk: 'rgba(220,210,190,.45)',
+    roadInk: 'rgba(228,221,204,.45)',
+    crossAlpha: 0.18,           // survey crosses every 4 cells
+    vignette: 0.75,             // edge darkness, 0..1
+    glow: 0.45,                 // glow radius as a fraction of the cell
+    countFont: '"JetBrains Mono", ui-monospace, Menlo, monospace'
+  };
+
+  const hexA = (h, a) => h.startsWith('#') ? `rgba(${parseInt(h.slice(1, 3), 16)},${parseInt(h.slice(3, 5), 16)},${parseInt(h.slice(5, 7), 16)},${a})` : h;
+  const H32 = (a, b) => { let h = (a * 374761393 + b * 668265263) | 0; h = ((h ^ (h >>> 13)) * 1274126177) | 0; return (h ^ (h >>> 16)) >>> 0; };
+  const r01 = (a, b) => (H32(a | 0, b | 0) % 1000) / 1000;
+
+  // ---- terrain regions → outlines (grid-aligned, corners eased) ----
+  function regionLoops(cells) {
+    const has = (x, y) => cells.has(x + ',' + y);
+    const out = new Map();
+    const add = (x1, y1, x2, y2) => { const k = x1 + ',' + y1; if (!out.has(k)) out.set(k, []); out.get(k).push([x2, y2]); };
+    for (const key of cells) {
+      const [x, y] = key.split(',').map(Number);
+      if (!has(x, y - 1)) add(x, y, x + 1, y);
+      if (!has(x + 1, y)) add(x + 1, y, x + 1, y + 1);
+      if (!has(x, y + 1)) add(x + 1, y + 1, x, y + 1);
+      if (!has(x - 1, y)) add(x, y + 1, x, y);
+    }
+    const loops = []; let guard = 0;
+    while (out.size && guard++ < 5000) {
+      const [startKey, list] = out.entries().next().value;
+      let cur = startKey.split(',').map(Number);
+      let next = list.shift(); if (!list.length) out.delete(startKey);
+      const loop = [cur]; let dir = [next[0] - cur[0], next[1] - cur[1]]; cur = next; let g2 = 0;
+      while (!(cur[0] === loop[0][0] && cur[1] === loop[0][1]) && g2++ < 5000) {
+        loop.push(cur);
+        const k = cur[0] + ',' + cur[1]; const cands = out.get(k); if (!cands) break;
+        let pick = 0;
+        if (cands.length > 1) { const r = [-dir[1], dir[0]]; const i = cands.findIndex(c => c[0] - cur[0] === r[0] && c[1] - cur[1] === r[1]); if (i >= 0) pick = i; }
+        next = cands.splice(pick, 1)[0]; if (!cands.length) out.delete(k);
+        dir = [next[0] - cur[0], next[1] - cur[1]]; cur = next;
+      }
+      loops.push(loop);
+    }
+    return loops;
+  }
+  function loopPath(loop, c) {
+    const pts = loop.map(([x, y]) => [x * c, y * c]);
+    const p = new Path2D(), n = pts.length, k = 0.28;
+    for (let i = 0; i < n; i++) {
+      const a = pts[i], b = pts[(i + 1) % n];
+      const ax = a[0] + (b[0] - a[0]) * k, ay = a[1] + (b[1] - a[1]) * k, bx = a[0] + (b[0] - a[0]) * (1 - k), by = a[1] + (b[1] - a[1]) * (1 - k);
+      if (i === 0) p.moveTo(ax, ay); else p.quadraticCurveTo(a[0], a[1], ax, ay);
+      p.lineTo(bx, by);
+    }
+    p.closePath(); return p;
+  }
+  const unionPath = loops => { const u = new Path2D(); loops.forEach(p => u.addPath(p)); return u; };
+
+  /* terrainLayer(terrainAt, cell, dpr) → an offscreen canvas. terrainAt(x,y) returns 'open'|'road'|'forest'|'lake'|'mountain'.
+     Rebuild only when the map or the cell size changes. */
+  function terrainLayer(terrainAt, c, dpr) {
+    const T = THEME;
+    const off = document.createElement('canvas'); off.width = Math.round(W * c * dpr); off.height = Math.round(H * c * dpr);
+    const g = off.getContext('2d'); g.scale(dpr, dpr);
+    g.fillStyle = T.ground; g.fillRect(0, 0, W * c, H * c);
+    // survey crosses
+    g.strokeStyle = hexA(T.ink, T.crossAlpha); g.lineWidth = 1; const a = Math.max(2, c * 0.12); g.beginPath();
+    for (let x = 2; x < W; x += 4) for (let y = 2; y < H; y += 4) { g.moveTo(x * c - a, y * c + 0.5); g.lineTo(x * c + a, y * c + 0.5); g.moveTo(x * c + 0.5, y * c - a); g.lineTo(x * c + 0.5, y * c + a); }
+    g.stroke();
+    const cellsOf = type => { const s = new Set(); for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) if (terrainAt(x, y) === type) s.add(x + ',' + y); return s; };
+    const lw = Math.max(0.9, c / 30);
+    g.lineJoin = 'round'; g.lineCap = 'round';
+    // lake: tint, ruled water, shoreline
+    { const cells = cellsOf('lake'); const loops = regionLoops(cells).map(l => loopPath(l, c));
+      g.fillStyle = T.lakeTint; loops.forEach(p => g.fill(p));
+      g.save(); g.clip(unionPath(loops), 'nonzero');
+      g.strokeStyle = T.lakeInk; g.lineWidth = lw * 0.9; g.globalAlpha = 0.55; const sp = Math.max(4, c * 0.3);
+      for (let yy = sp * 0.6; yy < H * c; yy += sp) { g.beginPath(); for (let xx = 0; xx <= W * c; xx += c * 0.5) { const wob = Math.sin(xx / (c * 0.9) + yy * 0.05) * c * 0.04; xx === 0 ? g.moveTo(xx, yy + wob) : g.lineTo(xx, yy + wob); } g.stroke(); }
+      g.restore();
+      g.strokeStyle = T.lakeInk; g.lineWidth = lw * 1.4; loops.forEach(p => g.stroke(p)); }
+    // forest: tint, dotted boundary, tree stipple
+    { const cells = cellsOf('forest'); const loops = regionLoops(cells).map(l => loopPath(l, c));
+      g.fillStyle = T.forestTint; loops.forEach(p => g.fill(p));
+      g.strokeStyle = T.forestInk; g.lineWidth = lw * 1.3; g.setLineDash([lw * 1.2, Math.max(2.5, c * 0.16)]); loops.forEach(p => g.stroke(p)); g.setLineDash([]);
+      g.fillStyle = T.forestInk; g.strokeStyle = T.forestInk; g.lineWidth = lw;
+      for (const key of cells) { const [x, y] = key.split(',').map(Number);
+        for (let i = 0; i < 3; i++) { const px = (x + 0.2 + r01(x * 3 + i, y * 7) * 0.6) * c, py = (y + 0.2 + r01(x * 11, y * 5 + i) * 0.6) * c; const r = c * (0.06 + 0.04 * r01(x + i, y + 9));
+          g.globalAlpha = 0.8; g.beginPath(); g.arc(px, py, r, 0, 7); g.fill();
+          if (c >= 22) { g.globalAlpha = 0.6; g.beginPath(); g.moveTo(px, py + r); g.lineTo(px, py + r + c * 0.09); g.stroke(); } } }
+      g.globalAlpha = 1; }
+    // mountain: tint, hatching, hard edge
+    { const cells = cellsOf('mountain'); const loops = regionLoops(cells).map(l => loopPath(l, c));
+      g.fillStyle = T.mountainTint; loops.forEach(p => g.fill(p));
+      g.save(); g.clip(unionPath(loops), 'nonzero');
+      g.strokeStyle = T.mountainInk; g.lineWidth = lw * 0.9; g.globalAlpha = 0.7; const sp = Math.max(3, c * 0.22);
+      for (let d = -H * c; d < W * c + H * c; d += sp) { g.beginPath(); g.moveTo(d, 0); g.lineTo(d + H * c, H * c); g.stroke(); }
+      g.restore();
+      g.strokeStyle = T.mountainInk; g.lineWidth = lw * 1.5; loops.forEach(p => g.stroke(p)); }
+    // road: dashed line along the network
+    { const cells = cellsOf('road'); const seg = new Path2D();
+      for (const key of cells) { const [x, y] = key.split(',').map(Number); let deg = 0;
+        for (const [dx, dy] of [[1, 0], [0, 1], [-1, 0], [0, -1]]) if (cells.has((x + dx) + ',' + (y + dy))) { deg++; if (dx > 0 || dy > 0) { seg.moveTo((x + 0.5) * c, (y + 0.5) * c); seg.lineTo((x + dx + 0.5) * c, (y + dy + 0.5) * c); } }
+        if (deg === 1) { seg.moveTo((x + 0.5) * c, (y + 0.5) * c); seg.lineTo((x + 0.5) * c + 0.01, (y + 0.5) * c); } }
+      g.strokeStyle = T.roadInk; g.lineWidth = lw * 1.6; g.setLineDash([c * 0.22, c * 0.16]); g.stroke(seg); g.setLineDash([]); }
+    return off;
+  }
+
+  // ---- symbols ----
+  function hunterPath(k, cx, cy, s) {
+    const p = new Path2D();
+    if (k === 'sweeper') p.roundRect(cx - s, cy - s, s * 2, s * 2, s * 0.25);
+    else if (k === 'tracker') { p.moveTo(cx, cy - s * 1.15); p.lineTo(cx + s * 1.1, cy + s * 0.85); p.lineTo(cx - s * 1.1, cy + s * 0.85); p.closePath(); }
+    else if (k === 'listener') p.arc(cx, cy, s * 0.95, 0, Math.PI * 2);
+    else { p.moveTo(cx, cy - s * 1.2); p.lineTo(cx + s * 1.2, cy); p.lineTo(cx, cy + s * 1.2); p.lineTo(cx - s * 1.2, cy); p.closePath(); }
+    return p;
+  }
+  function warrenOutline(k, cx, cy, r) {
+    const p = new Path2D();
+    if (k === 'C') { for (let i = 0; i < 16; i++) { const a = (i / 16) * Math.PI * 2 - Math.PI / 2, rr = i % 2 ? r * 1.08 : r * 0.84; i ? p.lineTo(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr) : p.moveTo(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr); } p.closePath(); }
+    else if (k === 'S') { p.moveTo(cx - r * 1.15, cy); p.quadraticCurveTo(cx, cy - r * 1.25, cx + r * 1.15, cy); p.quadraticCurveTo(cx, cy + r * 1.25, cx - r * 1.15, cy); p.closePath(); }
+    else p.arc(cx, cy, r, 0, Math.PI * 2);
+    return p;
+  }
+  const glow = (g, color, c) => { g.shadowColor = color; g.shadowBlur = c * THEME.glow; };
+  const unglow = g => { g.shadowBlur = 0; g.shadowColor = 'transparent'; };
+  function drawCount(g, n, x, y, px, color, weight) {
+    g.save(); unglow(g); g.fillStyle = color; g.textAlign = 'center'; g.textBaseline = 'middle';
+    const size = Math.max(9, String(n).length >= 3 ? px * 0.78 : px);
+    g.font = `${weight || 700} ${size}px ${THEME.countFont}`; g.fillText(String(n), x, y + size * 0.06); g.restore();
+  }
+
+  // ---- the frame ----
+  /* draw(g, view, st, t): g = 2D context (already scaled by dpr), view = {cell, terrain}, st = board state, t = seconds. */
+  function draw(g, view, st, t) {
+    const T = THEME, c = view.cell;
+    g.drawImage(view.terrain, 0, 0, W * c, H * c);
+    g.lineCap = 'round'; g.lineJoin = 'round';
+    const tr = st.troop, tc = { x: (tr.x + 0.5) * c, y: (tr.y + 0.5) * c };
+    const light = st.light || {};
+
+    // belief heat (Scout warrens only): knowledge, so gold, and it shimmers a little
+    if (st.heat) for (let y = 0; y < H; y++) for (let x = 0; x < W; x++) {
+      const v = st.heat[y * W + x]; if (!v || v < 0.06) continue;
+      const sh = 1 + 0.08 * Math.sin(t * 1.3 + x * 0.7 + y * 0.5);
+      g.fillStyle = hexA(T.gold, Math.min(0.62, v * 0.5 * sh));
+      g.beginPath(); g.roundRect((x + 0.06) * c, (y + 0.06) * c, c * 0.88, c * 0.88, 2); g.fill();
+    }
+    // tracks: two pips, fading with age (0 fresh → 1 gone)
+    for (const k of st.tracks || []) { const a = Math.max(0, 1 - k.age); g.fillStyle = hexA(T.moss, a * 0.85); const cx = (k.x + 0.5) * c, cy = (k.y + 0.5) * c, r = Math.max(1.2, c * 0.05); g.beginPath(); g.arc(cx - c * 0.12, cy + c * 0.08, r, 0, 7); g.arc(cx + c * 0.12, cy - c * 0.08, r, 0, 7); g.fill(); }
+    // route: committed transit or hover preview. Moss if you win the race, blood if they do.
+    if (st.route && st.route.path && st.route.path.length > 1) {
+      const color = st.route.win === false ? T.blood : T.moss, path = st.route.path;
+      g.save(); glow(g, color, c); g.strokeStyle = color; g.lineWidth = Math.max(2, c * 0.085); g.setLineDash([0.01, c * 0.36]); g.lineDashOffset = -t * 8;
+      g.beginPath(); path.forEach((p, i) => (i ? g.lineTo((p.x + 0.5) * c, (p.y + 0.5) * c) : g.moveTo((p.x + 0.5) * c, (p.y + 0.5) * c))); g.stroke();
+      const e = path[path.length - 1]; g.setLineDash([]); g.lineWidth = Math.max(1.5, c * 0.06); g.beginPath(); g.arc((e.x + 0.5) * c, (e.y + 0.5) * c, c * 0.32, 0, 7); g.stroke();
+      g.restore();
+    }
+    // warrens: kind is the shape, depth is the line
+    (st.warrens || []).forEach((w, i) => {
+      const cx = (w.x + 0.5) * c, cy = (w.y + 0.5) * c, r = c * 0.36;
+      const lw = { deep: Math.max(2.6, c * 0.11), mid: Math.max(1.6, c * 0.065), shallow: Math.max(1.1, c * 0.04) }[w.d] || 1.6;
+      const outline = warrenOutline(w.k, cx, cy, r);
+      g.save();
+      g.fillStyle = T.ground; g.fill(outline);
+      g.strokeStyle = T.ink; g.lineWidth = lw; if (w.d === 'shallow') g.setLineDash([Math.max(2, c * 0.1), Math.max(2, c * 0.09)]); g.stroke(outline); g.setLineDash([]);
+      g.lineWidth = Math.max(1, c * 0.045); g.fillStyle = T.ink;
+      if (w.k === 'D') { g.beginPath(); g.arc(cx, cy, r * 0.62, 0, 7); g.stroke(); g.beginPath(); g.arc(cx, cy, r * 0.22, 0, 7); g.fill(); }
+      else if (w.k === 'S') { g.beginPath(); g.arc(cx, cy, r * 0.3, 0, 7); g.fill(); }
+      else if (w.k === 'N') { for (let j = 0; j < 3; j++) { const a = -Math.PI / 2 + j * Math.PI * 2 / 3; g.beginPath(); g.arc(cx + Math.cos(a) * r * 0.42, cy + Math.sin(a) * r * 0.42, r * 0.2, 0, 7); g.fill(); } }
+      else { g.beginPath(); const teeth = 4, span = r * 1.1; for (let j = 0; j <= teeth * 2; j++) { const x = cx - span / 2 + (j / (teeth * 2)) * span, y = cy + (j % 2 ? r * 0.3 : -r * 0.25); j ? g.lineTo(x, y) : g.moveTo(x, y); } g.stroke(); }
+      if (i === st.current && tr.state === 'warren') { g.strokeStyle = T.moss; g.lineWidth = Math.max(2, c * 0.08); glow(g, T.moss, c); g.beginPath(); g.arc(cx, cy, c * 0.5, 0, 7); g.stroke(); }
+      else if (st.hover && st.hover.x === w.x && st.hover.y === w.y) { g.strokeStyle = T.ink; g.lineWidth = 1.2; g.setLineDash([2, 3]); g.beginPath(); g.arc(cx, cy, c * 0.5, 0, 7); g.stroke(); }
+      g.restore();
+    });
+    // the siege ring: a diamond 3 blocks out. Draws itself in over 1.4s (ringAge), then pulses. Solid once besieged.
+    if (st.ring) {
+      const half = 3.5 * c, p = new Path2D();
+      p.moveTo(tc.x, tc.y - half); p.lineTo(tc.x + half, tc.y); p.lineTo(tc.x, tc.y + half); p.lineTo(tc.x - half, tc.y); p.closePath();
+      const perim = 4 * Math.SQRT2 * half;
+      g.save(); glow(g, T.blood, c);
+      if (st.ringSolid) { g.strokeStyle = T.blood; g.lineWidth = Math.max(2, c * 0.09); g.stroke(p); }
+      else {
+        const form = Math.min(1, (st.ringAge == null ? 9 : st.ringAge) / 1.4), pulse = 0.55 + 0.45 * (0.5 + 0.5 * Math.sin(t * 2 * Math.PI / 1.4));
+        g.strokeStyle = hexA(T.blood, form < 1 ? 1 : pulse); g.lineWidth = Math.max(1.6, c * 0.07);
+        if (form < 1) g.setLineDash([perim * form, perim]); else { g.setLineDash([c * 0.28, c * 0.22]); g.lineDashOffset = -t * 22; }
+        g.stroke(p);
+      }
+      g.restore();
+    }
+    // hunters search: each kind has its own gaze
+    for (const h of st.hunters || []) {
+      const cx = (h.x + 0.5) * c, cy = (h.y + 0.5) * c, base = Math.atan2(tc.y - cy, tc.x - cx), ph = h.ph || 0;
+      g.save();
+      if (h.k === 'sweeper') { const a = base + Math.sin(t * 0.9 + ph) * 0.85, r = c * 2.6, hw = 0.5; g.beginPath(); g.moveTo(cx, cy); g.arc(cx, cy, r, a - hw, a + hw); g.closePath(); g.fillStyle = hexA(T.blood, 0.1); g.fill(); g.strokeStyle = hexA(T.blood, 0.45); g.lineWidth = 1; g.setLineDash([2, 3]); g.stroke(); }
+      else if (h.k === 'tracker') { const a = base + Math.sin(t * 1.7 + ph) * 0.12, r = c * 3.6, hw = 0.16; g.beginPath(); g.moveTo(cx, cy); g.arc(cx, cy, r, a - hw, a + hw); g.closePath(); g.fillStyle = hexA(T.blood, 0.12 + 0.07 * Math.sin(t * 3 + ph)); g.fill(); }
+      else if (h.k === 'listener') { for (let i = 0; i < 2; i++) { const f = (t * 0.45 + ph * 0.1 + i * 0.5) % 1; g.beginPath(); g.arc(cx, cy, 0.4 * c + f * c * 2.8, 0, 7); g.strokeStyle = hexA(T.blood, (1 - f) * 0.6); g.lineWidth = 1.2; g.stroke(); } }
+      else { const len = c * (0.95 + 0.35 * Math.sin(t * 6 + ph)); g.beginPath(); g.moveTo(cx + Math.cos(base) * c * 0.45, cy + Math.sin(base) * c * 0.45); g.lineTo(cx + Math.cos(base) * len, cy + Math.sin(base) * len); g.strokeStyle = hexA(T.blood, 0.75); g.lineWidth = 2; g.setLineDash([3, 3]); g.stroke(); }
+      g.restore();
+    }
+    // watched N ticks: gold threads from each watching hunter. Dotted at 1, dashed to 3, solid beyond.
+    if (tr.located) for (const h of st.hunters || []) {
+      if (!(h.reach || h.trail)) continue;
+      const w = tr.watched || 1;
+      g.save(); g.strokeStyle = hexA(T.gold, 0.7); g.lineWidth = Math.max(1.2, c * 0.045);
+      g.setLineDash(w <= 1 ? [1, c * 0.22] : w <= 3 ? [c * 0.16, c * 0.16] : []); glow(g, T.gold, c);
+      g.beginPath(); g.moveTo((h.x + 0.5) * c, (h.y + 0.5) * c); g.lineTo(tc.x, tc.y); g.stroke(); g.restore();
+    }
+    // hunter bodies: shape = kind, never colour alone
+    for (const h of st.hunters || []) {
+      let cx = (h.x + 0.5) * c, cy = (h.y + 0.5) * c; const ph = h.ph || 0;
+      if (h.k === 'hound') { cx += Math.sin(t * 11 + ph) * c * 0.03; cy += Math.cos(t * 9 + ph) * c * 0.03; }
+      const s = c * 0.3, p = hunterPath(h.k, cx, cy, s);
+      g.save(); glow(g, T.blood, c);
+      if (h.k === 'listener') { g.strokeStyle = T.blood; g.lineWidth = Math.max(3, c * 0.17); g.stroke(p); unglow(g); g.fillStyle = T.blood; g.beginPath(); g.arc(cx, cy, c * 0.06, 0, 7); g.fill(); }
+      else { g.fillStyle = T.blood; g.fill(p); unglow(g); }
+      if (h.reach) { g.strokeStyle = T.blood; g.lineWidth = Math.max(1.4, c * 0.06); g.beginPath(); g.arc(cx, cy, c * 0.47, 0, 7); g.stroke(); }
+      if (h.muster) { g.strokeStyle = hexA(T.blood, 0.8); g.lineWidth = 1.2; g.setLineDash([3, 4]); g.beginPath(); g.arc(cx, cy, c * 0.47, 0, 7); g.stroke(); g.setLineDash([]); }
+      if (h.trail) { g.fillStyle = T.gold; glow(g, T.gold, c); g.beginPath(); g.arc(cx + c * 0.3, cy - c * 0.3, Math.max(2.5, c * 0.095), 0, 7); g.fill(); }
+      g.restore();
+    }
+    // decoy: a small dashed ring of us, marked d, running the other way. Blood ring once they take it.
+    if (st.decoy) {
+      const d = st.decoy, cx = (d.x + 0.5) * c, cy = (d.y + 0.5) * c, r = c * 0.2;
+      g.save(); glow(g, T.moss, c);
+      g.strokeStyle = T.moss; g.lineWidth = Math.max(1.4, c * 0.06); g.setLineDash([Math.max(2, c * 0.09), Math.max(2, c * 0.08)]); g.beginPath(); g.arc(cx, cy, r, 0, 7); g.stroke(); g.setLineDash([]);
+      g.lineWidth = 1.4; g.globalAlpha = 0.7; g.beginPath(); g.moveTo(cx - r * 2.4, cy - r * 0.4); g.lineTo(cx - r * 1.5, cy - r * 0.4); g.moveTo(cx - r * 2.8, cy + r * 0.4); g.lineTo(cx - r * 1.5, cy + r * 0.4); g.stroke(); g.globalAlpha = 1;
+      drawCount(g, 'd', cx, cy, c * 0.3, T.moss, 500);
+      if (d.seen) { glow(g, T.blood, c); g.strokeStyle = T.blood; g.lineWidth = Math.max(1.4, c * 0.055); g.setLineDash([c * 0.2, c * 0.14]); g.beginPath(); g.arc(cx, cy, c * 0.42, 0, 7); g.stroke(); }
+      g.restore();
+    }
+    // rearguard: the square, part of us, left behind, with its own count. Shakes while it fights.
+    if (st.rearguard) {
+      const r = st.rearguard, s = c * 0.26, cx = (r.x + 0.5) * c + (r.state === 'fighting' ? Math.sin(t * 14) * c * 0.03 : 0), cy = (r.y + 0.5) * c;
+      g.save(); glow(g, T.moss, c);
+      g.fillStyle = T.moss; g.beginPath(); g.roundRect(cx - s, cy - s, s * 2, s * 2, 3); g.fill(); unglow(g);
+      if (r.state === 'fighting') { g.strokeStyle = T.blood; g.lineWidth = Math.max(1.5, c * 0.06); const k = 0.5 + 0.5 * Math.sin(t * 14); g.beginPath(); g.moveTo(cx + s * 1.3, cy - s * 1.3); g.lineTo(cx + s * (1.9 + k * 0.4), cy - s * (1.9 + k * 0.4)); g.moveTo(cx + s * 1.5, cy - s * 0.3); g.lineTo(cx + s * (2.2 + k * 0.3), cy - s * 0.3); g.moveTo(cx + s * 0.4, cy - s * 1.5); g.lineTo(cx + s * 0.4, cy - s * (2.2 + k * 0.3)); g.stroke(); }
+      drawCount(g, r.n, cx, cy, c * 0.34, T.ground, 800);
+      g.restore();
+    }
+    // the troop: breathes (faster once located, still when besieged or dead)
+    {
+      const period = tr.located ? 1.3 : 2.6;
+      const breath = tr.besieged || tr.state === 'dead' ? 1 : 1 + 0.04 * Math.sin(t * 2 * Math.PI / period);
+      const cx = tc.x, cy = tc.y, r = c * 0.43 * breath;
+      g.save();
+      if (tr.state === 'holdForest') g.globalAlpha = 0.8;
+      if (tr.state === 'warren') { glow(g, T.moss, c); g.fillStyle = T.moss; g.beginPath(); g.arc(cx, cy, r, 0, 7); g.fill(); unglow(g); drawCount(g, tr.n, cx, cy, c * 0.42, T.ground, 800); }
+      else if (tr.state === 'holdOpen' || tr.state === 'holdForest') { glow(g, T.moss, c); g.strokeStyle = T.moss; g.lineWidth = Math.max(3, c * 0.13); g.beginPath(); g.arc(cx, cy, r, 0, 7); g.stroke(); unglow(g); drawCount(g, tr.n, cx, cy, c * 0.4, T.ink, 800); }
+      else if (tr.state === 'transit') { glow(g, T.moss, c); g.strokeStyle = T.moss; g.lineWidth = Math.max(2.4, c * 0.1); g.setLineDash([c * 0.22, c * 0.16]); g.lineDashOffset = -t * 30; g.beginPath(); g.arc(cx, cy, r, 0, 7); g.stroke(); g.setLineDash([]); unglow(g); drawCount(g, tr.n, cx, cy, c * 0.4, T.ink, 800); }
+      else { g.strokeStyle = T.ink; g.lineWidth = Math.max(1.4, c * 0.06); g.setLineDash([3, 3]); g.beginPath(); g.arc(cx, cy, r, 0, 7); g.stroke(); g.setLineDash([]); g.lineWidth = Math.max(2, c * 0.08); g.beginPath(); g.moveTo(cx - r * 0.6, cy + r * 0.6); g.lineTo(cx + r * 0.6, cy - r * 0.6); g.stroke(); }
+      g.globalAlpha = 1;
+      if (tr.located) { glow(g, T.blood, c); g.strokeStyle = T.blood; g.lineWidth = Math.max(1.6, c * 0.065); g.setLineDash([c * 0.3, c * 0.22]); g.lineDashOffset = -t * 18; g.beginPath(); g.arc(cx, cy, c * 0.62, 0, 7); g.stroke(); g.setLineDash([]); unglow(g); }
+      if (tr.besieged) { glow(g, T.blood, c); g.strokeStyle = T.blood; g.lineWidth = Math.max(3, c * 0.14); g.beginPath(); g.arc(cx, cy, c * 0.6, 0, 7); g.stroke(); unglow(g); }
+      if (tr.located && tr.watched) { const n = Math.min(8, tr.watched), rr = c * 0.9; g.fillStyle = T.gold; glow(g, T.gold, c); for (let i = 0; i < n; i++) { const a = -Math.PI / 2 + (i - (n - 1) / 2) * 0.4; g.beginPath(); g.arc(cx + Math.cos(a) * rr, cy + Math.sin(a) * rr, Math.max(2, c * 0.075), 0, 7); g.fill(); } }
+      g.restore();
+    }
+    // light: vignette to black; warm blood edges while located; gold from the east at dawn
+    {
+      const w = W * c, h = H * c;
+      const rad = g.createRadialGradient(w * 0.5, h * 0.5, Math.min(w, h) * 0.32, w * 0.5, h * 0.5, Math.max(w, h) * 0.72);
+      rad.addColorStop(0, 'rgba(0,0,0,0)'); rad.addColorStop(1, `rgba(0,0,0,${light.dark ? Math.min(0.9, T.vignette + 0.25) : T.vignette})`);
+      g.fillStyle = rad; g.fillRect(0, 0, w, h);
+      if (light.warm) { const pulse = 0.5 + 0.5 * Math.sin(t * 2 * Math.PI / 1.4); const r2 = g.createRadialGradient(w * 0.5, h * 0.5, Math.min(w, h) * 0.3, w * 0.5, h * 0.5, Math.max(w, h) * 0.7); r2.addColorStop(0, hexA(T.blood, 0)); r2.addColorStop(1, hexA(T.blood, st.ringSolid ? 0.2 : 0.07 + 0.1 * pulse)); g.fillStyle = r2; g.fillRect(0, 0, w, h); }
+      if (light.dawn) { const b = 0.26 + 0.07 * Math.sin(t * 0.8); const lg = g.createLinearGradient(w, 0, w * 0.45, 0); lg.addColorStop(0, hexA(T.gold, b)); lg.addColorStop(1, hexA(T.gold, 0)); g.fillStyle = lg; g.fillRect(0, 0, w, h); }
+    }
+    // label chip: the race, or the transit countdown
+    if (st.route && st.route.label) {
+      const e = st.route.path[st.route.path.length - 1], color = st.route.win === false ? T.blood : T.moss;
+      drawChip(g, c, (e.x + 0.5) * c, (e.y + 0.5) * c, st.route.label, color);
+    }
+  }
+  function drawChip(g, c, x, y, text, color) {
+    g.save(); g.font = `600 12px ${THEME.countFont}`;
+    const w = g.measureText(text).width + 18, h = 24;
+    let bx = x - w / 2, by = y - c * 0.75 - h; if (by < 4) by = y + c * 0.75; bx = Math.max(4, Math.min(W * c - w - 4, bx));
+    g.fillStyle = 'rgba(8,9,10,0.94)'; g.strokeStyle = color; g.lineWidth = 1.5;
+    g.beginPath(); g.roundRect(bx, by, w, h, 3); g.fill(); g.stroke();
+    g.fillStyle = color; g.textAlign = 'center'; g.textBaseline = 'middle'; g.fillText(text, bx + w / 2, by + h / 2 + 0.5); g.restore();
+  }
+
+  window.LWBoard = { W, H, THEME, terrainLayer, draw, hunterPath, warrenOutline, regionLoops, drawCount };
+})();
+
+</script>
 <script type="module">
 // ---- src/rng.js
 // Stateless, hashed randomness. Every roll is a pure function of (seed, ...tags), so a
@@ -636,7 +993,8 @@ const DEFAULTS = {
   holdNoise: 0.7,          // holding still outside a warren: quieter than walking
   cost: { decoy: 4, scout: 3, dig: 8, rearguard: 5 },
   decoyLife: 10, decoyNoise: 1.4, scoutLife: 10,
-  leaveCost: 3,            // settled ticks a warren forgets when you leave it
+  leaveCost: 3,
+  retreatTicks: 3,         // in the last ticks before dawn the hunters turn for the edges            // settled ticks a warren forgets when you leave it
   heir: null,              // { attune: 'C'|'S'|'D' } or { boon: id }
   lineage: null,           // { C, S, D } ticks the line has spent in each kind, all generations
   familyK: 2,              // prior weight on the kinds the family favours
@@ -881,7 +1239,9 @@ function step(g, action = { type: 'stay' }) {
   if (loc && !g._wasLocated) g.events.push({ t: 'located' });
   g._wasLocated = loc;
   g._ready = undefined;
-  for (const h of g.hunters) moveHunter(g, h);
+  const retreating = g.tick > c.nightLen - c.retreatTicks;
+  if (retreating && g.tick === c.nightLen - c.retreatTicks + 1) g.events.push({ t: 'retreat', left: c.nightLen - g.tick + 1 });
+  for (const h of g.hunters) retreating ? retreatHunter(g, h) : moveHunter(g, h);
 
   // 5. contact after they move
   if (contact(g)) return g.events;
@@ -1102,6 +1462,18 @@ function chooseTarget(g, h) {
   return best;
 }
 
+// dawn is coming: step away from the troop, toward the edges
+function retreatHunter(g, h) {
+  const K = HUNTER_KINDS[h.kind], f = hunterField(g, cellOf(g, g.troop));
+  h.mp += K.speed; h.target = -1;
+  for (let guard = 0; guard < 6; guard++) {
+    const here = cellOf(g, h); let best = -1, bd = f[here];
+    for (const j of neighbours(g, here)) if (g.hCost(j) < Infinity && f[j] > bd && f[j] < Infinity) { bd = f[j]; best = j; }
+    if (best < 0) return;
+    const cost = g.hCost(best); if (cost > h.mp) return;
+    h.mp -= cost; h.x = best % g.W; h.y = (best / g.W) | 0;
+  }
+}
 function located(g) { return g.belief[g.troop.y * g.W + g.troop.x] > 0.5; }
 function musterReady(g) {
   const t = g.troop;
@@ -1566,32 +1938,36 @@ function describe(h) {
 }
 
 // ---- ui.js
-// The page. Reads sim state, draws it, turns clicks into actions. No rules live here.
+// The page. Reads sim state, hands CD's "Burrow" renderer (board.js → window.LWBoard) a
+// plain board state every animation frame, and turns clicks and keys into actions.
+// No rules live here.
 
 const $ = id => document.getElementById(id);
+const LW = window.LWBoard;
 const cv = $('board'), ctx = cv.getContext('2d');
-const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
-const C = {}; for (const k of ['bg', 'ink', 'dim', 'moss', 'blood', 'gold', 'open', 'road', 'forest', 'forestdot', 'lake', 'mtn', 'line']) C[k] = css('--' + k);
 const ROSTER = roster(true);
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const TRADE = { C: 'strong, loud', S: 'sees them, thin walls', D: 'holds, slow to leave', N: 'grows fast, loud' };
 const GIFT = { C: '+30% strength in any fight', S: 'You see where they think you are', D: '+30% when they come in', N: '+1 extra person every tick' };
 const KIND_COST = { C: 'Loud: noise ×1.4', S: 'Thin walls: no fortify bonus', D: 'Slow to leave: you lose your first tick climbing out', N: 'Loud: noise ×1.5' };
-const TERRAIN = { '.': 'open ground: seen and heard', '=': 'road: fast and loud', 'f': 'forest: hidden and quiet', '~': 'lake: slow swim, they can’t follow', '^': 'mountain' };
-for (const name of Object.keys(ROSTER)) { const o = document.createElement('option'); o.value = name; o.textContent = 'Watch: ' + name; $('watch').appendChild(o); }
+const DEPTH_NOTE = { deep: 'Deep: hides your noise well (×0.45)', mid: 'Mid: hides some noise (×0.7)', shallow: 'Shallow: hides nothing (×1)' };
+const GROUND = { '.': 'open ground', '=': 'the road', 'f': 'the trees', '~': 'the water', '^': 'the rocks' };
+const GROUND_CHIP = { '.': 'open: exposed', '=': 'road: fast and loud', 'f': 'forest: hidden and quiet', '~': 'lake: they can’t follow', '^': 'mountain' };
+const TERRAIN_KIND = { '.': 'open', '=': 'road', 'f': 'forest', '~': 'lake', '^': 'mountain' };
+for (const name of Object.keys(ROSTER)) { const o = document.createElement('option'); o.value = name; o.textContent = 'Bot: ' + name; $('watch').appendChild(o); }
 
-let g, cs = 30, hover = -1, actions = [], timer = null, cfg;
+let g, cs = 30, hover = -1, actions = [], timer = null, cfg, terrain = null, terrainKey = '';
+let ringStart = null, rgFightAt = -1e9, logN = 0;
 
 // ---------------------------------------------------------------- the line (kept in this browser)
-const LKEY = 'lw.line.v1';
+const LKEY = 'lw.line.v1', AKEY = 'lw.lines.v1', RKEY = 'lw.run.v1';
 function loadLine() { try { const l = JSON.parse(localStorage.getItem(LKEY)); if (l && l.v === 1) return l; } catch {} return null; }
 function saveLine(l) { try { localStorage.setItem(LKEY, JSON.stringify(l)); } catch {} }
-const AKEY = 'lw.lines.v1';
 function archived() { try { return JSON.parse(localStorage.getItem(AKEY)) || []; } catch { return []; } }
 function archive(l) { if (!l || !l.chronicle.length) return; try { const a = archived(); a.push(l); localStorage.setItem(AKEY, JSON.stringify(a.slice(-20))); } catch {} }
 let line = loadLine();
 if (!line || line.ended) { line = newLine(Date.now() % 100000 + 1); saveLine(line); }
 const watching = () => !!$('watch').value;
-const RKEY = 'lw.run.v1';
 let picks = [];
 function saveRun() {
   if (watching() || !g || g.over) return;
@@ -1604,193 +1980,234 @@ function cfgNow() { return { ...($('cfgsel').value === 'tuned' ? TUNED : {}), ..
 function start(seed) {
   clearInterval(timer); timer = null;
   cfg = cfgNow();
-  g = newGame(seed, cfg); actions = []; picks = [];
+  g = newGame(seed, cfg); actions = []; picks = []; ringStart = null; terrainKey = '';
   if (!watching()) clearRun();
-  $('log').innerHTML = '';
+  $('log').innerHTML = ''; logN = 0;
+  say(`Night 1. ${g.map.hand.frame.replace(/^The /, 'The ')}. ${g.hunters.length} hunters at the edges.`, 'gold');
   if (!watching()) say(`${line.name} ${roman(line.gen)}${line.heir ? ', ' + describe(line.heir) : ''}.`, 'gold');
-  say(`Night 1. ${g.map.hand.frame}. ${g.hunters.length} hunters at the edges.`, 'gold');
   lineBar(); chronicle();
-  layout(); draw(); panel();
-  if ($('watch').value) watchLoop();
-}
-function layout() {
-  const wrap = cv.parentElement.clientWidth;
-  cs = Math.max(8, Math.floor(wrap / g.W));
-  const dpr = window.devicePixelRatio || 1;
-  cv.width = g.W * cs * dpr; cv.height = g.H * cs * dpr;
-  cv.style.width = g.W * cs + 'px'; cv.style.height = g.H * cs + 'px';
-  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  layout(); panel();
+  if (watching()) watchLoop();
 }
 
-// ---------------------------------------------------------------- drawing
-function cellRnd(i, k) { let h = (i * 2654435761 + k * 40503) >>> 0; h ^= h >>> 13; h = Math.imul(h, 0x5bd1e995) >>> 0; return (h % 1000) / 1000; }
-function draw() {
-  const { W, H } = g;
-  ctx.fillStyle = C.bg; ctx.fillRect(0, 0, W * cs, H * cs);
-  for (let i = 0; i < g.N; i++) {
-    const x = (i % W) * cs, y = ((i / W) | 0) * cs, t = g.tiles[i];
-    ctx.fillStyle = t === '~' ? C.lake : t === '^' ? C.mtn : t === 'f' ? C.forest : t === '=' ? C.road : C.open;
-    ctx.fillRect(x, y, cs, cs);
-    if (t === 'f') { ctx.fillStyle = C.forestdot; for (let k = 0; k < 3; k++) { ctx.beginPath(); ctx.arc(x + cs * (0.2 + 0.6 * cellRnd(i, k)), y + cs * (0.2 + 0.6 * cellRnd(i, k + 7)), cs * 0.13, 0, 7); ctx.fill(); } }
-    if (t === '^') { ctx.fillStyle = 'rgba(0,0,0,.25)'; ctx.beginPath(); ctx.moveTo(x + cs * .15, y + cs * .85); ctx.lineTo(x + cs * .5, y + cs * .18); ctx.lineTo(x + cs * .85, y + cs * .85); ctx.fill(); }
-    if (t === '~') { ctx.strokeStyle = 'rgba(255,255,255,.08)'; ctx.beginPath(); ctx.moveTo(x + cs * .2, y + cs * .55); ctx.quadraticCurveTo(x + cs * .5, y + cs * .35, x + cs * .8, y + cs * .55); ctx.stroke(); }
-  }
-  // what they believe (only if you are scouting)
-  const v = view(g);
-  if (v.belief) {
-    let mx = 0; for (let i = 0; i < g.N; i++) mx = Math.max(mx, v.belief[i]);
-    for (let i = 0; i < g.N; i++) { const b = v.belief[i] / (mx || 1); if (b < 0.04) continue; ctx.fillStyle = `rgba(210,176,82,${0.12 + 0.55 * b})`; ctx.fillRect((i % W) * cs + 1, ((i / W) | 0) * cs + 1, cs - 2, cs - 2); }
-  }
-  // your own tracks
-  for (let i = 0; i < g.N; i++) { const age = g.T - g.tracks[i]; if (age < g.cfg.trackLife) { ctx.fillStyle = `rgba(143,191,99,${0.35 * (1 - age / g.cfg.trackLife)})`; ctx.beginPath(); ctx.arc((i % W + .5) * cs, ((i / W | 0) + .5) * cs, cs * .1, 0, 7); ctx.fill(); } }
-  // warrens
-  for (const w of g.warrens) {
-    const x = (w.x + .5) * cs, y = (w.y + .5) * cs, r = cs * .4;
-    ctx.fillStyle = '#0c0e09'; ctx.beginPath(); ctx.arc(x, y, r, 0, 7); ctx.fill();
-    ctx.lineWidth = w.depth === 'deep' ? 3.5 : w.depth === 'mid' ? 2 : 1;
-    ctx.strokeStyle = w.id === g.troop.warren ? C.moss : C.ink; ctx.setLineDash(w.depth === 'shallow' ? [2, 2] : []);
-    ctx.stroke(); ctx.setLineDash([]);
-    if (!(w.x === g.troop.x && w.y === g.troop.y)) { ctx.fillStyle = C.ink; ctx.font = `600 ${Math.round(cs * .36)}px ${css('--mono')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(w.kind, x, y + 1); }
-  }
-  // route preview to the hovered warren
-  const hwW = g.warrens.find(w => w.i === hover);
-  const hw = hwW || (hover >= 0 && g.tCost(hover) < Infinity ? { i: hover, x: hover % W, y: (hover / W) | 0, open: true } : null);
-  if (hw && !inTransit(g.troop) && hw.i !== v.here && !g.over && isFinite(v.troopTicksTo(hw.i))) {
-    const f = dijkstra(g.W, g.H, g.tCost, hw.i);
-    let cur = v.here; ctx.strokeStyle = C.moss; ctx.setLineDash([4, 4]); ctx.lineWidth = 2; ctx.beginPath(); ctx.moveTo((cur % W + .5) * cs, ((cur / W | 0) + .5) * cs);
-    for (let k = 0; k < 200 && cur !== hw.i; k++) {
-      let nb = -1, bd = f[cur]; for (const j of g.nb[cur]) if (f[j] < bd) { bd = f[j]; nb = j; }
-      if (nb < 0) break; cur = nb; ctx.lineTo((cur % W + .5) * cs, ((cur / W | 0) + .5) * cs);
-    }
-    ctx.stroke(); ctx.setLineDash([]);
-    const you = v.troopTicksTo(hw.i), them = v.hunterTicksTo(hw.i);
-    const what = hw.open ? TERRAIN[g.tiles[hw.i]] + ' · hold here' : `${KIND_NAME[hw.kind]} (${TRADE[hw.kind]}) · ${hw.depth}`;
-    label((hw.x + .5) * cs, (hw.y - .6) * cs, `${what} · you ${you.toFixed(0)}t · them ${isFinite(them) ? them.toFixed(0) + 't' : '—'}`, them <= you ? C.blood : C.moss);
-  }
-  // the ring, once they know where you are
-  if (g.troop.warren != null && located(g)) {
-    ctx.strokeStyle = C.blood; ctx.setLineDash([3, 5]); ctx.lineWidth = 1.5;
-    const R = g.cfg.musterDist; const x = (g.troop.x + .5) * cs, y = (g.troop.y + .5) * cs;
-    ctx.beginPath(); ctx.moveTo(x, y - (R + .5) * cs); ctx.lineTo(x + (R + .5) * cs, y); ctx.lineTo(x, y + (R + .5) * cs); ctx.lineTo(x - (R + .5) * cs, y); ctx.closePath(); ctx.stroke(); ctx.setLineDash([]);
-  }
-  // your decoys (running, loud) and rearguards (left behind, waiting)
-  for (const dc of g.decoys) { const x = (dc.x + .5) * cs, y = (dc.y + .5) * cs; ctx.strokeStyle = C.moss; ctx.setLineDash([2, 3]); ctx.lineWidth = 2; ctx.beginPath(); ctx.arc(x, y, cs * .3, 0, 7); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = C.moss; ctx.font = `600 ${Math.round(cs * .3)}px ${css('--mono')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText('d', x, y + 1); }
-  for (const rg of g.rearguards) { const x = (rg.x + .5) * cs, y = (rg.y + .5) * cs, r = cs * .26; ctx.fillStyle = C.moss; ctx.globalAlpha = .75; ctx.fillRect(x - r, y - r, 2 * r, 2 * r); ctx.globalAlpha = 1; ctx.fillStyle = C.bg; ctx.font = `700 ${Math.round(cs * .3)}px ${css('--mono')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle'; ctx.fillText(rg.size, x, y + 1); }
-  // hunters
-  const inReach = new Set(v.attackable().map(h => h.id));
-  for (const h of g.hunters) {
-    const x = (h.x + .5) * cs, y = (h.y + .5) * cs, r = cs * .3;
-    ctx.fillStyle = C.blood; ctx.strokeStyle = C.blood; ctx.lineWidth = 2; ctx.beginPath();
-    if (h.kind === 'sweeper') ctx.rect(x - r, y - r, 2 * r, 2 * r);
-    else if (h.kind === 'tracker') { ctx.moveTo(x, y - r * 1.2); ctx.lineTo(x + r * 1.1, y + r); ctx.lineTo(x - r * 1.1, y + r); ctx.closePath(); }
-    else if (h.kind === 'hound') { ctx.moveTo(x, y - r * 1.3); ctx.lineTo(x + r * 1.1, y); ctx.lineTo(x, y + r * 1.3); ctx.lineTo(x - r * 1.1, y); ctx.closePath(); }
-    else { ctx.arc(x, y, r, 0, 7); }
-    if (h.kind === 'listener') ctx.stroke(); else ctx.fill();
-    if (inReach.has(h.id)) { ctx.strokeStyle = C.ink; ctx.lineWidth = 1.5; ctx.beginPath(); ctx.arc(x, y, r * 1.8, 0, 7); ctx.stroke(); }
-    if (h.trail) { ctx.fillStyle = C.gold; ctx.beginPath(); ctx.arc(x + r, y - r, 3, 0, 7); ctx.fill(); }
-  }
-  // the troop
-  const tx = (g.troop.x + .5) * cs, ty = (g.troop.y + .5) * cs;
-  ctx.fillStyle = g.over && g.stats.death ? C.blood : C.moss;
-  ctx.beginPath(); ctx.arc(tx, ty, cs * .46, 0, 7);
-  if (g.troop.warren == null) { ctx.fillStyle = C.bg; ctx.fill(); ctx.strokeStyle = C.moss; ctx.lineWidth = 2.5; if (inTransit(g.troop)) ctx.setLineDash([3, 3]); ctx.stroke(); ctx.setLineDash([]); ctx.fillStyle = C.moss; }
-  else ctx.fill(), ctx.fillStyle = C.bg;
-  ctx.font = `800 ${Math.round(cs * .42)}px ${css('--mono')}`; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-  ctx.fillText(g.troop.size, tx, ty + 1);
+// ---------------------------------------------------------------- the board: CD's renderer, fed live state
+function layout() {
+  const wrap = $('boardwrap').clientWidth || 640;
+  cs = Math.max(8, Math.min(40, Math.floor(wrap / g.W)));
+  const dpr = window.devicePixelRatio || 1;
+  cv.width = Math.round(g.W * cs * dpr); cv.height = Math.round(g.H * cs * dpr);
+  cv.style.width = g.W * cs + 'px'; cv.style.height = g.H * cs + 'px';
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+  const key = `${g.seed}|${cs}|${dpr}|${g.warrens.length}`;
+  if (key !== terrainKey) { terrainKey = key; terrain = LW.terrainLayer((x, y) => TERRAIN_KIND[g.tiles[y * g.W + x]], cs, dpr); }
 }
-function label(x, y, text, color) {
-  ctx.font = `600 11px ${css('--mono')}`; const w = ctx.measureText(text).width + 12;
-  const lx = Math.min(Math.max(4, x - w / 2), g.W * cs - w - 4), ly = Math.max(4, y - 18);
-  ctx.fillStyle = 'rgba(12,14,9,.92)'; ctx.fillRect(lx, ly, w, 20); ctx.strokeStyle = color; ctx.lineWidth = 1; ctx.strokeRect(lx, ly, w, 20);
-  ctx.fillStyle = color; ctx.textAlign = 'left'; ctx.textBaseline = 'middle'; ctx.fillText(text, lx + 6, ly + 10);
+function pathTo(dest) {
+  const f = troopField(g, dest), out = [];
+  let cur = g.troop.y * g.W + g.troop.x;
+  out.push({ x: cur % g.W, y: (cur / g.W) | 0 });
+  for (let k = 0; k < 200 && cur !== dest; k++) {
+    let nb = -1, bd = f[cur]; for (const j of g.nb[cur]) if (f[j] < bd) { bd = f[j]; nb = j; }
+    if (nb < 0) break; cur = nb; out.push({ x: cur % g.W, y: (cur / g.W) | 0 });
+  }
+  return out;
+}
+function placeWords(cell) {
+  const w = g.warrenAt[cell];
+  if (w != null) { const W = g.warrens[w]; return { short: `${KIND_NAME[W.kind]} · ${W.depth}`, long: `${KIND_NAME[W.kind]} (${TRADE[W.kind]}) · ${W.depth}`, warren: W }; }
+  return { short: GROUND_CHIP[g.tiles[cell]], long: GROUND_CHIP[g.tiles[cell]] + ' · hold here', warren: null };
+}
+// the race, read as intent: is it safer there than here?
+function verdict(v, cell) {
+  const you = v.troopTicksTo(cell), them = v.hunterTicksTo(cell), here = v.nearestHunterTicks();
+  if (!isFinite(them)) return { you, them, win: true, word: 'nobody can reach it' };
+  if (them <= you) return { you, them, win: false, word: 'they’ll get there first' };
+  if (them - you <= 2) return { you, them, win: true, word: 'risky' };
+  if (them - you > here + 1) return { you, them, win: true, word: 'probably safer than here' };
+  return { you, them, win: true, word: 'about as safe as here' };
+}
+let routeCache = { key: '', route: null };
+function route(v) {
+  const t = g.troop;
+  if (g.over) return null;
+  if (inTransit(t)) {
+    const key = `t${g.T}|${t.destCell}`;
+    if (routeCache.key !== key) {
+      const pw = placeWords(t.destCell), left = Math.max(1, Math.round(v.troopTicksTo(t.destCell)));
+      routeCache = { key, route: { path: pathTo(t.destCell), win: v.hunterTicksTo(t.destCell) > v.troopTicksTo(t.destCell), label: `${pw.short} · ${left}t` } };
+    }
+    return routeCache.route;
+  }
+  if (hover < 0 || hover === v.here || g.tCost(hover) === Infinity || watching()) return null;
+  const key = `h${g.T}|${hover}`;
+  if (routeCache.key !== key) {
+    const vd = verdict(v, hover);
+    if (!isFinite(vd.you)) { routeCache = { key, route: null }; return null; }
+    const pw = placeWords(hover);
+    routeCache = { key, route: { path: pathTo(hover), win: vd.win, label: `${pw.long} · you ${vd.you.toFixed(0)}t · them ${isFinite(vd.them) ? vd.them.toFixed(0) + 't' : '—'} · ${vd.word}` } };
+  }
+  return routeCache.route;
+}
+function boardState(now) {
+  const t = g.troop, v = view(g), dead = g.over && !!g.stats.death;
+  const here = t.y * g.W + t.x, loc = !dead && located(g);
+  const ring = !dead && t.warren != null && loc;
+  if (ring && ringStart == null) ringStart = now; if (!ring) ringStart = null;
+  const reach = new Set(v.attackable().map(h => h.id));
+  let heat = null;
+  if (v.belief) { let mx = 0; for (const b of v.belief) mx = Math.max(mx, b); heat = new Float32Array(g.N); if (mx > 0) for (let i = 0; i < g.N; i++) heat[i] = v.belief[i] / mx; }
+  const tracks = [];
+  for (let i = 0; i < g.N; i++) { const age = g.T - g.tracks[i]; if (age < g.cfg.trackLife) tracks.push({ x: i % g.W, y: (i / g.W) | 0, age: age / g.cfg.trackLife }); }
+  const dc = g.decoys[0], rg = g.rearguards[0];
+  return {
+    warrens: g.warrens.map(w => ({ x: w.x, y: w.y, k: w.kind, d: w.depth })),
+    current: t.warren != null ? t.warren : -1,
+    hover: hover >= 0 ? { x: hover % g.W, y: (hover / g.W) | 0 } : null,
+    troop: { x: t.x, y: t.y, n: t.size, state: dead ? 'dead' : t.warren != null ? 'warren' : inTransit(t) ? 'transit' : g.tiles[here] === 'f' ? 'holdForest' : 'holdOpen', located: loc, besieged: !dead && t.besieged, watched: t.watch || 0 },
+    hunters: g.hunters.map(h => ({ x: h.x, y: h.y, k: h.kind, reach: reach.has(h.id), trail: !!h.trail, muster: ring && !t.besieged && Math.abs(h.x - t.x) + Math.abs(h.y - t.y) <= g.cfg.musterDist + 1, ph: h.id * 1.7 })),
+    ring, ringSolid: ring && t.besieged, ringAge: REDUCED ? 9 : ringStart == null ? 0 : (now - ringStart) / 1000,
+    heat, tracks, route: route(v),
+    decoy: dc ? { x: dc.x, y: dc.y, seen: !!dc.spotted } : null,
+    rearguard: rg ? { x: rg.x, y: rg.y, n: rg.size, state: now - rgFightAt < 900 ? 'fighting' : 'waiting' } : null,
+    light: { warm: loc, dark: dead, dawn: !dead && g.tick > g.cfg.nightLen - (g.cfg.retreatTicks || 3) },
+  };
+}
+function frame(now) {
+  if (g && terrain && !$('tab-play').hidden) LW.draw(ctx, { cell: cs, terrain }, boardState(now), REDUCED ? 0 : now / 1000);
+  requestAnimationFrame(frame);
 }
 
 // ---------------------------------------------------------------- panel
+const HUNTER_D = {
+  sweeper: 'M4 2.5h8a1.5 1.5 0 0 1 1.5 1.5v8a1.5 1.5 0 0 1-1.5 1.5H4a1.5 1.5 0 0 1-1.5-1.5V4A1.5 1.5 0 0 1 4 2.5z',
+  tracker: 'M8 2L14.5 13.5H1.5Z',
+  listener: 'M8 2a6 6 0 1 0 0.01 0zm0 2.7a3.3 3.3 0 1 1-0.01 0z',
+  hound: 'M8 1.2L14.8 8 8 14.8 1.2 8Z',
+};
+// warren glyphs, 24×24: outline by kind, line by depth (CD's app.js)
+function warrenGlyphSVG(k, d) {
+  const f = v => Math.round(v * 100) / 100;
+  let out, inn = '', dots = '';
+  if (k === 'C') { const pts = []; for (let i = 0; i < 16; i++) { const a = (i / 16) * Math.PI * 2 - Math.PI / 2, rr = i % 2 ? 10 : 7.8; pts.push(`${f(12 + Math.cos(a) * rr)} ${f(12 + Math.sin(a) * rr)}`); } out = 'M' + pts.join('L') + 'Z'; const t = []; for (let i = 0; i <= 8; i++) t.push(`${f(7 + i * 1.25)} ${i % 2 ? 14.2 : 10}`); inn = 'M' + t.join('L'); }
+  else if (k === 'S') { out = 'M1.5 12 Q12 1.5 22.5 12 Q12 22.5 1.5 12Z'; dots = 'M12 9.4a2.6 2.6 0 1 0 0.01 0z'; }
+  else if (k === 'D') { out = 'M12 3a9 9 0 1 0 0.01 0z'; inn = 'M12 6.6a5.4 5.4 0 1 0 0.01 0z'; dots = 'M12 10a2 2 0 1 0 0.01 0z'; }
+  else { out = 'M12 3a9 9 0 1 0 0.01 0z'; dots = [0, 1, 2].map(i => { const a = -Math.PI / 2 + i * Math.PI * 2 / 3, x = 12 + Math.cos(a) * 3.8, y = 12 + Math.sin(a) * 3.8; return `M${f(x)} ${f(y - 1.9)}a1.9 1.9 0 1 0 0.01 0z`; }).join(''); }
+  const sw = { deep: 3, mid: 1.8, shallow: 1.3 }[d] || 1.8, dash = d === 'shallow' ? '2.2 2' : 'none';
+  return `<path d="${out}" fill="none" stroke="currentColor" stroke-width="${sw}" stroke-dasharray="${dash}" stroke-linejoin="round"></path>` +
+    (inn ? `<path d="${inn}" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"></path>` : '') +
+    (dots ? `<path d="${dots}" fill="currentColor"></path>` : '');
+}
+const pc = x => Math.round(100 * x) + '%';
 function panel() {
-  const t = g.troop, v = view(g);
+  const t = g.troop, v = view(g), dead = g.over && !!g.stats.death;
+  const here = t.y * g.W + t.x, w = t.warren != null ? g.warrens[t.warren] : null;
   $('night').textContent = g.night;
-  $('ticks').textContent = `${g.tick} / ${g.cfg.nightLen}`;
-  $('dawnfill').style.width = (100 * g.tick / g.cfg.nightLen) + '%';
-  $('size').textContent = t.size;
-  const w = t.warren != null ? g.warrens[t.warren] : null;
-  $('where').textContent = w ? `in a ${w.depth} ${KIND_NAME[w.kind]} warren` : inTransit(t) ? (t.dest != null ? `running → ${KIND_NAME[g.warrens[t.dest].kind]} warren` : 'running → open ground') : `holding · ${TERRAIN[g.tiles[t.y * g.W + t.x]]}`;
-  if (w) {
-    $('wcard').hidden = false;
-    $('wkind').textContent = `${KIND_NAME[w.kind]} · ${w.depth}`;
-    $('wgift').textContent = GIFT[w.kind];
-    $('wcost').textContent = KIND_COST[w.kind];
-    $('wdepth').textContent = { deep: 'Deep: hides your noise well (×0.45)', mid: 'Mid: hides some noise (×0.7)', shallow: 'Shallow: hides nothing (×1)' }[w.depth];
-  } else $('wcard').hidden = true;
-  const sb = sizeBuys(g), pc = x => Math.round(100 * x) + '%';
-  $('buys').textContent = holding(t) || inTransit(t) ? 'No walls out here: anything that reaches you fights you.' : sb.beat ? `Holding here you’d beat ${sb.beat} sweeper${sb.beat === 1 ? '' : 's'} (${pc(sb.pBeat)}), not ${sb.beat + 1} (${pc(sb.pNext)}).` : `You wouldn’t beat even one sweeper (${pc(sb.pNext)}).`;
-  for (const k of ['decoy', 'rearguard', 'scout', 'dig']) $('sp-' + k).disabled = g.over || !canSpend(g, k);
-  $('sdef').textContent = troopStrength(g, 'defend').toFixed(0);
-  $('reserve').textContent = g.reserve ? `${g.reserve} asleep · spends draw from here first` : 'none yet · grows at dawn';
+  $('dawn-len').textContent = g.cfg.nightLen;
+  $('dawn-ticks').textContent = g.tick;
+  $('dawn-fill').style.width = (100 * g.tick / g.cfg.nightLen) + '%';
+  $('count').textContent = t.size; $('count').classList.toggle('dead', dead);
+  $('where').textContent = dead ? 'the warren fell' : w ? `in a ${w.depth} ${KIND_NAME[w.kind]} warren` : inTransit(t) ? `running for ${t.dest != null ? `the ${g.warrens[t.dest].depth} ${KIND_NAME[g.warrens[t.dest].kind]} warren` : GROUND[g.tiles[t.destCell]]}` : `holding in ${GROUND[g.tiles[here]]}`;
+  const st = $('status');
+  const [txt, kind] = dead ? ['dead', 'ink'] : t.besieged ? ['besieged · not growing', 'them'] : located(g) ? ['located', 'them'] : inTransit(t) ? ['in transit', 'you'] : holding(t) ? [g.tiles[here] === 'f' ? 'holding · hidden' : 'holding · exposed', g.tiles[here] === 'f' ? 'you' : 'them'] : ['hidden', 'you'];
+  st.textContent = txt; st.className = 'status ' + kind;
+  $('strength').textContent = troopStrength(g, 'defend').toFixed(0);
   $('noise').textContent = troopNoise(g).toFixed(1);
-  const settled = t.warren != null ? (g.settled[t.warren] || 0) : 0;
+  const settled = w ? (g.settled[w.id] || 0) : 0;
   const accel = g.cfg.accelAt ? g.cfg.accelAt.filter(a => settled >= a).length : 0;
-  const nurs = t.warren != null && g.warrens[t.warren].kind === 'N' ? g.cfg.nurseryGrowth : 0;
-  $('growth').textContent = t.warren == null ? 'not while moving' : t.besieged ? 'halted (siege)' : `+${g.cfg.growth + accel + nurs} a tick` + (g.cfg.accelAt && accel < g.cfg.accelAt.length ? ` · +${g.cfg.growth + accel + nurs + 1} in ${g.cfg.accelAt[accel] - settled}` : '') + (settled ? ` · settled ${settled}` : '');
-  $('watched').textContent = t.watch ? `${t.watch} tick${t.watch === 1 ? '' : 's'}: they'll react faster` : '—';
-  $('watched').style.color = t.watch ? C.blood : '';
-  $('status').textContent = g.over ? 'gone' : t.besieged ? 'SIEGE · not growing' : located(g) ? 'located' : t.warren == null ? 'running' : 'hidden';
-  $('status').style.color = t.besieged || located(g) ? C.blood : '';
-  $('spec').innerHTML = ['C', 'S', 'D'].map(k => `<div class="s"><span>${KIND_NAME[k]}</span><div class="t"><div style="width:${100 * Math.max(t.spec[k], w && w.kind === k ? 1 : 0)}%"></div></div><span>+${Math.round(100 * g.cfg.warrenBonus * Math.max(t.spec[k], w && w.kind === k ? 1 : 0))}%</span></div>`).join('');
-  $('hcount').textContent = `· ${g.hunters.length}`;
-  $('hunters').innerHTML = g.hunters.map(h => `<div class="h"><i style="${h.kind === 'listener' ? 'background:none;border:2px solid ' + C.blood + ';border-radius:50%' : h.kind === 'tracker' ? 'clip-path:polygon(50% 0,100% 100%,0 100%)' : h.kind === 'hound' ? 'clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%)' : ''}"></i><span>${HUNTER_KINDS[h.kind].label}${h.trail ? ' · on your trail' : ''}</span><b>${h.str.toFixed(0)}</b></div>`).join('');
-  const tgt = v.attackable().sort((a, b) => a.str - b.str)[0];
-  $('attackbtn').disabled = !tgt || g.over;
-  $('attackodds').textContent = tgt ? `${Math.round(100 * winChance(troopStrength(g, 'attack'), tgt.str))}% vs ${HUNTER_KINDS[tgt.kind].label.toLowerCase()}` : 'A';
+  const nurs = w && w.kind === 'N' ? g.cfg.nurseryGrowth : 0;
+  $('growing').textContent = !w ? '—' : t.besieged ? 'halted' : `+${g.cfg.growth + accel + nurs} a tick` + (g.cfg.accelAt && accel < g.cfg.accelAt.length ? ` · +${g.cfg.growth + accel + nurs + 1} in ${g.cfg.accelAt[accel] - settled}` : '') + (settled ? ` · settled ${settled}` : '');
+  $('watched').textContent = t.watch ? `${t.watch} tick${t.watch === 1 ? '' : 's'}` : '—';
+  $('reserve').textContent = g.reserve ? `${g.reserve} asleep` : '—';
+  // odds everywhere: what your size buys where you are, and what an attack would do
+  const sb = sizeBuys(g), tgt = v.attackable().sort((a, b) => a.str - b.str)[0];
+  const where = w ? 'Holding here' : 'In the open';
+  const holdLine = sb.beat ? `${where} you’d beat ${sb.beat} sweeper${sb.beat === 1 ? '' : 's'} (${pc(sb.pBeat)}), not ${sb.beat + 1} (${pc(sb.pNext)}).` : `${where} you wouldn’t beat even one sweeper (${pc(sb.pNext)}).`;
+  const atk = tgt ? winChance(troopStrength(g, 'attack'), tgt.str) : null;
+  $('odds').textContent = dead ? '' : (tgt ? `Attacking the ${HUNTER_KINDS[tgt.kind].label.toLowerCase()} you’d win (${pc(atk)}). ` : '') + holdLine;
+  $('odds').hidden = dead;
+  // this warren
+  $('warren').hidden = !w;
+  if (w) {
+    $('warren-glyph').innerHTML = warrenGlyphSVG(w.kind, w.depth);
+    $('warren-name').textContent = `${KIND_NAME[w.kind]} · ${w.depth}`;
+    $('warren-gift').textContent = GIFT[w.kind]; $('warren-cost').textContent = KIND_COST[w.kind]; $('warren-depth').textContent = DEPTH_NOTE[w.depth];
+  }
+  // hunters
+  const reach = new Set(v.attackable().map(h => h.id)), ring = t.warren != null && located(g);
+  $('hunter-count').textContent = g.hunters.length;
+  $('hunters').innerHTML = g.hunters.map(h => {
+    const s = [reach.has(h.id) && 'in reach', h.trail && 'on your trail', ring && !t.besieged && Math.abs(h.x - t.x) + Math.abs(h.y - t.y) <= g.cfg.musterDist + 1 && 'mustering'].filter(Boolean).join(' · ');
+    return `<div class="row"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="${HUNTER_D[h.kind]}" fill="var(--blood)" fill-rule="evenodd"></path></svg><span>${HUNTER_KINDS[h.kind].label}</span><span class="state">${s}</span><span class="n">${h.str.toFixed(0)}</span></div>`;
+  }).join('');
+  // verbs
   $('stay').disabled = g.over;
-  $('scout-note')?.remove();
+  $('attack').disabled = !tgt || g.over;
+  $('attack-key').textContent = tgt ? `A · ${pc(atk)}` : 'A · NONE IN REACH';
+  for (const k of ['decoy', 'rearguard', 'scout', 'dig']) $('sp-' + k).disabled = g.over || watching() || !canSpend(g, k);
 }
 
-const LOG_MAX = 60;
-function say(text, cls = '') { const li = document.createElement('li'); li.textContent = text; if (cls) li.className = cls; $('log').prepend(li); while ($('log').children.length > LOG_MAX) $('log').lastChild.remove(); }
+// ---------------------------------------------------------------- the log: chronological, numbered, the latest in full
+const LOG_SHOW = 9;
+function say(text, k = 'ink') {
+  const row = document.createElement('div'); row.className = 'row';
+  row.innerHTML = `<span class="i">${++logN}</span><span class="${k}"></span>`; row.lastChild.textContent = text;
+  $('log').appendChild(row);
+  while ($('log').children.length > LOG_SHOW) $('log').firstChild.remove();
+}
+const dirWord = (dx, dy) => Math.abs(dx) >= Math.abs(dy) ? (dx > 0 ? 'east' : 'west') : (dy > 0 ? 'south' : 'north');
 function narrate(evs) {
   for (const e of evs) {
-    if (e.t === 'move') say(`Run for the ${KIND_NAME[g.warrens[e.to].kind]} warren.`);
-    else if (e.t === 'go') say('Out into the open.');
-    else if (e.t === 'hold') say(e.forest ? 'Still, in the trees. Not growing.' : 'Holding in the open. Not growing, and easy to see.', e.forest ? 'good' : 'bad');
-    else if (e.t === 'spend') say({ decoy: `${e.cost} of you break away loud, the other way.`, rearguard: `${e.cost} of you stay behind.`, scout: `${e.cost} of you go to look.`, dig: `${e.cost} of you dig.` }[e.kind], 'gold');
-    else if (e.t === 'dug') say(`A new ${KIND_NAME[e.kind]} warren, shallow, dug in the dark.`, 'good');
-    else if (e.t === 'decoy-seen') say('They’ve seen the decoy. They think it’s you.', 'good');
-    else if (e.t === 'decoy-caught') say('The decoy is caught. They know now.', 'bad');
+    if (e.t === 'arrive-warren') say(`Under. A ${g.warrens[e.id].depth} ${KIND_NAME[g.warrens[e.id].kind]} warren.`, 'you');
+    else if (e.t === 'hold') say(e.forest ? 'In the trees. Hidden and quiet. Not growing.' : 'Holding in the open. Not growing, and easy to see.', e.forest ? 'you' : 'them');
+    else if (e.t === 'spend') {
+      if (e.kind === 'decoy') { const dc = g.decoys.at(-1); const tx = dc ? dc.target % g.W : g.troop.x, ty = dc ? (dc.target / g.W) | 0 : g.troop.y; say(`Decoy out. −${e.cost}. It breaks ${dirWord(tx - g.troop.x, ty - g.troop.y)}.`, 'you'); }
+      else say({ rearguard: `Rearguard left behind. −${e.cost}.`, scout: `Scout out. −${e.cost}. Ten ticks of seeing what they think.`, dig: `Digging. −${e.cost}.` }[e.kind], 'you');
+    }
+    else if (e.t === 'dug') say(`A new ${KIND_NAME[e.kind]} warren, shallow, dug in the dark.`, 'you');
+    else if (e.t === 'decoy-seen') say('They take it.', 'gold');
+    else if (e.t === 'decoy-caught') say('The decoy is caught. They know now.', 'them');
     else if (e.t === 'decoy-gone') say('The decoy goes to ground.');
-    else if (e.t === 'rearguard') say(e.won ? 'The rearguard held, and loudly. They think you’re back there.' : 'The rearguard fell. It bought you time.', e.won ? 'good' : 'bad');
-    else if (e.t === 'arrive-warren') say(`Under again: a ${g.warrens[e.id].depth} ${KIND_NAME[g.warrens[e.id].kind]} warren.`, 'good');
-    else if (e.t === 'seen') say('Seen.', 'bad');
-    else if (e.t === 'located') say(g.troop.warren != null ? 'Heard. They know which warren you’re in.' : 'They have you.', 'bad');
-    else if (e.t === 'siege') say('They know where you are. The ring is forming.', 'bad');
-    else if (e.t === 'arrive') say(`A ${HUNTER_KINDS[e.kind].label.toLowerCase()} arrives at the edge.`);
-    else if (e.t === 'fight') say(e.won ? `${e.mode === 'attack' ? 'You went out and won' : 'They came in and lost'}: ${e.mine.toFixed(0)} against ${e.theirs.toFixed(0)}. ${e.lost} of yours lost.` : `${e.mine.toFixed(0)} against ${e.theirs.toFixed(0)}.`, e.won ? 'good' : 'bad');
+    else if (e.t === 'rearguard') { rgFightAt = performance.now(); say(e.won ? 'The rearguard held, loudly. They think you’re back there.' : 'The rearguard fell. It bought you time.', e.won ? 'you' : 'them'); }
+    else if (e.t === 'seen') say('Seen.', 'them');
+    else if (e.t === 'located') say(g.troop.warren != null ? 'Heard. They know which warren you’re in.' : 'They have you.', 'them');
+    else if (e.t === 'siege') say('Besieged. Not growing.', 'them');
+    else if (e.t === 'retreat') say(`Dawn in ${e.left}. They turn for the edges.`, 'gold');
+    else if (e.t === 'arrive') say(`A ${HUNTER_KINDS[e.kind].label.toLowerCase()} arrives at the edge.`, 'them');
+    else if (e.t === 'fight') say(e.won ? `${e.mode === 'attack' ? 'You went out and won' : 'They came in and lost'}: ${e.mine.toFixed(0)} against ${e.theirs.toFixed(0)}. ${e.lost} of yours lost.` : `${e.mine.toFixed(0)} against ${e.theirs.toFixed(0)}.`, e.won ? 'you' : 'them');
     else if (e.t === 'dusk') say(`Night ${e.night}. ${e.hunters} hunters at the edges.`, 'gold');
   }
+}
+// what you meant by a click, said before it happens
+function intent(a) {
+  const v = view(g);
+  if (a.type === 'move') { const w = g.warrens[a.to], n = Math.round(v.troopTicksTo(w.i)); return `Running for the ${w.depth} ${KIND_NAME[w.kind]} warren. ${n} tick${n === 1 ? '' : 's'}.`; }
+  if (a.type === 'go') { const n = Math.round(v.troopTicksTo(a.cell)), tl = g.tiles[a.cell]; return tl === 'f' ? `Making for the trees to hide. ${n} tick${n === 1 ? '' : 's'}.` : tl === '~' ? `Into the water, where they can’t follow. ${n} tick${n === 1 ? '' : 's'}.` : `Out into ${GROUND[tl]}. ${n} tick${n === 1 ? '' : 's'}.`; }
+  return null;
 }
 
 // ---------------------------------------------------------------- acting
 function act(a) {
   if (g.over || g.pendingDraft) return;
+  const said = intent(a); if (said) say(said, 'you');
   actions.push({ T: g.T + 1, a });
   const night = g.night;
   const evs = step(g, a);
   narrate(evs);
-  if (g.night !== night && !g.over) dawnDialog(night);
-  draw(); panel();
+  if (g.night !== night && !g.over) { say(`Dawn. Night ${night} survived.`, 'gold'); dawnDialog(night); }
+  panel();
   saveRun();
   if (g.over) { clearRun(); endDialog(); }
-  else if (inTransit(g.troop) && !timer && !$('watch').value) { timer = setInterval(() => { if (!inTransit(g.troop) || g.over || g.pendingDraft) { clearInterval(timer); timer = null; return; } const k = g._spendNext; g._spendNext = null; act(k ? { type: k } : { type: 'stay' }); }, 220); }
+  else if (inTransit(g.troop) && !timer && !watching()) { timer = setInterval(() => { if (!inTransit(g.troop) || g.over || g.pendingDraft) { clearInterval(timer); timer = null; return; } const k = g._spendNext; g._spendNext = null; act(k ? { type: k } : { type: 'stay' }); }, 220); }
 }
 function dawnDialog(n) {
   $('dn').textContent = n;
   $('remnantline').textContent = `${g.troop.size} of you wake for night ${g.night}. The rest go to ground: ${g.reserve} sleeping in the burrows, ready to be spent. The hunters remember where you hid.`;
   const offer = g.pendingDraft;
   if (!offer) return;
-  if ($('watch').value) { takeBoon(g, pickBoon(offer)); return; }
-  $('boons').innerHTML = offer.map(id => { const b = BOONS.find(x => x.id === id); const [name, ...rest] = b.text.split('. '); return `<button type="button" data-b="${id}"><b>${name}</b>${rest.join('. ')}</button>`; }).join('');
+  if (watching()) { takeBoon(g, pickBoon(offer)); return; }
+  $('boons').innerHTML = offer.map(id => { const b = BOONS.find(x => x.id === id); const [name, ...rest] = b.text.split('. '); return `<button type="button" data-b="${id}"><b>${name}</b><span>${rest.join('. ')}</span></button>`; }).join('');
   $('draft').showModal();
 }
-$('boons').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; takeBoon(g, b.dataset.b); picks.push(b.dataset.b); saveRun(); say(`Took ${b.dataset.b}.`, 'gold'); $('draft').close(); draw(); panel(); });
+$('boons').addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; takeBoon(g, b.dataset.b); picks.push(b.dataset.b); saveRun(); say(`Took ${b.dataset.b}.`, 'gold'); $('draft').close(); panel(); });
 
 function endDialog() {
   clearInterval(timer); timer = null;
@@ -1802,9 +2219,10 @@ function endDialog() {
     const NUM = ['a', 'a', 'two', 'three', 'four', 'five', 'six'];
     const parts = Object.entries(d.hunters.reduce((a, k) => (a[k] = (a[k] || 0) + 1, a), {})).map(([k, n]) => `${NUM[n] ?? n} ${HUNTER_KINDS[k].label.toLowerCase()}${n > 1 ? 's' : ''}`);
     const who = parts.length > 1 ? parts.slice(0, -1).join(', ') + ' and ' + parts.at(-1) : parts[0];
-    const how = d.cause === 'found' ? `Found where you stayed, a ${w.depth} ${KIND_NAME[w.kind]} warren` : d.cause === 'transit' ? 'Caught in the open between warrens' : 'You went out to fight and did not come back';
+    const how = d.cause === 'found' ? `Found where you stayed, a ${w.depth} ${KIND_NAME[w.kind]} warren` : d.cause === 'transit' ? 'Caught in the open' : 'You went out to fight and did not come back';
     $('endline').textContent = `Night ${d.night}, ${left} tick${left === 1 ? '' : 's'} before dawn. ${how}, ${d.size} strong, by ${who}.`;
     $('endmore').textContent = `You moved ${s.moves} time${s.moves === 1 ? '' : 's'} and fought ${s.fights}. The most you ever were: ${s.peak}.` + twinLine(d);
+    say($('endline').textContent, 'them');
   }
   $('working').textContent = working();
   heirPick();
@@ -1814,15 +2232,14 @@ function endDialog() {
 // ---------------------------------------------------------------- lineage at the end of a run
 function lineBar() {
   $('linename').textContent = watching() ? 'watching' : `${line.name} ${roman(line.gen)}`;
-  $('lineheir').textContent = watching() ? '' : line.heir ? describe(line.heir) : 'no heirloom';
+  $('lineheir').textContent = watching() ? '' : '· ' + (line.heir ? describe(line.heir) : 'no heirloom');
 }
 function heirPick() {
   const box = $('heirs');
   if (watching()) { box.innerHTML = ''; $('again').hidden = false; $('next').hidden = false; return; }
   $('again').hidden = true; $('next').hidden = true;
   const sentence = $('endline').textContent;
-  const failed = (g.result?.nights ?? 0) === 0;
-  if (failed) {
+  if ((g.result?.nights ?? 0) === 0) {
     const ended = recordGeneration(line, g, sentence, null);
     box.innerHTML = `<p class="lineend">${line.name} ${roman(line.gen)} never saw a dawn. The line of ${line.name} ends ${line.gen === 1 ? 'where it began' : `after ${line.gen} generations`}. That was the last warren.</p><button type="button" id="newline">Found a new line</button>`;
     line = ended; saveLine(line); archive(line); chronicle();
@@ -1830,10 +2247,10 @@ function heirPick() {
     return;
   }
   const opts = heirlooms(g), slots = heirSlots(g), chosen = new Set();
-  box.innerHTML = `<div class="lbl">WHO GOT AWAY · WHAT DO THEY CARRY TO ${line.name.toUpperCase()} ${roman(line.gen + 1)}?</div>` +
-    `<p class="dim small">${g.result.nights} night${g.result.nights === 1 ? '' : 's'} survived: choose up to ${slots} heirloom${slots === 1 ? '' : 's'}. They replace whatever this generation inherited. The hunters will remember which warrens your family favours.</p>` +
-    opts.map((o, i) => `<button type="button" data-h="${i}" aria-pressed="false"><b>${o.label}</b>${o.text}</button>`).join('') +
-    `<button type="button" id="passon" class="passon">Pass on nothing</button>`;
+  box.innerHTML = `<div class="label">Who got away · what do they carry to ${line.name} ${roman(line.gen + 1)}?</div>` +
+    opts.map((o, i) => `<button type="button" data-h="${i}" aria-pressed="false"><b>${o.label}</b><span>${o.text}</span></button>`).join('') +
+    `<button type="button" id="passon" class="passon">Pass on nothing</button>` +
+    `<p class="note">${g.result.nights} night${g.result.nights === 1 ? '' : 's'} survived: up to ${slots} heirloom${slots === 1 ? '' : 's'}. They replace whatever this generation inherited. The hunters will remember which warrens your family favours.</p>`;
   const pass = $('passon');
   box.querySelectorAll('button[data-h]').forEach(b => b.addEventListener('click', () => {
     const i = +b.dataset.h;
@@ -1849,11 +2266,11 @@ function heirPick() {
 function chronicle() {
   const c = $('chronicle'); if (!c) return;
   const rows = [...line.chronicle].reverse();
-  c.innerHTML = `<h2>The line of ${line.name}${line.ended ? ' <span class="dim">· ended</span>' : ''}</h2>` +
-    `<p class="dim">${line.ended ? `It ran ${line.chronicle.length} generation${line.chronicle.length === 1 ? '' : 's'}.` : `Generation ${roman(line.gen)} is out there now${line.heir ? `, ${describe(line.heir)}` : ''}.`}</p>` +
-    (rows.length ? `<ol class="gens">${rows.map(r => `<li><div class="gn">${r.name}<span>${r.nights} night${r.nights === 1 ? '' : 's'} · seed ${r.seed}</span></div><p>${r.sentence}</p>${r.inherited || r.passed ? `<p class="dim small">${r.inherited ? 'Born ' + r.inherited + '. ' : ''}${r.passed ? 'Passed on: ' + r.passed + '.' : ''}</p>` : ''}</li>`).join('')}</ol>` : '<p class="dim">No generation has fallen yet.</p>') +
+  c.innerHTML = `<h2>The line of ${line.name}${line.ended ? ' · ended' : ''}</h2>` +
+    `<p class="mute">${line.ended ? `It ran ${line.chronicle.length} generation${line.chronicle.length === 1 ? '' : 's'}.` : `Generation ${roman(line.gen)} is out there now${line.heir ? `, ${describe(line.heir)}` : ''}.`}</p>` +
+    (rows.length ? `<ol class="gens">${rows.map(r => `<li><div class="gn">${r.name}<span>${r.nights} night${r.nights === 1 ? '' : 's'} · seed ${r.seed}</span></div><p>${r.sentence}</p>${r.inherited || r.passed ? `<p class="mute small">${r.inherited ? 'Born ' + r.inherited + '. ' : ''}${r.passed ? 'Passed on: ' + r.passed + '.' : ''}</p>` : ''}</li>`).join('')}</ol>` : '<p class="mute">No generation has fallen yet.</p>') +
     `<button type="button" id="abandon">Abandon this line and found a new one</button>` +
-    (() => { const a = archived().filter(l => l.founded !== line.founded).reverse(); return a.length ? `<h3 class="earlier">Earlier lines</h3><ol class="gens">${a.map(l => `<li><div class="gn">The line of ${l.name}<span>${l.chronicle.length} generation${l.chronicle.length === 1 ? '' : 's'}${l.abandoned ? ' · abandoned' : ''}</span></div><p class="dim small">${l.chronicle.map(r => `${r.name}: ${r.nights} night${r.nights === 1 ? '' : 's'}`).join(' · ')}</p><p>${l.chronicle.at(-1).sentence}</p></li>`).join('')}</ol>` : ''; })();
+    (() => { const a = archived().filter(l => l.founded !== line.founded).reverse(); return a.length ? `<h3 class="earlier">Earlier lines</h3><ol class="gens">${a.map(l => `<li><div class="gn">The line of ${l.name}<span>${l.chronicle.length} generation${l.chronicle.length === 1 ? '' : 's'}${l.abandoned ? ' · abandoned' : ''}</span></div><p class="mute small">${l.chronicle.map(r => `${r.name}: ${r.nights} night${r.nights === 1 ? '' : 's'}`).join(' · ')}</p><p>${l.chronicle.at(-1).sentence}</p></li>`).join('')}</ol>` : ''; })();
   $('abandon').addEventListener('click', () => { if ($('abandon').dataset.armed) { archive({ ...line, ended: true, abandoned: true }); line = newLine(Date.now() % 100000 + 1); saveLine(line); chronicle(); lineBar(); start(+$('seed').value || 1); } else { $('abandon').dataset.armed = 1; $('abandon').textContent = 'Click again to abandon it'; } });
 }
 // The twin: same world, same choices, but run one tick before the end. Honest because
@@ -1864,7 +2281,7 @@ function twinLine(d) {
     const t = newGame(g.seed, cfg); const pol = ROSTER['hybrid-5-1.3']();
     const map = new Map(actions.map(x => [x.T, x.a]));
     while (!t.over && t.night <= d.night) {
-      if (t.pendingDraft) takeBoon(t, g.stats.boons[t.night - 1] && t.pendingDraft.includes(g.stats.boons[t.night - 1]) ? g.stats.boons[t.night - 1] : pickBoon(t.pendingDraft));
+      if (t.pendingDraft) takeBoon(t, picks[t.night - 2] && t.pendingDraft.includes(picks[t.night - 2]) ? picks[t.night - 2] : pickBoon(t.pendingDraft));
       const T = t.T + 1; let a;
       if (T < d.T - k) a = map.get(T) || { type: 'stay' };
       else if (T === d.T - k) { const dd = bestDestination(view(t)); a = dd ? { type: 'move', to: dd.id } : { type: 'stay' }; }
@@ -1874,19 +2291,18 @@ function twinLine(d) {
     }
     return false;
   };
-  const s1 = saved(1);
-  return s1 ? ' Running one tick earlier would have seen dawn.' : saved(3) ? ' One tick earlier wasn\'t enough. Three would have been.' : ' Running earlier would not have saved it.';
+  return saved(1) ? ' Running one tick earlier would have seen dawn.' : saved(3) ? ' One tick earlier wasn’t enough. Three would have been.' : ' Running earlier would not have saved it.';
 }
 function working() {
   return `seed ${g.seed} · ${g.map.hand.frame} · rules: ${$('cfgsel').value}
-night ${g.night}, tick ${g.tick} (global ${g.T})
+night ${g.night}, tick ${g.tick} (global ${g.T}) · reserve ${g.reserve}
 dials ${JSON.stringify(g.map.dials)}
-boons ${g.stats.boons.join(', ') || 'none'}
+boons ${g.stats.boons.join(', ') || 'none'} · spends ${JSON.stringify(g.stats.spends)}
 fights ${g.stats.fights} (won ${g.stats.fightsWon}) · moves ${g.stats.moves} · attacks ${g.stats.attacks}
-ticks staying ${g.stats.stayTicks} · in transit ${g.stats.transitTicks}
-by warren kind: C ${g.stats.kindTicks.C} · S ${g.stats.kindTicks.S} · D ${g.stats.kindTicks.D}
+ticks staying ${g.stats.stayTicks} · in transit ${g.stats.transitTicks} · holding ${g.stats.holdTicks || 0}
+by warren kind: C ${g.stats.kindTicks.C} · S ${g.stats.kindTicks.S} · D ${g.stats.kindTicks.D} · N ${g.stats.kindTicks.N || 0}
 death ${JSON.stringify(g.stats.death)}
-replay ${actions.filter(x => x.a.type !== 'stay').map(x => `${x.T}:${x.a.type[0]}${x.a.to ?? x.a.hunter ?? ''}`).join(' ')}`;
+replay ${actions.filter(x => x.a.type !== 'stay').map(x => `${x.T}:${x.a.type[0]}${x.a.to ?? x.a.hunter ?? x.a.cell ?? ''}`).join(' ')}`;
 }
 
 function watchLoop() {
@@ -1897,17 +2313,17 @@ function watchLoop() {
     if (g.pendingDraft) takeBoon(g, pickBoon(g.pendingDraft));
     const a = pol(view(g)); const night = g.night;
     narrate(step(g, a)); actions.push({ T: g.T, a });
-    if (g.night !== night) say(`Dawn. Night ${night} survived.`, 'good');
-    draw(); panel(); if (g.over) endDialog();
+    if (g.night !== night) say(`Dawn. Night ${night} survived.`, 'gold');
+    panel(); if (g.over) endDialog();
   }, 140);
 }
 
 // ---------------------------------------------------------------- input
 function cellAt(e) { const r = cv.getBoundingClientRect(); const x = Math.floor((e.clientX - r.left) / cs), y = Math.floor((e.clientY - r.top) / cs); return x >= 0 && y >= 0 && x < g.W && y < g.H ? y * g.W + x : -1; }
-cv.addEventListener('mousemove', e => { const c = cellAt(e); if (c !== hover) { hover = c; draw(); } });
-cv.addEventListener('mouseleave', () => { hover = -1; draw(); });
+cv.addEventListener('mousemove', e => { hover = cellAt(e); });
+cv.addEventListener('mouseleave', () => { hover = -1; });
 cv.addEventListener('click', e => {
-  if ($('watch').value) return;
+  if (watching()) return;
   const c = cellAt(e); if (c < 0) return;
   const v = view(g);
   const h = v.attackable().find(h => h.y * g.W + h.x === c);
@@ -1917,22 +2333,34 @@ cv.addEventListener('click', e => {
   if (w && w.id !== g.troop.warren) return act({ type: 'move', to: w.id });
   if (!w && g.tCost(c) < Infinity && c !== v.here) return act({ type: 'go', cell: c });
 });
+const flash = el => { el.classList.add('flash'); setTimeout(() => el.classList.remove('flash'), 180); };
 $('stay').addEventListener('click', () => act({ type: 'stay' }));
-for (const k of ['decoy', 'rearguard', 'scout', 'dig']) $('sp-' + k).addEventListener('click', () => { if (canSpend(g, k)) { const was = inTransit(g.troop); if (was) { g._spendNext = k; } else act({ type: k }); } });
-$('attackbtn').addEventListener('click', () => { const h = view(g).attackable().sort((a, b) => a.str - b.str)[0]; if (h) act({ type: 'attack', hunter: h.id }); });
+$('attack').addEventListener('click', () => { const h = view(g).attackable().sort((a, b) => a.str - b.str)[0]; if (h) act({ type: 'attack', hunter: h.id }); });
+for (const k of ['decoy', 'rearguard', 'scout', 'dig']) $('sp-' + k).addEventListener('click', () => { if (canSpend(g, k)) { if (inTransit(g.troop)) g._spendNext = k; else act({ type: k }); } });
 document.addEventListener('keydown', e => {
-  if (e.target.matches('input,select') || document.querySelector('dialog[open]')) return;
-  if (e.code === 'Space') { e.preventDefault(); act({ type: 'stay' }); }
-  if (e.key === 'a' || e.key === 'A') $('attackbtn').click();
-  const sk = { d: 'decoy', r: 'rearguard', s: 'scout', g: 'dig' }[e.key.toLowerCase()];
-  if (sk) $('sp-' + sk).click();
+  if (e.target.matches('input,select') || document.querySelector('dialog[open]') || $('tab-play').hidden) return;
+  if (e.code === 'Space') { e.preventDefault(); flash($('stay')); act({ type: 'stay' }); return; }
+  const id = { a: 'attack', d: 'sp-decoy', r: 'sp-rearguard', s: 'sp-scout', g: 'sp-dig' }[e.key.toLowerCase()];
+  if (id && !$(id).disabled) { flash($(id)); $(id).click(); }
 });
 $('newrun').addEventListener('click', () => start(+$('seed').value || 1));
 $('watch').addEventListener('change', () => start(+$('seed').value || 1));
 $('cfgsel').addEventListener('change', () => start(+$('seed').value || 1));
 $('again').addEventListener('click', () => { $('ending').close(); start(g.seed); });
 $('next').addEventListener('click', () => { $('ending').close(); $('seed').value = g.seed + 1; start(g.seed + 1); });
-window.addEventListener('resize', () => { layout(); draw(); });
+$('working-toggle').addEventListener('click', () => { const open = $('workingbar').classList.toggle('open'); $('working-toggle').textContent = open ? 'Hide the working' : 'Show the working'; $('working-toggle').setAttribute('aria-expanded', String(open)); });
+window.addEventListener('resize', () => { if (g) layout(); });
+$('ending').addEventListener('cancel', e => { if (!watching()) e.preventDefault(); });
+
+// tabs
+document.querySelectorAll('.tab').forEach(a => a.addEventListener('click', e => {
+  e.preventDefault();
+  document.querySelectorAll('.tab').forEach(x => x.toggleAttribute('aria-current', x === a));
+  for (const id of ['play', 'chron', 'brief']) $('tab-' + id).hidden = id !== a.dataset.tab;
+  if (a.dataset.tab === 'play') layout();
+}));
+document.querySelector('.tab[data-tab="play"]').setAttribute('aria-current', 'page');
+
 function resume() {
   const r = loadRun();
   if (!r || r.founded !== line.founded || r.gen !== line.gen || !r.actions.length) return false;
@@ -1946,23 +2374,15 @@ function resume() {
     if (g.over) break;
   }
   if (g.over) { clearRun(); return false; }
-  $('log').innerHTML = '';
+  $('log').innerHTML = ''; logN = 0;
   say(`Resumed ${line.name} ${roman(line.gen)}: night ${g.night}, tick ${g.tick}, ${g.troop.size} strong.`, 'gold');
-  layout(); draw(); panel(); saveRun();
+  layout(); panel(); saveRun();
   if (g.pendingDraft) dawnDialog(g.night - 1);
   return true;
 }
 if (!resume()) start(1);
+requestAnimationFrame(frame);
 
-// ---------------------------------------------------------------- tabs, and the ending can't be dismissed without a choice
-document.querySelectorAll('.tab').forEach(b => b.addEventListener('click', () => {
-  document.querySelectorAll('.tab').forEach(x => x.setAttribute('aria-selected', String(x === b)));
-  for (const id of ['play', 'chron', 'brief']) $('tab-' + id).hidden = id !== b.dataset.tab;
-  $('tab-play').style.display = b.dataset.tab === 'play' ? '' : 'none';
-  document.querySelector('.tools').style.display = b.dataset.tab === 'play' ? '' : 'none';
-  if (b.dataset.tab === 'play') { layout(); draw(); }
-}));
-$('ending').addEventListener('cancel', e => { if (!watching()) e.preventDefault(); });
 // the CD brief: inlined in the artifact build; fetched next to the page when run locally
 if ($('tab-brief').innerHTML.includes('<!--BRIEF-->')) fetch('cd-brief.html').then(r => r.ok ? r.text() : '').then(t => { if (t) $('tab-brief').innerHTML = t; }).catch(() => {});
 // read-only handle for debugging and automated playtests (never used by the game itself)

@@ -6,112 +6,108 @@
 <title>The Last Warren</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,800;62..125,900&family=Literata:ital,opsz,wght@0,7..72,400;1,7..72,400&family=Martian+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400..800&family=Big+Shoulders+Stencil+Display:wght@400..900&display=swap">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <div class="app">
-  <header class="bar">
-    <h1><span class="moss">The Last</span> Warren</h1>
-    <div class="line"><span class="lbl">LINE</span><b id="linename">—</b><span class="dim" id="lineheir"></span></div>
-    <div class="clock">
-      <span class="lbl">NIGHT</span><b id="night">1</b>
-      <div class="dawn" title="ticks until dawn"><div id="dawnfill"></div></div>
-      <span class="lbl" id="ticks">0 / 54</span>
-    </div>
-    <nav class="tabs" role="tablist" aria-label="Sections">
-      <button type="button" role="tab" class="tab" data-tab="play" aria-selected="true">Play</button>
-      <button type="button" role="tab" class="tab" data-tab="chron" aria-selected="false">Chronicle</button>
-      <button type="button" role="tab" class="tab" data-tab="brief" aria-selected="false">CD brief</button>
+
+  <header class="hdr">
+    <div class="brand">The Last Warren</div>
+    <div class="pair"><span>Line</span><span class="line-name" id="linename">—</span><span id="lineheir">· no heirloom</span></div>
+    <div class="pair"><span>Night</span><span class="night" id="night">1</span></div>
+    <nav role="tablist" aria-label="Sections">
+      <a href="#play" role="tab" class="tab" data-tab="play" aria-current="page">Play</a>
+      <a href="#chronicle" role="tab" class="tab" data-tab="chron">Chronicle</a>
+      <a href="#brief" role="tab" class="tab" data-tab="brief">CD brief</a>
     </nav>
   </header>
 
-  <div class="tools">
-    <label class="lbl" for="seed">SEED</label><input id="seed" type="number" value="1" min="1">
-    <select id="cfgsel" aria-label="Rules"><option value="tuned">Tuned rules</option><option value="defaults">Starting rules</option></select>
-    <button id="newrun" type="button">New run</button>
-    <select id="watch" aria-label="Watch a policy play"><option value="">You play</option></select>
-  </div>
-
-  <main class="main" id="tab-play" role="tabpanel">
-    <div class="boardwrap">
-      <canvas id="board" aria-label="The map"></canvas>
-      <div class="hint" id="hint">Click a warren to run for it, or any square to go there and hold (forest hides you). Click a ringed hunter to attack. <kbd>Space</kbd> stays a tick; hold it to keep staying. Spend people with <kbd>D</kbd> <kbd>R</kbd> <kbd>S</kbd> <kbd>G</kbd>.</div>
+  <section id="tab-play" role="tabpanel">
+    <div class="dawn">
+      <div class="track"><div class="fill" id="dawn-fill" style="width:0%"></div></div>
+      <span class="count"><span id="dawn-ticks">0</span> / <span id="dawn-len">54</span> to dawn</span>
     </div>
 
-    <aside class="side">
-      <div class="verbs">
-        <button id="stay" class="verb stay" type="button">Stay <small>space</small></button>
-        <button id="attackbtn" class="verb atk" type="button" disabled>Attack <small id="attackodds">A</small></button>
-      </div>
-      <div class="spends">
-        <button id="sp-decoy" type="button" title="4 people break away, loud, and run the other way (D)">Decoy <small>−4 · D</small></button>
-        <button id="sp-rearguard" type="button" title="5 people stay behind and fight the first hunter to reach them (R)">Rearguard <small>−5 · R</small></button>
-        <button id="sp-scout" type="button" title="3 people go to look: see their belief map for 10 ticks (S)">Scout <small>−3 · S</small></button>
-        <button id="sp-dig" type="button" title="8 people dig a shallow warren right here, of the kind you're most attuned to. Only while holding in the open (G)">Dig here <small>−8 · G</small></button>
-      </div>
-      <div class="block">
-        <div class="lbl">THE TROOP</div>
-        <div class="big"><b id="size">4</b> <span id="where" class="dim">in a warren</span></div>
-        <div class="rows">
-          <div class="row"><span>Strength (defending)</span><b id="sdef">—</b></div>
-          <div class="row"><span>Reserve</span><b id="reserve">—</b></div>
-          <div class="row"><span>Noise</span><b id="noise">—</b></div>
-          <div class="row"><span>Growing</span><b id="growth">—</b></div>
-          <div class="row"><span>Watched</span><b id="watched">—</b></div>
-          <div class="row"><span>Status</span><b id="status">hidden</b></div>
+    <div class="layout">
+      <div class="boardwrap" id="boardwrap"><canvas id="board" aria-label="The map"></canvas></div>
+
+      <aside class="panel">
+        <div class="troop">
+          <div class="count" id="count">4</div>
+          <div class="where" id="where">in a warren</div>
         </div>
-        <p class="buys" id="buys"></p>
-        <div class="spec" id="spec"></div>
-      </div>
-      <div class="block wcard" id="wcard">
-        <div class="lbl">THIS WARREN</div>
-        <div class="wk" id="wkind"></div>
-        <div class="wl gift" id="wgift"></div>
-        <div class="wl cost" id="wcost"></div>
-        <div class="wl" id="wdepth"></div>
-      </div>
-      <div class="block">
-        <div class="lbl">HUNTERS <span id="hcount"></span></div>
-        <div id="hunters" class="hunters"></div>
-      </div>
-      <div class="block">
-        <div class="lbl">LOG</div>
-        <ol id="log" class="log"></ol>
-      </div>
-      <div class="block legend">
-        <span><i class="sw t-open"></i>open</span><span><i class="sw t-road"></i>road, fast and loud</span>
-        <span><i class="sw t-forest"></i>forest, slow and quiet</span><span><i class="sw t-lake"></i>lake: you swim, they can't</span>
-        <span><i class="sw t-mtn"></i>mountain: blocks feet and eyes</span>
-        <span><b>C</b> Combat: +30% strength, but loud</span><span><b>S</b> Scout: see where they think you are, but thin walls</span><span><b>D</b> Defense: +30% holding, but slow to leave</span><span><b>N</b> Nursery: +1 extra a tick, but loud</span>
-        <span>◌ d decoy · ■ rearguard · ○ you, holding · ◌ you, running</span>
-      </div>
-    </aside>
-  </main>
+        <div class="status you" id="status">hidden</div>
+        <dl class="stats">
+          <dt>strength</dt><dd id="strength">—</dd>
+          <dt>noise</dt><dd id="noise">—</dd>
+          <dt>growing</dt><dd id="growing">—</dd>
+          <dt>watched</dt><dd class="gold" id="watched">—</dd>
+          <dt>reserve</dt><dd id="reserve">—</dd>
+        </dl>
+        <p class="odds" id="odds"></p>
+
+        <div class="section warren" id="warren">
+          <div class="name"><svg width="26" height="26" viewBox="0 0 24 24" id="warren-glyph" aria-hidden="true"></svg><span id="warren-name">—</span></div>
+          <div class="gift" id="warren-gift"></div>
+          <div class="cost" id="warren-cost"></div>
+          <div class="depth" id="warren-depth"></div>
+        </div>
+
+        <div class="section hunters">
+          <div class="label">Hunters · <span id="hunter-count">0</span></div>
+          <div id="hunters"></div>
+        </div>
+
+        <div class="section log" id="log"></div>
+      </aside>
+    </div>
+
+    <div class="verbs">
+      <button class="verb stay" id="stay" type="button"><span class="word">STAY</span><span class="key">SPACE · HOLD</span></button>
+      <button class="verb attack" id="attack" type="button"><span class="word">ATTACK</span><span class="key" id="attack-key">A · NONE IN REACH</span></button>
+      <span class="gap"></span>
+      <button class="verb spend" id="sp-decoy" type="button" title="4 of you break away, loud, and run the other way"><span class="word">DECOY</span><span class="key">−4 D</span></button>
+      <button class="verb spend" id="sp-rearguard" type="button" title="5 of you stay behind and fight the first hunter to reach them"><span class="word">REARGUARD</span><span class="key">−5 R</span></button>
+      <button class="verb spend" id="sp-scout" type="button" title="3 of you go to look: see where they think you are for 10 ticks"><span class="word">SCOUT</span><span class="key">−3 S</span></button>
+      <button class="verb spend" id="sp-dig" type="button" title="8 of you dig a shallow warren here, of the kind you're most attuned to. Only while holding in the open"><span class="word">DIG HERE</span><span class="key">−8 G</span></button>
+    </div>
+
+    <div class="foot">
+      <p>Click a warren to run for it, any square to go there and hold. Click a ringed hunter to attack. Hover for the race. Forest hides you; lakes they can’t cross. Spends draw from the reserve first.</p>
+      <button class="working-toggle" id="working-toggle" type="button" aria-expanded="false">Show the working</button>
+    </div>
+    <div class="working" id="workingbar">
+      <label for="seed">Seed</label><input id="seed" type="number" value="1" min="1">
+      <select id="cfgsel" aria-label="Rules"><option value="tuned">Tuned rules</option><option value="defaults">Starting rules</option></select>
+      <select id="watch" aria-label="Player"><option value="">You play</option></select>
+      <button class="btn" id="newrun" type="button">New run</button>
+    </div>
+  </section>
 
   <section class="page" id="tab-chron" role="tabpanel" hidden><div id="chronicle"></div></section>
-
   <section class="page brief" id="tab-brief" role="tabpanel" hidden>
     <!--BRIEF-->
   </section>
 </div>
 
 <dialog id="draft">
-  <div class="lbl">DAWN · NIGHT <span id="dn"></span> SURVIVED</div>
+  <div class="label">Dawn · night <span id="dn"></span> survived</div>
   <h2 id="dawnline">You got under before the light.</h2>
-  <p class="dim" id="remnantline"></p>
-  <div id="boons" class="boons"></div>
+  <p class="mute" id="remnantline"></p>
+  <div id="boons" class="choices"></div>
 </dialog>
 
 <dialog id="ending">
-  <div class="lbl">THE WARREN FELL</div>
+  <div class="label">The warren fell</div>
   <h2 id="endline"></h2>
-  <p id="endmore" class="dim"></p>
-  <div id="heirs" class="boons heirs"></div>
+  <p id="endmore" class="mute"></p>
+  <div id="heirs" class="choices heirs"></div>
   <details class="eye"><summary>Show the working</summary><pre id="working"></pre></details>
-  <div class="row-btns"><button id="again" type="button">Same seed again</button><button id="next" type="button">Next seed</button></div>
+  <div class="row-btns"><button id="again" class="btn" type="button">Same seed again</button><button id="next" class="btn" type="button">Next seed</button></div>
 </dialog>
 
+<script src="board.js"></script>
 <script type="module" src="ui.js"></script>
 </body>
 </html>

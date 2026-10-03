@@ -30,10 +30,11 @@ catch (e) { console.error(String(e.stderr || e)); process.exit(1); }
 const html = read('index.html');
 const body = html.slice(html.indexOf('<body>') + 6, html.lastIndexOf('</body>'))
   .replace('<!--BRIEF-->', read('cd-brief.html'))
+  .replace(/<script src="board.js"><\/script>/, () => `<script>${read('board.js').replace(/<\/script/gi, '<\\/script')}\n</script>`)
   .replace(/<script type="module" src="ui.js"><\/script>/, () => `<script type="module">${js.replace(/<\/script/gi, '<\\/script')}\n</script>`);
 const head = `<title>The Last Warren</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,500;62..125,800;62..125,900&family=Literata:ital,opsz,wght@0,7..72,400;1,7..72,400&family=Martian+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400..800&family=Big+Shoulders+Stencil+Display:wght@400..900&display=swap">
 <style>${read('style.css')}</style>`;
 const out = process.argv.includes('--full')
   ? `<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n<meta name="viewport" content="width=device-width, initial-scale=1">\n${head}\n</head>\n<body>${body}</body>\n</html>\n`
