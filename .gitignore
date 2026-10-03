@@ -10,6 +10,7 @@ games/*/reports/
 seren/content/
 __pycache__/
 
-# Elsible: campaigns played locally never ship; the prototype page is built from the deck
+# Elsible: campaigns played locally never ship; the prototype pages are built from the deck
 elsible/LIVE/
 elsible/prototype/elsible.html
+elsible/prototype/parlor.html

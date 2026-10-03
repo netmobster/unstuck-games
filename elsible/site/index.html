@@ -1,35 +1,365 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Elsible · Unstuck Games</title>
-<meta name="description" content="You were dealt a life, and then... Storytelling with an AI narrator. In design.">
+<title>Elsible — You were dealt a life, and then...</title>
+<meta name="description" content="You were dealt a life, and then... Storytelling with an AI narrator. Pick your cards at the reader's table, seal your life in an envelope, and step through the door.">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;1,400&family=Space+Mono&display=swap">
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
 <style>
-/* A holding page. The session building Elsible replaces it with the real one. */
-:root { --ink:#100d0b; --cloth:#16100f; --bone:#e8e1d6; --dust:#a39a8f; --copper:#b07a4e; color-scheme: dark; }
+/* ---------- Elsible: home (design: Claude Design, 3 Oct 2026) ----------
+   Palette: velvet #1a2320 · cloth #202b27 · candle ivory #ecd3a6 · ash #c9b893 · brass #b08d57
+   Type:    Rozha One (display) · Cormorant Garamond (everything else)
+*/
+:root {
+  --velvet: #1a2320; --cloth: #202b27; --room: #0d1210;
+  --ivory: #ecd3a6; --ivory-hi: #fff4dc; --ash: #c9b893; --ash-dim: #8f8673; --brass: #b08d57;
+  --face: linear-gradient(180deg, #f3e3c3, #e6cfa3);
+  --display: 'Rozha One', Georgia, serif; --text: 'Cormorant Garamond', Georgia, serif;
+  color-scheme: dark;
+}
 * { box-sizing: border-box; }
-html, body { margin: 0; min-height: 100%; background: var(--ink); color: var(--bone); }
-body { min-height: 100vh; display: grid; place-items: center; padding: 16px;
-  background: radial-gradient(110% 70% at 50% 0%, #2a1b18 0%, var(--cloth) 45%, var(--ink) 100%) fixed; }
-main { text-align: center; }
-h1 { font: 400 clamp(44px, 9vw, 76px)/1 "IBM Plex Serif", Georgia, serif; margin: 0 0 14px; }
-h1 i { color: var(--copper); }
-p { font: italic 400 18px/1.5 "IBM Plex Serif", Georgia, serif; color: var(--dust); margin: 0 0 28px; }
-.small { font: 400 11px/1.6 "Space Mono", ui-monospace, monospace; letter-spacing: .14em; text-transform: uppercase; color: var(--dust); }
-.small a { color: var(--copper); }
+html, body { margin: 0; background: var(--room); color: var(--ivory); }
+body { font-family: var(--text); background: radial-gradient(ellipse 70% 50% at 50% 28%, #2a382f 0%, #1a2320 48%, #0d1210 100%) fixed; }
+a { color: var(--ivory); } a:hover { color: var(--ivory-hi); }
+button { font: inherit; cursor: pointer; color: inherit; }
+button:focus-visible, a:focus-visible { outline: 2px solid var(--ivory); outline-offset: 3px; }
+p { margin: 0; }
+.wrap { max-width: 1180px; margin: 0 auto; padding: 0 40px; }
+.kicker { font-size: 12px; letter-spacing: .24em; text-transform: uppercase; color: var(--ash); }
+.rule { border: 0; border-top: 1px solid rgba(176,141,87,.3); margin: 0; }
+
+/* header */
+.top { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding: 26px 0; }
+.brand { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+.brand span { font-family: var(--display); font-size: 22px; line-height: 1; }
+.top nav { display: flex; gap: 26px; align-items: center; }
+.top nav a { text-decoration: none; color: var(--ash); font-size: 14px; letter-spacing: .16em; text-transform: uppercase; }
+.top nav a:hover { color: var(--ivory); }
+
+.btn { display: inline-flex; align-items: center; gap: 12px; text-decoration: none; border-radius: 999px; font-family: var(--display); font-size: 18px; padding: 14px 28px; border: 1px solid var(--ivory); background: var(--ivory); color: var(--velvet); }
+.btn:hover { background: var(--ivory-hi); color: var(--velvet); }
+.btn.ghost { background: transparent; color: var(--ivory); border-color: rgba(176,141,87,.6); }
+.btn.ghost:hover { border-color: var(--ivory); background: rgba(236,211,166,.06); }
+
+/* hero */
+.hero { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 56px; align-items: center; padding: 56px 0 72px; }
+.hero h1 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(40px, 5vw, 66px); line-height: 1.02; letter-spacing: -.01em; text-wrap: pretty; }
+.hero h1 em { font-style: italic; font-family: var(--text); font-weight: 500; color: var(--ash); }
+.hero .lede { font-size: clamp(20px, 1.8vw, 24px); line-height: 1.4; max-width: 460px; text-wrap: pretty; margin-top: 26px; }
+.hero .acts { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; margin-top: 34px; }
+.hero .fine { font-style: italic; font-size: 15px; color: var(--ash); margin-top: 14px; }
+
+/* the loop: a miniature parlor */
+.loop { position: relative; border-radius: 16px; border: 1px solid rgba(176,141,87,.3); background: radial-gradient(ellipse 70% 60% at 50% 35%, rgba(236,211,166,.07), transparent 70%), rgba(13,18,16,.5); box-shadow: inset 0 0 80px rgba(0,0,0,.4), 0 30px 70px rgba(0,0,0,.45); padding: 26px 26px 0; display: flex; flex-direction: column; gap: 18px; min-height: 520px; overflow: hidden; user-select: none; }
+.loop .voice { text-align: center; font-style: italic; font-size: 17px; line-height: 1.3; min-height: 44px; color: var(--ivory); transition: opacity .35s; }
+.loop .voice.fade { opacity: 0; }
+.loop .spread { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); gap: 7px; }
+.mini { position: relative; aspect-ratio: 2 / 3; border-radius: 6px; border: 1px solid rgba(176,141,87,.35); padding: 8px 7px; display: flex; flex-direction: column; gap: 4px; color: var(--ash-dim); overflow: hidden; transition: background .4s, color .4s, border-color .4s, box-shadow .4s, rotate .4s; }
+.mini .n { font-size: 7px; letter-spacing: .14em; text-transform: uppercase; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.mini .t { font-family: var(--display); font-size: clamp(8px, .9vw, 10.5px); line-height: 1.1; overflow-wrap: anywhere; }
+.mini .shade { position: absolute; left: -20%; right: -20%; top: -30%; height: 58%; pointer-events: none; opacity: 0; transition: opacity .4s; background: radial-gradient(ellipse at 50% 0%, rgba(8,12,10,.3), transparent 70%); }
+.mini.focus { border-color: var(--ivory); color: var(--ivory); box-shadow: 0 0 0 1px var(--ivory); }
+.mini.filled { background: var(--face); color: var(--velvet); border-color: var(--brass); box-shadow: 0 8px 20px rgba(0,0,0,.5); }
+.mini.filled .shade { opacity: 1; }
+.mini.hers { background-color: var(--cloth); border-color: var(--brass); color: var(--ivory); align-items: center; justify-content: center;
+  background-image: repeating-linear-gradient(45deg, rgba(236,211,166,.13) 0 1px, transparent 1px 6px), repeating-linear-gradient(-45deg, rgba(236,211,166,.13) 0 1px, transparent 1px 6px);
+  box-shadow: inset 0 0 0 3px var(--cloth), inset 0 0 0 4px rgba(176,141,87,.6), 0 8px 20px rgba(0,0,0,.5); }
+.mini.hers .t { font-family: var(--text); font-style: italic; font-size: 9px; }
+.mini.dashed { border-style: dashed; }
+.loop .sentence { text-align: center; font-size: 15px; line-height: 1.45; min-height: 44px; text-wrap: pretty; padding: 0 10px; }
+.loop .sentence .ph { color: var(--ash-dim); font-style: italic; }
+.loop .hand { display: flex; align-items: flex-end; justify-content: center; height: 150px; overflow: hidden; margin-top: auto; padding: 0 20px; }
+.held { width: 104px; height: 168px; flex: none; margin: 0 -8px; border-radius: 6px; border: 1px solid var(--brass); background: var(--face); color: var(--velvet); padding: 11px 10px; display: flex; flex-direction: column; gap: 5px; box-shadow: 0 10px 24px rgba(0,0,0,.5); position: relative; overflow: hidden; transform-origin: 50% 100%; animation: deal .5s cubic-bezier(.2,.7,.2,1) both; transition: translate .45s cubic-bezier(.2,.7,.2,1), rotate .45s, box-shadow .45s; }
+.held .shade { position: absolute; left: -20%; right: -20%; top: -30%; height: 56%; pointer-events: none; background: radial-gradient(ellipse at 50% 0%, rgba(8,12,10,.22), transparent 70%); }
+.held .t { position: relative; font-family: var(--display); font-size: 12.5px; line-height: 1.1; }
+.held .l { position: relative; font-style: italic; font-size: 10.5px; line-height: 1.25; }
+.held.lift { translate: 0 -34px !important; rotate: 0deg !important; z-index: 2; box-shadow: 0 0 0 2px var(--ivory), 0 20px 40px rgba(0,0,0,.6); }
+.held.gone { opacity: 0; translate: 0 -120px !important; transition: opacity .35s, translate .45s; }
+@keyframes deal { from { opacity: 0; transform: translateY(40px); } to { opacity: 1; transform: none; } }
+@keyframes turn { from { transform: rotateY(90deg); } to { transform: none; } }
+.mini.turning { animation: turn .5s ease-out both; }
+.loop .tag { position: absolute; top: 12px; right: 14px; font-size: 10px; letter-spacing: .2em; text-transform: uppercase; color: var(--ash-dim); }
+.loop .pause { position: absolute; top: 8px; left: 12px; background: none; border: 1px solid rgba(176,141,87,.4); border-radius: 999px; color: var(--ash); font-size: 10px; letter-spacing: .2em; text-transform: uppercase; padding: 3px 10px; }
+.loop .pause:hover { color: var(--ivory); border-color: var(--ivory); }
+
+/* sections */
+section.block { padding: 72px 0; }
+.block h2 { margin: 0 0 18px; font-family: var(--display); font-weight: 400; font-size: clamp(30px, 3.4vw, 44px); line-height: 1.08; letter-spacing: -.01em; text-wrap: pretty; max-width: 760px; }
+.block .lede { font-size: 20px; line-height: 1.45; max-width: 640px; text-wrap: pretty; }
+.cols3 { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 36px; margin-top: 40px; }
+.cols3 h3 { margin: 0 0 10px; font-family: var(--display); font-weight: 400; font-size: 22px; line-height: 1.15; }
+.cols3 p { font-size: 17px; line-height: 1.45; color: var(--ash); text-wrap: pretty; }
+.cols3 .num { font-size: 12px; letter-spacing: .22em; color: var(--ash-dim); margin-bottom: 12px; }
+
+/* a passage */
+.passage { display: grid; grid-template-columns: minmax(0, 4fr) minmax(0, 7fr); gap: 56px; align-items: start; }
+.passage .card-stack { display: flex; flex-direction: column; gap: 10px; }
+.chip { display: inline-flex; gap: 8px; align-items: baseline; font-size: 14px; color: var(--ash); }
+.chip b { font-weight: 500; color: var(--ivory); font-family: var(--display); font-size: 15px; }
+.prose { font-size: clamp(19px, 1.7vw, 22px); line-height: 1.55; text-wrap: pretty; border-left: 1px solid rgba(176,141,87,.5); padding-left: 28px; }
+.prose p + p { margin-top: 1em; }
+.prose .you { display: block; margin-top: 1.2em; font-style: italic; color: var(--ash); }
+.prose .you::before { content: '› '; color: var(--brass); }
+
+/* the reader's lines */
+.lines { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 40px; }
+.line-card { border-radius: 12px; border: 1px solid rgba(176,141,87,.3); padding: 26px 26px 22px; display: flex; flex-direction: column; gap: 14px; background: rgba(13,18,16,.35); }
+.line-card .when { font-size: 11px; letter-spacing: .22em; text-transform: uppercase; color: var(--ash-dim); }
+.line-card .say { font-style: italic; font-size: 21px; line-height: 1.35; text-wrap: pretty; }
+
+/* three steps */
+.steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 20px; margin-top: 40px; }
+.step { position: relative; overflow: hidden; border-radius: 10px; background: var(--face); color: var(--velvet); border: 1px solid var(--brass); box-shadow: 0 12px 30px rgba(0,0,0,.5); padding: 24px 22px; display: flex; flex-direction: column; gap: 10px; min-height: 290px; }
+.step .shade { position: absolute; left: -20%; right: -20%; top: -30%; height: 56%; pointer-events: none; background: radial-gradient(ellipse at 50% 0%, rgba(8,12,10,.22), transparent 70%); }
+.step > * { position: relative; }
+.step .n { font-size: 11px; letter-spacing: .2em; text-transform: uppercase; opacity: .8; }
+.step h3 { margin: 0; font-family: var(--display); font-weight: 400; font-size: 22px; line-height: 1.1; }
+.step p { font-style: italic; font-size: 16px; line-height: 1.35; }
+.step code { margin-top: auto; font-family: ui-monospace, Menlo, monospace; font-size: 12.5px; line-height: 1.4; background: rgba(26,35,32,.08); border: 1px solid rgba(26,35,32,.2); border-radius: 6px; padding: 8px 10px; }
+.step a { margin-top: auto; align-self: flex-start; font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--velvet); text-decoration: underline; text-underline-offset: 3px; }
+.honest { margin-top: 28px; font-size: 17px; line-height: 1.5; color: var(--ash); max-width: 640px; text-wrap: pretty; }
+
+/* close + footer */
+.close { padding: 80px 0 90px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 24px; }
+.close h2 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(34px, 4vw, 54px); line-height: 1.05; }
+.close .fine { font-style: italic; font-size: 16px; color: var(--ash); }
+footer { padding: 28px 0 40px; display: flex; justify-content: space-between; align-items: baseline; gap: 20px; flex-wrap: wrap; font-size: 15px; color: var(--ash); }
+footer a { color: var(--ivory); }
+
+@media (max-width: 900px) {
+  .wrap { padding: 0 20px; }
+  .hero { grid-template-columns: 1fr; gap: 40px; padding: 32px 0 56px; }
+  .loop { min-height: 460px; padding: 34px 16px 0; }
+  .loop .spread { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .mini .t { font-size: 10.5px; }
+  .cols3, .lines, .steps, .passage { grid-template-columns: 1fr; }
+  .top nav { display: none; }
+  .held { width: 92px; height: 150px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .held, .mini.turning { animation: none; }
+  .mini, .held, .loop .voice { transition: none; }
+  .loop .pause { display: none; }
+}
 </style>
 </head>
 <body>
-<main>
-  <h1>Els<i>ible</i></h1>
-  <p>You were dealt a life, and then…</p>
-  <div class="small">In design · <a href="/play/">try the deal</a></div>
-</main>
+<div class="wrap">
+
+  <header class="top">
+    <a class="brand" href="/"><svg width="15" height="25" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="5"/><rect x="25" y="52" width="10" height="46" fill="#ecd3a6"/></svg><span>Elsible</span></a>
+    <nav><a href="#how">How it holds</a><a href="#session">A session</a><a href="#reader">The reader</a><a href="#steps">Playing</a></nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>You were dealt a life, <em>and then...</em></h1>
+      <p class="lede">Everyone has wondered what they’d do with a second go. The reader deals you one: a life, maybe yours, taken at the other fork. Sometimes it’s somebody else’s entirely, in a place or a time you’ve never been. You take the cards you want. She keeps one face down. Then you step through the door and live it.</p>
+      <div class="acts"><a class="btn" href="/play/">Sit down <span aria-hidden="true">→</span></a><a class="btn ghost" href="#how">How it holds</a></div>
+      <p class="fine">Nothing to roll. No stat sheet. One character, which is you.</p>
+    </div>
+    <div class="loop" id="loop" aria-label="The reader dealing a life, on a loop">
+      <button class="pause" id="lPause" type="button" aria-pressed="false">Pause</button>
+      <div class="tag">The Parlor</div>
+      <div class="voice" id="lVoice" aria-hidden="true"></div>
+      <div class="spread" id="lSpread" aria-hidden="true"></div>
+      <p class="sentence" id="lSentence" aria-hidden="true"></p>
+      <div class="hand" id="lHand" aria-hidden="true"></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="block" id="how">
+    <div class="kicker">How it holds</div>
+    <h2>Most story games forget who you are by the second evening. This one can’t.</h2>
+    <p class="lede">A chat log drifts. Elsible doesn’t run on one. Your life is written down before you take a step in it, and your narrator keeps the record while you play.</p>
+    <div class="cols3">
+      <div><div class="num">I</div><h3>The life is written first</h3><p>Your cards become a document before the first scene: who you are, where this is, who’s at the centre, who’s around you, how it’s told. The story grows from that, not from whatever was said last.</p></div>
+      <div><div class="num">II</div><h3>Your narrator keeps the record</h3><p>Every person you meet, every promise, every door you open stays on the record. Weeks later, the one who tested you remembers what you answered.</p></div>
+      <div><div class="num">III</div><h3>The half you don’t get told is already moving</h3><p>A secret, a twist, what happens if nobody intervenes. It’s written as you step through the door, so the story is going somewhere whether you push or not.</p></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="block" id="session">
+    <div class="kicker">What a session feels like</div>
+    <h2>You type what you do. Your narrator tells you what happens.</h2>
+    <div class="passage" style="margin-top:40px">
+      <div class="card-stack">
+        <div class="chip"><span>The story</span><b>Fake dating</b></div>
+        <div class="chip"><span>Who you are</span><b>The bridesmaid</b></div>
+        <div class="chip"><span>Where</span><b>The wedding weekend</b></div>
+        <div class="chip"><span>The Other</span><b>Grumpy to your sunshine</b></div>
+        <div class="chip"><span>The circle</span><b>The group chat · The ex</b></div>
+        <div class="chip"><span>Told by</span><b>The rom-com narrator</b></div>
+        <div class="chip"><span>And now</span><b>The plus-one</b></div>
+        <div class="chip"><span>And then...</span><b style="color:var(--ash-dim); font-family:var(--text); font-style:italic; font-weight:400">sealed in</b></div>
+      </div>
+      <div class="prose">
+        <p>Here’s the thing about being a bridesmaid for the fourth time: you know exactly where the bar is before the venue does. So when the groom’s brother, who has said eleven words to you in two years and nine of them were “excuse me”, sits down on the stool next to yours and says “I need a favour,” you know two things. One, this is the rehearsal dinner and your ex is at table six with someone who does Pilates. Two, you already know what the favour is.</p>
+        <p>“My mother,” he says, to his drink, “thinks I’m bringing someone.”</p>
+        <span class="you">You say: “You’re kidding. Who?”</span>
+        <p>He doesn’t answer, which, you’ll realise later, was the answer. The group chat has already noticed where you’re sitting. It has opinions. One of them is a photo.</p>
+      </div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="block" id="reader">
+    <div class="kicker">The reader</div>
+    <h2>She’s seen every life. She finds yours interesting anyway.</h2>
+    <p class="lede">She deals the cards and nothing else. The doorkeeper takes you through the door. After that, the story is told by the narrator you picked.</p>
+    <div class="lines">
+      <div class="line-card"><div class="when">When you sit</div><div class="say">Sit. Seven cards make a life. For each I deal you five, and you keep one; two, for the people around you. The kind of story first; everyone knows the kind they want, they just don’t say it out loud.</div></div>
+      <div class="line-card"><div class="when">When you refuse her card</div><div class="say">Picky. Fine. That’s three refused. The fourth is still mine.</div></div>
+      <div class="line-card"><div class="when">At the door</div><div class="say">One more, face down. Seal it in and the doorkeeper turns it: what you wished for, or a price for it. Mostly a price. Or leave it with me.</div></div>
+    </div>
+  </section>
+
+  <hr class="rule">
+
+  <section class="block" id="steps">
+    <div class="kicker">Playing</div>
+    <h2>Three steps. The first one you only do once.</h2>
+    <div class="steps">
+      <div class="step" style="rotate:-1.5deg"><div class="shade"></div><div class="n">I</div><h3>Get Claude Code</h3><p>From Anthropic. It runs in a terminal window on your computer, and it needs a paid Claude plan (Pro or Max); the free plan doesn’t include it.</p><a href="https://claude.ai/code" target="_blank" rel="noopener">claude.ai/code ↗</a></div>
+      <div class="step" style="rotate:1deg"><div class="shade"></div><div class="n">II</div><h3>Sit down at the table</h3><p>Pick your cards in the Parlor. When the life is set, seal it in an envelope and take it with you: one small file.</p><a href="/play/">The Parlor →</a></div>
+      <div class="step" style="rotate:-.5deg"><div class="shade"></div><div class="n">III</div><h3>Open the door</h3><p>Put the envelope in a folder, open Claude Code there, and type one line. The doorkeeper takes it from there.</p><code>I’m ready. Open the door.</code></div>
+    </div>
+    <p class="honest">Elsible is played inside Claude Code, a text tool made by Anthropic. It’s where your narrator can keep the whole life in view at once; a browser chat can’t. If a terminal window sounds like a lot, it’s one install and one typed line, and the doorkeeper is on the other side of it.</p>
+  </section>
+
+  <hr class="rule">
+
+  <section class="close">
+    <h2>Sit down.</h2>
+    <a class="btn" href="/play/">Sit down <span aria-hidden="true">→</span></a>
+    <p class="fine">Nothing locks until you walk through. Change any card until then.</p>
+  </section>
+
+  <footer>
+    <span>Packs are coming: romance, mystery, horror, other worlds. If you write, write one. <a href="mailto:jay@unstuck-games.com">jay@unstuck-games.com</a></span>
+    <span>Elsible · an <a href="https://unstuck-games.com/">Unstuck Games</a> title</span>
+  </footer>
+</div>
+
+<script>
+// ============================================================
+// THE LOOP: the reader deals a life, slot by slot, then her card turns; repeat.
+// A trimmed sample for show; the full deck lives in the Parlor.
+// ============================================================
+const SLOTS = [
+  { id: 'story',  name: 'The story',   q: 'What kind of story?',  line: 'Seven cards make a life. For each, I deal five; you keep one. The story first.' },
+  { id: 'who',    name: 'Who you are', q: 'Who are you?',         line: 'Now who you are in it. Pick someone you can stand.' },
+  { id: 'where',  name: 'Where',       q: 'Where is this life?',  line: 'Where this life keeps you. Everywhere has rules.' },
+  { id: 'other',  name: 'The Other',   q: 'Who’s at the centre?', line: 'Who’s at the centre of it. Not always who you’d choose.' },
+  { id: 'circle', name: 'The circle',  q: 'Who’s around you?',   line: 'Two from your circle. Everyone has at least two.', pick: 2 },
+  { id: 'told',   name: 'Told by',     q: 'Who’s telling it?',   line: 'Who tells it. People skip this one and regret it.' },
+  { id: 'burn',   name: 'The burn',    q: 'How does it burn?',    line: 'How it burns. Or leave it.' },
+];
+const DECK = {
+  story: [['Enemies to lovers', 'You need the person you came here to beat'], ['Fake dating', 'An arrangement, with rules'], ['Second chance', 'The one that got away is back in town'], ['The impostor', 'You were pretending until it mattered'], ['Found family', 'Strangers who became yours'], ['The long con', 'You’re here to take something'], ['Friends to lovers', 'The best thing in your life, and you might break it'], ['The file on them', 'You were looking into them. You kept looking']],
+  who: [['The new hire', 'First week, and everyone already has a version of you'], ['The bridesmaid', 'Again'], ['The night-shift nurse', 'You see people at their worst, at 3am'], ['The ghostwriter', 'You write other people’s lives for a living'], ['The one who came back', 'You left town. Now you’re home'], ['The assistant', 'In every room, and nobody sees you'], ['The detective', 'It’s your job to find out'], ['The heir to the family business', 'It’s yours, and you didn’t want it']],
+  where: [['The small town', 'You can’t buy milk without being asked about it'], ['The office', 'Open plan, glass walls, one kitchen'], ['The lake house', 'One summer, one house, too many people'], ['The tour', 'A band, a bus, forty cities in sixty days'], ['The hospital', 'Long shifts, high stakes'], ['The wedding weekend', 'Three days, one venue, everyone you know'], ['The family restaurant', 'Three generations, one kitchen'], ['The city at night', 'Everyone’s anonymous until they aren’t']],
+  other: [['The one who tests you', '“Show me who you are”'], ['The boss', 'They sign your reviews'], ['Grumpy to your sunshine', 'They’re rude to everyone. Slightly less to you'], ['The one who left', 'They had a reason, and never said it'], ['The rival', 'Only one of you gets it'], ['The one who knows your secret', 'They could ruin you, and they haven’t'], ['The one who believes in you', '“You’ll come round. I can wait”'], ['The one who doesn’t know', 'They have no idea what you are to them']],
+  circle: [['The group chat', 'Everyone has an opinion, instantly'], ['The ex', 'Still around, still kind, still a problem'], ['The dog', 'Follows you everywhere'], ['The sibling', 'Shares your history and your blame'], ['The roommate', 'Knows when you came home, and who with'], ['The old friend', 'Knew you before all this'], ['The kid', 'Small, honest, always listening'], ['The parent who calls every day', 'Loves you. Has notes']],
+  told: [['Your diary', 'first person, late at night'], ['The rom-com narrator', 'warm, knowing, a little smug'], ['The true-crime podcast', 'slow, careful, a little ominous'], ['The nature documentary', 'hushed, observational, deadpan'], ['The noir detective', 'rain, cigarettes, regret'], ['The wedding toast', 'affectionate, slightly drunk'], ['The gossip column', 'breathless and three steps ahead'], ['Your best friend, telling it later', 'over drinks, years from now']],
+  burn: [['Slow burn', 'Not yet. Not yet'], ['Forced proximity', 'Stuck together. One room. One bed'], ['A ticking clock', 'The time left is always in view'], ['Everyone’s lying a little', 'Nobody tells the whole truth'], ['A comedy of errors', 'Everything goes wrong in the funniest order'], ['Opposites attract', 'You disagree about everything'], ['Hurt / comfort', 'Someone is carrying a wound'], ['A love triangle', 'There’s a third person, and they’re not wrong']],
+  andnow: [['The plus-one', 'You need a date by Saturday'], ['The power cut', 'Nobody leaves until the lights come back'], ['The wrong text', 'You sent it to the wrong person'], ['The reunion', 'Ten years, one room, everyone you used to be'], ['The visitor', 'Someone arrived who knows the truth about you'], ['The deadline', 'Something closes on a date'], ['The inheritance', 'The will is read on Friday'], ['The screenshot', 'It’s already in the group chat']],
+};
+const $ = id => document.getElementById(id);
+const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+const mid = s => s ? s.charAt(0).toLowerCase() + s.slice(1) : s;
+const shuffle = a => [...a].sort(() => Math.random() - .5);
+const REDUCE = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+let paused = false, resume = null;
+const hold = () => paused ? new Promise(r => { resume = r; }) : Promise.resolve();
+const wait = async ms => { await new Promise(r => setTimeout(r, ms)); await hold(); };
+
+let picks, tilts, an;
+function reset() { picks = { circle: [] }; an = null; tilts = {}; for (const s of SLOTS) tilts[s.id] = (Math.random() * 5 - 2.5).toFixed(2); tilts.andnow = (Math.random() * 6 - 3).toFixed(2); }
+
+function drawSpread(focus, anState) {
+  let html = '';
+  for (const s of SLOTS) {
+    const v = picks[s.id], filled = s.id === 'circle' ? v.length > 0 : !!v;
+    const title = s.id === 'circle' ? (v.length ? v.map(c => c[0]).join(' · ') : s.q) : (v ? v[0] : s.q);
+    html += '<div class="mini' + (filled ? ' filled' : '') + (focus === s.id ? ' focus' : '') + '" style="rotate:' + (filled ? tilts[s.id] : 0) + 'deg"><div class="shade"></div><div class="n">' + esc(s.name) + '</div><div class="t">' + esc(title) + '</div></div>';
+  }
+  if (anState === 'down') html += '<div class="mini hers" style="rotate:' + tilts.andnow + 'deg"><div class="t">and then...</div></div>';
+  else if (anState === 'up') html += '<div class="mini filled' + (REDUCE ? '' : ' turning') + '" style="rotate:' + tilts.andnow + 'deg; --shade:.3"><div class="shade"></div><div class="n">And now</div><div class="t">' + esc(an[0]) + '</div></div>';
+  else html += '<div class="mini dashed"><div class="n">And now</div><div class="t" style="font-family:var(--text); font-style:italic; font-size:9px">hers to play</div></div>';
+  $('lSpread').innerHTML = html;
+}
+function drawSentence(taken) {
+  const on = t => esc(t), ph = t => '<span class="ph">' + esc(t) + '</span>', p = picks;
+  const w = (k, fb) => p[k] ? on(mid(p[k][0])) : ph(fb);
+  let s = (p.story ? on(p.story[0]) : ph('A story')) + ': ' + w('who', 'someone') + ' in ' + w('where', 'somewhere') + ', with ' + w('other', 'someone') + ' at the centre, ';
+  s += p.circle.length === 2 ? on(mid(p.circle[0][0])) + ' and ' + on(mid(p.circle[1][0])) + ' around you' : p.circle.length === 1 ? on(mid(p.circle[0][0])) + ' and ' + ph('one more') + ' around you' : ph('nobody yet around you');
+  if (p.burn) s += '; ' + on(mid(p.burn[0]));
+  s += taken && an ? '; and now ' + on(mid(an[0])) : '; ' + ph('and then...');
+  s += ' — told by ' + w('told', 'a voice not yet chosen') + '.';
+  $('lSentence').innerHTML = s;
+}
+async function say(t) { const v = $('lVoice'); v.classList.add('fade'); await wait(300); v.textContent = t; v.classList.remove('fade'); }
+function dealHand(cards) {
+  const h = $('lHand'); h.innerHTML = '';
+  cards.forEach((c, i) => { const off = i - (cards.length - 1) / 2; const d = document.createElement('div'); d.className = 'held'; d.style.cssText = 'rotate:' + (off * 4) + 'deg; translate:0 ' + (Math.abs(off) * 10 + 14) + 'px; animation-delay:' + (i * 70) + 'ms'; d.innerHTML = '<div class="shade"></div><div class="t">' + esc(c[0]) + '</div><div class="l">' + esc(c[1]) + '</div>'; h.appendChild(d); });
+  return [...h.children];
+}
+function still() {
+  // Reduced motion: one finished life, at rest.
+  reset();
+  for (const s of SLOTS) { const cards = shuffle(DECK[s.id]); if (s.id === 'circle') picks.circle = cards.slice(0, 2); else picks[s.id] = cards[0]; }
+  an = DECK.andnow[Math.floor(Math.random() * DECK.andnow.length)];
+  drawSpread(null, 'up'); drawSentence(true);
+  $('lVoice').textContent = 'One more, face down. Seal it in, or leave it with me.';
+}
+async function run() {
+  while (true) {
+    reset();
+    for (const s of SLOTS) {
+      drawSpread(s.id, null); drawSentence(false);
+      await say(s.line);
+      const cards = shuffle(DECK[s.id]).slice(0, 5);
+      const els = dealHand(cards);
+      await wait(1500);
+      const n = s.pick || 1;
+      for (let k = 0; k < n; k++) {
+        const idx = [1, 3, 2, 0, 4][(k * 2 + Math.floor(Math.random() * 2)) % 5];
+        const el = els[idx]; if (!el || el.classList.contains('gone')) continue;
+        el.classList.add('lift'); await wait(650);
+        el.classList.add('gone');
+        if (s.id === 'circle') picks.circle.push(cards[idx]); else picks[s.id] = cards[idx];
+        drawSpread(s.id, null); drawSentence(false);
+        await wait(500);
+      }
+      await wait(600);
+    }
+    // her card
+    $('lHand').innerHTML = '';
+    an = DECK.andnow[Math.floor(Math.random() * DECK.andnow.length)];
+    drawSpread(null, 'down'); await say('That’s a life. Now I play one.'); await wait(1600);
+    drawSpread(null, 'up'); drawSentence(true); await say('There it is. Take it, or make me play another.'); await wait(2400);
+    await say('One more, face down. Seal it in, or leave it with me.'); await wait(3000);
+    await say(''); await wait(400);
+  }
+}
+$('lPause').addEventListener('click', () => {
+  paused = !paused;
+  if (!paused && resume) { resume(); resume = null; }
+  $('lPause').textContent = paused ? 'Play' : 'Pause';
+  $('lPause').setAttribute('aria-pressed', String(paused));
+});
+if (REDUCE) still(); else run();
+</script>
 <script src="/switcher.js" defer></script>
 </body>
 </html>
