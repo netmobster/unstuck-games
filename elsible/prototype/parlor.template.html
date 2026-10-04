@@ -123,8 +123,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .sentence .ph { color: var(--ash); font-style: italic; }
 .door-row { display: flex; align-items: center; gap: 18px; flex-wrap: wrap; justify-content: center; }
 .door-row .note { font-style: italic; font-size: 15px; color: var(--ash); }
-.door-btn { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--ash); border: 1px solid rgba(176,141,87,.5); border-radius: 999px; padding: 13px 26px; font-family: var(--display); font-size: 18px; pointer-events: none; }
-.door-btn.ready { background: var(--ivory); color: var(--velvet); border-color: var(--ivory); pointer-events: auto; }
+.door-btn { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--ash); border: 1px solid rgba(176,141,87,.5); border-radius: 999px; padding: 13px 26px; font-family: var(--display); font-size: 18px; }
+.door-btn:hover { border-color: var(--ivory); color: var(--ivory); }
+.door-btn.ready { background: var(--ivory); color: var(--velvet); border-color: var(--ivory); }
 .door-btn.ready:hover { background: var(--ivory-hi); }
 
 /* your hand */
@@ -142,6 +143,12 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .held .play { font-size: 13px; line-height: 1.35; margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(176,141,87,.45); opacity: .9; }
 .held:hover { translate: 0 -40px !important; rotate: 0deg !important; z-index: 10; box-shadow: 0 26px 50px rgba(0,0,0,.6); }
 .held.taken { background: var(--ivory); box-shadow: 0 0 0 3px var(--ivory), 0 0 0 4px var(--brass), 0 18px 40px rgba(0,0,0,.55); }
+/* her card, when the hand moves on to it */
+.held-back { width: 176px; height: 290px; flex: none; border-radius: 10px; color: var(--ivory); animation: deal .55s cubic-bezier(.2,.7,.2,1) both; transition: translate .12s cubic-bezier(.2,.8,.2,1); }
+.held-back .name { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
+.held-back i { font-size: 16px; }
+.held-back:hover { translate: 0 -14px; }
+.andnow.focus .down, .andnow.focus .up, .andnow.focus .waiting { box-shadow: 0 0 0 2px var(--ivory), 0 14px 34px rgba(0,0,0,.5); }
 
 @keyframes deal { from { opacity: 0; transform: translateY(46px); } to { opacity: 1; transform: none; } }
 @keyframes turn { from { transform: rotateY(90deg); } to { transform: none; } }
@@ -198,6 +205,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .door-btn { padding: 9px 20px; font-size: 16px; }
   .hand { padding-top: 14px; padding-bottom: 46px; }
   .held { width: 150px; height: 248px; padding: 16px 14px; }
+  .held-back { width: 150px; height: 248px; }
   .held .title { font-size: 18px; }
   .held .line { font-size: 14px; }
   .held .play { font-size: 12px; padding-top: 8px; }
@@ -361,6 +369,7 @@ const LINES = {
   taken: 'That’s a life. Open the door; I’ll have one more card for you there.',
   again: ['Another, then. I’ve got all night.', 'Picky. Fine.', 'That’s three refused. The fourth is still mine.', 'I could do this longer than you can.'],
   reshuffle: 'That’s every card I have. Back to the top of the deck; you’ve seen them all now.',
+  andnow: 'Fill the life first. Then I play one.',
 };
 const OFFER = {
   none: 'One more, face down. Seal it into your envelope and the doorkeeper turns it at the door. You wished for this life; my card says how it’s granted. Mostly at a price. Now and then, a gift. Or leave it with me, and you get the life you picked. Near enough.',
@@ -375,7 +384,7 @@ const KEY = 'elsible.parlor.v5';
 const CARDS_PER_HAND = (DECK.deal && DECK.deal.per_slot) || 5;
 let deck = {};
 const DIAL_START = { absurdity: 2, stakes: 3, cost: 2, people: 3, length: 3 };
-let S = { focus: 'story', hands: {}, picks: { circle: [] }, an: null, anUp: false, anTaken: false, refused: [], reshuffled: false, dealN: 0, played: false, business: false, tilts: {}, door: null, djinn: null, dials: Object.fromEntries(DIALS.map(d => [d.id, DIAL_START[d.id] || 3])), downloaded: false };
+let S = { focus: 'story', hands: {}, seen: {}, picks: { circle: [] }, an: null, anUp: false, anTaken: false, refused: [], reshuffled: false, dealN: 0, played: false, business: false, tilts: {}, door: null, djinn: null, dials: Object.fromEntries(DIALS.map(d => [d.id, DIAL_START[d.id] || 3])), downloaded: false };
 
 function buildDeck(withBusiness) {
   const d = {};
@@ -401,13 +410,28 @@ function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e
 // ============================================================
 // MOVES
 // ============================================================
-function dealAll() { const hands = {}; for (const s of SLOTS) hands[s.id] = draw(s.id, CARDS_PER_HAND); Object.assign(S, { hands, picks: { circle: [] }, an: null, anUp: false, anTaken: false, refused: [], reshuffled: false, focus: 'story', played: false, djinn: null, dealN: S.dealN + 1, tilts: rollTilts() }); save(); }
+function dealAll() { const hands = {}, seen = {}; for (const s of SLOTS) { hands[s.id] = draw(s.id, CARDS_PER_HAND); seen[s.id] = hands[s.id].slice(); } Object.assign(S, { hands, seen, picks: { circle: [] }, an: null, anUp: false, anTaken: false, refused: [], reshuffled: false, focus: 'story', played: false, djinn: null, dealN: S.dealN + 1, tilts: rollTilts() }); save(); }
+// Deal again from the cards she hasn't shown you yet, like a real deck; she reshuffles only when she runs out.
+function dealFresh(cat) {
+  S.seen = S.seen || {};
+  const shown = S.seen[cat] || [];
+  let hand = draw(cat, CARDS_PER_HAND, shown);
+  if (hand.length < CARDS_PER_HAND) {
+    hand = hand.concat(draw(cat, CARDS_PER_HAND - hand.length, hand.concat(S.hands[cat] || [])));
+    if (hand.length < CARDS_PER_HAND) hand = hand.concat(draw(cat, CARDS_PER_HAND - hand.length, hand));
+    S.seen[cat] = hand.slice();
+  } else S.seen[cat] = shown.concat(hand);
+  return hand;
+}
 function settleAndNow() { if (!lifeSet(S.picks)) Object.assign(S, { an: null, anUp: false, anTaken: false }); else if (!S.an) Object.assign(S, { an: herNext(), anUp: false, anTaken: false }); }
+const emptySlot = (id, p) => id === 'circle' ? (p.circle || []).length < 2 : !p[id];
+function firstEmpty(p) { const s = SLOTS.find(s => s.id !== 'burn' && emptySlot(s.id, p)); return s ? s.id : null; }
+// After the last card you pick, the hand moves on to hers.
 function nextSlot(from, p) {
   const ids = SLOTS.map(s => s.id), i = ids.indexOf(from);
-  const empty = id => id === 'circle' ? (p.circle || []).length < 2 : !p[id];
-  for (let k = 1; k < ids.length; k++) { const id = ids[(i + k) % ids.length]; if (id !== 'burn' && empty(id)) return id; }
-  return empty('burn') && from !== 'burn' ? 'burn' : from;
+  for (let k = 1; k < ids.length; k++) { const id = ids[(i + k) % ids.length]; if (id !== 'burn' && emptySlot(id, p)) return id; }
+  if (from !== 'burn' && emptySlot('burn', p)) return 'burn';
+  return 'andnow';
 }
 function take(slot, id) {
   const p = S.picks; let focus = S.focus;
@@ -417,14 +441,22 @@ function take(slot, id) {
   S.focus = focus; S.played = false; S.reshuffled = false; settleAndNow(); save();
 }
 const ACTS = {
-  dealAgain() { const f = S.focus; S.hands[f] = draw(f, CARDS_PER_HAND); if (f === 'circle') S.picks.circle = []; else S.picks[f] = null; S.played = false; S.dealN++; settleAndNow(); save(); },
+  dealAgain() {
+    const f = S.focus;
+    if (f === 'andnow') { if (S.an && S.anUp && !S.anTaken) ACTS.another(); return; }
+    S.hands[f] = dealFresh(f); if (f === 'circle') S.picks.circle = []; else S.picks[f] = null; S.played = false; S.dealN++; settleAndNow(); save();
+  },
   newHand() { dealAll(); },
-  playItOut() { const h = S.hands, pick = a => a[Math.floor(Math.random() * a.length)]; S.picks = { story: pick(h.story), who: pick(h.who), where: pick(h.where), other: pick(h.other), told: pick(h.told), burn: Math.random() < .75 ? pick(h.burn) : null, circle: [...h.circle].sort(() => Math.random() - .5).slice(0, 2) }; S.reshuffled = false; Object.assign(S, { played: true, an: herNext(), anUp: true, anTaken: false, focus: 'story' }); save(); },
+  playItOut() { const h = S.hands, pick = a => a[Math.floor(Math.random() * a.length)]; S.picks = { story: pick(h.story), who: pick(h.who), where: pick(h.where), other: pick(h.other), told: pick(h.told), burn: Math.random() < .75 ? pick(h.burn) : null, circle: [...h.circle].sort(() => Math.random() - .5).slice(0, 2) }; S.reshuffled = false; Object.assign(S, { played: true, an: herNext(), anUp: true, anTaken: false, focus: 'andnow' }); save(); },
   togglePack() { S.business = !S.business; deck = buildDeck(S.business); dealAll(); },
-  turnIt() { S.anUp = true; save(); },
+  turnIt() { S.anUp = true; S.focus = 'andnow'; save(); },
   takeIt() { S.anTaken = true; S.reshuffled = false; save(); },
-  another() { S.refused.push(S.an); S.reshuffled = false; S.an = herNext(); S.anUp = false; S.anTaken = false; save(); },
-  openDoor() { if (S.anTaken) { S.door = 'door'; save(); } },
+  another() { S.refused.push(S.an); S.reshuffled = false; S.an = herNext(); S.anUp = false; S.anTaken = false; S.focus = 'andnow'; save(); },
+  // Open the door always does something: it opens, or it takes you to what's missing.
+  openDoor() {
+    if (S.anTaken) { S.door = 'door'; save(); return; }
+    S.focus = lifeSet(S.picks) ? 'andnow' : (firstEmpty(S.picks) || S.focus); save();
+  },
   closeDoor() { S.door = null; save(); },
   seal() { S.djinn = 'sealed'; save(); },
   leave() { S.djinn = 'left'; save(); },
@@ -503,10 +535,10 @@ function render() {
     html += '<button class="card slot' + (filled ? ' filled' : '') + (foc ? ' focus' : '') + '" data-slot="' + s.id + '" style="rotate:' + tilt + 'deg; --shade:' + shade + '"><div class="shade"></div><div class="name">' + esc(s.name) + '</div><div class="title">' + esc(title) + '</div><div class="sub">' + esc(sub) + '</div></button>';
   }
   const anTilt = set && S.an ? (T.andnow || 0) : 0;
-  html += '<div class="andnow" style="rotate:' + anTilt + 'deg">';
+  html += '<div class="andnow' + (S.focus === 'andnow' ? ' focus' : '') + '" style="rotate:' + anTilt + 'deg">';
   if (!set || !S.an) html += '<div class="waiting"><div class="name">And now</div><div class="sub">hers to play</div></div>';
   else if (anDown) html += '<button class="back down" data-act="turnIt"><div class="name">Her card</div><i>tap to turn</i></button>';
-  else html += '<div class="card up' + (S.anTaken ? ' taken' : '') + '" style="--shade:.28"><div class="shade"></div><div class="name">And now</div><div class="title">' + esc(an.title) + '</div><div class="sub">' + esc(an.line) + '</div></div>';
+  else html += '<button class="card up' + (S.anTaken ? ' taken' : '') + '" data-slot="andnow" style="--shade:.28"><div class="shade"></div><div class="name">And now</div><div class="title">' + esc(an.title) + '</div><div class="sub">' + esc(an.line) + '</div></button>';
   html += '</div>';
   $('spread').innerHTML = html;
 
@@ -518,13 +550,27 @@ function render() {
   // sentence + door
   $('sentence').innerHTML = sentenceHTML();
   $('doorBtn').classList.toggle('ready', !!S.anTaken);
-  $('doorNote').textContent = S.anTaken ? 'Nothing is locked. Change any card until you walk through.' : (set ? 'Take her card first.' : 'Fill the life first. Nothing locks.');
+  $('doorNote').textContent = S.anTaken ? 'Nothing is locked. Change any card until you walk through.' : !set ? 'Fill the life first. Nothing locks.' : anDown ? 'Turn her card, then take it.' : 'Take her card, or make her play another.';
 
-  // hand
+  // hand: the slot in focus, or her card once your picks are done
+  const hand = $('hand'); hand.innerHTML = '';
+  if (S.focus === 'andnow') {
+    $('handName').textContent = 'And now';
+    $('handQ').textContent = !set ? 'Fill the life first; then she plays one.' : anDown ? 'She plays one back. Turn it when you’re ready.' : S.anTaken ? 'Taken. Open the door.' : 'Take it, or make her play another.';
+    $('handCount').textContent = S.refused.length && !S.anTaken ? S.refused.length + ' refused · she remembers' : '';
+    if (set && S.an && anDown) hand.innerHTML = '<button class="back held-back" data-act="turnIt"><div class="name">Her card</div><i>tap to turn</i></button>';
+    else if (set && S.an) {
+      const b = document.createElement('button'); b.className = 'card held' + (S.anTaken ? ' taken' : '');
+      if (!S.anTaken) b.dataset.act = 'takeIt';
+      b.setAttribute('aria-label', S.anTaken ? 'Her card, taken: ' + an.title : 'Take her card: ' + an.title);
+      b.style.cssText = '--shade:.2';
+      b.innerHTML = '<div class="shade"></div><div class="name">And now</div><div class="title">' + esc(an.title) + '</div><div class="line">' + esc(an.line) + '</div><div class="play">' + esc(an.play) + '</div>';
+      hand.appendChild(b);
+    }
+  } else {
   const f = SLOTS.find(s => s.id === S.focus), fv = p[S.focus], ids = S.hands[S.focus] || [];
   $('handName').textContent = f.name; $('handQ').textContent = f.q;
   $('handCount').textContent = (f.pick === 2 ? 'Take two' : f.optional ? 'Take one, or leave it' : 'Take one') + ' · ' + ids.length + ' of ' + deck[S.focus].length + ', she holds the rest';
-  const hand = $('hand'); hand.innerHTML = '';
   ids.forEach((id, i) => {
     const c = card(S.focus, id); if (!c) return;
     const taken = S.focus === 'circle' ? fv.includes(id) : fv === id, off = i - (ids.length - 1) / 2;
@@ -533,6 +579,7 @@ function render() {
     b.innerHTML = '<div class="shade"></div><div class="title">' + esc(c.title) + '</div><div class="line">' + esc(c.line) + '</div><div class="play">' + esc(c.play) + '</div>';
     hand.appendChild(b);
   });
+  }
 
   // the door
   const open = !!S.door && S.anTaken;
