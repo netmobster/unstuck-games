@@ -24,6 +24,7 @@ try { var s = parseInt(localStorage.getItem('elsible.textsize') || '0', 10) || 0
   --ivory: #ecd3a6; --ivory-hi: #fff4dc; --ash: #c9b893; --ash-dim: #8f8673; --brass: #b08d57;
   --face: linear-gradient(180deg, #f3e3c3, #e6cfa3);
   --display: 'Rozha One', Georgia, serif; --text: 'Cormorant Garamond', Georgia, serif;
+  --ember: #c9563f; --ember-hi: #e8795f;   /* one red, for the one card that costs you */
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -72,15 +73,20 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .stack .back { position: absolute; inset: 0; }
 .stack .under { background-image: none; box-shadow: none; border-color: rgba(176,141,87,.55); }
 .stack .u1 { translate: 4px 5px; rotate: 3deg; } .stack .u2 { translate: 2px 2px; rotate: 1.5deg; }
-.hers { width: 84px; height: 138px; rotate: -4deg; transition: rotate .4s, opacity .4s; }
+.hers { width: 100px; height: 164px; rotate: -4deg; transition: rotate .4s, opacity .4s; }
 /* her last card, the djinn: it looks like no other card on the table */
-.djinn-back { background-color: var(--velvet);
+.her-back { background-color: var(--velvet);
   background-image: repeating-linear-gradient(45deg, rgba(176,141,87,.34) 0 1px, transparent 1px 7px), repeating-linear-gradient(-45deg, rgba(176,141,87,.34) 0 1px, transparent 1px 7px);
   box-shadow: inset 0 0 0 4px var(--velvet), inset 0 0 0 5px var(--ivory), 0 0 0 2px rgba(176,141,87,.6), 0 0 24px rgba(236,211,166,.22), 0 12px 28px rgba(0,0,0,.5);
-  animation: djinnGlow 4.5s ease-in-out infinite; gap: 6px; padding: 0 6px; text-align: center; }
-.djinn-back i { font-size: 14px; }
-.djinn-back .knows { font-style: italic; font-size: 11px; line-height: 1.15; color: var(--ash); }
-@keyframes djinnGlow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(236,211,166,0)); } 50% { filter: drop-shadow(0 0 9px rgba(236,211,166,.38)); } }
+  animation: herGlow 4.5s ease-in-out infinite; gap: 6px; padding: 0 6px; text-align: center; }
+.her-back i { font-size: 14px; }
+.her-back.djinn { box-shadow: inset 0 0 0 4px var(--velvet), inset 0 0 0 5px var(--ivory), 0 0 0 2px var(--ember), 0 0 28px rgba(201,86,63,.38), 0 12px 28px rgba(0,0,0,.5); animation-name: emberGlow; }
+.her-back.djinn .knows { color: var(--ember-hi); font-size: 14px; }
+.her-back.djinn i { font-size: 16px; }
+#hersNote { font-size: 15px; line-height: 1.25; color: var(--ember-hi); max-width: 130px; }
+@keyframes emberGlow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(201,86,63,0)); } 50% { filter: drop-shadow(0 0 10px rgba(232,121,95,.5)); } }
+.her-back .knows { font-style: italic; font-size: 11px; line-height: 1.15; color: var(--ash); }
+@keyframes herGlow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(236,211,166,0)); } 50% { filter: drop-shadow(0 0 9px rgba(236,211,166,.38)); } }
 .hers.sealed { rotate: 6deg; }
 .hers.left { opacity: .45; }
 
@@ -108,7 +114,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 /* her card: the And now slot */
 .andnow { aspect-ratio: 2 / 3; position: relative; perspective: 800px; }
 .andnow > * { position: absolute; inset: 0; }
-.andnow .waiting { border-radius: 10px; border: 1px dashed rgba(176,141,87,.4); padding: 16px 14px; display: flex; flex-direction: column; gap: 8px; color: var(--ash-dim); }
+.andnow .waiting { background: none; text-align: left; width: 100%; border-radius: 10px; border: 1px dashed rgba(176,141,87,.4); padding: 16px 14px; display: flex; flex-direction: column; gap: 8px; color: var(--ash-dim); }
 .andnow .waiting .sub { margin-top: auto; font-style: italic; font-size: 14px; }
 .andnow .down { border-radius: 10px; animation: deal .5s both; }
 .andnow .down:hover { translate: 0 -5px; }
@@ -152,11 +158,15 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .held:hover { translate: 0 -40px !important; rotate: 0deg !important; z-index: 10; box-shadow: 0 26px 50px rgba(0,0,0,.6); }
 .held.taken { background: var(--ivory); box-shadow: 0 0 0 3px var(--ivory), 0 0 0 4px var(--brass), 0 18px 40px rgba(0,0,0,.55); }
 /* her card, when the hand moves on to it */
+.andnow .down.her-back, .held-back.her-back { animation: deal .55s cubic-bezier(.2,.7,.2,1) both, herGlow 4.5s ease-in-out .6s infinite; }
 .held-back { width: 176px; height: 290px; flex: none; border-radius: 10px; color: var(--ivory); animation: deal .55s cubic-bezier(.2,.7,.2,1) both; transition: translate .12s cubic-bezier(.2,.8,.2,1); }
 .held-back .name { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
 .held-back i { font-size: 16px; }
 .held-back:hover { translate: 0 -14px; }
-.andnow.focus .down, .andnow.focus .up, .andnow.focus .waiting { box-shadow: 0 0 0 2px var(--ivory), 0 14px 34px rgba(0,0,0,.5); }
+.andnow.focus .waiting { border-style: solid; border-color: var(--ivory); color: var(--ivory); }
+.held-back .name { font-size: 12px; } .held-back i { font-size: 19px; } .held-back .knows { font-size: 14px; }
+.hand-head .acts { display: inline-flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-left: 6px; }
+.hand-head .acts .note { font-style: italic; font-size: 14px; color: var(--ash); }
 
 @keyframes deal { from { opacity: 0; transform: translateY(46px); } to { opacity: 1; transform: none; } }
 @keyframes turn { from { transform: rotateY(90deg); } to { transform: none; } }
@@ -202,9 +212,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .reader .line { font-size: clamp(20px, 1.9vw, 24px); max-width: 900px; }
   .reader .voice { gap: 8px; }
   .stack, .hers { width: 52px; height: 84px; }
-  .hers svg { display: none; }
-  .hers i { font-size: 11px; }
-  .hers .knows { font-size: 9.5px; }
+  .hers { width: 62px; height: 100px; }
+  .hers i, .hers .knows { display: none; }
+  #hersNote { font-size: 13px; }
   .cloth { padding: 16px 22px 14px; gap: 10px; }
   .slot, .andnow { aspect-ratio: 1 / 1; }
   .sentence { margin: 0; }
@@ -234,7 +244,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 @media (prefers-reduced-motion: reduce) {
   .held, .andnow .down, .andnow .up, .door { animation: none; }
   .card, .hers, .her .back { transition: none; }
-  .djinn-back { animation: none; }
+  .her-back, .andnow .down.her-back, .held-back.her-back { animation: none; }
 }
 </style>
 </head>
@@ -261,18 +271,13 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
       <div class="line" id="line">Sit. One moment while I find the deck.</div>
     </div>
     <div class="side">
-      <div class="back hers djinn-back" id="hersCard" tabindex="0" title="Her last card. At the door you can seal it into your envelope, and the doorkeeper turns it: what you wished for, now and then a gift, mostly a price. Or leave it with her."><svg width="22" height="36" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/><circle cx="30" cy="41" r="4" fill="#ecd3a6"/></svg><i>and then...</i><span class="knows">the doorkeeper will know</span></div>
+      <div class="back hers her-back djinn" id="hersCard" tabindex="0" title="Her last card. At the door you can seal it into your envelope, and the doorkeeper turns it: what you wished for, now and then a gift, mostly a price. Or leave it with her."><svg width="22" height="36" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/><circle cx="30" cy="41" r="4" fill="#ecd3a6"/></svg><i>and then...</i><span class="knows">the doorkeeper will know</span></div>
       <small id="hersNote">Hers. Turning it costs you.</small>
     </div>
   </section>
 
   <section class="cloth">
     <div class="spread" id="spread"></div>
-    <div class="offer hidden" id="offer">
-      <button class="pill solid" data-act="takeIt">Take it</button>
-      <button class="pill" data-act="another">Make her play another</button>
-      <span class="note" id="refusedNote"></span>
-    </div>
     <div class="said">
       <p class="sentence" id="sentence"></p>
       <div class="door-row">
@@ -283,7 +288,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   </section>
 
   <section class="hand-wrap">
-    <div class="hand-head"><span class="which" id="handName"></span><span class="q" id="handQ"></span><span class="count" id="handCount"></span></div>
+    <div class="hand-head"><span class="which" id="handName"></span><span class="q" id="handQ"></span><span class="count" id="handCount"></span><span class="acts" id="handActs"></span></div>
     <div class="hand" id="hand"></div>
   </section>
 </div>
@@ -299,7 +304,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
         </div>
         <div class="dials" id="dials"><div class="foot">These change how your cards are read, never which cards you hold.</div></div>
         <div class="her">
-          <div class="back djinn-back" id="herBack"><svg width="16" height="26" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/></svg></div>
+          <div class="back her-back djinn" id="herBack"><svg width="16" height="26" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/></svg></div>
           <div>
             <div class="kicker">The reader</div>
             <div class="says" id="herSays"></div>
@@ -548,16 +553,10 @@ function render() {
   }
   const anTilt = set && S.an ? (T.andnow || 0) : 0;
   html += '<div class="andnow' + (S.focus === 'andnow' ? ' focus' : '') + '" style="rotate:' + anTilt + 'deg">';
-  if (!set || !S.an) html += '<div class="waiting"><div class="name">And now</div><div class="sub">hers to play</div></div>';
-  else if (anDown) html += '<button class="back down" data-act="turnIt"><div class="name">Her card</div><i>tap to turn</i></button>';
-  else html += '<button class="card up' + (S.anTaken ? ' taken' : '') + '" data-slot="andnow" style="--shade:.28"><div class="shade"></div><div class="name">And now</div><div class="title">' + esc(an.title) + '</div><div class="sub">' + esc(an.line) + '</div></button>';
+  if (S.anTaken && an) html += '<button class="card slot filled' + (S.focus === 'andnow' ? ' focus' : '') + '" data-slot="andnow" style="--shade:.28"><div class="shade"></div><div class="name">And now</div><div class="title">' + esc(an.title) + '</div><div class="sub">' + esc(an.line) + '</div></button>';
+  else html += '<button class="waiting" data-slot="andnow"><div class="name">And now</div><div class="sub">' + (set && S.an ? 'she\u2019s playing it: in your hand' : 'hers to play') + '</div></button>';
   html += '</div>';
   $('spread').innerHTML = html;
-
-  // her offer
-  $('offer').classList.toggle('hidden', !anUp);
-  $('offer').querySelectorAll('.pill').forEach(b => b.classList.toggle('hidden', S.anTaken));
-  $('refusedNote').textContent = S.anTaken ? 'Taken.' : (S.refused.length ? S.refused.length + ' refused. She remembers.' : '');
 
   // sentence + door
   $('sentence').innerHTML = sentenceHTML();
@@ -569,8 +568,10 @@ function render() {
   if (S.focus === 'andnow') {
     $('handName').textContent = 'And now';
     $('handQ').textContent = !set ? 'Fill the life first; then she plays one.' : anDown ? 'She plays one back. Turn it when you’re ready.' : S.anTaken ? 'Taken. Open the door.' : 'Take it, or make her play another.';
-    $('handCount').textContent = S.refused.length && !S.anTaken ? S.refused.length + ' refused · she remembers' : '';
-    if (set && S.an && anDown) hand.innerHTML = '<button class="back held-back" data-act="turnIt"><div class="name">Her card</div><i>tap to turn</i></button>';
+    $('handCount').textContent = '';
+    $('handActs').innerHTML = (set && S.an && S.anUp && !S.anTaken ? '<button class="pill solid" data-act="takeIt">Take it</button><button class="pill" data-act="another">Make her play another</button>' : '')
+      + (S.refused.length && !S.anTaken ? '<span class="note">' + S.refused.length + ' refused. She remembers.</span>' : '');
+    if (set && S.an && anDown) hand.innerHTML = '<button class="back held-back her-back" data-act="turnIt"><div class="name">Her card</div><i>and now...</i><span class="knows">tap to turn</span></button>';
     else if (set && S.an) {
       const b = document.createElement('button'); b.className = 'card held' + (S.anTaken ? ' taken' : '');
       if (!S.anTaken) b.dataset.act = 'takeIt';
@@ -580,6 +581,7 @@ function render() {
       hand.appendChild(b);
     }
   } else {
+  $('handActs').innerHTML = '';
   const f = SLOTS.find(s => s.id === S.focus), fv = p[S.focus], ids = S.hands[S.focus] || [];
   $('handName').textContent = f.name; $('handQ').textContent = f.q;
   $('handCount').textContent = (f.pick === 2 ? 'Take two' : f.optional ? 'Take one, or leave it' : 'Take one') + ' · ' + ids.length + ' of ' + deck[S.focus].length + ', she holds the rest';
