@@ -24,7 +24,6 @@ try { var s = parseInt(localStorage.getItem('elsible.textsize') || '0', 10) || 0
   --ivory: #ecd3a6; --ivory-hi: #fff4dc; --ash: #c9b893; --ash-dim: #8f8673; --brass: #b08d57;
   --face: linear-gradient(180deg, #f3e3c3, #e6cfa3);
   --display: 'Rozha One', Georgia, serif; --text: 'Cormorant Garamond', Georgia, serif;
-  --ember: #c9563f; --ember-hi: #e8795f;   /* one red, for the one card that costs you */
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -73,20 +72,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .stack .back { position: absolute; inset: 0; }
 .stack .under { background-image: none; box-shadow: none; border-color: rgba(176,141,87,.55); }
 .stack .u1 { translate: 4px 5px; rotate: 3deg; } .stack .u2 { translate: 2px 2px; rotate: 1.5deg; }
-.hers { width: 100px; height: 164px; rotate: -4deg; transition: rotate .4s, opacity .4s; }
-/* her last card, the djinn: it looks like no other card on the table */
-.her-back { background-color: var(--velvet);
-  background-image: repeating-linear-gradient(45deg, rgba(176,141,87,.34) 0 1px, transparent 1px 7px), repeating-linear-gradient(-45deg, rgba(176,141,87,.34) 0 1px, transparent 1px 7px);
-  box-shadow: inset 0 0 0 4px var(--velvet), inset 0 0 0 5px var(--ivory), 0 0 0 2px rgba(176,141,87,.6), 0 0 24px rgba(236,211,166,.22), 0 12px 28px rgba(0,0,0,.5);
-  animation: herGlow 4.5s ease-in-out infinite; gap: 6px; padding: 0 6px; text-align: center; }
-.her-back i { font-size: 14px; }
-.her-back.djinn { box-shadow: inset 0 0 0 4px var(--velvet), inset 0 0 0 5px var(--ivory), 0 0 0 2px var(--ember), 0 0 28px rgba(201,86,63,.38), 0 12px 28px rgba(0,0,0,.5); animation-name: emberGlow; }
-.her-back.djinn .knows { color: var(--ember-hi); font-size: 14px; }
-.her-back.djinn i { font-size: 16px; }
-#hersNote { font-size: 15px; line-height: 1.25; color: var(--ember-hi); max-width: 130px; }
-@keyframes emberGlow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(201,86,63,0)); } 50% { filter: drop-shadow(0 0 10px rgba(232,121,95,.5)); } }
-.her-back .knows { font-style: italic; font-size: 11px; line-height: 1.15; color: var(--ash); }
-@keyframes herGlow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(236,211,166,0)); } 50% { filter: drop-shadow(0 0 9px rgba(236,211,166,.38)); } }
+.hers { width: 84px; height: 138px; rotate: -4deg; transition: rotate .4s, opacity .4s; }
 .hers.sealed { rotate: 6deg; }
 .hers.left { opacity: .45; }
 
@@ -141,6 +127,12 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .door-btn:hover { border-color: var(--ivory); color: var(--ivory); }
 .door-btn.ready { background: var(--ivory); color: var(--velvet); border-color: var(--ivory); }
 .door-btn.ready:hover { background: var(--ivory-hi); }
+.turn-wrap { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.turn-btn { display: inline-flex; align-items: center; background: transparent; color: var(--ivory); border: 1px dashed rgba(176,141,87,.75); border-radius: 999px; padding: 13px 24px; font-family: var(--display); font-size: 18px; }
+.turn-btn:hover { border-style: solid; border-color: var(--ivory); }
+.turn-btn:disabled { opacity: .4; cursor: not-allowed; border-style: dashed; }
+.door-row .turn-wrap .note { font-size: 14px; max-width: 300px; padding-left: 8px; }
+.door-note { display: block; text-align: center; font-style: italic; font-size: 15px; color: var(--ash); }
 
 /* your hand */
 .hand-wrap { display: flex; flex-direction: column; gap: 6px; }
@@ -157,16 +149,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .held .play { font-size: 13px; line-height: 1.35; margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(176,141,87,.45); opacity: .9; }
 .held:hover { translate: 0 -40px !important; rotate: 0deg !important; z-index: 10; box-shadow: 0 26px 50px rgba(0,0,0,.6); }
 .held.taken { background: var(--ivory); box-shadow: 0 0 0 3px var(--ivory), 0 0 0 4px var(--brass), 0 18px 40px rgba(0,0,0,.55); }
-/* her card, when the hand moves on to it */
-.andnow .down.her-back, .held-back.her-back { animation: deal .55s cubic-bezier(.2,.7,.2,1) both, herGlow 4.5s ease-in-out .6s infinite; }
-.held-back { width: 176px; height: 290px; flex: none; border-radius: 10px; color: var(--ivory); animation: deal .55s cubic-bezier(.2,.7,.2,1) both; transition: translate .12s cubic-bezier(.2,.8,.2,1); }
-.held-back .name { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; }
-.held-back i { font-size: 16px; }
-.held-back:hover { translate: 0 -14px; }
-.andnow.focus .waiting { border-style: solid; border-color: var(--ivory); color: var(--ivory); }
-.held-back .name { font-size: 12px; } .held-back i { font-size: 19px; } .held-back .knows { font-size: 14px; }
-.hand-head .acts { display: inline-flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-left: 6px; }
-.hand-head .acts .note { font-style: italic; font-size: 14px; color: var(--ash); }
 
 @keyframes deal { from { opacity: 0; transform: translateY(46px); } to { opacity: 1; transform: none; } }
 @keyframes turn { from { transform: rotateY(90deg); } to { transform: none; } }
@@ -212,9 +194,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .reader .line { font-size: clamp(20px, 1.9vw, 24px); max-width: 900px; }
   .reader .voice { gap: 8px; }
   .stack, .hers { width: 52px; height: 84px; }
-  .hers { width: 62px; height: 100px; }
-  .hers i, .hers .knows { display: none; }
-  #hersNote { font-size: 13px; }
   .cloth { padding: 16px 22px 14px; gap: 10px; }
   .slot, .andnow { aspect-ratio: 1 / 1; }
   .sentence { margin: 0; }
@@ -224,9 +203,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .said { gap: 10px; }
   .sentence { font-size: clamp(18px, 1.7vw, 21px); }
   .door-btn { padding: 9px 20px; font-size: 16px; }
+  .turn-btn { padding: 9px 18px; font-size: 16px; }
   .hand { padding-top: 14px; padding-bottom: 46px; }
   .held { width: 150px; height: 248px; padding: 16px 14px; }
-  .held-back { width: 150px; height: 248px; }
   .held .title { font-size: 18px; }
   .held .line { font-size: 14px; }
   .held .play { font-size: 12px; padding-top: 8px; }
@@ -244,7 +223,6 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 @media (prefers-reduced-motion: reduce) {
   .held, .andnow .down, .andnow .up, .door { animation: none; }
   .card, .hers, .her .back { transition: none; }
-  .her-back, .andnow .down.her-back, .held-back.her-back { animation: none; }
 }
 </style>
 </head>
@@ -271,8 +249,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
       <div class="line" id="line">Sit. One moment while I find the deck.</div>
     </div>
     <div class="side">
-      <div class="back hers her-back djinn" id="hersCard" tabindex="0" title="Her last card. At the door you can seal it into your envelope, and the doorkeeper turns it: what you wished for, now and then a gift, mostly a price. Or leave it with her."><svg width="22" height="36" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/><circle cx="30" cy="41" r="4" fill="#ecd3a6"/></svg><i>and then...</i><span class="knows">the doorkeeper will know</span></div>
-      <small id="hersNote">Hers. Turning it costs you.</small>
+      <div class="back hers" id="hersCard" title="Her last card"><svg width="22" height="36" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/><circle cx="30" cy="41" r="4" fill="#ecd3a6"/></svg><i>and then...</i></div>
+      <small id="hersNote">Hers. It stays down.</small>
     </div>
   </section>
 
@@ -282,13 +260,17 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
       <p class="sentence" id="sentence"></p>
       <div class="door-row">
         <button class="door-btn" id="doorBtn" data-act="openDoor">Open the door <span aria-hidden="true">→</span></button>
-        <span class="note" id="doorNote"></span>
+        <div class="turn-wrap">
+          <button class="turn-btn" id="turnBtn" data-act="turnIt">Turn her card... but be careful</button>
+          <span class="note" id="turnNote">The doorkeeper sees what you turn, and judges you for it.</span>
+        </div>
       </div>
+      <span class="door-note" id="doorNote"></span>
     </div>
   </section>
 
   <section class="hand-wrap">
-    <div class="hand-head"><span class="which" id="handName"></span><span class="q" id="handQ"></span><span class="count" id="handCount"></span><span class="acts" id="handActs"></span></div>
+    <div class="hand-head"><span class="which" id="handName"></span><span class="q" id="handQ"></span><span class="count" id="handCount"></span></div>
     <div class="hand" id="hand"></div>
   </section>
 </div>
@@ -304,15 +286,10 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
         </div>
         <div class="dials" id="dials"><div class="foot">These change how your cards are read, never which cards you hold.</div></div>
         <div class="her">
-          <div class="back her-back djinn" id="herBack"><svg width="16" height="26" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/></svg></div>
+          <div class="back" id="herBack"><svg width="16" height="26" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/></svg></div>
           <div>
             <div class="kicker">The reader</div>
             <div class="says" id="herSays"></div>
-            <div class="choose" id="herChoose">
-              <button class="pill solid" data-act="seal">Seal it in</button>
-              <button class="pill" data-act="leave">Leave it with her</button>
-            </div>
-            <button class="again hidden" id="herAgain" data-act="unchoose">Change your mind</button>
           </div>
         </div>
         <div class="foot-row">
@@ -380,18 +357,16 @@ const LINES = {
   circle: 'Two from your circle. Everyone has at least two, even the ones who say otherwise.',
   told: 'Who tells it. People skip this one and regret it.',
   burn: 'How it burns. Or leave it; some lives don’t need the help.',
-  down: 'That’s a life. Now I play one. Turn it when you’re ready; it won’t improve with waiting.',
-  up: 'There it is. Take it, or make me play another. I have more.',
-  played: 'Fine, I did it myself. Don’t say you weren’t warned.',
-  taken: 'That’s a life. Open the door; I’ll have one more card for you there.',
+  down: 'That’s a life. My card’s on the table, face down. Open the door, or turn it. Careful; the doorkeeper sees what you turn.',
+  up: 'There it is. Yours now, unless you make me play another.',
+  played: 'Fine, I did it myself. My card stays face down; turning it is yours to risk.',
   again: ['Another, then. I’ve got all night.', 'Picky. Fine.', 'That’s three refused. The fourth is still mine.', 'I could do this longer than you can.'],
   reshuffle: 'That’s every card I have. Back to the top of the deck; you’ve seen them all now.',
-  andnow: 'Fill the life first. Then I play one.',
 };
+// What she says at the door, depending on whether you turned her card.
 const OFFER = {
-  none: 'One more, face down. Seal it into your envelope and the doorkeeper turns it at the door. You wished for this life; my card says how it’s granted. Mostly at a price. Now and then, a gift. Or leave it with me, and you get the life you picked. Near enough.',
-  sealed: 'Sealed in. The doorkeeper will tell you which way up it landed, upright or reversed, and nothing else. You’ll spend the rest of it looking.',
-  left: 'Left with me. The doorkeeper still makes the pieces fit; that part isn’t up to either of us.',
+  turned: 'You turned my card, and the doorkeeper saw. At the door you’ll be told which way up it landed, upright or reversed, and nothing else. You’ll spend the rest of it looking.',
+  left: 'You left my card face down. The doorkeeper still makes the pieces fit; the life comes as picked, near enough.',
 };
 
 // ============================================================
@@ -401,7 +376,8 @@ const KEY = 'elsible.parlor.v5';
 const CARDS_PER_HAND = (DECK.deal && DECK.deal.per_slot) || 5;
 let deck = {};
 const DIAL_START = { absurdity: 2, stakes: 3, cost: 2, people: 3, length: 3 };
-let S = { focus: 'story', hands: {}, seen: {}, picks: { circle: [] }, an: null, anUp: false, anTaken: false, refused: [], reshuffled: false, dealN: 0, played: false, business: false, tilts: {}, door: null, djinn: null, dials: Object.fromEntries(DIALS.map(d => [d.id, DIAL_START[d.id] || 3])), downloaded: false };
+// an: her card, dealt face down once the life is set. anTaken: you turned it (anUp: it shows face up).
+let S = { focus: 'story', hands: {}, seen: {}, picks: { circle: [] }, an: null, anUp: false, anTaken: false, refused: [], reshuffled: false, dealN: 0, played: false, business: false, tilts: {}, door: null, dials: Object.fromEntries(DIALS.map(d => [d.id, DIAL_START[d.id] || 3])), downloaded: false };
 
 function buildDeck(withBusiness) {
   const d = {};
@@ -427,7 +403,7 @@ function save() { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e
 // ============================================================
 // MOVES
 // ============================================================
-function dealAll() { const hands = {}, seen = {}; for (const s of SLOTS) { hands[s.id] = draw(s.id, CARDS_PER_HAND); seen[s.id] = hands[s.id].slice(); } Object.assign(S, { hands, seen, picks: { circle: [] }, an: null, anUp: false, anTaken: false, refused: [], reshuffled: false, focus: 'story', played: false, djinn: null, dealN: S.dealN + 1, tilts: rollTilts() }); save(); }
+function dealAll() { const hands = {}, seen = {}; for (const s of SLOTS) { hands[s.id] = draw(s.id, CARDS_PER_HAND); seen[s.id] = hands[s.id].slice(); } Object.assign(S, { hands, seen, picks: { circle: [] }, an: null, anUp: false, anTaken: false, refused: [], reshuffled: false, focus: 'story', played: false, dealN: S.dealN + 1, tilts: rollTilts() }); save(); }
 // Deal again from the cards she hasn't shown you yet, like a real deck; she reshuffles only when she runs out.
 function dealFresh(cat) {
   S.seen = S.seen || {};
@@ -443,12 +419,11 @@ function dealFresh(cat) {
 function settleAndNow() { if (!lifeSet(S.picks)) Object.assign(S, { an: null, anUp: false, anTaken: false }); else if (!S.an) Object.assign(S, { an: herNext(), anUp: false, anTaken: false }); }
 const emptySlot = (id, p) => id === 'circle' ? (p.circle || []).length < 2 : !p[id];
 function firstEmpty(p) { const s = SLOTS.find(s => s.id !== 'burn' && emptySlot(s.id, p)); return s ? s.id : null; }
-// After the last card you pick, the hand moves on to hers.
 function nextSlot(from, p) {
   const ids = SLOTS.map(s => s.id), i = ids.indexOf(from);
   for (let k = 1; k < ids.length; k++) { const id = ids[(i + k) % ids.length]; if (id !== 'burn' && emptySlot(id, p)) return id; }
   if (from !== 'burn' && emptySlot('burn', p)) return 'burn';
-  return 'andnow';
+  return from;
 }
 function take(slot, id) {
   const p = S.picks; let focus = S.focus;
@@ -459,34 +434,30 @@ function take(slot, id) {
 }
 const ACTS = {
   dealAgain() {
-    const f = S.focus;
-    if (f === 'andnow') { if (S.an && S.anUp && !S.anTaken) ACTS.another(); return; }
+    const f = S.focus; if (!SLOTS.some(s => s.id === f)) return;
     S.hands[f] = dealFresh(f); if (f === 'circle') S.picks.circle = []; else S.picks[f] = null; S.played = false; S.dealN++; settleAndNow(); save();
   },
   newHand() { dealAll(); },
-  playItOut() { const h = S.hands, pick = a => a[Math.floor(Math.random() * a.length)]; S.picks = { story: pick(h.story), who: pick(h.who), where: pick(h.where), other: pick(h.other), told: pick(h.told), burn: Math.random() < .75 ? pick(h.burn) : null, circle: [...h.circle].sort(() => Math.random() - .5).slice(0, 2) }; S.reshuffled = false; Object.assign(S, { played: true, an: herNext(), anUp: true, anTaken: false, focus: 'andnow' }); save(); },
+  playItOut() { const h = S.hands, pick = a => a[Math.floor(Math.random() * a.length)]; S.picks = { story: pick(h.story), who: pick(h.who), where: pick(h.where), other: pick(h.other), told: pick(h.told), burn: Math.random() < .75 ? pick(h.burn) : null, circle: [...h.circle].sort(() => Math.random() - .5).slice(0, 2) }; S.reshuffled = false; Object.assign(S, { played: true, an: herNext(), anUp: false, anTaken: false, focus: 'story' }); save(); },
   togglePack() { S.business = !S.business; deck = buildDeck(S.business); dealAll(); },
-  turnIt() { S.anUp = true; S.focus = 'andnow'; save(); },
-  takeIt() { S.anTaken = true; S.reshuffled = false; save(); },
-  another() { S.refused.push(S.an); S.reshuffled = false; S.an = herNext(); S.anUp = false; S.anTaken = false; S.focus = 'andnow'; save(); },
+  // Turning her card is the risk: the doorkeeper sees what you turn, and judges you for it.
+  turnIt() { if (!lifeSet(S.picks) || !S.an || S.anTaken) return; S.anUp = true; S.anTaken = true; S.reshuffled = false; S.played = false; save(); },
+  another() { if (!S.anTaken) return; S.refused.push(S.an); S.reshuffled = false; S.an = herNext(); S.anUp = true; S.anTaken = true; save(); },
   // Open the door always does something: it opens, or it takes you to what's missing.
   openDoor() {
-    if (S.anTaken) { S.door = 'door'; save(); return; }
-    S.focus = lifeSet(S.picks) ? 'andnow' : (firstEmpty(S.picks) || S.focus); save();
+    if (lifeSet(S.picks)) { S.door = 'door'; save(); return; }
+    S.focus = firstEmpty(S.picks) || S.focus; save();
   },
   closeDoor() { S.door = null; save(); },
-  seal() { S.djinn = 'sealed'; save(); },
-  leave() { S.djinn = 'left'; save(); },
-  unchoose() { S.djinn = null; save(); },
-  walkThrough() { if (S.djinn) { S.door = 'handoff'; save(); } },
+  walkThrough() { S.door = 'handoff'; save(); },
   backToDoor() { S.door = 'door'; save(); },
   download() {
-    const p = S.picks, when = new Date();
+    const p = S.picks, when = new Date(), turned = !!S.anTaken;
     const env = {
       format: 'elsible-envelope/1', sealed_at: when.toISOString(), deck: 'story', version: DECK.version,
       packs: S.business ? ['business'] : [],
-      cards: { trope: p.story, role: p.who, world: p.where, other: p.other, circle: p.circle.slice(), told_by: p.told, modifier: p.burn || null, pressure: S.an },
-      refused: S.refused.slice(), djinn: S.djinn, dials: Object.assign({}, S.dials),
+      cards: { trope: p.story, role: p.who, world: p.where, other: p.other, circle: p.circle.slice(), told_by: p.told, modifier: p.burn || null, pressure: turned ? S.an : null },
+      refused: S.refused.slice(), djinn: turned ? 'sealed' : 'left', dials: Object.assign({}, S.dials),
     };
     const row = (cat, id) => { const k = card(cat, id); return k ? '- **' + k.title + '**: ' + k.line + '\n  - in play: ' + k.play : ''; };
     const md = '# Your envelope\n\n'
@@ -494,8 +465,7 @@ const ACTS = {
       + '```json\n' + JSON.stringify(env, null, 2) + '\n```\n\n'
       + '## Your life, as dealt\n\n' + sentenceText() + '\n\n'
       + '## The cards\n\n' + ['story', 'who', 'where', 'other'].map(k => row(k, p[k])).join('\n') + '\n' + p.circle.map(id => row('circle', id)).join('\n') + '\n' + row('told', p.told) + (p.burn ? '\n' + row('burn', p.burn) : '') + '\n\n'
-      + '## And now: her complication\n\n' + row('andnow', S.an) + '\n\n'
-      + '## Her last card\n\n' + (S.djinn === 'sealed' ? 'Sealed in, face down. The doorkeeper turns it at the door.' : 'Left with her. The life comes as picked, near enough.') + '\n\n'
+      + '## Her card\n\n' + (turned ? row('andnow', S.an) + '\n\nTurned. The doorkeeper saw it, and will judge you for it.' : 'Left face down. The life comes as picked, near enough.') + '\n\n'
       + '## How you set the dials\n\n' + DIALS.map(d => '- ' + d.name + ': ' + S.dials[d.id] + ', between ' + d.low + ' (1) and ' + d.high + ' (5)').join('\n') + '\n';
     const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob([md], { type: 'text/markdown' })); a.download = 'elsible-envelope.md'; document.body.appendChild(a); a.click(); a.remove(); setTimeout(() => URL.revokeObjectURL(a.href), 2000);
     S.downloaded = true; save();
@@ -527,22 +497,19 @@ const sentenceText = () => sentenceParts().map(w => w.t).join('');
 function render() {
   const p = S.picks, set = lifeSet(p), T = S.tilts || {}, an = card('andnow', S.an);
   const anDown = set && S.an && !S.anUp, anUp = set && S.an && S.anUp;
+  if (!SLOTS.some(s => s.id === S.focus)) S.focus = 'story';
 
   // reader
   let line = LINES[S.focus] || LINES.story;
-  if (S.anTaken) line = LINES.taken;
-  else if (S.reshuffled && (anUp || anDown)) line = LINES.reshuffle;
-  else if (anUp) line = S.refused.length ? LINES.again[Math.min(S.refused.length - 1, LINES.again.length - 1)] : (S.played ? LINES.played : LINES.up);
-  else if (anDown) line = LINES.down;
+  if (S.reshuffled && anUp) line = LINES.reshuffle;
+  else if (anUp) line = S.refused.length ? LINES.again[Math.min(S.refused.length - 1, LINES.again.length - 1)] : LINES.up;
+  else if (anDown) line = S.played ? LINES.played : LINES.down;
   $('line').textContent = line;
   const total = Object.values(deck).reduce((a, b) => a + b.length, 0);
   $('deckNote').textContent = total + ' cards. You’ll see ' + (CARDS_PER_HAND * SLOTS.length) + '.';
   $('packBtn').textContent = S.business ? 'Business pack in · remove' : 'Add the business pack';
-  $('hersCard').classList.toggle('sealed', S.djinn === 'sealed');
-  $('hersCard').classList.toggle('left', S.djinn === 'left');
-  $('hersNote').textContent = S.djinn === 'sealed' ? 'Hers. Sealed in your envelope.' : S.djinn === 'left' ? 'Hers. Left with her.' : 'Hers. Turning it costs you.';
 
-  // spread
+  // the river: your cards, then hers
   let html = '';
   for (const s of SLOTS) {
     const v = p[s.id], filled = s.id === 'circle' ? v.length > 0 : !!v, foc = S.focus === s.id;
@@ -552,36 +519,27 @@ function render() {
     html += '<button class="card slot' + (filled ? ' filled' : '') + (foc ? ' focus' : '') + '" data-slot="' + s.id + '" style="rotate:' + tilt + 'deg; --shade:' + shade + '"><div class="shade"></div><div class="name">' + esc(s.name) + '</div><div class="title">' + esc(title) + '</div><div class="sub">' + esc(sub) + '</div></button>';
   }
   const anTilt = set && S.an ? (T.andnow || 0) : 0;
-  html += '<div class="andnow' + (S.focus === 'andnow' ? ' focus' : '') + '" style="rotate:' + anTilt + 'deg">';
-  if (S.anTaken && an) html += '<button class="card slot filled' + (S.focus === 'andnow' ? ' focus' : '') + '" data-slot="andnow" style="--shade:.28"><div class="shade"></div><div class="name">And now</div><div class="title">' + esc(an.title) + '</div><div class="sub">' + esc(an.line) + '</div></button>';
-  else html += '<button class="waiting" data-slot="andnow"><div class="name">And now</div><div class="sub">' + (set && S.an ? 'she\u2019s playing it: in your hand' : 'hers to play') + '</div></button>';
+  html += '<div class="andnow" style="rotate:' + anTilt + 'deg">';
+  if (!set || !S.an) html += '<div class="waiting"><div class="name">And now</div><div class="sub">hers to play</div></div>';
+  else if (anDown) html += '<div class="back down"><div class="name">Her card</div><i>and then...</i></div>';
+  else html += '<div class="card up taken" style="--shade:.28"><div class="shade"></div><div class="name">And now</div><div class="title">' + esc(an.title) + '</div><div class="sub">' + esc(an.line) + '</div></div>';
   html += '</div>';
   $('spread').innerHTML = html;
 
-  // sentence + door
+  // the sentence, and the two choices under it
   $('sentence').innerHTML = sentenceHTML();
-  $('doorBtn').classList.toggle('ready', !!S.anTaken);
-  $('doorNote').textContent = S.anTaken ? 'Nothing is locked. Change any card until you walk through.' : !set ? 'Fill the life first. Nothing locks.' : anDown ? 'Turn her card, then take it.' : 'Take her card, or make her play another.';
+  $('doorBtn').classList.toggle('ready', set);
+  const tb = $('turnBtn');
+  tb.disabled = !set || !S.an;
+  tb.dataset.act = S.anTaken ? 'another' : 'turnIt';
+  tb.textContent = S.anTaken ? 'Make her play another' : 'Turn her card... but be careful';
+  $('turnNote').textContent = S.anTaken
+    ? (S.refused.length ? S.refused.length + ' refused. The doorkeeper saw those too.' : 'Turned. The doorkeeper saw it.')
+    : 'The doorkeeper sees what you turn, and judges you for it.';
+  $('doorNote').textContent = set ? 'Nothing is locked. Change any card until you walk through.' : 'Fill the life first. Nothing locks.';
 
-  // hand: the slot in focus, or her card once your picks are done
+  // your hand
   const hand = $('hand'); hand.innerHTML = '';
-  if (S.focus === 'andnow') {
-    $('handName').textContent = 'And now';
-    $('handQ').textContent = !set ? 'Fill the life first; then she plays one.' : anDown ? 'She plays one back. Turn it when you’re ready.' : S.anTaken ? 'Taken. Open the door.' : 'Take it, or make her play another.';
-    $('handCount').textContent = '';
-    $('handActs').innerHTML = (set && S.an && S.anUp && !S.anTaken ? '<button class="pill solid" data-act="takeIt">Take it</button><button class="pill" data-act="another">Make her play another</button>' : '')
-      + (S.refused.length && !S.anTaken ? '<span class="note">' + S.refused.length + ' refused. She remembers.</span>' : '');
-    if (set && S.an && anDown) hand.innerHTML = '<button class="back held-back her-back" data-act="turnIt"><div class="name">Her card</div><i>and now...</i><span class="knows">tap to turn</span></button>';
-    else if (set && S.an) {
-      const b = document.createElement('button'); b.className = 'card held' + (S.anTaken ? ' taken' : '');
-      if (!S.anTaken) b.dataset.act = 'takeIt';
-      b.setAttribute('aria-label', S.anTaken ? 'Her card, taken: ' + an.title : 'Take her card: ' + an.title);
-      b.style.cssText = '--shade:.2';
-      b.innerHTML = '<div class="shade"></div><div class="name">And now</div><div class="title">' + esc(an.title) + '</div><div class="line">' + esc(an.line) + '</div><div class="play">' + esc(an.play) + '</div>';
-      hand.appendChild(b);
-    }
-  } else {
-  $('handActs').innerHTML = '';
   const f = SLOTS.find(s => s.id === S.focus), fv = p[S.focus], ids = S.hands[S.focus] || [];
   $('handName').textContent = f.name; $('handQ').textContent = f.q;
   $('handCount').textContent = (f.pick === 2 ? 'Take two' : f.optional ? 'Take one, or leave it' : 'Take one') + ' · ' + ids.length + ' of ' + deck[S.focus].length + ', she holds the rest';
@@ -593,10 +551,9 @@ function render() {
     b.innerHTML = '<div class="shade"></div><div class="title">' + esc(c.title) + '</div><div class="line">' + esc(c.line) + '</div><div class="play">' + esc(c.play) + '</div>';
     hand.appendChild(b);
   });
-  }
 
   // the door
-  const open = !!S.door && S.anTaken;
+  const open = !!S.door && set;
   $('veil').classList.toggle('hidden', !open);
   if (open) {
     $('stageDoor').classList.toggle('hidden', S.door !== 'door');
@@ -610,13 +567,7 @@ function render() {
       l.innerHTML = '<div class="lbl">' + esc(d.name) + '</div><input type="range" min="1" max="5" step="1" value="' + S.dials[d.id] + '" data-dial="' + esc(d.id) + '" aria-label="' + esc(d.name) + ', from ' + esc(d.low) + ' to ' + esc(d.high) + '"><div class="ends"><i>' + esc(d.low) + '</i><i>' + esc(d.high) + '</i></div>';
       dials.insertBefore(l, dials.querySelector('.foot'));
     }
-    $('herSays').textContent = OFFER[S.djinn || 'none'];
-    $('herChoose').classList.toggle('hidden', !!S.djinn);
-    $('herAgain').classList.toggle('hidden', !S.djinn);
-    $('herBack').classList.toggle('sealed', S.djinn === 'sealed');
-    $('herBack').classList.toggle('left', S.djinn === 'left');
-    $('walkBtn').disabled = !S.djinn;
-    $('walkBtn').title = S.djinn ? '' : 'Seal her card in, or leave it with her, first';
+    $('herSays').textContent = OFFER[S.anTaken ? 'turned' : 'left'];
     $('dlBtn').textContent = S.downloaded ? 'Downloaded · again' : 'Download your envelope';
   }
 }

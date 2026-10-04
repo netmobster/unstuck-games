@@ -2,6 +2,24 @@
 
 What was decided and why, dated. Newest first.
 
+## 2026-10-03 — CC — Her card: one card, in the river
+
+Jay, playing the parlor: her card sat in three places, two of them turnable, and nothing said that
+turning it had consequences. His fix: *"card is only in the 'river'... and there are two buttons:
+'open the door' and 'turn her card... but be careful'"*. **This entry supersedes the ones below
+where they differ.**
+
+1. **Her card is one card, face down in the river** (the table's last slot) once the life is set.
+   The corner card goes back to Claude Design's decoration, "Hers. It stays down.", and there is no
+   red anywhere (Jay: "no to the red card/overly texty card").
+2. **Two choices under the sentence: open the door, or turn her card.** Turning is the risk: the
+   doorkeeper sees what you turned and judges you for it (the djinn). Open the door without turning
+   and the life comes as picked, near enough. *Supersedes* "seal it in, or leave it with her" at the
+   door, and makes the dealer's complication optional (3 Oct, "back to the Loom's feel", #2).
+3. **Once turned, she can play another.** Every refusal is seen by the doorkeeper too.
+4. **The envelope:** `djinn: sealed` when her card was turned, with that card as `pressure`; `left`
+   when it wasn't. The severity ladder and "upright or reversed, told at the door" stand.
+
 ## 2026-10-03 — CC — The djinn card, and who builds the parlor
 
 Jay's answers on the Djinn Card page (https://claude.ai/artifact/QYPBKiY89Bw3DUYrgZXr6F).

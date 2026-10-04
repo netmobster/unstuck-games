@@ -23,8 +23,7 @@ try { var s = parseInt(localStorage.getItem('elsible.textsize') || '0', 10) || 0
   --ivory: #ecd3a6; --ivory-hi: #fff4dc; --ash: #c9b893; --ash-dim: #8f8673; --brass: #b08d57;
   --face: linear-gradient(180deg, #f3e3c3, #e6cfa3);
   --display: 'Rozha One', Georgia, serif; --text: 'Cormorant Garamond', Georgia, serif;
-  --fs: 1.2;
-  --ember: #c9563f; --ember-hi: #e8795f; --ember-ink: #9c3a28;   /* one red, for the one card that costs you */   /* text size: 20% over the design by default; A− and A+ move it one size a click */
+  --fs: 1.2;   /* text size: 20% over the design by default; A− and A+ move it one size a click */
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -124,18 +123,6 @@ section.block { padding: 72px 0; }
 .back i { font-size: calc(13px * var(--fs)); color: var(--ivory); }
 .djinn { margin-top: 56px; display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 34px; align-items: start; border-radius: 16px; border: 1px solid rgba(176,141,87,.35); padding: 34px 34px 30px; background: rgba(13,18,16,.35); }
 .djinn .back { width: 96px; height: 156px; rotate: -5deg; margin-top: 6px; }
-/* her last card, the djinn: the same look as in the parlor */
-.her-back { flex-direction: column; gap: 8px; padding: 0 8px; text-align: center; background-color: var(--velvet);
-  background-image: repeating-linear-gradient(45deg, rgba(176,141,87,.34) 0 1px, transparent 1px 7px), repeating-linear-gradient(-45deg, rgba(176,141,87,.34) 0 1px, transparent 1px 7px);
-  box-shadow: inset 0 0 0 4px var(--velvet), inset 0 0 0 5px var(--ivory), 0 0 0 2px rgba(176,141,87,.6), 0 0 24px rgba(236,211,166,.22), 0 12px 28px rgba(0,0,0,.5);
-  animation: herGlow 4.5s ease-in-out infinite; }
-.her-back .knows { font-style: italic; font-size: calc(11.5px * var(--fs)); line-height: 1.15; color: var(--ash); }
-.her-back.djinn { box-shadow: inset 0 0 0 4px var(--velvet), inset 0 0 0 5px var(--ivory), 0 0 0 2px var(--ember), 0 0 28px rgba(201,86,63,.38), 0 12px 28px rgba(0,0,0,.5); animation-name: emberGlow; }
-.her-back.djinn .knows { color: var(--ember-hi); }
-.grant .n.rev { color: var(--ember-ink); opacity: 1; }
-@keyframes emberGlow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(201,86,63,0)); } 50% { filter: drop-shadow(0 0 10px rgba(232,121,95,.5)); } }
-@keyframes herGlow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(236,211,166,0)); } 50% { filter: drop-shadow(0 0 9px rgba(236,211,166,.38)); } }
-@media (prefers-reduced-motion: reduce) { .her-back { animation: none; } }
 .djinn h3 { margin: 0 0 14px; font-family: var(--display); font-weight: 400; font-size: clamp(calc(26px * var(--fs)), calc(2.6vw * var(--fs)), calc(34px * var(--fs))); line-height: 1.1; text-wrap: pretty; }
 .djinn .say { font-size: calc(19px * var(--fs)); line-height: 1.45; max-width: 37em; text-wrap: pretty; }
 .djinn .say a { color: var(--ivory); text-underline-offset: 3px; }
@@ -256,8 +243,7 @@ footer a { color: var(--ivory); }
         <div class="chip"><span>The Other</span><b>Grumpy to your sunshine</b></div>
         <div class="chip"><span>The circle</span><b>The group chat · The ex</b></div>
         <div class="chip"><span>Told by</span><b>The rom-com narrator</b></div>
-        <div class="chip"><span>And now</span><b>The plus-one</b></div>
-        <div class="chip"><span>And then...</span><b style="color:var(--ash-dim); font-family:var(--text); font-style:italic; font-weight:400">sealed in</b></div>
+        <div class="chip"><span>Her card, turned</span><b>The plus-one</b></div>
       </div>
       <div class="prose">
         <p>Here’s the thing about being a bridesmaid for the fourth time: you know exactly where the bar is before the venue does. So when the groom’s brother, who has said eleven words to you in two years and nine of them were “excuse me”, sits down on the stool next to yours and says “I need a favour,” you know two things. One, this is the rehearsal dinner and your ex is at table six with someone who does Pilates. Two, you already know what the favour is.</p>
@@ -268,17 +254,17 @@ footer a { color: var(--ivory); }
     </div>
 
     <div class="djinn">
-      <div class="back her-back djinn" aria-hidden="true"><i>and then...</i><span class="knows">the doorkeeper will know</span></div>
+      <div class="back" aria-hidden="true"><i>and then...</i></div>
       <div>
         <h3>You can turn the card, but it costs you.</h3>
-        <p class="say">At the door the reader offers one more card, face down. Leave it with her and you get the life you picked. Seal it in and the <a href="#door">doorkeeper</a> turns it: now and then a gift, mostly a price. You’re told which way up it landed. Never what it changed.</p>
+        <p class="say">When your life is set, the reader plays one card, face down. Leave it and open the door, and you get the life you picked. Turn it, and the <a href="#door">doorkeeper</a> sees what you turned and judges you for it: now and then a gift, mostly a price. You’re told which way up it landed. Never what it changed.</p>
         <div class="kicker might">In this story, it might have been</div>
         <div class="grants">
           <div class="grant gift"><div class="shade"></div><div class="n">Upright</div><b>A gift</b><p>You’ve been a bridesmaid at this venue twice before. You know which doors lock, and who has the keys.</p></div>
-          <div class="grant"><div class="shade"></div><div class="n rev">Reversed</div><b>A secret turns</b><p>His mother already knows it’s fake. She’s letting it run to see what you’ll do.</p></div>
-          <div class="grant"><div class="shade"></div><div class="n rev">Reversed</div><b>A card bends</b><p>The group chat isn’t on your side. Someone in it set this up, and the photo was taken before you sat down.</p></div>
-          <div class="grant"><div class="shade"></div><div class="n rev">Reversed</div><b>The life tilts</b><p>The wedding is off by Saturday morning, and the whole family thinks you know why.</p></div>
-          <div class="grant"><div class="shade"></div><div class="n rev">Reversed</div><b>Everything at once</b><p>The group chat is live-streaming, your ex is the best man, and his mother has booked the engagement photos.</p></div>
+          <div class="grant"><div class="shade"></div><div class="n">Reversed</div><b>A secret turns</b><p>His mother already knows it’s fake. She’s letting it run to see what you’ll do.</p></div>
+          <div class="grant"><div class="shade"></div><div class="n">Reversed</div><b>A card bends</b><p>The group chat isn’t on your side. Someone in it set this up, and the photo was taken before you sat down.</p></div>
+          <div class="grant"><div class="shade"></div><div class="n">Reversed</div><b>The life tilts</b><p>The wedding is off by Saturday morning, and the whole family thinks you know why.</p></div>
+          <div class="grant"><div class="shade"></div><div class="n">Reversed</div><b>Everything at once</b><p>The group chat is live-streaming, your ex is the best man, and his mother has booked the engagement photos.</p></div>
         </div>
         <p class="fine">None of it is scripted. Every life is woven fresh and no two come out alike, and whatever the card costs, what you do about it is yours. Your choices are the story.</p>
       </div>
@@ -294,7 +280,7 @@ footer a { color: var(--ivory); }
     <div class="lines">
       <div class="line-card"><div class="when">When you sit</div><div class="say">Sit. Seven cards make a life. For each I deal you five, and you keep one; two, for the people around you. The kind of story first; everyone knows the kind they want, they just don’t say it out loud.</div></div>
       <div class="line-card"><div class="when">When you refuse her card</div><div class="say">Picky. Fine. That’s three refused. The fourth is still mine.</div></div>
-      <div class="line-card"><div class="when">At the door</div><div class="say">One more, face down. Seal it in and the doorkeeper turns it: what you wished for, or a price for it. Mostly a price. Or leave it with me.</div></div>
+      <div class="line-card"><div class="when">When the life is set</div><div class="say">My card’s on the table, face down. Open the door, or turn it. Careful; the doorkeeper sees what you turn.</div></div>
     </div>
   </section>
 
@@ -306,10 +292,10 @@ footer a { color: var(--ivory); }
     <div>
     <div class="kicker">The doorkeeper</div>
     <h2>Where anything <em>else...</em> is possible.</h2>
-    <p class="lede">The reader only deals. Your narrator only tells. In between, the doorkeeper opens your envelope, turns her card if you sealed it in, and writes the life you’re about to live, out of sight. That’s why nothing in your envelope is secret: the secrets don’t exist until the door.</p>
+    <p class="lede">The reader only deals. Your narrator only tells. In between, the doorkeeper opens your envelope, judges her card if you turned it, and writes the life you’re about to live, out of sight. That’s why nothing in your envelope is secret: the secrets don’t exist until the door.</p>
     <div class="steps four">
-      <div class="step" style="rotate:-1deg"><div class="shade"></div><div class="n">I</div><h3>You hand it over</h3><p>Your envelope: the cards you kept, the complication she played, and her last card if you sealed it in.</p></div>
-      <div class="step" style="rotate:1.2deg"><div class="shade"></div><div class="n">II</div><h3>Her card turns</h3><p>If you sealed it in. You’re told upright or reversed, and nothing else. Upright is a gift. Reversed is a price, and you’ll spend the story looking for it.</p></div>
+      <div class="step" style="rotate:-1deg"><div class="shade"></div><div class="n">I</div><h3>You hand it over</h3><p>Your envelope: the cards you kept, and her card if you turned it.</p></div>
+      <div class="step" style="rotate:1.2deg"><div class="shade"></div><div class="n">II</div><h3>Her card is judged</h3><p>If you turned it. You’re told upright or reversed, and nothing else. Upright is a gift. Reversed is a price, and you’ll spend the story looking for it.</p></div>
       <div class="step" style="rotate:-.6deg"><div class="shade"></div><div class="n">III</div><h3>Your life is written</h3><p>Out of sight, random cards become one real person: a name, a past, what they want, the people around them. It’s read back and checked until every piece holds, and the half you don’t get told is set underneath.</p></div>
       <div class="step" style="rotate:.8deg"><div class="shade"></div><div class="n">IV</div><h3>The door opens</h3><p>You’re shown the life you’re stepping into, and one line into your first morning. From there the story belongs to your narrator, and to what you do.</p></div>
     </div>
@@ -414,7 +400,7 @@ function still() {
   for (const s of SLOTS) { const cards = shuffle(DECK[s.id]); if (s.id === 'circle') picks.circle = cards.slice(0, 2); else picks[s.id] = cards[0]; }
   an = DECK.andnow[Math.floor(Math.random() * DECK.andnow.length)];
   drawSpread(null, 'up'); drawSentence(true);
-  $('lVoice').textContent = 'One more, face down. Seal it in, or leave it with me.';
+  $('lVoice').textContent = 'There it is. Yours now, unless you make me play another.';
 }
 async function run() {
   while (true) {
@@ -440,9 +426,9 @@ async function run() {
     // her card
     $('lHand').innerHTML = '';
     an = DECK.andnow[Math.floor(Math.random() * DECK.andnow.length)];
-    drawSpread(null, 'down'); await say('That’s a life. Now I play one.'); await wait(1600);
-    drawSpread(null, 'up'); drawSentence(true); await say('There it is. Take it, or make me play another.'); await wait(2400);
-    await say('One more, face down. Seal it in, or leave it with me.'); await wait(3000);
+    drawSpread(null, 'down'); await say('That’s a life. My card’s on the table, face down.'); await wait(1800);
+    await say('Open the door, or turn it. Careful; the doorkeeper sees what you turn.'); await wait(2600);
+    drawSpread(null, 'up'); drawSentence(true); await say('There it is. Yours now, unless you make me play another.'); await wait(3000);
     await say(''); await wait(400);
   }
 }
