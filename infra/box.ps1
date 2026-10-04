@@ -17,6 +17,10 @@
 param([Parameter(Position = 0)][string]$Step, [switch]$Live)
 
 $ErrorActionPreference = 'Continue'
+# The box answers in UTF-8 (systemctl prints arrows). Without these the AWS CLI on Windows
+# crashes trying to print them, and PowerShell garbles what it does print.
+$env:PYTHONUTF8 = '1'; $env:PYTHONIOENCODING = 'utf-8'
+try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch { }
 $Region = 'us-east-2'
 $Bucket = 'unstuck-box-968053968391'
 $NewIp  = '18.225.22.191'
@@ -99,18 +103,12 @@ journalctl -u unstuck-contact -n 15 --no-pager
 echo "== messages kept: $(ls /srv/contact 2>/dev/null | wc -l)"
 '@ }
 
-$Steps['door-install'] = @{ box = 'new'; what = 'Installs and starts the playtest door (services/door.py). Needs /unstuck/door/DOOR_PASSWORD in Parameter Store first; makes the signing secret on the box once'; script = @'
-set -e
-cd /srv/unstuck
-python3 infra/unstuck-env.py door --ensure DOOR_SECRET
-grep -q '^DOOR_PASSWORD=' /etc/door.env || { echo "No DOOR_PASSWORD yet: add /unstuck/door/DOOR_PASSWORD in Parameter Store, then run this again."; exit 1; }
-cp infra/systemd/unstuck-door.service /etc/systemd/system/
+$Steps['door-remove'] = @{ box = 'new'; what = 'Takes the server-side door off the box (replaced by the JS password in the game page): stops it and removes its unit and env file'; script = @'
+systemctl disable --now unstuck-door 2>/dev/null || true
+rm -f /etc/systemd/system/unstuck-door.service /etc/door.env
 systemctl daemon-reload
-systemctl enable unstuck-door
-systemctl restart unstuck-door
-sleep 1
-echo "door: $(systemctl is-active unstuck-door)"
-curl -s -o /dev/null -w 'a visitor with no pass gets %{http_code} (401 is right)\n' -H 'Host: last-warren.unstuck-games.com' http://127.0.0.1:8771/door/check
+echo "door service: $(systemctl is-active unstuck-door 2>/dev/null || true)"
+ls /etc/door.env 2>/dev/null || echo "/etc/door.env is gone"
 '@ }
 
 $Steps['nginx'] = @{ box = 'new'; what = 'Puts the repo''s nginx config in place, tests it, and reloads. Nothing is reloaded if the test fails'; script = @'
@@ -242,11 +240,12 @@ $id = aws ssm send-command --profile $box.profile --region $Region --instance-id
 Remove-Item $params -ErrorAction SilentlyContinue
 if ($LASTEXITCODE -ne 0 -or -not $id) { Say 'Could not send the command.' 'Red'; exit 1 }
 Say "`nsent ($id), waiting for the box..." 'Yellow'
-$inv = $null
+$inv = $null; $fails = 0
 for ($i = 0; $i -lt 300; $i++) {
   Start-Sleep -Seconds 2
   $raw = aws ssm get-command-invocation --profile $box.profile --region $Region --command-id $id --instance-id $box.instance --output json
-  if ($LASTEXITCODE -ne 0) { continue }
+  if ($LASTEXITCODE -ne 0) { $fails++; if ($fails -ge 10) { Say "Could not read the box's answer 10 times running. The step may still have run: check with  aws ssm get-command-invocation --command-id $id --instance-id $($box.instance)" 'Red'; exit 1 }; continue }
+  $fails = 0
   $inv = $raw | Out-String | ConvertFrom-Json
   if ($inv.Status -ne 'Pending' -and $inv.Status -ne 'InProgress' -and $inv.Status -ne 'Delayed') { break }
 }
