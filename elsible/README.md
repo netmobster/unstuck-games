@@ -2,21 +2,25 @@
 
 > ***You were dealt a life, and then...***
 
-Storytelling with an AI narrator, on the Seren engine. You're dealt a life (Loom-style: five cards
-a slot, never locked, the dealer plays a complication back at you), the weave turns the random
-hand into a real person's life, the auditor makes it true, and you step into an ordinary morning
-of it. What's moving underneath is the narrator's to know and yours to find out.
+Storytelling with an AI narrator, on the Seren engine. At the reader's table you're dealt a life:
+five cards a slot, never locked. Then she plays her card face down: open the door, or turn it and
+let the doorkeeper judge you. Your cards go into an envelope; behind the door they're woven into a
+real person's life and checked until it's true; and you step into an ordinary morning of it. What's
+moving underneath is the narrator's to know and yours to find out.
 
-**Built locally. Nothing here is pushed or deployed.**
+**Live:** elsible.unstuck-games.com (the home page) and `/play/` (the parlor). Everything else is
+built and tested locally; pushes happen when Jay asks for them.
 
 | | |
 |---|---|
 | the design | [`docs/elsible.md`](docs/elsible.md) |
-| every decision, dated | [`DECISIONS.md`](DECISIONS.md) |
-| briefs for Claude Design (system, not design) | [`docs/briefs/elsible-system-brief.md`](docs/briefs/elsible-system-brief.md) · [`docs/briefs/elsible-dealing-brief.md`](docs/briefs/elsible-dealing-brief.md) |
-| the deck | [`decks/story/deck.json`](decks/story/deck.json) (core v3) · [`decks/story/packs/`](decks/story/packs/) (business) |
-| the prototype | [`prototype/`](prototype/): `python elsible/prototype/build.py`, then open `prototype/elsible.html` |
-| the engine pieces | [`engine/`](engine/) |
+| every decision, dated | [`DECISIONS.md`](DECISIONS.md) · ideas, filed: [`IDEAS.md`](IDEAS.md) |
+| the site | [`site/`](site/): the home page (`index.html`) and the parlor (`play/index.html`, built) |
+| the parlor | [`prototype/parlor.template.html`](prototype/parlor.template.html), built with `python elsible/prototype/build.py --publish` |
+| the door | [`door/`](door/): the doorkeeper, the weave and the audit, the reveal. See its README to play the first part |
+| the deck | [`decks/story/deck.json`](decks/story/deck.json) (v4) · [`decks/story/packs/`](decks/story/packs/) (business) · the card list: [`docs/briefs/elsible-cards.md`](docs/briefs/elsible-cards.md) |
+| briefs for Claude Design | [`docs/briefs/`](docs/briefs/) (the system and the deal; the parlor has since replaced their flow) |
+| the engine pieces | [`engine/`](engine/), for play, which comes after the door |
 
 ## Try the deal from the command line
 

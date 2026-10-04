@@ -2,6 +2,28 @@
 
 What was decided and why, dated. Newest first.
 
+## 2026-10-03 — CC — The door, built
+
+Jay signed off the parlor and it went live (PR #130). The door is the next piece: what happens
+between the envelope and the story. Built locally in `elsible/door/`.
+
+1. **The doorkeeper is Claude Code reading `door/CLAUDE.md`,** in a folder made from the kit and
+   the player's envelope (`new-life.ps1`; each life under `~\Elsible\lives\`). One voice, only the
+   transition: it opens the envelope, has the life written and checked, says how her card landed,
+   shows the reveal and steps aside.
+2. **The weave and the audit run in sub-agents** (`weave.md`, `audit.md`), so the hidden half is
+   written where the player's screen never shows it. The doorkeeper never reads `life/hidden.md`.
+3. **No Python and no server.** The roll for her card is a real roll from the shell (PowerShell's
+   `Get-Random` or bash's `$RANDOM`), and the reveal is a page Claude Code fills from a template and
+   opens itself. *Why:* the home page promises one install and one typed line.
+4. **The first rehearsal worked:** a throwaway hand (fake dating, the bridesmaid, the wedding
+   weekend) became Hattie, 31, a florist, and the audit passed it. Jay: *"that's...
+   phenomenal...."* **It's slow:** about 18 minutes on Opus. Sonnet and tighter briefs cut the
+   audit to about 4; the weave is being timed. The doorkeeper tells the player a life takes a few
+   minutes.
+5. **Play is the next build.** The door ends with "The door's open. Your narrator takes it from
+   here."
+
 ## 2026-10-03 — CC — Her card: one card, in the river
 
 Jay, playing the parlor: her card sat in three places, two of them turnable, and nothing said that
