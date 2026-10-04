@@ -169,6 +169,19 @@ How the person at the centre treats you. Love interest, rival or mark: the story
 | **The reunion** | Ten years, one room, everyone you used to be | Old versions of you walk in the door |
 | **The funeral** | Everyone in black, saying what they shouldn't | Old grudges, no exit |
 
+## 9 · Tune — five dials
+
+Set after the hand, before the weave. **They shape how the life is told, never which cards are
+in it.** Each dial runs between its own two ends.
+
+| dial | low end | high end |
+|---|---|---|
+| **Absurdity** | played straight | a court in your head |
+| **Stakes** | one evening | a whole life |
+| **Cost** | your pride | your job, your name |
+| **Crowd** | just the two of you | everyone watching |
+| **Length** | one night | a season |
+
 ---
 
 ## The hidden half — for the weave, never on a card
@@ -213,6 +226,18 @@ happens if somebody does. The weave makes these specific to the life that was de
 
 The core deck is deliberately incomplete. Packs add cards to any slot:
 
-- **Business** (built, separate file): the investor, the founder, the startup, the firm; the audit,
-  the raise, the merger.
+- **Business** (built, `decks/story/packs/business.json`). Its cards join the core deck's slots when
+  the pack is on:
+
+| slot | card | line | in play |
+|---|---|---|---|
+| Who you are | **The investor** | You decide who gets money, and everyone knows it | Every warm word to you might be a pitch · diligence is a reason to ask anything |
+| Who you are | **The founder** | You built it, and it is starting to own you | Every friendship is also a reference |
+| Where | **The startup** | Twelve people, one runway, no walls | Work and life are the same room · everything ships tonight |
+| Where | **The firm** | The hours are long and the floors are numbered | Hierarchy is literal · a mistake is billable |
+| And now (the dealer) | **The audit** | Someone is checking the story | Every lie costs more as the clock runs |
+| And now (the dealer) | **The raise** | The money comes with people attached | Every yes is owed to someone |
+| And now (the dealer) | **The merger** | Two houses, one name at the end | Somebody's people will not survive it |
+
+  It also adds one secret to the weave's reference list: *Conflict of interest*.
 - **Romance, thriller, horror, isekai, historical:** not written yet.

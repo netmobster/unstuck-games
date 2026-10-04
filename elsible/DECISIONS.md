@@ -2,6 +2,82 @@
 
 What was decided and why, dated. Newest first.
 
+## 2026-10-03 — CC — Her card: one card, in the river
+
+Jay, playing the parlor: her card sat in three places, two of them turnable, and nothing said that
+turning it had consequences. His fix: *"card is only in the 'river'... and there are two buttons:
+'open the door' and 'turn her card... but be careful'"*. **This entry supersedes the ones below
+where they differ.**
+
+1. **Her card is one card, face down in the river** (the table's last slot) once the life is set.
+   The corner card goes back to Claude Design's decoration, "Hers. It stays down.", and there is no
+   red anywhere (Jay: "no to the red card/overly texty card").
+2. **Two choices under the sentence: open the door, or turn her card.** Turning is the risk: the
+   doorkeeper sees what you turned and judges you for it (the djinn). Open the door without turning
+   and the life comes as picked, near enough. *Supersedes* "seal it in, or leave it with her" at the
+   door, and makes the dealer's complication optional (3 Oct, "back to the Loom's feel", #2).
+3. **Once turned, she can play another.** Every refusal is seen by the doorkeeper too.
+4. **The envelope:** `djinn: sealed` when her card was turned, with that card as `pressure`; `left`
+   when it wasn't. The severity ladder and "upright or reversed, told at the door" stand.
+
+## 2026-10-03 — CC — The djinn card, and who builds the parlor
+
+Jay's answers on the Djinn Card page (https://claude.ai/artifact/QYPBKiY89Bw3DUYrgZXr6F).
+**This entry supersedes the ones below where they differ.**
+
+1. **Turning her card is the player's choice.** At the end of the deal she offers her last card:
+   seal it into the envelope, or leave it with her. Left, you get the life you picked, *ish*: the
+   doorkeeper still makes the pieces fit, and the dials change how the cards are read, never which
+   cards you hold.
+2. **Sealed, the doorkeeper rolls how hard it bites.** Jay's severity ladder:
+   1. a boon: purely additive and surprising (a gift, or a detail like the age you start at);
+   2. the hidden half turns against you;
+   3. one of your cards bends;
+   4. the whole life tilts;
+   5. every card turned to its extreme.
+
+   *Djinn rules: mostly worse.* Turning is a cost, with a chance of a boon. The default roll is
+   2d3−1 (1 and 5 one in nine each, 3 one in three), to tune after test 1. The doorkeeper rolls;
+   the player never does.
+3. **At the door you're told upright or reversed, not what it changed.** Upright is the boon,
+   reversed is a cost. *Why (Jay):* "add tension, the player is LOOKING for the cost, but doesn't
+   know what it is."
+4. **Three roles, one voice each.** The reader is just the cards. The doorkeeper is just the
+   transition. The narrator picked under Told by is the DM. *Why (Jay):* Seren had a stretch where
+   the narrator and the AI both talked as characters.
+5. **The parlor first, and CC builds it.** Claude Design is done unless new assets are needed. CC
+   takes its files into `elsible/site/` and makes the fixes itself. The door gets built after Jay
+   signs the parlor off. Jay: *"You keep wanting to pass stuff back and I'm not sure why?"*
+6. **The contact address is jay@unstuck-games.com** (it takes mail: MX at IONOS, checked).
+
+## 2026-10-03 — CC — The sealed envelope, and Claude Design's first pass
+
+Claude Design built a parlor and a home page from the briefs. CC played the parlor and read both
+(the read-back: https://claude.ai/artifact/5Vx133aRJN5NKL5MM7PRyh). These are Jay's answers, and
+one call he made in chat. **This entry supersedes the ones below where they differ.**
+
+1. **The web hands you a sealed envelope; the doorkeeper weaves.** The parlor deals and your cards
+   go into an envelope. Claude Code is the doorkeeper: it opens the envelope, weaves and audits out
+   of the player's sight, and reveals the life at the door. *Supersedes* 2 Oct #11 (the web writes
+   the reveal). *Why:* the AWS account moved to a new box this morning without Bedrock (a bug is
+   filed), so nothing can weave on the web today. And it holds up on its own terms: nothing secret
+   exists until the door, the web needs no model, and it is what Claude Design built. Jay: *"It
+   works narratively, and technically, and we can build today without needing bedrock."*
+2. **The first part is finished before play is built.** The deal, the envelope, the doorkeeper and
+   the reveal get played end to end and signed off by Jay first. Jay: *"Why would we move on if the
+   first part isn't done?"*
+3. **The reader's last card is a djinn.** Your cards are the wish; her face-down card is how it is
+   granted: what you wanted, better, or worse. *"You pick your cards, but there's always a bit of
+   unknown."* The doorkeeper turns it at the door. How it works is open (the Djinn Card page).
+   *Changes* the read-back's objection to "upright or reversed is decided when the door opens":
+   under the djinn that is the grant, not the ending, so it stands.
+4. **The premise is a second go.** Jay's wording for the home page: *"A life, maybe yours, taken at
+   the other fork."* It is not necessarily your life. The deck never asks for your real one, and
+   every Other stays invented (2 Oct #10).
+5. **Dice stay, at knife-edge moments only.** The home page says "Nothing to roll."
+6. **Contact is an unstuck-games.com address.**
+7. **The invitation to pack writers stays** on the home page.
+
 ## 2026-10-03 — CC, the server move — the deal prototype goes up at elsible.unstuck-games.com
 
 Jay asked for the push: *"Yes: push the committed deck-v4 state and put the deal prototype up as
