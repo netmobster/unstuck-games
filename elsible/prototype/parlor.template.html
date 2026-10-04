@@ -128,19 +128,19 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .door-btn.ready:hover { background: var(--ivory-hi); }
 
 /* your hand */
-.hand-wrap { display: flex; flex-direction: column; gap: 6px; margin-top: auto; }
+.hand-wrap { display: flex; flex-direction: column; gap: 6px; }
 .hand-head { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; justify-content: center; }
 .hand-head .which { font-family: var(--display); font-size: 22px; }
 .hand-head .q { font-style: italic; font-size: 17px; color: var(--ash); }
 .hand-head .count { font-size: 12px; letter-spacing: .2em; text-transform: uppercase; color: var(--ash); margin-left: 12px; }
-.hand { display: flex; align-items: flex-end; justify-content: center; padding: 22px 80px 0; height: 272px; overflow: hidden; }
+.hand { display: flex; align-items: flex-end; justify-content: center; padding: 46px 80px 56px; overflow-x: clip; overflow-y: visible; }
 .held { width: 176px; height: 290px; flex: none; margin: 0 -14px; padding: 22px 18px 20px; gap: 9px;
   background: var(--face); color: var(--velvet); border-color: var(--brass); box-shadow: 0 12px 30px rgba(0,0,0,.5);
   transform-origin: 50% 100%; animation: deal .55s cubic-bezier(.2,.7,.2,1) both; will-change: translate, rotate; }
 .held .title { font-size: 21px; }
 .held .line { font-style: italic; font-size: 16px; line-height: 1.3; }
 .held .play { font-size: 13px; line-height: 1.35; margin-top: auto; padding-top: 12px; border-top: 1px solid rgba(176,141,87,.45); opacity: .9; }
-.held:hover { translate: 0 -40px !important; rotate: 0deg !important; z-index: 2; box-shadow: 0 26px 50px rgba(0,0,0,.6); }
+.held:hover { translate: 0 -40px !important; rotate: 0deg !important; z-index: 10; box-shadow: 0 26px 50px rgba(0,0,0,.6); }
 .held.taken { background: var(--ivory); box-shadow: 0 0 0 3px var(--ivory), 0 0 0 4px var(--brass), 0 18px 40px rgba(0,0,0,.55); }
 
 @keyframes deal { from { opacity: 0; transform: translateY(46px); } to { opacity: 1; transform: none; } }
@@ -196,7 +196,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .said { gap: 10px; }
   .sentence { font-size: clamp(18px, 1.7vw, 21px); }
   .door-btn { padding: 9px 20px; font-size: 16px; }
-  .hand { height: 214px; padding-top: 14px; }
+  .hand { padding-top: 14px; padding-bottom: 46px; }
   .held { width: 150px; height: 248px; padding: 16px 14px; }
   .held .title { font-size: 18px; }
   .held .line { font-size: 14px; }
@@ -207,7 +207,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .page { padding: 20px 18px 0; }
   .reader { grid-template-columns: 1fr; }
   .reader .side { display: none; }
-  .hand { padding: 22px 0 0; }
+  .hand { padding: 40px 0 50px; }
   .door { padding: 32px 24px; }
   .steps { grid-template-columns: 1fr; }
   .step { aspect-ratio: auto; }
