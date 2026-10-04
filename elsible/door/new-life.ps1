@@ -20,7 +20,9 @@ if (-not $Into) { $Into = Join-Path $HOME ('Elsible\lives\' + (Get-Date -Format 
 if (Test-Path -LiteralPath (Join-Path $Into 'elsible-envelope.md')) { throw "There's already a life at $Into. Pick another -Into." }
 
 New-Item -ItemType Directory -Force -Path (Join-Path $Into 'deck\packs') | Out-Null
-foreach ($f in 'CLAUDE.md', 'weave.md', 'audit.md', 'reveal.template.html') { Copy-Item -LiteralPath (Join-Path $kit $f) -Destination $Into }
+foreach ($f in 'CLAUDE.md', 'reveal.template.html') { Copy-Item -LiteralPath (Join-Path $kit $f) -Destination $Into }
+New-Item -ItemType Directory -Force -Path (Join-Path $Into '.claude\agents') | Out-Null
+Get-ChildItem -LiteralPath (Join-Path $kit '.claude\agents') -Filter '*.md' | Copy-Item -Destination (Join-Path $Into '.claude\agents')
 Copy-Item -LiteralPath (Join-Path $elsible 'decks\story\deck.json') -Destination (Join-Path $Into 'deck\deck.json')
 Get-ChildItem -LiteralPath (Join-Path $elsible 'decks\story\packs') -Filter '*.json' | Copy-Item -Destination (Join-Path $Into 'deck\packs')
 Copy-Item -LiteralPath $Envelope -Destination (Join-Path $Into 'elsible-envelope.md')

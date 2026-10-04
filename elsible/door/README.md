@@ -10,11 +10,15 @@ opens itself.
 
 | file | what it is |
 |---|---|
-| `CLAUDE.md` | the doorkeeper: one voice, only the transition, and the seven steps from "I'm ready. Open the door." |
-| `weave.md` | the brief for the sub-agent that writes the life (`life/reveal.json`) and what's moving underneath it (`life/hidden.md`) |
-| `audit.md` | the brief for the second sub-agent, which checks the two agree and that nothing visible gives the hidden half away |
+| `CLAUDE.md` | the doorkeeper: one voice, only the transition, and the eight steps from "I'm ready. Open the door." |
+| `.claude/agents/weaver.md` | the sub-agent that writes the life (`life/reveal.json`) and what's moving underneath it (`life/hidden.md`) |
+| `.claude/agents/auditor.md` | the sub-agent that checks the two agree and that nothing visible gives the hidden half away |
 | `reveal.template.html` | the reveal page, in the parlor's look |
-| `new-life.ps1` | sets up a life folder from an envelope: the four files above, the deck, and your envelope |
+| `new-life.ps1` | sets up a life folder from an envelope: the files above, the deck, and your envelope |
+
+The weaver and the auditor are pinned for speed: Sonnet, medium effort, read and write only, a
+few turns, and none of the user's own instructions loaded. The roll for her card is made by the
+doorkeeper straight into `life/roll.txt`, which nobody on screen reads.
 
 ## Play the first part
 
