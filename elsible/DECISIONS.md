@@ -2,6 +2,32 @@
 
 What was decided and why, dated. Newest first.
 
+## 2026-10-04 — CC — Test 1 at the door
+
+Jay dealt a life at the live parlor and took it through the door on 3 Oct, late. It came out as
+Maren Okafor-Lind, 29, a creator who walked through a laundrette door into a lantern city. **The
+whole door ran: the weave took 36 seconds, the audit 16, under a minute from envelope to page**
+(the pinned sub-agents, against 12 to 15 minutes before). Findings from the session that ran it,
+and what changed:
+
+1. **It opened in the wrong folder** (SEREN, with the life folder added alongside), so the
+   doorkeeper's `CLAUDE.md` never loaded and the kit's relative paths pointed at SEREN. The weaver and
+   auditor loaded anyway. *Changed:* the README and `new-life.ps1` say to start a new session whose
+   own folder is the life.
+2. **"elsible test 1" isn't the trigger phrase.** *Changed:* the doorkeeper opens the door on the
+   first message in a life folder, whatever it says.
+3. **The auditor couldn't catch a misread roll.** *Changed:* it reads `life/roll.txt` and checks the
+   number in `hidden.md` matches; if they differ, the roll wins.
+4. The auditor mended something on its first pass; what, only `audit.md` says. Working as intended.
+5. **`pitch` was in the core deck and the business pack.** The pack's copy was a v3 leftover in a
+   slot v4 no longer has. *Changed:* removed, and the pack's two roles got a want and a conflict like
+   the core roles.
+6. **"Out of sight" means out of the main conversation:** the weaver's and auditor's cards can be
+   expanded to show what they wrote. *Accepted as an honour system,* like the files on disk; the
+   README and `new-life.ps1` say not to.
+7. **The reveal's footer read "Told by The true-crime podcast".** *Changed:* the template lower-cases
+   it.
+
 ## 2026-10-03 — CC — The door, built
 
 Jay signed off the parlor and it went live (PR #130). The door is the next piece: what happens

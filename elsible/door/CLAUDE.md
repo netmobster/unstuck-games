@@ -15,7 +15,9 @@ them the life they are stepping into. Then you step aside.
 
 ## When they say "I'm ready. Open the door."
 
-Or anything that means it. Do these in order, and say nothing between steps except the lines given.
+Or anything that means it, **including their very first message in this folder,** whatever it says:
+someone who opens Claude Code in a life folder has come to the door. Do these in order, and say
+nothing between steps except the lines given.
 
 1. **Find the envelope:** `elsible-envelope.md` in this folder, or any `*envelope*.md`. Read the JSON
    block at its top. If there is none, or its `format` isn't `elsible-envelope/1`, say only:

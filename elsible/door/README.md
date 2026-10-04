@@ -29,10 +29,16 @@ doorkeeper straight into `life/roll.txt`, which nobody on screen reads.
    .\elsible\door\new-life.ps1 -Envelope "$HOME\Downloads\elsible-envelope.md"
    ```
 
-3. Open Claude Code in the folder it prints, and say: *I'm ready. Open the door.*
+3. Start a **new** Claude Code session with the folder it prints as the session's own folder (in the
+   desktop app: a new session, and pick that folder). Then say: *I'm ready. Open the door.*
 
-Each life gets its own folder under `~\Elsible\lives\`. **Don't open `life\hidden.md`:** it's the
-narrator's.
+Each life gets its own folder under `~\Elsible\lives\`.
+
+- **The folder has to be the session's own.** Added to a session that's already open somewhere else,
+  the doorkeeper's `CLAUDE.md` doesn't load and every path in the kit points at the wrong place. (Test
+  1 opened in SEREN with the life folder added alongside.)
+- **Don't peek behind the door.** Don't open `life\hidden.md`, `life\roll.txt` or `life\audit.md`, and
+  don't expand the weaver's or auditor's cards in the transcript: they show what was written.
 
 ## Not yet
 

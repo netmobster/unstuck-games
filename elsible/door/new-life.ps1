@@ -29,4 +29,6 @@ Copy-Item -LiteralPath $Envelope -Destination (Join-Path $Into 'elsible-envelope
 
 Write-Host ''
 Write-Host "A life is ready at $Into"
-Write-Host 'Open Claude Code there and say: I''m ready. Open the door.'
+Write-Host 'Start a NEW Claude Code session in that folder (its own folder, not added to an open session),'
+Write-Host 'and say: I''m ready. Open the door.'
+Write-Host 'Behind the door stays behind the door: don''t open life\hidden.md or expand the weaver''s and auditor''s cards.'

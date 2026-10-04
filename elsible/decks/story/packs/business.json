@@ -7,13 +7,17 @@
     "id": "investor",
     "name": "The investor",
     "line": "You decide who gets money, and everyone knows it",
-    "changes": "Every warm word to you might be a pitch · diligence is a reason to ask anything"
+    "changes": "Every warm word to you might be a pitch · diligence is a reason to ask anything",
+    "want": "to be right about someone, early, and in public",
+    "conflict": "you can never tell if they like you or your money"
    },
    {
     "id": "founder",
     "name": "The founder",
     "line": "You built it, and it is starting to own you",
-    "changes": "Every friendship is also a reference"
+    "changes": "Every friendship is also a reference",
+    "want": "to make it work without losing who started it",
+    "conflict": "you are the company, and the company is not you"
    }
   ],
   "world": [
@@ -48,25 +52,6 @@
     "name": "The merger",
     "line": "Two houses, one name at the end",
     "changes": "Somebody's people will not survive it"
-   }
-  ],
-  "undercurrent": [
-   {
-    "id": "pitch",
-    "name": "The pitch got personal",
-    "line": "It was business, until it was not",
-    "changes": "The deal and the feeling want different endings",
-    "signals": [
-     "they remember a detail from a meeting you thought was only business",
-     "a message that arrives after hours and isn't about the work",
-     "someone in the room notices how you two talk",
-     "the paperwork asks a question you don't want to answer honestly"
-    ],
-    "if_full": [
-     "the deal closes and the feeling is never said",
-     "it comes out at the worst possible meeting, in front of everyone"
-    ],
-    "if_resolved": "the job and the feeling are separated, and one of them is given up on purpose"
    }
   ],
   "secret": [
