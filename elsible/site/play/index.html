@@ -73,6 +73,14 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .stack .under { background-image: none; box-shadow: none; border-color: rgba(176,141,87,.55); }
 .stack .u1 { translate: 4px 5px; rotate: 3deg; } .stack .u2 { translate: 2px 2px; rotate: 1.5deg; }
 .hers { width: 84px; height: 138px; rotate: -4deg; transition: rotate .4s, opacity .4s; }
+/* her last card, the djinn: it looks like no other card on the table */
+.djinn-back { background-color: var(--velvet);
+  background-image: repeating-linear-gradient(45deg, rgba(176,141,87,.34) 0 1px, transparent 1px 7px), repeating-linear-gradient(-45deg, rgba(176,141,87,.34) 0 1px, transparent 1px 7px);
+  box-shadow: inset 0 0 0 4px var(--velvet), inset 0 0 0 5px var(--ivory), 0 0 0 2px rgba(176,141,87,.6), 0 0 24px rgba(236,211,166,.22), 0 12px 28px rgba(0,0,0,.5);
+  animation: djinnGlow 4.5s ease-in-out infinite; gap: 6px; padding: 0 6px; text-align: center; }
+.djinn-back i { font-size: 14px; }
+.djinn-back .knows { font-style: italic; font-size: 11px; line-height: 1.15; color: var(--ash); }
+@keyframes djinnGlow { 0%, 100% { filter: drop-shadow(0 0 0 rgba(236,211,166,0)); } 50% { filter: drop-shadow(0 0 9px rgba(236,211,166,.38)); } }
 .hers.sealed { rotate: 6deg; }
 .hers.left { opacity: .45; }
 
@@ -194,6 +202,9 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
   .reader .line { font-size: clamp(20px, 1.9vw, 24px); max-width: 900px; }
   .reader .voice { gap: 8px; }
   .stack, .hers { width: 52px; height: 84px; }
+  .hers svg { display: none; }
+  .hers i { font-size: 11px; }
+  .hers .knows { font-size: 9.5px; }
   .cloth { padding: 16px 22px 14px; gap: 10px; }
   .slot, .andnow { aspect-ratio: 1 / 1; }
   .sentence { margin: 0; }
@@ -223,6 +234,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 @media (prefers-reduced-motion: reduce) {
   .held, .andnow .down, .andnow .up, .door { animation: none; }
   .card, .hers, .her .back { transition: none; }
+  .djinn-back { animation: none; }
 }
 </style>
 </head>
@@ -249,8 +261,8 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
       <div class="line" id="line">Sit. One moment while I find the deck.</div>
     </div>
     <div class="side">
-      <div class="back hers" id="hersCard" title="Her last card"><svg width="22" height="36" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/><circle cx="30" cy="41" r="4" fill="#ecd3a6"/></svg><i>and then...</i></div>
-      <small id="hersNote">Hers. It stays down.</small>
+      <div class="back hers djinn-back" id="hersCard" tabindex="0" title="Her last card. At the door you can seal it into your envelope, and the doorkeeper turns it: what you wished for, now and then a gift, mostly a price. Or leave it with her."><svg width="22" height="36" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/><circle cx="30" cy="41" r="4" fill="#ecd3a6"/></svg><i>and then...</i><span class="knows">the doorkeeper will know</span></div>
+      <small id="hersNote">Hers. Turning it costs you.</small>
     </div>
   </section>
 
@@ -287,7 +299,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
         </div>
         <div class="dials" id="dials"><div class="foot">These change how your cards are read, never which cards you hold.</div></div>
         <div class="her">
-          <div class="back" id="herBack"><svg width="16" height="26" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/></svg></div>
+          <div class="back djinn-back" id="herBack"><svg width="16" height="26" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="3"/><rect x="26" y="54" width="8" height="44" fill="#ecd3a6"/></svg></div>
           <div>
             <div class="kicker">The reader</div>
             <div class="says" id="herSays"></div>
@@ -523,7 +535,7 @@ function render() {
   $('packBtn').textContent = S.business ? 'Business pack in · remove' : 'Add the business pack';
   $('hersCard').classList.toggle('sealed', S.djinn === 'sealed');
   $('hersCard').classList.toggle('left', S.djinn === 'left');
-  $('hersNote').textContent = S.djinn === 'sealed' ? 'Hers. Sealed in your envelope.' : S.djinn === 'left' ? 'Hers. Left with her.' : 'Hers. It stays down.';
+  $('hersNote').textContent = S.djinn === 'sealed' ? 'Hers. Sealed in your envelope.' : S.djinn === 'left' ? 'Hers. Left with her.' : 'Hers. Turning it costs you.';
 
   // spread
   let html = '';
