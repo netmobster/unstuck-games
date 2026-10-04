@@ -3,6 +3,8 @@ dist/
 .DS_Store
 games/*/reports/
 .claude/
+# ...except the door's own sub-agents, which ship with Elsible
+!elsible/door/.claude/
 .vite/
 
 # SEREN campaign content is private: LIVE/ never ships, and the test campaign is built
