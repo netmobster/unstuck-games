@@ -84,7 +84,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 
 /* a card lying on the cloth (slot) or held in the hand */
 .card { position: relative; overflow: hidden; text-align: left; border-radius: 10px; padding: 16px 14px; display: flex; flex-direction: column; gap: 8px;
-  background: transparent; color: var(--ash); border: 1px solid rgba(176,141,87,.4); }
+  background: transparent; color: var(--ash); border: 1px solid rgba(176,141,87,.4); transition: translate .12s cubic-bezier(.2,.8,.2,1), rotate .12s cubic-bezier(.2,.8,.2,1), box-shadow .12s ease-out; }
 .card .shade { position: absolute; left: -20%; right: -20%; top: -30%; height: 58%; pointer-events: none;
   background: radial-gradient(ellipse at 50% 0%, rgba(8,12,10,var(--shade, 0)), transparent 70%); }
 .card > * { position: relative; }
