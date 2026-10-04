@@ -53,6 +53,7 @@ function start(seed) {
   lineBar(); chronicle();
   layout(); panel();
   if (watching()) watchLoop();
+  else if (clock.on) clockReset(performance.now() + period());   // a new night: two beats to read the board
 }
 
 // ---------------------------------------------------------------- the board: CD's renderer, fed live state
@@ -137,9 +138,48 @@ function boardState(now) {
   };
 }
 function frame(now) {
+  if (g) clockTick(now);
   if (g && terrain && !$('tab-play').hidden) LW.draw(ctx, { cell: cs, terrain }, boardState(now), REDUCED ? 0 : now / 1000);
   requestAnimationFrame(frame);
 }
+
+// ---------------------------------------------------------------- the clock (a toggle)
+// Manual waits for you; Auto does not. Each tick is still one sim step, so the twins, the
+// saves and the tuning are untouched: Auto only stops waiting. Doing nothing is staying,
+// acting restarts the count, and a dialog, another tab, the bot, a run between warrens (which
+// steps itself) or a hidden page all hold it. A held clock never catches up afterwards.
+// P switches between them; in Manual, STAY still steps, as it always has.
+const CKEY = 'lw.clock.v1', SPEEDS = { slow: 1000, normal: 600, fast: 350 };
+const clock = (() => { try { const c = JSON.parse(localStorage.getItem(CKEY)); if (c && SPEEDS[c.speed]) return { on: !!c.on, speed: c.speed }; } catch {} return { on: false, speed: 'normal' }; })();
+let nextTickAt = 0, lastFrame = 0;
+const period = () => SPEEDS[clock.speed];
+function saveClock() { try { localStorage.setItem(CKEY, JSON.stringify({ on: clock.on, speed: clock.speed })); } catch {} }
+function clockReset(from = performance.now()) { nextTickAt = from + period(); }
+function clockHeld() { return !clock.on || !g || g.over || !!g.pendingDraft || watching() || inTransit(g.troop) || $('tab-play').hidden || !!document.querySelector('dialog[open]'); }
+function clockTick(now) {
+  if (now - lastFrame > 500) clockReset(now);
+  lastFrame = now;
+  if (clockHeld()) { clockReset(now); clockDraw(now); return; }
+  if (now >= nextTickAt) { const k = g._spendNext; g._spendNext = null; act(k ? { type: k } : { type: 'stay' }); clockReset(now); }
+  clockDraw(now);
+}
+function clockDraw(now) {
+  if (!clock.on) return;
+  const held = clockHeld(), left = Math.max(0, nextTickAt - now);
+  $('clock-fill').style.width = held ? '100%' : (100 * (1 - left / period())).toFixed(1) + '%';
+  $('clock-bar').classList.toggle('held', held);
+  $('clock-left').textContent = held ? 'held' : (left / 1000).toFixed(1) + 's';
+}
+function clockUI() {
+  $('clockline').dataset.mode = clock.on ? 'clock' : 'turns';
+  $('clock-turns').setAttribute('aria-pressed', String(!clock.on));
+  $('clock-clock').setAttribute('aria-pressed', String(clock.on));
+  for (const s of Object.keys(SPEEDS)) $('clock-' + s).setAttribute('aria-pressed', String(clock.speed === s));
+}
+$('clock-turns').addEventListener('click', () => { clock.on = false; saveClock(); clockUI(); });
+$('clock-clock').addEventListener('click', () => { clock.on = true; saveClock(); clockReset(); clockUI(); });
+for (const s of Object.keys(SPEEDS)) $('clock-' + s).addEventListener('click', () => { clock.speed = s; saveClock(); clockReset(); clockUI(); });
+clockUI();
 
 // ---------------------------------------------------------------- panel
 const HUNTER_D = {
@@ -260,6 +300,7 @@ function act(a) {
   if (g.night !== night && !g.over) { say(`Dawn. Night ${night} survived.`, 'gold'); dawnDialog(night); }
   panel();
   saveRun();
+  if (clock.on) clockReset();
   if (g.over) { clearRun(); endDialog(); }
   else if (inTransit(g.troop) && !timer && !watching()) { timer = setInterval(() => { if (!inTransit(g.troop) || g.over || g.pendingDraft) { clearInterval(timer); timer = null; return; } const k = g._spendNext; g._spendNext = null; act(k ? { type: k } : { type: 'stay' }); }, 220); }
 }
@@ -405,6 +446,7 @@ for (const k of ['decoy', 'rearguard', 'scout', 'dig']) $('sp-' + k).addEventLis
 document.addEventListener('keydown', e => {
   if (e.target.matches('input,select') || document.querySelector('dialog[open]') || $('tab-play').hidden) return;
   if (e.code === 'Space') { e.preventDefault(); flash($('stay')); act({ type: 'stay' }); return; }
+  if (e.key.toLowerCase() === 'p') { $(clock.on ? 'clock-turns' : 'clock-clock').click(); return; }
   const id = { a: 'attack', d: 'sp-decoy', r: 'sp-rearguard', s: 'sp-scout', g: 'sp-dig' }[e.key.toLowerCase()];
   if (id && !$(id).disabled) { flash($(id)); $(id).click(); }
 });

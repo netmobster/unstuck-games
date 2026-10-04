@@ -38,7 +38,7 @@ files needed to rebuild the box from nothing are in [`infra/`](infra/).
 | `ferretbowling.unstuck-games.com` | Ferret Bowling page; the game at `/play/` | files from `ferret-bowling/` |
 | `elsewhere.unstuck-games.com` | Elsewhere page; the world at `/play` behind a password | files from `elsewhere/`, plus the Elsewhere service |
 | `deadline.unstuck-games.com` | Deadline Dungeon (game #4): holding page, design docs | files from `deadline-dungeon/` |
-| `last-warren.unstuck-games.com` | The Last Warren (game #5): page; the game at `/play/` | files from `the-last-warren/`; `/play/` is a single-file build of `games/the-last-warren/` |
+| `last-warren.unstuck-games.com` | The Last Warren (game #5): the diary (public); the game at `/play/`, **behind the playtest door** | files from `the-last-warren/`; `/play/` is a single-file build of `games/the-last-warren/`, and nginx asks the door before serving it |
 | `elsible.unstuck-games.com` | Elsible (in design): a holding page, and the deal prototype (deck v4) at `/play/` | files from `elsible/site/`. `/play/` is built by `python elsible/prototype/build.py --publish` |
 | `seren.unstuck-games.com` | SEREN, the AI-DM table, behind a password | the SEREN service; content from `/srv/seren`, never the repo |
 
@@ -66,6 +66,7 @@ live at the repo root and nginx serves them on every game address.
 | nginx | 80, 443 | Everything public. Canonical config: [`infra/nginx/unstuck.conf`](infra/nginx/unstuck.conf) → `/etc/nginx/conf.d/unstuck.conf` | system package |
 | `elsewhere` | 8765 | The Elsewhere world: password gate, sessions, Bedrock calls | [`infra/systemd/elsewhere.service`](infra/systemd/elsewhere.service) |
 | `unstuck-contact` | 8770 | Contact form: stores every message to `/srv/contact`, then sends via SES. Also takes "ask for a key" from the Elsewhere door. | [`infra/systemd/unstuck-contact.service`](infra/systemd/unstuck-contact.service) |
+| `unstuck-door` | 8771 | The playtest door for games that are only files. nginx asks it before serving The Last Warren's `/play/`, and it draws the password page in the game's look. One shared password, `DOOR_PASSWORD` in `/etc/door.env` (from `/unstuck/door/*`), and a signed two-week pass | [`infra/systemd/unstuck-door.service`](infra/systemd/unstuck-door.service) |
 | `unstuck-feed.timer` | — | Daily: caches the Substack feed to `/srv/cache/feed.json` for the updates page | [`.service`](infra/systemd/unstuck-feed.service), [`.timer`](infra/systemd/unstuck-feed.timer) |
 
 **Secrets** live in `/etc/elsewhere.env` on the box and nowhere else. The names are in
