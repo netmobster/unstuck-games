@@ -258,6 +258,9 @@ class Handler(BaseHTTPRequestHandler):
             person = auth.exchange(code, self._host())
             if not person:
                 return self._redirect("/?signin=failed")
+            if not accounts.allowed(person["email"]):
+                # Not on the guest list: no account is made, and the door says so.
+                return self._redirect("/?signin=invite-only")
             row = accounts.upsert(corpus.ROOT, person["sub"], person["email"],
                                   person["name"], person["picture"])
             return self._redirect(nxt, [auth.cookie_header(row["slug"], self._secure())])
