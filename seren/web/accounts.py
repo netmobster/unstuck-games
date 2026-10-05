@@ -62,6 +62,19 @@ def _adopted(email: str) -> str:
     return ""
 
 
+def allowed(email: str) -> bool:
+    """Who may sign in with Google. SEREN_ALLOW="a@x.com,b@y.com" is the guest list; unset
+    means anyone with a Google account, which is how it was before the list existed.
+
+    The list exists because signing in is a way through the door: without it, anyone with a
+    Google account was through, and every turn they took cost real money."""
+    raw = os.environ.get("SEREN_ALLOW", "").strip()
+    if not raw:
+        return True
+    guests = {a.strip().lower() for a in raw.split(",") if a.strip()}
+    return email.strip().lower() in guests
+
+
 def _slug_for(con: sqlite3.Connection, email: str) -> str:
     """A readable folder name, unique, settled once and never revisited."""
     claim = _adopted(email)

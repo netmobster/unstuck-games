@@ -13,9 +13,16 @@ files needed to rebuild the box from nothing are in [`infra/`](infra/).
 >
 > - **On the new box:** the studio site, Orbis, Bad Monkeys, Ferret Bowling, Deadline,
 >   The Last Warren and Elsible.
-> - **SEREN and Elsewhere** wait for the new account's Bedrock quotas (case
->   179104816100756). Until then nginx answers them with a "moving house" page
->   (`infra/holding/moving.html`, 503) whenever their service isn't running.
+> - **SEREN and Elsewhere** point at the new box and start fresh there. Their settings live in
+>   Parameter Store (`/unstuck/seren/*`, `/unstuck/elsewhere/*`), written into
+>   `/etc/<service>.env` by `box.ps1 seren-env` / `elsewhere-env`. SEREN's content comes from
+>   the bucket (`transfer/seren-content.tgz`, via `box.ps1 seren-content`), and Google sign-in
+>   is limited by `SEREN_ALLOW`. Whenever a service isn't running, nginx answers with a
+>   "moving house" page (`infra/holding/moving.html`, 503).
+> - **The AI notice:** the new account's Bedrock quotas are still zero (case 179104816100756).
+>   `ai-status.json` at the repo root is one switch for every game that needs the narrator:
+>   while `"ok": false`, `/ai-notice.js` tells players as they come in. Set it to true when
+>   Amazon opens Bedrock.
 > - **The old account (970376923067) is out of reach.** Nothing on the old box can be
 >   copied, so SEREN's player saves, Elsewhere's world and the contact archive stay there
 >   (contact mail also went to Gmail). The old box can't be switched off from our side:

@@ -9,10 +9,8 @@
     .\infra\box.ps1 check              # dry run: show what 'check' would send
     .\infra\box.ps1 check -Live        # do it
 
-  The new box uses the default AWS profile (account 968053968391). The old box uses the
-  profile 'unstuck-old' (account 970376923067). Sign them in with:
-    aws login
-    aws login --profile unstuck-old --region us-east-2
+  The box uses the default AWS profile (account 968053968391). Sign it in with:  aws login
+  (The old box, in account 970376923067, is out of reach and has no steps here.)
 #>
 param([Parameter(Position = 0)][string]$Step, [switch]$Live)
 
@@ -24,11 +22,9 @@ try { [Console]::OutputEncoding = [System.Text.Encoding]::UTF8 } catch { }
 $Region = 'us-east-2'
 $Bucket = 'unstuck-box-968053968391'
 $NewIp  = '18.225.22.191'
-$OldIp  = '3.23.50.161'
 $Ns     = 'ns1046.ui-dns.com'
 $Boxes  = @{
   new = @{ instance = 'i-071b14e3c340dca70'; profile = 'default';     account = '968053968391'; login = 'aws login' }
-  old = @{ instance = 'i-0da082b463daa7314'; profile = 'unstuck-old'; account = '970376923067'; login = 'aws login --profile unstuck-old --region us-east-2' }
 }
 $Names = @('unstuck-games.com', 'www.unstuck-games.com', 'orbis.unstuck-games.com', 'badmonkeys.unstuck-games.com',
            'ferretbowling.unstuck-games.com', 'elsewhere.unstuck-games.com', 'deadline.unstuck-games.com',
@@ -36,21 +32,6 @@ $Names = @('unstuck-games.com', 'www.unstuck-games.com', 'orbis.unstuck-games.co
 
 # ---------------------------------------------------------------- the steps, in the order they are used
 $Steps = [ordered]@{}
-
-$Steps['old-check'] = @{ box = 'old'; what = 'Read-only: what the old box runs, its env names (never values), its data and certificate'; script = @'
-. /etc/os-release; echo "$PRETTY_NAME $(uname -m)"
-git -C /srv/unstuck log --oneline -1
-echo "== services"
-for s in nginx elsewhere unstuck-contact unstuck-feed.timer seren; do printf '  %-22s %s\n' "$s" "$(systemctl is-active $s)"; done
-echo "== every unit in /etc/systemd/system"; ls /etc/systemd/system/*.service /etc/systemd/system/*.timer 2>/dev/null | xargs -n1 basename | paste -sd' '
-echo "== env names, values not shown"
-for f in /etc/*.env; do echo "  $f: $(sed -n 's/^\([A-Za-z_][A-Za-z0-9_]*\)=.*/\1/p' "$f" | paste -sd' ')"; done
-echo "== data"; du -sh /srv/* 2>/dev/null
-echo "== /srv/seren"; ls /srv/seren 2>/dev/null | paste -sd' '
-echo "  player folders: $(ls -d /srv/seren/players/*/ 2>/dev/null | wc -l)"
-echo "== certificate"; certbot certificates 2>/dev/null | grep -E 'Domains|Expiry'
-echo "== cron"; crontab -l 2>/dev/null; ls /etc/cron.d 2>/dev/null | paste -sd' '
-'@ }
 
 $Steps['check'] = @{ box = 'new'; what = 'Read-only: the new box - build, services, nginx, certificate, Nova from its role, SEREN data'; script = @'
 . /etc/os-release; echo "$PRETTY_NAME $(uname -m), $(python3 --version)"
@@ -103,14 +84,6 @@ journalctl -u unstuck-contact -n 15 --no-pager
 echo "== messages kept: $(ls /srv/contact 2>/dev/null | wc -l)"
 '@ }
 
-$Steps['door-remove'] = @{ box = 'new'; what = 'Takes the server-side door off the box (replaced by the JS password in the game page): stops it and removes its unit and env file'; script = @'
-systemctl disable --now unstuck-door 2>/dev/null || true
-rm -f /etc/systemd/system/unstuck-door.service /etc/door.env
-systemctl daemon-reload
-echo "door service: $(systemctl is-active unstuck-door 2>/dev/null || true)"
-ls /etc/door.env 2>/dev/null || echo "/etc/door.env is gone"
-'@ }
-
 $Steps['nginx'] = @{ box = 'new'; what = 'Puts the repo''s nginx config in place, tests it, and reloads. Nothing is reloaded if the test fails'; script = @'
 set -e
 cp /etc/nginx/conf.d/unstuck.conf /tmp/unstuck.conf.before
@@ -120,33 +93,40 @@ systemctl reload nginx
 echo "nginx reloaded"
 '@ }
 
-$Steps['seren-snapshot'] = @{ box = 'old'; what = 'Stops SEREN on the old box, packs /srv/seren and /etc/seren.env, uploads them to the new bucket (a one-hour upload link). SEREN stays stopped there, so nothing is written to the old copy.'; script = @'
+$Steps['seren-content'] = @{ box = 'new'; what = 'Unpacks SEREN''s content (dm, docs, npcs, adventures, the SRD library) into /srv/seren from the bucket. Anything already there is moved aside, not deleted'; script = @'
 set -e
-systemctl stop seren
-tar -czf /tmp/seren.tgz -C / srv/seren etc/seren.env
-ls -la /tmp/seren.tgz
-curl -sS --fail -T /tmp/seren.tgz '{{UPLOAD_URL}}'
-rm -f /tmp/seren.tgz
-echo "uploaded. SEREN is stopped on the old box."
+aws s3 cp s3://unstuck-box-968053968391/transfer/seren-content.tgz /tmp/seren-content.tgz --region us-east-2 --only-show-errors
+if [ -n "$(ls -A /srv/seren 2>/dev/null)" ]; then mv /srv/seren /srv/seren.before-$(date +%s); fi
+mkdir -p /srv/seren && tar -xzf /tmp/seren-content.tgz -C /srv/seren
+chown -R ec2-user:ec2-user /srv/seren && rm -f /tmp/seren-content.tgz
+echo "/srv/seren: $(du -sh /srv/seren | cut -f1), $(find /srv/seren -type f | wc -l) files: $(ls /srv/seren | paste -sd' ')"
 '@ }
 
-$Steps['seren-restore'] = @{ box = 'new'; what = 'Unpacks the snapshot into /srv/seren and /etc/seren.env, then makes new cookie and session secrets on the box (everyone signs in again once)'; script = @'
+$Steps['seren-env'] = @{ box = 'new'; what = 'Writes /etc/seren.env from /unstuck/seren/* in Parameter Store, and makes its cookie and session secrets once'; script = @'
 set -e
-aws s3 cp s3://unstuck-box-968053968391/transfer/seren.tgz /tmp/seren.tgz --region us-east-2 --only-show-errors
-rm -rf /tmp/seren-in && mkdir /tmp/seren-in && tar -xzf /tmp/seren.tgz -C /tmp/seren-in
-if [ -n "$(ls -A /srv/seren)" ]; then mv /srv/seren /srv/seren.before-$(date +%s); mkdir /srv/seren; fi
-cp -a /tmp/seren-in/srv/seren/. /srv/seren/
-chown -R ec2-user:ec2-user /srv/seren
-install -m 600 -o root -g root /tmp/seren-in/etc/seren.env /etc/seren.env
-rm -rf /tmp/seren-in /tmp/seren.tgz
-python3 /srv/unstuck/infra/unstuck-env.py seren --rotate SEREN_COOKIE_SECRET SEREN_SESSION_SECRET
-du -sh /srv/seren
-echo "player folders: $(ls -d /srv/seren/players/*/ 2>/dev/null | wc -l)"
-python3 -c "import sqlite3; c = sqlite3.connect('/srv/seren/players/accounts.db'); print('accounts:', c.execute('select count(*) from accounts').fetchone()[0])" || echo "no accounts.db"
+python3 /srv/unstuck/infra/unstuck-env.py seren --ensure SEREN_COOKIE_SECRET SEREN_SESSION_SECRET
+grep -q '^SEREN_PASSWORD=' /etc/seren.env || { echo "No SEREN_PASSWORD yet: add /unstuck/seren/SEREN_PASSWORD in Parameter Store, then run this again."; exit 1; }
 '@ }
 
-$Steps['seren-start'] = @{ box = 'new'; what = 'Starts SEREN on the new box and checks it answers locally'; script = @'
-systemctl enable --now seren
+$Steps['elsewhere-env'] = @{ box = 'new'; what = 'Writes /etc/elsewhere.env from /unstuck/elsewhere/* in Parameter Store, and makes its cookie secret once'; script = @'
+set -e
+python3 /srv/unstuck/infra/unstuck-env.py elsewhere --ensure ELSEWHERE_COOKIE_SECRET
+grep -q '^ELSEWHERE_PASSWORD=' /etc/elsewhere.env || { echo "No ELSEWHERE_PASSWORD yet: add /unstuck/elsewhere/ELSEWHERE_PASSWORD in Parameter Store, then run this again."; exit 1; }
+'@ }
+
+$Steps['elsewhere-start'] = @{ box = 'new'; what = 'Starts (or restarts) the Elsewhere world and checks it answers locally'; script = @'
+install -d -o ec2-user -g ec2-user /srv/unstuck/elsewhere/web/sessions
+systemctl enable elsewhere
+systemctl restart elsewhere
+sleep 3
+echo "elsewhere: $(systemctl is-active elsewhere)"
+curl -s -o /dev/null -w 'the world answers on 127.0.0.1:8765/play with %{http_code}\n' http://127.0.0.1:8765/play
+journalctl -u elsewhere -n 8 --no-pager
+'@ }
+
+$Steps['seren-start'] = @{ box = 'new'; what = 'Starts (or restarts) SEREN and checks it answers locally'; script = @'
+systemctl enable seren
+systemctl restart seren
 sleep 3
 echo "seren: $(systemctl is-active seren)"
 curl -s -o /dev/null -w 'the table answers on 127.0.0.1:8790 with %{http_code}\n' http://127.0.0.1:8790/
@@ -162,11 +142,6 @@ systemctl reload nginx
 certbot certificates 2>/dev/null | grep -E 'Domains|Expiry'
 '@ }
 
-$Steps['seren-rollback'] = @{ box = 'old'; what = 'Undo: starts SEREN on the old box again. Then point seren back at the old IP in IONOS.'; script = @'
-systemctl start seren
-echo "seren on the old box: $(systemctl is-active seren). Now point seren's A record back at 3.23.50.161."
-'@ }
-
 # ---------------------------------------------------------------- helpers
 function Say($t, $c = 'Gray') { Write-Host $t -ForegroundColor $c }
 
@@ -178,17 +153,6 @@ function MovedNames {
     if ($ip -eq $NewIp) { $out += $n }
   }
   return $out
-}
-
-function UploadUrl($key) {
-  # A one-hour presigned PUT, signed with the new account's credentials for this one object.
-  $c = aws configure export-credentials --format process | ConvertFrom-Json
-  if (-not $c) { return $null }
-  $env:AWS_ACCESS_KEY_ID = $c.AccessKeyId; $env:AWS_SECRET_ACCESS_KEY = $c.SecretAccessKey; $env:AWS_SESSION_TOKEN = $c.SessionToken
-  $py = "import boto3; print(boto3.client('s3', region_name='$Region').generate_presigned_url('put_object', Params={'Bucket': '$Bucket', 'Key': '$key'}, ExpiresIn=3600))"
-  $url = python -c $py
-  Remove-Item Env:AWS_ACCESS_KEY_ID, Env:AWS_SECRET_ACCESS_KEY, Env:AWS_SESSION_TOKEN -ErrorAction SilentlyContinue
-  return $url
 }
 
 # ---------------------------------------------------------------- list
@@ -218,16 +182,6 @@ if ($Step -eq 'cert') {
   Say "  DNS        pointing at the new box: $($moved -join ', ')" 'Green'
   $script = $script.Replace('{{DOMAINS}}', (($moved | ForEach-Object { "-d $_" }) -join ' '))
 }
-if ($script.Contains('{{UPLOAD_URL}}')) {
-  if ($Live) {
-    $url = UploadUrl 'transfer/seren.tgz'
-    if (-not $url) { Say '  S3         could not make the upload link (is the default profile signed in, and boto3 installed?)' 'Red'; exit 1 }
-    $script = $script.Replace('{{UPLOAD_URL}}', $url)
-  } else {
-    $script = $script.Replace('{{UPLOAD_URL}}', '<a one-hour upload link to s3://' + $Bucket + '/transfer/seren.tgz, made at send time>')
-  }
-}
-
 Say ''
 foreach ($line in ($script -split "`n")) { if ($line.Trim()) { Say "  | $line" 'DarkGray' } }
 if (-not $Live) { Say "`nNothing was sent. Run again with -Live to do it." 'Cyan'; exit 0 }

@@ -153,7 +153,14 @@ document.getElementById('f').onsubmit = async e => {
   document.getElementById('p').value = '';
   document.getElementById('p').focus();
 };
-
+// After Google sends someone back without letting them in, say why.
+{
+  const why = { 'invite-only': 'That Google account isn’t on the guest list. The table is invite-only for now.',
+                stale: 'That sign-in took too long. Try again.', cancelled: 'Sign-in was cancelled.',
+                failed: 'Google sign-in didn’t work. Try again, or use the password.' };
+  const k = new URLSearchParams(location.search).get('signin');
+  if (why[k]) document.getElementById('no').textContent = why[k];
+}
 </script>
 <script src="/switcher.js" defer></script>
 </body></html>
