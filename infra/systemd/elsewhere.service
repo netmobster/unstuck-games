@@ -7,7 +7,7 @@ User=ec2-user
 WorkingDirectory=/srv/unstuck/elsewhere
 # Secrets live here, never in the repo. See infra/elsewhere.env.example.
 EnvironmentFile=/etc/elsewhere.env
-ExecStart=/usr/bin/python3 -u /srv/unstuck/elsewhere/web/server.py
+ExecStart=/usr/bin/python3.11 -u /srv/unstuck/elsewhere/web/server.py
 Restart=always
 RestartSec=3
 
