@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Moving house · Unstuck Games</title>
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+  /* nginx serves this when SEREN or Elsewhere isn't answering: on its first days on the new
+     box, or for the seconds a restart takes. The host says which game it is. */
+  :root{--bg:#f2efe6;--card:#faf8f2;--ink:#16163a;--muted:#565672;--accent:#2b34d6;--acid:#e9f257}
+  *{box-sizing:border-box}
+  html,body{margin:0;background:var(--bg);color:var(--ink)}
+  body{font:400 17px/1.6 'Nunito Sans',sans-serif;min-height:100vh;display:grid;place-items:center;padding:24px 16px}
+  main{width:min(560px,100%);background:var(--card);border:2px solid var(--ink);border-radius:16px;padding:28px 28px 24px;box-shadow:6px 6px 0 var(--ink)}
+  .kick{font:800 12px/1 'Nunito Sans',sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+  h1{font:400 clamp(34px,7vw,52px)/1.02 'Luckiest Guy',cursive;margin:12px 0 14px;letter-spacing:.01em}
+  p{margin:0 0 12px} .muted{color:var(--muted)}
+  a{color:var(--accent);font-weight:700}
+</style>
+</head>
+<body>
+<main>
+  <div class="kick">Unstuck Games</div>
+  <h1><span id="game">This game</span> is moving house.</h1>
+  <p>It's on a new server and back soon. It's waiting on one last thing from Amazon before it can talk again.</p>
+  <p class="muted">When it reopens it starts fresh: the old server's saves couldn't come with it.</p>
+  <p class="muted">Meanwhile, the rest of the studio is open: <a href="https://unstuck-games.com/">unstuck-games.com</a></p>
+</main>
+<script>
+  var names = { seren: 'SEREN', elsewhere: 'Elsewhere' };
+  var n = names[location.hostname.split('.')[0]];
+  if (n) { document.getElementById('game').textContent = n; document.title = n + ' is moving house · Unstuck Games'; }
+</script>
+<script src="/switcher.js" defer></script>
+</body>
+</html>
