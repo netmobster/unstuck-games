@@ -7,9 +7,20 @@ Jay's desktop; none of that is true any more.
 EC2 instance that holds a checkout of this repo. Deploying is `git pull` on the box. The
 files needed to rebuild the box from nothing are in [`infra/`](infra/).
 
-> **Moving, 3 Oct 2026.** The games are moving one at a time to a new box in a new AWS
-> account, after the laptop compromise. Until the move finishes, the sections below
-> describe the **old** box.
+> **Moving, 3–5 Oct 2026.** The games are moving to a new box in a new AWS account, after
+> the laptop compromise. Until the move finishes, the sections below describe the **old**
+> box.
+>
+> - **On the new box:** the studio site, Orbis, Bad Monkeys, Ferret Bowling, Deadline,
+>   The Last Warren and Elsible.
+> - **SEREN and Elsewhere** wait for the new account's Bedrock quotas (case
+>   179104816100756). Until then nginx answers them with a "moving house" page
+>   (`infra/holding/moving.html`, 503) whenever their service isn't running.
+> - **The old account (970376923067) is out of reach.** Nothing on the old box can be
+>   copied, so SEREN's player saves, Elsewhere's world and the contact archive stay there
+>   (contact mail also went to Gmail). The old box can't be switched off from our side:
+>   it stops when the account is closed or recovered. Every secret that lived on it counts
+>   as exposed.
 >
 > | | New | Old |
 > |---|---|---|
