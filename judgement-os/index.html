@@ -478,7 +478,7 @@ footer .linkbtn:hover{color:var(--paper-ink)}
       </div>
 
       <button type="button" class="door" data-open="m-how" data-tab="flow">
-        <span><span class="door-title">How it works</span><span class="door-sub">The flow, the judge's answer, the four decisions that exist, what holds it, and how to judge the judges.</span></span>
+        <span><span class="door-title">How it works</span><span class="door-sub">The flow, the judge's answer, the decisions that exist, what holds it, and how to judge the judges.</span></span>
         <span class="door-go">Open →</span>
       </button>
     </div>
@@ -562,7 +562,8 @@ footer .linkbtn:hover{color:var(--paper-ink)}
       <div class="box">
         <button type="button" class="tile hi" data-open="m-plugins" data-tab="labs"><span class="tile-head"><span class="tile-name">labs</span><span class="tile-ver">both editions</span></span><span class="tile-what"><strong>Judgement Powered Skills:</strong> the judges, their recorder and the log</span><span class="tile-go">Open the sheet →</span></button>
         <button type="button" class="tile" data-open="m-plugins" data-tab="day"><span class="tile-head"><span class="tile-name">day</span><span class="tile-ver">both editions</span></span><span class="tile-what">A phased start to the day and check-ins, from your task list or your selfActual vault</span><span class="tile-go">Open the sheet →</span></button>
-        <button type="button" class="tile" data-open="m-plugins" data-tab="sexyhtml"><span class="tile-head"><span class="tile-name">sexyhtml</span><span class="tile-ver">both editions</span></span><span class="tile-what"><code>/sexyhtml</code> picks a house style and a shape for a finished page, asking the judge when it's unclear</span><span class="tile-go">Open the sheet →</span></button>
+        <button type="button" class="tile" data-open="m-plugins" data-tab="sexyhtml"><span class="tile-head"><span class="tile-name">sexyhtml</span><span class="tile-ver">both editions</span></span><span class="tile-what"><code>/sexyhtml</code> picks a house style and a shape for a finished page, asking the judge when it's unclear; each style brings its component kit</span><span class="tile-go">Open the sheet →</span></button>
+        <button type="button" class="tile" data-open="m-plugins" data-tab="make"><span class="tile-head"><span class="tile-name">make</span><span class="tile-ver">General Edition</span></span><span class="tile-what">Say what you want made: <code>/make</code> picks where it lands, a page, a form in the chat, a deck, a design, a doc or a file</span><span class="tile-go">Open the sheet →</span></button>
         <button type="button" class="tile" data-open="m-plugins" data-tab="comms"><span class="tile-head"><span class="tile-name">comms</span><span class="tile-ver">both editions</span></span><span class="tile-what"><strong>The send gate</strong> and humanify in both; vault messages, reminders and <code>/ping</code> in the selfActual Edition</span><span class="tile-go">Open the sheet →</span></button>
         <button type="button" class="tile" data-open="m-plugins" data-tab="guard"><span class="tile-head"><span class="tile-name">guard</span><span class="tile-ver">both editions</span></span><span class="tile-what">Hard rules as hooks: deny or ask, on every command, edit and connector call</span><span class="tile-go">Open the sheet →</span></button>
         <button type="button" class="tile" data-open="m-plugins" data-tab="sa"><span class="tile-head"><span class="tile-name">sa</span><span class="tile-ver">selfActual Edition</span></span><span class="tile-what">Gears, loops and modes through one router, fetched from your selfActual vault; your tasks and sessions</span><span class="tile-go">Open the sheet →</span></button>
@@ -583,14 +584,22 @@ footer .linkbtn:hover{color:var(--paper-ink)}
 
     <div class="editions">
       <div class="edition">
-        <span class="tag soon">Coming soon</span>
+        <span class="tag live">Out now</span>
         <h3>Judgement OS: General Edition</h3>
         <p class="who">Any Claude Code user.</p>
-        <p class="what">The judges, the day loop, the house styles, the send gate and 19 of Jay's gears, loops and modes. The judges work from a profile you write for yourself: <code>/labs:profile</code> starts you off, and they stay quiet until it's filled in. It never needs selfActual.</p>
-        <pre class="install" id="install-general">&lt;install command&gt;</pre>
+        <p class="what">The judges, the day loop, the house styles with their component kits, <code>make</code>, the send gate and 19 of Jay's gears, loops and modes. The judges work from a profile you write for yourself: <code>/labs:profile</code> starts you off, and they stay quiet until it's filled in. It never needs selfActual.</p>
+        <pre class="install" id="install-general">/plugin marketplace add netmobster/judgement-os-general
+/plugin install labs@judgement-os
+/plugin install guard@judgement-os
+/plugin install sexyhtml@judgement-os
+/plugin install make@judgement-os
+/plugin install comms@judgement-os
+/plugin install day@judgement-os
+/plugin install dice@judgement-os
+/plugin install gears@judgement-os</pre>
         <div class="acts">
           <button type="button" class="copy" data-copy="install-general">Copy install</button>
-          <span class="small">one marketplace · public</span>
+          <span class="small">one marketplace · public · MIT · <a href="https://github.com/netmobster/judgement-os-general" target="_blank" rel="noopener">on GitHub ↗</a></span>
         </div>
       </div>
       <div class="edition">
@@ -671,7 +680,7 @@ footer .linkbtn:hover{color:var(--paper-ink)}
     <div class="tabs" role="tablist" aria-label="How it works">
       <button type="button" role="tab" data-tab="flow" aria-selected="true">The flow</button>
       <button type="button" role="tab" data-tab="answer" aria-selected="false">The answer</button>
-      <button type="button" role="tab" data-tab="decisions" aria-selected="false">The four decisions</button>
+      <button type="button" role="tab" data-tab="decisions" aria-selected="false">The decisions</button>
       <button type="button" role="tab" data-tab="holds" aria-selected="false">What holds it</button>
       <button type="button" role="tab" data-tab="judges" aria-selected="false">Judge the judges</button>
     </div>
@@ -731,15 +740,16 @@ footer .linkbtn:hover{color:var(--paper-ink)}
       </section>
 
       <section data-panel="decisions" hidden>
-        <p class="lede">Four marked decisions are built; three ship in the editions. It's a pattern, not a single trick. In each one the rule's pick is the normal path and the judges are the escalation.</p>
+        <p class="lede">Five marked decisions are shown here; four ship in the General Edition. It's a pattern, not a single trick. In each one the rule's pick is the normal path and the judges are the escalation.</p>
         <div class="tbl three" style="margin-top:20px">
           <div class="row head"><span>decision</span><span>the rule's pick</span><span>asks the judge when</span></div>
           <div class="row"><b class="key">a daily planning choice <span class="dim">(Jay's own boot, for now)</span></b><div class="v">The option used most in the last seven runs, ties to the most recent. When the rule is sure, the skill says what it picked in one line and keeps going.</div><div class="v">It's late in the day, something is blocked and waiting on someone, or the handoff names a project the pick ignores.</div></div>
           <div class="row"><b class="key">which design system a page uses</b><div class="v">A default style, a work style for work, a gaming style for gaming. A named style always wins.</div><div class="v">A request reads as both work and gaming, or you say “judge it”.</div></div>
           <div class="row"><b class="key">which voice a draft is in</b><div class="v">From where the draft is going: a newsletter, a pitch, a bit, a story. With nothing to go on, it asks you.</div><div class="v">Two registers fit, or the draft reads differently from where it's going. The judge sees counts about the draft, never the draft.</div></div>
           <div class="row"><b class="key">which shape a page takes</b><div class="v">Report, checklist, picker, explainer, one-pager or a multiple-choice report, from the request and how many decisions and steps the page carries.</div><div class="v">Two shapes fit. When style and shape both need the judges, all four calls run in one message: one wait.</div></div>
+          <div class="row"><b class="key">where a made thing lands</b><div class="v">A surface named outright wins; otherwise the words that point at one are counted. Nothing points anywhere: a page.</div><div class="v">The words point two ways at once, or you say “judge it”.</div></div>
         </div>
-        <p class="note">In all four, no profile on the machine means the rule decides, and a request touching your private topics never reaches the judges.</p>
+        <p class="note">In all of them, no profile on the machine means the rule decides, and a request touching your private topics never reaches the judges.</p>
       </section>
 
       <section data-panel="holds" hidden>
@@ -812,6 +822,7 @@ footer .linkbtn:hover{color:var(--paper-ink)}
       <button type="button" role="tab" data-tab="guard" aria-selected="false">guard</button>
       <button type="button" role="tab" data-tab="ug" aria-selected="false">dice</button>
       <button type="button" role="tab" data-tab="sexyhtml" aria-selected="false">sexyhtml</button>
+      <button type="button" role="tab" data-tab="make" aria-selected="false">make</button>
       <button type="button" role="tab" data-tab="labs" aria-selected="false">labs</button>
     </div>
     <div class="modal-body">
@@ -897,6 +908,19 @@ footer .linkbtn:hover{color:var(--paper-ink)}
           <div class="row"><b class="key">seren</b><div class="v">Games and anything geeky: dark ink, bone, copper and verdigris.</div></div>
           <div class="row"><b class="key">judgement-os</b><div class="v">This page. The lamp-lit room, then the paper.</div></div>
           <div class="row"><b class="key">sa</b><div class="v"><span class="when">selfActual Edition</span>The selfActual design system: paper and ink, with evidence tags.</div></div>
+        </div>
+        <p class="sub-k">Component kits</p>
+        <p class="note" style="margin-top:8px">Each house style ships with its own kit of ready-made parts: callouts, stat rows, timelines, step lists, comparisons, question panels, numbered figures, line charts, small multiples, layers and a slide frame. ECHO-JAY carries 31 components and Seren 27; the selfActual Edition adds selfActual's 30. Claude fills in the words and the numbers, and the look comes with it.</p>
+      </section>
+
+      <section data-panel="make" hidden>
+        <div class="plug-h"><span class="name">make</span><span class="tag-line">The front door for making things</span></div>
+        <div class="tbl">
+          <div class="row"><b class="key">make</b><div class="v">Say what you want made. <code>/make</code> picks where it lands: a page, a form or card in the chat, a deck, a design, a living doc, a file or a design system. Then it hands it to the right maker; pages go to <code>sexyhtml</code>.</div></div>
+          <div class="row"><b class="key">surface</b><div class="v"><span class="when">a marked decision</span>A surface you name outright wins. Otherwise the words that point at one are counted; when they point two ways, the rule takes its best guess and the judges are asked. Nothing points anywhere: a page.</div></div>
+          <div class="row"><b class="key">chat kit</b><div class="v">A question form drawn right in the chat, whose answers come back as one line; a done list and a before-and-after card in your house style.</div></div>
+          <div class="row"><b class="key">explainers</b><div class="v"><code>/make:diff-review</code>, <code>/make:plan-review</code>, <code>/make:project-recap</code> and <code>/make:fact-check</code>: a page that cites every claim.</div></div>
+          <div class="row"><b class="key">post kit</b><div class="v">A post's header, issue cover and carousel from one source, on one design canvas.</div></div>
         </div>
       </section>
 
