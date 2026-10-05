@@ -133,12 +133,6 @@ a:hover { color: var(--ink); }
 /* ── dialogs: the same voice. Stencil for the sentence, choices as hairline rows ── */
 dialog { background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: var(--radius); max-width: 620px; width: calc(100% - 32px); padding: 26px 28px; box-shadow: 0 0 60px rgba(0, 0, 0, .8); }
 dialog::backdrop { background: rgba(4, 5, 4, .78); }
-#gate::backdrop { background: rgba(4, 5, 4, .97); }
-.gate-form { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0 6px; }
-.gate-form input { flex: 1; min-width: 0; background: #11120f; border: 1px solid var(--line); color: var(--ink); font: inherit; font-size: 16px; padding: 10px 12px; border-radius: 2px; }
-.gate-form input:focus { outline: none; border-color: var(--gold); }
-.gate-form button { font: 700 13px var(--fm); letter-spacing: .14em; text-transform: uppercase; padding: 10px 16px; border: 1px solid var(--gold); background: var(--gold); color: #11120f; cursor: pointer; border-radius: 2px; }
-.gate-no { min-height: 20px; color: var(--blood); margin: 0 0 8px; }
 dialog h2 { font: 700 30px/1.08 var(--fs); letter-spacing: .03em; margin: 10px 0 12px; text-wrap: balance; }
 #ending h2 { color: var(--ink); }
 #draft h2 { color: var(--gold); text-shadow: 0 0 18px var(--glow-gold); }

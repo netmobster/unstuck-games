@@ -38,7 +38,7 @@ files needed to rebuild the box from nothing are in [`infra/`](infra/).
 | `ferretbowling.unstuck-games.com` | Ferret Bowling page; the game at `/play/` | files from `ferret-bowling/` |
 | `elsewhere.unstuck-games.com` | Elsewhere page; the world at `/play` behind a password | files from `elsewhere/`, plus the Elsewhere service |
 | `deadline.unstuck-games.com` | Deadline Dungeon (game #4): holding page, design docs | files from `deadline-dungeon/` |
-| `last-warren.unstuck-games.com` | The Last Warren (game #5): the diary (public); the game at `/play/`, which asks for the playtest password | files from `the-last-warren/`; `/play/` is a single-file build of `games/the-last-warren/`. The password check is JS in the page (a speed bump, not a lock): the page carries a SHA-256 of it, and the word itself lives in Parameter Store `/unstuck/door/DOOR_PASSWORD` and in Proton |
+| `last-warren.unstuck-games.com` | The Last Warren (game #5): the diary, and the game at `/play/` | files from `the-last-warren/`; `/play/` is a single-file build of `games/the-last-warren/` |
 | `elsible.unstuck-games.com` | Elsible (in design): a holding page, and the deal prototype (deck v4) at `/play/` | files from `elsible/site/`. `/play/` is built by `python elsible/prototype/build.py --publish` |
 | `seren.unstuck-games.com` | SEREN, the AI-DM table, behind a password | the SEREN service; content from `/srv/seren`, never the repo |
 
