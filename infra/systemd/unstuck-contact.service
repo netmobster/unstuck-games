@@ -6,9 +6,9 @@ After=network-online.target
 User=ec2-user
 Environment=AWS_REGION=us-east-2
 Environment=CONTACT_TO=wearecleardigital@gmail.com
-Environment=CONTACT_FROM=wearecleardigital@gmail.com
+Environment=CONTACT_FROM=hello@unstuck-games.com
 Environment=CONTACT_DIR=/srv/contact
-ExecStart=/usr/bin/python3 -u /srv/unstuck/services/contact.py
+ExecStart=/usr/bin/python3.11 -u /srv/unstuck/services/contact.py
 Restart=always
 RestartSec=3
 

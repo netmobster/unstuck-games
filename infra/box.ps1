@@ -34,18 +34,19 @@ $Names = @('unstuck-games.com', 'www.unstuck-games.com', 'orbis.unstuck-games.co
 $Steps = [ordered]@{}
 
 $Steps['check'] = @{ box = 'new'; what = 'Read-only: the new box - build, services, nginx, certificate, Nova from its role, SEREN data'; script = @'
-. /etc/os-release; echo "$PRETTY_NAME $(uname -m), $(python3 --version)"
+PY=$(command -v python3.11 || command -v python3)
+. /etc/os-release; echo "$PRETTY_NAME $(uname -m), $($PY --version)"
 echo "== repo";  git -C /srv/unstuck log --oneline -1
 echo "== build"; tail -n 1 /var/log/unstuck-bootstrap.log
 echo "== services"
-for s in nginx unstuck-contact unstuck-feed.timer certbot-renew-unstuck.timer elsewhere seren; do printf '  %-30s %s\n' "$s" "$(systemctl is-active $s)"; done
+for s in nginx unstuck-contact unstuck-feed.timer certbot-renew-unstuck.timer elsewhere seren; do printf '  %-30s %-9s %s\n' "$s" "$(systemctl is-active $s)" "$(systemctl show -p ExecStart --value $s | grep -o 'python3[.0-9]*' | head -n 1)"; done
 echo "== nginx"; nginx -t 2>&1 | tail -n 1; echo "  conf.d/unstuck.conf: $(wc -l < /etc/nginx/conf.d/unstuck.conf) lines"
 echo "== certificate"; certbot certificates 2>/dev/null | grep -E 'Domains|Expiry' || echo "  none yet"
 echo "== Nova, through the box's own role"
-python3 - <<'PY'
+$PY - <<'PY'
 import boto3
 c = boto3.client("bedrock-runtime", region_name="us-east-2")
-for m in ("amazon.nova-micro-v1:0", "us.amazon.nova-lite-v1:0", "us.amazon.nova-pro-v1:0"):
+for m in ("us.amazon.nova-micro-v1:0", "us.amazon.nova-lite-v1:0", "us.amazon.nova-pro-v1:0"):
     try:
         r = c.converse(modelId=m, messages=[{"role": "user", "content": [{"text": "Reply with one word: ready"}]}], inferenceConfig={"maxTokens": 5})
         print("  %-26s %s" % (m, r["output"]["message"]["content"][0]["text"].strip()))
@@ -104,13 +105,13 @@ echo "/srv/seren: $(du -sh /srv/seren | cut -f1), $(find /srv/seren -type f | wc
 
 $Steps['seren-env'] = @{ box = 'new'; what = 'Writes /etc/seren.env from /unstuck/seren/* in Parameter Store, and makes its cookie and session secrets once'; script = @'
 set -e
-python3 /srv/unstuck/infra/unstuck-env.py seren --ensure SEREN_COOKIE_SECRET SEREN_SESSION_SECRET
+$(command -v python3.11 || command -v python3) /srv/unstuck/infra/unstuck-env.py seren --ensure SEREN_COOKIE_SECRET SEREN_SESSION_SECRET
 grep -q '^SEREN_PASSWORD=' /etc/seren.env || { echo "No SEREN_PASSWORD yet: add /unstuck/seren/SEREN_PASSWORD in Parameter Store, then run this again."; exit 1; }
 '@ }
 
 $Steps['elsewhere-env'] = @{ box = 'new'; what = 'Writes /etc/elsewhere.env from /unstuck/elsewhere/* in Parameter Store, and makes its cookie secret once'; script = @'
 set -e
-python3 /srv/unstuck/infra/unstuck-env.py elsewhere --ensure ELSEWHERE_COOKIE_SECRET
+$(command -v python3.11 || command -v python3) /srv/unstuck/infra/unstuck-env.py elsewhere --ensure ELSEWHERE_COOKIE_SECRET
 grep -q '^ELSEWHERE_PASSWORD=' /etc/elsewhere.env || { echo "No ELSEWHERE_PASSWORD yet: add /unstuck/elsewhere/ELSEWHERE_PASSWORD in Parameter Store, then run this again."; exit 1; }
 '@ }
 
@@ -141,6 +142,61 @@ nginx -t
 systemctl reload nginx
 certbot certificates 2>/dev/null | grep -E 'Domains|Expiry'
 '@ }
+
+# ---------------------------------------------------------------- upkeep
+# Copies only the units that differ from the box's, restarts only the services among them,
+# and puts every changed unit back if one of those services won't stay up.
+$UnitsScript = @'
+set -e
+bk=$(mktemp -d); changed=""
+cd /srv/unstuck/infra/systemd
+for f in *.service *.timer; do
+  if [ -f "/etc/systemd/system/$f" ] && [ "$(md5sum < "$f")" = "$(md5sum < "/etc/systemd/system/$f")" ]; then continue; fi
+  if [ -f "/etc/systemd/system/$f" ]; then cp "/etc/systemd/system/$f" "$bk/"; fi
+  cp "$f" /etc/systemd/system/
+  changed="$changed $f"
+done
+if [ -z "$changed" ]; then echo "Every unit already matches the repo. Nothing was restarted."; exit 0; fi
+echo "units changed:$changed"
+systemctl daemon-reload
+restart() { for u in $changed; do case "$u" in unstuck-feed.service) ;; *) systemctl restart "$u" || true ;; esac; done; sleep 4; }
+restart
+bad=""
+for u in $changed; do
+  case "$u" in unstuck-feed.service) continue ;; esac
+  st=$(systemctl is-active "$u" || true)
+  printf '  %-26s %-9s %s\n' "$u" "$st" "$(systemctl show -p ExecStart --value "$u" | grep -o 'python3[.0-9]*' | head -n 1)"
+  [ "$st" = active ] || bad="$bad $u"
+done
+if [ -n "$bad" ]; then
+  for u in $changed; do if [ -f "$bk/$u" ]; then cp "$bk/$u" /etc/systemd/system/; else rm -f "/etc/systemd/system/$u"; fi; done
+  systemctl daemon-reload
+  restart
+  for u in $bad; do journalctl -u "$u" -n 12 --no-pager; done
+  echo "Not running after the change:$bad. The old units are back in place and restarted."
+  exit 1
+fi
+echo "every changed service is running"
+'@
+
+$Steps['units'] = @{ box = 'new'; what = 'Puts the repo''s systemd units in place and restarts the services whose unit changed. If one won''t stay up, the old units go back and the step fails'; script = $UnitsScript }
+
+$Steps['py311'] = @{ box = 'new'; what = 'Once: installs Python 3.11 and boto3, checks every service''s code parses under 3.11, then does ''units'' to move the services onto it'; script = @'
+set -e
+dnf install -y -q python3.11 python3.11-pip
+python3.11 -m pip install --quiet --upgrade boto3
+python3.11 - <<'PY'
+import ast, pathlib, sys, zoneinfo
+import boto3
+zoneinfo.ZoneInfo("America/Toronto")
+root = pathlib.Path("/srv/unstuck")
+files = [p for d in ("seren/web", "elsewhere/web", "services") for p in (root / d).glob("*.py")]
+files += [root / "scripts/fetch-feed.py", root / "infra/unstuck-env.py"]
+for p in files:
+    ast.parse(p.read_text(encoding="utf-8"), str(p))
+print("python %s, boto3 %s: all %d service files parse" % (sys.version.split()[0], boto3.__version__, len(files)))
+PY
+'@ + "`n" + $UnitsScript }
 
 # ---------------------------------------------------------------- helpers
 function Say($t, $c = 'Gray') { Write-Host $t -ForegroundColor $c }

@@ -18,14 +18,14 @@ exec > >(tee -a /var/log/unstuck-bootstrap.log) 2>&1
 REPO=https://github.com/netmobster/unstuck-games.git
 SRV=/srv/unstuck
 
-# ---- packages
-dnf install -y nginx git python3 python3-pip openssl
-pip3 install --quiet boto3
+# ---- packages. The services run on Python 3.11: boto3 no longer supports the distro's 3.9.
+dnf install -y nginx git python3 python3.11 python3.11-pip openssl
+python3.11 -m pip install --quiet boto3
 
 # certbot from the distro if it has it, otherwise its own venv (the EFF route on AL2023)
 if ! command -v certbot >/dev/null; then
   if ! dnf install -y certbot; then
-    python3 -m venv /opt/certbot
+    python3.11 -m venv /opt/certbot
     /opt/certbot/bin/pip install --quiet --upgrade pip certbot
     ln -sf /opt/certbot/bin/certbot /usr/bin/certbot
   fi

@@ -7,7 +7,7 @@ User=ec2-user
 WorkingDirectory=/srv/unstuck/seren/web
 # Secrets and the content path live here, never in the repo. See infra/seren.env.example.
 EnvironmentFile=/etc/seren.env
-ExecStart=/usr/bin/python3 -u /srv/unstuck/seren/web/server.py
+ExecStart=/usr/bin/python3.11 -u /srv/unstuck/seren/web/server.py
 Restart=always
 RestartSec=3
 

@@ -4,4 +4,4 @@ Description=Cache the Games That Got Out feed for the updates page
 [Service]
 Type=oneshot
 User=ec2-user
-ExecStart=/usr/bin/python3 /srv/unstuck/scripts/fetch-feed.py --out /srv/cache/feed.json
+ExecStart=/usr/bin/python3.11 /srv/unstuck/scripts/fetch-feed.py --out /srv/cache/feed.json
