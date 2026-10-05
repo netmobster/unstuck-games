@@ -487,35 +487,10 @@ function resume() {
   if (g.pendingDraft) dawnDialog(g.night - 1);
   return true;
 }
-// ---------------------------------------------------------------- the playtest password
-// The game is in playtest and not public, so /play/ asks for a password. It's a JS password
-// by choice: a speed bump, not a lock. The page carries only a SHA-256 of the word (which
-// lives in Parameter Store /unstuck/door/DOOR_PASSWORD and in Proton), the diary stays open,
-// and once the word is right this browser remembers it. Changing the word changes the hash,
-// so everyone is asked again. Local copies (localhost) don't ask. The game doesn't start
-// until the word is right, so nothing plays behind the dialog.
-const GATE = 'fd8a7df4e889fb6bf3c0fcbd64e2ff4681443776efa5418ad376b472f9c97e81', GKEY = 'lw.pass.v1';
-async function sha256(t) { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); }
-function gatePassed() { try { return localStorage.getItem(GKEY) === GATE; } catch { return false; } }
-function afterGate(go) {
-  if (gatePassed() || /^(localhost|127\.)/.test(location.hostname)) return go();
-  const d = $('gate');
-  d.addEventListener('cancel', e => e.preventDefault());
-  $('gate-form').addEventListener('submit', async e => {
-    e.preventDefault();
-    if (await sha256($('gate-word').value.trim()) === GATE) { try { localStorage.setItem(GKEY, GATE); } catch {} d.close(); go(); return; }
-    $('gate-no').textContent = 'Not that one.';
-    $('gate-word').value = ''; $('gate-word').focus();
-  });
-  d.showModal(); $('gate-word').focus();
-}
-
 // ?watch[=bot]&seed=N: the site's "Watch a night" link. A bot plays; your line is not touched.
 const qs = new URLSearchParams(location.search);
-afterGate(() => {
-  if (qs.has('watch')) { const b = qs.get('watch'); $('watch').value = ROSTER[b] ? b : 'hybrid-3-1.8'; const s = +qs.get('seed') || 1; $('seed').value = s; start(s); }
-  else if (!resume()) start(1);
-});
+if (qs.has('watch')) { const b = qs.get('watch'); $('watch').value = ROSTER[b] ? b : 'hybrid-3-1.8'; const s = +qs.get('seed') || 1; $('seed').value = s; start(s); }
+else if (!resume()) start(1);
 requestAnimationFrame(frame);
 
 // the CD brief: inlined in the artifact build; fetched next to the page when run locally

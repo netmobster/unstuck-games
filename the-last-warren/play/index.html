@@ -141,12 +141,6 @@ a:hover { color: var(--ink); }
 /* ── dialogs: the same voice. Stencil for the sentence, choices as hairline rows ── */
 dialog { background: var(--bg); color: var(--ink); border: 1px solid var(--line); border-radius: var(--radius); max-width: 620px; width: calc(100% - 32px); padding: 26px 28px; box-shadow: 0 0 60px rgba(0, 0, 0, .8); }
 dialog::backdrop { background: rgba(4, 5, 4, .78); }
-#gate::backdrop { background: rgba(4, 5, 4, .97); }
-.gate-form { display: flex; gap: 8px; flex-wrap: wrap; margin: 16px 0 6px; }
-.gate-form input { flex: 1; min-width: 0; background: #11120f; border: 1px solid var(--line); color: var(--ink); font: inherit; font-size: 16px; padding: 10px 12px; border-radius: 2px; }
-.gate-form input:focus { outline: none; border-color: var(--gold); }
-.gate-form button { font: 700 13px var(--fm); letter-spacing: .14em; text-transform: uppercase; padding: 10px 16px; border: 1px solid var(--gold); background: var(--gold); color: #11120f; cursor: pointer; border-radius: 2px; }
-.gate-no { min-height: 20px; color: var(--blood); margin: 0 0 8px; }
 dialog h2 { font: 700 30px/1.08 var(--fs); letter-spacing: .03em; margin: 10px 0 12px; text-wrap: balance; }
 #ending h2 { color: var(--ink); }
 #draft h2 { color: var(--gold); text-shadow: 0 0 18px var(--glow-gold); }
@@ -547,18 +541,6 @@ dialog h2 { font: 700 30px/1.08 var(--fs); letter-spacing: .03em; margin: 10px 0
   <h2 id="dawnline">You got under before the light.</h2>
   <p class="mute" id="remnantline"></p>
   <div id="boons" class="choices"></div>
-</dialog>
-
-<dialog id="gate" aria-labelledby="gate-title">
-  <div class="label">The Last Warren · playtest</div>
-  <h2 id="gate-title">Have a password?</h2>
-  <p class="mute">The game is in playtest and not public yet. The diary is open to everyone.</p>
-  <form id="gate-form" class="gate-form" autocomplete="off">
-    <input id="gate-word" type="password" placeholder="password" aria-label="Password">
-    <button type="submit">Enter</button>
-  </form>
-  <p id="gate-no" class="gate-no" role="status"></p>
-  <p class="mute">No password? <a href="https://unstuck-games.com/contact/">Ask for a key</a> · <a href="/">The diary</a></p>
 </dialog>
 
 <dialog id="ending">
@@ -2592,35 +2574,10 @@ function resume() {
   if (g.pendingDraft) dawnDialog(g.night - 1);
   return true;
 }
-// ---------------------------------------------------------------- the playtest password
-// The game is in playtest and not public, so /play/ asks for a password. It's a JS password
-// by choice: a speed bump, not a lock. The page carries only a SHA-256 of the word (which
-// lives in Parameter Store /unstuck/door/DOOR_PASSWORD and in Proton), the diary stays open,
-// and once the word is right this browser remembers it. Changing the word changes the hash,
-// so everyone is asked again. Local copies (localhost) don't ask. The game doesn't start
-// until the word is right, so nothing plays behind the dialog.
-const GATE = 'fd8a7df4e889fb6bf3c0fcbd64e2ff4681443776efa5418ad376b472f9c97e81', GKEY = 'lw.pass.v1';
-async function sha256(t) { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(t)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2, '0')).join(''); }
-function gatePassed() { try { return localStorage.getItem(GKEY) === GATE; } catch { return false; } }
-function afterGate(go) {
-  if (gatePassed() || /^(localhost|127\.)/.test(location.hostname)) return go();
-  const d = $('gate');
-  d.addEventListener('cancel', e => e.preventDefault());
-  $('gate-form').addEventListener('submit', async e => {
-    e.preventDefault();
-    if (await sha256($('gate-word').value.trim()) === GATE) { try { localStorage.setItem(GKEY, GATE); } catch {} d.close(); go(); return; }
-    $('gate-no').textContent = 'Not that one.';
-    $('gate-word').value = ''; $('gate-word').focus();
-  });
-  d.showModal(); $('gate-word').focus();
-}
-
 // ?watch[=bot]&seed=N: the site's "Watch a night" link. A bot plays; your line is not touched.
 const qs = new URLSearchParams(location.search);
-afterGate(() => {
-  if (qs.has('watch')) { const b = qs.get('watch'); $('watch').value = ROSTER[b] ? b : 'hybrid-3-1.8'; const s = +qs.get('seed') || 1; $('seed').value = s; start(s); }
-  else if (!resume()) start(1);
-});
+if (qs.has('watch')) { const b = qs.get('watch'); $('watch').value = ROSTER[b] ? b : 'hybrid-3-1.8'; const s = +qs.get('seed') || 1; $('seed').value = s; start(s); }
+else if (!resume()) start(1);
 requestAnimationFrame(frame);
 
 // the CD brief: inlined in the artifact build; fetched next to the page when run locally
