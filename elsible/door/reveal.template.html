@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<!--
+  THE REVEAL. The doorkeeper fills this from life/reveal.json and writes it as life/reveal.html.
+
+  Replace each {{TOKEN}} with the field from reveal.json, HTML-escaped (& < > " become entities):
+    {{TITLE}} title · {{SENTENCE}} sentence · {{NAME}} you.name · {{AGE}} you.age
+    {{PAST}} you.past · {{WANT}} you.want · {{LIFE_1}} life[0] · {{LIFE_2}} life[1]
+    {{FIRST_MORNING}} first_morning · {{TOLD_BY}} told_by with its first letter lower-cased, since it
+      follows "Told by" ("The true-crime podcast" gives "the true-crime podcast")
+    {{HER_CARD}} her_card: "upright" gives "Her card landed upright.", "reversed" gives
+      "Her card landed reversed.", and "left" removes the whole <p class="her"> line.
+    {{PEOPLE}} one <div class="person"> per entry in people, copied from the pattern below.
+
+  Pattern for one person:
+    <div class="person"><div class="who">{{who}} · {{card}}</div><div class="pname">{{name}}</div><p>{{with_you}}</p></div>
+
+  Write nothing else into the page. Never anything from life/hidden.md.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{{TITLE}} · Elsible</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Rozha+One&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap" rel="stylesheet">
+<style>
+/* The life you're stepping into: the Elsible look, from the parlor. */
+:root {
+  --velvet: #1a2320; --cloth: #202b27; --room: #0d1210;
+  --ivory: #ecd3a6; --ivory-hi: #fff4dc; --ash: #c9b893; --ash-dim: #8f8673; --brass: #b08d57;
+  --face: linear-gradient(180deg, #f3e3c3, #e6cfa3);
+  --display: 'Rozha One', Georgia, serif; --text: 'Cormorant Garamond', Georgia, serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--room); color: var(--ivory); }
+body { min-height: 100vh; font-family: var(--text); font-size: 22px; line-height: 1.5;
+  background: radial-gradient(ellipse 70% 55% at 50% 30%, #2a382f 0%, #1a2320 48%, #0d1210 100%) fixed; }
+main { max-width: 860px; margin: 0 auto; padding: 48px 28px 80px; display: flex; flex-direction: column; gap: 34px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--display); font-size: 20px; color: var(--ivory); }
+.kicker { font-size: 13px; letter-spacing: .26em; text-transform: uppercase; color: var(--ash); }
+.head { display: flex; flex-direction: column; gap: 14px; text-align: center; align-items: center; }
+.sentence { font-style: italic; font-size: 20px; color: var(--ash); max-width: 720px; margin: 0; text-wrap: pretty; }
+h1 { margin: 0; font-family: var(--display); font-weight: 400; font-size: clamp(40px, 6vw, 68px); line-height: 1.05; text-wrap: balance; }
+.her { margin: 0; font-size: 14px; letter-spacing: .2em; text-transform: uppercase; color: var(--brass); }
+.you { display: flex; flex-direction: column; gap: 10px; border-top: 1px solid rgba(176,141,87,.3); padding-top: 30px; }
+.you .is { font-family: var(--display); font-size: clamp(28px, 3.4vw, 38px); line-height: 1.15; margin: 0; }
+.you p { margin: 0; max-width: 680px; text-wrap: pretty; }
+.you .want { color: var(--ash); font-style: italic; }
+.life p { margin: 0 0 1em; max-width: 700px; text-wrap: pretty; }
+.people { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.person { border-radius: 10px; background: var(--face); color: var(--velvet); border: 1px solid var(--brass); box-shadow: 0 12px 30px rgba(0,0,0,.5); padding: 18px 16px; display: flex; flex-direction: column; gap: 6px; }
+.person .who { font-size: 11px; letter-spacing: .18em; text-transform: uppercase; opacity: .8; }
+.person .pname { font-family: var(--display); font-size: 24px; line-height: 1.1; }
+.person p { margin: 0; font-style: italic; font-size: 17px; line-height: 1.35; }
+.morning { text-align: center; font-style: italic; font-size: clamp(24px, 2.8vw, 30px); line-height: 1.35; max-width: 720px; margin: 10px auto 0; text-wrap: pretty; }
+.then { text-align: center; font-style: italic; font-size: clamp(34px, 4.5vw, 52px); color: var(--ash); margin: 0; }
+footer { display: flex; flex-direction: column; align-items: center; gap: 6px; text-align: center; color: var(--ash); font-size: 16px; font-style: italic; border-top: 1px solid rgba(176,141,87,.3); padding-top: 22px; }
+/* the reveal unfolds, slowly, once */
+.step { animation: rise .9s ease-out both; }
+.step:nth-child(2) { animation-delay: .3s; } .step:nth-child(3) { animation-delay: .9s; } .step:nth-child(4) { animation-delay: 1.6s; }
+.step:nth-child(5) { animation-delay: 2.3s; } .step:nth-child(6) { animation-delay: 3s; } .step:nth-child(7) { animation-delay: 3.8s; } .step:nth-child(8) { animation-delay: 4.6s; }
+@keyframes rise { from { opacity: 0; transform: translateY(12px); } to { opacity: 1; transform: none; } }
+@media (prefers-reduced-motion: reduce) { .step { animation: none; } }
+@media (max-width: 700px) { body { font-size: 19px; } .people { grid-template-columns: 1fr; } }
+</style>
+</head>
+<body>
+<main>
+  <div class="brand step"><svg width="15" height="25" viewBox="0 0 60 100" fill="none" aria-hidden="true"><path d="M8 98V34a22 22 0 0 1 44 0v64" stroke="#ecd3a6" stroke-width="5"/><rect x="25" y="52" width="10" height="46" fill="#ecd3a6"/></svg>Elsible</div>
+  <section class="head step">
+    <div class="kicker">Your life</div>
+    <p class="sentence">{{SENTENCE}}</p>
+    <h1>{{TITLE}}</h1>
+    <p class="her">{{HER_CARD}}</p>
+  </section>
+  <section class="you step">
+    <p class="is">You are {{NAME}}, {{AGE}}.</p>
+    <p>{{PAST}}</p>
+    <p class="want">What you want: {{WANT}}</p>
+  </section>
+  <section class="life step">
+    <p>{{LIFE_1}}</p>
+    <p>{{LIFE_2}}</p>
+  </section>
+  <section class="people step">
+    {{PEOPLE}}
+  </section>
+  <p class="morning step">{{FIRST_MORNING}}</p>
+  <p class="then step">and then...</p>
+  <footer class="step">
+    <span>Told by {{TOLD_BY}}</span>
+    <span>The door’s open. Your narrator takes it from here.</span>
+  </footer>
+</main>
+</body>
+</html>

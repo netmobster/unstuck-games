@@ -2,6 +2,58 @@
 
 What was decided and why, dated. Newest first.
 
+## 2026-10-04 — CC — Test 1 at the door
+
+Jay dealt a life at the live parlor and took it through the door on 3 Oct, late. It came out as
+Maren Okafor-Lind, 29, a creator who walked through a laundrette door into a lantern city. **The
+whole door ran: the weave took 36 seconds, the audit 16, under a minute from envelope to page**
+(the pinned sub-agents, against 12 to 15 minutes before). Findings from the session that ran it,
+and what changed:
+
+1. **It opened in the wrong folder** (SEREN, with the life folder added alongside), so the
+   doorkeeper's `CLAUDE.md` never loaded and the kit's relative paths pointed at SEREN. The weaver and
+   auditor loaded anyway. *Changed:* the README and `new-life.ps1` say to start a new session whose
+   own folder is the life.
+2. **"elsible test 1" isn't the trigger phrase.** *Changed:* the doorkeeper opens the door on the
+   first message in a life folder, whatever it says.
+3. **The auditor couldn't catch a misread roll.** *Changed:* it reads `life/roll.txt` and checks the
+   number in `hidden.md` matches; if they differ, the roll wins.
+4. The auditor mended something on its first pass; what, only `audit.md` says. Working as intended.
+5. **`pitch` was in the core deck and the business pack.** The pack's copy was a v3 leftover in a
+   slot v4 no longer has. *Changed:* removed, and the pack's two roles got a want and a conflict like
+   the core roles.
+6. **"Out of sight" means out of the main conversation:** the weaver's and auditor's cards can be
+   expanded to show what they wrote. *Accepted as an honour system,* like the files on disk; the
+   README and `new-life.ps1` say not to.
+7. **The reveal's footer read "Told by The true-crime podcast".** *Changed:* the template lower-cases
+   it.
+
+## 2026-10-03 — CC — The door, built
+
+Jay signed off the parlor and it went live (PR #130). The door is the next piece: what happens
+between the envelope and the story. Built locally in `elsible/door/`.
+
+1. **The doorkeeper is Claude Code reading `door/CLAUDE.md`,** in a folder made from the kit and
+   the player's envelope (`new-life.ps1`; each life under `~\Elsible\lives\`). One voice, only the
+   transition: it opens the envelope, has the life written and checked, says how her card landed,
+   shows the reveal and steps aside.
+2. **The weave and the audit run in sub-agents,** so the hidden half is written where the player's
+   screen never shows it. The doorkeeper never reads `life/hidden.md`.
+3. **No Python and no server.** The roll for her card is a real roll from the shell (PowerShell's
+   `Get-Random` or bash's `$RANDOM`), and the reveal is a page Claude Code fills from a template and
+   opens itself. *Why:* the home page promises one install and one typed line.
+4. **The rehearsals worked:** a throwaway hand (fake dating, the bridesmaid, the wedding weekend)
+   became Hattie, 31, a florist (Opus), and Josie, 32, a Year 4 teacher (Sonnet); the audit passed
+   both. Jay: *"that's... phenomenal...."*
+5. **The weaver and the auditor ship as the door's own sub-agents** (`door/.claude/agents/`):
+   Sonnet, `effort: medium`, read and write only, a few turns, `omitClaudeMd`. *Why:* the
+   rehearsals took 12 to 15 minutes a weave, whatever the model or brief, because sub-agents
+   launched ad hoc inherit the session's effort (here, the maximum) and load the user's whole
+   CLAUDE.md. The roll moves to the doorkeeper, written straight to `life/roll.txt` unseen, so the
+   sub-agents need no shell. Jay's first real run is the timing test.
+6. **Play is the next build.** The door ends with "The door's open. Your narrator takes it from
+   here."
+
 ## 2026-10-03 — CC — Her card: one card, in the river
 
 Jay, playing the parlor: her card sat in three places, two of them turnable, and nothing said that
