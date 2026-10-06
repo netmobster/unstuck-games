@@ -1,0 +1,186 @@
+/* The AI Echo web edition: components for text that comes from the drafts, in Claude Design's
+   values (site.css carries the tokens), plus the local workbench. */
+.ae-kicker { margin: 0 0 18px; max-width: 70ch; font-family: var(--ej-font-mono); font-size: 13px; line-height: 1.5; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-gold-text); }
+.ae-sub { margin: 14px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 34px; line-height: 1.05; color: var(--ej-steel-text); }
+.ae-stand { margin: 24px 0 0; max-width: 60ch; font-size: 23px; line-height: 1.4; color: var(--ej-fg-muted); text-wrap: pretty; }
+.ae-meta { margin-top: 18px; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); }
+.ae-tease { margin: 10px 0 0; font-size: 16px; color: var(--ej-fg-muted); }
+
+.ae-body { display: flex; flex-direction: column; gap: 20px; margin-top: 56px; max-width: 72ch; }
+.ae-body p { margin: 0; font-size: 19px; line-height: 1.6; text-wrap: pretty; }
+.ae-body h2 { margin: 28px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 34px; line-height: 1.05; letter-spacing: -.005em; text-wrap: balance; }
+.ae-body h3 { margin: 22px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 28px; line-height: 1.05; text-wrap: balance; }
+.ae-body ul, .ae-body ol { margin: 0; padding-left: 1.2em; display: flex; flex-direction: column; gap: 10px; font-size: 19px; line-height: 1.55; }
+.ae-body a { color: var(--ej-steel-text); overflow-wrap: anywhere; }
+.ae-pull { margin: 12px 0; padding: 18px 0 0; border-top: 4px solid var(--ej-steel); font-family: var(--ej-font-display); font-weight: 600; font-size: clamp(28px, 3.2vw, 38px); line-height: 1.08; text-wrap: balance; }
+.ae-visual { padding: 14px 16px; border: 1px dashed var(--ej-line-strong); background: var(--ej-surface-2); font-family: var(--ej-font-mono); font-size: 13px; line-height: 1.55; color: var(--ej-fg-faint); }
+.ae-visual b { font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); }
+.ae-stamp { align-self: flex-start; padding: 8px 12px; border: 2px solid var(--ej-steel); font-family: var(--ej-font-mono); font-size: 13px; line-height: 1.6; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-steel-text); }
+.ae-table { overflow-x: auto; }
+.ae-table table { width: 100%; border-collapse: collapse; font-size: 16px; line-height: 1.4; background: var(--ej-surface); }
+.ae-table th { padding: 10px 12px; text-align: left; vertical-align: bottom; font-family: var(--ej-font-mono); font-size: 12px; font-weight: 400; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-steel-text); background: var(--ej-steel-tint); border-bottom: 1px solid var(--ej-line-strong); }
+.ae-table td { padding: 10px 12px; vertical-align: top; border-bottom: 1px solid var(--ej-line); }
+.ae-fig { margin: 8px 0 16px; max-width: 960px; }
+.ae-foot { margin-top: 14px; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .06em; color: var(--ej-fg-muted); }
+.ae-rdtag { display: block; margin-bottom: 4px; font-family: var(--ej-font-mono); font-size: 11px; font-weight: 400; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); }
+
+/* A paragraph that is the magazine's reading: labelled, with a dashed rule. Dashed is ours; solid is sourced. */
+.rd-l { margin: 8px 0 -12px; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); }
+.rd-l + p, .rd-l + ul, .rd-l + ol, .rd-l + blockquote { border-left: 2px dashed var(--ej-steel); padding-left: 16px; }
+
+.ae-boxes { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr)); gap: 24px; margin-top: 56px; max-width: 960px; }
+.ae-box { position: relative; padding: 28px 32px; display: flex; flex-direction: column; gap: 12px; }
+.ae-box p { margin: 0; font-size: 16px; line-height: 1.5; text-wrap: pretty; }
+.ae-box.know { background: var(--ej-surface); border: 2px solid var(--ej-steel); box-shadow: var(--ej-shadow-raise); }
+.ae-box.wrong { background: var(--ej-gold-tint); border: 1px solid var(--ej-gold); }
+.ae-box-h { font-family: var(--ej-font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); }
+.ae-box.wrong .ae-box-h { color: var(--ej-gold-text); }
+
+.ae-share { display: flex; flex-direction: column; gap: 10px; margin-top: 24px; }
+.ae-share-h { font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); }
+.ae-share-b { text-align: left; padding: 12px 16px; background: var(--ej-surface); border: 1px solid var(--ej-line); font: inherit; font-size: 17px; color: var(--ej-fg); cursor: pointer; }
+.ae-share-b span { display: block; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); margin-bottom: 4px; }
+.ae-share-b:hover, .ae-share-b:focus-visible { border-color: var(--ej-steel); }
+
+/* The workbench: local only. It sits in the empty right margin on wide screens. */
+.wb { display: none; }
+.wb-on .wb { display: block; position: fixed; top: 190px; right: 16px; width: 360px; max-height: calc(100vh - 206px); overflow: auto; z-index: 15; padding: 14px 16px 16px; background: var(--ej-surface); border: 1px solid var(--ej-line); border-top: 3px solid var(--ej-gold); box-shadow: var(--ej-shadow-raise); font-size: 14px; line-height: 1.45; color: var(--ej-fg); }
+.wb-h { font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-gold-text); margin: 4px 0 10px; }
+.wb-x { float: right; font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; background: none; border: 1px solid var(--ej-line-strong); color: var(--ej-fg-muted); padding: 3px 6px; cursor: pointer; }
+.wb details { border-top: 1px solid var(--ej-line); padding: 8px 0; }
+.wb summary { cursor: pointer; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-steel-text); }
+.wb-ev { list-style: none; margin: 8px 0 0; padding: 0; }
+.wb-ev li { display: grid; grid-template-columns: 18px 1fr; gap: 6px; padding: 4px 0; }
+.wb-ev li.na { opacity: .5; } .wb-ev small { color: var(--ej-fg-muted); font-size: 12px; }
+.wb-list { margin: 8px 0 0; padding-left: 16px; display: flex; flex-direction: column; gap: 6px; }
+.wb-md { margin-top: 8px; } .wb-md p, .wb-md ul { margin: 0 0 8px; } .wb-md ul { padding-left: 16px; }
+.wb-sub { margin-top: 10px; font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); }
+.wb-p { margin: 8px 0 0; color: var(--ej-fg-muted); }
+.wb-src { margin-top: 10px; font-family: var(--ej-font-mono); font-size: 10px; color: var(--ej-fg-faint); overflow-wrap: anywhere; }
+.wb-btn { flex: none; white-space: nowrap; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-gold-text); background: transparent; border: 1px solid var(--ej-gold); padding: 6px 10px; cursor: pointer; }
+@media (max-width: 1500px) { .wb-on .wb { width: 320px; } }
+@media (max-width: 1100px) { .wb-on .wb { position: static; width: auto; max-height: none; margin: 48px 16px 0; } }
+
+/* Evidence blocks: SOURCE / CHECK / STATUS / OPEN for the claims that carry a piece. */
+.ae-ev { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 6px 16px; margin: 0; padding: 16px 18px; background: var(--ej-surface); border: 1px solid var(--ej-line); border-left: 3px solid var(--ej-steel); font-size: 15px; line-height: 1.45; }
+.ae-ev dt { font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); padding-top: 2px; }
+.ae-ev dd { margin: 0; }
+.ae-body pre { white-space: pre-wrap; overflow-wrap: anywhere; font-size: 14px; }
+.ae-fig { overflow-x: auto; }
+@media (max-width: 600px) { .ae-ev { grid-template-columns: minmax(0, 1fr); } .ae-ev dd { margin-bottom: 8px; } }
+/* Claude Design's front page: keep the governor inside a phone screen. */
+svg { max-width: 100%; height: auto; }
+
+@media (max-width: 600px) { svg { overflow: hidden !important; } }
+
+/* Figures from Claude Design keep their own width beside the 72ch text column. */
+.ae-body .ae-fig { width: min(960px, calc(100vw - 96px)); }
+/* The Receipts' pipeline, drawn from its list: one step per stop, the human steps in gold. */
+.ae-body .ae-pipe, .ae-pipe { list-style: none; margin: 8px 0; padding: 0; display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0; width: min(960px, calc(100vw - 96px)); counter-reset: pipe; border-top: 3px solid var(--ej-steel); }
+.ae-pipe li { counter-increment: pipe; position: relative; padding: 14px 14px 16px; border-right: 1px solid var(--ej-line); background: var(--ej-surface); display: flex; flex-direction: column; gap: 6px; font-size: 14px; line-height: 1.4; }
+.ae-pipe li::before { content: counter(pipe, decimal-leading-zero); font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; color: var(--ej-fg-faint); }
+.ae-pipe b { font-family: var(--ej-font-display); font-weight: 600; font-size: 20px; line-height: 1.05; text-transform: capitalize; }
+.ae-pipe span { color: var(--ej-fg-muted); text-transform: none; }
+.ae-pipe i { margin-top: auto; font-style: normal; font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; color: var(--ej-steel-text); }
+.ae-pipe li.human { background: var(--ej-gold-tint); }
+.ae-pipe li.human i { color: var(--ej-gold-text); }
+
+/* Claude Design front page: on a phone the hero grid stacks to one column. */
+@media (max-width: 700px) { [style*="minmax(320px, .9fr)"] { grid-template-columns: minmax(0, 1fr) !important; } }
+
+@media (max-width: 700px) { .wb-btn { display: none; } }
+@media (max-width: 700px) { .ae-body .ae-pipe { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+/* Text size, A− and A+ in the top bar. */
+.sz-btn { flex: none; min-width: 34px; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .04em; color: var(--ej-fg-muted); background: transparent; border: 1px solid var(--ej-line-strong); padding: 5px 8px; cursor: pointer; }
+.sz-btn:hover, .sz-btn:focus-visible { color: var(--ej-fg); border-color: var(--ej-steel); }
+.sz-btn + .sz-btn { margin-left: -12px; border-left: 0; }
+
+/* The Month: five claim cards. */
+.ae-body .ae-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 20px; width: min(1180px, calc(100vw - 96px)); margin: 8px 0; }
+.ae-card { display: flex; flex-direction: column; gap: 10px; padding: 22px 22px 18px; background: var(--ej-surface); border: 1px solid var(--ej-line); border-top: 3px solid var(--ej-steel); }
+.ae-card p { margin: 0; font-size: 16px; line-height: 1.5; }
+.ae-card-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; flex-wrap: wrap; }
+.ae-lane { font-family: var(--ej-font-display); font-weight: 600; font-size: 28px; line-height: 1; }
+.ae-grade { font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 4px 8px; border: 1px solid currentColor; white-space: nowrap; }
+.ae-grade.g-held, .ae-grade.g-core { color: var(--ej-steel-text); }
+.ae-grade.g-split { color: var(--ej-fg-muted); border-style: dashed; }
+.ae-grade.g-reframed { color: var(--ej-gold-text); background: var(--ej-gold-tint); }
+.ae-k { margin-top: 4px; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); }
+.ae-said { font-family: var(--ej-font-display); font-weight: 600; font-size: 21px !important; line-height: 1.15 !important; }
+.ae-reading { margin-top: 2px; padding: 10px 0 2px 14px; border-left: 2px dashed var(--ej-steel); }
+.ae-reading .ae-k { margin-top: 0; color: var(--ej-steel-text); }
+.ae-card-share { margin-top: auto; align-self: flex-start; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-steel-text); background: transparent; border: 1px solid var(--ej-line-strong); padding: 6px 10px; cursor: pointer; }
+.ae-card-share:hover, .ae-card-share:focus-visible { border-color: var(--ej-steel); color: var(--ej-fg); }
+/* Wide blocks make room for the workbench when it's open on a wide screen. */
+@media (min-width: 1101px) { .wb-on .ae-body .ae-cards, .wb-on .ae-body .ae-fig, .wb-on .ae-body .ae-pipe { width: min(1180px, calc(100vw - 96px - 400px)); } }
+
+/* Who pays: four days, six actions, as timeline cards. Every card ends on the same field. */
+.ae-body .ae-six { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 16px; width: min(1180px, calc(100vw - 96px)); margin: 4px 0 8px; counter-reset: six; }
+@media (min-width: 1101px) { .wb-on .ae-body .ae-six { width: min(1180px, calc(100vw - 96px - 400px)); } }
+.ae-six-c { display: flex; flex-direction: column; gap: 10px; padding: 18px 20px 16px; background: var(--ej-surface); border: 1px solid var(--ej-line); border-top: 3px solid var(--ej-steel); }
+.ae-six-d { display: flex; justify-content: space-between; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); }
+.ae-six-d span { color: var(--ej-fg-faint); }
+.ae-six-a { font-family: var(--ej-font-display); font-weight: 600; font-size: 24px; line-height: 1.05; }
+.ae-six-chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.ae-six-chips span { font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; padding: 3px 6px; border: 1px solid var(--ej-line-strong); color: var(--ej-fg-muted); }
+.ae-six-c p { margin: 0; font-size: 15px !important; line-height: 1.5 !important; }
+.ae-six-l { margin-top: auto; padding-top: 10px; border-top: 1px dashed var(--ej-line-strong); font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-gold-text); }
+.ae-six-l span { color: var(--ej-fg-faint); }
+
+/* Corrections: the ledger. */
+.ae-body .ae-ledger { width: min(1180px, calc(100vw - 96px)); display: flex; flex-direction: column; gap: 28px; }
+@media (min-width: 1101px) { .wb-on .ae-body .ae-ledger { width: min(1180px, calc(100vw - 96px - 400px)); } }
+.ae-led-f { display: flex; flex-wrap: wrap; gap: 8px; position: sticky; top: 64px; z-index: 5; padding: 10px 0; background: var(--ej-bg); }
+.ae-led-f button { font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; padding: 7px 12px; background: var(--ej-surface); color: var(--ej-fg-muted); border: 1px solid var(--ej-line-strong); cursor: pointer; }
+.ae-led-f button span { color: var(--ej-fg-faint); margin-left: 4px; }
+.ae-led-f button[aria-pressed="true"] { background: var(--ej-steel-tint); color: var(--ej-steel-text); border-color: var(--ej-steel); }
+.ae-led-g { display: flex; flex-direction: column; background: var(--ej-surface); border: 1px solid var(--ej-line); border-top: 3px solid var(--ej-steel); }
+.ae-led-g[data-kind="print"] { border-top-color: var(--ej-gold); }
+.ae-led-gh { padding: 16px 18px 10px; display: flex; flex-direction: column; gap: 8px; }
+.ae-led-gh h3 { margin: 0 !important; font-size: 26px !important; }
+.ae-led-k { font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); }
+.ae-led-notes { display: flex; flex-direction: column; gap: 8px; }
+.ae-led-notes p { font-size: 15px !important; color: var(--ej-fg-muted); }
+.ae-led-h, .ae-led-r { display: grid; grid-template-columns: minmax(130px, 1.1fr) minmax(0, 2fr) minmax(0, 3fr); gap: 16px; padding: 10px 18px; }
+.ae-led-h { font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); background: var(--ej-steel-tint); border-top: 1px solid var(--ej-line); }
+.ae-led-r { border-top: 1px solid var(--ej-line); font-size: 15px; line-height: 1.45; }
+.ae-led-w { font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--ej-fg-muted); }
+.ae-led-s { font-weight: 600; }
+.ae-led-s i { font-weight: 400; color: var(--ej-fg-faint); }
+@media (max-width: 760px) { .ae-led-h { display: none; } .ae-led-r { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+
+/* What does a task cost? The calculator. */
+.ae-body .ae-calc { width: min(1000px, calc(100vw - 96px)); display: flex; flex-direction: column; gap: 14px; padding: 20px 22px; background: var(--ej-surface); border: 1px solid var(--ej-line); border-top: 3px solid var(--ej-gold); }
+@media (min-width: 1101px) { .wb-on .ae-body .ae-calc { width: min(1000px, calc(100vw - 96px - 400px)); } }
+.ae-calc-h { display: flex; justify-content: space-between; align-items: end; gap: 12px; flex-wrap: wrap; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-gold-text); }
+.ae-calc label { display: flex; flex-direction: column; gap: 4px; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ej-fg-muted); }
+.ae-calc input, .ae-calc select { font: inherit; font-family: var(--ej-font-body); font-size: 16px; letter-spacing: 0; text-transform: none; color: var(--ej-fg); background: var(--ej-bg); border: 1px solid var(--ej-line-strong); padding: 7px 9px; min-width: 0; width: 100%; box-sizing: border-box; font-variant-numeric: tabular-nums; }
+.ae-calc input:focus-visible, .ae-calc select:focus-visible { outline: 2px solid var(--ej-steel); outline-offset: 1px; }
+.ae-calc-h label { width: 160px; }
+.ae-calc-g { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; }
+.ae-calc-m { display: flex; flex-direction: column; gap: 10px; padding: 14px; border: 1px solid var(--ej-line); background: var(--ej-surface-2); }
+.ae-calc-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ae-calc-out { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.ae-calc-out span { display: block; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-fg-faint); }
+.ae-calc-out b { font-family: var(--ej-font-display); font-weight: 600; font-size: 30px; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.ae-calc-bar { height: 10px; background: var(--ej-line); } .ae-calc-bar i { display: block; height: 100%; width: 0; background: var(--ej-steel); transition: width .3s; }
+.ae-calc-v { font-size: 17px; font-weight: 600; }
+.ae-calc-ref { font-size: 14px; line-height: 1.5; color: var(--ej-fg-muted); }
+.ae-calc-ref b { font-family: var(--ej-font-mono); font-weight: 400; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-steel-text); }
+.ae-calc-ref button { margin: 6px 0 2px; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 10px; background: transparent; color: var(--ej-steel-text); border: 1px solid var(--ej-steel); cursor: pointer; }
+.ae-calc-guess { display: block; font-size: 12px; color: var(--ej-fg-faint); }
+@media (prefers-reduced-motion: reduce) { .ae-calc-bar i { transition: none; } }
+
+/* The Pattern: step chips per lane, and the folds that hold the full steps. */
+.ae-stepchips { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 6px; width: min(960px, calc(100vw - 96px)); }
+@media (min-width: 1101px) { .wb-on .ae-body .ae-stepchips { width: min(960px, calc(100vw - 96px - 400px)); } }
+.ae-stepchip { display: flex; flex-direction: column; gap: 4px; text-align: left; padding: 10px 10px 12px; background: var(--ej-surface); border: 1px solid var(--ej-line); border-top: 3px solid var(--ej-steel-bright); font: inherit; font-family: var(--ej-font-display); font-weight: 600; font-size: 16px; line-height: 1.1; color: var(--ej-fg); cursor: pointer; }
+.ae-stepchip span { font-family: var(--ej-font-mono); font-weight: 400; font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-steel-text); }
+.ae-stepchip:hover, .ae-stepchip:focus-visible, .ae-stepchip[aria-current] { border-top-color: var(--ej-gold); background: var(--ej-gold-tint); }
+.ae-steps { border-left: 2px solid var(--ej-line); padding-left: 14px; }
+.ae-steps summary { cursor: pointer; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-steel-text); padding: 4px 0; }
+.ae-steps ol { margin-top: 10px; }
+.ae-steps-all { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; color: var(--ej-fg-muted); }
+.ae-steps-all button { font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 10px; background: transparent; color: var(--ej-steel-text); border: 1px solid var(--ej-steel); cursor: pointer; }
+@media (max-width: 700px) { .ae-stepchips { grid-template-columns: repeat(2, minmax(0, 1fr)); } }

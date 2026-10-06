@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="/aiechomag/"><meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>04 The Receipts — The AI Echo, Edition 1</title>
+<meta name="description" content="A field magazine for people operating at the edge of AI. Edition 1, covering September 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/web.css">
+</head>
+<body style="margin: 0; background: var(--ej-bg);">
+<div id="root" data-theme="light" style="color: var(--ej-fg); font-family: var(--ej-font-body); background: var(--ej-bg);">
+
+  <nav style="position: sticky; top: 0; z-index: 20; background: var(--ej-bg); border-bottom: 1px solid var(--ej-line);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 14px 48px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ej-fg);">
+        <span style="font-family: var(--ej-font-display); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: .05em; text-transform: uppercase;">The AI Echo</span>
+        <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); border: 1px solid var(--ej-line-strong); padding: 3px 8px; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 0 100%);">№ 1 · Oct 2026</span>
+      </a>
+<div style="flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-left: auto; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <span style="flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); white-space: nowrap;">04 // Method, pipeline and ledger</span>
+        <button type="button" data-action="toggleRibbon" aria-expanded="true" style="flex: none; white-space: nowrap; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="ribbonLabel">Hide sections</span></button>
+<button type="button" class="sz-btn" data-sz="-1" aria-label="Smaller text">A−</button><button type="button" class="sz-btn" data-sz="1" aria-label="Larger text">A+</button><button type="button" data-action="toggleTheme" style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-muted); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="themeLabel">Dark</span></button>
+      </div>
+    </div>
+<div id="ribbon" style="display: block; border-top: 1px solid var(--ej-line); background: var(--ej-surface);">
+      <div aria-label="Edition 1 sections" data-ribbon="1" style="max-width: 1360px; margin: 0 auto; padding: 0 36px; display: flex; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;">
+        
+          <div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="index.html" data-selected="false" title="The AI Echo" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">№ 1 · Front</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The AI Echo</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Cover and contents</span>
+                </a>
+<a href="01-from-the-editors.html" data-selected="false" title="From the editors" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">01</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">From the editors</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The editor's letter</span>
+                </a>
+<a href="02-the-rules.html" data-selected="false" title="The Rules (DRAFT)" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">02</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Rules (DRAFT)</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Nine rules, each with its test</span>
+                </a>
+<a href="03-the-month.html" data-selected="false" title="The Month" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">03</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Month</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five claims, and how each fared</span>
+                </a>
+<a href="04-the-receipts.html" data-selected="true" title="The Receipts" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid var(--ej-gold); border-radius: 0; background: var(--ej-bg); color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;" aria-current="page">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">04</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Receipts</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Method, pipeline and ledger</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Front of the book</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="05-who-checks-the-checker.html" data-selected="false" title="Who checks the checker?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">05</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who checks the checker?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">When people approve everything</span>
+                </a>
+<a href="06-who-pays-when-an-agent-breaks-something.html" data-selected="false" title="Who pays when an agent breaks something?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">06</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who pays when an agent breaks something?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Six actions went public, after the fact</span>
+                </a>
+<a href="07-the-month-in-one-chart.html" data-selected="false" title="Same score, different bill" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">07</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                </a>
+<a href="08-the-pattern.html" data-selected="false" title="The Pattern" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">08</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Pattern</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five lanes into one point</span>
+                </a>
+<a href="09-what-does-a-task-cost.html" data-selected="false" title="What does a task cost?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">09</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What does a task cost?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Model choice, per job</span>
+                </a>
+<a href="10-how-do-you-get-found-when-a-machine-reads-first.html" data-selected="false" title="How do you get found when a machine reads first?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">10</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">How do you get found when a machine reads first?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Being found when AI reads first</span>
+                </a>
+<a href="11-the-case-against.html" data-selected="false" title="The case against" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">11</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The case against</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The steelman, and the reply</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Features</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="12-the-operator.html" data-selected="false" title="The Operator" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">12</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five field-guide cards</span>
+                </a>
+<a href="13-field-notes.html" data-selected="false" title="Field Notes: candidates" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">13</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Field Notes</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">A tool, a stop, an experiment</span>
+                </a>
+<a href="14-corrections.html" data-selected="false" title="Corrections" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">14</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Corrections</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What we got wrong, and what changed</span>
+                </a>
+<a href="15-prove-us-wrong.html" data-selected="false" title="Prove us wrong" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">15</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Prove us wrong</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Make the case against us</span>
+                </a>
+<a href="16-the-library.html" data-selected="false" title="The Library" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">16</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Library</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Twenty-eight things to read</span>
+                </a>
+<a href="17-the-operators-page.html" data-selected="false" title="The Operator's Page" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">17</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator's Page</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">To do, to watch, one question</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Back of the book</div>
+          </div>
+        
+      </div>
+    </div>
+<div id="progress" style="height: 2px; background: var(--ej-gold); width: 0.00%; transition: width .15s linear;"></div>
+  </nav>
+<main id="top" style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
+    
+  </main>
+<div id="receipts" data-theme="light" style="background: var(--ej-bg); color: var(--ej-fg); padding: 72px 0 0;">
+      <article style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
+        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;"><span style="display: inline-block; padding: 6px 16px 6px 10px; background: var(--ej-gold); color: var(--ej-on-gold); font-family: var(--ej-font-display); font-weight: 700; font-size: 16px; line-height: 1; letter-spacing: .1em; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);">04</span><span style="font-family: var(--ej-font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">// The Receipts</span><span style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">Print pages 06–07</span></div>
+<h2 style="margin: 28px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: clamp(44px, 5.5vw, 84px); line-height: .95; letter-spacing: -.005em; max-width: 18ch; text-wrap: balance;">The Receipts</h2><p class="ae-stand">How this issue was made, the way a survey states its method: the sample, the procedure, the checks and the limits.</p><div class="ae-meta">Department // 9 min read</div><div class="ae-body"><h2>The pipeline</h2>
+<ol class="ae-pipe"><li class=""><b>MONITOR</b><span>37 FEEDS (MID-SEPTEMBER), ALL IN ENGLISH · EACH ITEM SCORED OUT OF 20</span><i>AGENT</i></li><li class=""><b>ROUNDUPS</b><span>5, PUBLISHED ON FRIDAYS, COVERING 28 AUG TO 2 OCT</span></li><li class="human"><b>CLAIMS</b><span>5, PICKED BY THE EDITOR</span><i>HUMAN</i></li><li class=""><b>RESEARCH</b><span>1 AGENT A CLAIM · TIMELINE, VERDICT, COUNTER-EVIDENCE, READING LIST, 3 ACTIONS</span><i>AGENT</i></li><li class=""><b>CHECK 1</b><span>236 LINES · 39 WRONG · 1 UNSETTLED · SEPARATE AGENTS</span></li><li class=""><b>DRAFTING</b><span>CLAUDE CODE AGENTS, FROM A PACK WITH EVERY CLAIM TAGGED</span><i>AGENT</i></li><li class=""><b>CHECK 2</b><span>647 LINES · 25 WRONG · SEPARATE AGENTS</span></li><li class=""><b>SECOND FAMILY</b><span>CHATGPT, 6 OCT · 764 ROWS · ITS FINDINGS CHECKED BY SEPARATE AGENTS</span><i>AI</i></li><li class="human"><b>THE EDITOR&#39;S READ</b><span>JAY WRIGHT · YES ON [DATE]</span><i>HUMAN · OPEN</i></li></ol>
+<p>The editor picked the five claims that came up most in the month&#39;s roundups and would change most
+about what readers do.</p>
+<h2>The ledger</h2>
+<div class="ae-stamp">CHECK 1 // 236 LINES · 39 WRONG · ALL CORRECTED</div>
+<div class="ae-stamp">CHECK 2 // 647 LINES · 25 WRONG · ALL CORRECTED</div>
+<div class="ae-table"><table>
+<thead>
+<tr>
+<th></th>
+<th>Check 1: the September research</th>
+<th>Check 2: this issue</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lines checked</td>
+<td>236</td>
+<td>647</td>
+</tr>
+<tr>
+<td>Confirmed</td>
+<td>196</td>
+<td>605</td>
+</tr>
+<tr>
+<td>Wrong, then corrected</td>
+<td>39</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Overstated, then corrected</td>
+<td>not counted</td>
+<td>5 rows (7 overstatements)</td>
+</tr>
+<tr>
+<td>Couldn&#39;t be confirmed</td>
+<td>1, printed firmer than proven; corrected in Corrections</td>
+<td>12: 3 settled in the first edit, 4 in the second, 5 open and named on their pages</td>
+</tr>
+<tr>
+<td>Private lines, not checkable</td>
+<td>4, outside the 236</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Checked by a second model family</td>
+<td>0</td>
+<td>ChatGPT, 6 October: 764 rows, its findings checked against the sources (below)</td>
+</tr>
+<tr>
+<td>Links loaded</td>
+<td>33, in the September post</td>
+<td>28, in The Library</td>
+</tr>
+</tbody></table></div>
+<p>A line is one sentence, bullet or table row with something in it to check: a number, name, date,
+quote or attribution. Wrong: the source says otherwise. Open: it waits on something that hadn&#39;t
+happened when the issue closed, and its page names it. Every check also flagged right lines that
+claimed more than their source. The editors tightened them; only check 2 counted them apart. Check
+2&#39;s 647 lines are 605 confirmed, 25 wrong, 12 unconfirmed and 5 rows that overstated their source;
+those 5 rows held 7 overstatements. Check 1&#39;s 236 lines are 196 confirmed, 39 wrong and 1
+unsettled; its 4 private lines sit outside them.</p>
+<p>Check 2&#39;s confirmed count includes our readings, which were checked only against the September
+monthly, not against primary sources.</p>
+<p><strong>The second family.</strong> On 6 October, after the close, ChatGPT (OpenAI&#39;s Go plan, model not shown,
+web search on) checked the issue&#39;s 19 sections: 764 rows. Two separate agents then checked its
+claims against the sources before any line here changed. They made 56 rulings: on its 29 WRONG
+and OVERSTATED rows, and on 27 points from its two lists, 12 readings it said were written as
+facts and 15 other notes. The 56 came to 3 right, 11 partly right and 42 wrong. The 29 rows were
+0 right, 5 partly right and 24 wrong; the 27 points 3, 6 and 18. The 14 right or partly right are
+fixed. Of its 146 unconfirmed rows, 125 were already confirmed by our checks, 14 weren&#39;t facts, 5
+rest on a source behind a wall (listed under the limits) and 2 had no support in our record. Both
+are now fixed.</p>
+<p><strong>By section</strong>, in running order, so any page&#39;s stamp can be tested against the total:</p>
+<div class="ae-table"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Lines</th>
+<th>Wrong</th>
+<th>Open after the first edit</th>
+<th>Open now</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cover lines</td>
+<td>13</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Colophon</td>
+<td>15</td>
+<td>1</td>
+<td>3</td>
+<td>1</td>
+</tr>
+<tr>
+<td>01 From the editor</td>
+<td>21</td>
+<td>1</td>
+<td>3</td>
+<td>2</td>
+</tr>
+<tr>
+<td>02 The Rules</td>
+<td>8</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>03 The Month</td>
+<td>21</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>04 The Receipts (rebuilt after the check)</td>
+<td>25</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+</tr>
+<tr>
+<td>05 Who checks the checker?</td>
+<td>54</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>06 Who pays when an agent breaks something?</td>
+<td>70</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>07 The month in one chart (5 of the 11 print)</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>08 The Pattern</td>
+<td>57</td>
+<td>3</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>09 What does a task cost?</td>
+<td>58</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>10 How do you get found when a machine reads first?</td>
+<td>44</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>11 The case against</td>
+<td>42</td>
+<td>2</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>12 The Operator</td>
+<td>43</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>13 Field Notes (all ten candidates)</td>
+<td>68</td>
+<td>8</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>14 Corrections</td>
+<td>57</td>
+<td>5</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>16 The Library</td>
+<td>30</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>17 The Operator&#39;s Page</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>647</strong></td>
+<td><strong>25</strong></td>
+<td><strong>9</strong></td>
+<td><strong>5</strong></td>
+</tr>
+</tbody></table></div>
+<p>Check 1&#39;s 39 errors are all in Corrections, with the check 2 errors that changed a reading.</p>
+<h2>Who checks our checker</h2>
+<div class="ae-stamp">WHO CHECKS OUR CHECKER // 12 ERRORS PLANTED · 11 CAUGHT · THE MISS: A DROPPED HEDGE</div>
+<p>One agent copied two features, 05 Who checks the checker? and 09 What does a task cost?, and
+planted 12 errors in the copies, six in each: three changed numbers, two shifted dates, two swapped
+attributions, two dropped hedges, a source mismatch and two drafting slips. Two fresh checkers,
+who weren&#39;t told anything was planted and couldn&#39;t see the originals, checked a copy each. Their
+reports were graded against an answer key kept outside the magazine&#39;s files. They caught all six
+in 05 and five of six in 09. The miss: the line said simpler coding may not have improved much
+(AINews&#39;s words: &quot;may not materially improve&quot;), and the copy said it &quot;had not improved much&quot;. The
+checker confirmed the line.</p>
+<p>The caveat: each copy kept its source map, which still held the true figures, so some catches may
+have come from the map rather than the sources.</p>
+<h2>The verdict scale</h2>
+<p><strong>Lines.</strong> Checkers mark every number, quote, date and attribution confirmed, wrong or
+unconfirmed.</p>
+<p><strong>Claims.</strong> Each of September&#39;s five claims gets a grade: held (substantially survives),
+strengthened (the evidence makes it stronger), weakened (survives with less force), reframed (the
+useful conclusion is genuinely different) or still open (not enough evidence). The research agents
+called all five reframed. An agent that didn&#39;t research them regraded them: accountability held;
+judgment held at its core, its first-week form weakened; model choice was reframed, reversed per
+job; the wrapper held on cost, weakened on quality, reframed toward thinner wrappers; being found
+strengthened on money and plumbing, weakened on &quot;moved from making&quot;, still open on search. Grades
+are readings. No checker checked them.</p>
+<p>HELD 1 · HELD AT ITS CORE 1 · REFRAMED 1 · SPLIT 2</p>
+<h2>What this method can&#39;t see</h2>
+<ul>
+<li><strong>Only what the monitor reads.</strong> Thirty-seven feeds is a sample, not the field: none of the
+legal actions of 28 September to 1 October reached a daily brief (the briefs are the editor&#39;s
+own and not public, so this rests on his word). The scoring weights changed on
+20 September, so items either side of that date weren&#39;t scored alike.</li>
+<li><strong>Paywalls and private sources.</strong> We don&#39;t go round paywalls. Paywalled sources were checked
+only as far as their public previews, private ones not at all, and each page says so where the
+claim sits. The one exception is the cover&#39;s sell line for 09, which leaves it to 09. The table below lists every claim that rests on one, and where it could fail.</li>
+<li><strong>One model family, then a second.</strong> Every agent that researched, checked or drafted this issue
+ran on Claude, and agents trained alike can miss alike. ChatGPT, as red team, shaped the
+structure and the cover line. On 6 October, after the close, it checked the issue&#39;s facts as a
+second model family, and its findings were checked against the sources before any line changed
+(the ledger has the result).</li>
+<li><strong>What no check covered.</strong> The grades, The Pattern&#39;s convergence and the cover line are
+readings. The facts under them were checked.</li>
+<li><strong>One editor.</strong> One person&#39;s questions, one person&#39;s read.</li>
+<li><strong>A closed month.</strong> The corpus closed on 5 October. Later developments wait for the next issue.</li>
+</ul>
+<p><strong>Behind a wall.</strong> Every claim in this issue that rests on a paywalled or private source:</p>
+<div class="ae-table"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Claim</th>
+<th>Source</th>
+<th>Where it could fail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Colophon</td>
+<td>The corpus: 31 daily intel briefs, 31 August to 29 September</td>
+<td>The editor&#39;s own briefs, not public</td>
+<td>Nobody outside can count or read them. If they differ, so does the corpus line</td>
+</tr>
+<tr>
+<td>Colophon</td>
+<td>A scored archive of items, 20 September to 5 October</td>
+<td>The editor&#39;s own archive, not public</td>
+<td>As above. If it differs, so do the archive&#39;s dates and the scores in Field Notes</td>
+</tr>
+<tr>
+<td>04 The Receipts; 14 Corrections</td>
+<td>None of the legal actions of 28 September to 1 October reached a daily brief; three stories that made no takeaway were in the 19 and 20 September briefs</td>
+<td>The editor&#39;s own briefs, not public</td>
+<td>If a brief carried a legal action, the monitor&#39;s blind spot is smaller than we say, and &quot;What I missed&quot; changes</td>
+</tr>
+<tr>
+<td>05 Who checks the checker?</td>
+<td>Where the labs drop human review, and the move to reviewing the AI&#39;s review</td>
+<td>Pragmatic Engineer, 8 September, partly paywalled</td>
+<td>We read the public part. If the paid part describes the labs differently, so would we</td>
+</tr>
+<tr>
+<td>03, 07, 08, 09, 14, 17</td>
+<td>Argon against Astra per task: $1.99 and $3.98 against $3.26, the output tokens a task, the tied score</td>
+<td>AINews at Latent Space, 1 October, a paid post, checked as far as its public preview</td>
+<td>The preview gives no method. If the full post&#39;s figures or method differ, the chart and every per-task comparison change</td>
+</tr>
+<tr>
+<td>11 The case against</td>
+<td>Argon tied Astra on score and burned more than twice the output tokens</td>
+<td>AINews at Latent Space, 1 October, as above</td>
+<td>If the full post&#39;s token counts differ, the case that the model, not the operator, sets the bill loses its example</td>
+</tr>
+<tr>
+<td>12 The Operator</td>
+<td>Argon matched Astra at 53 but cost about three-fifths as much per task, $1.99 to $3.26</td>
+<td>AINews at Latent Space, 1 October, as above</td>
+<td>If the full post&#39;s per-task figures differ, step 1&#39;s case for pricing the job, not the token, loses its example</td>
+</tr>
+<tr>
+<td>Cover lines, the sell line for 09 (if it prints)</td>
+<td>Two models scored the same; one used 62,000 output tokens to the other&#39;s 27,000 and at its introductory price still cost less per task</td>
+<td>AINews at Latent Space, 1 October, as above</td>
+<td>As 09. The sell line carries no marker of its own</td>
+</tr>
+<tr>
+<td>08 The Pattern; 09 What does a task cost?; 14 Corrections</td>
+<td>Astra 2.5 times pricier per token than its predecessor, cheaper per task in some workflows and dearer in others</td>
+<td>AINews at Latent Space, 4 September, a paid post, checked as far as its public subtitle and preview</td>
+<td>If the full post qualifies &quot;cheaper per task&quot;, the month&#39;s first per-job evidence is weaker, and 14&#39;s correction of &quot;far less per task&quot; needs another look</td>
+</tr>
+<tr>
+<td>11 The case against</td>
+<td>Astra 2.5 times pricier per token than its predecessor</td>
+<td>AINews at Latent Space, 4 September, as above</td>
+<td>The figure is in the public subtitle. If the full post qualifies it, the cost objection loses one of its two supports</td>
+</tr>
+<tr>
+<td>08 The Pattern; 09 What does a task cost?</td>
+<td>Nate B Jones concluded that one project could give him reasons to use both models</td>
+<td>Nate B Jones, 10 September, a paid post, checked as far as its free opening</td>
+<td>The quoted line closes the free opening. If the paid part ends elsewhere, &quot;concluded&quot; overstates it</td>
+</tr>
+<tr>
+<td>13 Field Notes</td>
+<td>Jenny Ouyang&#39;s three tests and her bar for scheduling</td>
+<td>Build to Launch, 26 September: the public part; prompts and templates paid</td>
+<td>Everything used is public. If the paid templates set a different bar, the note needs a caveat</td>
+</tr>
+<tr>
+<td>13 Field Notes</td>
+<td>MKT1&#39;s three-person setup and its vacation test</td>
+<td>MKT1, 17 September, a paid post with a long free preview</td>
+<td>Everything used is in the preview. Little rests on the paid part</td>
+</tr>
+<tr>
+<td>13 Field Notes, reserves</td>
+<td>Brex&#39;s agents as employees; AUTOMATION.md</td>
+<td>Creator Economy, 13 September (the episode is paid); Build to Launch, 15 September (all but the convention is paid)</td>
+<td>Only the public spec and convention were read. If a reserve runs, its paid part could qualify it</td>
+</tr>
+<tr>
+<td>13 Field Notes, set aside</td>
+<td>Nate B Jones&#39;s five-prompt provider audit: only the outline is public</td>
+<td>Nate B Jones, 2 September, paid</td>
+<td>The prompts weren&#39;t seen, which is why it was set aside</td>
+</tr>
+<tr>
+<td>14 Corrections</td>
+<td>&quot;ChatGPT ads are working&quot; is unconfirmed</td>
+<td>Stratechery, paywalled</td>
+<td>We couldn&#39;t read the piece. If it holds numbers we haven&#39;t seen, the correction is too firm</td>
+</tr>
+<tr>
+<td>14 Corrections</td>
+<td>The five rungs of agent access appear in Nate B Jones&#39;s piece about DHH&#39;s setup</td>
+<td>Nate B Jones, paywalled</td>
+<td>We couldn&#39;t read all of it. If it sources the rungs to DHH, &quot;almost certainly not DHH&#39;s&quot; is wrong</td>
+</tr>
+</tbody></table></div>
+</div><div style="display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 48px; padding-bottom: 120px; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+          <a href="03-the-month.html" style="font: inherit; text-decoration: none; display: inline-flex; letter-spacing: inherit; text-transform: inherit; color: var(--ej-steel-text); background: transparent; border: 0; padding: 0; cursor: pointer; text-align: left;">← 03 The Month</a>
+<a href="05-who-checks-the-checker.html" style="font: inherit; text-decoration: none; display: inline-flex; letter-spacing: inherit; text-transform: inherit; color: var(--ej-steel-text); background: transparent; border: 0; padding: 0; cursor: pointer; text-align: right;">05 Who checks the checker? →</a>
+        </div>
+      </article>
+    </div>
+<main style="max-width: 1360px; margin: 0 auto; padding: 0 48px 160px;">
+    <footer style="margin-top: 160px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; align-items: flex-end;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--ej-font-display); font-weight: 700; font-size: 40px; line-height: .86; letter-spacing: .04em; text-transform: uppercase;">The AI Echo</div>
+<div style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.8;">Edition 1 · October 2026 · covering September 2026<br>Published free as a PDF with The ECHO Files on Substack · Editor: Jay Wright</div>
+      </div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <a href="https://echofiles.substack.com" style="text-decoration: none;">Subscribe</a>
+<a href="#rules" style="text-decoration: none;">The Rules</a>
+<a href="#corrections" style="text-decoration: none;">Corrections</a>
+<a href="index.html" style="text-decoration: none; color: var(--ej-fg-faint);">Top ↑</a>
+      </div>
+<div style="width: 72px; height: 6px; background: repeating-linear-gradient(135deg, var(--ej-line-strong) 0 6px, transparent 6px 12px);"></div>
+    </footer>
+  </main>
+</div>
+<script src="assets/site.js"></script>
+<script>(function(){var k="ai-echo-size",n=0;try{n=parseInt(localStorage.getItem(k)||"0",10)||0}catch(e){}function apply(){var z=Math.pow(1.1,n);document.querySelectorAll("#features, main#top, main").forEach(function(el){el.style.zoom=z});document.querySelectorAll("[data-sz]").forEach(function(b){b.title=Math.round(z*100)+"%"});try{localStorage.setItem(k,String(n))}catch(e){}}apply();document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-sz]");if(!b)return;n+=parseInt(b.getAttribute("data-sz"),10);apply();});})();</script></body>
+</html>
