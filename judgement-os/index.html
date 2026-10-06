@@ -580,7 +580,7 @@ footer .linkbtn:hover{color:var(--paper-ink)}
   <div class="wrap">
     <div class="r">IV · DOWNLOAD</div>
     <h2>Two builds, one source.</h2>
-    <p class="sub">The same Judgement OS. One works from a profile you write yourself; the other also reads your own selfActual vault. The General Edition is out now; the selfActual Edition is coming soon.</p>
+    <p class="sub">The same Judgement OS. One works from a profile you write yourself; the other also reads your own selfActual vault. Both are public, and they sit side by side.</p>
 
     <div class="editions">
       <div class="edition">
@@ -603,14 +603,22 @@ footer .linkbtn:hover{color:var(--paper-ink)}
         </div>
       </div>
       <div class="edition">
-        <span class="tag soon">Coming soon</span>
+        <span class="tag live">Out now</span>
         <h3>Judgement OS: selfActual Edition</h3>
-        <p class="who">People with a selfActual account. Anyone can install it.</p>
-        <p class="what">The same, plus context from your own selfActual vault. Without an account it just does less, and whenever it can't sign in it says so and points to selfactual.ai.</p>
-        <pre class="install" id="install-sa">&lt;install command&gt;</pre>
+        <p class="who">People with a selfActual account. Once a month it checks that your account answers.</p>
+        <p class="what">The same, plus context from your own selfActual vault: your tasks, your gears, loops and modes, your messages and your profile. Without a selfActual account it says so, points to selfactual.ai, and runs nothing else.</p>
+        <pre class="install" id="install-sa">/plugin marketplace add netmobster/judgement-os-sa
+/plugin install labs@judgement-os-sa
+/plugin install guard@judgement-os-sa
+/plugin install sexyhtml@judgement-os-sa
+/plugin install make@judgement-os-sa
+/plugin install comms@judgement-os-sa
+/plugin install day@judgement-os-sa
+/plugin install dice@judgement-os-sa
+/plugin install sa@judgement-os-sa</pre>
         <div class="acts">
           <button type="button" class="copy" data-copy="install-sa">Copy install</button>
-          <span class="needs">Needs a selfActual account. Don't have one? <a href="https://selfactual.ai" target="_blank" rel="noopener">selfactual.ai</a></span>
+          <span class="needs">Needs a selfActual account. Don't have one? <a href="https://selfactual.ai" target="_blank" rel="noopener">selfactual.ai</a> · MIT · <a href="https://github.com/netmobster/judgement-os-sa" target="_blank" rel="noopener">on GitHub ↗</a></span>
         </div>
       </div>
     </div>
