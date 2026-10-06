@@ -222,3 +222,11 @@ svg { max-width: 100%; height: auto; }
   [style*="grid-template-columns: 88px minmax(0, 1fr) minmax(220px, 300px)"] > :nth-child(3) { grid-column: 2; }
   [style*="grid-template-columns: minmax(180px, 380px) minmax(0, 1fr) 56px 56px 56px"] { grid-template-columns: minmax(0, 1fr) minmax(0, .5fr) 36px 36px 36px !important; gap: 0 8px !important; }
 }
+/* CD's 05 and 06 on phones: FIG.01's bar rows, the auto-mode comparison and 06's legend. */
+@media (max-width: 700px) {
+  [style*="grid-template-columns: 200px minmax(0, 1fr) 150px"] { grid-template-columns: minmax(0, 1fr) auto !important; gap: 6px 10px !important; }
+  [style*="grid-template-columns: 200px minmax(0, 1fr) 150px"] > :first-child { grid-column: 1 / -1; }
+  [style*="grid-template-columns: 1fr 1fr; gap: 0; border-top: 3px solid var(--ej-fg)"] { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; }
+  [style*="grid-template-columns: 1fr 1fr; gap: 0; border-top: 3px solid var(--ej-fg)"] > * { min-width: 0; padding-left: 10px !important; overflow-wrap: anywhere; }
+  article [style*="display: flex; align-items: center; gap: 10px;"] { flex-wrap: wrap; }
+}
