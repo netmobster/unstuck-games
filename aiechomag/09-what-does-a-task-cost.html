@@ -153,60 +153,903 @@
     
   </main>
 <div id="s-09" data-theme="light" style="background: var(--ej-bg); color: var(--ej-fg); padding: 72px 0 0;">
-      <article style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
-        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;"><span style="display: inline-block; padding: 6px 16px 6px 10px; background: var(--ej-gold); color: var(--ej-on-gold); font-family: var(--ej-font-display); font-weight: 700; font-size: 16px; line-height: 1; letter-spacing: .1em; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);">09</span><span style="font-family: var(--ej-font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">// What does a task cost?</span></div>
-<h2 style="margin: 28px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: clamp(44px, 5.5vw, 84px); line-height: .95; letter-spacing: -.005em; max-width: 18ch; text-wrap: balance;">What does a task cost?</h2><p class="ae-stand">By the end of September the sticker price no longer told the big labs apart, and on the magazine&#39;s reading the number that did was the cost of a finished task.</p><div class="ae-meta">Feature // 10 min read</div><div class="ae-body"><p>In early September, a weekly roundup from The ECHO Files said model choice had become the least consequential decision in the stack. By October, on the magazine&#39;s reading, the evidence had split that claim, and one half had come back reversed. The vendor mattered less. Which model got which job mattered more, and so did what was wrapped around it. The number worth counting was the cost of a finished task, rather than the price of a token, and the same roundup had already named what you spend per task among the decisions that do count.</p>
-<h2>The sticker converged</h2>
-<p>Some prices were falling before the month began. OpenAI cut Luna&#39;s price 80% in July, while Anthropic held Opus at $5/$25 per million input and output tokens across five releases.</p>
-<p>Then came the price war. On 22 September Anthropic released Claude Opus 5.5 at $4/$20, a 20% cut. About an hour later OpenAI released GPT-6 Sol at $2/$10, half GPT-5.6 Sol&#39;s promotional $4/$20, and GPT-6 Luna at $0.10/$0.50. Between 28 and 30 September, Anthropic, OpenAI and Google each launched or announced a model at $2/$10: Claude Sonnet 5.5, GPT-6.1 Sol and Gemini 4 Argon.</p>
-<p>Two of the three labs were already there. Sonnet 5 had sold at $2/$10 since its launch, and Anthropic&#39;s pricing page says a planned rise to $3/$15 won&#39;t happen. GPT-6 Sol had been at $2/$10 for a week. Google&#39;s $2/$10 is an introductory half price.</p>
-<p>So the sticker stopped separating vendors, and Anthropic began selling in other units. Anthropic&#39;s launch page said Opus 5.5 costs 40% less to run than Opus 5 on typical workloads. That is a claim about work rather than tokens, and it is Anthropic&#39;s own; the list price fell 20%. Sonnet 5.5 kept its list price, and Anthropic says it costs up to 30% less per task because it needs fewer tokens.</p>
-<h2>Argon&#39;s three prices</h2>
-<p>Gemini 4 Argon shows what a token price hides. It has three prices.</p>
-<p>The first is on the announcement: $2/$10, a 50% introductory discount with no end date announced. It is open first to government users, Google staff and trusted cyber defenders in Google&#39;s Fairwind Program. Developers, enterprises and consumers come later.</p>
-<p>The second is the standard price behind the discount: $4/$20.</p>
-<p>The third is the one a bill is made of. Argon matched GPT-6 Astra at 53 on Artificial Analysis&#39;s Intelligence Index, but averaged 62,000 output tokens per task to Astra&#39;s 27,000. Astra lists at $10/$50, so Argon&#39;s introductory price is a fifth of Astra&#39;s per token. AINews put the cost at $1.99 a task against Astra&#39;s $3.26; output tokens make up under half of each. At its standard price, Argon would come to $3.98 a task, more than Astra.</p>
-<dl class="ae-ev"><dt>SOURCE</dt><dd>AINews at Latent Space, 1 October. A paid post, read as far as its public preview.</dd><dt>CHECK</dt><dd>Read against the preview in the September research check, and loaded again for this issue&#39;s check on 5 October. Recomputed: at list prices, output tokens come to $0.62 of Argon&#39;s $1.99 and $1.35 of Astra&#39;s $3.26.</dd><dt>STATUS</dt><dd>CONFIRMED</dd><dt>OPEN</dt><dd>AINews doesn&#39;t say how it worked the costs out, and output tokens explain under half of each.</dd></dl>
-<p>The benchmark calls it a tie. The cost per task doesn&#39;t. On these numbers Argon beats Astra per task only while the discount lasts, because it burns far more tokens to reach the same score. The token price on the announcement is an input, not an answer.</p>
-<blockquote class="ae-pull">The benchmark calls it a tie. The cost per task doesn&#39;t. The token price on the announcement is an input, not an answer.</blockquote>
-<div class="ae-calc"><div class="ae-calc-h"><span>Work it out // cost per task</span><label>Tasks a month<input type="number" min="0" step="100" data-f="tasks" value="1000"></label></div><div class="ae-calc-g"><div class="ae-calc-m" data-side="a"><label class="ae-calc-l">Model A<select data-f="preset"><option value="0" selected>Gemini 4 Argon (introductory) · $2/$10</option><option value="1">Gemini 4 Argon (standard) · $4/$20</option><option value="2">GPT-6 Astra · $10/$50</option><option value="3">GPT-6 Sol · $2/$10</option><option value="4">GPT-6 Luna · $0.1/$0.5</option><option value="5">Claude Opus 5.5 · $4/$20</option><option value="6">Claude Sonnet 5.5 · $2/$10</option><option value="c">Custom</option></select></label><div class="ae-calc-row"><label>$ per million in<input type="number" min="0" step="0.01" data-f="pin" value="2"></label><label>$ per million out<input type="number" min="0" step="0.01" data-f="pout" value="10"></label></div><div class="ae-calc-row"><label>Input tokens a task<input type="number" min="0" step="1000" data-f="tin" value="0"></label><label>Output tokens a task<input type="number" min="0" step="1000" data-f="tout" value="62000"></label></div><div class="ae-calc-out"><div><span>A task</span><b data-o="task">–</b></div><div><span>A month</span><b data-o="month">–</b></div></div><div class="ae-calc-bar"><i data-o="bar"></i></div></div><div class="ae-calc-m" data-side="b"><label class="ae-calc-l">Model B<select data-f="preset"><option value="0">Gemini 4 Argon (introductory) · $2/$10</option><option value="1">Gemini 4 Argon (standard) · $4/$20</option><option value="2" selected>GPT-6 Astra · $10/$50</option><option value="3">GPT-6 Sol · $2/$10</option><option value="4">GPT-6 Luna · $0.1/$0.5</option><option value="5">Claude Opus 5.5 · $4/$20</option><option value="6">Claude Sonnet 5.5 · $2/$10</option><option value="c">Custom</option></select></label><div class="ae-calc-row"><label>$ per million in<input type="number" min="0" step="0.01" data-f="pin" value="10"></label><label>$ per million out<input type="number" min="0" step="0.01" data-f="pout" value="50"></label></div><div class="ae-calc-row"><label>Input tokens a task<input type="number" min="0" step="1000" data-f="tin" value="0"></label><label>Output tokens a task<input type="number" min="0" step="1000" data-f="tout" value="27000"></label></div><div class="ae-calc-out"><div><span>A task</span><b data-o="task">–</b></div><div><span>A month</span><b data-o="month">–</b></div></div><div class="ae-calc-bar"><i data-o="bar"></i></div></div></div><div class="ae-calc-v" data-o="verdict"></div><div class="ae-calc-ref"><b>For reference //</b> AINews reported $1.99 a task for Argon at its introductory price and $3.26 for Astra, with Argon at $3.98 at its standard price. Output tokens make up under half of each, and the preview doesn't say how AINews worked the figures out. <button type="button" data-calc="fit">Fit the input tokens to AINews's totals</button> <span class="ae-calc-guess">Our guess, not AINews's method: it assumes the rest of each figure is input tokens at list price.</span></div></div>
-
-<h2>Per job from the start</h2>
-<p>The month&#39;s first evidence was already priced by the hour and by the task. On 3 September Latent Space put GPT-6 Astra at under $6 an hour: 33 tokens a second at a top rate of $50 per million tokens. The next day AINews found Astra 2.5 times pricier per token than its predecessor, cheaper per task in some workflows and dearer in others (a paid post, checked as far as its public preview).</p>
-<p>The comparisons that followed split by job. On 10 September Nate B Jones compared Claude Fable 5.1 and Astra under the title &quot;Which Model Gets Which Job&quot;, and concluded that one project could give him reasons to use both (a paid post, checked as far as its free opening). Zvi Mowshowitz planned to put every non-trivial question to both models for a while, because their answers to one hard question had complemented each other. On 22 September Claire Vo&#39;s blind test on How I AI split three ways. GPT-6 Sol won her over on clear writing, Opus 5.5 looked strongest for long-running agents and B2B front-end work, and Astra was her favourite.</p>
-<p>On 26 September Zvi published a job map: Opus 5.5 by default, Fable 5.1 for correctness in expert domains, Astra for ambitious coding and some science work, and Luna and other cheap models for budget work. That is a routing table, written as a blog post. By 3 October Jones was routing in practice, keeping Astra for the most demanding work and moving recurring jobs to Sol to save his plan allowance.</p>
-<h2>The wrapper&#39;s number, and its limits</h2>
-<p>The other lever on the bill is the wrapper. Alibaba.com&#39;s president, Kuo Zhang, wrote in Fortune on 9 September that work gets done by three things together: the model; a harness that equips it with tools and memory and lets it act; and context on what good looks like in a given industry.</p>
-<p>On 17 September Tom Tunguz wrote up HarnessTax, a study that ran the same models under different harnesses. His lead example was one switch. GPT-5.6 Sol moved from Claude Code to Pi, a minimal open-source harness, and its cost per resolved task fell from $1.540 to $0.441, a 71% cut. That is larger than any September cut to input or output token prices. Fable 5.1&#39;s cache reads did fall 75% at the start of the month, so the comparison holds for input and output prices only.</p>
-<p>The limits matter as much as the number. The 71% is one model moved to one harness, not an average. HarnessTax&#39;s own headline, as GIGAZINE reported it, was that success rates didn&#39;t vary significantly while costs differed by up to five times, so the 71% isn&#39;t even the widest gap. On quality, Tunguz&#39;s footnote finds one significant result in 42 comparisons, fewer than chance alone would produce, and none that survives correction for running so many tests. He calls the quality gap &quot;undemonstrated at this sample size, not proven absent&quot;. An arXiv study from 8 September found no clear average effect of the harness on quality either.</p>
-<p>So the defensible claim is narrower than the version The ECHO Files&#39; roundups ran in September. A harness can change what the same work costs several times over. Neither of September&#39;s two studies showed that it changes average quality, in either direction.</p>
-<h2>Savings by deletion</h2>
-<p>Where the wrapper saved money in production, part of the saving came from making it smaller. On 23 September Cursor said harness changes had cut users&#39; token costs by 7% without reducing agent quality, measured in A/B tests on a large user base. It trimmed roughly 66% of its system prompt, because newer models needed less direction, and loaded tools only when they were needed, cutting description tokens in its static context by 60%.</p>
-<p>Dan McAteer had made the case in Latent Space on 22 August: harness progress is measured by how much of the harness gets deleted. He cited Anthropic cutting 80% of Claude Code&#39;s system prompt. On 29 September Anthropic&#39;s Thariq Shihipar said the core harness has to get more complex and more secure, and that he expects the Claude.md file to disappear eventually. On the magazine&#39;s reading, what a harness sheds is instruction, and what it keeps is machinery: tools, security and limits.</p>
-<h2>A lab moves in on routing</h2>
-<p>Routing, which had looked like the wrapper&#39;s best business, drew in a lab and two cloud platforms. Jev, a model that only classifies, routes and scores, claimed more than 100 times the speed of small frontier models at more than 200 times lower cost, on its own figures, and six clones shipped in two days. OpenAI built its own, the Decisions API, in about a week, by Latent Space&#39;s account, and launched it in limited preview at DevDay on 29 September. AWS and Cloudflare released decision models on 1 October. Days earlier, on 25 September, Latent Space had reported Stripe&#39;s purchase of OpenRouter at $7B, which put a price on a routing wrapper.</p>
-<h2>Where the savings came from</h2>
-<p>Set the wrapper&#39;s numbers beside the market&#39;s. Ramp&#39;s AI index, reported by The Decoder on 2 October, showed businesses using more AI and paying less for it: usage up about 50% since spending peaked in July. The Decoder put nearly all of the fall in spending down to OpenAI and Anthropic competing. It doesn&#39;t mention harnesses or wrappers. This magazine&#39;s reading, and it is an inference, is that the savings businesses actually banked came from two labs competing rather than from anything their operators built.</p>
-<h2>When the model sets the bill</h2>
-<p>The strongest case against the argument is Databricks. It rolled Astra out to about 3,500 engineers, and coding spend rose 60%. Gains were clear only on highly complex work, and AINews reported that simpler coding may not have improved much. On the monthly&#39;s reading, the model set both the cost and the outcome there.</p>
-<p>Databricks&#39; answer was to put Astra on its own sub-budget. The magazine&#39;s lesson: keep the expensive model for the work that needs it, and give its spending a line of its own.</p>
-<h2>The operator&#39;s tool</h2>
-<p>Put the month together and, on the magazine&#39;s reading, the operator&#39;s tool is a routing table: one row per job, with a default model, a trigger for escalating to a bigger one, a cost per accepted output and a spend cap. The Operator&#39;s guides to model routing and spend caps, in 12, set out how to build one.</p>
-<div class="ae-visual"><b>Visual to come //</b> A routing table drawn as a working document, not a chart.</div>
-<p>A rerunnable eval is what keeps the table honest. A cheaper row is cheaper only if its output still gets accepted, and the month&#39;s main harness study couldn&#39;t rule a quality gap in or out.</p>
-<p>The cost of a task is the price of a token times the tokens the job burns, and the harness can move the second number several times over. September moved both. Only the first is on the price list.</p>
-<blockquote class="ae-pull">The cost of a task is the price of a token times the tokens the job burns. September moved both. Only the first is on the price list.</blockquote>
-</div><div class="ae-boxes"><div class="ae-box know"><div class="ae-box-h">How we know</div><p><strong>Sources:</strong> Simon Willison&#39;s price table (22 September), Anthropic&#39;s launch and pricing pages, Zvi Mowshowitz (12 September and 1 October), AINews at Latent Space, Tom Tunguz and GIGAZINE on HarnessTax, Cursor, and The Decoder on Ramp.</p>
-<p><strong>What was checked:</strong></p>
-<div class="ae-stamp">CHECKED // 58 LINES · 0 WRONG // 2026.10.05<br>SEPTEMBER RESEARCH // 89 LINES · 16 WRONG<br>ALL CORRECTED · 1 UNSETTLED, NOT USED HERE<br>NOT CHECKED // THE VERDICT: THE VENDOR MATTERS LESS, THE JOB MORE</div>
-<p>The checks covered numbers, quotes and dates, not the readings built on them. Those are ours: the grade on September&#39;s claim (reframed, and reversed at the level of the job), that cost per task now tells the labs apart, and that the operator&#39;s tool is a routing table.</p>
-<p><strong>What&#39;s uncertain:</strong> HarnessTax&#39;s own page didn&#39;t load, so its figures rest on Tunguz and GIGAZINE. The AWS and Cloudflare releases rest on press coverage.</p>
-</div><div class="ae-box wrong"><div class="ae-box-h">Prove us wrong</div><p>The claim here most likely to be wrong is that a thinner harness cuts the cost of a task without cutting its quality. It rests on one study in which a quality gap is unproven at 42 comparisons rather than ruled out, an arXiv paper that found no clear average effect, and Cursor&#39;s A/B tests of its own product. What would change our mind: a harness comparison large enough to detect a quality gap, or production data in which a deletion pass cut tokens and raised failure or rework rates. Reply to the Substack email.</p>
-</div></div><div style="display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 48px; padding-bottom: 120px; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
-          <a href="08-the-pattern.html" style="font: inherit; text-decoration: none; display: inline-flex; letter-spacing: inherit; text-transform: inherit; color: var(--ej-steel-text); background: transparent; border: 0; padding: 0; cursor: pointer; text-align: left;">← 08 The Pattern</a>
-<a href="10-how-do-you-get-found-when-a-machine-reads-first.html" style="font: inherit; text-decoration: none; display: inline-flex; letter-spacing: inherit; text-transform: inherit; color: var(--ej-steel-text); background: transparent; border: 0; padding: 0; cursor: pointer; text-align: right;">10 How do you get found when a machine reads first? →</a>
+      <!-- ===== Page content: edit below ===== -->
+<article style="max-width: 1200px; margin: 0 auto; background: var(--ej-bg); box-sizing: border-box; overflow: hidden;">
+      
+      <header style="position: relative; padding: 72px clamp(24px, 6vw, 96px) 0;">
+        <div style="position: absolute; left: 72px; top: -20px; font-family: var(--ej-font-display); font-weight: 700; font-size: clamp(180px, 24vw, 320px); line-height: .8; color: var(--ej-line); letter-spacing: -.02em; pointer-events: none;">09</div>
+<div style="position: relative; display: flex; flex-direction: column; gap: 22px;">
+          <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;"><span style="display: inline-block; padding: 6px 16px 6px 10px; background: var(--ej-gold); color: var(--ej-on-gold); font-family: var(--ej-font-display); font-weight: 700; font-size: 16px; line-height: 1; letter-spacing: .1em; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);">09</span><span style="font-family: var(--ej-font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">// Feature · 10 min</span></div>
+<h2 style="margin: 0; font-family: var(--ej-font-display); font-weight: 600; font-size: clamp(52px, 7vw, 96px); line-height: .92; letter-spacing: -.005em; max-width: 15ch; text-wrap: balance;">What does a task cost?</h2>
+<p style="margin: 0; max-width: 56ch; font-size: 24px; line-height: 1.4; color: var(--ej-fg-muted); text-wrap: pretty;">By the end of September the sticker price no longer told the big labs apart, and on the magazine's reading the number that did was the cost of a finished task.</p>
         </div>
-      </article>
+      </header>
+<div style="padding: 48px clamp(24px, 6vw, 96px) 0; display: flex; flex-direction: column; gap: 22px;">
+        
+          <div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              
+              
+
+              
+                <figure style="margin: 8px 0; display: flex; flex-direction: column; gap: 12px; padding: 24px 0 0; background: transparent; border-top: 3px solid var(--ej-fg);">
+                  <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 26px; line-height: 1.05;">Argon's three prices</span><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">Cost per task · AINews, 1 Oct</span></div>
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; background-color: var(--ej-surface-2); background-image: repeating-linear-gradient(0deg, var(--ej-line) 0 1px, transparent 1px 28px); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-inset);"><div style="display: grid; grid-template-columns: 260px minmax(0, 1fr) 220px; gap: 14px; align-items: center;"><span style="font-size: 15px; line-height: 1.3;">Gemini 4 Argon · introductory $2/$10</span><span style="height: 20px; width: 50%; background: var(--ej-steel); border: 0; box-sizing: border-box;"></span><span style="font-family: var(--ej-font-mono); font-size: 13px; color: var(--ej-steel-text);">$1.99 a task</span></div>
+<div style="display: grid; grid-template-columns: 260px minmax(0, 1fr) 220px; gap: 14px; align-items: center;"><span style="font-size: 15px; line-height: 1.3;">GPT-6 Astra · $10/$50</span><span style="height: 20px; width: 82%; background: var(--ej-steel); border: 0; box-sizing: border-box;"></span><span style="font-family: var(--ej-font-mono); font-size: 13px; color: var(--ej-steel-text);">$3.26 a task</span></div>
+<div style="display: grid; grid-template-columns: 260px minmax(0, 1fr) 220px; gap: 14px; align-items: center;"><span style="font-size: 15px; line-height: 1.3;">Gemini 4 Argon · standard $4/$20</span><span style="height: 20px; width: 100%; background: var(--ej-gold); border: 0; box-sizing: border-box;"></span><span style="font-family: var(--ej-font-mono); font-size: 13px; color: var(--ej-gold-text);">$3.98 a task</span></div></div>
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.6;">Same score (53, Artificial Analysis) · Argon averaged 62,000 output tokens a task to Astra's 27,000 · paid post, read as far as its public preview</span>
+                </figure>
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              <p style="margin: 0; font-size: 24px; line-height: 1.5; text-wrap: pretty;"><span style="float: left; font-family: var(--ej-font-display); font-weight: 700; font-size: 96px; line-height: .78; padding: 8px 12px 0 0;">I</span>n early September, a weekly roundup from The ECHO Files said model choice had become the least consequential decision in the stack. By October, on the magazine's reading, the evidence had split that claim, and one half had come back reversed. The vendor mattered less. Which model got which job mattered more, and so did what was wrapped around it. The number worth counting was the cost of a finished task, rather than the price of a token, and the same roundup had already named what you spend per task among the decisions that do count.</p>
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                
+                
+                <a href="03-the-month.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--ej-line-strong);"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">03 The Month →</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">Model choice: reframed, reversed per job.</span></a>
+                
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              <h3 style="margin: 40px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: 1.02; letter-spacing: -.005em;">The sticker converged</h3>
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">Some prices were falling before the month began. OpenAI cut Luna's price 80% in July, while Anthropic held Opus at $5/$25 per million input and output tokens across five releases.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">Then came the price war. On 22 September Anthropic released Claude Opus 5.5 at $4/$20, a 20% cut. About an hour later OpenAI released GPT-6 Sol at $2/$10, half GPT-5.6 Sol's promotional $4/$20, and GPT-6 Luna at $0.10/$0.50. Between 28 and 30 September, Anthropic, OpenAI and Google each launched or announced a model at $2/$10: Claude Sonnet 5.5, GPT-6.1 Sol and Gemini 4 Argon.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              
+              
+
+              
+                <figure style="margin: 8px 0; display: flex; flex-direction: column; gap: 12px; padding: 0; background: transparent; border-top: 0;">
+                  <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 26px; line-height: 1.05;">Three labs, one sticker</span><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">Per million input / output tokens</span></div>
+<div style="overflow-x: auto; background: var(--ej-surface); border: 1px solid var(--ej-line-strong); box-shadow: none;">
+                      <div style="display: grid; grid-template-columns: minmax(0, 1.4fr) 110px minmax(0, 1.4fr); min-width: 600px;">
+                        <span style="padding: 10px 12px; background: var(--ej-steel-tint); border-bottom: 2px solid var(--ej-steel); font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">Model</span><span style="padding: 10px 12px; background: var(--ej-steel-tint); border-bottom: 2px solid var(--ej-steel); font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">Price</span><span style="padding: 10px 12px; background: var(--ej-steel-tint); border-bottom: 2px solid var(--ej-steel); font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">Note</span>
+                        <span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 600; background: transparent;">Claude Sonnet 5</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg); font-weight: 400; background: transparent;">$2/$10</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg); font-weight: 400; background: transparent;">Since its launch; a planned rise to $3/$15 won't happen</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 600; background: transparent;">GPT-6 Sol</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg); font-weight: 400; background: transparent;">$2/$10</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg); font-weight: 400; background: transparent;">From 22 September</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 600; background: transparent;">Claude Sonnet 5.5</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg); font-weight: 400; background: transparent;">$2/$10</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg); font-weight: 400; background: transparent;">28–30 September</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 600; background: transparent;">GPT-6.1 Sol</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg); font-weight: 400; background: transparent;">$2/$10</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg); font-weight: 400; background: transparent;">28–30 September</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 600; background: var(--ej-gold-tint);">Gemini 4 Argon</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg); font-weight: 400; background: var(--ej-gold-tint);">$2/$10</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg); font-weight: 400; background: var(--ej-gold-tint);">Introductory half price</span>
+                      </div>
+                    </div>
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+                </figure>
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">Two of the three labs were already there. Sonnet 5 had sold at $2/$10 since its launch, and Anthropic's pricing page says a planned rise to $3/$15 won't happen. GPT-6 Sol had been at $2/$10 for a week. Google's $2/$10 is an introductory half price.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">So the sticker stopped separating vendors, and Anthropic began selling in other units. Anthropic's launch page said Opus 5.5 costs 40% less to run than Opus 5 on typical workloads. That is a claim about work rather than tokens, and it is Anthropic's own; the list price fell 20%. Sonnet 5.5 kept its list price, and Anthropic says it costs up to 30% less per task because it needs fewer tokens.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                <div style="display: flex; flex-direction: column; gap: 4px; padding-left: 14px; border-left: 2px solid var(--ej-steel);"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: .9; color: var(--ej-fg);">40% / 20%</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">Opus 5.5: 40% cheaper to run than Opus 5 on typical workloads, on Anthropic's claim, against a 20% list-price cut</span></div>
+                
+                
+                
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              <h3 style="margin: 40px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: 1.02; letter-spacing: -.005em;">Argon's three prices</h3>
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">Gemini 4 Argon shows what a token price hides. It has three prices.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              
+              
+
+              
+                <figure style="margin: 8px 0; display: flex; flex-direction: column; gap: 12px; padding: 0; background: transparent; border-top: 0;">
+                  
+
+                  
+
+                  
+
+                  
+
+                  <div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px;"><div style="padding: 16px 18px; background: var(--ej-surface); border: 1px solid var(--ej-line); border-top: 3px solid var(--ej-steel); display: flex; flex-direction: column; gap: 8px;"><span style="font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">One · on the announcement</span><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 22px; line-height: 1.05;">$2/$10</span><span style="font-size: 15px; line-height: 1.5;">A 50% introductory discount with no end date announced. It is open first to government users, Google staff and trusted cyber defenders in Google's Fairwind Program. Developers, enterprises and consumers come later.</span></div>
+<div style="padding: 16px 18px; background: var(--ej-surface); border: 1px solid var(--ej-line); border-top: 3px solid var(--ej-steel); display: flex; flex-direction: column; gap: 8px;"><span style="font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">Two · behind the discount</span><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 22px; line-height: 1.05;">$4/$20</span><span style="font-size: 15px; line-height: 1.5;">The standard price behind the discount.</span></div>
+<div style="padding: 16px 18px; background: var(--ej-gold-tint); border: 1px solid var(--ej-line); border-top: 3px solid var(--ej-gold); display: flex; flex-direction: column; gap: 8px;"><span style="font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-gold-text);">Three · what a bill is made of</span><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 22px; line-height: 1.05;">$1.99 or $3.98 a task</span><span style="font-size: 15px; line-height: 1.5;">Argon matched GPT-6 Astra at 53 on Artificial Analysis's Intelligence Index, but averaged 62,000 output tokens per task to Astra's 27,000.</span></div></div>
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+                </figure>
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">Astra lists at $10/$50, so Argon's introductory price is a fifth of Astra's per token. AINews put the cost at $1.99 a task against Astra's $3.26; output tokens make up under half of each. At its standard price, Argon would come to $3.98 a task, more than Astra.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                
+                
+                
+                <div style="display: flex; flex-direction: column; gap: 10px; padding: 16px 18px; background: var(--ej-surface); border: 1px solid var(--ej-line);"><div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">Source</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg);">AINews at Latent Space, 1 October. A paid post, read as far as its public preview.</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">Check</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg);">Read against the preview in the September research check, and loaded again for this issue's check on 5 October. Recomputed: at list prices, output tokens come to $0.62 of Argon's $1.99 and $1.35 of Astra's $3.26.</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">Status</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-steel-text);">Confirmed</span></div>
+<div style="display: flex; flex-direction: column; gap: 2px;"><span style="font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">Open</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-gold-text);">AINews doesn't say how it worked the costs out, and output tokens explain under half of each.</span></div></div>
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">The benchmark calls it a tie. The cost per task doesn't. On these numbers Argon beats Astra per task only while the discount lasts, because it burns far more tokens to reach the same score. The token price on the announcement is an input, not an answer.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              
+              
+
+              
+                <figure style="margin: 8px 0; display: flex; flex-direction: column; gap: 12px; padding: 0; background: transparent; border-top: 0;">
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  <div class="ae-calc"><div class="ae-calc-h"><span>Work it out // cost per task</span><label>Tasks a month<input type="number" min="0" step="100" data-f="tasks" value="1000"></label></div><div class="ae-calc-g"><div class="ae-calc-m" data-side="a"><label class="ae-calc-l">Model A<select data-f="preset"><option value="0" selected>Gemini 4 Argon (introductory) · $2/$10</option><option value="1">Gemini 4 Argon (standard) · $4/$20</option><option value="2">GPT-6 Astra · $10/$50</option><option value="3">GPT-6 Sol · $2/$10</option><option value="4">GPT-6 Luna · $0.1/$0.5</option><option value="5">Claude Opus 5.5 · $4/$20</option><option value="6">Claude Sonnet 5.5 · $2/$10</option><option value="c">Custom</option></select></label><div class="ae-calc-row"><label>$ per million in<input type="number" min="0" step="0.01" data-f="pin" value="2"></label><label>$ per million out<input type="number" min="0" step="0.01" data-f="pout" value="10"></label></div><div class="ae-calc-row"><label>Input tokens a task<input type="number" min="0" step="1000" data-f="tin" value="0"></label><label>Output tokens a task<input type="number" min="0" step="1000" data-f="tout" value="62000"></label></div><div class="ae-calc-out"><div><span>A task</span><b data-o="task">–</b></div><div><span>A month</span><b data-o="month">–</b></div></div><div class="ae-calc-bar"><i data-o="bar"></i></div></div><div class="ae-calc-m" data-side="b"><label class="ae-calc-l">Model B<select data-f="preset"><option value="0">Gemini 4 Argon (introductory) · $2/$10</option><option value="1">Gemini 4 Argon (standard) · $4/$20</option><option value="2" selected>GPT-6 Astra · $10/$50</option><option value="3">GPT-6 Sol · $2/$10</option><option value="4">GPT-6 Luna · $0.1/$0.5</option><option value="5">Claude Opus 5.5 · $4/$20</option><option value="6">Claude Sonnet 5.5 · $2/$10</option><option value="c">Custom</option></select></label><div class="ae-calc-row"><label>$ per million in<input type="number" min="0" step="0.01" data-f="pin" value="10"></label><label>$ per million out<input type="number" min="0" step="0.01" data-f="pout" value="50"></label></div><div class="ae-calc-row"><label>Input tokens a task<input type="number" min="0" step="1000" data-f="tin" value="0"></label><label>Output tokens a task<input type="number" min="0" step="1000" data-f="tout" value="27000"></label></div><div class="ae-calc-out"><div><span>A task</span><b data-o="task">–</b></div><div><span>A month</span><b data-o="month">–</b></div></div><div class="ae-calc-bar"><i data-o="bar"></i></div></div></div><div class="ae-calc-v" data-o="verdict"></div><div class="ae-calc-ref"><b>For reference //</b> AINews reported $1.99 a task for Argon at its introductory price and $3.26 for Astra, with Argon at $3.98 at its standard price. Output tokens make up under half of each, and the preview doesn't say how AINews worked the figures out. <button type="button" data-calc="fit">Fit the input tokens to AINews's totals</button> <span class="ae-calc-guess">Our guess, not AINews's method: it assumes the rest of each figure is input tokens at list price.</span></div></div>
+
+                  
+                </figure>
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              <h3 style="margin: 40px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: 1.02; letter-spacing: -.005em;">Per job from the start</h3>
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">The month's first evidence was already priced by the hour and by the task. On 3 September Latent Space put GPT-6 Astra at under $6 an hour: 33 tokens a second at a top rate of $50 per million tokens. The next day AINews found Astra 2.5 times pricier per token than its predecessor, cheaper per task in some workflows and dearer in others (a paid post, checked as far as its public preview).</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                <div style="display: flex; flex-direction: column; gap: 4px; padding-left: 14px; border-left: 2px solid var(--ej-steel);"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: .9; color: var(--ej-fg);">&lt; $6</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">an hour for GPT-6 Astra · 33 tokens a second at $50 per million (Latent Space, 3 September)</span></div>
+                
+                
+                
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">The comparisons that followed split by job. On 10 September Nate B Jones compared Claude Fable 5.1 and Astra under the title &quot;Which Model Gets Which Job&quot;, and concluded that one project could give him reasons to use both (a paid post, checked as far as its free opening). Zvi Mowshowitz planned to put every non-trivial question to both models for a while, because their answers to one hard question had complemented each other. On 22 September Claire Vo's blind test on How I AI split three ways. GPT-6 Sol won her over on clear writing, Opus 5.5 looked strongest for long-running agents and B2B front-end work, and Astra was her favourite.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">On 26 September Zvi published a job map: Opus 5.5 by default, Fable 5.1 for correctness in expert domains, Astra for ambitious coding and some science work, and Luna and other cheap models for budget work. That is a routing table, written as a blog post. By 3 October Jones was routing in practice, keeping Astra for the most demanding work and moving recurring jobs to Sol to save his plan allowance.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                
+                <div style="display: flex; flex-direction: column; gap: 4px; padding-left: 14px; border-left: 2px solid var(--ej-line-strong);"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">See below</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">Zvi's map becomes the working table at the end of this piece.</span></div>
+                
+                
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              <h3 style="margin: 40px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: 1.02; letter-spacing: -.005em;">The wrapper's number, and its limits</h3>
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">The other lever on the bill is the wrapper. Alibaba.com's president, Kuo Zhang, wrote in Fortune on 9 September that work gets done by three things together: the model; a harness that equips it with tools and memory and lets it act; and context on what good looks like in a given industry.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">On 17 September Tom Tunguz wrote up HarnessTax, a study that ran the same models under different harnesses. His lead example was one switch. GPT-5.6 Sol moved from Claude Code to Pi, a minimal open-source harness, and its cost per resolved task fell from $1.540 to $0.441, a 71% cut. That is larger than any September cut to input or output token prices. Fable 5.1's cache reads did fall 75% at the start of the month, so the comparison holds for input and output prices only.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              
+              
+
+              
+                <figure style="margin: 8px 0; display: flex; flex-direction: column; gap: 12px; padding: 0; background: transparent; border-top: 0;">
+                  
+
+                  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); border-top: 3px solid var(--ej-fg);"><div style="padding: 14px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 48px; line-height: .9; color: var(--ej-fg);">$1.540</span><span style="font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.5;">Cost per resolved task · GPT-5.6 Sol in Claude Code</span></div>
+<div style="padding: 14px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 48px; line-height: .9; color: var(--ej-fg);">$0.441</span><span style="font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.5;">The same model in Pi, a minimal harness</span></div>
+<div style="padding: 14px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 48px; line-height: .9; color: var(--ej-gold-text);">−71%</span><span style="font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.5;">One model, one switch · not an average</span></div></div>
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.6;">Source // Tom Tunguz on HarnessTax, 17 September</span>
+                </figure>
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">The limits matter as much as the number. The 71% is one model moved to one harness, not an average. HarnessTax's own headline, as GIGAZINE reported it, was that success rates didn't vary significantly while costs differed by up to five times, so the 71% isn't even the widest gap. On quality, Tunguz's footnote finds one significant result in 42 comparisons, fewer than chance alone would produce, and none that survives correction for running so many tests. He calls the quality gap &quot;undemonstrated at this sample size, not proven absent&quot;. An arXiv study from 8 September found no clear average effect of the harness on quality either.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                <div style="display: flex; flex-direction: column; gap: 4px; padding-left: 14px; border-left: 2px solid var(--ej-steel);"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: .9; color: var(--ej-gold-text);">1 in 42</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">comparisons with a significant quality result, fewer than chance alone; none survives correction</span></div>
+                
+                
+                
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">So the defensible claim is narrower than the version The ECHO Files' roundups ran in September. A harness can change what the same work costs several times over. Neither of September's two studies showed that it changes average quality, in either direction.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                
+                
+                <a href="14-corrections.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--ej-line-strong);"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">14 Corrections →</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">HarnessTax's 71% is one data point, not an average.</span></a>
+                
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              <h3 style="margin: 40px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: 1.02; letter-spacing: -.005em;">Savings by deletion</h3>
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">Where the wrapper saved money in production, part of the saving came from making it smaller. On 23 September Cursor said harness changes had cut users' token costs by 7% without reducing agent quality, measured in A/B tests on a large user base. It trimmed roughly 66% of its system prompt, because newer models needed less direction, and loaded tools only when they were needed, cutting description tokens in its static context by 60%.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              
+              
+
+              
+                <figure style="margin: 8px 0; display: flex; flex-direction: column; gap: 12px; padding: 0; background: transparent; border-top: 0;">
+                  <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 26px; line-height: 1.05;">What got cut</span><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">Share removed</span></div>
+<div style="display: flex; flex-direction: column; gap: 12px; padding: 20px 22px; background-color: var(--ej-surface-2); background-image: repeating-linear-gradient(0deg, var(--ej-line) 0 1px, transparent 1px 28px); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-inset);"><div style="display: grid; grid-template-columns: 300px minmax(0, 1fr) 60px; gap: 14px; align-items: center;"><span style="font-size: 15px; line-height: 1.3;">Claude Code's system prompt (Anthropic)</span><span style="height: 20px; width: 80%; background: var(--ej-steel); border: 0; box-sizing: border-box;"></span><span style="font-family: var(--ej-font-mono); font-size: 13px; color: var(--ej-steel-text);">80%</span></div>
+<div style="display: grid; grid-template-columns: 300px minmax(0, 1fr) 60px; gap: 14px; align-items: center;"><span style="font-size: 15px; line-height: 1.3;">Cursor's system prompt</span><span style="height: 20px; width: 66%; background: var(--ej-steel); border: 0; box-sizing: border-box;"></span><span style="font-family: var(--ej-font-mono); font-size: 13px; color: var(--ej-steel-text);">~66%</span></div>
+<div style="display: grid; grid-template-columns: 300px minmax(0, 1fr) 60px; gap: 14px; align-items: center;"><span style="font-size: 15px; line-height: 1.3;">Cursor's static-context tool descriptions (tools now load on demand)</span><span style="height: 20px; width: 60%; background: var(--ej-steel); border: 0; box-sizing: border-box;"></span><span style="font-family: var(--ej-font-mono); font-size: 13px; color: var(--ej-steel-text);">60%</span></div>
+<div style="display: grid; grid-template-columns: 300px minmax(0, 1fr) 60px; gap: 14px; align-items: center;"><span style="font-size: 15px; line-height: 1.3;">Cursor users' token costs, all harness changes</span><span style="height: 20px; width: 7%; background: var(--ej-gold); border: 0; box-sizing: border-box;"></span><span style="font-family: var(--ej-font-mono); font-size: 13px; color: var(--ej-gold-text);">7%</span></div></div>
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.6;">Sources // Cursor, 23 September · Dan McAteer in Latent Space, 22 August</span>
+                </figure>
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">Dan McAteer had made the case in Latent Space on 22 August: harness progress is measured by how much of the harness gets deleted. He cited Anthropic cutting 80% of Claude Code's system prompt. On 29 September Anthropic's Thariq Shihipar said the core harness has to get more complex and more secure, and that he expects the Claude.md file to disappear eventually. On the magazine's reading, what a harness sheds is instruction, and what it keeps is machinery: tools, security and limits.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                
+                <div style="display: flex; flex-direction: column; gap: 4px; padding-left: 14px; border-left: 2px solid var(--ej-gold);"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-gold-text);">Our reading // of checked facts</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">Rule V: where the evidence ends and our judgment begins.</span></div>
+                
+                
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              <h3 style="margin: 40px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: 1.02; letter-spacing: -.005em;">A lab moves in on routing</h3>
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">Routing, which had looked like the wrapper's best business, drew in a lab and two cloud platforms. Jev, a model that only classifies, routes and scores, claimed more than 100 times the speed of small frontier models at more than 200 times lower cost, on its own figures, and six clones shipped in two days. OpenAI built its own, the Decisions API, in about a week, by Latent Space's account, and launched it in limited preview at DevDay on 29 September. AWS and Cloudflare released decision models on 1 October. Days earlier, on 25 September, Latent Space had reported Stripe's purchase of OpenRouter at $7B, which put a price on a routing wrapper.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              
+              
+
+              
+                <figure style="margin: 8px 0; display: flex; flex-direction: column; gap: 12px; padding: 0; background: transparent; border-top: 0;">
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  <div style="position: relative; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; border-top: 2px solid var(--ej-steel);"><div style="position: relative; padding: 18px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span style="position: absolute; top: -7px; left: 0; width: 12px; height: 12px; background: var(--ej-gold);"></span><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-steel-text);">25 Sep</span><span style="font-size: 15px; line-height: 1.45;">Stripe buys OpenRouter, reported at $7B</span></div>
+<div style="position: relative; padding: 18px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span style="position: absolute; top: -7px; left: 0; width: 12px; height: 12px; background: var(--ej-steel);"></span><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-steel-text);">29 Sep</span><span style="font-size: 15px; line-height: 1.45;">OpenAI's Decisions API, limited preview at DevDay</span></div>
+<div style="position: relative; padding: 18px 16px 0 0; display: flex; flex-direction: column; gap: 6px;"><span style="position: absolute; top: -7px; left: 0; width: 12px; height: 12px; background: var(--ej-steel);"></span><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-steel-text);">1 Oct</span><span style="font-size: 15px; line-height: 1.45;">AWS and Cloudflare release decision models</span></div></div>
+
+                  
+
+                  
+
+                  
+                </figure>
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              <h3 style="margin: 40px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: 1.02; letter-spacing: -.005em;">Where the savings came from</h3>
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">Set the wrapper's numbers beside the market's. Ramp's AI index, reported by The Decoder on 2 October, showed businesses using more AI and paying less for it: usage up about 50% since spending peaked in July. The Decoder put nearly all of the fall in spending down to OpenAI and Anthropic competing. It doesn't mention harnesses or wrappers. This magazine's reading, and it is an inference, is that the savings businesses actually banked came from two labs competing rather than from anything their operators built.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                <div style="display: flex; flex-direction: column; gap: 4px; padding-left: 14px; border-left: 2px solid var(--ej-steel);"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: .9; color: var(--ej-fg);">~50%</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">rise in usage since spending peaked in July (Ramp, via The Decoder) · spending fell</span></div>
+                
+                
+                
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              <h3 style="margin: 40px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: 1.02; letter-spacing: -.005em;">When the model sets the bill</h3>
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">The strongest case against the argument is Databricks. It rolled Astra out to about 3,500 engineers, and coding spend rose 60%. Gains were clear only on highly complex work, and AINews reported that simpler coding may not have improved much. On the monthly's reading, the model set both the cost and the outcome there.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                <div style="display: flex; flex-direction: column; gap: 4px; padding-left: 14px; border-left: 2px solid var(--ej-steel);"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: .9; color: var(--ej-gold-text);">+60%</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">coding spend at Databricks after rolling Astra out to about 3,500 engineers</span></div>
+                
+                
+                
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">Databricks' answer was to put Astra on its own sub-budget. The magazine's lesson: keep the expensive model for the work that needs it, and give its spending a line of its own.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                
+                
+                <a href="11-the-case-against.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--ej-line-strong);"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">11 The case against →</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">The steelman reads Databricks the other way.</span></a>
+                
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              <h3 style="margin: 40px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: 1.02; letter-spacing: -.005em;">The operator's tool</h3>
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">Put the month together and, on the magazine's reading, the operator's tool is a routing table: one row per job, with a default model, a trigger for escalating to a bigger one, a cost per accepted output and a spend cap. The Operator's guides to model routing and spend caps, in 12, set out how to build one.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+<aside style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px;">
+                
+                
+                <a href="12-the-operator.html" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px; padding: 14px 16px; border: 1px solid var(--ej-line-strong);"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">12 The Operator →</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">Cards 02 and 04: model routing and spend caps, as steps.</span></a>
+                
+              </aside>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: 1 / -1; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              
+              
+
+              
+                <figure style="margin: 8px 0; display: flex; flex-direction: column; gap: 12px; padding: 0; background: transparent; border-top: 0;">
+                  <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap;"><span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 26px; line-height: 1.05;">The routing table</span><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">A working document · Zvi's job map, 26 September, as the first rows</span></div>
+<div style="overflow-x: auto; background: var(--ej-surface); border: 1px solid var(--ej-line-strong); box-shadow: var(--ej-shadow-raise), var(--ej-bevel);">
+                      <div style="display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, .8fr); min-width: 600px;">
+                        <span style="padding: 10px 12px; background: var(--ej-steel-tint); border-bottom: 2px solid var(--ej-steel); font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">Job</span><span style="padding: 10px 12px; background: var(--ej-steel-tint); border-bottom: 2px solid var(--ej-steel); font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">Default model</span><span style="padding: 10px 12px; background: var(--ej-steel-tint); border-bottom: 2px solid var(--ej-steel); font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">Escalate when</span><span style="padding: 10px 12px; background: var(--ej-steel-tint); border-bottom: 2px solid var(--ej-steel); font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">Cost per accepted output</span><span style="padding: 10px 12px; background: var(--ej-steel-tint); border-bottom: 2px solid var(--ej-steel); font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">Spend cap</span>
+                        <span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 600; background: transparent;">Default work</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 400; background: transparent;">Opus 5.5</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 600; background: transparent;">Correctness in expert domains</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 400; background: transparent;">Fable 5.1</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 600; background: transparent;">Ambitious coding, some science</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 400; background: transparent;">GPT-6 Astra</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg); font-weight: 400; background: transparent;">Databricks: its own sub-budget</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 600; background: transparent;">Budget work</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 400; background: transparent;">Luna and other cheap models</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg); font-weight: 600; background: transparent;">Your recurring job</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-body); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span><span style="padding: 11px 12px; border-bottom: 1px solid var(--ej-line); font-size: 15px; line-height: 1.4; font-family: var(--ej-font-mono); color: var(--ej-fg-faint); font-weight: 400; background: transparent;">fill in</span>
+                      </div>
+                    </div>
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  
+
+                  <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.6;">Blank cells are yours: price each job per accepted output, not per token, and rerun the eval before you trust a cheaper row</span>
+                </figure>
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              <p style="margin: 0; font-size: 20px; line-height: 1.6; text-wrap: pretty;">A rerunnable eval is what keeps the table honest. A cheaper row is cheaper only if its output still gets accepted, and the month's main harness study couldn't rule a quality gap in or out.</p>
+              
+              
+              
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              
+              <div style="margin: 24px 0; border-top: 3px solid var(--ej-steel); padding-top: 18px; font-family: var(--ej-font-display); font-weight: 600; font-size: 40px; line-height: 1.1; text-wrap: balance;">The cost of a task is the price of a token times the tokens the job burns, and the harness can move the second number several times over. September moved both. Only the first is on the price list.</div>
+
+              
+
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              
+              
+
+              
+
+              
+                <div style="margin-top: 40px; padding: 28px 32px; background: var(--ej-surface); border: 2px solid var(--ej-steel); box-shadow: var(--ej-shadow-raise), var(--ej-bevel); display: flex; flex-direction: column; gap: 16px;">
+                  <span style="font-family: var(--ej-font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">How we know</span>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">Sources</span><span style="font-size: 16px; line-height: 1.5;">Simon Willison's price table (22 September), Anthropic's launch and pricing pages, Zvi Mowshowitz (12 September and 1 October), AINews at Latent Space, Tom Tunguz and GIGAZINE on HarnessTax, Cursor, and The Decoder on Ramp.</span></div>
+<div style="display: flex; flex-direction: column; gap: 8px;"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">What was checked</span>
+<div style="display: flex; flex-wrap: wrap; gap: 8px;"><span style="padding: 7px 12px; border: 1px solid var(--ej-steel); font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ej-steel-text); line-height: 1.4;">Checked // 58 lines · 0 wrong // 2026.10.05</span><span style="padding: 7px 12px; border: 1px solid var(--ej-steel); font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ej-steel-text); line-height: 1.4;">September research // 89 lines · 16 wrong · all corrected · 1 unsettled, not used here</span><span style="padding: 7px 12px; border: 1px solid var(--ej-gold); font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--ej-gold-text); line-height: 1.4;">Not checked // the verdict: the vendor matters less, the job more</span></div><span style="font-size: 15px; line-height: 1.5; color: var(--ej-fg-muted);">The checks covered numbers, quotes and dates, not the readings built on them. Those are ours: the grade on September's claim (reframed, and reversed at the level of the job), that cost per task now tells the labs apart, and that the operator's tool is a routing table.</span></div>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">What's uncertain</span><span style="font-size: 16px; line-height: 1.5;">HarnessTax's own page didn't load, so its figures rest on Tunguz and GIGAZINE. The AWS and Cloudflare releases rest on press coverage.</span></div>
+                </div>
+              
+              
+            </div>
+            
+          </div>
+<div style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(240px, 1fr); gap: 48px; align-items: start;">
+            <div style="grid-column: auto; display: flex; flex-direction: column; gap: 22px; min-width: 0;">
+              
+              
+              
+              
+
+              
+
+              
+              
+                <div style="position: relative; padding: 28px 32px; background: var(--ej-gold-tint); border: 1px solid var(--ej-gold); display: flex; flex-direction: column; gap: 14px;">
+                  <span style="position: absolute; left: -1px; top: -1px; width: 14px; height: 14px; border-left: 2px solid var(--ej-gold); border-top: 2px solid var(--ej-gold);"></span><span style="position: absolute; right: -1px; bottom: -1px; width: 14px; height: 14px; border-right: 2px solid var(--ej-gold); border-bottom: 2px solid var(--ej-gold);"></span>
+                  <span style="font-family: var(--ej-font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-gold-text);">Prove us wrong</span>
+<p style="margin: 0; font-size: 17px; line-height: 1.55;">The claim here most likely to be wrong is that a thinner harness cuts the cost of a task without cutting its quality. It rests on one study in which a quality gap is unproven at 42 comparisons rather than ruled out, an arXiv paper that found no clear average effect, and Cursor's A/B tests of its own product.</p>
+<div style="display: flex; flex-direction: column; gap: 4px;"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint);">What would change our mind</span><span style="font-size: 17px; line-height: 1.55;">A harness comparison large enough to detect a quality gap, or production data in which a deletion pass cut tokens and raised failure or rework rates.</span></div>
+<a href="https://echofiles.substack.com" style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-gold-text); text-decoration: none;">Reply to the Substack email →</a>
+                </div>
+              
+            </div>
+            
+          </div>
+        
+      </div>
+<div style="margin: 56px clamp(24px, 6vw, 96px) 96px; display: flex; justify-content: space-between; gap: 16px;">
+        <a href="08-the-pattern.html" style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); text-decoration: none; padding: 10px 16px; border: 1px solid var(--ej-steel);">← 08 The Pattern</a>
+<a href="10-how-do-you-get-found-when-a-machine-reads-first.html" style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); text-decoration: none; padding: 10px 16px; border: 1px solid var(--ej-steel);">10 How do you get found… →</a>
+      </div>
+    </article>
+
     </div>
 <main style="max-width: 1360px; margin: 0 auto; padding: 0 48px 160px;">
     <footer style="margin-top: 160px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; align-items: flex-end;">

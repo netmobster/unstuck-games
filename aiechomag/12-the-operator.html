@@ -153,64 +153,273 @@
     
   </main>
 <div id="operator" data-theme="light" style="background: var(--ej-bg); color: var(--ej-fg); padding: 72px 0 0;">
-      <article style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
-        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;"><span style="display: inline-block; padding: 6px 16px 6px 10px; background: var(--ej-gold); color: var(--ej-on-gold); font-family: var(--ej-font-display); font-weight: 700; font-size: 16px; line-height: 1; letter-spacing: .1em; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);">12</span><span style="font-family: var(--ej-font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">// The Operator</span></div>
-<h2 style="margin: 28px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: clamp(44px, 5.5vw, 84px); line-height: .95; letter-spacing: -.005em; max-width: 18ch; text-wrap: balance;">The Operator: five field guides</h2><p class="ae-stand">Five field guides built from the fifteen actions the September research recommended, each one something you can start on Monday.</p><div class="ae-meta">Field guides // 5 min read</div><div class="ae-body"><h2>Human gates</h2>
-<p><strong>Don&#39;t review everything. Review what you can&#39;t undo.</strong></p>
-<ol>
-<li><strong>Write the gate list.</strong> List the agent actions that are irreversible or leave the building: sends, spend, publishing, permissions. Rajesh Beri&#39;s stricter test gates only what is both hard to reverse and visible outside the system.</li>
-<li><strong>Put human sign-off there, and only there</strong>. Anthropic&#39;s study (see 05) suggests people are poor item-by-item checkers, and that they tire: testers&#39; catch rate fell from about 17% early in a session to about 5% after 50 or more prior prompts. Fewer prompts should mean less fatigue at the ones that matter.</li>
-<li><strong>Sample everything else.</strong> Spot-check the rest every week instead of approving it one item at a time.</li>
-<li><strong>Check the grader before you trust it.</strong> Hand-grade 20 recent AI outputs yourself (emails, ads, briefs), then check that your automated grader agrees with you. Look at your data before you write the eval: Hamel Husain&#39;s first complaint about Anthropic&#39;s eval tool is that it nudges you the other way.</li>
-<li><strong>Attach a receipt.</strong> Every AI deliverable carries its sources, the checks run and who approved it. Boards are asking. In Comviva&#39;s 2026 Global CMO Survey, carried by MarTech, 86% of marketing leaders have been asked to justify their AI spend at board level, and 16% feel confident doing it.</li>
-</ol>
-<p><strong>It&#39;s working when</strong> your gate list fits on one page, every item on it gets read before it&#39;s approved, and your grader agrees with your hand grades.</p>
-<h2>Model routing</h2>
-<p><strong>Stop picking a model. Pick a model for a job.</strong></p>
-<ol>
-<li><strong>Price the job, not the token.</strong> Take your three most frequent AI jobs and price each per accepted output. Run each on two $2/$10 models, Sonnet 5.5 and GPT-6.1 Sol, and log the tokens and the cost. Token prices mislead: on AINews&#39;s figures (a paid post, checked as far as its public preview), Gemini 4 Argon matched GPT-6 Astra at 53 on Artificial Analysis&#39;s index at an introductory token price a fifth of Astra&#39;s, but cost about three-fifths as much per task, $1.99 to $3.26.</li>
-<li><strong>Build an eval you can rerun.</strong> Use 10 to 20 past outputs for each job, and rerun it whenever a model or a price changes.</li>
-<li><strong>Write the routing table.</strong> For each job: its default model, and what triggers escalation. For the shape, see Zvi Mowshowitz&#39;s: Opus 5.5 by default, Fable 5.1 for correctness in expert domains, Astra for ambitious coding and some science work, Luna and other cheap models for budget work. Yours will split differently.</li>
-<li><strong>Fence off the frontier.</strong> Give the $10/$50 models a sub-budget of their own, as Databricks did for Astra (see 09).</li>
-<li><strong>Send labels and routes to a decision model.</strong> Any call that only returns a label or a route can go to a cheap decision model. OpenAI previewed its Decisions API on 29 September, and AWS and Cloudflare released decision models on 1 October.</li>
-</ol>
-<p><strong>It&#39;s working when</strong> you can say what each job costs per accepted output, and a new model release means rerunning an eval, not reopening the vendor argument.</p>
-<h2>Agent liability</h2>
-<p><strong>If it can browse, log in, spend or publish, somebody owns it.</strong></p>
-<ol>
-<li><strong>Find every agent.</strong> List each agent that can browse, log in, spend or publish, including any switched on inside a vendor&#39;s tool.</li>
-<li><strong>Name one owner for each.</strong> One human, by name. Our bet is that liability will land on whoever deploys the agent, not only on the labs; 06 has the law and the bill.</li>
-<li><strong>Log what agents do, not what they say.</strong> Tool calls, URLs visited and credentials used, stored outside the agent. The questions can come months later: OpenAI found a June breach of a New South Wales fire-data service on 29 September and told the state on 1 October.</li>
-<li><strong>Box it in.</strong> A sandbox for anything with write access, and a hard spend cap that fails closed.</li>
-<li><strong>Get the vendor&#39;s clock in writing.</strong> Ask each AI vendor how soon they&#39;ll tell you about an incident involving your account. OpenAI&#39;s public framework is for publishing reports, not notifying customers, and states no deadline for complex cases involving third parties: on our reading, an incident on your account (see 06).</li>
-</ol>
-<p><strong>It&#39;s working when</strong> you can pick any agent at random, name its owner, show what it did last Tuesday, and quote its vendor&#39;s notification deadline from a letter.</p>
-<h2>Spend caps</h2>
-<p><strong>A cap that warns is a report. A cap that stops is a limit.</strong></p>
-<p>Four of the month&#39;s five sets of advice include a hard cap, all leaning on the same Simon Willison post from 3 October (see 08).</p>
-<ol>
-<li><strong>Cap every agent twice.</strong> A per-run cap and a monthly cap, both failing closed: when one is hit, the agent stops.</li>
-<li><strong>Cap every job.</strong> Give each job in your routing table a hard monthly cap.</li>
-<li><strong>Make capped the default.</strong> New agents start capped, and switching a cap off is the deliberate act. That&#39;s Willison&#39;s argument: hard budget caps on by default, with opting out left to the user.</li>
-<li><strong>Find the money, then spend it on limits.</strong> Before your next model swap, keep the model and change the harness: price one recurring workflow per completed task under yours and under a minimal one such as Pi. In HarnessTax&#39;s comparisons, costs varied up to fivefold across harnesses and no quality difference held up, though at that sample size a gap is unproven, not ruled out. Then do a deletion pass on one agent: cut the instructions, guardrails and tool definitions the current model no longer needs, and keep only what a rerun proves you need. Cursor&#39;s 7% cut in token costs came partly from deletions like these. Put what you save into the caps.</li>
-</ol>
-<p><strong>It&#39;s working when</strong> an agent hits its cap and stops, and nobody finds out from the invoice.</p>
-<h2>Being found</h2>
-<p><strong>Get on the machine&#39;s shortlist. Don&#39;t leave search to do it.</strong></p>
-<ol>
-<li><strong>Log the shortlist every week.</strong> Run your top 20 buyer questions through ChatGPT, Gemini, Claude, Perplexity and Google&#39;s AI Mode, and log who gets cited. Astra searches a median of five sources per answer, which suggests a narrow field. The tracker doesn&#39;t say how many of them it cites, so you log that yourself. Read what the answers say about you, too: 67% of AI-tool users in SOCi&#39;s survey say they&#39;ve been given wrong information about a local business.</li>
-<li><strong>Date your mentions and watch the week after.</strong> Use the log to date each AI mention, then check direct and organic traffic over the following seven days. Expect most of it untagged: in Profound&#39;s study (see 10), only about 2.5% of the visits that followed an AI mention carried a referral tag.</li>
-<li><strong>Ask.</strong> Add an AI option to your &quot;how did you hear about us&quot; question.</li>
-<li><strong>Get agent-readable.</strong> Tidy your structured product data and test how browser agents handle your checkout. If you buy media, send your team&#39;s comments on OpenProposal, IAB Tech Lab&#39;s proposed standard for agent-to-agent media buying, by 22 October.</li>
-<li><strong>Keep the search budget.</strong> On our reading of September&#39;s data, AI discovery is growing on top of search, not in place of it. Datos found the two growing at about the same rate, and IAB still forecasts paid search up 8.1% this year.</li>
-</ol>
-<p><strong>It&#39;s working when</strong> you can name the date of your last AI mention and say what your direct traffic did the week after.</p>
+      <!-- ===== Page content: edit below ===== -->
+<style>
+  @page { margin: 12mm; }
+  @media print { body { background: #fff; } body * { visibility: hidden; } #op-print, #op-print * { visibility: visible; } #op-print { position: absolute; left: 0; top: 0; width: 100%; } #op-print > div { break-inside: avoid; } }
+  #op button { font: inherit; }
+</style>
+<article id="op" style="max-width: 1200px; margin: 0 auto; background: var(--ej-bg); color: var(--ej-fg); font-family: var(--ej-font-body); overflow: hidden;">
+  <header style="position: relative; padding: 72px clamp(24px, 6vw, 96px) 40px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr)); gap: 40px 48px; align-items: end;">
+    <div style="position: absolute; left: 72px; top: -20px; font-family: var(--ej-font-display); font-weight: 700; font-size: clamp(180px, 24vw, 320px); line-height: .8; color: var(--ej-line); letter-spacing: -.02em; pointer-events: none;">12</div>
+    <div style="position: relative; display: flex; flex-direction: column; gap: 22px;">
+      <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;"><span style="display: inline-block; padding: 6px 16px 6px 10px; background: var(--ej-gold); color: var(--ej-on-gold); font-family: var(--ej-font-display); font-weight: 700; font-size: 16px; line-height: 1; letter-spacing: .1em; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);">12</span><span style="font-family: var(--ej-font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">// Field guides · a kit, not an article</span></div>
+      <h2 style="margin: 0; font-family: var(--ej-font-display); font-weight: 600; font-size: clamp(56px, 7vw, 96px); line-height: .92; letter-spacing: -.005em;">The Operator</h2>
+      <p style="margin: 0; max-width: 52ch; font-size: 22px; line-height: 1.45; color: var(--ej-fg-muted);">Five field guides built from the fifteen actions the September research recommended, each one something you can start on Monday.</p>
+    </div>
+    <div style="position: relative; padding: 20px 22px; background: var(--ej-surface); border: 1px solid var(--ej-line-strong); box-shadow: var(--ej-shadow-raise), var(--ej-bevel); display: flex; flex-direction: column; gap: 12px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">Your kit</span><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; color: var(--ej-fg-faint);">Saved in this browser</span></div>
+      <div style="display: flex; align-items: baseline; gap: 10px;"><span id="op-done" style="font-family: var(--ej-font-display); font-weight: 600; font-size: 64px; line-height: .85;">0</span><span id="op-total" style="font-family: var(--ej-font-display); font-weight: 600; font-size: 28px; color: var(--ej-fg-muted);"></span></div>
+      <div id="op-meter" style="display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 4px;"></div>
+      <div style="display: flex; gap: 8px; flex-wrap: wrap;">
+        <button type="button" id="op-copy" style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 8px 12px; border: 1px solid var(--ej-steel); border-radius: 0; cursor: pointer; background: transparent; color: var(--ej-steel-text);">Copy as checklist</button>
+        <button type="button" id="op-reset" style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; padding: 8px 12px; border: 1px solid var(--ej-line-strong); border-radius: 0; cursor: pointer; background: transparent; color: var(--ej-fg-faint);">Reset</button>
+      </div>
+    </div>
+  </header>
+  <div style="padding: 0 clamp(24px, 6vw, 96px); position: sticky; top: 0; z-index: 5; background: var(--ej-bg);">
+    <div id="op-tabs" role="tablist" style="display: flex; flex-wrap: wrap; border-bottom: 2px solid var(--ej-fg);"></div>
+  </div>
+  <div id="op-view"></div>
+  <div style="margin: 56px clamp(24px, 6vw, 96px) 96px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+    <a href="11-the-case-against.html" style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); text-decoration: none; padding: 10px 16px; border: 1px solid var(--ej-steel);">← 11 The case against</a>
+    <a href="13-field-notes.html" style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); text-decoration: none; padding: 10px 16px; border: 1px solid var(--ej-steel);">13 Field Notes →</a>
+  </div>
+</article>
+<script>
+// 12 The Operator — the five field guides as data, and three views of them. Plain JavaScript, no dependencies.
+// To edit a guide, change GUIDES below; every view reads from it.
+var GUIDES = [
+ {
+  "n": "01",
+  "href": "05-who-checks-the-checker.html",
+  "name": "Human gates",
+  "short": "Gates",
+  "from": "05",
+  "rule": "Don't review everything. Review what you can't undo.",
+  "intro": "",
+  "working": "your gate list fits on one page, every item on it gets read before it's approved, and your grader agrees with your hand grades.",
+  "steps": [
+   {
+    "title": "Write the gate list.",
+    "body": "List the agent actions that are irreversible or leave the building: sends, spend, publishing, permissions. Rajesh Beri's stricter test gates only what is both hard to reverse and visible outside the system."
+   },
+   {
+    "title": "Put human sign-off there, and only there.",
+    "body": "Anthropic's study (see 05) suggests people are poor item-by-item checkers, and that they tire: testers' catch rate fell from about 17% early in a session to about 5% after 50 or more prior prompts. Fewer prompts should mean less fatigue at the ones that matter."
+   },
+   {
+    "title": "Sample everything else.",
+    "body": "Spot-check the rest every week instead of approving it one item at a time."
+   },
+   {
+    "title": "Check the grader before you trust it.",
+    "body": "Hand-grade 20 recent AI outputs yourself (emails, ads, briefs), then check that your automated grader agrees with you. Look at your data before you write the eval: Hamel Husain's first complaint about Anthropic's eval tool is that it nudges you the other way."
+   },
+   {
+    "title": "Attach a receipt.",
+    "body": "Every AI deliverable carries its sources, the checks run and who approved it. Boards are asking. In Comviva's 2026 Global CMO Survey, carried by MarTech, 86% of marketing leaders have been asked to justify their AI spend at board level, and 16% feel confident doing it."
+   }
+  ]
+ },
+ {
+  "n": "02",
+  "href": "09-what-does-a-task-cost.html",
+  "name": "Model routing",
+  "short": "Routing",
+  "from": "09",
+  "rule": "Stop picking a model. Pick a model for a job.",
+  "intro": "",
+  "working": "you can say what each job costs per accepted output, and a new model release means rerunning an eval, not reopening the vendor argument.",
+  "steps": [
+   {
+    "title": "Price the job, not the token.",
+    "body": "Take your three most frequent AI jobs and price each per accepted output. Run each on two $2/$10 models, Sonnet 5.5 and GPT-6.1 Sol, and log the tokens and the cost. Token prices mislead: on AINews's figures (a paid post, checked as far as its public preview), Gemini 4 Argon matched GPT-6 Astra at 53 on Artificial Analysis's index at an introductory token price a fifth of Astra's, but cost about three-fifths as much per task, $1.99 to $3.26."
+   },
+   {
+    "title": "Build an eval you can rerun.",
+    "body": "Use 10 to 20 past outputs for each job, and rerun it whenever a model or a price changes."
+   },
+   {
+    "title": "Write the routing table.",
+    "body": "For each job: its default model, and what triggers escalation. For the shape, see Zvi Mowshowitz's: Opus 5.5 by default, Fable 5.1 for correctness in expert domains, Astra for ambitious coding and some science work, Luna and other cheap models for budget work. Yours will split differently."
+   },
+   {
+    "title": "Fence off the frontier.",
+    "body": "Give the $10/$50 models a sub-budget of their own, as Databricks did for Astra (see 09)."
+   },
+   {
+    "title": "Send labels and routes to a decision model.",
+    "body": "Any call that only returns a label or a route can go to a cheap decision model. OpenAI previewed its Decisions API on 29 September, and AWS and Cloudflare released decision models on 1 October."
+   }
+  ]
+ },
+ {
+  "n": "03",
+  "href": "06-who-pays-when-an-agent-breaks-something.html",
+  "name": "Agent liability",
+  "short": "Liability",
+  "from": "06",
+  "rule": "If it can browse, log in, spend or publish, somebody owns it.",
+  "intro": "",
+  "working": "you can pick any agent at random, name its owner, show what it did last Tuesday, and quote its vendor's notification deadline from a letter.",
+  "steps": [
+   {
+    "title": "Find every agent.",
+    "body": "List each agent that can browse, log in, spend or publish, including any switched on inside a vendor's tool."
+   },
+   {
+    "title": "Name one owner for each.",
+    "body": "One human, by name. Our bet is that liability will land on whoever deploys the agent, not only on the labs; 06 has the law and the bill."
+   },
+   {
+    "title": "Log what agents do, not what they say.",
+    "body": "Tool calls, URLs visited and credentials used, stored outside the agent. The questions can come months later: OpenAI found a June breach of a New South Wales fire-data service on 29 September and told the state on 1 October."
+   },
+   {
+    "title": "Box it in.",
+    "body": "A sandbox for anything with write access, and a hard spend cap that fails closed."
+   },
+   {
+    "title": "Get the vendor's clock in writing.",
+    "body": "Ask each AI vendor how soon they'll tell you about an incident involving your account. OpenAI's public framework is for publishing reports, not notifying customers, and states no deadline for complex cases involving third parties: on our reading, an incident on your account (see 06)."
+   }
+  ]
+ },
+ {
+  "n": "04",
+  "href": "08-the-pattern.html",
+  "name": "Spend caps",
+  "short": "Caps",
+  "from": "08",
+  "rule": "A cap that warns is a report. A cap that stops is a limit.",
+  "intro": "Four of the month's five sets of advice include a hard cap, all leaning on the same Simon Willison post from 3 October (see 08).",
+  "working": "an agent hits its cap and stops, and nobody finds out from the invoice.",
+  "steps": [
+   {
+    "title": "Cap every agent twice.",
+    "body": "A per-run cap and a monthly cap, both failing closed: when one is hit, the agent stops."
+   },
+   {
+    "title": "Cap every job.",
+    "body": "Give each job in your routing table a hard monthly cap."
+   },
+   {
+    "title": "Make capped the default.",
+    "body": "New agents start capped, and switching a cap off is the deliberate act. That's Willison's argument: hard budget caps on by default, with opting out left to the user."
+   },
+   {
+    "title": "Find the money, then spend it on limits.",
+    "body": "Before your next model swap, keep the model and change the harness: price one recurring workflow per completed task under yours and under a minimal one such as Pi. In HarnessTax's comparisons, costs varied up to fivefold across harnesses and no quality difference held up, though at that sample size a gap is unproven, not ruled out. Then do a deletion pass on one agent: cut the instructions, guardrails and tool definitions the current model no longer needs, and keep only what a rerun proves you need. Cursor's 7% cut in token costs came partly from deletions like these. Put what you save into the caps."
+   }
+  ]
+ },
+ {
+  "n": "05",
+  "href": "10-how-do-you-get-found-when-a-machine-reads-first.html",
+  "name": "Being found",
+  "short": "Found",
+  "from": "10",
+  "rule": "Get on the machine's shortlist. Don't leave search to do it.",
+  "intro": "",
+  "working": "you can name the date of your last AI mention and say what your direct traffic did the week after.",
+  "steps": [
+   {
+    "title": "Log the shortlist every week.",
+    "body": "Run your top 20 buyer questions through ChatGPT, Gemini, Claude, Perplexity and Google's AI Mode, and log who gets cited. Astra searches a median of five sources per answer, which suggests a narrow field. The tracker doesn't say how many of them it cites, so you log that yourself. Read what the answers say about you, too: 67% of AI-tool users in SOCi's survey say they've been given wrong information about a local business."
+   },
+   {
+    "title": "Date your mentions and watch the week after.",
+    "body": "Use the log to date each AI mention, then check direct and organic traffic over the following seven days. Expect most of it untagged: in Profound's study (see 10), only about 2.5% of the visits that followed an AI mention carried a referral tag."
+   },
+   {
+    "title": "Ask.",
+    "body": "Add an AI option to your \"how did you hear about us\" question."
+   },
+   {
+    "title": "Get agent-readable.",
+    "body": "Tidy your structured product data and test how browser agents handle your checkout. If you buy media, send your team's comments on OpenProposal, IAB Tech Lab's proposed standard for agent-to-agent media buying, by 22 October."
+   },
+   {
+    "title": "Keep the search budget.",
+    "body": "On our reading of September's data, AI discovery is growing on top of search, not in place of it. Datos found the two growing at about the same rate, and IAB still forecasts paid search up 8.1% this year."
+   }
+  ]
+ }
+];
+(function () {
+  var KEY = 'ai-echo-operator', st = { view: 'run', card: 0, why: true, done: {} };
+  try { st.done = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {}
+  var $ = function (s) { return document.querySelector(s); };
+  var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+  var isDone = function (gi, si) { return !!st.done[gi + '-' + si]; };
+  var doneIn = function (gi) { return GUIDES[gi].steps.filter(function (_, si) { return isDone(gi, si); }).length; };
+  var total = GUIDES.reduce(function (n, g) { return n + g.steps.length; }, 0);
+  function save() { try { localStorage.setItem(KEY, JSON.stringify(st.done)); } catch (e) {} }
+  var MONO = 'font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase;';
+  var DISP = 'font-family: var(--ej-font-display); font-weight: 600;';
+  var BTN = MONO + ' font-size: 12px; padding: 10px 16px; border: 1px solid var(--ej-steel); border-radius: 0; background: transparent; color: var(--ej-steel-text); cursor: pointer;';
+  function ticks(gi, h) { var out = ''; for (var si = 0; si < 5; si++) { var c = si >= GUIDES[gi].steps.length ? 'transparent' : isDone(gi, si) ? 'var(--ej-gold)' : 'var(--ej-line-strong)'; out += '<span style="height: ' + h + 'px; background: ' + c + ';"></span>'; } return '<span style="display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px;">' + out + '</span>'; }
+  function header() {
+    $('#op-done').textContent = Object.keys(st.done).length; $('#op-total').textContent = '/ ' + total + ' steps';
+    $('#op-meter').innerHTML = GUIDES.map(function (g, gi) { return '<div style="display: flex; flex-direction: column; gap: 4px;">' + ticks(gi, 8) + '<span style="' + MONO + ' font-size: 9px; letter-spacing: .08em; color: var(--ej-fg-faint); white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">' + g.n + ' ' + esc(g.short) + '</span></div>'; }).join('');
+    $('#op-tabs').innerHTML = [['run', 'Run it', 'Tick off as you go'], ['compare', 'Compare', 'All five side by side'], ['print', 'Tear off', 'Printable cards']].map(function (v) { var on = st.view === v[0]; return '<button type="button" role="tab" aria-selected="' + on + '" data-view="' + v[0] + '" style="display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 14px 22px 12px 0; margin: 0 22px -2px 0; border: 0; border-bottom: 4px solid ' + (on ? 'var(--ej-gold)' : 'transparent') + '; border-radius: 0; background: transparent; cursor: pointer;"><span style="' + DISP + ' font-size: 26px; line-height: 1; color: ' + (on ? 'var(--ej-fg)' : 'var(--ej-fg-muted)') + ';">' + v[1] + '</span><span style="' + MONO + ' font-size: 10px; color: var(--ej-fg-faint);">' + v[2] + '</span></button>'; }).join('');
+  }
+  function viewRun() {
+    var g = GUIDES[st.card], all = doneIn(st.card) === g.steps.length;
+    var nav = GUIDES.map(function (x, gi) { var on = gi === st.card, d = doneIn(gi), full = d === x.steps.length; return '<button type="button" data-card="' + gi + '" style="text-align: left; padding: 14px 16px; border: 1px solid ' + (on ? 'var(--ej-line-strong)' : 'var(--ej-line)') + '; border-left: 4px solid ' + (on ? 'var(--ej-gold)' : full ? 'var(--ej-steel)' : 'var(--ej-line)') + '; border-radius: 0; background: ' + (on ? 'var(--ej-surface)' : 'transparent') + '; box-shadow: ' + (on ? 'var(--ej-shadow-raise)' : 'none') + '; cursor: pointer; color: var(--ej-fg); display: flex; flex-direction: column; gap: 6px;"><span style="display: flex; justify-content: space-between; gap: 8px;"><span style="' + MONO + ' font-size: 10px; color: var(--ej-steel-text);">Card ' + x.n + '</span><span style="' + MONO + ' font-size: 10px; color: ' + (full ? 'var(--ej-gold-text)' : 'var(--ej-fg-faint)') + ';">' + d + '/' + x.steps.length + '</span></span><span style="' + DISP + ' font-size: 22px; line-height: 1;">' + esc(x.name) + '</span>' + ticks(gi, 4) + '</button>'; }).join('');
+    var steps = g.steps.map(function (s, si) { var d = isDone(st.card, si); return '<li style="display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 0 16px; padding: 22px 32px 22px 22px; border-bottom: 1px solid var(--ej-line); background: ' + (d ? 'color-mix(in srgb, var(--ej-gold) 6%, transparent)' : 'transparent') + ';"><button type="button" data-step="' + si + '" aria-pressed="' + d + '" aria-label="Mark step ' + (si + 1) + ' done" style="width: 40px; height: 40px; display: flex; align-items: center; justify-content: center; border: 2px solid ' + (d ? 'var(--ej-gold)' : 'var(--ej-steel)') + '; border-radius: 0; background: ' + (d ? 'var(--ej-gold)' : 'transparent') + '; color: ' + (d ? 'var(--ej-on-gold)' : 'var(--ej-steel-text)') + '; cursor: pointer; ' + DISP + ' font-size: 20px; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">' + (d ? '✓' : (si + 1)) + '</button><div style="display: flex; flex-direction: column; gap: 8px;"><span style="' + DISP + ' font-size: 24px; line-height: 1.05; color: ' + (d ? 'var(--ej-fg-muted)' : 'var(--ej-fg)') + '; text-decoration: ' + (d ? 'line-through' : 'none') + ';">' + esc(s.title) + '</span>' + (st.why ? '<p style="margin: 0; font-size: 16px; line-height: 1.55; color: var(--ej-fg-muted); max-width: 66ch;">' + esc(s.body) + '</p>' : '') + '</div></li>'; }).join('');
+    var prev = GUIDES[(st.card + GUIDES.length - 1) % GUIDES.length].name, next = GUIDES[(st.card + 1) % GUIDES.length].name;
+    return '<div style="padding: 40px clamp(24px, 6vw, 96px) 0; display: flex; flex-wrap: wrap; gap: 32px 40px; align-items: flex-start;">'
+      + '<nav style="flex: 0 0 240px; display: flex; flex-direction: column; gap: 6px;">' + nav + '</nav>'
+      + '<div style="flex: 1 1 480px; min-width: 0; display: flex; flex-direction: column; background: var(--ej-surface); border: 1px solid var(--ej-line-strong); border-top: 2px dashed var(--ej-line-strong); box-shadow: var(--ej-shadow-raise), var(--ej-bevel);">'
+      + '<div style="padding: 28px 32px 24px; display: flex; flex-direction: column; gap: 14px; border-bottom: 1px solid var(--ej-line);">'
+      + '<div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;"><span style="' + MONO + ' font-size: 11px; color: var(--ej-steel-text);">Card ' + g.n + ' of 05 // The Operator</span><span style="display: flex; gap: 8px; flex-wrap: wrap;"><a href="' + g.href + '" style="' + MONO + ' font-size: 11px; text-decoration: none; padding: 6px 10px; border: 1px solid var(--ej-line-strong);">From ' + g.from + ' →</a><button type="button" id="op-why" style="' + MONO + ' font-size: 11px; padding: 6px 10px; border: 1px solid var(--ej-steel); border-radius: 0; cursor: pointer; background: ' + (st.why ? 'transparent' : 'var(--ej-steel-tint)') + '; color: var(--ej-steel-text);">' + (st.why ? 'Steps only' : 'Show the why') + '</button></span></div>'
+      + '<h3 style="margin: 0; ' + DISP + ' font-size: clamp(36px, 4vw, 52px); line-height: .95;">' + esc(g.name) + '</h3>'
+      + '<div style="' + DISP + ' font-size: 28px; line-height: 1.1; color: var(--ej-gold-text); max-width: 30ch;">' + esc(g.rule) + '</div>'
+      + (g.intro ? '<p style="margin: 0; padding: 12px 14px; background: var(--ej-steel-tint); font-size: 16px; line-height: 1.5;">' + esc(g.intro) + '</p>' : '')
+      + '</div><ol style="list-style: none; margin: 0; padding: 0;">' + steps + '</ol>'
+      + '<div style="padding: 22px 32px 26px; display: flex; flex-wrap: wrap; gap: 12px 16px; align-items: flex-start; background: ' + (all ? 'var(--ej-gold-tint)' : 'var(--ej-steel-tint)') + ';"><span style="padding: 6px 10px; border: 2px solid ' + (all ? 'var(--ej-gold)' : 'var(--ej-steel)') + '; ' + MONO + ' font-size: 11px; color: ' + (all ? 'var(--ej-gold-text)' : 'var(--ej-steel-text)') + '; white-space: nowrap;">' + (all ? 'All done · now test it' : 'It\'s working when') + '</span><span style="flex: 1 1 300px; font-size: 18px; line-height: 1.5;">' + esc(g.working) + '</span></div>'
+      + '</div></div>'
+      + '<div style="padding: 24px clamp(24px, 6vw, 96px) 0; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;"><button type="button" id="op-prev" style="' + BTN + '">← ' + esc(prev) + '</button><button type="button" id="op-next" style="' + BTN + '">' + esc(next) + ' →</button></div>';
+  }
+  function viewCompare() {
+    var cell = function (t, css) { return '<span style="padding: 14px; border-bottom: 1px solid var(--ej-line); border-left: 1px solid var(--ej-line); font-size: 14px; line-height: 1.4; ' + (css || '') + '">' + t + '</span>'; };
+    var key = function (t, c, bg) { return '<span style="padding: 14px; border-bottom: 1px solid var(--ej-line); ' + MONO + ' font-size: 10px; color: ' + (c || 'var(--ej-fg-faint)') + '; background: ' + (bg || 'transparent') + ';">' + t + '</span>'; };
+    var out = '<span style="padding: 14px; background: var(--ej-steel-tint); border-bottom: 2px solid var(--ej-steel);"></span>' + GUIDES.map(function (g, gi) { return '<button type="button" data-open="' + gi + '" style="text-align: left; padding: 14px; background: var(--ej-steel-tint); border: 0; border-bottom: 2px solid var(--ej-steel); border-left: 1px solid var(--ej-line); border-radius: 0; cursor: pointer; display: flex; flex-direction: column; gap: 4px; color: var(--ej-fg);"><span style="' + MONO + ' font-size: 10px; color: var(--ej-steel-text);">Card ' + g.n + ' · ' + doneIn(gi) + '/' + g.steps.length + '</span><span style="' + DISP + ' font-size: 22px; line-height: 1;">' + esc(g.name) + '</span></button>'; }).join('');
+    out += key('The rule', 'var(--ej-gold-text)') + GUIDES.map(function (g) { return cell(esc(g.rule), DISP + ' font-size: 17px; color: var(--ej-gold-text);'); }).join('');
+    for (var si = 0; si < 5; si++) { out += key('Step ' + (si + 1)); GUIDES.forEach(function (g, gi) { var s = g.steps[si]; out += s ? cell(esc(s.title), isDone(gi, si) ? 'color: var(--ej-fg-faint); text-decoration: line-through;' : '') : cell('—', 'color: var(--ej-fg-faint);'); }); }
+    out += key('It\'s working when', 'var(--ej-steel-text)', 'var(--ej-steel-tint)') + GUIDES.map(function (g) { return cell(esc(g.working), 'background: var(--ej-steel-tint);'); }).join('');
+    out += key('From') + GUIDES.map(function (g) { return cell('<a href="' + g.href + '">' + g.from + ' →</a>', 'font-family: var(--ej-font-mono);'); }).join('');
+    return '<div style="padding: 40px clamp(24px, 6vw, 96px) 0;"><div style="overflow-x: auto;"><div style="display: grid; grid-template-columns: 150px repeat(5, minmax(170px, 1fr)); min-width: 1000px; border: 1px solid var(--ej-line-strong); background: var(--ej-surface);">' + out + '</div></div><div style="margin-top: 14px; ' + MONO + ' font-size: 11px; letter-spacing: .1em; color: var(--ej-fg-faint);">Read down a column for one guide, across a row to compare · ticked steps are struck through · click a card name to open it</div></div>';
+  }
+  function viewPrint() {
+    var cards = GUIDES.map(function (g, gi) { return '<div style="padding: 22px 24px; background: var(--ej-surface); border: 2px dashed var(--ej-line-strong); display: flex; flex-direction: column; gap: 12px; break-inside: avoid;"><div style="display: flex; justify-content: space-between; gap: 8px; ' + MONO + ' font-size: 10px;"><span style="color: var(--ej-steel-text);">The AI Echo · Edition 1 · Card ' + g.n + '</span><span style="color: var(--ej-fg-faint);">✂ Tear here</span></div><div style="' + DISP + ' font-size: 32px; line-height: .95;">' + esc(g.name) + '</div><div style="' + DISP + ' font-size: 19px; line-height: 1.15; color: var(--ej-gold-text);">' + esc(g.rule) + '</div><ol style="list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 8px;">' + g.steps.map(function (s, si) { return '<li style="display: grid; grid-template-columns: 22px minmax(0, 1fr); gap: 10px; font-size: 15px; line-height: 1.35;"><span style="width: 16px; height: 16px; margin-top: 2px; border: 2px solid var(--ej-steel); background: ' + (isDone(gi, si) ? 'var(--ej-gold)' : 'transparent') + ';"></span><span>' + esc(s.title) + '</span></li>'; }).join('') + '</ol><div style="padding-top: 10px; border-top: 1px solid var(--ej-line); display: flex; flex-direction: column; gap: 4px;"><span style="' + MONO + ' font-size: 10px; color: var(--ej-fg-faint);">It\'s working when</span><span style="font-size: 14px; line-height: 1.45;">' + esc(g.working) + '</span></div></div>'; }).join('');
+    return '<div style="padding: 40px clamp(24px, 6vw, 96px) 0; display: flex; flex-direction: column; gap: 18px;"><div style="display: flex; justify-content: space-between; align-items: center; gap: 16px; flex-wrap: wrap;"><span style="font-size: 17px; color: var(--ej-fg-muted);">One card per guide, two to a page. Cut along the dashes.</span><button type="button" id="op-printbtn" style="' + MONO + ' font-size: 12px; padding: 10px 18px 10px 14px; border: 0; border-radius: 0; cursor: pointer; background: var(--ej-gold); color: var(--ej-on-gold); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">Print the cards</button></div><div id="op-print" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 24px;">' + cards + '</div></div>';
+  }
+  function render() { header(); $('#op-view').innerHTML = st.view === 'compare' ? viewCompare() : st.view === 'print' ? viewPrint() : viewRun(); }
+  document.getElementById('op').addEventListener('click', function (e) {
+    var t = e.target.closest('button'); if (!t) return;
+    if (t.dataset.view) st.view = t.dataset.view;
+    else if (t.dataset.card) st.card = Number(t.dataset.card);
+    else if (t.dataset.open) { st.card = Number(t.dataset.open); st.view = 'run'; }
+    else if (t.dataset.step) { var k = st.card + '-' + t.dataset.step; if (st.done[k]) delete st.done[k]; else st.done[k] = 1; save(); }
+    else if (t.id === 'op-why') st.why = !st.why;
+    else if (t.id === 'op-prev') st.card = (st.card + GUIDES.length - 1) % GUIDES.length;
+    else if (t.id === 'op-next') st.card = (st.card + 1) % GUIDES.length;
+    else if (t.id === 'op-reset') { st.done = {}; save(); }
+    else if (t.id === 'op-printbtn') { window.print(); return; }
+    else if (t.id === 'op-copy') {
+      var md = '# The AI Echo · The Operator\n\n' + GUIDES.map(function (g, gi) { return '## ' + g.n + ' ' + g.name + '\n' + g.rule + '\n\n' + g.steps.map(function (s, si) { return '- [' + (isDone(gi, si) ? 'x' : ' ') + '] ' + s.title; }).join('\n') + '\n\nIt\'s working when ' + g.working; }).join('\n\n');
+      try { navigator.clipboard.writeText(md); } catch (er) {}
+      t.textContent = 'Copied'; setTimeout(function () { t.textContent = 'Copy as checklist'; }, 1800); return;
+    } else return;
+    render();
+  });
+  render();
+})();
+</script>
 
-</div><div style="display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 48px; padding-bottom: 120px; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
-          <a href="11-the-case-against.html" style="font: inherit; text-decoration: none; display: inline-flex; letter-spacing: inherit; text-transform: inherit; color: var(--ej-steel-text); background: transparent; border: 0; padding: 0; cursor: pointer; text-align: left;">← 11 The case against</a>
-<a href="13-field-notes.html" style="font: inherit; text-decoration: none; display: inline-flex; letter-spacing: inherit; text-transform: inherit; color: var(--ej-steel-text); background: transparent; border: 0; padding: 0; cursor: pointer; text-align: right;">13 Field Notes: candidates →</a>
-        </div>
-      </article>
     </div>
 <main style="max-width: 1360px; margin: 0 auto; padding: 0 48px 160px;">
     <footer style="margin-top: 160px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; align-items: flex-end;">
