@@ -261,3 +261,6 @@ svg { max-width: 100%; height: auto; }
   [style*="grid-template-columns: 36px minmax(0, 1fr) auto; gap: 12px; align-items: baseline"] { grid-template-columns: 30px minmax(0, 1fr) !important; }
   [style*="grid-template-columns: 36px minmax(0, 1fr) auto; gap: 12px; align-items: baseline"] > :nth-child(3) { grid-column: 2; }
 }
+/* The section ribbon: no native scrollbar (Windows drew a full bar with arrows); a fade at each edge says there's more, and the wheel scrolls it sideways (size script). */
+[data-ribbon] { scrollbar-width: none !important; -ms-overflow-style: none; -webkit-mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 48px), transparent 100%); mask-image: linear-gradient(to right, transparent 0, #000 28px, #000 calc(100% - 48px), transparent 100%); }
+[data-ribbon]::-webkit-scrollbar { display: none; }
