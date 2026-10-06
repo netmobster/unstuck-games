@@ -1,0 +1,1710 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="/aiechomag/"><meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit C: the machinery — The AI Echo, Edition 1</title>
+<meta name="description" content="A field magazine for people operating at the edge of AI. Edition 1, covering September 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/web.css">
+</head>
+<body style="margin: 0; background: var(--ej-bg);">
+<div id="root" data-theme="light" style="color: var(--ej-fg); font-family: var(--ej-font-body); background: var(--ej-bg);">
+
+  <nav style="position: sticky; top: 0; z-index: 20; background: var(--ej-bg); border-bottom: 1px solid var(--ej-line);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 14px 48px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ej-fg);">
+        <span style="font-family: var(--ej-font-display); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: .05em; text-transform: uppercase;">The AI Echo</span>
+        <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); border: 1px solid var(--ej-line-strong); padding: 3px 8px; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 0 100%);">№ 1 · Oct 2026</span>
+      </a>
+<div style="flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-left: auto; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <span style="flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); white-space: nowrap;">14 // What we got wrong, and what changed</span>
+        <button type="button" data-action="toggleRibbon" aria-expanded="true" style="flex: none; white-space: nowrap; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="ribbonLabel">Hide sections</span></button>
+<button type="button" class="sz-btn" data-sz="-1" aria-label="Smaller text">A−</button><button type="button" class="sz-btn" data-sz="1" aria-label="Larger text">A+</button><button type="button" data-action="toggleTheme" style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-muted); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="themeLabel">Dark</span></button>
+      </div>
+    </div>
+<div id="ribbon" style="display: block; border-top: 1px solid var(--ej-line); background: var(--ej-surface);">
+      <div aria-label="Edition 1 sections" data-ribbon="1" style="max-width: 1360px; margin: 0 auto; padding: 0 36px; display: flex; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;">
+        
+          <div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="index.html" data-selected="false" title="The AI Echo" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">№ 1 · Front</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The AI Echo</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Cover and contents</span>
+                </a>
+<a href="01-from-the-editors.html" data-selected="false" title="From the editors" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">01</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">From the editors</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The editor's letter</span>
+                </a>
+<a href="02-the-rules.html" data-selected="false" title="The Rules (DRAFT)" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">02</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Rules (DRAFT)</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Nine rules, each with its test</span>
+                </a>
+<a href="03-the-month.html" data-selected="false" title="The Month" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">03</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Month</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five claims, and how each fared</span>
+                </a>
+<a href="04-the-receipts.html" data-selected="false" title="The Receipts" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">04</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Receipts</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Method, pipeline and ledger</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Front of the book</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="05-who-checks-the-checker.html" data-selected="false" title="Who checks the checker?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">05</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who checks the checker?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">When people approve everything</span>
+                </a>
+<a href="06-who-pays-when-an-agent-breaks-something.html" data-selected="false" title="Who pays when an agent breaks something?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">06</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who pays when an agent breaks something?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Six actions went public, after the fact</span>
+                </a>
+<a href="07-the-month-in-one-chart.html" data-selected="false" title="Same score, different bill" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">07</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                </a>
+<a href="08-the-pattern.html" data-selected="false" title="The Pattern" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">08</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Pattern</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five lanes into one point</span>
+                </a>
+<a href="09-what-does-a-task-cost.html" data-selected="false" title="What does a task cost?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">09</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What does a task cost?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Model choice, per job</span>
+                </a>
+<a href="10-how-do-you-get-found-when-a-machine-reads-first.html" data-selected="false" title="How do you get found when a machine reads first?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">10</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">How do you get found when a machine reads first?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Being found when AI reads first</span>
+                </a>
+<a href="11-the-case-against.html" data-selected="false" title="The case against" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">11</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The case against</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The steelman, and the reply</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Features</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="12-the-operator.html" data-selected="false" title="The Operator" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">12</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five field-guide cards</span>
+                </a>
+<a href="13-field-notes.html" data-selected="false" title="Field Notes: candidates" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">13</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Field Notes</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">A tool, a stop, an experiment</span>
+                </a>
+<a href="14-corrections.html" data-selected="true" title="Corrections" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid var(--ej-gold); border-radius: 0; background: var(--ej-bg); color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">14</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Corrections</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What we got wrong, and what changed</span>
+                </a>
+<a href="15-prove-us-wrong.html" data-selected="false" title="Prove us wrong" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">15</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Prove us wrong</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Make the case against us</span>
+                </a>
+<a href="16-the-library.html" data-selected="false" title="The Library" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">16</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Library</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Twenty-eight things to read</span>
+                </a>
+<a href="17-the-operators-page.html" data-selected="false" title="The Operator's Page" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">17</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator's Page</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">To do, to watch, one question</span>
+                </a>
+<a href="18-the-raw-data.html" data-selected="false" title="The Raw Data" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">18</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Raw Data</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The data behind the issue</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Back of the book</div>
+          </div>
+        
+      </div>
+    </div>
+<div id="progress" style="height: 2px; background: var(--ej-gold); width: 0.00%; transition: width .15s linear;"></div>
+  </nav>
+<main id="top" style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
+    
+  </main>
+<div id="corrections" data-theme="light" style="background: var(--ej-bg); color: var(--ej-fg); padding: 72px 0 0;">
+      <article class="dr"><p class="dr-crumb"><a href="data/index.html">The data room</a> // The audits</p><div class="dr-kick"><span class="dr-tab">DATA</span><span>// The audits</span></div><h1 class="dr-h1">Audit C: the machinery</h1><p class="dr-dek">Framing audit, 5 to 6 October</p><div class="dr-doc"><p><em>The AI Echo, Edition 1. Red Team v3, point 3: &quot;Don&#39;t explain the apparatus. Demonstrate it.&quot;
+Auditor C (CC), overnight 5 to 6 October 2026. Report only: no draft, check, print, design or
+audit file was changed. Separate editors apply what&#39;s here.</em></p>
+<p><strong>Read against.</strong> The red team&#39;s brief; <code>print/edition-1-full.md</code>; the annotated files it is built
+from (<code>drafts/</code>, <code>cc-sections/</code>), with their source maps and edit logs; the five check reports in
+<code>checks/</code> and their tallies; <code>edit-rulings.md</code>; <code>edit-notes.md</code>; <code>claude-design-brief.md</code>; Claude
+Design&#39;s <code>README.md</code>, <code>identity.html</code> and the <code>p02</code> and <code>p12</code> page templates;
+<code>for-claude-design/round-2/round-2-notes.md</code>. Audits A, B1, B2 and D were already in <code>audit/</code>;
+where we overlap, the cross-reference is given and any disagreement is named (end of file). No
+fact was re-checked against the web.</p>
+<p><strong>Where to edit.</strong> Line numbers are the annotated files&#39; (<code>drafts/</code> or <code>cc-sections/</code>). &quot;Print L&quot;
+is the line in <code>print/edition-1-full.md</code>. Section numbers are the file numbers, as in the brief.
+The printed contents number them three lower: 04 prints as 01, 07 The Receipts as 04, 08 as 05,
+11 The Pattern as 08, 17 Corrections as 14, 18 Prove us wrong as 15.</p>
+<p><strong>The test.</strong> For every paragraph or line about the process: does it help the reader understand
+the evidence, or does it only tell them the process is sophisticated? KEEP · COMPRESS (text
+given) · CONVERT to a stamp or ledger line (line given) · CUT. A KEEP carries a priority only when
+the line needs a fix to stay.</p>
+<hr>
+<h2>Summary</h2>
+<p><strong>65 verdicts</strong> on process paragraphs and lines in the listed sections, 9 of them the list for
+Jay&#39;s letter.</p>
+<table>
+<thead>
+<tr>
+<th>KEEP</th>
+<th>COMPRESS</th>
+<th>CONVERT</th>
+<th>CUT</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21</td>
+<td>12</td>
+<td>22</td>
+<td>10</td>
+</tr>
+</tbody></table>
+<p>By priority: MUST 7 · SHOULD 26 · COULD 15 · no change 17. Part 2 adds six design items (all
+SHOULD). Part 3 has three notes outside the listed sections.</p>
+<p><strong>What passes.</strong> Where the machinery is already a demonstration, it stays: the correction
+entries, &quot;One argument, found four times&quot;, the feature openers that set September&#39;s claim against
+October&#39;s evidence, The Month&#39;s &quot;the verdicts are the research&#39;s readings&quot;, and Corrections&#39; note
+that the live monthly is corrected in the magazine, not quietly edited.</p>
+<p><strong>What fails.</strong> Narration: the pipeline told in prose; five How we know boxes of 160 to 250 words
+each, 1,035 in all; the Manus story told three times; and Prove us wrong restating its five boxes
+at nearly three times its 200-word budget. And four statements about the process that aren&#39;t true
+of the printed issue.</p>
+<p><strong>The three that matter most.</strong></p>
+<ol>
+<li><strong>Make the machinery true before showing it</strong> (C-34, C-20, C-19, C-45, C-13: all MUST).
+Corrections says the 12 unconfirmed lines are &quot;fixed, reworded or cut&quot;: 9 still print. The
+Receipts says its one unsettled line was &quot;reworded to what could be shown&quot;: Corrections says it
+ran firmer than proven. The Receipts&#39; claim-scoring step has no record behind it. Two How we
+know boxes point readers at NEW tags that the print strips. Rule I then promises what the open
+lines contradict.</li>
+<li><strong>Stamp every section from its check tally, and make the ledger add up</strong> (D-01, C-24). The
+five reports&#39; row counts sum to 647 lines, not the ledger&#39;s 642: five rows one checker counted
+as overstated are missing. Each page gets a steel stamp such as
+<code>CHECKED // 57 LINES · 3 WRONG</code> / <code>ALL CORRECTED // 2026.10.05</code>, and any line still open is
+named on it.</li>
+<li><strong>Shrink the five How we know boxes</strong> to this piece&#39;s stamp, the research check as one line, a
+NOT CHECKED line naming the reading, and two sentences of real uncertainty (C-46, C-50, C-53,
+C-54, C-55): about 500 words for all five, from 1,035.</li>
+</ol>
+<p>Taken together, the recommendations take roughly 1,000 words of prose out of an issue that runs
+about 2,000 over its flatplan, and put stamps and tables in their place.</p>
+<hr>
+<h2>Part 1. The paragraph audit</h2>
+<h3>03 Colophon · <code>cc-sections/03-colophon.md</code></h3>
+<p><strong>C-01 · CONVERT · SHOULD · The desks (lines 9 to 36; print L18 to L45)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;<strong>Research desk:</strong> five research agents, one per claim (Claude Opus 5.5, run from Claude
+Code)&quot;, and eleven more lines in that form: 275 words against a 200-word budget.</li>
+<li><strong>Test:</strong> about half is evidence the reader needs (who did what, the corpus, where a person
+decided) and half is production story. Claude Design&#39;s colophon template (<code>p02</code>) already has a
+desk ledger with a HUMAN or AGENT tag on each row. Use it, and put each desk&#39;s count in its row,
+so the colophon shows the checks instead of describing them.</li>
+<li><strong>Proposed:</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Desk</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Editor</td>
+<td>Jay Wright</td>
+<td>HUMAN</td>
+</tr>
+<tr>
+<td>Research</td>
+<td>Five agents, one per claim</td>
+<td>AGENT</td>
+</tr>
+<tr>
+<td>Check 1</td>
+<td>Five agents · 236 lines of the September research · 39 wrong</td>
+<td>AGENT</td>
+</tr>
+<tr>
+<td>Drafting</td>
+<td>Claude Code agents, from a pack with every claim tagged to its source</td>
+<td>AGENT</td>
+</tr>
+<tr>
+<td>Check 2</td>
+<td>Five agents · 647 lines of this issue · 25 wrong</td>
+<td>AGENT</td>
+</tr>
+<tr>
+<td>Editing</td>
+<td>Claude Code agents, applying each check before the line edit</td>
+<td>AGENT</td>
+</tr>
+<tr>
+<td>Second model family</td>
+<td>Not run for this issue <em>(or its name and count, if it runs)</em></td>
+<td></td>
+</tr>
+<tr>
+<td>Model</td>
+<td>Every agent above ran on Claude Opus 5.5 <em>(see C-04)</em></td>
+<td></td>
+</tr>
+<tr>
+<td>Design and cover</td>
+<td>Claude Design</td>
+<td>AI</td>
+</tr>
+<tr>
+<td>Red team</td>
+<td>ChatGPT (Red Team v3): the structure and the cover line. It checked no facts</td>
+<td>AI</td>
+</tr>
+<tr>
+<td>Corpus</td>
+<td>31 daily briefs (31 August to 29 September), a scored archive (20 September to 5 October) and five weekly roundups (28 August to 2 October). Closed 5 October 2026</td>
+<td></td>
+</tr>
+<tr>
+<td>The editor&#39;s read</td>
+<td>Jay Wright chose the questions, read every page, wrote the letter and the reply to the case against, and said yes on [date]</td>
+<td>HUMAN</td>
+</tr>
+</tbody></table>
+<p>  Then: &quot;Corrections and letters: reply to the email.&quot; and &quot;Published free by The ECHO Files on
+  Substack.&quot; Check 2&#39;s count follows the ledger (C-24).</p>
+<p><strong>C-02 · COMPRESS · SHOULD · Drafting (line 15; print L24)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;...from an annotated pack in which every claim is tagged to its source. Manus was the
+plan; its run merged the pack&#39;s files instead of drafting them&quot;</li>
+<li><strong>Test:</strong> what the reader needs is who drafted, because it puts research, checks and drafts on
+one model family. The Manus clause is a production story. Corrections already prints it as a
+caught-before-print error (&quot;Our colophon said Manus drafted the features&quot;), and that is the
+demonstration.</li>
+<li><strong>Proposed:</strong> &quot;<strong>Drafting:</strong> Claude Code agents, from an annotated pack in which every claim is
+tagged to its source.&quot; Audit D agrees (C15).</li>
+</ul>
+<p><strong>C-03 · CONVERT · SHOULD · The check by a second model family (line 13; print L22)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;A check by a second model family is <em>[pending: name it once run]</em>&quot;</li>
+<li><strong>Test:</strong> whether a second family checked the issue is evidence: it is the one guard against
+shared blind spots (check-16, &quot;Shared blind spots&quot;). A placeholder can&#39;t print, and &quot;pending&quot; in
+print reads as a promise.</li>
+<li><strong>Proposed:</strong> a desk row, <code>SECOND MODEL FAMILY // NOT RUN FOR THIS ISSUE</code>, or, if it runs,
+<code>SECOND MODEL FAMILY // [MODEL] · [N] LINES · [W] WRONG</code>. The same value goes in The Receipts&#39;
+ledger (C-24).</li>
+</ul>
+<p><strong>C-04 · COMPRESS · SHOULD · The model, named three times (lines 11, 13, 15; print L20, L22, L24)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;(Claude Opus 5.5, run from Claude Code)&quot;, &quot;(Claude Opus 5.5)&quot;, &quot;Claude Code agents
+(Claude Opus 5.5)&quot;</li>
+<li><strong>Test:</strong> the model matters to the reader (one family). But check-16 marked the first two
+UNCONFIRMED: no file in the pack names the model (items 18 and 19). The third was added in the
+edit, after the check, so the fix brought in a third unsourced instance.</li>
+<li><strong>Proposed:</strong> one row, &quot;Model: every agent above ran on Claude Opus 5.5&quot;, sourced before print
+from the sessions&#39; own records, if they name it. If not: &quot;Model: every agent above ran on
+Claude, from Claude Code&quot;, which check-16 item 18 supports.</li>
+</ul>
+<p><strong>C-05 · CUT · COULD · Working system (lines 24 to 25; print L33 to L34)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;<strong>Working system:</strong> Judgement OS, the rules and routines the Claude Code sessions ran
+under. Several of The Rules come from it&quot;</li>
+<li><strong>Test:</strong> gives the rules a pedigree; doesn&#39;t help the reader weigh anything. The Rules stand on
+their tests. If Judgement OS counts as a product, the brief&#39;s disclosure rule (<code>00-BRIEF.md</code>,
+rule 7) applies too. Jay&#39;s call.</li>
+<li><strong>Proposed:</strong> cut the line.</li>
+</ul>
+<p><strong>C-07 · KEEP · SHOULD · What a person did (lines 32 to 33; print L41 to L42)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;<strong>What a person did:</strong> chose the questions, read every page, wrote the letter and the
+reply to the case against, and said yes to publication.&quot;</li>
+<li><strong>Test:</strong> the most useful line in the colophon: it shows where human judgment enters. But
+check-16 marked it UNCONFIRMED, pending (item 20): no reply to the case against exists yet, and
+nothing is published.</li>
+<li><strong>Proposed:</strong> keep it, as the last desk row in C-01. It prints only once all four are true, with
+the date of the yes.</li>
+</ul>
+<p><strong>C-08 · COMPRESS · COULD · The closing lines (lines 35 to 39; print L44 to L48)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;Corrections run in the corrections department and on a standing page.&quot; and &quot;How this
+issue was made is in The Receipts; the rules it was made under are in The Rules.&quot;</li>
+<li><strong>Test:</strong> the pointers repeat the contents list on the same page. &quot;A standing page&quot; is
+infrastructure the issue doesn&#39;t show; if it exists, give its address.</li>
+<li><strong>Proposed:</strong> &quot;<strong>Corrections and letters:</strong> reply to the email. Published free by The ECHO Files
+on Substack.&quot; Add the standing page&#39;s address if there is one.</li>
+</ul>
+<p><strong>Kept as is</strong></p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Line</th>
+<th>Why it stays</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C-09</td>
+<td>Corpus (lines 29 to 30): &quot;31 daily intel briefs ... Closed 5 October 2026.&quot;</td>
+<td>It is the sample. The reader needs it to judge what the issue could have seen.</td>
+</tr>
+<tr>
+<td>C-10</td>
+<td>Red team (lines 21 to 22): &quot;ChatGPT (Red Team v3), which sketched the structure ... and wrote the cover line&quot;</td>
+<td>The one place a second model family touched the issue. C-01 adds that it checked no facts.</td>
+</tr>
+</tbody></table>
+<h3>04 From the editor · <code>cc-sections/04-editors-letter-jay-DRAFT.md</code></h3>
+<p>Jay rewrites this, so here is a list rather than a rewrite.</p>
+<p><strong>C-11 · Jay&#39;s list</strong></p>
+<p>The letter is the right place to describe the machinery once, in a person&#39;s voice, so most of it
+can stay. What it shouldn&#39;t do is ask for trust in sentences the pages already earn.</p>
+<p>When the rewrite is done, rerun the check on it, so the letter&#39;s stamp describes Jay&#39;s text (D-02).</p>
+<h3>05 The Rules · <code>cc-sections/05-the-rules-DRAFT.md</code></h3>
+<p><strong>C-12 · COMPRESS · SHOULD · The header (lines 3 to 4; print L141 to L142)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;<em>DRAFT v0. These are the rules this issue was made under. There are more in the systems
+that make it, and we&#39;ll add them as we write them up. Each rule comes with its test.</em>&quot;</li>
+<li><strong>Test:</strong> &quot;There are more in the systems that make it&quot; tells the reader there is machinery they
+can&#39;t see. It signals depth and shows nothing.</li>
+<li><strong>Proposed:</strong> &quot;<em>DRAFT v0. The rules this issue was made under. Each comes with its test, and
+with how this issue did.</em>&quot;</li>
+</ul>
+<p><strong>C-13 · CONVERT · MUST · Rule I (lines 8 to 10; print L146 to L148)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;Every number, quote, date and attribution was checked against its source before you read
+it. If we couldn&#39;t find the source, the claim isn&#39;t here.&quot;</li>
+<li><strong>Test:</strong> check-16 marked this UNCONFIRMED, pending (item 24). After the second check it is
+nearly true, but nine lines nobody could confirm still print (C-34), two of them the colophon&#39;s
+model names, with no source in the pack. With stamps on every page, Rule I would be contradicted
+on each page whose stamp says OPEN.</li>
+<li><strong>Proposed:</strong> settle or cut the nine before print, keep the rule as written, and add under its
+test: <code>THIS ISSUE // 647 LINES CHECKED · 0 OPEN</code>. If any stay open, change the second sentence to
+&quot;Where we couldn&#39;t settle a line, its page says so.&quot; and add
+<code>THIS ISSUE // 647 LINES CHECKED · [N] OPEN, NAMED ON THEIR PAGES</code>.</li>
+</ul>
+<p><strong>C-14 · KEEP · SHOULD (one fix) · Rule II&#39;s example (lines 12 to 13; print L150)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;Two numbers we printed in September came from a page&#39;s summary box, which the site&#39;s own
+markup labels an AI summary, not from the essay underneath.&quot;</li>
+<li><strong>Test:</strong> already a demonstration: a rule shown with the error that caused it. But this wording
+was written in the edit, after the check, and it puts two numbers in one box. They came from
+boxes on two different Tom Tunguz posts: 47 to 3 from his 2 September essay, 3.14 from his
+8 September post (check-16 items 6 and 25; Corrections calls it &quot;the same kind of box&quot;).</li>
+<li><strong>Proposed:</strong> &quot;Two numbers we printed in September came from summary boxes on two of Tom
+Tunguz&#39;s pages, which his site&#39;s own markup labels AI summaries, not from the essays
+underneath.&quot;</li>
+</ul>
+<p><strong>C-15 · CONVERT · SHOULD · Rules III to VIII (lines 15 to 39; print L153 to L177)</strong></p>
+<ul>
+<li><p><strong>Now:</strong> each rule and its test, for example &quot;<strong>VIII. The one who writes doesn&#39;t send.</strong> ...
+<em>The test: for everything that went out, can you name who said yes, and when?</em>&quot;</p>
+</li>
+<li><p><strong>Test:</strong> the rules describe the machinery and the tests ask the reader to check it, but the
+page never answers its own tests. One line under each test, giving this issue&#39;s <a href="data/recheck-result.html">result</a>, is the
+demonstration.</p>
+</li>
+<li><p><strong>Proposed</strong>, one mono line under each test:</p>
+<ul>
+<li>III: <code>THIS ISSUE // 18 CORRECTIONS TO WHAT WE&#39;D PUBLISHED · ALL IN PRINT</code></li>
+<li>IV: <code>THIS ISSUE // ONE STEELMAN, WRITTEN IN-HOUSE AND LABELLED · NO OUTSIDE CASE YET</code></li>
+<li>V: <code>THIS ISSUE // 5 FEATURES · 5 PROVE US WRONG BOXES, COLLECTED ON ONE PAGE</code></li>
+<li>VI: <code>THIS ISSUE // 10 CHECKER AGENTS, NONE CHECKING ITS OWN WORK · ALL ON ONE MODEL FAMILY</code></li>
+<li>VII: <code>THIS ISSUE // EACH PAGE&#39;S VERDICTS ON ITS STAMP · REPORTS AND EDIT LOGS IN THE DATA ROOM</code>
+(the second half only if D-04 happens)</li>
+<li>VIII: <code>THIS ISSUE // ONE YES, FROM JAY WRIGHT, ON [DATE]</code></li>
+</ul>
+<p>The 18 are Corrections&#39; &quot;Wrong in what we&#39;d already published&quot;: 11 corrected by the monthly, 4
+found since, 3 in the monthly. The lines add about 75 words to a page at its 400-word budget;
+with C-12&#39;s cut it lands near 455. If that doesn&#39;t fit, keep I, III, VI and VIII. If audit B2&#39;s
+new rule V (&quot;A reading says it&#39;s a reading&quot;) goes in, the numbers move up by one.</p>
+</li>
+</ul>
+<h3>07 The Receipts · <code>cc-sections/07-the-receipts.md</code></h3>
+<p><strong>C-16 · KEEP · The standfirst (lines 3 to 4).</strong> &quot;How this issue was made, the way a survey states
+its method: the sample, the procedure, the checks and the limits.&quot; One sentence that tells the
+reader what kind of page this is.</p>
+<p><strong>C-17 · CONVERT · SHOULD · The pipeline, steps 1 to 8 (lines 6 to 19; print L214 to L227)</strong></p>
+<ul>
+<li><p><strong>Now:</strong> eight numbered paragraphs, about 285 words, from &quot;1. <strong>Monitor.</strong> An intel agent reads
+37 feeds ...&quot; to &quot;8. <strong>The editor&#39;s read.</strong> One person read every page ...&quot;.</p>
+</li>
+<li><p><strong>Test:</strong> this is the passage the red team describes (&quot;here&#39;s how we researched, here&#39;s how we
+checked&quot;). The flatplan already calls for an eight-step diagram (<code>claude-design-brief.md</code>, The
+Receipts). Put each step&#39;s count on its label and the prose can go.</p>
+</li>
+<li><p><strong>Proposed</strong> diagram labels:</p>
+<ol>
+<li><code>MONITOR // 37 FEEDS (MID-SEPTEMBER), ALL IN ENGLISH · EACH ITEM SCORED OUT OF 20 · AGENT</code></li>
+<li><code>ROUNDUPS // 5, PUBLISHED ON FRIDAYS, COVERING 28 AUG TO 2 OCT</code></li>
+<li><code>CLAIMS // 5, PICKED BY THE EDITOR · HUMAN</code></li>
+<li><code>RESEARCH // 1 AGENT A CLAIM · TIMELINE, VERDICT, COUNTER-EVIDENCE, READING LIST, 3 ACTIONS · AGENT</code></li>
+<li><code>CHECK 1 // 236 LINES · 39 WRONG · 1 UNSETTLED · SEPARATE AGENTS</code></li>
+<li><code>DRAFTING // CLAUDE CODE AGENTS, FROM A PACK WITH EVERY CLAIM TAGGED · AGENT</code></li>
+<li><code>CHECK 2 // 647 LINES · 25 WRONG · SEPARATE AGENTS</code></li>
+<li><code>THE EDITOR&#39;S READ // JAY WRIGHT · YES ON [DATE] · HUMAN</code></li>
+</ol>
+<p>Under the diagram, one sentence: &quot;The editor picked the five claims that came up most in the
+month&#39;s roundups and would change most about what readers do.&quot;</p>
+</li>
+</ul>
+<p><strong>C-18 · CUT · COULD · Step 1&#39;s formula (line 8; print L216)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;The weights changed on 20 September, and we say so: SD + P + (U × 2) from the 21 September
+brief on, (SD × 2) + P + U before.&quot;</li>
+<li><strong>Test:</strong> the formula is internal, and &quot;and we say so&quot; asks for credit for disclosing it. What
+the reader needs is that scores either side of 20 September aren&#39;t comparable; that goes in the
+limits (C-28).</li>
+<li><strong>Proposed:</strong> cut from the page. The formula can go to the data room (D-04).</li>
+</ul>
+<p><strong>C-19 · CUT · MUST · Step 3&#39;s scoring (lines 11 to 12; print L219 to L220)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;The month&#39;s candidate claims are scored on how often they appeared, whether they moved,
+and how much they change what a reader does.&quot;</li>
+<li><strong>Test:</strong> check-16 marked it UNCONFIRMED (item 27): the pack has no scoring record, and &quot;whether
+they moved&quot; appears only in CC&#39;s own draft of the rules. An unsourced claim about the method, in
+the method section, under Rule I.</li>
+<li><strong>Proposed:</strong> &quot;3. <strong>Claims.</strong> The editor picked five: the claims that came up most in the
+month&#39;s roundups and would change most about what readers do.&quot; That is the monthly&#39;s own
+description (check-16 item 27).</li>
+</ul>
+<p><strong>C-20 · CONVERT · MUST · The unsettled line (step 5, lines 15 to 16, and the ledger, line 28;
+print L223 to L224 and L236)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;The one line they couldn&#39;t settle was reworded to what could be shown.&quot; and
+&quot;| Reworded to only what could be shown | 1 |&quot;</li>
+<li><strong>Test:</strong> the issue contradicts itself. Corrections, &quot;In the September monthly&quot;: &quot;<strong>The five
+rungs.</strong> We said flatly that they weren&#39;t DHH&#39;s. It&#39;s almost certain, not proven.&quot; The line ran
+firmer than the check could show (check-16, the flag on &quot;Nothing unconfirmed was printed&quot;), and
+this issue corrects it.</li>
+<li><strong>Proposed:</strong> ledger row <code>| Couldn&#39;t be settled | 1, printed firmer than proven; corrected in Corrections |</code>. The step-5 label in C-17 carries &quot;1 UNSETTLED&quot;.</li>
+</ul>
+<p><strong>C-21 · CUT · SHOULD · Step 6&#39;s Manus sentence (line 17; print L225)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;Manus was the plan; its run merged the files instead of drafting them.&quot;</li>
+<li><strong>Test:</strong> pipeline story. Who drafted changes what the reader can trust, and the label says it;
+the Manus history doesn&#39;t. The demonstration is the Corrections entry.</li>
+<li><strong>Proposed:</strong> cut. Audit D (C15) keeps the Manus story here and in Corrections; I would keep it
+in Corrections only, where it is a correction rather than a story. Both audits cut it from the
+colophon.</li>
+</ul>
+<p><strong>C-22 · CONVERT · SHOULD · Step 7&#39;s placeholder (line 18; print L226)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;A check by a model from a different family is <em>[pending]</em>.&quot;</li>
+<li><strong>Test:</strong> as C-03.</li>
+<li><strong>Proposed:</strong> cut from the step (audit D, C15, agrees), and give it one ledger row:
+<code>| Checked by a second model family | none (not run) |</code>, or its count if it runs.</li>
+</ul>
+<p><strong>C-23 · CONVERT · SHOULD · Step 8 (line 19; print L227)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;8. <strong>The editor&#39;s read.</strong> One person read every page, rewrote what needed his voice, and
+said yes.&quot;</li>
+<li><strong>Test:</strong> pending (check-16 item 28), and it narrates. A dated yes demonstrates Rule VIII.</li>
+<li><strong>Proposed:</strong> the step-8 label in C-17, <code>THE EDITOR&#39;S READ // JAY WRIGHT · YES ON [DATE] · HUMAN</code>.</li>
+</ul>
+<p><strong>C-24 · CONVERT · MUST · The ledger (lines 21 to 33; print L229 to L241)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;| Claims checked in this issue&#39;s drafts | 642 |&quot;, with &quot;Confirmed 605&quot;, &quot;Wrong, then fixed
+25&quot; and &quot;| Couldn&#39;t be confirmed yet (most describe things that hadn&#39;t happened) | 12 |&quot;.</li>
+<li><strong>Test:</strong> the ledger is the demonstration, so it has to add up. The five reports&#39; row counts
+sum to 647, not 642: <a href="data/check-01-06-11.html">check-01-06-11</a> counted five rows as overstated rather than confirmed (two
+in the cover lines, two in The Month, one in The Pattern), and 642 leaves them out. Stamps added
+up page by page would reach 647 and contradict the ledger. &quot;Claims&quot; in one column and &quot;Lines&quot; in
+the other also changes the unit mid-table (audit A, A-23). And of the 12, three were settled or
+cut in the edit and nine still print (C-34): the ledger should say which.</li>
+<li><strong>Proposed:</strong></li>
+</ul>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>Check 1: the September research</th>
+<th>Check 2: this issue</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Lines checked</td>
+<td>236</td>
+<td>647</td>
+</tr>
+<tr>
+<td>Confirmed</td>
+<td>196</td>
+<td>605</td>
+</tr>
+<tr>
+<td>Wrong, then corrected</td>
+<td>39</td>
+<td>25</td>
+</tr>
+<tr>
+<td>Overstated, then corrected</td>
+<td>not counted</td>
+<td>5</td>
+</tr>
+<tr>
+<td>Couldn&#39;t be confirmed</td>
+<td>1, printed firmer than proven; corrected in Corrections</td>
+<td>12: 3 settled in the edit, [n] before print, [m] open and named on their pages</td>
+</tr>
+<tr>
+<td>Private lines, not checkable</td>
+<td>4</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Checked by a second model family</td>
+<td>0</td>
+<td>0 (not run)</td>
+</tr>
+<tr>
+<td>Links loaded</td>
+<td>33, in the September post</td>
+<td>28, in The Library</td>
+</tr>
+</tbody></table>
+<p>  Key, under the table: &quot;A line is one sentence, bullet or table row with something in it to
+  check: a number, name, date, quote or attribution. Wrong: the source says otherwise. Open: it
+  waits on something that hadn&#39;t happened when the issue closed, and its page names it. Every
+  check also flagged right lines that claimed more than their source. The editors tightened them;
+  only one check counted them apart, the 5 above.&quot;</p>
+<p>  Then the by-section table in D-01, so a reader can test any page&#39;s stamp against the total.</p>
+<p><strong>C-25 · COMPRESS · COULD · The errors&#39; range (lines 35 to 36; print L243 to L244)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;The errors ranged from a date a few days out to a quote credited to the wrong person. The
+full list is in the corrections department.&quot;</li>
+<li><strong>Test:</strong> the first sentence repeats the letter&#39;s examples.</li>
+<li><strong>Proposed:</strong> &quot;Check 1&#39;s 39 errors are all in Corrections, with the check 2 errors that changed a
+reading.&quot;</li>
+</ul>
+<p><strong>C-26 · CONVERT · SHOULD · The verdict scale (lines 38 to 41; print L246 to L249)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;Each claim gets one of five verdicts: held, strengthened, weakened, reframed or still open.
+All five of September&#39;s claims came back reframed.&quot;</li>
+<li><strong>Test:</strong> a count line shows the spread at a glance, including when everything lands in one
+box, which is the red team&#39;s point 1. Audit A (A-01, MUST) regrades the five, so the counts wait
+on that ruling.</li>
+<li><strong>Proposed:</strong> one line in the scale&#39;s own terms, with the counts audit A&#39;s ruling settles, in the
+form <code>HELD [n] · STRENGTHENED [n] · WEAKENED [n] · REFRAMED [n] · STILL OPEN [n]</code>, then: &quot;The
+verdicts are the research agents&#39; readings. No check covered them.&quot;</li>
+</ul>
+<p><strong>C-27 · COMPRESS · SHOULD · One model family (line 48; print L256)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;<strong>One model family.</strong> Agents trained alike can miss alike, and every agent on this issue
+ran on Claude. A check by a second family is pending.&quot;</li>
+<li><strong>Test:</strong> the most important limit in the list. But &quot;every agent on this issue ran on Claude&quot;
+sits a page from a colophon that credits ChatGPT with the structure and the cover line, and
+Manus ran on the pack. The reader needs to know where the second family touched the issue and
+where it didn&#39;t.</li>
+<li><strong>Proposed:</strong> &quot;<strong>One model family.</strong> Every agent that researched, checked or drafted this issue
+ran on Claude, and agents trained alike can miss alike. ChatGPT, as red team, shaped the
+structure and the cover line, and checked no facts. No second model family has checked the
+issue.&quot; (Or its <a href="data/recheck-result.html">result</a>, if it runs.)</li>
+</ul>
+<p><strong>C-28 · CONVERT · COULD · Only what the monitor reads (line 45; print L253)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;<strong>Only what the monitor reads.</strong> Thirty-seven feeds is a sample, not the field.&quot;</li>
+<li><strong>Test:</strong> true and abstract, and the issue has a concrete case: none of the legal actions of 28
+September to 1 October reached a brief (09&#39;s How we know; Corrections, &quot;What I missed&quot;).</li>
+<li><strong>Proposed:</strong> &quot;<strong>Only what the monitor reads.</strong> Thirty-seven feeds is a sample, not the field:
+none of the legal actions of 28 September to 1 October reached a daily brief. The scoring
+weights changed on 20 September, so items either side of that date weren&#39;t scored alike.&quot;</li>
+</ul>
+<p><strong>C-29 · CONVERT · SHOULD · What no check covered (a new line in the limits)</strong></p>
+<ul>
+<li><strong>Now:</strong> the limits name the sample, paywalls, one family, one editor and a closed month, but not
+the readings. That boundary is printed only in The Pattern&#39;s How we know and in The Month.</li>
+<li><strong>Test:</strong> this is where the evidence ends, so it belongs in the method&#39;s own limits.</li>
+<li><strong>Proposed:</strong> &quot;<strong>What no check covered.</strong> The verdicts, The Pattern&#39;s convergence and the cover
+line are readings. The facts under them were checked.&quot; (The cover line is the red team&#39;s model
+line, which was never one of the checked options: <code>edit-notes.md</code>, Jay&#39;s calls.)</li>
+</ul>
+<p><strong>C-30 · KEEP · Paywalls, One editor, A closed month (lines 46 to 50).</strong> Each states a limit on the
+evidence in a line.</p>
+<h3>17 Corrections, framing and intros · <code>cc-sections/17-corrections.md</code></h3>
+<p><strong>C-31 · KEEP · The standfirst (lines 3 to 5).</strong> &quot;One department, three kinds of error...&quot; It
+tells the reader how the page is organised and how to send a correction.</p>
+<p><strong>C-32 · CONVERT · COULD · The September research intro (lines 11 to 12; print L1140 to L1141)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;The checkers went through 236 lines of the September research and flagged 39 as wrong,
+plus one they couldn&#39;t settle. Every one is below: what the draft said, then what&#39;s true.&quot;</li>
+<li><strong>Test:</strong> a count set as a sentence. The design already styles each entry old text, then new
+(<code>claude-design-brief.md</code>, &quot;Correction entry&quot;), so the reading key is redundant.</li>
+<li><strong>Proposed:</strong> <code>CHECK 1 // 236 LINES · 39 WRONG · 1 UNSETTLED · EVERY ONE BELOW</code></li>
+</ul>
+<p><strong>C-33 · COMPRESS · COULD · &quot;And one of ours&quot; (lines 61 to 63; print L1190 to L1192)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;<strong>And one of ours, found in our own edit:</strong> four of the five September throughlines landed
+on a hard spend cap...&quot;</li>
+<li><strong>Test:</strong> the entry is a demonstration, the issue catching its own false convergence, and audit
+D (C17) keeps it. But &quot;found in our own edit&quot; can&#39;t be checked (check-16, flags on 17), and
+&quot;throughlines&quot; is the pipeline&#39;s word.</li>
+<li><strong>Proposed:</strong> &quot;<strong>And one of ours:</strong> the advice for four of the five September claims ended at a
+hard spend cap, and all four leaned on the same Simon Willison post. That&#39;s one argument found
+four times, not four discoveries. The Pattern says so.&quot;</li>
+</ul>
+<p><strong>C-34 · CONVERT · MUST · This issue&#39;s drafts (lines 67 to 69; print L1196 to L1198)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;Five more checkers went through this issue&#39;s drafts. They found 25 lines wrong and 12 they
+couldn&#39;t confirm, most of them because they described things that hadn&#39;t happened yet. All are
+fixed, reworded or cut. The ones that mattered:&quot;</li>
+<li><strong>Test:</strong> untrue as printed. The 25 are fixed: each fix is in the print copy (D-01). Of the 12,
+three were settled or cut in the edit, and nine still print: the colophon&#39;s model name twice and
+its &quot;What a person did&quot;, three lines of the letter, Rule I, and steps 3 and 8 of The Receipts.
+Six describe things that hadn&#39;t happened (the editor&#39;s read and yes, his reply, the AI letters,
+Rule I&#39;s &quot;every&quot;); three wait on a source.</li>
+<li><strong>Proposed:</strong> <code>CHECK 2 // 647 LINES · 25 WRONG · ALL CORRECTED · 12 UNCONFIRMED</code>, then: &quot;Of the 12
+lines the checkers couldn&#39;t confirm, [n] were settled or cut before print, and [m] still wait on
+something, each named on its page&#39;s stamp. The ones that mattered:&quot; Fill [n] and [m] at press.
+The aim is m = 0.</li>
+</ul>
+<p><strong>C-35 · CONVERT · COULD · After &quot;The ones that mattered&quot; (from line 69)</strong></p>
+<ul>
+<li><strong>Now:</strong> nine entries, then the next section.</li>
+<li><strong>Test:</strong> the stamps will show 25 wrong lines; the page lists nine entries. A reader who wants
+the rest has nowhere to go.</li>
+<li><strong>Proposed</strong>, after the ninth entry: &quot;The rest, with every check report, are in the data room at
+[address].&quot; (Needs D-04.)</li>
+</ul>
+<p><strong>Kept as is</strong></p>
+<table>
+<thead>
+<tr>
+<th>ID</th>
+<th>Line</th>
+<th>Why it stays</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C-36</td>
+<td>Line 85: &quot;These ran in the September monthly, in the editor&#39;s voice.&quot;</td>
+<td>Explains the &quot;I&quot; that follows.</td>
+</tr>
+<tr>
+<td>C-37</td>
+<td>Line 101: &quot;Caught while researching this issue&#39;s Field Notes, and confirmed by a checker.&quot;</td>
+<td>Rule III promises &quot;how we found out&quot;. This is it.</td>
+</tr>
+<tr>
+<td>C-38</td>
+<td>Lines 110 to 111: &quot;The monthly went out on 5 October. These stay in the published post; this is where they&#39;re corrected.&quot;</td>
+<td>Shows &quot;We don&#39;t quietly edit&quot; working, on the page.</td>
+</tr>
+</tbody></table>
+<h3>18 Prove us wrong · <code>cc-sections/18-prove-us-wrong.md</code></h3>
+<p><strong>C-39 · CUT · COULD · The opening line (line 3; print L1257)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;This issue is an argument, and it comes with instructions for breaking it.&quot;</li>
+<li><strong>Test:</strong> word for word in the letter. Keep it there (C-11h; audit D, C16).</li>
+<li><strong>Proposed:</strong> cut it here.</li>
+</ul>
+<p><strong>C-40 · COMPRESS · COULD · The lead-in (lines 5 to 6; print L1259 to L1260)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;Every feature ends with the claim in it most likely to be wrong, and the evidence that
+would change our mind. Here they are in one place:&quot;</li>
+<li><strong>Proposed:</strong> &quot;The claim in each feature most likely to be wrong, and what would change our mind:&quot;</li>
+</ul>
+<p><strong>C-41 · CONVERT · SHOULD · The five items (lines 8 to 37; print L1262 to L1291)</strong></p>
+<ul>
+<li><strong>Now:</strong> five numbered paragraphs that restate each feature&#39;s box, reasons included: 448 words,
+on a page budgeted at 200 and now running 586.</li>
+<li><strong>Test:</strong> collecting the five in one place is the demonstration, and audit D keeps the
+collection on purpose. Restating each box&#39;s reasoning is not: the reasons are on each feature&#39;s
+own page.</li>
+<li><strong>Proposed:</strong> a five-row ledger.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>The claim most likely to be wrong</th>
+<th>What would change our mind</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>05 Who checks the checker?</td>
+<td>A person at the gate of an irreversible action is worth keeping</td>
+<td>Data comparing a few human gates with classifier-only gating on the same actions</td>
+</tr>
+<tr>
+<td>06 Who pays when an agent breaks something?</td>
+<td>An incident on a customer&#39;s account sits on the track where OpenAI&#39;s framework states no deadline (our reading, not OpenAI&#39;s statement)</td>
+<td>Framework text or customer terms setting a deadline, or a customer who can show when they were told</td>
+</tr>
+<tr>
+<td>08 The Pattern</td>
+<td>Five separate claims converged on one move</td>
+<td>A claim from the same month, of similar weight, that ended somewhere other than a limit; or the same five traced from other feeds by someone else, ending elsewhere</td>
+</tr>
+<tr>
+<td>09 What does a task cost?</td>
+<td>A thinner harness cuts the cost of a task without cutting its quality</td>
+<td>A harness comparison big enough to detect a quality gap, or a deletion pass that raised failure or rework</td>
+</tr>
+<tr>
+<td>10 How do you get found when a machine reads first?</td>
+<td>AI discovery is growing on top of search, not replacing it</td>
+<td>Several quarters of panel data with search falling as AI discovery rises among the same people, or paid-search forecasts cut as AI-visibility budgets grow</td>
+</tr>
+</tbody></table>
+<p>  Then: &quot;11, The case against, goes after the move itself.&quot; About 190 words in all.</p>
+<p><strong>C-42 · KEEP · How to argue with us (lines 39 to 40).</strong> The reader&#39;s process, not ours: &quot;A link
+beats an opinion.&quot;</p>
+<p><strong>C-43 · CONVERT · COULD · What happens next (lines 42 to 44; print L1296 to L1298)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;<strong>What happens next:</strong> we check what you send the same way we checked ourselves. If you&#39;re
+right, the correction runs in the next issue under your name, if you want it there. The best
+arguments run in the next issue whoever wins, with a reply.&quot;</li>
+<li><strong>Test:</strong> &quot;the same way we checked ourselves&quot; points at the apparatus. Show it applied to the
+reader&#39;s own claim.</li>
+<li><strong>Proposed:</strong> &quot;<strong>What happens next:</strong> a checker that didn&#39;t write the claim tests what you send
+against its sources, and the <a href="data/recheck-result.html">result</a> runs with a stamp like every page here. If you&#39;re right, the
+correction runs in the next issue, under your name if you want it. The best arguments run
+whoever wins, with a reply.&quot;</li>
+</ul>
+<p><strong>C-44 · KEEP · The sign-off (line 46).</strong> &quot;We&#39;d rather be corrected in public than be wrong in
+private.&quot; A sign-off, not process. Jay&#39;s call.</p>
+<h3>The features: How we know boxes and process paragraphs</h3>
+<p><strong>C-45 · CUT · MUST · &quot;Tagged NEW&quot; (08: <code>drafts/08-who-checks-the-checker.md</code> line 79, print L343;
+09: <code>drafts/09-who-pays-when-an-agent-breaks-something.md</code> line 79, print L438)</strong></p>
+<ul>
+<li><strong>Now:</strong> 08: &quot;The drafter reloaded the Anthropic, Hamel and Beri pages on 5 October to confirm the
+quoted wording. Facts that were not in the checked record are tagged NEW.&quot; 09: &quot;The drafter
+reloaded several on 5 October. Facts not in the checked record are tagged NEW.&quot;</li>
+<li><strong>Test:</strong> the print copy strips every tag (<code>make-print.mjs</code>, and the print copy&#39;s own header
+says so), so these sentences point readers at markers the page doesn&#39;t carry, and the reload is
+pipeline narration. Audit B1 flags the same sentences (B1-08-12, B1-09-09) at SHOULD and
+replaces them with a not-checked line. I&#39;d make the cut a MUST, because the sentences describe
+something that isn&#39;t on the printed page. B1&#39;s not-checked content becomes the NOT CHECKED line
+in C-46 and C-50.</li>
+<li><strong>Proposed:</strong> cut both sentences from each box. C-46 and C-50 give the boxes that replace them.</li>
+</ul>
+<p><strong>C-46 · CONVERT · SHOULD · 08 How we know (lines 79 to 81; print L341 to L345; 160 words)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;This piece is built on the research agent&#39;s report on the claim and a separate checker&#39;s
+line-by-line report, which confirmed 44 lines and found 4 wrong, all fixed before print. The
+core numbers come from primary pages: ...&quot; and &quot;Still uncertain: the 13.6% comes from a study
+Anthropic ran through a research vendor ...&quot;</li>
+<li><strong>Test:</strong> the counts belong in a stamp, the source list stays, and the uncertainty is the part a
+reader can&#39;t get anywhere else. Into the template&#39;s three slots (<code>p12</code>: Sources, What was
+checked, What&#39;s uncertain):</li>
+<li><strong>Proposed:</strong><ul>
+<li><strong>Sources:</strong> Anthropic (7 August and 28 September), Hamel Husain, Qodo, Faros and Rajesh Beri.</li>
+<li><strong>What was checked:</strong>
+<code>CHECKED // 54 LINES · 0 WRONG // 2026.10.05</code>
+<code>SEPTEMBER RESEARCH // 48 LINES · 4 WRONG</code> / <code>ALL CORRECTED</code>
+<code>NOT CHECKED // THE READING THAT THE HUMAN WORK MOVED UP A LEVEL</code></li>
+<li><strong>What&#39;s uncertain:</strong> Most of the evidence comes from software engineering, and the marketing
+evidence is thinner. Pragmatic Engineer&#39;s reporting on the labs is partly paywalled.</li>
+<li>If 08 doesn&#39;t take the evidence block in D-05, open the uncertainty with this instead: &quot;The
+13.6% comes from Anthropic&#39;s own study, run through a research vendor in a test environment,
+comparing people with Anthropic&#39;s own classifier.&quot;</li>
+<li><strong>The research check&#39;s count:</strong> 44 confirmed and 4 wrong is 48 lines. The red team&#39;s example,
+&quot;CHECKED: 44 lines / 4 errors found&quot;, reads the confirmed figure as the lines checked. Don&#39;t
+copy it.</li>
+</ul>
+</li>
+</ul>
+<p><strong>C-47 · KEEP · 08 &quot;The receipt&quot; (lines 59 to 63; print L323 to L327)</strong></p>
+<ul>
+<li>&quot;Each of the three jobs should leave a record, and two surveys suggest that is where many
+organisations are thin. ...&quot; and &quot;A receipt is what turns the three jobs into evidence: what was
+checked, by what, against which definition of good, and who said yes.&quot;</li>
+<li>This is about the reader&#39;s organisation, not the magazine&#39;s process: two surveys and a piece of
+advice. It stays. The feature&#39;s own stamp, at the foot of the same piece, is the worked example,
+and nothing needs to point that out.</li>
+</ul>
+<p><strong>C-48 · CUT · COULD · 08 On Monday (line 73; print L337)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;This issue&#39;s own receipts are in The Receipts.&quot;</li>
+<li><strong>Test:</strong> a pointer to the apparatus, at the end of a piece whose own box will show its receipt.</li>
+<li><strong>Proposed:</strong> cut the sentence.</li>
+</ul>
+<p><strong>C-49 · KEEP · The openers that trace each claim (08 line 13, 09 line 17, 12 line 7, 13 line 7)</strong></p>
+<ul>
+<li>For example 09: &quot;The weekly roundups this issue grew out of carried the claim from &#39;Auditability
+quietly went backwards&#39; in the first roundup to &#39;Accountability arrived after the fact, and from
+outside&#39; in the fifth.&quot;</li>
+<li>They set September&#39;s claim against October&#39;s evidence: evidence about the claim, not about the
+apparatus. Whether the change is stated plainly enough is audit A&#39;s question.</li>
+</ul>
+<p><strong>C-50 · CONVERT · SHOULD · 09 How we know (lines 79 to 81; print L436 to L440; 193 words)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;...a separate checker&#39;s report, which confirmed 42 lines and found 11 wrong, all fixed
+before print. Among the fixes: ...&quot; and &quot;Still uncertain: ... Hawley&#39;s release wouldn&#39;t load for
+the research agent, and neither senator&#39;s release loaded for the drafter on 5 October. The six-
+and 12-day figures reached The Next Web through Axios. Separately, OpenAI&#39;s own incident page on
+the 100-plus notifications returned an error to the checker. ...&quot;</li>
+<li><strong>Test:</strong> which page loaded for which agent is pipeline narration. The evidence point under it,
+that the bill&#39;s terms are secondhand, stays. The list of fixes is in Corrections.</li>
+<li><strong>Proposed:</strong><ul>
+<li><strong>Sources:</strong> The Next Web, Transformer, Tech Policy Press, California&#39;s attorney general,
+WFSU, ABC News (Australia), The Register, CNBC, TechTimes, TechSpot and Rajesh Beri.</li>
+<li><strong>What was checked:</strong>
+<code>CHECKED // 70 LINES · 2 WRONG</code> / <code>BOTH CORRECTED // 2026.10.05</code>
+<code>SEPTEMBER RESEARCH // 53 LINES · 11 WRONG</code> / <code>ALL CORRECTED</code>
+<code>NOT CHECKED // THAT THE GAP HELD, AND THAT LIABILITY WILL LAND ON WHOEVER DEPLOYS THE AGENT</code></li>
+<li><strong>What&#39;s uncertain:</strong> The bill has no published text, so its terms are its sponsors&#39;
+description as reported by Beri and TechTimes, and the FTC hasn&#39;t named the other companies
+it is investigating. None of the legal actions reached the monitor&#39;s daily briefs: all of
+them came from the open web.</li>
+</ul>
+</li>
+</ul>
+<p><strong>C-51 · COMPRESS · COULD · 11&#39;s opening paragraph (<code>drafts/11-the-pattern.md</code> line 7; print L543)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;...and gave each to a research agent to trace through September. None held as written and
+none was simply wrong: all five came back reframed. Five more agents then checked the numbers,
+quotes and dates line by line.&quot;</li>
+<li><strong>Test:</strong> &quot;gave each to a research agent&quot; is evidence (the verdicts are agents&#39; readings) and
+stays. The last sentence restates the stamp.</li>
+<li><strong>Proposed:</strong> cut the last sentence, unless audit A&#39;s rewrite of this paragraph goes in. A ends
+it &quot;though not the grades&quot;, which marks the boundary and earns the sentence its place.</li>
+</ul>
+<p><strong>C-52 · KEEP · 11 &quot;One argument, found four times&quot; (lines 85 to 91; print L621 to L627)</strong></p>
+<ul>
+<li>&quot;Four agents reaching one action from separate evidence would be strong. These four shared a
+source. The research agents never saw each other&#39;s work, but all four leaned on the same Simon
+Willison post...&quot;</li>
+<li>The best case of machinery as evidence in the issue: it uses a fact about the apparatus (the
+agents worked apart) to show that the independence was false (one shared source), and then
+discounts its own finding. That is what the red team asks for. The section&#39;s last paragraph
+could lose &quot;The September monthly&#39;s answer was to take the action anyway.&quot; but needn&#39;t.</li>
+</ul>
+<p><strong>C-53 · CONVERT · SHOULD · 11 How we know (line 113; print L647 to L649; 211 words)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;The timelines follow the long version of the September monthly ... Separate agents checked
+236 of the monthly&#39;s lines and found 39 wrong, all now fixed; four internal lines ... went
+unchecked. No check covered the pattern itself, so the convergence is the magazine&#39;s reading of
+checked facts. ...&quot;</li>
+<li><strong>Test:</strong> nine sentences. Three carry the reader&#39;s real uncertainty, and one, &quot;No check covered
+the pattern itself&quot;, is the most important boundary in the issue, set mid-box after the counts.
+Give it its own line. The counts go to stamp lines; the 37 feeds and the paywalls go to The
+Receipts&#39; limits; the corrections go to Corrections. Audit D (C14) also takes the 236 and 39 out
+of this box as a cross-reference; a stamp line does that job.</li>
+<li><strong>Proposed:</strong><ul>
+<li><strong>Sources:</strong> the long version of the September monthly, five steps a timeline (the published
+post carries three; link the long one, as <code>edit-notes.md</code> asks), and the five research
+reports.</li>
+<li><strong>What was checked:</strong>
+<code>CHECKED // 57 LINES · 3 WRONG</code> / <code>ALL CORRECTED // 2026.10.05</code>
+<code>SEPTEMBER RESEARCH // 236 LINES · 39 WRONG</code> / <code>ALL CORRECTED</code>
+<code>NOT CHECKED // THE CONVERGENCE ITSELF: OUR READING</code></li>
+<li><strong>What&#39;s uncertain:</strong> The timelines share sources (OpenAI in all five, Tunguz in four, Latent
+Space and the Decisions API in three), some step dates are when a brief or a write-up carried
+the news, and Shero Commerce&#39;s post has no exact date. The research returned seven or eight
+steps a claim and the monthly cut each to five, so the matching shape is partly an edit.</li>
+<li>On the spread, the convergence point takes audit B2&#39;s label (B2-06; B2 Part 4, &quot;OUR READING
+// SET LIMITS, THEN AUDIT THEM&quot;). The NOT CHECKED line uses the same words, so the box and the
+spread agree.</li>
+</ul>
+</li>
+</ul>
+<p><strong>C-54 · CONVERT · SHOULD · 12 How we know (<code>drafts/12-what-does-a-task-cost.md</code> line 94; print
+L751 to L753; 223 words)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;The list prices come from Simon Willison&#39;s price table ... Separate checkers went line by
+line through the September monthly this piece draws on. On model choice they confirmed 35 lines
+and flagged 8 as wrong; on the wrapper, 37 confirmed, 8 wrong and one left unsettled that this
+piece doesn&#39;t use. This piece uses the corrected versions. Still uncertain: ...&quot;</li>
+<li><strong>Test:</strong> &quot;This piece uses the corrected versions&quot; asks the reader to take the fixing on trust; a
+stamp shows it. Three of the six uncertainty sentences repeat the body (the discount&#39;s end date,
+Anthropic&#39;s and Jev&#39;s own figures).</li>
+<li><strong>Proposed:</strong><ul>
+<li><strong>Sources:</strong> Simon Willison&#39;s price table (22 September), Anthropic&#39;s launch and pricing
+pages, Zvi Mowshowitz (12 September and 1 October), AINews at Latent Space, Tom Tunguz and
+GIGAZINE on HarnessTax, Cursor, and The Decoder on Ramp.</li>
+<li><strong>What was checked:</strong>
+<code>CHECKED // 58 LINES · 0 WRONG // 2026.10.05</code>
+<code>SEPTEMBER RESEARCH // 89 LINES · 16 WRONG</code> / <code>ALL CORRECTED · 1 UNSETTLED, NOT USED HERE</code>
+<code>NOT CHECKED // THE VERDICT: THE VENDOR MATTERS LESS, THE JOB MORE</code></li>
+<li><strong>What&#39;s uncertain:</strong> The per-task costs for Astra and Argon come from paid AINews posts, read
+as far as their previews, and the Argon preview doesn&#39;t say how the costs were worked out.
+HarnessTax&#39;s own page didn&#39;t load, so its figures rest on Tunguz and GIGAZINE.</li>
+<li>The 89 lines are model choice&#39;s 43 (35 confirmed, 8 wrong) and the wrapper&#39;s 46 (37, 8 and 1
+unsettled).</li>
+</ul>
+</li>
+</ul>
+<p><strong>C-55 · CONVERT · SHOULD · 13 How we know (<code>drafts/13-how-do-you-get-found.md</code> line 76; print L837
+to L839; 248 words)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;...A separate checker went line by line through the September monthly this piece draws on,
+confirmed 38 lines, flagged 8 as wrong and loaded every cited page. This piece uses the
+corrected versions: Astra&#39;s median of five counts sources searched, not sources cited; the 48%
+are ...; the 37.9% is ...; and the visit lift and the referral figure are Profound&#39;s, not
+Datos&#39;s. Still uncertain: ...&quot;</li>
+<li><strong>Test:</strong> the list of corrections is Corrections&#39; job, and all four are printed there. The
+zero-click caveat is already in the body.</li>
+<li><strong>Proposed:</strong><ul>
+<li><strong>Sources:</strong> Latent Space&#39;s AEO tracker, IAB, PPC Land, MediaPost, Android Headlines, IAB Tech
+Lab, TechCrunch, Business Wire, Shero Commerce, MarTech (for Datos, Profound and Semrush),
+SOCi and Forrester.</li>
+<li><strong>What was checked:</strong>
+<code>CHECKED // 44 LINES · 2 WRONG</code> / <code>BOTH CORRECTED // 2026.10.05</code>
+<code>SEPTEMBER RESEARCH // 46 LINES · 8 WRONG</code> / <code>ALL CORRECTED</code>
+<code>NOT CHECKED // THE VERDICT: AN ADDITION TO SEARCH, NOT A REPLACEMENT</code></li>
+<li><strong>What&#39;s uncertain:</strong> The same-rate finding is MarTech&#39;s summary of Datos&#39;s report, which the
+checker couldn&#39;t open, and the Profound figures also reach us through MarTech. The ad run rate
+is OpenAI&#39;s own number, and the only conversion figures are a vendor&#39;s.</li>
+</ul>
+</li>
+</ul>
+<p><strong>C-56 · COMPRESS · COULD · 14 The case against, its label (<code>drafts/14-the-case-against.md</code> line 1;
+print L852)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;<em>A steelman: the strongest case against this issue&#39;s argument, written in-house to the
+best standard we could manage. Not an outside contributor.</em>&quot;</li>
+<li><strong>Test:</strong> Rule IV requires the label. &quot;To the best standard we could manage&quot; is a claim of
+effort, and &quot;Not an outside contributor&quot; repeats &quot;written in-house&quot;.</li>
+<li><strong>Proposed:</strong> &quot;<em>A steelman: the strongest case against this issue&#39;s argument, written in-house.</em>&quot;</li>
+</ul>
+<p><strong>C-57 · KEEP · 06 The Month (<code>drafts/06-the-month.md</code> line 5; print L188)</strong></p>
+<ul>
+<li>&quot;The verdicts are the research&#39;s readings; the facts under them were checked.&quot;</li>
+<li>One sentence, and it is the boundary the red team asks for. Audit A rewrites the sentence before
+it and keeps this one in substance.</li>
+</ul>
+<hr>
+<h2>Part 2. The demonstration</h2>
+<h3>D-01 · SHOULD · A stamp for every section</h3>
+<p><strong>What a stamp says.</strong> Two lines, three when something is still open:</p>
+<pre><code>CHECKED // {lines} LINES · {wrong} WRONG
+{CORRECTED | BOTH CORRECTED | ALL CORRECTED} // 2026.10.05
+{n} OPEN // {what each one waits on}
+</code></pre>
+<p>When nothing was wrong, the date joins the first line: <code>CHECKED // 54 LINES · 0 WRONG // 2026.10.05</code>.</p>
+<ul>
+<li><strong>Lines</strong> is the check report&#39;s own row count for the section, so a reader can match the stamp
+to the report (D-04). A line is one sentence, bullet or table row with something checkable in it
+(the key in C-24).</li>
+<li><strong>Wrong</strong> is the report&#39;s WRONG count. Overstated lines get no term on the stamp. Only
+<a href="data/check-01-06-11.html">check-01-06-11</a> counted them apart; the other four checks flagged the same kind of line under
+&quot;Other flags&quot; and counted it confirmed (08 alone had six). An OVERSTATED figure on the page would
+make The Month and The Pattern look worse than 08 and 09 for following a stricter rule. The
+ledger carries the five (C-24).</li>
+<li><strong>Corrected</strong> is supported: I compared all 25 WRONG items in the five reports against the print
+copy, and every fix is in it. For the CC sections, that comparison is the only record (D-03).</li>
+<li><strong>The date</strong> as round 2 set it, 2026.10.05: &quot;10.05&quot; reads as 10 May outside North America.</li>
+<li><strong>No &quot;CC&quot;.</strong> The design&#39;s receipt stamp ends &quot;CC · 10.05&quot;. It is house shorthand the reader
+hasn&#39;t been told; the key and the colophon say who checks.</li>
+</ul>
+<p><strong>What it says when lines are still unconfirmed.</strong> A line the checkers couldn&#39;t confirm, and the
+edit didn&#39;t settle, stays on its page&#39;s stamp with what it waits on, in a few words:
+<code>3 OPEN // HIS READ · HIS REPLY · THE AI LETTERS</code>. At press each open line is settled (and drops
+off the stamp), cut, or stays named. Nothing open prints unnamed. Lines about the editor&#39;s own acts
+(his read, his yes, his reply) are settled by the act, recorded with its date in the edit log. The
+three unconfirmed lines settled in the edit (Rule II reworded; &quot;uniqueness&quot; confirmed from the
+script; Field Notes 4B&#39;s redirect line cut) don&#39;t appear on stamps; the ledger counts them.</p>
+<p><strong>How it looks.</strong> The receipt stamp&#39;s chamfered mono block (<code>identity.html</code>, Labels and stamps),
+in steel: 2px steel border, steel text, page ground, no fill. Share Tech Mono 14px, uppercase,
+0.12em tracking, about 45 characters a line (the How we know box&#39;s inner measure is 416px). The 1B
+brackets-check mark at the left: round 2&#39;s notes say it &quot;doubles as the &#39;checked&#39; stamp&quot;. Gold
+stays where the design system puts it, once on contents and once in The Receipts, so no page gets
+a second gold thing.</p>
+<p><strong>The stamps.</strong> Tallies from the five reports. &quot;Edit&quot; marks the cases in D-02.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Tally (report)</th>
+<th>Stamp</th>
+<th>Where it sits</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cover</td>
+<td>11 C · 0 W · 0 U, +3 overstated (01-06-11)</td>
+<td>None. The printed line is the red team&#39;s model line, never one of the checked options</td>
+<td>The ledger only</td>
+</tr>
+<tr>
+<td>Contents</td>
+<td>not checked</td>
+<td>Gold: <code>CHECKED // 647 LINES · 25 WRONG</code> / <code>ALL CORRECTED // 2026.10.05</code>, plus <code>[n] OPEN, NAMED ON THEIR PAGES</code> if any remain</td>
+<td>Foot of the colophon column, as in <code>p02</code></td>
+</tr>
+<tr>
+<td>03 Colophon</td>
+<td>11 C · 1 W · 3 U (16-and-cc)</td>
+<td><code>CHECKED // 15 LINES · 1 WRONG · CORRECTED</code> / <code>3 OPEN // THE MODEL, TWICE · THE EDITOR&#39;S READ</code> / <code>2026.10.05</code>. Better: no separate stamp, and any desk row still open shows OPEN in the template&#39;s right-hand tag column</td>
+<td>Desk ledger</td>
+</tr>
+<tr>
+<td>04 From the editor (01)</td>
+<td>17 C · 1 W · 3 U</td>
+<td>Edit: recheck Jay&#39;s rewrite. As checked: <code>CHECKED // 21 LINES · 1 WRONG · CORRECTED</code> / <code>3 OPEN // HIS READ · HIS REPLY · THE AI LETTERS</code> / <code>2026.10.05</code></td>
+<td>After the signature</td>
+</tr>
+<tr>
+<td>05 The Rules (02)</td>
+<td>6 C · 0 W · 2 U, 1 settled</td>
+<td><code>CHECKED // 8 LINES · 0 WRONG // 2026.10.05</code> / <code>1 OPEN // RULE I, WHILE ANY LINE IS OPEN</code></td>
+<td>Page foot, above the running footer; the DRAFT stamp stays</td>
+</tr>
+<tr>
+<td>06 The Month (03)</td>
+<td>19 C · 0 W · 0 U, +2 overstated</td>
+<td><code>CHECKED // 21 LINES · 0 WRONG // 2026.10.05</code></td>
+<td>Page foot</td>
+</tr>
+<tr>
+<td>07 The Receipts (04)</td>
+<td>21 C · 1 W · 3 U, 1 settled</td>
+<td>Edit: recheck once rebuilt (2.4). As checked: <code>CHECKED // 25 LINES · 1 WRONG · CORRECTED</code> / <code>2 OPEN // CLAIM SCORING · THE EDITOR&#39;S READ</code> / <code>2026.10.05</code></td>
+<td>Its own row in the by-section table</td>
+</tr>
+<tr>
+<td>08 Who checks the checker? (05)</td>
+<td>54 C · 0 W · 0 U (08-09)</td>
+<td><code>CHECKED // 54 LINES · 0 WRONG // 2026.10.05</code></td>
+<td>How we know, &quot;What was checked&quot;</td>
+</tr>
+<tr>
+<td>09 Who pays...? (06)</td>
+<td>68 C · 2 W · 0 U</td>
+<td><code>CHECKED // 70 LINES · 2 WRONG</code> / <code>BOTH CORRECTED // 2026.10.05</code></td>
+<td>How we know</td>
+</tr>
+<tr>
+<td>10 The month in one chart (07)</td>
+<td>11 C · 0 W · 0 U (10-12-13)</td>
+<td>Edit: only Proposal 1 prints (rows 1 to 5). Joined to the source line: <code>SOURCE // AINEWS AT LATENT SPACE, 1 OCTOBER · ZVI MOWSHOWITZ, 12 SEPTEMBER AND 1 OCTOBER // CHECKED · 5 LINES · 0 WRONG</code></td>
+<td>Under the chart</td>
+</tr>
+<tr>
+<td>11 The Pattern (08)</td>
+<td>53 C · 3 W · 0 U, +2 overstated (01-06-11)</td>
+<td><code>CHECKED // 57 LINES · 3 WRONG</code> / <code>ALL CORRECTED // 2026.10.05</code></td>
+<td>How we know, on the text pages. The spread carries B2&#39;s OUR READING label</td>
+</tr>
+<tr>
+<td>12 What does a task cost? (09)</td>
+<td>58 C · 0 W · 0 U</td>
+<td><code>CHECKED // 58 LINES · 0 WRONG // 2026.10.05</code></td>
+<td>How we know</td>
+</tr>
+<tr>
+<td>13 How do you get found? (10)</td>
+<td>42 C · 2 W · 0 U</td>
+<td><code>CHECKED // 44 LINES · 2 WRONG</code> / <code>BOTH CORRECTED // 2026.10.05</code></td>
+<td>How we know</td>
+</tr>
+<tr>
+<td>14 The case against (11)</td>
+<td>40 C · 2 W · 0 U (14-15-20)</td>
+<td>Edit: rebuilt after the check; recheck. Without a recheck: <code>CHECKED // 42 LINES · 2 WRONG</code> / <code>BOTH CORRECTED · REBUILT AFTER THE CHECK</code> / <code>2026.10.05</code></td>
+<td>After the last line, before the editor&#39;s reply</td>
+</tr>
+<tr>
+<td>15 The Operator (12)</td>
+<td>43 C · 0 W · 0 U</td>
+<td><code>CHECKED // 43 LINES · 0 WRONG // 2026.10.05</code></td>
+<td>After the fifth card</td>
+</tr>
+<tr>
+<td>16 Field Notes (13)</td>
+<td>59 C · 8 W · 1 U, settled</td>
+<td>Edit: recount for the five that run. Wrong lines by candidate: 2A 1, 3A 1, 3B 1, 5A 2; set-aside entries 2; the old correction 4, 1</td>
+<td>Page foot</td>
+</tr>
+<tr>
+<td>17 Corrections (14)</td>
+<td>52 C · 5 W · 0 U</td>
+<td><code>CHECKED // 57 LINES · 5 WRONG</code> / <code>ALL CORRECTED // 2026.10.05</code></td>
+<td>Under the standfirst</td>
+</tr>
+<tr>
+<td>18 Prove us wrong (15)</td>
+<td>not checked</td>
+<td><code>FROM THE FEATURES&#39; BOXES // CHECKED THERE</code></td>
+<td>Page foot</td>
+</tr>
+<tr>
+<td>19 The Library (16)</td>
+<td>30 C · 0 W · 0 U</td>
+<td><code>CHECKED // 30 LINES · 0 WRONG // 2026.10.05</code> / <code>LOADED // 28 OF 28 LINKS</code>, in place of &quot;Every link was loaded on 5 October 2026&quot;</td>
+<td>Under the standfirst</td>
+</tr>
+<tr>
+<td>20 The Operator&#39;s Page (17)</td>
+<td>10 C · 0 W · 0 U</td>
+<td><code>CHECKED // 10 LINES · 0 WRONG // 2026.10.05</code></td>
+<td>Above the running footer</td>
+</tr>
+<tr>
+<td>The Receipts, issue stamp</td>
+<td></td>
+<td>Gold: <code>CHECK 1 // 236 LINES · 39 WRONG · ALL CORRECTED</code> / <code>CHECK 2 // 647 LINES · 25 WRONG · ALL CORRECTED</code></td>
+<td>Head of the ledger</td>
+</tr>
+</tbody></table>
+<p><strong>By-section table for The Receipts.</strong> The same counts in one place, so the stamps can be tested
+against the ledger. Running-order numbers, as the reader sees them:</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Lines</th>
+<th>Wrong</th>
+<th>Open at the check</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Cover lines</td>
+<td>13</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>Colophon</td>
+<td>15</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>01 From the editor</td>
+<td>21</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>02 The Rules</td>
+<td>8</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<td>03 The Month</td>
+<td>21</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>04 The Receipts</td>
+<td>25</td>
+<td>1</td>
+<td>2</td>
+</tr>
+<tr>
+<td>05 Who checks the checker?</td>
+<td>54</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>06 Who pays when an agent breaks something?</td>
+<td>70</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>07 The month in one chart (5 of them print)</td>
+<td>11</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>08 The Pattern</td>
+<td>57</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>09 What does a task cost?</td>
+<td>58</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>10 How do you get found when a machine reads first?</td>
+<td>44</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>11 The case against</td>
+<td>42</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>12 The Operator</td>
+<td>43</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>13 Field Notes (all ten candidates)</td>
+<td>68</td>
+<td>8</td>
+<td>0</td>
+</tr>
+<tr>
+<td>14 Corrections</td>
+<td>57</td>
+<td>5</td>
+<td>0</td>
+</tr>
+<tr>
+<td>16 The Library</td>
+<td>30</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td>17 The Operator&#39;s Page</td>
+<td>10</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>647</strong></td>
+<td><strong>25</strong></td>
+<td><strong>9</strong></td>
+</tr>
+</tbody></table>
+<p>The 9 open lines and the 3 settled in the edit make the ledger&#39;s 12. The 647 also includes the 5
+rows <a href="data/check-01-06-11.html">check-01-06-11</a> counted as overstated (2 in the cover lines, 2 in The Month, 1 in The Pattern).</p>
+<h3>D-02 · SHOULD · A stamp describes the text the checker saw</h3>
+<ul>
+<li><strong>The rule:</strong> a stamp gives the report&#39;s count for the section as checked on 5 October. Small
+cuts in the edit don&#39;t change it (08&#39;s three-row coda: 54 rows checked, 51 print). Two cases do:<ul>
+<li><strong>Rewritten after the check.</strong> 14 was rebuilt (its edit log opens &quot;Rebuilt the piece around its
+weak step&quot;); 04 will be rewritten by Jay; 07 is rebuilt if 2.4 goes in. Recheck, or the stamp
+says <code>REBUILT AFTER THE CHECK</code>.</li>
+<li><strong>Only part prints.</strong> The chart page prints Proposal 1 only (round 2&#39;s notes), so its stamp
+counts rows 1 to 5. Field Notes prints five of ten candidates: recount from the report&#39;s own
+verdicts for the five that run.</li>
+</ul>
+</li>
+<li><strong>No stamp on the cover.</strong> The chosen cover line (1c) is the red team&#39;s model line.
+<code>edit-notes.md</code>: &quot;never one of the five checked options. It&#39;s a reading, not a fact.&quot; A stamp
+near it would say otherwise. Audit B2 (B2-27, MUST) labels it OUR READING.</li>
+<li><strong>Why the rule matters, from this issue.</strong> Two lines changed in the edit were never re-read by a
+checker, and both slipped: the colophon&#39;s Drafting line gained a third unsourced &quot;(Claude Opus
+5.5)&quot; (C-04), and Rule II&#39;s rewording put two numbers from two pages into &quot;a page&#39;s summary box&quot;
+(C-14).</li>
+</ul>
+<h3>D-03 · SHOULD · Edit logs for the CC sections</h3>
+<ul>
+<li><strong>Now:</strong> every file in <code>drafts/</code> ends with &quot;## Edit log (5 Oct)&quot;, one line per change with the
+check item it answers. No file in <code>cc-sections/</code> has one (02, 03, 04, 05, 07, 17, 18, 19), though
+<code>edit-notes.md</code> says each editor &quot;logged its changes in an &#39;Edit log (5 Oct)&#39; at the foot of the
+file&quot;.</li>
+<li><strong>Why:</strong> an ALL CORRECTED stamp on the colophon, the letter, The Receipts and Corrections then
+rests only on comparing the print copy with the check. I made that comparison, and all eight
+WRONG items in those sections are fixed in print, but a reader or a later editor can&#39;t trace it
+the way they can trace the drafts&#39; stamps.</li>
+<li><strong>Proposed:</strong> add &quot;## Edit log (5 Oct)&quot; to each CC section, one line per item in
+<code>checks/check-16-and-cc-sections.md</code>, including the three unconfirmed lines that were settled and
+the nine that weren&#39;t.</li>
+</ul>
+<h3>D-04 · SHOULD · Put the reports where a reader can open them</h3>
+<ul>
+<li>Rule VII&#39;s test is &quot;can you see the verdicts separately from the edit that followed them?&quot; In
+print, no: tags, source maps, check reports and edit logs are all stripped or unpublished.</li>
+<li><code>edit-notes.md</code> already asks for a data room for the long monthly (&quot;Publish it or link it with
+the issue (the data room), or readers can&#39;t match it step for step&quot;). Put the five check reports
+and the edit logs there too, and give its address once, in The Receipts. Then every stamp can be
+checked: a reader opens <code>check-08-09.md</code> and finds &quot;08: CONFIRMED 54 · WRONG 0 · UNCONFIRMED 0&quot;.</li>
+</ul>
+<h3>D-05 · SHOULD · Evidence blocks for the few claims that carry a piece</h3>
+<p><strong>Format.</strong> Four rows, set beside the paragraph that makes the claim:</p>
+<pre><code>SOURCE  // where it comes from, and how close to the primary it is
+CHECK   // who checked it, against what, and what they found
+STATUS  // one entry from the list below
+OPEN    // what is still uncertain, or what is ours
+</code></pre>
+<p>Labels in Share Tech Mono 12px, faint; values in Source Sans 17px (the design&#39;s &quot;Small&quot; type for
+boxes). Steel corner brackets, no fill, no shadow: shadows are reserved for How we know, field
+cards, chart wells and the routing table. One column wide, never beside a pull quote. Where a
+feature carries a block, its How we know box doesn&#39;t repeat the block&#39;s OPEN line.</p>
+<p><strong>STATUS, one of:</strong> CONFIRMED · CORRECTED (a check found it wrong, and it&#39;s fixed) · CONFIRMED AS
+REPORTED (it matches a secondary source; the primary wasn&#39;t read) · OPEN (it waits on something) ·
+OUR READING (an inference from checked facts) · OUR BET (what comes next). The last two are audit
+B2&#39;s labels (Part 4), so the blocks and the page labels are one system.</p>
+<p><strong>Worked example 1: the 13.6%</strong> (08, beside <code>drafts/08</code> line 7; print L271). The issue&#39;s most-used
+number (The Month, this feature, the case against, The Operator, a cover sell line), and both sides
+of the human-gate argument lean on it.</p>
+<blockquote>
+<p>In a controlled study, 1,053 paid testers worked through sessions in which one permission prompt
+was swapped for a dangerous command. They caught it 13.6% of the time. The classifier caught 89%.</p>
+</blockquote>
+<pre><code>SOURCE // Anthropic, &quot;Auto mode is now the default in Claude Code for Pro, Max, and Team
+          plans&quot;, 7 August 2026. Anthropic&#39;s own study, run through a research vendor.
+CHECK  // Read against the post in the September research check and again in this issue&#39;s.
+          Recomputed: 143 of 1,053 is 13.6%; 937 of 1,053 is 89%.
+STATUS // CONFIRMED
+OPEN   // A test environment, not the testers&#39; own code, and Anthropic grading its own
+          classifier. The study didn&#39;t test a short list of gates on irreversible actions,
+          which is the job this issue keeps for people.
+</code></pre>
+<p><strong>Worked example 2: the convergence</strong> (11, beside &quot;Read across, they arrive at one move: set
+limits, then audit them&quot;, <code>drafts/11</code> line 11; print L547). The issue&#39;s central claim, and its most
+contested.</p>
+<pre><code>SOURCE // The five research reports and the September monthly, 5 October.
+CHECK  // The 25 timeline steps, line by line, in both checks. The convergence itself:
+          no check covered it.
+STATUS // OUR READING
+OPEN   // The timelines share sources, four threads&#39; spend caps lean on one Simon Willison
+          post, and the endings bunch into the nine days before the research stopped.
+          The case against argues the model eats the limits too.
+</code></pre>
+<p><strong>Rule of thumb.</strong> A claim gets a block only if the feature&#39;s headline answer rests on it and at
+least one of these is true: a check changed it; it rests on one source, a vendor&#39;s own figures or a
+page the checkers couldn&#39;t fully read; or it is a reading set among checked facts. One per feature
+at most, plus the Pattern spread. If the claim is also the Prove us wrong claim, put the CHECK and
+STATUS rows in that box instead of adding a block. Never use one where the stamp already says it
+all: a confirmed figure from a primary page with nothing open. In this issue that gives five:</p>
+<table>
+<thead>
+<tr>
+<th>Feature</th>
+<th>Claim</th>
+<th>Why it gets one</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>08</td>
+<td>The 13.6% against 89%</td>
+<td>Example 1: the vendor&#39;s own study, and the piece turns on it</td>
+</tr>
+<tr>
+<td>09</td>
+<td>&quot;None of their six actions assigns liability&quot; (<code>drafts/09</code> line 7)</td>
+<td>A check changed it: the FTC line in it said &quot;reported&quot; until this issue&#39;s check (STATUS: CORRECTED). OPEN: the bill has no published text</td>
+</tr>
+<tr>
+<td>11</td>
+<td>The convergence</td>
+<td>Example 2: a reading set among checked facts</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Argon&#39;s $1.99 a task against Astra&#39;s $3.26</td>
+<td>A paid preview. OPEN: AINews doesn&#39;t say how it worked the costs out, and output tokens explain under half of each</td>
+</tr>
+<tr>
+<td>13</td>
+<td>AI discovery is growing on top of search</td>
+<td>Also the Prove us wrong claim, so add <code>CHECK // MARTECH&#39;S SUMMARY OF DATOS; THE REPORT ITSELF DIDN&#39;T OPEN</code> and <code>STATUS // CONFIRMED AS REPORTED</code> to that box</td>
+</tr>
+</tbody></table>
+<p>The case against (14) gets none: it argues a reading throughout, and says so.</p>
+<h3>D-06 · SHOULD · Correct round 2&#39;s figures for Claude Design</h3>
+<ul>
+<li><code>for-claude-design/round-2/round-2-notes.md</code>, fix 5, gives the contents stamp &quot;642 lines checked,
+25 wrong (all fixed in the edit) and 12 unconfirmed&quot;. Once C-24 is applied, send 647 and the open
+count at press, so the gold stamp and the ledger agree.</li>
+<li>The same fix keeps &quot;CC&quot; in the stamp&#39;s text. Drop it (D-01).</li>
+</ul>
+<h3>2.3 · The How we know boxes, shrunk</h3>
+<p>All five can shrink, and all five follow one pattern, in the template&#39;s own three slots
+(<code>pages/p12-feature-close.html</code>):</p>
+<ul>
+<li><strong>Sources:</strong> one line of names and dates.</li>
+<li><strong>What was checked:</strong> this piece&#39;s stamp; the September research check as one line; and a NOT
+CHECKED line naming the reading the piece rests on. That third line answers B1&#39;s cross-cutting
+point 3 (&quot;The How we know boxes say what was checked, never what wasn&#39;t&quot;) in every box, not only
+The Pattern&#39;s.</li>
+<li><strong>What&#39;s uncertain:</strong> one or two sentences, and only what the body doesn&#39;t already say.</li>
+</ul>
+<p>The shrunk text for each is in C-46 (08), C-50 (09), C-53 (11), C-54 (12) and C-55 (13). Together
+they come to about 500 words, labels included, from 1,035. What leaves the boxes, and where it
+goes: the counts to stamps; the lists of corrections to Corrections; the drafters&#39; reloads, the
+page-load failures and the NEW tags to nowhere (C-45); the 37 feeds and the paywalls to The
+Receipts&#39; limits.</p>
+<p>The case against (14) has no box, by design. A stamp after its last line (D-01) is enough.</p>
+<h3>2.4 · The Receipts</h3>
+<p>Yes: The Receipts should become mostly the ledger and the stamps. The flatplan already calls for an
+eight-step pipeline diagram, so the step prose can shrink to one label per step, carrying that
+step&#39;s count and whether a person or an agent did it (C-17). The two checks become two columns of
+one ledger that adds up, 647 lines for this issue rather than 642, with the open lines split from
+the settled ones (C-24), and a by-section table repeats every page&#39;s stamp, so a reader can test
+any page against the total (D-01). The prose that survives is what the numbers can&#39;t carry: a short
+key saying what a line is and what wrong and open mean; one line saying the verdicts and The
+Pattern&#39;s convergence are readings no check covered (C-26, C-29); and the limits, each pinned to
+something that happened in this issue: none of the legal actions reached a brief, the scoring
+weights changed on 20 September, and every agent that researched, checked or drafted ran on Claude
+while no second family checked anything (C-27, C-28). The Manus story, the scoring formula, the
+claim-scoring step that no record supports, the sentence on the range of errors and the narration
+of the editor&#39;s read go to the diagram, to the data room or nowhere (C-18 to C-23, C-25). That
+takes the section from about 500 words of prose to about 200, plus the diagram and the tables,
+inside its 470-word budget.</p>
+<p>Assembled, it reads:</p>
+<pre><code>THE RECEIPTS
+How this issue was made, the way a survey states its method: the sample, the procedure,
+the checks and the limits.
+
+[DIAGRAM: eight labels, C-17]
+The editor picked the five claims that came up most in the month&#39;s roundups and would
+change most about what readers do.
+
+THE LEDGER
+[gold stamp: CHECK 1 // 236 LINES · 39 WRONG · ALL CORRECTED
+             CHECK 2 // 647 LINES · 25 WRONG · ALL CORRECTED]
+[ledger table and key: C-24]
+[by-section table: D-01]
+Check 1&#39;s 39 errors are all in Corrections, with the check 2 errors that changed a reading.
+The check reports are in the data room at [address].
+
+THE VERDICTS
+[count line: C-26]
+The verdicts are the research agents&#39; readings. No check covered them.
+
+WHAT THIS METHOD CAN&#39;T SEE
+Only what the monitor reads. [C-28]
+Paywalls. [as now]
+One model family. [C-27]
+What no check covered. [C-29]
+One editor. [as now]
+A closed month. [as now]
+</code></pre>
+<hr>
+<h2>Part 3. Outside the listed sections</h2>
+<p><strong>X-01 · CONVERT · SHOULD · 16 Field Notes, the apparatus in print
+(<code>drafts/16-field-notes-candidates.md</code>; print L987 to L1123)</strong></p>
+<ul>
+<li><strong>Now:</strong> under each candidate, a &quot;From:&quot; line with the pack&#39;s file paths and scores
+(&quot;<code>06-daily-briefs/morning-intel-2026-09-14.md</code> (17/20)&quot;), a &quot;Checked:&quot; paragraph of up to 180
+words, a &quot;How these were chosen&quot; paragraph, and a &quot;Found while checking&quot; block of four roundup
+corrections.</li>
+<li><strong>Test:</strong> file paths and scores are pipeline internals, and the &quot;Checked&quot; notes were written for
+Jay&#39;s pick. The four corrections are printed in full in Corrections (&quot;found since&quot;).</li>
+<li><strong>Proposed:</strong> in print, cut the &quot;From:&quot; lines, &quot;How these were chosen&quot; and &quot;Found while
+checking&quot;. Turn each &quot;Checked:&quot; paragraph into one stamp line under its note, for example 1A:
+<code>CHECKED // LOADS · FREE · THE BACKUP BRANCH CONFIRMED</code>; 1B:
+<code>CHECKED // THE PUBLIC PART · PROMPTS AND TEMPLATES PAYWALLED</code>. Keep the rest in the annotated
+file for Jay&#39;s pick.</li>
+</ul>
+<p><strong>X-02 · CUT · SHOULD · 10 The month in one chart, text for the editor and the designer
+(<code>drafts/10-the-month-in-one-chart.md</code> line 7 and the designer notes; print L459, L479 to L485)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;Each proposal gives a title, the chart type, the exact data points with their sources, and
+one sentence on what it shows. Proposal 1 is the recommendation...&quot; and bulleted &quot;Notes for the
+designer&quot; that aren&#39;t marked DESIGNER NOTE.</li>
+<li><strong>Test:</strong> addressed to the editor and the designer, not the reader. Round 2&#39;s notes: &quot;The chart
+page prints only Proposal 1&quot;.</li>
+<li><strong>Proposed:</strong> cut from the print copy, or mark DESIGNER NOTE, along with Proposals 2 and 3.</li>
+</ul>
+<p><strong>X-03 · COMPRESS · COULD · 15 The Operator, its standfirst (<code>drafts/15-the-operator.md</code> line 3;
+print L917)</strong></p>
+<ul>
+<li><strong>Now:</strong> &quot;<em>Five instruction sets built from the month&#39;s fifteen throughline actions, each one
+something you can start on Monday.</em>&quot;</li>
+<li><strong>Test:</strong> &quot;throughline&quot; is the pipeline&#39;s word, never explained to the reader.</li>
+<li><strong>Proposed:</strong> &quot;<em>Five field guides built from the fifteen actions the September research
+recommended, each one something you can start on Monday.</em>&quot;</li>
+</ul>
+<hr>
+<h2>Cross-references to the other audits</h2>
+<table>
+<thead>
+<tr>
+<th>This audit</th>
+<th>Other audit</th>
+<th>Relation</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C-45, and the NOT CHECKED lines in C-46 and C-50</td>
+<td>B1-08-12, B1-09-09</td>
+<td>Same sentences. B1 has them at SHOULD; I&#39;d make the cut MUST. B1&#39;s not-checked content becomes the NOT CHECKED line</td>
+</tr>
+<tr>
+<td>C-53; D-05, example 2</td>
+<td>B2-06; B2 Part 4</td>
+<td>B2&#39;s OUR READING label goes on the spread. My box line and STATUS values use the same words</td>
+</tr>
+<tr>
+<td>D-02, the cover</td>
+<td>B2-27</td>
+<td>B2 labels the cover line OUR READING; I keep stamps off the cover</td>
+</tr>
+<tr>
+<td>C-15</td>
+<td>B2 Part 5</td>
+<td>B2&#39;s new rule V moves the rule numbers up by one; its THIS ISSUE line can count the labels once they&#39;re placed</td>
+</tr>
+<tr>
+<td>C-26, C-51, C-11g, C-57</td>
+<td>A-01; A&#39;s rewrites of 11 and 06; A on the letter</td>
+<td>A regrades the verdicts, so my count line waits on its ruling. A&#39;s &quot;though not the grades&quot; earns 11&#39;s last sentence</td>
+</tr>
+<tr>
+<td>C-24</td>
+<td>A-23</td>
+<td>Both change &quot;Claims&quot; to &quot;Lines&quot;. Mine also fixes the total</td>
+</tr>
+<tr>
+<td>C-02, C-21, C-22</td>
+<td>D, C15</td>
+<td>Agree on the colophon&#39;s Manus clause and step 7&#39;s placeholder. Differ on The Receipts&#39; Manus sentence: D keeps it, I cut it</td>
+</tr>
+<tr>
+<td>C-11h, C-39</td>
+<td>D, C16</td>
+<td>Agree: keep the line in the letter, cut it from Prove us wrong</td>
+</tr>
+<tr>
+<td>C-33</td>
+<td>D, C17</td>
+<td>D keeps the entry; I only trim its framing</td>
+</tr>
+<tr>
+<td>C-53</td>
+<td>D, C14</td>
+<td>D cross-refers the 236 and 39 in prose; my stamp line does the same job</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Tally</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>KEEP</th>
+<th>COMPRESS</th>
+<th>CONVERT</th>
+<th>CUT</th>
+<th>MUST</th>
+<th>SHOULD</th>
+<th>COULD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>03 Colophon (C-01 to C-10)</td>
+<td>3</td>
+<td>3</td>
+<td>2</td>
+<td>2</td>
+<td>0</td>
+<td>6</td>
+<td>2</td>
+</tr>
+<tr>
+<td>04 From the editor (C-11, a to i)</td>
+<td>5</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>4</td>
+<td>1</td>
+</tr>
+<tr>
+<td>05 The Rules (C-12 to C-15)</td>
+<td>1</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+</tr>
+<tr>
+<td>07 The Receipts (C-16 to C-30)</td>
+<td>2</td>
+<td>2</td>
+<td>8</td>
+<td>3</td>
+<td>3</td>
+<td>7</td>
+<td>3</td>
+</tr>
+<tr>
+<td>17 Corrections (C-31 to C-38)</td>
+<td>4</td>
+<td>1</td>
+<td>3</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>3</td>
+</tr>
+<tr>
+<td>18 Prove us wrong (C-39 to C-44)</td>
+<td>2</td>
+<td>1</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>3</td>
+</tr>
+<tr>
+<td>Features (C-45 to C-57)</td>
+<td>4</td>
+<td>2</td>
+<td>5</td>
+<td>2</td>
+<td>1</td>
+<td>5</td>
+<td>3</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>21</strong></td>
+<td><strong>12</strong></td>
+<td><strong>22</strong></td>
+<td><strong>10</strong></td>
+<td><strong>7</strong></td>
+<td><strong>26</strong></td>
+<td><strong>15</strong></td>
+</tr>
+</tbody></table>
+<p>Seventeen of the 21 KEEPs need no change. Part 2&#39;s six design items are all SHOULD. Part 3: one
+CONVERT and one CUT at SHOULD, one COMPRESS at COULD.</p>
+</div></article>
+    </div>
+<main style="max-width: 1360px; margin: 0 auto; padding: 0 48px 160px;">
+    <footer style="margin-top: 160px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; align-items: flex-end;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--ej-font-display); font-weight: 700; font-size: 40px; line-height: .86; letter-spacing: .04em; text-transform: uppercase;">The AI Echo</div>
+<div style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.8;">Edition 1 · October 2026 · covering September 2026<br>Published free as a PDF with The ECHO Files on Substack · Editor: Jay Wright</div>
+      </div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <a href="https://echofiles.substack.com" style="text-decoration: none;">Subscribe</a>
+<a href="#rules" style="text-decoration: none;">The Rules</a>
+<a href="#corrections" style="text-decoration: none;">Corrections</a>
+<a href="index.html" style="text-decoration: none; color: var(--ej-fg-faint);">Top ↑</a>
+      </div>
+<div style="width: 72px; height: 6px; background: repeating-linear-gradient(135deg, var(--ej-line-strong) 0 6px, transparent 6px 12px);"></div>
+    </footer>
+  </main>
+</div>
+<script src="assets/site.js"></script>
+<script>(function(){var k="ai-echo-size",n=0;try{n=parseInt(localStorage.getItem(k)||"0",10)||0}catch(e){}function apply(){var z=Math.pow(1.1,n);document.querySelectorAll("#features, main#top, main").forEach(function(el){el.style.zoom=z});document.querySelectorAll("[data-sz]").forEach(function(b){b.title=Math.round(z*100)+"%"});try{localStorage.setItem(k,String(n))}catch(e){}}apply();document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-sz]");if(!b)return;n+=parseInt(b.getAttribute("data-sz"),10);apply();});})();</script></body>
+</html>

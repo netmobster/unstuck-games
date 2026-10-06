@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="/aiechomag/"><meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>What does a task cost? — The AI Echo, Edition 1</title>
+<meta name="description" content="A field magazine for people operating at the edge of AI. Edition 1, covering September 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/web.css">
+</head>
+<body style="margin: 0; background: var(--ej-bg);">
+<div id="root" data-theme="light" style="color: var(--ej-fg); font-family: var(--ej-font-body); background: var(--ej-bg);">
+
+  <nav style="position: sticky; top: 0; z-index: 20; background: var(--ej-bg); border-bottom: 1px solid var(--ej-line);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 14px 48px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ej-fg);">
+        <span style="font-family: var(--ej-font-display); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: .05em; text-transform: uppercase;">The AI Echo</span>
+        <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); border: 1px solid var(--ej-line-strong); padding: 3px 8px; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 0 100%);">№ 1 · Oct 2026</span>
+      </a>
+<div style="flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-left: auto; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <span style="flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); white-space: nowrap;">14 // What we got wrong, and what changed</span>
+        <button type="button" data-action="toggleRibbon" aria-expanded="true" style="flex: none; white-space: nowrap; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="ribbonLabel">Hide sections</span></button>
+<button type="button" class="sz-btn" data-sz="-1" aria-label="Smaller text">A−</button><button type="button" class="sz-btn" data-sz="1" aria-label="Larger text">A+</button><button type="button" data-action="toggleTheme" style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-muted); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="themeLabel">Dark</span></button>
+      </div>
+    </div>
+<div id="ribbon" style="display: block; border-top: 1px solid var(--ej-line); background: var(--ej-surface);">
+      <div aria-label="Edition 1 sections" data-ribbon="1" style="max-width: 1360px; margin: 0 auto; padding: 0 36px; display: flex; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;">
+        
+          <div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="index.html" data-selected="false" title="The AI Echo" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">№ 1 · Front</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The AI Echo</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Cover and contents</span>
+                </a>
+<a href="01-from-the-editors.html" data-selected="false" title="From the editors" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">01</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">From the editors</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The editor's letter</span>
+                </a>
+<a href="02-the-rules.html" data-selected="false" title="The Rules (DRAFT)" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">02</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Rules (DRAFT)</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Nine rules, each with its test</span>
+                </a>
+<a href="03-the-month.html" data-selected="false" title="The Month" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">03</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Month</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five claims, and how each fared</span>
+                </a>
+<a href="04-the-receipts.html" data-selected="false" title="The Receipts" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">04</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Receipts</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Method, pipeline and ledger</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Front of the book</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="05-who-checks-the-checker.html" data-selected="false" title="Who checks the checker?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">05</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who checks the checker?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">When people approve everything</span>
+                </a>
+<a href="06-who-pays-when-an-agent-breaks-something.html" data-selected="false" title="Who pays when an agent breaks something?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">06</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who pays when an agent breaks something?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Six actions went public, after the fact</span>
+                </a>
+<a href="07-the-month-in-one-chart.html" data-selected="false" title="Same score, different bill" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">07</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                </a>
+<a href="08-the-pattern.html" data-selected="false" title="The Pattern" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">08</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Pattern</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five lanes into one point</span>
+                </a>
+<a href="09-what-does-a-task-cost.html" data-selected="false" title="What does a task cost?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">09</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What does a task cost?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Model choice, per job</span>
+                </a>
+<a href="10-how-do-you-get-found-when-a-machine-reads-first.html" data-selected="false" title="How do you get found when a machine reads first?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">10</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">How do you get found when a machine reads first?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Being found when AI reads first</span>
+                </a>
+<a href="11-the-case-against.html" data-selected="false" title="The case against" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">11</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The case against</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The steelman, and the reply</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Features</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="12-the-operator.html" data-selected="false" title="The Operator" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">12</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five field-guide cards</span>
+                </a>
+<a href="13-field-notes.html" data-selected="false" title="Field Notes: candidates" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">13</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Field Notes</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">A tool, a stop, an experiment</span>
+                </a>
+<a href="14-corrections.html" data-selected="true" title="Corrections" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid var(--ej-gold); border-radius: 0; background: var(--ej-bg); color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">14</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Corrections</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What we got wrong, and what changed</span>
+                </a>
+<a href="15-prove-us-wrong.html" data-selected="false" title="Prove us wrong" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">15</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Prove us wrong</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Make the case against us</span>
+                </a>
+<a href="16-the-library.html" data-selected="false" title="The Library" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">16</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Library</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Twenty-eight things to read</span>
+                </a>
+<a href="17-the-operators-page.html" data-selected="false" title="The Operator's Page" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">17</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator's Page</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">To do, to watch, one question</span>
+                </a>
+<a href="18-the-raw-data.html" data-selected="false" title="The Raw Data" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">18</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Raw Data</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The data behind the issue</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Back of the book</div>
+          </div>
+        
+      </div>
+    </div>
+<div id="progress" style="height: 2px; background: var(--ej-gold); width: 0.00%; transition: width .15s linear;"></div>
+  </nav>
+<main id="top" style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
+    
+  </main>
+<div id="corrections" data-theme="light" style="background: var(--ej-bg); color: var(--ej-fg); padding: 72px 0 0;">
+      <article class="dr"><p class="dr-crumb"><a href="data/index.html">The data room</a> // Source maps and edit logs</p><div class="dr-kick"><span class="dr-tab">DATA</span><span>// Source maps and edit logs</span></div><h1 class="dr-h1">What does a task cost?</h1><p class="dr-dek">Source map and edit logs</p><div class="dr-doc"><h2>Source map</h2>
+<p>Anchors: <code>01-the-monthly-september-2026.md#n</code> is the monthly&#39;s numbered section n; &quot;step k&quot;, &quot;throughline k&quot;, &quot;Why it matters&quot;, &quot;Verdict&quot; and &quot;The best case against&quot; are the parts of that section; <code>#intro</code> is the text before section 1. In the check files, §1 is &quot;Needs a change&quot; (items numbered in order, including unnumbered bullets), §2 is &quot;Confirmed&quot;, §4 is &quot;Count&quot;. Primary URLs are as given in the check files. All paths are relative to <code>manus-pack/</code>. A <code>NEW</code> tag carries a fact taken from <code>checks/check-10-12-13.md</code> (5 October), with the primary source the checker loaded; rows with a letter (18a, 19a, 36a, 36b) were added in the edit, so the check&#39;s row numbers still hold.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Claim as printed</th>
+<th>Tag</th>
+<th>Primary source</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>Standfirst: the sticker price no longer told the labs apart; on the magazine&#39;s reading, cost of a finished task did</td>
+<td>01#3, Why it matters</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026</a></td>
+</tr>
+<tr>
+<td>2</td>
+<td>Early September, a weekly roundup (5 to 11 Sep): model choice the least consequential decision in the stack. One roundup said it; the 12 to 18 Sep roundup only referred back to it (recheck/result.md, seeded-error test)</td>
+<td>01#3, Where it appeared; <a href="data/check-claim-3.html">check-claim-3</a> §2, Where it appeared</td>
+<td><a href="https://echofiles.substack.com/p/this-week-in-ai-operator-space-sept" rel="noopener" target="_blank">https://echofiles.substack.com/p/this-week-in-ai-operator-space-sept</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>On the magazine&#39;s reading, the evidence split the claim and one half came back reversed (audit A&#39;s grade: reframed, reversed at the level of the job); the vendor mattered less; which model got which job mattered more; so did the wrapper</td>
+<td>01#intro; 01#4, Verdict; the grade is <a href="data/audit-a-verdicts.html">audit-A-verdicts.md</a> §1, not a source</td>
+<td>as row 1</td>
+</tr>
+<tr>
+<td>3a</td>
+<td>The number worth counting was the cost of a finished task; the same roundup had already named what you spend per task among the decisions that count (&quot;The consequential decisions are which layer you operate at, what you spend per task, and whether anyone can see what happened.&quot;)</td>
+<td><a href="data/roundups.html#roundup-2026-09-05-to-09-11">05-roundups/roundup-2026-09-05-to-09-11.md</a></td>
+<td><a href="https://echofiles.substack.com/p/this-week-in-ai-operator-space-sept" rel="noopener" target="_blank">https://echofiles.substack.com/p/this-week-in-ai-operator-space-sept</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>OpenAI cut Luna&#39;s price 80% in July; Anthropic held Opus at $5/$25 across five releases</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, Background</td>
+<td><a href="https://tomtunguz.com/the-most-important-market-in-ai-is-the-middle/" rel="noopener" target="_blank">https://tomtunguz.com/the-most-important-market-in-ai-is-the-middle/</a> ; <a href="https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/" rel="noopener" target="_blank">https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/</a></td>
+</tr>
+<tr>
+<td>5</td>
+<td>22 Sep, about an hour after Opus 5.5: OpenAI released GPT-6 Sol at $2/$10, half GPT-5.6 Sol&#39;s promotional $4/$20, and GPT-6 Luna at $0.10/$0.50</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted; §1, Also worth knowing (the promotional prices); NEW (check-10-12-13 §2, Attribution and wording) for the hour</td>
+<td><a href="https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/" rel="noopener" target="_blank">https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/</a> (loaded 5 Oct)</td>
+</tr>
+<tr>
+<td>6</td>
+<td>22 Sep: Anthropic released Opus 5.5 at $4/$20, a 20% cut, about an hour before OpenAI released GPT-6 Sol and Luna</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted and What I got wrong; NEW (check-10-12-13 §2, Attribution and wording) for the timing</td>
+<td><a href="https://www.anthropic.com/claude-opus-5-5" rel="noopener" target="_blank">https://www.anthropic.com/claude-opus-5-5</a> ; <a href="https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/" rel="noopener" target="_blank">https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/</a></td>
+</tr>
+<tr>
+<td>7</td>
+<td>28–30 Sep: Anthropic, OpenAI and Google each launched or announced a model at $2/$10 (Sonnet 5.5, GPT-6.1 Sol, Gemini 4 Argon)</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 1</td>
+<td><a href="https://www.anthropic.com/claude-sonnet-5-5" rel="noopener" target="_blank">https://www.anthropic.com/claude-sonnet-5-5</a> ; <a href="https://simonwillison.net/2026/Sep/29/openai-devday-2026-live-blog/" rel="noopener" target="_blank">https://simonwillison.net/2026/Sep/29/openai-devday-2026-live-blog/</a> ; <a href="https://thezvi.wordpress.com/2026/10/01/ai-188-gemini-dot-argon/" rel="noopener" target="_blank">https://thezvi.wordpress.com/2026/10/01/ai-188-gemini-dot-argon/</a></td>
+</tr>
+<tr>
+<td>8</td>
+<td>Sonnet 5 at $2/$10 since launch; planned rise to $3/$15 won&#39;t happen; GPT-6 Sol at $2/$10 for a week</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 1</td>
+<td><a href="https://platform.claude.com/docs/en/about-claude/pricing" rel="noopener" target="_blank">https://platform.claude.com/docs/en/about-claude/pricing</a> ; <a href="https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/" rel="noopener" target="_blank">https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/</a></td>
+</tr>
+<tr>
+<td>9</td>
+<td>Google&#39;s $2/$10 is an introductory half price (who can use it is row 14; &quot;only for trusted cyber defenders in Google&#39;s Fairwind Program&quot; cut on 6 Oct, <a href="data/recheck-post-gpt-check.html">recheck/post-gpt-check.md</a> row 51)</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 1; NEW (gpt-check/adjudication-wrong-overstated.md row 10 and C2)</td>
+<td><a href="https://thezvi.wordpress.com/2026/10/01/ai-188-gemini-dot-argon/" rel="noopener" target="_blank">https://thezvi.wordpress.com/2026/10/01/ai-188-gemini-dot-argon/</a> ; <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" rel="noopener" target="_blank">https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/</a></td>
+</tr>
+<tr>
+<td>10</td>
+<td>The sticker stopped separating vendors; Anthropic began selling in other units (its two examples are rows 11 and 12)</td>
+<td>01#3, Why it matters</td>
+<td>as row 1</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Anthropic: Opus 5.5 costs 40% less to run than Opus 5 on typical workloads; list price fell 20%</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, What I got wrong</td>
+<td><a href="https://www.anthropic.com/claude-opus-5-5" rel="noopener" target="_blank">https://www.anthropic.com/claude-opus-5-5</a></td>
+</tr>
+<tr>
+<td>12</td>
+<td>Sonnet 5.5 kept its list price; up to 30% less per task because it needs fewer tokens</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted</td>
+<td><a href="https://www.anthropic.com/claude-sonnet-5-5" rel="noopener" target="_blank">https://www.anthropic.com/claude-sonnet-5-5</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td>Argon: $2/$10, a 50% introductory discount, no end date announced</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 1</td>
+<td><a href="https://thezvi.wordpress.com/2026/10/01/ai-188-gemini-dot-argon/" rel="noopener" target="_blank">https://thezvi.wordpress.com/2026/10/01/ai-188-gemini-dot-argon/</a></td>
+</tr>
+<tr>
+<td>14</td>
+<td>Argon access: open first to government users, Google staff and trusted cyber defenders in Google&#39;s Fairwind Program; developers, enterprises and consumers later. AINews&#39;s preview: &quot;Access starts with government users and trusted cyber defenders in the Fairwind Program&quot;; Google&#39;s post: the Fairwind rollout, the US government&#39;s pre-release access and &quot;thousands of Googlers&quot; (government users restored and Google staff added on 6 Oct, <a href="data/recheck-post-gpt-check.html">recheck/post-gpt-check.md</a> rows 51 and 52)</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 1; NEW (gpt-check/adjudication-wrong-overstated.md C2; <a href="data/recheck-post-gpt-check.html">recheck/post-gpt-check.md</a>)</td>
+<td>as row 13 ; <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" rel="noopener" target="_blank">https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/</a> ; <a href="https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer" rel="noopener" target="_blank">https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer</a> (paid; preview)</td>
+</tr>
+<tr>
+<td>15</td>
+<td>Argon&#39;s standard price $4/$20</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 1</td>
+<td>as row 13</td>
+</tr>
+<tr>
+<td>16</td>
+<td>Argon matched Astra at 53 on Artificial Analysis&#39;s Intelligence Index; 62,000 output tokens per task to Astra&#39;s 27,000</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted</td>
+<td><a href="https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer" rel="noopener" target="_blank">https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer</a> (paid; preview)</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Astra lists at $10/$50; Argon&#39;s introductory price a fifth of Astra&#39;s per token</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted</td>
+<td><a href="https://thezvi.wordpress.com/2026/09/12/gpt-6-astra-can-do-ambitious-things/" rel="noopener" target="_blank">https://thezvi.wordpress.com/2026/09/12/gpt-6-astra-can-do-ambitious-things/</a> ; as row 16</td>
+</tr>
+<tr>
+<td>18</td>
+<td>$1.99 a task against Astra&#39;s $3.26 (AINews)</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted; §1 item 1</td>
+<td>as row 16</td>
+</tr>
+<tr>
+<td>18a</td>
+<td>Output tokens make up under half of each per-task figure (at list output prices, $0.62 of $1.99 and $1.35 of $3.26)</td>
+<td>NEW (check-10-12-13 §2, Arithmetic)</td>
+<td><a href="https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer" rel="noopener" target="_blank">https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer</a> (paid; preview, loaded 5 Oct)</td>
+</tr>
+<tr>
+<td>19</td>
+<td>At its standard price, Argon would come to $3.98 a task, more than Astra</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 1</td>
+<td>as row 16</td>
+</tr>
+<tr>
+<td>19a</td>
+<td>Argon beats Astra per task only while the discount lasts, because it burns far more tokens to reach the same score</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted; §1 item 1</td>
+<td>as row 16</td>
+</tr>
+<tr>
+<td>19b</td>
+<td>Evidence block on the $1.99 against $3.26: AINews, 1 Oct, paid, read as far as its preview; read in the September check and loaded again 5 Oct; output tokens $0.62 of $1.99 and $1.35 of $3.26 at list prices; AINews gives no method</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted; §1 item 1; NEW (check-10-12-13 §2, Arithmetic)</td>
+<td>as row 16 (loaded 5 Oct)</td>
+</tr>
+<tr>
+<td>20</td>
+<td>3 Sep: Latent Space put Astra at under $6 an hour; 33 tokens a second at a top rate of $50 per million</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §1 item 1; §2, Background and Why it matters</td>
+<td><a href="https://www.latent.space/p/astra" rel="noopener" target="_blank">https://www.latent.space/p/astra</a></td>
+</tr>
+<tr>
+<td>21</td>
+<td>AINews (4 Sep): Astra 2.5 times pricier per token; cheaper per task in some workflows, dearer in others; the line says it is a paid post, checked as far as its public preview</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 5</td>
+<td><a href="https://www.latent.space/p/ainews-gpt-6-astra-openais-biggest" rel="noopener" target="_blank">https://www.latent.space/p/ainews-gpt-6-astra-openais-biggest</a> (paid; preview)</td>
+</tr>
+<tr>
+<td>22</td>
+<td>10 Sep: Nate B Jones, &quot;Which Model Gets Which Job&quot;; concluded one project could justify both models; the line says it is a paid post, checked as far as its free opening</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted</td>
+<td><a href="https://natesnewsletter.substack.com/p/fable-astra-which-job" rel="noopener" target="_blank">https://natesnewsletter.substack.com/p/fable-astra-which-job</a> (paid; the quoted conclusion closes the free opening)</td>
+</tr>
+<tr>
+<td>23</td>
+<td>Zvi planned to ask both models every non-trivial question, because their answers complemented each other</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 7</td>
+<td><a href="https://thezvi.wordpress.com/2026/09/05/claude-mythos-5-1-and-fable-5-1-capabilities/" rel="noopener" target="_blank">https://thezvi.wordpress.com/2026/09/05/claude-mythos-5-1-and-fable-5-1-capabilities/</a></td>
+</tr>
+<tr>
+<td>24</td>
+<td>22 Sep: Claire Vo&#39;s blind test; Sol won her over on clear writing; Opus 5.5 strongest for long-running agents and B2B front-end work; Astra her favourite</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 6</td>
+<td><a href="https://www.lennysnewsletter.com/p/opus-55-vs-gpt-6-sol-which-model" rel="noopener" target="_blank">https://www.lennysnewsletter.com/p/opus-55-vs-gpt-6-sol-which-model</a></td>
+</tr>
+<tr>
+<td>25</td>
+<td>26 Sep: Zvi&#39;s job map (Opus 5.5 default; Fable 5.1 expert-domain correctness; Astra ambitious coding and some science; Luna and other cheap models for budget work)</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 2</td>
+<td><a href="https://thezvi.wordpress.com/2026/09/26/claude-opus-5-5-should-raise-your-ambitions/" rel="noopener" target="_blank">https://thezvi.wordpress.com/2026/09/26/claude-opus-5-5-should-raise-your-ambitions/</a></td>
+</tr>
+<tr>
+<td>26</td>
+<td>3 Oct: Jones keeps Astra for the most demanding work, moves recurring jobs to Sol to save plan allowance</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted</td>
+<td><a href="https://natesnewsletter.substack.com/p/openai-devday-dots-space-sol" rel="noopener" target="_blank">https://natesnewsletter.substack.com/p/openai-devday-dots-space-sol</a></td>
+</tr>
+<tr>
+<td>27</td>
+<td>Kuo Zhang, Alibaba.com&#39;s president, wrote in Fortune on 9 Sep: model, harness and context together</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §1 item 4</td>
+<td><a href="https://fortune.com/2026/09/09/alibaba-president-kuo-zhang-ai-agents-can-talk-but-not-work/" rel="noopener" target="_blank">https://fortune.com/2026/09/09/alibaba-president-kuo-zhang-ai-agents-can-talk-but-not-work/</a></td>
+</tr>
+<tr>
+<td>28</td>
+<td>17 Sep: Tunguz wrote up HarnessTax; same models under different harnesses</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §1 item 2</td>
+<td><a href="https://tomtunguz.com/the-harness-margin-opportunity/" rel="noopener" target="_blank">https://tomtunguz.com/the-harness-margin-opportunity/</a></td>
+</tr>
+<tr>
+<td>29</td>
+<td>Lead example: GPT-5.6 Sol, Claude Code to Pi (a minimal open-source harness); $1.540 to $0.441 per resolved task; 71%</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted; <a href="data/check-claim-3.html">check-claim-3</a> §1 item 8</td>
+<td>as row 28</td>
+</tr>
+<tr>
+<td>30</td>
+<td>Larger than any September cut to input or output token prices</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §1 item 3; <a href="data/check-claim-3.html">check-claim-3</a> §1, Also worth knowing; <a href="data/check-10-12-13.html">check-10-12-13</a> §2, Rulings on the two disagreements, 1 (the biggest such cut was 58%, Luna&#39;s output price)</td>
+<td><a href="https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/" rel="noopener" target="_blank">https://simonwillison.net/2026/Sep/22/opus-and-sol-and-luna/</a></td>
+</tr>
+<tr>
+<td>31</td>
+<td>Fable 5.1&#39;s cache reads fell 75% at the start of the month</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §1 item 3</td>
+<td><a href="https://www.anthropic.com/claude-fable-and-mythos-5-1" rel="noopener" target="_blank">https://www.anthropic.com/claude-fable-and-mythos-5-1</a></td>
+</tr>
+<tr>
+<td>32</td>
+<td>The 71% is one model moved to one harness, not an average</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, What I got wrong</td>
+<td>as row 28</td>
+</tr>
+<tr>
+<td>33</td>
+<td>HarnessTax&#39;s own headline (via GIGAZINE): success rates didn&#39;t vary significantly; costs differed up to five times; 71% not the widest gap</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §1 item 2</td>
+<td><a href="https://gigazine.net/gsc_news/en/20260917-harnesstax-ai-coding-agents/" rel="noopener" target="_blank">https://gigazine.net/gsc_news/en/20260917-harnesstax-ai-coding-agents/</a></td>
+</tr>
+<tr>
+<td>34</td>
+<td>Tunguz&#39;s footnote: one significant <a href="data/recheck-result.html">result</a> in 42, fewer than chance, none survives correction; &quot;undemonstrated at this sample size, not proven absent&quot;</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §1 items 5 and 8</td>
+<td>as row 28 (footnote 1)</td>
+</tr>
+<tr>
+<td>35</td>
+<td>arXiv study, 8 Sep: no clear average effect of the harness on quality</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted</td>
+<td><a href="https://arxiv.org/abs/2609.11987" rel="noopener" target="_blank">https://arxiv.org/abs/2609.11987</a></td>
+</tr>
+<tr>
+<td>36</td>
+<td>Narrower than the version the roundups ran in September</td>
+<td>01, What I got wrong (HarnessTax bullet)</td>
+<td><a href="https://echofiles.substack.com/p/this-week-in-ai-operator-space-sept-1a1" rel="noopener" target="_blank">https://echofiles.substack.com/p/this-week-in-ai-operator-space-sept-1a1</a></td>
+</tr>
+<tr>
+<td>36a</td>
+<td>Neither of September&#39;s two studies (HarnessTax as Tunguz wrote it up, 17 Sep; the arXiv paper, 8 Sep) showed that the harness changes average quality, in either direction</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §1 items 5 and 8; §2, How it shifted</td>
+<td>as rows 28 and 35</td>
+</tr>
+<tr>
+<td>36b</td>
+<td>Where the wrapper saved money in production, part of the saving came from making it smaller</td>
+<td>01#4, step 3 (&quot;Part of Cursor&#39;s 7% cut came from removing things&quot;)</td>
+<td>as row 1 ; as row 37</td>
+</tr>
+<tr>
+<td>37</td>
+<td>23 Sep: Cursor, harness changes cut users&#39; token costs 7% without reducing agent quality; A/B tests on a large user base</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted and Read these</td>
+<td><a href="https://cursor.com/blog/improved-token-efficiency" rel="noopener" target="_blank">https://cursor.com/blog/improved-token-efficiency</a></td>
+</tr>
+<tr>
+<td>38</td>
+<td>Cursor trimmed roughly 66% of its system prompt; loaded tools only when needed; description tokens in static context cut 60%</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted</td>
+<td>as row 37</td>
+</tr>
+<tr>
+<td>39</td>
+<td>McAteer, Latent Space, 22 Aug: harness progress measured by how much gets deleted</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted</td>
+<td><a href="https://www.latent.space/p/attention-interface" rel="noopener" target="_blank">https://www.latent.space/p/attention-interface</a></td>
+</tr>
+<tr>
+<td>40</td>
+<td>Anthropic cut 80% of Claude Code&#39;s system prompt</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted</td>
+<td>as row 39</td>
+</tr>
+<tr>
+<td>41</td>
+<td>29 Sep: Thariq Shihipar, core harness more complex and more secure; Claude.md expected to go away</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted</td>
+<td><a href="https://www.latent.space/p/thariq" rel="noopener" target="_blank">https://www.latent.space/p/thariq</a></td>
+</tr>
+<tr>
+<td>42</td>
+<td>Routing had looked like the wrapper&#39;s best business; drew in a lab (OpenAI) and two cloud platforms (AWS, Cloudflare)</td>
+<td>01#4, Verdict (&quot;looked like&quot;); <a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted; <a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted</td>
+<td>as row 1 ; as rows 44 and 45</td>
+</tr>
+<tr>
+<td>43</td>
+<td>Jev: only classifies, routes and scores; &gt;100x speed of small frontier models, &gt;200x lower cost (own figures); six clones in two days</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted</td>
+<td><a href="https://www.latent.space/p/ainews-jev-a-system-one-model-that" rel="noopener" target="_blank">https://www.latent.space/p/ainews-jev-a-system-one-model-that</a> ; <a href="https://www.latent.space/p/ainews-here-are-6-clones-of-jev-in" rel="noopener" target="_blank">https://www.latent.space/p/ainews-here-are-6-clones-of-jev-in</a></td>
+</tr>
+<tr>
+<td>44</td>
+<td>OpenAI built the Decisions API in about a week, by Latent Space&#39;s account (its episode title; OpenAI&#39;s Nikunj Handa agreed on air); launched in limited preview at DevDay, 29 Sep</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted; <a href="data/check-claim-1.html">check-claim-1</a> §2, How it shifted</td>
+<td><a href="https://www.latent.space/p/devday-2026" rel="noopener" target="_blank">https://www.latent.space/p/devday-2026</a> ; <a href="https://the-decoder.com/openai-expands-codex-and-its-api-at-devday-with-security-scans-a-decisions-api-and-ultrafast/" rel="noopener" target="_blank">https://the-decoder.com/openai-expands-codex-and-its-api-at-devday-with-security-scans-a-decisions-api-and-ultrafast/</a></td>
+</tr>
+<tr>
+<td>45</td>
+<td>AWS and Cloudflare released decision models on 1 Oct</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, How it shifted</td>
+<td><a href="https://siliconangle.com/2026/10/01/aws-debuts-strands-decider-2b-a-first-lightweight-decision-model-for-accelerate-agentic-workflows/" rel="noopener" target="_blank">https://siliconangle.com/2026/10/01/aws-debuts-strands-decider-2b-a-first-lightweight-decision-model-for-accelerate-agentic-workflows/</a> ; <a href="https://cryptobriefing.com/cloudflare-clef-decision-models-workers-ai/" rel="noopener" target="_blank">https://cryptobriefing.com/cloudflare-clef-decision-models-workers-ai/</a></td>
+</tr>
+<tr>
+<td>46</td>
+<td>25 Sep: Latent Space reported Stripe&#39;s purchase of OpenRouter at $7B</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted</td>
+<td><a href="https://www.latent.space/p/openrouter" rel="noopener" target="_blank">https://www.latent.space/p/openrouter</a></td>
+</tr>
+<tr>
+<td>47</td>
+<td>Ramp&#39;s AI index via The Decoder, 2 Oct: more AI, paying less; usage up about 50% since spending peaked in July</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted</td>
+<td><a href="https://the-decoder.com/businesses-are-using-more-ai-and-paying-less-for-it-ramp-ai-index-shows/" rel="noopener" target="_blank">https://the-decoder.com/businesses-are-using-more-ai-and-paying-less-for-it-ramp-ai-index-shows/</a></td>
+</tr>
+<tr>
+<td>48</td>
+<td>Fall in spending almost entirely from OpenAI–Anthropic competition; no mention of harnesses or wrappers (the rest is labelled as our inference)</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §2, How it shifted</td>
+<td>as row 47</td>
+</tr>
+<tr>
+<td>49</td>
+<td>Databricks: Astra to about 3,500 engineers; coding spend up 60%</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, The best case against</td>
+<td><a href="https://www.latent.space/p/ainews-reality-checks-on-ai-news" rel="noopener" target="_blank">https://www.latent.space/p/ainews-reality-checks-on-ai-news</a></td>
+</tr>
+<tr>
+<td>50</td>
+<td>Gains clear only on highly complex work; simpler coding may not have improved much</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, The best case against; §1 item 4</td>
+<td>as row 49</td>
+</tr>
+<tr>
+<td>51</td>
+<td>On the monthly&#39;s reading, the model set both the cost and the outcome there</td>
+<td>01#3, The best case against</td>
+<td>as row 1</td>
+</tr>
+<tr>
+<td>52</td>
+<td>Databricks&#39; answer: Astra on its own sub-budget (the source says &quot;dedicated sub-budget&quot; and names no cap)</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §2, The best case against and The throughline</td>
+<td>as row 49</td>
+</tr>
+<tr>
+<td>53</td>
+<td>On the magazine&#39;s reading, the routing table: job, default model, escalation trigger, cost per accepted output, spend cap; The Operator (printed 12, file 15) sets out how to build one</td>
+<td>01#3, Why it matters and throughline 2</td>
+<td>as row 1</td>
+</tr>
+<tr>
+<td>54</td>
+<td>(Cut in edit pass 2: the six steps now live only in The Operator, file 15.) Steps 1–6. In step 4, Databricks&#39; part is the separate sub-budget; &quot;and cap it&quot; is this piece&#39;s advice, not something Databricks is reported to have done</td>
+<td>01#3, throughlines 1–3; 01#4, throughlines 1–3; <a href="data/check-claim-3.html">check-claim-3</a> §2, The throughline</td>
+<td>as row 1</td>
+</tr>
+<tr>
+<td>55</td>
+<td>The main harness study couldn&#39;t rule a quality gap in or out</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §1 item 5</td>
+<td>as row 28</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Visual: Zvi&#39;s four-row job map</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §1 item 2</td>
+<td>as row 25</td>
+</tr>
+<tr>
+<td>57</td>
+<td>How we know, What was checked: this piece&#39;s stamp, 58 lines and 0 wrong (check-10-12-13&#39;s count for 12); September research 89 lines (claim 3: 35 confirmed, 8 wrong; claim 4: 37 confirmed, 8 wrong, 1 unsettled), 16 wrong, all corrected; NOT CHECKED, the verdict; the readings named as ours</td>
+<td><a href="data/check-claim-3.html">check-claim-3</a> §4 and its scope line; <a href="data/check-claim-4.html">check-claim-4</a> §4 and its scope line; <a href="data/check-10-12-13.html">checks/check-10-12-13.md</a>; <a href="data/audit-c-machinery.html">audit-C-machinery.md</a> C-54</td>
+<td>the check files</td>
+</tr>
+<tr>
+<td>58</td>
+<td>How we know, What&#39;s uncertain: HarnessTax&#39;s page didn&#39;t load; AWS and Cloudflare via press. (The AINews preview caveats now sit in the evidence block, row 19b; the discount&#39;s end date and the vendors&#39; own figures are in the body; Vo&#39;s scores no longer print)</td>
+<td><a href="data/check-claim-4.html">check-claim-4</a> §1, Note; <a href="data/check-claim-3.html">check-claim-3</a> §1, Also worth knowing</td>
+<td>the check files</td>
+</tr>
+</tbody></table>
+<p>Not tagged because they are arithmetic on tagged figures: &quot;a fifth of Astra&#39;s per token&quot; ($2/$10 against $10/$50). Not tagged because they are this magazine&#39;s reading rather than a sourced fact: &quot;Some prices were falling before the month began&quot; (a summary of row 4); &quot;The benchmark calls it a tie. The cost per task doesn&#39;t.&quot; (53 each on the index; $1.99, $3.26 and $3.98 a task); &quot;The month&#39;s first evidence was already priced by the hour and by the task&quot; (a summary of rows 20 and 21); &quot;That is a routing table, written as a blog post&quot;; the Ramp inference (labelled as one in the text); &quot;what a harness sheds is instruction, and what it keeps is machinery&quot; (labelled in the text); &quot;The magazine&#39;s lesson&quot; on Databricks (labelled advice); &quot;the harness can move the second number several times over&quot; (a reading of rows 29 and 33).</p>
+<p>Ruled 5 October (check-10-12-13 §2, Rulings on the two disagreements, 1), closing the drafter&#39;s note to the checker: September&#39;s biggest cut to an input or output price was 58%, Luna&#39;s output price ($1.20 to $0.50); check-claim-4&#39;s 50% repeats the sources&#39; rounding. The text names no figure and the 71% exceeds 58%, so the body doesn&#39;t change on this point.</p>
+<h2>Edit log (5 Oct)</h2>
+<p>&quot;Check&quot; is <code>checks/check-10-12-13.md</code>: §1 is Needs a change, §2 is Other flags, named by sub-heading. &quot;Rulings&quot; is <code>edit-rulings.md</code>.</p>
+<ol>
+<li>Header note: &quot;Not yet checked&quot; replaced with the check and edit dates, and the <code>[NEW: …]</code> convention. Rulings, Mechanics.</li>
+<li>The sticker converged: &quot;The same week, Claude Opus 5.5 launched at $4/$20&quot; → &quot;On 22 September Anthropic released Claude Opus 5.5 at $4/$20&quot;, followed by &quot;About an hour later OpenAI released GPT-6 Sol … and GPT-6 Luna&quot;. The sentences now run in time order, tagged <code>NEW</code> to Willison&#39;s 22 September post. Check §2, Attribution and wording (Opus 5.5 timing).</li>
+<li>Same paragraph: &quot;half GPT-5.6 Sol&#39;s $4/$20&quot; → &quot;half GPT-5.6 Sol&#39;s promotional $4/$20&quot;, tagged to <a href="data/check-claim-3.html">check-claim-3</a> §1, Also worth knowing. The 25% rise Willison notes for November was left out to keep the line short. Check §2, Attribution and wording (optional context).</li>
+<li>Argon&#39;s three prices: &quot;AINews put the <a href="data/recheck-result.html">result</a> at $1.99 a task&quot; → &quot;AINews put the cost at&quot;, so the figure isn&#39;t read as tokens times price. Check §2, Arithmetic; Rulings, Gemini 4 Argon.</li>
+<li>Same paragraph: added &quot;output tokens make up under half of each&quot;, tagged <code>NEW</code> to the AINews preview. Check §2, Arithmetic; Rulings, Gemini 4 Argon.</li>
+<li>Same paragraph: &quot;At its standard price, Argon comes to $3.98 a task&quot; → &quot;would come to&quot;. Rulings, Gemini 4 Argon.</li>
+<li>&quot;Same score, different bill.&quot; → &quot;The benchmark calls it a tie. The invoice doesn&#39;t.&quot; The phrase now runs only on the chart page. Check §2, Attribution and wording (Proposal 1&#39;s title); Rulings, Wording.</li>
+<li>&quot;because it spends more than twice the output tokens to reach the same score&quot; → &quot;because it burns far more tokens per task (62,000 output tokens to Astra&#39;s 27,000) to reach the same score&quot;, now tagged. Check §2, Arithmetic.</li>
+<li>Pull quote: &quot;Same score, different bill.&quot; → &quot;The benchmark calls it a tie. The invoice doesn&#39;t.&quot; The rest of the pull is unchanged. Same items as 7.</li>
+<li>The wrapper&#39;s number: &quot;Nobody has yet shown that it changes the quality, in either direction.&quot; → &quot;Neither of September&#39;s two studies showed that it changes average quality, in either direction.&quot;, now tagged. Check §2, Overstatements; Untagged claims.</li>
+<li>Savings by deletion: &quot;Where the wrapper saved money in production, it did it by getting smaller.&quot; → &quot;…part of the saving came from making it smaller.&quot;, tagged to the monthly&#39;s #4 step 3. Check §2, Overstatements; Untagged claims.</li>
+<li>Same paragraph: cut &quot;Part of the saving came from taking things out.&quot;, which repeated the corrected opener; &quot;Cursor trimmed&quot; → &quot;It trimmed&quot;. Follows from 11.</li>
+<li>The labs move in on routing: &quot;in about a week&quot; attributed: &quot;, by Latent Space&#39;s account,&quot;. The commas keep the attribution off the launch, which Latent Space called &quot;shipped&quot;. Check §2, Attribution and wording (about a week); Rulings, The Decisions API.</li>
+<li>Same sentence: &quot;launched it as a limited preview&quot; → &quot;launched it in limited preview&quot;, the rulings&#39; wording. Check §2, Rulings on the two disagreements, 2; Rulings, The Decisions API.</li>
+<li>When the model sets the bill: &quot;Databricks&#39; answer was a dedicated Astra sub-budget&quot; → &quot;Databricks&#39; answer was to put Astra on its own sub-budget&quot;. Rulings, Databricks; edit notes, Consistency.</li>
+<li>Step 4: &quot;Put the $10/$50 frontier models behind a capped sub-budget, as Databricks did for Astra&quot; → &quot;Put the $10/$50 frontier models on their own sub-budget, as Databricks did for Astra, and cap it&quot;. Check §2, Overstatements (12 · step 4).</li>
+<li>How we know: &quot;went line by line through the research behind this piece&quot; → &quot;went line by line through the September monthly this piece draws on&quot;. Check §2, Attribution and wording.</li>
+<li>How we know: added that the Argon preview doesn&#39;t say how AINews worked out its per-task costs, tagged <code>NEW</code> to the AINews preview. Check §2, Arithmetic.</li>
+<li>Source map: anchors now explain <code>NEW</code> tags and the lettered rows. Rulings, Mechanics.</li>
+<li>Source map: rows 5 and 6 restated for the order, the hour and &quot;promotional&quot;. Check §2, Attribution and wording.</li>
+<li>Source map: added rows 18a (output tokens under half) and 19a (burns far more tokens). Check §2, Arithmetic.</li>
+<li>Source map: row 19 now reads &quot;would come to&quot;. Rulings, Gemini 4 Argon.</li>
+<li>Source map: row 30 carries the ruling that the biggest input/output cut was 58%. Check §2, Rulings on the two disagreements, 1.</li>
+<li>Source map: added rows 36a and 36b for the two corrected lines, now tagged. Check §2, Overstatements; Untagged claims.</li>
+<li>Source map: row 44 records whose &quot;about a week&quot; it is (Latent Space&#39;s title; OpenAI&#39;s Nikunj Handa agreed on air) and reads &quot;in limited preview&quot;. Check §2, Attribution and wording; Rulings on the two disagreements, 2.</li>
+<li>Source map: row 52 reads &quot;its own sub-budget&quot; and notes the source names no cap. Rulings, Databricks.</li>
+<li>Source map: row 54 notes that step 4&#39;s &quot;and cap it&quot; is this piece&#39;s advice, not something Databricks is reported to have done. Check §2, Overstatements (12 · step 4).</li>
+<li>Source map: row 57 records that the checks covered the September monthly. Check §2, Attribution and wording.</li>
+<li>Source map: row 58 adds the AINews per-task caveat. Check §2, Arithmetic.</li>
+<li>Not-tagged list: dropped &quot;more than twice the output tokens&quot;, now tagged in place, and added &quot;The benchmark calls it a tie. The invoice doesn&#39;t.&quot; as the magazine&#39;s reading. Check §2, Arithmetic; Untagged claims.</li>
+<li>The drafter&#39;s note to the checker on 50% against 58% is replaced by the checker&#39;s ruling (58%, Luna&#39;s output price; nothing in the body changes). Check §2, Rulings on the two disagreements, 1.</li>
+</ol>
+<h2>Edit pass 2 (6 Oct)</h2>
+<p>Tonight&#39;s audits, applied on Jay&#39;s &quot;Apply everything&quot;. A is <code>audit/audit-A-verdicts.md</code>, B3 <code>audit/audit-B3-receipt-vs-reading.md</code>, C <code>audit/audit-C-machinery.md</code>, D <code>audit/audit-D-repetition.md</code>, R <code>recheck/result.md</code>. D numbers sections as printed: this piece is 09, The Operator 12.</p>
+<ul>
+<li>R (seeded-error test, the one real finding): applied. &quot;The ECHO Files&#39; weekly roundups said&quot; → &quot;a weekly roundup from The ECHO Files said&quot;; only the 5 to 11 September roundup said it. &quot;From The ECHO Files&quot; is kept so the reader knows whose roundup. Source map row 2 fixed.</li>
+<li>A-06 (MUST): applied, with B3-12-02&#39;s marker: &quot;By October, on the magazine&#39;s reading, the evidence had split that claim, and one half had come back reversed.&quot; Matches A&#39;s house grade (reframed, reversed at the level of the job).</li>
+<li>A-17 (SHOULD): applied. Heading &quot;A lab moves in on routing&quot;; &quot;drew in a lab and two cloud platforms&quot;, retagged to the checks. Row 42.</li>
+<li>A-21 (SHOULD): applied, inside How we know: the grade on September&#39;s claim is named as a reading.</li>
+<li>A-27 (COULD): adapted. Merged with B3-12-02: &quot;The number worth counting was the cost of a finished task … and the same roundup had already named what you spend per task among the decisions that do count&quot;, tagged to the 5 to 11 September roundup, whose words are in new row 3a.</li>
+<li>A-28 (COULD): applied: &quot;the harness can move the second number several times over&quot;.</li>
+<li>A P-2 (factual): applied: &quot;and Anthropic began selling in other units&quot;. Row 10.</li>
+<li>B3-12-01 (MUST): applied. Standfirst: &quot;on the magazine&#39;s reading the number that did was the cost of a finished task&quot;. Row 1.</li>
+<li>B3-12-02 (MUST): adapted. The marker is &quot;on the magazine&#39;s reading&quot;, not &quot;the September monthly read the evidence more narrowly&quot;: A-06, the house verdict, rules out &quot;narrower&quot;. Its second sentence is merged with A-27 (&quot;the number worth counting&quot;). Row 3.</li>
+<li>B3-12-03 (COULD): applied: &quot;Some prices were falling&quot;.</li>
+<li>B3-12-04 (SHOULD): adapted, using A P-2&#39;s wording, which says the same thing.</li>
+<li>B3-12-05 (COULD): applied in body and PULL: &quot;The cost per task doesn&#39;t.&quot;</li>
+<li>B3-12-06 (COULD): applied: &quot;The month&#39;s first evidence was already priced by the hour and by the task.&quot;</li>
+<li>B3-12-07 (COULD): applied: &quot;The other lever on the bill&quot;.</li>
+<li>B3-12-08 (SHOULD): applied: &quot;On the magazine&#39;s reading, what a harness sheds …&quot;.</li>
+<li>B3-12-09 (SHOULD): adapted, using A-17&#39;s wording for the same fix, so 12 agrees with 11 and 14.</li>
+<li>B3-12-10 (SHOULD): applied: &quot;On the monthly&#39;s reading, the model set both the cost and the outcome there.&quot; Row 51.</li>
+<li>B3-12-11 (SHOULD): applied: &quot;The magazine&#39;s lesson: …&quot;.</li>
+<li>B3-12-12 (SHOULD): applied, inside D S2&#39;s replacement paragraph. Row 53.</li>
+<li>B3-12-13 (SHOULD): skipped: step 5 is cut by D S2. The same advice runs in The Operator (file 15, Model routing step 5) without naming Jev&#39;s own figures; that is for 15&#39;s editor.</li>
+<li>B3-12-14 (SHOULD): applied, with A-28&#39;s &quot;several times over&quot; and B3&#39;s &quot;Only the first is on the price list&quot;, in body and PULL.</li>
+<li>B3-12-15 (SHOULD): applied in How we know: &quot;The checks covered numbers, quotes and dates, not the readings built on them. Those are ours: …&quot;.</li>
+<li>B3-X-01 (MUST): not for this file (The Receipts&#39; ledger). Rows 1, 3, 10, 42, 51, 53 and 54 are among its 17; their wording now says &quot;reading&quot; where the text does.</li>
+<li>C-54 (SHOULD): adapted. How we know now runs in three slots: Sources, What was checked (stamp, September research line, NOT CHECKED line) and What&#39;s uncertain. Kept &quot;The AWS and Cloudflare releases rest on press coverage&quot;, which the body doesn&#39;t say. The Argon preview caveat moved to the D-05 block, not repeated in the box. Rows 57 and 58.</li>
+<li>C 2.3 (the boxes shrunk): applied through C-54.</li>
+<li>D-01 (stamp): applied through C-54&#39;s stamp line.</li>
+<li>D-05 (evidence block, SHOULD): applied: a SOURCE / CHECK / STATUS / OPEN block after the Argon paragraph. STATUS is CONFIRMED, since the AINews preview is the primary page, read in part. New row 19b.</li>
+<li>D S2 (SHOULD): adapted. Steps 1 to 6 replaced with D&#39;s cross-reference to The Operator (printed 12), with B3-12-12&#39;s marker. &quot;The eval is what keeps the table honest&quot; → &quot;A rerunnable eval …&quot;, since the eval step left with the list. The routing-table visual and the two closing paragraphs stay. Row 54 marked cut.</li>
+<li>D S3 (SHOULD): applied: the repeated &quot;(62,000 output tokens to Astra&#39;s 27,000)&quot; is cut from the second paragraph. Row 19a.</li>
+<li>D C2, C4, C8 (COULD): no change; they name 12 as the home and edit other sections.</li>
+<li>D, noticed in passing (who can use Argon): skipped here. 12 says &quot;trusted testers only&quot; and then names the Fairwind Program&#39;s users; the two describe one group, and the choice of one phrase is issue-wide.</li>
+<li>Not-tagged list: updated for &quot;Some prices&quot;, &quot;The cost per task doesn&#39;t&quot;, &quot;priced by the hour and by the task&quot;, &quot;The magazine&#39;s lesson&quot; and &quot;can move the second number several times over&quot;.</li>
+<li>GPT check (6 Oct): <a href="data/gpt-adjudication-wrong.html">adjudication-wrong-overstated.md</a>, row 10 and C2 (Argon access, PARTLY): &quot;for trusted testers only&quot; is now &quot;only for trusted cyber defenders in Google&#39;s Fairwind Program&quot;. Tagged NEW with Google&#39;s Argon post. Source map row 9.</li>
+<li>GPT check (6 Oct): <a href="data/gpt-adjudication-wrong.html">adjudication-wrong-overstated.md</a>, C2 (Argon access, the second line here): &quot;government users and trusted cyber defenders&quot; is now &quot;trusted cyber defenders in Google&#39;s Fairwind Program&quot;; &quot;government users&quot; isn&#39;t in Google&#39;s post. Source map row 14. This settles the pass-2 skip of audit D&#39;s note above.</li>
+<li>GPT check (6 Oct): <a href="data/gpt-adjudication-unconfirmed.html">adjudication-unconfirmed.md</a>, B item 46 (AINews, 4 Sep, paid; flagged there on 10, The Pattern, and the same source and claim print here): the AINews line now says &quot;(a paid post, checked as far as its public preview)&quot;. Source map row 21.</li>
+<li>GPT check (6 Oct): <a href="data/gpt-adjudication-unconfirmed.html">adjudication-unconfirmed.md</a>, B item 73 (Nate B Jones, 10 Sep, paid): the line now says &quot;(a paid post, checked as far as its free opening)&quot;. Source map row 22. Both are in The Receipts&#39; &quot;Behind a wall&quot; table.</li>
+<li>Post-GPT re-check: <a href="data/recheck-post-gpt-check.html">recheck/post-gpt-check.md</a> row 51 (OVERSTATED): &quot;only for trusted cyber defenders in Google&#39;s Fairwind Program&quot; went past both sources. The access clause is cut from that sentence, which now says only &quot;Google&#39;s $2/$10 is an introductory half price&quot;; who can use it sits four lines down, so the page says it once. Source map row 9.</li>
+<li>Post-GPT re-check: row 52 (CONFIRMED, but one phrase issue-wide): &quot;Access starts with trusted cyber defenders in Google&#39;s Fairwind Program&quot; is now &quot;It is open first to government users, Google staff and trusted cyber defenders in Google&#39;s Fairwind Program&quot;, the issue&#39;s one phrase for Argon access. AINews&#39;s preview names government users; Google&#39;s post says thousands of Googlers use it. Tagged NEW with the AINews post beside Google&#39;s. Source map row 14.</li>
+</ul>
+</div></article>
+    </div>
+<main style="max-width: 1360px; margin: 0 auto; padding: 0 48px 160px;">
+    <footer style="margin-top: 160px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; align-items: flex-end;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--ej-font-display); font-weight: 700; font-size: 40px; line-height: .86; letter-spacing: .04em; text-transform: uppercase;">The AI Echo</div>
+<div style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.8;">Edition 1 · October 2026 · covering September 2026<br>Published free as a PDF with The ECHO Files on Substack · Editor: Jay Wright</div>
+      </div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <a href="https://echofiles.substack.com" style="text-decoration: none;">Subscribe</a>
+<a href="#rules" style="text-decoration: none;">The Rules</a>
+<a href="#corrections" style="text-decoration: none;">Corrections</a>
+<a href="index.html" style="text-decoration: none; color: var(--ej-fg-faint);">Top ↑</a>
+      </div>
+<div style="width: 72px; height: 6px; background: repeating-linear-gradient(135deg, var(--ej-line-strong) 0 6px, transparent 6px 12px);"></div>
+    </footer>
+  </main>
+</div>
+<script src="assets/site.js"></script>
+<script>(function(){var k="ai-echo-size",n=0;try{n=parseInt(localStorage.getItem(k)||"0",10)||0}catch(e){}function apply(){var z=Math.pow(1.1,n);document.querySelectorAll("#features, main#top, main").forEach(function(el){el.style.zoom=z});document.querySelectorAll("[data-sz]").forEach(function(b){b.title=Math.round(z*100)+"%"});try{localStorage.setItem(k,String(n))}catch(e){}}apply();document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-sz]");if(!b)return;n+=parseInt(b.getAttribute("data-sz"),10);apply();});})();</script></body>
+</html>
