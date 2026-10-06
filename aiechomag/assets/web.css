@@ -230,3 +230,22 @@ svg { max-width: 100%; height: auto; }
   [style*="grid-template-columns: 1fr 1fr; gap: 0; border-top: 3px solid var(--ej-fg)"] > * { min-width: 0; padding-left: 10px !important; overflow-wrap: anywhere; }
   article [style*="display: flex; align-items: center; gap: 10px;"] { flex-wrap: wrap; }
 }
+/* CD's Fig.08 on phones: its lanes need about 470px, so the figure scrolls sideways inside its frame. */
+@media (max-width: 700px) {
+  [style*="position: relative; padding: 36px 36px 32px; border: 1px solid var(--ej-line)"] { overflow-x: auto; padding: 20px 12px !important; }
+  [style*="position: relative; padding: 36px 36px 32px; border: 1px solid var(--ej-line)"] > * { min-width: 480px; }
+}
+@media (max-width: 700px) { a[style*="text-transform: uppercase; text-decoration: none"] { white-space: normal !important; max-width: 100%; overflow-wrap: anywhere; } }
+/* CD's 09, 10 and 11 on phones: bar rows (label, bar, value) put the label on its own line; the comparison grids stack. */
+@media (max-width: 700px) {
+  [style*="grid-template-columns: 260px minmax(0, 1fr) 220px"], [style*="grid-template-columns: 300px minmax(0, 1fr) 60px"],
+  [style*="grid-template-columns: 330px minmax(0, 1fr) 90px"], [style*="grid-template-columns: 330px minmax(0, 1fr) 70px"],
+  [style*="grid-template-columns: 200px minmax(0, 1fr) 180px"] { grid-template-columns: minmax(0, 1fr) auto !important; gap: 4px 10px !important; }
+  [style*="grid-template-columns: 260px minmax(0, 1fr) 220px"] > :first-child, [style*="grid-template-columns: 300px minmax(0, 1fr) 60px"] > :first-child,
+  [style*="grid-template-columns: 330px minmax(0, 1fr) 90px"] > :first-child, [style*="grid-template-columns: 330px minmax(0, 1fr) 70px"] > :first-child,
+  [style*="grid-template-columns: 200px minmax(0, 1fr) 180px"] > :first-child { grid-column: 1 / -1; }
+  [style*="grid-template-columns: 260px minmax(0, 1fr) 220px"] > :last-child, [style*="grid-template-columns: 200px minmax(0, 1fr) 180px"] > :last-child { max-width: 45vw; overflow-wrap: anywhere; }
+  [style*="grid-template-columns: minmax(0, 1.4fr) 110px minmax(0, 1.4fr)"] { grid-template-columns: minmax(0, 1fr) !important; gap: 10px !important; }
+  [style*="grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, .8fr)"] { font-size: 12px; gap: 6px !important; }
+  [style*="grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, .8fr)"] > * { min-width: 0; overflow-wrap: anywhere; }
+}
