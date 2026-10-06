@@ -1,0 +1,413 @@
+/* The AI Echo, Edition 1 — shared stylesheet.
+   1. ECHO-JAY tokens (light by default; dark applies inside any [data-theme="dark"])
+   2. Motion (the cover build and the Pattern reveal)
+   3. Hover and focus states. Everything else is inline on the element, so each page reads top to bottom. */
+
+/* ECHO-JAY tokens for The AI Echo (print adaptation). Copied from uploads/echo-jay-all.css on 2026-10-05.
+   Flattened from styles.css and tokens/*.css on 5 Oct 2026. Only the Google Fonts import remains. */
+
+/* ===== tokens/fonts.css ===== */
+/* ECHO-JAY — webfonts. Served from Google Fonts; no binaries supplied. Barlow Condensed (display), Source Sans 3 (body), Share Tech Mono (readouts). */
+
+/* ===== tokens/colors.css ===== */
+/* ECHO-JAY — color tokens. Light is the default ground (cool steel white); dark is a second ground, switched with data-theme="dark" on <html>. Gold is attention and liveness; steel blue is data and structure. */
+:root {
+  --ej-desk: #d6dde5;
+  --ej-bg: #eef2f6;
+  --ej-surface: #ffffff;
+  --ej-surface-2: #f5f7fa;
+  --ej-line: #c8d3de;
+  --ej-line-strong: #94a6b8;
+  --ej-fg: #0f1720;
+  --ej-fg-muted: #4f6076;
+  --ej-fg-faint: #627186;
+  --ej-gold-100: #fbf3d7;
+  --ej-gold-200: #f5e5a8;
+  --ej-gold-300: #ecc84a;
+  --ej-gold-400: #c9a227;
+  --ej-gold-500: #a7841c;
+  --ej-gold-600: #7a5c0e;
+  --ej-gold-700: #574108;
+  --ej-steel-100: #e1ebf5;
+  --ej-steel-200: #c3d6ea;
+  --ej-steel-300: #6f9fd0;
+  --ej-steel-400: #3f6b96;
+  --ej-steel-500: #2b5276;
+  --ej-steel-600: #1d3a55;
+  --ej-ok: #2e7d4f;
+  --ej-ok-tint: #e3f3ea;
+  --ej-alert: #b3261e;
+  --ej-alert-tint: #fbe6e4;
+  --ej-grid: rgba(63,107,150,.09);
+  --ej-scan: rgba(15,23,32,.045);
+  --ej-glow: rgba(236,200,74,.55);
+  --ej-shadow-raise: 0 1px 2px rgba(15,23,32,.08), 0 12px 28px -14px rgba(43,82,118,.5);
+  --ej-shadow-inset: inset 0 2px 5px rgba(15,23,32,.14);
+  --ej-shadow-frame: 0 32px 70px -26px rgba(15,23,32,.6), 0 2px 6px rgba(15,23,32,.12);
+  --ej-shadow-header: inset 0 1px 0 rgba(255,255,255,.8), 0 8px 18px -10px rgba(15,23,32,.4);
+  --ej-shadow-footer: 0 -8px 18px -12px rgba(15,23,32,.35);
+  --ej-bevel: inset 0 1px 0 rgba(255,255,255,.8);
+  --ej-bevel-gold: inset 0 1px 0 rgba(255,255,255,.38), inset 0 -2px 0 rgba(0,0,0,.2);
+
+  /* Semantic aliases — write these in components; the ramps above are the source. */
+  --ej-gold: var(--ej-gold-400);          /* fills: nameplate, primary button, live bar */
+  --ej-gold-bright: var(--ej-gold-300);   /* hover, glow source */
+  --ej-gold-text: var(--ej-gold-600);     /* gold as text — readable on the ground */
+  --ej-gold-tint: var(--ej-gold-100);     /* receipt ground, focus halo */
+  --ej-gold-edge: var(--ej-gold-500);     /* pressed state */
+  --ej-on-gold: #1a1300;                  /* text on a gold fill, both grounds */
+  --ej-steel: var(--ej-steel-400);        /* data bars, node brackets, hover borders */
+  --ej-steel-text: var(--ej-steel-500);   /* readout text, table heads, links */
+  --ej-steel-tint: var(--ej-steel-100);   /* readout strip, table head */
+  --ej-steel-bright: var(--ej-steel-300);
+  --ej-surface-page: var(--ej-bg);
+  --ej-surface-card: var(--ej-surface);
+  --ej-surface-well: var(--ej-surface-2);
+  --ej-text-body-color: var(--ej-fg);
+  --ej-text-muted-color: var(--ej-fg-muted);
+  --ej-text-label-color: var(--ej-fg-faint);
+  --ej-border-default: var(--ej-line);
+  --ej-border-strong: var(--ej-line-strong);
+}
+
+[data-theme="dark"] {
+  --ej-desk: #06090d;
+  --ej-bg: #0d1319;
+  --ej-surface: #131b24;
+  --ej-surface-2: #182230;
+  --ej-line: #26333f;
+  --ej-line-strong: #44566a;
+  --ej-fg: #e7edf3;
+  --ej-fg-muted: #a9b6c4;
+  --ej-fg-faint: #7a8aa0;
+  --ej-gold-100: #2a2410;
+  --ej-gold-200: #4a3d12;
+  --ej-gold-300: #ffd45e;
+  --ej-gold-400: #e2b93b;
+  --ej-gold-500: #f0c75e;
+  --ej-gold-600: #f0c75e;
+  --ej-gold-700: #f7dd8a;
+  --ej-steel-100: #15283a;
+  --ej-steel-200: #1f3a52;
+  --ej-steel-300: #8fb8e8;
+  --ej-steel-400: #6f9fd0;
+  --ej-steel-500: #9dc0e6;
+  --ej-steel-600: #bcd6f2;
+  --ej-ok: #5fcf8a;
+  --ej-ok-tint: #10281a;
+  --ej-alert: #ff7b72;
+  --ej-alert-tint: #3a1512;
+  --ej-grid: rgba(111,159,208,.12);
+  --ej-scan: rgba(255,255,255,.035);
+  --ej-glow: rgba(255,212,94,.6);
+  --ej-shadow-raise: 0 1px 2px rgba(0,0,0,.45), 0 12px 28px -14px rgba(0,0,0,.8);
+  --ej-shadow-inset: inset 0 2px 6px rgba(0,0,0,.55);
+  --ej-shadow-frame: 0 32px 70px -26px rgba(0,0,0,.95), 0 0 0 1px rgba(255,255,255,.03);
+  --ej-shadow-header: inset 0 1px 0 rgba(255,255,255,.06), 0 8px 18px -10px rgba(0,0,0,.7);
+  --ej-shadow-footer: 0 -8px 18px -12px rgba(0,0,0,.6);
+  --ej-bevel: inset 0 1px 0 rgba(255,255,255,.06);
+  --ej-bevel-gold: inset 0 1px 0 rgba(255,255,255,.3), inset 0 -2px 0 rgba(0,0,0,.28);
+}
+
+/* theme-auto removed: the magazine is light; dark is opted into per element with data-theme="dark" */
+
+/* ===== tokens/typography.css ===== */
+/* ECHO-JAY — type tokens. Barlow Condensed for titles and the nameplate, Source Sans 3 for reading, Share Tech Mono for readouts, keys and labels. Sizes are rem on a 15px root so the A−/A+ control rescales everything. */
+:root {
+  --ej-font-display: "Barlow Condensed", "Arial Narrow", sans-serif;
+  --ej-font-body: "Source Sans 3", system-ui, sans-serif;
+  --ej-font-mono: "Share Tech Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  --ej-text-title: 2.333rem;   /* 35px — the artifact title */
+  --ej-text-h2: 1.6rem;        /* 24px — section heads, big figures */
+  --ej-text-h3: 1.2rem;        /* 18px — nameplate, sub-heads */
+  --ej-text-lead: 1.133rem;    /* 17px — subtitle */
+  --ej-text-body: 1rem;        /* 15px */
+  --ej-text-sm: 0.933rem;      /* 14px — tables, nodes */
+  --ej-text-btn: 0.867rem;     /* 13px — button labels */
+  --ej-text-stamp: 0.8rem;     /* 12px — receipt stamp */
+  --ej-text-label: 0.733rem;   /* 11px — mono labels, readouts. The floor. */
+
+  --ej-leading-title: 1.02;
+  --ej-leading-lead: 1.45;
+  --ej-leading-body: 1.6;
+  --ej-leading-table: 1.4;
+
+  --ej-tracking-title: -0.005em;
+  --ej-tracking-wordmark: 0.1em;
+  --ej-tracking-label: 0.12em;
+  --ej-tracking-readout: 0.1em;
+  --ej-tracking-mono: 0.08em;
+  --ej-tracking-btn: 0.08em;
+
+  --ej-weight-display: 600;
+  --ej-weight-wordmark: 700;
+  --ej-weight-btn: 700;
+}
+
+/* ===== tokens/spacing.css ===== */
+/* ECHO-JAY — geometry. A 4px scale, no radii (chamfers and brackets instead), one artifact width. Shadows live with the colors because they change per ground. */
+:root {
+  --ej-space-1: 4px;
+  --ej-space-2: 8px;
+  --ej-space-3: 12px;
+  --ej-space-4: 16px;
+  --ej-space-5: 20px;
+  --ej-space-6: 24px;
+  --ej-space-8: 32px;
+
+  --ej-artifact-width: 500px;  /* the sidebar */
+  --ej-pad-x: 20px;            /* content gutter inside the shell */
+  --ej-pad-chrome: 16px;       /* header, readout, footer gutter */
+
+  --ej-radius: 0;              /* nothing is rounded */
+  --ej-chamfer-sm: 5px;        /* tags, controls, switch */
+  --ej-chamfer: 8px;           /* primary button */
+  --ej-chamfer-lg: 10px;       /* nameplate */
+  --ej-bracket: 12px;          /* panel corner brackets */
+  --ej-bracket-weight: 2px;
+  --ej-hairline: 1px;
+
+  --ej-blink: 2s;
+  --ej-pulse: 3s;
+  --ej-ease: ease-in-out;
+  --ej-fast: 0.15s;
+}
+
+/* ===== tokens/base.css ===== */
+/* ECHO-JAY — base element styles. Plain CSS on plain HTML; the root font-size is the A−/A+ control. */
+*, *::before, *::after { box-sizing: border-box; }
+html { font-size: 15px; }
+html[data-size="-1"] { font-size: 14px; }
+html[data-size="1"] { font-size: 16px; }
+body { margin: 0; background: var(--ej-bg); color: var(--ej-fg); font-family: var(--ej-font-body); font-size: var(--ej-text-body); line-height: var(--ej-leading-body); -webkit-font-smoothing: antialiased; }
+h1, h2, h3, h4 { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); line-height: 1.05; letter-spacing: var(--ej-tracking-title); margin: 0 0 var(--ej-space-2); text-wrap: pretty; }
+h1 { font-size: var(--ej-text-title); line-height: var(--ej-leading-title); }
+h2 { font-size: var(--ej-text-h2); }
+h3 { font-size: var(--ej-text-h3); }
+h4 { font-size: var(--ej-text-body); letter-spacing: 0.04em; text-transform: uppercase; }
+p { margin: 0 0 var(--ej-space-3); text-wrap: pretty; }
+ul, ol { margin: 0 0 var(--ej-space-3); padding-left: 1.2em; }
+li + li { margin-top: var(--ej-space-1); }
+a { color: var(--ej-steel-text); text-decoration: none; text-underline-offset: 3px; }
+a:hover { color: var(--ej-gold-text); text-decoration: underline; }
+strong, b { font-weight: 700; }
+code, kbd, samp, pre { font-family: var(--ej-font-mono); }
+code { font-size: 0.933em; color: var(--ej-steel-text); }
+img { display: block; max-width: 100%; }
+hr { height: 1px; border: 0; margin: var(--ej-space-4) 0; background: var(--ej-line); }
+button, input, select, textarea { font: inherit; color: inherit; }
+:focus { outline: none; }
+:focus-visible { outline: 2px solid var(--ej-gold); outline-offset: 2px; }
+::selection { background: var(--ej-gold-tint); color: var(--ej-fg); }
+
+@keyframes ej-blink { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+@keyframes ej-pulse { 0%, 100% { text-shadow: 0 0 3px var(--ej-glow); } 50% { text-shadow: 0 0 12px var(--ej-glow); } }
+@media (prefers-reduced-motion: reduce) { .ej-blink, .ej-pulse, .ej-dot, .ej-readout-live { animation: none; } }
+
+/* ===== tokens/classes.css ===== */
+/* ECHO-JAY — the class layer. The React components in components/ render exactly these classes; plain HTML uses them directly. */
+
+/* Shell — the artifact. Fills the host pane by default; .ej-shell-framed previews it at 500px on a desk. */
+.ej-shell { display: flex; flex-direction: column; width: 100%; min-height: 100vh; background: var(--ej-bg); color: var(--ej-fg); font-family: var(--ej-font-body); }
+.ej-shell-framed { width: var(--ej-artifact-width); max-width: 100%; min-height: 0; margin: 24px auto; border: 1px solid var(--ej-line-strong); box-shadow: var(--ej-shadow-frame); }
+.ej-desk { min-height: 100vh; background: var(--ej-desk); }
+.ej-desk-grid { background-image: linear-gradient(var(--ej-grid) 1px, transparent 1px), linear-gradient(90deg, var(--ej-grid) 1px, transparent 1px); background-size: 24px 24px; }
+
+/* Header: nameplate row + readout strip */
+.ej-header { position: relative; z-index: 1; background: var(--ej-surface); border-bottom: 1px solid var(--ej-line-strong); box-shadow: var(--ej-shadow-header); }
+.ej-header-row { display: flex; align-items: center; justify-content: space-between; gap: var(--ej-space-3); padding: 10px var(--ej-pad-chrome) 10px 0; }
+.ej-header-meta { display: flex; align-items: center; gap: var(--ej-space-3); min-width: 0; }
+.ej-nameplate { display: inline-block; padding: 7px 18px 7px var(--ej-pad-chrome); background: var(--ej-gold); color: var(--ej-on-gold); font-family: var(--ej-font-display); font-weight: var(--ej-weight-wordmark); font-size: var(--ej-text-h3); letter-spacing: var(--ej-tracking-wordmark); text-transform: uppercase; line-height: 1; white-space: nowrap; clip-path: polygon(0 0, calc(100% - var(--ej-chamfer-lg)) 0, 100% 100%, 0 100%); box-shadow: var(--ej-bevel-gold); }
+.ej-readout { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 14px; padding: 6px var(--ej-pad-chrome); border-top: 1px solid var(--ej-line); background-color: var(--ej-steel-tint); background-image: repeating-linear-gradient(0deg, var(--ej-scan) 0 1px, transparent 1px 3px); box-shadow: var(--ej-shadow-inset); font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-readout); text-transform: uppercase; color: var(--ej-steel-text); }
+.ej-readout-sep { color: var(--ej-line-strong); }
+.ej-readout-live { color: var(--ej-gold-text); animation: ej-pulse var(--ej-pulse) var(--ej-ease) infinite; }
+.ej-readout-end { margin-left: auto; }
+.ej-dot { display: inline-block; width: 6px; height: 6px; margin-right: 6px; vertical-align: 1px; background: var(--ej-gold); animation: ej-blink var(--ej-blink) var(--ej-ease) infinite; }
+.ej-controls { display: flex; align-items: center; gap: 6px; flex: none; }
+.ej-ctl { font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); line-height: 1.2; color: var(--ej-fg-muted); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 4px 7px; cursor: pointer; }
+.ej-ctl:hover { border-color: var(--ej-gold); color: var(--ej-fg); }
+.ej-ctl:disabled { opacity: 0.45; cursor: not-allowed; }
+.ej-footer { display: flex; justify-content: space-between; gap: var(--ej-space-3); margin-top: auto; padding: 8px var(--ej-pad-chrome); border-top: 1px solid var(--ej-line-strong); background: var(--ej-surface); box-shadow: var(--ej-shadow-footer); font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-readout); text-transform: uppercase; color: var(--ej-fg-faint); }
+
+/* Title block and content column */
+.ej-titleblock { padding: 24px var(--ej-pad-x) 18px; border-bottom: 1px solid var(--ej-line-strong); }
+.ej-title { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: var(--ej-text-title); line-height: var(--ej-leading-title); letter-spacing: var(--ej-tracking-title); margin: 0; text-wrap: pretty; }
+.ej-subtitle { font-size: var(--ej-text-lead); line-height: var(--ej-leading-lead); color: var(--ej-fg-muted); margin: 12px 0 0; text-wrap: pretty; }
+.ej-byline { display: flex; justify-content: space-between; gap: var(--ej-space-3); margin-top: 16px; padding-top: 10px; border-top: 1px dashed var(--ej-line-strong); font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); text-transform: uppercase; color: var(--ej-fg-faint); }
+.ej-content { display: flex; flex-direction: column; gap: 22px; padding: 20px var(--ej-pad-x) 24px; font-size: var(--ej-text-body); line-height: var(--ej-leading-body); }
+.ej-content > p, .ej-content > ul, .ej-content > ol { margin: 0; }
+.ej-section-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--ej-space-3); }
+.ej-h2 { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: var(--ej-text-h2); line-height: 1.05; margin: 0; }
+
+/* Labels, highlights, figures */
+.ej-label { font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-label); text-transform: uppercase; color: var(--ej-fg-faint); }
+.ej-label-row { display: flex; justify-content: space-between; gap: var(--ej-space-3); margin-bottom: 6px; }
+.ej-hl { color: var(--ej-gold-text); }
+.ej-mono { font-family: var(--ej-font-mono); }
+.ej-muted { color: var(--ej-fg-muted); }
+.ej-figure { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: var(--ej-text-h2); line-height: 1; color: var(--ej-gold-text); text-shadow: 0 0 10px var(--ej-glow); white-space: nowrap; }
+.ej-blink { animation: ej-blink var(--ej-blink) var(--ej-ease) infinite; }
+.ej-pulse { animation: ej-pulse var(--ej-pulse) var(--ej-ease) infinite; }
+
+/* Panel — raised surface with gold corner brackets */
+.ej-panel { position: relative; padding: 14px 16px; background: var(--ej-surface); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-raise), var(--ej-bevel); }
+.ej-panel::before, .ej-panel::after { content: ""; position: absolute; width: var(--ej-bracket); height: var(--ej-bracket); pointer-events: none; }
+.ej-panel::before { left: -1px; top: -1px; border-left: var(--ej-bracket-weight) solid var(--ej-gold); border-top: var(--ej-bracket-weight) solid var(--ej-gold); }
+.ej-panel::after { right: -1px; bottom: -1px; border-right: var(--ej-bracket-weight) solid var(--ej-gold); border-bottom: var(--ej-bracket-weight) solid var(--ej-gold); }
+.ej-panel-plain::before, .ej-panel-plain::after { display: none; }
+.ej-panel-list { padding: 6px 16px 4px; }
+.ej-panel-list > .ej-label { display: block; padding: 8px 0 6px; }
+.ej-panel-head { display: flex; justify-content: space-between; align-items: baseline; gap: var(--ej-space-3); margin-bottom: 10px; }
+.ej-panel-head > .ej-label { margin: 0; }
+.ej-stack { display: flex; flex-direction: column; gap: 10px; }
+
+/* Receipt — the one gold-ground block */
+.ej-receipt { display: flex; justify-content: space-between; align-items: center; gap: var(--ej-space-3); padding: 12px 16px; border: 1px solid var(--ej-gold); background: var(--ej-gold-tint); box-shadow: var(--ej-shadow-raise), inset 0 1px 0 rgba(255,255,255,.5), 0 0 16px -4px var(--ej-glow); }
+.ej-receipt .ej-label { color: var(--ej-gold-text); }
+.ej-receipt-body { margin-top: 2px; }
+.ej-receipt-stamp { font-family: var(--ej-font-mono); font-size: var(--ej-text-stamp); letter-spacing: var(--ej-tracking-mono); color: var(--ej-gold-text); white-space: nowrap; }
+
+/* Buttons */
+.ej-btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; font-family: var(--ej-font-body); font-weight: var(--ej-weight-btn); font-size: var(--ej-text-btn); letter-spacing: var(--ej-tracking-btn); text-transform: uppercase; line-height: 1.2; padding: 10px 16px; border: 1px solid transparent; border-radius: 0; cursor: pointer; text-decoration: none; color: var(--ej-fg); background: transparent; white-space: nowrap; }
+.ej-btn svg { display: block; width: 14px; height: 14px; }
+.ej-btn:disabled { opacity: 0.45; cursor: not-allowed; }
+.ej-btn-primary { color: var(--ej-on-gold); background: var(--ej-gold); padding-right: 20px; clip-path: polygon(0 0, calc(100% - var(--ej-chamfer)) 0, 100% var(--ej-chamfer), 100% 100%, 0 100%); box-shadow: var(--ej-bevel-gold); }
+.ej-btn-primary:hover { background: var(--ej-gold-bright); }
+.ej-btn-primary:active { background: var(--ej-gold-edge); box-shadow: inset 0 2px 0 rgba(0,0,0,.25); }
+.ej-btn-secondary { background: var(--ej-surface); border-color: var(--ej-line-strong); box-shadow: var(--ej-bevel), 0 1px 2px rgba(15,23,32,.1); }
+.ej-btn-secondary:hover { border-color: var(--ej-gold); background: var(--ej-surface-2); }
+.ej-btn-secondary:active { box-shadow: var(--ej-shadow-inset); }
+.ej-btn-ghost { color: var(--ej-steel-text); padding-inline: 8px; }
+.ej-btn-ghost:hover { color: var(--ej-gold-text); background: var(--ej-steel-tint); }
+.ej-btn-sm { padding: 7px 12px; font-size: var(--ej-text-label); }
+.ej-btn-sm.ej-btn-primary { padding-right: 16px; }
+.ej-btn-row { display: flex; flex-wrap: wrap; gap: 8px; }
+
+/* Tags */
+.ej-tag { display: inline-flex; align-items: center; gap: 6px; font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-readout); text-transform: uppercase; line-height: 1.2; padding: 3px 9px 3px 8px; border: 1px solid var(--ej-line-strong); color: var(--ej-fg-muted); background: var(--ej-surface); white-space: nowrap; clip-path: polygon(0 0, calc(100% - var(--ej-chamfer-sm)) 0, 100% var(--ej-chamfer-sm), 100% 100%, 0 100%); }
+.ej-tag-gold { border-color: var(--ej-gold); color: var(--ej-gold-text); background: var(--ej-gold-tint); }
+.ej-tag-steel { border-color: var(--ej-steel); color: var(--ej-steel-text); background: var(--ej-steel-tint); }
+.ej-tag-ok { border-color: var(--ej-ok); color: var(--ej-ok); background: var(--ej-ok-tint); }
+.ej-tag-alert { border-color: var(--ej-alert); color: var(--ej-alert); background: var(--ej-alert-tint); }
+.ej-tag-row { display: flex; flex-wrap: wrap; gap: 6px; }
+
+/* Forms */
+.ej-field { display: flex; flex-direction: column; gap: 8px; }
+.ej-field-hint { font-size: var(--ej-text-sm); color: var(--ej-fg-muted); margin-top: -2px; }
+.ej-inline { display: flex; gap: 8px; align-items: center; }
+.ej-inline > .ej-input { flex: 1; }
+.ej-input { width: 100%; min-width: 0; min-height: 38px; font: inherit; font-size: var(--ej-text-body); padding: 8px 10px; background: var(--ej-bg); color: var(--ej-fg); border: 1px solid var(--ej-line-strong); border-radius: 0; outline: none; box-shadow: var(--ej-shadow-inset); }
+.ej-input::placeholder { color: var(--ej-fg-faint); }
+.ej-input:hover { border-color: var(--ej-steel); }
+.ej-input:focus { border-color: var(--ej-gold); box-shadow: var(--ej-shadow-inset), 0 0 0 2px var(--ej-gold-tint), 0 0 10px var(--ej-glow); }
+.ej-input:disabled { opacity: 0.45; cursor: not-allowed; }
+textarea.ej-input { min-height: 90px; resize: vertical; line-height: 1.5; }
+select.ej-input { appearance: none; padding-right: 30px; cursor: pointer; background-image: linear-gradient(45deg, transparent 50%, var(--ej-fg-muted) 50%), linear-gradient(135deg, var(--ej-fg-muted) 50%, transparent 50%); background-position: calc(100% - 16px) 55%, calc(100% - 11px) 55%; background-size: 5px 5px, 5px 5px; background-repeat: no-repeat; }
+.ej-switch-list { display: flex; flex-direction: column; }
+.ej-switch-row { display: flex; align-items: center; justify-content: space-between; gap: var(--ej-space-3); padding: 10px 0; border-top: 1px solid var(--ej-line); }
+.ej-switch { position: relative; display: inline-flex; align-items: center; gap: 8px; cursor: pointer; font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-fg-faint); user-select: none; }
+.ej-switch input { position: absolute; opacity: 0; width: 0; height: 0; pointer-events: none; }
+.ej-switch-state { min-width: 3ch; text-align: right; }
+.ej-switch-state::before { content: "OFF"; }
+.ej-switch input:checked ~ .ej-switch-state::before { content: "ON"; }
+.ej-switch-track { position: relative; display: block; width: 34px; height: 18px; background: var(--ej-line-strong); box-shadow: inset 0 1px 3px rgba(0,0,0,.3); clip-path: polygon(0 0, calc(100% - var(--ej-chamfer-sm)) 0, 100% var(--ej-chamfer-sm), 100% 100%, var(--ej-chamfer-sm) 100%, 0 calc(100% - var(--ej-chamfer-sm))); transition: background var(--ej-fast); }
+.ej-switch-track::after { content: ""; position: absolute; top: 3px; left: 3px; width: 12px; height: 12px; background: #ffffff; box-shadow: 0 1px 2px rgba(0,0,0,.35); transition: left var(--ej-fast); }
+.ej-switch input:checked ~ .ej-switch-track { background: var(--ej-gold); }
+.ej-switch input:checked ~ .ej-switch-track::after { left: 19px; }
+.ej-switch input:focus-visible ~ .ej-switch-track { outline: 2px solid var(--ej-gold); outline-offset: 2px; }
+.ej-switch input:disabled ~ * { opacity: 0.45; }
+
+/* Table */
+.ej-table-wrap { overflow-x: auto; overflow-y: hidden; border: 1px solid var(--ej-line); background: var(--ej-surface); box-shadow: var(--ej-shadow-raise); }
+.ej-table { width: 100%; border-collapse: separate; border-spacing: 0; font-size: var(--ej-text-sm); line-height: var(--ej-leading-table); background: var(--ej-surface); }
+.ej-table-wrap > .ej-table { border: 0; box-shadow: none; }
+.ej-table th { text-align: left; font-family: var(--ej-font-mono); font-weight: 400; font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-readout); text-transform: uppercase; color: var(--ej-steel-text); background: var(--ej-steel-tint); padding: 6px 8px; border-bottom: 1px solid var(--ej-line-strong); white-space: nowrap; }
+.ej-table td { padding: 9px 8px; border-bottom: 1px solid var(--ej-line); vertical-align: top; }
+.ej-table tbody tr:last-child td { border-bottom: 0; }
+.ej-table tbody tr:hover { background: var(--ej-surface-2); }
+.ej-table .ej-key { font-family: var(--ej-font-mono); color: var(--ej-gold-text); white-space: nowrap; }
+.ej-table .ej-num { font-family: var(--ej-font-mono); text-align: right; white-space: nowrap; }
+.ej-table th.ej-num { text-align: right; }
+
+/* Bars — a small chart */
+.ej-bars { position: relative; display: flex; align-items: flex-end; gap: 4px; height: 72px; padding: 0 6px; border: 1px solid var(--ej-line); border-bottom-color: var(--ej-line-strong); background-color: var(--ej-surface-2); background-image: repeating-linear-gradient(0deg, var(--ej-line) 0 1px, transparent 1px 18px); box-shadow: var(--ej-shadow-inset); }
+.ej-bar { flex: 1 1 0; min-width: 2px; height: var(--v, 50%); background: var(--ej-steel); }
+.ej-bar-hi { background: var(--ej-gold); box-shadow: 0 0 10px var(--ej-glow); }
+.ej-bars-target { position: absolute; left: 0; right: 0; top: var(--v, 50%); border-top: 1px dashed var(--ej-gold); opacity: 0.8; pointer-events: none; }
+.ej-bars-axis { display: flex; justify-content: space-between; margin-top: 6px; font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-fg-faint); }
+
+/* Key / value */
+.ej-kv { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 6px 16px; margin: 0; font-size: var(--ej-text-sm); line-height: var(--ej-leading-table); }
+.ej-kv dt { font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-readout); text-transform: uppercase; color: var(--ej-fg-faint); padding-top: 3px; white-space: nowrap; }
+.ej-kv dd { margin: 0; }
+
+/* Flow — boxes and arrows for architecture and process diagrams */
+.ej-flow { display: flex; align-items: stretch; gap: 8px; }
+.ej-flow-vertical { flex-direction: column; align-items: stretch; }
+.ej-node { position: relative; flex: 1 1 0; min-width: 0; padding: 10px 12px; background: var(--ej-surface); border: 1px solid var(--ej-line-strong); box-shadow: var(--ej-shadow-raise), var(--ej-bevel); font-size: var(--ej-text-sm); line-height: 1.35; }
+.ej-node::before { content: ""; position: absolute; left: -1px; top: -1px; width: 8px; height: 8px; border-left: var(--ej-bracket-weight) solid var(--ej-steel); border-top: var(--ej-bracket-weight) solid var(--ej-steel); }
+.ej-node-title { font-family: var(--ej-font-display); font-weight: var(--ej-weight-display); font-size: 1.067rem; letter-spacing: 0.02em; text-transform: uppercase; line-height: 1.1; }
+.ej-node-sub { font-family: var(--ej-font-mono); font-size: var(--ej-text-label); letter-spacing: var(--ej-tracking-mono); color: var(--ej-fg-faint); margin-top: 4px; }
+.ej-node-hi { border-color: var(--ej-gold); }
+.ej-node-hi::before { border-color: var(--ej-gold); }
+.ej-node-well { background: var(--ej-surface-2); box-shadow: var(--ej-shadow-inset); }
+.ej-arrow { flex: none; align-self: center; font-family: var(--ej-font-mono); font-size: var(--ej-text-body); color: var(--ej-steel); line-height: 1; }
+.ej-flow-vertical > .ej-arrow { align-self: flex-start; padding-left: 12px; }
+
+/* Code */
+.ej-code { margin: 0; padding: 12px 14px; background: var(--ej-surface-2); border: 1px solid var(--ej-line); box-shadow: var(--ej-shadow-inset); font-family: var(--ej-font-mono); font-size: var(--ej-text-sm); line-height: 1.5; color: var(--ej-fg); overflow-x: auto; white-space: pre; tab-size: 2; }
+
+/* Divider — hazard stripes */
+.ej-divider { height: 5px; border: 0; margin: 0; background: repeating-linear-gradient(135deg, var(--ej-line-strong) 0 6px, transparent 6px 12px); opacity: 0.6; }
+.ej-divider-gold { background: repeating-linear-gradient(135deg, var(--ej-gold) 0 8px, transparent 8px 16px); opacity: 1; }
+.ej-divider-inset { margin: 0 var(--ej-pad-x); }
+
+
+/* ===== 2. Motion ===== */
+html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body { margin: 0; background: var(--ej-bg); }
+    a { color: var(--ej-steel-text); } a:hover { color: var(--ej-gold-text); }
+    details > summary { list-style: none; cursor: pointer; } details > summary::-webkit-details-marker { display: none; }
+    button { font: inherit; }
+    @keyframes rule { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    @keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes draw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+    @keyframes spread { 0% { transform: scaleX(.55); } 70% { transform: scaleX(1.06); } 85% { transform: scaleX(.98); } 100% { transform: scaleX(1); } }
+    @keyframes ballL { 0% { transform: translateX(63px); } 70% { transform: translateX(-8px); } 85% { transform: translateX(3px); } 100% { transform: none; } }
+    @keyframes ballR { 0% { transform: translateX(-63px); } 70% { transform: translateX(8px); } 85% { transform: translateX(-3px); } 100% { transform: none; } }
+    @keyframes setlimit { from { fill: transparent; stroke: var(--ej-steel); } to { fill: var(--ej-gold); stroke: var(--ej-gold-text); } }
+    @keyframes pop { from { opacity: 0; transform: scale(.6); } to { opacity: 1; transform: none; } }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0s !important; animation-delay: 0s !important; } html { scroll-behavior: auto; } }
+
+/* ===== 3. States ===== */
+a, button { transition: color .15s, background-color .15s, border-color .15s; }
+a:hover { color: var(--ej-gold-text); }
+[data-ribbon] a:hover { background: var(--ej-steel-tint) !important; }
+[data-action]:hover { border-color: var(--ej-gold) !important; }
+[data-action^="steps."]:hover { background: var(--ej-gold) !important; }
+[data-bar]:hover { background: var(--ej-steel-text) !important; }
+:focus-visible { outline: 2px solid var(--ej-steel); outline-offset: 2px; }
+
+/* Fix (CC, 6 Oct): re-declare the semantic aliases so per-element dark mode reaches them. */
+[data-theme="dark"] {
+  --ej-gold: var(--ej-gold-400);          /* fills: nameplate, primary button, live bar */
+  --ej-gold-bright: var(--ej-gold-300);   /* hover, glow source */
+  --ej-gold-text: var(--ej-gold-600);     /* gold as text — readable on the ground */
+  --ej-gold-tint: var(--ej-gold-100);     /* receipt ground, focus halo */
+  --ej-gold-edge: var(--ej-gold-500);     /* pressed state */
+  --ej-on-gold: #1a1300;                  /* text on a gold fill, both grounds */
+  --ej-steel: var(--ej-steel-400);        /* data bars, node brackets, hover borders */
+  --ej-steel-text: var(--ej-steel-500);   /* readout text, table heads, links */
+  --ej-steel-tint: var(--ej-steel-100);   /* readout strip, table head */
+  --ej-steel-bright: var(--ej-steel-300);
+  --ej-surface-page: var(--ej-bg);
+  --ej-surface-card: var(--ej-surface);
+  --ej-surface-well: var(--ej-surface-2);
+  --ej-text-body-color: var(--ej-fg);
+  --ej-text-muted-color: var(--ej-fg-muted);
+  --ej-text-label-color: var(--ej-fg-faint);
+  --ej-border-default: var(--ej-line);
+  --ej-border-strong: var(--ej-line-strong);
+}
