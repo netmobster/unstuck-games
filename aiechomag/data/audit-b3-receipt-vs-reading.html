@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="/aiechomag/"><meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit B3: receipt against reading — The AI Echo, Edition 1</title>
+<meta name="description" content="A field magazine for people operating at the edge of AI. Edition 1, covering September 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/web.css">
+</head>
+<body style="margin: 0; background: var(--ej-bg);">
+<div id="root" data-theme="light" style="color: var(--ej-fg); font-family: var(--ej-font-body); background: var(--ej-bg);">
+
+  <nav style="position: sticky; top: 0; z-index: 20; background: var(--ej-bg); border-bottom: 1px solid var(--ej-line);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 14px 48px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ej-fg);">
+        <span style="font-family: var(--ej-font-display); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: .05em; text-transform: uppercase;">The AI Echo</span>
+        <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); border: 1px solid var(--ej-line-strong); padding: 3px 8px; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 0 100%);">№ 1 · Oct 2026</span>
+      </a>
+<div style="flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-left: auto; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <span style="flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); white-space: nowrap;">14 // What we got wrong, and what changed</span>
+        <button type="button" data-action="toggleRibbon" aria-expanded="true" style="flex: none; white-space: nowrap; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="ribbonLabel">Hide sections</span></button>
+<button type="button" class="sz-btn" data-sz="-1" aria-label="Smaller text">A−</button><button type="button" class="sz-btn" data-sz="1" aria-label="Larger text">A+</button><button type="button" data-action="toggleTheme" style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-muted); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="themeLabel">Dark</span></button>
+      </div>
+    </div>
+<div id="ribbon" style="display: block; border-top: 1px solid var(--ej-line); background: var(--ej-surface);">
+      <div aria-label="Edition 1 sections" data-ribbon="1" style="max-width: 1360px; margin: 0 auto; padding: 0 36px; display: flex; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;">
+        
+          <div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="index.html" data-selected="false" title="The AI Echo" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">№ 1 · Front</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The AI Echo</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Cover and contents</span>
+                </a>
+<a href="01-from-the-editors.html" data-selected="false" title="From the editors" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">01</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">From the editors</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The editor's letter</span>
+                </a>
+<a href="02-the-rules.html" data-selected="false" title="The Rules (DRAFT)" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">02</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Rules (DRAFT)</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Nine rules, each with its test</span>
+                </a>
+<a href="03-the-month.html" data-selected="false" title="The Month" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">03</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Month</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five claims, and how each fared</span>
+                </a>
+<a href="04-the-receipts.html" data-selected="false" title="The Receipts" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">04</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Receipts</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Method, pipeline and ledger</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Front of the book</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="05-who-checks-the-checker.html" data-selected="false" title="Who checks the checker?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">05</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who checks the checker?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">When people approve everything</span>
+                </a>
+<a href="06-who-pays-when-an-agent-breaks-something.html" data-selected="false" title="Who pays when an agent breaks something?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">06</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who pays when an agent breaks something?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Six actions went public, after the fact</span>
+                </a>
+<a href="07-the-month-in-one-chart.html" data-selected="false" title="Same score, different bill" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">07</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                </a>
+<a href="08-the-pattern.html" data-selected="false" title="The Pattern" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">08</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Pattern</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five lanes into one point</span>
+                </a>
+<a href="09-what-does-a-task-cost.html" data-selected="false" title="What does a task cost?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">09</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What does a task cost?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Model choice, per job</span>
+                </a>
+<a href="10-how-do-you-get-found-when-a-machine-reads-first.html" data-selected="false" title="How do you get found when a machine reads first?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">10</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">How do you get found when a machine reads first?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Being found when AI reads first</span>
+                </a>
+<a href="11-the-case-against.html" data-selected="false" title="The case against" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">11</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The case against</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The steelman, and the reply</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Features</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="12-the-operator.html" data-selected="false" title="The Operator" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">12</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five field-guide cards</span>
+                </a>
+<a href="13-field-notes.html" data-selected="false" title="Field Notes: candidates" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">13</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Field Notes</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">A tool, a stop, an experiment</span>
+                </a>
+<a href="14-corrections.html" data-selected="true" title="Corrections" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid var(--ej-gold); border-radius: 0; background: var(--ej-bg); color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">14</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Corrections</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What we got wrong, and what changed</span>
+                </a>
+<a href="15-prove-us-wrong.html" data-selected="false" title="Prove us wrong" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">15</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Prove us wrong</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Make the case against us</span>
+                </a>
+<a href="16-the-library.html" data-selected="false" title="The Library" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">16</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Library</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Twenty-eight things to read</span>
+                </a>
+<a href="17-the-operators-page.html" data-selected="false" title="The Operator's Page" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">17</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator's Page</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">To do, to watch, one question</span>
+                </a>
+<a href="18-the-raw-data.html" data-selected="false" title="The Raw Data" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">18</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Raw Data</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The data behind the issue</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Back of the book</div>
+          </div>
+        
+      </div>
+    </div>
+<div id="progress" style="height: 2px; background: var(--ej-gold); width: 0.00%; transition: width .15s linear;"></div>
+  </nav>
+<main id="top" style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
+    
+  </main>
+<div id="corrections" data-theme="light" style="background: var(--ej-bg); color: var(--ej-fg); padding: 72px 0 0;">
+      <article class="dr"><p class="dr-crumb"><a href="data/index.html">The data room</a> // The audits</p><div class="dr-kick"><span class="dr-tab">DATA</span><span>// The audits</span></div><h1 class="dr-h1">Audit B3: receipt against reading</h1><p class="dr-dek">Framing audit, 5 to 6 October</p><div class="dr-doc"><p><em>The AI Echo, Edition 1 · Monday 5 October 2026 · auditor B3 (CC). Red Team v3, point 2: a hard
+line between receipt and editorial synthesis. Report only: no draft, check or print file was
+edited.</em></p>
+<p><strong>Sections.</strong> 12 What does a task cost?, 13 How do you get found when a machine reads first?,
+10 The month in one chart (only what prints: the page&#39;s standfirst, Proposal 1&#39;s title and its
+&quot;What it shows&quot; line), and 14 The case against (only two things: whether its factual premises are
+stated as receipts correctly, and whether any of its readings are presented as established fact
+rather than as the piece&#39;s case).</p>
+<p><strong>Read against.</strong> The print copy (<code>print/edition-1-full.md</code>; the per-section files match it),
+traced back through the annotated drafts, their source maps, &quot;not tagged&quot; lists and edit logs,
+<code>edit-rulings.md</code>, <code>edit-notes.md</code>, this issue&#39;s checks (<code>checks/check-10-12-13.md</code>,
+<code>checks/check-14-15-20.md</code>) and the pack (<code>00-BRIEF.md</code>, <code>00-RULES.md</code>, the monthly,
+<code>03-research/</code> claims 3 to 5, <code>04-checks/check-claim-3.md</code> to <code>check-claim-5.md</code>). No fact was
+re-checked and nothing was loaded from the web.</p>
+<p><strong>Levels.</strong></p>
+<ul>
+<li><strong>RECEIPT:</strong> someone said, filed, published or measured it, or a checker confirmed it. It stays flat.</li>
+<li><strong>READING:</strong> the magazine&#39;s interpretation of checked facts. A line tagged only to the monthly&#39;s
+Verdict, Why it matters, best case against or throughline is a reading here, even under an
+<code>[S: …]</code> tag: the monthly is ECHO&#39;s own earlier reading, not an outside source.</li>
+<li><strong>HYPOTHESIS:</strong> a bet about what comes next, what it means or what will work.</li>
+<li><strong>Advice</strong> is counted apart, and flagged where it states a causal claim as settled or doesn&#39;t say
+what it rests on (the brief asked this of 12 and 13).</li>
+</ul>
+<p><strong>Priorities.</strong> MUST: a reader would be misled. Then SHOULD and COULD.</p>
+<p><strong>Where to edit.</strong> Quotes are the print text; in the drafts the same lines carry tags. Line
+numbers are the drafts&#39; (<code>drafts/</code>, <code>cc-sections/</code>), where edits go before <code>make-print.mjs</code> is
+rerun. In <code>print/</code> the lines run two lower for 10, 12 and 13 (the script strips their header
+comment) and match for 14.</p>
+<hr>
+<h2>Summary</h2>
+<p><strong>48 findings: 4 MUST, 25 SHOULD, 19 COULD.</strong> One printed element checked and holding (10&#39;s chart
+title).</p>
+<p>The three that matter most:</p>
+<ol>
+<li><strong>12 prints its thesis as what the evidence said</strong> (B3-12-01, B3-12-02). The standfirst states
+that cost per task told the labs apart, and the opening says &quot;By October the evidence said
+something narrower&quot;, then gives the monthly&#39;s verdict as that evidence. 13&#39;s standfirst was
+already softened to &quot;suggests&quot;; 12&#39;s wasn&#39;t.</li>
+<li><strong>The Receipts&#39; ledger counts readings as confirmed claims</strong> (B3-X-01). In these four sections,
+17 source-map rows are the monthly&#39;s own readings or advice, and the checks marked them
+CONFIRMED because they match the monthly. They sit inside &quot;Confirmed 605&quot;.</li>
+<li><strong>The steelman&#39;s key premise uses the monthly&#39;s word, not Cursor&#39;s</strong> (B3-14-03). 14 says Cursor
+cut its prompt &quot;because newer models need fewer guardrails&quot;. The only Cursor wording in the pack
+is &quot;direction&quot;, and 12 prints &quot;less direction&quot;. The piece&#39;s step from instructions to limits
+rides on &quot;guardrails&quot;.</li>
+</ol>
+<hr>
+<h2>Rough counts by section</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Receipts</th>
+<th>Readings: marked / unmarked</th>
+<th>Hypotheses: marked / unmarked</th>
+<th>Advice</th>
+<th>Findings: MUST / SHOULD / COULD</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12 What does a task cost?</td>
+<td>about 60</td>
+<td>1 / about 27</td>
+<td>0 / 1</td>
+<td>7 (1 names its basis)</td>
+<td>2 / 9 / 4</td>
+</tr>
+<tr>
+<td>13 How do you get found when a machine reads first?</td>
+<td>about 47</td>
+<td>3 / about 25</td>
+<td>0 / 1</td>
+<td>5 (4 name their basis)</td>
+<td>0 / 7 / 7</td>
+</tr>
+<tr>
+<td>10 The month in one chart (what prints)</td>
+<td>5</td>
+<td>0 / 1</td>
+<td>0 / 0</td>
+<td>0</td>
+<td>0 / 2 / 0, plus 1 holds</td>
+</tr>
+<tr>
+<td>14 The case against</td>
+<td>about 34</td>
+<td>8 / about 16</td>
+<td>2 / 4</td>
+<td>0</td>
+<td>1 / 7 / 8</td>
+</tr>
+<tr>
+<td>Across sections</td>
+<td></td>
+<td></td>
+<td></td>
+<td></td>
+<td>1 / 0 / 0</td>
+</tr>
+</tbody></table>
+<p><em>How counted:</em> by hand, from the print copy. One sentence is one unit, and a sentence that mixes
+levels counts once, at the level that leads it. Headings, designer notes and the two boxes are left
+out. The boxes are almost all receipts (12&#39;s How we know about 9 sentences, 13&#39;s about 10), and
+each Prove us wrong box names its one hypothesis, marked as such.</p>
+<p><em>&quot;Unmarked&quot; is not a fault count.</em> Most unmarked readings are plainly the writer&#39;s voice (&quot;That is
+a fair hit&quot;) or sit under a frame already marked. The findings are the ones that pass for receipts.
+The pattern to notice: about a third of 12&#39;s and 13&#39;s claim sentences are readings, and each marks
+only one to three of them; 14, the piece built to argue, marks the most.</p>
+<hr>
+<h2>Across sections</h2>
+<p><strong>B3-X-01 · MUST</strong> · 04 The Receipts, <code>cc-sections/07-the-receipts.md</code> lines 30 to 31 (outside my
+sections; the evidence is in them)</p>
+<ul>
+<li><strong>Now:</strong> &quot;Claims checked in this issue&#39;s drafts | 642&quot; and &quot;Confirmed | 605&quot;</li>
+<li><strong>Level:</strong> Mixed. In the source maps of 10, 12, 13 and 14, 17 rows are the monthly&#39;s readings or advice (12: rows 1, 3, 10, 42, 51, 53, 54; 13: rows 1, 5, 6, 15, 29, 33, 39, 40; 10: row 1; 14: row 27), and the checks counted them CONFIRMED because they match the monthly (&quot;Why it&#39;s counted CONFIRMED: the line matches the monthly&#39;s throughline 2&quot;, <a href="data/check-10-12-13.html">check-10-12-13</a> §2).</li>
+<li><strong>Propose:</strong> One line under the ledger: The confirmed count includes our readings, which were checked only against the September monthly, not against an outside source. (For a number, count the reading rows in every source map; these four sections give 17 of about 150.)</li>
+</ul>
+<p>Notes, no separate edit:</p>
+<ul>
+<li><strong>Same root as B1&#39;s cross-cutting 1.</strong> A reading tagged <code>[S: …]</code> looks like a receipt in the
+draft, and print strips every tag. B1&#39;s <code>[S-reading: …]</code> tag would also let the ledger split its
+count.</li>
+<li><strong>&quot;The evidence said&quot; is the pattern to stop.</strong> Evidence doesn&#39;t speak; the magazine reads it.
+12 has &quot;the evidence said&quot; (B3-12-02) and 13 has &quot;The evidence landed&quot; (B3-13-02). 13&#39;s &quot;the
+month&#39;s evidence leans one way&quot; and &quot;the month&#39;s data suggests&quot; are hedged and can stay.</li>
+<li><strong>One receipt, two renderings.</strong> Cursor&#39;s reason is &quot;less direction&quot; in 12 and &quot;fewer
+guardrails&quot; in 14 (B3-14-03). The Ramp cause is The Decoder&#39;s in 12 and the index&#39;s in 14
+(B3-14-05). Both times, 12 has the receipt at its own level.</li>
+<li><strong>The markers already exist.</strong> 12&#39;s &quot;This magazine&#39;s reading, and it is an inference, is
+that…&quot;, 14&#39;s &quot;That they go next is a bet, and this piece makes it&quot;, 06&#39;s &quot;The verdicts are the
+research&#39;s readings; the facts under them were checked&quot; and 11&#39;s &quot;No check covered the pattern
+itself&quot;. The proposals below reuse them. B1&#39;s cross-cutting 2 (one marker, every time) applies.</li>
+</ul>
+<hr>
+<h2>12 What does a task cost?</h2>
+<p><code>drafts/12-what-does-a-task-cost.md</code>, a feature (third person). Already on the right side of the
+line: &quot;This magazine&#39;s reading, and it is an inference, is that…&quot; (line 63), &quot;On these numbers&quot;
+(29), &quot;it is Anthropic&#39;s own&quot; (17), &quot;on its own figures&quot; and &quot;by Latent Space&#39;s account&quot; (59).</p>
+<p><strong>B3-12-01 · MUST</strong> · 12, <code>drafts/12-what-does-a-task-cost.md</code> line 5, standfirst</p>
+<ul>
+<li><strong>Now:</strong> &quot;By the end of September the sticker price no longer told the big labs apart, and the number that did was the cost of a finished task.&quot;</li>
+<li><strong>Level:</strong> The first clause is a RECEIPT; the second is the monthly&#39;s READING (its Why it matters), since no receipt compares the three labs&#39; $2/$10 models per task.</li>
+<li><strong>Propose:</strong> By the end of September the sticker price no longer told the big labs apart, and on the magazine&#39;s reading the number that did was the cost of a finished task.</li>
+</ul>
+<p><strong>B3-12-02 · MUST</strong> · 12, line 7, opening paragraph</p>
+<ul>
+<li><strong>Now:</strong> &quot;By October the evidence said something narrower.&quot; … &quot;What changed was the unit a bill is counted in: the cost of a finished task, rather than the price of a token.&quot;</li>
+<li><strong>Level:</strong> READING put in the evidence&#39;s mouth: the two sentences between are the monthly&#39;s verdicts on claims 3 and 4, resting on practitioners&#39; preferences (Jones, Zvi, Vo) rather than measurements, and bills are still counted in tokens.</li>
+<li><strong>Propose:</strong> By October the September monthly read the evidence more narrowly. … What changed, on that reading, was the unit worth counting: the cost of a finished task, rather than the price of a token. (The two sentences between stay as they are.)</li>
+</ul>
+<p><strong>B3-12-03 · COULD</strong> · 12, line 11, The sticker converged</p>
+<ul>
+<li><strong>Now:</strong> &quot;Prices were falling before the month began.&quot;</li>
+<li><strong>Level:</strong> READING that sums two receipts pointing two ways: OpenAI cut Luna, Anthropic held Opus.</li>
+<li><strong>Propose:</strong> Some prices were falling before the month began.</li>
+</ul>
+<p><strong>B3-12-04 · SHOULD</strong> · 12, line 17, The sticker converged</p>
+<ul>
+<li><strong>Now:</strong> &quot;So the sticker stopped separating vendors, and the vendors began selling in other units.&quot;</li>
+<li><strong>Level:</strong> The second clause is a READING generalised from one vendor: both &quot;other units&quot; receipts (40% less to run, up to 30% less per task) are Anthropic&#39;s.</li>
+<li><strong>Propose:</strong> So the sticker stopped separating vendors, and Anthropic sold its two new models in other units.</li>
+</ul>
+<p><strong>B3-12-05 · COULD</strong> · 12, lines 29 and 31 (body and PULL), Argon&#39;s three prices</p>
+<ul>
+<li><strong>Now:</strong> &quot;The benchmark calls it a tie. The invoice doesn&#39;t.&quot;</li>
+<li><strong>Level:</strong> READING in a receipt&#39;s clothes: there is no invoice; the per-task figures are AINews&#39;s estimates, from a paid preview that doesn&#39;t give its method.</li>
+<li><strong>Propose:</strong> The benchmark calls it a tie. The cost per task doesn&#39;t.</li>
+</ul>
+<p><strong>B3-12-06 · COULD</strong> · 12, line 35, Per job from the start</p>
+<ul>
+<li><strong>Now:</strong> &quot;The month&#39;s founding evidence was already priced in work.&quot;</li>
+<li><strong>Level:</strong> READING (the monthly&#39;s step heading): Latent Space&#39;s hourly figure is tokens a second times the token price.</li>
+<li><strong>Propose:</strong> The month&#39;s first evidence was already priced by the hour and by the task.</li>
+</ul>
+<p><strong>B3-12-07 · COULD</strong> · 12, line 43, The wrapper&#39;s number, and its limits</p>
+<ul>
+<li><strong>Now:</strong> &quot;The other half of the bill is the wrapper.&quot;</li>
+<li><strong>Level:</strong> READING: &quot;half&quot; implies a split that no receipt measures.</li>
+<li><strong>Propose:</strong> The other lever on the bill is the wrapper.</li>
+</ul>
+<p><strong>B3-12-08 · SHOULD</strong> · 12, line 55, Savings by deletion</p>
+<ul>
+<li><strong>Now:</strong> &quot;On that view, what a harness sheds is instruction, and what it keeps is machinery: tools, security and limits.&quot;</li>
+<li><strong>Level:</strong> The magazine&#39;s READING (the draft lists it as one) attributed to McAteer&#39;s and Shihipar&#39;s view; neither mentions limits, which is the issue&#39;s own Pattern word.</li>
+<li><strong>Propose:</strong> On the magazine&#39;s reading, what a harness sheds is instruction, and what it keeps is machinery: tools, security and limits.</li>
+</ul>
+<p><strong>B3-12-09 · SHOULD</strong> · 12, lines 57 and 59, The labs move in on routing</p>
+<ul>
+<li><strong>Now:</strong> &quot;The labs move in on routing&quot; (heading); &quot;Routing, which had looked like the wrapper&#39;s best business, moved toward the labs.&quot;</li>
+<li><strong>Level:</strong> The monthly&#39;s READING (its claim 4 verdict); the section&#39;s receipts are one lab in limited preview, two cloud platforms, a startup&#39;s model and its clones, and a payments firm paying $7B for a router, which points the other way.</li>
+<li><strong>Propose:</strong> Heading: OpenAI and the clouds move in on routing. Sentence: Routing, which had looked like the wrapper&#39;s best business, drew in OpenAI and two cloud platforms.</li>
+</ul>
+<p><strong>B3-12-10 · SHOULD</strong> · 12, line 67, When the model sets the bill</p>
+<ul>
+<li><strong>Now:</strong> &quot;There the model set both the cost and the outcome.&quot;</li>
+<li><strong>Level:</strong> The monthly&#39;s READING (its best case against): the receipt is a 60% rise in spend after Databricks gave Astra to about 3,500 engineers, and that rollout choice is a competing cause.</li>
+<li><strong>Propose:</strong> On the monthly&#39;s reading, the model set both the cost and the outcome there.</li>
+</ul>
+<p><strong>B3-12-11 · SHOULD</strong> · 12, line 69, When the model sets the bill</p>
+<ul>
+<li><strong>Now:</strong> &quot;Keep the expensive model for the work that needs it, and give its spending a line of its own.&quot;</li>
+<li><strong>Level:</strong> Advice written as if it described Databricks&#39; answer: the source reports a dedicated sub-budget only, not that Astra was kept to the work that needs it.</li>
+<li><strong>Propose:</strong> The magazine&#39;s lesson: keep the expensive model for the work that needs it, and give its spending a line of its own.</li>
+</ul>
+<p><strong>B3-12-12 · SHOULD</strong> · 12, line 73, The operator&#39;s tool</p>
+<ul>
+<li><strong>Now:</strong> &quot;Put the month together and the operator&#39;s tool is a routing table:&quot;</li>
+<li><strong>Level:</strong> HYPOTHESIS (the monthly&#39;s Why it matters and throughline 2) stated as a finding; the receipts show Zvi&#39;s map and Jones&#39;s routing, not a measured gain from a routing table.</li>
+<li><strong>Propose:</strong> Put the month together and, on the magazine&#39;s reading, the operator&#39;s tool is a routing table:</li>
+</ul>
+<p><strong>B3-12-13 · SHOULD</strong> · 12, line 79, step 5</p>
+<ul>
+<li><strong>Now:</strong> &quot;Move any call that only returns a label or a route to a cheap decision model.&quot;</li>
+<li><strong>Level:</strong> Advice that takes a causal claim as settled (cheaper and no worse) on Jev&#39;s own figures alone; steps 1 to 3 are tests, and this one is an order.</li>
+<li><strong>Propose:</strong> Test a cheap decision model on any call that only returns a label or a route. The speed and cost figures here are Jev&#39;s own.</li>
+</ul>
+<p><strong>B3-12-14 · SHOULD</strong> · 12, lines 86 and 88 (closing and PULL)</p>
+<ul>
+<li><strong>Now:</strong> &quot;…and the harness decides much of the second number.&quot; … &quot;Only the first is on the announcement.&quot;</li>
+<li><strong>Level:</strong> READINGS as fact: one study shows a harness can move cost up to fivefold and Argon shows the model setting the token count, and the piece&#39;s own receipt contradicts the last line (Anthropic&#39;s Sonnet 5.5 page claims fewer tokens per task).</li>
+<li><strong>Propose:</strong> …and the harness can move the second number a long way. … Only the first is on the price list.</li>
+</ul>
+<p><strong>B3-12-15 · SHOULD</strong> · 12, line 94, How we know</p>
+<ul>
+<li><strong>Now:</strong> &quot;This piece uses the corrected versions. Still uncertain: …&quot; (nothing says which claims are readings)</li>
+<li><strong>Level:</strong> The box says what was checked, never what wasn&#39;t (B1&#39;s cross-cutting 3); 06 and 11 already draw this line.</li>
+<li><strong>Propose:</strong> After &quot;This piece uses the corrected versions.&quot;, add: The checks covered numbers, quotes and dates, not the readings built on them. Those are ours: that cost per task now tells the labs apart, and that the operator&#39;s tool is a routing table.</li>
+</ul>
+<hr>
+<h2>13 How do you get found when a machine reads first?</h2>
+<p><code>drafts/13-how-do-you-get-found.md</code>, a feature (third person). Already on the right side of the
+line: &quot;the month&#39;s data suggests&quot; (line 5), &quot;looked like an addition to search&quot; (7), &quot;leans one
+way&quot; (55), &quot;That is why the advice below has you date your mentions…&quot; (45), &quot;Those are Criteo&#39;s
+own figures&quot; (29).</p>
+<p><strong>B3-13-01 · SHOULD</strong> · 13, <code>drafts/13-how-do-you-get-found.md</code> lines 5 and 7, standfirst and opening</p>
+<ul>
+<li><strong>Now:</strong> &quot;In September AI discovery got money, rules and plumbing faster than anyone could measure it,&quot; (standfirst); &quot;paid for and permissioned faster than anyone could measure it&quot; (opening)</li>
+<li><strong>Level:</strong> READING overstated as fact: Profound did measure the visits, and the receipts show measurement lagging (2.5% tagged), not impossible; the standfirst marks its second clause (&quot;suggests&quot;) but not this one.</li>
+<li><strong>Propose:</strong> Standfirst: In September AI discovery got money, rules and plumbing while most of the visits it sent went untagged, and the month&#39;s data suggests… Opening: …paid for and permissioned faster than its measurement kept up.</li>
+</ul>
+<p><strong>B3-13-02 · SHOULD</strong> · 13, line 7, opening</p>
+<ul>
+<li><strong>Now:</strong> &quot;By the third, marketing was moving from making things with AI to being found by it. By the fourth, access had replaced capability as the constraint. The evidence landed between the first and the third.&quot;</li>
+<li><strong>Level:</strong> The first two are RECEIPTS of what the roundups said, narrated as if the magazine said them; the third is a READING given to the evidence.</li>
+<li><strong>Propose:</strong> The third said marketing was moving from making things with AI to being found by it. The fourth said access had replaced capability as the constraint. On the magazine&#39;s reading, the evidence landed between the first and the third.</li>
+</ul>
+<p><strong>B3-13-03 · COULD</strong> · 13, line 9</p>
+<ul>
+<li><strong>Now:</strong> &quot;September moved all three.&quot;</li>
+<li><strong>Level:</strong> READING: nothing in the piece counts citations (the tracker counts sources searched), so &quot;being cited&quot; isn&#39;t shown to have moved.</li>
+<li><strong>Propose:</strong> On the magazine&#39;s reading, September moved all three.</li>
+</ul>
+<p><strong>B3-13-04 · SHOULD</strong> · 13, line 15, A short shortlist</p>
+<ul>
+<li><strong>Now:</strong> &quot;So the shortlist is short, and it changes with the reader.&quot;</li>
+<li><strong>Level:</strong> READING via &quot;So&quot;: &quot;short&quot; is inferred from sources searched, which the lines above say aren&#39;t a count of citations, and &quot;changes with the reader&quot; comes from first picks, a different list.</li>
+<li><strong>Propose:</strong> So the shortlist looks short, and it changes with the reader.</li>
+</ul>
+<p><strong>B3-13-05 · COULD</strong> · 13, line 17</p>
+<ul>
+<li><strong>Now:</strong> &quot;Discovery was leaving the click before September.&quot; … &quot;Ranking had stopped meaning being cited, too.&quot;</li>
+<li><strong>Level:</strong> READINGS of a trend: SparkToro&#39;s two years come from different panels, and Ahrefs&#39; 37.9% is one snapshot with no earlier figure.</li>
+<li><strong>Propose:</strong> Most searches already ended without a click before September. … Ranking didn&#39;t mean being cited, either.</li>
+</ul>
+<p><strong>B3-13-06 · COULD</strong> · 13, line 19</p>
+<ul>
+<li><strong>Now:</strong> &quot;Being found added a job to the marketing team. It didn&#39;t take the old one away.&quot;</li>
+<li><strong>Level:</strong> READING (in the draft&#39;s not-tagged list) stated as fact, from IAB&#39;s 76% and Knak&#39;s 88%.</li>
+<li><strong>Propose:</strong> On the magazine&#39;s reading, being found added a job to the marketing team without taking the old one away.</li>
+</ul>
+<p><strong>B3-13-07 · COULD</strong> · 13, lines 21 and 23, The money came first</p>
+<ul>
+<li><strong>Now:</strong> &quot;The money came first&quot; (heading); &quot;IAB raised its forecast for US ad spend growth this year to 12.3%&quot;</li>
+<li><strong>Level:</strong> READING by placement: the 12.3% covers all US ad spend and IAB credits a strong first half, not AI; the section&#39;s AI money is ChatGPT ads&#39; run rate, and nothing dates the money before the traffic.</li>
+<li><strong>Propose:</strong> Heading: The money arrived. Sentence: IAB raised its forecast for growth in all US ad spend this year to 12.3%, …</li>
+</ul>
+<p><strong>B3-13-08 · COULD</strong> · 13, line 33, Walls, rules and plumbing</p>
+<ul>
+<li><strong>Now:</strong> &quot;Access got rules before it got traffic.&quot;</li>
+<li><strong>Level:</strong> READING of a sequence that the piece&#39;s own receipts undercut: AI traffic was already arriving (Shero&#39;s visits, Profound&#39;s lift, SOCi&#39;s 52%).</li>
+<li><strong>Propose:</strong> Access got rules while its traffic was still hard to count.</li>
+</ul>
+<p><strong>B3-13-09 · SHOULD</strong> · 13, line 37, Walls, rules and plumbing</p>
+<ul>
+<li><strong>Now:</strong> &quot;A brand&#39;s own levers are narrower: its structured product data, its checkout and, for media buyers, a comment on OpenProposal by 22 October.&quot;</li>
+<li><strong>Level:</strong> HYPOTHESIS (the monthly&#39;s throughline 3) stated as fact: &quot;levers&quot; says these move AI discovery, and no receipt shows that.</li>
+<li><strong>Propose:</strong> What a brand controls is narrower: its structured product data, its checkout and, for media buyers, a comment on OpenProposal by 22 October.</li>
+</ul>
+<p><strong>B3-13-10 · COULD</strong> · 13, lines 49 and 51 (body and PULL)</p>
+<ul>
+<li><strong>Now:</strong> &quot;The money and the plumbing arrived in September. The measurement didn&#39;t.&quot;</li>
+<li><strong>Level:</strong> READING (the monthly&#39;s intro): measurement exists but lags; Profound measured the lift, and IAB&#39;s 86% are changing how they measure.</li>
+<li><strong>Propose:</strong> The money and the plumbing arrived in September. Reliable measurement didn&#39;t.</li>
+</ul>
+<p><strong>B3-13-11 · COULD</strong> · 13, line 57, On top of search</p>
+<ul>
+<li><strong>Now:</strong> &quot;SOCi&#39;s local-search data shows both at once.&quot;</li>
+<li><strong>Level:</strong> READING: SOCi tracks AI use over a year but gives search use as a snapshot with no time window, so it shows both in use, not both holding.</li>
+<li><strong>Propose:</strong> SOCi&#39;s local-search data shows both in use at once.</li>
+</ul>
+<p><strong>B3-13-12 · SHOULD</strong> · 13, line 65, step 1</p>
+<ul>
+<li><strong>Now:</strong> &quot;Astra searches a median of five sources per answer, so the shortlist is short. Find out whether you&#39;re on it.&quot;</li>
+<li><strong>Level:</strong> READING via &quot;so&quot;, next to &quot;log who gets cited&quot;: a search count isn&#39;t a citation count, the pairing <a href="data/check-claim-5.html">check-claim-5</a> flagged in the monthly; 15&#39;s editors fixed the same line (its edit log), and 13 still pairs them.</li>
+<li><strong>Propose (15&#39;s wording, line 58):</strong> Astra searches a median of five sources per answer. The tracker doesn&#39;t say how many of them it cites, which is why you log it yourself.</li>
+</ul>
+<p><strong>B3-13-13 · SHOULD</strong> · 13, lines 63 and 67, lead-in and step 3</p>
+<ul>
+<li><strong>Now:</strong> &quot;What it does support is measuring the new channel properly:&quot; … &quot;3. Get agent-readable. Tidy your structured product data and test how browser agents handle your checkout.&quot;</li>
+<li><strong>Level:</strong> Advice listed under &quot;what it does support&quot; that isn&#39;t measurement and rests on no receipt; steps 1, 2 and 4 rest on named receipts (Astra&#39;s median, Profound&#39;s untagged visits, the 22 October deadline), and this one on none.</li>
+<li><strong>Propose:</strong> 3. Get agent-readable. This one is a bet; nothing in the month&#39;s data prices it. Tidy your structured product data and test how browser agents handle your checkout.</li>
+</ul>
+<p><strong>B3-13-14 · SHOULD</strong> · 13, line 76, How we know</p>
+<ul>
+<li><strong>Now:</strong> &quot;This piece uses the corrected versions: … Still uncertain: …&quot; (nothing says which claims are readings)</li>
+<li><strong>Level:</strong> As B3-12-15: the box says what was checked, never what wasn&#39;t.</li>
+<li><strong>Propose:</strong> After the list of corrections, add: The checks covered numbers, quotes and dates, not the readings built on them. Those are ours: that discovery is growing on top of search, that measurement lags the money, and the advice to get agent-readable.</li>
+</ul>
+<hr>
+<h2>10 The month in one chart</h2>
+<p><code>drafts/10-the-month-in-one-chart.md</code>, a department page. Only Proposal 1 prints, so only the
+page&#39;s standfirst, Proposal 1&#39;s title and its &quot;What it shows&quot; line were audited. Already on the
+right side of the line: the footnote, &quot;Cost per task as reported by AINews; output tokens are under
+half of it.&quot; (line 23).</p>
+<p><strong>B3-10-01 · SHOULD</strong> · 10, <code>drafts/10-the-month-in-one-chart.md</code> line 5, standfirst</p>
+<ul>
+<li><strong>Now:</strong> &quot;Three proposals for the issue&#39;s data page, led by the one that puts September&#39;s argument in a single picture: what a task costs.&quot;</li>
+<li><strong>Level:</strong> READING scoped too wide: cost per task is one claim&#39;s reading (claim 3&#39;s Why it matters), while the issue&#39;s argument is &quot;set limits, then audit them&quot; (The Pattern); with only Proposal 1 printing, the line needs rewriting anyway.</li>
+<li><strong>Propose:</strong> One of September&#39;s readings in a single picture: what a task costs.</li>
+</ul>
+<p><strong>B3-10-02 · Holds</strong> · 10, line 9, Proposal 1&#39;s title</p>
+<ul>
+<li><strong>Now:</strong> &quot;Same score, different bill&quot;</li>
+<li><strong>Level:</strong> RECEIPT, compressed: 53 each on the index, and $1.99, $3.26 and $3.98 a task on AINews&#39;s figures, which the footnote attributes.</li>
+<li><strong>Propose:</strong> No change.</li>
+</ul>
+<p><strong>B3-10-03 · SHOULD</strong> · 10, line 25, What it shows</p>
+<ul>
+<li><strong>Now:</strong> &quot;At the same benchmark score, the model that is cheapest per token is cheapest per task only while its introductory discount lasts, because …&quot;</li>
+<li><strong>Level:</strong> A derived RECEIPT printed without its source: the per-task costs are AINews&#39;s, from a paid preview that doesn&#39;t give its method, and 12 scopes the same sentence with &quot;On these numbers&quot;.</li>
+<li><strong>Propose:</strong> On AINews&#39;s figures, at the same benchmark score, the model that is cheapest per token …</li>
+</ul>
+<hr>
+<h2>14 The case against</h2>
+<p><code>drafts/14-the-case-against.md</code>, a labelled in-house steelman: its argument is meant to be
+argument, and only its premises and its passing-off of readings as fact were audited. Already on
+the right side of the line: &quot;its hardest step is its own&quot; (line 7), &quot;On its reading&quot; (15), &quot;That
+they go next is a bet, and this piece makes it.&quot; (19), &quot;So this section moves the gatekeeper, not
+the gate.&quot; (35), &quot;On this piece&#39;s reading, then,&quot; (53), &quot;made as hard as the evidence allows and
+one step harder&quot; (55).</p>
+<p><strong>B3-14-01 · COULD</strong> · 14, <code>drafts/14-the-case-against.md</code> line 3, title</p>
+<ul>
+<li><strong>Now:</strong> &quot;The case against: the model eats the limits too&quot;</li>
+<li><strong>Level:</strong> The piece&#39;s HYPOTHESIS as a flat title; the standfirst marks it, and the title is already on Jay&#39;s list (edit-notes, &quot;Jay&#39;s calls&quot;).</li>
+<li><strong>Propose:</strong> The case against: does the model eat the limits too?</li>
+</ul>
+<p><strong>B3-14-02 · COULD</strong> · 14, line 5, standfirst</p>
+<ul>
+<li><strong>Now:</strong> &quot;This issue argues that the operator&#39;s job moved from supervising every output to setting limits and auditing them;&quot;</li>
+<li><strong>Level:</strong> RECEIPT about the issue, hardened: the issue&#39;s words, quoted in the next paragraph, are &quot;looks less like … and more like&quot;.</li>
+<li><strong>Propose:</strong> This issue argues that the operator&#39;s job looks less like supervising every output and more like setting limits and auditing them;</li>
+</ul>
+<p><strong>B3-14-03 · MUST</strong> · 14, line 17, One step past Mollick</p>
+<ul>
+<li><strong>Now:</strong> &quot;Cursor did that on 23 September, trimming roughly 66% of its system prompt because newer models need fewer guardrails.&quot;</li>
+<li><strong>Level:</strong> RECEIPT in the monthly&#39;s paraphrase, not Cursor&#39;s words: the only Cursor wording in the pack is &quot;much of that direction became unnecessary&quot; (check-claim-4 §2), 12 prints &quot;less direction&quot;, and the piece&#39;s step from instructions to limits rides on &quot;guardrails&quot;.</li>
+<li><strong>Propose:</strong> Cursor did that on 23 September, trimming roughly 66% of its system prompt because newer models needed less direction. (If the piece wants the word, it can own it: On its reading, much of that direction was guardrails. If Cursor&#39;s post does say &quot;guardrails&quot;, quote it.)</li>
+</ul>
+<p><strong>B3-14-04 · SHOULD</strong> · 14, lines 19 and 21 (body and PULL)</p>
+<ul>
+<li><strong>Now:</strong> &quot;So the line between a guardrail and a limit is whether the model can be trusted to keep it, and every better model moves that line.&quot;</li>
+<li><strong>Level:</strong> READING and HYPOTHESIS given as a conclusion by &quot;So&quot;: the receipts show deleted instructions, and the next sentence concedes no cap or sandbox has gone; as a PULL it loses even that.</li>
+<li><strong>Propose:</strong> Body: On this piece&#39;s reading, the line between a guardrail and a limit is whether the model can be trusted to keep it, and better models will keep moving it. PULL: Nothing in September&#39;s record shows a spend cap or a sandbox made redundant. That they go next is a bet, and this piece makes it.</li>
+</ul>
+<p><strong>B3-14-05 · SHOULD</strong> · 14, line 27, The cost objection</p>
+<ul>
+<li><strong>Now:</strong> &quot;Ramp&#39;s index showed AI spend falling while usage rose about 50% since July, almost entirely because of price competition between OpenAI and Anthropic.&quot;</li>
+<li><strong>Level:</strong> The cause is The Decoder&#39;s READING, not something the index showed, and &quot;price&quot; is the monthly&#39;s word (The Decoder: &quot;competition&quot;); 12 attributes it correctly.</li>
+<li><strong>Propose:</strong> Ramp&#39;s index showed AI spend falling while usage rose about 50% since July, and The Decoder put nearly all of the fall down to OpenAI and Anthropic competing.</li>
+</ul>
+<p><strong>B3-14-06 · COULD</strong> · 14, line 29, heading</p>
+<ul>
+<li><strong>Now:</strong> &quot;The machine is the better gate&quot;</li>
+<li><strong>Level:</strong> The section&#39;s READING as a heading; the section concedes that the study never tested a short gate list and that it &quot;moves the gatekeeper, not the gate&quot;.</li>
+<li><strong>Propose:</strong> Is the machine the better gate?</li>
+</ul>
+<p><strong>B3-14-07 · SHOULD</strong> · 14, line 31, The machine is the better gate</p>
+<ul>
+<li><strong>Now:</strong> &quot;The issue keeps one human step for certain:&quot;</li>
+<li><strong>Level:</strong> RECEIPT about the issue, overstated: 08 keeps the gate but names it as its claim most likely to be wrong.</li>
+<li><strong>Propose:</strong> The issue keeps one human step:</li>
+</ul>
+<p><strong>B3-14-08 · COULD</strong> · 14, line 33</p>
+<ul>
+<li><strong>Now:</strong> &quot;People push back when they see the whole job,&quot;</li>
+<li><strong>Level:</strong> READING of why plans are rejected more than prompts; Anthropic&#39;s post gives the two rates, not the reason.</li>
+<li><strong>Propose:</strong> Perhaps people push back when they see the whole job,</li>
+</ul>
+<p><strong>B3-14-09 · SHOULD</strong> · 14, line 33</p>
+<ul>
+<li><strong>Now:</strong> &quot;The only catch rate on record is the testers&#39;, about one in six even early in a session.&quot;</li>
+<li><strong>Level:</strong> RECEIPT misscoped: the classifier&#39;s 89%, a paragraph up, is also a catch rate on record, and the point is about people.</li>
+<li><strong>Propose:</strong> The only human catch rate on record is the testers&#39;, about one in six even early in a session.</li>
+</ul>
+<p><strong>B3-14-10 · SHOULD</strong> · 14, line 35</p>
+<ul>
+<li><strong>Now:</strong> &quot;But a gate on what can&#39;t be undone belongs to whichever checker misses less, and the testers missed nearly nine in ten.&quot;</li>
+<li><strong>Level:</strong> RECEIPT applied past its scope: a paragraph earlier the piece concedes the study never tested a short gate list, so 86% isn&#39;t a measure of such a gate.</li>
+<li><strong>Propose:</strong> …and in the only test on record, the testers missed nearly nine in ten.</li>
+</ul>
+<p><strong>B3-14-11 · COULD</strong> · 14, line 37</p>
+<ul>
+<li><strong>Now:</strong> &quot;The audit is moving too.&quot;</li>
+<li><strong>Level:</strong> READING stated as a trend, from one research swarm (DeepMind&#39;s).</li>
+<li><strong>Propose:</strong> The audit may be next.</li>
+</ul>
+<p><strong>B3-14-12 · COULD</strong> · 14, lines 41 and 43 (body and PULL)</p>
+<ul>
+<li><strong>Now:</strong> &quot;The model set the cost and the outcome first.&quot;</li>
+<li><strong>Level:</strong> The monthly&#39;s READING (its best case against) stated as fact; Databricks&#39; rollout choice is a competing cause, as in B3-12-10.</li>
+<li><strong>Propose:</strong> On the monthly&#39;s reading, the model set the cost and the outcome first.</li>
+</ul>
+<p><strong>B3-14-13 · SHOULD</strong> · 14, line 45</p>
+<ul>
+<li><strong>Now:</strong> &quot;Google set the price and the model set the token count; the operator set neither.&quot;</li>
+<li><strong>Level:</strong> READING (the draft&#39;s untagged list) generalised from a benchmark average; on an operator&#39;s own work the harness moves the token count, as 12 argues.</li>
+<li><strong>Propose:</strong> On the benchmark, Google set the price and the model set the token count; the operator set neither.</li>
+</ul>
+<p><strong>B3-14-14 · SHOULD</strong> · 14, line 51</p>
+<ul>
+<li><strong>Now:</strong> &quot;Whatever it becomes, it is a limit on the operator, written by somebody else.&quot;</li>
+<li><strong>Level:</strong> HYPOTHESIS written as fact about a bill with no number or text; if it never passes, it limits no one.</li>
+<li><strong>Propose:</strong> If it passes as reported, it will be a limit on the operator, written by somebody else.</li>
+</ul>
+<p><strong>B3-14-15 · COULD</strong> · 14, line 53</p>
+<ul>
+<li><strong>Now:</strong> &quot;The operator&#39;s share is narrower than this issue says, and shrinking from both ends.&quot;</li>
+<li><strong>Level:</strong> HYPOTHESIS (&quot;shrinking&quot;) in a new sentence after the marked reading; one month can&#39;t show a trend.</li>
+<li><strong>Propose:</strong> On that reading, the operator&#39;s share is narrower than this issue says, and shrinking from both ends.</li>
+</ul>
+<p><strong>B3-14-16 · COULD</strong> · 14, line 55</p>
+<ul>
+<li><strong>Now:</strong> &quot;Over to the editor: which of these limits won&#39;t the model eat?&quot;</li>
+<li><strong>Level:</strong> Presupposes the piece&#39;s HYPOTHESIS; <a href="data/check-14-15-20.html">check-14-15-20</a> counted this line among those stating the step as fact.</li>
+<li><strong>Propose:</strong> Over to the editor: will the model eat these limits too?</li>
+</ul>
+<hr>
+<h2>Outside my sections, seen in passing</h2>
+<ul>
+<li><strong>15 The Operator, step 5</strong> (<code>drafts/15-the-operator.md</code> line 62): &quot;AI discovery is growing on top
+of search, not in place of it.&quot; states 13&#39;s marked reading, its Prove us wrong claim, as fact.
+B1 already has it in its 15 section; no second entry needed.</li>
+<li><strong>15 The Operator, step 1</strong> (line 58) already has the searched-against-cited wording that 13
+needs (B3-13-12).</li>
+</ul>
+<h2>Factual problems seen in passing</h2>
+<p>None. Every fact relied on here was confirmed by a check, and the problems above are framing. One
+sits on the line: if Cursor&#39;s post doesn&#39;t use the word &quot;guardrails&quot;, 14 attributes the monthly&#39;s
+paraphrase to Cursor (B3-14-03).</p>
+</div></article>
+    </div>
+<main style="max-width: 1360px; margin: 0 auto; padding: 0 48px 160px;">
+    <footer style="margin-top: 160px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; align-items: flex-end;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--ej-font-display); font-weight: 700; font-size: 40px; line-height: .86; letter-spacing: .04em; text-transform: uppercase;">The AI Echo</div>
+<div style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.8;">Edition 1 · October 2026 · covering September 2026<br>Published free as a PDF with The ECHO Files on Substack · Editor: Jay Wright</div>
+      </div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <a href="https://echofiles.substack.com" style="text-decoration: none;">Subscribe</a>
+<a href="#rules" style="text-decoration: none;">The Rules</a>
+<a href="#corrections" style="text-decoration: none;">Corrections</a>
+<a href="index.html" style="text-decoration: none; color: var(--ej-fg-faint);">Top ↑</a>
+      </div>
+<div style="width: 72px; height: 6px; background: repeating-linear-gradient(135deg, var(--ej-line-strong) 0 6px, transparent 6px 12px);"></div>
+    </footer>
+  </main>
+</div>
+<script src="assets/site.js"></script>
+<script>(function(){var k="ai-echo-size",n=0;try{n=parseInt(localStorage.getItem(k)||"0",10)||0}catch(e){}function apply(){var z=Math.pow(1.1,n);document.querySelectorAll("#features, main#top, main").forEach(function(el){el.style.zoom=z});document.querySelectorAll("[data-sz]").forEach(function(b){b.title=Math.round(z*100)+"%"});try{localStorage.setItem(k,String(n))}catch(e){}}apply();document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-sz]");if(!b)return;n+=parseInt(b.getAttribute("data-sz"),10);apply();});})();</script></body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="/aiechomag/"><meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit A: the verdicts — The AI Echo, Edition 1</title>
+<meta name="description" content="A field magazine for people operating at the edge of AI. Edition 1, covering September 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/web.css">
+</head>
+<body style="margin: 0; background: var(--ej-bg);">
+<div id="root" data-theme="light" style="color: var(--ej-fg); font-family: var(--ej-font-body); background: var(--ej-bg);">
+
+  <nav style="position: sticky; top: 0; z-index: 20; background: var(--ej-bg); border-bottom: 1px solid var(--ej-line);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 14px 48px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ej-fg);">
+        <span style="font-family: var(--ej-font-display); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: .05em; text-transform: uppercase;">The AI Echo</span>
+        <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); border: 1px solid var(--ej-line-strong); padding: 3px 8px; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 0 100%);">№ 1 · Oct 2026</span>
+      </a>
+<div style="flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-left: auto; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <span style="flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); white-space: nowrap;">14 // What we got wrong, and what changed</span>
+        <button type="button" data-action="toggleRibbon" aria-expanded="true" style="flex: none; white-space: nowrap; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="ribbonLabel">Hide sections</span></button>
+<button type="button" class="sz-btn" data-sz="-1" aria-label="Smaller text">A−</button><button type="button" class="sz-btn" data-sz="1" aria-label="Larger text">A+</button><button type="button" data-action="toggleTheme" style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-muted); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="themeLabel">Dark</span></button>
+      </div>
+    </div>
+<div id="ribbon" style="display: block; border-top: 1px solid var(--ej-line); background: var(--ej-surface);">
+      <div aria-label="Edition 1 sections" data-ribbon="1" style="max-width: 1360px; margin: 0 auto; padding: 0 36px; display: flex; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;">
+        
+          <div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="index.html" data-selected="false" title="The AI Echo" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">№ 1 · Front</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The AI Echo</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Cover and contents</span>
+                </a>
+<a href="01-from-the-editors.html" data-selected="false" title="From the editors" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">01</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">From the editors</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The editor's letter</span>
+                </a>
+<a href="02-the-rules.html" data-selected="false" title="The Rules (DRAFT)" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">02</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Rules (DRAFT)</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Nine rules, each with its test</span>
+                </a>
+<a href="03-the-month.html" data-selected="false" title="The Month" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">03</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Month</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five claims, and how each fared</span>
+                </a>
+<a href="04-the-receipts.html" data-selected="false" title="The Receipts" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">04</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Receipts</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Method, pipeline and ledger</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Front of the book</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="05-who-checks-the-checker.html" data-selected="false" title="Who checks the checker?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">05</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who checks the checker?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">When people approve everything</span>
+                </a>
+<a href="06-who-pays-when-an-agent-breaks-something.html" data-selected="false" title="Who pays when an agent breaks something?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">06</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who pays when an agent breaks something?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Six actions went public, after the fact</span>
+                </a>
+<a href="07-the-month-in-one-chart.html" data-selected="false" title="Same score, different bill" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">07</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                </a>
+<a href="08-the-pattern.html" data-selected="false" title="The Pattern" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">08</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Pattern</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five lanes into one point</span>
+                </a>
+<a href="09-what-does-a-task-cost.html" data-selected="false" title="What does a task cost?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">09</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What does a task cost?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Model choice, per job</span>
+                </a>
+<a href="10-how-do-you-get-found-when-a-machine-reads-first.html" data-selected="false" title="How do you get found when a machine reads first?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">10</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">How do you get found when a machine reads first?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Being found when AI reads first</span>
+                </a>
+<a href="11-the-case-against.html" data-selected="false" title="The case against" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">11</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The case against</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The steelman, and the reply</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Features</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="12-the-operator.html" data-selected="false" title="The Operator" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">12</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five field-guide cards</span>
+                </a>
+<a href="13-field-notes.html" data-selected="false" title="Field Notes: candidates" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">13</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Field Notes</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">A tool, a stop, an experiment</span>
+                </a>
+<a href="14-corrections.html" data-selected="true" title="Corrections" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid var(--ej-gold); border-radius: 0; background: var(--ej-bg); color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">14</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Corrections</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What we got wrong, and what changed</span>
+                </a>
+<a href="15-prove-us-wrong.html" data-selected="false" title="Prove us wrong" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">15</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Prove us wrong</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Make the case against us</span>
+                </a>
+<a href="16-the-library.html" data-selected="false" title="The Library" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">16</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Library</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Twenty-eight things to read</span>
+                </a>
+<a href="17-the-operators-page.html" data-selected="false" title="The Operator's Page" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">17</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator's Page</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">To do, to watch, one question</span>
+                </a>
+<a href="18-the-raw-data.html" data-selected="false" title="The Raw Data" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">18</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Raw Data</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The data behind the issue</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Back of the book</div>
+          </div>
+        
+      </div>
+    </div>
+<div id="progress" style="height: 2px; background: var(--ej-gold); width: 0.00%; transition: width .15s linear;"></div>
+  </nav>
+<main id="top" style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
+    
+  </main>
+<div id="corrections" data-theme="light" style="background: var(--ej-bg); color: var(--ej-fg); padding: 72px 0 0;">
+      <article class="dr"><p class="dr-crumb"><a href="data/index.html">The data room</a> // The audits</p><div class="dr-kick"><span class="dr-tab">DATA</span><span>// The audits</span></div><h1 class="dr-h1">Audit A: the verdicts</h1><p class="dr-dek">Framing audit, 5 to 6 October</p><div class="dr-doc"><p><em>The AI Echo, Edition 1 · Monday 5 October 2026 · auditor A (CC). Red Team v3, point 1: &quot;Stop
+letting &#39;reframed&#39; do too much work.&quot; Report only: no draft, check, print or research file was
+edited.</em></p>
+<p><strong>Read against.</strong> The print copy (<code>print/edition-1-full.md</code>), traced back to the files it is built
+from (<code>drafts/</code>, <code>cc-sections/</code>); the September research and its checks
+(<code>standalone/2026-10-september-monthly/research/claim-1</code> to <code>claim-5</code>, <code>check-claim-1</code> to
+<code>check-claim-5</code>); the published monthly (<code>post.md</code>, <code>post-long.md</code>); the five roundups in
+<code>manus-pack/05-roundups/</code>; this issue&#39;s checks, <code>edit-rulings.md</code> and <code>edit-notes.md</code>. No fact was
+re-checked and nothing was loaded from the web.</p>
+<p><strong>Where to edit.</strong> Line numbers are the annotated files&#39; (<code>drafts/</code>, <code>cc-sections/</code>); edit those,
+then rerun <code>make-print.mjs</code>. Section numbers are the file numbers. The printed contents number them
+differently: 04 prints as 01, 05 as 02, 06 The Month as 03, 07 The Receipts as 04, 08 as 05, 09 as
+06, 11 The Pattern as 08, 12 as 09, 13 as 10, 14 as 11, 15 as 12, 17 Corrections as 14, 18 Prove us
+wrong as 15, 19 The Library as 16.</p>
+<hr>
+<h2>1. The five claims</h2>
+<h3>The research&#39;s verdict, tested</h3>
+<p>The research said none of the five held as written, none was simply wrong, and all five came back
+reframed. On the evidence in the research and the checks:</p>
+<ul>
+<li><strong>&quot;All five reframed&quot;: no.</strong> One claim fits the red team&#39;s &quot;reframed&quot; (model choice), and there
+October&#39;s conclusion reverses September&#39;s at the level of the job. One held (accountability). One
+held at its core (judgment). Two split (the wrapper, being found).</li>
+<li><strong>The research&#39;s own verdict sentences say so.</strong> &quot;Verification stayed the bottleneck&quot; (claim 1).
+&quot;The gap held&quot; (claim 2). &quot;The price and parity half strengthened&quot; (claim 3). &quot;The margin is real
+and now measured&quot; (claim 4). &quot;The channel half got stronger&quot; (claim 5). The one-word label erased
+every held or strengthened part.</li>
+<li><strong>Claim 2&#39;s reframe was refuted by its own check.</strong> The research verdict said liability &quot;began to
+be assigned after the fact&quot;; <a href="data/check-claim-2.html">check-claim-2</a> §2 item 5 found &quot;none of them assigns liability yet&quot;.
+Without that line, October&#39;s conclusion is the 2 October roundup&#39;s own takeaway: &quot;Accountability
+arrived after the fact, and from outside.&quot;</li>
+<li><strong>&quot;None held as written&quot;</strong> is true only word for word.</li>
+<li><strong>&quot;None simply wrong&quot;</strong> is true of the five bundled claims, not of the weekly statements. Three
+takeaways were wrong on the month&#39;s own evidence: &quot;Judgment did not get cheap&quot; (28 Aug to 4 Sep),
+whose dataset came from a nightly taste loop; &quot;Model choice is now the least consequential choice
+in your stack&quot; (5 to 11 Sep), whose lead source concluded &quot;The same project can give me a reason
+to use both&quot;; and &quot;Faster isn&#39;t better&quot; (26 Sep to 2 Oct), against the month&#39;s only long-run
+record, better, not faster.</li>
+<li><strong>The finders graded themselves.</strong> The agents that traced the claims gave the verdicts, and the
+editor printed them. The checkers scoped verdicts out as opinion (check-claim-1 §3), and no check
+covered the monthly&#39;s intro or its pattern (check-01-06-11). Rule VI, &quot;the one who finds doesn&#39;t
+grade&quot;, never reached the grades.</li>
+</ul>
+<p>Two passages already make the delta explicit, and are the models for the rest: 09&#39;s &quot;The gap they
+were reacting to held. ... What changed in those four days is that the question was raised in
+public six times, after the fact.&quot; and 12&#39;s &quot;So the defensible claim is narrower than the version
+The ECHO Files&#39; roundups ran in September.&quot;</p>
+<h3>The table</h3>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Claim, as September stated it</th>
+<th>Conclusion, as the issue now prints it</th>
+<th>Grade</th>
+<th>Delta</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td><strong>&quot;Judgment and verification are the scarce step&quot;</strong> (claim-1 report header). In the roundups: &quot;Judgment did not get cheap, and now there&#39;s a dataset&quot; (28 Aug to 4 Sep); &quot;Verification is the scarce step ... The value moved to whoever owns sign-off&quot; (19 to 25 Sep).</td>
+<td>06: &quot;Verification stayed the bottleneck, but checking each item moved to machines.&quot; 08: &quot;It survived the month, but it changed shape.&quot; 11: &quot;Ended as: which actions keep a human gate.&quot; The move table: &quot;A human gate only on what&#39;s irreversible or leaves the building&quot;.</td>
+<td><strong>Held at its core; weakened in its first-week form.</strong> Not reframed.</td>
+<td>September put the scarce step in human judgment and sign-off. October keeps verification as the bottleneck but hands item-by-item checking to machines, leaving people to define good, audit the grader and gate what can&#39;t be undone. The first week&#39;s &quot;Judgment did not get cheap&quot; failed on its own dataset, and September&#39;s own advice (&quot;whose taste it carries&quot;; &quot;invest in the checker, not the generator&quot;) already pointed where October landed.</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>&quot;Accountability can&#39;t keep up with deployment&quot;</strong> (claim-2 header). In the roundups: &quot;Auditability quietly went backwards&quot; (28 Aug to 4 Sep); &quot;Accountability arrived after the fact, and from outside&quot; (26 Sep to 2 Oct).</td>
+<td>06: &quot;The gap held ... No liability has been assigned yet.&quot; 09: &quot;The accountability gap held&quot;. 11: &quot;Ended as: who pays when an agent breaks something.&quot; The move table: &quot;A named owner for every agent that can browse, log in or spend&quot;.</td>
+<td><strong>Held.</strong> The detection evidence grew, which argues for strengthened; the counter-case (AB 316 predates the month, and the Astra brake worked once) stops short of it.</td>
+<td>Nothing material changed: October&#39;s conclusion is the 2 October roundup&#39;s takeaway. The research&#39;s reframe rested on liability that &quot;began to be assigned&quot;; its own check found none assigned, and the issue now prints that. What October adds is evidence: six actions went public after the fact, none of them a finding.</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>&quot;Model choice stopped being the variable (with: capability got cheap)&quot;</strong> (claim-3 header). In the roundups: &quot;Model choice is now the least consequential choice in your stack&quot; (5 to 11 Sep); &quot;Stop asking which model to use&quot; (12 to 18 Sep); &quot;Capability got cheap, and everybody noticed at once&quot; (28 Aug to 4 Sep).</td>
+<td>06: &quot;The vendor matters less. Which model gets which job matters more.&quot; 12: &quot;By October the evidence said something narrower.&quot; 11: &quot;Ended as: which model gets which job.&quot; The move table: &quot;A routing table, with frontier models on their own sub-budget and a cap&quot;.</td>
+<td><strong>Reframed, and reversed at the level of the job.</strong> The price half held, below the $10/$50 frontier only.</td>
+<td>September said stop choosing models; October says choose one per job. Only the vendor-and-price half survived. The roundups&#39; lead source had already concluded otherwise: &quot;The same project can give me a reason to use both&quot; (Nate B Jones, 10 Sep). This is the one genuine reframe of the five, and 12 calls it &quot;narrower&quot;.</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>&quot;The wrapper is the margin&quot;</strong> (claim-4 header). In the roundups: &quot;The wrapper is the margin, and this week somebody priced it&quot;, with &quot;71% cheaper ... with no significant quality difference&quot; (12 to 18 Sep); &quot;The harness is the product&quot; (26 Sep to 2 Oct).</td>
+<td>06: &quot;it&#39;s a cost margin, won by deleting scaffolding and adding limits.&quot; 12: &quot;A harness can change what the same work costs several times over. Neither of September&#39;s two studies showed that it changes average quality&quot;. 11: &quot;Ended as: what an agent may spend.&quot;</td>
+<td><strong>Split: held on cost, weakened on quality, reframed toward thinner wrappers.</strong></td>
+<td>September said the wrapper is where the money is, and by 2 October that the harness is the product. October keeps the cost lever, demotes the 71% from an average to one example, finds the quality effect unproven either way, and points the work at cutting the harness down. &quot;Adding limits&quot; is the advice for the savings (Willison&#39;s 3 October argument), not something the evidence shows winning the margin.</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>&quot;Marketing&#39;s job moved from making assets to being found (with: capability converts)&quot;</strong> (claim-5 header). In the roundups: &quot;The market is quietly moving from making things with AI to being found by it&quot; (12 to 18 Sep); &quot;Faster isn&#39;t better, and the org is the bottleneck&quot; (26 Sep to 2 Oct).</td>
+<td>06: &quot;The money and the plumbing arrived ... The measurement didn&#39;t ... AI discovery grew alongside search rather than replacing it&quot;. 13: &quot;Being found added a job to the marketing team. It didn&#39;t take the old one away.&quot; 11: &quot;Ended as: where a brand gets cited&quot;, &quot;the loosest fit of the five&quot;.</td>
+<td><strong>Split: strengthened on money and plumbing, weakened on &quot;moved from making&quot;, still open on whether AI discovery adds to search or replaces it.</strong></td>
+<td>September said marketing&#39;s job moved from making to being found. October says being found was added, not swapped in, and rests &quot;on top of search&quot; on one quarter-over-quarter comparison that 13&#39;s own Prove us wrong calls the claim most likely to be wrong. The fifth roundup&#39;s &quot;Faster isn&#39;t better&quot; runs against the month&#39;s only long-run record: better, not faster.</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>2. Findings</h2>
+<p><strong>32 findings: 8 MUST, 14 SHOULD, 10 COULD.</strong> Two factual problems found in passing are listed
+separately at the end, after the shared lines with audit B1.</p>
+<h3>MUST</h3>
+<p><strong>A-01 · MUST · 07 The Receipts, &quot;The verdict scale&quot;</strong> · <code>cc-sections/07-the-receipts.md</code>, lines 40 to 41</p>
+<ul>
+<li><strong>Now:</strong> &quot;Each claim gets one of five verdicts: held, strengthened, weakened, reframed or still open. All five of September&#39;s claims came back reframed.&quot;</li>
+<li><strong>Wrong:</strong> On the research and the checks, one claim was reframed, one held, one held at its core and two split; 09 itself says the gap &quot;held&quot;; and the line hides that the agents who traced the claims gave the verdicts and no checker graded them.</li>
+<li><strong>Proposed:</strong> the replacement in section 3.</li>
+</ul>
+<p><strong>A-02 · MUST · 06 The Month, opening paragraph</strong> · <code>drafts/06-the-month.md</code>, line 5</p>
+<ul>
+<li><strong>Now:</strong> &quot;Traced through the month, the five came back reframed: none held as written, and none was simply wrong.&quot;</li>
+<li><strong>Wrong:</strong> It inherits a label the research&#39;s own verdict sentences contradict (&quot;The gap held&quot;, &quot;Verification stayed the bottleneck&quot;), and &quot;none simply wrong&quot; glosses three takeaways the month&#39;s evidence reversed.</li>
+<li><strong>Proposed:</strong> &quot;Traced through the month, they fared differently: two held at their core, one came back reversed at the level of the job, and two split. The grades are the magazine&#39;s readings; the facts under them were checked.&quot;</li>
+</ul>
+<p><strong>A-03 · MUST · 06 The Month, the five paragraph leads</strong> · <code>drafts/06-the-month.md</code>, lines 7 to 15</p>
+<ul>
+<li><strong>Now:</strong> &quot;Judgment → limits.&quot; &quot;Accountability → named owners.&quot; &quot;Models → routing.&quot; &quot;Wrappers → deletion and limits.&quot; &quot;Making → being found, on top of search.&quot;</li>
+<li><strong>Wrong:</strong> The arrows give only where each claim ended, never what September said, so no delta shows; &quot;Accountability → named owners&quot; turns the operator&#39;s advice into the claim&#39;s destination and revives the retired &quot;liability got names&quot;; &quot;Models → routing&quot; hides a reversal.</li>
+<li><strong>Proposed:</strong> open each paragraph with the grade and September&#39;s claim, then keep the current text.<ul>
+<li>&quot;<strong>Judgment: held at its core.</strong> September said judgment and verification were the scarce step.&quot;</li>
+<li>&quot;<strong>Accountability: held.</strong> September said accountability couldn&#39;t keep up with deployment.&quot;</li>
+<li>&quot;<strong>Model choice: reframed.</strong> September said model choice was the least consequential choice in the stack; per job, the evidence said the reverse.&quot;</li>
+<li>&quot;<strong>The wrapper: split.</strong> September said the wrapper is the margin. It held as a cost margin, won by deleting scaffolding; its effect on quality is unproven either way.&quot; This replaces the current first sentence, whose &quot;and adding limits&quot; turns the advice for the savings into how they were won.</li>
+<li>&quot;<strong>Being found: split.</strong> September said marketing moved from making with AI to being found by it; being found grew, but making didn&#39;t go away.&quot;</li>
+<li>If <code>00-BRIEF.md</code>&#39;s arrow must stay for the fifth, add the grade to it: &quot;<strong>Making → being found, on top of search (split).</strong>&quot;</li>
+</ul>
+</li>
+</ul>
+<p><strong>A-04 · MUST · 11 The Pattern, opening paragraph</strong> · <code>drafts/11-the-pattern.md</code>, line 7</p>
+<ul>
+<li><strong>Now:</strong> &quot;None held as written and none was simply wrong: all five came back reframed. Five more agents then checked the numbers, quotes and dates line by line.&quot;</li>
+<li><strong>Wrong:</strong> The same inherited label, set beside the line checks so the checkers seem to stand behind it; they scoped verdicts out as opinion (check-claim-1 §3).</li>
+<li><strong>Proposed:</strong> &quot;The research agents called all five reframed. On the issue&#39;s five-level scale, two held at their core, one came back reversed at the level of the job, and two split. Five more agents then checked the numbers, quotes and dates line by line, though not the grades.&quot;</li>
+</ul>
+<p><strong>A-05 · MUST · 11 The Pattern, the five &quot;Ended as&quot; lines</strong> · <code>drafts/11-the-pattern.md</code>, lines 27, 39, 51, 63 and 75</p>
+<ul>
+<li><strong>Now:</strong> &quot;<strong>Ended as:</strong> who pays when an agent breaks something.&quot; and &quot;<strong>Ended as:</strong> which model gets which job.&quot; (and three more)</li>
+<li><strong>Wrong:</strong> Each lane shows a start and an end but no grade, so the claim that held reads as transformed and the claim that reversed reads as a smooth evolution.</li>
+<li><strong>Proposed:</strong> one line under each &quot;Ended as&quot;.<ul>
+<li>Judgment: &quot;<strong>Graded:</strong> held at its core. The first week&#39;s &#39;Judgment did not get cheap&#39; weakened on its own dataset.&quot;</li>
+<li>Accountability: &quot;<strong>Graded:</strong> held. &#39;After the fact, and from outside&#39; was already the roundups&#39; line on 2 October.&quot;</li>
+<li>Model choice: &quot;<strong>Graded:</strong> reframed. Per job, the reverse of &#39;the least consequential choice in your stack&#39;; the price half held below the frontier.&quot;</li>
+<li>The wrapper: &quot;<strong>Graded:</strong> split. Held on cost, weakened on quality, reframed toward thinner wrappers. The spend cap is advice, not a finding.&quot;</li>
+<li>Being found: &quot;<strong>Graded:</strong> split. Strengthened on money and plumbing, weakened on &#39;moved from making&#39;, still open on search.&quot;</li>
+<li>In the VISUAL note (line 13), print each grade beside its line&#39;s right-hand label.</li>
+</ul>
+</li>
+</ul>
+<p><strong>A-06 · MUST · 12 What does a task cost?, opening paragraph</strong> · <code>drafts/12-what-does-a-task-cost.md</code>, line 7</p>
+<ul>
+<li><strong>Now:</strong> &quot;By October the evidence said something narrower.&quot;</li>
+<li><strong>Wrong:</strong> &quot;Which model got which job mattered more&quot; is the reverse of &quot;the least consequential decision in the stack&quot;, not a narrower version of it; &quot;narrower&quot; fits only the vendor half.</li>
+<li><strong>Proposed:</strong> &quot;By October the evidence had split it, and one half came back reversed.&quot;</li>
+</ul>
+<p><strong>A-07 · MUST · 17 Corrections, &quot;In the September monthly&quot;</strong> · <code>cc-sections/17-corrections.md</code>, lines 108 to 115</p>
+<ul>
+<li><strong>Now:</strong> three bullets (the FTC line, the 50% line, the five rungs), and nothing on the liability verdict.</li>
+<li><strong>Wrong:</strong> The published monthly still says liability &quot;stopped being hypothetical&quot;, that five actors &quot;started naming who should answer for it&quot; and, in its intro and TL;DR, that &quot;liability started getting names&quot; (its SEO description says &quot;liability got names&quot;); the issue&#39;s ruling retired all of it, so under Rule III it is a correction in print.</li>
+<li><strong>Proposed bullet:</strong> &quot;<strong>Liability didn&#39;t get names.</strong> We wrote that between 28 September and 1 October liability &#39;stopped being hypothetical&#39; and &#39;started getting names&#39;. No liability has been assigned. The actions went public, and three of the five actors were already acting before 28 September.&quot;</li>
+</ul>
+<p><strong>A-08 · MUST if A-01 to A-05 are adopted · 17 Corrections, &quot;In the September monthly&quot;</strong> · <code>cc-sections/17-corrections.md</code>, lines 108 to 115</p>
+<ul>
+<li><strong>Now:</strong> no entry for the monthly&#39;s verdicts.</li>
+<li><strong>Wrong:</strong> The published monthly&#39;s subtitle says &quot;None held as written, none was wrong, and all five moved the same way&quot;, and every section opens &quot;Verdict: reframed&quot;; regrading them in the magazine without a note is the quiet edit Rule III rules out.</li>
+<li><strong>Proposed bullet:</strong> &quot;<strong>Not all five were reframed.</strong> We said none of the five held as written and none was wrong. Regraded, accountability held, judgment held at its core, model choice came back reversed at the level of the job, and the wrapper and being found split.&quot;</li>
+</ul>
+<h3>SHOULD</h3>
+<p><strong>A-09 · SHOULD · 06 The Month, standfirst and closing line; 02 Contents</strong> · <code>drafts/06-the-month.md</code>, lines 3 and 17; <code>cc-sections/02-contents.md</code>, line 9</p>
+<ul>
+<li><strong>Now:</strong> &quot;each started as a statement about what was scarce and ended as a limit someone has to set&quot;; &quot;traces how five statements about scarcity became five limits&quot;; &quot;September&#39;s five shifts, compressed&quot;.</li>
+<li><strong>Wrong:</strong> They state the Pattern&#39;s unchecked synthesis as what happened to each claim, including the one that held.</li>
+<li><strong>Proposed:</strong> standfirst &quot;<em>September&#39;s five claims, compressed, and how each one fared.</em>&quot;; closing &quot;The Pattern, at the centre of this issue, argues that all five point to one move: set limits, then audit them.&quot;; Contents &quot;03 The Month: September&#39;s five claims, and how each fared&quot;.</li>
+</ul>
+<p><strong>A-10 · SHOULD · 06 The Month, being found; 15 The Operator, Being found step 5</strong> · <code>drafts/06-the-month.md</code>, line 15; <code>drafts/15-the-operator.md</code>, line 62</p>
+<ul>
+<li><strong>Now:</strong> &quot;And AI discovery grew alongside search rather than replacing it&quot; (06); &quot;AI discovery is growing on top of search, not in place of it.&quot; (15)</li>
+<li><strong>Wrong:</strong> Both state as settled what 13&#39;s standfirst says the data only &quot;suggests&quot;, and what 13&#39;s Prove us wrong calls the claim most likely to be wrong (one quarter&#39;s comparison, via MarTech&#39;s summary).</li>
+<li><strong>Proposed:</strong> 06 &quot;And on one quarter&#39;s data, AI discovery grew alongside search rather than replacing it&quot;; 15 &quot;On September&#39;s data, AI discovery is growing on top of search, not in place of it.&quot;</li>
+</ul>
+<p><strong>A-11 · SHOULD · 11 The Pattern, paragraphs 2 and 3</strong> · <code>drafts/11-the-pattern.md</code>, lines 9 and 11</p>
+<ul>
+<li><strong>Now:</strong> &quot;Side by side, they had moved the same way.&quot; / &quot;Each ended it as a limit someone has to set&quot; / &quot;Read across, they arrive at one move: set limits, then audit them.&quot;</li>
+<li><strong>Wrong:</strong> The convergence is the magazine&#39;s unchecked reading and lives in the advice, not the grades: accountability held, being found&#39;s limits were set by others, only the wrapper&#39;s &quot;Ended as&quot; is about spending, and judgment&#39;s keeps only the one of its three jobs that is a limit.</li>
+<li><strong>Proposed:</strong> &quot;Side by side, on the magazine&#39;s reading, they point the same way.&quot; / &quot;Each ended the month pointing at a limit someone has to set&quot; / &quot;Read across, the magazine finds one move in them: set limits, then audit them.&quot;</li>
+</ul>
+<p><strong>A-12 · SHOULD · 11 The Pattern, Judgment step 1; 19 The Library</strong> · <code>drafts/11-the-pattern.md</code>, line 21; <code>cc-sections/19-the-library.md</code>, line 7</p>
+<ul>
+<li><strong>Now:</strong> &quot;2 September: the dataset complicates itself.&quot; / &quot;The dataset, and the taste loop that complicates it.&quot;</li>
+<li><strong>Wrong:</strong> &quot;Complicates&quot; softens a contradiction: the claim&#39;s founding dataset cut against the first week&#39;s &quot;Judgment did not get cheap&quot;.</li>
+<li><strong>Proposed:</strong> &quot;2 September: the founding dataset cuts against the first week&#39;s reading.&quot; / &quot;The dataset, and the taste loop that cuts against it.&quot;</li>
+</ul>
+<p><strong>A-13 · SHOULD · 11 The Pattern, How we know</strong> · <code>drafts/11-the-pattern.md</code>, line 113</p>
+<ul>
+<li><strong>Now:</strong> &quot;No check covered the pattern itself, so the convergence is the magazine&#39;s reading of checked facts.&quot;</li>
+<li><strong>Wrong:</strong> The five grades weren&#39;t checked either, and the agents who traced the claims gave them.</li>
+<li><strong>Proposed:</strong> &quot;No check covered the pattern itself or the five grades, so both are the magazine&#39;s readings of checked facts.&quot;</li>
+</ul>
+<p><strong>A-14 · SHOULD · 08 Who checks the checker?, the verdict paragraph</strong> · <code>drafts/08-who-checks-the-checker.md</code>, line 13</p>
+<ul>
+<li><strong>Now:</strong> &quot;It survived the month, but it changed shape.&quot;</li>
+<li><strong>Wrong:</strong> It doesn&#39;t say which part survived: the first week&#39;s &quot;Judgment did not get cheap&quot; failed on its own dataset, which 08 then calls &quot;the plainest case&quot; for job one.</li>
+<li><strong>Proposed:</strong> &quot;Its core held: verification stayed the bottleneck. Its first-week form did not: the dataset behind &#39;Judgment did not get cheap&#39; came from a taste loop that updates Tunguz&#39;s style guide every night.&quot;</li>
+</ul>
+<p><strong>A-15 · SHOULD · 08, the same passage</strong> · <code>drafts/08-who-checks-the-checker.md</code>, lines 11 and 13</p>
+<ul>
+<li><strong>Now:</strong> &quot;People wave through items. They push back on plans.&quot; ... &quot;That is September in small.&quot;</li>
+<li><strong>Wrong:</strong> One post&#39;s rejection rates become the month&#39;s lesson, and a rejection rate isn&#39;t a catch rate (the issue&#39;s own case against says so).</li>
+<li><strong>Proposed:</strong> &quot;People wave through items and push back on plans, though a rejection rate isn&#39;t a catch rate. On the magazine&#39;s reading, that is September in small.&quot;</li>
+</ul>
+<p><strong>A-16 · SHOULD · 08, Job three</strong> · <code>drafts/08-who-checks-the-checker.md</code>, line 55</p>
+<ul>
+<li><strong>Now:</strong> &quot;The month ended on limits rather than sign-offs.&quot;</li>
+<li><strong>Wrong:</strong> What stands under it is one post&#39;s argument (Willison, 3 October), not an event that ended the month.</li>
+<li><strong>Proposed:</strong> &quot;The month closed on an argument for limits rather than sign-offs.&quot;</li>
+</ul>
+<p><strong>A-17 · SHOULD · 12, 14 and 11: &quot;the labs&quot; on routing</strong> · <code>drafts/12-what-does-a-task-cost.md</code>, lines 57 and 59; <code>drafts/14-the-case-against.md</code>, line 11; <code>drafts/11-the-pattern.md</code>, line 60</p>
+<ul>
+<li><strong>Now:</strong> &quot;The labs move in on routing&quot; and &quot;Routing, which had looked like the wrapper&#39;s best business, moved toward the labs.&quot; (12); &quot;while the labs began taking over routing&quot; (14); &quot;the labs move in, and the counter arrives&quot; (11)</li>
+<li><strong>Wrong:</strong> The wrapper verdict&#39;s &quot;the labs are taking over the routing layer&quot; rests on one lab; the edit fixed 06 (&quot;one lab moved in on routing&quot;) but not these, and AWS and Cloudflare are cloud platforms, Stripe neither.</li>
+<li><strong>Proposed:</strong> 12 &quot;## A lab moves in on routing&quot; and &quot;Routing, which had looked like the wrapper&#39;s best business, drew in a lab and two cloud platforms.&quot;; 14 &quot;while OpenAI moved in on routing&quot;; 11 &quot;a lab moves in, and the counter arrives&quot;.</li>
+</ul>
+<p><strong>A-18 · SHOULD · 13 How do you get found?, paragraph 2</strong> · <code>drafts/13-how-do-you-get-found.md</code>, line 9</p>
+<ul>
+<li><strong>Now:</strong> &quot;If a model is a brand&#39;s first reader, the job shifts from producing assets to being cited, permitted and measured.&quot;</li>
+<li><strong>Wrong:</strong> It restates September&#39;s &quot;moved from&quot; as the lesson, which the piece&#39;s own evidence contradicts (&quot;Being found added a job to the marketing team. It didn&#39;t take the old one away.&quot;).</li>
+<li><strong>Proposed:</strong> &quot;If a model is a brand&#39;s first reader, the job adds being cited, permitted and measured to producing assets.&quot;</li>
+</ul>
+<p><strong>A-19 · SHOULD · 13, paragraph 1</strong> · <code>drafts/13-how-do-you-get-found.md</code>, line 7</p>
+<ul>
+<li><strong>Now:</strong> &quot;The first told readers ... By the third ... By the fourth, access had replaced capability as the constraint.&quot;</li>
+<li><strong>Wrong:</strong> The claim&#39;s history skips the two roundups whose versions failed: the second (its Thompson link is retracted in Corrections) and the fifth, whose takeaway the month&#39;s only long-run record reverses.</li>
+<li><strong>Proposed:</strong> after the fourth, add &quot;The fifth said AI made marketing faster than it made it better; the month&#39;s only long-run record says better, not faster.&quot;</li>
+</ul>
+<p><strong>A-20 · SHOULD · 04 From the editor</strong> · <code>cc-sections/04-editors-letter-jay-DRAFT.md</code>, lines 27 to 28</p>
+<ul>
+<li><strong>Now:</strong> &quot;September&#39;s story turned out to be a single move made five ways. Each of the five claims started the month as a statement about what was scarce, and ended it as a limit someone has to set.&quot;</li>
+<li><strong>Wrong:</strong> It presents the unchecked synthesis as a discovery, and never says how the claims themselves fared.</li>
+<li><strong>Proposed:</strong> &quot;My reading is that September was a single move made five ways. Each of the five claims started the month as a statement about what was scarce, and ended it pointing at a limit someone has to set. The claims themselves fared differently: two held at their core, one came back reversed, and two split.&quot;</li>
+</ul>
+<p><strong>A-21 · SHOULD · How we know boxes in 08, 09, 12 and 13</strong> · <code>drafts/08-who-checks-the-checker.md</code>, line 79; <code>drafts/09-who-pays-when-an-agent-breaks-something.md</code>, line 79; <code>drafts/12-what-does-a-task-cost.md</code>, line 94; <code>drafts/13-how-do-you-get-found.md</code>, line 76</p>
+<ul>
+<li><strong>Now:</strong> for example, 08: &quot;This piece is built on the research agent&#39;s report on the claim and a separate checker&#39;s line-by-line report, which confirmed 44 lines and found 4 wrong&quot;</li>
+<li><strong>Wrong:</strong> None says the claim&#39;s grade went unchecked, so the line counts read as backing it.</li>
+<li><strong>Proposed:</strong> add to each box: &quot;The grade on the claim is a reading, not a checked fact.&quot;</li>
+</ul>
+<p><strong>A-22 · SHOULD · 15 The Operator, Spend caps</strong> · <code>drafts/15-the-operator.md</code>, line 45</p>
+<ul>
+<li><strong>Now:</strong> &quot;Four of the month&#39;s five threads ended here&quot;</li>
+<li><strong>Wrong:</strong> The threads&#39; advice ended there, not the threads; 11 says only the wrapper&#39;s &quot;Ended as&quot; line is about spending.</li>
+<li><strong>Proposed:</strong> &quot;Four of the month&#39;s five threads end their advice here&quot;</li>
+</ul>
+<h3>COULD</h3>
+<p><strong>A-23 · COULD · 07 The Receipts, the ledger</strong> · <code>cc-sections/07-the-receipts.md</code>, line 30</p>
+<ul>
+<li><strong>Now:</strong> &quot;Claims checked in this issue&#39;s drafts | 642&quot;</li>
+<li><strong>Wrong:</strong> Once the verdict scale grades &quot;claims&quot;, this row&#39;s &quot;claims&quot; means lines; the September row already says &quot;Lines&quot;.</li>
+<li><strong>Proposed:</strong> &quot;Lines checked in this issue&#39;s drafts | 642&quot;</li>
+</ul>
+<p><strong>A-24 · COULD · 11 The Pattern, &quot;The move&quot; table</strong> · <code>drafts/11-the-pattern.md</code>, line 97</p>
+<ul>
+<li><strong>Now:</strong> &quot;| Thread | Set the limit | Then audit it |&quot;</li>
+<li><strong>Wrong:</strong> Every thread arrives at the same move, with no sign which claims held.</li>
+<li><strong>Proposed:</strong> add a column, &quot;Graded&quot;: held at its core; held; reframed; split; split.</li>
+</ul>
+<p><strong>A-25 · COULD · 11 The Pattern, &quot;Where the lines meet&quot;</strong> · <code>drafts/11-the-pattern.md</code>, line 83</p>
+<ul>
+<li><strong>Now:</strong> &quot;The Decisions API is the pattern in small.&quot;</li>
+<li><strong>Wrong:</strong> One product in limited preview is made the month&#39;s emblem, as fact.</li>
+<li><strong>Proposed:</strong> &quot;On the magazine&#39;s reading, the Decisions API is the pattern in small.&quot;</li>
+</ul>
+<p><strong>A-26 · COULD · 09 What to log now; 15 Agent liability, step 2</strong> · <code>drafts/09-who-pays-when-an-agent-breaks-something.md</code>, line 63; <code>drafts/15-the-operator.md</code>, line 34</p>
+<ul>
+<li><strong>Now:</strong> &quot;Liability is being written so that it lands on whoever deploys the agent, not only on the labs.&quot; (15 is nearly the same.)</li>
+<li><strong>Wrong:</strong> It slides from one announced bill with no text, plus a law that removes a defence, to a trend.</li>
+<li><strong>Proposed:</strong> &quot;is being written&quot; to &quot;may be written&quot;. B1 rates this MUST with stronger wording (B1-09-06, B1-15-04): take B1&#39;s.</li>
+</ul>
+<p><strong>A-27 · COULD · 12, opening paragraph</strong> · <code>drafts/12-what-does-a-task-cost.md</code>, line 7</p>
+<ul>
+<li><strong>Now:</strong> &quot;What changed was the unit a bill is counted in: the cost of a finished task, rather than the price of a token.&quot;</li>
+<li><strong>Wrong:</strong> Bills are still counted in tokens, and the 5 to 11 September roundup had already named &quot;what you spend per task&quot;, so the line inflates the change.</li>
+<li><strong>Proposed:</strong> &quot;The number that mattered was the cost of a finished task, rather than the price of a token. The 5 to 11 September roundup had already said as much.&quot;</li>
+</ul>
+<p><strong>A-28 · COULD · 12, closing paragraph</strong> · <code>drafts/12-what-does-a-task-cost.md</code>, line 86</p>
+<ul>
+<li><strong>Now:</strong> &quot;and the harness decides much of the second number&quot;</li>
+<li><strong>Wrong:</strong> It turns one example and a fivefold range into a rule.</li>
+<li><strong>Proposed:</strong> &quot;and the harness can move the second number several times over&quot;</li>
+</ul>
+<p><strong>A-29 · COULD · 13, paragraphs 1 and 2</strong> · <code>drafts/13-how-do-you-get-found.md</code>, lines 7 and 9</p>
+<ul>
+<li><strong>Now:</strong> &quot;The evidence landed between the first and the third.&quot; / &quot;September moved all three.&quot;</li>
+<li><strong>Wrong:</strong> The first is too vague to show which parts held; the second contradicts the piece&#39;s own &quot;The measurement didn&#39;t.&quot;</li>
+<li><strong>Proposed:</strong> &quot;The evidence backed the third on money and plumbing, and the first on search.&quot; / &quot;September moved the first two. The third lagged.&quot;</li>
+</ul>
+<p><strong>A-30 · COULD · 18 Prove us wrong</strong> · <code>cc-sections/18-prove-us-wrong.md</code>, after item 5</p>
+<ul>
+<li><strong>Now:</strong> five items, none on the grades.</li>
+<li><strong>Wrong:</strong> The grades are the issue&#39;s most contestable reading, and the only one without an invitation to break it.</li>
+<li><strong>Proposed:</strong> &quot;6. <strong>The grades.</strong> The Receipts grades each of September&#39;s five claims. The grades are readings, not checked facts. <em>What would change our mind:</em> September evidence that a claim graded held had already given way, or that model choice held as the roundups wrote it.&quot;</li>
+</ul>
+<p><strong>A-31 · COULD · Cover option 4 (not in the print copy)</strong> · <code>drafts/01-cover-lines.md</code>, line 18</p>
+<ul>
+<li><strong>Now:</strong> &quot;SEPTEMBER 2026: Five claims about what was scarce became five limits someone has to set.&quot;</li>
+<li><strong>Wrong:</strong> The unchecked synthesis, stated as the month&#39;s <a href="data/recheck-result.html">result</a>.</li>
+<li><strong>Proposed:</strong> &quot;SEPTEMBER 2026: Five claims about what was scarce, and the limits they point to.&quot;</li>
+</ul>
+<p><strong>A-32 · COULD · 05 The Rules, Rule VI</strong> · <code>cc-sections/05-the-rules-DRAFT.md</code>, line 31</p>
+<ul>
+<li><strong>Now:</strong> &quot;<em>The test: for every checked line, was the checker someone other than the finder?</em>&quot;</li>
+<li><strong>Wrong:</strong> The agents that traced the five claims also graded them, and the test as written doesn&#39;t reach grades.</li>
+<li><strong>Proposed:</strong> &quot;<em>The test: for every checked line and every claim&#39;s grade, was the grader someone other than the finder?</em>&quot;</li>
+</ul>
+<hr>
+<h2>3. The Receipts: replacement for &quot;The verdict scale&quot;</h2>
+<p>Drop-in replacement for the section body, <code>cc-sections/07-the-receipts.md</code>, lines 40 to 41. The
+heading stays. 117 words.</p>
+<blockquote>
+<p><strong>Lines.</strong> Checkers mark every number, quote, date and attribution confirmed, wrong or
+unconfirmed.</p>
+<p><strong>Claims.</strong> Each of September&#39;s five claims gets a grade: held (substantially survives),
+strengthened (the evidence makes it stronger), weakened (survives with less force), reframed
+(the useful conclusion is genuinely different) or still open (not enough evidence). The research
+agents called all five reframed. An agent that didn&#39;t research them regraded them:
+accountability held; judgment held at its core, its first-week form weakened; model choice was
+reframed, reversed per job; the wrapper held on cost, weakened on quality, reframed toward
+thinner wrappers; being found strengthened on money and plumbing, weakened on &#39;moved from
+making&#39;, still open on search. Grades are readings. No checker checked them.</p>
+</blockquote>
+<p>If Jay regrades, the list changes and the sentence before it names him instead.</p>
+<hr>
+<h2>Shared lines with audit B1</h2>
+<p>Audit B1 (point 2, receipt against reading) marks readings on some of the same lines. The fixes
+combine; take one wording per line.</p>
+<ul>
+<li><strong>04, lines 27 to 28</strong> (A-20, B1-04-01): B1&#39;s &quot;I read September as a single move made five ways&quot;, plus A-20&#39;s last sentence on how the claims fared.</li>
+<li><strong>06, line 3 and line 17</strong> (A-09, B1-06-01, B1-06-10): A-09 changes what the line claims; B1 marks it. Either closing works.</li>
+<li><strong>06, line 5</strong> (A-02, B1-06-02): A-02&#39;s grades, with B1&#39;s &quot;our readings&quot; if 06 is treated as a department.</li>
+<li><strong>06, lines 7 to 15</strong> (A-03, B1-06-04, B1-06-08): A-03&#39;s grade leads; B1&#39;s &quot;Our advice to operators: ...&quot; for the named-owner sentence. The wrapper fixes say the same thing.</li>
+<li><strong>06, line 15 and 15, line 62</strong> (A-10, B1-06-09, B1-15-08): the same point; either wording.</li>
+<li><strong>08, line 11</strong> (A-15, B1-08-03): compatible; B1 changes &quot;shows&quot; to &quot;suggests&quot;, A-15 the sentence after.</li>
+<li><strong>08, line 13</strong> (A-14, B1-08-04): combine as &quot;On the magazine&#39;s reading, its core held: ...&quot;</li>
+<li><strong>08, line 55</strong> (A-16, B1-08-10): the same line; either wording.</li>
+<li><strong>08 and 09, How we know</strong> (A-21, B1-08-12, B1-09-09): merge into one sentence per box.</li>
+<li><strong>09, line 63 and 15, line 34</strong> (A-26, B1-09-06, B1-15-04): take B1&#39;s.</li>
+<li><strong>15, line 45</strong> (A-22, B1-15-06): the same fix.</li>
+</ul>
+<hr>
+<h2>Found in passing (factual, not framing)</h2>
+<p><strong>P-1 · 07 The Receipts, pipeline step 5 and the ledger</strong> · <code>cc-sections/07-the-receipts.md</code>, lines 16 and 28</p>
+<ul>
+<li><strong>Now:</strong> &quot;The one line they couldn&#39;t settle was reworded to what could be shown.&quot; / &quot;Reworded to only what could be shown | 1&quot;</li>
+<li><strong>Wrong:</strong> 17 says the monthly printed that line firmer than could be shown (&quot;We said flatly that they weren&#39;t DHH&#39;s. It&#39;s almost certain, not proven.&quot;), so the two sections contradict each other; check-16 had flagged the firmer wording.</li>
+<li><strong>Proposed:</strong> &quot;The one line they couldn&#39;t settle ran firmer than could be shown, and the corrections department corrects it.&quot; / &quot;Couldn&#39;t be settled; printed firmer, now corrected | 1&quot;</li>
+</ul>
+<p><strong>P-2 · 12 What does a task cost?, &quot;The sticker converged&quot;</strong> · <code>drafts/12-what-does-a-task-cost.md</code>, line 17</p>
+<ul>
+<li><strong>Now:</strong> &quot;So the sticker stopped separating vendors, and the vendors began selling in other units.&quot;</li>
+<li><strong>Wrong:</strong> Both examples that follow are Anthropic&#39;s (Opus 5.5&#39;s &quot;40% less to run&quot;, Sonnet 5.5&#39;s &quot;up to 30% less per task&quot;).</li>
+<li><strong>Proposed:</strong> &quot;So the sticker stopped separating vendors, and Anthropic began selling in other units.&quot;</li>
+</ul>
+</div></article>
+    </div>
+<main style="max-width: 1360px; margin: 0 auto; padding: 0 48px 160px;">
+    <footer style="margin-top: 160px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; align-items: flex-end;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--ej-font-display); font-weight: 700; font-size: 40px; line-height: .86; letter-spacing: .04em; text-transform: uppercase;">The AI Echo</div>
+<div style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.8;">Edition 1 · October 2026 · covering September 2026<br>Published free as a PDF with The ECHO Files on Substack · Editor: Jay Wright</div>
+      </div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <a href="https://echofiles.substack.com" style="text-decoration: none;">Subscribe</a>
+<a href="#rules" style="text-decoration: none;">The Rules</a>
+<a href="#corrections" style="text-decoration: none;">Corrections</a>
+<a href="index.html" style="text-decoration: none; color: var(--ej-fg-faint);">Top ↑</a>
+      </div>
+<div style="width: 72px; height: 6px; background: repeating-linear-gradient(135deg, var(--ej-line-strong) 0 6px, transparent 6px 12px);"></div>
+    </footer>
+  </main>
+</div>
+<script src="assets/site.js"></script>
+<script>(function(){var k="ai-echo-size",n=0;try{n=parseInt(localStorage.getItem(k)||"0",10)||0}catch(e){}function apply(){var z=Math.pow(1.1,n);document.querySelectorAll("#features, main#top, main").forEach(function(el){el.style.zoom=z});document.querySelectorAll("[data-sz]").forEach(function(b){b.title=Math.round(z*100)+"%"});try{localStorage.setItem(k,String(n))}catch(e){}}apply();document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-sz]");if(!b)return;n+=parseInt(b.getAttribute("data-sz"),10);apply();});})();</script></body>
+</html>

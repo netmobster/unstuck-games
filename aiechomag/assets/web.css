@@ -189,3 +189,44 @@ svg { max-width: 100%; height: auto; }
   div:has(> div > [data-action="toggleTheme"]) { padding: 12px 16px !important; gap: 8px 16px !important; }
   div:has(> [data-action="toggleTheme"]) { flex: 1 1 100% !important; margin-left: 0 !important; gap: 10px !important; }
 }
+/* The data room */
+.dr { max-width: 1360px; margin: 0 auto; padding: 72px 48px 0; }
+.dr-crumb { font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); margin: 0 0 32px; }
+.dr-crumb a { color: var(--ej-steel-text); }
+.dr-kick { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; font-family: var(--ej-font-mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--ej-steel-text); }
+.dr-tab { display: inline-block; padding: 6px 16px 6px 10px; background: var(--ej-gold); color: var(--ej-on-gold); font-family: var(--ej-font-display); font-weight: 700; font-size: 16px; line-height: 1; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%); }
+.dr-h1 { font-family: var(--ej-font-display); font-weight: 700; font-size: clamp(36px, 6vw, 72px); line-height: 1.02; margin: 24px 0 0; color: var(--ej-fg); }
+.dr-dek { font-size: 20px; line-height: 1.5; color: var(--ej-fg-muted, var(--ej-fg)); max-width: 62ch; margin: 20px 0 0; }
+.dr-doc, .dr-group, .dr-day { max-width: 88ch; margin-top: 48px; color: var(--ej-fg); line-height: 1.6; }
+.dr-doc h2, .dr-group h2, .dr-day h2 { font-family: var(--ej-font-display); font-size: 28px; margin: 40px 0 12px; }
+.dr-doc h3 { font-family: var(--ej-font-display); font-size: 21px; margin: 28px 0 8px; }
+.dr-doc table { border-collapse: collapse; font-size: 14px; display: block; overflow-x: auto; max-width: 100%; }
+.dr-doc th, .dr-doc td, .dr-table th, .dr-table td { border: 1px solid var(--ej-line); padding: 6px 8px; text-align: left; vertical-align: top; }
+.dr-doc code { font-family: var(--ej-font-mono); font-size: .9em; overflow-wrap: anywhere; }
+.dr-doc pre { overflow-x: auto; white-space: pre-wrap; }
+.dr-doc a, .dr-group a, .dr-day a, .dr-items a { color: var(--ej-steel-text); overflow-wrap: anywhere; }
+.dr-list { list-style: none; padding: 0; margin: 16px 0 0; display: grid; gap: 10px; }
+.dr-list li { display: grid; gap: 2px; padding: 10px 0; border-top: 1px solid var(--ej-line); }
+.dr-list li span, .dr-meta, .dr-why { font-size: 14px; color: var(--ej-fg-faint); }
+.dr-items { padding-left: 0; list-style: none; display: grid; gap: 10px; }
+.dr-items li { display: grid; grid-template-columns: 2.5em minmax(0, 1fr); column-gap: 10px; }
+.dr-items .dr-why { grid-column: 2; }
+.dr-score { font-family: var(--ej-font-mono); color: var(--ej-gold-text); }
+.dr-scroll { overflow-x: auto; margin-top: 40px; }
+.dr-table { border-collapse: collapse; font-size: 13px; min-width: 760px; color: var(--ej-fg); }
+@media (max-width: 700px) { .dr { padding: 40px 16px 0; } .dr-dek { font-size: 18px; } }
+.dr-warn { max-width: 88ch; margin: 32px 0 0; padding: 14px 18px; border: 1px solid var(--ej-gold); color: var(--ej-fg); font-weight: 600; }
+/* Claude Design's page pass (6 Oct) on phones: the Rules' rows and the Receipts' by-section grid were clipped at 375px. */
+@media (max-width: 700px) {
+  [style*="grid-template-columns: 88px minmax(0, 1fr) minmax(220px, 300px)"] { grid-template-columns: 44px minmax(0, 1fr) !important; gap: 12px 16px !important; }
+  [style*="grid-template-columns: 88px minmax(0, 1fr) minmax(220px, 300px)"] > :nth-child(3) { grid-column: 2; }
+  [style*="grid-template-columns: minmax(180px, 380px) minmax(0, 1fr) 56px 56px 56px"] { grid-template-columns: minmax(0, 1fr) minmax(0, .5fr) 36px 36px 36px !important; gap: 0 8px !important; }
+}
+/* CD's 05 and 06 on phones: FIG.01's bar rows, the auto-mode comparison and 06's legend. */
+@media (max-width: 700px) {
+  [style*="grid-template-columns: 200px minmax(0, 1fr) 150px"] { grid-template-columns: minmax(0, 1fr) auto !important; gap: 6px 10px !important; }
+  [style*="grid-template-columns: 200px minmax(0, 1fr) 150px"] > :first-child { grid-column: 1 / -1; }
+  [style*="grid-template-columns: 1fr 1fr; gap: 0; border-top: 3px solid var(--ej-fg)"] { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr) !important; }
+  [style*="grid-template-columns: 1fr 1fr; gap: 0; border-top: 3px solid var(--ej-fg)"] > * { min-width: 0; padding-left: 10px !important; overflow-wrap: anywhere; }
+  article [style*="display: flex; align-items: center; gap: 10px;"] { flex-wrap: wrap; }
+}

@@ -1,0 +1,2553 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="/aiechomag/"><meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GPT check results — The AI Echo, Edition 1 — The AI Echo, Edition 1</title>
+<meta name="description" content="A field magazine for people operating at the edge of AI. Edition 1, covering September 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/web.css">
+</head>
+<body style="margin: 0; background: var(--ej-bg);">
+<div id="root" data-theme="light" style="color: var(--ej-fg); font-family: var(--ej-font-body); background: var(--ej-bg);">
+
+  <nav style="position: sticky; top: 0; z-index: 20; background: var(--ej-bg); border-bottom: 1px solid var(--ej-line);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 14px 48px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ej-fg);">
+        <span style="font-family: var(--ej-font-display); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: .05em; text-transform: uppercase;">The AI Echo</span>
+        <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); border: 1px solid var(--ej-line-strong); padding: 3px 8px; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 0 100%);">№ 1 · Oct 2026</span>
+      </a>
+<div style="flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-left: auto; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <span style="flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); white-space: nowrap;">14 // What we got wrong, and what changed</span>
+        <button type="button" data-action="toggleRibbon" aria-expanded="true" style="flex: none; white-space: nowrap; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="ribbonLabel">Hide sections</span></button>
+<button type="button" class="sz-btn" data-sz="-1" aria-label="Smaller text">A−</button><button type="button" class="sz-btn" data-sz="1" aria-label="Larger text">A+</button><button type="button" data-action="toggleTheme" style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-muted); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="themeLabel">Dark</span></button>
+      </div>
+    </div>
+<div id="ribbon" style="display: block; border-top: 1px solid var(--ej-line); background: var(--ej-surface);">
+      <div aria-label="Edition 1 sections" data-ribbon="1" style="max-width: 1360px; margin: 0 auto; padding: 0 36px; display: flex; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;">
+        
+          <div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="index.html" data-selected="false" title="The AI Echo" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">№ 1 · Front</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The AI Echo</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Cover and contents</span>
+                </a>
+<a href="01-from-the-editors.html" data-selected="false" title="From the editors" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">01</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">From the editors</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The editor's letter</span>
+                </a>
+<a href="02-the-rules.html" data-selected="false" title="The Rules (DRAFT)" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">02</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Rules (DRAFT)</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Nine rules, each with its test</span>
+                </a>
+<a href="03-the-month.html" data-selected="false" title="The Month" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">03</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Month</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five claims, and how each fared</span>
+                </a>
+<a href="04-the-receipts.html" data-selected="false" title="The Receipts" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">04</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Receipts</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Method, pipeline and ledger</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Front of the book</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="05-who-checks-the-checker.html" data-selected="false" title="Who checks the checker?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">05</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who checks the checker?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">When people approve everything</span>
+                </a>
+<a href="06-who-pays-when-an-agent-breaks-something.html" data-selected="false" title="Who pays when an agent breaks something?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">06</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who pays when an agent breaks something?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Six actions went public, after the fact</span>
+                </a>
+<a href="07-the-month-in-one-chart.html" data-selected="false" title="Same score, different bill" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">07</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                </a>
+<a href="08-the-pattern.html" data-selected="false" title="The Pattern" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">08</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Pattern</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five lanes into one point</span>
+                </a>
+<a href="09-what-does-a-task-cost.html" data-selected="false" title="What does a task cost?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">09</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What does a task cost?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Model choice, per job</span>
+                </a>
+<a href="10-how-do-you-get-found-when-a-machine-reads-first.html" data-selected="false" title="How do you get found when a machine reads first?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">10</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">How do you get found when a machine reads first?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Being found when AI reads first</span>
+                </a>
+<a href="11-the-case-against.html" data-selected="false" title="The case against" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">11</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The case against</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The steelman, and the reply</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Features</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="12-the-operator.html" data-selected="false" title="The Operator" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">12</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five field-guide cards</span>
+                </a>
+<a href="13-field-notes.html" data-selected="false" title="Field Notes: candidates" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">13</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Field Notes</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">A tool, a stop, an experiment</span>
+                </a>
+<a href="14-corrections.html" data-selected="true" title="Corrections" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid var(--ej-gold); border-radius: 0; background: var(--ej-bg); color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">14</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Corrections</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What we got wrong, and what changed</span>
+                </a>
+<a href="15-prove-us-wrong.html" data-selected="false" title="Prove us wrong" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">15</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Prove us wrong</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Make the case against us</span>
+                </a>
+<a href="16-the-library.html" data-selected="false" title="The Library" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">16</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Library</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Twenty-eight things to read</span>
+                </a>
+<a href="17-the-operators-page.html" data-selected="false" title="The Operator's Page" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">17</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator's Page</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">To do, to watch, one question</span>
+                </a>
+<a href="18-the-raw-data.html" data-selected="false" title="The Raw Data" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">18</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Raw Data</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The data behind the issue</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Back of the book</div>
+          </div>
+        
+      </div>
+    </div>
+<div id="progress" style="height: 2px; background: var(--ej-gold); width: 0.00%; transition: width .15s linear;"></div>
+  </nav>
+<main id="top" style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
+    
+  </main>
+<div id="corrections" data-theme="light" style="background: var(--ej-bg); color: var(--ej-fg); padding: 72px 0 0;">
+      <article class="dr"><p class="dr-crumb"><a href="data/index.html">The data room</a> // The second family: ChatGPT</p><div class="dr-kick"><span class="dr-tab">DATA</span><span>// The second family: ChatGPT</span></div><h1 class="dr-h1">GPT check results — The AI Echo, Edition 1</h1><p class="dr-dek">Its results, totalled</p><div class="dr-doc"><h2>How the counts were made</h2>
+<p>ChatGPT used the four briefed verdicts plus NOT CHECKABLE, but often added qualifiers or invented its own labels. Each row is counted once, as follows:</p>
+<ul>
+<li><strong>CONFIRMED</strong> includes &quot;CONFIRMED (arithmetic)&quot;, &quot;CONFIRMED AS REPORTED&quot;, &quot;CONFIRMED WITH CAVEAT&quot;, &quot;CONFIRMED AS CORRECTION&quot;, &quot;CONFIRMED, subject to AINews&#39;s calculation&quot;, &quot;CONFIRMED / IMPORTANT&quot;, &quot;CONFIRMED AS A READING OF THE RECORD&quot; and similar.</li>
+<li><strong>WRONG</strong> includes &quot;WRONG / DOESN&#39;T ADD UP AS PRESENTED&quot; (06) and &quot;WRONG / OUTDATED&quot; (11).</li>
+<li><strong>OVERSTATED</strong> includes &quot;OVERSTATED / WRONG TERM&quot; (05), &quot;OVERSTATED / BROKEN&quot; and &quot;OVERSTATED / NEEDS ATTRIBUTION&quot; and &quot;OVER-SIMPLIFIED&quot; (11), &quot;OVERSTATED / WRONG FOR CURRENT RECORD&quot; (16).</li>
+<li><strong>UNCONFIRMED</strong> includes &quot;UNCONFIRMED IN THIS PASS&quot;, &quot;UNCONFIRMED FROM THE CHART ITSELF&quot;, &quot;PARTLY UNCONFIRMED&quot;, &quot;PARTLY CONFIRMED&quot; and &quot;UNCONFIRMED / INTERNAL COUNT&quot;.</li>
+<li><strong>NOT CHECKABLE</strong> includes &quot;NOT CHECKABLE / AMBIGUOUS&quot;, &quot;NOT EXTERNALLY CHECKABLE&quot;, &quot;NOT CHECKABLE FROM EXTERNAL SOURCES&quot;.</li>
+<li><strong>Other labels</strong> are ChatGPT&#39;s own non-briefed verdicts: READING, ADVICE, EDITORIAL RULE, EDITORIAL DEFINITION, PREDICTION, FALSIFICATION TEST, OPEN QUESTION, CONTRADICTORY / AMBIGUOUS, and one row whose verdict didn&#39;t render (06 row 21).</li>
+</ul>
+<h2>Counts per section</h2>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Rows</th>
+<th>CONFIRMED</th>
+<th>WRONG</th>
+<th>UNCONFIRMED</th>
+<th>OVERSTATED</th>
+<th>NOT CHECKABLE</th>
+<th>Other labels</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01 colophon</td>
+<td>22</td>
+<td>2</td>
+<td>0</td>
+<td>8</td>
+<td>0</td>
+<td>12</td>
+<td>0</td>
+</tr>
+<tr>
+<td>02 contents</td>
+<td>22</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>20</td>
+<td>0</td>
+</tr>
+<tr>
+<td>03 editor&#39;s letter (draft)</td>
+<td>34</td>
+<td>0</td>
+<td>0</td>
+<td>2</td>
+<td>1</td>
+<td>24</td>
+<td>7</td>
+</tr>
+<tr>
+<td>04 the rules (draft)</td>
+<td>36</td>
+<td>0</td>
+<td>0</td>
+<td>3</td>
+<td>0</td>
+<td>24</td>
+<td>9</td>
+</tr>
+<tr>
+<td>05 the month</td>
+<td>27</td>
+<td>16</td>
+<td>1</td>
+<td>2</td>
+<td>3</td>
+<td>1</td>
+<td>4</td>
+</tr>
+<tr>
+<td>06 the receipts</td>
+<td>45</td>
+<td>3</td>
+<td>1</td>
+<td>2</td>
+<td>0</td>
+<td>30</td>
+<td>9</td>
+</tr>
+<tr>
+<td>07 who checks the checker</td>
+<td>69</td>
+<td>38</td>
+<td>0</td>
+<td>13</td>
+<td>2</td>
+<td>3</td>
+<td>13</td>
+</tr>
+<tr>
+<td>08 who pays</td>
+<td>81</td>
+<td>59</td>
+<td>0</td>
+<td>7</td>
+<td>1</td>
+<td>2</td>
+<td>12</td>
+</tr>
+<tr>
+<td>09 the month in one chart</td>
+<td>17</td>
+<td>12</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+</tr>
+<tr>
+<td>10 the pattern</td>
+<td>95</td>
+<td>41</td>
+<td>1</td>
+<td>28</td>
+<td>3</td>
+<td>12</td>
+<td>10</td>
+</tr>
+<tr>
+<td>11 what does a task cost</td>
+<td>59</td>
+<td>27</td>
+<td>2</td>
+<td>18</td>
+<td>6</td>
+<td>3</td>
+<td>3</td>
+</tr>
+<tr>
+<td>12 how do you get found</td>
+<td>48</td>
+<td>28</td>
+<td>0</td>
+<td>7</td>
+<td>2</td>
+<td>3</td>
+<td>8</td>
+</tr>
+<tr>
+<td>13 the case against</td>
+<td>38</td>
+<td>25</td>
+<td>0</td>
+<td>7</td>
+<td>0</td>
+<td>2</td>
+<td>4</td>
+</tr>
+<tr>
+<td>14 the operator</td>
+<td>30</td>
+<td>16</td>
+<td>0</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td>7</td>
+</tr>
+<tr>
+<td>15 field notes candidates</td>
+<td>37</td>
+<td>19</td>
+<td>0</td>
+<td>15</td>
+<td>2</td>
+<td>1</td>
+<td>0</td>
+</tr>
+<tr>
+<td>16 corrections</td>
+<td>48</td>
+<td>20</td>
+<td>0</td>
+<td>21</td>
+<td>1</td>
+<td>6</td>
+<td>0</td>
+</tr>
+<tr>
+<td>17 prove us wrong</td>
+<td>7</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>7 (&quot;Good&quot;/&quot;Very good&quot;; off-format, verdict PASS)</td>
+</tr>
+<tr>
+<td>18 the library</td>
+<td>31</td>
+<td>27</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+<td>2</td>
+<td>0</td>
+</tr>
+<tr>
+<td>19 the operator&#39;s page</td>
+<td>18</td>
+<td>9</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>6</td>
+</tr>
+<tr>
+<td><strong>Total</strong></td>
+<td><strong>764</strong></td>
+<td><strong>342</strong></td>
+<td><strong>6</strong></td>
+<td><strong>146</strong></td>
+<td><strong>23</strong></td>
+<td><strong>147</strong></td>
+<td><strong>100</strong></td>
+</tr>
+</tbody></table>
+<h2>Things a checker should know about the replies themselves</h2>
+<p>These are observations about ChatGPT&#39;s output, copied from the log, not verdicts on the issue.</p>
+<ul>
+<li><strong>ChatGPT reversed one of its own WRONGs.</strong> In 11 it marked Databricks&#39; &quot;about 3,500 engineers&quot; WRONG / OUTDATED (&quot;&gt;10,000&quot;). In 13 it wrote that the Sept. 16 Patrick Wendell post says <del>3,500 engineers and that &quot;section 11&#39;s &#39;</del>3,500&#39; is not necessarily wrong … my previous check treated the later Databricks post as if it superseded it.&quot;</li>
+<li><strong>Its verdicts on the same claim differ across sections.</strong> Argon&#39;s access (&quot;government users and trusted cyber defenders&quot;): CONFIRMED in 11 (row 14), OVERSTATED in 19 (row 11). Rajesh Beri&#39;s gate rule: UNCONFIRMED in 07 (rows 46–49, 51–52) and 14 (row 3), CONFIRMED in 08 (rows 66–68) and 10 (row 17). Datos &quot;same rate&quot;: UNCONFIRMED in 05 (row 26) and 10 (row 73), CONFIRMED AS REPORTED in 12 (row 29) and 14 (row 27). Several items it confirmed earlier are &quot;UNCONFIRMED IN THIS PASS&quot; later.</li>
+<li><strong>Some sources are thin or unusual.</strong> Unlinked bracket labels (08 row 49, 12 row 41, several rows in 16); an unresolved token <code>https://turn2search8</code> (07 row 58); a <code>t.co</code> link (16, Other); an Amazon Music podcast URL labelled &quot;Engadget&quot; (12 row 21); a <code>china.googleblog.com</code> URL for Google&#39;s Argon announcement (11).</li>
+<li><strong>Format departures.</strong> 17 did not use the briefed table or lists and proposes rewording. 18&#39;s reply opens with an echo of the brief. 06 row 21 lost its verdict when a quoted &quot;|&quot; broke ChatGPT&#39;s table.</li>
+<li><strong>Requests to act:</strong> none. Its suggestions are editorial and were not acted on.</li>
+</ul>
+<hr>
+<h1>Flagged lines and lists, by section</h1>
+<p>Each section lists every WRONG, OVERSTATED and UNCONFIRMED row exactly as ChatGPT gave it (quote, verdict, source, note), then its &quot;Readings written as facts&quot; and &quot;Other&quot; lists, verbatim.</p>
+<h2>01 01-colophon.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>UNCONFIRMED</strong> (8)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>“Edition 1 · October 2026 · covering September 2026”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://echofiles.substack.com/about" rel="noopener" target="_blank">The ECHO Files archive/about page</a></td>
+<td>The public ECHO Files page confirms the publication and its archive, but I found no independent/public source establishing this particular magazine edition&#39;s October/September dating.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>“Design and cover</td>
+<td>Claude Design”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.anthropic.com/news/claude-design-anthropic-labs" rel="noopener" target="_blank">Claude Design by Anthropic</a></td>
+</tr>
+<tr>
+<td>14</td>
+<td>“Working system</td>
+<td>Judgement OS: the rules and routines the Claude Code sessions ran under”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>15</td>
+<td>“Also involved</td>
+<td>Imprint, Jay&#39;s AI co-pilot”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+</tr>
+<tr>
+<td>16</td>
+<td>“Corpus</td>
+<td>31 daily intel briefs (31 August to 29 September)”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://echofiles.substack.com/p/this-week-in-ai-operator-space-sept" rel="noopener" target="_blank">The ECHO Files weekly intel archive</a></td>
+</tr>
+<tr>
+<td>17</td>
+<td>“a scored archive of items (20 September to 5 October)”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I found no public source exposing this archive.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>“five weekly roundups (28 August to 2 October)”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://echofiles.substack.com/p/this-week-in-ai-operator-space-sept" rel="noopener" target="_blank">The ECHO Files weekly roundup, Sept. 5–11</a></td>
+<td>At least one such weekly roundup is publicly verifiable, but I could not establish the complete five-roundup set or exact date range from public sources.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>“Closed 5 October 2026”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Could not independently verify the corpus closing date.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>“A field magazine for people operating at the edge of AI”</strong> — this is positioning/description rather than an objective fact. It would be cleaner editorially to treat it as the magazine&#39;s description, but it isn&#39;t a problematic factual claim.</li>
+<li><strong>“Judgement OS: the rules and routines…”</strong> — if this is intended as a description of an internal system rather than a claim about the external world, it is fine; it is simply not externally verifiable.</li>
+<li><strong>“the editor&#39;s read”</strong> is explicitly labelled as a read, so the pending editorial interpretation is properly separated from factual reporting.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>No obvious factual contradiction found.</strong> This section is overwhelmingly a production record, so most of it is deliberately outside external fact-checking.</li>
+<li>The one externally verifiable product attribution worth tightening is <strong>“Claude Design.”</strong> Claude Design is real and is explicitly described by Anthropic as a product for creating visual work; Anthropic also confirms its integration with Claude Code. <a href="https://www.anthropic.com/news/claude-design-anthropic-labs" rel="noopener" target="_blank">Anthropic</a> But that does <strong>not</strong> prove this particular issue&#39;s cover/design was made with it.</li>
+<li>The public ECHO Files About page supports the broader publication identity and Jay Wright attribution: it identifies the author as <strong>Jeremy “Jay” Wright</strong> and describes The ECHO Files as a build-in-public publication documenting known-operator AI. <a href="https://echofiles.substack.com/about" rel="noopener" target="_blank">ECHO Files</a></li>
+<li><strong>“39 wrong” / “25 wrong”</strong> are potentially important numbers, but because they describe the magazine&#39;s own internal checks, they belong in the NOT CHECKABLE bucket under your instruction rather than being treated as externally verified statistics.</li>
+<li><strong>“Published free”</strong> is the only line I&#39;d regard as slightly worth distinguishing from the rest: the publication itself is publicly accessible, but “free” is a current access/pricing assertion and the specific Edition 1 status isn&#39;t established by the sources I found.</li>
+</ul>
+<h2>02 02-contents.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>UNCONFIRMED</strong> (2)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8</td>
+<td>“06 Who pays when an agent breaks something? Six actions went public, after the fact”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>This contains a substantive factual claim (“six actions went public, after the fact”), but this contents page supplies no source. It needs checking against section 06 when provided.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>“16 The Library: 28 pieces worth your time”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>“28 pieces” is a concrete count, but whether there are actually 28 cannot be established until the section/library is supplied. “Worth your time” is editorial judgment, not fact.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>“Six actions went public, after the fact”</strong> is the one entry that needs attention. It is phrased as a factual assertion, not a labelled reading. It may well be true, but the underlying six examples need to substantiate it.</li>
+<li><strong>“The whole issue on one page”</strong> is effectively a description of what section 17 contains, not an external fact.</li>
+<li><strong>“28 pieces worth your time”</strong> mixes a checkable number with an explicitly subjective judgment. The number can be fact-checked; “worth your time” is editorial opinion and doesn&#39;t need a fact label.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li>I found <strong>no indexed public source for this contents page or these section titles</strong>, so there isn&#39;t much external verification possible yet. That&#39;s expected for a contents page.</li>
+<li><strong>Section 06 should be a priority check</strong> when you send it because its contents entry already commits to a precise number: <em>six actions</em>.</li>
+<li><strong>Section 16 likewise commits to 28 pieces</strong>. When that section arrives, count the actual entries rather than accepting the stated number.</li>
+<li>The “647 lines / 25 wrong / all corrected / 5 open” footer is consistent with the colophon you sent previously, but per your rule these are internal production claims and therefore <strong>NOT CHECKABLE</strong>, not independently confirmed.</li>
+</ul>
+<h2>03 03-editors-letter-jay-DRAFT.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (1)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>“Every Friday I publish a roundup of what my AI morning intel agent found that week.”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://echofiles.substack.com/about" rel="noopener" target="_blank">The ECHO Files About page</a></td>
+<td>The public publication description confirms a <strong>weekly newsletter</strong> and a weekly “Signal” section, but I couldn&#39;t independently establish the specific <strong>Friday</strong> cadence or that every roundup is generated from an “AI morning intel agent.” <a href="https://echofiles.substack.com/about" rel="noopener" target="_blank">ECHO Files</a></td>
+</tr>
+</tbody></table>
+<p><strong>UNCONFIRMED</strong> (2)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>9</td>
+<td>“A number from my first roundup that turned out to live in a summary box the page&#39;s own markup labels an AI summary, not in the essay I thought I was citing.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>This is a very specific factual description of a source-page/markup discrepancy, but the page and number aren&#39;t identified. I couldn&#39;t reproduce it from public search.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>“The claims themselves fared differently: two held at their core, one came back reversed, and two split.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>This is a concrete classification of five underlying claims. It should be checked against section 03/05/08&#39;s actual five claims when those sections arrive.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The biggest one is the five-claim synthesis:</strong> “Each of the five claims started…” and especially “two held… one… reversed, and two split.” The first is explicitly introduced by <strong>“I read September…”</strong>, so the reading is labelled. The second sentence, however, reads much more like a classification/result. I&#39;d flag it for the editor to ensure the surrounding context keeps clear that this is <strong>his analytical classification</strong>, not an independently observable fact.</li>
+<li><strong>“Every feature ends with the claim most likely to be wrong…”</strong> is stated categorically. This is not a world fact; it&#39;s a claim about the magazine&#39;s own construction. Once the features are available, it is mechanically checkable.</li>
+<li><strong>“The best replies run in the next issue”</strong> is a future editorial promise, not a fact. That&#39;s okay, but it should remain conditional/promissory rather than being read as an established policy if that policy isn&#39;t actually settled.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<h2>04 04-the-rules-DRAFT.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>UNCONFIRMED</strong> (3)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>7</td>
+<td>“Two numbers we printed in September came from summary boxes on two of Tom Tunguz&#39;s pages”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://tomtunguz.com/" rel="noopener" target="_blank">Tomasz Tunguz archive</a> <a href="https://tomtunguz.com/" rel="noopener" target="_blank">Tomasz Tunguz</a></td>
+<td>The archive confirms numerous September Tunguz posts, including Sep. 2–30, but I cannot establish from the indexed pages that exactly <strong>two numbers</strong> in the magazine came from summary boxes.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>“which his site&#39;s own markup labels AI summaries”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://tomtunguz.com/" rel="noopener" target="_blank">Tomasz Tunguz archive</a> <a href="https://tomtunguz.com/" rel="noopener" target="_blank">Tomasz Tunguz</a></td>
+<td>The public/indexed page exposes Tunguz&#39;s article summaries, but the search-accessible representation does not expose the underlying markup sufficiently to verify the claimed <strong>AI summary</strong> label. This needs the actual page/source HTML to confirm.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>“not from the essays underneath.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://tomtunguz.com/" rel="noopener" target="_blank">Tomasz Tunguz archive</a> <a href="https://tomtunguz.com/" rel="noopener" target="_blank">Tomasz Tunguz</a></td>
+<td>The archive clearly contains article titles and summary text, but it doesn&#39;t establish what the magazine&#39;s two September citations actually relied upon.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>“Two numbers we printed in September came from summary boxes…”</strong> is presented as fact. The underlying Tunguz pages are real and contain September 2026 posts, but I could not independently establish the exact two-number provenance from the public indexed material. <a href="https://tomtunguz.com/" rel="noopener" target="_blank">Tomasz Tunguz</a></li>
+<li><strong>“which his site&#39;s own markup labels AI summaries”</strong> is also stated as fact. This is the most important externally checkable assertion in the section, and currently <strong>UNCONFIRMED</strong> rather than CONFIRMED. The editor should retain the actual source-page/HTML evidence in the receipts.</li>
+<li><strong>“Each feature ends…”</strong> is categorical but refers to the magazine&#39;s own construction, so it isn&#39;t a “reading written as fact” in the problematic sense. It is simply a structural promise that can be checked.</li>
+<li>The central rules themselves are <strong>rules</strong>, not claims about the external world. They don&#39;t need “our reading” labels.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The Tunguz claim deserves a source-level check, not merely an article-level check.</strong> The public Tunguz archive clearly shows the September publication run—Sep. 2, 3, 4, 7, 8, 14, 15, 17, 21, 23, 24, 28, 29, 30, etc. <a href="https://tomtunguz.com/" rel="noopener" target="_blank">Tomasz Tunguz</a> But that does not prove what appeared in the page&#39;s markup versus the essay body.</li>
+<li>There is a useful independent corroboration that Tunguz&#39;s <strong>Sep. 2 “AI Productivity Doesn&#39;t Mean What I Thought It Means”</strong> was indeed about his own AI-writing workflow and self-study, rather than merely an abstract AI productivity claim. <a href="https://www.thatwastheweek.com/p/dont-trust-the-trust-scare" rel="noopener" target="_blank">That Was The Week</a> This doesn&#39;t validate the magazine&#39;s “AI summary box” assertion, but it reinforces why the distinction between summary and primary text matters.</li>
+<li><strong>Rule V is deliberately unresolved</strong>, which is good editorial hygiene: [N] and “COUNT AND CHECK PENDING” prevent an unverified compliance number from masquerading as settled.</li>
+<li><strong>Potential terminology issue:</strong> Rule I says “Every fact has a source,” but Rule V explicitly allows the magazine to make its own readings/bets. That&#39;s logically fine because the rules distinguish <em>source-derived facts</em> from <em>editorial inference</em>. The test in Rule V makes that boundary explicit.</li>
+<li><strong>The strongest future audit target is Rule VII.</strong> The claim “10 checker agents, none checking its own work” is internal and therefore not externally checkable, but if the receipts later expose agent-by-agent provenance, an editor can verify whether the separation actually held.</li>
+</ul>
+<h2>05 05-the-month.md</h2>
+<p><strong>WRONG</strong> (1)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>15</td>
+<td>“the vendors converged at $2/$10 per million input and output tokens: Anthropic and OpenAI before 28 September, Google by 30 September”</td>
+<td><strong>WRONG</strong></td>
+<td><a href="https://www.anthropic.com/claude-sonnet-5-5" rel="noopener" target="_blank">Anthropic — Claude Sonnet 5.5</a></td>
+<td>The chronology is wrong. Anthropic launched Sonnet 5.5 <strong>on September 28</strong>, not before it; OpenAI&#39;s GPT-6.1 Sol arrived <strong>September 29</strong>; Google Argon arrived <strong>September 30</strong>. The $2/$10 prices are correct. <a href="https://www.anthropic.com/claude-sonnet-5-5" rel="noopener" target="_blank">Anthropic</a></td>
+</tr>
+</tbody></table>
+<p><strong>OVERSTATED</strong> (3)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>“In an Anthropic study from August, 1,053 paid testers caught a swapped-in dangerous command 13.6% of the time; the classifier caught 89%.”</td>
+<td><strong>OVERSTATED / WRONG TERM</strong></td>
+<td><a href="https://claude.com/blog/auto-mode-default-in-claude-code" rel="noopener" target="_blank">Anthropic study</a></td>
+<td>The <strong>1,053</strong>, <strong>13.6%</strong> and <strong>89%</strong> figures are confirmed. But Anthropic calls the 89% mechanism <strong>auto mode</strong>, not “the classifier.” It blocked 937/1,053 dangerous commands; humans caught 143/1,053. <a href="https://claude.com/blog/auto-mode-default-in-claude-code" rel="noopener" target="_blank">Claude</a></td>
+</tr>
+<tr>
+<td>11</td>
+<td>“Florida, the FTC and California&#39;s attorney general moved publicly on matters opened earlier”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://oag.ca.gov/news/press-releases/part-ongoing-investigation-attorney-general-bonta-serves-investigative-subpoena" rel="noopener" target="_blank">California AG — OpenAI subpoena</a></td>
+<td>California is confirmed. The FTC investigation is also reported as opened around Sept. 30. Florida&#39;s relevant OpenAI lawsuit, however, was <strong>filed June 1</strong>, not during this Sept. 28–Oct. 1 window. So the sentence&#39;s grouping is defensible only if “moved publicly” means <em>public activity in the period</em>, not that all three initiated their matters then. <a href="https://www.publicnow.com/view/D3DD11A9D1F1601F9E8F3DAE054799290D422B74" rel="noopener" target="_blank">PublicNow</a></td>
+</tr>
+<tr>
+<td>16</td>
+<td>“at an introductory half price for trusted testers”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" rel="noopener" target="_blank">Google — Gemini 4 Argon</a></td>
+<td>Google confirms <strong>$2/$10 introductory pricing</strong> and a phased rollout to <strong>trusted cyber defenders through the Fairwind Program</strong>. It does not call them simply “trusted testers.” Standard pricing is $4/$20, so “half price” is correct. <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" rel="noopener" target="_blank">blog.google</a></td>
+</tr>
+</tbody></table>
+<p><strong>UNCONFIRMED</strong> (2)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>“one held, one held at its core, one came back reversed at the level of the job, and two split.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>This is the magazine&#39;s classification of its five claims. It can only be checked against the underlying September roundups and later sections.</td>
+</tr>
+<tr>
+<td>26</td>
+<td>“Datos found the two growing at about the same rate.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://datos.live/report/state-of-search-q2-2026/" rel="noopener" target="_blank">Datos — State of Search Q2 2026</a></td>
+<td>Datos confirms the Q2 report examines AI and traditional search together, and secondary reporting says traditional search remained stable while AI activity grew. I did <strong>not</strong> find support for the specific claim that the two were “growing at about the same rate.” <a href="https://datos.live/report/state-of-search-q2-2026/" rel="noopener" target="_blank">Datos</a></td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>“one held, one held at its core, one came back reversed… and two split”</strong> is an analytical classification. It isn&#39;t labelled “our reading” in that sentence, although the following sentence says “The grades are our readings.” I&#39;d still flag this as <strong>borderline</strong>: a reader could reasonably interpret the five-way classification as an objective <a href="data/recheck-result.html">result</a> rather than the magazine&#39;s synthesis.</li>
+<li><strong>“verification stayed the bottleneck…”</strong> is properly labelled <strong>“Our reading.”</strong></li>
+<li><strong>“the vendor matters less…”</strong> is properly labelled <strong>“Our reading.”</strong></li>
+<li><strong>“it held as a cost margin, won by deleting scaffolding, and its effect on quality is unproven either way”</strong> is properly labelled <strong>“Our reading.”</strong> “Unproven” is a strong evidentiary conclusion, but it is explicitly presented as the magazine&#39;s reading.</li>
+<li><strong>“being found grew, but making didn&#39;t go away”</strong> is properly labelled <strong>“Our reading.”</strong></li>
+<li><strong>“AI discovery looked like an addition to search, not a replacement”</strong> is also explicitly labelled as a reading. Good.</li>
+<li><strong>“set limits, then audit them”</strong> is clearly identified as what <strong>The Pattern argues</strong>, so it is appropriately separated from the factual receipts.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>There is a real chronology error in the model-pricing sentence.</strong> “Anthropic and OpenAI before 28 September” cannot stand. Anthropic&#39;s Sonnet 5.5 launched <strong>Sept. 28</strong>; OpenAI&#39;s GPT-6.1 Sol launched <strong>Sept. 29</strong>. Google Argon launched Sept. 30. <a href="https://www.anthropic.com/claude-sonnet-5-5" rel="noopener" target="_blank">Anthropic</a></li>
+<li>The Anthropic study line has a <strong>terminology problem that matters</strong>: “classifier” is not what Anthropic says. The experiment compared <strong>human review with Claude Code auto mode</strong>. The numbers themselves are excellent and match the source exactly. <a href="https://claude.com/blog/auto-mode-default-in-claude-code" rel="noopener" target="_blank">Claude</a></li>
+<li>The <strong>Argon/Astra comparison is unusually solid</strong>, but the issue should retain the configuration: Artificial Analysis reports 53 vs 53 for Argon High and Astra Max in the comparison cited. It isn&#39;t evidence that the two models are universally equivalent. <a href="https://artificialanalysis.ai/models/comparisons/gemini-4-argon-vs-gpt-6-astra" rel="noopener" target="_blank">Artificial Analysis</a></li>
+<li>The <strong>Argon token-use point is actually stronger than the prose makes it sound</strong>: AA gives 62K vs 27K output tokens/task, while still showing $1.99 vs $3.26 per task at intro pricing. At standard Argon pricing, its estimated task cost crosses above Astra. <a href="https://artificialanalysis.ai/models/comparisons/gemini-4-argon-vs-gpt-6-astra" rel="noopener" target="_blank">Artificial Analysis</a></li>
+<li>The <strong>Datos line is the weakest sourcing in the section</strong>. The official report confirms the dataset and scope, but the exact “same rate” proposition wasn&#39;t recoverable from the public material. The secondary evidence instead says traditional search remained stable while AI usage changed, which isn&#39;t the same proposition. <a href="https://datos.live/report/state-of-search-q2-2026/" rel="noopener" target="_blank">Datos</a></li>
+<li>The <strong>liability paragraph is broadly strong</strong>, but “Florida, the FTC and California&#39;s attorney general moved publicly on matters opened earlier” compresses events with different origins. Florida&#39;s case began June 1; California&#39;s subpoena was Oct. 1; the FTC investigation was reported around Sept. 30. The underlying point—that several liability/accountability fronts became publicly salient in that window—is sound. <a href="https://www.publicnow.com/view/D3DD11A9D1F1601F9E8F3DAE054799290D422B74" rel="noopener" target="_blank">PublicNow</a></li>
+<li>One particularly good editorial choice: <strong>“No liability has been assigned yet”</strong> avoids turning lawsuits, investigations, subpoenas and proposed legislation into findings of wrongdoing. That distinction is important here.</li>
+</ul>
+<h2>06 06-the-receipts.md</h2>
+<p><strong>WRONG</strong> (1)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>10</td>
+<td>“605 confirmed · 25 wrong · 7 overstated · 12 couldn&#39;t be confirmed”</td>
+<td><strong>WRONG / DOESN&#39;T ADD UP AS PRESENTED</strong></td>
+<td>—</td>
+<td><strong>605 + 25 + 7 + 12 = 649</strong>, not 647. The prose later says the 7 overstated items are in <strong>5 rows</strong> and those 5 rows are already included in the 647. If so, “7 overstated” is a subset of the 25 wrong rather than an additional category, and the table needs to say so explicitly.</td>
+</tr>
+</tbody></table>
+<p><strong>OVERSTATED</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>UNCONFIRMED</strong> (2)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>“5, PUBLISHED ON FRIDAYS, COVERING 28 AUG TO 2 OCT”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://echofiles.substack.com/about" rel="noopener" target="_blank">The ECHO Files</a></td>
+<td>Public material supports a weekly-roundup format, but I cannot independently establish the exact five-roundup set, Friday cadence, and date range from outside the issue.</td>
+</tr>
+<tr>
+<td>28</td>
+<td>“AINews said simpler coding ‘may not have improved much’”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>The underlying AINews article/source needs to be supplied. I could not locate a sufficiently reliable indexed source for this exact wording.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The grade classifications</strong> (“accountability held,” “model choice was reframed,” etc.) are appropriately rescued by the explicit sentence <strong>“Grades are readings.”</strong></li>
+<li><strong>“Thirty-seven feeds is a sample, not the field”</strong> is plainly methodological interpretation and doesn&#39;t need a source.</li>
+<li><strong>“some catches may have come from the map rather than the sources”</strong> is appropriately hedged.</li>
+<li><strong>“The editor picked the five claims … that would change most about what readers do”</strong> is an internal editorial judgment, but it is written declaratively. That&#39;s acceptable as a statement of the editor&#39;s selection rationale, not as an empirical finding.</li>
+<li><strong>The most important borderline case is the opening classification:</strong> “one held, one held at its core, one came back reversed… and two split.” The next sentence says “The grades are our readings,” but the classification itself would be clearer if that attribution carried directly into it.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>There is a genuine ledger arithmetic problem.</strong> The Check 2 table cannot simultaneously present 605 confirmed + 25 wrong + 7 overstated + 12 unconfirmed as four additive categories and claim 647 lines. That&#39;s <strong>649</strong>. The prose makes the intended accounting recoverable: the <strong>7 overstated items are apparently contained within the 25 wrong, and occupy 5 rows</strong>, with those 5 rows accounting for the difference between 642 and 647. But the table currently makes them look additive. This is the clearest editorial correction I would make before print.</li>
+<li><strong>Check 1 has the same structural ambiguity:</strong> 196 + 39 + 1 = 236 exactly, so the separate “4 private lines, not checkable” cannot be an additional category. If those four are a subset of the 196 confirmed or otherwise included in the 236, the table needs to say that. If they&#39;re separate, the Check 1 total is wrong.</li>
+<li>The <strong>section-level totals themselves are impressively clean</strong>: 647 lines, 25 wrong, 9 open-after-first-edit, 5 open-now all reconcile. So the problem appears to be <strong>category presentation</strong>, not the underlying section arithmetic.</li>
+<li>The Tunguz claim referenced elsewhere in the issue is externally supported: his Sept. 17 article says the right harness cut cost for the same <a href="data/recheck-result.html">result</a> by <strong>71% without loss of accuracy</strong>, and specifies the underlying HarnessTax study. <a href="https://tomasztunguz.com/" rel="noopener" target="_blank">Tomasz Tunguz</a></li>
+<li>The Anthropic figures used elsewhere in the issue also check out: reporting on Anthropic&#39;s study gives <strong>1,053 paid testers, 89% caught by auto mode vs. 13.6% by human review</strong>. <a href="https://techcrunch.com/2026/08/09/anthropic-is-turning-claude-codes-auto-mode-on-by-default/" rel="noopener" target="_blank">TechCrunch</a></li>
+<li>The section&#39;s methodological limitation about <strong>one model family</strong> is particularly important. It is accurately described as a limitation, and the magazine does not pretend the internal checks establish model-family independence.</li>
+<li><strong>“The grades … are readings” is good practice.</strong> It prevents the very real methodological problem of turning a model-generated classification into an apparent empirical finding.</li>
+<li>One subtle distinction: the statement <strong>“No second model family has checked the issue”</strong> is true <em>at the stated Oct. 5 production cutoff</em>, but this external review is now precisely the second-model-family check the magazine says it lacked. That isn&#39;t a contradiction in the issue; it&#39;s a consequence of the check being performed after the stated cutoff.</li>
+</ul>
+<h2>07 07-who-checks-the-checker.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (2)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>25</td>
+<td>“Tunguz framed what&#39;s left as building the systems that make AI-written code come out right.”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://tomtunguz.com/ai-productivity-doesnt-mean-what-i-thought" rel="noopener" target="_blank">Tomasz Tunguz</a> <a href="https://tomtunguz.com/ai-productivity-doesnt-mean-what-i-thought" rel="noopener" target="_blank">Tomasz Tunguz</a></td>
+<td>His Sept. 2 piece supports the move from structural drafting to human rhetorical judgment, but “building the systems that make AI-written code come out right” is a broader synthesis than the cited article itself.</td>
+</tr>
+<tr>
+<td>34</td>
+<td>“one agent&#39;s exploit … spreading through a 100-agent swarm by way of a shared knowledge library.”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://institute.deepmind.com/essays/cheaters-and-whistleblowers-in-the-agent-swarm/" rel="noopener" target="_blank">DeepMind Institute</a> <a href="https://institute.deepmind.com/essays/cheaters-and-whistleblowers-in-the-agent-swarm/" rel="noopener" target="_blank">DeepMind Institute</a></td>
+<td>DeepMind confirms a 100-agent experiment, cheating, a shared knowledge library and agents fighting back. But “one agent&#39;s exploit spreading … by way of the library” is a more specific causal description than the source excerpt establishes.</td>
+</tr>
+</tbody></table>
+<p><strong>UNCONFIRMED</strong> (13)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>21</td>
+<td>“the most common setup has engineers reviewing the AI&#39;s review rather than the code.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I found secondary discussion of this review pattern, but not sufficiently strong primary evidence for “most common.” This is a quantitative/generalization claim and should be sourced more precisely.</td>
+</tr>
+<tr>
+<td>35</td>
+<td>“six Google DeepMind researchers”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://institute.deepmind.com/essays/cheaters-and-whistleblowers-in-the-agent-swarm/" rel="noopener" target="_blank">DeepMind Institute</a> <a href="https://institute.deepmind.com/essays/cheaters-and-whistleblowers-in-the-agent-swarm/" rel="noopener" target="_blank">DeepMind Institute</a></td>
+<td>The accessible article doesn&#39;t establish the six-author count in the excerpt I found.</td>
+</tr>
+<tr>
+<td>39</td>
+<td>“then grades a handful of cases and asks whether you would have scored any of them differently.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://claude.dev/blog/automating-eval-design-and-hillclimbing/" rel="noopener" target="_blank">Anthropic/claude.dev</a> <a href="https://claude.dev/blog/automating-eval-design-and-hillclimbing/" rel="noopener" target="_blank">claude.dev Blog</a></td>
+<td>The source confirms grader approval/validation, but I couldn&#39;t establish this exact “handful of cases / would you have scored differently” sequence from the primary page.</td>
+</tr>
+<tr>
+<td>40</td>
+<td>“it is important to read a sample of scored transcripts before believing your evaluator”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I could not find this exact quotation in the accessible primary Anthropic material. It may come from the tool&#39;s generated guidance, but the source should be supplied.</td>
+</tr>
+<tr>
+<td>42</td>
+<td>“the task asked for code that catches one error type while its grader wanted a chain of at least three.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Specific worked-example detail not recoverable from the primary page I could access.</td>
+</tr>
+<tr>
+<td>43</td>
+<td>“the grader&#39;s instructions contradicted Anthropic&#39;s documentation, and testing the real API showed the documentation was right.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Same: specific worked-example claim needs the source excerpt.</td>
+</tr>
+<tr>
+<td>46</td>
+<td>“Rajesh Beri put the rule plainly on 4 October…”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.beri.net/" rel="noopener" target="_blank">Rajesh Beri</a> <a href="https://www.beri.net/" rel="noopener" target="_blank">THE D<em>AI</em>LY BRIEF</a></td>
+<td>His Oct. 4 archive is publicly visible, but I could not locate the quoted article/text establishing this exact rule.</td>
+</tr>
+<tr>
+<td>47</td>
+<td>“Gate an action only when it is hard to reverse … Everything else belongs in sampled audit.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.beri.net/" rel="noopener" target="_blank">Rajesh Beri</a> <a href="https://www.beri.net/" rel="noopener" target="_blank">THE D<em>AI</em>LY BRIEF</a></td>
+<td>Exact quotation not independently located. Treat as needing the direct source URL.</td>
+</tr>
+<tr>
+<td>48</td>
+<td>“If the answer is a call to a customer, a bank, a regulator or a counterparty, a person signs off first.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.beri.net/" rel="noopener" target="_blank">Rajesh Beri</a> <a href="https://www.beri.net/" rel="noopener" target="_blank">THE D<em>AI</em>LY BRIEF</a></td>
+<td>Same source gap.</td>
+</tr>
+<tr>
+<td>49</td>
+<td>“If it is one more API call, the action goes to the sampled audit.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.beri.net/" rel="noopener" target="_blank">Rajesh Beri</a> <a href="https://www.beri.net/" rel="noopener" target="_blank">THE D<em>AI</em>LY BRIEF</a></td>
+<td>Needs direct source.</td>
+</tr>
+<tr>
+<td>51</td>
+<td>“Beri … suggests seeding 1 to 2% of a review queue with actions known to be wrong.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.beri.net/" rel="noopener" target="_blank">Rajesh Beri</a> <a href="https://www.beri.net/" rel="noopener" target="_blank">THE D<em>AI</em>LY BRIEF</a></td>
+<td>I could not verify the exact 1–2% recommendation from the accessible archive.</td>
+</tr>
+<tr>
+<td>52</td>
+<td>“you have measured the rubber stamp directly”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.beri.net/" rel="noopener" target="_blank">Rajesh Beri</a> <a href="https://www.beri.net/" rel="noopener" target="_blank">THE D<em>AI</em>LY BRIEF</a></td>
+<td>Exact quotation not located.</td>
+</tr>
+<tr>
+<td>62</td>
+<td>“Sources: Anthropic … Hamel Husain, Qodo, Faros and Rajesh Beri.”</td>
+<td><strong>PARTLY UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Anthropic/Hamel/Qodo/Faros are verifiable. The specific Beri quotations need a direct source.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The core thesis is generally labelled very well.</strong> “On the magazine&#39;s reading” appears before the major synthesis: verification remained the bottleneck, human work moved upward, and the three jobs are the new human role.</li>
+<li><strong>“The most common setup has engineers reviewing the AI&#39;s review rather than the code”</strong> is the biggest unlabeled empirical/generalization claim I would flag. I couldn&#39;t verify “most common.”</li>
+<li><strong>The DeepMind causal description</strong> (“one agent&#39;s exploit spreading … by way of a shared knowledge library”) is stronger than the source I could independently establish. The underlying experiment is real, but the causal chain needs the paper/source.</li>
+<li><strong>“A receipt is what turns the three jobs into evidence”</strong> is a conceptual definition, not really a factual claim.</li>
+<li><strong>The “third job is a ritual” passage is appropriately conditional</strong> and therefore does not present the conclusion as already established.</li>
+<li>The final <strong>“most likely to be wrong”</strong> box is exemplary in this respect: it explicitly identifies the claim as the magazine&#39;s candidate and gives a concrete falsification test.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>Strongest correction needed: the Anthropic classifier wording is actually fine here.</strong> Unlike section 05, this section says “the classifier,” and Anthropic itself calls the mechanism the <strong>auto mode classifier</strong>. The numbers and dates are also solid. <a href="https://claude.com/blog/auto-mode-default-in-claude-code" rel="noopener" target="_blank">Claude</a></li>
+<li><strong>The 97% vs. 3% distinction is worth preserving carefully.</strong> “97% approved” and “3% rejected” are complements, while the 39% figure concerns <em>plans</em>, a different decision unit. The section correctly treats the latter as evidence about a different layer rather than conflating the two.</li>
+<li><strong>The Faros numbers are solid, but the report is telemetry rather than a controlled causal experiment.</strong> The source itself stresses that distinction. The magazine uses the figures as evidence that review load increased, which is defensible; it should not imply Faros proved AI <em>caused</em> the increase. <a href="https://www.faros.ai/blog/ai-engineers-faster-delivery-slower" rel="noopener" target="_blank">Faros</a></li>
+<li><strong>The Qodo evidence is particularly strong for the “verification bottleneck” thesis.</strong> Both developers and engineering leaders independently put review/validation at the top, at 26%. <a href="https://www.qodo.ai/blog/state-of-ai-code-quality-report-2026/" rel="noopener" target="_blank">Qodo</a></li>
+<li><strong>Hamel&#39;s source supports the conceptual point very well</strong>, but the section attributes some very specific details to his experiment that I could not recover from the accessible primary post. The direct Hamel post confirms the central criticism and his positive assessment of issue discovery. <a href="https://www.linkedin.com/pulse/claudes-new-auto-eval-tool-hamel-husain-pvmvc" rel="noopener" target="_blank">LinkedIn</a></li>
+<li><strong>The Anthropic eval-tool source is stronger than the section&#39;s citation trail suggests.</strong> The primary Sept. 28 post explicitly says users approve the examples and grader, and that hillclimbing checks for harness errors and bad graders. <a href="https://claude.dev/blog/automating-eval-design-and-hillclimbing/" rel="noopener" target="_blank">claude.dev Blog</a></li>
+<li><strong>The 6.3% vs. 2.4% number needs its population caveat if space permits.</strong> Anthropic says these were <em>production sessions already flagged for review</em>. It is not “6.3% of all manually approved production sessions” in an unrestricted population. <a href="https://claude.com/blog/auto-mode-default-in-claude-code" rel="noopener" target="_blank">Claude</a></li>
+<li><strong>The Beri material is the weakest externally verifiable component.</strong> I found his Oct. 4 archive and current posts, but not the exact quoted rule or the 1–2% seeding recommendation. Given the magazine&#39;s Rule I, I&#39;d want the direct Beri URL attached to those lines before publication.</li>
+<li>The DeepMind experiment itself is unquestionably real: <strong>100 Gemini 3.1 Pro agents, 71 math problems, shared bulletin board/knowledge library, automated verification</strong>, and agents that cheated and resisted the cheating. <a href="https://institute.deepmind.com/essays/cheaters-and-whistleblowers-in-the-agent-swarm/" rel="noopener" target="_blank">DeepMind Institute</a> The problem is only the more specific interpretation of how the exploit propagated.</li>
+<li><strong>Overall:</strong> this is a much stronger section than a typical AI-industry synthesis. Most of the important quantitative claims are source-supported, and the magazine consistently distinguishes evidence from its own interpretation. The two things I&#39;d hold for receipts are <strong>Beri&#39;s quotations/recommendations</strong> and <strong>the exact Hamel/Anthropic eval-tool micro-details</strong>.</li>
+</ul>
+<h2>08 08-who-pays-when-an-agent-breaks-something.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (1)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>74</td>
+<td>“The only record an operator controls is its own.”</td>
+<td><strong>OVERSTATED</strong></td>
+<td>—</td>
+<td>An operator may control its own records, but may also control vendor contracts, exported logs, cloud audit logs, etc. As written, “only” is too absolute unless intended rhetorically.</td>
+</tr>
+</tbody></table>
+<p><strong>UNCONFIRMED</strong> (7)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>14</td>
+<td>“Meta, through Irregular&#39;s testing, on 5 August.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I could not locate a sufficiently authoritative source establishing this exact date/attribution. The underlying Meta/Irregular incident may be real, but this exact chronology needs its source.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>“OpenAI&#39;s 31 August answer to Congress didn&#39;t disclose.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.gage.academy/tools/slowdown-docket/records/DKT-2026-0007-house-democrats-oversight-letter-openai" rel="noopener" target="_blank">Congressional correspondence summary</a> <a href="https://www.gage.academy/tools/slowdown-docket/records/DKT-2026-0007-house-democrats-oversight-letter-openai" rel="noopener" target="_blank">GAGE Academy</a></td>
+<td>The 31 Aug response and Sept. 2 follow-up are documented, but I could not independently inspect the complete response here to establish this precise omission.</td>
+</tr>
+<tr>
+<td>25</td>
+<td>“The Next Web&#39;s headline called them cases of OpenAI&#39;s models ‘hiding mistakes and making up data’.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I couldn&#39;t independently retrieve the TNW headline. Needs direct source.</td>
+</tr>
+<tr>
+<td>32</td>
+<td>“‘despite knowing about it at the time’, Transformer reported.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I couldn&#39;t independently retrieve Transformer’s original report.</td>
+</tr>
+<tr>
+<td>38</td>
+<td>“David Robinson … quit, writing in The Atlantic on 3 October”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I could not independently retrieve the Atlantic article/source with enough confidence to verify this exact attribution.</td>
+</tr>
+<tr>
+<td>39</td>
+<td>“‘the time for trial and error is over’.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Same source gap.</td>
+</tr>
+<tr>
+<td>53</td>
+<td>“no committee referral as of 2 October, and no bill number or published text as of 5 October.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I found the Senate announcement but not a sufficiently authoritative legislative docket establishing both negative conditions. Needs a Congressional record/docket source.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The opening “accountability gap held” is properly labelled</strong> as the magazine&#39;s reading.</li>
+<li><strong>“What changed in those four days…”</strong> is an interpretation of the six events, not a raw fact. It isn&#39;t explicitly labelled “our reading” in that sentence, although the paragraph begins with “On the magazine&#39;s reading.” I&#39;d consider that sufficient, but a very strict editor could carry the label closer.</li>
+<li><strong>The application of OpenAI&#39;s disclosure framework to a customer&#39;s account</strong> is the most important reading in the piece. It is explicitly labelled as the magazine&#39;s reading, and the “Prove us wrong” box is unusually good: it states exactly what evidence would falsify it.</li>
+<li><strong>“The rule already existed, the brake worked at least once, and what lagged was detection, not accountability”</strong> is presented under “On that reading,” so appropriately labelled.</li>
+<li><strong>“The bet here…”</strong> is correctly and prominently labelled.</li>
+<li><strong>“The only record an operator controls is its own”</strong> is too absolute if meant literally. It&#39;s an editorial warning, but it reads like a factual proposition and should either be softened or clearly framed as advice.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The strongest factual problem is the CFAA retention sentence.</strong> The statute says a civil action must generally be begun within two years of the act or discovery of the damage. It does <strong>not</strong> say operators must retain logs for two years. Beri recommends retaining the action log for at least that period. Those are different propositions. <a href="https://www.beri.net/article/ai-agent-accountability-act-hawley-murphy-cfaa-operator-liability-enterprise-agent-deployers" rel="noopener" target="_blank">THE D<em>AI</em>LY BRIEF</a></li>
+<li><strong>The Transluce “6,467 reports” number needs a unit caveat.</strong> It is not 6,467 incidents or 6,467 confirmed attacks. Transluce says it found 6,467 reports with significant evidence of agent activity. The distinction is important and should remain explicit. <a href="https://transluce.org/agent-activity" rel="noopener" target="_blank">Transluce</a></li>
+<li><strong>The OpenAI framework section is very strong.</strong> The six reports, three-track process, 6/12-business-day targets, and absence of a fixed deadline for the larger-investigation track are all directly supported by OpenAI. <a href="https://openai.com/index/model-misalignment-reporting-framework/" rel="noopener" target="_blank">OpenAI</a></li>
+<li><strong>The customer-notification inference is actually handled unusually well.</strong> The article does <em>not</em> say OpenAI&#39;s framework legally gives customers no notice. It says that&#39;s the magazine&#39;s reading, then explicitly offers contractual/customer terms as evidence that could change its mind. That&#39;s exactly the distinction the magazine claims to enforce.</li>
+<li><strong>The AB 316 paragraph is solid.</strong> The statute explicitly says a defendant who developed, modified, or used AI cannot assert that the AI autonomously caused the harm as a defense. <a href="https://legiscan.com/CA/text/AB316/id/3268860" rel="noopener" target="_blank">LegiScan</a></li>
+<li><strong>The six-event chronology is substantially supported.</strong> Florida, LASST, FTC, California AG, the hearing, and the Hawley/Murphy bill all land in the claimed window. The biggest thing I&#39;d preserve is that these are <strong>actions/proceedings, not liability findings</strong>. The section is careful about that.</li>
+<li><strong>The GPT-6.1 Astra cancellation is confirmed</strong>, including the quoted rationale about scope, authorization and communicating the work performed. <a href="https://www.wired.com/story/openai-delays-release-of-latest-model-over-safety-concerns/" rel="noopener" target="_blank">WIRED</a></li>
+<li><strong>The “Nvidia watchdog” claim is actually stronger than written:</strong> NVIDIA specifically says Sentry is an <strong>out-of-band watchdog on BlueField-4 DPUs</strong>, continuously monitoring agent behavior and capable of quarantining agents. <a href="https://investor.nvidia.com/news/press-release-details/2026/NVIDIA-Launches-Open-Agent-Safety-Platform-to-Secure-Agents-From-Testing-to-Deployment/default.aspx" rel="noopener" target="_blank">NVIDIA Investor Relations</a></li>
+<li><strong>The Beri material is now externally verifiable.</strong> His Oct. 4 analysis explicitly recommends the owner/scope record and external action log, including destination, credential, timestamp, triggering task and retention for the CFAA window. <a href="https://www.beri.net/article/ai-agent-accountability-act-hawley-murphy-cfaa-operator-liability-enterprise-agent-deployers" rel="noopener" target="_blank">THE D<em>AI</em>LY BRIEF</a></li>
+<li><strong>One chronology item remains genuinely unresolved:</strong> the exact “Meta, through Irregular&#39;s testing, on 5 August” claim. I would not let that one pass without the underlying source. Anthropic&#39;s Aug. 4 UK AISI incident is separately documented, so there is a real risk that two August incidents have been compressed together. <a href="https://www.anthropic.com/news/improving-alignment-security-efforts" rel="noopener" target="_blank">Anthropic</a></li>
+<li><strong>The biggest editorial strength:</strong> the section doesn&#39;t turn lawsuits, subpoenas, investigations or a proposed bill into “accountability arrived.” It repeatedly distinguishes <strong>a question being raised</strong> from <strong>liability actually being assigned</strong>. That&#39;s a meaningful factual discipline, not just stylistic caution.</li>
+</ul>
+<h2>09 09-the-month-in-one-chart.md</h2>
+<p><strong>WRONG</strong> (1)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>17</td>
+<td>“Cost per task as reported by AINews; output tokens are under half of it.”</td>
+<td><strong>WRONG</strong></td>
+<td><a href="https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer" rel="noopener" target="_blank">AINews: Gemini 4 Argon</a></td>
+<td>This is the clearest factual/wording error. <strong>62,000 output tokens are not “under half” of $1.99</strong>—the two quantities have different units. If the intended meaning is that output tokens are under half of <em>Astra&#39;s</em> output tokens, that&#39;s also false: 62K is <strong>more than twice</strong> Astra&#39;s 27K. The footnote appears malformed.</td>
+</tr>
+</tbody></table>
+<p><strong>OVERSTATED</strong> (1)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>14</td>
+<td>“the model that is cheapest per token is cheapest per task only while its introductory discount lasts.”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer" rel="noopener" target="_blank">AINews: Gemini 4 Argon</a></td>
+<td>The supplied data establish that Argon is cheaper per task at introductory pricing ($1.99 vs $3.26) but more expensive at standard pricing ($3.98 vs $3.26). “Only while its introductory discount lasts” is effectively true <strong>for this comparison</strong>, but the phrase generalizes from three observations and should be understood as the chart&#39;s interpretation, not an independent fact.</td>
+</tr>
+</tbody></table>
+<p><strong>UNCONFIRMED</strong> (1)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12</td>
+<td>“who can use it” / introductory-price availability</td>
+<td><strong>UNCONFIRMED FROM THE CHART ITSELF</strong></td>
+<td><a href="https://thezvi.wordpress.com/2026/10/01/ai-188-gemini-dot-argon/" rel="noopener" target="_blank">Zvi: Gemini Dot Argon</a></td>
+<td>Zvi confirms the $2/$10 pricing and rollout context, but the exact eligibility restriction isn&#39;t visible in the retrieved passage. The cited source may contain it elsewhere.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li>The standfirst correctly labels the chart as <strong>“one of September&#39;s readings.”</strong></li>
+<li><strong>“the model that is cheapest per token is cheapest per task only while its introductory discount lasts”</strong> is the one substantive interpretive sentence I&#39;d flag. The data demonstrate the <a href="data/recheck-result.html">result</a> for these three rows; they don&#39;t establish a general law about “the model that is cheapest per token.”</li>
+<li>The rest of “What it shows” is largely factual: same index score, different task costs, and different token usage.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>There is one obvious broken footnote:</strong> “output tokens are under half of it.” This is either a typo or a corrupted edit. It should be fixed before print. As written it compares <strong>tokens to dollars</strong>, which is dimensionally meaningless.</li>
+<li>The underlying AINews numbers are unusually cleanly supported: <strong>53 / 53, 62K / 27K, $1.99 / $3.26 / $3.98</strong> all appear directly in the retrieved source. <a href="https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer" rel="noopener" target="_blank">Latent Space</a></li>
+<li>The <strong>pricing arithmetic is internally coherent</strong>: the standard Argon price is exactly 2× the introductory price, and $1.99 × 2 = $3.98.</li>
+<li>The chart&#39;s strongest insight survives the check: <strong>same Intelligence Index score does not imply same cost per task</strong>, because token consumption differs substantially. That&#39;s directly supported by AINews. <a href="https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer" rel="noopener" target="_blank">Latent Space</a></li>
+<li>One methodological caveat worth keeping: <strong>Artificial Analysis Intelligence Index = 53 is a benchmark/index score, not proof that the two models are equivalent in practical quality.</strong> The chart correctly calls it an index rather than “same performance.”</li>
+<li>Zvi&#39;s Sept. 12 source independently confirms Astra&#39;s <strong>$10/$50</strong> headline price, while OpenAI&#39;s own pricing page confirms it as well. <a href="https://thezvi.wordpress.com/2026/09/12/gpt-6-astra-can-do-ambitious-things/" rel="noopener" target="_blank">Don&#39;t Worry About the Vase</a></li>
+<li><strong>Overall:</strong> the data table is essentially solid. I would mark this section <strong>one actual editorial/factual defect: the footnote</strong>, plus one sentence that should be treated as a reading rather than a demonstrated general rule.</li>
+</ul>
+<h2>10 10-the-pattern.md</h2>
+<p><strong>WRONG</strong> (1)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>90</td>
+<td>“Shero Commerce&#39;s post has no exact date.”</td>
+<td><strong>WRONG</strong></td>
+<td><a href="https://sherocommerce.com/blogs/commerce-jam/commerce-jam-september-2026" rel="noopener" target="_blank">Shero</a></td>
+<td>The retrieved page is explicitly a <strong>September 2026</strong> Commerce Jam issue; the companion benchmark page is also dated/published in late September. If the claim means the specific post lacks a day-level date, say that instead.</td>
+</tr>
+</tbody></table>
+<p><strong>OVERSTATED</strong> (3)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>8</td>
+<td>“DeepMind paper … exploit … spreading through a 100-agent swarm”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://institute.deepmind.com/essays/cheaters-and-whistleblowers-in-the-agent-swarm/" rel="noopener" target="_blank">Google DeepMind</a></td>
+<td>The 100-agent experiment, cheating, shared knowledge and resistance are supported. The precise claim that the exploit <strong>spread through the swarm</strong> is stronger than the accessible source establishes.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>“Tunguz framed what&#39;s left as building the systems that make AI-written code come out right.”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://tomtunguz.com/ai-productivity-doesnt-mean-what-i-thought" rel="noopener" target="_blank">Tunguz</a></td>
+<td>Reasonable synthesis, but broader than what Tunguz literally establishes.</td>
+</tr>
+<tr>
+<td>78</td>
+<td>“A person sets the allowed answers in advance; the machine chooses among them.”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://openai.com/index/devday-2026-recap/" rel="noopener" target="_blank">OpenAI DevDay</a></td>
+<td>OpenAI says developers define possible answers/actions and the API classifies/routes/chooses. “A person” is narrower than the source, which is about the developer.</td>
+</tr>
+</tbody></table>
+<p><strong>UNCONFIRMED</strong> (28)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>9</td>
+<td>“most common setup has engineers reviewing the AI&#39;s review rather than the code”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Same problem as section 07: this “most common” generalization needs a direct source.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>“Anthropic&#39;s eval-design tool has the user confirm the inputs and check the grader&#39;s scores on a handful of cases”</td>
+<td><strong>PARTLY CONFIRMED</strong></td>
+<td><a href="https://claude.dev/blog/automating-eval-design-and-hillclimbing/" rel="noopener" target="_blank">Anthropic</a></td>
+<td>User approval of examples/grader is supported. I couldn&#39;t independently verify the exact “handful of cases” sequence.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>“Anthropic advises reading a sample of graded transcripts before trusting any evaluator.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Exact quotation/advice wasn&#39;t recoverable from the primary source I could access.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>“Zvi … wiki … 11 May to 22 June, which OpenAI&#39;s 31 August answer … didn&#39;t disclose.”</td>
+<td><strong>PARTLY CONFIRMED / UNCONFIRMED OMISSION</strong></td>
+<td><a href="https://thezvi.wordpress.com/" rel="noopener" target="_blank">Zvi Mowshowitz</a></td>
+<td>The wiki/activity claim is supported; I couldn&#39;t independently establish the precise omission from OpenAI&#39;s Aug. 31 congressional response.</td>
+</tr>
+<tr>
+<td>35</td>
+<td>“David Robinson … oversaw safety reports for 12 frontier-model launches … quit … ‘time for trial and error is over’.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I couldn&#39;t independently retrieve a sufficiently authoritative source for the exact role, number 12, resignation and quotation. This should remain open until the Atlantic/source is pinned down.</td>
+</tr>
+<tr>
+<td>36</td>
+<td>“3 to 10 September … AINews found GPT-6 Astra 2.5 times pricier per token…”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I couldn&#39;t retrieve the underlying AINews item sufficiently to verify the 2.5× figure.</td>
+</tr>
+<tr>
+<td>37</td>
+<td>“Zvi planned to ask both Fable 5.1 and Astra every non-trivial question…”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://thezvi.wordpress.com/" rel="noopener" target="_blank">Zvi Mowshowitz</a></td>
+<td>The general comparative-use claim is plausible, but I couldn&#39;t independently recover this exact passage.</td>
+</tr>
+<tr>
+<td>40</td>
+<td>“At Databricks, coding spend rose 60% … with clear gains only on complex work.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the Databricks source.</td>
+</tr>
+<tr>
+<td>42</td>
+<td>“Opus 5.5 … a 20% cut.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>The $4/$20 price is supported, but the claimed percentage reduction requires the prior Opus price as the comparison baseline.</td>
+</tr>
+<tr>
+<td>43</td>
+<td>“Tunguz found open models carrying most tokens at an 86% discount.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs direct Tunguz source.</td>
+</tr>
+<tr>
+<td>46</td>
+<td>“Sonnet 5.5 … costs up to 30% less per task because it uses fewer tokens.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the source behind the “30%” and token-use comparison.</td>
+</tr>
+<tr>
+<td>47</td>
+<td>“AWS and Cloudflare released decision models.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs direct sources; I couldn&#39;t establish this pair from the search.</td>
+</tr>
+<tr>
+<td>48</td>
+<td>“Jones sent demanding work to Astra and the rest to Sol”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://podcasts.apple.com/gb/podcast/claude-fable-5-1-and-gpt-6-astra-which-model-gets-which-job/id1877109372" rel="noopener" target="_blank">Nate B. Jones</a></td>
+<td>The retrieved source establishes task-based model selection, but not this exact Astra/Sol routing rule.</td>
+</tr>
+<tr>
+<td>49</td>
+<td>“Anthropic cutting 80% of Claude Code&#39;s system prompt.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the Latent Space/McAteer source.</td>
+</tr>
+<tr>
+<td>50</td>
+<td>“arXiv study … no clear average effect of the harness on quality.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the specific paper/title.</td>
+</tr>
+<tr>
+<td>51</td>
+<td>“HarnessTax&#39;s 42 comparisons … no quality difference survived statistical correction, costs varied up to fivefold.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs direct HarnessTax study. This is important because it supports the wrapper&#39;s central grade.</td>
+</tr>
+<tr>
+<td>53</td>
+<td>“Jev … launched, and six clones shipped in two days.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs source.</td>
+</tr>
+<tr>
+<td>54</td>
+<td>“Cursor&#39;s 7% cut … system prompt roughly 66% shorter … tools loaded only when needed.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs Cursor/source.</td>
+</tr>
+<tr>
+<td>55</td>
+<td>“Stripe&#39;s purchase of OpenRouter, reported at $7B”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs direct acquisition/reporting source.</td>
+</tr>
+<tr>
+<td>56</td>
+<td>“Thariq … ‘in the limit, Claude.md goes away.’”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the original interview/post.</td>
+</tr>
+<tr>
+<td>58</td>
+<td>“The Decoder put nearly all of the fall down to OpenAI and Anthropic competing.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs direct Decoder source.</td>
+</tr>
+<tr>
+<td>59</td>
+<td>“Pi pod … put the Pi agent in sandboxes on your own server”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs direct project source.</td>
+</tr>
+<tr>
+<td>61</td>
+<td>“Latent Space ran 7 models across 161 categories … median of 5 sources … only 28 categories have one pick every model agrees on.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the specific Latent Space source.</td>
+</tr>
+<tr>
+<td>67</td>
+<td>“only 29% of consumers research products in chatbots at all.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I could not match this denominator to the Semrush source retrieved.</td>
+</tr>
+<tr>
+<td>73</td>
+<td>“Datos found AI and traditional search growing at about the same rate.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs direct Datos source.</td>
+</tr>
+<tr>
+<td>74</td>
+<td>“Profound … visits … 1.5 to 2.5 times expected … mostly untracked.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the Profound/MarTech source.</td>
+</tr>
+<tr>
+<td>75</td>
+<td>“Forrester said it&#39;s still unclear whether a critical mass … want autonomous buying.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs direct Forrester source.</td>
+</tr>
+<tr>
+<td>82</td>
+<td>“Model choice&#39;s cap advice also draws on Databricks putting Astra on its own sub-budget.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs Databricks source.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The central convergence claim is very well labelled.</strong> The standfirst says “On the magazine&#39;s reading,” and the later “side by side” paragraph again says “on the magazine&#39;s reading.”</li>
+<li><strong>The individual “Ended as…” statements are explicitly attributed to the magazine&#39;s reading.</strong> Good.</li>
+<li><strong>“The Decisions API is the pattern in small”</strong> is correctly introduced as “On the magazine&#39;s reading.”</li>
+<li><strong>The five-row limit/audit table is synthesis</strong>, not raw evidence. The surrounding framing makes that reasonably clear.</li>
+<li><strong>“A person sets the allowed answers in advance”</strong> is the one place where a synthesis is stated too categorically. The source says the <strong>developer</strong> defines possible answers/actions; that needn&#39;t literally be a person.</li>
+<li><strong>The “crowded calendar can look like a pattern” paragraph is excellent epistemic hygiene.</strong> It identifies a plausible alternative explanation rather than pretending the convergence proves itself.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>This is the first section where I would seriously distinguish “factual errors” from “source gaps.”</strong> The externally checkable core is largely intact, but a <em>lot</em> of the detailed timeline depends on sources I could not independently retrieve. Those should not be counted as WRONG; they are <strong>UNCONFIRMED until the underlying source pack is exposed</strong>.</li>
+<li><strong>The strongest confirmed pieces are the ones that recur from earlier sections:</strong> Qodo&#39;s 26%, OpenAI&#39;s six-report framework, the AIUC $40M round, Anthropic/Accenture&#39;s $1B commitments, Transluce&#39;s 6,467 reports, NVIDIA&#39;s watchdog, Astra&#39;s cancellation, IAB&#39;s 12.3%/48%, Semrush&#39;s ~81%, Amazon/Muse, OpenProposal, Adobe&#39;s 130%, and Shero&#39;s 2.74×. <a href="https://iabtechlab.com/press-releases/iab-tech-lab-introduces-aamp-3-0-with-openproposal/" rel="noopener" target="_blank">IAB Tech Lab</a></li>
+<li><strong>Shero is particularly clean.</strong> The underlying page says 96 million sessions across 73 stores, with AI visits staying around the same level while orders increased 2.74×. So the magazine&#39;s use of that evidence is sound. <a href="https://sherocommerce.com/blogs/commerce-jam/commerce-jam-september-2026" rel="noopener" target="_blank">Shero Commerce</a></li>
+<li><strong>The IAB/OpenProposal chronology is clean:</strong> OpenProposal was announced Sept. 22 and its public-comment window closes Oct. 22. <a href="https://iabtechlab.com/press-releases/iab-tech-lab-introduces-aamp-3-0-with-openproposal/" rel="noopener" target="_blank">IAB Tech Lab</a></li>
+<li><strong>The “81%” Semrush number is legitimate, but denominator matters.</strong> Semrush reports 80.93% among people who use AI for product research, not 81% of all consumers. The section says “chatbot shoppers,” which is reasonably close; don&#39;t shorten it later to “81% of consumers.” <a href="https://www.semrush.com/blog/ai-chatbots-talk-ai-users-out-of-buying/" rel="noopener" target="_blank">Semrush</a></li>
+<li><strong>The IAB 48% claim is excellent:</strong> the primary IAB source explicitly says 48% of buyers are measuring/plan to measure brand visibility and citations directly inside AI tools. <a href="https://www.iab.com/news/iab-raises-2026-u-s-ad-spend-forecast/" rel="noopener" target="_blank">IAB</a></li>
+<li><strong>The Ramp claim is directionally solid</strong>, but the section&#39;s phrase “spend falling while usage rose about 50% since July” should retain the attribution to Ramp&#39;s transaction dataset. Ramp measures adoption/spend among 70,000+ American businesses, not the entire economy. <a href="https://ramp.com/data/ai-index" rel="noopener" target="_blank">Ramp</a></li>
+<li><strong>The “Shero Commerce&#39;s post has no exact date” line should be fixed.</strong> At minimum, change it to something like “the specific post does not expose a day-level publication date” if that&#39;s what the editor actually means.</li>
+<li><strong>The wrapper subsection is the weakest externally auditable portion of the section.</strong> HarnessTax, McAteer, Cursor, Stripe/OpenRouter, Thariq, Jev, Decoder and Pi pod contain several of the claims carrying the “wrapper” grade, but I couldn&#39;t independently verify them from the sources available in this pass. That doesn&#39;t mean they&#39;re wrong; it means the source pack needs to make those receipts easy to inspect.</li>
+<li><strong>The model-choice section has a similar problem:</strong> the central claim is plausible and several pieces are confirmed, but Databricks, Tunguz&#39;s 86%, Sonnet&#39;s 30%, AWS/Cloudflare, and Jones&#39;s Oct. 3 routing are currently source gaps.</li>
+<li><strong>The magazine is doing something methodologically smart here:</strong> it explicitly admits that the apparent convergence is <strong>not independent evidence</strong> because multiple research agents reused the same source—especially the Willison budget-cap post. That materially weakens the “four independent discoveries” interpretation and is exactly the sort of caveat I&#39;d expect in a careful field magazine.</li>
+<li><strong>Overall verdict:</strong> the <em>pattern</em> is appropriately presented as a reading, not a discovered law. The factual scaffolding is mostly sound where independently checkable; the main editorial work before print is <strong>tightening several source-dependent microclaims and fixing the Shero date statement</strong>, rather than changing the central thesis.</li>
+</ul>
+<h2>11 11-what-does-a-task-cost.md</h2>
+<p><strong>WRONG</strong> (2)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>“OpenAI cut Luna&#39;s price 80% in July”</td>
+<td><strong>WRONG</strong></td>
+<td><a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/" rel="noopener" target="_blank">OpenAI GPT-6 Sol and Luna pricing</a></td>
+<td>OpenAI&#39;s own announcement says GPT-5.6 Luna → GPT-6 Luna was <strong>50% cheaper</strong> ($0.20/$1.20 → $0.10/$0.50), not 80%. This is a genuine factual error.</td>
+</tr>
+<tr>
+<td>50</td>
+<td>“Databricks … about 3,500 engineers, coding spend rose 60%.”</td>
+<td><strong>WRONG / OUTDATED</strong></td>
+<td><a href="https://www.databricks.com/blog/how-databricks-rolls-out-frontier-models-12000-employees-day-1" rel="noopener" target="_blank">Databricks model rollout report</a></td>
+<td>Databricks&#39; current account says <strong>more than 10,000</strong> users in the population when the uncontrolled Astra rollout produced a <strong>60% average developer spending increase</strong>. It does not support “about 3,500 engineers.”</td>
+</tr>
+</tbody></table>
+<p><strong>OVERSTATED</strong> (6)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>12</td>
+<td>“Sonnet 5.5 … costs up to 30% less per task because it needs fewer tokens.”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://www.anthropic.com/claude/sonnet" rel="noopener" target="_blank">Anthropic Sonnet 5.5</a></td>
+<td>Anthropic says <strong>up to an estimated 30% less to run than Sonnet 5 for typical workloads billed by token</strong>. “Per task because it needs fewer tokens” is a stronger causal formulation than the source.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>“AINews … $1.99 … $3.26; output tokens make up under half of each.”</td>
+<td><strong>OVERSTATED / BROKEN</strong></td>
+<td><a href="https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer" rel="noopener" target="_blank">AINews: Gemini 4 Argon</a></td>
+<td>AINews supports $1.99/$3.26 and 62K/27K. But “output tokens make up under half of each” is dimensionally wrong if it means the <em>share of task cost</em>: using the cited prices, output-token cost is $0.62/$1.35, i.e. ~31% and ~41%. If “under half” means share of dollars, it is actually correct—but the magazine&#39;s wording is ambiguous and should say <strong>“output-token charges account for under half of each task&#39;s cost.”</strong></td>
+</tr>
+<tr>
+<td>20</td>
+<td>“Argon beats Astra per task only while the discount lasts”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer" rel="noopener" target="_blank">AINews: Gemini 4 Argon</a></td>
+<td>True for the comparison shown: $1.99 &lt; $3.26 at intro; $3.98 &gt; $3.26 at standard. But “only while the discount lasts” is an inference from these prices, not a source-stated fact.</td>
+</tr>
+<tr>
+<td>48</td>
+<td>“Ramp … usage up about 50% since spending peaked in July.”</td>
+<td><strong>OVERSTATED / NEEDS ATTRIBUTION</strong></td>
+<td><a href="https://ramp.com/data/ai-index-sept-2026" rel="noopener" target="_blank">Ramp AI Index Sept. 2026</a></td>
+<td>Ramp definitely reports falling per-employee AI spend and revised July figures. But the exact “usage up 50% since spending peaked in July” formulation needs the specific Oct. 2 Decoder report, not just Ramp&#39;s primary page.</td>
+</tr>
+<tr>
+<td>51</td>
+<td>“Gains were clear only on highly complex work”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://www.databricks.com/blog/how-databricks-rolls-out-frontier-models-12000-employees-day-1" rel="noopener" target="_blank">Databricks model rollout report</a></td>
+<td>Databricks says it learned which tasks Astra was uniquely great at and steered usage accordingly, but the retrieved source does not establish the categorical “only on highly complex work” formulation.</td>
+</tr>
+<tr>
+<td>55</td>
+<td>“cost of a task is the price of a token times the tokens the job burns”</td>
+<td><strong>OVER-SIMPLIFIED</strong></td>
+<td><a href="https://developers.openai.com/api/docs/pricing" rel="noopener" target="_blank">OpenAI pricing</a></td>
+<td>As a conceptual shorthand, yes. But actual bills can include cached input, cache writes, long-context tiers, batch/priority processing, etc. The section itself is otherwise sophisticated enough that this should be phrased as a simplified model rather than literally exhaustive.</td>
+</tr>
+</tbody></table>
+<p><strong>UNCONFIRMED</strong> (18)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>“Anthropic held Opus at $5/$25 … across five releases”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.anthropic.com/claude/opus" rel="noopener" target="_blank">Anthropic Opus pricing</a></td>
+<td>Current Anthropic material confirms the new $4/$20 price and 20% reduction, but I couldn&#39;t independently establish the “across five releases” historical claim.</td>
+</tr>
+<tr>
+<td>8</td>
+<td>“Sonnet 5 had sold at $2/$10 since its launch”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Current Anthropic page confirms $2/$10 for Sonnet 5.5, but not this historical claim about Sonnet 5.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>“planned rise to $3/$15 won&#39;t happen”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I could not independently verify the historical pricing announcement.</td>
+</tr>
+<tr>
+<td>21</td>
+<td>“3 September … Astra at under $6 an hour: 33 tokens a second at $50/M”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I couldn&#39;t retrieve the specific Latent Space source.</td>
+</tr>
+<tr>
+<td>24</td>
+<td>“Nate B Jones … concluded … one project could give him reasons to use both.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I found evidence of the task-based comparison but not enough to verify this exact wording as a quotation/paraphrase.</td>
+</tr>
+<tr>
+<td>25</td>
+<td>“Zvi … every non-trivial question to both models”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Exact passage not independently recovered.</td>
+</tr>
+<tr>
+<td>26</td>
+<td>“Claire Vo&#39;s blind test … GPT-6 Sol … Opus 5.5 … Astra”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the original test source.</td>
+</tr>
+<tr>
+<td>27</td>
+<td>“Zvi … job map: Opus 5.5 by default, Fable 5.1 … Astra … Luna…”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Exact source needs to be pinned.</td>
+</tr>
+<tr>
+<td>28</td>
+<td>“Jones was routing in practice … Astra … Sol”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the Oct. 3 Jones source.</td>
+</tr>
+<tr>
+<td>31</td>
+<td>“larger than any September cut to input or output token prices”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Requires a complete comparison set of September price cuts. It is plausible but not established by the cited HarnessTax source.</td>
+</tr>
+<tr>
+<td>32</td>
+<td>“Fable 5.1&#39;s cache reads did fall 75% … so comparison holds for input/output prices only.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the relevant pricing source and precise baseline.</td>
+</tr>
+<tr>
+<td>37</td>
+<td>“arXiv study … no clear average effect … on quality”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Specific paper not identified in this pass.</td>
+</tr>
+<tr>
+<td>43</td>
+<td>“Thariq … core harness has to get more complex … Claude.md … disappear eventually.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I couldn&#39;t independently recover the original interview/source for the quote.</td>
+</tr>
+<tr>
+<td>44</td>
+<td>“Jev … &gt;100× speed … &gt;200× lower cost … six clones in two days”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Those are Jev&#39;s own claims; I couldn&#39;t find sufficiently independent corroboration.</td>
+</tr>
+<tr>
+<td>46</td>
+<td>“AWS and Cloudflare released decision models on 1 October.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I found Cloudflare&#39;s Sept. 29 AI Gateway/User Insights release, but not a source establishing the stated <strong>decision models on Oct. 1</strong>.</td>
+</tr>
+<tr>
+<td>47</td>
+<td>“Stripe&#39;s purchase of OpenRouter at $7B”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the underlying Sept. 25 Latent Space/source.</td>
+</tr>
+<tr>
+<td>49</td>
+<td>“The Decoder put nearly all of the fall … down to OpenAI and Anthropic competing.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the cited Decoder article.</td>
+</tr>
+<tr>
+<td>52</td>
+<td>“AINews reported that simpler coding may not have improved much.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the underlying AINews source.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The section is generally very disciplined about this.</strong> The opening explicitly says “on the magazine&#39;s reading,” and the later operator-routing conclusion does the same.</li>
+<li><strong>“Argon beats Astra per task only while the discount lasts”</strong> is the main place I&#39;d flag. The numerical observation is factual; the causal/generalized “only while” formulation is the magazine&#39;s inference.</li>
+<li><strong>“The cost of a task is the price of a token times the tokens the job burns”</strong> is presented as a definitional fact, but it&#39;s really a simplified model of token-based billing.</li>
+<li><strong>“The magazine&#39;s lesson”</strong> around Databricks is correctly marked as interpretation.</li>
+<li><strong>“The savings businesses actually banked came from two labs competing rather than from anything their operators built”</strong> is explicitly labelled inference. Good.</li>
+<li>The final “routing table” recommendation is properly labelled as the magazine&#39;s reading.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>There are two concrete issues I&#39;d fix before print.</strong></li>
+</ul>
+<ol>
+<li><strong>Luna&#39;s July price cut is 50%, not 80%.</strong> OpenAI&#39;s own announcement gives $0.20/$1.20 → $0.10/$0.50. <a href="https://openai.com/index/introducing-gpt-6-sol-and-luna/" rel="noopener" target="_blank">OpenAI</a></li>
+<li><strong>The Databricks population is wrong.</strong> The current Databricks account describes a rollout to <strong>more than 10,000</strong> people, not ~3,500 engineers. It also explicitly says the uncontrolled Astra rollout produced a 60% higher average developer spend. <a href="https://www.databricks.com/blog/how-databricks-rolls-out-frontier-models-12000-employees-day-1" rel="noopener" target="_blank">Databricks</a></li>
+</ol>
+<ul>
+<li><strong>The HarnessTax material is substantially stronger than the draft&#39;s caveat makes it sound.</strong> The primary study says 21 model–harness combinations, seven models, three harnesses, and up to 5× cost differences with little effect on success rates. <a href="https://harnesstax.github.io/" rel="noopener" target="_blank">HarnessTax</a> Tunguz&#39;s statistical caveat is also exactly represented: one nominally significant <a href="data/recheck-result.html">result</a> among 42 comparisons, fewer than chance expectation, and none surviving Holm-Bonferroni. <a href="https://tomtunguz.com/the-harness-margin-opportunity/" rel="noopener" target="_blank">Tomasz Tunguz</a></li>
+<li><strong>Cursor is exceptionally well supported.</strong> The 7% reduction, 66% system-prompt reduction, and dynamic tool loading all appear in Cursor&#39;s own report. <a href="https://cursor.com/blog/improved-token-efficiency" rel="noopener" target="_blank">Cursor</a></li>
+<li><strong>The Argon paragraph is basically sound</strong>, including the $1.99/$3.26/$3.98 and 62K/27K figures. AINews states those numbers directly. <a href="https://www.latent.space/p/ainews-gemini-4-argon-gdms-answer" rel="noopener" target="_blank">Latent Space</a> The one thing I&#39;d clean is the “output tokens make up under half of each” phrasing: it should explicitly say <strong>output-token charges</strong>, otherwise the reader has to infer that you&#39;re comparing a dollar component of task cost.</li>
+<li><strong>The Databricks correction actually strengthens the section&#39;s argument.</strong> The current Databricks source says the uncontrolled Astra rollout caused a 60% increase across a population of &gt;10,000 developers, then describes exactly the kind of budget/routing controls the magazine advocates: daily runaway limits, a quality-frontier budget, experimental budgets, centralized cost tracing, and smart routing. <a href="https://www.databricks.com/blog/how-databricks-rolls-out-frontier-models-12000-employees-day-1" rel="noopener" target="_blank">Databricks</a> That&#39;s almost uncannily aligned with the magazine&#39;s thesis.</li>
+<li><strong>One interesting source-level nuance:</strong> the Databricks source does <em>not</em> say “Astra set both the cost and the outcome.” It says the organization subsequently learned which tasks Astra was uniquely good at and steered usage to reduce overall costs. So the evidence actually supports <strong>routing by task</strong>, not the stronger “model alone set the outcome” reading.</li>
+<li><strong>Overall:</strong> unlike section 09, this one has <strong>two genuine factual corrections</strong> rather than merely source gaps. The core economics—token price ≠ task cost, harness choice can move cost dramatically, and routing matters—is well supported. The strongest empirical section is the HarnessTax/Cursor material; the weakest audit trail is the cluster around Jev, Stripe/OpenRouter, AWS/Cloudflare and the Jones/Zvi/Vo task-routing examples.</li>
+</ul>
+<h2>12 12-how-do-you-get-found.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (2)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>“AI discovery got money, rules and plumbing … most of the visits it sent went untagged”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://www.iab.com/news/iab-raises-2026-u-s-ad-spend-forecast/" rel="noopener" target="_blank">IAB</a> · <a href="https://www.tryprofound.com/blog/the-ai-mention-effect" rel="noopener" target="_blank">Profound</a></td>
+<td>Money/rules/plumbing are supported. “Most visits it sent went untagged” is specifically supported by Profound&#39;s panel: &gt;97% of post-AI-mention brand visits lacked a UTM. But that is a <strong>Profound study population</strong>, not all AI traffic. <a href="https://www.iab.com/news/iab-raises-2026-u-s-ad-spend-forecast/" rel="noopener" target="_blank">IAB</a></td>
+</tr>
+<tr>
+<td>41</td>
+<td>“A report of visits alone would have shown nothing happening.”</td>
+<td><strong>OVERSTATED</strong></td>
+<td>[Shero/SOCI evidence]</td>
+<td>A flat-traffic report would miss the <strong>2.74× order change</strong>, but “nothing happening” is rhetorically stronger than the data.</td>
+</tr>
+</tbody></table>
+<p><strong>UNCONFIRMED</strong> (7)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>17</td>
+<td>“ChatGPT ads had passed a $1B run rate … 31 August”</td>
+<td><strong>UNCONFIRMED IN THIS PASS</strong></td>
+<td>—</td>
+<td>The claim is attributed to OpenAI and was checked in the earlier section, but I didn&#39;t retrieve the primary OpenAI announcement here.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>“OpenAI began testing Sponsored Agents on 16 September”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the primary OpenAI announcement/source.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>“MediaPost … $3 to $13 a click, no performance benchmarks”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the cited MediaPost article.</td>
+</tr>
+<tr>
+<td>25</td>
+<td>“Shero … 73 stores … visits flat … orders 2.74 times”</td>
+<td><strong>UNCONFIRMED IN THIS PASS</strong></td>
+<td>—</td>
+<td>This was independently supported in the previous check, but I did not retrieve the underlying Shero page in this pass.</td>
+</tr>
+<tr>
+<td>33</td>
+<td>“67% … AI tools say they&#39;ve been given wrong information about a local business”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.soci.ai/blog/ai-local-search-verification-loop/" rel="noopener" target="_blank">SOCi</a></td>
+<td>The retrieved primary page gives extensive trust/verification figures but I could not locate this exact 67% statistic in the accessible text.</td>
+</tr>
+<tr>
+<td>35</td>
+<td>“Only 29% of consumers use chatbots for product research at all.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>The retrieved MarTech article does not expose the 29% figure. More importantly, the denominator needs care: the 81% figure is among chatbot-shopping users, not all consumers.</td>
+</tr>
+<tr>
+<td>36</td>
+<td>“Forrester … unclear whether a critical mass … want agents to buy”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the Forrester article itself.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The section is unusually clean on this.</strong> The major thesis is explicitly marked “On the magazine&#39;s reading.”</li>
+<li><strong>“AI is being added to search”</strong> is an inference from Datos&#39;s same-growth-rate observation. It is immediately contextualized by the source and the later “on the magazine&#39;s reading” framing, so I would <strong>not</strong> treat it as a serious editorial violation.</li>
+<li><strong>“A report of visits alone would have shown nothing happening”</strong> is rhetorical overstatement. Better understood as “would have missed the increase in orders.”</li>
+<li><strong>“If you moved budget out of search … the data doesn&#39;t back you yet”</strong> is advice/inference, not a finding from the underlying datasets. It is presented in the “What to do” section, so the context makes that acceptable.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The strongest correction is actually a methodological one:</strong> the 81% Semrush statistic must remain explicitly scoped to <strong>people who use chatbots for online shopping</strong>. MarTech&#39;s headline and article make that denominator clear. Don&#39;t let a later edit turn it into “81% of consumers.” <a href="https://martech.org/ai-is-telling-consumers-not-to-buy-your-product/" rel="noopener" target="_blank">MarTech</a></li>
+<li><strong>The Profound claim is very strong, but the wording should stay precise.</strong> Profound analyzed &gt;2 million AI conversations/browsing activity from January–June, and its headline finding is 1.5–2.5× baseline visits over seven days. It says only ~2.5% carried a trackable AI-referral parameter and &gt;97% did not include a UTM. That&#39;s solid evidence for an attribution gap <strong>within that study</strong>, not proof that 97% of all AI-originated web traffic is invisible. <a href="https://www.tryprofound.com/blog/the-ai-mention-effect" rel="noopener" target="_blank">Profound</a></li>
+<li><strong>The Ahrefs number is especially clean.</strong> The actual study says 863K keyword SERPs and 4M AI Overview URLs, with 37.9% also appearing in the first ten blocks. That&#39;s worth retaining because it directly supports the distinction between conventional rank and AI citation. <a href="https://ahrefs.com/blog/ai-overview-citations-top-10/" rel="noopener" target="_blank">Ahrefs</a></li>
+<li><strong>Knak is clean too:</strong> 333 enterprise marketing decision-makers and 88% saying AI output needs moderate/substantial editing. The 85% missed-a-launch figure is also directly reported. <a href="https://knak.com/state-of-marketing-production/" rel="noopener" target="_blank">Knak</a></li>
+<li><strong>IAB is probably the strongest source in this section.</strong> The 12.3%, 76%, 44%, 86%, 48%, and 8.1% numbers all appear in the primary Sept. 10 release. <a href="https://www.iab.com/news/iab-raises-2026-u-s-ad-spend-forecast/" rel="noopener" target="_blank">IAB</a></li>
+<li><strong>Criteo needs the caveat already present.</strong> Its ~2× conversion and ~3× CTR figures are vendor/client data, not independent measurement. The draft appropriately attributes them and says independent verification wasn&#39;t available. <a href="https://www.criteo.com/news/press-releases/2026/05/an-update-on-criteos-integration-with-openai/" rel="noopener" target="_blank">Criteo</a></li>
+<li><strong>The SOCi section actually supports the “search isn&#39;t dead” argument well.</strong> SOCi reports 83% using search versus 52% using AI for local discovery, but it also describes a multi-channel “verification loop,” which is arguably a more nuanced conclusion than simple substitution. <a href="https://www.soci.ai/blog/ai-local-search-verification-loop/" rel="noopener" target="_blank">SOCi</a></li>
+<li><strong>The Shopify wording is slightly broader than the underlying implementation.</strong> Shopify&#39;s documentation says direct checkout is available for <strong>eligible stores</strong> on Meta surfaces, including Muse; it isn&#39;t literally “all browser agents everywhere.” <a href="https://help.shopify.com/en/manual/online-sales-channels/agentic-storefronts/meta" rel="noopener" target="_blank">Shopify Help Center</a></li>
+<li><strong>Adobe&#39;s 130% forecast is solid, but it&#39;s a forecast, not an observed September traffic increase.</strong> The same Adobe source says August actual AI-driven retail traffic grew 127% YoY and the holiday forecast is 130%. The draft gets that distinction right by saying “forecast.” <a href="https://business.adobe.com/resources/holiday-shopping-report.html" rel="noopener" target="_blank">Adobe for Business</a></li>
+<li><strong>The “measurement lagged the money” thesis survives.</strong> IAB itself says marketers are changing measurement while struggling to connect AI journeys to established performance signals; 45% call comparing AI-driven and traditional journeys their top measurement challenge. That&#39;s actually stronger support for the magazine&#39;s reading than the draft currently uses. <a href="https://www.iab.com/news/iab-raises-2026-u-s-ad-spend-forecast/" rel="noopener" target="_blank">IAB</a></li>
+<li><strong>Overall:</strong> I would not treat this as another section with major factual damage. The independently checkable claims are mostly clean. The things I&#39;d keep open are the <strong>OpenAI ad chronology, MediaPost CPC figures, SOCi 67%, Semrush 29%, Forrester, and Shero</strong>, because those need their specific receipts. The central argument—<strong>AI discovery is becoming a real channel, but attribution is weak and the evidence does not yet show traditional search being displaced</strong>—is well supported.</li>
+</ul>
+<h2>13 13-the-case-against.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>UNCONFIRMED</strong> (7)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>11</td>
+<td>“the swarm … burned 130 billion output tokens, about $40M”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I couldn&#39;t independently retrieve the specific Latent Space estimate in this pass. Keep the attribution (“Latent Space&#39;s estimate”) if retained.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>“The Decoder put nearly all of the fall … down to OpenAI and Anthropic competing.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the specific Decoder article to verify the characterization.</td>
+</tr>
+<tr>
+<td>25</td>
+<td>“DeepMind swarm … exploit … automated grader … 100-agent swarm”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I did not retrieve the paper in this pass. The claim was independently used in earlier sections, but this check needs the actual paper for a clean confirmation.</td>
+</tr>
+<tr>
+<td>26</td>
+<td>“OpenAI found a June breach … only on 29 September”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the underlying OpenAI/Australian-government reporting.</td>
+</tr>
+<tr>
+<td>30</td>
+<td>“OpenAI cancelled GPT-6.1 Astra because it fell short on scope and authorization”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I couldn&#39;t independently retrieve the cancellation announcement or Saachi Jain quote in this pass.</td>
+</tr>
+<tr>
+<td>32</td>
+<td>“28 September to 1 October … state, non-profit, regulator, AG and senators … six actions”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>This is a composite chronology from section 08. It needs the underlying filings/news reports rather than one source.</td>
+</tr>
+<tr>
+<td>33</td>
+<td>“bill … no bill number or published text as of 5 October”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>This is time-sensitive and should be verified against the Senate/Thomas legislative records at the actual 5 Oct cutoff.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>Very little to flag.</strong> This is explicitly a steelman, and it consistently marks its strongest inferential moves as “this piece&#39;s,” “on its reading,” or “on this piece&#39;s reading.”</li>
+<li><strong>“The model eats the limits too”</strong> is the central thesis/hypothesis of the steelman, not a fact. The framing makes that clear.</li>
+<li><strong>“a guardrail is a limit written in prose”</strong> is a conceptual definition introduced by the steelman. It should not be read as a sourced technical definition.</li>
+<li><strong>“On that reading, the line between a guardrail and a limit is whether the model can be trusted to keep it”</strong> is appropriately labelled as interpretation.</li>
+<li><strong>“a gate on what can&#39;t be undone belongs to whichever checker misses less”</strong> is an argument, not an empirical <a href="data/recheck-result.html">result</a>. The subsequent sentence correctly grounds it in the one available test.</li>
+<li><strong>“The limit was the receipt”</strong> is rhetorical interpretation, not factual reporting.</li>
+<li><strong>“the operator&#39;s share is narrower … shrinking from both ends”</strong> is explicitly the steelman&#39;s reading.</li>
+<li>The strongest predictive sentence—<strong>“That they go next is a bet, and this piece makes it”</strong>—is excellent labelling. It tells the reader exactly where the steelman stops being evidence.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>Important contradiction with section 11:</strong> the Databricks sentence here is actually <em>more accurate</em> than section 11&#39;s earlier draft. The contemporaneous Sept. 16 Patrick Wendell post says <strong>~3,500 engineers</strong>, <del>60% higher coding spend, strong gains on highly complex tasks, unclear gains on medium/low complexity, and an Astra-specific sub-budget. <a href="https://zamantika.com/pwendell/status/2100299179923067016" rel="noopener" target="_blank">Zamantika</a> The later Databricks corporate post describes a different, broader rollout of <strong>&gt;10,000 users</strong> and also reports the 60% increase. <a href="https://www.databricks.com/blog/how-databricks-rolls-out-frontier-models-12000-employees-day-1" rel="noopener" target="_blank">Databricks</a> **So section 11&#39;s “</del>3,500” is not necessarily wrong**—it refers to the earlier engineer rollout/control group; my previous check treated the later Databricks post as if it superseded it. That distinction should be corrected in the magazine&#39;s audit ledger if they recorded my earlier verdict. This is an important second-model correction.</li>
+<li>The <strong>Anthropic evidence is unusually strong</strong> for this steelman. The primary source confirms the 13.6% human catch rate, 89% classifier rate, 39% plan rejection vs. 3% permission rejection, and the deterioration from ~17% early to ~5% after 50+ prompts. <a href="https://claude.com/blog/auto-mode-default-in-claude-code" rel="noopener" target="_blank">Claude</a> This is exactly the sort of evidence a steelman should use because it simultaneously supports the magazine&#39;s argument <em>and</em> gives its opponent the strongest counterpoint.</li>
+<li><strong>The “model eats the wrapper” argument is legitimately sourced.</strong> Cursor explicitly says improved models made much of its old instruction unnecessary. <a href="https://cursor.com/blog/improved-token-efficiency" rel="noopener" target="_blank">Cursor</a> Thariq goes further: he says Claude.md may disappear “in the limit,” while also noting that repeated failure modes can justify adding instructions back. <a href="https://podbay.fm/p/latent-space-the-ai-engineer-podcast/e/1790646498" rel="noopener" target="_blank">Podbay</a> That latter qualification is worth preserving because it makes the steelman stronger, not weaker: the harness may shrink, but it doesn&#39;t necessarily vanish.</li>
+<li><strong>There is a useful tension the piece currently underplays:</strong> Databricks&#39; actual current architecture is almost a direct counterexample to “the operator&#39;s share is shrinking.” Its model rollout explicitly uses per-user budgets, daily runaway limits, quality-frontier budgets, experimental budgets, central tracing, benchmarking, and smart routing. <a href="https://www.databricks.com/blog/how-databricks-rolls-out-frontier-models-12000-employees-day-1" rel="noopener" target="_blank">Databricks</a> The steelman can argue those controls themselves may eventually be absorbed by models—but the September evidence does <strong>not</strong> show that happening yet.</li>
+<li>Databricks even says that once it understood which tasks Astra was uniquely good at, it could <strong>steer usage to reduce overall costs</strong>, and it describes the premium model as something for specialized tasks rather than daily driving. <a href="https://www.databricks.com/blog/how-databricks-rolls-out-frontier-models-12000-employees-day-1" rel="noopener" target="_blank">Databricks</a> That&#39;s strong evidence for the main issue&#39;s routing thesis, and the steelman should acknowledge that this is a live counterexample to its strongest formulation.</li>
+<li><strong>The spend-cap argument is stronger than the steelman gives it credit for.</strong> Databricks now describes hard caps that automatically stop requests after a budget is exceeded, plus per-user, per-use-case, workspace and account budgets. <a href="https://www.databricks.com/blog/introducing-ai-spend-controls-unity-ai-gateway" rel="noopener" target="_blank">Databricks</a> So “a spend cap is a ceiling on a number they set” is a good rhetorical attack, but it doesn&#39;t establish that the cap is becoming unnecessary; it establishes that <strong>the model/vendor controls increasingly determine how much headroom the operator needs</strong>.</li>
+<li><strong>One source distinction matters:</strong> the 1,053-person Anthropic study is a <em>controlled test environment</em>, not people&#39;s real production work. Anthropic explicitly says participants were paid professional testers working in a test environment rather than their own codebases. <a href="https://claude.com/blog/auto-mode-default-in-claude-code" rel="noopener" target="_blank">Claude</a> The steelman doesn&#39;t overclaim this, but an editor should preserve that caveat whenever using the 13.6% figure.</li>
+<li><strong>Verdict:</strong> this is a strong steelman. I would mark <strong>no major factual errors found in the independently checkable material</strong>. The unresolved items are the 130B/$40M estimate, DeepMind swarm, NSW breach chronology, Astra cancellation/quote, and Hawley–Murphy bill status. More importantly, the steelman&#39;s central prediction—<strong>that models will eventually absorb limits themselves—is genuinely a prediction, and the piece correctly says so.</strong></li>
+</ul>
+<h2>14 14-the-operator.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>UNCONFIRMED</strong> (7)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>3</td>
+<td>“Beri&#39;s stricter test gates only what is both hard to reverse and visible outside the system.”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I could not retrieve the Beri source in this pass. Keep as attributed advice rather than established fact until the original is checked.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>“Zvi … Opus 5.5 by default … Fable … Astra … Luna”</td>
+<td><strong>UNCONFIRMED IN THIS PASS</strong></td>
+<td>—</td>
+<td>Needs the cited Zvi job-map source.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>“Decisions API on 29 September, AWS and Cloudflare … 1 October”</td>
+<td><strong>PARTLY UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Decisions API date is supported by the earlier evidence; I did not independently establish the AWS/Cloudflare <strong>1 October</strong> claim here.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>“OpenAI found a June breach … 29 September … told … 1 October.”</td>
+<td><strong>UNCONFIRMED IN THIS PASS</strong></td>
+<td>—</td>
+<td>Needs the NSW/OpenAI primary reporting. This is important enough to retain as an open receipt rather than silently upgrade.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>“Four … five sets of advice include a hard cap”</td>
+<td><strong>UNCONFIRMED / INTERNAL COUNT</strong></td>
+<td>—</td>
+<td>This depends on the five research reports, not an external source. Not externally checkable from this section.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>“all leaning on the same Simon Willison post from 3 October”</td>
+<td><strong>UNCONFIRMED IN THIS PASS</strong></td>
+<td>—</td>
+<td>Internal-source genealogy; needs the five research reports if you want to verify the “all” claim.</td>
+</tr>
+<tr>
+<td>23</td>
+<td>“67% … AI-tool users … wrong information about a local business”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.soci.ai/blog/ai-local-search-verification-loop/" rel="noopener" target="_blank">SOCi</a></td>
+<td>I still cannot locate this exact 67% statistic in the accessible primary material. <strong>Keep this one open.</strong></td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>Very clean overall.</strong> This section is a field guide, so most prescriptive language is obviously advice rather than disguised reporting.</li>
+<li><strong>“Fewer prompts should mean less fatigue at the ones that matter”</strong> is the one sentence I&#39;d flag. Anthropic demonstrates fatigue with repeated prompts; it does <strong>not</strong> demonstrate that reducing prompts while retaining a small gate list improves performance at those remaining gates.</li>
+<li><strong>“Four of the month&#39;s five sets of advice include a hard cap”</strong> is an internal synthesis. It should remain tied to the five research reports rather than sounding like an independently established fact.</li>
+<li><strong>“The Astra searches five sources, which suggests a narrow field”</strong> is an inference. “Suggests” handles it correctly.</li>
+<li><strong>“That&#39;s why The Operator&#39;s guide … has you…”</strong> is editorial reasoning, not a source finding.</li>
+<li><strong>“AI discovery is growing on top of search, not in place of it”</strong> is explicitly “on our reading.” Good.</li>
+<li>The liability recommendation is especially well-labelled: <strong>“Our bet is…”</strong> rather than “the law will…”</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The biggest thing to preserve is denominator discipline.</strong> The SOCi 67% number is still not independently nailed down. Since this is an actionable guide, I would not let that statistic survive another edit without the exact SOCi passage.</li>
+<li><strong>The Profound number needs its study-level caveat.</strong> “2.5% carried a referral tag” is defensible, but it describes the Profound dataset, not a universal percentage of AI-originated visits. The guide&#39;s actual recommendation—date mentions and inspect direct/organic traffic—is stronger than the statistic anyway. <a href="https://www.comviva.com/resources/research/global-cmo-survey-report-2026/" rel="noopener" target="_blank">Comviva</a></li>
+<li><strong>The Comviva receipt is excellent.</strong> The 86% / 16% pair is directly supported by the primary 2026 report, and the section uses it exactly for what it measures: pressure to justify AI investment and confidence in the evidence. <a href="https://www.comviva.com/resources/research/global-cmo-survey-report-2026/" rel="noopener" target="_blank">Comviva</a></li>
+<li><strong>OpenProposal is clean and time-sensitive.</strong> It was announced Sept. 22 and remains open for public comment until Oct. 22. The guide&#39;s “by 22 October” instruction is therefore actionable rather than stale. <a href="https://www.iab.org.nz/news-resources/iab-tech-lab-introduces-aamp-3.0-to-standardise-the-rfp-to-buy-process-for-agentic-advertising" rel="noopener" target="_blank">IAB New Zealand</a></li>
+<li><strong>One subtle editorial issue:</strong> “Run each on two $2/$10 models, Sonnet 5.5 and GPT-6.1 Sol” makes a recommendation that will age very quickly. That&#39;s fine for a monthly field magazine, but I&#39;d make the issue date prominent wherever this guide is reproduced.</li>
+<li><strong>The strongest practical recommendation is actually the accepted-output metric.</strong> “Cost per accepted output” combines model choice, token consumption, harness, and quality into one operator-level measure. That&#39;s a recommendation rather than a proven universal metric, but it is much more defensible than telling operators to optimize token price.</li>
+<li><strong>The section is notably less vulnerable than the analytical features.</strong> Most statements are either direct instructions or explicitly attributed evidence. The few external factual dependencies that remain open are the NSW breach chronology, Beri&#39;s gate rule, SOCi&#39;s 67%, and the AWS/Cloudflare release claim.</li>
+</ul>
+<p><strong>Verdict:</strong> <strong>No major factual error found.</strong> The field-guide recommendations are appropriately separated from evidence, and the few open receipts are identifiable rather than being presented as settled facts.</p>
+<h2>15 15-field-notes-candidates.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (2)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>18</td>
+<td>“Vercel … 10 people to one … $5,000/year … 32 times its cost”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://tomtunguz.com/single-digit-thousand-dollar-ai-sdr/" rel="noopener" target="_blank">Tomasz Tunguz, 15 Sep. 2026</a></td>
+<td>Tunguz says <strong>10 to 1.25</strong>, not 10 to 1, and “single-digit thousands” in annual infrastructure; the 32× ROI is confirmed.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>“runs on about $5,000 a year in infrastructure and tokens”</td>
+<td><strong>OVERSTATED</strong></td>
+<td></td>
+<td>The source says “single-digit thousands,” not specifically $5,000. The $5,000 figure belongs to the supplied SaaStr headline/source, but Tunguz&#39;s own summary does not establish that exact number.</td>
+</tr>
+</tbody></table>
+<p><strong>UNCONFIRMED</strong> (15)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6</td>
+<td>“ZCode 3.12.3 … packaging encrypted copies of whole workspaces … 62 captures”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://blog.ferstar.org/en/posts/zcode-silent-workspace-snapshot-upload/" rel="noopener" target="_blank">Ferstar original report</a></td>
+<td>I could not retrieve the primary page in this pass. Treat the detailed forensics as dependent on that source rather than independently confirmed.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>“fixed … next day … version 3.14.0”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://blog.ferstar.org/en/posts/zcode-silent-workspace-snapshot-upload/" rel="noopener" target="_blank">Ferstar original report</a></td>
+<td>Same issue: the supplied source is the right place to verify the version chronology, but I could not independently load it.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>“Simon Willison and Alex Garcia … Fable 5.1, GPT-5.6 and Astra … Datasette … two security releases”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://simonwillison.net/2026/Sep/11/datasette-security/" rel="noopener" target="_blank">Simon Willison, Datasette security post</a></td>
+<td>I did not retrieve the specific post successfully enough to verify all the model names, division of labour and release details.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>“For most of the issues one of them wrote the test and the other the fix”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://simonwillison.net/2026/Sep/11/datasette-security/" rel="noopener" target="_blank">Simon Willison, Datasette security post</a></td>
+<td>The section itself preserves an important qualification (“most,” not every issue). Still needs primary-source verification.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>“six years … 24 … 23 usable … four kept the same category label”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://martech.org/" rel="noopener" target="_blank">Gene De Libero / MarTech, 24 Sep. 2026</a></td>
+<td>Search confirms the article exists and its subject, but I could not retrieve the article body with the underlying 24/23/4 figures.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>“17 vendors … 11 matched”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://martech.org/" rel="noopener" target="_blank">Gene De Libero / MarTech, 24 Sep. 2026</a></td>
+<td>Same: exact numerical findings need the article body.</td>
+</tr>
+<tr>
+<td>24</td>
+<td>“one owner for the system and a named lane for each person”</td>
+<td><strong>PARTLY UNCONFIRMED</strong></td>
+<td><a href="https://newsletter.mkt1.co/p/multiplayer-ai-team-mkt1" rel="noopener" target="_blank">MKT1, 17 Sep. 2026</a></td>
+<td>Shared repos, personal repos and team structure are confirmed; I did not find the exact “one owner / named lane” wording in the accessible text.</td>
+</tr>
+<tr>
+<td>27</td>
+<td>“Brex&#39;s agents as employees … outcome, skills, limits, human manager, token budget”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://creatoreconomy.so/p/stop-building-ai-agents-build-ai-employees-instead-pedro-franceschi-brex" rel="noopener" target="_blank">Creator Economy / Pedro Franceschi interview</a></td>
+<td>I could not retrieve the cited episode sufficiently to verify the four-line specification.</td>
+</tr>
+<tr>
+<td>28</td>
+<td>“Warp … about 2,000 pull requests a month … human interactions per PR … LLM judge … cost per PR”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.lennysnewsletter.com/p/how-warp-ships-2000-prs-a-month-with" rel="noopener" target="_blank">Lenny&#39;s Newsletter / Warp</a></td>
+<td>Source is plausible and specifically cited, but I could not independently retrieve the relevant body in this pass.</td>
+</tr>
+<tr>
+<td>30</td>
+<td>“split roughly evenly … loudest comments weren&#39;t the majority”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.marketingaiinstitute.com/blog/podcast-ai-web-browser" rel="noopener" target="_blank">Marketing AI Institute, 9 Sep. 2026</a></td>
+<td>The accessible excerpt confirms the experiment but not these outcome figures.</td>
+</tr>
+<tr>
+<td>31</td>
+<td>“one … out of 300-plus recipients … daily report … stopped for three days”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://themarketdetective.substack.com/p/how-much-of-your-work-would-nobody" rel="noopener" target="_blank">Market Detective, 11 Sep. 2026</a></td>
+<td>I couldn&#39;t retrieve the cited post in this pass.</td>
+</tr>
+<tr>
+<td>33</td>
+<td>“Cutler&#39;s subway map … contradicts the roundup&#39;s description”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Internal correction claim; it requires the underlying Cutler post and the earlier roundup.</td>
+</tr>
+<tr>
+<td>34</td>
+<td>“Nate B Jones … outline is public; prompts are paywalled”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Could not independently verify the access boundary.</td>
+</tr>
+<tr>
+<td>36</td>
+<td>“Zapier&#39;s AI fluency rubric … dates from 31 March”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the original rubric/source and archive metadata.</td>
+</tr>
+<tr>
+<td>37</td>
+<td>“MarTech job-postings study … 60 postings … mentioned AI”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>I did not independently retrieve the study.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>“so judge any agent that can see your code by what leaves the machine, not by its settings page.”</strong> This is editorial advice drawn from the ZCode incident, not a fact established by the incident. The surrounding wording makes that fairly clear.</li>
+<li><strong>“if a vendor&#39;s homepage title changed more than twice in five years you&#39;re evaluating a marketing decision”</strong> is a proposed heuristic, not a finding from De Libero&#39;s study. It should stay clearly presented as the magazine&#39;s test.</li>
+<li><strong>“Price and privacy are sold separately here”</strong> is a useful characterization of Meta&#39;s pricing structure, but the stronger conclusion—<em>therefore read the data terms before routing client material</em>—is advice.</li>
+<li><strong>“so if you steer agents mid-task, restate the limit…”</strong> is an inference from Anthropic&#39;s 90%/40% experiment. The underlying numbers are fact; the operational prescription is the magazine&#39;s.</li>
+<li><strong>“The order is the part to copy”</strong> and the subsequent Vercel workflow are editorial interpretation/advice, not claims that Vercel proved this is universally optimal.</li>
+<li><strong>“The test they hold it to is the one to steal”</strong> is likewise an editorial recommendation.</li>
+<li><strong>“One system to steal”</strong> is inherently a recommendation, not a factual assertion.</li>
+<li>The “reserves” section generally does a good job distinguishing source findings from the magazine&#39;s proposed use of them.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>There is one clear factual tightening I would make before print: Vercel.</strong> The source currently accessible through Tunguz says <strong>10 → 1.25</strong>, not “10 → 1,” and describes the annual infrastructure bill as <strong>“single-digit thousands,”</strong> not $5,000. <a href="https://tomtunguz.com/single-digit-thousand-dollar-ai-sdr/" rel="noopener" target="_blank">Tomasz Tunguz, 15 Sep. 2026</a> The supplied SaaStr source may support the exact $5,000 figure, but the line as written blends the two sources. If you want maximum receipt integrity, say <strong>10 → 1.25</strong> and attribute the exact $5,000 to SaaStr.</li>
+<li><strong>The Anthropic 90%/40% item is exceptionally solid.</strong> The primary report gives the exact experimental manipulation: the same scope reminder immediately before the model vs. three turns earlier, with 90% vs. 40% cessation. <a href="https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents" rel="noopener" target="_blank">Anthropic, 9 Sep. 2026</a></li>
+<li><strong>There is an important nuance the Field Note actually captures well:</strong> Anthropic says the Mythos 5 experiment was a replication/simulation and cautions about generalization. So the recommendation “restate the limit in the latest turn” should not be presented as a production guarantee. The draft doesn&#39;t make that stronger claim, which is good.</li>
+<li><strong>The Ptacek quotation is clean.</strong> The “single word” rule is genuinely the original&#39;s wording, not a paraphrase accidentally promoted to a quote. <a href="https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/" rel="noopener" target="_blank">Thomas Ptacek, 17 Sep. 2026</a></li>
+<li><strong>The MKT1 candidate is particularly well supported.</strong> The public page gives the 2 repos / 100+ skills / 30+ routines headline and explicitly defines the Vacation Test. <a href="https://newsletter.mkt1.co/p/multiplayer-ai-team-mkt1" rel="noopener" target="_blank">MKT1, 17 Sep. 2026</a></li>
+<li><strong>The automation candidate is also strong.</strong> Ouyang&#39;s Sept. 26 article independently supports the three tests and the “one bounded proof before scheduling” procedure; the Sept. 15 article independently supports the AUTOMATION.md pattern. <a href="https://buildtolaunch.substack.com/p/choose-where-claude-automation-runs" rel="noopener" target="_blank">Ouyang, 26 Sep. 2026</a> <a href="https://buildtolaunch.substack.com/p/claude-code-routines-beginner-guide" rel="noopener" target="_blank">Ouyang, 15 Sep. 2026</a></li>
+<li><strong>The Meta number is actually stronger than the magazine&#39;s wording.</strong> Tunguz reports a 92% input discount <strong>and 95% output discount</strong>. The Field Note calls the item “92%” because it appears to be focusing on the input price; that&#39;s defensible, but readers could interpret “92%” as applying to both. If precision matters, make it “92% on input, 95% on output.” <a href="https://tomtunguz.com/the-ads-model-for-prompts-vertically-integrates-ai/" rel="noopener" target="_blank">Tomasz Tunguz, 3 Sep. 2026</a></li>
+<li><strong>The OpenRouter reserve is clean.</strong> Willison explicitly documents both provider.only and /endpoints, including the reason: different providers can produce materially different behavior from the same model name. <a href="https://simonwillison.net/2026/Sep/11/so-you-want-to-use-openrouter/" rel="noopener" target="_blank">Simon Willison, 11 Sep. 2026</a></li>
+<li><strong>The Field Notes format itself is strong editorially:</strong> the candidates distinguish <em>what the source demonstrated</em> from <em>what the magazine thinks an operator should steal</em>. That separation is exactly what the rest of the issue&#39;s “reading vs. fact” discipline calls for.</li>
+<li><strong>I would not call the section “2 wrong” based on this second-model pass.</strong> The Vercel wording is the only concrete factual correction I can substantiate here; most of the remaining unresolved items are simply claims whose cited primary pages I could not independently retrieve.</li>
+</ul>
+<p><strong>Bottom line: one definite/near-definite tightening (Vercel), one useful Meta precision tweak, and several “UNCONFIRMED” receipts that should remain attributed rather than upgraded. The underlying candidate selection is unusually clean.</strong></p>
+<h2>16 16-corrections.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (1)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>5</td>
+<td>“OpenAI found the New South Wales breach on 29 September and told the state on 1 October”</td>
+<td><strong>OVERSTATED / WRONG FOR CURRENT RECORD</strong></td>
+<td><a href="https://www.reuters.com/legal/litigation/australias-abc-rejects-ai-copyright-carveout-believes-already-been-scraped-2026-10-06/" rel="noopener" target="_blank">Reuters, 6 Oct. 2026</a></td>
+<td>Current reporting says OpenAI took <strong>three months</strong> to notify Australia about a breach of its main health portal, and today OpenAI acknowledged delays. This appears to concern a different Australian incident from the NSW fire-data-service chronology in the issue, so the correction should identify the exact incident rather than imply the chronology is settled. <a href="https://www.reuters.com/legal/litigation/australias-abc-rejects-ai-copyright-carveout-believes-already-been-scraped-2026-10-06/" rel="noopener" target="_blank">Reuters</a></td>
+</tr>
+</tbody></table>
+<p><strong>UNCONFIRMED</strong> (21)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>2</td>
+<td>“Faros&#39;s ‘April telemetry’ … two years … 22,000 developers … 441.5%”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>This is a correction to an earlier internal claim; I could not independently retrieve the Faros report here.</td>
+</tr>
+<tr>
+<td>3</td>
+<td>“Anthropic and OpenAI drop human review only on low-risk changes … person still presses merge”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the cited Pragmatic Engineer article.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>“Bryan Cantrill&#39;s essay … December 2025 … 5 September 2026 follow-up”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Plausible chronology, but I did not retrieve both originals.</td>
+</tr>
+<tr>
+<td>6</td>
+<td>“agents&#39; wiki activity … 11 May to 22 June … whole run”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Requires Zvi&#39;s reconstruction.</td>
+</tr>
+<tr>
+<td>7</td>
+<td>“A May attack on RubyGems … public in May; what came out … 12 September was OpenAI&#39;s agents did it”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the underlying RubyGems/OpenAI reporting.</td>
+</tr>
+<tr>
+<td>9</td>
+<td>“Anthropic and Accenture … expects to invest at least $1B”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the companies&#39; announcement/reporting.</td>
+</tr>
+<tr>
+<td>10</td>
+<td>“Transluce … agent-like activity”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the Transluce source.</td>
+</tr>
+<tr>
+<td>11</td>
+<td>“LASST … under California UCL, citing AB 316”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the complaint.</td>
+</tr>
+<tr>
+<td>12</td>
+<td>“more than 100 organisations … announced 30 September … review still running”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs OpenAI&#39;s announcement.</td>
+</tr>
+<tr>
+<td>13</td>
+<td>“David Robinson … safety reports for 12 frontier-model launches”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs Robinson&#39;s Atlantic piece.</td>
+</tr>
+<tr>
+<td>15</td>
+<td>“Google&#39;s price is an introductory half price for trusted testers”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs Google&#39;s pricing announcement.</td>
+</tr>
+<tr>
+<td>16</td>
+<td>“Zvi&#39;s budget pick was ‘Sol’: it&#39;s Luna”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Requires Zvi&#39;s job-map source.</td>
+</tr>
+<tr>
+<td>18</td>
+<td>“Claire Vo&#39;s test … Sol won writing … Opus … long agent runs … Astra favourite”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the original Claire Vo test.</td>
+</tr>
+<tr>
+<td>19</td>
+<td>“Zvi planned to ask both every non-trivial question … answers complemented each other”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs Zvi&#39;s original.</td>
+</tr>
+<tr>
+<td>22</td>
+<td>“Astra-at-$6 and bill-halving … both from 3 September”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the two cited Sept. 3 sources.</td>
+</tr>
+<tr>
+<td>24</td>
+<td>“Kuo Zhang ‘told Fortune’ … wrote the piece himself”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the Fortune article.</td>
+</tr>
+<tr>
+<td>26</td>
+<td>“Pi pod … third-party project, posted 2 October”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the Pi pod project/source.</td>
+</tr>
+<tr>
+<td>27</td>
+<td>“Alex Zhang priced the swarm … $40M” → “Latent Space host&#39;s”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the relevant Latent Space episode/post; attribution correction is plausible but not independently established here.</td>
+</tr>
+<tr>
+<td>30</td>
+<td>“37.9% … Ahrefs study … quoted by Erase.com”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs Ahrefs/Erase primary trail.</td>
+</tr>
+<tr>
+<td>34</td>
+<td>“The only public numbers … Criteo&#39;s own”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs the underlying Criteo/other-market evidence to establish “only.”</td>
+</tr>
+<tr>
+<td>35</td>
+<td>“MKT1&#39;s ‘1,100 job posts’” → “1,100-plus”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>Needs MKT1&#39;s underlying post/source.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The corrections department is unusually disciplined about this.</strong> Most corrections distinguish factual error from interpretation.</li>
+<li><strong>“The throughline built on that number: rewritten.”</strong> This is an editorial consequence of a factual correction, not itself an externally verifiable fact.</li>
+<li><strong>“The price war was ‘left out of the takeaways’”</strong> is an internal editorial diagnosis.</li>
+<li><strong>“The five rungs … were almost certainly not DHH&#39;s”</strong> is appropriately hedged, but it is still a conclusion from source comparison, not a proven fact. The subsequent wording (“not proven”) fixes that.</li>
+<li><strong>“One argument found four times, not four discoveries”</strong> is a methodological reading. It is actually a valuable correction because it prevents the Pattern from manufacturing independent corroboration from a shared source.</li>
+<li><strong>“The case against leaned on Ethan Mollick for a step his essay doesn&#39;t take”</strong> is an editorial/source-comparison finding, not a new external fact.</li>
+<li><strong>“The monthly made the same error” / “the second check caught it”</strong> are internal production claims and therefore not externally checkable.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>The FTC correction is rock-solid and worth keeping exactly.</strong> The FTC itself confirmed the investigation on September 30; AP reports that it had been opened in the summer. The old “reportedly opened” wording was materially weaker than the available evidence. <a href="https://apnews.com/article/89ac416717adbfb1d72f2d85e6ce83d1" rel="noopener" target="_blank">AP News</a></li>
+<li><strong>The OpenAI 3.1 correction is also rock-solid.</strong> OpenAI&#39;s own research write-up says <strong>3.1 agent-workdays per human workday</strong>, measured as an eight-hour workday, as of mid-August. <a href="https://openai.com/index/research-acceleration-view-inside-openai/" rel="noopener" target="_blank">OpenAI</a></li>
+<li><strong>The Meta correction is good, but I would sharpen one thing:</strong> it is <strong>92% cheaper on input and 95% cheaper on output</strong>, not simply “92%.” The current web evidence gives $1.25 → $0.10 input and $4.25 → $0.20 output. <a href="https://eigenradar.com/en/ai/briefs/2026-09-04/meta-muse-spark-contributor-pricing/" rel="noopener" target="_blank">Eigen Radar</a></li>
+<li><strong>The Vercel correction is the one I would scrutinize hardest.</strong> The section&#39;s statement that the original said “10 people to 1” is materially suspect: the accessible Tunguz account says the actual staffing was <strong>10 → 1.25</strong>, while the SaaStr headline says “10-person SDR team down to 1.” The correction should explicitly identify which source said which rather than presenting the 1.25 figure as if it were necessarily the only original claim.</li>
+<li><strong>The NSW correction needs incident-level precision.</strong> Current October 6 reporting says OpenAI took three months to notify Australia about a breach of the country&#39;s main health portal, while the issue&#39;s chronology refers to a June NSW fire-data service breach discovered Sept. 29 and reported Oct. 1. Those may be <strong>two different Australian incidents</strong>. Do not let the correction collapse them into one. <a href="https://www.reuters.com/legal/litigation/australias-abc-rejects-ai-copyright-carveout-believes-already-been-scraped-2026-10-06/" rel="noopener" target="_blank">Reuters</a></li>
+<li><strong>That distinction matters because the current reporting says OpenAI knew of four Australian-government-site breaches and is now acknowledging internal communication failures.</strong> So the broader accountability thesis is not weakened by the correction, but the chronology needs to be exact. <a href="https://www.reuters.com/legal/litigation/australias-abc-rejects-ai-copyright-carveout-believes-already-been-scraped-2026-10-06/" rel="noopener" target="_blank">Reuters</a></li>
+<li><strong>The correction to “liability got names” is absolutely the right editorial move.</strong> The contemporary evidence is about lawsuits, investigations, subpoenas, hearings and proposed legislation—not adjudicated liability. Today&#39;s Financial Times reporting even describes insurers and lawyers as <em>testing</em> whether executives might ultimately face liability, which reinforces that the question remains unsettled. <a href="https://www.ft.com/content/a5caf8d4-992f-4832-89c3-6c73f6f111fe" rel="noopener" target="_blank">Financial Times</a></li>
+<li><strong>The Anthropic correction should preserve the primary-source caveat.</strong> Its Sept. 9 report confirms the four-incident investigation and the Mythos 5 behavior, but the detailed 90%/40% reminder experiment belongs to the report&#39;s specific experimental methodology, not a general claim that recency always improves instruction-following. <a href="https://t.co/2f3ypwLPUr" rel="noopener" target="_blank">t.co</a></li>
+<li><strong>The “all four hard-cap recommendations share Willison” correction is one of the best corrections in the whole issue.</strong> It prevents the magazine from accidentally turning four dependent findings into four independent confirmations. I would keep that exactly as an editorial-method correction.</li>
+</ul>
+<p><strong>Verdict:</strong> this is a strong corrections page. I see <strong>no newly demonstrated major error in the corrections themselves</strong>, but I would flag <strong>three things for a final editor pass: the exact Vercel staffing/cost attribution, the NSW-vs-Australian-health incident distinction, and the Meta 92%/95% input-output distinction.</strong> The FTC and OpenAI 3.1 corrections are particularly well-founded.</p>
+<h2>17 17-prove-us-wrong.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>UNCONFIRMED</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>Readings written as facts / Other:</strong> the reply did not use the briefed shape or these lists. Its whole reply, verbatim:</p>
+<p>Yes. <strong>Section 17 is structurally clean and, unlike some earlier sections, I don&#39;t see a factual correction that needs to be forced into it.</strong> The main thing I&#39;d tighten is the distinction between <em>“most likely to be wrong”</em> and <em>“what evidence would actually falsify it.”</em></p>
+<h3>My check</h3>
+<table>
+<thead>
+<tr>
+<th>Row</th>
+<th>Verdict</th>
+<th>Comment</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>05 — human gate</strong></td>
+<td><strong>Good</strong></td>
+<td>Excellent falsification criterion. Same actions, human-gate vs classifier-only, preferably with matched severity and outcomes.</td>
+</tr>
+<tr>
+<td><strong>06 — customer-account notification</strong></td>
+<td><strong>Good, but now more important</strong></td>
+<td>The wording correctly says <strong>“our reading, not OpenAI&#39;s statement.”</strong> That&#39;s essential. OpenAI&#39;s framework now explicitly says customer-deployment misalignment will be disclosed subject to privacy/contractual obligations, while also saying complex cases can require longer investigation. <a href="https://openai.com/index/model-misalignment-reporting-framework/" rel="noopener" target="_blank">OpenAI</a></td>
+</tr>
+<tr>
+<td><strong>08 — convergence</strong></td>
+<td><strong>Very good</strong></td>
+<td>This is the right test for the Pattern: independent evidence or independent feeds. It also properly attacks the magazine&#39;s own synthesis rather than one underlying fact.</td>
+</tr>
+<tr>
+<td><strong>09 — harness quality</strong></td>
+<td><strong>Good</strong></td>
+<td>“Comparison big enough to detect a quality gap” is the right falsifier. I&#39;d retain the second criterion around failure/rework because production quality matters more than benchmark quality.</td>
+</tr>
+<tr>
+<td><strong>10 — AI on top of search</strong></td>
+<td><strong>Good, but the strongest row</strong></td>
+<td>The proposed falsifier is appropriately longitudinal. Current Datos material does support treating traditional search and AI discovery as coexisting rather than assuming replacement. <a href="https://datos.live/report/state-of-search-q2-2026/" rel="noopener" target="_blank">Datos</a></td>
+</tr>
+<tr>
+<td><strong>04 — grades</strong></td>
+<td><strong>Good</strong></td>
+<td>Necessary because the grades are explicitly readings rather than checked facts. This gives the reader a way to attack the interpretation itself.</td>
+</tr>
+<tr>
+<td><strong>11 — case against</strong></td>
+<td><strong>Good</strong></td>
+<td>Correctly says it attacks the <em>move itself</em>, rather than pretending it&#39;s another independent claim.</td>
+</tr>
+</tbody></table>
+<h3>One thing I would change</h3>
+<p>The line:</p>
+<blockquote>
+<p><strong>“The claim in each feature most likely to be wrong”</strong></p>
+</blockquote>
+<p>is slightly misleading because <strong>04 isn&#39;t a feature in the same sense as the others</strong>, and its “claim” is the editorial grading system. More importantly, the table is actually doing something better: it identifies <strong>the most vulnerable inference in each piece</strong>.</p>
+<p>I&#39;d change the intro to:</p>
+<blockquote>
+<p><strong>The inference in each feature most vulnerable to being wrong, and what would change our mind:</strong></p>
+</blockquote>
+<p>That makes the epistemic contract much cleaner.</p>
+<h3>The 06 row is especially good after today&#39;s evidence</h3>
+<p>I would <strong>not</strong> broaden it. In fact, keep it narrow.</p>
+<p>OpenAI&#39;s current framework says that for customer deployments it will share information subject to customer privacy and contractual obligations, and explicitly says complex cases requiring third-party coordination can take longer. <a href="https://openai.com/index/model-misalignment-reporting-framework/" rel="noopener" target="_blank">OpenAI</a></p>
+<p>That means the magazine&#39;s claim shouldn&#39;t become:</p>
+<blockquote>
+<p>“OpenAI has no customer notification deadline.”</p>
+</blockquote>
+<p>It doesn&#39;t establish that.</p>
+<p>The defensible claim remains:</p>
+<blockquote>
+<p><strong>“We couldn&#39;t find a customer-notification deadline in the public framework.”</strong></p>
+</blockquote>
+<p>That&#39;s exactly what your row currently challenges.</p>
+<p>And there&#39;s a useful reason to keep the challenge alive: OpenAI has now notified more than 100 organizations about rogue-agent activity, so the real-world notification practice is becoming evidence in its own right. <a href="https://www.reuters.com/legal/litigation/openai-alerts-more-than-100-groups-about-rogue-ai-agent-activity-2026-10-01/" rel="noopener" target="_blank">Reuters</a></p>
+<h3>One subtle issue with 10</h3>
+<p>Your proposed falsifier is:</p>
+<blockquote>
+<p>“Several quarters of panel data with search falling as AI discovery rises among the same people…”</p>
+</blockquote>
+<p>That&#39;s strong, but perhaps <strong>too strong</strong>. A replacement could happen through <em>query substitution</em> while aggregate search remains flat because other search behavior grows.</p>
+<p>So the cleanest falsifier is really:</p>
+<blockquote>
+<p><strong>panel data showing that, among the same users, AI discovery is replacing rather than supplementing traditional search for commercially meaningful queries.</strong></p>
+</blockquote>
+<p>That would be harder to game with aggregate-growth numbers.</p>
+<p>And that&#39;s particularly worthwhile because current Datos material actually frames the research around changing search behavior and traditional search, while independent reporting says traditional search remains substantially larger than standalone AI activity. <a href="https://datos.live/report/state-of-search-q2-2026/" rel="noopener" target="_blank">Datos</a></p>
+<h3>Final verdict</h3>
+<p><strong>PASS.</strong></p>
+<p>I would make <strong>one editorial wording change</strong> (“inference … most vulnerable” rather than “claim … most likely”), and possibly broaden the 10 falsifier from <em>search volume falling</em> to <em>same-user/query substitution</em>. Otherwise this is doing exactly what a “Prove Us Wrong” page should do.</p>
+<p>And the final line is excellent:</p>
+<blockquote>
+<p><strong>“We&#39;d rather be corrected in public than be wrong in private.”</strong></p>
+</blockquote>
+<h2>18 18-the-library.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>UNCONFIRMED</strong> (2)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>“The 28 pieces the September research leaned on”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td>—</td>
+<td>This is a description of the magazine&#39;s own corpus, so it is <strong>NOT CHECKABLE</strong> externally.</td>
+</tr>
+<tr>
+<td>4</td>
+<td>“Thinking in Systems, Shipping in Loops” — Tunguz, 24 Sep</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://tomtunguz.com/thinking-in-systems/" rel="noopener" target="_blank">Tunguz</a></td>
+<td>I could identify the cited page, but I did not establish the editorial characterization “verification as loop design” from an independently checkable passage.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>“The dataset, and the taste loop that cuts against it.”</strong> The existence of the cited Tunguz material is factual; “cuts against it” is an editorial interpretation. It is presented in a “why worth your time” blurb, so I&#39;d tolerate it, but it is still a reading.</li>
+<li><strong>“How review moved to reviewing the AI&#39;s review”</strong> is interpretive compression of the Pragmatic Engineer article, rather than a source fact.</li>
+<li><strong>“Risk, not capability, is what holds adoption back.”</strong> This is a strong interpretation of the AIUC piece. If retained, I&#39;d phrase it as <em>“the piece&#39;s argument is that risk, not capability…”</em>.</li>
+<li><strong>“The strongest counter: humans caught 13.6%.”</strong> The 13.6% is factual; “strongest counter” is editorial ranking.</li>
+<li><strong>“The best dated timeline of the disclosure.”</strong> Editorial judgment, not fact.</li>
+<li><strong>“The strongest counter-case.”</strong> Editorial judgment.</li>
+<li><strong>“The case for routing by job.”</strong> Reasonable characterization, but still a reading of Jones&#39;s piece.</li>
+<li><strong>“The deletion thesis, with numbers.”</strong> Editorial characterization.</li>
+<li><strong>“The counter at full strength.”</strong> Editorial characterization.</li>
+<li><strong>“Primary data on what frontier models choose…”</strong> “Primary data” is defensible as a description of Latent Space&#39;s own tracker, but “what frontier models choose” is narrower than “what the tracker measures”; worth keeping precise.</li>
+<li><strong>“AI search is adding to traditional search, and most AI referrals go untracked.”</strong> This is the most important one. It combines conclusions from underlying datasets into a declarative library description. The magazine itself elsewhere correctly labels the <em>addition-to-search</em> conclusion as its reading. Here I&#39;d change it to <strong>“Data on AI search suggests it is adding to traditional search; most AI referrals in the cited study went untracked.”</strong></li>
+<li><strong>“The demand-side check on agents that buy.”</strong> Clearly editorial characterization; harmless, but technically a reading.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>No substantive source-list error found.</strong> The library is unusually disciplined about identifying primary vs secondary material. That matters because several claims elsewhere depend on secondary reporting; the library doesn&#39;t disguise that.</li>
+<li>The strongest thing to preserve is the <strong>primary-source preference</strong>. Anthropic&#39;s auto-mode page, for example, directly establishes the August 7 date and the 1,053/13.6% study rather than requiring a secondary account. <a href="https://claude.com/blog/auto-mode-default-in-claude-code" rel="noopener" target="_blank">Claude</a></li>
+<li>There is one useful caveat for the editor: <strong>“loaded” is not the same as “verified.”</strong> A page can load while a particular claim remains inaccessible behind a paywall or be supported only by a preview. The magazine generally acknowledges this elsewhere, so this isn&#39;t an error—just something worth keeping conceptually separate.</li>
+<li>The library&#39;s title <strong>“The 28 pieces”</strong> appears to count the six + six + five + six + five entries exactly: <strong>28</strong>. So the arithmetic works.</li>
+<li>The six entries in “Who checks the checker,” six in accountability, five model-choice, six wrapper, and five found totals <strong>28</strong>. That&#39;s worth noting because the surrounding issue has several independent count systems that are easy to accidentally desynchronize.</li>
+<li>One potentially important editorial distinction: the library calls the Latent Space AEO tracker “primary data,” while the actual <em>interpretation</em> of that data belongs to Latent Space. Don&#39;t let “primary data” silently become “objective finding.” The tracker itself is still an instrument produced by one publisher.</li>
+</ul>
+<p><strong>Verdict: PASS, with one recommended wording fix around the MarTech entry&#39;s “AI search is adding to traditional search” formulation.</strong> Everything else is either supported, clearly editorial characterization, or an explicitly internal/not-checkable claim.</p>
+<h2>19 19-the-operators-page.md</h2>
+<p><strong>WRONG</strong> (0)</p>
+<p><em>None.</em></p>
+<p><strong>OVERSTATED</strong> (1)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>11</td>
+<td>“Gemini 4 Argon… only government users and trusted cyber defenders could use it”</td>
+<td><strong>OVERSTATED</strong></td>
+<td><a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" rel="noopener" target="_blank">Google&#39;s Argon announcement</a></td>
+<td>Google&#39;s announcement says Argon was rolling out to <strong>trusted cyber defenders through Fairwind</strong> and that access would gradually expand. It does not say “only government users” in the cited announcement. That&#39;s a narrower/stronger formulation than the source establishes. <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" rel="noopener" target="_blank">blog.google</a></td>
+</tr>
+</tbody></table>
+<p><strong>UNCONFIRMED</strong> (1)</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>short quote</th>
+<th>verdict</th>
+<th>source</th>
+<th>note</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>6</td>
+<td>“had no bill number or published text as of 5 October”</td>
+<td><strong>UNCONFIRMED</strong></td>
+<td><a href="https://www.hawley.senate.gov/senators-hawley-murphy-announce-bipartisan-ai-agent-accountability-act/" rel="noopener" target="_blank">Hawley Senate announcement</a></td>
+<td>I found the October 1 announcement describing the bill, but not an authoritative October 5 congressional record establishing the absence of a bill number/text. This is plausible, but the <em>absence</em> needs a dated congressional-record check.</td>
+</tr>
+</tbody></table>
+<p><strong>Readings written as facts</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>“only government users and trusted cyber defenders could use it”</strong> is the one actual wording problem. Google&#39;s primary announcement supports <strong>trusted cyber defenders / phased rollout</strong>, but not that exact “only government users” formulation. I&#39;d flag it <strong>OVERSTATED</strong> rather than WRONG.</li>
+<li><strong>“the number that did was the cost…”</strong> doesn&#39;t occur here; the page appropriately keeps that as an operational recommendation rather than reasserting the broader thesis as fact.</li>
+<li><strong>“gets human sign-off” / “hard spend cap” / “log the shortlist”</strong> are recommendations, not evidence claims. They don&#39;t need epistemic labels, but they should not be mistaken for empirically established best practices.</li>
+</ul>
+<p><strong>Other</strong> (ChatGPT, verbatim)</p>
+<ul>
+<li><strong>This is a strong closing page.</strong> It has three actions, three genuinely watchable external developments, and one unresolved question. It doesn&#39;t reopen the magazine&#39;s arguments unnecessarily.</li>
+<li>The <strong>OpenProposal item is particularly clean</strong>: the primary repository explicitly says the draft is <em>not</em> a ratified IAB Tech Lab standard and gives the October 22 closing date. <a href="https://github.com/IABTechLab/OpenProposal" rel="noopener" target="_blank">GitHub</a></li>
+<li>The <strong>Argon wording should be fixed</strong>. Google&#39;s own announcement says the initial cohort is trusted cyber defenders and that broader availability will follow, starting with paid API customers and Google AI Ultra subscribers. <a href="https://blog.google/innovation-and-ai/models-and-research/gemini-models/gemini-4-argon/" rel="noopener" target="_blank">blog.google</a> The current “only government users and trusted cyber defenders” formulation makes the access gate sound more formally defined than Google&#39;s announcement does.</li>
+<li>The Hawley–Murphy item is worth keeping exactly because the <strong>official announcement itself says “AI agent operators”</strong> will be liable. That makes it a particularly good watch item for the magazine&#39;s unresolved operator-liability question. <a href="https://www.hawley.senate.gov/senators-hawley-murphy-announce-bipartisan-ai-agent-accountability-act/" rel="noopener" target="_blank">Josh Hawley</a></li>
+<li>The FTC item is solid: this isn&#39;t merely a media report—the FTC confirmed the investigation. <a href="https://www.reuters.com/business/ftc-opens-probe-into-ai-giants-including-anthropic-openai-new-york-post-reports-2026-09-30/" rel="noopener" target="_blank">Reuters</a></li>
+<li>The <strong>$3.98 vs $3.26 calculation should retain the AINews attribution</strong> somewhere nearby. The arithmetic isn&#39;t independently supported by Google&#39;s pricing page; it depends on AINews&#39;s reported task-token usage.</li>
+</ul>
+<p><strong>Overall: PASS, with one OVERSTATED line to fix: Argon&#39;s access description.</strong> The rest of the page is appropriately separated into advice, watch items, and an explicitly unresolved question.</p>
+</div></article>
+    </div>
+<main style="max-width: 1360px; margin: 0 auto; padding: 0 48px 160px;">
+    <footer style="margin-top: 160px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; align-items: flex-end;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--ej-font-display); font-weight: 700; font-size: 40px; line-height: .86; letter-spacing: .04em; text-transform: uppercase;">The AI Echo</div>
+<div style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.8;">Edition 1 · October 2026 · covering September 2026<br>Published free as a PDF with The ECHO Files on Substack · Editor: Jay Wright</div>
+      </div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <a href="https://echofiles.substack.com" style="text-decoration: none;">Subscribe</a>
+<a href="#rules" style="text-decoration: none;">The Rules</a>
+<a href="#corrections" style="text-decoration: none;">Corrections</a>
+<a href="index.html" style="text-decoration: none; color: var(--ej-fg-faint);">Top ↑</a>
+      </div>
+<div style="width: 72px; height: 6px; background: repeating-linear-gradient(135deg, var(--ej-line-strong) 0 6px, transparent 6px 12px);"></div>
+    </footer>
+  </main>
+</div>
+<script src="assets/site.js"></script>
+<script>(function(){var k="ai-echo-size",n=0;try{n=parseInt(localStorage.getItem(k)||"0",10)||0}catch(e){}function apply(){var z=Math.pow(1.1,n);document.querySelectorAll("#features, main#top, main").forEach(function(el){el.style.zoom=z});document.querySelectorAll("[data-sz]").forEach(function(b){b.title=Math.round(z*100)+"%"});try{localStorage.setItem(k,String(n))}catch(e){}}apply();document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-sz]");if(!b)return;n+=parseInt(b.getAttribute("data-sz"),10);apply();});})();</script></body>
+</html>

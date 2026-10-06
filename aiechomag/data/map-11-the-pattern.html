@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="/aiechomag/"><meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Pattern — The AI Echo, Edition 1</title>
+<meta name="description" content="A field magazine for people operating at the edge of AI. Edition 1, covering September 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/web.css">
+</head>
+<body style="margin: 0; background: var(--ej-bg);">
+<div id="root" data-theme="light" style="color: var(--ej-fg); font-family: var(--ej-font-body); background: var(--ej-bg);">
+
+  <nav style="position: sticky; top: 0; z-index: 20; background: var(--ej-bg); border-bottom: 1px solid var(--ej-line);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 14px 48px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ej-fg);">
+        <span style="font-family: var(--ej-font-display); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: .05em; text-transform: uppercase;">The AI Echo</span>
+        <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); border: 1px solid var(--ej-line-strong); padding: 3px 8px; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 0 100%);">№ 1 · Oct 2026</span>
+      </a>
+<div style="flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-left: auto; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <span style="flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); white-space: nowrap;">14 // What we got wrong, and what changed</span>
+        <button type="button" data-action="toggleRibbon" aria-expanded="true" style="flex: none; white-space: nowrap; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="ribbonLabel">Hide sections</span></button>
+<button type="button" class="sz-btn" data-sz="-1" aria-label="Smaller text">A−</button><button type="button" class="sz-btn" data-sz="1" aria-label="Larger text">A+</button><button type="button" data-action="toggleTheme" style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-muted); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="themeLabel">Dark</span></button>
+      </div>
+    </div>
+<div id="ribbon" style="display: block; border-top: 1px solid var(--ej-line); background: var(--ej-surface);">
+      <div aria-label="Edition 1 sections" data-ribbon="1" style="max-width: 1360px; margin: 0 auto; padding: 0 36px; display: flex; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;">
+        
+          <div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="index.html" data-selected="false" title="The AI Echo" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">№ 1 · Front</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The AI Echo</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Cover and contents</span>
+                </a>
+<a href="01-from-the-editors.html" data-selected="false" title="From the editors" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">01</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">From the editors</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The editor's letter</span>
+                </a>
+<a href="02-the-rules.html" data-selected="false" title="The Rules (DRAFT)" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">02</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Rules (DRAFT)</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Nine rules, each with its test</span>
+                </a>
+<a href="03-the-month.html" data-selected="false" title="The Month" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">03</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Month</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five claims, and how each fared</span>
+                </a>
+<a href="04-the-receipts.html" data-selected="false" title="The Receipts" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">04</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Receipts</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Method, pipeline and ledger</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Front of the book</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="05-who-checks-the-checker.html" data-selected="false" title="Who checks the checker?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">05</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who checks the checker?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">When people approve everything</span>
+                </a>
+<a href="06-who-pays-when-an-agent-breaks-something.html" data-selected="false" title="Who pays when an agent breaks something?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">06</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who pays when an agent breaks something?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Six actions went public, after the fact</span>
+                </a>
+<a href="07-the-month-in-one-chart.html" data-selected="false" title="Same score, different bill" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">07</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                </a>
+<a href="08-the-pattern.html" data-selected="false" title="The Pattern" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">08</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Pattern</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five lanes into one point</span>
+                </a>
+<a href="09-what-does-a-task-cost.html" data-selected="false" title="What does a task cost?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">09</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What does a task cost?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Model choice, per job</span>
+                </a>
+<a href="10-how-do-you-get-found-when-a-machine-reads-first.html" data-selected="false" title="How do you get found when a machine reads first?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">10</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">How do you get found when a machine reads first?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Being found when AI reads first</span>
+                </a>
+<a href="11-the-case-against.html" data-selected="false" title="The case against" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">11</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The case against</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The steelman, and the reply</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Features</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="12-the-operator.html" data-selected="false" title="The Operator" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">12</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five field-guide cards</span>
+                </a>
+<a href="13-field-notes.html" data-selected="false" title="Field Notes: candidates" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">13</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Field Notes</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">A tool, a stop, an experiment</span>
+                </a>
+<a href="14-corrections.html" data-selected="true" title="Corrections" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid var(--ej-gold); border-radius: 0; background: var(--ej-bg); color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">14</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Corrections</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What we got wrong, and what changed</span>
+                </a>
+<a href="15-prove-us-wrong.html" data-selected="false" title="Prove us wrong" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">15</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Prove us wrong</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Make the case against us</span>
+                </a>
+<a href="16-the-library.html" data-selected="false" title="The Library" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">16</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Library</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Twenty-eight things to read</span>
+                </a>
+<a href="17-the-operators-page.html" data-selected="false" title="The Operator's Page" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">17</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator's Page</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">To do, to watch, one question</span>
+                </a>
+<a href="18-the-raw-data.html" data-selected="false" title="The Raw Data" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">18</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Raw Data</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The data behind the issue</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Back of the book</div>
+          </div>
+        
+      </div>
+    </div>
+<div id="progress" style="height: 2px; background: var(--ej-gold); width: 0.00%; transition: width .15s linear;"></div>
+  </nav>
+<main id="top" style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
+    
+  </main>
+<div id="corrections" data-theme="light" style="background: var(--ej-bg); color: var(--ej-fg); padding: 72px 0 0;">
+      <article class="dr"><p class="dr-crumb"><a href="data/index.html">The data room</a> // Source maps and edit logs</p><div class="dr-kick"><span class="dr-tab">DATA</span><span>// Source maps and edit logs</span></div><h1 class="dr-h1">The Pattern</h1><p class="dr-dek">Source map and edit logs</p><div class="dr-doc"><h2>Source map</h2>
+<p>Anchors: <code>01-the-monthly-september-2026.md#n</code> is the monthly&#39;s numbered section n; &quot;step k&quot; is step k of its &quot;How it shifted&quot; list; &quot;throughline k&quot; is item k of &quot;The throughline&quot;. <code>#intro</code> is the text before section 1; <code>#the-pattern</code> is the closing section &quot;The pattern&quot;; &quot;header note&quot; is the italic note under its title. In the check files, §1 is &quot;Needs a change&quot;, §2 is &quot;Confirmed&quot; and §3 is &quot;Internal&quot;. <code>NEW: url</code> marks a fact taken from this edition&#39;s own checks (<code>checks/check-01-06-11.md</code>, <code>check-08-09.md</code>, <code>check-10-12-13.md</code>), tagged with the page the check loaded. <code>checks/…</code> and <code>audit/…</code> are this edition&#39;s own check reports and audits; <code>05-roundups/…, line n</code> is the roundup&#39;s line. A tag that opens <code>reading,</code> marks a reading: the line cites the editor&#39;s own earlier reading (the monthly&#39;s verdicts, <code>#intro</code> or <code>#the-pattern</code>) or this issue&#39;s grades (<code>audit/audit-A-verdicts.md</code> §1, the house verdict as of 6 October), and no check covered it. It is stripped from print like any <code>[S: …]</code> tag (<code>make-print.mjs</code> strips only <code>[S:</code>, <code>[NEW:</code> and <code>[S/NEW:</code>, so a separate <code>[S-reading:</code> tag would print). Interpretive sentences with no fact in them (for example &quot;The evidence for it counts once&quot;, &quot;A crowded calendar can look like a pattern&quot;) are the magazine&#39;s reading and carry no tag. Every reading on the page now carries a marker: &quot;on the magazine&#39;s reading&quot;, &quot;the magazine finds&quot;, &quot;a bet&quot;, or an OUR READING label on a pull or the graphic. Rows with a letter (1a, 11a and so on) were added on 6 October, so the earlier row numbers still hold.</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Claim</th>
+<th>Tag</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>In early October the editor took the five claims that came up most and would change most; one research agent each, for his September monthly; the research agents&#39; verdict on each of the five was the same, reframed (the monthly&#39;s verdict lines); five more agents then checked numbers, quotes and dates line by line, not the grades, which are the magazine&#39;s readings</td>
+<td>00-BRIEF.md, What you&#39;re making; <a href="data/claim-1-research.html">03-research/claim-1-verification.md</a> to <a href="data/claim-5-research.html">claim-5-marketing.md</a>, report headers (dated 5 October); <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#intro</a>; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a> to #5, verdicts; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §3</td>
+</tr>
+<tr>
+<td>1a</td>
+<td>The grades on the issue&#39;s five-level scale: accountability held; judgment held at its core; model choice came back reversed at the level of the job; the wrapper and being found split. A reading: audit A&#39;s regrade, adopted as the house verdict, resting on the research&#39;s own verdict sentences (&quot;The gap held&quot;, &quot;Verification stayed the bottleneck&quot;) and on check-claim-2&#39;s finding that no liability was assigned</td>
+<td>reading, <a href="data/audit-a-verdicts.html">audit/audit-A-verdicts.md</a> §1; <a href="data/claim-1-research.html">03-research/claim-1-verification.md</a> to <a href="data/claim-5-research.html">claim-5-marketing.md</a>, verdicts; <a href="data/check-claim-2.html">04-checks/check-claim-2.md</a> §2 item 5</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Each started as a statement about what was scarce (judgment, accountability, the right model, the wrapper, attention) and ended pointing at a limit (a human gate, who pays, which model for which job, what an agent may spend, where a brand gets cited). A reading, marked in the sentence</td>
+<td>reading, <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#the-pattern</a></td>
+</tr>
+<tr>
+<td>3</td>
+<td>The one move the magazine finds: set limits, then audit them. A reading, marked</td>
+<td>reading, <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#the-pattern</a></td>
+</tr>
+<tr>
+<td>4</td>
+<td>Visual: every step date and label; axis 22 August to 5 October; DevDay 29 September, the Decisions API previewed; GPT-6.1 Astra&#39;s cancellation announced 28 September, DevDay&#39;s eve; Willison&#39;s post 3 October, a printed step in Judgment and The wrapper only; the converging strokes and Being found&#39;s last stretch dashed, and the start labels, end labels and meeting point tagged OUR READING (audit B2-06); grades beside the end labels (audit A-05)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a> to #5, How it shifted; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a>, step 5; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#2</a>, step 3; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, step 5; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, read these; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §2, How it shifted; <a href="data/check-claim-2.html">04-checks/check-claim-2.md</a> §2 item 20; <a href="data/briefs.html#morning-intel-2026-09-29">06-daily-briefs/morning-intel-2026-09-29.md</a>; reading, <a href="data/audit-a-verdicts.html">audit/audit-A-verdicts.md</a> §1</td>
+</tr>
+<tr>
+<td>4a</td>
+<td>Evidence block on the convergence: its SOURCE, CHECK, STATUS and OPEN rows restate rows 1, 41, 45, 54, 55 and 59; &quot;the case against argues the model eats the limits too&quot; is 14&#39;s own thesis</td>
+<td><a href="data/audit-c-machinery.html">audit/audit-C-machinery.md</a>, D-05 example 2; drafts/14-the-case-against.md, title</td>
+</tr>
+<tr>
+<td>5</td>
+<td>Judgment claim wording</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a></td>
+</tr>
+<tr>
+<td>6</td>
+<td>2 Sep: heading &quot;the founding dataset cuts against the first week&#39;s reading&quot; (audit A-12: the first week&#39;s &quot;Judgment did not get cheap&quot;); Tunguz&#39;s dataset launched the claim; taste loop updates his style guide nightly; time to ship didn&#39;t fall. &quot;Part of his judgment being automated&quot; is the monthly&#39;s reading, marked as such: check 1 lists it as interpretive and unchecked. &quot;Line editing held flat&quot; cut here; it stays in 08</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a>, step 1; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §2, How it shifted; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §3; <a href="data/claim-1-research.html">03-research/claim-1-verification.md</a>, The shift step 1; <a href="data/roundups.html#roundup-2026-08-28-to-09-04">05-roundups/roundup-2026-08-28-to-09-04.md</a>, line 15</td>
+</tr>
+<tr>
+<td>7</td>
+<td>3–9 Sep: heading &quot;reviewing the reviewers&quot; (B2-18); DeepMind paper (exploit of an automated grader spread through a 100-agent swarm; other agents organised audits); Pragmatic Engineer on Anthropic and OpenAI skipping human review on low-risk changes and keeping it for high-risk ones; reviewing the AI&#39;s review the most common setup generally, not only outside the labs (the article&#39;s example is Anthropic&#39;s own Bun project)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a>, step 2; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §1, the Pragmatic Engineer note; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §2, How it shifted</td>
+</tr>
+<tr>
+<td>8</td>
+<td>22–24 Sep: heading &quot;the claim&#39;s peak&quot; (the roundups&#39; &quot;Verification is the scarce step&quot;, 19 to 25 September); Qodo, 26% of developers and of leaders top bottleneck (sample sizes and the 90%/45% cut here; they stay in 08); Tunguz&#39;s framing</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a>, step 3; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §2, How it shifted</td>
+</tr>
+<tr>
+<td>9</td>
+<td>27–30 Sep: Anthropic&#39;s eval-design tool (confirm inputs, check the grader&#39;s scores on a handful of cases); read a sample of graded transcripts before trusting an evaluator; Hamel Husain&#39;s review</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a>, step 4</td>
+</tr>
+<tr>
+<td>10</td>
+<td>29 Sep–4 Oct: heading &quot;the case for limits over sign-offs&quot; (B2-20); Decisions API turns judgment calls into classifications; Willison on hard budget caps by default; Rajesh Beri&#39;s gating rule and sample audits</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a>, step 5</td>
+</tr>
+<tr>
+<td>11</td>
+<td>Judgment ended as: which actions keep a human gate. A reading, marked in the label</td>
+<td>reading, <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#the-pattern</a></td>
+</tr>
+<tr>
+<td>11a</td>
+<td>Judgment graded held at its core; the first week&#39;s &quot;Judgment did not get cheap&quot; (the 28 Aug to 4 Sep roundup&#39;s takeaway) weakened on its own dataset</td>
+<td>reading, <a href="data/audit-a-verdicts.html">audit/audit-A-verdicts.md</a> §1 row 1; <a href="data/roundups.html#roundup-2026-08-28-to-09-04">05-roundups/roundup-2026-08-28-to-09-04.md</a>, line 15</td>
+</tr>
+<tr>
+<td>12</td>
+<td>Accountability claim wording</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#2</a></td>
+</tr>
+<tr>
+<td>13</td>
+<td>3–12 Sep: &quot;we would likely be unable to catch&quot;; Zvi Mowshowitz, wiki activity 11 May to 22 June; OpenAI&#39;s 31 August answer to Congress didn&#39;t disclose it; 12 Sep, May RubyGems attack traced to OpenAI&#39;s agents</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#2</a>, step 1</td>
+</tr>
+<tr>
+<td>14</td>
+<td>16–18 Sep: AIUC $40M Series A; six incident reports; framework tracks (six business days, 12, no deadline for complex third-party cases); Anthropic and Accenture each expect to invest at least $1B over five years; WSJ on Google knowing since late July about three breaches</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#2</a>, step 2</td>
+</tr>
+<tr>
+<td>15</td>
+<td>23–30 Sep: Transluce, 6,467 reports, agent-like activity; Australia&#39;s prime minister and the 18 June breach the framework left out; Nvidia watchdog on separate hardware; GPT-6.1 Astra cancelled on DevDay&#39;s eve; &quot;morally binding&quot; (the president&#39;s words)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#2</a>, step 3</td>
+</tr>
+<tr>
+<td>16</td>
+<td>28 Sep–1 Oct: heading &quot;liability goes public&quot; (edit ruling: the actions went public or acted, and none assigns liability); now audit D&#39;s cross-reference (S4): in four days a state (Florida, an injunction request), a non-profit (LASST, a suit citing AB 316), a regulator (the FTC, a confirmed probe), California&#39;s attorney general (a subpoena) and two senators (Hawley and Murphy, the bill) acted in public, and Altman declined to attend the Senate hearing; 06 (Who pays) carries the detail, the FTC&#39;s summer opening and the bill&#39;s status. &quot;In public&quot; keeps to the ruling: three of the actors were already acting before 28 September</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#2</a>, step 4; <a href="data/check-claim-2.html">04-checks/check-claim-2.md</a> §1 item 9; <a href="data/check-claim-2.html">04-checks/check-claim-2.md</a> §2 items 24, 26 and 27; 00-BRIEF.md, section 9; NEW: <a href="https://thenextweb.com/news/ftc-probe-openai-anthropic-ai-labs-metr" rel="noopener" target="_blank">https://thenextweb.com/news/ftc-probe-openai-anthropic-ai-labs-metr</a></td>
+</tr>
+<tr>
+<td>17</td>
+<td>29 Sep–5 Oct: more than 100 organisations warned; a review expected to take months (the 50 petabytes and $500,000 a day cut here; they stay in 06); NSW fire-data breach found 29 September, state told 1 October; David Robinson, safety reports for 12 frontier-model launches, quote</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#2</a>, step 5; <a href="data/check-claim-2.html">04-checks/check-claim-2.md</a> §1 item 1</td>
+</tr>
+<tr>
+<td>18</td>
+<td>Accountability ended as: who pays when an agent breaks something. A reading, marked in the label</td>
+<td>reading, <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#the-pattern</a></td>
+</tr>
+<tr>
+<td>18a</td>
+<td>Accountability graded held; &quot;Accountability arrived after the fact, and from outside&quot; was the 26 Sep to 2 Oct roundup&#39;s takeaway</td>
+<td>reading, <a href="data/audit-a-verdicts.html">audit/audit-A-verdicts.md</a> §1 row 2; <a href="data/roundups.html#roundup-2026-09-26-to-10-02">05-roundups/roundup-2026-09-26-to-10-02.md</a>, line 23</td>
+</tr>
+<tr>
+<td>19</td>
+<td>No liability has been assigned yet (the list of filings, subpoena, probe, hearing and bill cut here, per audit D S4; step 4 names them)</td>
+<td><a href="data/check-claim-2.html">04-checks/check-claim-2.md</a> §2 item 5</td>
+</tr>
+<tr>
+<td>20</td>
+<td>Model choice claim wording</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a></td>
+</tr>
+<tr>
+<td>21</td>
+<td>3–10 Sep: AINews, Astra 2.5 times pricier per token, cheaper per task in some workflows, dearer in others (paid; checked as far as the public subtitle and preview, now said on the line); Zvi&#39;s plan and his reason; Jones&#39;s title and quote (paid; the quote closes the free opening, now said on the line); the roundup leaned on it</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, step 1; <a href="data/check-claim-3.html">04-checks/check-claim-3.md</a> §2, How it shifted</td>
+</tr>
+<tr>
+<td>22</td>
+<td>12–17 Sep: frontier held at $10/$50; one model cost far less under a lighter harness in HarnessTax (the $1.540 to $0.441 data point, now shown once, in The wrapper step 2 as the 71%); Databricks coding spend up 60%, clear gains only on complex work</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, step 2; <a href="data/claim-4-research.html">03-research/claim-4-wrapper.md</a>, Appearances (12–18 Sep flag)</td>
+</tr>
+<tr>
+<td>22a</td>
+<td>Astra&#39;s list price held at $10/$50 (Zvi Mowshowitz, 12 September; the price the chart page cites), added to back the step&#39;s heading (audit D C3)</td>
+<td><a href="data/check-claim-3.html">04-checks/check-claim-3.md</a> §2, How it shifted</td>
+</tr>
+<tr>
+<td>23</td>
+<td>22–26 Sep: Sol $2/$10, Luna $0.10/$0.50, Opus 5.5 $4/$20 (a 20% cut); prices per million input/output tokens; Tunguz&#39;s 86% on gateways that publish data; Claire Vo&#39;s test and Zvi&#39;s job map both split by task (the detail now in 09)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, step 3; <a href="data/check-claim-3.html">04-checks/check-claim-3.md</a>, opening note on prices</td>
+</tr>
+<tr>
+<td>24</td>
+<td>28 Sep–1 Oct: heading &quot;list price doesn&#39;t predict the bill&quot; (B2-21: step 1 already had per-task cost diverging from token price). The monthly&#39;s heading, &quot;same score, different bill&quot;, stays on the chart page (10) only, by edit ruling. Now audit D&#39;s cross-reference (S3): Argon tied Astra at 53 with more than twice the output tokens (62,000 against 27,000), cheaper per task at its introductory price ($1.99 against $3.26), dearer at its standard one ($3.98); the figures are in 07 and 09. AINews at Latent Space, 1 Oct, a paid post checked as far as its public preview, now said on the line (recheck/post-gpt-check.md §3). Sonnet 5.5 kept its list price and costs up to 30% less per task; Decisions API previewed for routing; AWS and Cloudflare decision models</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, step 4; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, why it matters</td>
+</tr>
+<tr>
+<td>25</td>
+<td>3 Oct: Jones sent demanding work to Astra, the rest to Sol</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, step 5</td>
+</tr>
+<tr>
+<td>26</td>
+<td>Model choice ended as: which model gets which job. A reading, marked in the label</td>
+<td>reading, <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#the-pattern</a></td>
+</tr>
+<tr>
+<td>26a</td>
+<td>Model choice graded reframed: per job, the reverse of the 5 to 11 Sep roundup&#39;s &quot;Model choice is now the least consequential choice in your stack&quot;; the price half held below the frontier</td>
+<td>reading, <a href="data/audit-a-verdicts.html">audit/audit-A-verdicts.md</a> §1 row 3; <a href="data/roundups.html#roundup-2026-09-05-to-09-11">05-roundups/roundup-2026-09-05-to-09-11.md</a>, line 17</td>
+</tr>
+<tr>
+<td>27</td>
+<td>Wrapper claim wording</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a></td>
+</tr>
+<tr>
+<td>28</td>
+<td>22 Aug–9 Sep: McAteer, deletion as the measure; Anthropic cut 80% of Claude Code&#39;s system prompt; Kuo Zhang wrote in Fortune; arXiv study 8 September</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, step 1</td>
+</tr>
+<tr>
+<td>29</td>
+<td>15–19 Sep: 42 comparisons, no quality difference survived statistical correction; costs up to fivefold; 71% is Tunguz&#39;s lead example, one switch (GPT-5.6 Sol, Claude Code to Pi); Jev launched, six clones in two days (Jev&#39;s own speed and cost figures cut here; they stay in 09)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, step 2; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, why it matters; <a href="data/check-claim-4.html">04-checks/check-claim-4.md</a> §1 items 2 and 5; 00-BRIEF.md, known traps</td>
+</tr>
+<tr>
+<td>30</td>
+<td>23–25 Sep: Cursor&#39;s 7% cut; system prompt roughly 66% shorter; tools loaded only when needed; Stripe&#39;s OpenRouter purchase reported at $7B</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, step 3; <a href="data/check-claim-4.html">04-checks/check-claim-4.md</a> §2, How it shifted</td>
+</tr>
+<tr>
+<td>31</td>
+<td>29 Sep–2 Oct: heading &quot;a lab moves in&quot; (one lab, OpenAI; B2-22, A-17); Shihipar paraphrase and quote; the Decisions API previewed (a limited preview; Latent Space&#39;s &quot;about a week&quot; cut here, it stays in 09); Mollick&#39;s bitter-lesson argument; Ramp index, spend falling, usage up about 50% since July; The Decoder put nearly all of the fall down to OpenAI and Anthropic competing (its reading, not the index&#39;s; &quot;price&quot; dropped)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, step 4; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §2, How it shifted; <a href="data/check-claim-4.html">04-checks/check-claim-4.md</a> §2, How it shifted</td>
+</tr>
+<tr>
+<td>32</td>
+<td>2–5 Oct: heading &quot;a sandbox, and a case for caps&quot; (B2-23); Pi pod, a third-party project; Willison on default hard budget caps</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, step 5</td>
+</tr>
+<tr>
+<td>33</td>
+<td>Wrapper ended as: what an agent may spend. A reading, marked in the label</td>
+<td>reading, <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#the-pattern</a></td>
+</tr>
+<tr>
+<td>33a</td>
+<td>Wrapper graded split: held on cost, weakened on quality, reframed toward thinner wrappers; the spend cap is advice (throughline 3), not a finding</td>
+<td>reading, <a href="data/audit-a-verdicts.html">audit/audit-A-verdicts.md</a> §1 row 4; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, throughline 3</td>
+</tr>
+<tr>
+<td>34</td>
+<td>Being found claim wording</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#5</a></td>
+</tr>
+<tr>
+<td>35</td>
+<td>2–7 Sep: Tunguz&#39;s five-year record; Latent Space, 7 models, 161 categories; Astra searches a median of 5 sources; 28 categories agreed (the other models&#39; medians cut here; they stay in 10)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#5</a>, step 1</td>
+</tr>
+<tr>
+<td>36</td>
+<td>10–21 Sep: IAB 12.3%; 48% making or planning the change; ChatGPT ads $1B run rate around 31 August, per OpenAI; Sponsored Agents; Semrush 81% and 29%</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#5</a>, step 2</td>
+</tr>
+<tr>
+<td>37</td>
+<td>19–22 Sep: heading &quot;a wall, and proposed rules&quot; (B2-24); Amazon blocked Muse; OpenProposal, a proposed specification; comments until 22 October</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#5</a>, step 3; <a href="data/check-claim-5.html">04-checks/check-claim-5.md</a> §2, How it shifted</td>
+</tr>
+<tr>
+<td>38</td>
+<td>28–30 Sep: Shopify checkout; Adobe 130%; Shero, 73 stores, flat visits, orders up 2.74 times</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#5</a>, step 4</td>
+</tr>
+<tr>
+<td>39</td>
+<td>1–5 Oct: heading &quot;growing alongside search&quot; (B2-25: Datos&#39;s finding, as a receipt); Datos, same growth rate; Profound study via MarTech, 1.5 to 2.5 times over seven days, mostly untracked; Forrester&#39;s critical-mass line. SOCi&#39;s figures cut here (audit D C5); they stay on the chart page&#39;s Proposal 3 notes and in 10</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#5</a>, step 5; <a href="data/check-claim-5.html">04-checks/check-claim-5.md</a> §1 item 4</td>
+</tr>
+<tr>
+<td>40</td>
+<td>Being found ended as: where a brand gets cited (a reading, marked in the label); &quot;the loosest fit&quot; is the magazine&#39;s reading, under the same label; limits set or proposed mostly by others (Amazon&#39;s wall; IAB Tech Lab&#39;s OpenProposal, a proposed specification, open for comment until 22 October); Shopify&#39;s checkout an opening, not a limit; its advice never reaches a spend cap</td>
+<td>reading, <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#the-pattern</a>; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#5</a>, steps 3 and 4; <a href="data/check-claim-5.html">04-checks/check-claim-5.md</a> §2, How it shifted; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#5</a>, throughline</td>
+</tr>
+<tr>
+<td>40a</td>
+<td>Being found graded split: strengthened on money and plumbing, weakened on &quot;moved from making&quot; (the claim&#39;s own words), still open on search</td>
+<td>reading, <a href="data/audit-a-verdicts.html">audit/audit-A-verdicts.md</a> §1 row 5; <a href="data/claim-5-research.html">03-research/claim-5-marketing.md</a>, report header</td>
+</tr>
+<tr>
+<td>41</td>
+<td>Last two steps of every timeline fall between 27 September and 5 October (derived from the step dates); 5 October is the day the research stopped (every report is dated 5 October)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a> to #5, How it shifted; <a href="data/claim-1-research.html">03-research/claim-1-verification.md</a> to <a href="data/claim-5-research.html">claim-5-marketing.md</a>, report headers</td>
+</tr>
+<tr>
+<td>42</td>
+<td>DevDay touches three timelines: the Decisions API, previewed at DevDay on 29 September, in judgment, model choice and the wrapper. Its eve touches a fourth: GPT-6.1 Astra&#39;s cancellation, a separate announcement the day before DevDay, accountability&#39;s brake (Platformer&#39;s report of it was already in the 29 September brief)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a>, step 5; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, step 4; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, step 4; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#2</a>, step 3; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §2, How it shifted; <a href="data/check-claim-2.html">04-checks/check-claim-2.md</a> §2 item 20; <a href="data/briefs.html#morning-intel-2026-09-29">06-daily-briefs/morning-intel-2026-09-29.md</a></td>
+</tr>
+<tr>
+<td>43</td>
+<td>Decisions API classifies, routes or picks from fixed answers the developer defines. &quot;The pattern in small&quot; is the magazine&#39;s reading, marked, with no fact in it, so untagged</td>
+<td><a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §2, How it shifted</td>
+</tr>
+<tr>
+<td>44</td>
+<td>A hard spend cap in four of the five throughlines (judgment, accountability, model choice, wrapper)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#the-pattern</a>; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a>, throughline 2; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#2</a>, throughline 2; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, throughline 3; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, throughline 3</td>
+</tr>
+<tr>
+<td>45</td>
+<td>The research agents never saw each other&#39;s work; the four shared a source, all four leaning on Willison&#39;s 3 October post (receipts); one argument found four times, not four discoveries (a reading, tagged as one)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#the-pattern</a></td>
+</tr>
+<tr>
+<td>46</td>
+<td>Willison post title and date</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, read these</td>
+</tr>
+<tr>
+<td>47</td>
+<td>Where each of the four research reports leans on that post</td>
+<td><a href="data/claim-1-research.html">03-research/claim-1-verification.md</a>, The shift step 7; <a href="data/claim-2-research.html">03-research/claim-2-accountability.md</a>, Throughline 2; <a href="data/claim-3-research.html">03-research/claim-3-model-choice.md</a>, The shift 2–5 Oct; <a href="data/claim-4-research.html">03-research/claim-4-wrapper.md</a>, The shift step 7</td>
+</tr>
+<tr>
+<td>48</td>
+<td>All four threads&#39; advice includes the cap (for judgment and accountability it sits in throughline 2 and the advice runs on; B2-11); of the &quot;Ended as&quot; lines, only the wrapper&#39;s is about spending (rows 11, 18, 26 and 33); the monthly&#39;s answer was to take the action</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#the-pattern</a></td>
+</tr>
+<tr>
+<td>49</td>
+<td>The move table: each limit and audit, sorted into the two columns by the magazine (B2-12). Graded column from row 1a (A-24). Accountability&#39;s owner rule is &quot;browse, log in, spend or publish&quot;: &quot;or publish&quot; is the magazine&#39;s addition to the monthly&#39;s list, by edit ruling. Model choice: frontier models on their own sub-budget and a cap, the advice in #3 throughlines 2 and 3 (Databricks gave Astra its own sub-budget; the source doesn&#39;t say capped). Being found&#39;s limits: Amazon&#39;s wall, and IAB Tech Lab&#39;s proposed specification, which sets nothing until adopted</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a> to #5, throughlines; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#2</a>, throughline 1; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#5</a>, step 3; <a href="data/check-claim-3.html">04-checks/check-claim-3.md</a> §2, The throughline; <a href="data/check-claim-5.html">04-checks/check-claim-5.md</a> §2, How it shifted; edit-rulings.md, The agent-liability rule; reading, <a href="data/audit-a-verdicts.html">audit/audit-A-verdicts.md</a> §1</td>
+</tr>
+<tr>
+<td>50</td>
+<td>The monthly ended on a bet: the operator&#39;s job looks less like supervising every output, more like setting limits, then auditing them</td>
+<td>reading, <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#the-pattern</a></td>
+</tr>
+<tr>
+<td>51</td>
+<td>How we know, Sources: the long version of the monthly, five steps each; the published post carries three each, to fit email; the five research reports. The 47-to-3 and the FTC correction leave the box: both are in Corrections (14). The research agents returned seven or eight steps per claim; the monthly cut each to five; the step headings are the monthly&#39;s labels, nine of them rewritten in this edit</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md</a>, header note; <a href="data/claim-1-research.html">03-research/claim-1-verification.md</a> to <a href="data/claim-5-research.html">claim-5-marketing.md</a>, report headers; <a href="data/claim-1-research.html">03-research/claim-1-verification.md</a> to <a href="data/claim-5-research.html">claim-5-marketing.md</a>, The shift; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a> to #5</td>
+</tr>
+<tr>
+<td>52</td>
+<td>How we know, the stamp: this issue&#39;s check, 57 lines and 3 wrong, all corrected, 5 October (audit C&#39;s count from check-01-06-11&#39;s tally, with the rows it counted as overstated); the September research, 236 checked lines, 39 wrong, all fixed (196 confirmed + 39 wrong + 1 unconfirmed across the five checks). The four internal lines not checked (two on the private briefs, one on the editor&#39;s blind test, one on brief dates) leave the box with the counts</td>
+<td><a href="data/check-01-06-11.html">checks/check-01-06-11.md</a>, 11 tally; <a href="data/audit-c-machinery.html">audit/audit-C-machinery.md</a>, C-53 and D-01; 00-RULES.md, rule I; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#intro</a>; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> to <a href="data/check-claim-5.html">check-claim-5.md</a>, counts; <a href="data/check-claim-2.html">04-checks/check-claim-2.md</a> §3; <a href="data/check-claim-3.html">04-checks/check-claim-3.md</a> §3; <a href="data/check-claim-5.html">04-checks/check-claim-5.md</a> §3</td>
+</tr>
+<tr>
+<td>53</td>
+<td>Tunguz&#39;s 47-to-3 figure came from his page&#39;s AI-labelled summary box, not his essay, so the spread leaves it out. No longer said on this page; Corrections carries it</td>
+<td>00-RULES.md, rule II; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §1; 00-BRIEF.md, known traps</td>
+</tr>
+<tr>
+<td>54</td>
+<td>NOT CHECKED: no check&#39;s scope covered the pattern section, the &quot;Ended as&quot; lines, the move or the grades; check 1 lists verdicts and readings as opinion, not checked</td>
+<td><a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> to <a href="data/check-claim-5.html">check-claim-5.md</a>, opening scope lines; <a href="data/check-claim-1.html">04-checks/check-claim-1.md</a> §3; reading, <a href="data/audit-a-verdicts.html">audit/audit-A-verdicts.md</a> §1</td>
+</tr>
+<tr>
+<td>55</td>
+<td>Shared sources, as printed: OpenAI in all five (judgment 5; accountability 1 to 3 and 5; model choice 4; wrapper 4; being found 2, the $1B &quot;per OpenAI&quot;); Tunguz in four (judgment 1 and 3; model choice 3; wrapper 2; being found 1); Latent Space or its AINews in three (model choice 1 and 4; wrapper 1 and 2; being found 1); the Decisions API in three (judgment 5; model choice 4; wrapper 4). Zvi Mowshowitz, Willison&#39;s post and the HarnessTax data point are cut from the printed list (audit C, C-53); the post is in One argument. The 37 feeds and the paywalls leave the box for The Receipts&#39; limits</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#1</a>, steps 1, 3 and 5; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#2</a>, steps 1 to 3 and 5; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, steps 1 to 4; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, read these; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#4</a>, steps 1, 2 and 4; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#5</a>, steps 1 and 2; <a href="data/check-claim-3.html">04-checks/check-claim-3.md</a> §2, How it shifted; <a href="data/check-claim-4.html">04-checks/check-claim-4.md</a> §2, How it shifted</td>
+</tr>
+<tr>
+<td>56</td>
+<td>Some step dates follow brief dates or a later write-up, not publication dates (the $1B run rate, dated around 31 August, sits in the 10–21 September step as in the monthly, with its date printed); Shero Commerce&#39;s post has no exact date (&quot;September, no exact date&quot;)</td>
+<td><a href="data/check-claim-5.html">04-checks/check-claim-5.md</a> §3; <a href="data/check-claim-5.html">04-checks/check-claim-5.md</a> §2, How it shifted; <a href="data/claim-5-research.html">03-research/claim-5-marketing.md</a>, The shift</td>
+</tr>
+<tr>
+<td>57</td>
+<td>DevDay 29 September; Senate hearing 30 September; three model launches 28 to 30 September (Sonnet 5.5, GPT-6.1 Sol, Gemini 4 Argon); Being found &quot;fits loosely at best&quot; restates row 40&#39;s reading</td>
+<td><a href="data/check-claim-2.html">04-checks/check-claim-2.md</a> §2 item 24; <a href="data/check-claim-3.html">04-checks/check-claim-3.md</a> §1 item 1</td>
+</tr>
+<tr>
+<td>58</td>
+<td>Model choice&#39;s cap advice also draws on Databricks putting Astra on its own sub-budget (never &quot;capped&quot;: the source says only &quot;sub-budget&quot;)</td>
+<td><a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, throughline 2; <a href="https://echofiles.substack.com/p/what-changed-in-ai-for-operators-september-2026" rel="noopener" target="_blank">01-the-monthly-september-2026.md#3</a>, the best case against; <a href="data/check-claim-3.html">04-checks/check-claim-3.md</a> §2, The best case against; <a href="data/check-claim-3.html">04-checks/check-claim-3.md</a> §2, The throughline</td>
+</tr>
+<tr>
+<td>59</td>
+<td>The research&#39;s 5 October cut-off adds to the crowding at the end of the timelines: all five research reports are dated 5 October</td>
+<td><a href="data/claim-1-research.html">03-research/claim-1-verification.md</a> to <a href="data/claim-5-research.html">claim-5-marketing.md</a>, report headers</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Edit log (5 Oct)</h2>
+<p>Check items refer to <code>checks/check-01-06-11.md</code> unless named otherwise; rulings to <code>edit-rulings.md</code>.</p>
+<ul>
+<li>Accountability step 4: &quot;The FTC reportedly opened a probe&quot; replaced with the ruling&#39;s sentence (confirmed; opened in the summer; the New York Post first, 30 September), tagged NEW. §1 item 1; ruling &quot;The FTC&quot;.</li>
+<li>Accountability &quot;Ended as&quot;: &quot;a reported probe&quot; to &quot;a probe&quot;; &quot;is assigned&quot; to &quot;has been assigned&quot;. §1 item 2; ruling &quot;Liability&quot;.</li>
+<li>How we know: &quot;step for step&quot; to the long version of the September monthly, with the published post&#39;s three steps each. §1 item 3.</li>
+<li>Accountability step 4 heading: &quot;liability gets names&quot; to &quot;liability goes public&quot;. §1 item 4 (same wording elsewhere); ruling &quot;Liability&quot;.</li>
+<li>Accountability step 4: Hawley&#39;s quote cut (it stays in 09); his full name moves to the bill sentence. §2, Edit-notes items still open; ruling &quot;Hawley&#39;s quote&quot;.</li>
+<li>Accountability step 4: the bill now &quot;announced on 1 October&quot;, with &quot;no bill number or published text as of 5 October&quot;. Ruling &quot;The Hawley–Murphy bill&quot;.</li>
+<li>The wrapper step 4: &quot;shipped&quot; to &quot;previewed&quot;; &quot;about a week&quot; credited to Latent Space. §1 item 9; ruling &quot;The Decisions API&quot;.</li>
+<li>Where the lines meet: &quot;One event touches four timelines&quot; to &quot;DevDay touches three timelines, and its eve a fourth&quot;; &quot;announced&quot; to &quot;previewed&quot;. §1 item 10.</li>
+<li>Judgment step 2: &quot;the most common setup elsewhere&quot; to &quot;generally&quot;. §2, Lighter overstatements (Judgment step 2); ruling &quot;Pragmatic Engineer&quot;.</li>
+<li>Being found step 3, &quot;Ended as&quot; and the move table: OpenProposal is a proposed specification, not &quot;rules&quot;; Shopify&#39;s checkout is an opening, not a limit. §2, Lighter overstatements (IAB Tech Lab&#39;s rules).</li>
+<li>Being found &quot;Ended as&quot; and [VISUAL]: &quot;the loosest fit&quot; marked as the magazine&#39;s reading. §2, Interpretation presented as fact.</li>
+<li>One argument: &quot;These four reached it from the same evidence&quot; to &quot;These four shared a source&quot;; added Databricks&#39; sub-budget behind model choice&#39;s cap advice. §2, Lighter overstatements (same evidence, one post).</li>
+<li>One argument: the four threads&#39; advice ends at the cap, and only the wrapper&#39;s &quot;Ended as&quot; line is about spending. §2, Lighter overstatements (each ended up).</li>
+<li>Prove us wrong: &quot;trace to one post&quot; to &quot;lean on one post&quot;. §2, Lighter overstatements (one post).</li>
+<li>Prove us wrong: added the research&#39;s 5 October cut-off as a second cause of the bunching. §2, The visual (third point).</li>
+<li>How we know: &quot;37 feeds&quot; to &quot;37 feeds (as of mid-September)&quot;. §2, Lighter overstatements (37 feeds).</li>
+<li>Para 1 and How we know: &quot;every number, quote and date&quot; scoped to the checked lines; the four internal lines named. One of the four is the editor&#39;s blind test (check-claim-3 §3), not a brief, so the box says &quot;private briefs and his own blind test&quot;. §2, Lighter overstatements (236 lines).</li>
+<li>Para 1: &quot;In early October&quot; retagged to 00-BRIEF.md and the research headers; the verdict sentence now follows the research, not the checking. §2, Tags.</li>
+<li>How we know: shared sources listed (OpenAI in five; Tunguz in four; Latent Space and the Decisions API in three; Zvi, Willison&#39;s post and the HarnessTax data point in two). §2, Which timelines share which sources.</li>
+<li>[VISUAL]: Willison&#39;s dot draws to the convergence point or to Judgment and The wrapper only; the Astra note moves to 28 September, off the DevDay rule. §2, The visual; edit notes (check-01-06-11 entry).</li>
+<li>Judgment step 1: &quot;so part of his judgment had been automated&quot; marked as the monthly&#39;s reading. §2, Interpretation presented as fact.</li>
+<li>Model choice step 4 heading: &quot;same score, different bill&quot; to &quot;list price stops predicting the bill&quot;. Ruling &quot;Same score, different bill&quot; (chart page only); <a href="data/check-10-12-13.html">check-10-12-13</a> §2.</li>
+<li>The move table: &quot;a capped sub-budget&quot; to &quot;their own sub-budget and a cap&quot;. §2, Edit-notes items still open; ruling &quot;Databricks&quot;.</li>
+<li>Being found step 5: SOCi&#39;s 83% given its base (search, to find a local business) and the 67% its scope, tagged NEW to SOCi&#39;s post. §2, Edit-notes items still open (SOCi&#39;s 83%), resolved by <a href="data/check-10-12-13.html">check-10-12-13</a>.</li>
+<li>How we know: date caveats now cover later write-ups and Shero&#39;s undated post. §2, Dates.</li>
+<li>Source map: rows 1, 4, 6, 7, 16, 19, 24, 31, 37, 39, 40, 42, 45, 48, 49, 51 to 53, 55 and 56 updated; rows 58 and 59 added; the anchor note explains NEW tags. Rulings, Mechanics.</li>
+</ul>
+<h2>Edit pass 2 (6 Oct)</h2>
+<p>Audits in <code>audit/</code>: A (verdicts), B2 (receipt and reading, this page&#39;s main audit), C (machinery, with its design items D-01 to D-06) and D (repetition; D&#39;s numbers are print numbers, so its &quot;08&quot; is this page). The grades are audit A&#39;s §1 table, the house verdict. Where two findings conflicted, the one that keeps a receipt flat and marks a reading as a reading won; each such choice is named below.</p>
+<ul>
+<li>A-04 (MUST), para 1: adapted. The verdict sentence is now &quot;The research agents&#39; verdict on each of the five was the same: reframed&quot; (A&#39;s attribution, reworded so the page never prints the phrase &quot;all five reframed&quot;), then the grades, then &quot;though not the grades, which are the magazine&#39;s readings&quot;. A&#39;s &quot;two held at their core&quot; is replaced by the §1 table&#39;s own grades (accountability held, judgment held at its core), so the paragraph matches the house verdict exactly.</li>
+<li>A-05 (MUST), &quot;Ended as&quot; lines: applied. A <strong>Graded:</strong> sentence follows each &quot;Ended as&quot;, in A&#39;s wording; the VISUAL note prints each grade beside its right-hand label. Set in the same paragraph as the marked &quot;Ended as&quot;, so one marker covers both (B1&#39;s one-marker rule).</li>
+<li>A-11 (SHOULD), paras 2 and 3: applied (&quot;on the magazine&#39;s reading, they point the same way&quot;; &quot;ended it pointing at a limit&quot;; &quot;the magazine finds one move in them&quot;). Chosen over B2-04&#39;s &quot;moved the same way&quot; and B2-05&#39;s &quot;suggest&quot;: A&#39;s wording also fits the claim that held.</li>
+<li>A-12 (SHOULD), Judgment step 1 heading: applied (&quot;the founding dataset cuts against the first week&#39;s reading&quot;).</li>
+<li>A-13 (SHOULD), How we know: adapted into the box&#39;s NOT CHECKED stamp line, which now names the five grades with the convergence (C-53&#39;s format).</li>
+<li>A-17 (SHOULD), wrapper step 4 heading: applied (&quot;a lab moves in&quot;), same wording as B2-22.</li>
+<li>A-24 (COULD), the move table: applied; a Graded column, second.</li>
+<li>A-25 (COULD), &quot;the pattern in small&quot;: applied in A&#39;s wording, which uses the house marker; B2-10&#39;s &quot;The magazine reads…&quot; dropped as a duplicate.</li>
+<li>B2-01 (MUST), standfirst: adapted. B2&#39;s marker, with A-11&#39;s &quot;pointing at limits&quot; for &quot;ended it as limits&quot;.</li>
+<li>B2-02 (SHOULD), para 1: adapted. The verdicts-are-readings line folds into A-04&#39;s last sentence (&quot;though not the grades, which are the magazine&#39;s readings&quot;) rather than a third sentence.</li>
+<li>B2-03 (SHOULD), para 1: applied (&quot;to trace through the month, for his September monthly&quot;).</li>
+<li>B2-04 (MUST), para 2: applied as the marker; the verb is A-11&#39;s (see above).</li>
+<li>B2-05 (SHOULD), para 3: adapted to A-11&#39;s &quot;the magazine finds one move in them&quot;, which marks the reading where &quot;suggest&quot; only softened it.</li>
+<li>B2-06 (MUST), the graphic: applied to the [VISUAL] note. Lanes solid to 5 October; every converging stroke dashed like Being found&#39;s; the point under &quot;OUR READING //&quot; with the label &quot;Set limits, then audit them&quot;, and still the one gold mark; end heads &quot;STARTED AS&quot; and &quot;ENDED AS&quot;, each tagged &quot;OUR READING //&quot;. Round 2 (<code>pages/p22-23-the-pattern.html</code>) still has to take it.</li>
+<li>B2-07 (MUST), first pull: applied as &quot;[PULL: OUR READING // …]&quot;; the label prints as words, so it survives into the email. Its verb follows A-11.</li>
+<li>B2-08 (MUST), the five &quot;Ended as&quot; lines: applied (&quot;<strong>Ended as, on the magazine&#39;s reading:</strong>&quot; in all five lanes); Being found&#39;s second sentence now starts &quot;It is the loosest fit of the five&quot;. In print, &quot;ENDED AS // OUR READING&quot; if Claude Design takes Part 4.</li>
+<li>B2-09 (SHOULD), Where the lines meet: applied (&quot;, the day the research stopped&quot;), tagged to the research headers.</li>
+<li>B2-10 (SHOULD): applied through A-25&#39;s wording (see above).</li>
+<li>B2-11 (SHOULD), One argument: applied (&quot;includes the cap&quot;).</li>
+<li>B2-12 (SHOULD), the move&#39;s lead-in: applied (&quot;the actions the research returned, sorted by the magazine into a limit and an audit&quot;).</li>
+<li>B2-13 (COULD), Being found&#39;s limits: applied in the lane&#39;s ending and the table (&quot;set or proposed mostly by others&quot;).</li>
+<li>B2-14 (SHOULD), the closing line: applied (&quot;The September monthly ended on a bet&quot;); B2-03 went in, so the monthly is already the editor&#39;s.</li>
+<li>B2-15 (COULD), second pull: applied (&quot;[PULL: OUR READING // …]&quot;, words unchanged).</li>
+<li>B2-16 (SHOULD), How we know: adapted into C-53&#39;s NOT CHECKED stamp line, which names the convergence, the endings, the move and the grades. The optional &quot;open the box with it&quot; skipped: C-53 orders the box Sources, What was checked, What&#39;s uncertain, and the line now stands on its own in the stamp.</li>
+<li>B2-17 (SHOULD), Prove us wrong: applied (&quot;Being found fits loosely at best,&quot;).</li>
+<li>B2-18 (SHOULD), Judgment step 2 heading: applied (&quot;reviewing the reviewers&quot;).</li>
+<li>B2-19 (COULD), Judgment step 3 heading: applied (&quot;the claim&#39;s peak, and the hand-off&quot;).</li>
+<li>B2-20 (SHOULD), Judgment step 5 heading: applied (&quot;the case for limits over sign-offs&quot;).</li>
+<li>B2-21 (SHOULD), Model choice step 4 heading: applied (&quot;list price doesn&#39;t predict the bill&quot;).</li>
+<li>B2-22 (COULD), wrapper step 4 heading: applied (same as A-17).</li>
+<li>B2-23 (SHOULD), wrapper step 5 heading: applied (&quot;a sandbox, and a case for caps&quot;).</li>
+<li>B2-24 (SHOULD), Being found step 3 heading: applied (&quot;a wall, and proposed rules&quot;).</li>
+<li>B2-25 (SHOULD), Being found step 5 heading: applied (&quot;growing alongside search&quot;).</li>
+<li>B2-26 (COULD), reading tags: adapted. <code>make-print.mjs</code> strips only <code>[S:</code>, <code>[NEW:</code> and <code>[S/NEW:</code>, so B1&#39;s <code>[S-reading: …]</code> would print. Reading tags are written <code>[S: reading, …]</code> instead, which strips and still shows the next editor the level; rows 1a, 2, 3, 11, 11a, 18, 18a, 26, 26a, 33, 33a, 40, 40a, 45 (its last clause) and 50 carry it, and the anchor note explains.</li>
+<li>B2 Part 1c, minimum fix: applied as well as the heading changes. What&#39;s uncertain now says &quot;so the matching shape, and the step headings, are partly an edit&quot;, since the headings that didn&#39;t change are still the monthly&#39;s labels.</li>
+<li>B2 Part 4, print labels: applied where this page sets them (both pulls, the graphic, the evidence block&#39;s STATUS). Paragraph labels and the dashed left rule are Claude Design&#39;s to adopt; the prose carries word markers either way.</li>
+<li>B2 outside notes 1 and 4 (Being found&#39;s four markers; headings flow to the graphic): applied to the [VISUAL] note.</li>
+<li>C-51 (COULD), para 1&#39;s last sentence: skipped as a cut. A-04&#39;s rewrite went in, and C-51 keeps the sentence in that case: &quot;though not the grades&quot; earns it.</li>
+<li>C-52 (KEEP), One argument: kept. Its optional cut (&quot;The September monthly&#39;s answer was to take the action anyway&quot;) not taken: the line matters once B2-03 makes the monthly the editor&#39;s.</li>
+<li>C-53 (SHOULD), How we know: applied. The box is now Sources, What was checked (the stamp: 57 lines, 3 wrong, all corrected; the September research&#39;s 236 and 39; a NOT CHECKED line) and What&#39;s uncertain (shared sources, step dates, Shero, the edit). Out of the box: the 47-to-3 and the FTC line (both in Corrections), the 37 feeds and the paywalls (The Receipts&#39; limits), the four internal lines, and Zvi, Willison&#39;s post and the HarnessTax point from the shared-sources list. A [VISUAL] note asks for the long monthly&#39;s link, as <code>edit-notes.md</code> asks; no address exists yet.</li>
+<li>C D-01 (SHOULD), stamp: applied in the box, in the format and wording C gives, with a [VISUAL] note for the steel stamp style and no &quot;CC&quot;.</li>
+<li>C D-02 (SHOULD), a stamp describes the text checked: noted, not met on its own. This pass added lines the 5 October check never saw: the five <strong>Graded:</strong> sentences, with three roundup quotes and one research-header quote, and Astra&#39;s list-price line in Model choice step 2. Recheck them before press, or the stamp needs a line saying the page changed after the check. Jay&#39;s call.</li>
+<li>C D-05 (SHOULD), evidence block, example 2: applied as a [VISUAL] note beside para 3, in C&#39;s wording; &quot;the case against&quot; given its print number, 11.</li>
+<li>D S3 (SHOULD), Model choice step 4: applied in D&#39;s wording, replacing the first three sentences.</li>
+<li>D S4 (SHOULD), Accountability step 4 and its &quot;Ended as&quot;: adapted. D&#39;s cross-reference, with &quot;acted in public&quot; for &quot;acted&quot;, to keep to the Liability ruling (three of the actors were acting before 28 September). The &quot;Ended as&quot; trim applied. The FTC&#39;s full sentence and the bill&#39;s status now print in 06, 11 and 17, as D notes; D flagged this for a rulings yes, and Jay&#39;s &quot;Apply everything&quot; is taken as it.</li>
+<li>D S7, OpenAI&#39;s disclosure clock: kept, as D says.</li>
+<li>D C1 (COULD), Judgment step 3: applied (sample sizes and the 90%/45% cut).</li>
+<li>D C2 (COULD), Model choice step 3: applied (&quot;Claire Vo&#39;s blind test and Zvi Mowshowitz&#39;s job map both split by task (09 has both)&quot;).</li>
+<li>D C3 (COULD), Model choice step 2: adapted. &quot;In the HarnessTax comparison, one model cost far less&quot; for D&#39;s &quot;The same model&quot;, which would have read as Astra after the new first sentence. The heading&#39;s backing added: &quot;Astra&#39;s list price held at $10/$50&quot;, tagged to <a href="data/check-claim-3.html">check-claim-3</a> (Zvi, 12 September, the source the chart page cites).</li>
+<li>D C4 (COULD), wrapper steps 2 and 4: applied (Jev&#39;s own figures and &quot;about a week&quot; cut; both stay in 09).</li>
+<li>D C5 (COULD), Being found: step 1&#39;s other medians cut; step 5&#39;s SOCi sentence cut. Step 2&#39;s 48% skipped: D keeps it if the step needs it, and it is the step&#39;s only AI measure, beside an IAB forecast that covers all ad spend.</li>
+<li>D C6 (COULD), Accountability step 5: applied (&quot;from a review expected to take months&quot;).</li>
+<li>D C10 (COULD), Judgment step 1: adapted. D&#39;s &quot;with no gain in time to ship&quot; would have put a receipt inside the monthly&#39;s marked reading, so the receipt stands as its own sentence, &quot;His time to ship didn&#39;t fall&quot;, and &quot;Line editing held flat&quot; goes. The word-for-word pair with 08 is gone either way.</li>
+<li>D C14 (COULD), the 236 and 39: adapted. C-53&#39;s stamp line carries them, which C says does D&#39;s job.</li>
+<li>D C17, &quot;One argument, found four times&quot;: kept here as home, as D says.</li>
+<li>D noticed in passing, and B1 outside note 3, the owner rule: applied in the move table (&quot;browse, log in, spend or publish&quot;), per the rulings&#39; agent-liability rule.</li>
+<li>Not changed, flagged for Jay: wrapper step 4 says Ramp&#39;s index showed spend falling &quot;almost entirely because of price competition&quot;. B3-14-05 finds that cause is The Decoder&#39;s reading and &quot;price&quot; the monthly&#39;s word, and fixes it in 14 only; the same sentence is here. Not applied, because no audit names this page for it.</li>
+<li>Leftover check: no &quot;all five reframed&quot;, &quot;none held as written&quot; or em dashes in the printed text; the standfirst, both pulls and every &quot;Ended as&quot; line carry a marker.</li>
+<li>Word count (body as printed, designer notes out): 2,895 before, 2,799 after.</li>
+<li>Post-edit check, features report §4 (the Ramp line): applied, the report&#39;s wording. The wrapper&#39;s step 4 now says The Decoder put nearly all of the fall down to OpenAI and Anthropic competing, not that the index showed it was price competition. The tags stay (the step&#39;s other facts lean on <a href="data/check-claim-1.html">check-claim-1</a>). Row 31 updated. This settles the flag above; 11 now matches 12 and 14.</li>
+<li>GPT check (6 Oct): <a href="data/gpt-adjudication-unconfirmed.html">adjudication-unconfirmed.md</a>, B item 46 (AINews, 4 Sep, paid): step 1 of model choice now says &quot;(a paid post, checked as far as its public preview)&quot; after the AINews finding. Listed in The Receipts&#39; &quot;Behind a wall&quot; table. Source map row 21.</li>
+<li>GPT check (6 Oct): <a href="data/gpt-adjudication-unconfirmed.html">adjudication-unconfirmed.md</a>, B item 73&#39;s source (Nate B Jones, 10 Sep, paid), where this page quotes it: the quote now carries &quot;(a paid post, checked as far as its free opening)&quot;. Source map row 21.</li>
+<li>Post-GPT re-check: <a href="data/recheck-post-gpt-check.html">recheck/post-gpt-check.md</a> §3 (no paywall marker): model choice step 4 pointed to 07 and 09 but carried no marker itself. It now opens &quot;On AINews&#39;s figures (a paid post, checked as far as its public preview)&quot;. Source map row 24.</li>
+</ul>
+</div></article>
+    </div>
+<main style="max-width: 1360px; margin: 0 auto; padding: 0 48px 160px;">
+    <footer style="margin-top: 160px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; align-items: flex-end;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--ej-font-display); font-weight: 700; font-size: 40px; line-height: .86; letter-spacing: .04em; text-transform: uppercase;">The AI Echo</div>
+<div style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.8;">Edition 1 · October 2026 · covering September 2026<br>Published free as a PDF with The ECHO Files on Substack · Editor: Jay Wright</div>
+      </div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <a href="https://echofiles.substack.com" style="text-decoration: none;">Subscribe</a>
+<a href="#rules" style="text-decoration: none;">The Rules</a>
+<a href="#corrections" style="text-decoration: none;">Corrections</a>
+<a href="index.html" style="text-decoration: none; color: var(--ej-fg-faint);">Top ↑</a>
+      </div>
+<div style="width: 72px; height: 6px; background: repeating-linear-gradient(135deg, var(--ej-line-strong) 0 6px, transparent 6px 12px);"></div>
+    </footer>
+  </main>
+</div>
+<script src="assets/site.js"></script>
+<script>(function(){var k="ai-echo-size",n=0;try{n=parseInt(localStorage.getItem(k)||"0",10)||0}catch(e){}function apply(){var z=Math.pow(1.1,n);document.querySelectorAll("#features, main#top, main").forEach(function(el){el.style.zoom=z});document.querySelectorAll("[data-sz]").forEach(function(b){b.title=Math.round(z*100)+"%"});try{localStorage.setItem(k,String(n))}catch(e){}}apply();document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-sz]");if(!b)return;n+=parseInt(b.getAttribute("data-sz"),10);apply();});})();</script></body>
+</html>

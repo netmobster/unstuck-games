@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head><base href="/aiechomag/"><meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audit D: repetition, and a tease for The Operator's Page — The AI Echo, Edition 1</title>
+<meta name="description" content="A field magazine for people operating at the edge of AI. Edition 1, covering September 2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Source+Sans+3:wght@400;600;700&family=Share+Tech+Mono&display=swap">
+<link rel="stylesheet" href="assets/site.css"><link rel="stylesheet" href="assets/web.css">
+</head>
+<body style="margin: 0; background: var(--ej-bg);">
+<div id="root" data-theme="light" style="color: var(--ej-fg); font-family: var(--ej-font-body); background: var(--ej-bg);">
+
+  <nav style="position: sticky; top: 0; z-index: 20; background: var(--ej-bg); border-bottom: 1px solid var(--ej-line);">
+    <div style="max-width: 1360px; margin: 0 auto; padding: 14px 48px; display: flex; align-items: center; gap: 28px; flex-wrap: wrap;">
+      <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: var(--ej-fg);">
+        <span style="font-family: var(--ej-font-display); font-weight: 700; font-size: 22px; line-height: 1; letter-spacing: .05em; text-transform: uppercase;">The AI Echo</span>
+        <span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); border: 1px solid var(--ej-line-strong); padding: 3px 8px; white-space: nowrap; clip-path: polygon(0 0, calc(100% - 5px) 0, 100% 5px, 100% 100%, 0 100%);">№ 1 · Oct 2026</span>
+      </a>
+<div style="flex: 1 1 0; min-width: 0; display: flex; align-items: center; justify-content: flex-end; gap: 16px; margin-left: auto; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <span style="flex: 1 1 auto; min-width: 0; overflow: hidden; text-overflow: ellipsis; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); white-space: nowrap;">14 // What we got wrong, and what changed</span>
+        <button type="button" data-action="toggleRibbon" aria-expanded="true" style="flex: none; white-space: nowrap; font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="ribbonLabel">Hide sections</span></button>
+<button type="button" class="sz-btn" data-sz="-1" aria-label="Smaller text">A−</button><button type="button" class="sz-btn" data-sz="1" aria-label="Larger text">A+</button><button type="button" data-action="toggleTheme" style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-muted); background: transparent; border: 1px solid var(--ej-line-strong); border-radius: 0; padding: 3px 8px; cursor: pointer;"><span id="themeLabel">Dark</span></button>
+      </div>
+    </div>
+<div id="ribbon" style="display: block; border-top: 1px solid var(--ej-line); background: var(--ej-surface);">
+      <div aria-label="Edition 1 sections" data-ribbon="1" style="max-width: 1360px; margin: 0 auto; padding: 0 36px; display: flex; overflow-x: auto; overflow-y: hidden; scrollbar-width: thin;">
+        
+          <div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="index.html" data-selected="false" title="The AI Echo" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">№ 1 · Front</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The AI Echo</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Cover and contents</span>
+                </a>
+<a href="01-from-the-editors.html" data-selected="false" title="From the editors" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">01</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">From the editors</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The editor's letter</span>
+                </a>
+<a href="02-the-rules.html" data-selected="false" title="The Rules (DRAFT)" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">02</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Rules (DRAFT)</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Nine rules, each with its test</span>
+                </a>
+<a href="03-the-month.html" data-selected="false" title="The Month" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">03</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Month</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five claims, and how each fared</span>
+                </a>
+<a href="04-the-receipts.html" data-selected="false" title="The Receipts" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">04</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Receipts</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Method, pipeline and ledger</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Front of the book</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="05-who-checks-the-checker.html" data-selected="false" title="Who checks the checker?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">05</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who checks the checker?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">When people approve everything</span>
+                </a>
+<a href="06-who-pays-when-an-agent-breaks-something.html" data-selected="false" title="Who pays when an agent breaks something?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">06</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Who pays when an agent breaks something?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Six actions went public, after the fact</span>
+                </a>
+<a href="07-the-month-in-one-chart.html" data-selected="false" title="Same score, different bill" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">07</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Same score, different bill</span>
+                </a>
+<a href="08-the-pattern.html" data-selected="false" title="The Pattern" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">08</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Pattern</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five lanes into one point</span>
+                </a>
+<a href="09-what-does-a-task-cost.html" data-selected="false" title="What does a task cost?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">09</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What does a task cost?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Model choice, per job</span>
+                </a>
+<a href="10-how-do-you-get-found-when-a-machine-reads-first.html" data-selected="false" title="How do you get found when a machine reads first?" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">10</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">How do you get found when a machine reads first?</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Being found when AI reads first</span>
+                </a>
+<a href="11-the-case-against.html" data-selected="false" title="The case against" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">11</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The case against</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The steelman, and the reply</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Features</div>
+          </div>
+<div style="flex: none; display: flex; flex-direction: column; padding: 8px 12px 6px; border-right: 1px solid var(--ej-line);">
+            <div style="display: flex; gap: 2px; flex: 1;">
+              
+                <a href="12-the-operator.html" data-selected="false" title="The Operator" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">12</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Five field-guide cards</span>
+                </a>
+<a href="13-field-notes.html" data-selected="false" title="Field Notes: candidates" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">13</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Field Notes</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">A tool, a stop, an experiment</span>
+                </a>
+<a href="14-corrections.html" data-selected="true" title="Corrections" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid var(--ej-gold); border-radius: 0; background: var(--ej-bg); color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">14</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Corrections</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">What we got wrong, and what changed</span>
+                </a>
+<a href="15-prove-us-wrong.html" data-selected="false" title="Prove us wrong" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">15</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Prove us wrong</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Make the case against us</span>
+                </a>
+<a href="16-the-library.html" data-selected="false" title="The Library" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">16</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Library</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">Twenty-eight things to read</span>
+                </a>
+<a href="17-the-operators-page.html" data-selected="false" title="The Operator's Page" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">17</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Operator's Page</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">To do, to watch, one question</span>
+                </a>
+<a href="18-the-raw-data.html" data-selected="false" title="The Raw Data" style="width: 156px; display: flex; flex-direction: column; gap: 3px; text-align: left; padding: 8px 10px 7px; border: 0; border-bottom: 2px solid transparent; border-radius: 0; background: transparent; color: var(--ej-fg); cursor: pointer; transition: background .15s, border-color .15s;">
+                  <span style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-steel-text);">18</span>
+                  <span style="font-family: var(--ej-font-display); font-weight: 600; font-size: 17px; line-height: 1.05; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The Raw Data</span>
+                  <span style="font-size: 12px; line-height: 1.3; color: var(--ej-fg-muted); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;">The data behind the issue</span>
+                </a>
+              
+            </div>
+<div style="font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase; font-size: 10px; color: var(--ej-fg-faint); text-align: center; padding-top: 6px;">Back of the book</div>
+          </div>
+        
+      </div>
+    </div>
+<div id="progress" style="height: 2px; background: var(--ej-gold); width: 0.00%; transition: width .15s linear;"></div>
+  </nav>
+<main id="top" style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
+    
+  </main>
+<div id="corrections" data-theme="light" style="background: var(--ej-bg); color: var(--ej-fg); padding: 72px 0 0;">
+      <article class="dr"><p class="dr-crumb"><a href="data/index.html">The data room</a> // The audits</p><div class="dr-kick"><span class="dr-tab">DATA</span><span>// The audits</span></div><h1 class="dr-h1">Audit D: repetition, and a tease for The Operator's Page</h1><p class="dr-dek">Framing audit, 5 to 6 October</p><div class="dr-doc"><p><em>Edition 1, 5 October 2026. Answers the second red team&#39;s note (<code>second-red-team-2026-10-05.md</code>):
+&quot;trim some of the repeated stats between The Month, The Pattern and the features&quot;, and &quot;tease The
+Operator&#39;s Page near the front&quot;. Read-only audit of <code>print/</code> as of 23:29. Nothing in the edition
+was changed. Editors apply.</em></p>
+<h2>How to read this</h2>
+<p><strong>Section numbers are the issue&#39;s, with the print file in brackets.</strong> Line numbers are the print
+file&#39;s.</p>
+<table>
+<thead>
+<tr>
+<th>No.</th>
+<th>Section</th>
+<th>File</th>
+<th>No.</th>
+<th>Section</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>01</td>
+<td>From the editor</td>
+<td>print/04</td>
+<td>10</td>
+<td>How do you get found</td>
+<td>print/13</td>
+</tr>
+<tr>
+<td>02</td>
+<td>The Rules</td>
+<td>print/05</td>
+<td>11</td>
+<td>The case against</td>
+<td>print/14</td>
+</tr>
+<tr>
+<td>03</td>
+<td>The Month</td>
+<td>print/06</td>
+<td>12</td>
+<td>The Operator</td>
+<td>print/15</td>
+</tr>
+<tr>
+<td>04</td>
+<td>The Receipts</td>
+<td>print/07</td>
+<td>13</td>
+<td>Field Notes</td>
+<td>print/16</td>
+</tr>
+<tr>
+<td>05</td>
+<td>Who checks the checker?</td>
+<td>print/08</td>
+<td>14</td>
+<td>Corrections</td>
+<td>print/17</td>
+</tr>
+<tr>
+<td>06</td>
+<td>Who pays...?</td>
+<td>print/09</td>
+<td>15</td>
+<td>Prove us wrong</td>
+<td>print/18</td>
+</tr>
+<tr>
+<td>07</td>
+<td>The month in one chart</td>
+<td>print/10</td>
+<td>16</td>
+<td>The Library</td>
+<td>print/19</td>
+</tr>
+<tr>
+<td>08</td>
+<td>The Pattern</td>
+<td>print/11</td>
+<td>17</td>
+<td>The Operator&#39;s Page</td>
+<td>print/20</td>
+</tr>
+<tr>
+<td>09</td>
+<td>What does a task cost?</td>
+<td>print/12</td>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<p><strong>Actions.</strong> <em>Keep</em>: the repeat does work where it is. <em>Cross-refer</em>: replace it with a short
+pointer (text given). <em>Cut</em>: remove it. <strong>SHOULD</strong> means a reader gets the same number twice for
+no new reason and it costs real space. <strong>COULD</strong> is a tidy-up.</p>
+<p><strong>Left alone on purpose.</strong> The Month compresses, The Pattern traces, Prove us wrong collects, and
+The Operator&#39;s Page boils down. Those repeats are listed at the end as kept, not flagged. Pull
+quotes that repeat their own body text are by design and aren&#39;t counted.</p>
+<p><strong>The rulings hold.</strong> Hawley&#39;s quote is only in 06, &quot;Same score, different bill&quot; only in 07, and
+&quot;When people approve nearly everything&quot; only in 05. Some proposals below shorten a ruled sentence
+(the FTC line, the bill&#39;s status); those are marked, so whoever owns <code>edit-rulings.md</code> can say yes.</p>
+<h2>Summary</h2>
+<ul>
+<li><strong>Repeats logged: 46</strong> (facts, or tight groups of facts, in more than one section): 7 SHOULD, 17 COULD, 22 kept.</li>
+<li><strong>Space the SHOULDs free up: about 1,150 words.</strong> The COULDs add about 450 more.</li>
+<li><strong>The five that cost the most space:</strong><ol>
+<li><strong>S1. The roundup corrections are printed twice:</strong> in full in 13 Field Notes and again in 14 Corrections. About 530 words.</li>
+<li><strong>S2. The features&#39; to-do lists repeat The Operator:</strong> 09&#39;s six steps and 10&#39;s four steps, nearly word for word. About 300 words.</li>
+<li><strong>S4 and S5. The four days in Washington:</strong> told in 06, then again in The Pattern, the case against and The Operator. In 11 and 12 it&#39;s the same two sentences, word for word. About 120 words.</li>
+<li><strong>S3. Argon against Astra:</strong> 53, 62,000 to 27,000, $1.99, $3.26, $3.98, in 08, 09 (twice), 11 and 12. 07 already charts them. About 130 words.</li>
+<li><strong>C13. Corrections&#39; duplicate entries:</strong> the five rungs is corrected three times, and four more errors twice each. About 100 words. This one is COULD: each entry records a separate publication, so a merge has to keep each one named.</li>
+</ol>
+</li>
+</ul>
+<hr>
+<h2>SHOULD</h2>
+<h3>S1. The roundup corrections, printed twice</h3>
+<p><strong>The facts:</strong> Meta&#39;s 92% is a discount, not a premium. OpenAI disclosed 3.1 agent-workdays, not
+3.14. Cutler built his map by hand. ZCode had already been fixed.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Quote</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>13 Field Notes, l129 to 137, &quot;Found while checking: corrections for the roundups&quot; (441 words)</td>
+<td>&quot;Meta&#39;s 92% is a discount, not a premium.&quot; &quot;OpenAI disclosed 3.1, not 3.14&quot;</td>
+</tr>
+<tr>
+<td>13 Field Notes, l122, &quot;Checked and set aside&quot; (about 90 words)</td>
+<td>&quot;OpenAI&#39;s agent-workdays figure: 3.1, now confirmed... If it runs, print 3.1.&quot;</td>
+</tr>
+<tr>
+<td>14 Corrections, l99 to 106, &quot;In the weekly roundups, found since&quot; (about 200 words)</td>
+<td>&quot;Meta&#39;s 92% was backwards&quot; ... &quot;OpenAI disclosed 3.1, not 3.14&quot;</td>
+</tr>
+</tbody></table>
+<p><strong>Home: 14 Corrections.</strong> That&#39;s where the issue says corrections run.</p>
+<ul>
+<li><strong>13: cut</strong> both blocks from the print copy. They&#39;re the desk&#39;s working notes, and 14 carries
+all four verdicts. If Number B (Meta) or Stop A (ZCode) is the pick, keep one line under it
+instead:<ul>
+<li>Meta: &quot;We got this backwards in the 28 Aug to 4 Sep roundup. The correction is in 14.&quot;</li>
+<li>ZCode: &quot;Our 19 to 25 Sep roundup missed the fix. The correction is in 14.&quot;</li>
+</ul>
+</li>
+<li>13 is still a candidates page, and most of its apparatus goes once Jay picks. This makes the cut
+explicit, so the duplicate doesn&#39;t survive into layout.</li>
+</ul>
+<p><strong>Saves:</strong> about 530 words.</p>
+<h3>S2. The features&#39; to-do lists repeat The Operator</h3>
+<p><strong>The facts:</strong></p>
+<ul>
+<li>Price your three most frequent jobs per accepted output, on two $2/$10 models (Sonnet 5.5 and
+GPT-6.1 Sol).</li>
+<li>Keep the model and change the harness (Pi).</li>
+<li>Do a deletion pass.</li>
+<li>Give the $10/$50 models a sub-budget, as Databricks did.</li>
+<li>Send labels and routes to a cheap decision model.</li>
+<li>Build an eval from 10 to 20 past outputs.</li>
+<li>Every week, put your top 20 buyer questions to five named tools.</li>
+<li>Date your mentions and watch the following seven days.</li>
+<li>Add an AI option to &quot;how did you hear about us&quot;.</li>
+<li>Tidy your structured data, and test your checkout with browser agents.</li>
+<li>Comment on OpenProposal by 22 October.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Quote</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>09 Task cost, l71 to 78, &quot;The operator&#39;s tool&quot; (206 words)</td>
+<td>&quot;Re-price your three most frequent AI jobs per accepted output, not per token. Run each on two $2/$10 models, such as Sonnet 5.5 and GPT-6.1 Sol&quot;</td>
+</tr>
+<tr>
+<td>10 Found, l59 to 68, &quot;What to do this month&quot; (165 words)</td>
+<td>&quot;Every week, run your top 20 buyer questions through ChatGPT, Gemini, Claude, Perplexity and Google&#39;s AI Mode&quot;</td>
+</tr>
+<tr>
+<td>12 Operator: Model routing 1 to 5, Spend caps 2 and 4, Being found 1 to 4</td>
+<td>&quot;Take your three most frequent AI jobs and price each per accepted output. Run each on two $2/$10 models, Sonnet 5.5 and GPT-6.1 Sol&quot; / &quot;Run your top 20 buyer questions through ChatGPT, Gemini, Claude, Perplexity and Google&#39;s AI Mode&quot;</td>
+</tr>
+<tr>
+<td>17 Operator&#39;s Page, Do 3</td>
+<td>&quot;Put your top 20 buyer questions to five AI tools every week&quot;</td>
+</tr>
+</tbody></table>
+<p><strong>Home: 12 The Operator.</strong> 05 already shows the pattern: its &quot;On Monday&quot; names three actions in
+one sentence, then points to the field guide.</p>
+<ul>
+<li><strong>09: cross-refer.</strong> Replace l71 to 78 with:<blockquote>
+<p>Put the month together and the operator&#39;s tool is a routing table: one row per job, with a default model, a trigger for escalating to a bigger one, a cost per accepted output and a spend cap. The Operator&#39;s guides to model routing and spend caps, in 12, set out how to build one.</p>
+</blockquote>
+Keep the routing-table visual and the two paragraphs after it.</li>
+<li><strong>10: cross-refer.</strong> Replace l61 to 66 with:<blockquote>
+<p>If you moved budget out of search to chase AI visibility, the data doesn&#39;t back you yet. What it does support is measuring the new channel properly, and The Operator&#39;s guide to being found, in 12, sets out the weekly log.</p>
+</blockquote>
+Keep the closing &quot;Plan for two readers&quot; line. <strong>One knock-on fix:</strong> l43 says &quot;That is why the
+advice below has you date your mentions&quot;. Make it &quot;That is why The Operator&#39;s guide (12) has you
+date your mentions and watch direct and organic traffic for the week after.&quot;</li>
+<li><strong>17: keep.</strong> It&#39;s the boil-down.</li>
+</ul>
+<p><strong>Saves:</strong> about 300 words. Both features stay above the 1,500-word body floor, but the editors
+should measure.</p>
+<h3>S3. Argon against Astra</h3>
+<p><strong>The facts:</strong></p>
+<ul>
+<li>Both models score 53.</li>
+<li>Argon averages 62,000 output tokens a task to Astra&#39;s 27,000.</li>
+<li>Argon costs $1.99 a task at its introductory price, a fifth of Astra&#39;s per token. Astra costs $3.26.</li>
+<li>Argon would cost $3.98 a task at its standard price.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Quote</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>03 Month, l11</td>
+<td>&quot;matched GPT-6 Astra&#39;s score... with more than twice the output tokens, yet cost less per task at its introductory price&quot;</td>
+</tr>
+<tr>
+<td>07 Chart</td>
+<td>the full table, under &quot;Same score, different bill&quot;</td>
+</tr>
+<tr>
+<td>08 Pattern, Model choice step 4, l48</td>
+<td>&quot;matched Astra at 53... 62,000 output tokens per task to Astra&#39;s 27,000... $1.99 a task against Astra&#39;s $3.26... $3.98&quot;</td>
+</tr>
+<tr>
+<td>09 Task cost, l25 and again l27</td>
+<td>l25: &quot;averaged 62,000 output tokens per task to Astra&#39;s 27,000&quot;. l27: &quot;(62,000 output tokens to Astra&#39;s 27,000)&quot;</td>
+</tr>
+<tr>
+<td>11 Case against, l45</td>
+<td>&quot;matched Astra at 53... 62,000 output tokens a task to Astra&#39;s 27,000... $1.99 a task to Astra&#39;s $3.26&quot;</td>
+</tr>
+<tr>
+<td>12 Operator, Model routing 1, l21</td>
+<td>&quot;matched GPT-6 Astra at 53... 62,000 output tokens a task to Astra&#39;s 27,000&quot;</td>
+</tr>
+<tr>
+<td>14 Corrections, l34</td>
+<td>&quot;$3.98 a task, more than GPT-6 Astra&#39;s $3.26&quot;</td>
+</tr>
+<tr>
+<td>17 Operator&#39;s Page, Watch 3</td>
+<td>&quot;At its $4/$20 standard price it would cost $3.98 a task, more than Astra&#39;s $3.26.&quot;</td>
+</tr>
+</tbody></table>
+<p><strong>Home: 09</strong> (&quot;Argon&#39;s three prices&quot;), with 07 as its picture.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>03</td>
+<td>Keep: it has no figures.</td>
+</tr>
+<tr>
+<td>07</td>
+<td>Keep.</td>
+</tr>
+<tr>
+<td>14</td>
+<td>Keep: it&#39;s the record.</td>
+</tr>
+<tr>
+<td>17</td>
+<td>Keep: it&#39;s a watch item about access and price.</td>
+</tr>
+<tr>
+<td>08, step 4</td>
+<td>Cross-refer. Replace its first three sentences with the text below.</td>
+</tr>
+<tr>
+<td>09, l27</td>
+<td>Cut the repeat inside the piece, using the text below.</td>
+</tr>
+<tr>
+<td>11, l45</td>
+<td>Cross-refer, using the text below. Its &quot;about three-fifths as much&quot; isn&#39;t needed for the point it makes.</td>
+</tr>
+<tr>
+<td>12, Model routing 1</td>
+<td>Cross-refer. Replace the last sentence with the text below.</td>
+</tr>
+</tbody></table>
+<ul>
+<li><strong>08, step 4:</strong> &quot;Gemini 4 Argon tied Astra on Artificial Analysis&#39;s index while burning more than twice the output tokens: cheaper per task at its introductory price, dearer at its standard one (07 and 09 have the figures).&quot;</li>
+<li><strong>09, l27:</strong> &quot;On these numbers Argon beats Astra per task only while the discount lasts, because it burns far more tokens to reach the same score.&quot;</li>
+<li><strong>11, l45:</strong> &quot;Gemini 4 Argon tied Astra on score and burned more than twice the output tokens to get there; 07 has the bill. Google set the price and the model set the token count; the operator set neither.&quot;</li>
+<li><strong>12, Model routing 1:</strong> &quot;Token prices mislead: see Gemini 4 Argon against GPT-6 Astra in 07.&quot;</li>
+</ul>
+<p><strong>Saves:</strong> about 130 words.</p>
+<h3>S4. The four days in Washington, retold in The Pattern</h3>
+<p><strong>The facts:</strong></p>
+<ul>
+<li>Florida asked for an injunction.</li>
+<li>LASST sued under the Unfair Competition Law, citing AB 316.</li>
+<li>The FTC confirmed its probe.</li>
+<li>Altman declined to testify.</li>
+<li>California&#39;s attorney general served a subpoena.</li>
+<li>Hawley and Murphy announced a bill with no number or text.</li>
+<li>No liability has been assigned yet.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Quote</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>03 Month, l9</td>
+<td>&quot;a non-profit sued OpenAI, two senators announced a bill, and Florida, the FTC and California&#39;s attorney general moved publicly&quot;</td>
+</tr>
+<tr>
+<td>06 Who pays, l39 to 49</td>
+<td>&quot;Four days, six names&quot; (home)</td>
+</tr>
+<tr>
+<td>08 Pattern, Accountability step 4, l36 (103 words), and &quot;Ended as&quot;, l39</td>
+<td>the ruled FTC sentence word for word; &quot;it had no bill number or published text as of 5 October&quot;; &quot;No liability has been assigned yet: these are filings, a subpoena, a probe, a hearing and a bill with no text.&quot;</td>
+</tr>
+</tbody></table>
+<p><strong>Home: 06.</strong></p>
+<ul>
+<li><strong>03: keep.</strong></li>
+<li><strong>08: cross-refer.</strong> Replace step 4 with:<blockquote>
+<p><strong>28 September to 1 October: liability goes public.</strong> In four days a state, a non-profit, a regulator, California&#39;s attorney general and two senators acted: an injunction request, a suit citing AB 316, a confirmed FTC probe, a subpoena, a Senate hearing Sam Altman declined to attend, and the Hawley–Murphy bill. 06 has the detail.</p>
+</blockquote>
+Then trim &quot;Ended as&quot; to: &quot;<strong>Ended as:</strong> who pays when an agent breaks something. No liability has been assigned yet.&quot;</li>
+<li><em>Ruling check:</em> this drops the full FTC sentence (&quot;which it says it opened in the summer; the New
+York Post reported it first&quot;) and the bill&#39;s status line from 08. &quot;Confirmed&quot; keeps to the
+ruling, and 06, 11 and 17 still carry both in full.</li>
+</ul>
+<p><strong>Saves:</strong> about 60 words.</p>
+<h3>S5. The same two sentences in 11 and 12</h3>
+<p><strong>The facts:</strong> AB 316 has barred the &quot;AI acted autonomously&quot; defence since 1 January. The bill, as
+reported, targets anyone who knowingly operates an agent that recklessly causes hacking damage.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Quote</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>06 Who pays, l47 and l55</td>
+<td>the bill and AB 316 (home)</td>
+</tr>
+<tr>
+<td>11 Case against, l49 and l51</td>
+<td>&quot;In civil suits, California&#39;s AB 316 has barred the defence that the AI acted autonomously since 1 January.&quot; / &quot;The bill, as reported, targets anyone who knowingly operates an agent that recklessly causes hacking damage; announced on 1 October, it had no bill number or published text as of 5 October.&quot;</td>
+</tr>
+<tr>
+<td>12 Operator, Agent liability 2, l34</td>
+<td>the same two sentences, word for word</td>
+</tr>
+<tr>
+<td>17 Operator&#39;s Page, Watch 1</td>
+<td>the bill&#39;s status</td>
+</tr>
+</tbody></table>
+<p><strong>Home: 06.</strong></p>
+<ul>
+<li><strong>11: keep.</strong> Its point is that somebody else writes the limits, and it needs both.</li>
+<li><strong>17: keep.</strong></li>
+<li><strong>12: cross-refer.</strong> Replace everything after &quot;One human, by name.&quot; with:<blockquote>
+<p>Liability is being written to land on whoever deploys the agent, not only on the labs; 06 has the law and the bill.</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>Saves:</strong> about 50 words, and a word-for-word pair across two facing sections.</p>
+<h3>S6. Anthropic&#39;s tester study</h3>
+<p><strong>The facts:</strong></p>
+<ul>
+<li>1,053 paid testers caught the swapped-in command 13.6% of the time. The classifier caught 89%.</li>
+<li>Testers caught about 17% early in a session and about 5% after 50 or more prompts.</li>
+<li>The classifier let 11% through.</li>
+<li>Anthropic still advises reviewing high-stakes production changes yourself.</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Quote</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>03 Month, l7</td>
+<td>&quot;1,053 paid testers caught a swapped-in dangerous command 13.6% of the time; the classifier caught 89%&quot;</td>
+</tr>
+<tr>
+<td>05 Checker, l7, l9, l15 caption, l67</td>
+<td>home. l67 repeats it: &quot;Anthropic, whose classifier beat its testers 89% to 13.6%, still advises reviewing high-stakes production changes yourself&quot; (the third time in the piece for that advice)</td>
+</tr>
+<tr>
+<td>11 Case against, l31</td>
+<td>&quot;1,053 paid testers caught a swapped-in dangerous command 13.6% of the time; the classifier caught 89%. The testers managed about 17% early in a session and about 5% after 50 or more prior prompts.&quot;</td>
+</tr>
+<tr>
+<td>12 Operator, Human gates 2, l10</td>
+<td>&quot;paid testers caught a swapped-in dangerous command 13.6% of the time against the classifier&#39;s 89%, and fell from about 17%... to about 5%&quot;</td>
+</tr>
+<tr>
+<td>15 Prove us wrong; 16 Library</td>
+<td>&quot;about 17%&quot;; &quot;humans caught 13.6%&quot;</td>
+</tr>
+</tbody></table>
+<p><strong>Home: 05.</strong></p>
+<ul>
+<li><strong>03, 15, 16: keep.</strong></li>
+<li><strong>05, l67: cut the figures.</strong> &quot;Anthropic, whose own classifier beat its testers, still advises reviewing high-stakes production changes yourself.&quot;</li>
+<li><strong>11, l31: cross-refer.</strong><blockquote>
+<p>In Anthropic&#39;s study (see 05), testers caught a swapped-in dangerous command 13.6% of the time and the classifier 89%.</p>
+</blockquote>
+Its next paragraph already says &quot;about one in six even early in a session&quot;. Keep l35, the 11%
+and 7%: that&#39;s the steelman&#39;s &quot;classifiers miss too&quot;.</li>
+<li><strong>12, step 2: cross-refer.</strong> Keep the fatigue figures, because they&#39;re the step&#39;s reason:<blockquote>
+<p>People are poor item-by-item checkers, and they tire: in Anthropic&#39;s study (see 05), testers&#39; catch rate fell from about 17% early in a session to about 5% late on. Fewer prompts should mean less fatigue at the ones that matter.</p>
+</blockquote>
+</li>
+</ul>
+<p><strong>Saves:</strong> about 60 words.</p>
+<h3>S7. OpenAI&#39;s disclosure clock in The Operator</h3>
+<p><strong>The facts:</strong> six business days for cases that are ready, 12 for minor ones, and no deadline for
+complex cases involving third parties. The framework governs publishing reports, not telling
+customers.</p>
+<table>
+<thead>
+<tr>
+<th>Section</th>
+<th>Quote</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>06 Who pays, l29 and l31</td>
+<td>home</td>
+</tr>
+<tr>
+<td>06 Who pays, l71</td>
+<td>&quot;states no deadline for complex cases involving third parties, and on our reading that is what an incident on your account would be&quot;</td>
+</tr>
+<tr>
+<td>08 Pattern, Accountability step 2</td>
+<td>&quot;within six business days for cases that are ready, 12 for minor ones, and no deadline&quot;</td>
+</tr>
+<tr>
+<td>12 Operator, Agent liability 5, l37</td>
+<td>&quot;It sets six business days for cases that are ready, 12 for minor ones, and no deadline for complex cases involving third parties, which, on our reading, is what an incident on your account would be.&quot;</td>
+</tr>
+<tr>
+<td>14, 15</td>
+<td>the record, and the collected box</td>
+</tr>
+</tbody></table>
+<p><strong>Home: 06.</strong></p>
+<ul>
+<li><strong>08: keep.</strong> It&#39;s the trace.</li>
+<li><strong>12: cross-refer.</strong> Replace the last two sentences with:<blockquote>
+<p>OpenAI&#39;s public framework is for publishing reports, not notifying customers, and sets no deadline for complex cases involving third parties: on our reading, an incident on your account (see 06).</p>
+</blockquote>
+</li>
+<li>06 l71 is a COULD: see C12.</li>
+</ul>
+<p><strong>Saves:</strong> about 30 words.</p>
+<hr>
+<h2>COULD</h2>
+<p><strong>C1. Qodo: 26%, then 90% against 45%, from 500 developers and 300 leaders.</strong></p>
+<ul>
+<li><strong>Found in:</strong> 05 (l25 and l61, the home), 08 Judgment step 3 (l23), and 07 Proposal 2.</li>
+<li><strong>08, step 3: cut the sample sizes and the 90/45.</strong> The 90/45 is 05&#39;s receipt point, not the
+hand-off step. New text: &quot;<strong>22 to 24 September: the peak, and the hand-off.</strong> In Qodo&#39;s survey,
+26% of developers and leaders called validating AI code their top bottleneck. Tunguz framed
+what&#39;s left as building the systems that make AI-written code come out right.&quot;</li>
+<li><strong>07:</strong> Proposal 2 isn&#39;t the recommended chart. If it&#39;s picked, apply its own designer note.</li>
+</ul>
+<p><strong>C2. Claire Vo&#39;s blind test and Zvi&#39;s job map.</strong></p>
+<ul>
+<li><strong>Found in:</strong> 08 Model choice step 3 (l47), 09 (l35, l37, and the routing-table visual: the
+home) and 12 Model routing 3.</li>
+<li><strong>08, step 3: cross-refer.</strong> Keep the price war. Replace the last two sentences with &quot;Yet
+Claire Vo&#39;s blind test and Zvi Mowshowitz&#39;s job map both split by task (09 has both).&quot;</li>
+<li><strong>12, step 3: cross-refer.</strong> &quot;For the shape, see Zvi Mowshowitz&#39;s job map, drawn in 09. Yours
+will split differently.&quot;</li>
+</ul>
+<p><strong>C3. HarnessTax&#39;s $1.540 to $0.441.</strong></p>
+<ul>
+<li><strong>Found in:</strong> two timelines inside 08, Model choice step 2 (l46) and The wrapper step 2
+(l58). The home is 09, l43.</li>
+<li><strong>Model choice step 2: cut</strong> the HarnessTax sentence, and point to the wrapper&#39;s step: &quot;The
+same model cost far less under a lighter harness (see The wrapper, below).&quot;</li>
+<li><strong>The heading:</strong> step 2 is headed &quot;the frontier held at $10/$50&quot;, but its body never shows
+that. If the editors want the heading backed, add &quot;Astra&#39;s list price held at $10/$50.&quot; The
+source is the one 07 cites for Astra&#39;s list price: Zvi Mowshowitz, 12 September.</li>
+</ul>
+<p><strong>C4. Jev&#39;s 100 times the speed and 200 times lower cost, and the Decisions API built &quot;in about a week&quot;.</strong></p>
+<ul>
+<li><strong>Found in:</strong> 08 The wrapper, steps 2 and 4, and 09 l57 (the home). 03 carries &quot;about a week&quot;
+as compression.</li>
+<li><strong>08, step 2:</strong> &quot;Jev, a model that only classifies, routes and scores, launched, and six clones
+shipped in two days.&quot;</li>
+<li><strong>08, step 4:</strong> drop &quot;which Latent Space says it built in about a week&quot;.</li>
+</ul>
+<p><strong>C5. Being found&#39;s numbers in The Pattern.</strong> The home for all three is 10.</p>
+<ul>
+<li><strong>Step 1, l69:</strong> drop &quot;(Sol 9, Opus 11, Fable 15)&quot;.</li>
+<li><strong>Step 2, l70:</strong> the 48% sentence is a near copy of 10&#39;s l23. Keep it only if the step needs it.</li>
+<li><strong>Step 5, l73 (122 words):</strong> cut the SOCi sentence (9% to 52%, 83%, 67%). 10 carries it three
+times already. Datos, Profound and Forrester make the step.</li>
+</ul>
+<p><strong>C6. OpenAI&#39;s review: 100-plus organisations, about 50 petabytes, more than $500,000 a day.</strong></p>
+<ul>
+<li><strong>Found in:</strong> 06 l35 (the home) and 08 Accountability step 5 (l37).</li>
+<li><strong>08:</strong> keep the step, but trim to &quot;from a review expected to take months&quot;.</li>
+</ul>
+<p><strong>C7. Comviva: 86% asked to justify their AI spend, 16% confident.</strong></p>
+<ul>
+<li><strong>Found in:</strong> 05 l61 (the home) and 12 Human gates 5 (l13).</li>
+<li><strong>12: cross-refer.</strong> &quot;Boards are asking (see 05 for the survey).&quot;</li>
+<li>This also helps a reader who meets IAB&#39;s different 86% in 10. See &quot;Noticed in passing&quot;.</li>
+</ul>
+<p><strong>C8. Databricks inside The Operator.</strong></p>
+<ul>
+<li><strong>Found in:</strong> 12 Model routing 4 (&quot;Databricks set one up for Astra after coding spend rose 60%,
+with clear gains only on highly complex work&quot;) and Spend caps 2 (&quot;as Databricks did for
+Astra&quot;). The home is 09.</li>
+<li><strong>Routing 4:</strong> &quot;Give the $10/$50 models a sub-budget of their own, as Databricks did for Astra
+(see 09).&quot;</li>
+<li><strong>Spend caps 2:</strong> cut its second half, since routing 4 now carries it.</li>
+</ul>
+<p><strong>C9. Profound: 1.5 to 2.5 times the visits, and about 2.5% tagged.</strong></p>
+<ul>
+<li><strong>Found in:</strong> 10 (l43 and the funnel visual: the home), 12 Being found 2 (l59), 08 step 5 and<ol start="3">
+<li></li>
+</ol>
+</li>
+<li><strong>12: cross-refer.</strong> &quot;Expect most of it untagged: in Profound&#39;s study (see 10), only about 2.5%
+of the visits that followed an AI mention carried a referral tag.&quot;</li>
+<li>The step also says &quot;over the following seven days&quot; twice; this fixes that too.</li>
+</ul>
+<p><strong>C10. Two word-for-word sentences.</strong></p>
+<ul>
+<li><strong>&quot;Line editing held flat, and his time to ship didn&#39;t fall.&quot;</strong> It&#39;s in 05 l31 and 08 Judgment
+step 1. Recast 08: &quot;...which the monthly reads as part of his judgment being automated, with
+no gain in time to ship.&quot;</li>
+<li><strong>&quot;Anthropic advises reading a sample of graded transcripts before trusting any evaluator.&quot;</strong>
+It&#39;s in 08 step 4 and 12 Human gates 4, and 05 quotes the original. In 12, cut the sentence:
+the step&#39;s instruction already says it. Keep Hamel&#39;s line.</li>
+</ul>
+<p><strong>C11. Repeats inside 10.</strong> S2 removes l63 and l66. Two more:</p>
+<ul>
+<li><strong>OpenProposal&#39;s 22 October</strong> is at l31, l35 and l66. At l35, drop the date: &quot;a comment on
+OpenProposal&quot;.</li>
+<li><strong>SOCi&#39;s 83%</strong> is at l55, l68 and the box. Recast the close: &quot;Plan for two readers: the model
+that reads first, and the search box most people still use.&quot;</li>
+</ul>
+<p><strong>C12. Repeats inside 06.</strong></p>
+<ul>
+<li><strong>l9&#39;s last two sentences restate the standfirst.</strong> Cut &quot;What changed in those four days...
+not only the lab that built it.&quot;</li>
+<li><strong>l47 dates the bill&#39;s status twice.</strong> Use: &quot;It had no committee referral as of 2 October, and
+no bill number or published text as of 5 October.&quot; This needs a ruling check.</li>
+<li><strong>l71 repeats l31&#39;s reading of the framework.</strong> Use: &quot;OpenAI&#39;s framework, as read above, sets
+no deadline for that.&quot;</li>
+</ul>
+<p><strong>C13. Duplicate entries inside 14 Corrections.</strong> Merge into one entry per fact, under the earliest
+publication it ran in, and name the later ones in brackets.</p>
+<ul>
+<li><strong>The five rungs</strong> is at l49, l94 and l115. Keep l94, and add: &quot;The monthly then said flatly
+they weren&#39;t DHH&#39;s: almost certain, not proven.&quot; Cut l49 and l115.</li>
+<li><strong>The FTC</strong> is at l71 and l113. Cut it from the drafts list, and add to l113: &quot;The same error
+ran in our drafts.&quot;</li>
+<li><strong>HarnessTax&#39;s lead example</strong> is at l43 and l91. Keep l91, and add &quot;(and in the monthly&#39;s
+draft)&quot;.</li>
+<li><strong>Tunguz&#39;s 47 to 3</strong> is at l16 and l87. Keep l87, and add &quot;(and in the monthly&#39;s draft)&quot;.</li>
+<li><strong>Leave these separate:</strong> Cantrill (l18, l89), the quality-difference pair (l46, l91), and the
+40 to 50% (l36, l95). Each pair records two different errors.</li>
+</ul>
+<p><strong>C14. The ledger in The Pattern&#39;s How we know.</strong></p>
+<ul>
+<li><strong>Found in:</strong> 236 lines and 39 wrong appear in 01, 04 (the home: the ledger), 08 How we know
+(l113) and 14 l11.</li>
+<li><strong>01 and 14: keep.</strong> The letter&#39;s hook and the Corrections intro both do work.</li>
+<li><strong>08: cross-refer.</strong> &quot;Separate agents checked the monthly line by line; the counts are in The
+Receipts&#39; ledger (04).&quot;</li>
+</ul>
+<p><strong>C15. The colophon and The Receipts.</strong> The home is 04 The Receipts.</p>
+<ul>
+<li><strong>The Manus clause</strong> is in the colophon&#39;s Drafting line and in Receipts step 6, near word for
+word. In the colophon, end the line at &quot;tagged to its source.&quot; 04 and 14 keep the Manus story.</li>
+<li><strong>The pending second-family check</strong> is in the colophon, Receipts step 7 and &quot;One model family&quot;.
+Cut it from step 7.</li>
+</ul>
+<p><strong>C16. &quot;This issue is an argument, and it comes with instructions for breaking it.&quot;</strong></p>
+<ul>
+<li><strong>Found in:</strong> word for word in 01 l33 and 15 l3.</li>
+<li><strong>01: keep.</strong> It&#39;s Jay&#39;s voice, and it comes first.</li>
+<li><strong>15: cut l3.</strong> The paragraph after it opens the page well enough.</li>
+</ul>
+<p><strong>C17. &quot;One argument, found four times.&quot;</strong></p>
+<ul>
+<li><strong>Found in:</strong> 08 (the home: the heading, the body and a pull), 12 Spend caps intro (l45) and 14
+l61.</li>
+<li><strong>14: keep.</strong> It&#39;s a correction, and the red team singled it out.</li>
+<li><strong>12: cross-refer.</strong> &quot;Four of the five threads ended here, all on the same Simon Willison post
+(see 08).&quot;</li>
+</ul>
+<hr>
+<h2>Kept: repeats that do work where they are</h2>
+<table>
+<thead>
+<tr>
+<th>Fact</th>
+<th>Sections</th>
+<th>Why it stays</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Scarcity to limits (the thesis)</td>
+<td>01, 03 (standfirst and close), 08 (standfirst, l9, pull), 11 (quoting the monthly)</td>
+<td>It&#39;s the argument. Each one introduces The Pattern or points to it</td>
+</tr>
+<tr>
+<td>&quot;None held as written, none was simply wrong&quot; / all five reframed</td>
+<td>03, 08, 04</td>
+<td>Method, one clause each</td>
+</tr>
+<tr>
+<td>The Month&#39;s figures: 13.6% and 89%, &quot;still disclosing June incidents in October&quot;, $10/$50 and $2/$10, 71%, $1B, 2.5%, Datos</td>
+<td>03 and the features</td>
+<td>Compression by design</td>
+</tr>
+<tr>
+<td>Everything on The Operator&#39;s Page</td>
+<td>17 against 12 and the features</td>
+<td>The boil-down</td>
+</tr>
+<tr>
+<td>The five &quot;most likely to be wrong&quot; claims</td>
+<td>15 against each feature&#39;s box</td>
+<td>Collected on purpose</td>
+</tr>
+<tr>
+<td>Rules VI to VIII; the summary-box error</td>
+<td>01 and 02; 01, 02 and 14 (&quot;Rule II is there because of them&quot;)</td>
+<td>The letter teases, the Rules state, Corrections points. A model for the rest</td>
+</tr>
+<tr>
+<td>3% of requests against 39% of plans rejected; the 11% and 7% misses</td>
+<td>05, 11</td>
+<td>The steelman argues with them</td>
+</tr>
+<tr>
+<td>DeepMind&#39;s 100-agent swarm</td>
+<td>05, 08, 11</td>
+<td>One clause each. 11 uses it for &quot;agents audited agents&quot;</td>
+</tr>
+<tr>
+<td>Beri&#39;s gate rule; Hamel&#39;s review; Pragmatic Engineer</td>
+<td>05, 08, 12</td>
+<td>Short, and each is the step itself</td>
+</tr>
+<tr>
+<td>Databricks&#39; 60% and the sub-budget</td>
+<td>09, 11, 08 (&quot;One argument&quot;)</td>
+<td>11&#39;s &quot;the limit was the receipt&quot; needs it</td>
+</tr>
+<tr>
+<td>Ramp: usage up about 50%, spend down</td>
+<td>08, 09, 11</td>
+<td>Trace step, home, and the steelman&#39;s cost objection</td>
+</tr>
+<tr>
+<td>Cursor&#39;s 66% and 7%; Anthropic&#39;s 80%; Thariq&#39;s &quot;Claude.md goes away&quot;</td>
+<td>08, 09, 11, 12</td>
+<td>11 argues guardrails get eaten; 12 uses one clause</td>
+</tr>
+<tr>
+<td>GPT-6.1 Astra cancelled; Saachi Jain&#39;s &quot;scope and authorization&quot;</td>
+<td>06, 08, 11</td>
+<td>11&#39;s &quot;limits with teeth&quot;</td>
+</tr>
+<tr>
+<td>The NSW breach, found 29 September and reported 1 October</td>
+<td>03, 06, 08, 11, 12, 14</td>
+<td>One clause in each of 11 and 12, each doing its own job</td>
+</tr>
+<tr>
+<td>The owner rule (browse, log in, spend, publish) and the cap that fails closed</td>
+<td>03, 06, 08, 12, 17</td>
+<td>The issue&#39;s actions, stated at each level</td>
+</tr>
+<tr>
+<td>The accountability timeline&#39;s steps 1, 2, 3 and 5 against 06</td>
+<td>08, 06</td>
+<td>The trace. Only step 4 (S4) and one trim in step 5 (C6) are flagged</td>
+</tr>
+<tr>
+<td>ChatGPT ads at $1B, Shopify, Adobe&#39;s 130%, Shero&#39;s 2.74, Amazon and Muse, Semrush</td>
+<td>03, 08, 10</td>
+<td>Trace steps</td>
+</tr>
+<tr>
+<td>Datos&#39;s &quot;same rate&quot;; IAB&#39;s 8.1% for paid search</td>
+<td>03, 08, 10, 12, 15</td>
+<td>One clause each</td>
+</tr>
+<tr>
+<td>Astra&#39;s median of five sources</td>
+<td>10, 12, 08</td>
+<td>It&#39;s 12&#39;s reason for its step (08&#39;s breakdown is trimmed in C5)</td>
+</tr>
+<tr>
+<td>The Decisions API</td>
+<td>03, 05, 08 (four times), 09, 12</td>
+<td>It crossing threads is The Pattern&#39;s point</td>
+</tr>
+<tr>
+<td>The ledger&#39;s 642, 605, 25 and 12</td>
+<td>04, 14</td>
+<td>14&#39;s intro to its list</td>
+</tr>
+<tr>
+<td>07&#39;s Proposals 2 and 3 (Qodo, SOCi)</td>
+<td>07 against 05 and 10</td>
+<td>Not recommended; each has its own note if picked</td>
+</tr>
+</tbody></table>
+<hr>
+<h2>Noticed in passing (not repetition; for the other editors)</h2>
+<ul>
+<li><strong>Who can use Argon.</strong> 03, 07, 08 (step 4), 09 l13 and 14 say &quot;trusted testers&quot;. 09 l21 and 17
+say &quot;government users and trusted cyber defenders in Google&#39;s Fairwind Program&quot;. It&#39;s one group
+described two ways. Pick one.</li>
+<li><strong>08&#39;s Model choice step 2</strong> is headed &quot;the frontier held at $10/$50&quot;, and its body doesn&#39;t show
+it (see C3).</li>
+<li><strong>The owner rule&#39;s list.</strong> 03 (l9), 06 (l63, l67) and 08&#39;s table say &quot;browse, log in or spend&quot;.
+12 and 17 add &quot;or publish&quot;, per the rulings. Align them, unless 06 is deliberately following the
+bill&#39;s scope.</li>
+<li><strong>One number, two facts.</strong> 86% is IAB&#39;s share of buyers changing how they measure (10), and also
+Comviva&#39;s share of marketing leaders asked to justify their AI spend (05, 12). C7 removes one of
+the three appearances.</li>
+<li><strong>The letter&#39;s title.</strong> The contents lists &quot;01 From the editors&quot;; the page is headed &quot;From the
+editor&quot;.</li>
+</ul>
+<hr>
+<h2>A tease for The Operator&#39;s Page</h2>
+<p>All three are under 25 words, and none repeats 17&#39;s own standfirst word for word.</p>
+<p><strong>1. Contents (print/02).</strong> This is the recommendation. Add it under the italic line at the top, so
+it reads before the list:</p>
+<blockquote>
+<p><em>Short of time? Start at 17, The Operator&#39;s Page: the whole issue on one page.</em></p>
+</blockquote>
+<p>(15 words)</p>
+<p><strong>2. Editor&#39;s letter (print/04).</strong> Put it as its own line, after the paragraph on the AIs&#39; letters
+and before the closing line. It&#39;s in Jay&#39;s voice, for him to rewrite:</p>
+<blockquote>
+<p>If you only have time for one page, make it the last one: 17, The Operator&#39;s Page.</p>
+</blockquote>
+<p>(17 words)</p>
+<p><strong>3. Colophon (print/03).</strong> An alternative to 1, if the contents page has to stay a bare list. Add
+it after &quot;How this issue was made is in The Receipts&quot;:</p>
+<blockquote>
+<p>Short of time? 17, The Operator&#39;s Page, is the issue on one page.</p>
+</blockquote>
+<p>(12 words)</p>
+<p>Use 1 and 2 together: the contents line catches the skimmer, and the letter gives the reason in
+the editor&#39;s voice.</p>
+</div></article>
+    </div>
+<main style="max-width: 1360px; margin: 0 auto; padding: 0 48px 160px;">
+    <footer style="margin-top: 160px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; align-items: flex-end;">
+      <div style="display: flex; flex-direction: column; gap: 12px;">
+        <div style="font-family: var(--ej-font-display); font-weight: 700; font-size: 40px; line-height: .86; letter-spacing: .04em; text-transform: uppercase;">The AI Echo</div>
+<div style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-fg-faint); line-height: 1.8;">Edition 1 · October 2026 · covering September 2026<br>Published free as a PDF with The ECHO Files on Substack · Editor: Jay Wright</div>
+      </div>
+<div style="display: flex; gap: 28px; flex-wrap: wrap; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
+        <a href="https://echofiles.substack.com" style="text-decoration: none;">Subscribe</a>
+<a href="#rules" style="text-decoration: none;">The Rules</a>
+<a href="#corrections" style="text-decoration: none;">Corrections</a>
+<a href="index.html" style="text-decoration: none; color: var(--ej-fg-faint);">Top ↑</a>
+      </div>
+<div style="width: 72px; height: 6px; background: repeating-linear-gradient(135deg, var(--ej-line-strong) 0 6px, transparent 6px 12px);"></div>
+    </footer>
+  </main>
+</div>
+<script src="assets/site.js"></script>
+<script>(function(){var k="ai-echo-size",n=0;try{n=parseInt(localStorage.getItem(k)||"0",10)||0}catch(e){}function apply(){var z=Math.pow(1.1,n);document.querySelectorAll("#features, main#top, main").forEach(function(el){el.style.zoom=z});document.querySelectorAll("[data-sz]").forEach(function(b){b.title=Math.round(z*100)+"%"});try{localStorage.setItem(k,String(n))}catch(e){}}apply();document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("[data-sz]");if(!b)return;n+=parseInt(b.getAttribute("data-sz"),10);apply();});})();</script></body>
+</html>
