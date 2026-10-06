@@ -184,3 +184,8 @@ svg { max-width: 100%; height: auto; }
 .ae-steps-all { display: flex; gap: 14px; align-items: center; flex-wrap: wrap; font-size: 14px; color: var(--ej-fg-muted); }
 .ae-steps-all button { font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase; padding: 6px 10px; background: transparent; color: var(--ej-steel-text); border: 1px solid var(--ej-steel); cursor: pointer; }
 @media (max-width: 700px) { .ae-stepchips { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+/* Phone header: the controls row had flex-basis 0 beside the nameplate, so its buttons spilled left over it. Give it its own line. */
+@media (max-width: 700px) {
+  div:has(> div > [data-action="toggleTheme"]) { padding: 12px 16px !important; gap: 8px 16px !important; }
+  div:has(> [data-action="toggleTheme"]) { flex: 1 1 100% !important; margin-left: 0 !important; gap: 10px !important; }
+}
