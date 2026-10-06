@@ -249,3 +249,15 @@ svg { max-width: 100%; height: auto; }
   [style*="grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, .8fr)"] { font-size: 12px; gap: 6px !important; }
   [style*="grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, 1fr) minmax(0, .8fr)"] > * { min-width: 0; overflow-wrap: anywhere; }
 }
+.ae-pn-keep { max-width: 1200px; margin: 0 auto; padding: 0 clamp(16px, 6vw, 96px); }
+/* CD's 14 and 18 on phones: 14's stage strip scrolls sideways, its 96px padding comes in, its three-column entries stack; 18's fold rows wrap. */
+@media (max-width: 700px) {
+  [style*="display: flex; gap: 3px; height: 96px"] { overflow-x: auto; }
+  [style*="flex: 4 1 0; min-width: 90px"] { flex-shrink: 0 !important; }
+  [style*="padding: 0 96px; display: flex; flex-direction: column; gap: 10px"] { padding: 0 16px !important; }
+  [style*="grid-template-columns: minmax(120px, 170px) minmax(0, 1fr) minmax(0, 1.3fr)"] { grid-template-columns: minmax(0, 1fr) !important; gap: 8px !important; }
+  [style*="display: flex; gap: 8px; align-items: baseline; padding-left: 12px; border-left: 3px solid"] { flex-wrap: wrap; }
+  [style*="display: flex; gap: 8px; align-items: baseline; padding-left: 12px; border-left: 3px solid"] > * { min-width: 0; overflow-wrap: anywhere; }
+  [style*="grid-template-columns: 36px minmax(0, 1fr) auto; gap: 12px; align-items: baseline"] { grid-template-columns: 30px minmax(0, 1fr) !important; }
+  [style*="grid-template-columns: 36px minmax(0, 1fr) auto; gap: 12px; align-items: baseline"] > :nth-child(3) { grid-column: 2; }
+}

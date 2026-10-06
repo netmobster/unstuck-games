@@ -153,142 +153,476 @@
     
   </main>
 <div id="s-13" data-theme="light" style="background: var(--ej-bg); color: var(--ej-fg); padding: 72px 0 0;">
-      <article style="max-width: 1360px; margin: 0 auto; padding: 0 48px;">
-        <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;"><span style="display: inline-block; padding: 6px 16px 6px 10px; background: var(--ej-gold); color: var(--ej-on-gold); font-family: var(--ej-font-display); font-weight: 700; font-size: 16px; line-height: 1; letter-spacing: .1em; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);">13</span><span style="font-family: var(--ej-font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">// Field Notes</span></div>
-<h2 style="margin: 28px 0 0; font-family: var(--ej-font-display); font-weight: 600; font-size: clamp(44px, 5.5vw, 84px); line-height: .95; letter-spacing: -.005em; max-width: 18ch; text-wrap: balance;">Field Notes: candidates</h2><p class="ae-stand">Two candidates for each of five slots, from the September daily briefs and the scored archive. Every link was loaded on 5 October. Jay picks one per slot and writes the sixth, &quot;what I changed my mind about&quot;, himself.</p><div class="ae-meta">Candidates: Jay picks five // 8 min read</div><div class="ae-body"><h2>One tool worth using</h2>
-<h3>A. commit-rewriter, for what your agent left in git</h3>
-<p>Simon Willison built this small Python web app to fix the commit messages behind the Datasette security releases, which were full of coding-agent cruft and references to a private repository&#39;s issues, and it runs with one command: <code>uvx commit-rewriter path/to/repo</code>. Before it rewrites anything it saves a timestamped branch of the repository, so the undo exists before the rewrite does.</p>
-<ul>
-<li><strong>Source:</strong> Simon Willison, simonwillison.net, 14 September 2026. <a href="https://simonwillison.net/2026/Sep/14/commit-rewriter/" target="_blank" rel="noopener">https://simonwillison.net/2026/Sep/14/commit-rewriter/</a></li>
-</ul>
-<div class="ae-stamp">CHECKED // LOADS · FREE · THE BACKUP BRANCH CONFIRMED</div>
-<h3>B. Three tests before you schedule an automation</h3>
-<p>Jenny Ouyang&#39;s guide sorts the places a Claude automation can run into four lanes (Claude&#39;s cloud, your own computer, a code repository, or tools outside Claude) and picks between them with three tests, access, evidence and stop, taking the smaller lane when two pass. Her bar for putting any job on a schedule is the part worth keeping: one clean manual run, a receipt that points at the output, known behaviour if it runs twice, and a pause control that someone has actually tested.</p>
-<ul>
-<li><strong>Source:</strong> Jenny Ouyang, Build to Launch, 26 September 2026. <a href="https://buildtolaunch.substack.com/p/choose-where-claude-automation-runs" target="_blank" rel="noopener">https://buildtolaunch.substack.com/p/choose-where-claude-automation-runs</a></li>
-</ul>
-<div class="ae-stamp">CHECKED // THE PUBLIC PART · PROMPTS AND TEMPLATES PAYWALLED</div>
-<h2>One thing to stop doing</h2>
-<h3>A. Stop taking a coding agent&#39;s privacy settings on trust</h3>
-<p>On 18 September a reverse-engineer showed that ZCode 3.12.3, Z.ai&#39;s desktop coding agent, was packaging encrypted copies of whole workspaces, mostly git history, for upload to Alibaba Cloud before every prompt (62 captures in one session), and at least one small workspace was accepted. Neither of its two privacy toggles stopped it, because the capture ran in the host app rather than in the agent. Z.ai said the same day that it had been fixed, and by the next day the upload code was gone from version 3.14.0. It came to light because an outsider unpacked the app, so judge any agent that can see your code by what leaves the machine, not by its settings page.</p>
-<ul>
-<li><strong>Source:</strong> Tokenstead, 18 September 2026, reporting ferstar&#39;s forensics. <a href="https://tokenstead.ai/guides/zcode-silent-git-history-upload" target="_blank" rel="noopener">https://tokenstead.ai/guides/zcode-silent-git-history-upload</a>. Original: ferstar, 18 September 2026, updated 19, 21 and 23 September. <a href="https://blog.ferstar.org/en/posts/zcode-silent-workspace-snapshot-upload/" target="_blank" rel="noopener">https://blog.ferstar.org/en/posts/zcode-silent-workspace-snapshot-upload/</a></li>
-</ul>
-<div class="ae-stamp">CHECKED // BOTH PAGES LOAD · THE FIGURES MATCH · 62 CAPTURES, NOT UPLOADS · THE FIX DATED 18 AND 19 SEPTEMBER</div>
-<p>Our 19 to 25 Sep roundup missed the fix. The correction is in 14.</p>
-<h3>B. Stop using the words the model suggests</h3>
-<p>Thomas Ptacek&#39;s first rule for writing with an LLM, posted on 17 September and picked up by Simon Willison the same day, allows no exceptions: &quot;You may not use a single word an LLM suggests to you.&quot; Write the draft yourself, use a model as a copyeditor to find what is wrong with it, then rewrite those passages in your own words and ignore its praise, because the phrasing a model offers is the part readers learn to spot.</p>
-<ul>
-<li><strong>Source:</strong> Simon Willison, simonwillison.net, 17 September 2026. <a href="https://simonwillison.net/2026/Sep/17/how-to-write-with-an-llm/" target="_blank" rel="noopener">https://simonwillison.net/2026/Sep/17/how-to-write-with-an-llm/</a>. Original: &quot;How To Write With An LLM&quot;, sockpuppet.org, 17 September 2026. <a href="https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/" target="_blank" rel="noopener">https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/</a></li>
-</ul>
-<div class="ae-stamp">CHECKED // BOTH LOAD · THE RULE IS WORD FOR WORD FROM THE ORIGINAL</div>
-<h2>One experiment to run this month</h2>
-<h3>A. Audit your own code with frontier models</h3>
-<p>Simon Willison and Alex Garcia pointed Claude Fable 5.1, GPT-5.6 and GPT-6 Astra at Datasette, found bugs Willison calls very subtle, and shipped two security releases, whose fixes matter most for instances that mix public and private tables. For most of the issues one of them wrote the test and the other the fix, and two people saw every issue as well as the models. They now plan to audit all their development work this way; try the same this month on one repository or workflow you&#39;re responsible for.</p>
-<ul>
-<li><strong>Source:</strong> Simon Willison, simonwillison.net, 11 September 2026. <a href="https://simonwillison.net/2026/Sep/11/datasette-security/" target="_blank" rel="noopener">https://simonwillison.net/2026/Sep/11/datasette-security/</a></li>
-</ul>
-<div class="ae-stamp">CHECKED // LOADS · THE TEST-AND-FIX SPLIT WAS FOR MOST ISSUES, NOT EVERY ONE · NO PROMPTS OR COSTS GIVEN</div>
-<h3>B. Read a vendor&#39;s name history before you renew</h3>
-<p>Gene De Libero pulled six years of Internet Archive homepage snapshots for 24 digital experience platform vendors, got usable results for 23, and found that four kept the same category label throughout. He then took the 17 vendors in Gartner&#39;s January 2025 Magic Quadrant for Digital Experience Platforms and checked each one&#39;s homepage against its published release notes or, for two of them, its product documentation: the label matched the actual product in 11. Run his test on your three biggest renewals: if a vendor&#39;s homepage title changed more than twice in five years you&#39;re evaluating a marketing decision, so read the release notes for the six months after the rename and ask what changed in the product that month.</p>
-<ul>
-<li><strong>Source:</strong> Gene De Libero, MarTech, 24 September 2026. <a href="https://martech.org/martech-category-labels-dont-mean-anything-anymore/" target="_blank" rel="noopener">https://martech.org/martech-category-labels-dont-mean-anything-anymore/</a></li>
-</ul>
-<div class="ae-stamp">CHECKED // LOADS · 11 OF 17 MATCHED · TWO CHECKED AGAINST PRODUCT DOCUMENTATION, NOT RELEASE NOTES</div>
-<h2>One number to know</h2>
-<h3>A. 90% and 40%: where a reminder sits</h3>
-<p>In Anthropic&#39;s assessment of recent cybersecurity incidents, a user message telling Claude Mythos 5 which systems were in scope stopped its out-of-scope behaviour 90% of the time when it was the last thing in context, and 40% of the time when it came three turns earlier. Same words, same model, and a reminder three turns old worked less than half as often, so if you steer agents mid-task, restate the limit in the latest turn rather than trusting the one they read earlier.</p>
-<ul>
-<li><strong>Source:</strong> Anthropic, &quot;An alignment assessment of recent cybersecurity incidents&quot;, 9 September 2026. <a href="https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents" target="_blank" rel="noopener">https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents</a>. In the pack via Zvi Mowshowitz, 19 September 2026: <a href="https://thezvi.wordpress.com/2026/09/19/anthropic-looks-at-some-of-its-alignment-problems/" target="_blank" rel="noopener">https://thezvi.wordpress.com/2026/09/19/anthropic-looks-at-some-of-its-alignment-problems/</a></li>
-</ul>
-<div class="ae-stamp">CHECKED // BOTH LOAD · THE 90% AND 40% ARE IN ANTHROPIC&#39;S OWN REPORT</div>
-<h3>B. 92%: what Meta knocks off for your data</h3>
-<p>That is the discount on Meta&#39;s Muse Spark 1.3 API for choosing the contributor tier: $0.10 per million input tokens instead of $1.25 (and $0.20 instead of $4.25 for output), in return for letting Meta use what you send to improve its products. Price and privacy are sold separately here, so read the data terms beside the price before routing client or customer material to whatever costs least.</p>
-<ul>
-<li><strong>Source:</strong> Tom Tunguz, 3 September 2026. <a href="https://tomtunguz.com/the-ads-model-for-prompts-vertically-integrates-ai/" target="_blank" rel="noopener">https://tomtunguz.com/the-ads-model-for-prompts-vertically-integrates-ai/</a>. Primary: Meta&#39;s Muse Spark pricing page, <a href="https://dev.meta.ai/models/muse-spark/" target="_blank" rel="noopener">https://dev.meta.ai/models/muse-spark/</a></li>
-</ul>
-<div class="ae-stamp">CHECKED // META&#39;S PAGE LOADS · THE SAME FOUR PRICES · THE URL TUNGUZ CITES NOW RETURNS 404</div>
-<p>We got this backwards in the 28 Aug to 4 Sep roundup. The correction is in 14.</p>
-<h2>One system to steal</h2>
-<h3>A. Vercel&#39;s order: document, encode, test, then remove</h3>
-<p>Vercel&#39;s COO, Jeanne DeWitt Grosser, says its inbound sales-development agent took that function from 10 people to one in the US plus about a fifth of a person covering Europe and Asia-Pacific, runs on about $5,000 a year in infrastructure and tokens, and returns 32 times its cost. The order is the part to copy: shadow your best people, turn each of their steps into a tool call, test the agent and only then take the people out, with a person checking every output until it beats them, and someone still reviewing its work daily after that.</p>
-<ul>
-<li><strong>Source:</strong> Tom Tunguz, &quot;When Inbound Sells Itself&quot;, 15 September 2026. <a href="https://tomtunguz.com/single-digit-thousand-dollar-ai-sdr/" target="_blank" rel="noopener">https://tomtunguz.com/single-digit-thousand-dollar-ai-sdr/</a>. The detail and method come from SaaStr (Jason Lemkin), linked in Tunguz&#39;s footnote 1: <a href="https://www.saastr.com/vercel-took-a-10-person-sdr-team-down-to-1-the-whole-thing-costs-5000-a-year-with-vercels-coo-jeanne-dewitt-grosser/" target="_blank" rel="noopener">https://www.saastr.com/vercel-took-a-10-person-sdr-team-down-to-1-the-whole-thing-costs-5000-a-year-with-vercels-coo-jeanne-dewitt-grosser/</a></li>
-</ul>
-<div class="ae-stamp">CHECKED // BOTH LOAD · SAASTR&#39;S PIECE DATES FROM 2 JULY 2026 · THE NUMBERS PREDATE SEPTEMBER</div>
-<h3>B. MKT1&#39;s three-person setup, and its vacation test</h3>
-<p>Emily Kramer and Halley Johnson published the working inventory of how MKT1&#39;s three marketers, two of them half-time, run the business on Claude: two team repositories plus a personal one each, a public MCP server, more than 100 skills and more than 30 scheduled routines, with one owner for the system and a named lane for each person. The test they hold it to is the one to steal: if a person or a computer is offline, can the work still run, and can the workflow still be updated?</p>
-<ul>
-<li><strong>Source:</strong> Emily Kramer and Halley Johnson, MKT1, 17 September 2026. <a href="https://newsletter.mkt1.co/p/multiplayer-ai-team-mkt1" target="_blank" rel="noopener">https://newsletter.mkt1.co/p/multiplayer-ai-team-mkt1</a>. The page is titled &quot;How 3 marketers run MKT1 on Claude (and how to steal our setup)&quot;; the brief lists it as &quot;Inside team MKT1&#39;s multiplayer AI setup&quot;.</li>
-</ul>
-<div class="ae-stamp">CHECKED // THE INVENTORY, THE LANES AND THE VACATION TEST ARE IN THE FREE PREVIEW</div>
-<h2>Reserves (checked, in case a pick falls through)</h2>
-<div class="ae-table"><table>
-<thead>
-<tr>
-<th>Slot</th>
-<th>Reserve</th>
-<th>Source</th>
-<th>From</th>
-<th>Note</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>Stop</td>
-<td>Stop comparing model runs through an auto-router: OpenRouter can send one model name to providers whose serving setups differ. Willison points to its provider.only option, and to an /endpoints call that lists who serves a model.</td>
-<td>Simon Willison, 11 Sep. <a href="https://simonwillison.net/2026/Sep/11/so-you-want-to-use-openrouter/" target="_blank" rel="noopener">https://simonwillison.net/2026/Sep/11/so-you-want-to-use-openrouter/</a></td>
-<td>brief 09-12, 17/20</td>
-<td>Loads, confirmed.</td>
-</tr>
-<tr>
-<td>System</td>
-<td>Brex&#39;s agents as employees: each gets one outcome to own, written skills and limits, a human manager to escalate to, and a token budget sized to what the outcome is worth.</td>
-<td>Peter Yang with Pedro Franceschi, Creator Economy, 13 Sep. <a href="https://creatoreconomy.so/p/stop-building-ai-agents-build-ai-employees-instead-pedro-franceschi-brex" target="_blank" rel="noopener">https://creatoreconomy.so/p/stop-building-ai-agents-build-ai-employees-instead-pedro-franceschi-brex</a></td>
-<td>briefs 09-14 (17), 09-15 (16)</td>
-<td>The four-line spec is public and the episode is paid. It&#39;s a budget sized to value, not a default hard cap, but it&#39;s an earlier, independent source for per-agent budgets than the Willison post the pattern section leans on.</td>
-</tr>
-<tr>
-<td>System</td>
-<td>Warp&#39;s factory: requests from Slack and Linear become about 2,000 pull requests a month, measured by human interactions per PR, an LLM judge on every run, and cost per PR.</td>
-<td>Lenny&#39;s Newsletter (Zach Lloyd), 21 Sep. <a href="https://www.lennysnewsletter.com/p/how-warp-ships-2000-prs-a-month-with" target="_blank" rel="noopener">https://www.lennysnewsletter.com/p/how-warp-ships-2000-prs-a-month-with</a></td>
-<td>brief 09-22, <code>2026-09-22.json</code>, 16</td>
-<td>Free. Engineering-heavy.</td>
-</tr>
-<tr>
-<td>Experiment</td>
-<td>Marketing AI Institute had GPT-5.6 Sol&#39;s browser agent read hundreds of LinkedIn comments and sort them for and against. They split roughly evenly, and the loudest comments weren&#39;t the majority.</td>
-<td>Marketing AI Institute, 9 Sep. <a href="https://www.marketingaiinstitute.com/blog/podcast-ai-web-browser" target="_blank" rel="noopener">https://www.marketingaiinstitute.com/blog/podcast-ai-web-browser</a></td>
-<td>brief 09-10, 14/20</td>
-<td>A person watched it throughout. They warn against leaving an agent alone in a signed-in account, and that LinkedIn&#39;s terms can get accounts banned for automation.</td>
-</tr>
-<tr>
-<td>Number</td>
-<td>One: the number of people, out of 300-plus recipients, who asked where a daily report that had run for over ten years had gone when it stopped for three days.</td>
-<td>The Market Detective (Inga Simonenko), 11 Sep. <a href="https://themarketdetective.substack.com/p/how-much-of-your-work-would-nobody" target="_blank" rel="noopener">https://themarketdetective.substack.com/p/how-much-of-your-work-would-nobody</a></td>
-<td>brief 09-13, 16/20</td>
-<td>Public. Not an AI piece: the AI angle would be ours. Near its end it offers three questions to ask any report&#39;s readers.</td>
-</tr>
-<tr>
-<td>Tool</td>
-<td>AUTOMATION.md: one file per scheduled job holding the sources, rules, output and receipt formats, safety limits and failure behaviour, while the scheduler decides only when and where.</td>
-<td>Jenny Ouyang, Build to Launch, 15 Sep. <a href="https://buildtolaunch.substack.com/p/claude-code-routines-beginner-guide" target="_blank" rel="noopener">https://buildtolaunch.substack.com/p/claude-code-routines-beginner-guide</a></td>
-<td>brief 09-15, 16/20</td>
-<td>The convention is public and the rest is paid. Same author as tool B.</td>
-</tr>
-</tbody></table></div>
-<h2>Checked and set aside</h2>
-<ul>
-<li><strong>Cutler&#39;s subway map (TBM 439, 11 Sep).</strong> The post contradicts the roundup&#39;s description (the correction is in 14). It is free in full: Substack&#39;s page data marks it for everyone, there&#39;s no paywall marker, and the page runs to the post&#39;s end and its comments. [briefs 09-12 and 09-14, 17/20]</li>
-<li><strong>Nate B Jones&#39;s five-prompt provider audit (2 Sep).</strong> Only the outline is public; the prompts are paywalled. [brief 09-04, 17/20]</li>
-<li><strong>LLM Ass Bench.</strong> The page loaded with almost nothing on it, so what it measures couldn&#39;t be confirmed. [brief 09-23; <code>2026-09-23.json</code>, 14]</li>
-<li><strong>Zapier&#39;s AI fluency rubric (via Aakash Gupta, 24 Sep).</strong> The rubric&#39;s current version dates from 31 March (the first from May 2025), so it isn&#39;t September news. [brief 09-25; <code>2026-09-25.json</code>, 16]</li>
-<li><strong>MarTech&#39;s job-postings study (28 Sep).</strong> It covers 60 postings chosen because they mentioned AI, and the monthly already calls it thin. [brief 09-29; <code>2026-09-29.json</code>, 17]</li>
-</ul>
-</div><div style="display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; margin-top: 48px; padding-bottom: 120px; font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase;">
-          <a href="12-the-operator.html" style="font: inherit; text-decoration: none; display: inline-flex; letter-spacing: inherit; text-transform: inherit; color: var(--ej-steel-text); background: transparent; border: 0; padding: 0; cursor: pointer; text-align: left;">← 12 The Operator</a>
-<a href="14-corrections.html" style="font: inherit; text-decoration: none; display: inline-flex; letter-spacing: inherit; text-transform: inherit; color: var(--ej-steel-text); background: transparent; border: 0; padding: 0; cursor: pointer; text-align: right;">14 Corrections →</a>
-        </div>
-      </article>
+      <!-- ===== Page content: edit below ===== -->
+<article id="fn" style="max-width: 1200px; margin: 0 auto; background: var(--ej-bg); color: var(--ej-fg); font-family: var(--ej-font-body); overflow: hidden;">
+  <header style="position: relative; padding: 72px clamp(24px, 6vw, 96px) 32px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 32px 48px; align-items: end;">
+    <div style="position: absolute; left: 72px; top: -20px; font-family: var(--ej-font-display); font-weight: 700; font-size: clamp(180px, 24vw, 320px); line-height: .8; color: var(--ej-line); letter-spacing: -.02em; pointer-events: none;">13</div>
+    <div style="position: relative; display: flex; flex-direction: column; gap: 20px;">
+      <div style="display: flex; align-items: center; gap: 14px; flex-wrap: wrap;"><span style="display: inline-block; padding: 6px 16px 6px 10px; background: var(--ej-gold); color: var(--ej-on-gold); font-family: var(--ej-font-display); font-weight: 700; font-size: 16px; line-height: 1; letter-spacing: .1em; clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 100%, 0 100%);">13</span><span id="fn-kicker" style="font-family: var(--ej-font-mono); font-size: 13px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);"></span></div>
+      <h2 id="fn-heading" style="margin: 0; font-family: var(--ej-font-display); font-weight: 600; font-size: clamp(56px, 7vw, 96px); line-height: .92; letter-spacing: -.005em;"></h2>
+      <p id="fn-standfirst" style="margin: 0; max-width: 52ch; font-size: 21px; line-height: 1.45; color: var(--ej-fg-muted);"></p>
+    </div>
+    <div style="position: relative; display: flex; flex-direction: column; gap: 10px;">
+      <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 12px;"><span style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text);">The six slots</span><span id="fn-picked" style="font-family: var(--ej-font-mono); font-size: 11px; letter-spacing: .1em; text-transform: uppercase;"></span></div>
+      <div id="fn-chips" style="display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 4px;"></div>
+    </div>
+  </header>
+  <div style="padding: 0 clamp(24px, 6vw, 96px); position: sticky; top: 0; z-index: 5; background: var(--ej-bg);"><div id="fn-modes" style="display: flex; flex-wrap: wrap; border-bottom: 2px solid var(--ej-fg);"></div></div>
+  <div id="fn-view"></div>
+  <div style="margin: 56px clamp(24px, 6vw, 96px) 96px; display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;">
+    <a href="12-the-operator.html" style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); text-decoration: none; padding: 10px 16px; border: 1px solid var(--ej-steel);">← 12 The Operator</a>
+    <a href="14-corrections.html" style="font-family: var(--ej-font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--ej-steel-text); text-decoration: none; padding: 10px 16px; border: 1px solid var(--ej-steel);">14 Corrections →</a>
+  </div>
+</article>
+<script>
+// 13 Field Notes — candidates as data, three views of them. Plain JavaScript, no dependencies.
+// PICKS: the editor's choice per slot (index 0–4 → "A" or "B"). Empty = not yet picked.
+// When all five are set, the page opens on the web edition and readers can still open the desk to see how the picks were made.
+var PICKS = {"0":"A","1":"A","2":"B","3":"A","4":"B"};
+var SLOTS = [
+ {
+  "slot": "One tool worth using",
+  "bench": [
+   {
+    "t": "AUTOMATION.md: one file per scheduled job holding the sources, rules, output and receipt formats, safety limits and failure behaviour, while the scheduler decides only when and where.",
+    "src": "Jenny Ouyang, Build to Launch, 15 Sep",
+    "url": "https://buildtolaunch.substack.com/p/claude-code-routines-beginner-guide",
+    "from": "brief 09-15, 16/20",
+    "note": "The convention is public and the rest is paid. Same author as tool B."
+   }
+  ],
+  "cands": [
+   {
+    "id": "A",
+    "title": "commit-rewriter, for what your agent left in git",
+    "body": "Simon Willison built this small Python web app to fix the commit messages behind the Datasette security releases, which were full of coding-agent cruft and references to a private repository's issues, and it runs with one command: uvx commit-rewriter path/to/repo. Before it rewrites anything it saves a timestamped branch of the repository, so the undo exists before the rewrite does.",
+    "sources": [
+     {
+      "k": "Source",
+      "t": "Simon Willison, simonwillison.net, 14 September 2026",
+      "url": "https://simonwillison.net/2026/Sep/14/commit-rewriter/"
+     }
+    ],
+    "check": "Checked // loads · free · the backup branch confirmed",
+    "code": "uvx commit-rewriter path/to/repo"
+   },
+   {
+    "id": "B",
+    "title": "Three tests before you schedule an automation",
+    "body": "Jenny Ouyang's guide sorts the places a Claude automation can run into four lanes (Claude's cloud, your own computer, a code repository, or tools outside Claude) and picks between them with three tests, access, evidence and stop, taking the smaller lane when two pass. Her bar for putting any job on a schedule is the part worth keeping: one clean manual run, a receipt that points at the output, known behaviour if it runs twice, and a pause control that someone has actually tested.",
+    "sources": [
+     {
+      "k": "Source",
+      "t": "Jenny Ouyang, Build to Launch, 26 September 2026",
+      "url": "https://buildtolaunch.substack.com/p/choose-where-claude-automation-runs"
+     }
+    ],
+    "check": "Checked // the public part · prompts and templates paywalled"
+   }
+  ]
+ },
+ {
+  "slot": "One thing to stop doing",
+  "bench": [
+   {
+    "t": "Stop comparing model runs through an auto-router: OpenRouter can send one model name to providers whose serving setups differ. Willison points to its provider.only option, and to an /endpoints call that lists who serves a model.",
+    "src": "Simon Willison, 11 Sep",
+    "url": "https://simonwillison.net/2026/Sep/11/so-you-want-to-use-openrouter/",
+    "from": "brief 09-12, 17/20",
+    "note": "Loads, confirmed."
+   }
+  ],
+  "cands": [
+   {
+    "id": "A",
+    "title": "Stop taking a coding agent's privacy settings on trust",
+    "body": "On 18 September a reverse-engineer showed that ZCode 3.12.3, Z.ai's desktop coding agent, was packaging encrypted copies of whole workspaces, mostly git history, for upload to Alibaba Cloud before every prompt (62 captures in one session), and at least one small workspace was accepted. Neither of its two privacy toggles stopped it, because the capture ran in the host app rather than in the agent. Z.ai said the same day that it had been fixed, and by the next day the upload code was gone from version 3.14.0. It came to light because an outsider unpacked the app, so judge any agent that can see your code by what leaves the machine, not by its settings page.",
+    "sources": [
+     {
+      "k": "Source",
+      "t": "Tokenstead, 18 September 2026, reporting ferstar's forensics",
+      "url": "https://tokenstead.ai/guides/zcode-silent-git-history-upload"
+     },
+     {
+      "k": "Original",
+      "t": "ferstar, 18 September 2026, updated 19, 21 and 23 September",
+      "url": "https://blog.ferstar.org/en/posts/zcode-silent-workspace-snapshot-upload/"
+     }
+    ],
+    "check": "Checked // both pages load · the figures match · 62 captures, not uploads · the fix dated 18 and 19 September",
+    "corr": "Our 19 to 25 Sep roundup missed the fix",
+    "nums": [
+     {
+      "n": "62",
+      "l": "Captures in one session",
+      "c": "var(--ej-gold-text)"
+     },
+     {
+      "n": "0 of 2",
+      "l": "Privacy toggles that stopped it",
+      "c": "var(--ej-fg)"
+     },
+     {
+      "n": "Next day",
+      "l": "Upload code gone from 3.14.0",
+      "c": "var(--ej-fg)"
+     }
+    ]
+   },
+   {
+    "id": "B",
+    "title": "Stop using the words the model suggests",
+    "body": "Thomas Ptacek's first rule for writing with an LLM, posted on 17 September and picked up by Simon Willison the same day, allows no exceptions: \"You may not use a single word an LLM suggests to you.\" Write the draft yourself, use a model as a copyeditor to find what is wrong with it, then rewrite those passages in your own words and ignore its praise, because the phrasing a model offers is the part readers learn to spot.",
+    "sources": [
+     {
+      "k": "Source",
+      "t": "Simon Willison, simonwillison.net, 17 September 2026",
+      "url": "https://simonwillison.net/2026/Sep/17/how-to-write-with-an-llm/"
+     },
+     {
+      "k": "Original",
+      "t": "\"How To Write With An LLM\", sockpuppet.org, 17 September 2026",
+      "url": "https://sockpuppet.org/blog/2026/09/17/how-to-write-with-an-llm/"
+     }
+    ],
+    "check": "Checked // both load · the rule is word for word from the original"
+   }
+  ]
+ },
+ {
+  "slot": "One experiment to run this month",
+  "bench": [
+   {
+    "t": "Marketing AI Institute had GPT-5.6 Sol's browser agent read hundreds of LinkedIn comments and sort them for and against. They split roughly evenly, and the loudest comments weren't the majority.",
+    "src": "Marketing AI Institute, 9 Sep",
+    "url": "https://www.marketingaiinstitute.com/blog/podcast-ai-web-browser",
+    "from": "brief 09-10, 14/20",
+    "note": "A person watched it throughout. They warn against leaving an agent alone in a signed-in account, and that LinkedIn's terms can get accounts banned for automation."
+   }
+  ],
+  "cands": [
+   {
+    "id": "A",
+    "title": "Audit your own code with frontier models",
+    "body": "Simon Willison and Alex Garcia pointed Claude Fable 5.1, GPT-5.6 and GPT-6 Astra at Datasette, found bugs Willison calls very subtle, and shipped two security releases, whose fixes matter most for instances that mix public and private tables. For most of the issues one of them wrote the test and the other the fix, and two people saw every issue as well as the models. They now plan to audit all their development work this way; try the same this month on one repository or workflow you're responsible for.",
+    "sources": [
+     {
+      "k": "Source",
+      "t": "Simon Willison, simonwillison.net, 11 September 2026",
+      "url": "https://simonwillison.net/2026/Sep/11/datasette-security/"
+     }
+    ],
+    "check": "Checked // loads · the test-and-fix split was for most issues, not every one · no prompts or costs given"
+   },
+   {
+    "id": "B",
+    "title": "Read a vendor's name history before you renew",
+    "body": "Gene De Libero pulled six years of Internet Archive homepage snapshots for 24 digital experience platform vendors, got usable results for 23, and found that four kept the same category label throughout. He then took the 17 vendors in Gartner's January 2025 Magic Quadrant for Digital Experience Platforms and checked each one's homepage against its published release notes or, for two of them, its product documentation: the label matched the actual product in 11. Run his test on your three biggest renewals: if a vendor's homepage title changed more than twice in five years you're evaluating a marketing decision, so read the release notes for the six months after the rename and ask what changed in the product that month.",
+    "sources": [
+     {
+      "k": "Source",
+      "t": "Gene De Libero, MarTech, 24 September 2026",
+      "url": "https://martech.org/martech-category-labels-dont-mean-anything-anymore/"
+     }
+    ],
+    "check": "Checked // loads · 11 of 17 matched · two checked against product documentation, not release notes",
+    "fig": [
+     {
+      "l": "Same label for six years",
+      "w": "17.4%",
+      "v": "4 of 23",
+      "bg": "var(--ej-gold)",
+      "fg": "var(--ej-gold-text)"
+     },
+     {
+      "l": "Label matched the product",
+      "w": "64.7%",
+      "v": "11 of 17",
+      "bg": "var(--ej-steel)",
+      "fg": "var(--ej-steel-text)"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "slot": "One number to know",
+  "bench": [
+   {
+    "t": "One: the number of people, out of 300-plus recipients, who asked where a daily report that had run for over ten years had gone when it stopped for three days.",
+    "src": "The Market Detective (Inga Simonenko), 11 Sep",
+    "url": "https://themarketdetective.substack.com/p/how-much-of-your-work-would-nobody",
+    "from": "brief 09-13, 16/20",
+    "note": "Public. Not an AI piece: the AI angle would be ours. Near its end it offers three questions to ask any report's readers."
+   }
+  ],
+  "cands": [
+   {
+    "id": "A",
+    "title": "90% and 40%: where a reminder sits",
+    "body": "In Anthropic's assessment of recent cybersecurity incidents, a user message telling Claude Mythos 5 which systems were in scope stopped its out-of-scope behaviour 90% of the time when it was the last thing in context, and 40% of the time when it came three turns earlier. Same words, same model, and a reminder three turns old worked less than half as often, so if you steer agents mid-task, restate the limit in the latest turn rather than trusting the one they read earlier.",
+    "sources": [
+     {
+      "k": "Source",
+      "t": "Anthropic, \"An alignment assessment of recent cybersecurity incidents\", 9 September 2026",
+      "url": "https://www.anthropic.com/research/alignment-assessment-cybersecurity-incidents"
+     },
+     {
+      "k": "Via",
+      "t": "Zvi Mowshowitz, 19 September 2026",
+      "url": "https://thezvi.wordpress.com/2026/09/19/anthropic-looks-at-some-of-its-alignment-problems/"
+     }
+    ],
+    "check": "Checked // both load · the 90% and 40% are in Anthropic's own report",
+    "fig": [
+     {
+      "l": "Reminder last in context",
+      "w": "90%",
+      "v": "90%",
+      "bg": "var(--ej-gold)",
+      "fg": "var(--ej-gold-text)"
+     },
+     {
+      "l": "Three turns earlier",
+      "w": "40%",
+      "v": "40%",
+      "bg": "var(--ej-steel)",
+      "fg": "var(--ej-steel-text)"
+     }
+    ]
+   },
+   {
+    "id": "B",
+    "title": "92%: what Meta knocks off for your data",
+    "body": "That is the discount on Meta's Muse Spark 1.3 API for choosing the contributor tier: $0.10 per million input tokens instead of $1.25 (and $0.20 instead of $4.25 for output), in return for letting Meta use what you send to improve its products. Price and privacy are sold separately here, so read the data terms beside the price before routing client or customer material to whatever costs least.",
+    "sources": [
+     {
+      "k": "Source",
+      "t": "Tom Tunguz, 3 September 2026",
+      "url": "https://tomtunguz.com/the-ads-model-for-prompts-vertically-integrates-ai/"
+     },
+     {
+      "k": "Primary",
+      "t": "Meta's Muse Spark pricing page",
+      "url": "https://dev.meta.ai/models/muse-spark/"
+     }
+    ],
+    "check": "Checked // Meta's page loads · the same four prices · the URL Tunguz cites now returns 404",
+    "corr": "We got this backwards in the 28 Aug to 4 Sep roundup",
+    "fig": [
+     {
+      "l": "Input · standard",
+      "w": "100%",
+      "v": "$1.25",
+      "bg": "var(--ej-steel)",
+      "fg": "var(--ej-steel-text)"
+     },
+     {
+      "l": "Input · contributor",
+      "w": "8%",
+      "v": "$0.10",
+      "bg": "var(--ej-gold)",
+      "fg": "var(--ej-gold-text)"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "slot": "One system to steal",
+  "bench": [
+   {
+    "t": "Brex's agents as employees: each gets one outcome to own, written skills and limits, a human manager to escalate to, and a token budget sized to what the outcome is worth.",
+    "src": "Peter Yang with Pedro Franceschi, Creator Economy, 13 Sep",
+    "url": "https://creatoreconomy.so/p/stop-building-ai-agents-build-ai-employees-instead-pedro-franceschi-brex",
+    "from": "briefs 09-14 (17), 09-15 (16)",
+    "note": "The four-line spec is public and the episode is paid. It's a budget sized to value, not a default hard cap, but it's an earlier, independent source for per-agent budgets than the Willison post the pattern section leans on."
+   },
+   {
+    "t": "Warp's factory: requests from Slack and Linear become about 2,000 pull requests a month, measured by human interactions per PR, an LLM judge on every run, and cost per PR.",
+    "src": "Lenny's Newsletter (Zach Lloyd), 21 Sep",
+    "url": "https://www.lennysnewsletter.com/p/how-warp-ships-2000-prs-a-month-with",
+    "from": "brief 09-22, 2026-09-22.json, 16",
+    "note": "Free. Engineering-heavy."
+   }
+  ],
+  "cands": [
+   {
+    "id": "A",
+    "title": "Vercel's order: document, encode, test, then remove",
+    "body": "Vercel's COO, Jeanne DeWitt Grosser, says its inbound sales-development agent took that function from 10 people to one in the US plus about a fifth of a person covering Europe and Asia-Pacific, runs on about $5,000 a year in infrastructure and tokens, and returns 32 times its cost. The order is the part to copy: shadow your best people, turn each of their steps into a tool call, test the agent and only then take the people out, with a person checking every output until it beats them, and someone still reviewing its work daily after that.",
+    "sources": [
+     {
+      "k": "Source",
+      "t": "Tom Tunguz, \"When Inbound Sells Itself\", 15 September 2026",
+      "url": "https://tomtunguz.com/single-digit-thousand-dollar-ai-sdr/"
+     },
+     {
+      "k": "Detail",
+      "t": "SaaStr (Jason Lemkin), Tunguz's footnote 1",
+      "url": "https://www.saastr.com/vercel-took-a-10-person-sdr-team-down-to-1-the-whole-thing-costs-5000-a-year-with-vercels-coo-jeanne-dewitt-grosser/"
+     }
+    ],
+    "check": "Checked // both load · SaaStr's piece dates from 2 July 2026 · the numbers predate September",
+    "nums": [
+     {
+      "n": "10 → ~1¼",
+      "l": "People: one in the US, about a fifth more abroad",
+      "c": "var(--ej-fg)"
+     },
+     {
+      "n": "~$5,000",
+      "l": "A year, infrastructure and tokens",
+      "c": "var(--ej-fg)"
+     },
+     {
+      "n": "32×",
+      "l": "Return on its cost",
+      "c": "var(--ej-gold-text)"
+     }
+    ]
+   },
+   {
+    "id": "B",
+    "title": "MKT1's three-person setup, and its vacation test",
+    "body": "Emily Kramer and Halley Johnson published the working inventory of how MKT1's three marketers, two of them half-time, run the business on Claude: two team repositories plus a personal one each, a public MCP server, more than 100 skills and more than 30 scheduled routines, with one owner for the system and a named lane for each person. The test they hold it to is the one to steal: if a person or a computer is offline, can the work still run, and can the workflow still be updated?",
+    "sources": [
+     {
+      "k": "Source",
+      "t": "Emily Kramer and Halley Johnson, MKT1, 17 September 2026",
+      "url": "https://newsletter.mkt1.co/p/multiplayer-ai-team-mkt1"
+     }
+    ],
+    "check": "Checked // the inventory, the lanes and the vacation test are in the free preview",
+    "nums": [
+     {
+      "n": "3",
+      "l": "Marketers, two half-time",
+      "c": "var(--ej-fg)"
+     },
+     {
+      "n": "100+",
+      "l": "Skills",
+      "c": "var(--ej-fg)"
+     },
+     {
+      "n": "30+",
+      "l": "Scheduled routines",
+      "c": "var(--ej-fg)"
+     }
+    ]
+   }
+  ]
+ }
+];
+var SET_ASIDE = [
+ {
+  "t": "Cutler's subway map (TBM 439, 11 Sep)",
+  "why": "The post contradicts the roundup's description (the correction is in 14). It is free in full: Substack's page data marks it for everyone, there's no paywall marker, and the page runs to the post's end and its comments.",
+  "from": "briefs 09-12 and 09-14, 17/20"
+ },
+ {
+  "t": "Nate B Jones's five-prompt provider audit (2 Sep)",
+  "why": "Only the outline is public; the prompts are paywalled.",
+  "from": "brief 09-04, 17/20"
+ },
+ {
+  "t": "LLM Ass Bench",
+  "why": "The page loaded with almost nothing on it, so what it measures couldn't be confirmed.",
+  "from": "brief 09-23; 2026-09-23.json, 14"
+ },
+ {
+  "t": "Zapier's AI fluency rubric (via Aakash Gupta, 24 Sep)",
+  "why": "The rubric's current version dates from 31 March (the first from May 2025), so it isn't September news.",
+  "from": "brief 09-25; 2026-09-25.json, 16"
+ },
+ {
+  "t": "MarTech's job-postings study (28 Sep)",
+  "why": "It covers 60 postings chosen because they mentioned AI, and the monthly already calls it thin.",
+  "from": "brief 09-29; 2026-09-29.json, 17"
+ }
+];
+(function () {
+  var KEY = 'ai-echo-fieldnotes', published = Object.keys(PICKS).length === 5;
+  var st = { mode: published ? 'web' : 'desk', picks: {} };
+  if (published) st.picks = Object.assign({}, PICKS); else { try { st.picks = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) {} }
+  var $ = function (s) { return document.querySelector(s); };
+  var esc = function (s) { return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;'); };
+  var MONO = 'font-family: var(--ej-font-mono); letter-spacing: .12em; text-transform: uppercase;', DISP = 'font-family: var(--ej-font-display); font-weight: 600;';
+  var picked = function (si) { return published ? PICKS[si] : st.picks[si]; };
+  function fig(c) { if (!c.fig) return ''; return '<div style="display: flex; flex-direction: column; gap: 8px; padding: 14px 16px; background: var(--ej-bg); border: 1px solid var(--ej-line);">' + c.fig.map(function (f) { return '<div style="display: grid; grid-template-columns: 120px minmax(0, 1fr) 76px; gap: 10px; align-items: center;"><span style="font-size: 13px; line-height: 1.25; color: var(--ej-fg-muted);">' + esc(f.l) + '</span><span style="height: 14px; width: ' + f.w + '; background: ' + f.bg + ';"></span><span style="font-family: var(--ej-font-mono); font-size: 13px; color: ' + f.fg + '; text-align: right;">' + esc(f.v) + '</span></div>'; }).join('') + '</div>'; }
+  function nums(c) { if (!c.nums) return ''; return '<div style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); border-top: 2px solid var(--ej-fg);">' + c.nums.map(function (d) { return '<div style="padding: 10px 8px 0 0; display: flex; flex-direction: column; gap: 4px;"><span style="' + DISP + ' font-size: 30px; line-height: .9; color: ' + d.c + ';">' + esc(d.n) + '</span><span style="' + MONO + ' font-size: 9px; letter-spacing: .08em; color: var(--ej-fg-faint); line-height: 1.4;">' + esc(d.l) + '</span></div>'; }).join('') + '</div>'; }
+  function srcs(c, small) { return c.sources.map(function (r) { return '<a href="' + esc(r.url) + '" style="font-size: ' + (small ? 13 : 14) + 'px; line-height: 1.4; text-decoration: none; overflow-wrap: anywhere;"><span style="' + MONO + ' font-size: 10px; letter-spacing: .1em; color: var(--ej-fg-faint);">' + esc(r.k) + ' // </span>' + esc(r.t) + ' ↗</a>'; }).join(''); }
+  function card(c, si) {
+    var p = picked(si), on = p === c.id, off = p && !on;
+    return '<div style="display: flex; flex-direction: column; gap: 14px; padding: 24px; background: var(--ej-surface); border: 2px solid ' + (on ? 'var(--ej-gold)' : 'var(--ej-line)') + '; box-shadow: ' + (on ? 'var(--ej-shadow-raise), var(--ej-bevel)' : 'none') + '; opacity: ' + (off ? .55 : 1) + ';">'
+      + '<div style="display: flex; justify-content: space-between; align-items: center; gap: 10px;"><span style="' + DISP + ' font-weight: 700; font-size: 28px; line-height: 1; color: var(--ej-steel);">' + c.id + '</span>'
+      + (published ? (on ? '<span style="' + MONO + ' font-size: 11px; padding: 8px 12px; background: var(--ej-gold); color: var(--ej-on-gold);">✓ The pick</span>' : '')
+        : '<button type="button" data-pick="' + si + ':' + c.id + '" style="' + MONO + ' font-size: 11px; padding: 8px 14px 8px 10px; border: ' + (on ? '0' : '1px solid var(--ej-steel)') + '; border-radius: 0; background: ' + (on ? 'var(--ej-gold)' : 'transparent') + '; color: ' + (on ? 'var(--ej-on-gold)' : 'var(--ej-steel-text)') + '; cursor: pointer; clip-path: polygon(0 0, calc(100% - 7px) 0, 100% 7px, 100% 100%, 0 100%);">' + (on ? '✓ Picked' : 'Pick ' + c.id) + '</button>')
+      + '</div><div style="' + DISP + ' font-size: 26px; line-height: 1.05;">' + esc(c.title) + '</div>' + fig(c) + nums(c)
+      + '<p style="margin: 0; font-size: 16px; line-height: 1.55;">' + esc(c.body) + '</p>'
+      + (c.code ? '<code style="display: block; padding: 10px 12px; background: #0d1319; color: #e7edf3; font-family: var(--ej-font-mono); font-size: 13px;">' + esc(c.code) + '</code>' : '')
+      + '<div style="margin-top: auto; display: flex; flex-direction: column; gap: 8px; padding-top: 12px; border-top: 1px solid var(--ej-line);">' + srcs(c, true)
+      + '<span style="align-self: flex-start; padding: 5px 9px; border: 1px solid var(--ej-steel); ' + MONO + ' font-size: 10px; letter-spacing: .08em; color: var(--ej-steel-text); line-height: 1.5;">' + esc(c.check) + '</span>'
+      + (c.corr ? '<a href="14-corrections.html" style="align-self: flex-start; padding: 5px 9px; border: 1px solid var(--ej-gold); background: var(--ej-gold-tint); ' + MONO + ' font-size: 10px; letter-spacing: .08em; color: var(--ej-gold-text); text-decoration: none; line-height: 1.5;">' + esc(c.corr) + ' → 14</a>' : '')
+      + '</div></div>';
+  }
+  function desk() {
+    var out = SLOTS.map(function (s, si) {
+      var p = picked(si);
+      return '<section id="slot-0' + (si + 1) + '" style="scroll-margin-top: 90px; display: flex; flex-direction: column; gap: 16px;">'
+        + '<div style="display: flex; justify-content: space-between; align-items: baseline; gap: 16px; flex-wrap: wrap; padding-bottom: 10px; border-bottom: 3px solid var(--ej-fg);"><div style="display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap;"><span style="' + MONO + ' font-size: 12px; color: var(--ej-steel-text);">Slot 0' + (si + 1) + '</span><h3 style="margin: 0; ' + DISP + ' font-size: clamp(28px, 3.4vw, 40px); line-height: 1;">' + esc(s.slot) + '</h3></div><span style="' + MONO + ' font-size: 11px; color: ' + (p ? 'var(--ej-gold-text)' : 'var(--ej-fg-faint)') + ';">' + (p ? 'Picked: ' + p : 'Not picked') + '</span></div>'
+        + '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); gap: 16px; align-items: stretch;">' + s.cands.map(function (c) { return card(c, si); }).join('') + '</div>'
+        + (s.bench.length ? '<details style="background: var(--ej-steel-tint);"><summary style="cursor: pointer; padding: 12px 16px; ' + MONO + ' font-size: 11px; color: var(--ej-steel-text);">On the bench · ' + s.bench.length + ' checked reserve' + (s.bench.length > 1 ? 's' : '') + ', in case a pick falls through ▾</summary><div style="padding: 0 16px 16px; display: flex; flex-direction: column; gap: 12px;">' + s.bench.map(function (b) { return '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 16px; padding: 14px 16px; background: var(--ej-bg); border: 1px solid var(--ej-line);"><div style="display: flex; flex-direction: column; gap: 6px;"><span style="font-size: 15px; line-height: 1.5;">' + esc(b.t) + '</span><a href="' + esc(b.url) + '" style="font-size: 13px; text-decoration: none;">' + esc(b.src) + ' ↗</a></div><div style="display: flex; flex-direction: column; gap: 4px;"><span style="' + MONO + ' font-size: 10px; letter-spacing: .1em; color: var(--ej-fg-faint);">From ' + esc(b.from) + '</span><span style="font-size: 13px; line-height: 1.45; color: var(--ej-fg-muted);">' + esc(b.note) + '</span></div></div>'; }).join('') + '</div></details>' : '')
+        + '</section>';
+    }).join('');
+    out += '<section id="slot-06" style="scroll-margin-top: 90px; display: flex; flex-direction: column; gap: 16px;"><div style="display: flex; align-items: baseline; gap: 14px; padding-bottom: 10px; border-bottom: 3px solid var(--ej-fg);"><span style="' + MONO + ' font-size: 12px; color: var(--ej-gold-text);">Slot 06</span><h3 style="margin: 0; ' + DISP + ' font-size: clamp(28px, 3.4vw, 40px); line-height: 1;">What I changed my mind about</h3></div><div style="padding: 28px; border: 2px dashed var(--ej-gold); background: var(--ej-gold-tint); display: flex; flex-direction: column; gap: 8px;"><span style="' + MONO + ' font-size: 11px; color: var(--ej-gold-text);">Jay writes this one himself · no candidates</span><span style="font-size: 16px; line-height: 1.5; color: var(--ej-fg-muted);">Empty until the editor\'s read. It prints as the sixth note, in the same format.</span></div></section>';
+    out += '<section style="display: flex; flex-direction: column; gap: 14px;"><div style="display: flex; align-items: baseline; justify-content: space-between; gap: 14px; flex-wrap: wrap; padding-bottom: 10px; border-bottom: 1px solid var(--ej-line-strong);"><h3 style="margin: 0; ' + DISP + ' font-size: 30px; line-height: 1; color: var(--ej-fg-muted);">Checked and set aside</h3><span style="' + MONO + ' font-size: 11px; color: var(--ej-fg-faint);">The cutting-room floor · ' + SET_ASIDE.length + ' checked, not used</span></div><div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: 10px;">' + SET_ASIDE.map(function (a) { return '<div style="padding: 14px 16px; border: 1px solid var(--ej-line); display: flex; flex-direction: column; gap: 6px;"><span style="' + DISP + ' font-size: 18px; line-height: 1.1; color: var(--ej-fg-muted); text-decoration: line-through; text-decoration-color: var(--ej-line-strong);">' + esc(a.t) + '</span><span style="font-size: 14px; line-height: 1.45; color: var(--ej-fg-muted);">' + esc(a.why) + '</span><span style="font-family: var(--ej-font-mono); font-size: 10px; letter-spacing: .08em; color: var(--ej-fg-faint);">' + esc(a.from) + '</span></div>'; }).join('') + '</div></section>';
+    return '<div style="padding: 40px clamp(24px, 6vw, 96px) 0; display: flex; flex-direction: column; gap: 56px;">' + out + '</div>';
+  }
+  function chosen(si) { var id = picked(si) || 'A'; var s = SLOTS[si]; return { c: s.cands.filter(function (x) { return x.id === id; })[0], o: s.cands.filter(function (x) { return x.id !== id; })[0] }; }
+  function web() {
+    var out = SLOTS.map(function (s, si) { var p = chosen(si);
+      return '<section id="web-0' + (si + 1) + '" style="scroll-margin-top: 90px; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr)); gap: 24px 32px; align-items: start; padding-bottom: 32px; border-bottom: 1px solid var(--ej-line);">'
+        + '<div style="display: flex; flex-direction: column; gap: 6px;"><span style="' + MONO + ' font-size: 11px; color: var(--ej-steel-text);">0' + (si + 1) + '</span><span style="' + DISP + ' font-size: 26px; line-height: 1;">' + esc(s.slot) + '</span></div>'
+        + '<div style="grid-column: span 2; min-width: 0; display: flex; flex-direction: column; gap: 12px;"><span style="' + DISP + ' font-size: 30px; line-height: 1.05;">' + esc(p.c.title) + '</span>' + fig(p.c) + nums(p.c) + '<p style="margin: 0; font-size: 18px; line-height: 1.6;">' + esc(p.c.body) + '</p>' + (p.c.code ? '<code style="display: block; padding: 10px 12px; background: #0d1319; color: #e7edf3; font-family: var(--ej-font-mono); font-size: 13px;">' + esc(p.c.code) + '</code>' : '') + srcs(p.c) + '</div>'
+        + '<aside style="display: flex; flex-direction: column; gap: 10px;"><span style="padding: 6px 10px; border: 1px solid var(--ej-steel); ' + MONO + ' font-size: 10px; letter-spacing: .08em; color: var(--ej-steel-text); line-height: 1.5;">' + esc(p.c.check) + '</span>' + (p.c.corr ? '<a href="14-corrections.html" style="padding: 5px 9px; border: 1px solid var(--ej-gold); background: var(--ej-gold-tint); ' + MONO + ' font-size: 10px; letter-spacing: .08em; color: var(--ej-gold-text); text-decoration: none; line-height: 1.5;">' + esc(p.c.corr) + ' → 14</a>' : '') + '<details style="border-top: 1px solid var(--ej-line);"><summary style="cursor: pointer; padding: 10px 0; ' + MONO + ' font-size: 10px; color: var(--ej-fg-faint);">Also considered ▾</summary><div style="display: flex; flex-direction: column; gap: 6px; padding-bottom: 6px;"><span style="' + DISP + ' font-size: 17px; line-height: 1.1;">' + esc(p.o.title) + '</span>' + srcs(p.o, true) + '</div></details></aside>'
+        + '</section>'; }).join('');
+    out += '<section style="padding: 22px 24px; border: 2px dashed var(--ej-gold); background: var(--ej-gold-tint); display: flex; flex-direction: column; gap: 6px;"><span style="' + MONO + ' font-size: 11px; color: var(--ej-gold-text);">06 · What I changed my mind about</span><span style="font-size: 16px; color: var(--ej-fg-muted);">Jay\'s note, to come.</span></section>';
+    var note = published ? 'Every pick shown with its runner-up folded underneath · the desk shows how they were chosen' : 'Preview: picks shown are from this browser; unpicked slots show candidate A';
+    return '<div style="padding: 40px clamp(24px, 6vw, 96px) 0; display: flex; flex-direction: column; gap: 40px;">' + out + '<div style="' + MONO + ' font-size: 11px; letter-spacing: .1em; color: var(--ej-fg-faint);">' + note + '</div></div>';
+  }
+  function print() {
+    var notes = SLOTS.map(function (s, si) { var c = chosen(si).c; return '<div style="display: flex; flex-direction: column; gap: 6px; break-inside: avoid;"><span style="' + MONO + ' font-size: 10px; color: #2b5276;">0' + (si + 1) + ' · ' + esc(s.slot) + '</span><span style="' + DISP + ' font-size: 20px; line-height: 1.05;">' + esc(c.title) + '</span><span style="font-size: 12.5px; line-height: 1.5;">' + esc(c.body) + '</span><span style="font-family: var(--ej-font-mono); font-size: 9px; letter-spacing: .06em; color: #627186; overflow-wrap: anywhere;">' + esc(c.sources.map(function (r) { return r.t + ' · ' + r.url.replace(/^https?:\/\//, ''); }).join(' · ')) + '</span></div>'; }).join('');
+    return '<div style="padding: 40px clamp(24px, 6vw, 96px) 0; display: flex; flex-direction: column; gap: 16px; align-items: center;"><button type="button" id="fn-printbtn" style="align-self: flex-end; ' + MONO + ' font-size: 12px; padding: 10px 18px 10px 14px; border: 0; border-radius: 0; cursor: pointer; background: var(--ej-gold); color: var(--ej-on-gold); clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 0 100%);">Print this page</button><div id="fn-sheet" style="width: 100%; max-width: 816px; box-sizing: border-box; padding: 56px clamp(24px, 6vw, 64px); background: #fff; color: #0f1720; box-shadow: var(--ej-shadow-raise); display: flex; flex-direction: column; gap: 22px;"><div style="display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; ' + MONO + ' font-size: 10px; color: #627186;"><span>13 // Field Notes</span><span>The AI Echo // Edition 1 · October 2026</span></div><div style="' + DISP + ' font-size: 56px; line-height: .95; padding-bottom: 14px; border-bottom: 3px solid #0f1720;">Field Notes</div><div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 22px 32px;">' + notes + '<div style="display: flex; flex-direction: column; gap: 6px; padding: 12px; border: 1px dashed #c9a227;"><span style="' + MONO + ' font-size: 10px; color: #7a5c0e;">06 · What I changed my mind about</span><span style="font-size: 12.5px; line-height: 1.5; color: #4f6076;">Jay\'s note, to come.</span></div></div><div style="margin-top: 6px; padding-top: 10px; border-top: 1px solid #c8d3de; ' + MONO + ' font-size: 9px; letter-spacing: .08em; color: #627186;">Every link loaded on 5 October · the candidates not picked, the reserves and the set-aside list are online, under "How we chose"</div></div></div>';
+  }
+  function header() {
+    var deskMode = st.mode === 'desk', n = SLOTS.filter(function (_, si) { return picked(si); }).length;
+    $('#fn-kicker').textContent = deskMode ? '// ' + (published ? 'How we chose · the ballot' : 'Candidates · Jay picks five') : '// Field Notes · a tool, a stop, an experiment, a number, a system';
+    $('#fn-heading').textContent = deskMode && !published ? 'Field Notes: candidates' : 'Field Notes';
+    $('#fn-standfirst').textContent = deskMode ? 'Two candidates for each of five slots, from the September daily briefs and the scored archive. Every link was loaded on 5 October. Jay picks one per slot and writes the sixth, "what I changed my mind about", himself.' : 'One tool, one thing to stop, one experiment, one number and one system, from September\'s briefs. Every link was loaded on 5 October.';
+    var pl = $('#fn-picked'); pl.textContent = published ? '' : n + ' of 5 picked · slot 6 is Jay\'s'; pl.style.color = n === 5 ? 'var(--ej-gold-text)' : 'var(--ej-fg-faint)';
+    $('#fn-chips').innerHTML = ['Tool', 'Stop', 'Experiment', 'Number', 'System', 'Mind'].map(function (t, i) { var jay = i === 5, p = jay ? null : picked(i); var href = (st.mode === 'web' && !jay ? '#web-0' : '#slot-0') + (i + 1); return '<a href="' + href + '" data-jump="' + href + '" style="text-decoration: none; display: flex; flex-direction: column; gap: 6px; padding: 10px 8px 8px; background: ' + (p ? 'var(--ej-gold-tint)' : 'var(--ej-surface)') + '; border: 1px solid var(--ej-line); border-top: 3px solid ' + (p ? 'var(--ej-gold)' : 'var(--ej-line-strong)') + '; color: var(--ej-fg);"><span style="' + DISP + ' font-weight: 700; font-size: 26px; line-height: .9; color: ' + (p ? 'var(--ej-gold-text)' : 'var(--ej-fg-faint)') + ';">' + (jay ? 'J' : (p || '–')) + '</span><span style="' + MONO + ' font-size: 9px; letter-spacing: .08em; color: var(--ej-fg-faint); line-height: 1.3;">' + t + '</span></a>'; }).join('');
+    $('#fn-modes').innerHTML = [['desk', published ? 'How we chose' : 'Editor\'s desk', published ? 'The ballot, kept' : 'Pick one per slot'], ['web', 'Web edition', 'What readers see'], ['print', 'Print / PDF', 'One page, picks only']].map(function (m) { var on = st.mode === m[0]; return '<button type="button" data-mode="' + m[0] + '" style="display: flex; flex-direction: column; align-items: flex-start; gap: 3px; padding: 14px 22px 12px 0; margin: 0 22px -2px 0; border: 0; border-bottom: 4px solid ' + (on ? 'var(--ej-gold)' : 'transparent') + '; border-radius: 0; background: transparent; cursor: pointer;"><span style="' + DISP + ' font-size: 24px; line-height: 1; color: ' + (on ? 'var(--ej-fg)' : 'var(--ej-fg-muted)') + ';">' + m[1] + '</span><span style="' + MONO + ' font-size: 10px; color: var(--ej-fg-faint);">' + m[2] + '</span></button>'; }).join('');
+  }
+  function render() { header(); $('#fn-view').innerHTML = st.mode === 'web' ? web() : st.mode === 'print' ? print() : desk(); }
+  document.getElementById('fn').addEventListener('click', function (e) {
+    var t = e.target.closest('button'); if (!t) return;
+    if (t.dataset.mode) st.mode = t.dataset.mode;
+    else if (t.dataset.pick) { var k = t.dataset.pick.split(':'); if (st.picks[k[0]] === k[1]) delete st.picks[k[0]]; else st.picks[k[0]] = k[1]; try { localStorage.setItem(KEY, JSON.stringify(st.picks)); } catch (er) {} }
+    else if (t.id === 'fn-printbtn') { window.print(); return; }
+    else return;
+    render();
+  });
+  render();
+})();
+</script>
+<style>
+  #fn button { font: inherit; }
+  @page { margin: 12mm; }
+  @media print { body { background: #fff; } body * { visibility: hidden; } #fn-sheet, #fn-sheet * { visibility: visible; } #fn-sheet { position: absolute; left: 0; top: 0; box-shadow: none !important; } }
+</style>
+
     </div>
 <main style="max-width: 1360px; margin: 0 auto; padding: 0 48px 160px;">
     <footer style="margin-top: 160px; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 24px 48px; align-items: flex-end;">
