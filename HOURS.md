@@ -16,6 +16,24 @@ Split below is CC's estimate against Jay's ~4:00 total: **Orbis ~1:45 · Game #2
 
 ---
 
+## Game #6 — INFINITE FRONTIER (tombstone: not yet chosen · brief from another AI, reviewed)
+
+**Clock started 2026-10-11** (brief v0.5 pasted; Jay to correct the time). The brief was made elsewhere and is **not counted**. Game number assumed; correct it if Elsible holds #6.
+
+| Milestone | Jay-time (cumulative) | Date |
+|---|---|---|
+| Brief filed as received, reviewed against the method, round-one boundary questions posed | ~0:02 | 2026-10-11 |
+| Tombstone chosen | | |
+| Boundaries in | | |
+| P0 gray-box: chunk grammar, attachment, route validation, phone input | | |
+| First Jay playtest from the phone | | |
+
+| Date | Jay-time | Machine work | What Jay did |
+|---|---|---|---|
+| 2026-10-11 | ~0:02 | Read the brief against METHOD, the library and GOD-MODE; wrote `ideas/infinite-frontier/REVIEW.md` | Pasted the name and the brief, answered three setup questions |
+
+---
+
 ## Game #5 — THE LAST WARREN (tombstone: Tokyo Jungle · markers: Agar.io, Rodent's Revenge, Hitman GO, Invisible Inc., Anomaly)
 
 **Clock started 2026-10-01 ~16:10 ET** (name + red-team brief pasted). The idea and brief were made with the red team before the clock and are **not counted**.
