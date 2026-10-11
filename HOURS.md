@@ -16,7 +16,7 @@ Split below is CC's estimate against Jay's ~4:00 total: **Orbis ~1:45 · Game #2
 
 ---
 
-## Game #6 — INFINITE FRONTIER (tombstone, theoretical: Desktop Tower Defense · markers: Gem TD, Dungeon of the Endless, Rampart, Fieldrunners)
+## Game #6 — INFINITE FRONTIER (tombstone: Jay to pick from Dungeon Keeper · Dungeon of the Endless · The Settlers II · Desktop Tower Defense)
 
 **Clock started 2026-10-11** (brief v0.5 pasted; Jay to correct the time). The brief was made elsewhere and is **not counted**. Game number assumed; correct it if Elsible holds #6.
 
@@ -24,7 +24,8 @@ Split below is CC's estimate against Jay's ~4:00 total: **Orbis ~1:45 · Game #2
 |---|---|---|
 | Brief filed as received, reviewed against the method, round-one boundary questions posed | ~0:02 | 2026-10-11 |
 | Tombstone shortlist researched (five corpses, three organs) | ~0:03 | 2026-10-11 |
-| Tombstone chosen (theoretical): DTD, after Jay's pivot to "no towers, the hex tile is the unit" | ~0:?? (Jay's GPT brainstorm; Jay to fill) | 2026-10-11 |
+| Pivot: "no towers, the hex tile is the unit"; DTD named as theoretical tombstone by the red team | ~0:?? (Jay's GPT brainstorm; Jay to fill) | 2026-10-11 |
+| Grave re-opened on Jay's organ ("a constrained game unconfined, where original choices last"); five parallel digs; `TOMBSTONE.md` with four corpses and three possible records | ~0:05 (two question rounds) | 2026-10-11 |
 | Pivot document, old brief classified, P0 and experiments proposed, round two posed | (machine work) | 2026-10-11 |
 | Boundaries in | | |
 | P0: hex board, three denizens, flow-field routing, place/destroy, invariants, sweep | | |
