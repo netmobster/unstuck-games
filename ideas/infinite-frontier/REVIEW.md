@@ -5,6 +5,10 @@
 > the library, [GOD-MODE.md](../../GOD-MODE.md) and [PRE-ADS.md](../../PRE-ADS.md). A brief,
 > not a spec: nothing is decided until Jay's boundaries are in (method step 4). The
 > round-one questions are at the bottom.
+>
+> **2026-10-11, later:** partly superseded by [PIVOT.md](PIVOT.md). The brief's towers,
+> chunk grammar and ports are gone; the method gaps, the phone, God Mode and the
+> wave-length problem still stand. Round one is replaced by PIVOT.md §7.
 
 **One line:** a roguelike tower defense where the player builds the route out of 9×9
 chunks, drafts one of three cards after every wave, and loses everything but unlocks on

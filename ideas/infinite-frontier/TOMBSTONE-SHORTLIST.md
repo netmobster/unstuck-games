@@ -4,6 +4,10 @@
 > out." A shortlist for Jay to pick from, in the manner of The Last Warren's. Facts from
 > web search only (Wikipedia and Steam were unreachable from this box), so anything quoted
 > publicly gets checked in the teardown first. Unverified claims are marked.
+>
+> **Outcome, 2026-10-11:** Jay went sideways and picked **A**, with a twist the list did
+> not foresee: the obstacle *is* the effect, and there are no towers at all. Desktop Tower
+> Defense is the theoretical tombstone; B and C become markers. See [PIVOT.md](PIVOT.md) §2.
 
 ## The organ, before the corpse
 
