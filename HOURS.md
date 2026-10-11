@@ -23,6 +23,7 @@ Split below is CC's estimate against Jay's ~4:00 total: **Orbis ~1:45 · Game #2
 | Milestone | Jay-time (cumulative) | Date |
 |---|---|---|
 | Brief filed as received, reviewed against the method, round-one boundary questions posed | ~0:02 | 2026-10-11 |
+| Tombstone shortlist researched (five corpses, three organs) | ~0:03 | 2026-10-11 |
 | Tombstone chosen | | |
 | Boundaries in | | |
 | P0 gray-box: chunk grammar, attachment, route validation, phone input | | |
@@ -30,7 +31,7 @@ Split below is CC's estimate against Jay's ~4:00 total: **Orbis ~1:45 · Game #2
 
 | Date | Jay-time | Machine work | What Jay did |
 |---|---|---|---|
-| 2026-10-11 | ~0:02 | Read the brief against METHOD, the library and GOD-MODE; wrote `ideas/infinite-frontier/REVIEW.md` | Pasted the name and the brief, answered three setup questions |
+| 2026-10-11 | ~0:03 | Read the brief against METHOD, the library and GOD-MODE; wrote `ideas/infinite-frontier/REVIEW.md`; tombstone research pass, `TOMBSTONE-SHORTLIST.md` | Pasted the name and the brief, answered three setup questions, asked for the tombstone run |
 
 ---
 
