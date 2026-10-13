@@ -17,7 +17,7 @@ A working, static, mobile-first web app in `boop-remote/`:
 - **Three-pick shortlist:** a best fit, a different trade-off, and a longer-term or other-angle pick. Each has why it fits, watch-outs, uncertainties, a "compared with the best fit" line, and a next step.
 - **Saved view** for likes, saves and passes, with "put back" and two levels of reset.
 - **About** page covering methodology, status definitions, scam-safety tips from official sources, and privacy.
-- **Catalogue:** 61 researched records across 8 categories (57 can be recommended), 325 source citations, and 6 official job-scam guidance sources.
+- **Catalogue:** 77 researched records across 9 categories (73 can be recommended), 460 source citations, and 6 official job-scam guidance sources. The catalogue was built in two passes; the second filled the biggest gaps of the first.
 - **Pipeline:** normalise, build/validate, audit, plus a link checker and a CSV ledger.
 - **Tests:** 44 unit tests and 26 browser checks across two viewports.
 
@@ -60,7 +60,7 @@ A working, static, mobile-first web app in `boop-remote/`:
 
 See `RESEARCH_METHODOLOGY.md` and `CATALOGUE_AUDIT.md`.
 
-- **Categories covered:** customer operations (12), language and writing (12), AI and data (8), paid research (7), public programs and training (6), software and digital (6), freelance (5), structured employment (5).
+- **Categories covered:** customer operations (14), language and writing (12), creative and production (9), AI and data (8), software and digital (8), paid research (7), public programs and training (7), freelance (7), structured employment (5).
 - **Found beyond the obvious families:**
   - accessibility testing paid to assistive-technology users (Fable)
   - Statistics Canada data-collection clerks
@@ -76,15 +76,16 @@ See `RESEARCH_METHODOLOGY.md` and `CATALOGUE_AUDIT.md`.
   - ODSP employment supports
 - **Dropped for thin evidence or no Canada access:** TELUS CS, Teleperformance, Amazon virtual CS, Boldly, Time Etc, Arise, OneForma, RWS TrainAI, Invisible, Testbirds, Scribie, Verbit, TransPerfect.
 - **Rejected but kept with reasons:** BELAY (US residents only) and Leger LEO (effective earnings unsupported).
-- **Not researched, because the search budget ran out:** creative and production work (no records), appointment setting, ecommerce operations, and the small-business digital-help and spreadsheet category records.
-- **Target versus result:** the brief asked for about 50 if the evidence supports it. There are 61 records, but evidence depth is uneven. Quality was preferred over padding: agents dropped candidates rather than invent sources.
+- **Filled by a second pass** (two more agents, after the first pass's search budget ran out): creative and production work (9 records, including stock contributing, 99designs, Canva Creators, a TV-metadata editor contract and Young Canada Works), virtual assistance, appointment setting, ecommerce operations, small-business digital help, spreadsheet cleanup, the Shopify Partner Program, and Digital Main Street's Digital Service Squad.
+- **Still not researched:** see the coverage gaps in `CATALOGUE_AUDIT.md`.
+- **Target versus result:** the brief asked for about 50 if the evidence supports it. There are 77 records, but evidence depth is uneven. Quality was preferred over padding: agents dropped candidates rather than invent sources.
 
 ## 6. Evidence and confidence policy
 
 - **"Confirmed" means an opened official page.** A search summary of an official page counts as `official_info_found` with eligibility "likely".
 - **Anecdotes are labelled and dated.** They lower confidence, and they are never the basis for a positive status.
 - **Freshness:** records older than 180 days (`CONFIG.staleDays`) are treated as stale. They are shown with a "Stale" chip, demoted, and never shortlisted.
-- **Every automated change to the agents' output is logged** in `research/normalization_log.md`: 75 changes across two runs.
+- **Every automated change to the agents' output is logged** in `research/normalization_log.md`: 76 changes across three runs.
 
 ## 7. Matching weights and hard-filter rules
 
@@ -127,7 +128,7 @@ See `RESEARCH_METHODOLOGY.md` and `CATALOGUE_AUDIT.md`.
 - otherwise Long shot
 - "Not enough answers yet" when fewer than two preference components apply
 
-**Ordering** is deterministic: score, then evidence strength, then id. A test checks that shuffled input gives the same order.
+**Ordering** is deterministic: score, then evidence strength, then fewer risk flags, then id. A test checks that shuffled input gives the same order.
 
 **Three picks** (`pickThree`):
 - The pool excludes passes, stale records, scores at or below −0.15, and audience-restricted routes the person hasn't liked. Likes and saves add +0.25.
@@ -166,11 +167,11 @@ All weights and thresholds live in `WEIGHTS`, `CONFIG` and `fitLabel()`, and are
 
 | Command | Result |
 |---|---|
-| `node scripts/normalize-raw.mjs && node scripts/build-catalogue.mjs` | 61 records from 5 files, 6 safety sources, **0 validation problems** |
+| `node scripts/normalize-raw.mjs && node scripts/build-catalogue.mjs` | 77 records from 7 files, 6 safety sources, **0 validation problems** |
 | `bun test test/` | **44 pass, 0 fail.** Covers schema validation of every record; unique ids; every link a valid URL backed by a same-site source; "open" only with official evidence; categories never posing as jobs; research participation never shown as employment; stale and rejected kept off the shortlist; hard filters across 300 generated profiles; deterministic ranking; unknowns neutral; distinct picks; audience restrictions; prompt contents and privacy |
 | `node test/ui.mjs` | **26 pass, 0 fail** (13 checks × mobile 390×844 and desktop 1280×860). Covers onboarding; answer, skip and back; the adaptive follow-up; all four card controls; details with evidence, `noopener` links and the prompt; clipboard copy plus the forced fallback; like, save, pass and undo; touch swipe (mobile) and arrow keys (desktop); the shortlist; the saved view; the impossible-limits empty state; clear everything; no overflow; no console errors |
 | `npx eslint src scripts test` | clean |
-| `node scripts/check-links.mjs` | **0 of 333 URLs reachable from this environment** (all DNS `ENOTFOUND`, the network policy). Not a statement about the sites |
+| `node scripts/check-links.mjs` | **0 of 457 URLs reachable from this environment** (all DNS `ENOTFOUND`, the network policy). Not a statement about the sites |
 
 Bugs the tests caught and that were fixed during the build:
 - An unanswered multi-select was stored as "I have none of these", which hid every route needing a computer. Empty now means skipped, and there is an explicit "None of these" option.
@@ -185,7 +186,7 @@ Bugs the tests caught and that were fixed during the build:
   - All evidence is search-engine summaries, plus a few Indeed postings read through a connector.
   - No record is `applications_open_confirmed`, and no application links are published.
   - **Every record needs re-verification before real users rely on it.**
-- The shared search budget (about 200 searches) ran out. Gaps are listed in `CATALOGUE_AUDIT.md`. In particular, creative and production work has no records.
+- The shared search budget (about 200 searches per pass) ran out in the first pass. A second pass filled the largest gaps; what's still missing is listed in `CATALOGUE_AUDIT.md`.
 - There has been no human review of any record, including the higher-risk ones (AI task platforms, moderation, fee-charging marketplaces).
 - Pay figures are often missing, in an unstated currency, or self-reported. The USD→CAD factor is a fixed approximation.
 - Weights and label thresholds were tuned by inspecting about five personas, not by user research.
@@ -203,7 +204,7 @@ The UI hedges each of these: dates, statuses, "still uncertain", and "none of th
 
 **Next three, highest value first:**
 1. **Re-verify the catalogue with working network access.** Open every official and application page, fill in `applyUrl`, upgrade statuses where justified, fix currencies, and run the link checker. Then have a person review the higher-risk records.
-2. **Fill the coverage gaps:** creative and production work, appointment setting, ecommerce operations, the small-business digital-help and spreadsheet categories, other provinces' programs, and more paid-study pools.
+2. **Fill the remaining coverage gaps:** remote customer service at Canadian banks and telcos, captioning employers, other provinces' programs, more paid-study pools, and the 2026–27 funding status of Digital Main Street and Young Canada Works.
 3. **Test with real people who have different preferences,** as the brief asks. Watch what they reject, misunderstand and pursue, then recalibrate the weights and thresholds against that.
 
 ## 14. How to run locally

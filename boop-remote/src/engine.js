@@ -322,9 +322,10 @@ export function match(catalogue, profile, today) {
     const signals = sc.breakdown.filter(b => b.key !== 'evidence').length;
     ranked.push({ rec, ...sc, label: signals < 2 ? 'Not enough answers yet' : fitLabel(sc.score), stale: isStale(rec, today) });
   }
-  // Deterministic: score desc, then evidence, then id.
+  // Deterministic: score desc, then evidence, then fewer risk flags, then id.
   const ev = { strong: 0, moderate: 1, weak: 2 };
-  ranked.sort((a, b) => b.score - a.score || ev[a.rec.evidenceStrength] - ev[b.rec.evidenceStrength] || a.rec.id.localeCompare(b.rec.id));
+  ranked.sort((a, b) => b.score - a.score || ev[a.rec.evidenceStrength] - ev[b.rec.evidenceStrength]
+    || a.rec.riskFlags.length - b.rec.riskFlags.length || a.rec.id.localeCompare(b.rec.id));
   excluded.sort((a, b) => a.rec.id.localeCompare(b.rec.id));
   return { ranked, excluded };
 }
@@ -341,7 +342,7 @@ export function pickThree(ranked, { liked = [], passed = [] } = {}) {
     .filter(m => !passed.includes(m.rec.id) && !m.stale && m.score > -0.15)
     .filter(m => !isRestricted(m.rec) || liked.includes(m.rec.id))
     .map(m => ({ ...m, adj: m.score + (liked.includes(m.rec.id) ? 0.25 : 0) }))
-    .sort((a, b) => b.adj - a.adj || a.rec.id.localeCompare(b.rec.id));
+    .sort((a, b) => b.adj - a.adj || a.rec.riskFlags.length - b.rec.riskFlags.length || a.rec.id.localeCompare(b.rec.id));
   if (!pool.length) return [];
 
   // The best-fit slot goes to an actual earning route: not a category, and not a support

@@ -74,13 +74,12 @@ ${records.filter(r => r.evidenceStrength === 'weak').map(r => `- ${r.name} (\`${
 
 ## Coverage gaps
 
-The research search budget ran out before these were researched. They are gaps, not judgements:
+Two research passes were made. The second (2026-10-13, two more agents) filled the biggest first-pass gaps: creative and production work, virtual assistance, appointment setting, ecommerce operations, small-business digital help, spreadsheet cleanup, and Digital Main Street. Still open:
 
-- **Customer operations:** appointment setting, ecommerce order processing, remote customer service at Canadian banks, telcos and airlines, and a virtual-assistant category record. TELUS, Teleperformance, Amazon, Boldly, Time Etc and Arise were looked at and dropped for thin or conflicting evidence.
-- **Creative and production:** social media management, captioning and editing, podcast support, digital asset tagging. **No records in this category.**
-- **Freelance and microbusiness:** the "digital help for local small businesses" and "spreadsheet/data cleanup" category records were dropped because no citable source could be reached.
+- **Customer operations:** remote customer service at Canadian banks, telcos and airlines (no 2026 remote posting found); entry-level remote order-processing employers. TELUS, Teleperformance, Amazon, Boldly, Time Etc and Arise were looked at and dropped for thin or conflicting evidence.
+- **Creative and production:** captioning employers (3Play Media's postings were US-only; Amara had no recruitment information), digital asset tagging, Dribbble, the Canada Media Fund. The production-assistant training programs found date from 2019–2023.
 - **Language and writing:** content and product-description writing; a negative-signal pass for Welocalize.
-- **Programs:** Youth Employment and Skills Strategy, Opportunities Fund for Persons with Disabilities, Canada Training Credit, OSAP micro-credentials.
+- **Programs:** Youth Employment and Skills Strategy, Opportunities Fund for Persons with Disabilities, Canada Training Credit, OSAP micro-credentials; funding status for Digital Main Street and Young Canada Works in 2026–27.
 - **Research participation:** Maru Voice Canada; paid study pools at other Ontario universities.
 - **Geography:** Canada-first throughout. Nothing was checked for other countries, and the app says so.
 

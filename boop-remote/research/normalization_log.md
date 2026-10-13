@@ -86,3 +86,9 @@ Changes applied by `scripts/normalize-raw.mjs` to the agents' raw research so it
 | cra-contact-centre-agent-seasonal | applyUrl https://www.canada.ca/en/revenue-agency/corporate/careers-cra/careers-cra-4-search-jobs.html cleared (page not opened; kept in sources) |
 | working-solutions-on-demand-agent | applyUrl https://jobs.workingsolutions.com/ cleared (page not opened; kept in sources) |
 | concentrix-canada-customer-service | applyUrl https://jobs.concentrix.com/job-search/?country=Canada cleared (page not opened; kept in sources) |
+
+## Run 2026-10-13
+
+| Record | Change |
+|---|---|
+| young-canada-works-heritage-students | audience set: Students aged 16–30 |

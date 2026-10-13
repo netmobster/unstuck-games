@@ -11,6 +11,9 @@ How the opportunity catalogue was researched, what the evidence standards are, a
   3. AI data evaluation and software QA (AI rating and training platforms, crowd testing, accessibility testing)
   4. Paid research participation and freelance marketplaces (study panels, UX research, Upwork and similar)
   5. Canadian and Ontario structured employment, programs and training (Job Bank, Employment Ontario, apprenticeships, public-service routes, staffing agencies, libraries)
+- **A second pass** later the same day added two more agents to fill gaps the first pass couldn't reach before its search budget ran out:
+  6. Creative and production work (social media, video and podcast editing, film and TV production assistants, stock contributing, design marketplaces, metadata editing, heritage student jobs)
+  7. Operations and small business (virtual assistance, appointment setting, ecommerce operations, small-business digital help, spreadsheet cleanup, the Shopify Partner Program, Digital Main Street)
 - **Beyond the obvious categories**, research turned up and kept: a Toronto accessibility-testing company that pays assistive-technology users, Statistics Canada data-collection clerks, CRA seasonal contact-centre work, election workers, Indigenous-language phone interpreting, Canadian French speech-data tasks, university paid-study pools, staffing-agency temp placements, free library e-learning, and pre-apprenticeship training.
 
 ## 2. Source hierarchy
@@ -30,7 +33,7 @@ Negative signals were searched for as deliberately as positive ones: "not paid",
 
 - **No web page could be opened.** Every attempt failed with a DNS error, and direct downloads were refused by the environment's network policy. Agents could only use a web *search* tool, which returns summaries and excerpts of pages.
 - **The search budget ran out.** The five agents shared about 200 searches, roughly 33 to 45 each, and some planned searches never ran. The gaps are listed in `CATALOGUE_AUDIT.md` and the per-family ledgers.
-- **A job-board connector worked** for one agent. It read a handful of full Indeed postings, and those are the only sources marked `accessible: true`.
+- **A job-board connector worked** for two agents. They read a handful of full Indeed postings (11 citations), and those are the only sources marked `accessible: true`.
 - **The consequences, applied by `scripts/normalize-raw.mjs` and logged in `research/normalization_log.md`:**
   - Every source seen only through a search summary is marked `accessible: false`.
   - No record may claim `applications_open_confirmed`, and none does.
@@ -38,7 +41,7 @@ Negative signals were searched for as deliberately as positive ones: "not paid",
   - Application links were cleared unless the page itself was opened (7 cleared). The URLs stay in each record's sources for re-checking.
   - Pay published without a currency is stored as `"unstated"` (8 records). We never assume USD, even for US-based platforms.
   - Evidence strength is at most `moderate`.
-- **The link checker** (`scripts/check-links.mjs`) could not reach any of the 333 URLs from this environment (all `ENOTFOUND`). This tells us nothing about the sites themselves; it must be re-run with network access.
+- **The link checker** (`scripts/check-links.mjs`) could not reach any of the 457 URLs from this environment (all `ENOTFOUND`). This tells us nothing about the sites themselves; it must be re-run with network access.
 
 In short, the catalogue is a carefully sourced first draft. Every URL appeared word-for-word in search results (agents were told never to construct URLs), and every claim cites where it came from. None of it has been checked against the live page, and there has been no human review yet.
 

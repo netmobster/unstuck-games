@@ -4,7 +4,7 @@
 
 Canada-first (Ontario where relevant). No accounts, no tracking. Answers stay in the browser.
 
-> **Status (2026-10-13):** working prototype with a 61-record researched catalogue. The research environment could not open web pages, so **every record rests on search-engine summaries of its sources, and no record claims a confirmed open application.** Read `CATALOGUE_AUDIT.md` before relying on any listing.
+> **Status (2026-10-13):** working prototype with a 77-record researched catalogue. The research environment could not open web pages, so **every record rests on search-engine summaries of its sources, and no record claims a confirmed open application.** Read `CATALOGUE_AUDIT.md` before relying on any listing.
 
 ## Run it
 
