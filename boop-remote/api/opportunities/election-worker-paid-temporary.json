@@ -1,0 +1,215 @@
+{
+ "id": "election-worker-paid-temporary",
+ "name": "Paid election worker (municipal, provincial or federal elections)",
+ "organization": "Various",
+ "type": "category",
+ "category": "structured_employment",
+ "tags": [
+  "temporary",
+  "one-day",
+  "election",
+  "paid-training",
+  "civic",
+  "in-person"
+ ],
+ "summary": "Short-term paid jobs staffing voting places for municipal, provincial or federal elections; hiring happens in the weeks or months before each vote.",
+ "whatYouDo": "After a short paid training session, you work at a voting location on advance-poll days or election day, greeting voters, checking registration, issuing ballots or supervising. Days often run 12-14 hours, and the election office decides your assignment.",
+ "appeal": [
+  "Paid training (Elections Canada pays about 3 hours)",
+  "No experience needed for entry roles",
+  "Elections Canada accepts online applications at any time; age 16+ for federal elections",
+  "Ontario municipal examples: $225-$300/day plus $50-$60 for training in Windsor-Essex (news); Toronto lists about $280 for one role",
+  "Often assigned near your home"
+ ],
+ "watchOuts": [
+  "Very long days (12-14 hours) on site",
+  "Work exists only around elections, so it is sporadic",
+  "Toronto's hiring for the October 26, 2026 municipal election is closed (positions filled); other cities' training ran late September-early October, so this cycle is likely too late",
+  "Must stay non-partisan; candidates, their families and campaign workers are excluded",
+  "Eligibility differs: federal requires Canadian citizenship and age 16+; Toronto requires 18+ and legal right to work",
+  "Federal pay rates differ between Elections Canada pages and years; check the current rate"
+ ],
+ "officialUrl": "https://www.elections.ca/jobs",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "onsite"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": 16,
+  "assessment": "interview"
+ },
+ "schedule": {
+  "flexibility": "fixed",
+  "windows": [
+   "day",
+   "evening",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person"
+  ],
+  "realtime": "high",
+  "phone": false
+ },
+ "skills": {
+  "computer": 0,
+  "writing": 0,
+  "numeracy": 1,
+  "detail": 2,
+  "customer": 2,
+  "technical": 0,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": true,
+  "cost": "paid_to_you",
+  "notes": "Mandatory training; Elections Canada pays about 3 hours; Toronto training about 2.5 hours; Windsor-Essex pays $50-$60."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Varies by election and role. Elections Canada pages: roughly $20-$27/hr (one page), $27.76 for central poll supervisor (another); 2025 news: $17.40-$33.08/hr. Ontario municipal 2026 examples: $225-$300/day (Windsor-Essex news), about $280 (Toronto)."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "Only during election periods; next federal/provincial dates depend on when elections are called."
+ },
+ "workerStatus": "varies",
+ "fees": null,
+ "applicationSteps": [
+  "Federal: apply online at elections.ca/jobs (accepted any time); you are contacted when an election is called",
+  "Municipal or provincial: watch your city clerk's or Elections Ontario's site in the months before a vote",
+  "Attend the mandatory paid training",
+  "Work your assigned advance-poll or election-day shift"
+ ],
+ "timeToFirstEarnings": "months",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work"
+ ],
+ "fitsIf": "You want occasional, short, in-person paid work, can handle long days and can stay politically neutral.",
+ "notFitIf": "You need regular income or remote work, or cannot manage a 13-14 hour day on site.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.elections.ca/content.aspx?section=emp&dir=pos&document=pollworker&lang=e",
+   "title": "Apply to work as a poll worker",
+   "type": "official",
+   "publisher": "Elections Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "pay",
+    "schedule"
+   ],
+   "notes": "Search-result summary only (fetch blocked). Citizens 16+ on election day; non-partisan; apply online any time; 12-14 hr shifts; ~3 hrs paid training; hourly rates vary by page.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.elections.ca/jobs",
+   "title": "Employment - Elections Canada",
+   "type": "official",
+   "publisher": "Elections Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Elections Canada jobs entry point (seen in results).",
+   "accessible": false
+  },
+  {
+   "url": "https://www.toronto.ca/city-government/elections/work-for-toronto-elections/about-election-jobs/",
+   "title": "About election jobs - City of Toronto",
+   "type": "official",
+   "publisher": "City of Toronto",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status",
+    "requirements",
+    "pay"
+   ],
+   "notes": "Search summary: recruitment closed, all 2026 positions filled, vacancies filled from existing pool; 18+ and legally able to work; ~2.5 hr training; one role shows $280.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.toronto.ca/news/toronto-residents-encouraged-to-apply-for-2026-municipal-election-jobs/",
+   "title": "Toronto residents encouraged to apply for 2026 municipal election jobs",
+   "type": "official",
+   "publisher": "City of Toronto",
+   "published": "2026-07-06",
+   "accessed": "2026-10-13",
+   "claims": [
+    "status"
+   ],
+   "notes": "News release opening applications for thousands of paid voting-place jobs; election day Monday October 26, 2026.",
+   "accessible": false
+  },
+  {
+   "url": "https://sarnianewstoday.ca/windsor/news/2026/07/20/windsor-and-essex-recruiting-election-workers-for-municipal-vote",
+   "title": "Windsor and Essex recruiting election workers for municipal vote",
+   "type": "journalism",
+   "publisher": "Sarnia News Today",
+   "published": "2026-07-20",
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "schedule"
+   ],
+   "notes": "Most positions $225-$300/day plus $50-$60 for mandatory training; up to 13 hours on voting days.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.kitchener.ca/council-and-city-administration/election/election-hiring-in-2026/",
+   "title": "Election Hiring in 2026 - City of Kitchener",
+   "type": "official",
+   "publisher": "City of Kitchener",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "schedule"
+   ],
+   "notes": "Advance-vote and election-day roles; mandatory training September 28-October 9, 2026.",
+   "accessible": false
+  },
+  {
+   "url": "https://bnnbloomberg.ca/federal-election-2025/2025/03/31/a-guide-to-the-200000-temporary-jobs-offered-by-elections-canada-for-the-upcoming-federal-election",
+   "title": "A guide to the 200,000 temporary jobs offered by Elections Canada for the upcoming federal election",
+   "type": "journalism",
+   "publisher": "BNN Bloomberg",
+   "published": "2025-03-31",
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "2025 federal election pay reported at $17.40 (Level 1) to $33.08 (Level 5) per hour.",
+   "accessible": false
+  }
+ ]
+}

@@ -1,0 +1,63 @@
+{
+  "_about": "Editorial overrides applied by scripts/normalize-raw.mjs. `audience` marks routes only open to a specific group. The app never asks about these characteristics, so such routes are labelled on cards and only reach the shortlist if the person likes or saves them.",
+  "fable-accessibility-tester": {
+    "audience": [
+      "People who use assistive technology (lived disability experience)"
+    ]
+  },
+  "odsp-employment-supports": {
+    "audience": [
+      "Ontario residents with a disability or long-term health condition"
+    ]
+  },
+  "languageline-indigenous-language-interpreter-canada": {
+    "audience": [
+      "People fluent in English and an Indigenous language such as Cree or Inuktitut"
+    ]
+  },
+  "canada-summer-jobs": {
+    "audience": [
+      "Youth aged 15–30"
+    ]
+  },
+  "npower-canada-junior-it-analyst": {
+    "audience": [
+      "Young adults (roughly 18–29)"
+    ]
+  },
+  "public-service-student-new-grad-programs": {
+    "audience": [
+      "Current students or recent graduates"
+    ]
+  },
+  "better-jobs-ontario": {
+    "audience": [
+      "People in Ontario who were laid off or have been unemployed for a long stretch"
+    ]
+  },
+  "intuit-turbotax-seasonal-tax-expert-canada": {
+    "audience": [
+      "Experienced Canadian tax preparers"
+    ]
+  },
+  "scribbr-academic-editor": {
+    "audience": [
+      "Degree holders"
+    ]
+  },
+  "crowdgen-canadian-french-voice-tasks": {
+    "audience": [
+      "Canadian French speakers"
+    ]
+  },
+  "uoft-paid-research-pools": {
+    "audience": [
+      "People who can get to a University of Toronto campus"
+    ]
+  },
+  "young-canada-works-heritage-students": {
+    "audience": [
+      "Students aged 16–30"
+    ]
+  }
+}

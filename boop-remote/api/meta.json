@@ -1,0 +1,185 @@
+{
+ "generated": "2026-10-13",
+ "counts": {
+  "records": 77,
+  "recommendable": 73,
+  "byCategory": {
+   "creative_production": 9,
+   "ai_data": 8,
+   "customer_ops": 14,
+   "government_program": 7,
+   "language_writing": 12,
+   "freelance_microbusiness": 7,
+   "research_participation": 7,
+   "tech_digital": 8,
+   "structured_employment": 5
+  },
+  "byStatus": {
+   "official_info_found": 60,
+   "uncertain": 4,
+   "not_currently_open": 2,
+   "rejected": 2,
+   "waitlist_or_no_work_guarantee": 7,
+   "stale_needs_recheck": 2
+  },
+  "byType": {
+   "freelance": 17,
+   "category": 17,
+   "task_platform": 10,
+   "employment": 8,
+   "contract": 8,
+   "program": 6,
+   "research_participation": 7,
+   "training_pathway": 4
+  }
+ },
+ "enums": {
+  "types": {
+   "employment": "Job (employee)",
+   "contract": "Contract role",
+   "freelance": "Freelance",
+   "task_platform": "Task platform",
+   "research_participation": "Paid research (not a job)",
+   "training_pathway": "Training route",
+   "program": "Public program",
+   "category": "Kind of work to investigate"
+  },
+  "categories": {
+   "customer_ops": "Customer & business operations",
+   "language_writing": "Language, writing & audio",
+   "ai_data": "AI, data & evaluation",
+   "tech_digital": "Software & digital operations",
+   "research_participation": "Paid research participation",
+   "creative_production": "Creative & production",
+   "structured_employment": "Structured employment",
+   "freelance_microbusiness": "Freelance & microbusiness",
+   "government_program": "Public programs & training"
+  },
+  "statuses": {
+   "applications_open_confirmed": "Applications open (confirmed on an official page)",
+   "registration_open_not_work_guaranteed": "Sign-up open, work not guaranteed",
+   "eligibility_confirmed": "Canadian eligibility confirmed, openings not checked",
+   "official_info_found": "Official information found, openings not checked",
+   "waitlist_or_no_work_guarantee": "Waitlist or reports of little work",
+   "uncertain": "Uncertain: thin or conflicting evidence",
+   "not_currently_open": "Not currently open",
+   "stale_needs_recheck": "Stale: needs re-checking",
+   "rejected": "Researched and rejected"
+  },
+  "statusShort": {
+   "applications_open_confirmed": "Open now",
+   "registration_open_not_work_guaranteed": "Sign-up open",
+   "eligibility_confirmed": "Eligible in Canada",
+   "official_info_found": "Official info",
+   "waitlist_or_no_work_guarantee": "Waitlist / little work",
+   "uncertain": "Uncertain",
+   "not_currently_open": "Closed",
+   "stale_needs_recheck": "Stale",
+   "rejected": "Rejected"
+  },
+  "sourceTypes": [
+   "official",
+   "government",
+   "independent_review",
+   "forum",
+   "journalism",
+   "aggregator"
+  ],
+  "eligibility": [
+   "confirmed",
+   "likely",
+   "unclear",
+   "not_eligible"
+  ],
+  "settings": [
+   "remote",
+   "hybrid",
+   "onsite",
+   "varies"
+  ],
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "modes": [
+   "text",
+   "voice",
+   "video",
+   "in_person",
+   "independent"
+  ],
+  "skills": [
+   "computer",
+   "writing",
+   "numeracy",
+   "detail",
+   "customer",
+   "technical",
+   "creative",
+   "language"
+  ],
+  "horizons": [
+   "now",
+   "bridge",
+   "career"
+  ],
+  "workerStatus": [
+   "employee",
+   "contractor",
+   "participant",
+   "student",
+   "varies",
+   "unknown"
+  ],
+  "evidence": [
+   "strong",
+   "moderate",
+   "weak"
+  ],
+  "legitimacy": [
+   "established",
+   "likely",
+   "unclear"
+  ],
+  "assessments": [
+   "none",
+   "free_test",
+   "unpaid_test",
+   "paid_test",
+   "interview",
+   "unknown"
+  ]
+ },
+ "matching": {
+  "weights": {
+   "interaction": 3,
+   "skills": 3,
+   "goals": 3,
+   "schedule": 2,
+   "evidence": 2,
+   "predictability": 1.5,
+   "learning": 1,
+   "pay": 1,
+   "equipment": 1
+  },
+  "config": {
+   "staleDays": 180,
+   "usdToCad": 1.37,
+   "hoursCap": {
+    "lt10": 10,
+    "10to20": 20,
+    "20to30": 30,
+    "30plus": 60
+   }
+  },
+  "labels": {
+   "strong": 0.45,
+   "good": 0.25,
+   "possible": 0.05
+  },
+  "shortlistFloor": -0.15,
+  "docs": "DECISIONS.md §7"
+ }
+}

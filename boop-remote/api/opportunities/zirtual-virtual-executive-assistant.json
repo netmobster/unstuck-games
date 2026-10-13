@@ -1,0 +1,140 @@
+{
+ "id": "zirtual-virtual-executive-assistant",
+ "name": "Remote virtual executive assistant (Zirtual)",
+ "organization": "Zirtual",
+ "type": "contract",
+ "category": "customer_ops",
+ "tags": [
+  "virtual-assistant",
+  "executive-assistant",
+  "contractor",
+  "text-mostly",
+  "experienced"
+ ],
+ "summary": "Zirtual matches experienced virtual executive assistants in the US or Canada with busy professionals as independent contractors.",
+ "whatYouDo": "You manage clients' calendars, inboxes, travel, documents and research remotely during business hours, replying to clients within two hours and sending weekly usage reports. An account supervisor supports you with client relationships.",
+ "appeal": [
+  "Posting explicitly accepts residents of the US or Canada",
+  "Mostly written/independent work (email, calendar, documents)",
+  "Business-hours schedule; no round-the-clock availability",
+  "Bilingual English/French is a plus"
+ ],
+ "watchOuts": [
+  "Requires 2–4+ years as an executive or administrative assistant and 50+ WPM typing",
+  "Contractor pay is a percentage of client plans; average $1,500–$3,800/month depends on client mix (currency not stated)",
+  "No equipment provided; you supply computer, internet and phone",
+  "Must respond to clients within 2 hours during business hours (PST or EST)",
+  "Zirtual warns that scammers impersonate its recruiters; real emails come only from @zirtual.com"
+ ],
+ "officialUrl": null,
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "US",
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "significant",
+  "credentialRequired": false,
+  "credentials": [
+   "Associate's/Bachelor's degree or equivalent experience"
+  ],
+  "equipment": [
+   "computer",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "fixed",
+  "windows": [
+   "day"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 3,
+  "writing": 3,
+  "numeracy": 1,
+  "detail": 3,
+  "customer": 2,
+  "technical": 1,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": null,
+  "cost": "unknown",
+  "notes": "Account supervisor provides guidance; formal training not described."
+ },
+ "compensation": {
+  "min": 1500,
+  "max": 3800,
+  "currency": "unstated",
+  "unit": "month",
+  "basis": "official",
+  "notes": "Employer-stated average monthly earnings range in a July 2026 posting seen via Indeed; % of client monthly plans; currency not stated."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "medium",
+  "notes": "Earnings depend on number and size of assigned client plans."
+ },
+ "workerStatus": "contractor",
+ "fees": "None per Zirtual's posting (never asks candidates for payment); you bear your own equipment, internet and phone costs and taxes.",
+ "applicationSteps": [
+  "Confirm the opening on Zirtual's own careers channel (posting seen on Indeed, dated 2026-07-15)",
+  "Apply showing 2–4+ years of EA/admin experience and tool skills (Google Workspace/Microsoft, CRMs)",
+  "Only engage with recruiters emailing from @zirtual.com"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "uncertain",
+ "legitimacy": "likely",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "contractor_no_benefits",
+  "variable_work",
+  "scam_impersonation"
+ ],
+ "fitsIf": "You are an experienced admin/executive assistant in Canada who wants mostly written remote work during business hours.",
+ "notFitIf": "You are new to admin work or need a set wage and benefits.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://to.indeed.com/aat6nd4dvqrl",
+   "title": "Remote Virtual Executive Assistant - Zirtual (Indeed)",
+   "type": "aggregator",
+   "publisher": "Indeed",
+   "published": "2026-07-15",
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "pay",
+    "requirements",
+    "worker_status",
+    "schedule",
+    "risk"
+   ],
+   "notes": "Full posting read via Indeed job API. Contractor role for US or Canada residents; 2–4+ yrs EA; 50 WPM; business hours PST/EST; 2-hr response; avg $1,500–$3,800/mo; scam-impersonation warning; no equipment provided.",
+   "accessible": true
+  }
+ ]
+}

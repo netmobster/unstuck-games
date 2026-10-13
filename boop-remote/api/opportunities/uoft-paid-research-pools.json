@@ -1,0 +1,186 @@
+{
+ "id": "uoft-paid-research-pools",
+ "name": "Paid university research studies (University of Toronto participant pools)",
+ "organization": "University of Toronto (psychology departments and labs)",
+ "type": "research_participation",
+ "category": "research_participation",
+ "tags": [
+  "research-participation",
+  "not-a-job",
+  "university",
+  "in-person",
+  "toronto",
+  "older-adults"
+ ],
+ "summary": "Sign up to University of Toronto participant registries to be contacted for paid psychology studies; occasional research participation, not a job.",
+ "whatYouDo": "You register with a campus participant pool or sign-up system and are invited to, or sign up for, studies you're eligible for. Sessions in the St. George adult pool usually last 1–2 hours, and some labs run computer tasks or MRI scans.",
+ "appeal": [
+  "Official pay at one pool: $18/hour for the St. George Adult Volunteer Pool",
+  "Community members, not just students, can register at the St. George, Mississauga (UTM) and Scarborough (UTSC) campuses",
+  "Some pools specifically want older adults (40–80 or 55–80), a group online panels often underserve"
+ ],
+ "watchOuts": [
+  "Only practical if you can get to a Toronto-area campus for in-person studies",
+  "Eligibility depends on the study, with age bands such as 55–80, 40–80 or healthy adults 18–35",
+  "Invitations are occasional, and registering doesn't guarantee any studies",
+  "Some UofT recruitment pages are years old, so confirm a pool is active before relying on it",
+  "Rotman's paid pool (about $10/hour) is aimed at students, not the general public"
+ ],
+ "officialUrl": "https://adultvolunteerpool.psych.utoronto.ca/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [
+   "ON"
+  ],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": 18,
+  "assessment": "none"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person",
+   "independent"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 0,
+  "numeracy": 0,
+  "detail": 1,
+  "customer": 0,
+  "technical": 0,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": 18,
+  "max": 18,
+  "currency": "CAD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "The St. George Adult Volunteer Pool states $18/hour (ages 55–80, sessions usually 1–2 h). The other UofT community pools reviewed don't give a rate in the text retrieved. The student-oriented Rotman pool is about $10/hour."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "Recruitment depends on active studies and their age bands. No volume data was found."
+ },
+ "workerStatus": "participant",
+ "fees": null,
+ "applicationSteps": [
+  "Choose the pool for your campus: the Adult Volunteer Pool (St. George), the UTM Psychological & Brain Sciences sign-up system, or the UTSC Community Adult Volunteer Panel",
+  "Register with your name, contact details and age",
+  "Wait to be contacted, or sign up for paid studies you're eligible for",
+  "Attend the session and receive your compensation"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work"
+ ],
+ "fitsIf": "You live near a University of Toronto campus (especially if you're an older adult) and want occasional paid study sessions.",
+ "notFitIf": "You can't travel to campus or you need predictable income.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://adultvolunteerpool.psych.utoronto.ca/",
+   "title": "Adult Volunteer Pool",
+   "type": "official",
+   "publisher": "University of Toronto, Department of Psychology",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "status",
+    "requirements"
+   ],
+   "notes": "From a search summary: currently looking for volunteers aged 55–80, paid $18/hour, with sessions usually 1–2 hours and an online sign-up link. Direct fetch was blocked, so the 'currently' wording could not be checked live.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.utm.utoronto.ca/psychology/faculty-research/psychological-brain-sciences-research-sign-system",
+   "title": "Psychological & Brain Sciences Research Sign-up System",
+   "type": "official",
+   "publisher": "University of Toronto Mississauga",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "From a search summary: anyone wanting financial compensation can create a participant account (name and contact details) and sign up for paid experiments. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.utsc.utoronto.ca/psych/community-adult-volunteer-panel",
+   "title": "Community Adult Volunteer Panel",
+   "type": "official",
+   "publisher": "University of Toronto Scarborough",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "From a search summary: a community registry for adults 18+ who are not currently in PSYA01/PSYA02, especially looking for people aged 40–80. Pay was not stated in the summary. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://macklab.utoronto.ca/participate.html",
+   "title": "Participate - Mack Lab @ UofT",
+   "type": "official",
+   "publisher": "Mack Lab, University of Toronto",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "From a search summary: the lab is looking for healthy adults aged 18–35 for its studies, including MRI and computer tasks. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.rotman.utoronto.ca/faculty-and-research/education-labs/behavioural-research-lab/sign-up-to-participate/",
+   "title": "Sign Up to Participate",
+   "type": "official",
+   "publisher": "Rotman School of Management, University of Toronto",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements"
+   ],
+   "notes": "From a search summary: the Rotman Paid Participant Pool runs marketing and organisational behaviour studies, usually at $10/hour, with most studies on campus. It is aimed at students. Direct fetch was blocked.",
+   "accessible": false
+  }
+ ],
+ "audience": [
+  "People who can get to a University of Toronto campus"
+ ]
+}

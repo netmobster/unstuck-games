@@ -1,0 +1,205 @@
+{
+ "id": "italki-language-tutor",
+ "name": "Online language teacher / community tutor",
+ "organization": "italki",
+ "type": "freelance",
+ "category": "language_writing",
+ "tags": [
+  "tutoring",
+  "languages",
+  "french",
+  "english",
+  "video",
+  "set-your-own-rate",
+  "commission"
+ ],
+ "summary": "Teach languages on italki as a Community Tutor (native or near-native, no credential) or a certified Professional Teacher, setting your own price; italki takes a 15–30% commission on paid lessons.",
+ "whatYouDo": "You apply with government ID, a photo, written intro and video; once approved you set lesson prices and teach booked one-on-one video lessons. Community Tutors mostly offer conversation practice; Professional Teachers with credentials offer structured lessons.",
+ "appeal": [
+  "Community Tutor route needs no teaching credential (per third-party guides)",
+  "No commission on trial lessons (official)",
+  "Set your own price (minimum US$5 for Community Tutors, US$10 for Professional Teachers)",
+  "Suits French and less-common languages, not just English"
+ ],
+ "watchOuts": [
+  "Commission rose in 2025: 21% on single lessons, 15–19% on packages, 30% on group classes (official help centre)",
+  "italki's English teacher page says its English teachers hold a certification (CELTA/TEFL/TESOL), so no-credential English applicants may struggle",
+  "Applications are reviewed and can be rejected; government ID required",
+  "No guaranteed students; income depends on marketing yourself",
+  "No source found on Canada-specific eligibility either way"
+ ],
+ "officialUrl": "https://www.italki.com/fr/instructorterms",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "unclear",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [
+   "Teaching certificate (e.g. CELTA, TEFL, TESOL), teaching degree or licence only for the Professional Teacher route"
+  ],
+  "equipment": [
+   "computer",
+   "webcam",
+   "headset",
+   "fast internet"
+  ],
+  "minAge": 18,
+  "assessment": "none"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "video",
+   "voice"
+  ],
+  "realtime": "high",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 1,
+  "customer": 3,
+  "technical": 0,
+  "creative": 1,
+  "language": 3
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": "Credentials only needed for Professional Teacher status."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": "USD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Teachers set their own prices; official minimum lesson price is US$5 (Community Tutor) or US$10 (Professional Teacher). Net pay = price minus commission."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Depends on student bookings; no volume guarantee found."
+ },
+ "workerStatus": "contractor",
+ "fees": "Commission (official help centre): trial lessons 0%, single lessons 21%, 5-lesson packages 19%, 10-lesson 17%, 15/20-lesson 15%, group classes 30%. Older sources cite a flat 15%.",
+ "applicationSteps": [
+  "Choose Community Tutor or Professional Teacher route",
+  "Submit the teacher application with photo, written intro, video and government ID (plus credentials for Professional Teacher)",
+  "Wait for italki's review and approval",
+  "Set lesson prices and availability, then accept bookings"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "fees",
+  "variable_work",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You speak a language natively or at near-native level (French is a good fit) and want to set your own prices for one-on-one lessons.",
+ "notFitIf": "You want an English-only route without credentials, or need guaranteed hours.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://support.italki.com/hc/en-us/articles/206352068-How-does-italki-charge-a-commission",
+   "title": "How does italki charge a commission?",
+   "type": "official",
+   "publisher": "italki",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Help centre table: trial 0%, single lessons 21%, 5-pack 19%, 10-pack 17%, 15/20-pack 15%, group classes 30%.",
+   "accessible": false
+  },
+  {
+   "url": "https://support.italki.com/hc/en-us/articles/900003254946-How-much-should-I-charge-for-my-lessons",
+   "title": "How much should I charge for my lessons?",
+   "type": "official",
+   "publisher": "italki",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Lowest lesson price is US$10 for Professional Teachers and US$5 for Community Tutors.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.italki.com/fr/instructorterms",
+   "title": "italki Teacher Policy (French-locale page)",
+   "type": "official",
+   "publisher": "italki",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Teacher Policy: applicants submit a complete application with passport or government ID through the platform; italki evaluates it for approval.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.italki.com/teachers/english?page=4",
+   "title": "Find English teachers – italki",
+   "type": "official",
+   "publisher": "italki",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "English teacher listing page states its English teachers are native or certified bilingual speakers with at least one teaching certification (CELTA, TEFL or TESOL).",
+   "accessible": false
+  },
+  {
+   "url": "https://teeachie.com/blog/italki-commission-for-teachers/",
+   "title": "italki Commission for Teachers: What You Keep in 2026",
+   "type": "aggregator",
+   "publisher": "Teeachie",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "2026 guide reporting italki moved from a flat 15% to tiered commission in early 2025.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.tefl.org/teach-english-online/italki/",
+   "title": "Tutoring English Online with italki",
+   "type": "aggregator",
+   "publisher": "TEFL Org",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Third-party guide. Search summaries of guides describe Community Tutors as 18+, native or C2, no credential; Professional Teachers need CELTA/TEFL/TESOL or similar (not pinned to this page).",
+   "accessible": false
+  }
+ ]
+}

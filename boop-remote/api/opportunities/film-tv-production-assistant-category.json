@@ -1,0 +1,242 @@
+{
+ "id": "film-tv-production-assistant-category",
+ "name": "Film & TV production assistant (category)",
+ "organization": "Various",
+ "type": "category",
+ "category": "creative_production",
+ "tags": [
+  "film",
+  "television",
+  "production-assistant",
+  "crew",
+  "on-set",
+  "screen-industry",
+  "noc-53111"
+ ],
+ "summary": "Entry-level crew work on film, TV and commercial sets, sometimes reached through short crew-training programs. Job Bank files production assistants under NOC 53111.",
+ "whatYouDo": "Production assistants (PAs) support crews on set and on location: running errands, helping move and set up equipment, managing people and traffic around the set, distributing paperwork and helping whichever department needs a hand. The work is on-site, usually by the day or by production, and long days are common.",
+ "appeal": [
+  "A recognized way into Canada's screen industry that usually doesn't need a degree",
+  "Job Bank says the occupation usually requires a college diploma, an apprenticeship of under 2 years, or more than 6 months of on-the-job training",
+  "Free or low-cost crew-training programs have run in Toronto, Northern Ontario and B.C., some aimed at youth from under-represented groups",
+  "Toronto's earlier PA training program was recognized by the Directors Guild of Canada – Ontario toward its apprenticeship program, which cut the entry cost by 75% (City of Toronto, 2019)"
+ ],
+ "watchOuts": [
+  "Job Bank's 2025–2027 outlook is Very limited in Ontario and in the Montréal/Laval and Montérégie regions, Limited in Kitchener–Waterloo–Barrie and Moderate in Nova Scotia",
+  "Job Bank 'production assistant' wages ($16.00 low, $24.94 median, $36.49 high per hour) were last updated November 2023",
+  "Job Bank says these workers usually work more than 40 hours per week. Long, irregular days are typical",
+  "Work comes one production at a time, so income is irregular and depends on local filming activity",
+  "The training programs found (Toronto, Northern Ontario, B.C.) come from 2019–2023 reporting. No 2026 intake was confirmed",
+  "On-site only, not remote"
+ ],
+ "officialUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/5642/ON",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "onsite"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [
+   "College diploma, apprenticeship under 2 years, or 6+ months on-the-job training usually expected (Job Bank)"
+  ],
+  "equipment": [],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person"
+  ],
+  "realtime": "high",
+  "phone": false
+ },
+ "skills": {
+  "computer": 0,
+  "writing": 0,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 1,
+  "technical": 1,
+  "creative": 1,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "free",
+  "notes": "Some crew-training routes have been free (e.g. Northern Ontario crew training sessions, Reel Canada workshops); none confirmed running in 2026."
+ },
+ "compensation": {
+  "min": 16,
+  "max": 36.49,
+  "currency": "CAD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Job Bank 'Production Assistant' Canada wages, last updated 29 Nov 2023: $16.00 low, $24.94 median, $36.49 high per hour. An undated Playback article reported PA day rates of $125–$150 at two Toronto commercial production companies (likely old). Current rates not verified."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Project-based on-set work. Job Bank estimates about 2,200 workers in NOC 53111 in Ontario, with a Very limited outlook there for 2025–2027."
+ },
+ "workerStatus": "varies",
+ "fees": null,
+ "applicationSteps": [
+  "Look for crew-training programs in your area (e.g. City of Toronto screen-industry pathways, Reel Canada's Reel Opportunities, regional film offices)",
+  "Search Job Bank and screen-industry job boards for production assistant postings",
+  "Build contacts with local crews, and ask about guild or union apprenticeship routes (e.g. Directors Guild of Canada – Ontario)"
+ ],
+ "timeToFirstEarnings": "months",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work"
+ ],
+ "fitsIf": "You like fast-paced, physical teamwork on location and can handle long days at short notice.",
+ "notFitIf": "You need remote work, regular hours or steady weekly income.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/summary-occupation/5642/ON",
+   "title": "Production Assistant in Ontario",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "schedule"
+   ],
+   "notes": "Search summary: production assistant maps to NOC 53111; usually requires a college diploma, an apprenticeship under 2 years or more than 6 months of on-the-job training; workers usually work more than 40 hours a week (not pinned precisely to this page). Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/5642/ON",
+   "title": "Production Assistant in Ontario (job prospects)",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Search summary: 2025–2027 outlook Very limited in Ontario for NOC 53111; about 2,200 workers; employers include broadcasters, recording studios and motion picture and video production companies. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/5642/NS",
+   "title": "Production Assistant in Nova Scotia (job prospects)",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Search summary: 2025–2027 outlook Moderate in Nova Scotia. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://nb.jobbank.gc.ca/marketreport/wages-occupation/5642/ca",
+   "title": "Wages Production Assistant in Canada",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": "2023-11-29",
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search summary: national hourly range $16.00 low, $24.94 median, $36.49 high; updated 29 Nov 2023. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.toronto.ca/news/city-of-toronto-and-partners-launching-program-to-train-youth-for-work-in-local-screen-industry/",
+   "title": "City of Toronto and partners launching program to train youth for work in local screen industry",
+   "type": "government",
+   "publisher": "City of Toronto",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "status"
+   ],
+   "notes": "Search summary (2019-era): five-week production assistant training for Black young adults aged 18–29 with POV and CEE Centre for Young Black Professionals; Directors Guild of Canada – Ontario counted the program toward its apprenticeship and cut entry cost 75%. Current status unknown. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.toronto.ca/news/city-of-toronto-and-partners-announce-expansion-of-screen-industry-workforce-development-training-programs-for-diverse-youth/",
+   "title": "City of Toronto and partners announce expansion of screen industry workforce development training programs for diverse youth",
+   "type": "government",
+   "publisher": "City of Toronto",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status"
+   ],
+   "notes": "Search summary (circa 2020–2021): expansion added an Indigenous cohort with Miziwe Biik and planned training for 200+ BIPOC participants with an $800,000 provincial grant. No 2025–2026 information found. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://reelcanada.ca/reel-opportunities/workshops/",
+   "title": "Reel Opportunities workshops",
+   "type": "official",
+   "publisher": "Reel Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "status"
+   ],
+   "notes": "Search summary: free one-hour classroom workshops with industry professionals for youth aged 14–30; program says it is expanding to in-person film and TV training in select cities (no cities, dates or pay details given). Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://sootoday.com/local-entertainment/training-program-feeds-northern-ontarios-growing-film-tv-sector-6522119",
+   "title": "Training program feeds Northern Ontario's growing film/TV sector",
+   "type": "journalism",
+   "publisher": "SooToday",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search summary: Cultural Industries Ontario North with Reel Canada ran free crew training in Sudbury, North Bay and Sault Ste. Marie covering production assistant, grip/electric and art department roles. Earlier year; not confirmed for 2026. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://playbackonline.ca/?p=22168",
+   "title": "Sparks, Partners' raise crew rates",
+   "type": "journalism",
+   "publisher": "Playback",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "schedule"
+   ],
+   "notes": "Search summary: undated (likely old) report that two Toronto commercial production companies paid PAs $125–$150 per shoot day, with premiums for 14-hour days. Not current pay evidence. Page not opened.",
+   "accessible": false
+  }
+ ]
+}

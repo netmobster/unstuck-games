@@ -1,0 +1,1458 @@
+[
+ {
+  "id": "better-jobs-ontario",
+  "name": "Better Jobs Ontario (funded retraining for laid-off or long-unemployed people)",
+  "organization": "Government of Ontario - Employment Ontario",
+  "record_type": "government_support",
+  "category": "government_program",
+  "summary": "Ontario grant that can cover tuition, books, transportation and a basic living allowance while an eligible laid-off or long-unemployed person trains for an in-demand job.",
+  "what_you_do": "With an Employment Ontario provider, you research an in-demand occupation and an approved training program, then build and submit an application. If approved, you attend the training while Better Jobs Ontario helps with costs, then look for work in that field.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You live in Ontario, were laid off (or have been unemployed 12+ weeks in a low-income household) and want funded training for a new occupation.",
+   "Up to $28,000 for training of 1 year or less, or up to $35,000 for programs over 1 year and up to 2 years",
+   "Basic living allowance up to $500/week plus a transportation allowance (guidelines cite $45/week)",
+   "May also cover childcare, disability-related supports and language training",
+   "People receiving EI, Ontario Works or ODSP can still apply",
+   "Not laid off? You may still qualify after 12+ weeks unemployed in a low-income household"
+  ],
+  "who_it_may_not_fit": [
+   "You need wages right away, would have to quit a current job to train, or are not a citizen or permanent resident.",
+   "Must be an Ontario resident and a Canadian citizen or permanent resident (program guidelines)",
+   "Living allowance is income-tested and only tops household income up to a 'moderate standard of living'",
+   "Quitting a job less than 12 months ago can make you ineligible unless the quit is authorized",
+   "Training for regulated occupations must be fully accredited",
+   "Multi-step application that colleges say can take several months; some college pages still cite older rules (e.g., 6 months unemployed)",
+   "No first-hand accounts of approval times found in this research pass"
+  ],
+  "audience_restriction": [
+   "People in Ontario who were laid off or have been unemployed for a long stretch"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://ontario.ca/betterjobsontario",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "participant",
+   "schedule_type": "varies",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Allowance paid during approved training; job outcomes after training not evidenced.",
+    "Approved costs (tuition, books, transportation, other instructional costs) covered up to the caps; costs above caps not described in sources found."
+   ]
+  },
+  "skill_demands": {
+   "computer": 1,
+   "writing": 1,
+   "numeracy": 1,
+   "detail": 1,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": "CAD",
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "months",
+   "income_predictability": "unknown",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "Allowance, not wages: up to $500/week basic living allowance plus $45/week transportation (EOPG guidance), income-tested."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "age_or_group_restricted"
+  ],
+  "risk_notes": [],
+  "barriers": [],
+  "progression_potential": "high",
+  "horizon": "career",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13",
+  "sources": [
+   {
+    "url": "https://ontario.ca/betterjobsontario",
+    "source_type": "official",
+    "publisher": "Government of Ontario",
+    "title": "Better Jobs Ontario",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "pay",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "Search-result summary only (fetch blocked). Eligibility: laid off and not working / in temporary job, or not laid off but unemployed 12+ weeks in low-income household; up to $28,000/$35,000; living allowance up to $500/week; apply via EO provider.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://eopg.labour.gov.on.ca/en/updates-to-the-better-jobs-ontario-guidelines/",
+    "source_type": "government",
+    "publisher": "Ontario Employment Ontario Partners' Gateway",
+    "title": "Updates to the Better Jobs Ontario guidelines",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "pay"
+    ],
+    "evidence_summary": "Search summary: revised guidelines effective January 27, 2026; $500/week living allowance plus $45/week transportation, capped at a moderate standard of living.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://eopg.labour.gov.on.ca/wp-content/uploads/2026/01/bjo-program-guidelines-en-2.pdf",
+    "source_type": "government",
+    "publisher": "Government of Ontario",
+    "title": "Better Jobs Ontario program guidelines (January 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "Guidelines PDF seen in results; summary attributes residency and citizen/PR requirements to program guidelines (exact version not confirmed).",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://lambtoncollege.ca/training-career-advancement/employees-job-seekers/better-jobs-ontario",
+    "source_type": "worker_anecdote",
+    "publisher": "Lambton College",
+    "title": "Better Jobs Ontario - Lambton College",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "risks"
+    ],
+    "evidence_summary": "College guidance (third party): authorization-to-quit form; August 2025 change limits ineligibility to those who quit under 12 months ago; accreditation rule for regulated jobs.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://georgebrown.ca/media/better-jobs-ontario-passport-document-2024",
+    "source_type": "worker_anecdote",
+    "publisher": "George Brown College",
+    "title": "Better Jobs Ontario passport document 2024",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "work_volume",
+     "risks"
+    ],
+    "evidence_summary": "College document (2024): 10-step process can take several months; start early.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   }
+  ],
+  "research_notes": [],
+  "open_questions": [],
+  "disposition": "pending",
+  "disposition_reason": "Migrated from v1; awaiting revalidation.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "better-jobs-ontario",
+   "v1_name": "Better Jobs Ontario (funded retraining for laid-off or long-unemployed people)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "canada-summer-jobs",
+  "name": "Canada Summer Jobs (youth summer jobs, ages 15-30)",
+  "organization": "Government of Canada - Employment and Social Development Canada",
+  "record_type": "government_support",
+  "category": "government_program",
+  "summary": "Federally funded summer jobs for people aged 15 to 30, posted on Job Bank each spring; the 2026 hiring period has ended.",
+  "what_you_do": "Employers that receive Canada Summer Jobs funding post their jobs on Job Bank, and youth apply directly to those employers. Jobs span recreation, food service, marketing, tourism, construction, environmental work and technology, and run through the summer.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You are 15-30, a citizen, PR or protected person with a SIN, and want a summer job next year.",
+   "Up to 100,000 jobs announced for 2026",
+   "All funded jobs listed in one place on Job Bank",
+   "A common first-job or student route for ages 15-30",
+   "Wide range of fields"
+  ],
+  "who_it_may_not_fit": [
+   "You need work this autumn or winter, or you are in Canada on a temporary permit.",
+   "Seasonal and closed now: 2026 hiring ran April 20 to July 20 and jobs ended by August 29, 2026",
+   "Must be 15-30 at the start of the job, have a valid SIN, and be a citizen, permanent resident or person with refugee protection",
+   "Pay, hours and length are set per posting; third-party pay figures are unverified",
+   "Next cycle's dates not announced in sources found"
+  ],
+  "audience_restriction": [
+   "Youth aged 15–30"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [],
+   "work_authorization_notes": null
+  },
+  "availability_status": "closed_or_not_open",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://www.canada.ca/en/employment-social-development/news/2026/04/canada-summer-jobs-2026.html",
+  "requirements": {
+   "minimum_age": 15,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "employee",
+   "schedule_type": "varies",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "some",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "unknown",
+   "training_required": "no",
+   "conditions_notes": [
+    "Seasonal: hiring April-July, jobs end late August."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 0,
+   "detail": 1,
+   "customer": 1,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "medium",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "Wages set by each employer's posting; not verified."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "low_task_volume",
+   "no_guaranteed_work",
+   "age_or_group_restricted"
+  ],
+  "risk_notes": [],
+  "barriers": [],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13",
+  "sources": [
+   {
+    "url": "https://www.canada.ca/en/employment-social-development/news/2026/04/canada-summer-jobs-2026-youth-hiring-period-now-open-with-up-to-100000-jobs-available.html",
+    "source_type": "official",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Canada Summer Jobs 2026: Youth hiring period now open, with up to 100,000 jobs available",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "availability",
+     "requirements"
+    ],
+    "evidence_summary": "April 2026 news release (search summary; fetch blocked): up to 100,000 jobs for ages 15-30; jobs posted on Job Bank; fields listed.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://www.canada.ca/en/employment-social-development/news/2026/04/canada-summer-jobs-2026.html",
+    "source_type": "official",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Canada Summer Jobs 2026",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "availability",
+     "requirements",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "Backgrounder (search summary): hiring period April 20-July 20, 2026, jobs until August 29, 2026; youth must be 15-30, have a SIN and be citizen/PR/refugee-protected.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://ns.jobbank.gc.ca/youth",
+    "source_type": "official",
+    "publisher": "Government of Canada (Job Bank)",
+    "title": "Job Bank - youth",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements"
+    ],
+    "evidence_summary": "Job Bank youth section where summer jobs are listed (title seen in results).",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   }
+  ],
+  "research_notes": [],
+  "open_questions": [],
+  "disposition": "pending",
+  "disposition_reason": "Migrated from v1; awaiting revalidation.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "canada-summer-jobs",
+   "v1_name": "Canada Summer Jobs (youth summer jobs, ages 15-30)",
+   "v1_status": "not_currently_open",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "digital-main-street-digital-service-squad",
+  "name": "Digital Service Squad member (Digital Main Street, Ontario)",
+  "organization": "Digital Main Street",
+  "record_type": "employer",
+  "category": "government_program",
+  "summary": "Paid squad roles helping Ontario main-street small businesses get online through free one-on-one support. Digital Main Street hires them in Toronto, and local BIAs or municipalities hire them when they have grant funding.",
+  "what_you_do": "You visit or contact the independent storefront businesses assigned to you, sometimes door to door with the local BIA coordinator, and help them with digital assessments, basic website setup, Google Business Profiles, social media and 360° photos. You also onboard them to the Digital Main Street platform and point eligible businesses to grants.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You live in Ontario (Toronto for Digital Main Street's own roles), like talking with shop owners and can explain basic digital tools.",
+   "Paid, hands-on experience helping real small businesses go digital",
+   "Historically a large employer of students and recent graduates: over 1,600 hired by March 2021, per Ontario",
+   "Digital Main Street posted a 2026 squad-member role in Toronto",
+   "The skills carry over to freelance digital help for small businesses later"
+  ],
+  "who_it_may_not_fit": [
+   "You need fully remote work or a permanent position.",
+   "The 2026 Toronto posting's closing date (May 29, 2026) has passed, and no current opening was confirmed",
+   "Toronto roles require living in Toronto and travelling independently to businesses: hybrid, not fully remote",
+   "The 2026 posting describes pay only as 'competitive'; older roles were contracts (35 hrs/week in 2020)",
+   "Squads outside Toronto depend on Digital Service Squad grants. Brampton said in 2025 that the grant program's future was awaiting provincial updates, and its own squad contract ended June 30, 2025",
+   "Third-party grant listings that say the grant is 'open' are not official and may be out of date"
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://digitalmainstreet.ca/careers/",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "unknown",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "hybrid",
+   "relationship_type": "unknown",
+   "schedule_type": "unknown",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "partly",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Hiring depends on yearly program and grant funding. Roles are term contracts, not permanent jobs.",
+    "Squad members are described as trained specialists; training details were not seen."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 2,
+   "creative": 1,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "The 2026 posting offers 'competitive remuneration in line with industry standards', with no figure. A search summary attributed $15.50/hr to an old (about 2017) Digital Main Street posting; that figure is outdated and its exact source page is uncertain. Squad grants were reported to cover staff salaries and some equipment."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "unpredictable_income",
+   "in_person_required"
+  ],
+  "risk_notes": [],
+  "barriers": [],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13",
+  "sources": [
+   {
+    "url": "https://digitalmainstreet.ca/wp-content/uploads/2026/05/Position-Description-Digital-Service-Squad-Member-2026.pdf",
+    "source_type": "official",
+    "publisher": "Digital Main Street",
+    "title": "Position Description Digital Service Squad Member 2026",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "availability",
+     "requirements",
+     "work_conditions",
+     "pay"
+    ],
+    "evidence_summary": "Search-summary only (fetch failed: DNS ENOTFOUND for digitalmainstreet.ca). The 2026 Digital Service Squad Team Member role (uploaded May 2026) is hybrid, must be based in Toronto, is assigned to specific business areas with independent travel, and includes going door to door with BIA coordinators. Closing date May 29, 2026, with rolling interviews; 'competitive remuneration'.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://digitalmainstreet.ca/careers/",
+    "source_type": "official",
+    "publisher": "Digital Main Street",
+    "title": "Join the @digital_mainst squad!",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "availability"
+    ],
+    "evidence_summary": "Seen only as a search-result title; content not seen. Re-check here for current postings.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://digitalmainstreet.ca/wp-content/uploads/2020/06/Digital-Service-Squad-June2020.pdf",
+    "source_type": "official",
+    "publisher": "Digital Main Street",
+    "title": "Job Description Digital Service Squad",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "work_conditions"
+    ],
+    "evidence_summary": "Search-summary only (2020). The position was a contract with TABIA for 35 hours per week.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://digitalmainstreet.ca/fr/?p=59525",
+    "source_type": "official",
+    "publisher": "Digital Main Street",
+    "title": "Digital Service Squad - Support for Toronto Businesses",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements"
+    ],
+    "evidence_summary": "Search-summary only. Squad specialists give free one-on-one help to Toronto's independent storefront businesses with basic website setup, Google Business Profiles, 360° photos and social media.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://www.ontario.ca/page/published-plans-and-annual-reports-2021-2022-ministry-economic-development-job-creation-and",
+    "source_type": "government",
+    "publisher": "Government of Ontario",
+    "title": "Published plans and annual reports 2021-2022: Ministry of Economic Development, Job Creation and Trade",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "legitimacy"
+    ],
+    "evidence_summary": "Search-summary only. By March 2021, Digital Main Street had supported 17,600+ businesses, hired 1,600+ students and recent graduates, and set up 87 Digital Service Squads across Ontario. The attribution to this specific page is likely but not certain.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://www.brampton.ca/EN/Business/BEC/whatsNew/Pages/Digital-Main-Street.aspx",
+    "source_type": "government",
+    "publisher": "City of Brampton",
+    "title": "Digital Main Street - City of Brampton",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "availability"
+    ],
+    "evidence_summary": "Search-summary only. Brampton is awaiting provincial updates on the future of the Digital Main Street Ontario Grants Program (including the Digital Service Squad Grant); its own squad contract ended June 30, 2025.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://www.prescott.ca/media/mywjjmx2/job-description-dss-squad-member-2023.pdf",
+    "source_type": "government",
+    "publisher": "Town of Prescott",
+    "title": "Job description DSS squad member 2023",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements"
+    ],
+    "evidence_summary": "Search-summary only (2023). A municipally hired squad role: digital technology specialists in an Ontario area or region who give one-on-one help to main-street small businesses. Pay was not shown in the excerpt.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://www.hellodarwin.com/business-aid/programs/digital-main-street-digital-service-squad-grant",
+    "source_type": "aggregator",
+    "publisher": "hellodarwin",
+    "title": "Digital Main Street Digital Service Squad Grant",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "availability"
+    ],
+    "evidence_summary": "Search-summary only. Third-party listing, last updated July 2025, marks the squad grant as open with continuous intakes. Applicants are BIAs, municipalities, chambers of commerce and Small Business Enterprise Centres, not small businesses. Not confirmed against an official source, and it conflicts with Brampton's 2025 notice.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   }
+  ],
+  "research_notes": [],
+  "open_questions": [],
+  "disposition": "pending",
+  "disposition_reason": "Migrated from v1; awaiting revalidation.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "digital-main-street-digital-service-squad",
+   "v1_name": "Digital Service Squad member (Digital Main Street, Ontario)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "employment-ontario-employment-services",
+  "name": "Employment Ontario employment services (free job-search help)",
+  "organization": "Government of Ontario - Employment Ontario (local service providers)",
+  "record_type": "government_support",
+  "category": "government_program",
+  "summary": "Free one-on-one job-search help in Ontario (resumes, interview prep, job matching and referrals to funded training) through more than 700 local Employment Ontario locations.",
+  "what_you_do": "You connect with a local provider and work with an employment counsellor on a job-search plan, your resume and interview skills, and introductions to employers. Providers are also the door to funded programs such as Better Jobs Ontario and pre-apprenticeship training. Self-serve job information is open to anyone.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You live in Ontario, can legally work in Canada and want free, personal help with your job search or with getting into funded training.",
+   "Free 1-on-1 counsellor support; over 700 locations",
+   "Gateway to funded training (Better Jobs Ontario, pre-apprenticeship) and youth supports",
+   "Self-service information open to anyone, including people who are employed or students",
+   "Toll-free contact centre: 1-800-387-5656 (TTY 1-866-533-6339)"
+  ],
+  "who_it_may_not_fit": [
+   "You need paid work immediately or prefer a fully self-directed job search.",
+   "Full assisted services usually target people who are unemployed or working under about 20 hours a week and not in full-time school (provider rules vary)",
+   "Usually requires Ontario residence and legal entitlement to work in Canada",
+   "Quality and offerings vary by provider; it is help to find work, not a paid job",
+   "System was restructured as Integrated Employment Services (rolled out province-wide by March 2025) and now absorbs social-assistance employment supports; disability advocates criticized parts of the change",
+   "No first-hand user reviews found in this research pass"
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://ontario.ca/page/employment-ontario",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "participant",
+   "schedule_type": "varies",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "unknown",
+   "training_required": "no",
+   "conditions_notes": [
+    "Outcomes depend on the local provider and labour market; not measured here.",
+    "Can refer you to funded training such as Better Jobs Ontario or pre-apprenticeship programs."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 0,
+   "detail": 0,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "unknown",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "Free service, not a paid job. Older youth streams (e.g., Youth Job Connection) offered paid pre-employment training/placements, but current availability varies by region."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [],
+  "risk_notes": [],
+  "barriers": [],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13",
+  "sources": [
+   {
+    "url": "https://ontario.ca/page/employment-ontario",
+    "source_type": "official",
+    "publisher": "Government of Ontario",
+    "title": "Employment Ontario - Get free support from a counsellor",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "legitimacy"
+    ],
+    "evidence_summary": "Search-result summary only (fetch blocked). Says 700+ locations, free 1-on-1 counsellor support for job search, resumes, interviews and training; has a find-services tool.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://achev.ca/service/employment-ontario/",
+    "source_type": "official",
+    "publisher": "Achev (Employment Ontario service provider)",
+    "title": "Employment Ontario - Achev",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "GTA provider (not the ministry). Search summary: eligibility = unemployed or under 20 hrs/week, not in full-time training, Ontario resident, legally entitled to work in Canada.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://aeswellnessportal.ca/Services/Display/166038/Integrated_Employment_Services",
+    "source_type": "aggregator",
+    "publisher": "Community services directory",
+    "title": "Integrated Employment Services",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements"
+    ],
+    "evidence_summary": "Directory listing: assisted services for unemployed people out of school; self-service open to anyone; lists contact centre number; 'most programs are free for those eligible'.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://ontario.cmha.ca/news/oden-move-odsp-employment-programmes-to-employment-ontario/",
+    "source_type": "worker_anecdote",
+    "publisher": "CMHA Ontario",
+    "title": "ODEN: move ODSP employment programmes to Employment Ontario",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Advocacy news item: disability employment network opposed folding ODSP employment supports into Employment Ontario. Opinion, undated in results.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   }
+  ],
+  "research_notes": [],
+  "open_questions": [],
+  "disposition": "pending",
+  "disposition_reason": "Migrated from v1; awaiting revalidation.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "employment-ontario-employment-services",
+   "v1_name": "Employment Ontario employment services (free job-search help)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "job-bank-canada",
+  "name": "Job Bank job search and alerts (Government of Canada)",
+  "organization": "Government of Canada - Job Bank",
+  "record_type": "government_support",
+  "category": "government_program",
+  "summary": "Free federal job board where you can search Canadian job postings, set daily email alerts and check typical wages for an occupation, without creating an account.",
+  "what_you_do": "You search postings by keyword, occupation, province and other filters, and save a search as an email alert for new matches. Job Bank also publishes wage ranges by occupation and region, which helps you judge whether a posting's pay is realistic. Canada Summer Jobs-funded jobs are listed there too.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You want a free, government-run place to search Canadian job postings, get alerts and check typical wages.",
+   "Free, government-run, no account needed to search",
+   "Email job alerts for saved searches",
+   "Occupation wage pages help you spot pay that looks too good to be true",
+   "Each posting has a 'Report a problem with this job posting' button",
+   "Postings created directly by registered employers carry a 'Posted on Job Bank' flag"
+  ],
+  "who_it_may_not_fit": [
+   "You want someone to coach you one-on-one or place you in a job (Employment Ontario is a better fit).",
+   "It is a search tool, not a job: you still compete for each posting",
+   "Some listings are pulled in from other websites, so check who actually posted a job",
+   "Job Bank warns about imitation sites and fake job offers; legitimate employers will not ask for banking details to apply",
+   "Alert frequency described differently in older material (once vs. twice a day)"
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://www.jobbank.gc.ca/intro/findajob",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "computer"
+   ],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "varies",
+   "schedule_type": "flexible",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day",
+    "evening",
+    "night",
+    "weekend"
+   ],
+   "real_time_interaction": "none",
+   "phone_or_video_required": "no",
+   "text_based_work": "yes",
+   "independent_work": "yes",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "unknown",
+   "training_required": "no",
+   "conditions_notes": [
+    "Number of postings varies by occupation and region; not measured here."
+   ]
+  },
+  "skill_demands": {
+   "computer": 1,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 1,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "unknown",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "Not a paying job; pay depends on each posting. Job Bank wage pages give occupation medians (e.g., Ontario survey interviewers about $24.18/hr) for comparison."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "scam_impersonation"
+  ],
+  "risk_notes": [],
+  "barriers": [],
+  "progression_potential": "unknown",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13",
+  "sources": [
+   {
+    "url": "https://www.jobbank.gc.ca/intro/findajob",
+    "source_type": "official",
+    "publisher": "Government of Canada (Job Bank)",
+    "title": "Find a job - Job Bank",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "legitimacy"
+    ],
+    "evidence_summary": "Search-result summary only (fetch blocked in research environment). Describes search filters, email alerts and the report-a-posting button; site says it is the only source of jobs validated by the Government of Canada.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://www.jobbank.gc.ca/findajob/resources/safety-tips",
+    "source_type": "official",
+    "publisher": "Government of Canada (Job Bank)",
+    "title": "Job Search Safety Tips - Job Bank",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "risks",
+     "legitimacy"
+    ],
+    "evidence_summary": "Search-result summary only. Advises not to share banking details, SIN or ID numbers early; notes 'Posted on Job Bank' flag for postings created by registered employers; says Job Bank does not handle immigration.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://www.jobbank.gc.ca/support/question?qaid=16&tid=7",
+    "source_type": "official",
+    "publisher": "Government of Canada (Job Bank)",
+    "title": "Why do I see jobs from other websites on Job Bank?",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "FAQ title seen in search results confirms some listings come from other websites; page content not retrieved.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://gov.mb.ca/wd/ites/tes/pubs/jobs_careers/jobbank_for_jobseekers_factsheet.pdf",
+    "source_type": "government",
+    "publisher": "Government of Manitoba",
+    "title": "Job Bank for job seekers factsheet",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements"
+    ],
+    "evidence_summary": "Undated provincial factsheet (search summary): job search needs no account or personal information; alerts up to twice daily (may be outdated).",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   }
+  ],
+  "research_notes": [],
+  "open_questions": [],
+  "disposition": "pending",
+  "disposition_reason": "Migrated from v1; awaiting revalidation.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "job-bank-canada",
+   "v1_name": "Job Bank job search and alerts (Government of Canada)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "odsp-employment-supports",
+  "name": "ODSP Employment Supports (job help for people with a disability)",
+  "organization": "Government of Ontario - Ontario Disability Support Program",
+  "record_type": "government_support",
+  "category": "government_program",
+  "summary": "Ontario employment help (job coaching, job placement and on-the-job supports) for people whose long-term disability makes finding or keeping work harder; you do not need to receive ODSP income support.",
+  "what_you_do": "Through a community-based provider, you get help preparing for, finding and keeping a job, such as job coaching, job placement and supports once you start working. Delivery is moving into Employment Ontario's integrated system, so your local route may be through an Employment Ontario provider.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You live in Ontario, a long-term health condition or disability makes finding or keeping work harder, and you want hands-on job support.",
+   "You do not have to be on ODSP income support to qualify",
+   "Includes job coaching and on-the-job supports",
+   "Job-retention support can continue after you are placed",
+   "Delivered by community providers in your area"
+  ],
+  "who_it_may_not_fit": [
+   "You do not need disability-related supports; general Employment Ontario services may fit better.",
+   "Eligibility (community directory): 16+, Ontario resident, legally able to work, with a substantial disability expected to last a year or more that makes finding or keeping work hard",
+   "If not on income support you may need a Verification of Disability form",
+   "Retention supports for non-income-support clients were capped at 15 months after placement (2021 policy) vs. up to 33 months for income-support clients",
+   "Services are being folded into Employment Ontario's Integrated Employment Services; advocates criticized the change and the local route varies"
+  ],
+  "audience_restriction": [
+   "Ontario residents with a disability or long-term health condition"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://www.ontario.ca/page/ontario-disability-support-program-employment-supports",
+  "requirements": {
+   "minimum_age": 16,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "participant",
+   "schedule_type": "varies",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "unknown",
+   "training_required": "no",
+   "conditions_notes": [
+    "Depends on the provider and the job found."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 0,
+   "detail": 0,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 0
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "unknown",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "Support service, not a paid job."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "age_or_group_restricted"
+  ],
+  "risk_notes": [],
+  "barriers": [],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13",
+  "sources": [
+   {
+    "url": "https://www.ontario.ca/page/ontario-disability-support-program-employment-supports",
+    "source_type": "official",
+    "publisher": "Government of Ontario",
+    "title": "Ontario Disability Support Program employment supports",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "legitimacy"
+    ],
+    "evidence_summary": "Search-result summary only (fetch blocked). No need to receive ODSP income support; community-based providers; job coaching and on-the-job supports.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://www.ontario.ca/document/ontario-disability-support-program-policy-directives-employment-supports/42-job-retention",
+    "source_type": "government",
+    "publisher": "Government of Ontario",
+    "title": "ODSP policy directives for employment supports - 4.2 Job retention",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "work_volume"
+    ],
+    "evidence_summary": "Directive dated March 2021: retention supports capped at 15 consecutive months for non-income-support clients vs. up to 33 months for income-support recipients. May be outdated.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://communityreach.cioc.ca/record/ORI0826?Number=1",
+    "source_type": "aggregator",
+    "publisher": "Community Information Ontario directory",
+    "title": "ODSP Employment Supports (Record ORI0826)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "Directory: 16+, Ontario resident, legally allowed to work, substantial disability lasting 1+ year that impedes work; Application for Employment Supports form.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://ontario.cmha.ca/news/oden-move-odsp-employment-programmes-to-employment-ontario/",
+    "source_type": "worker_anecdote",
+    "publisher": "CMHA Ontario",
+    "title": "ODEN: move ODSP employment programmes to Employment Ontario",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Advocacy position opposing the transfer of ODSP employment supports into Employment Ontario. Opinion, undated in results.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   }
+  ],
+  "research_notes": [],
+  "open_questions": [],
+  "disposition": "pending",
+  "disposition_reason": "Migrated from v1; awaiting revalidation.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "odsp-employment-supports",
+   "v1_name": "ODSP Employment Supports (job help for people with a disability)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "ontario-pre-apprenticeship-training",
+  "name": "Pre-apprenticeship training (free trade-readiness programs, Ontario)",
+  "organization": "Government of Ontario (delivered by colleges and community agencies)",
+  "record_type": "training_program",
+  "category": "government_program",
+  "summary": "Free Ontario programs of up to 52 weeks, including an 8-12 week work placement, that help people without trade experience get ready to land an apprenticeship.",
+  "what_you_do": "You take trade-focused training at a college or community agency, then complete a work placement with an employer. The goal is to build the skills and experience that sponsors look for when hiring apprentices.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You are interested in a trade but do not yet have the skills or experience to get an employer to sponsor you.",
+   "No charge; textbooks, safety equipment and tools are covered",
+   "Includes an 8-12 week work placement",
+   "Age and EI eligibility are not factors",
+   "Start dates throughout the year",
+   "Open to high-school graduates and people who left school early who are unemployed or underemployed"
+  ],
+  "who_it_may_not_fit": [
+   "You need income now or cannot commit to months of in-person training.",
+   "Training, not a job: no wage or stipend information found",
+   "Each program sets its own trade focus and intake criteria; availability varies by area",
+   "Listed priority groups (e.g., Indigenous people, newcomers, women, Francophones, youth-at-risk) may get priority",
+   "Sources do not say how many graduates go on to get an apprenticeship sponsor"
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://www.ontario.ca/page/pre-apprenticeship-training",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "onsite",
+   "relationship_type": "trainee",
+   "schedule_type": "fixed",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Cohort-based programs; intake dates vary by provider.",
+    "No charge; textbooks, safety equipment and tools covered (ontario.ca, via search)."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 1,
+   "detail": 1,
+   "customer": 0,
+   "technical": 1,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "months",
+   "income_predictability": "unknown",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "No pay information found; treat as unpaid training unless the provider says otherwise."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "in_person_required"
+  ],
+  "risk_notes": [],
+  "barriers": [],
+  "progression_potential": "high",
+  "horizon": "career",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13",
+  "sources": [
+   {
+    "url": "https://www.ontario.ca/page/pre-apprenticeship-training",
+    "source_type": "official",
+    "publisher": "Government of Ontario",
+    "title": "Pre-apprenticeship training",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "legitimacy"
+    ],
+    "evidence_summary": "Search-result summary only (fetch blocked). No charge; books, safety gear and tools covered; up to 52 weeks with 8-12 week placement; for unemployed/underemployed high-school grads or early leavers; age and EI not factors; apply via Employment Ontario.",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   },
+   {
+    "url": "https://centralwesthealthline.ca/printService.aspx?id=14052",
+    "source_type": "aggregator",
+    "publisher": "Central West Healthline",
+    "title": "Pre-apprenticeship training (service listing)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13",
+    "published_at": null,
+    "supports": [
+     "requirements"
+    ],
+    "evidence_summary": "Community directory listing describing the program for unemployed people wanting skilled-trades careers (narrower wording than ontario.ca).",
+    "limitations": [
+     "Seen only as a search-engine summary; the page itself was not opened."
+    ]
+   }
+  ],
+  "research_notes": [],
+  "open_questions": [],
+  "disposition": "pending",
+  "disposition_reason": "Migrated from v1; awaiting revalidation.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "ontario-pre-apprenticeship-training",
+   "v1_name": "Pre-apprenticeship training (free trade-readiness programs, Ontario)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ }
+]

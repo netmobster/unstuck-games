@@ -1,0 +1,890 @@
+{
+ "generated_at": "2026-10-13T15:17:38.000Z",
+ "v1_catalogue_built": "2026-10-13",
+ "original_record_count": 77,
+ "status_counts": {
+  "official_info_found": 60,
+  "uncertain": 4,
+  "not_currently_open": 2,
+  "rejected": 2,
+  "waitlist_or_no_work_guarantee": 7,
+  "stale_needs_recheck": 2
+ },
+ "type_counts": {
+  "freelance": 17,
+  "category": 17,
+  "task_platform": 10,
+  "employment": 8,
+  "contract": 8,
+  "program": 6,
+  "research_participation": 7,
+  "training_pathway": 4
+ },
+ "category_counts": {
+  "creative_production": 9,
+  "ai_data": 8,
+  "customer_ops": 14,
+  "government_program": 7,
+  "language_writing": 12,
+  "freelance_microbusiness": 7,
+  "research_participation": 7,
+  "tech_digital": 8,
+  "structured_employment": 5
+ },
+ "canada_eligibility_counts": {
+  "likely": 68,
+  "unclear": 8,
+  "not_eligible": 1
+ },
+ "evidence_strength_counts": {
+  "moderate": 61,
+  "weak": 16
+ },
+ "source_count": 460,
+ "sources_opened": 11,
+ "sources_search_summary_only": 449,
+ "source_type_counts": {
+  "official": 226,
+  "independent_review": 48,
+  "journalism": 29,
+  "forum": 31,
+  "aggregator": 53,
+  "government": 73
+ },
+ "records_with_apply_url": 0,
+ "records_with_pay": 34,
+ "category_records": [
+  "ai-response-evaluation-category",
+  "bilingual-en-fr-work-category",
+  "canadian-freelance-boards-associations",
+  "content-moderation-trust-safety-category",
+  "ecommerce-operations-support-category",
+  "election-worker-paid-temporary",
+  "film-tv-production-assistant-category",
+  "proofreading-copyediting-category",
+  "public-service-student-new-grad-programs",
+  "remote-appointment-setting-category",
+  "remote-contact-centre-customer-support-category",
+  "small-business-digital-help-category",
+  "social-media-coordinator-category",
+  "spreadsheet-data-cleanup-freelancing-category",
+  "staffing-agency-temp-placements",
+  "video-audio-podcast-editing-category",
+  "virtual-assistant-admin-support-category"
+ ],
+ "rejected_or_closed": [
+  {
+   "id": "apple-at-home-advisor-canada",
+   "status": "not_currently_open"
+  },
+  {
+   "id": "belay-virtual-assistant-contractor",
+   "status": "rejected"
+  },
+  {
+   "id": "canada-summer-jobs",
+   "status": "not_currently_open"
+  },
+  {
+   "id": "leger-leo-survey-panel",
+   "status": "rejected"
+  }
+ ],
+ "potential_overlaps": [
+  {
+   "host": "ontario.ca",
+   "ids": [
+    "better-jobs-ontario",
+    "employment-ontario-employment-services",
+    "odsp-employment-supports",
+    "ontario-pre-apprenticeship-training",
+    "small-business-digital-help-category",
+    "staffing-agency-temp-placements"
+   ]
+  },
+  {
+   "host": "jobbank.gc.ca",
+   "ids": [
+    "bilingual-en-fr-work-category",
+    "ecommerce-operations-support-category",
+    "film-tv-production-assistant-category",
+    "job-bank-canada",
+    "proofreading-copyediting-category",
+    "remote-contact-centre-customer-support-category",
+    "social-media-coordinator-category",
+    "spreadsheet-data-cleanup-freelancing-category",
+    "virtual-assistant-admin-support-category"
+   ]
+  },
+  {
+   "host": "canada.ca",
+   "ids": [
+    "canada-summer-jobs",
+    "cra-contact-centre-agent-seasonal",
+    "public-service-student-new-grad-programs",
+    "young-canada-works-heritage-students"
+   ]
+  },
+  {
+   "host": "crowdgen.com",
+   "ids": [
+    "crowdgen-appen-ai-projects",
+    "crowdgen-canadian-french-voice-tasks"
+   ]
+  },
+  {
+   "host": "shopify.com",
+   "ids": [
+    "shopify-merchant-support-advisor-canada",
+    "shopify-partner-program-freelance"
+   ]
+  }
+ ],
+ "schema_observations": [
+  "v1 \"type\" mixes relationship (employment/contract/freelance) with destination kind (task_platform/program/category); v2 separates record_type from work_conditions.relationship_type.",
+  "v1 \"status\" mixes eligibility and availability (eligibility_confirmed vs applications_open_confirmed); v2 separates region_eligibility from availability_status.",
+  "v1 sources carry a boolean \"accessible\"; v2 uses the five access_status states.",
+  "v1 compensation.basis conflates advertised and self-reported pay; v2 separates advertised_rate, verified_rate and anecdotal_effective_rate.",
+  "v1 has no availability-check timestamp; lastChecked covers the whole record.",
+  "v1 \"category\" records share availability statuses with real destinations; v2 gives them not_applicable_category."
+ ],
+ "records_needing_revalidation": [
+  {
+   "id": "99designs-designer",
+   "name": "Freelance graphic designer (contests and 1-to-1 projects)",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "adobe-stock-contributor",
+   "name": "Stock photo, video & illustration contributor",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "ai-response-evaluation-category",
+   "name": "AI response evaluation and rating (category)",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "no official or government source",
+    "no verified official URL",
+    "cites sources published 2019–2023"
+   ]
+  },
+  {
+   "id": "alignerr-ai-trainer",
+   "name": "Freelance AI training specialist (Alignerr)",
+   "type": "task_platform",
+   "status": "uncertain",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "apple-at-home-advisor-canada",
+   "name": "AppleCare At Home Advisor (Canada)",
+   "type": "employment",
+   "status": "not_currently_open",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "interaction style not recorded"
+   ]
+  },
+  {
+   "id": "belay-virtual-assistant-contractor",
+   "name": "Virtual assistant contractor (BELAY)",
+   "type": "contract",
+   "status": "rejected",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "interaction style not recorded"
+   ]
+  },
+  {
+   "id": "better-jobs-ontario",
+   "name": "Better Jobs Ontario (funded retraining for laid-off or long-unemployed people)",
+   "type": "program",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "bilingual-en-fr-work-category",
+   "name": "Bilingual English–French work (category)",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "cites sources published 2019–2023"
+   ]
+  },
+  {
+   "id": "cambly-english-tutor",
+   "name": "Online English conversation tutor",
+   "type": "freelance",
+   "status": "waitlist_or_no_work_guarantee",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "canada-summer-jobs",
+   "name": "Canada Summer Jobs (youth summer jobs, ages 15-30)",
+   "type": "program",
+   "status": "not_currently_open",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "canadian-freelance-boards-associations",
+   "name": "Canadian freelance job boards and freelancer associations",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "no verified official URL"
+   ]
+  },
+  {
+   "id": "canva-creators-template-designer",
+   "name": "Canva template creator",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "concentrix-canada-customer-service",
+   "name": "Customer service / tech support representative (Concentrix Canada)",
+   "type": "employment",
+   "status": "stale_needs_recheck",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "content-moderation-trust-safety-category",
+   "name": "Content moderation / online safety evaluation (category)",
+   "type": "category",
+   "status": "uncertain",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "no verified official URL"
+   ]
+  },
+  {
+   "id": "contra-freelance",
+   "name": "Commission-free freelance portfolio and payments (Contra)",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked",
+    "cites sources published 2019–2023"
+   ]
+  },
+  {
+   "id": "cra-contact-centre-agent-seasonal",
+   "name": "Contact centre agent, seasonal/term (Canada Revenue Agency)",
+   "type": "employment",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked",
+    "cites sources published 2019–2023"
+   ]
+  },
+  {
+   "id": "crowdgen-appen-ai-projects",
+   "name": "AI data project contributor (CrowdGen by Appen)",
+   "type": "task_platform",
+   "status": "stale_needs_recheck",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "crowdgen-canadian-french-voice-tasks",
+   "name": "Canadian French voice-rating and speech data tasks",
+   "type": "task_platform",
+   "status": "waitlist_or_no_work_guarantee",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "dataannotation-ai-trainer",
+   "name": "AI chatbot evaluator and writer (DataAnnotation)",
+   "type": "task_platform",
+   "status": "uncertain",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay figure without currency"
+   ]
+  },
+  {
+   "id": "digital-main-street-digital-service-squad",
+   "name": "Digital Service Squad member (Digital Main Street, Ontario)",
+   "type": "contract",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "dscout-scout",
+   "name": "Diary studies and video missions (dscout)",
+   "type": "research_participation",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay from an aggregator, not the employer",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "election-worker-paid-temporary",
+   "name": "Paid election worker (municipal, provincial or federal elections)",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "employment-ontario-employment-services",
+   "name": "Employment Ontario employment services (free job-search help)",
+   "type": "program",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "fable-accessibility-tester",
+   "name": "Accessibility tester with lived disability experience (Fable)",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "film-tv-production-assistant-category",
+   "name": "Film & TV production assistant (category)",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "cites sources published 2019–2023"
+   ]
+  },
+  {
+   "id": "fiverr-gigs",
+   "name": "Selling freelance service 'gigs' on Fiverr",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "foundever-work-at-home-customer-service-canada",
+   "name": "Work-at-home customer service representative (Foundever Canada)",
+   "type": "employment",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "freelancer-com",
+   "name": "Bidding on projects at Freelancer.com",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "gotranscript-transcription",
+   "name": "Freelance transcriptionist (multi-language)",
+   "type": "task_platform",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "intuit-turbotax-seasonal-tax-expert-canada",
+   "name": "Seasonal tax expert, work from home (Intuit TurboTax Canada)",
+   "type": "employment",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "italki-language-tutor",
+   "name": "Online language teacher / community tutor",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "job-bank-canada",
+   "name": "Job Bank job search and alerts (Government of Canada)",
+   "type": "program",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "languageline-indigenous-language-interpreter-canada",
+   "name": "Over-the-phone interpreter (Indigenous languages, Canada)",
+   "type": "contract",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay figure without currency",
+    "pay from an aggregator, not the employer",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "leger-leo-survey-panel",
+   "name": "Paid online surveys (Leger LEO panel)",
+   "type": "research_participation",
+   "status": "rejected",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay from an aggregator, not the employer"
+   ]
+  },
+  {
+   "id": "mercor-ai-expert-evaluator",
+   "name": "AI output evaluator / domain expert (Mercor)",
+   "type": "contract",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay figure without currency",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "npower-canada-junior-it-analyst",
+   "name": "NPower Canada Junior IT Analyst Program (free IT training)",
+   "type": "training_pathway",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "odsp-employment-supports",
+   "name": "ODSP Employment Supports (job help for people with a disability)",
+   "type": "program",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "ontario-pre-apprenticeship-training",
+   "name": "Pre-apprenticeship training (free trade-readiness programs, Ontario)",
+   "type": "training_pathway",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "ontario-registered-apprenticeship",
+   "name": "Registered apprenticeship in a skilled trade (Ontario)",
+   "type": "training_pathway",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "outlier-ai-trainer",
+   "name": "AI trainer / response evaluator (Outlier)",
+   "type": "task_platform",
+   "status": "waitlist_or_no_work_guarantee",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "preply-online-tutor",
+   "name": "Online tutor (languages and other subjects)",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "prolific-paid-studies",
+   "name": "Paid online research studies (Prolific)",
+   "type": "research_participation",
+   "status": "waitlist_or_no_work_guarantee",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "proofreading-copyediting-category",
+   "name": "Proofreading & copyediting (category)",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "public-service-student-new-grad-programs",
+   "name": "Government student and new-grad job programs (FSWEP, Ontario SEO, Ontario Internship Program)",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "respondent-research-participant",
+   "name": "Paid research interviews and focus groups (Respondent)",
+   "type": "research_participation",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay from an aggregator, not the employer",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "rev-transcription-captioning",
+   "name": "Freelance transcriptionist / captioner",
+   "type": "task_platform",
+   "status": "waitlist_or_no_work_guarantee",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay figure without currency"
+   ]
+  },
+  {
+   "id": "scribbr-academic-editor",
+   "name": "Freelance academic editor / proofreader",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "shopify-merchant-support-advisor-canada",
+   "name": "Merchant Support Advisor (Shopify, Canada)",
+   "type": "employment",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay from an aggregator, not the employer",
+    "interaction style not recorded",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "shopify-partner-program-freelance",
+   "name": "Shopify Partner Program (freelance store setup & referrals)",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "shutterstock-contributor",
+   "name": "Stock photo, video & illustration contributor",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "simply-tv-metadata-data-editor",
+   "name": "Remote TV & movie metadata editor",
+   "type": "contract",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "small-business-digital-help-category",
+   "name": "Digital help for local small businesses (category)",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "cites sources published 2019–2023"
+   ]
+  },
+  {
+   "id": "social-media-coordinator-category",
+   "name": "Social media coordinator / community manager (category)",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "spreadsheet-data-cleanup-freelancing-category",
+   "name": "Spreadsheet & data clean-up freelancing (category)",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay figure without currency",
+    "pay from an aggregator, not the employer"
+   ]
+  },
+  {
+   "id": "staffing-agency-temp-placements",
+   "name": "Temporary placements through staffing agencies (office/admin and general)",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries"
+   ]
+  },
+  {
+   "id": "statcan-data-collection-clerk",
+   "name": "Statistics Canada data collection clerk (survey interviewer)",
+   "type": "employment",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "telus-digital-ai-community-rater",
+   "name": "Part-time online rater / evaluator (TELUS Digital AI Community)",
+   "type": "contract",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked",
+    "cites sources published 2019–2023"
+   ]
+  },
+  {
+   "id": "test-io-crowdtester",
+   "name": "Freelance bug-hunting tester (Test IO)",
+   "type": "task_platform",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "testlio-freelance-tester",
+   "name": "Freelance software tester, paid hourly (Testlio)",
+   "type": "freelance",
+   "status": "waitlist_or_no_work_guarantee",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay from an aggregator, not the employer"
+   ]
+  },
+  {
+   "id": "toronto-public-library-free-elearning",
+   "name": "Toronto Public Library free online courses (LinkedIn Learning, IT skills)",
+   "type": "training_pathway",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "transcribeme-transcription",
+   "name": "Freelance transcriptionist (short audio clips)",
+   "type": "task_platform",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay figure without currency",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "ttec-work-from-home-customer-service-canada",
+   "name": "Work-from-home customer service representative (TTEC Canada)",
+   "type": "employment",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "uoft-paid-research-pools",
+   "name": "Paid university research studies (University of Toronto participant pools)",
+   "type": "research_participation",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "upwork-freelance",
+   "name": "Freelance client work through Upwork",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked",
+    "cites sources published 2019–2023"
+   ]
+  },
+  {
+   "id": "user-interviews-participant",
+   "name": "Paid user research sessions (User Interviews)",
+   "type": "research_participation",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay from an aggregator, not the employer",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "usertesting-contributor",
+   "name": "Website and app tester (UserTesting contributor)",
+   "type": "research_participation",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay from an aggregator, not the employer",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "utest-applause-crowdtester",
+   "name": "Freelance crowd software tester (uTest / Applause)",
+   "type": "task_platform",
+   "status": "waitlist_or_no_work_guarantee",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "cites sources published 2019–2023"
+   ]
+  },
+  {
+   "id": "video-audio-podcast-editing-category",
+   "name": "Video, audio & podcast editing (category)",
+   "type": "category",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "cites sources published 2019–2023"
+   ]
+  },
+  {
+   "id": "welo-data-search-quality-rater-canada",
+   "name": "Search quality rater – English (Canada) (Welo Data / Welocalize)",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay figure without currency",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "welocalize-freelance-linguist",
+   "name": "Freelance translator / localization linguist",
+   "type": "freelance",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "working-solutions-on-demand-agent",
+   "name": "On-demand work-at-home contact centre agent (Working Solutions)",
+   "type": "contract",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "pay figure without currency",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "young-canada-works-heritage-students",
+   "name": "Young Canada Works student jobs in heritage",
+   "type": "program",
+   "status": "official_info_found",
+   "needs_revalidation": [
+    "no source was opened; all evidence is search summaries",
+    "availability never checked"
+   ]
+  },
+  {
+   "id": "zirtual-virtual-executive-assistant",
+   "name": "Remote virtual executive assistant (Zirtual)",
+   "type": "contract",
+   "status": "uncertain",
+   "needs_revalidation": [
+    "no official or government source",
+    "pay figure without currency",
+    "no verified official URL"
+   ]
+  }
+ ]
+}

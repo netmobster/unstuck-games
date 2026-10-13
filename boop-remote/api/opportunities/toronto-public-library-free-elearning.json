@@ -1,0 +1,149 @@
+{
+ "id": "toronto-public-library-free-elearning",
+ "name": "Toronto Public Library free online courses (LinkedIn Learning, IT skills)",
+ "organization": "Toronto Public Library",
+ "type": "training_pathway",
+ "category": "tech_digital",
+ "tags": [
+  "free-training",
+  "digital-skills",
+  "library",
+  "self-paced",
+  "toronto",
+  "it-skills",
+  "office-software"
+ ],
+ "summary": "With a free Toronto Public Library card you can take online courses (LinkedIn Learning, Let's Learn Tech IT training, Brainfuse workplace tech skills, Gale Courses) at no cost.",
+ "whatYouDo": "You sign in with your library card and work through self-paced video courses or instructor-led online classes on office software, IT support, programming, data analytics and job-search skills. It builds skills for your resume; it does not place you in a job.",
+ "appeal": [
+  "Free with a TPL card",
+  "Self-paced and flexible; learn from home",
+  "LinkedIn Learning (16,000+ courses per a TPL blog) includes resume and job-search topics",
+  "Let's Learn Tech covers IT skills such as cybersecurity, Python, data analytics, AI and networking",
+  "Brainfuse pathway covers word processing, spreadsheets, presentations and video-call tools"
+ ],
+ "watchOuts": [
+  "Toronto-focused: requires a TPL card (card eligibility not verified here); other Ontario libraries may offer similar services",
+  "Training only: no pay, placement or guaranteed credential",
+  "Course line-ups change; confirm on the eLearning page",
+  "Self-paced study needs your own motivation and a device with internet"
+ ],
+ "officialUrl": "https://torontopubliclibrary.ca/elearning",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [
+   "ON"
+  ],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "none"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 0,
+  "numeracy": 0,
+  "detail": 1,
+  "customer": 0,
+  "technical": 1,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "free",
+  "notes": "Free with a library card."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "No pay; free learning resource."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "Not work; self-paced learning."
+ },
+ "workerStatus": "student",
+ "fees": null,
+ "applicationSteps": [
+  "Get a Toronto Public Library card",
+  "Open TPL's eLearning page and choose a service (e.g., LinkedIn Learning, Let's Learn Tech)",
+  "Sign in with your library card and start a course",
+  "Add new skills to your resume and pair with job-search help (e.g., Employment Ontario)"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [],
+ "fitsIf": "You live in Toronto and want free, flexible, self-paced courses to build office, IT or job-search skills.",
+ "notFitIf": "You need income now or want structured training with job placement.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://torontopubliclibrary.ca/elearning",
+   "title": "eLearning - Toronto Public Library",
+   "type": "official",
+   "publisher": "Toronto Public Library",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "legitimacy"
+   ],
+   "notes": "Search-result summary only (fetch blocked). Library card gives free access to LinkedIn Learning, Let's Learn Tech Online, Brainfuse and Gale Courses.",
+   "accessible": false
+  },
+  {
+   "url": "https://tpl.ca/blogs/post/upgrade-your-skills-for-free/",
+   "title": "Five Free Online Resources to Boost Your Professional Skills",
+   "type": "official",
+   "publisher": "Toronto Public Library",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "TPL blog: LinkedIn Learning has 16,000+ courses; Let's Learn Tech offers free IT training to job seekers (cybersecurity, programming, Linux, data analytics, AI, networking).",
+   "accessible": false
+  }
+ ]
+}

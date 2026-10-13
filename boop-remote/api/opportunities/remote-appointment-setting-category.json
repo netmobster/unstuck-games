@@ -1,0 +1,197 @@
+{
+ "id": "remote-appointment-setting-category",
+ "name": "Remote appointment setting & scheduling (category)",
+ "organization": "Various",
+ "type": "category",
+ "category": "customer_ops",
+ "tags": [
+  "appointment-setting",
+  "outbound-calling",
+  "lead-generation",
+  "scheduling",
+  "phone",
+  "remote"
+ ],
+ "summary": "Calling businesses or customers from home to check their interest and book meetings for a sales team, paid by salary, hourly wage or per booked lead.",
+ "whatYouDo": "You work through call lists, introduce a product or service from a script, handle objections, decide whether the prospect qualifies, and book an appointment for a salesperson, then log notes in a CRM. Targets are usually daily: one posting expected 10 or more qualified appointments a day.",
+ "appeal": [
+  "Remote postings for people living in Canada appeared in September and October 2026",
+  "You book meetings rather than close sales",
+  "Some roles are salaried, e.g. $30,300–$55,000/yr, Mon–Fri 9–5 (posted 2026-09-27)",
+  "Builds sales and CRM skills that transfer to inside-sales jobs"
+ ],
+ "watchOuts": [
+  "Phone-heavy, high-volume cold calling against daily targets",
+  "Many listings pay only per lead or commission (one freelance role paid $50 per qualified lead with no base), so income can be close to zero",
+  "Commission-only listings with big unverified earnings claims are common (one advertised '2k to 5k USD per month' with no base); treat them as a red flag",
+  "Postings often require at least a year of cold-calling experience",
+  "Calls to consumers must follow CRTC telemarketing rules (registration, do-not-call lists, calling hours); an employer that ignores them puts you at risk",
+  "Never pay for leads, training or software to start"
+ ],
+ "officialUrl": "https://crtc.gc.ca/eng/phone/telemarketing/tobligations/rules-regles.htm",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "fast internet",
+   "quiet space"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [
+   "day"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "voice",
+   "text"
+  ],
+  "realtime": "high",
+  "phone": true
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 3,
+  "technical": 0,
+  "creative": 0,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "unknown",
+  "notes": "Postings mention scripts, coaching and team meetings. No formal training route was checked."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Pay structures differ too much for one range. Postings read on 2026-10-13: salaried $30,300–$55,000/yr (the same posting also lists $38,000–$45,000); a temporary role listing '$20.00–$22.00 per year', apparently a mislabelled hourly rate; and a freelance role paying $50 per qualified lead plus $5,000 if a referred group closes, with no base pay."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Salaried roles are steady. Per-lead and commission roles depend on lead quality and how many calls convert."
+ },
+ "workerStatus": "varies",
+ "fees": null,
+ "applicationSteps": [
+  "Prefer roles with a base salary or hourly wage, and get any commission plan in writing",
+  "Check the company's registered name and website independently",
+  "Ask whether you will call businesses or consumers and how the company follows the National Do Not Call List rules",
+  "Do not pay for leads, training or software to start"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "likely",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "phone_heavy",
+  "variable_work",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You are comfortable on the phone, handle rejection well and want target-driven work you can do from home.",
+ "notFitIf": "You dislike cold calling or need a guaranteed income from day one.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://crtc.gc.ca/eng/phone/telemarketing/tobligations/rules-regles.htm",
+   "title": "Key Unsolicited Telecommunications Rules",
+   "type": "government",
+   "publisher": "CRTC",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "risk",
+    "schedule"
+   ],
+   "notes": "Search-summary only. Telemarketers must register with the National DNCL (and subscribe unless exempt), use a list under 31 days old, keep an internal do-not-call list, and call consumers only 9:00 a.m.–9:30 p.m. on weekdays and 10:00 a.m.–6:00 p.m. on weekends.",
+   "accessible": false
+  },
+  {
+   "url": "https://to.indeed.com/aaqb9trz4269",
+   "title": "Appointment Setter - Property Print (Indeed)",
+   "type": "aggregator",
+   "publisher": "Indeed",
+   "published": "2026-09-27",
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "pay",
+    "requirements",
+    "schedule"
+   ],
+   "notes": "Full posting read via the Indeed job API. Permanent remote role; applicants must live in Canada. High-activity outbound calls to businesses in Canada and the US; target of 10+ qualified appointments a day. $30,300–$55,000/yr (a second section says $38,000–$45,000). Mon–Fri 9–5. 1 year of cold calling required. You supply a computer, internet, phone and quiet workspace.",
+   "accessible": true
+  },
+  {
+   "url": "https://to.indeed.com/aa2bsr7pzgb7",
+   "title": "Outbound Business Development Caller / Appointment Setter - TopTier Cleaning Agency (Indeed)",
+   "type": "aggregator",
+   "publisher": "Indeed",
+   "published": "2026-09-16",
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements"
+   ],
+   "notes": "Full posting read via the Indeed job API. Temporary remote role calling businesses to book cleaning consultations; no closing required. Pay shown as '$20.00–$22.00 per year', apparently a mislabelled hourly rate. 1 year of cold calling required.",
+   "accessible": true
+  },
+  {
+   "url": "https://to.indeed.com/aa7ksxfwwdmv",
+   "title": "B2B Appointment Setter – Group Benefits - Kazmir Consulting Group (Indeed)",
+   "type": "aggregator",
+   "publisher": "Indeed",
+   "published": "2026-09-17",
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "worker_status",
+    "requirements"
+   ],
+   "notes": "Full posting read via the Indeed job API. Freelance, performance-based role calling Canadian businesses. Pays $50 per qualified lead plus $5,000 when a generated group closes; no base pay stated. Leads are supplied.",
+   "accessible": true
+  },
+  {
+   "url": "https://hubstafftalent.net/jobs/commission-only-appointment-setter-uncapped-2k-to-5k-usd-per-month",
+   "title": "Commission-Only Appointment Setter Uncapped % - 2k to 5k USD per month! fixed price",
+   "type": "aggregator",
+   "publisher": "Hubstaff Talent",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "pay"
+   ],
+   "notes": "Search-result title only. An example of a commission-only appointment-setter listing advertising unverified monthly earnings. Kept as evidence of the commission-only pattern, not as an opportunity.",
+   "accessible": false
+  }
+ ]
+}

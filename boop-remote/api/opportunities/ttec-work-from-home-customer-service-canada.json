@@ -1,0 +1,183 @@
+{
+ "id": "ttec-work-from-home-customer-service-canada",
+ "name": "Work-from-home customer service representative (TTEC Canada)",
+ "organization": "TTEC",
+ "type": "employment",
+ "category": "customer_ops",
+ "tags": [
+  "customer-service",
+  "call-centre",
+  "chat-support",
+  "work-from-home",
+  "bpo",
+  "province-restricted"
+ ],
+ "summary": "TTEC, a large outsourced customer-service company, posts permanent work-from-home phone and chat support jobs for Canadian residents, usually limited to certain provinces.",
+ "whatYouDo": "You answer customers of a client brand (e.g. a luxury retailer, automotive or healthcare account) by phone or chat from home, using the client's systems and following quality and speed targets. Work is scheduled in shifts and measured on performance metrics.",
+ "appeal": [
+  "Postings are explicitly remote for people living in Canada",
+  "Posted roles are permanent and full-time (employee, not gig)",
+  "Chat-only representative postings exist for people who prefer text",
+  "Bilingual (French or Spanish) postings exist for language skills"
+ ],
+ "watchOuts": [
+  "Each posting limits eligible provinces: one remote role excluded BC and Ontario residents, another chat role was open to BC residents",
+  "Posted base pay seen was modest: $17–$18/hr on a remote luxury-retail role",
+  "Employee reviews (anecdotal) mention micromanagement, pay complaints, stress and rushed training",
+  "A reviewer describes company equipment as basic and says it must be returned on leaving",
+  "Healthcare/senior postings require prior call-centre experience"
+ ],
+ "officialUrl": "https://www.ttecjobs.com/en/location/canada-jobs/44028/6251999/2",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "shifts",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "voice",
+   "text"
+  ],
+  "realtime": "high",
+  "phone": true
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 3,
+  "technical": 1,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": null,
+  "cost": "unknown",
+  "notes": "Training details not seen in sources reached."
+ },
+ "compensation": {
+  "min": 17,
+  "max": 18,
+  "currency": "CAD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Base wage on one remote luxury-retail posting (ttecjobs.com, seen via search summary). Other postings' pay not seen."
+ },
+ "reliability": {
+  "workVolume": "steady",
+  "predictability": "medium",
+  "notes": "Luxury-retail posting says all positions are permanently remote and full-time. Openings and eligible provinces change per client program."
+ },
+ "workerStatus": "employee",
+ "fees": null,
+ "applicationSteps": [
+  "Search Canada openings on ttecjobs.com and check the eligible-province list on each posting",
+  "Apply online through the specific posting",
+  "Complete TTEC's screening and interview steps (details not confirmed)",
+  "Treat any offer that asks you to pay for equipment or arrives from a non-TTEC address as suspect"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "phone_heavy"
+ ],
+ "fitsIf": "You want a steady employee job doing phone or chat support from home and live in one of the provinces a posting accepts.",
+ "notFitIf": "You need high pay, dislike scripted metric-driven work, or live in a province a posting excludes.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.ttecjobs.com/en/location/canada-jobs/44028/6251999/2",
+   "title": "Search Canada Jobs at TTEC",
+   "type": "official",
+   "publisher": "TTEC",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "status"
+   ],
+   "notes": "Search-summary only (fetch blocked). Lists Canadian roles incl. automotive, bilingual Spanish-English and luxury retail; mix of work-from-home and hybrid.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.ttecjobs.com/en/job/%D0%BC%D0%BE%D0%BD%D1%80%D0%B5%D0%B0%D0%BB/customer-service-representative-luxury-retail-english-remote-canada/44028/97404149088",
+   "title": "Customer Service Representative (Luxury Retail, English, Remote Canada)",
+   "type": "official",
+   "publisher": "TTEC",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "canada_eligibility",
+    "worker_status",
+    "requirements"
+   ],
+   "notes": "Search-summary only. Base wage $17–$18/hr; permanently remote, full-time; open to AB, MB, NB, NL, NS, PE, QC, SK residents; not BC/ON or outside Canada.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.ttecjobs.com/en/position/customer-service-chat-representative-remote-canada-canada-1",
+   "title": "Customer Service Chat Representative - Remote - Canada",
+   "type": "official",
+   "publisher": "TTEC",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Search-summary only. Remote chat role in Canada; snippet says open to British Columbia residents (list truncated). Pay not shown.",
+   "accessible": false
+  },
+  {
+   "url": "https://ca.indeed.com/cmp/Ttec/faq/work-from-home",
+   "title": "TTEC work from home (Indeed Q&A)",
+   "type": "forum",
+   "publisher": "Indeed",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Anecdotal Q&A, undated. A respondent says staff get a basic company computer that must be returned on leaving.",
+   "accessible": false
+  },
+  {
+   "url": "https://static.glassdoor.ca/Reviews/Employee-Review-TTEC-E5944-RVW96744553.htm",
+   "title": "TTEC Canada Prioritizes Business Over Employee Well-Being (Glassdoor review)",
+   "type": "independent_review",
+   "publisher": "Glassdoor",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Anecdotal; title only seen. Search summary of several TTEC Glassdoor reviews (2010–2026) cites micromanagement, mediocre pay, stress and rushed training; others praise remote setup.",
+   "accessible": false
+  }
+ ]
+}

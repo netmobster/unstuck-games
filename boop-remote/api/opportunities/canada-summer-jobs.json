@@ -1,0 +1,155 @@
+{
+ "id": "canada-summer-jobs",
+ "name": "Canada Summer Jobs (youth summer jobs, ages 15-30)",
+ "organization": "Government of Canada - Employment and Social Development Canada",
+ "type": "program",
+ "category": "government_program",
+ "tags": [
+  "youth",
+  "summer",
+  "seasonal",
+  "first-job",
+  "job-bank"
+ ],
+ "summary": "Federally funded summer jobs for people aged 15 to 30, posted on Job Bank each spring; the 2026 hiring period has ended.",
+ "whatYouDo": "Employers that receive Canada Summer Jobs funding post their jobs on Job Bank, and youth apply directly to those employers. Jobs span recreation, food service, marketing, tourism, construction, environmental work and technology, and run through the summer.",
+ "appeal": [
+  "Up to 100,000 jobs announced for 2026",
+  "All funded jobs listed in one place on Job Bank",
+  "A common first-job or student route for ages 15-30",
+  "Wide range of fields"
+ ],
+ "watchOuts": [
+  "Seasonal and closed now: 2026 hiring ran April 20 to July 20 and jobs ended by August 29, 2026",
+  "Must be 15-30 at the start of the job, have a valid SIN, and be a citizen, permanent resident or person with refugee protection",
+  "Pay, hours and length are set per posting; third-party pay figures are unverified",
+  "Next cycle's dates not announced in sources found"
+ ],
+ "officialUrl": "https://www.canada.ca/en/employment-social-development/news/2026/04/canada-summer-jobs-2026.html",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": 15,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 0,
+  "writing": 0,
+  "numeracy": 0,
+  "detail": 1,
+  "customer": 1,
+  "technical": 0,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Wages set by each employer's posting; not verified."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "medium",
+  "notes": "Seasonal: hiring April-July, jobs end late August."
+ },
+ "workerStatus": "employee",
+ "fees": null,
+ "applicationSteps": [
+  "Watch for the next hiring-period announcement (2026 ran April 20 to July 20)",
+  "Search Canada Summer Jobs postings on Job Bank (youth section)",
+  "Apply directly to employers following each posting's instructions"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "bridge",
+ "status": "not_currently_open",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work"
+ ],
+ "fitsIf": "You are 15-30, a citizen, PR or protected person with a SIN, and want a summer job next year.",
+ "notFitIf": "You need work this autumn or winter, or you are in Canada on a temporary permit.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.canada.ca/en/employment-social-development/news/2026/04/canada-summer-jobs-2026-youth-hiring-period-now-open-with-up-to-100000-jobs-available.html",
+   "title": "Canada Summer Jobs 2026: Youth hiring period now open, with up to 100,000 jobs available",
+   "type": "official",
+   "publisher": "Employment and Social Development Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status",
+    "requirements"
+   ],
+   "notes": "April 2026 news release (search summary; fetch blocked): up to 100,000 jobs for ages 15-30; jobs posted on Job Bank; fields listed.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.canada.ca/en/employment-social-development/news/2026/04/canada-summer-jobs-2026.html",
+   "title": "Canada Summer Jobs 2026",
+   "type": "official",
+   "publisher": "Employment and Social Development Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status",
+    "requirements",
+    "canada_eligibility"
+   ],
+   "notes": "Backgrounder (search summary): hiring period April 20-July 20, 2026, jobs until August 29, 2026; youth must be 15-30, have a SIN and be citizen/PR/refugee-protected.",
+   "accessible": false
+  },
+  {
+   "url": "https://ns.jobbank.gc.ca/youth",
+   "title": "Job Bank - youth",
+   "type": "official",
+   "publisher": "Government of Canada (Job Bank)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Job Bank youth section where summer jobs are listed (title seen in results).",
+   "accessible": false
+  }
+ ],
+ "audience": [
+  "Youth aged 15–30"
+ ]
+}

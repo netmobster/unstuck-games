@@ -1,0 +1,2362 @@
+[
+  {
+    "id": "rev-transcription-captioning",
+    "name": "Freelance transcriptionist / captioner",
+    "organization": "Rev",
+    "type": "task_platform",
+    "category": "language_writing",
+    "tags": [
+      "transcription",
+      "captioning",
+      "subtitles",
+      "text-only",
+      "per-audio-minute",
+      "waitlist"
+    ],
+    "summary": "Transcribe or caption audio and video files from Rev's work queue and get paid per audio minute; new applicants currently face a waitlist.",
+    "whatYouDo": "You pick audio or video files from Rev's online queue and type (or correct) what is said, following Rev's style guide; captioners also sync text to video. Pay is per minute of audio, so speed and accuracy determine what you earn per hour worked.",
+    "appeal": [
+      "No degree or prior experience needed to apply",
+      "Choose your own hours and which files to take",
+      "Weekly PayPal payouts (per Rev's freelancer pages as indexed)",
+      "Captioning and subtitle-translation roles are listed at higher per-minute rates"
+    ],
+    "watchOuts": [
+      "Rev's freelancer page indicates a waitlist due to high application volume; secondary sources cite multi-week waits (one says 4–12 weeks, unverified)",
+      "Paid per audio minute, not per hour worked, so effective hourly pay is much lower than the headline rate",
+      "Rev cut base pay sharply in 2019 (Gizmodo reporting; worker petition cites $0.45 to $0.30 per minute)",
+      "Unpaid skills assessment and transcription sample required to apply",
+      "Independent contractor: no benefits and no guaranteed work",
+      "Canada appears on third-party lists of accepted countries, but the current official country list was not verified"
+    ],
+    "officialUrl": "https://www.rev.com/freelancers",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "IE",
+        "NZ",
+        "ZA",
+        "MX",
+        "NL"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "headset",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unpaid_test"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "independent",
+        "text"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 2,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 0,
+      "technical": 1,
+      "creative": 0,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": "Must follow Rev's style guidelines; no paid training identified."
+    },
+    "compensation": {
+      "min": 0.4,
+      "max": 1.1,
+      "currency": "unstated",
+      "unit": "minute_audio",
+      "basis": "official",
+      "notes": "Transcription range from Rev's freelancer pages as summarized in search results (pages could not be opened directly). Captioning listed at $0.54–$1.10 and subtitle translation at $1.70–$4.00+ per audio minute. Currency not stated in indexed text (Rev is US-based; likely USD). Older reviews cite a $0.30 floor."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Waitlist for new applicants; work comes from a shared queue; 2019 pay cuts and earnings losses reported by journalists and workers. No official volume guarantee found."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Choose a role (transcription, captions or subtitles) on Rev's freelancer page",
+      "Complete the short English/grammar skills assessment",
+      "Submit a transcription sample",
+      "Wait for an emailed decision (applications are waitlisted and processed in order received)",
+      "Set up PayPal to receive weekly payments"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "now",
+    "status": "waitlist_or_no_work_guarantee",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "unpaid_assessment",
+      "variable_work",
+      "contractor_no_benefits",
+      "waitlist"
+    ],
+    "fitsIf": "You type fast and accurately, have a good ear for English, and want flexible at-home work you can do in short sessions and can wait out a sign-up queue.",
+    "notFitIf": "You need predictable hourly income soon or dislike repetitive, detail-heavy work paid by the piece.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.rev.com/freelancers",
+        "title": "Apply To Be A Transcript, Caption, or Legal Freelancer",
+        "type": "official",
+        "publisher": "Rev",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status",
+          "requirements",
+          "reliability"
+        ],
+        "notes": "Search-indexed content (page not opened; egress blocked): applications waitlisted due to high volume, processed in order received with an email decision; apply by choosing a role, taking a skills assessment and submitting a sample.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.rev.com/freelancers/transcription",
+        "title": "Rev freelancer transcription page",
+        "type": "official",
+        "publisher": "Rev",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Search summary of Rev's freelancer pages: transcription $0.40–$1.10 per audio/video minute, paid weekly via PayPal. Not opened directly.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.rev.com/freelancers/captions",
+        "title": "Rev freelancer captions page",
+        "type": "official",
+        "publisher": "Rev",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Search summary: captioner $0.54–$1.10 per audio/video minute; subtitle translator $1.70–$4.00+ listed on Rev freelancer pages. Not opened directly.",
+        "accessible": false
+      },
+      {
+        "url": "https://medium.com/@dreamzville/great-article-f8bdbbafb8c5",
+        "title": "Comment listing countries Rev accepts freelancers from",
+        "type": "forum",
+        "publisher": "Medium (reader comment)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "Anecdotal, undated reader comment quoting a list of accepted countries that includes Canada (also US excluding California, UK, Australia, Ireland, Mexico, Netherlands, NZ, South Africa). Not an official list.",
+        "accessible": false
+      },
+      {
+        "url": "https://transcriptionist.net/jobs/rev/",
+        "title": "Rev Transcription Jobs (2026): How to Apply, Pay & Test",
+        "type": "aggregator",
+        "publisher": "transcriptionist.net",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "status"
+        ],
+        "notes": "Third-party guide. Search summaries of third-party guides say Canada is an eligible country and the waitlist can last weeks; specific figures not pinned to this page.",
+        "accessible": false
+      },
+      {
+        "url": "https://gizmodo.com/there-is-a-point-where-a-person-cant-do-anymore-1839808189",
+        "title": "Gizmodo report on Rev transcriptionist pay cut",
+        "type": "journalism",
+        "publisher": "Gizmodo",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "worker_status",
+          "risk"
+        ],
+        "notes": "2019 reporting that Rev lowered minimum pay for its independently contracted workforce by over 30%; workers reported large earnings losses.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.coworker.org/petitions/support-from-customers-for-fair-wages-for-rev-com-workers",
+        "title": "Support from customers for fair wages for Rev.com workers",
+        "type": "forum",
+        "publisher": "Coworker.org",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "risk"
+        ],
+        "notes": "Worker petition (circa 2019) stating base transcriptionist pay was cut from $0.45 to $0.30 per minute. Advocacy source.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "transcribeme-transcription",
+    "name": "Freelance transcriptionist (short audio clips)",
+    "organization": "TranscribeMe",
+    "type": "task_platform",
+    "category": "language_writing",
+    "tags": [
+      "transcription",
+      "text-only",
+      "per-audio-hour",
+      "entrance-exam",
+      "short-tasks"
+    ],
+    "summary": "Transcribe short audio clips on TranscribeMe's WorkHub platform after passing an entrance exam, paid per audio hour via PayPal.",
+    "whatYouDo": "After passing an entrance exam, you log into WorkHub and transcribe short audio clips (described as 2–4 minutes) following TranscribeMe's style guide. With experience and extra exams you can join specialty teams (e.g. legal, medical) that pay more.",
+    "appeal": [
+      "Short clips suit small blocks of free time",
+      "No experience needed to start; mainly a computer and internet connection",
+      "Specialty teams (legal, medical) pay more after additional exams",
+      "Paid through PayPal, which operates in Canada"
+    ],
+    "watchOuts": [
+      "Low starting pay: $15–22 per audio hour, and one audio hour can take several hours to transcribe",
+      "Unpaid entrance exam (style-guide quiz plus short audio clips)",
+      "Canada eligibility only evidenced by a third-party 'worldwide' listing, not an official country list",
+      "PayPal account required",
+      "Several sources found are more than two years old; rates and exam availability may have changed"
+    ],
+    "officialUrl": "https://www.transcribeme.com/freelancers/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "headset",
+        "fast internet"
+      ],
+      "minAge": 18,
+      "assessment": "unpaid_test"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "independent",
+        "text"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 2,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 0,
+      "technical": 1,
+      "creative": 0,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": "Must learn the style guide for the entrance exam; no paid training identified."
+    },
+    "compensation": {
+      "min": 0.25,
+      "max": 0.37,
+      "currency": "unstated",
+      "unit": "minute_audio",
+      "basis": "official",
+      "notes": "Official freelancer page (per search summary) cites starting rates of $15–22 per audio hour, converted here to roughly $0.25–0.37 per audio minute. Specialty-team rates cited variously as ~$36–40 or $60–70+ per audio hour. Currency not stated in indexed text (US company; likely USD)."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "No official or independent evidence on task supply was found in this pass."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Sign up on TranscribeMe's WorkHub site",
+      "Pass the general entrance exam (style-guide quiz plus short audio clips)",
+      "Account is activated after a pass; start transcribing short clips",
+      "Optionally take further exams to join specialty teams"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "weak",
+    "riskFlags": [
+      "unpaid_assessment",
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You want a low-commitment, text-only side task you can do in 10–20 minute bursts and are comfortable with modest pay while you build speed.",
+    "notFitIf": "You need at least minimum-wage-equivalent hourly earnings from the start.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.transcribeme.com/freelancers/",
+        "title": "Freelance Transcription Jobs - TranscribeMe",
+        "type": "official",
+        "publisher": "TranscribeMe",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "Search-indexed: starting $15–22 per audio hour; specialty teams $60–70+ per audio hour; only a computer and internet needed. Not opened directly.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.transcribeme.com/legal-transcriptionists-jobs/",
+        "title": "How to Become a Legal Transcriptionist at TranscribeMe",
+        "type": "official",
+        "publisher": "TranscribeMe",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Search-indexed: every transcriptionist must first pass a general entrance exam; specialty teams require further exams.",
+        "accessible": false
+      },
+      {
+        "url": "https://newworkhub.transcribeme.com/signup/",
+        "title": "Sign Up - WorkHub - TranscribeMe",
+        "type": "official",
+        "publisher": "TranscribeMe",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Transcriber signup page. Search summary of TranscribeMe pages: 18+, computer with latest Chrome, stable internet, PayPal account; account activated after passing the exam. Not opened.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.wahojobs.com/job/transcribeme-transcriber-1",
+        "title": "Transcriber - Work from Home - Starts $15 audio hr",
+        "type": "aggregator",
+        "publisher": "WahoJobs",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay"
+        ],
+        "notes": "Undated job-board listing marking the TranscribeMe transcriber role as open worldwide, starting at $15 per audio hour.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "gotranscript-transcription",
+    "name": "Freelance transcriptionist (multi-language)",
+    "organization": "GoTranscript",
+    "type": "task_platform",
+    "category": "language_writing",
+    "tags": [
+      "transcription",
+      "text-only",
+      "per-audio-minute",
+      "multilingual",
+      "french"
+    ],
+    "summary": "Freelance transcription work for GoTranscript in English or many other languages, paid per audio minute after a quiz and audio-sample test.",
+    "whatYouDo": "You pick transcription tasks on GoTranscript's platform and type what you hear following its guidelines. Work is offered in many languages, which can help bilingual people; pay varies by language demand, task difficulty, speed and accuracy.",
+    "appeal": [
+      "GoTranscript's jobs page says it is short on transcribers and editors and hiring is open (company claim, as indexed)",
+      "No application fee",
+      "Many languages supported, so French or another language may open extra work",
+      "Payouts via PayPal or Payoneer"
+    ],
+    "watchOuts": [
+      "Advertised 'up to $1.75 per minute' is a ceiling across languages; third-party guides cite much lower English rates (around $0.60 per audio minute, unverified)",
+      "Unpaid grammar/guidelines quiz and audio transcription sample",
+      "Impersonation risk: the company warns to apply only directly and use only your own account; never pay to apply",
+      "Canada not specifically confirmed on an official page",
+      "Independent contractor with no guaranteed volume"
+    ],
+    "officialUrl": "https://gotranscript.com/transcription-jobs",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "headset",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unpaid_test"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "independent",
+        "text"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 2,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 0,
+      "technical": 1,
+      "creative": 0,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": "Must learn GoTranscript's guidelines for the quiz and sample."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": "minute_audio",
+      "basis": "unknown",
+      "notes": "Official jobs page advertises up to $1.75 per audio minute, varying by language demand, speed, accuracy and complexity; third-party guides cite about $0.60 per audio minute for English (unverified). Left blank because no official English-specific rate was found."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "unknown",
+      "notes": "Company states a shortage of transcribers; no independent data on task supply found in this pass."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Choose your language on GoTranscript's transcription jobs page and complete the online application",
+      "Pass a short A/B-type quiz on the guidelines",
+      "Transcribe a short audio sample (a few minutes) using the style guide",
+      "If accepted, pick tasks and withdraw earnings via PayPal or Payoneer"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "weak",
+    "riskFlags": [
+      "unpaid_assessment",
+      "variable_work",
+      "contractor_no_benefits",
+      "scam_impersonation"
+    ],
+    "fitsIf": "You want flexible text-only work and especially if you can transcribe French or another in-demand language.",
+    "notFitIf": "You need a clear, reliable hourly rate before investing time in an unpaid test.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://gotranscript.com/transcription-jobs",
+        "title": "Online transcription jobs at GoTranscript",
+        "type": "official",
+        "publisher": "GoTranscript",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status",
+          "pay",
+          "worker_status",
+          "risk"
+        ],
+        "notes": "Search-indexed: freelance remote work for independent contractors; says it is short on transcribers/editors and hiring is fully open; pay up to $1.75/min varying by language and performance; no application fee; warns to apply directly and use only your own account. Not opened.",
+        "accessible": false
+      },
+      {
+        "url": "https://gotranscript.com/english-uk-transcription-job",
+        "title": "English (UK) transcription job with GoTranscript",
+        "type": "official",
+        "publisher": "GoTranscript",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Search-indexed: first step is a short A/B-type quiz on the guidelines, then a short audio clip transcription sample.",
+        "accessible": false
+      },
+      {
+        "url": "https://transcriptionist.net/jobs/gotranscript/",
+        "title": "GoTranscript Jobs (2026): How to Apply, Pay & Practice Test",
+        "type": "aggregator",
+        "publisher": "transcriptionist.net",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "Third-party guide. Search summaries of such guides cite ~$0.60/audio minute for English, PayPal/Payoneer payouts and an estimated 35–40% pass rate; not pinned to this page, unverified.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.lilachbullock.com/what-reddit-reveals-about-transcription-jobs/",
+        "title": "What Reddit reveals about transcription jobs",
+        "type": "independent_review",
+        "publisher": "Lilach Bullock",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Summarizes Reddit discussion: r/transcription moderators pin warnings about recurring recruitment scams; advice never to pay before earning. Secondhand summary of forum content.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "cambly-english-tutor",
+    "name": "Online English conversation tutor",
+    "organization": "Cambly",
+    "type": "freelance",
+    "category": "language_writing",
+    "tags": [
+      "tutoring",
+      "english",
+      "conversation",
+      "video",
+      "no-degree",
+      "native-speaker",
+      "per-minute"
+    ],
+    "summary": "Chat with English learners over video on Cambly for a fixed per-minute rate; native English speakers 18+ can apply without teaching credentials, but intake of new tutors is currently limited.",
+    "whatYouDo": "You log in when you like and take on-demand video calls or scheduled lessons with adult learners (or children on Cambly Kids), mostly practising conversation. You are paid only for minutes spent in calls.",
+    "appeal": [
+      "No teaching certificate, degree or experience required (official)",
+      "Fixed published rate: US$0.17/min (US$10.20/h); Cambly Kids US$0.20/min (US$12/h)",
+      "No minimum hours; log on whenever you like",
+      "Payouts processed weekly via PayPal, direct deposit, wire or prepaid card"
+    ],
+    "watchOuts": [
+      "Must be a native English speaker; fluent non-native speakers are generally not accepted",
+      "Cambly says it is temporarily limiting new tutors and profile processing may take longer (official page; also reported 10 Sep 2026)",
+      "Paid only for minutes in calls; tutor agreement reportedly guarantees no minimum students or income",
+      "Tutor reviews report unreliable 'priority hours', low pay, and penalties or removal after disconnections (anecdotal, mixed dates)",
+      "Some locations are unsupported (California, Massachusetts, New Jersey as of 2024); no Canadian province was listed"
+    ],
+    "officialUrl": "https://tutorlanding.cambly.com/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "webcam",
+        "headset",
+        "fast internet",
+        "quiet space"
+      ],
+      "minAge": 18,
+      "assessment": "none"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "video",
+        "voice"
+      ],
+      "realtime": "high",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 1,
+      "customer": 2,
+      "technical": 0,
+      "creative": 1,
+      "language": 3
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": "No certification or experience required per official tutor page."
+    },
+    "compensation": {
+      "min": 10.2,
+      "max": 12,
+      "currency": "USD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Official tutor page: $0.17 USD/min standard and $0.20 USD/min Cambly Kids, i.e. $10.20–12.00 per hour of call time. Waiting time between calls is unpaid. Older guides cite other rates."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Official: no minimum hours. Third-party review says the tutor agreement does not guarantee students or revenue; reviewers say priority hours have declined."
+    },
+    "workerStatus": "unknown",
+    "fees": null,
+    "applicationSteps": [
+      "Create a tutor profile on Cambly's tutor site",
+      "Complete the tech check and record a short self-introduction video",
+      "Wait for profile approval (currently slower while Cambly limits new tutors)",
+      "Choose a payout method and start taking calls"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "waitlist_or_no_work_guarantee",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "waitlist",
+      "account_deactivation_reports"
+    ],
+    "fitsIf": "You are a native English speaker who enjoys casual conversation and wants flexible, no-credential side income paid by the minute.",
+    "notFitIf": "You are not a native English speaker, or you need dependable hours and more than about US$10–12 per hour of call time.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://tutorlanding.cambly.com/",
+        "title": "Become a Tutor — Cambly",
+        "type": "official",
+        "publisher": "Cambly",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "pay",
+          "status",
+          "schedule"
+        ],
+        "notes": "Search-indexed: native English speaker, 18+, strong internet, no certificates or experience needed; $0.17/min ($10.20/h), Cambly Kids $0.20/min; weekly payment processing with several methods; no minimum hours; temporarily limiting new tutors. Not opened.",
+        "accessible": false
+      },
+      {
+        "url": "https://support.cambly.com/hc/en-us/articles/5075228249101-Unsupported-Tutoring-Locations",
+        "title": "Unsupported Tutoring Locations",
+        "type": "official",
+        "publisher": "Cambly",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "Help article with 2024 effective dates listing California, Massachusetts and New Jersey as unsupported tutoring locations; no Canadian location listed per search summary.",
+        "accessible": false
+      },
+      {
+        "url": "https://selfmadesuccess.com/cambly-tutor-review/",
+        "title": "Cambly tutor review",
+        "type": "independent_review",
+        "publisher": "Self-Made Success",
+        "published": "2026-09-10",
+        "accessed": "2026-10-13",
+        "claims": [
+          "status",
+          "reliability"
+        ],
+        "notes": "Updated 10 Sep 2026: author saw Cambly's notice about temporarily limiting new tutors; says the tutor agreement does not guarantee any minimum students or revenue.",
+        "accessible": false
+      },
+      {
+        "url": "https://ca.trustpilot.com/review/cambly.com",
+        "title": "Cambly reviews (Trustpilot Canada)",
+        "type": "forum",
+        "publisher": "Trustpilot",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "reliability"
+        ],
+        "notes": "Anecdotal user reviews (2018–2026 across Trustpilot domains): unreliable priority hours, low per-minute pay, disconnection penalties and removals; some praise flexibility.",
+        "accessible": false
+      },
+      {
+        "url": "https://static.glassdoor.ca/Interview/Cambly-Interview-Questions-E1181065.htm",
+        "title": "Cambly Interview Questions",
+        "type": "forum",
+        "publisher": "Glassdoor",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Applicant reports: online profile, tech check and self-introduction video; many approved within a day or two, longer depending on demand. Anecdotal.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "preply-online-tutor",
+    "name": "Online tutor (languages and other subjects)",
+    "organization": "Preply",
+    "type": "freelance",
+    "category": "language_writing",
+    "tags": [
+      "tutoring",
+      "languages",
+      "english",
+      "french",
+      "video",
+      "set-your-own-rate",
+      "commission"
+    ],
+    "summary": "Set your own rate and teach one-on-one video lessons on the Preply marketplace; Preply keeps the whole first trial lesson with each new student and 18–33% of later lessons.",
+    "whatYouDo": "You build a profile with a photo and intro video, set your price and availability, and teach booked one-on-one lessons (English, French, other languages or subjects). Income depends on attracting and keeping students in a crowded marketplace.",
+    "appeal": [
+      "You set your own price and schedule",
+      "Can teach English, French or other languages and subjects",
+      "No teaching certificate required (per third-party guides)",
+      "Commission falls as you accumulate hours taught (33% down to 18%)"
+    ],
+    "watchOuts": [
+      "Preply keeps 100% of every trial lesson with a new student, so first lessons are effectively unpaid",
+      "33% commission for new tutors; 18% only after 400+ hours taught",
+      "Crowded marketplace (one review cites 12,000+ English tutors), making first students hard to get",
+      "Complaint-board reports of tutor profiles removed without warning (individual, unverified)",
+      "Income is unpredictable, especially early on"
+    ],
+    "officialUrl": "https://preply.com/en/teach",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "webcam",
+        "headset",
+        "fast internet",
+        "quiet space"
+      ],
+      "minAge": null,
+      "assessment": "none"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "video",
+        "voice"
+      ],
+      "realtime": "high",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 1,
+      "customer": 3,
+      "technical": 0,
+      "creative": 1,
+      "language": 3
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": "No mandatory paid training identified."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": "hour",
+      "basis": "unknown",
+      "notes": "Tutors set their own rates. Official commission example: on a $10/hour lesson a new tutor keeps $6.70 and a tutor with 400+ hours keeps $8.20 (non-trial lessons)."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Earnings depend entirely on student bookings; no guaranteed volume. Large tutor supply reported."
+    },
+    "workerStatus": "contractor",
+    "fees": "Commission: 100% of each trial lesson with a new student; 33% of regular lessons for new tutors, falling (28% after 20 hours per secondary sources) to 18% at 400+ hours (official help article).",
+    "applicationSteps": [
+      "Sign up on Preply's teach page and create a tutor profile",
+      "Add a photo, short intro video, description and availability",
+      "Wait for Preply's profile review",
+      "Set your price and take trial lessons (first lesson with each new student is not paid to you)"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "fees",
+      "variable_work",
+      "contractor_no_benefits",
+      "account_deactivation_reports"
+    ],
+    "fitsIf": "You can teach a language (including French) or subject, enjoy live video teaching, and are willing to market yourself to build a student base.",
+    "notFitIf": "You need income within days or dislike giving away first lessons and competing on price.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://preply.com/en/teach",
+        "title": "Teach online: Become an online tutor at Preply",
+        "type": "official",
+        "publisher": "Preply",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Official tutor recruitment page (seen in search results; not opened). Search summary attributes the trial 100% / 33%→18% commission statement to it.",
+        "accessible": false
+      },
+      {
+        "url": "https://help.preply.com/en/articles/4171383-preply-commission-model",
+        "title": "Preply commission model",
+        "type": "official",
+        "publisher": "Preply",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "risk"
+        ],
+        "notes": "Help article: 100% commission on each trial lesson with a new student; non-trial commission starts at 33% and drops to 18% with hours taught; $10/h example (keep $6.70 new, $8.20 at 400+ hours).",
+        "accessible": false
+      },
+      {
+        "url": "https://storylearning.com/teach/teaching-tips/preply-review",
+        "title": "Preply Review: Is It Any Good For Online Teachers?",
+        "type": "independent_review",
+        "publisher": "StoryLearning",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "Review noting 12,000+ English tutors at time of writing (hard to stand out) and student complaints about subscription pricing.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.sikayetvar.com/en/preply-us",
+        "title": "Preply complaints",
+        "type": "forum",
+        "publisher": "SikayetVar",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Complaint posts including a tutor profile deleted without warning; individual, unverified reports.",
+        "accessible": false
+      },
+      {
+        "url": "https://teflinstitute.com/blog/preply-tutor/",
+        "title": "Becoming a Preply Tutor: Pay, Requirements and an Honest Look",
+        "type": "aggregator",
+        "publisher": "TEFL Institute",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "canada_eligibility"
+        ],
+        "notes": "Third-party guide. Search summaries of guides say no teaching certificate is needed, profile review takes ~3–5 working days and no country restriction on tutors is stated (not pinned to this page).",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "italki-language-tutor",
+    "name": "Online language teacher / community tutor",
+    "organization": "italki",
+    "type": "freelance",
+    "category": "language_writing",
+    "tags": [
+      "tutoring",
+      "languages",
+      "french",
+      "english",
+      "video",
+      "set-your-own-rate",
+      "commission"
+    ],
+    "summary": "Teach languages on italki as a Community Tutor (native or near-native, no credential) or a certified Professional Teacher, setting your own price; italki takes a 15–30% commission on paid lessons.",
+    "whatYouDo": "You apply with government ID, a photo, written intro and video; once approved you set lesson prices and teach booked one-on-one video lessons. Community Tutors mostly offer conversation practice; Professional Teachers with credentials offer structured lessons.",
+    "appeal": [
+      "Community Tutor route needs no teaching credential (per third-party guides)",
+      "No commission on trial lessons (official)",
+      "Set your own price (minimum US$5 for Community Tutors, US$10 for Professional Teachers)",
+      "Suits French and less-common languages, not just English"
+    ],
+    "watchOuts": [
+      "Commission rose in 2025: 21% on single lessons, 15–19% on packages, 30% on group classes (official help centre)",
+      "italki's English teacher page says its English teachers hold a certification (CELTA/TEFL/TESOL), so no-credential English applicants may struggle",
+      "Applications are reviewed and can be rejected; government ID required",
+      "No guaranteed students; income depends on marketing yourself",
+      "No source found on Canada-specific eligibility either way"
+    ],
+    "officialUrl": "https://www.italki.com/fr/instructorterms",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "unclear",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [
+        "Teaching certificate (e.g. CELTA, TEFL, TESOL), teaching degree or licence only for the Professional Teacher route"
+      ],
+      "equipment": [
+        "computer",
+        "webcam",
+        "headset",
+        "fast internet"
+      ],
+      "minAge": 18,
+      "assessment": "none"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "video",
+        "voice"
+      ],
+      "realtime": "high",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 1,
+      "customer": 3,
+      "technical": 0,
+      "creative": 1,
+      "language": 3
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": "Credentials only needed for Professional Teacher status."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": "USD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Teachers set their own prices; official minimum lesson price is US$5 (Community Tutor) or US$10 (Professional Teacher). Net pay = price minus commission."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Depends on student bookings; no volume guarantee found."
+    },
+    "workerStatus": "contractor",
+    "fees": "Commission (official help centre): trial lessons 0%, single lessons 21%, 5-lesson packages 19%, 10-lesson 17%, 15/20-lesson 15%, group classes 30%. Older sources cite a flat 15%.",
+    "applicationSteps": [
+      "Choose Community Tutor or Professional Teacher route",
+      "Submit the teacher application with photo, written intro, video and government ID (plus credentials for Professional Teacher)",
+      "Wait for italki's review and approval",
+      "Set lesson prices and availability, then accept bookings"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "fees",
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You speak a language natively or at near-native level (French is a good fit) and want to set your own prices for one-on-one lessons.",
+    "notFitIf": "You want an English-only route without credentials, or need guaranteed hours.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://support.italki.com/hc/en-us/articles/206352068-How-does-italki-charge-a-commission",
+        "title": "How does italki charge a commission?",
+        "type": "official",
+        "publisher": "italki",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Help centre table: trial 0%, single lessons 21%, 5-pack 19%, 10-pack 17%, 15/20-pack 15%, group classes 30%.",
+        "accessible": false
+      },
+      {
+        "url": "https://support.italki.com/hc/en-us/articles/900003254946-How-much-should-I-charge-for-my-lessons",
+        "title": "How much should I charge for my lessons?",
+        "type": "official",
+        "publisher": "italki",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Lowest lesson price is US$10 for Professional Teachers and US$5 for Community Tutors.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.italki.com/fr/instructorterms",
+        "title": "italki Teacher Policy (French-locale page)",
+        "type": "official",
+        "publisher": "italki",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Teacher Policy: applicants submit a complete application with passport or government ID through the platform; italki evaluates it for approval.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.italki.com/teachers/english?page=4",
+        "title": "Find English teachers – italki",
+        "type": "official",
+        "publisher": "italki",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "English teacher listing page states its English teachers are native or certified bilingual speakers with at least one teaching certification (CELTA, TEFL or TESOL).",
+        "accessible": false
+      },
+      {
+        "url": "https://teeachie.com/blog/italki-commission-for-teachers/",
+        "title": "italki Commission for Teachers: What You Keep in 2026",
+        "type": "aggregator",
+        "publisher": "Teeachie",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "2026 guide reporting italki moved from a flat 15% to tiered commission in early 2025.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.tefl.org/teach-english-online/italki/",
+        "title": "Tutoring English Online with italki",
+        "type": "aggregator",
+        "publisher": "TEFL Org",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Third-party guide. Search summaries of guides describe Community Tutors as 18+, native or C2, no credential; Professional Teachers need CELTA/TEFL/TESOL or similar (not pinned to this page).",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "proofreading-copyediting-category",
+    "name": "Proofreading & copyediting (category)",
+    "organization": "Various",
+    "type": "category",
+    "category": "language_writing",
+    "tags": [
+      "editing",
+      "proofreading",
+      "copyediting",
+      "freelance",
+      "career",
+      "editors-canada"
+    ],
+    "summary": "Checking and correcting other people's writing for errors, clarity and style, as an employee or freelancer; a recognized Canadian occupation with a national association and certification.",
+    "whatYouDo": "Proofreaders catch spelling, grammar and formatting errors in near-final text; copyeditors also fix consistency, clarity and style. Freelancers find clients through directories, platforms (e.g. Scribbr), publishers and referrals, and charge by the hour, word or project.",
+    "appeal": [
+      "Remote, text-based work",
+      "High self-employment share: Job Bank reports 39% of Ontario editors are self-employed (vs 15% across occupations)",
+      "Clear professional route in Canada via Editors Canada (directory listing and certification)",
+      "Job Bank national wage range for editors $20–$50/hour (median about $34.62)"
+    ],
+    "watchOuts": [
+      "Job Bank says the occupation usually requires a university degree",
+      "Job Bank outlook 2025–2027 is 'Limited' in Ontario and Quebec",
+      "Editors Canada directory listing requires paid membership (about $310/yr plus $80/yr profile, plus tax)",
+      "Certification exams cost about $450 (members) to $550 (non-members) each, plus annual maintenance fees",
+      "Finding freelance clients takes time; no guaranteed work"
+    ],
+    "officialUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/5332/ca",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [
+        "University degree usually expected (Job Bank)",
+        "Editors Canada certification (optional)"
+      ],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [
+        "day",
+        "evening",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 3,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 1,
+      "technical": 1,
+      "creative": 1,
+      "language": 3
+    },
+    "training": {
+      "required": false,
+      "cost": "user_pays",
+      "notes": "Optional paid professional development and certification through Editors Canada."
+    },
+    "compensation": {
+      "min": 20,
+      "max": 50,
+      "currency": "CAD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Job Bank wages for Editors (NOC 51110), Canada, 2023–2024 Labour Force Survey reference period: low $20, median ~$34.62, high $50/hour. Mostly employee wages; freelance proofreading rates vary widely."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "medium",
+      "notes": "Job Bank outlook Limited in ON and QC, Moderate in Ottawa/Outaouais (2025–2027). Freelance volume depends on client base."
+    },
+    "workerStatus": "varies",
+    "fees": "Optional: Editors Canada membership ~$310/yr plus $80/yr directory profile (plus tax); certification exams ~$450–$550 each; credential maintenance $25 (members) or $100 (non-members) per year.",
+    "applicationSteps": [
+      "Build skills and samples (style guides, before/after edits)",
+      "Consider joining Editors Canada and listing in its Online Directory of Editors",
+      "Optionally pursue Editors Canada certification",
+      "Find clients directly, via publishers, or via editing platforms such as Scribbr"
+    ],
+    "timeToFirstEarnings": "months",
+    "horizon": "career",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "fees"
+    ],
+    "fitsIf": "You have strong English (or French) writing skills, love precision, and are willing to build a client base over months.",
+    "notFitIf": "You need income quickly or dislike close, repetitive reading for errors.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.jobbank.gc.ca/marketreport/summary-occupation/5332/ca",
+        "title": "Editor in Canada",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "National median about $34.62/h, range $20–$50 (2023–2024 LFS); occupation usually requires a university degree. Seen via search; page not opened.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/5332/ON",
+        "title": "Editor in Ontario",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "2025–2027 outlook Limited (employment decline); search summary reports 39% of Ontario editors are self-employed vs 15% average.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/5332/QC",
+        "title": "Editor in Québec",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "2025–2027 outlook Limited; employment expected to remain relatively stable.",
+        "accessible": false
+      },
+      {
+        "url": "https://editors.ca/join/fees/",
+        "title": "Fees - Editors Canada",
+        "type": "official",
+        "publisher": "Editors Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "One-year membership $310; optional one-year directory profile $80 (two-year $589/$160); plus sales tax; non-refundable. Directory listing limited to members and student affiliates.",
+        "accessible": false
+      },
+      {
+        "url": "https://editors.ca/professional-development/certification/",
+        "title": "Editors Canada Professional Certification",
+        "type": "official",
+        "publisher": "Editors Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Current exam fee per search summary: $450 per exam for members, $550 for non-members.",
+        "accessible": false
+      },
+      {
+        "url": "https://editors.ca/professional-development/certification/maintenance/",
+        "title": "Editors Canada Professional Certification credential maintenance",
+        "type": "official",
+        "publisher": "Editors Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Annual credential maintenance fee $25 (members) or $100 (non-members); non-payment removes name from the certified roster.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "scribbr-academic-editor",
+    "name": "Freelance academic editor / proofreader",
+    "organization": "Scribbr",
+    "type": "freelance",
+    "category": "language_writing",
+    "tags": [
+      "editing",
+      "proofreading",
+      "academic",
+      "per-word",
+      "degree-required"
+    ],
+    "summary": "Edit and proofread students' academic papers for Scribbr at fixed per-word rates; requires native-level English and a university degree.",
+    "whatYouDo": "You claim editing orders (theses, essays, papers), correct language and comment on structure and clarity within a set deadline. Rates are fixed per word and higher for shorter deadlines.",
+    "appeal": [
+      "Structured entry into paid editing with set per-word rates",
+      "Scribbr states average earnings of roughly €20–30 per hour",
+      "Onboarding training through the Scribbr Academy",
+      "Remote; choose orders around your schedule"
+    ],
+    "watchOuts": [
+      "Bachelor's degree or higher and native English required",
+      "Multi-stage screening: 10-question language quiz (80+ to pass), test assignment, Academy training and 2–5 simulation orders; pay status of later stages unclear",
+      "Must be able to edit at least 10,000 words per week",
+      "Reviews describe a very hard entry barrier and actual hourly pay often below the advertised average",
+      "Hiring is periodic; applications are not always open",
+      "Rates are in euros; Canadian residency rules not stated on pages found"
+    ],
+    "officialUrl": "https://www.scribbr.com/frequently-asked-questions/how-can-i-become-a-scribbr-editor/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": true,
+      "credentials": [
+        "Bachelor's degree or higher"
+      ],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "free_test"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 3,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 1,
+      "technical": 1,
+      "creative": 0,
+      "language": 3
+    },
+    "training": {
+      "required": true,
+      "cost": "unknown",
+      "notes": "Scribbr Academy training and simulation orders are part of onboarding; whether these stages are paid could not be confirmed."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Scribbr FAQ: average approx. €20–30 per hour (EUR), based on fixed per-word rates that rise for shorter deadlines. Not recorded numerically because the currency is EUR. Reviews say real hourly earnings are often lower."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "unknown",
+      "notes": "Work depends on order volume; reviews mention periodic hiring."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Take the 10-question language quiz (score 80+ to continue)",
+      "Create an account and upload CV, motivation letter and ID",
+      "Complete the test assignment",
+      "Complete Scribbr Academy training and 2–5 simulation orders",
+      "Start claiming real orders"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You hold a degree, write excellent English and want a structured way to start earning from editing.",
+    "notFitIf": "You have no degree, or cannot commit to around 10,000 words of editing per week.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.scribbr.com/frequently-asked-questions/how-can-i-become-a-scribbr-editor/",
+        "title": "How can I become a Scribbr editor?",
+        "type": "official",
+        "publisher": "Scribbr",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Steps: language quiz, account with CV/motivation letter/ID, test assignment, Scribbr Academy, 2–5 simulation orders; native speakers and university degree required (per search summary of Scribbr pages).",
+        "accessible": false
+      },
+      {
+        "url": "https://www.scribbr.com/freelance-native-english-editor/apply-scribbr-editor/",
+        "title": "Scribbr language quiz",
+        "type": "official",
+        "publisher": "Scribbr",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "10-question quiz; bachelor's degree or higher; able to edit at least 10,000 words per week; score of 80+ leads to the test assignment.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.scribbr.com/frequently-asked-questions/how-much-will-i-earn-as-a-scribbr-editor/",
+        "title": "How much will I earn as a Scribbr editor?",
+        "type": "official",
+        "publisher": "Scribbr",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Average approx. €20–30 per hour based on fixed per-word rates; shorter deadlines pay more.",
+        "accessible": false
+      },
+      {
+        "url": "https://digitalbazaari.com/scribbr-proofreading-review/",
+        "title": "Scribbr: A Platform for Freelance Editors and Proofreaders (with a super-hard entry barrier)",
+        "type": "independent_review",
+        "publisher": "Digital Bazaari",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "status"
+        ],
+        "notes": "Review describing a very hard entry barrier. Search summaries of reviews also report pay below advertised and that Scribbr is not always accepting applications (not all pinned to this page).",
+        "accessible": false
+      }
+    ],
+    "audience": [
+      "Degree holders"
+    ]
+  },
+  {
+    "id": "bilingual-en-fr-work-category",
+    "name": "Bilingual English–French work (category)",
+    "organization": "Various",
+    "type": "category",
+    "category": "language_writing",
+    "tags": [
+      "bilingual",
+      "french",
+      "translation",
+      "interpretation",
+      "localization",
+      "canada-advantage"
+    ],
+    "summary": "Using English–French bilingualism for translation, interpretation, localization review, tutoring or bilingual service work — a distinctly Canadian advantage with an earnings premium that is strongest in Quebec.",
+    "whatYouDo": "Depending on the route: translating or revising documents, interpreting calls or meetings, reviewing French-Canadian content or voices for AI and localization companies, tutoring French, or serving clients in both languages. Professional translation and interpretation usually need training or accreditation; some task-based fr-CA work needs only native fluency.",
+    "appeal": [
+      "Job Bank national median for translators, terminologists and interpreters about $33.95/hour (range $20–$51)",
+      "The federal Translation Bureau buys freelance linguistic services through supply arrangements and a supplier directory",
+      "Research reports a bilingual earnings premium, largest in Quebec",
+      "Global companies specifically recruit Canadian French speakers (e.g. CrowdGen fr-CA voice tasks, Welocalize French Canadian linguists; LanguageLine added French Canadian video interpreting)"
+    ],
+    "watchOuts": [
+      "Outside Quebec, studies find the wage premium smaller or absent once occupation is accounted for",
+      "Translation Bureau supply arrangements or directory registration do not guarantee any work",
+      "Professional routes typically require training, certification or accreditation exams",
+      "Several 'French' postings found were for France- or US-based roles; check for fr-CA and location rules"
+    ],
+    "officialUrl": "https://www.jobbank.gc.ca/wagereport/occupation/24484",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [
+        "Translation training or certification often expected for professional translation",
+        "Accreditation exams for Translation Bureau interpretation"
+      ],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [
+        "day",
+        "evening",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "voice",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 3,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 1,
+      "technical": 1,
+      "creative": 1,
+      "language": 3
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "Formal translation training/certification helps for professional routes; costs not researched."
+    },
+    "compensation": {
+      "min": 20,
+      "max": 51,
+      "currency": "CAD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Job Bank wages for Translators, terminologists and interpreters (NOC 51114), 2023–2024 LFS, updated Nov 2025: national median $33.95; Quebec median $36.26, Ontario $25.64. Employee-oriented data; freelance and task rates differ."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "unknown",
+      "notes": "Varies by route; federal supplier status carries no work guarantee; task platforms are sporadic."
+    },
+    "workerStatus": "varies",
+    "fees": null,
+    "applicationSteps": [
+      "Assess your written and spoken level in both languages",
+      "Pick a route: fr-CA task platforms, tutoring, localization vendors, or professional translation/interpretation",
+      "For federal work, review the Translation Bureau's supplier routes (supply arrangement or directory; CRA business number and procurement business number needed)",
+      "Consider formal training or certification for professional translation"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "career",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work"
+    ],
+    "fitsIf": "You read, write and speak both English and French well and want to turn that into income, especially in or near Quebec, Ottawa or New Brunswick.",
+    "notFitIf": "Your French (or English) is conversational only, without strong writing skills.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.jobbank.gc.ca/wagereport/occupation/24484",
+        "title": "Wages for Translators, terminologists and interpreters - Job Bank",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "National median $33.95/h, range $20–$51 (2023–2024 LFS, updated 19 Nov 2025); QC $36.26, BC $33.55, AB $32.28, ON $25.64.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.canada.ca/en/translation-bureau/services.html",
+        "title": "Offering your services to the translation bureau",
+        "type": "government",
+        "publisher": "Translation Bureau, Government of Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "reliability"
+        ],
+        "notes": "Routes for freelance translators/interpreters: supply arrangement or directory registration; interpretation requires accreditation exams. Search summary of Bureau pages: no amount of work is guaranteed; tenders sent to qualified suppliers by email.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.canada.ca/en/translation-bureau/services/suppliers.html",
+        "title": "Suppliers qualified to offer linguistic services to the Translation Bureau",
+        "type": "government",
+        "publisher": "Translation Bureau, Government of Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Supplier qualification information; Indigenous/foreign-language route requires a CRA business number and procurement business number before directory registration (per search summary).",
+        "accessible": false
+      },
+      {
+        "url": "https://www.rcinet.ca/en/2019/04/30/canada-english-french-advantages-work/",
+        "title": "English-French bilingualism advantages at work",
+        "type": "journalism",
+        "publisher": "Radio Canada International",
+        "published": "2019-04-30",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Reports a 2019 Conference Board of Canada study: outside Quebec, bilinguals are about one-fifth of the workforce and more likely to have higher incomes and lower unemployment.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.uoguelph.ca/lang/news/august-31-bilingualism-translates-higher-earnings-study-finds",
+        "title": "Bilingualism Translates into Higher Earnings, Study Finds",
+        "type": "journalism",
+        "publisher": "University of Guelph, Lang School of Business",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "University news item on a study linking bilingualism to higher earnings. Search summary cites Christofides & Swidinsky (2001 Census): bilingual men +3.6%, women +6.6% vs English-only (attribution to this page not certain).",
+        "accessible": false
+      },
+      {
+        "url": "https://www.languageline.com/resources/news/languageline-video-interpreting-now-includes-french-canadian-supporting-canadas-linguistic-diversity",
+        "title": "LanguageLine Video Interpreting now includes French Canadian",
+        "type": "official",
+        "publisher": "LanguageLine Solutions",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Announcement adding French Canadian to 24/7 video interpreting for Quebec, Ontario, New Brunswick, Manitoba and others. Demand signal only; not a job posting.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "languageline-indigenous-language-interpreter-canada",
+    "name": "Over-the-phone interpreter (Indigenous languages, Canada)",
+    "organization": "LanguageLine Solutions",
+    "type": "contract",
+    "category": "language_writing",
+    "tags": [
+      "interpreting",
+      "phone",
+      "indigenous-languages",
+      "cree",
+      "inuktitut",
+      "bilingual",
+      "work-from-home"
+    ],
+    "summary": "Work-from-home phone interpreting between English and Indigenous languages such as Cree or Inuktitut for LanguageLine, as an independent contractor paid per call minute.",
+    "whatYouDo": "From a quiet home workspace you interpret live phone calls between English speakers and people who speak Cree, Inuktitut or another Indigenous language. You are paid only for the minutes you spend on interpreted calls.",
+    "appeal": [
+      "LanguageLine postings explicitly for work-from-home roles in Canada",
+      "Rewards a scarce skill: fluency in Cree, Inuktitut or other Indigenous languages",
+      "Postings list $1.25–$1.40 per call minute",
+      "Large, established interpreting company"
+    ],
+    "watchOuts": [
+      "Independent contractor, not eligible for employee benefits (per posting)",
+      "Paid only for active call minutes; reviews report low per-minute pay and periods of low call volume with long unpaid waits",
+      "Rates vary by time of day and interpretation level",
+      "Must provide a quiet, secure environment",
+      "French interpreter postings found were US-only; Canadian postings found were for Indigenous languages",
+      "Postings were not opened directly; current openings unconfirmed"
+    ],
+    "officialUrl": "https://languageline.wd5.myworkdayjobs.com/LLS_Careers/job/Canada-Remote/Inuktitut-Interpreter-in-Canada_R5501",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en",
+      "cr",
+      "iu"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "quiet space"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "voice"
+      ],
+      "realtime": "high",
+      "phone": true
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 2,
+      "technical": 0,
+      "creative": 0,
+      "language": 3
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "Training and screening requirements not stated in sources found."
+    },
+    "compensation": {
+      "min": 1.25,
+      "max": 1.4,
+      "currency": "unstated",
+      "unit": "minute_audio",
+      "basis": "aggregator",
+      "notes": "Per minute of interpreted call time, from aggregator copies (Glassdoor, Remotive) of LanguageLine's Canada postings; currency not shown in indexed text; one copy labels the header 'per hour' but per-minute is consistent across listings. Waiting time between calls is unpaid."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Glassdoor interpreter reviews (2016–2026, mostly US) are mixed: some report high volume, others falling volume and long waits between short calls. No Canada-specific volume data."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Find the Canada work-from-home interpreter posting for your language on LanguageLine's Workday careers site",
+      "Apply online",
+      "Complete LanguageLine's screening (details not published in sources found)",
+      "Set up a quiet, secure home workspace before taking calls"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "contractor_no_benefits",
+      "variable_work",
+      "phone_heavy"
+    ],
+    "fitsIf": "You are fluent in English and an Indigenous language such as Cree or Inuktitut and are comfortable interpreting live calls from home.",
+    "notFitIf": "You need steady, benefits-eligible hours or are uncomfortable with fast, high-pressure live phone conversations.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://languageline.wd5.myworkdayjobs.com/LLS_Careers/job/Canada-Remote/Inuktitut-Interpreter-in-Canada_R5501",
+        "title": "Inuktitut Interpreter in Canada",
+        "type": "official",
+        "publisher": "LanguageLine Solutions",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "worker_status"
+        ],
+        "notes": "Official Workday posting under 'Canada-Remote' (seen in search results; not opened). Search summaries: independent contractor position, not eligible for employee benefits.",
+        "accessible": false
+      },
+      {
+        "url": "https://languageline.wd5.myworkdayjobs.com/en-US/LLS_Careers/job/Cree-Interpreter-in-Canada_R5500",
+        "title": "Cree Interpreter in Canada",
+        "type": "official",
+        "publisher": "LanguageLine Solutions",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "Official Workday posting for a Cree interpreter in Canada (seen in search results; not opened).",
+        "accessible": false
+      },
+      {
+        "url": "https://www.glassdoor.ca/job-listing/cree-interpreter-languageline-solutions-JV_KO0,16_KE17,39.htm?jl=1007975669112",
+        "title": "LanguageLine Solutions hiring Cree Interpreter Job in Remote",
+        "type": "aggregator",
+        "publisher": "Glassdoor",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "schedule"
+        ],
+        "notes": "Copy of posting: work-from-home phone interpreter in Canada, $1.25–$1.40 per minute; rates depend on time of day/night and interpretation level.",
+        "accessible": false
+      },
+      {
+        "url": "https://remotive.com/remote/jobs/all-others/inuktitut-interpreter-4635951",
+        "title": "Inuktitut Interpreter @LanguageLine Solutions",
+        "type": "aggregator",
+        "publisher": "Remotive",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "worker_status"
+        ],
+        "notes": "Copy of posting: $1.25–$1.40 per minute; independent contractor, not eligible for employee benefits.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.glassdoor.es/Opiniones/Opinión-empleado-LanguageLine-Solutions-E354434-RVW92505986.htm",
+        "title": "Low pay, low call volume (LanguageLine interpreter review)",
+        "type": "forum",
+        "publisher": "Glassdoor",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "Anonymous interpreter reviews (2016–2026, mostly US): low per-minute pay, variable call volume, unpaid waits; others praise remote flexibility and prompt pay. Anecdotal.",
+        "accessible": false
+      },
+      {
+        "url": "https://remotive.com/remote/jobs/customer-service/french-interpreter-4298531",
+        "title": "[Hiring] French Interpreter @LanguageLine Solutions",
+        "type": "aggregator",
+        "publisher": "Remotive",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "French interpreter postings found were restricted to the United States (one listed $18–$21/hour), so French is not evidenced as a Canada route here.",
+        "accessible": false
+      }
+    ],
+    "audience": [
+      "People fluent in English and an Indigenous language such as Cree or Inuktitut"
+    ]
+  },
+  {
+    "id": "crowdgen-canadian-french-voice-tasks",
+    "name": "Canadian French voice-rating and speech data tasks",
+    "organization": "CrowdGen by Appen",
+    "type": "task_platform",
+    "category": "language_writing",
+    "tags": [
+      "speech-data",
+      "voice-rating",
+      "french-canadian",
+      "ai-data",
+      "bilingual",
+      "short-tasks",
+      "audio"
+    ],
+    "summary": "Short online projects where native Canadian French speakers located in Canada rate computer-generated voices or audio for AI training through Appen's CrowdGen platform.",
+    "whatYouDo": "After applying to a specific project and setting up a CrowdGen account, you listen to pairs of synthetic (text-to-speech) clips in Canadian French and judge which sounds more natural, or rate voice quality. Projects are temporary and pay per task, with rates sent in kickoff emails.",
+    "appeal": [
+      "Postings specifically seek native Canadian French speakers currently located in Canada",
+      "No fee to join (official)",
+      "Work from home in short tasks",
+      "Payouts by bank transfer, PayPal, Payoneer or Airtm depending on location"
+    ],
+    "watchOuts": [
+      "Postings warn high work volumes are not guaranteed; listed pay is a placeholder ($0.01–$1 per task) with real rates only in kickoff emails",
+      "Worker reviews (Trustpilot, Dec 2025) report onboarding then no work, and a payment that took two months",
+      "Projects can end without notice and some qualification assessments are reportedly unpaid",
+      "No general signup: you apply project by project",
+      "No Canadian French voice-recording (as opposed to rating) project was found"
+    ],
+    "officialUrl": "https://crowdgen.com/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "fr"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "headset",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unpaid_test"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 0,
+      "technical": 0,
+      "creative": 0,
+      "language": 3
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": "Project-specific guidelines and qualifications; some reportedly unpaid. Chrome browser recommended."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": "task",
+      "basis": "unknown",
+      "notes": "fr-CA postings show placeholder rates ($1/task; $0.01 piece rate); actual rates come in kickoff emails. Homepage advertises top rates of $100+/hour depending on location and skills, which is not representative of these tasks."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "Official posting says high volumes not guaranteed; worker reviews report long waits for work after onboarding and projects ending without notice."
+    },
+    "workerStatus": "unknown",
+    "fees": null,
+    "applicationSteps": [
+      "Find a current Canadian French project on Appen's CrowdGen job board (jobs.lever.co/appen)",
+      "Apply to that project",
+      "Follow the emailed instructions to create a CrowdGen account",
+      "Complete project qualification and guidelines",
+      "Do tasks when available and withdraw earnings"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "waitlist_or_no_work_guarantee",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "unpaid_assessment",
+      "payment_delay_reports",
+      "waitlist"
+    ],
+    "fitsIf": "You are a native Canadian French speaker living in Canada who wants occasional small online tasks and doesn't depend on the income.",
+    "notFitIf": "You need predictable work or income, or dislike unpaid qualification steps.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://crowdgen.com/",
+        "title": "CrowdGen by Appen - Where expert contributors shape frontier AI",
+        "type": "official",
+        "publisher": "Appen",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy",
+          "pay",
+          "requirements"
+        ],
+        "notes": "Appen's contributor platform (Appen listed on ASX as APX); apply to specific projects; never asks you to pay; top pay '$100+/h' depending on location and skills; withdrawals via bank transfer, PayPal, Payoneer, Airtm by location.",
+        "accessible": false
+      },
+      {
+        "url": "https://crowdgen.com/docs/general-onboarding/getting-started/how-do-i-start-working-at-crowdgen/",
+        "title": "How do I start working at CrowdGen?",
+        "type": "official",
+        "publisher": "Appen",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "You apply to a project and follow emailed instructions to create your CrowdGen account; existing Appen Connect credentials work.",
+        "accessible": false
+      },
+      {
+        "url": "https://jobs.lever.co/appen/c955501f-01d4-4363-8b36-1c381e421db4",
+        "title": "CrowdGen by Appen - Computer Voice Rating Task for French (Canada)",
+        "type": "official",
+        "publisher": "Appen (Lever job board)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "reliability",
+          "pay"
+        ],
+        "notes": "Requires a native Canadian French speaker currently located in Canada; warns high work volumes aren't guaranteed; lists a $0.01 placeholder piece rate.",
+        "accessible": false
+      },
+      {
+        "url": "https://jobs.lever.co/appen/2bea550c-8a19-4d50-9421-8b64aedd23cd",
+        "title": "CrowdGen by Appen - Text-to-Speech Voice Rater; French (Canada)",
+        "type": "official",
+        "publisher": "Appen (Lever job board)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "Compare pairs of synthetic audio clips for naturalness; pay differs per task and is given in kickoff emails ($1 placeholder).",
+        "accessible": false
+      },
+      {
+        "url": "https://ca.trustpilot.com/review/crowdgen.com",
+        "title": "CrowdGen reviews (Trustpilot Canada)",
+        "type": "forum",
+        "publisher": "Trustpilot",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "Anecdotal, mostly negative reviews: Dec 2025 reports of onboarding and training followed by no work, and a ~£271 payment taking two months; others say they do get paid.",
+        "accessible": false
+      },
+      {
+        "url": "https://alignlist.com/companies/appen",
+        "title": "Appen worker reviews",
+        "type": "forum",
+        "publisher": "Alignlist",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Worker review: projects can end without notice; some qualification assessments are unpaid. Anecdotal.",
+        "accessible": false
+      }
+    ],
+    "audience": [
+      "Canadian French speakers"
+    ]
+  },
+  {
+    "id": "welocalize-freelance-linguist",
+    "name": "Freelance translator / localization linguist",
+    "organization": "Welocalize",
+    "type": "freelance",
+    "category": "language_writing",
+    "tags": [
+      "translation",
+      "localization",
+      "linguistic-qa",
+      "french-canadian",
+      "bilingual",
+      "career"
+    ],
+    "summary": "Join Welocalize's freelance talent community to receive translation, review and quality-check work in your language pairs, such as English–Canadian French.",
+    "whatYouDo": "You register your language pairs, specialties and time zone and upload a CV; if matched, you receive projects such as translating, reviewing or quality-checking content. Senior French Canadian linguist roles also involve quality control and coordinating other freelancers.",
+    "appeal": [
+      "Official talent page says Welocalize hires freelance translators and linguists worldwide",
+      "Canadian French appears as a named specialization in Welocalize postings",
+      "Builds a professional localization track record",
+      "Remote, project-based work"
+    ],
+    "watchOuts": [
+      "Experienced roles found ask for a translation/applied-languages degree or equivalent and 3–4+ years of localization experience",
+      "French Canadian Linguist postings found were listed in the EU/UK, not Canada; check location rules",
+      "No pay rates published in sources found",
+      "Joining the talent pool does not guarantee projects",
+      "Negative-signal research (rates, payment reliability) could not be completed in this pass"
+    ],
+    "officialUrl": "https://talent.welocalize.com/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en",
+      "fr"
+    ],
+    "requirements": {
+      "experience": "significant",
+      "credentialRequired": false,
+      "credentials": [
+        "Translation/applied languages degree or equivalent experience (senior linguist roles)"
+      ],
+      "equipment": [
+        "computer",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 3,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 0,
+      "technical": 1,
+      "creative": 1,
+      "language": 3
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "Not stated in sources found."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "No rates found in official or third-party sources during this pass."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "No evidence on project volume for new freelancers."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Complete the form on Welocalize's talent site with language pairs, time zone and specialties",
+      "Upload your CV",
+      "Wait to be matched; check individual postings (jobs.lever.co/welocalize) for role-specific requirements and location"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "career",
+    "status": "official_info_found",
+    "legitimacy": "likely",
+    "evidenceStrength": "weak",
+    "riskFlags": [
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You already translate or review between English and French (or another pair) professionally and want to add a large localization vendor as a client.",
+    "notFitIf": "You are new to translation and have no localization experience or credentials.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://talent.welocalize.com/",
+        "title": "Hiring - Freelance Translators & Linguists Worldwide",
+        "type": "official",
+        "publisher": "Welocalize",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "status"
+        ],
+        "notes": "Talent page says hiring freelance translators and linguists worldwide; form asks for language pairs, time zone and specialties, then CV upload. Not opened.",
+        "accessible": false
+      },
+      {
+        "url": "https://talent.welocalize.com/linguists-pst/",
+        "title": "Freelance Translators - Various Languages - Welocalize",
+        "type": "official",
+        "publisher": "Welocalize",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Freelance translator recruitment page for various languages (seen in search results; content not summarized).",
+        "accessible": false
+      },
+      {
+        "url": "https://jobs.lever.co/welocalize/5ef2dfb2-f846-4e33-aa11-784a68aa5a44",
+        "title": "Welocalize - French Canadian Linguist",
+        "type": "official",
+        "publisher": "Welocalize (Lever job board)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Full-time remote role combining quality control, on-demand translation and lead duties; asks for translation/applied-languages degree or equivalent and 3–4+ years' localization experience (figures differ across copies).",
+        "accessible": false
+      },
+      {
+        "url": "https://www.linkedin.com/jobs/view/french-canadian-linguist-at-welocalize-3730467118",
+        "title": "Welocalize hiring French Canadian Linguist in European Union",
+        "type": "aggregator",
+        "publisher": "LinkedIn",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "Copy of the posting located in the European Union, suggesting some fr-CA roles are not Canada-based.",
+        "accessible": false
+      }
+    ]
+  }
+]

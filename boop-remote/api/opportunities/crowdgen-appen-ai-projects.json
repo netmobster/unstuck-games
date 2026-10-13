@@ -1,0 +1,246 @@
+{
+ "id": "crowdgen-appen-ai-projects",
+ "name": "AI data project contributor (CrowdGen by Appen)",
+ "organization": "Appen (CrowdGen, formerly Appen Connect)",
+ "type": "task_platform",
+ "category": "ai_data",
+ "tags": [
+  "ai-training",
+  "data-annotation",
+  "project-based",
+  "canada-projects",
+  "canadian-french"
+ ],
+ "summary": "Appen's contributor platform where you apply to individual AI data projects, some of them reserved for Canada residents.",
+ "whatYouDo": "You apply to a specific project and CrowdGen creates your account and onboards you. Canada-only projects have included rating AI-generated text and recording short video reactions (Project Coffee), facial-image annotation (Project Pine) and Canadian French evaluation (Project Babel).",
+ "appeal": [
+  "Official project pages reserved for Canada residents, including Canadian French work",
+  "Pay rate shown on each project page before you apply (e.g. US$16.50/hr, about C$23, on Project Coffee)",
+  "Project Coffee: work any time of day as long as weekly targets are met",
+  "Large, long-running company; says it never charges contributors to join"
+ ],
+ "watchOuts": [
+  "The Canada project pages found are 1–2 years old and may be closed",
+  "Pay varies by country and language; reviews report some projects paying far below minimum wage",
+  "2026 reviews describe inconsistent project availability",
+  "Some projects need an assessment or language exam",
+  "Some projects involve recording yourself or face images – a privacy consideration"
+ ],
+ "officialUrl": "https://crowdgen.com/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "webcam"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "video",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 0,
+  "technical": 0,
+  "creative": 1,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "unknown",
+  "notes": "Project-specific onboarding instructions are emailed after you apply."
+ },
+ "compensation": {
+  "min": 16.5,
+  "max": null,
+  "currency": "USD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Project Coffee (Canada) page: US$16.50/hr (~C$23), up to 20 hrs/week; page about a year old. A Project Babel (Canadian French) page advertises $22/hr (currency not shown in summary). Paid in local currency via bank transfer or PayPal."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "Project-based; 2026 reviews describe inconsistent availability. Indeed Canada employee reviews (Aug 2025) rate pay/benefits 2.8/5 (employees, not contributors)."
+ },
+ "workerStatus": "unknown",
+ "fees": null,
+ "applicationSteps": [
+  "Find a CrowdGen project page open to Canada residents",
+  "Apply to that project; CrowdGen emails account-creation instructions",
+  "Complete any project assessment or language exam",
+  "Set up payment in the dashboard's Payments tab"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "stale_needs_recheck",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "payment_delay_reports"
+ ],
+ "fitsIf": "You live in Canada (bonus if bilingual) and are happy to apply project by project for occasional paid tasks.",
+ "notFitIf": "You want a single ongoing role or are uncomfortable sharing video or face images.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://crowdgen.com/",
+   "title": "CrowdGen by Appen - Where expert contributors shape frontier AI",
+   "type": "official",
+   "publisher": "Appen",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy"
+   ],
+   "notes": "Official contributor homepage. Direct fetch blocked in sandbox.",
+   "accessible": false
+  },
+  {
+   "url": "https://crowdgen.com/crowdgen-by-appen/",
+   "title": "Appen Connect is now CrowdGen by Appen",
+   "type": "official",
+   "publisher": "Appen",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy"
+   ],
+   "notes": "Confirms CrowdGen is the renamed Appen Connect.",
+   "accessible": false
+  },
+  {
+   "url": "https://crowdgen.com/docs/general-onboarding/getting-started/how-do-i-start-working-at-crowdgen/",
+   "title": "How do I start working at CrowdGen?",
+   "type": "official",
+   "publisher": "Appen",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "New contributors apply to a project and receive emailed account instructions; payment set up afterwards.",
+   "accessible": false
+  },
+  {
+   "url": "https://crowdgen.com/coffee-en-ca/",
+   "title": "Project Coffee",
+   "type": "official",
+   "publisher": "Appen",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "pay",
+    "schedule",
+    "requirements"
+   ],
+   "notes": "Canada residents, fluent English, up to 20 hrs/week, computer with microphone; US$16.50/hr (~C$23); text evaluation and short video reactions. Page reportedly ~1 year old.",
+   "accessible": false
+  },
+  {
+   "url": "https://crowdgen.com/babel-canadian-french-c/",
+   "title": "Project Babel: Help AI speak Canadian French better (C)",
+   "type": "official",
+   "publisher": "Appen",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "requirements"
+   ],
+   "notes": "Canada residents with strong English and French writing. A related Babel page advertises $22/hr for evaluators.",
+   "accessible": false
+  },
+  {
+   "url": "https://crowdgen.com/pine-en-ca-b/",
+   "title": "Project Pine",
+   "type": "official",
+   "publisher": "Appen",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "requirements"
+   ],
+   "notes": "Facial recognition annotation; Canada residents, native English, arts/photography/design background.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.aitrainingjobs.it/appen-crowdgen-review-2026-ai-training-jobs-pay-tasks-reality/",
+   "title": "Appen (CrowdGen) Review (2026): AI Training Jobs, Pay, Tasks & Reality",
+   "type": "independent_review",
+   "publisher": "aitrainingjobs.it",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "reliability"
+   ],
+   "notes": "Review: pay priced by country/language; inconsistent project availability. Affiliate-style blog.",
+   "accessible": false
+  },
+  {
+   "url": "https://de.trustpilot.com/review/crowdgen.com",
+   "title": "Crowdgen Bewertungen",
+   "type": "aggregator",
+   "publisher": "Trustpilot",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "User reviews; one (China-based work, not Canada) reports not being paid what was owed after the platform change. Anecdotal.",
+   "accessible": false
+  },
+  {
+   "url": "https://ca.indeed.com/cmp/Appen/reviews",
+   "title": "Appen Employee Reviews",
+   "type": "aggregator",
+   "publisher": "Indeed Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Employee reviews (last updated Aug 2025) rate pay and benefits 2.8/5; employees, not contributors.",
+   "accessible": false
+  }
+ ]
+}

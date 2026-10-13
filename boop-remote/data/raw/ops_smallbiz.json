@@ -1,0 +1,1619 @@
+[
+  {
+    "id": "virtual-assistant-admin-support-category",
+    "name": "Virtual assistant / administrative support (category)",
+    "organization": "Various",
+    "type": "category",
+    "category": "customer_ops",
+    "tags": [
+      "virtual-assistant",
+      "administrative",
+      "calendar-inbox",
+      "remote",
+      "text-mostly"
+    ],
+    "summary": "Remote administrative support, such as inbox, calendar, documents, CRM upkeep and follow-ups, done for one employer or for several clients from home.",
+    "whatYouDo": "You manage email and calendars, keep contact lists and CRM records accurate, prepare documents, book meetings and chase follow-ups for a manager or for several small-business clients. Some roles add phone or email outreach, shipping coordination or industry paperwork such as real-estate forms.",
+    "appeal": [
+      "Job Bank lists a national median of about $26.44/hr for administrative assistants (NOC 13110)",
+      "Job Bank outlook pages say there may be openings for virtual assistants who support multiple clients",
+      "Mostly written, independent work during business hours",
+      "Remote part-time postings for people in Canada exist, e.g. 15–25 hrs/week at $19–$23/hr with training provided (posted 2026-10-13)"
+    ],
+    "watchOuts": [
+      "Ontario's 2025–2027 outlook is only 'Moderate', and Job Bank warns that AI, virtual agents and automation may change or cut some admin tasks",
+      "Many remote VA roles want years of admin experience or niche skills: one $25/hr contractor role required Canadian real-estate admin experience and was limited to ON, AB and SK",
+      "Freelance or contract VA work usually means no benefits, your own equipment, and your own tax and GST/HST obligations",
+      "'Virtual assistant' is a common job-scam title. Fake employers send a cheque to deposit and ask you to send money back for equipment or software",
+      "Never pay for equipment, training or onboarding up front, and never forward money for an 'employer'"
+    ],
+    "officialUrl": "https://www.jobbank.gc.ca/wagereport/occupation/24789",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [
+        "Job Bank: usually a college diploma, a short apprenticeship or more than 6 months of on-the-job training"
+      ],
+      "equipment": [
+        "computer",
+        "fast internet",
+        "quiet space"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [
+        "day"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent",
+        "voice"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 3,
+      "writing": 2,
+      "numeracy": 1,
+      "detail": 3,
+      "customer": 2,
+      "technical": 1,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "Some employers train new hires (one remote part-time posting said 'training provided'). Experienced-VA contractor roles expect you to start with little or no training."
+    },
+    "compensation": {
+      "min": 19.23,
+      "max": 36.88,
+      "currency": "CAD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Job Bank national low and high wages for administrative assistants (NOC 13110), with a median of $26.44/hr (2023–2024 Labour Force Survey, updated 2025-11-19; seen via search summary). These are employee wages. Remote postings read on 2026-10-13 paid $19–$23/hr (part-time employee) and $25/hr (contractor). Freelance VA rates were not evidenced."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "medium",
+      "notes": "Employee roles give steady hours. Freelance VAs depend on keeping clients. Job Bank outlooks range from Moderate (Ontario 2025–2027) to Very good (Alberta 2024–2026)."
+    },
+    "workerStatus": "varies",
+    "fees": null,
+    "applicationSteps": [
+      "Search Job Bank and reputable job boards for 'administrative assistant remote' or 'virtual assistant' with Canada as the location",
+      "Check whether the role is employee or contractor, and check the hours, province limits and pay",
+      "Look up the employer independently before sharing ID or banking details",
+      "If you freelance for several clients, track income for tax and register for GST/HST once you pass the $30,000 small-supplier threshold"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "scam_impersonation",
+      "contractor_no_benefits",
+      "variable_work"
+    ],
+    "fitsIf": "You are organized, write clearly and like keeping someone else's working day running from home.",
+    "notFitIf": "You want work that needs no office experience, or you dislike a constant stream of small requests and deadlines.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.jobbank.gc.ca/wagereport/occupation/24789",
+        "title": "Wages for Administrative assistants - Job Bank",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Search-summary only (fetch blocked). NOC 13110, Canada: low $19.23, median $26.44, high $36.88/hr; Ontario median $26.67/hr; 2023–2024 LFS data, wages updated 2025-11-19.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.jobbank.gc.ca/marketreport/summary-occupation/24789/ca",
+        "title": "Administrative Assistant in Canada",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Search-summary only. The occupation usually requires a college diploma, an apprenticeship of under 2 years, or more than 6 months of on-the-job training.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/24789/ON;jsessionid=B1BD970C72F7E39AFF44C2FB7DF9474F.jobsearch75",
+        "title": "Administrative Assistant in Ontario",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Search-summary only. Ontario outlook for 2025–2027 is Moderate (an earlier 2024–2026 version said Good). Says there may be some opportunities for virtual assistants to support multiple clients, while technology may temper job growth. The summaries blended several Job Bank outlook pages, so the exact page for each sentence is not certain.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/25599/BC",
+        "title": "Office Administrative Assistant in British Columbia",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "Search-summary only. Notes growth in virtual assistant roles, but says AI virtual agents and back-office automation, such as data entry, may affect employment.",
+        "accessible": false
+      },
+      {
+        "url": "https://to.indeed.com/aarwx66jww9b",
+        "title": "Assistant to the Founder/CEO - Medole Inc. (Indeed)",
+        "type": "aggregator",
+        "publisher": "Indeed",
+        "published": "2026-10-13",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements",
+          "schedule"
+        ],
+        "notes": "Full posting read via the Indeed job API. Remote part-time role (15–25 hrs/week, starting about Nov 2026) at a Canadian health-products company: inbox and calendar, CRM upkeep, sample shipments, and phone or email outreach to clinics. $19–$23/hr; training provided; Shopify or Amazon Seller Central experience an asset.",
+        "accessible": true
+      },
+      {
+        "url": "https://to.indeed.com/aa2cfvx8fymk",
+        "title": "Real Estate Executive Virtual Assistant (ON, AB, SK) - Red Rover (Indeed)",
+        "type": "aggregator",
+        "publisher": "Indeed",
+        "published": "2026-08-13",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements",
+          "worker_status",
+          "schedule",
+          "canada_eligibility"
+        ],
+        "notes": "Full posting read via the Indeed job API. Independent contractor at $25/hr, 30–40 hrs/week, Mon–Fri 9–5. Requires 1+ year of Canadian real-estate admin and 3+ years of executive-assistant experience, plus a fully equipped home office. Limited to ON, AB and SK.",
+        "accessible": true
+      },
+      {
+        "url": "https://infosec.yorku.ca/2024/03/job-scam-alert-virtual-assistant-needed-2",
+        "title": "Job Scam Alert - Virtual Assistant Needed",
+        "type": "independent_review",
+        "publisher": "York University Information Security",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Search-summary only (the URL suggests March 2024). A university security team flags a 'Virtual Assistant Needed' job-scam message and advises reporting it to the Canadian Anti-Fraud Centre.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.cp24.com/news/2024/01/18/job-scam-losses-more-than-tripled-over-last-year-canadian-anti-fraud-centre",
+        "title": "Job scam losses more than tripled over last year: Canadian Anti-Fraud Centre",
+        "type": "journalism",
+        "publisher": "CP24",
+        "published": "2024-01-18",
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Search-summary only. CAFC figures: reported job-scam losses rose from about $7.2M in 2022 to about $27.7M in 2023. The CAFC advises never accepting a cheque and sending money back, and never taking a job offered only by text or email.",
+        "accessible": false
+      },
+      {
+        "url": "https://antifraudcentre-centreantifraude.ca/scams-fraudes/job-emploi-eng.htm",
+        "title": "Job",
+        "type": "government",
+        "publisher": "Canadian Anti-Fraud Centre",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Search-summary only. CAFC job-scam page covering counterfeit-cheque, 'payment processor' (money mule) and task-based crypto job scams.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/when-register-charge.html",
+        "title": "When to register for and start charging the GST/HST - Canada.ca",
+        "type": "government",
+        "publisher": "Canada Revenue Agency",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Search-summary only. You must register for GST/HST once taxable supplies exceed $30,000 in a single calendar quarter or over the last four consecutive quarters. Registering below the threshold is voluntary.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "remote-appointment-setting-category",
+    "name": "Remote appointment setting & scheduling (category)",
+    "organization": "Various",
+    "type": "category",
+    "category": "customer_ops",
+    "tags": [
+      "appointment-setting",
+      "outbound-calling",
+      "lead-generation",
+      "scheduling",
+      "phone",
+      "remote"
+    ],
+    "summary": "Calling businesses or customers from home to check their interest and book meetings for a sales team, paid by salary, hourly wage or per booked lead.",
+    "whatYouDo": "You work through call lists, introduce a product or service from a script, handle objections, decide whether the prospect qualifies, and book an appointment for a salesperson, then log notes in a CRM. Targets are usually daily: one posting expected 10 or more qualified appointments a day.",
+    "appeal": [
+      "Remote postings for people living in Canada appeared in September and October 2026",
+      "You book meetings rather than close sales",
+      "Some roles are salaried, e.g. $30,300–$55,000/yr, Mon–Fri 9–5 (posted 2026-09-27)",
+      "Builds sales and CRM skills that transfer to inside-sales jobs"
+    ],
+    "watchOuts": [
+      "Phone-heavy, high-volume cold calling against daily targets",
+      "Many listings pay only per lead or commission (one freelance role paid $50 per qualified lead with no base), so income can be close to zero",
+      "Commission-only listings with big unverified earnings claims are common (one advertised '2k to 5k USD per month' with no base); treat them as a red flag",
+      "Postings often require at least a year of cold-calling experience",
+      "Calls to consumers must follow CRTC telemarketing rules (registration, do-not-call lists, calling hours); an employer that ignores them puts you at risk",
+      "Never pay for leads, training or software to start"
+    ],
+    "officialUrl": "https://crtc.gc.ca/eng/phone/telemarketing/tobligations/rules-regles.htm",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "fast internet",
+        "quiet space"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [
+        "day"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "voice",
+        "text"
+      ],
+      "realtime": "high",
+      "phone": true
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 3,
+      "technical": 0,
+      "creative": 0,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "Postings mention scripts, coaching and team meetings. No formal training route was checked."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "Pay structures differ too much for one range. Postings read on 2026-10-13: salaried $30,300–$55,000/yr (the same posting also lists $38,000–$45,000); a temporary role listing '$20.00–$22.00 per year', apparently a mislabelled hourly rate; and a freelance role paying $50 per qualified lead plus $5,000 if a referred group closes, with no base pay."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Salaried roles are steady. Per-lead and commission roles depend on lead quality and how many calls convert."
+    },
+    "workerStatus": "varies",
+    "fees": null,
+    "applicationSteps": [
+      "Prefer roles with a base salary or hourly wage, and get any commission plan in writing",
+      "Check the company's registered name and website independently",
+      "Ask whether you will call businesses or consumers and how the company follows the National Do Not Call List rules",
+      "Do not pay for leads, training or software to start"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "likely",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "phone_heavy",
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You are comfortable on the phone, handle rejection well and want target-driven work you can do from home.",
+    "notFitIf": "You dislike cold calling or need a guaranteed income from day one.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://crtc.gc.ca/eng/phone/telemarketing/tobligations/rules-regles.htm",
+        "title": "Key Unsolicited Telecommunications Rules",
+        "type": "government",
+        "publisher": "CRTC",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "risk",
+          "schedule"
+        ],
+        "notes": "Search-summary only. Telemarketers must register with the National DNCL (and subscribe unless exempt), use a list under 31 days old, keep an internal do-not-call list, and call consumers only 9:00 a.m.–9:30 p.m. on weekdays and 10:00 a.m.–6:00 p.m. on weekends.",
+        "accessible": false
+      },
+      {
+        "url": "https://to.indeed.com/aaqb9trz4269",
+        "title": "Appointment Setter - Property Print (Indeed)",
+        "type": "aggregator",
+        "publisher": "Indeed",
+        "published": "2026-09-27",
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay",
+          "requirements",
+          "schedule"
+        ],
+        "notes": "Full posting read via the Indeed job API. Permanent remote role; applicants must live in Canada. High-activity outbound calls to businesses in Canada and the US; target of 10+ qualified appointments a day. $30,300–$55,000/yr (a second section says $38,000–$45,000). Mon–Fri 9–5. 1 year of cold calling required. You supply a computer, internet, phone and quiet workspace.",
+        "accessible": true
+      },
+      {
+        "url": "https://to.indeed.com/aa2bsr7pzgb7",
+        "title": "Outbound Business Development Caller / Appointment Setter - TopTier Cleaning Agency (Indeed)",
+        "type": "aggregator",
+        "publisher": "Indeed",
+        "published": "2026-09-16",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "Full posting read via the Indeed job API. Temporary remote role calling businesses to book cleaning consultations; no closing required. Pay shown as '$20.00–$22.00 per year', apparently a mislabelled hourly rate. 1 year of cold calling required.",
+        "accessible": true
+      },
+      {
+        "url": "https://to.indeed.com/aa7ksxfwwdmv",
+        "title": "B2B Appointment Setter – Group Benefits - Kazmir Consulting Group (Indeed)",
+        "type": "aggregator",
+        "publisher": "Indeed",
+        "published": "2026-09-17",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "worker_status",
+          "requirements"
+        ],
+        "notes": "Full posting read via the Indeed job API. Freelance, performance-based role calling Canadian businesses. Pays $50 per qualified lead plus $5,000 when a generated group closes; no base pay stated. Leads are supplied.",
+        "accessible": true
+      },
+      {
+        "url": "https://hubstafftalent.net/jobs/commission-only-appointment-setter-uncapped-2k-to-5k-usd-per-month",
+        "title": "Commission-Only Appointment Setter Uncapped % - 2k to 5k USD per month! fixed price",
+        "type": "aggregator",
+        "publisher": "Hubstaff Talent",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "pay"
+        ],
+        "notes": "Search-result title only. An example of a commission-only appointment-setter listing advertising unverified monthly earnings. Kept as evidence of the commission-only pattern, not as an opportunity.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "ecommerce-operations-support-category",
+    "name": "Ecommerce operations support: orders, returns & product listings (category)",
+    "organization": "Various",
+    "type": "category",
+    "category": "tech_digital",
+    "tags": [
+      "ecommerce",
+      "order-processing",
+      "returns",
+      "product-listings",
+      "shopify",
+      "amazon-seller-central",
+      "marketplace-feeds"
+    ],
+    "summary": "Behind-the-scenes work for online stores: processing orders, handling returns and shipping claims, and creating or updating product listings and feeds on Shopify, Amazon and other marketplaces.",
+    "whatYouDo": "You upload and edit product listings (titles, photos, descriptions, prices), keep catalogues and marketplace feeds in sync, process daily orders through shipping tools, and log returns and damaged-shipment claims. Some roles add customer emails; senior roles add marketplace reporting, SEO and ERP or CRM integration.",
+    "appeal": [
+      "Mostly written, detail-focused computer work",
+      "Shopify and Amazon Seller Central skills are named as assets even in general admin postings",
+      "Clear progression: an experienced ecommerce operations role in London, ON paid $70,000–$90,000/yr (2026)",
+      "Can also be done as a freelancer for small online shops"
+    ],
+    "watchOuts": [
+      "Fully remote entry-level roles in Canada were scarce in searches; many are hybrid or in person (e.g. a $25/hr Vancouver contract required in-person shoots)",
+      "Canadian sellers also hire offshore assistants: one Canadian ecommerce company advertised a full-time remote assistant at $400–$550 USD/month (May 2025), which pushes freelance rates down",
+      "Jobs where you receive and reship parcels ('package inspector', 'quality control') are scams that can involve you in crime",
+      "'Product boosting' or task jobs that show earnings and then ask for crypto deposits are scams (CAFC warning)",
+      "Job Bank's e-commerce coordinator wages (median about $35.58/hr) describe a professional marketing occupation, not entry-level order processing"
+    ],
+    "officialUrl": "https://www.jobbank.gc.ca/marketreport/wages-occupation/296952/ca",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [
+        "day"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 3,
+      "writing": 2,
+      "numeracy": 1,
+      "detail": 3,
+      "customer": 1,
+      "technical": 2,
+      "creative": 1,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "Employers usually expect platform skills (Shopify admin, Amazon Seller Central, shipping software). No specific training route was checked."
+    },
+    "compensation": {
+      "min": 19,
+      "max": 25,
+      "currency": "CAD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Employer-stated pay in two Indeed postings read 2026-10-13 that include ecommerce tasks: $19–$23/hr (remote part-time admin, Shopify or Amazon an asset) and $25/hr (hybrid Vancouver contract managing Shopify listings). An experienced in-person role in London, ON paid $70,000–$90,000/yr. Job Bank's e-commerce sales coordinator national median is $35.58/hr (range $20.50–$57.44; search summary)."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "medium",
+      "notes": "Employee roles are steady. Freelance listing and order work follows store seasons and client budgets."
+    },
+    "workerStatus": "varies",
+    "fees": null,
+    "applicationSteps": [
+      "Learn one platform's basics (e.g. Shopify admin or Amazon Seller Central) and build a small sample catalogue",
+      "Search job boards for 'ecommerce coordinator', 'ecommerce assistant' or 'marketplace specialist' and check whether the role is really remote",
+      "Offer listing clean-up or order and returns admin to small online shops as a freelancer",
+      "Refuse any job that asks you to receive and reship parcels or to deposit money to unlock tasks"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "scam_impersonation",
+      "variable_work"
+    ],
+    "fitsIf": "You like tidy data, online shopping systems and steady behind-the-scenes computer work.",
+    "notFitIf": "You need a fully remote entry-level job right away or dislike repetitive detail work.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.jobbank.gc.ca/marketreport/wages-occupation/296952/ca",
+        "title": "Electronic Commerce (e-commerce) Sales Coordinator in Canada",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Search-summary only. National range $20.50–$57.44/hr, median $35.58/hr (Ontario median $37.02). The summary placed it under NOC 11202, a professional marketing occupation; 2023–2024 data, updated 2025-11-19.",
+        "accessible": false
+      },
+      {
+        "url": "https://to.indeed.com/aarwx66jww9b",
+        "title": "Assistant to the Founder/CEO - Medole Inc. (Indeed)",
+        "type": "aggregator",
+        "publisher": "Indeed",
+        "published": "2026-10-13",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "Full posting read via the Indeed job API. Remote part-time admin and outreach role at a Canadian online health-products seller; coordinates sample shipments; Shopify and Amazon Seller Central experience an asset; $19–$23/hr.",
+        "accessible": true
+      },
+      {
+        "url": "https://to.indeed.com/aa9bkdph7bn4",
+        "title": "Social Media & E-Commerce Specialist (Contract) — Beauty Startup - Tsb Communications (Indeed)",
+        "type": "aggregator",
+        "publisher": "Indeed",
+        "published": "2026-09-30",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements",
+          "schedule"
+        ],
+        "notes": "Full posting read via the Indeed job API. Part-time contract, 3 days a week, hybrid in Vancouver (must attend in-person shoots). Shopify product listings, descriptions, promotions and basic site updates plus social media. $25/hr during a 3-month probation.",
+        "accessible": true
+      },
+      {
+        "url": "https://to.indeed.com/aaq92hv7d64m",
+        "title": "E-Commerce Specialist - Express Employment Professionals (Indeed)",
+        "type": "aggregator",
+        "publisher": "Indeed",
+        "published": "2026-10-07",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "Full posting read via the Indeed job API. Recruiter posting for a London, ON client: in person, with WFH on Fridays. Maintain digital catalogues and product listings and run marketplace seller accounts. 3–5 years of experience; $70,000–$90,000/yr with benefits.",
+        "accessible": true
+      },
+      {
+        "url": "https://www.onlinejobs.ph/jobseekers/job/Remote-eCommerce-Assistant-Shopify-Amazon-Walmart-1369978",
+        "title": "Remote eCommerce Assistant – Shopify, Amazon, Walmart",
+        "type": "aggregator",
+        "publisher": "OnlineJobs.ph",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "risk"
+        ],
+        "notes": "Search-summary only (dated May 2025 in the summary). A Canadian ecommerce and logistics company hiring an offshore remote assistant for listings, daily orders (ShipStation or ClickShip) and returns, Mon–Fri on Eastern Time, at $400–$550 USD/month. Evidence of offshore price competition, not a route for Canadians.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.bitdefender.com/en-us/blog/hotforsecurity/reshipping-scams",
+        "title": "Reshipping Scams: How to Spot Fake 'Work-From-Home' Job Offers",
+        "type": "independent_review",
+        "publisher": "Bitdefender",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Search-summary only; US/general, not Canada-specific. Fake 'operations coordinator', 'quality control' or 'product inspection' jobs have workers receive and forward goods bought with stolen cards, and workers can face legal trouble.",
+        "accessible": false
+      },
+      {
+        "url": "https://guelph.ctvnews.ca/canada/article/cryptocurrency-scams-offering-fake-jobs-on-the-rise-canadian-anti-fraud-centre",
+        "title": "Cryptocurrency scams offering fake jobs on the rise: Canadian Anti-Fraud Centre",
+        "type": "journalism",
+        "publisher": "CTV News",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Search-summary only (2023 coverage). The CAFC warns of fake freelance jobs 'boosting' apps or products: victims see small early payouts and are then pushed to deposit crypto they cannot withdraw.",
+        "accessible": false
+      },
+      {
+        "url": "https://antifraudcentre-centreantifraude.ca/scams-fraudes/job-emploi-eng.htm",
+        "title": "Job",
+        "type": "government",
+        "publisher": "Canadian Anti-Fraud Centre",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Search-summary only. CAFC job-scam page, including task-based crypto job scams and money-mule 'payment processor' jobs.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "shopify-partner-program-freelance",
+    "name": "Shopify Partner Program (freelance store setup & referrals)",
+    "organization": "Shopify",
+    "type": "freelance",
+    "category": "tech_digital",
+    "tags": [
+      "ecommerce",
+      "shopify",
+      "store-setup",
+      "product-listings",
+      "referral-revenue",
+      "find-your-own-clients"
+    ],
+    "summary": "A free program for freelancers and agencies who build or manage Shopify stores for clients, which pays a recurring revenue share while referred merchants stay on paid plans.",
+    "whatYouDo": "You set up and customize Shopify stores for your own clients (products, listings, themes, settings) using free development stores, then transfer them to the client. You earn mainly what you charge clients, plus Shopify's share of the subscription fees of merchants you refer.",
+    "appeal": [
+      "Free to join, with unlimited development stores for practice and client builds",
+      "Shopify says partners earn a 20% recurring revenue share on referred merchants' subscriptions",
+      "Shopify's help centre says a Canadian partner paid in CAD may be able to use PayPal or a bank account",
+      "Payouts are made twice a month once the balance passes 25 USD"
+    ],
+    "watchOuts": [
+      "Shopify does not give you clients or work; you must find and bill your own clients",
+      "Joining does not list you as a Shopify expert: the Partner Directory is limited to higher tiers (Plus and above) and a limited number of Registered-tier partners",
+      "Recurring revenue share continues only if you stay active at least once every 12 months",
+      "Sources conflict on payout currency: one Shopify FAQ says payments are in USD, while the payout pages describe CAD options",
+      "You are self-employed: no benefits, and GST/HST registration is required once taxable revenue passes $30,000 in a quarter or over four consecutive quarters"
+    ],
+    "officialUrl": "https://www.shopify.com/shopifypartnersvap",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 3,
+      "writing": 2,
+      "numeracy": 1,
+      "detail": 2,
+      "customer": 2,
+      "technical": 2,
+      "creative": 2,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "Not checked. Development stores let you practise without a time limit."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "official",
+      "notes": "Shopify states a 20% recurring revenue share on referred merchants' subscription fees (search summary). Client fees are whatever you charge. No earnings data for typical partners was found; a vendor blog's claim about total partner payouts was not used."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Income depends entirely on finding clients and on referred merchants staying on paid plans."
+    },
+    "workerStatus": "contractor",
+    "fees": "Free to join, according to Shopify. No partner fees were found; payout-method limits apply.",
+    "applicationSteps": [
+      "Create a free Shopify Partner account from Shopify's partner page",
+      "Practise on a development store and build one or two sample stores for a portfolio",
+      "Find clients yourself (local shops, referrals, freelance marketplaces) and agree fees in writing",
+      "Set your payout method in the Partner Dashboard and check which currencies your country allows"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You know Shopify, or will learn it, and can find your own small-business clients.",
+    "notFitIf": "You need an employer to hand you steady paid work.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.shopify.com/shopifypartnersvap",
+        "title": "Become a Shopify partner and earn revenue",
+        "type": "official",
+        "publisher": "Shopify",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "Search-summary only (fetch blocked). Free to join; partners get new clients and earn a 20% revenue share; unlimited development stores instead of a 14-day trial.",
+        "accessible": false
+      },
+      {
+        "url": "https://help.shopify.com/en/partners/manage-account/manage-payouts-invoices/payout-method",
+        "title": "Shopify Help Center - Payout method",
+        "type": "official",
+        "publisher": "Shopify",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay"
+        ],
+        "notes": "Search-summary only. Payout options (PayPal, bank account, wire) depend on country and currency. A Canadian partner receiving CAD may have PayPal and bank-account options. Payouts go out twice a month once the balance exceeds 25 USD; the account must be a real bank account, not a virtual one.",
+        "accessible": false
+      },
+      {
+        "url": "https://help.shopify.com/en/partners/help-support/faq/earnings",
+        "title": "Shopify Help Center - Earnings FAQ",
+        "type": "official",
+        "publisher": "Shopify",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Search-summary only. Says payments are made in USD, which conflicts with the payout-method page's CAD example.",
+        "accessible": false
+      },
+      {
+        "url": "https://help.shopify.com/partners/glossary",
+        "title": "Shopify Partners glossary",
+        "type": "official",
+        "publisher": "Shopify",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "reliability"
+        ],
+        "notes": "Search-summary only. Recurring payments from earlier referrals continue only if the partner stays active at least once within each 12 months.",
+        "accessible": false
+      },
+      {
+        "url": "https://help.shopify.com/en/partners/directory/join",
+        "title": "Eligibility for the Shopify Partner Directory",
+        "type": "official",
+        "publisher": "Shopify",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Search-summary only. Plus, Premier and Platinum tier partners are invited to the directory; a limited number of Registered-tier partners are eligible. A Shopify community reply gave a different threshold (Select tier), so the rules may have changed.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/when-register-charge.html",
+        "title": "When to register for and start charging the GST/HST - Canada.ca",
+        "type": "government",
+        "publisher": "Canada Revenue Agency",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Search-summary only. GST/HST registration is required once taxable supplies exceed $30,000 in a calendar quarter or over four consecutive quarters.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "small-business-digital-help-category",
+    "name": "Digital help for local small businesses (category)",
+    "organization": "Various",
+    "type": "category",
+    "category": "freelance_microbusiness",
+    "tags": [
+      "small-business",
+      "website-updates",
+      "google-business-profile",
+      "social-media",
+      "local",
+      "freelance"
+    ],
+    "summary": "Freelance help for local shops and services with simple digital jobs: website updates, Google Business Profile listings, basic social posts and online-store setup.",
+    "whatYouDo": "You meet local business owners, then update their website text and photos, set up or fix their Google Business Profile, schedule simple social-media posts, or help them start selling online. The work usually comes as small paid jobs or a monthly retainer that you arrange yourself.",
+    "appeal": [
+      "Ontario's publicly funded Digital Main Street squads offered this kind of help (website creation, Google Business Profiles, social media, e-commerce), which shows the need",
+      "An Ontario government discussion paper said 40% of Ontario small businesses had no website",
+      "BDC's 2026 study found 96% of SMEs were investing in digital technology in 2025",
+      "Flexible, local, part-time work where face-to-face meetings build trust"
+    ],
+    "watchOuts": [
+      "Subsidies that paid for this help have shrunk: the federal CDAP stopped new advisor-grant applications in February 2024, and Brampton reported in 2025 that the future of Ontario's Digital Main Street grants was awaiting provincial updates",
+      "Where free government-funded squads still run, they offer similar help at no cost",
+      "You must find clients, set prices and chase invoices yourself; no source gave typical rates",
+      "Most businesses already have some web presence (89% in 2021, per Statistics Canada), so the work is often fixing and updating rather than building from scratch",
+      "Register for GST/HST once taxable revenue passes $30,000 in a quarter or over four consecutive quarters"
+    ],
+    "officialUrl": "https://www.ontario.ca/page/ontarios-small-business-strategy",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "fast internet",
+        "smartphone"
+      ],
+      "minAge": null,
+      "assessment": "none"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person",
+        "text",
+        "video",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 2,
+      "numeracy": 1,
+      "detail": 2,
+      "customer": 3,
+      "technical": 2,
+      "creative": 2,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "No specific course was checked."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "No reliable Canadian rate data was found for this kind of freelance work. You set your own prices."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "Depends on finding and keeping local clients. Retainers (monthly posting or updates) are steadier than one-off jobs."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Pick two or three services you can do well, such as Google Business Profile setup, website text and photo updates, or a monthly social-post package",
+      "Practise on a friend's or community group's listing and keep before-and-after examples",
+      "Approach local businesses, your BIA or chamber of commerce, and agree scope and price in writing",
+      "Check whether a free Digital Main Street squad or local business centre already serves your area",
+      "Track income for tax and GST/HST"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You are comfortable explaining technology to non-technical owners and want local, flexible freelance work.",
+    "notFitIf": "You want a steady paycheque or dislike selling your own services.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.ontario.ca/page/published-plans-and-annual-reports-2021-2022-ministry-economic-development-job-creation-and",
+        "title": "Published plans and annual reports 2021-2022: Ministry of Economic Development, Job Creation and Trade",
+        "type": "government",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy",
+          "reliability"
+        ],
+        "notes": "Search-summary only. Ontario and FedDev launched the $57M Digital Main Street platform in June 2020 for up to 22,900 businesses. Squads gave one-on-one help with digital assessments, website creation, social media advertising and e-commerce. By March 2021 the program had supported 17,600+ businesses with 87 squads. The summary blended several ontario.ca pages, so the attribution to this page is likely but not certain.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.ontario.ca/page/discussion-paper-shaping-ontarios-small-business-success-strategy",
+        "title": "Archived - Discussion paper: shaping Ontario's small business success strategy",
+        "type": "government",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Search-summary only; archived page, date not shown. Noted that 40% of Ontario small businesses don't have a website.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.ontario.ca/page/ontarios-small-business-strategy",
+        "title": "Ontario's Small Business Strategy",
+        "type": "government",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Search-summary only. Lists helping small businesses create a strong online presence under its technology pillar.",
+        "accessible": false
+      },
+      {
+        "url": "https://digitalmainstreet.ca/fr/?p=59525",
+        "title": "Digital Service Squad - Support for Toronto Businesses",
+        "type": "official",
+        "publisher": "Digital Main Street",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Search-summary only. Squad members give storefront businesses free one-on-one help with basic website setup, Google Business Profiles, 360° photos and social media. The Toronto program serves locally owned, independent businesses with a physical storefront.",
+        "accessible": false
+      },
+      {
+        "url": "https://www150.statcan.gc.ca/n1/daily-quotidien/220913/dq220913b-eng.htm",
+        "title": "Survey of Digital Technology and Internet Use, 2021 (The Daily)",
+        "type": "government",
+        "publisher": "Statistics Canada",
+        "published": "2022-09-13",
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Search-summary only. In 2021, 89% of businesses had some web presence and 33% had e-commerce sales (small businesses 32%); 41% more small businesses sold online than in 2019.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.bdc.ca/en/about/mediaroom/news-releases/350b-opportunity-canadas-next-phase-of-growth-to-be-driven-by-ai-and-digital-technologies",
+        "title": "A $350B opportunity: Canada's next phase of growth to be driven by AI and digital technologies",
+        "type": "government",
+        "publisher": "BDC (federal Crown corporation)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Search-summary only; the summary attributed these figures to a June 2026 BDC study, and this release appears to be it. 96% of SMEs were investing in digital technologies in 2025 (91% in 2021); only 30% used AI.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.bdc.ca/en/canada-digital-adoption-program",
+        "title": "Canada Digital Adoption Program - BDC",
+        "type": "government",
+        "publisher": "BDC (federal Crown corporation)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status"
+        ],
+        "notes": "Search-summary only. Businesses needed a signed CDAP grant agreement before February 19, 2024 to qualify, so the program is closed to new applicants.",
+        "accessible": false
+      },
+      {
+        "url": "https://thelogic.co/briefing/ottawa-closes-key-parts-of-4b-canada-digital-adoption-program-leaving-billions-unused",
+        "title": "Ottawa closes key parts of $4B Canada Digital Adoption Program, leaving billions unused",
+        "type": "journalism",
+        "publisher": "The Logic",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status"
+        ],
+        "notes": "Search-summary only (2024). The $15,000 digital-advisor grant stream closed to new applicants. At the time, the $2,400 website grants continued; their current status was not checked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.brampton.ca/EN/Business/BEC/whatsNew/Pages/Digital-Main-Street.aspx",
+        "title": "Digital Main Street - City of Brampton",
+        "type": "government",
+        "publisher": "City of Brampton",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status"
+        ],
+        "notes": "Search-summary only. Brampton is awaiting provincial updates on the future of the Digital Main Street Ontario Grants Program, including the Digital Transformation and Digital Service Squad grants; its own squad contract ended June 30, 2025.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/when-register-charge.html",
+        "title": "When to register for and start charging the GST/HST - Canada.ca",
+        "type": "government",
+        "publisher": "Canada Revenue Agency",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Search-summary only. GST/HST registration is required once taxable supplies exceed $30,000 in a calendar quarter or over four consecutive quarters.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "spreadsheet-data-cleanup-freelancing-category",
+    "name": "Spreadsheet & data clean-up freelancing (category)",
+    "organization": "Various",
+    "type": "category",
+    "category": "freelance_microbusiness",
+    "tags": [
+      "data-entry",
+      "spreadsheets",
+      "excel",
+      "data-cleanup",
+      "freelance",
+      "text-only"
+    ],
+    "summary": "Freelance work tidying, entering and organizing business data in spreadsheets: removing duplicates, fixing formats, building simple formulas and reports.",
+    "whatYouDo": "You take messy customer lists, inventory sheets or exported records and clean them: removing duplicates, standardizing names and dates, splitting or merging columns, and entering missing data from source documents. More skilled freelancers add formulas, pivot tables and simple dashboards.",
+    "appeal": [
+      "Quiet, independent, text-only work with no calls",
+      "You can start small with fixed-price projects",
+      "Spreadsheet skills pay more than plain data entry: Upwork's median is about $20/hr for Excel experts versus $13/hr for data entry (currency not stated)",
+      "Job Bank lists a national median of about $23.50/hr for employed data entry clerks"
+    ],
+    "watchOuts": [
+      "Job Bank rates Ontario's 2025–2027 outlook for data entry clerks as Limited because employment is declining",
+      "Job Bank notes AI tools such as OCR and robotic process automation are automating data entry tasks",
+      "Global freelance competition keeps plain data-entry rates low (Upwork typical $10–$20/hr; currency not stated)",
+      "Remote data-entry employee jobs are rare: a remote search for Canada on Indeed (2026-10-13) returned mostly on-site postings",
+      "'Data entry clerk' is a classic scam title: fake employers send cheques to deposit and forward, or recruit you as a 'payment processor'. Never move money for an employer"
+    ],
+    "officialUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/19213/ca",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 1,
+      "numeracy": 2,
+      "detail": 3,
+      "customer": 1,
+      "technical": 1,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "No training route was checked. Learning lookups, pivot tables and clean-up functions is what separates this from low-paid typing work."
+    },
+    "compensation": {
+      "min": 10,
+      "max": 30,
+      "currency": "unstated",
+      "unit": "hour",
+      "basis": "aggregator",
+      "notes": "Upwork's own rate pages (search summary): data entry specialists median $13/hr (typically $10–$20); Excel experts median $20/hr (typically $12–$30). Currency not stated. For comparison, Job Bank shows employed data entry clerks (NOC 14111) at a national median of about $23.50/hr CAD (low $17.00, high $32.60; 2023–2024 LFS)."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Freelance clean-up work is project-based. Employee data-entry demand is shrinking in Ontario, according to Job Bank."
+    },
+    "workerStatus": "contractor",
+    "fees": "Freelance marketplaces such as Upwork charge service fees (see those platforms' own records).",
+    "applicationSteps": [
+      "Build skills beyond typing: clean-up functions, lookups, pivot tables and basic charts",
+      "Make two or three before-and-after sample sheets using made-up data",
+      "Offer fixed-price clean-up jobs to local businesses or on established freelance marketplaces",
+      "Never accept a 'data entry' job that sends you a cheque or asks you to move money"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "scam_impersonation",
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You enjoy careful, quiet detail work and are willing to learn spreadsheet skills beyond basic typing.",
+    "notFitIf": "You are looking for an easy work-from-home typing job with steady hours.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.jobbank.gc.ca/marketreport/summary-occupation/19213/ca",
+        "title": "Data Input Clerk in Canada",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "reliability"
+        ],
+        "notes": "Search-summary only. NOC 14111, Canada: low $17.00, median $23.50, high $32.60/hr (2023–2024 LFS). Prospects vary by province or territory.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/19213/ON",
+        "title": "Data Input Clerk in Ontario",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Search-summary only. Outlook is Limited for 2025–2027: employment decline will remove some positions, retirements open others, and there is a moderate pool of unemployed experienced workers. Updated 2025-12-10. Toronto is also Limited and Ottawa Very limited.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/19213/geo25418",
+        "title": "Data Input Clerk in the Banff–Jasper–Rocky Mountain House Region",
+        "type": "government",
+        "publisher": "Job Bank (Government of Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "reliability"
+        ],
+        "notes": "Search-summary only. Key trends include AI automating data entry through OCR and robotic process automation.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.upwork.com/hire/data-entry-specialists/cost/",
+        "title": "Data Entry Specialist Hourly Rates",
+        "type": "official",
+        "publisher": "Upwork",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Search-summary only. Median $13/hr; typically $10–$20/hr; suggests $50–$300 per project for basic data entry. Currency not stated in the summary.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.upwork.com/hire/microsoft-excel-experts/cost/",
+        "title": "Excel Expert Hourly Rates",
+        "type": "official",
+        "publisher": "Upwork",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Search-summary only. Median $20/hr; typically $12–$30/hr; dashboard projects quoted at $500–$2,000. Currency not stated in the summary.",
+        "accessible": false
+      },
+      {
+        "url": "https://infosec.yorku.ca/2023/04/job-scam-alert-data-entry-clerk",
+        "title": "Job Scam Alert - Data Entry Clerk",
+        "type": "independent_review",
+        "publisher": "York University Information Security",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Search-summary only (the URL suggests April 2023). A university security team warns about a fake 'Data Entry Clerk' job offer.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.fcnb.ca/en/news-alerts/cafc-bulletin-job-scams",
+        "title": "CAFC bulletin: job scams",
+        "type": "government",
+        "publisher": "Financial and Consumer Services Commission (NB)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Search-summary only. Fraudsters recruit 'payment processors' through classifieds and email, have victims receive money into their own bank accounts and forward it, and use cheques that later prove invalid.",
+        "accessible": false
+      },
+      {
+        "url": "https://antifraudcentre-centreantifraude.ca/scams-fraudes/job-emploi-eng.htm",
+        "title": "Job",
+        "type": "government",
+        "publisher": "Canadian Anti-Fraud Centre",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Search-summary only. CAFC job-scam page (counterfeit cheques, money mules, task-based crypto scams).",
+        "accessible": false
+      },
+      {
+        "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/when-register-charge.html",
+        "title": "When to register for and start charging the GST/HST - Canada.ca",
+        "type": "government",
+        "publisher": "Canada Revenue Agency",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Search-summary only. GST/HST registration is required once taxable supplies exceed $30,000 in a calendar quarter or over four consecutive quarters.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "digital-main-street-digital-service-squad",
+    "name": "Digital Service Squad member (Digital Main Street, Ontario)",
+    "organization": "Digital Main Street",
+    "type": "contract",
+    "category": "government_program",
+    "tags": [
+      "ontario",
+      "toronto",
+      "small-business",
+      "digital-skills",
+      "students-recent-grads",
+      "hybrid",
+      "contract"
+    ],
+    "summary": "Paid squad roles helping Ontario main-street small businesses get online through free one-on-one support. Digital Main Street hires them in Toronto, and local BIAs or municipalities hire them when they have grant funding.",
+    "whatYouDo": "You visit or contact the independent storefront businesses assigned to you, sometimes door to door with the local BIA coordinator, and help them with digital assessments, basic website setup, Google Business Profiles, social media and 360° photos. You also onboard them to the Digital Main Street platform and point eligible businesses to grants.",
+    "appeal": [
+      "Paid, hands-on experience helping real small businesses go digital",
+      "Historically a large employer of students and recent graduates: over 1,600 hired by March 2021, per Ontario",
+      "Digital Main Street posted a 2026 squad-member role in Toronto",
+      "The skills carry over to freelance digital help for small businesses later"
+    ],
+    "watchOuts": [
+      "The 2026 Toronto posting's closing date (May 29, 2026) has passed, and no current opening was confirmed",
+      "Toronto roles require living in Toronto and travelling independently to businesses: hybrid, not fully remote",
+      "The 2026 posting describes pay only as 'competitive'; older roles were contracts (35 hrs/week in 2020)",
+      "Squads outside Toronto depend on Digital Service Squad grants. Brampton said in 2025 that the grant program's future was awaiting provincial updates, and its own squad contract ended June 30, 2025",
+      "Third-party grant listings that say the grant is 'open' are not official and may be out of date"
+    ],
+    "officialUrl": "https://digitalmainstreet.ca/careers/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [
+        "ON"
+      ],
+      "canadaEligibility": "likely",
+      "setting": "hybrid"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "unknown",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [],
+      "minAge": null,
+      "assessment": "interview"
+    },
+    "schedule": {
+      "flexibility": "unknown",
+      "windows": [
+        "day"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person",
+        "voice",
+        "text"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 3,
+      "technical": 2,
+      "creative": 1,
+      "language": 1
+    },
+    "training": {
+      "required": true,
+      "cost": "unknown",
+      "notes": "Squad members are described as trained specialists; training details were not seen."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "The 2026 posting offers 'competitive remuneration in line with industry standards', with no figure. A search summary attributed $15.50/hr to an old (about 2017) Digital Main Street posting; that figure is outdated and its exact source page is uncertain. Squad grants were reported to cover staff salaries and some equipment."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "low",
+      "notes": "Hiring depends on yearly program and grant funding. Roles are term contracts, not permanent jobs."
+    },
+    "workerStatus": "unknown",
+    "fees": null,
+    "applicationSteps": [
+      "Check Digital Main Street's careers page for a new squad posting",
+      "Ask your local BIA, municipality, chamber of commerce or Small Business Enterprise Centre whether it has Digital Service Squad funding this year",
+      "Prepare examples of helping a business with a website, Google Business Profile or social media",
+      "Confirm pay, contract length and work location before accepting"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [],
+    "fitsIf": "You live in Ontario (Toronto for Digital Main Street's own roles), like talking with shop owners and can explain basic digital tools.",
+    "notFitIf": "You need fully remote work or a permanent position.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://digitalmainstreet.ca/wp-content/uploads/2026/05/Position-Description-Digital-Service-Squad-Member-2026.pdf",
+        "title": "Position Description Digital Service Squad Member 2026",
+        "type": "official",
+        "publisher": "Digital Main Street",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status",
+          "requirements",
+          "schedule",
+          "pay"
+        ],
+        "notes": "Search-summary only (fetch failed: DNS ENOTFOUND for digitalmainstreet.ca). The 2026 Digital Service Squad Team Member role (uploaded May 2026) is hybrid, must be based in Toronto, is assigned to specific business areas with independent travel, and includes going door to door with BIA coordinators. Closing date May 29, 2026, with rolling interviews; 'competitive remuneration'.",
+        "accessible": false
+      },
+      {
+        "url": "https://digitalmainstreet.ca/careers/",
+        "title": "Join the @digital_mainst squad!",
+        "type": "official",
+        "publisher": "Digital Main Street",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status"
+        ],
+        "notes": "Seen only as a search-result title; content not seen. Re-check here for current postings.",
+        "accessible": false
+      },
+      {
+        "url": "https://digitalmainstreet.ca/wp-content/uploads/2020/06/Digital-Service-Squad-June2020.pdf",
+        "title": "Job Description Digital Service Squad",
+        "type": "official",
+        "publisher": "Digital Main Street",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "worker_status",
+          "schedule"
+        ],
+        "notes": "Search-summary only (2020). The position was a contract with TABIA for 35 hours per week.",
+        "accessible": false
+      },
+      {
+        "url": "https://digitalmainstreet.ca/fr/?p=59525",
+        "title": "Digital Service Squad - Support for Toronto Businesses",
+        "type": "official",
+        "publisher": "Digital Main Street",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Search-summary only. Squad specialists give free one-on-one help to Toronto's independent storefront businesses with basic website setup, Google Business Profiles, 360° photos and social media.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.ontario.ca/page/published-plans-and-annual-reports-2021-2022-ministry-economic-development-job-creation-and",
+        "title": "Published plans and annual reports 2021-2022: Ministry of Economic Development, Job Creation and Trade",
+        "type": "government",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy"
+        ],
+        "notes": "Search-summary only. By March 2021, Digital Main Street had supported 17,600+ businesses, hired 1,600+ students and recent graduates, and set up 87 Digital Service Squads across Ontario. The attribution to this specific page is likely but not certain.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.brampton.ca/EN/Business/BEC/whatsNew/Pages/Digital-Main-Street.aspx",
+        "title": "Digital Main Street - City of Brampton",
+        "type": "government",
+        "publisher": "City of Brampton",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status"
+        ],
+        "notes": "Search-summary only. Brampton is awaiting provincial updates on the future of the Digital Main Street Ontario Grants Program (including the Digital Service Squad Grant); its own squad contract ended June 30, 2025.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.prescott.ca/media/mywjjmx2/job-description-dss-squad-member-2023.pdf",
+        "title": "Job description DSS squad member 2023",
+        "type": "government",
+        "publisher": "Town of Prescott",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Search-summary only (2023). A municipally hired squad role: digital technology specialists in an Ontario area or region who give one-on-one help to main-street small businesses. Pay was not shown in the excerpt.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.hellodarwin.com/business-aid/programs/digital-main-street-digital-service-squad-grant",
+        "title": "Digital Main Street Digital Service Squad Grant",
+        "type": "aggregator",
+        "publisher": "hellodarwin",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status"
+        ],
+        "notes": "Search-summary only. Third-party listing, last updated July 2025, marks the squad grant as open with continuous intakes. Applicants are BIAs, municipalities, chambers of commerce and Small Business Enterprise Centres, not small businesses. Not confirmed against an official source, and it conflicts with Brampton's 2025 notice.",
+        "accessible": false
+      }
+    ]
+  }
+]
