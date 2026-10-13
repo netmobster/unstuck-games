@@ -2,6 +2,8 @@
 
 This repo is the **data layer** for Opportunity Engine: the researched catalogue, the questionnaire, the matching rules and the research-prompt generator. The UI in `index.html` is a working reference, but the front end can be rebuilt in Lovable (or anything else) on top of what's here. This page says how.
 
+> **Use v2.** `data/v2/catalogue.v2.json` (also served at `api/v2/catalogue.v2.json`) is the revalidated, Ontario-first dataset with a documented contract in `data/v2/SCHEMA.md`: controlled values for every matching dimension, `availability_status` separate from `region_eligibility`, honest `access_status` on every source, and computed `confidence`. The v1 endpoints below still work and the matching engine still runs on v1 shapes; port the engine to v2 field names when you wire it up (the mapping is at the end of `SCHEMA.md`).
+
 ## What the data layer gives you
 
 | Need | Where | Notes |

@@ -4,7 +4,7 @@
 
 Canada-first (Ontario where relevant). No accounts, no tracking. Answers stay in the browser.
 
-> **Status (2026-10-13):** working prototype with a 77-record researched catalogue. The research environment could not open web pages, so **every record rests on search-engine summaries of its sources, and no record claims a confirmed open application.** Read `CATALOGUE_AUDIT.md` before relying on any listing.
+> **Status (2026-10-13):** working prototype plus two datasets. **v2 (`data/v2/catalogue.v2.json`, 98 records) is the one to build on:** every v1 record was individually revalidated for Ontario, 25 routes were added, 12 were rejected into the audit trail, and the contract is documented in `data/v2/SCHEMA.md`. The research environment could not open web pages, so evidence is search-engine summaries plus 20 job postings read through a job-board connector; **no record claims "confirmed" eligibility, and only five claim a current opening.** Read `RESEARCH_REPORT.md` and `VALIDATION_REPORT.md` before relying on any listing. The reference app in this folder still runs on v1 (`data/catalogue.json`).
 
 ## Run it
 
@@ -37,7 +37,10 @@ The front end can be rebuilt elsewhere (Lovable, say) on top of what's here. **`
 | `src/prompt.js` | The "investigate this further" research-prompt generator (Copy prompt / Open Gemini) |
 | `data/raw/*.json` | Research output, one file per family, plus `safety_sources.json` |
 | `data/curation.json` | Editorial overrides (audience restrictions) |
-| `data/catalogue.json` | Built, validated catalogue the app loads |
+| `data/catalogue.json` | v1: built, validated catalogue the reference app loads |
+| `data/v2/` | **v2 dataset:** `catalogue.v2.json` (production), `catalogue.schema.json`, `catalogue.audit.json`, `catalogue.changelog.json`, `SCHEMA.md` (contract), `REVIEW_GUIDE.md`, `baseline/` (mechanical migration), `reviewed/` (per-slice revalidated records) |
+| `scripts/v2/` | `schema.mjs` → `migrate.mjs` → `baseline-audit.mjs` → `build.mjs` → `validate.mjs --report` → `audit-md.mjs`; `crosscheck-ajv.mjs` |
+| `RESEARCH_REPORT.md`, `VALIDATION_REPORT.md` | What the v2 revalidation found, and which checks actually ran |
 | `research/` | Record format, per-family research ledgers, normalisation log, `ledger.csv` export |
 | `scripts/` | `normalize-raw.mjs` → `build-catalogue.mjs` → `audit.mjs`; `check-links.mjs` |
 | `test/` | Unit tests (bun) and browser tests (Playwright) |
@@ -46,7 +49,8 @@ The front end can be rebuilt elsewhere (Lovable, say) on top of what's here. **`
 
 ```bash
 cd boop-remote
-npm run data                      # after editing data/raw or curation: normalise → validate → api/ → supabase/ → audit
+npm run data                      # v1: after editing data/raw or curation: normalise → validate → api/ → supabase/ → audit
+npm run data:v2                   # v2: rebuild catalogue.v2.json, audit, changelog, VALIDATION_REPORT.md and CATALOGUE_AUDIT.md from data/v2/reviewed/
 bun test test/                    # 53 unit tests: schema, catalogue rules, engine, prompt, api/ and SQL consistency
 node test/ui.mjs                  # 26 browser checks at mobile and desktop sizes; screenshots in test/screens/
 npx eslint src scripts test       # lint

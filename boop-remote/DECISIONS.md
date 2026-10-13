@@ -257,3 +257,10 @@ Jay's second brief changed the product shape: Lovable builds the app, this repo 
 Rejected alternatives: editing v1 in place (loses the audit trail and the contract separation); asking agents to score confidence (unauditable); treating a search snippet of an official page as opened (false precision); dropping categories entirely (they help discovery when labelled honestly).
 
 Unresolved: page access. Until a run can open pages, no record can honestly reach `strong`, `verified_rate` stays empty, and `accepting_applications` depends on job-board copies of postings.
+
+## v2 results (2026-10-13)
+
+- **113 audit entries:** 77 v1 records (45 updated, 28 downgraded, 1 merged, 3 rejected, 0 retained unchanged) and 36 new candidates (25 added, 11 rejected). **98 production records.**
+- **Validation (all ran):** JSON parse; structural validation by the in-repo interpreter and independently by ajv against `catalogue.schema.json`; unique ids; required fields and enums; URL and date formats; confidence range; status-evidence rules; eligibility-evidence rules; category rules; summary reconciliation. 0 errors, 45 warnings (25 "checked but still unknown", 20 "likely without a specific eligibility source"). `bun test test/`: 70 pass.
+- **Consequences for the product:** only five records can honestly be shown as "open now", and all five come from one job board on one day; the front end should treat `availability_unknown` as the normal state and say so, and should treat `confidence` as evidence strength, not as fit.
+- **Unresolved:** page access (blocks `confirmed`, `verified_rate` and `strong`); province coverage beyond Ontario; human review.
