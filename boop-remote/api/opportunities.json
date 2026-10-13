@@ -1,0 +1,2360 @@
+{
+ "generated": "2026-10-13",
+ "count": 77,
+ "records": [
+  {
+   "id": "99designs-designer",
+   "name": "Freelance graphic designer (contests and 1-to-1 projects)",
+   "organization": "99designs by Vista",
+   "type": "freelance",
+   "category": "creative_production",
+   "summary": "Apply to join 99designs as a designer, then compete in client design contests or take paid 1-to-1 projects such as logos and branding.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work",
+    "fees",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "adobe-stock-contributor",
+   "name": "Stock photo, video & illustration contributor",
+   "organization": "Adobe Stock",
+   "type": "freelance",
+   "category": "creative_production",
+   "summary": "Sell licences to your photos, videos, vectors and illustrations through Adobe Stock and earn a share of each sale.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits",
+    "account_deactivation_reports"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "ai-response-evaluation-category",
+   "name": "AI response evaluation and rating (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "ai_data",
+   "summary": "Remote gig work rating, ranking and rewriting chatbot or search outputs so AI companies can improve their models.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": "hour",
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits",
+    "unpaid_assessment",
+    "account_deactivation_reports",
+    "scam_impersonation"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "alignerr-ai-trainer",
+   "name": "Freelance AI training specialist (Alignerr)",
+   "organization": "Alignerr (Labelbox)",
+   "type": "task_platform",
+   "category": "ai_data",
+   "summary": "Labelbox-run marketplace that hires freelance generalists and experts by the hour to train and evaluate AI models.",
+   "status": "uncertain",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "weak",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": 15,
+    "max": 120,
+    "currency": "USD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "unpaid_assessment",
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "apple-at-home-advisor-canada",
+   "name": "AppleCare At Home Advisor (Canada)",
+   "organization": "Apple",
+   "type": "employment",
+   "category": "customer_ops",
+   "summary": "Apple's At Home Advisor remote support role has had Canadian postings in the past, but none were found open in Canada now.",
+   "status": "not_currently_open",
+   "canadaEligibility": "unclear",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "unknown",
+   "horizon": "bridge",
+   "evidenceStrength": "weak",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "scam_impersonation"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": false
+  },
+  {
+   "id": "belay-virtual-assistant-contractor",
+   "name": "Virtual assistant contractor (BELAY)",
+   "organization": "BELAY",
+   "type": "contract",
+   "category": "customer_ops",
+   "summary": "BELAY is a US virtual-assistant staffing firm whose contractor roles are open only to residents of certain US states, not Canada.",
+   "status": "rejected",
+   "canadaEligibility": "not_eligible",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": false
+  },
+  {
+   "id": "better-jobs-ontario",
+   "name": "Better Jobs Ontario (funded retraining for laid-off or long-unemployed people)",
+   "organization": "Government of Ontario - Employment Ontario",
+   "type": "program",
+   "category": "government_program",
+   "summary": "Ontario grant that can cover tuition, books, transportation and a basic living allowance while an eligible laid-off or long-unemployed person trains for an in-demand job.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [
+    "ON"
+   ],
+   "workerStatus": "participant",
+   "horizon": "career",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": "CAD",
+    "unit": null,
+    "basis": "official"
+   },
+   "riskFlags": [],
+   "audience": [
+    "People in Ontario who were laid off or have been unemployed for a long stretch"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "bilingual-en-fr-work-category",
+   "name": "Bilingual English–French work (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "language_writing",
+   "summary": "Using English–French bilingualism for translation, interpretation, localization review, tutoring or bilingual service work — a distinctly Canadian advantage with an earnings premium that is strongest in Quebec.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "career",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 20,
+    "max": 51,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "cambly-english-tutor",
+   "name": "Online English conversation tutor",
+   "organization": "Cambly",
+   "type": "freelance",
+   "category": "language_writing",
+   "summary": "Chat with English learners over video on Cambly for a fixed per-minute rate; native English speakers 18+ can apply without teaching credentials, but intake of new tutors is currently limited.",
+   "status": "waitlist_or_no_work_guarantee",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "unknown",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 10.2,
+    "max": 12,
+    "currency": "USD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "waitlist",
+    "account_deactivation_reports"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "canada-summer-jobs",
+   "name": "Canada Summer Jobs (youth summer jobs, ages 15-30)",
+   "organization": "Government of Canada - Employment and Social Development Canada",
+   "type": "program",
+   "category": "government_program",
+   "summary": "Federally funded summer jobs for people aged 15 to 30, posted on Job Bank each spring; the 2026 hiring period has ended.",
+   "status": "not_currently_open",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "employee",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work"
+   ],
+   "audience": [
+    "Youth aged 15–30"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": false
+  },
+  {
+   "id": "canadian-freelance-boards-associations",
+   "name": "Canadian freelance job boards and freelancer associations",
+   "organization": "Various",
+   "type": "category",
+   "category": "freelance_microbusiness",
+   "summary": "Canada-focused places to find freelance and contract postings (especially writing, editing and communications) and groups that support freelancers.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "bridge",
+   "evidenceStrength": "weak",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "canva-creators-template-designer",
+   "name": "Canva template creator",
+   "organization": "Canva",
+   "type": "freelance",
+   "category": "creative_production",
+   "summary": "Design templates for Canva's library and earn monthly royalties based on how often Canva users use them. You get in through a portfolio application, and the program is listed as being in beta.",
+   "status": "official_info_found",
+   "canadaEligibility": "unclear",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "weak",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work",
+    "waitlist"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "concentrix-canada-customer-service",
+   "name": "Customer service / tech support representative (Concentrix Canada)",
+   "organization": "Concentrix",
+   "type": "employment",
+   "category": "customer_ops",
+   "summary": "Concentrix hires customer service and tech support reps in Canada, but recent Canadian postings seen are hybrid or on-site; remote Canadian postings found are old.",
+   "status": "stale_needs_recheck",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "employee",
+   "horizon": "now",
+   "evidenceStrength": "weak",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 16,
+    "max": 25,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "scam_impersonation",
+    "phone_heavy"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "content-moderation-trust-safety-category",
+   "name": "Content moderation / online safety evaluation (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "customer_ops",
+   "summary": "Reviewing posts, videos or search results against safety rules; some evaluator versions are part-time freelance work from home.",
+   "status": "uncertain",
+   "canadaEligibility": "unclear",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "now",
+   "evidenceStrength": "weak",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "emotional_content",
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "contra-freelance",
+   "name": "Commission-free freelance portfolio and payments (Contra)",
+   "organization": "Contra",
+   "type": "freelance",
+   "category": "freelance_microbusiness",
+   "summary": "Show a portfolio, find or bring your own clients, and get paid without Contra taking a commission from your earnings.",
+   "status": "official_info_found",
+   "canadaEligibility": "unclear",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "weak",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "fees",
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "cra-contact-centre-agent-seasonal",
+   "name": "Contact centre agent, seasonal/term (Canada Revenue Agency)",
+   "organization": "Canada Revenue Agency",
+   "type": "employment",
+   "category": "customer_ops",
+   "summary": "The CRA hires temporary call-centre agents each year to answer taxpayers' phone questions, ramping up before tax season.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "employee",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 53000,
+    "max": 58000,
+    "currency": "CAD",
+    "unit": "year",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "phone_heavy",
+    "variable_work"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "crowdgen-appen-ai-projects",
+   "name": "AI data project contributor (CrowdGen by Appen)",
+   "organization": "Appen (CrowdGen, formerly Appen Connect)",
+   "type": "task_platform",
+   "category": "ai_data",
+   "summary": "Appen's contributor platform where you apply to individual AI data projects, some of them reserved for Canada residents.",
+   "status": "stale_needs_recheck",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "unknown",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 16.5,
+    "max": null,
+    "currency": "USD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "payment_delay_reports"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "crowdgen-canadian-french-voice-tasks",
+   "name": "Canadian French voice-rating and speech data tasks",
+   "organization": "CrowdGen by Appen",
+   "type": "task_platform",
+   "category": "language_writing",
+   "summary": "Short online projects where native Canadian French speakers located in Canada rate computer-generated voices or audio for AI training through Appen's CrowdGen platform.",
+   "status": "waitlist_or_no_work_guarantee",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "unknown",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": "task",
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work",
+    "unpaid_assessment",
+    "payment_delay_reports",
+    "waitlist"
+   ],
+   "audience": [
+    "Canadian French speakers"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "dataannotation-ai-trainer",
+   "name": "AI chatbot evaluator and writer (DataAnnotation)",
+   "organization": "DataAnnotation",
+   "type": "task_platform",
+   "category": "ai_data",
+   "summary": "Online platform that pays contributors to rate chatbot answers, write and check code for AI training, paid via PayPal.",
+   "status": "uncertain",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": 20,
+    "max": 150,
+    "currency": "unstated",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits",
+    "account_deactivation_reports",
+    "scam_impersonation"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "digital-main-street-digital-service-squad",
+   "name": "Digital Service Squad member (Digital Main Street, Ontario)",
+   "organization": "Digital Main Street",
+   "type": "contract",
+   "category": "government_program",
+   "summary": "Paid squad roles helping Ontario main-street small businesses get online through free one-on-one support. Digital Main Street hires them in Toronto, and local BIAs or municipalities hire them when they have grant funding.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "hybrid",
+   "regions": [
+    "ON"
+   ],
+   "workerStatus": "unknown",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "dscout-scout",
+   "name": "Diary studies and video missions (dscout)",
+   "organization": "dscout",
+   "type": "research_participation",
+   "category": "research_participation",
+   "summary": "Join occasional paid research 'missions' where you record short videos and answer questions on your phone; this is not a job.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "participant",
+   "horizon": "now",
+   "evidenceStrength": "weak",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": "USD",
+    "unit": "study",
+    "basis": "aggregator"
+   },
+   "riskFlags": [
+    "variable_work"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "ecommerce-operations-support-category",
+   "name": "Ecommerce operations support: orders, returns & product listings (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "tech_digital",
+   "summary": "Behind-the-scenes work for online stores: processing orders, handling returns and shipping claims, and creating or updating product listings and feeds on Shopify, Amazon and other marketplaces.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 19,
+    "max": 25,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "scam_impersonation",
+    "variable_work"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "election-worker-paid-temporary",
+   "name": "Paid election worker (municipal, provincial or federal elections)",
+   "organization": "Various",
+   "type": "category",
+   "category": "structured_employment",
+   "summary": "Short-term paid jobs staffing voting places for municipal, provincial or federal elections; hiring happens in the weeks or months before each vote.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "onsite",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "employment-ontario-employment-services",
+   "name": "Employment Ontario employment services (free job-search help)",
+   "organization": "Government of Ontario - Employment Ontario (local service providers)",
+   "type": "program",
+   "category": "government_program",
+   "summary": "Free one-on-one job-search help in Ontario (resumes, interview prep, job matching and referrals to funded training) through more than 700 local Employment Ontario locations.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [
+    "ON"
+   ],
+   "workerStatus": "participant",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "fable-accessibility-tester",
+   "name": "Accessibility tester with lived disability experience (Fable)",
+   "organization": "Fable (Fable Tech Labs, Toronto)",
+   "type": "freelance",
+   "category": "tech_digital",
+   "summary": "Toronto-founded company that pays people with disabilities who use assistive technology to test websites and apps for accessibility.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "contractor_no_benefits"
+   ],
+   "audience": [
+    "People who use assistive technology (lived disability experience)"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "film-tv-production-assistant-category",
+   "name": "Film & TV production assistant (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "creative_production",
+   "summary": "Entry-level crew work on film, TV and commercial sets, sometimes reached through short crew-training programs. Job Bank files production assistants under NOC 53111.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "onsite",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 16,
+    "max": 36.49,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "fiverr-gigs",
+   "name": "Selling freelance service 'gigs' on Fiverr",
+   "organization": "Fiverr",
+   "type": "freelance",
+   "category": "freelance_microbusiness",
+   "summary": "List fixed-price service packages ('gigs') that buyers can order directly; Fiverr keeps 20% of each sale.",
+   "status": "official_info_found",
+   "canadaEligibility": "unclear",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "fees",
+    "variable_work",
+    "account_deactivation_reports",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "foundever-work-at-home-customer-service-canada",
+   "name": "Work-at-home customer service representative (Foundever Canada)",
+   "organization": "Foundever (formerly Sitel)",
+   "type": "employment",
+   "category": "customer_ops",
+   "summary": "Foundever, a global customer-service outsourcer (formerly Sitel), hires work-from-home customer service representatives in Canada, with company equipment and benefits.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "employee",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 15,
+    "max": 19.35,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "phone_heavy"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "freelancer-com",
+   "name": "Bidding on projects at Freelancer.com",
+   "organization": "Freelancer.com",
+   "type": "freelance",
+   "category": "freelance_microbusiness",
+   "summary": "Bid on client projects posted to Freelancer.com's marketplace; the platform takes a fee on each project you're awarded.",
+   "status": "official_info_found",
+   "canadaEligibility": "unclear",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "fees",
+    "variable_work",
+    "account_deactivation_reports",
+    "payment_delay_reports",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "gotranscript-transcription",
+   "name": "Freelance transcriptionist (multi-language)",
+   "organization": "GoTranscript",
+   "type": "task_platform",
+   "category": "language_writing",
+   "summary": "Freelance transcription work for GoTranscript in English or many other languages, paid per audio minute after a quiz and audio-sample test.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "weak",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": "minute_audio",
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "unpaid_assessment",
+    "variable_work",
+    "contractor_no_benefits",
+    "scam_impersonation"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "intuit-turbotax-seasonal-tax-expert-canada",
+   "name": "Seasonal tax expert, work from home (Intuit TurboTax Canada)",
+   "organization": "Intuit (TurboTax)",
+   "type": "employment",
+   "category": "customer_ops",
+   "summary": "Intuit hires experienced tax preparers anywhere in Canada as seasonal remote employees to help TurboTax Live customers from January to April.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "employee",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 24.5,
+    "max": 33.5,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "phone_heavy"
+   ],
+   "audience": [
+    "Experienced Canadian tax preparers"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "italki-language-tutor",
+   "name": "Online language teacher / community tutor",
+   "organization": "italki",
+   "type": "freelance",
+   "category": "language_writing",
+   "summary": "Teach languages on italki as a Community Tutor (native or near-native, no credential) or a certified Professional Teacher, setting your own price; italki takes a 15–30% commission on paid lessons.",
+   "status": "official_info_found",
+   "canadaEligibility": "unclear",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": "USD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "fees",
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "job-bank-canada",
+   "name": "Job Bank job search and alerts (Government of Canada)",
+   "organization": "Government of Canada - Job Bank",
+   "type": "program",
+   "category": "government_program",
+   "summary": "Free federal job board where you can search Canadian job postings, set daily email alerts and check typical wages for an occupation, without creating an account.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "scam_impersonation"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "languageline-indigenous-language-interpreter-canada",
+   "name": "Over-the-phone interpreter (Indigenous languages, Canada)",
+   "organization": "LanguageLine Solutions",
+   "type": "contract",
+   "category": "language_writing",
+   "summary": "Work-from-home phone interpreting between English and Indigenous languages such as Cree or Inuktitut for LanguageLine, as an independent contractor paid per call minute.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 1.25,
+    "max": 1.4,
+    "currency": "unstated",
+    "unit": "minute_audio",
+    "basis": "aggregator"
+   },
+   "riskFlags": [
+    "contractor_no_benefits",
+    "variable_work",
+    "phone_heavy"
+   ],
+   "audience": [
+    "People fluent in English and an Indigenous language such as Cree or Inuktitut"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "leger-leo-survey-panel",
+   "name": "Paid online surveys (Leger LEO panel)",
+   "organization": "Leger",
+   "type": "research_participation",
+   "category": "research_participation",
+   "summary": "Answer market-research surveys for points you can redeem for cash, travel miles or gift cards; legitimate, but the earnings look too small to recommend as a way to earn.",
+   "status": "rejected",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "participant",
+   "horizon": "now",
+   "evidenceStrength": "weak",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "aggregator"
+   },
+   "riskFlags": [
+    "variable_work"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": false
+  },
+  {
+   "id": "mercor-ai-expert-evaluator",
+   "name": "AI output evaluator / domain expert (Mercor)",
+   "organization": "Mercor",
+   "type": "contract",
+   "category": "ai_data",
+   "summary": "AI-training marketplace that contracts generalists and professionals at hourly rates to judge AI outputs; some roles are open specifically to US and Canada residents.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 50,
+    "max": 70,
+    "currency": "unstated",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits",
+    "account_deactivation_reports"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "npower-canada-junior-it-analyst",
+   "name": "NPower Canada Junior IT Analyst Program (free IT training)",
+   "organization": "NPower Canada",
+   "type": "training_pathway",
+   "category": "tech_digital",
+   "summary": "Free 15-week beginner IT training, with the Google IT Support Professional Certificate and job-search support, for young adults facing barriers to work.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [
+    "AB",
+    "BC",
+    "MB",
+    "NS",
+    "ON",
+    "QC"
+   ],
+   "workerStatus": "student",
+   "horizon": "career",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "scam_impersonation"
+   ],
+   "audience": [
+    "Young adults (roughly 18–29)"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "odsp-employment-supports",
+   "name": "ODSP Employment Supports (job help for people with a disability)",
+   "organization": "Government of Ontario - Ontario Disability Support Program",
+   "type": "program",
+   "category": "government_program",
+   "summary": "Ontario employment help (job coaching, job placement and on-the-job supports) for people whose long-term disability makes finding or keeping work harder; you do not need to receive ODSP income support.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [
+    "ON"
+   ],
+   "workerStatus": "participant",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [],
+   "audience": [
+    "Ontario residents with a disability or long-term health condition"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "ontario-pre-apprenticeship-training",
+   "name": "Pre-apprenticeship training (free trade-readiness programs, Ontario)",
+   "organization": "Government of Ontario (delivered by colleges and community agencies)",
+   "type": "training_pathway",
+   "category": "government_program",
+   "summary": "Free Ontario programs of up to 52 weeks, including an 8-12 week work placement, that help people without trade experience get ready to land an apprenticeship.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "onsite",
+   "regions": [
+    "ON"
+   ],
+   "workerStatus": "student",
+   "horizon": "career",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "ontario-registered-apprenticeship",
+   "name": "Registered apprenticeship in a skilled trade (Ontario)",
+   "organization": "Skilled Trades Ontario",
+   "type": "training_pathway",
+   "category": "structured_employment",
+   "summary": "Earn-while-you-learn route into a skilled trade: you work for a sponsor and register a training agreement with Skilled Trades Ontario.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "onsite",
+   "regions": [
+    "ON"
+   ],
+   "workerStatus": "employee",
+   "horizon": "career",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "outlier-ai-trainer",
+   "name": "AI trainer / response evaluator (Outlier)",
+   "organization": "Outlier (Scale AI)",
+   "type": "task_platform",
+   "category": "ai_data",
+   "summary": "Scale AI's freelance platform where contributors write, rate and correct AI chatbot answers for hourly pay.",
+   "status": "waitlist_or_no_work_guarantee",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": 35,
+    "currency": "USD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits",
+    "account_deactivation_reports"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "preply-online-tutor",
+   "name": "Online tutor (languages and other subjects)",
+   "organization": "Preply",
+   "type": "freelance",
+   "category": "language_writing",
+   "summary": "Set your own rate and teach one-on-one video lessons on the Preply marketplace; Preply keeps the whole first trial lesson with each new student and 18–33% of later lessons.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": "hour",
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "fees",
+    "variable_work",
+    "contractor_no_benefits",
+    "account_deactivation_reports"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "prolific-paid-studies",
+   "name": "Paid online research studies (Prolific)",
+   "organization": "Prolific",
+   "type": "research_participation",
+   "category": "research_participation",
+   "summary": "Take part in paid online research studies when you match a study's criteria; this is research participation, not a job.",
+   "status": "waitlist_or_no_work_guarantee",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "participant",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 8,
+    "max": null,
+    "currency": "USD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "waitlist",
+    "account_deactivation_reports"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "proofreading-copyediting-category",
+   "name": "Proofreading & copyediting (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "language_writing",
+   "summary": "Checking and correcting other people's writing for errors, clarity and style, as an employee or freelancer; a recognized Canadian occupation with a national association and certification.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "career",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 20,
+    "max": 50,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "fees"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "public-service-student-new-grad-programs",
+   "name": "Government student and new-grad job programs (FSWEP, Ontario SEO, Ontario Internship Program)",
+   "organization": "Various",
+   "type": "category",
+   "category": "structured_employment",
+   "summary": "Federal and Ontario public-service hiring streams reserved for students (FSWEP, Ontario Summer Employment Opportunities) and recent graduates (Ontario Internship Program).",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "employee",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [],
+   "audience": [
+    "Current students or recent graduates"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "remote-appointment-setting-category",
+   "name": "Remote appointment setting & scheduling (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "customer_ops",
+   "summary": "Calling businesses or customers from home to check their interest and book meetings for a sales team, paid by salary, hourly wage or per booked lead.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "phone_heavy",
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "remote-contact-centre-customer-support-category",
+   "name": "Remote call-centre, chat & email customer support (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "customer_ops",
+   "summary": "Work-from-home customer service jobs answering customers by phone, chat or email for retailers, outsourcers and other companies across Canada.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 18.27,
+    "max": 25.3,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "phone_heavy",
+    "scam_impersonation"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "respondent-research-participant",
+   "name": "Paid research interviews and focus groups (Respondent)",
+   "organization": "Respondent",
+   "type": "research_participation",
+   "category": "research_participation",
+   "summary": "Apply to paid interviews, focus groups and surveys that companies run with consumers and professionals; this is research participation, not a job.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "participant",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": "USD",
+    "unit": "study",
+    "basis": "aggregator"
+   },
+   "riskFlags": [
+    "variable_work",
+    "fees",
+    "payment_delay_reports"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "rev-transcription-captioning",
+   "name": "Freelance transcriptionist / captioner",
+   "organization": "Rev",
+   "type": "task_platform",
+   "category": "language_writing",
+   "summary": "Transcribe or caption audio and video files from Rev's work queue and get paid per audio minute; new applicants currently face a waitlist.",
+   "status": "waitlist_or_no_work_guarantee",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 0.4,
+    "max": 1.1,
+    "currency": "unstated",
+    "unit": "minute_audio",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "unpaid_assessment",
+    "variable_work",
+    "contractor_no_benefits",
+    "waitlist"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "scribbr-academic-editor",
+   "name": "Freelance academic editor / proofreader",
+   "organization": "Scribbr",
+   "type": "freelance",
+   "category": "language_writing",
+   "summary": "Edit and proofread students' academic papers for Scribbr at fixed per-word rates; requires native-level English and a university degree.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [
+    "Degree holders"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "shopify-merchant-support-advisor-canada",
+   "name": "Merchant Support Advisor (Shopify, Canada)",
+   "organization": "Shopify",
+   "type": "employment",
+   "category": "customer_ops",
+   "summary": "Shopify, a Canadian ecommerce platform that works remotely, hires Merchant Support Advisors in Canada to help store owners with their Shopify shops.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "employee",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 28000,
+    "max": 71000,
+    "currency": "CAD",
+    "unit": "year",
+    "basis": "aggregator"
+   },
+   "riskFlags": [
+    "scam_impersonation"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "shopify-partner-program-freelance",
+   "name": "Shopify Partner Program (freelance store setup & referrals)",
+   "organization": "Shopify",
+   "type": "freelance",
+   "category": "tech_digital",
+   "summary": "A free program for freelancers and agencies who build or manage Shopify stores for clients, which pays a recurring revenue share while referred merchants stay on paid plans.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "shutterstock-contributor",
+   "name": "Stock photo, video & illustration contributor",
+   "organization": "Shutterstock",
+   "type": "freelance",
+   "category": "creative_production",
+   "summary": "Upload your photos, video clips or illustrations to Shutterstock's library and earn a percentage each time a customer licenses one.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits",
+    "account_deactivation_reports"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "simply-tv-metadata-data-editor",
+   "name": "Remote TV & movie metadata editor",
+   "organization": "Simply.TV",
+   "type": "contract",
+   "category": "creative_production",
+   "summary": "A freelance contract role researching, writing and checking TV and movie listings data for a Copenhagen-based metadata company. A Canada posting listed CAD 20/hour for a full-time allocation.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "weak",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": 20,
+    "max": 20,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "small-business-digital-help-category",
+   "name": "Digital help for local small businesses (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "freelance_microbusiness",
+   "summary": "Freelance help for local shops and services with simple digital jobs: website updates, Google Business Profile listings, basic social posts and online-store setup.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "social-media-coordinator-category",
+   "name": "Social media coordinator / community manager (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "creative_production",
+   "summary": "Planning, posting and monitoring social media content for an organization, as an employee or freelancer. Job Bank files it under professional occupations in advertising, marketing and public relations (NOC 11202).",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "career",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 20.5,
+    "max": 57.44,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "scam_impersonation"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "spreadsheet-data-cleanup-freelancing-category",
+   "name": "Spreadsheet & data clean-up freelancing (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "freelance_microbusiness",
+   "summary": "Freelance work tidying, entering and organizing business data in spreadsheets: removing duplicates, fixing formats, building simple formulas and reports.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 10,
+    "max": 30,
+    "currency": "unstated",
+    "unit": "hour",
+    "basis": "aggregator"
+   },
+   "riskFlags": [
+    "scam_impersonation",
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "staffing-agency-temp-placements",
+   "name": "Temporary placements through staffing agencies (office/admin and general)",
+   "organization": "Various",
+   "type": "category",
+   "category": "structured_employment",
+   "summary": "Licensed temp and staffing agencies (e.g., Randstad, Adecco, Robert Half) place workers in short-term or contract roles, including office and admin work that is occasionally partly remote.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "employee",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work",
+    "scam_impersonation"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "statcan-data-collection-clerk",
+   "name": "Statistics Canada data collection clerk (survey interviewer)",
+   "organization": "Statistics Canada",
+   "type": "employment",
+   "category": "structured_employment",
+   "summary": "Statistics Canada hires data collection clerks as needed, for up to 35 hours a week, to run survey interviews, mostly by phone, from home or on-site.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "employee",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "phone_heavy",
+    "variable_work"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "telus-digital-ai-community-rater",
+   "name": "Part-time online rater / evaluator (TELUS Digital AI Community)",
+   "organization": "TELUS Digital AI Community (formerly TELUS International AI)",
+   "type": "contract",
+   "category": "ai_data",
+   "summary": "TELUS Digital's AI Community hires people living in Canada as part-time freelancers to evaluate search, media and online-safety content from home.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 13.5,
+    "max": null,
+    "currency": "USD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits",
+    "account_deactivation_reports"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "test-io-crowdtester",
+   "name": "Freelance bug-hunting tester (Test IO)",
+   "organization": "Test IO",
+   "type": "task_platform",
+   "category": "tech_digital",
+   "summary": "Free crowdtesting platform that pays testers per accepted bug or test for exploratory testing of apps and websites.",
+   "status": "official_info_found",
+   "canadaEligibility": "unclear",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "weak",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": null,
+    "max": 50,
+    "currency": "USD",
+    "unit": "task",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits",
+    "scam_impersonation"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "testlio-freelance-tester",
+   "name": "Freelance software tester, paid hourly (Testlio)",
+   "organization": "Testlio",
+   "type": "freelance",
+   "category": "tech_digital",
+   "summary": "Managed crowdtesting company that pays vetted freelance testers by the hour for client test runs, with occasional Canada-specific projects.",
+   "status": "waitlist_or_no_work_guarantee",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "weak",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 18,
+    "max": 30,
+    "currency": "USD",
+    "unit": "hour",
+    "basis": "aggregator"
+   },
+   "riskFlags": [
+    "variable_work",
+    "waitlist",
+    "contractor_no_benefits",
+    "equipment_cost"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "toronto-public-library-free-elearning",
+   "name": "Toronto Public Library free online courses (LinkedIn Learning, IT skills)",
+   "organization": "Toronto Public Library",
+   "type": "training_pathway",
+   "category": "tech_digital",
+   "summary": "With a free Toronto Public Library card you can take online courses (LinkedIn Learning, Let's Learn Tech IT training, Brainfuse workplace tech skills, Gale Courses) at no cost.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [
+    "ON"
+   ],
+   "workerStatus": "student",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "transcribeme-transcription",
+   "name": "Freelance transcriptionist (short audio clips)",
+   "organization": "TranscribeMe",
+   "type": "task_platform",
+   "category": "language_writing",
+   "summary": "Transcribe short audio clips on TranscribeMe's WorkHub platform after passing an entrance exam, paid per audio hour via PayPal.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "weak",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 0.25,
+    "max": 0.37,
+    "currency": "unstated",
+    "unit": "minute_audio",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "unpaid_assessment",
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "ttec-work-from-home-customer-service-canada",
+   "name": "Work-from-home customer service representative (TTEC Canada)",
+   "organization": "TTEC",
+   "type": "employment",
+   "category": "customer_ops",
+   "summary": "TTEC, a large outsourced customer-service company, posts permanent work-from-home phone and chat support jobs for Canadian residents, usually limited to certain provinces.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "employee",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 17,
+    "max": 18,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "phone_heavy"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "uoft-paid-research-pools",
+   "name": "Paid university research studies (University of Toronto participant pools)",
+   "organization": "University of Toronto (psychology departments and labs)",
+   "type": "research_participation",
+   "category": "research_participation",
+   "summary": "Sign up to University of Toronto participant registries to be contacted for paid psychology studies; occasional research participation, not a job.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [
+    "ON"
+   ],
+   "workerStatus": "participant",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 18,
+    "max": 18,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work"
+   ],
+   "audience": [
+    "People who can get to a University of Toronto campus"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "upwork-freelance",
+   "name": "Freelance client work through Upwork",
+   "organization": "Upwork",
+   "type": "freelance",
+   "category": "freelance_microbusiness",
+   "summary": "Sell services to clients by sending proposals for projects posted on Upwork's freelance marketplace.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "fees",
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "user-interviews-participant",
+   "name": "Paid user research sessions (User Interviews)",
+   "organization": "User Interviews",
+   "type": "research_participation",
+   "category": "research_participation",
+   "summary": "Apply to occasional paid product-research sessions (interviews, surveys, tests) run by companies; this is research participation, not a job.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "participant",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": "USD",
+    "unit": "study",
+    "basis": "aggregator"
+   },
+   "riskFlags": [
+    "variable_work"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "usertesting-contributor",
+   "name": "Website and app tester (UserTesting contributor)",
+   "organization": "UserTesting",
+   "type": "research_participation",
+   "category": "research_participation",
+   "summary": "Get paid small amounts to try websites and apps while speaking your thoughts aloud on a screen recording; occasional paid tests, not a job.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "participant",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 10,
+    "max": null,
+    "currency": "USD",
+    "unit": "task",
+    "basis": "aggregator"
+   },
+   "riskFlags": [
+    "unpaid_assessment",
+    "variable_work"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "utest-applause-crowdtester",
+   "name": "Freelance crowd software tester (uTest / Applause)",
+   "organization": "uTest (Applause)",
+   "type": "task_platform",
+   "category": "tech_digital",
+   "summary": "Free-to-join tester community where you accept paid invitations to find bugs and run test cases on clients' apps and websites.",
+   "status": "waitlist_or_no_work_guarantee",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "unknown",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": "task",
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work",
+    "unpaid_assessment"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "video-audio-podcast-editing-category",
+   "name": "Video, audio & podcast editing (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "creative_production",
+   "summary": "Editing video and audio, from short social clips to podcasts, as an employee or freelancer. Job Bank groups video and sound editors with audio and video recording technicians (NOC 52113).",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "varies",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "career",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 20,
+    "max": 46.15,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "variable_work",
+    "equipment_cost"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "virtual-assistant-admin-support-category",
+   "name": "Virtual assistant / administrative support (category)",
+   "organization": "Various",
+   "type": "category",
+   "category": "customer_ops",
+   "summary": "Remote administrative support, such as inbox, calendar, documents, CRM upkeep and follow-ups, done for one employer or for several clients from home.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "varies",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": 19.23,
+    "max": 36.88,
+    "currency": "CAD",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "scam_impersonation",
+    "contractor_no_benefits",
+    "variable_work"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "welo-data-search-quality-rater-canada",
+   "name": "Search quality rater – English (Canada) (Welo Data / Welocalize)",
+   "organization": "Welocalize (Welo Data / Welo Global)",
+   "type": "freelance",
+   "category": "ai_data",
+   "summary": "Freelance, remote role rating search-engine results for relevance and quality, for people located in Canada working 10–20 hours a week.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": 15,
+    "currency": "unstated",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "contractor_no_benefits",
+    "payment_delay_reports"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "welocalize-freelance-linguist",
+   "name": "Freelance translator / localization linguist",
+   "organization": "Welocalize",
+   "type": "freelance",
+   "category": "language_writing",
+   "summary": "Join Welocalize's freelance talent community to receive translation, review and quality-check work in your language pairs, such as English–Canadian French.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "career",
+   "evidenceStrength": "weak",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [
+    "variable_work",
+    "contractor_no_benefits"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "working-solutions-on-demand-agent",
+   "name": "On-demand work-at-home contact centre agent (Working Solutions)",
+   "organization": "Working Solutions",
+   "type": "contract",
+   "category": "customer_ops",
+   "summary": "Working Solutions contracts independent agents in the US and Canada to handle customer calls for client programs from home, paid per productive minute.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "moderate",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": 15,
+    "max": 18.6,
+    "currency": "unstated",
+    "unit": "hour",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "contractor_no_benefits",
+    "variable_work",
+    "payment_delay_reports",
+    "phone_heavy"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "young-canada-works-heritage-students",
+   "name": "Young Canada Works student jobs in heritage",
+   "organization": "Canadian Heritage (Young Canada Works)",
+   "type": "program",
+   "category": "creative_production",
+   "summary": "Federally funded summer and student jobs at museums, archives, libraries and heritage sites for students aged 16–30. You apply to employers through the Young Canada Works portal.",
+   "status": "official_info_found",
+   "canadaEligibility": "likely",
+   "setting": "onsite",
+   "regions": [],
+   "workerStatus": "employee",
+   "horizon": "bridge",
+   "evidenceStrength": "moderate",
+   "legitimacy": "established",
+   "compensation": {
+    "min": null,
+    "max": null,
+    "currency": null,
+    "unit": null,
+    "basis": "unknown"
+   },
+   "riskFlags": [],
+   "audience": [
+    "Students aged 16–30"
+   ],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  },
+  {
+   "id": "zirtual-virtual-executive-assistant",
+   "name": "Remote virtual executive assistant (Zirtual)",
+   "organization": "Zirtual",
+   "type": "contract",
+   "category": "customer_ops",
+   "summary": "Zirtual matches experienced virtual executive assistants in the US or Canada with busy professionals as independent contractors.",
+   "status": "uncertain",
+   "canadaEligibility": "likely",
+   "setting": "remote",
+   "regions": [],
+   "workerStatus": "contractor",
+   "horizon": "now",
+   "evidenceStrength": "weak",
+   "legitimacy": "likely",
+   "compensation": {
+    "min": 1500,
+    "max": 3800,
+    "currency": "unstated",
+    "unit": "month",
+    "basis": "official"
+   },
+   "riskFlags": [
+    "contractor_no_benefits",
+    "variable_work",
+    "scam_impersonation"
+   ],
+   "audience": [],
+   "lastChecked": "2026-10-13",
+   "recommendable": true
+  }
+ ]
+}

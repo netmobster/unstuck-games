@@ -1,0 +1,186 @@
+{
+ "id": "freelancer-com",
+ "name": "Bidding on projects at Freelancer.com",
+ "organization": "Freelancer.com",
+ "type": "freelance",
+ "category": "freelance_microbusiness",
+ "tags": [
+  "freelance",
+  "marketplace",
+  "bidding",
+  "project-fee"
+ ],
+ "summary": "Bid on client projects posted to Freelancer.com's marketplace; the platform takes a fee on each project you're awarded.",
+ "whatYouDo": "You create a profile and bid on posted projects. If a client awards you a project and you accept, you deliver the work in milestones while Freelancer.com takes its project fee, then you withdraw your balance.",
+ "appeal": [
+  "Lots of posted projects to bid on",
+  "Fees are listed on an official fees page",
+  "A program lets you bring your own clients at 0% (older terms, may have changed)"
+ ],
+ "watchOuts": [
+  "On fixed-price work the project fee is 10% or $5 USD, whichever is greater, and it's collected when you accept the award",
+  "Hourly work costs 10% of each payment, and enterprise projects 15%",
+  "Official fee pages give inconsistent prices for upgrades and listings",
+  "Complaint boards (2011–2024) report suspended accounts and funds held pending identity or transaction checks",
+  "Withdrawals cost about $1 USD for PayPal, Skrill or Payoneer (wires cost more), and Freelancer uses its own exchange rate",
+  "Payout options for Canada weren't confirmed in this check"
+ ],
+ "officialUrl": "https://www.freelancer.com/info/how-it-works",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "unclear",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 2,
+  "numeracy": 1,
+  "detail": 2,
+  "customer": 2,
+  "technical": 1,
+  "creative": 1,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "You set your bids. No earnings data was checked. Take-home pay is after the project fee, withdrawal fees and currency conversion."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Work depends on winning bids. No official data on award rates."
+ },
+ "workerStatus": "contractor",
+ "fees": "Project fee on fixed-price work is 10% or $5 USD (whichever is greater), collected when you accept. Hourly work costs 10% per payment and enterprise projects 15%. Upgrades and memberships are optional and paid. Withdrawals cost about $1 USD for PayPal, Skrill or Payoneer; wires cost more (one third-party guide says $25 USD).",
+ "applicationSteps": [
+  "Create a profile and complete identity verification early to avoid payment holds",
+  "Bid on projects that match your skills",
+  "Accept awarded projects (the project fee is collected at this point)",
+  "Deliver through milestones and withdraw your balance"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "likely",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "fees",
+  "variable_work",
+  "account_deactivation_reports",
+  "payment_delay_reports",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You're comfortable competing on bids and can handle a fee taken when you accept a project.",
+ "notFitIf": "You're new, have little to spare for fees, or need fast, reliable access to your money.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.freelancer.com/feesandcharges",
+   "title": "Freelancer Fees and Charges, Earn And Save More!",
+   "type": "official",
+   "publisher": "Freelancer.com",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary: freelancer fees are 10% or $5 USD (whichever is greater) on fixed-price work, collected on acceptance, and 10% of hourly payments. Enterprise projects are 15%. Card, PayPal and Skrill transactions cost $0.30 + 2.3%, and withdrawals about $1 USD. Upgrade prices differ across official pages. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.freelancer.com/support/Payments/project-fees?amp%3Bw=f&ngsw-bypass=&w=f",
+   "title": "Project Fees",
+   "type": "official",
+   "publisher": "Freelancer.com",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Support page on project fees, summarised together with the fees page above. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.complaintsboard.com/freelancercom-account-suspension-without-explanation-and-withholding-of-funds-c1974646",
+   "title": "Freelancer.com - account suspension without explanation and withholding of funds",
+   "type": "forum",
+   "publisher": "ComplaintsBoard",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "A 2024 complaint (anecdote): an account was suspended with no specific reason and about $200–300 held. Freelancer.com has replied to such complaints that it freezes accounts only to verify identity or transactions.",
+   "accessible": false
+  },
+  {
+   "url": "https://solutions.trustradius.com/buyer-blog/freelancercom-product-guide/",
+   "title": "freelancercom product guide",
+   "type": "independent_review",
+   "publisher": "TrustRadius",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Notes user dissatisfaction with account verification and cases of funds withheld from unverified accounts.",
+   "accessible": false
+  },
+  {
+   "url": "https://wise.com/au/blog/freelancer-review",
+   "title": "Freelancer Review: All you need to know",
+   "type": "independent_review",
+   "publisher": "Wise",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Says most withdrawal methods are free except wires ($25 USD). This conflicts with other sources' figure of about $1, so check before relying on it.",
+   "accessible": false
+  }
+ ]
+}

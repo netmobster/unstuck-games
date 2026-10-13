@@ -32,6 +32,21 @@ A working, static, mobile-first web app in `boop-remote/`:
 | **A normalisation step between research and the app** | Agents interpreted the policy unevenly. One script applies it consistently and logs every change. |
 | **Canada-first, with Ontario as the province option** | The brief's working hypothesis. Eligibility and pay rules are country-specific. Other countries are a filter state ("Outside Canada"), not unverified listings. |
 
+### 2a. The data layer (added later on 2026-10-13)
+
+Jay said the front end could just be a Lovable build, and asked for the data layer to live here. Decisions:
+
+| Decision | Why |
+|---|---|
+| **Three delivery forms, all generated from the one validated catalogue:** static JSON in `api/`, Postgres DDL + seed in `supabase/`, and the engine modules with `types/index.d.ts` | Lovable projects usually pair a Vite/TypeScript front end with Supabase, but a static fetch is the least work. Generating all three from `data/catalogue.json` means they can't disagree. |
+| **`api/` and `supabase/` are committed, not built on deploy** | The site is static files served by nginx (`INFRA.md`); there is no build step on the box. |
+| **CORS header on `/boop-remote/api/` only** (`infra/nginx/unstuck.conf`) | A front end on another origin can't fetch the JSON without it. Scoped to the read-only API path, nothing else on the apex changes. Needs an nginx reload on deploy. |
+| **The JSON Schema and the SQL check constraints are generated from `src/schema.js`** | One list of enums. A test asserts the generated artefacts still mirror the validator. |
+| **The questionnaire's `when` conditions became data** (`{ key, not, gt, minLength, maxLength }`) | They were functions, which don't survive JSON. `conditionHolds()` interprets them; a test checks the JSON round trip gives the same visible questions. |
+| **Supabase tables keep scalar columns for filtering, jsonb for nested groups, and the full `record`** | A front end can filter in SQL and still hand the exact object to `match()` without reassembling it. RLS allows public `select` only. |
+| **The SQL was loaded into a real Postgres 16 twice** (`scripts/check-sql.sh`) | Proves the DDL and the upsert path, not just the syntax. |
+| **Matching stays in the client, in these modules** | `LOVABLE.md` tells the front end not to re-implement the rules. The rules are tested here and documented in §7. |
+
 ## 3. Alternatives considered and rejected
 
 - **Vite + TypeScript, like `games/orbis`:** rejected. It would add a build and dependencies for a small app; plain modules with a validator give most of the type safety at runtime and in tests.
@@ -168,7 +183,9 @@ All weights and thresholds live in `WEIGHTS`, `CONFIG` and `fitLabel()`, and are
 | Command | Result |
 |---|---|
 | `node scripts/normalize-raw.mjs && node scripts/build-catalogue.mjs` | 77 records from 7 files, 6 safety sources, **0 validation problems** |
-| `bun test test/` | **44 pass, 0 fail.** Covers schema validation of every record; unique ids; every link a valid URL backed by a same-site source; "open" only with official evidence; categories never posing as jobs; research participation never shown as employment; stale and rejected kept off the shortlist; hard filters across 300 generated profiles; deterministic ranking; unknowns neutral; distinct picks; audience restrictions; prompt contents and privacy |
+| `node scripts/build-api.mjs && node scripts/build-sql.mjs` | `api/` with 77 records, `supabase/schema.sql` and `seed.sql` |
+| `bash scripts/check-sql.sh` | Loaded into local Postgres 16.15 twice: 77 opportunities, 460 sources, 73 live, 6 safety sources |
+| `bun test test/` | **53 pass, 0 fail** (44 before the data layer; 9 added for `api/`, the questionnaire's JSON round trip and the SQL). Covers schema validation of every record; unique ids; every link a valid URL backed by a same-site source; "open" only with official evidence; categories never posing as jobs; research participation never shown as employment; stale and rejected kept off the shortlist; hard filters across 300 generated profiles; deterministic ranking; unknowns neutral; distinct picks; audience restrictions; prompt contents and privacy |
 | `node test/ui.mjs` | **26 pass, 0 fail** (13 checks × mobile 390×844 and desktop 1280×860). Covers onboarding; answer, skip and back; the adaptive follow-up; all four card controls; details with evidence, `noopener` links and the prompt; clipboard copy plus the forced fallback; like, save, pass and undo; touch swipe (mobile) and arrow keys (desktop); the shortlist; the saved view; the impossible-limits empty state; clear everything; no overflow; no console errors |
 | `npx eslint src scripts test` | clean |
 | `node scripts/check-links.mjs` | **0 of 457 URLs reachable from this environment** (all DNS `ENOTFOUND`, the network policy). Not a statement about the sites |

@@ -1,0 +1,216 @@
+{
+ "id": "upwork-freelance",
+ "name": "Freelance client work through Upwork",
+ "organization": "Upwork",
+ "type": "freelance",
+ "category": "freelance_microbusiness",
+ "tags": [
+  "freelance",
+  "marketplace",
+  "proposals",
+  "connects",
+  "service-fee"
+ ],
+ "summary": "Sell services to clients by sending proposals for projects posted on Upwork's freelance marketplace.",
+ "whatYouDo": "You build a profile, then spend 'Connects' to send proposals to clients' job posts. If hired, you agree hourly or fixed-price terms and deliver the work. Upwork deducts its service fee before you withdraw your earnings to your bank.",
+ "appeal": [
+  "Large marketplace where clients post jobs you can bid on",
+  "The fee is shown before you send a proposal and stays fixed for that contract",
+  "Withdrawals straight to a local bank cost a flat $0.99 USD",
+  "Reviews and a track record can lead to repeat clients"
+ ],
+ "watchOuts": [
+  "Since May 2025 the freelancer service fee varies from 0% to 15% per contract (third-party guides say about 10% is typical)",
+  "Proposals cost Connects ($0.15 each), and many jobs need about 6–16 or more; third-party guides say Connects spent on proposals generally aren't refunded",
+  "New profiles can be rejected when a skill area is crowded (Upwork Community reports)",
+  "Forum posts say new freelancers often spend their Connects and get no interviews",
+  "Optional Freelancer Plus costs $19.99/month",
+  "Canadian bank fees and currency-conversion costs may apply on top"
+ ],
+ "officialUrl": "https://www.upwork.com/i/how-it-works/freelancer/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "video",
+   "independent"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 2,
+  "numeracy": 1,
+  "detail": 2,
+  "customer": 2,
+  "technical": 1,
+  "creative": 1,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "You set your rate or bid. No earnings data was checked in this pass. Take-home pay is after the 0–15% service fee, Connects spending and withdrawal costs."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Work depends on winning proposals. Forum anecdotes describe new freelancers getting no interviews, and there's no official win-rate data."
+ },
+ "workerStatus": "contractor",
+ "fees": "Freelancer service fee varies 0–15% per contract and is shown before you propose. Basic accounts pay 5% on direct contracts. Connects cost $0.15 each (minimum 10). Freelancer Plus is optional at $19.99/month. Direct to Local Bank withdrawal costs $0.99 USD, with a $5 USD minimum.",
+ "applicationSteps": [
+  "Create a freelancer profile focused on a specific skill clients want",
+  "Wait for profile approval (crowded skill areas may be declined)",
+  "Send targeted proposals using free or purchased Connects",
+  "Check the service fee shown on each proposal or offer",
+  "Set up a withdrawal method such as Direct to Local Bank and withdraw your earnings"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "fees",
+  "variable_work",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You have a skill clients pay for, can write persuasive proposals, and can afford some upfront Connects cost while you build reviews.",
+ "notFitIf": "You need income within days or can't afford to spend money on bids that may not pay off.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.upwork.com/resources/is-upwork-free",
+   "title": "Is Upwork Free To Join? Our Pricing Breakdown (2026) - Upwork",
+   "type": "official",
+   "publisher": "Upwork",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary of Upwork's 2026 resource pages: the variable 0–15% fee is shown before a proposal and fixed once the contract starts. Basic accounts pay 5% on direct contracts. Freelancer Plus is $19.99/mo with 100 Connects (versus 10 on Basic). Connects are $0.15 each with a minimum purchase of 10. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://support.upwork.com/hc/en-us/articles/211063888",
+   "title": "Upwork Help Center withdrawal article (title not shown in search result)",
+   "type": "official",
+   "publisher": "Upwork",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary of Upwork withdrawal help pages: Direct to Local Bank costs $0.99 USD per withdrawal, arrives within about 4 days, and has a $5 USD minimum. The snippet did not show Canada's currency row. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://freelancercalculator.com/upwork-fees-2026/",
+   "title": "Upwork Fees 2026: Variable 0–15% Breakdown",
+   "type": "aggregator",
+   "publisher": "FreelancerCalculator.com",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "One of several third-party guides summarised together. Upwork moved to a variable 0–15% fee on May 1, 2025, and guides estimate the typical fee at about 10%.",
+   "accessible": false
+  },
+  {
+   "url": "https://wise.com/ca/blog/upwork-canada",
+   "title": "Upwork Canada: What You Need To Know Before You Sign Up",
+   "type": "independent_review",
+   "publisher": "Wise",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "pay"
+   ],
+   "notes": "A guide for Canadian Upwork users, apparently from about 2020. It says bank transfers can add your bank's receiving fees and currency conversion fees.",
+   "accessible": false
+  },
+  {
+   "url": "https://community.upwork.com/t5/New-to-Upwork/Direct-Deposit-To-Bank-In-Canada/td-p/918386",
+   "title": "Direct Deposit To Bank In Canada",
+   "type": "forum",
+   "publisher": "Upwork Community",
+   "published": "2021-05-28",
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "A 2021 anecdote: a Toronto freelancer says direct deposit to a Canadian bank only allowed CAD. This may be out of date.",
+   "accessible": false
+  },
+  {
+   "url": "https://community.upwork.com/t5/New-to-Upwork/Rejected-Profile/m-p/493363",
+   "title": "Re: Rejected Profile",
+   "type": "forum",
+   "publisher": "Upwork Community",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "A 2018 thread (anecdote): a rejection email cited many existing freelancers with similar skills, and the advice was to niche down.",
+   "accessible": false
+  },
+  {
+   "url": "https://community.upwork.com/t5/Freelancers/Why-Upwork-make-New-Freelancers-pay-for-Connects-before-they/m-p/1159102",
+   "title": "Why Upwork make New Freelancers pay for Connects before they...",
+   "type": "forum",
+   "publisher": "Upwork Community",
+   "published": "2022-10-05",
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "risk"
+   ],
+   "notes": "A 2022 anecdote: many new freelancers get no interview requests after spending their free Connects.",
+   "accessible": false
+  }
+ ]
+}

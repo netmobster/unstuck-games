@@ -1,0 +1,205 @@
+{
+ "id": "statcan-data-collection-clerk",
+ "name": "Statistics Canada data collection clerk (survey interviewer)",
+ "organization": "Statistics Canada",
+ "type": "employment",
+ "category": "structured_employment",
+ "tags": [
+  "survey-interviewer",
+  "phone",
+  "work-from-home-possible",
+  "federal-government",
+  "part-time"
+ ],
+ "summary": "Statistics Canada hires data collection clerks as needed, for up to 35 hours a week, to run survey interviews, mostly by phone, from home or on-site.",
+ "whatYouDo": "You contact selected households or businesses, mostly by telephone and sometimes in person, explain the survey, ask the questions and enter answers into a computer-assisted system. Some roles involve visiting respondents' homes in your region.",
+ "appeal": [
+  "Can be done from home or on-site depending on operational needs",
+  "Federal employer; clerks may be eligible for Public Service group insurance benefit plans",
+  "Occupation typically needs high school plus on-the-job training",
+  "Ontario median wage for survey interviewers and statistical clerks is about $24.18/hr (Job Bank, all employers)"
+ ],
+ "watchOuts": [
+  "Hiring is 'as needed'; no current Ontario posting was confirmed",
+  "Phone-heavy: lots of calls to strangers, some of whom assume it is a scam (worker reviews)",
+  "Hours up to 35/week; reviewers say many roles are part-time",
+  "2026 Census field jobs (reported $25.87/hr enumerators, May-July 2026) are over",
+  "A reported posting required reliable home phone service and willingness to travel"
+ ],
+ "officialUrl": "https://www.statcan.gc.ca/en/employment/opportunities/data-collection",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [
+   "secondary school diploma (often required)"
+  ],
+  "equipment": [
+   "quiet space",
+   "computer"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "shifts",
+  "windows": [
+   "day",
+   "evening",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": 35
+ },
+ "interaction": {
+  "modes": [
+   "voice",
+   "in_person"
+  ],
+  "realtime": "high",
+  "phone": true
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 0,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 2,
+  "technical": 0,
+  "creative": 0,
+  "language": 2
+ },
+ "training": {
+  "required": true,
+  "cost": "unknown",
+  "notes": "On-the-job training usually provided for this occupation (NOC description)."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "StatCan page lists no salary. Job Bank Ontario median for the occupation is $24.18/hr (range $17.60-$59.13, all employers). A secondary listing reported $25.87/hr for 2026 Census enumerators."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "medium",
+  "notes": "Hired as needed for up to 35 hrs/week; reviews mention mostly part-time positions."
+ },
+ "workerStatus": "employee",
+ "fees": null,
+ "applicationSteps": [
+  "Check Statistics Canada's 'Jobs in data collection' page for current openings in your region",
+  "Follow the application instructions in the posting",
+  "Make sure you have a quiet space and reliable phone service if working from home"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "phone_heavy",
+  "variable_work"
+ ],
+ "fitsIf": "You are comfortable making many phone calls to strangers and want a government job that may be done from home.",
+ "notFitIf": "You dislike phone work or rejection, or you need guaranteed full-time hours.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.statcan.gc.ca/en/employment/opportunities/data-collection",
+   "title": "Jobs in data collection",
+   "type": "official",
+   "publisher": "Statistics Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "schedule",
+    "worker_status"
+   ],
+   "notes": "Search-result summary only (fetch blocked). Hires data collection clerks as needed, up to 35 hrs/week; work from home or on-site; mostly phone, some home visits; may be eligible for PS insurance plans; no salary shown.",
+   "accessible": false
+  },
+  {
+   "url": "https://www23.statcan.gc.ca/imdb/p3VD.pl?Function=getVD&TVD=1322554&CVD=1322870&CPV=14110&CST=01052021&MLV=5&CLV=5",
+   "title": "NOC 2021 Version 1.0 - 14110 - Survey interviewers and statistical clerks",
+   "type": "government",
+   "publisher": "Statistics Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Occupation description: secondary school and computer experience may be required.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/wages-occupation/2363/ON",
+   "title": "Coding Clerk - Statistics in Ontario (wages)",
+   "type": "government",
+   "publisher": "Government of Canada (Job Bank)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Ontario wage table for NOC 14110: median $24.18/hr, low $17.60, high $59.13 (2023-2024 LFS data). All employers, not StatCan-specific.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.narcity.com/en-ca/money/statistics-canada-is-hiring-interviewers-right-now-you-dont-need-any-experience",
+   "title": "Statistics Canada Is Hiring 'Interviewers' Right Now & You Don't Need Any Experience",
+   "type": "journalism",
+   "publisher": "Narcity",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "schedule"
+   ],
+   "notes": "Undated article on a past posting: work from home or on-site, phone-based, needs reliable home phone, high school, basic computer skills, travel/overtime possible.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.westboundary.com/?p=22143",
+   "title": "Job Opportunities: 2026 Census Positions",
+   "type": "aggregator",
+   "publisher": "West Boundary community site",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "schedule"
+   ],
+   "notes": "Secondary listing: 2026 Census enumerators $25.87/hr, 20-40 hrs/week, May-July; crew leaders $31.32/hr. Now past.",
+   "accessible": false
+  },
+  {
+   "url": "https://ca.indeed.com/cmp/Statistics-Canada/salaries/Interviewer",
+   "title": "Statistics Canada Interviewer salaries - Indeed",
+   "type": "forum",
+   "publisher": "Indeed",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "risk"
+   ],
+   "notes": "Anecdotal reviews (undated): flexible hours and benefits praised; only part-time positions; public often assumes calls are scams.",
+   "accessible": false
+  }
+ ]
+}

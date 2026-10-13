@@ -1,0 +1,204 @@
+{
+ "id": "concentrix-canada-customer-service",
+ "name": "Customer service / tech support representative (Concentrix Canada)",
+ "organization": "Concentrix",
+ "type": "employment",
+ "category": "customer_ops",
+ "tags": [
+  "bpo",
+  "call-centre",
+  "hybrid",
+  "on-site",
+  "night-shift",
+  "scam-impersonation"
+ ],
+ "summary": "Concentrix hires customer service and tech support reps in Canada, but recent Canadian postings seen are hybrid or on-site; remote Canadian postings found are old.",
+ "whatYouDo": "You handle customer calls for a client brand, troubleshooting products or accounts on shifts that can run from early morning to late night, seven days a week. Some sites rotate schedules every few months based on performance.",
+ "appeal": [
+  "Large established employer with paid classroom training",
+  "Posted Canadian base pay $19.70–$25/hr on recent hybrid/on-site roles",
+  "Bilingual roles pay more"
+ ],
+ "watchOuts": [
+  "Canada work-from-home filter showed 0 jobs when indexed; remote Canadian postings found (~$21.49/hr night shift Calgary) are ~2.5 years old",
+  "Hybrid roles require living within ~35 km of a site (e.g. Niagara Falls)",
+  "Rotating shifts 8am–11:30pm, 7 days, changing every 3 months",
+  "Scammers impersonate Concentrix recruiters with look-alike emails; Concentrix publishes a scam warning",
+  "WFH roles test internet speed and system requirements"
+ ],
+ "officialUrl": "https://jobs.concentrix.com/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": true,
+  "credentials": [
+   "high school diploma or GED (on postings seen)"
+  ],
+  "equipment": [
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "shifts",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "voice"
+  ],
+  "realtime": "high",
+  "phone": true
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 3,
+  "technical": 2,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": true,
+  "cost": "free",
+  "notes": "Belleville bilingual posting lists 12 days of paid classroom training."
+ },
+ "compensation": {
+  "min": 16,
+  "max": 25,
+  "currency": "CAD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Posted base pay: $19.70 hybrid Niagara Falls; $25 on-site bilingual Belleville; $21.49 remote night shift Calgary and $16–$18 remote inside sales Vancouver (both ~910 days old)."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "Remote Canadian availability unclear; recent Canadian postings are site-based."
+ },
+ "workerStatus": "employee",
+ "fees": null,
+ "applicationSteps": [
+  "Search jobs.concentrix.com filtered to Canada and check whether a role is remote, hybrid or on-site",
+  "Apply only on jobs.concentrix.com; real recruiters use @concentrix.com addresses",
+  "Pass internet speed/system checks for any WFH role"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "stale_needs_recheck",
+ "legitimacy": "established",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "scam_impersonation",
+  "phone_heavy"
+ ],
+ "fitsIf": "You live near a Canadian Concentrix site and want a structured call-centre job with paid training.",
+ "notFitIf": "You need fully remote work now or fixed daytime hours.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://jobs.concentrix.com/job-search/?country=Canada",
+   "title": "Concentrix job search - Canada",
+   "type": "official",
+   "publisher": "Concentrix",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status"
+   ],
+   "notes": "Search-summary only (fetch blocked). ~31 Canadian jobs listed; WFH filter showed 0 when indexed (~238 days earlier).",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.concentrix.com/job/?id=CA-req-ae979a7950e515a5",
+   "title": "Customer Service / Technical Support Rep (Hybrid) - Concentrix Careers",
+   "type": "official",
+   "publisher": "Concentrix",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "schedule",
+    "requirements"
+   ],
+   "notes": "Search-summary only. Niagara Falls ON hybrid; $19.70/hr + incentives; within 35 km; 8am–11:30pm EST 7 days; schedules change every 3 months.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.concentrix.com/job/?id=CA-req-591d56610a219922",
+   "title": "Customer Service / Tech Support Rep (Bilingual: English / French) On-Site",
+   "type": "official",
+   "publisher": "Concentrix",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements"
+   ],
+   "notes": "Search-summary only. Belleville ON on-site; $25/hr; 1+ yr CS; rotating shifts; 12 days paid classroom training.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.concentrix.com/job/phn-phn-16185142/",
+   "title": "Technical Support / Customer Service Representative-Remote (Night Shift)",
+   "type": "official",
+   "publisher": "Concentrix",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "canada_eligibility"
+   ],
+   "notes": "Search-summary only. Calgary AB work-at-home night shift, $21.49/hr, HS/GED + 1 yr CS; page metadata ~910 days old.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.concentrix.com/faqs/",
+   "title": "Frequently Asked Questions - Concentrix Careers",
+   "type": "official",
+   "publisher": "Concentrix",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search-summary only. Internet speed and system requirements are tested for WFH roles.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.concentrix.com/scam-warning/",
+   "title": "Concentrix Disclaimer (scam warning)",
+   "type": "official",
+   "publisher": "Concentrix",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "legitimacy"
+   ],
+   "notes": "Search-summary only. Scammers use Concentrix name/logo and look-alike emails, fake interviews/offers, then ask for personal or banking info; report fraud to Concentrix.",
+   "accessible": false
+  }
+ ]
+}

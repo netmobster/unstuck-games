@@ -1,0 +1,160 @@
+{
+ "id": "leger-leo-survey-panel",
+ "name": "Paid online surveys (Leger LEO panel)",
+ "organization": "Leger",
+ "type": "research_participation",
+ "category": "research_participation",
+ "tags": [
+  "research-participation",
+  "not-a-job",
+  "surveys",
+  "points",
+  "canadian-panel"
+ ],
+ "summary": "Answer market-research surveys for points you can redeem for cash, travel miles or gift cards; legitimate, but the earnings look too small to recommend as a way to earn.",
+ "whatYouDo": "You join Leger's LEO panel and get survey invitations. Each survey shows its estimated time and points reward before you start, and points build up until you reach a redemption threshold.",
+ "appeal": [
+  "Canadian-owned research firm with a large North American panel (400,000+ members, per Leger)",
+  "Rewards include cash, PayPal, Air Miles, Aeroplan or gift cards",
+  "Surveys show their time and reward up front"
+ ],
+ "watchOuts": [
+  "Rejected for this tool: no source supports a meaningful effective hourly rate",
+  "Third-party reviews put surveys at roughly $0.50–$35 each, with 1,000 points worth $1",
+  "Cash-type rewards reportedly need 20,000 points (about $20) before you can redeem (not checked against Leger's terms)",
+  "Reviews are mixed: many negative user reviews alongside positive app ratings",
+  "Survey income, not a job: no guarantee of hours or volume"
+ ],
+ "officialUrl": "https://leger360.com/leger-launches-leo-the-mobile-app-to-give-your-opinion/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "smartphone"
+  ],
+  "minAge": null,
+  "assessment": "none"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 0,
+  "numeracy": 0,
+  "detail": 1,
+  "customer": 0,
+  "technical": 0,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "aggregator",
+  "notes": "Third-party reviews say about $0.50–$35 per survey, with 1,000 points ≈ $1. No source gave an hourly figure."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "Invitations depend on panel demand and your profile. No volume data was found."
+ },
+ "workerStatus": "participant",
+ "fees": null,
+ "applicationSteps": [
+  "Join the LEO panel through Leger's app",
+  "Complete the survey invitations you qualify for",
+  "Redeem your points once you reach the threshold"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "rejected",
+ "legitimacy": "established",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "variable_work"
+ ],
+ "fitsIf": "You already enjoy doing surveys for points or travel miles and don't mind small rewards.",
+ "notFitIf": "You want meaningful income for your time.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://leger360.com/leger-launches-leo-the-mobile-app-to-give-your-opinion/",
+   "title": "Leger launches LEO: the mobile app to give your opinion",
+   "type": "official",
+   "publisher": "Leger",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy",
+    "pay",
+    "canada_eligibility"
+   ],
+   "notes": "From a search summary of this press release: members earn points per completed survey, redeemable for cash, Air Miles, Aeroplan or gift cards. Leger calls itself the largest Canadian-owned research firm, with 400k+ panel members in North America. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://moneypantry.com/leo-review/",
+   "title": "leo review",
+   "type": "independent_review",
+   "publisher": "Money Pantry",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "risk"
+   ],
+   "notes": "Third-party review: about $0.50–$35 per survey, 1,000 points = $1. Redemption needs 10,000 points for Air Miles or Aeroplan and 20,000 for gift cards or PayPal. It notes many bad reviews.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.savvynewcanadians.com/leo-leger-opinion-review/",
+   "title": "LEO (Leger Opinion) review",
+   "type": "independent_review",
+   "publisher": "Savvy New Canadians",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy"
+   ],
+   "notes": "Third-party review: the LEO app is rated about 4.2/5 from 1,100+ Google Play reviews, and the panel dates from 2004.",
+   "accessible": false
+  }
+ ]
+}

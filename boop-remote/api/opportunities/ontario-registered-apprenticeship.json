@@ -1,0 +1,155 @@
+{
+ "id": "ontario-registered-apprenticeship",
+ "name": "Registered apprenticeship in a skilled trade (Ontario)",
+ "organization": "Skilled Trades Ontario",
+ "type": "training_pathway",
+ "category": "structured_employment",
+ "tags": [
+  "skilled-trades",
+  "apprenticeship",
+  "earn-while-you-learn",
+  "sponsor",
+  "ontario",
+  "hands-on"
+ ],
+ "summary": "Earn-while-you-learn route into a skilled trade: you work for a sponsor and register a training agreement with Skilled Trades Ontario.",
+ "whatYouDo": "Most of your time is paid, on-the-job work under qualified tradespeople, with time off for in-school technical training. You hold a registered training agreement and carry a Registered Apprentice Wallet Card while working.",
+ "appeal": [
+  "Paid while you learn; sponsors must follow Ontario law, including minimum wage",
+  "No special course or school enrolment needed to start; the key step is finding a sponsor",
+  "Sponsors can be employers, journeypersons, contractors, unions or industry associations",
+  "Online portal (or paper) application; training done in another province can be recognized after verification"
+ ],
+ "watchOuts": [
+  "You must find a sponsor in Ontario before you can register, which can be the hardest step",
+  "Minimum age 16, legal permission to work in Canada, and trade-specific education requirements",
+  "Trades with ratios need a 1:1 journeyperson-to-apprentice ratio, limiting how many apprentices an employer can take",
+  "Mostly physical, on-site work; length of apprenticeship and classroom fees not checked here"
+ ],
+ "officialUrl": "https://www.skilledtradesontario.ca/apprenticeship/starting-your-apprenticeship/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [
+   "ON"
+  ],
+  "canadaEligibility": "likely",
+  "setting": "onsite"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [
+   "trade-specific minimum education (varies by trade)"
+  ],
+  "equipment": [],
+  "minAge": 16,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 0,
+  "writing": 0,
+  "numeracy": 2,
+  "detail": 2,
+  "customer": 1,
+  "technical": 2,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": true,
+  "cost": "unknown",
+  "notes": "In-school technical training is part of the apprenticeship; classroom fees and grants not verified."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Paid by the sponsor; Skilled Trades Ontario says sponsors must comply with minimum wage laws. Trade-specific rates not checked."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "Depends on the sponsor's workload and trade."
+ },
+ "workerStatus": "employee",
+ "fees": null,
+ "applicationSteps": [
+  "Pick a trade and check its requirements (16+, legal right to work, education requirement)",
+  "Find a sponsor in Ontario (employer, journeyperson, contractor, union or association)",
+  "Apply with your sponsor through the Skilled Trades Ontario Portal or on paper",
+  "After approval, sign the Training Agreement and carry your Registered Apprentice Wallet Card at work"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "career",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [],
+ "fitsIf": "You like hands-on, physical work and want to be paid while you train toward a trade.",
+ "notFitIf": "You need remote work, or you cannot yet find an employer or other sponsor to take you on.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.skilledtradesontario.ca/apprenticeship/starting-your-apprenticeship/",
+   "title": "Starting your apprenticeship - Skilled Trades Ontario",
+   "type": "official",
+   "publisher": "Skilled Trades Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "canada_eligibility"
+   ],
+   "notes": "Search-result summary only (fetch blocked). Requirements: 16+, legal permission to work in Canada, trade education requirement, Ontario sponsor; apply via portal or paper; training agreement and wallet card.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.skilledtradesontario.ca/apprenticeship/sponsor-an-apprentice/",
+   "title": "Sponsor an apprentice - Skilled Trades Ontario",
+   "type": "official",
+   "publisher": "Skilled Trades Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "pay"
+   ],
+   "notes": "Sponsors need facilities and qualified trainers, must allow in-school training time, comply with minimum wage; 1:1 ratio in trades with ratios; first-time sponsors need approval.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.skilledtradesontario.ca/skilled-trades-ontario-portal/",
+   "title": "Skilled Trades Ontario Portal",
+   "type": "official",
+   "publisher": "Skilled Trades Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Online portal used for apprenticeship applications (search summary).",
+   "accessible": false
+  }
+ ]
+}

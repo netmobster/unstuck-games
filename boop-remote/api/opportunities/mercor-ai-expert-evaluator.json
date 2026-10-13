@@ -1,0 +1,238 @@
+{
+ "id": "mercor-ai-expert-evaluator",
+ "name": "AI output evaluator / domain expert (Mercor)",
+ "organization": "Mercor",
+ "type": "contract",
+ "category": "ai_data",
+ "tags": [
+  "ai-training",
+  "evaluation",
+  "expert-roles",
+  "hourly-contract",
+  "us-canada"
+ ],
+ "summary": "AI-training marketplace that contracts generalists and professionals at hourly rates to judge AI outputs; some roles are open specifically to US and Canada residents.",
+ "whatYouDo": "You apply to a specific listing. In the US/Canada generalist role you review everyday work files produced by AI (documents, slides, spreadsheets) for quality and accuracy; expert roles (law, STEM, finance, design) ask you to judge or create content in your field.",
+ "appeal": [
+  "Official listing titled 'Generalist Expert (US/Canada)' reported at $50–70/hr",
+  "That generalist role reportedly needs no prior AI experience",
+  "Several Canada-eligible expert roles at higher rates",
+  "Weekly payment via Stripe or Wise (postings and help docs)"
+ ],
+ "watchOuts": [
+  "Projects can end abruptly; media reported contractors re-offered work at lower rates after a project ended (Mercor disputed this)",
+  "A 2026 blog reports a mass offboarding on one project (May 2026)",
+  "Some projects require ~15 hrs/week for a few weeks",
+  "Mercor's help-centre country list is hard to read; confirm Canada is supported for payment before starting",
+  "Independent contractor: no benefits, you handle taxes"
+ ],
+ "officialUrl": "https://talent.docs.mercor.com/how-to/create-account",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "US",
+   "CA",
+   "GB",
+   "AU",
+   "NZ"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [
+   "bachelor's degree or equivalent experience (one aggregator copy of the generalist listing); expert roles need domain credentials"
+  ],
+  "equipment": [
+   "computer",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 3,
+  "writing": 2,
+  "numeracy": 2,
+  "detail": 3,
+  "customer": 0,
+  "technical": 1,
+  "creative": 0,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "unknown",
+  "notes": "A blog describes paid onboarding on one project; not confirmed as general policy."
+ },
+ "compensation": {
+  "min": 50,
+  "max": 70,
+  "currency": "unstated",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Generalist Expert (US/Canada) listing, per search summaries of the official page and an aggregator copy (posted 2026-08-16). Currency not stated in snippets. Expert roles in aggregator listings run ~$25–150/hr."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Reviews call availability 'feast-or-famine'; reported project endings and offboardings in 2026. Anecdotal plus one media report."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Create a Mercor talent account",
+  "Apply to a listing that names Canada (e.g. Generalist Expert US/Canada)",
+  "Complete Mercor's screening for that listing",
+  "Sign the contractor agreement and set up Stripe or Wise payouts"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "contractor_no_benefits",
+  "account_deactivation_reports"
+ ],
+ "fitsIf": "You have professional or strong general office skills and want well-paid but short, project-based contracts.",
+ "notFitIf": "You need ongoing work or dislike sudden project changes.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://work.mercor.com/jobs/list_AAABn_wJmpMuhtibNHZLXr9O/generalist-expert-us-canada",
+   "title": "Generalist Expert (US/Canada) - Mercor Jobs",
+   "type": "official",
+   "publisher": "Mercor",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "pay"
+   ],
+   "notes": "Official listing for US- or Canada-based generalists; search summary gives $50–70/hr. Direct fetch blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://work.mercor.com/jobs/list_AAABn5VZd-pn1Ae-osROeqoW/stem-phds-and-technical-domain-experts",
+   "title": "STEM PhDs and Technical Domain Experts - Mercor Jobs",
+   "type": "official",
+   "publisher": "Mercor",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "worker_status"
+   ],
+   "notes": "Accepting applicants only from US, UK, Australia, NZ and Canada; independent contractor engagement.",
+   "accessible": false
+  },
+  {
+   "url": "https://talent.docs.mercor.com/policies/supported-countries",
+   "title": "Supported Countries for Payment - Mercor",
+   "type": "official",
+   "publisher": "Mercor",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Lists locations Mercor cannot onboard. Two search summaries disagreed on whether Canada appears (page text scrambled in one). Needs direct check.",
+   "accessible": false
+  },
+  {
+   "url": "https://talent.docs.mercor.com/how-to/payments",
+   "title": "Payments - Mercor",
+   "type": "official",
+   "publisher": "Mercor",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Payment methods page; payouts processed through Stripe or Wise depending on country.",
+   "accessible": false
+  },
+  {
+   "url": "https://alignlist.com/jobs/mercor-generalist-expert-us-canada-list-aaabn-wjmpmuhtibnhzlxr9o",
+   "title": "Mercor – Generalist Expert (US/Canada)",
+   "type": "aggregator",
+   "publisher": "AlignList",
+   "published": "2026-08-16",
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "pay"
+   ],
+   "notes": "Copy of listing: US/Canada based, strong English, productivity tools, no prior AI experience; $50–70/hr.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.aol.com/articles/worlds-youngest-self-made-billionaires-204308445.html",
+   "title": "World's 'Youngest Self-Made Billionaires' Slammed by Some Contractors at Their AI Company Over Allegedly Cutting Pay",
+   "type": "journalism",
+   "publisher": "People (via AOL)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "reliability"
+   ],
+   "notes": "Citing Forbes/Business Insider: a project with thousands of contractors ended, workers re-offered lower rates; Mercor called claims inaccurate.",
+   "accessible": false
+  },
+  {
+   "url": "https://breakingeven.online/blog/mercor-project-l-mass-offboarding-may-2026",
+   "title": "mercor project l mass offboarding may 2026",
+   "type": "independent_review",
+   "publisher": "BreakingEven",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "risk"
+   ],
+   "notes": "Blog on a May 2026 mass offboarding; says some onboarding was paid. Opinion-leaning single source.",
+   "accessible": false
+  },
+  {
+   "url": "https://remowork.life/blog/mercor-review-how-it-works-pay-and-is-it-worth-it-in-2026",
+   "title": "Mercor review: how it works, pay and is it worth it in 2026",
+   "type": "independent_review",
+   "publisher": "remowork.life",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Job-board blog; warns of feast-or-famine contract availability.",
+   "accessible": false
+  }
+ ]
+}

@@ -1,0 +1,196 @@
+{
+ "id": "cambly-english-tutor",
+ "name": "Online English conversation tutor",
+ "organization": "Cambly",
+ "type": "freelance",
+ "category": "language_writing",
+ "tags": [
+  "tutoring",
+  "english",
+  "conversation",
+  "video",
+  "no-degree",
+  "native-speaker",
+  "per-minute"
+ ],
+ "summary": "Chat with English learners over video on Cambly for a fixed per-minute rate; native English speakers 18+ can apply without teaching credentials, but intake of new tutors is currently limited.",
+ "whatYouDo": "You log in when you like and take on-demand video calls or scheduled lessons with adult learners (or children on Cambly Kids), mostly practising conversation. You are paid only for minutes spent in calls.",
+ "appeal": [
+  "No teaching certificate, degree or experience required (official)",
+  "Fixed published rate: US$0.17/min (US$10.20/h); Cambly Kids US$0.20/min (US$12/h)",
+  "No minimum hours; log on whenever you like",
+  "Payouts processed weekly via PayPal, direct deposit, wire or prepaid card"
+ ],
+ "watchOuts": [
+  "Must be a native English speaker; fluent non-native speakers are generally not accepted",
+  "Cambly says it is temporarily limiting new tutors and profile processing may take longer (official page; also reported 10 Sep 2026)",
+  "Paid only for minutes in calls; tutor agreement reportedly guarantees no minimum students or income",
+  "Tutor reviews report unreliable 'priority hours', low pay, and penalties or removal after disconnections (anecdotal, mixed dates)",
+  "Some locations are unsupported (California, Massachusetts, New Jersey as of 2024); no Canadian province was listed"
+ ],
+ "officialUrl": "https://tutorlanding.cambly.com/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "webcam",
+   "headset",
+   "fast internet",
+   "quiet space"
+  ],
+  "minAge": 18,
+  "assessment": "none"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "video",
+   "voice"
+  ],
+  "realtime": "high",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 0,
+  "numeracy": 0,
+  "detail": 1,
+  "customer": 2,
+  "technical": 0,
+  "creative": 1,
+  "language": 3
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": "No certification or experience required per official tutor page."
+ },
+ "compensation": {
+  "min": 10.2,
+  "max": 12,
+  "currency": "USD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Official tutor page: $0.17 USD/min standard and $0.20 USD/min Cambly Kids, i.e. $10.20–12.00 per hour of call time. Waiting time between calls is unpaid. Older guides cite other rates."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Official: no minimum hours. Third-party review says the tutor agreement does not guarantee students or revenue; reviewers say priority hours have declined."
+ },
+ "workerStatus": "unknown",
+ "fees": null,
+ "applicationSteps": [
+  "Create a tutor profile on Cambly's tutor site",
+  "Complete the tech check and record a short self-introduction video",
+  "Wait for profile approval (currently slower while Cambly limits new tutors)",
+  "Choose a payout method and start taking calls"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "waitlist_or_no_work_guarantee",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "waitlist",
+  "account_deactivation_reports"
+ ],
+ "fitsIf": "You are a native English speaker who enjoys casual conversation and wants flexible, no-credential side income paid by the minute.",
+ "notFitIf": "You are not a native English speaker, or you need dependable hours and more than about US$10–12 per hour of call time.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://tutorlanding.cambly.com/",
+   "title": "Become a Tutor — Cambly",
+   "type": "official",
+   "publisher": "Cambly",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "pay",
+    "status",
+    "schedule"
+   ],
+   "notes": "Search-indexed: native English speaker, 18+, strong internet, no certificates or experience needed; $0.17/min ($10.20/h), Cambly Kids $0.20/min; weekly payment processing with several methods; no minimum hours; temporarily limiting new tutors. Not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://support.cambly.com/hc/en-us/articles/5075228249101-Unsupported-Tutoring-Locations",
+   "title": "Unsupported Tutoring Locations",
+   "type": "official",
+   "publisher": "Cambly",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Help article with 2024 effective dates listing California, Massachusetts and New Jersey as unsupported tutoring locations; no Canadian location listed per search summary.",
+   "accessible": false
+  },
+  {
+   "url": "https://selfmadesuccess.com/cambly-tutor-review/",
+   "title": "Cambly tutor review",
+   "type": "independent_review",
+   "publisher": "Self-Made Success",
+   "published": "2026-09-10",
+   "accessed": "2026-10-13",
+   "claims": [
+    "status",
+    "reliability"
+   ],
+   "notes": "Updated 10 Sep 2026: author saw Cambly's notice about temporarily limiting new tutors; says the tutor agreement does not guarantee any minimum students or revenue.",
+   "accessible": false
+  },
+  {
+   "url": "https://ca.trustpilot.com/review/cambly.com",
+   "title": "Cambly reviews (Trustpilot Canada)",
+   "type": "forum",
+   "publisher": "Trustpilot",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "reliability"
+   ],
+   "notes": "Anecdotal user reviews (2018–2026 across Trustpilot domains): unreliable priority hours, low per-minute pay, disconnection penalties and removals; some praise flexibility.",
+   "accessible": false
+  },
+  {
+   "url": "https://static.glassdoor.ca/Interview/Cambly-Interview-Questions-E1181065.htm",
+   "title": "Cambly Interview Questions",
+   "type": "forum",
+   "publisher": "Glassdoor",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Applicant reports: online profile, tech check and self-introduction video; many approved within a day or two, longer depending on demand. Anecdotal.",
+   "accessible": false
+  }
+ ]
+}

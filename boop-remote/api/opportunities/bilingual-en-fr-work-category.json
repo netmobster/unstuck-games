@@ -1,0 +1,203 @@
+{
+ "id": "bilingual-en-fr-work-category",
+ "name": "Bilingual English–French work (category)",
+ "organization": "Various",
+ "type": "category",
+ "category": "language_writing",
+ "tags": [
+  "bilingual",
+  "french",
+  "translation",
+  "interpretation",
+  "localization",
+  "canada-advantage"
+ ],
+ "summary": "Using English–French bilingualism for translation, interpretation, localization review, tutoring or bilingual service work — a distinctly Canadian advantage with an earnings premium that is strongest in Quebec.",
+ "whatYouDo": "Depending on the route: translating or revising documents, interpreting calls or meetings, reviewing French-Canadian content or voices for AI and localization companies, tutoring French, or serving clients in both languages. Professional translation and interpretation usually need training or accreditation; some task-based fr-CA work needs only native fluency.",
+ "appeal": [
+  "Job Bank national median for translators, terminologists and interpreters about $33.95/hour (range $20–$51)",
+  "The federal Translation Bureau buys freelance linguistic services through supply arrangements and a supplier directory",
+  "Research reports a bilingual earnings premium, largest in Quebec",
+  "Global companies specifically recruit Canadian French speakers (e.g. CrowdGen fr-CA voice tasks, Welocalize French Canadian linguists; LanguageLine added French Canadian video interpreting)"
+ ],
+ "watchOuts": [
+  "Outside Quebec, studies find the wage premium smaller or absent once occupation is accounted for",
+  "Translation Bureau supply arrangements or directory registration do not guarantee any work",
+  "Professional routes typically require training, certification or accreditation exams",
+  "Several 'French' postings found were for France- or US-based roles; check for fr-CA and location rules"
+ ],
+ "officialUrl": "https://www.jobbank.gc.ca/wagereport/occupation/24484",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en",
+  "fr"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [
+   "Translation training or certification often expected for professional translation",
+   "Accreditation exams for Translation Bureau interpretation"
+  ],
+  "equipment": [
+   "computer"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [
+   "day",
+   "evening",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "voice",
+   "independent"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 3,
+  "numeracy": 0,
+  "detail": 3,
+  "customer": 1,
+  "technical": 1,
+  "creative": 1,
+  "language": 3
+ },
+ "training": {
+  "required": false,
+  "cost": "unknown",
+  "notes": "Formal translation training/certification helps for professional routes; costs not researched."
+ },
+ "compensation": {
+  "min": 20,
+  "max": 51,
+  "currency": "CAD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Job Bank wages for Translators, terminologists and interpreters (NOC 51114), 2023–2024 LFS, updated Nov 2025: national median $33.95; Quebec median $36.26, Ontario $25.64. Employee-oriented data; freelance and task rates differ."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "unknown",
+  "notes": "Varies by route; federal supplier status carries no work guarantee; task platforms are sporadic."
+ },
+ "workerStatus": "varies",
+ "fees": null,
+ "applicationSteps": [
+  "Assess your written and spoken level in both languages",
+  "Pick a route: fr-CA task platforms, tutoring, localization vendors, or professional translation/interpretation",
+  "For federal work, review the Translation Bureau's supplier routes (supply arrangement or directory; CRA business number and procurement business number needed)",
+  "Consider formal training or certification for professional translation"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "career",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work"
+ ],
+ "fitsIf": "You read, write and speak both English and French well and want to turn that into income, especially in or near Quebec, Ottawa or New Brunswick.",
+ "notFitIf": "Your French (or English) is conversational only, without strong writing skills.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.jobbank.gc.ca/wagereport/occupation/24484",
+   "title": "Wages for Translators, terminologists and interpreters - Job Bank",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "National median $33.95/h, range $20–$51 (2023–2024 LFS, updated 19 Nov 2025); QC $36.26, BC $33.55, AB $32.28, ON $25.64.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.canada.ca/en/translation-bureau/services.html",
+   "title": "Offering your services to the translation bureau",
+   "type": "government",
+   "publisher": "Translation Bureau, Government of Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "reliability"
+   ],
+   "notes": "Routes for freelance translators/interpreters: supply arrangement or directory registration; interpretation requires accreditation exams. Search summary of Bureau pages: no amount of work is guaranteed; tenders sent to qualified suppliers by email.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.canada.ca/en/translation-bureau/services/suppliers.html",
+   "title": "Suppliers qualified to offer linguistic services to the Translation Bureau",
+   "type": "government",
+   "publisher": "Translation Bureau, Government of Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Supplier qualification information; Indigenous/foreign-language route requires a CRA business number and procurement business number before directory registration (per search summary).",
+   "accessible": false
+  },
+  {
+   "url": "https://www.rcinet.ca/en/2019/04/30/canada-english-french-advantages-work/",
+   "title": "English-French bilingualism advantages at work",
+   "type": "journalism",
+   "publisher": "Radio Canada International",
+   "published": "2019-04-30",
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Reports a 2019 Conference Board of Canada study: outside Quebec, bilinguals are about one-fifth of the workforce and more likely to have higher incomes and lower unemployment.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.uoguelph.ca/lang/news/august-31-bilingualism-translates-higher-earnings-study-finds",
+   "title": "Bilingualism Translates into Higher Earnings, Study Finds",
+   "type": "journalism",
+   "publisher": "University of Guelph, Lang School of Business",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "University news item on a study linking bilingualism to higher earnings. Search summary cites Christofides & Swidinsky (2001 Census): bilingual men +3.6%, women +6.6% vs English-only (attribution to this page not certain).",
+   "accessible": false
+  },
+  {
+   "url": "https://www.languageline.com/resources/news/languageline-video-interpreting-now-includes-french-canadian-supporting-canadas-linguistic-diversity",
+   "title": "LanguageLine Video Interpreting now includes French Canadian",
+   "type": "official",
+   "publisher": "LanguageLine Solutions",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Announcement adding French Canadian to 24/7 video interpreting for Quebec, Ontario, New Brunswick, Manitoba and others. Demand signal only; not a job posting.",
+   "accessible": false
+  }
+ ]
+}

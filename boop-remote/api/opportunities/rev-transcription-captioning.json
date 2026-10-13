@@ -1,0 +1,233 @@
+{
+ "id": "rev-transcription-captioning",
+ "name": "Freelance transcriptionist / captioner",
+ "organization": "Rev",
+ "type": "task_platform",
+ "category": "language_writing",
+ "tags": [
+  "transcription",
+  "captioning",
+  "subtitles",
+  "text-only",
+  "per-audio-minute",
+  "waitlist"
+ ],
+ "summary": "Transcribe or caption audio and video files from Rev's work queue and get paid per audio minute; new applicants currently face a waitlist.",
+ "whatYouDo": "You pick audio or video files from Rev's online queue and type (or correct) what is said, following Rev's style guide; captioners also sync text to video. Pay is per minute of audio, so speed and accuracy determine what you earn per hour worked.",
+ "appeal": [
+  "No degree or prior experience needed to apply",
+  "Choose your own hours and which files to take",
+  "Weekly PayPal payouts (per Rev's freelancer pages as indexed)",
+  "Captioning and subtitle-translation roles are listed at higher per-minute rates"
+ ],
+ "watchOuts": [
+  "Rev's freelancer page indicates a waitlist due to high application volume; secondary sources cite multi-week waits (one says 4–12 weeks, unverified)",
+  "Paid per audio minute, not per hour worked, so effective hourly pay is much lower than the headline rate",
+  "Rev cut base pay sharply in 2019 (Gizmodo reporting; worker petition cites $0.45 to $0.30 per minute)",
+  "Unpaid skills assessment and transcription sample required to apply",
+  "Independent contractor: no benefits and no guaranteed work",
+  "Canada appears on third-party lists of accepted countries, but the current official country list was not verified"
+ ],
+ "officialUrl": "https://www.rev.com/freelancers",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA",
+   "US",
+   "GB",
+   "AU",
+   "IE",
+   "NZ",
+   "ZA",
+   "MX",
+   "NL"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "headset",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unpaid_test"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "independent",
+   "text"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 2,
+  "numeracy": 0,
+  "detail": 3,
+  "customer": 0,
+  "technical": 1,
+  "creative": 0,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": "Must follow Rev's style guidelines; no paid training identified."
+ },
+ "compensation": {
+  "min": 0.4,
+  "max": 1.1,
+  "currency": "unstated",
+  "unit": "minute_audio",
+  "basis": "official",
+  "notes": "Transcription range from Rev's freelancer pages as summarized in search results (pages could not be opened directly). Captioning listed at $0.54–$1.10 and subtitle translation at $1.70–$4.00+ per audio minute. Currency not stated in indexed text (Rev is US-based; likely USD). Older reviews cite a $0.30 floor."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Waitlist for new applicants; work comes from a shared queue; 2019 pay cuts and earnings losses reported by journalists and workers. No official volume guarantee found."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Choose a role (transcription, captions or subtitles) on Rev's freelancer page",
+  "Complete the short English/grammar skills assessment",
+  "Submit a transcription sample",
+  "Wait for an emailed decision (applications are waitlisted and processed in order received)",
+  "Set up PayPal to receive weekly payments"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "now",
+ "status": "waitlist_or_no_work_guarantee",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "unpaid_assessment",
+  "variable_work",
+  "contractor_no_benefits",
+  "waitlist"
+ ],
+ "fitsIf": "You type fast and accurately, have a good ear for English, and want flexible at-home work you can do in short sessions and can wait out a sign-up queue.",
+ "notFitIf": "You need predictable hourly income soon or dislike repetitive, detail-heavy work paid by the piece.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.rev.com/freelancers",
+   "title": "Apply To Be A Transcript, Caption, or Legal Freelancer",
+   "type": "official",
+   "publisher": "Rev",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status",
+    "requirements",
+    "reliability"
+   ],
+   "notes": "Search-indexed content (page not opened; egress blocked): applications waitlisted due to high volume, processed in order received with an email decision; apply by choosing a role, taking a skills assessment and submitting a sample.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.rev.com/freelancers/transcription",
+   "title": "Rev freelancer transcription page",
+   "type": "official",
+   "publisher": "Rev",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search summary of Rev's freelancer pages: transcription $0.40–$1.10 per audio/video minute, paid weekly via PayPal. Not opened directly.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.rev.com/freelancers/captions",
+   "title": "Rev freelancer captions page",
+   "type": "official",
+   "publisher": "Rev",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search summary: captioner $0.54–$1.10 per audio/video minute; subtitle translator $1.70–$4.00+ listed on Rev freelancer pages. Not opened directly.",
+   "accessible": false
+  },
+  {
+   "url": "https://medium.com/@dreamzville/great-article-f8bdbbafb8c5",
+   "title": "Comment listing countries Rev accepts freelancers from",
+   "type": "forum",
+   "publisher": "Medium (reader comment)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Anecdotal, undated reader comment quoting a list of accepted countries that includes Canada (also US excluding California, UK, Australia, Ireland, Mexico, Netherlands, NZ, South Africa). Not an official list.",
+   "accessible": false
+  },
+  {
+   "url": "https://transcriptionist.net/jobs/rev/",
+   "title": "Rev Transcription Jobs (2026): How to Apply, Pay & Test",
+   "type": "aggregator",
+   "publisher": "transcriptionist.net",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "status"
+   ],
+   "notes": "Third-party guide. Search summaries of third-party guides say Canada is an eligible country and the waitlist can last weeks; specific figures not pinned to this page.",
+   "accessible": false
+  },
+  {
+   "url": "https://gizmodo.com/there-is-a-point-where-a-person-cant-do-anymore-1839808189",
+   "title": "Gizmodo report on Rev transcriptionist pay cut",
+   "type": "journalism",
+   "publisher": "Gizmodo",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "worker_status",
+    "risk"
+   ],
+   "notes": "2019 reporting that Rev lowered minimum pay for its independently contracted workforce by over 30%; workers reported large earnings losses.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.coworker.org/petitions/support-from-customers-for-fair-wages-for-rev-com-workers",
+   "title": "Support from customers for fair wages for Rev.com workers",
+   "type": "forum",
+   "publisher": "Coworker.org",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "risk"
+   ],
+   "notes": "Worker petition (circa 2019) stating base transcriptionist pay was cut from $0.45 to $0.30 per minute. Advocacy source.",
+   "accessible": false
+  }
+ ]
+}

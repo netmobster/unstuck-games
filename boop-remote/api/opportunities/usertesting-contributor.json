@@ -1,0 +1,206 @@
+{
+ "id": "usertesting-contributor",
+ "name": "Website and app tester (UserTesting contributor)",
+ "organization": "UserTesting",
+ "type": "research_participation",
+ "category": "research_participation",
+ "tags": [
+  "research-participation",
+  "not-a-job",
+  "usability-testing",
+  "think-aloud",
+  "paypal"
+ ],
+ "summary": "Get paid small amounts to try websites and apps while speaking your thoughts aloud on a screen recording; occasional paid tests, not a job.",
+ "whatYouDo": "You answer screener questions for tests in your dashboard. If you qualify, you complete tasks on a website or app while recording your screen and voice and saying what you think. Every test in your feed shows its pay before you start.",
+ "appeal": [
+  "Canada is one of UserTesting's seven standard contributor countries",
+  "Pay for each test is shown up front in your feed",
+  "Tests are short: third-party reviews commonly cite about $10 for a roughly 20-minute unmoderated test",
+  "The practice test can be done in English or French (or German)"
+ ],
+ "watchOuts": [
+  "Not a job: screeners often disqualify you, and tests come and go (third-party reviews)",
+  "Signing up includes a practice test that reviews describe as unpaid",
+  "Payment is PayPal only, about 14 days after each test",
+  "If you submit an incomplete test instead of reporting a problem, the payment is cancelled",
+  "You have to talk aloud while your screen is recorded"
+ ],
+ "officialUrl": "https://www.usertesting.com/get-paid-to-test/make-money-online",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en",
+  "fr",
+  "de"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "quiet space"
+  ],
+  "minAge": 18,
+  "assessment": "unpaid_test"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "voice",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 0,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 0,
+  "technical": 1,
+  "creative": 0,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": 10,
+  "max": null,
+  "currency": "USD",
+  "unit": "task",
+  "basis": "aggregator",
+  "notes": "UserTesting's help centre says pay depends on customer demand, test type and tasks, and is shown for each test. Third-party reviews commonly put a typical unmoderated test at about $10, with longer or live sessions paying more (one site advertises $10–$120). The $10 is a typical figure, not a guaranteed minimum."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "There's no official data on test volume. Third-party reviews report high screener disqualification rates."
+ },
+ "workerStatus": "participant",
+ "fees": null,
+ "applicationSteps": [
+  "Start sign-up on UserTesting's contributor page (it tells you whether your location qualifies)",
+  "Verify your email and connect a PayPal account in good standing",
+  "Complete your profile",
+  "Record the practice test in English, French or German",
+  "Take screeners in your dashboard and complete the tests you qualify for"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "unpaid_assessment",
+  "variable_work"
+ ],
+ "fitsIf": "You're comfortable thinking aloud on a recording and want short, occasional paid tasks.",
+ "notFitIf": "You need regular income or don't want to be recorded while you talk.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://help.usertesting.com/hc/articles/11880389286429-Which-countries-can-I-test-in",
+   "title": "Which countries can I test in",
+   "type": "official",
+   "publisher": "UserTesting",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "From a search summary of this customer-facing article: the standard contributor countries are the US, UK, Germany, France, Canada, India and Australia. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://participant-support.usertesting.com/hc/en-us/articles/38410176419603-Can-I-join-the-UserTesting-Network-from-my-country",
+   "title": "Can I join the UserTesting Network from my country",
+   "type": "official",
+   "publisher": "UserTesting",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "requirements"
+   ],
+   "notes": "From a search summary (attribution approximate): there's no fixed public list of eligible countries because the list changes, and the sign-up page shows whether your location qualifies. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://support.usertesting.com/hc/en-us/articles/4405071522323-What-languages-can-I-speak-in-my-practice-test",
+   "title": "What languages can I speak in my practice test",
+   "type": "official",
+   "publisher": "UserTesting",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "From a search summary: you can speak English, German or French in the practice test. Applicants verify their email and PayPal, complete a profile and submit the practice test. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://help.usertesting.com/hc/en-us/articles/11880240002845-Participant-compensation",
+   "title": "Participant compensation",
+   "type": "official",
+   "publisher": "UserTesting",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary: pay depends on demand, test type and tasks, and the feed shows the amount. Payment goes by PayPal about 14 days after completion. Submitting an incomplete test instead of reporting a problem cancels payment. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://sidehustleschool.com/reviews/usertesting/",
+   "title": "Is UserTesting Legit? A Current Contributor Review (2026)",
+   "type": "independent_review",
+   "publisher": "Side Hustle School",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "risk",
+    "requirements"
+   ],
+   "notes": "One of several third-party reviews summarised together (attribution approximate). They put typical unmoderated tests at about $10 and report high screener disqualification. They say the practice test is usually unpaid and contributors must be 18+.",
+   "accessible": false
+  },
+  {
+   "url": "https://focusgrouplist.com/usertesting-pays-10-120-per-test-quick-studies-you-can-do-anytime/",
+   "title": "UserTesting Pays $10-$120 Per Test — Quick Studies You Can Do Anytime",
+   "type": "aggregator",
+   "publisher": "FocusGroupList",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "An aggregator whose title claims $10–$120 per test. The figure is not verified.",
+   "accessible": false
+  }
+ ]
+}

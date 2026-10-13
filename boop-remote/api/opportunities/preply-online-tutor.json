@@ -1,0 +1,195 @@
+{
+ "id": "preply-online-tutor",
+ "name": "Online tutor (languages and other subjects)",
+ "organization": "Preply",
+ "type": "freelance",
+ "category": "language_writing",
+ "tags": [
+  "tutoring",
+  "languages",
+  "english",
+  "french",
+  "video",
+  "set-your-own-rate",
+  "commission"
+ ],
+ "summary": "Set your own rate and teach one-on-one video lessons on the Preply marketplace; Preply keeps the whole first trial lesson with each new student and 18–33% of later lessons.",
+ "whatYouDo": "You build a profile with a photo and intro video, set your price and availability, and teach booked one-on-one lessons (English, French, other languages or subjects). Income depends on attracting and keeping students in a crowded marketplace.",
+ "appeal": [
+  "You set your own price and schedule",
+  "Can teach English, French or other languages and subjects",
+  "No teaching certificate required (per third-party guides)",
+  "Commission falls as you accumulate hours taught (33% down to 18%)"
+ ],
+ "watchOuts": [
+  "Preply keeps 100% of every trial lesson with a new student, so first lessons are effectively unpaid",
+  "33% commission for new tutors; 18% only after 400+ hours taught",
+  "Crowded marketplace (one review cites 12,000+ English tutors), making first students hard to get",
+  "Complaint-board reports of tutor profiles removed without warning (individual, unverified)",
+  "Income is unpredictable, especially early on"
+ ],
+ "officialUrl": "https://preply.com/en/teach",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "webcam",
+   "headset",
+   "fast internet",
+   "quiet space"
+  ],
+  "minAge": null,
+  "assessment": "none"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "video",
+   "voice"
+  ],
+  "realtime": "high",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 1,
+  "customer": 3,
+  "technical": 0,
+  "creative": 1,
+  "language": 3
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": "No mandatory paid training identified."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": "hour",
+  "basis": "unknown",
+  "notes": "Tutors set their own rates. Official commission example: on a $10/hour lesson a new tutor keeps $6.70 and a tutor with 400+ hours keeps $8.20 (non-trial lessons)."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Earnings depend entirely on student bookings; no guaranteed volume. Large tutor supply reported."
+ },
+ "workerStatus": "contractor",
+ "fees": "Commission: 100% of each trial lesson with a new student; 33% of regular lessons for new tutors, falling (28% after 20 hours per secondary sources) to 18% at 400+ hours (official help article).",
+ "applicationSteps": [
+  "Sign up on Preply's teach page and create a tutor profile",
+  "Add a photo, short intro video, description and availability",
+  "Wait for Preply's profile review",
+  "Set your price and take trial lessons (first lesson with each new student is not paid to you)"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "fees",
+  "variable_work",
+  "contractor_no_benefits",
+  "account_deactivation_reports"
+ ],
+ "fitsIf": "You can teach a language (including French) or subject, enjoy live video teaching, and are willing to market yourself to build a student base.",
+ "notFitIf": "You need income within days or dislike giving away first lessons and competing on price.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://preply.com/en/teach",
+   "title": "Teach online: Become an online tutor at Preply",
+   "type": "official",
+   "publisher": "Preply",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Official tutor recruitment page (seen in search results; not opened). Search summary attributes the trial 100% / 33%→18% commission statement to it.",
+   "accessible": false
+  },
+  {
+   "url": "https://help.preply.com/en/articles/4171383-preply-commission-model",
+   "title": "Preply commission model",
+   "type": "official",
+   "publisher": "Preply",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "risk"
+   ],
+   "notes": "Help article: 100% commission on each trial lesson with a new student; non-trial commission starts at 33% and drops to 18% with hours taught; $10/h example (keep $6.70 new, $8.20 at 400+ hours).",
+   "accessible": false
+  },
+  {
+   "url": "https://storylearning.com/teach/teaching-tips/preply-review",
+   "title": "Preply Review: Is It Any Good For Online Teachers?",
+   "type": "independent_review",
+   "publisher": "StoryLearning",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "risk"
+   ],
+   "notes": "Review noting 12,000+ English tutors at time of writing (hard to stand out) and student complaints about subscription pricing.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.sikayetvar.com/en/preply-us",
+   "title": "Preply complaints",
+   "type": "forum",
+   "publisher": "SikayetVar",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Complaint posts including a tutor profile deleted without warning; individual, unverified reports.",
+   "accessible": false
+  },
+  {
+   "url": "https://teflinstitute.com/blog/preply-tutor/",
+   "title": "Becoming a Preply Tutor: Pay, Requirements and an Honest Look",
+   "type": "aggregator",
+   "publisher": "TEFL Institute",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "canada_eligibility"
+   ],
+   "notes": "Third-party guide. Search summaries of guides say no teaching certificate is needed, profile review takes ~3–5 working days and no country restriction on tutors is stated (not pinned to this page).",
+   "accessible": false
+  }
+ ]
+}

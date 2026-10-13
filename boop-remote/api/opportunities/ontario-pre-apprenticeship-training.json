@@ -1,0 +1,139 @@
+{
+ "id": "ontario-pre-apprenticeship-training",
+ "name": "Pre-apprenticeship training (free trade-readiness programs, Ontario)",
+ "organization": "Government of Ontario (delivered by colleges and community agencies)",
+ "type": "training_pathway",
+ "category": "government_program",
+ "tags": [
+  "skilled-trades",
+  "free-training",
+  "work-placement",
+  "ontario",
+  "no-sponsor-needed"
+ ],
+ "summary": "Free Ontario programs of up to 52 weeks, including an 8-12 week work placement, that help people without trade experience get ready to land an apprenticeship.",
+ "whatYouDo": "You take trade-focused training at a college or community agency, then complete a work placement with an employer. The goal is to build the skills and experience that sponsors look for when hiring apprentices.",
+ "appeal": [
+  "No charge; textbooks, safety equipment and tools are covered",
+  "Includes an 8-12 week work placement",
+  "Age and EI eligibility are not factors",
+  "Start dates throughout the year",
+  "Open to high-school graduates and people who left school early who are unemployed or underemployed"
+ ],
+ "watchOuts": [
+  "Training, not a job: no wage or stipend information found",
+  "Each program sets its own trade focus and intake criteria; availability varies by area",
+  "Listed priority groups (e.g., Indigenous people, newcomers, women, Francophones, youth-at-risk) may get priority",
+  "Sources do not say how many graduates go on to get an apprenticeship sponsor"
+ ],
+ "officialUrl": "https://www.ontario.ca/page/pre-apprenticeship-training",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [
+   "ON"
+  ],
+  "canadaEligibility": "likely",
+  "setting": "onsite"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "fixed",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 0,
+  "writing": 0,
+  "numeracy": 1,
+  "detail": 1,
+  "customer": 0,
+  "technical": 1,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": true,
+  "cost": "free",
+  "notes": "No charge; textbooks, safety equipment and tools covered (ontario.ca, via search)."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "No pay information found; treat as unpaid training unless the provider says otherwise."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "Cohort-based programs; intake dates vary by provider."
+ },
+ "workerStatus": "student",
+ "fees": null,
+ "applicationSteps": [
+  "Contact Employment Ontario (1-800-387-5656) or a local provider to find pre-apprenticeship programs near you",
+  "Check each program's trade, start date and intake criteria",
+  "Apply to the provider, then complete the in-class training and work placement",
+  "Use the placement and contacts to look for an apprenticeship sponsor"
+ ],
+ "timeToFirstEarnings": "months",
+ "horizon": "career",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [],
+ "fitsIf": "You are interested in a trade but do not yet have the skills or experience to get an employer to sponsor you.",
+ "notFitIf": "You need income now or cannot commit to months of in-person training.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.ontario.ca/page/pre-apprenticeship-training",
+   "title": "Pre-apprenticeship training",
+   "type": "official",
+   "publisher": "Government of Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "legitimacy"
+   ],
+   "notes": "Search-result summary only (fetch blocked). No charge; books, safety gear and tools covered; up to 52 weeks with 8-12 week placement; for unemployed/underemployed high-school grads or early leavers; age and EI not factors; apply via Employment Ontario.",
+   "accessible": false
+  },
+  {
+   "url": "https://centralwesthealthline.ca/printService.aspx?id=14052",
+   "title": "Pre-apprenticeship training (service listing)",
+   "type": "aggregator",
+   "publisher": "Central West Healthline",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Community directory listing describing the program for unemployed people wanting skilled-trades careers (narrower wording than ontario.ca).",
+   "accessible": false
+  }
+ ]
+}

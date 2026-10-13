@@ -1,0 +1,15 @@
+{
+ "generated": "2026-10-13",
+ "base": "https://unstuck-games.com/boop-remote/api/",
+ "endpoints": {
+  "index.json": "this list",
+  "meta.json": "counts, enum labels, matching weights",
+  "opportunities.json": "slim list of every record, for list views",
+  "opportunities/{id}.json": "one full record",
+  "catalogue.json": "every full record plus safety sources (the file the app loads)",
+  "questions.json": "the questionnaire",
+  "schema.json": "JSON Schema for one record",
+  "safety.json": "official Canadian job-scam guidance sources"
+ },
+ "licence": "Catalogue content is research output with cited sources; verify against the source before relying on it."
+}

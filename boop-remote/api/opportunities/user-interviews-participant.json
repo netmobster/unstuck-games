@@ -1,0 +1,183 @@
+{
+ "id": "user-interviews-participant",
+ "name": "Paid user research sessions (User Interviews)",
+ "organization": "User Interviews",
+ "type": "research_participation",
+ "category": "research_participation",
+ "tags": [
+  "research-participation",
+  "not-a-job",
+  "ux-research",
+  "interviews",
+  "gift-cards"
+ ],
+ "summary": "Apply to occasional paid product-research sessions (interviews, surveys, tests) run by companies; this is research participation, not a job.",
+ "whatYouDo": "You build a participant profile and answer screener surveys for studies that interest you. If a researcher picks you, you join a session such as a video interview or survey and receive an incentive afterwards.",
+ "appeal": [
+  "Canada is a supported participant country for projects that User Interviews runs itself ('Recruit' projects)",
+  "A single session can pay well for its length (one third-party review reports about US$45 per study on average)",
+  "You can redeem incentives in your local currency"
+ ],
+ "watchOuts": [
+  "Very occasional: User Interviews itself estimates 1–2 study invitations every 6 months",
+  "Screeners can be long, and you may hear nothing for days or weeks (third-party review)",
+  "When User Interviews pays you, it's a Tremendous digital gift card or prepaid Visa, not PayPal, Venmo or a bank transfer",
+  "Incentives are shown in USD, and one redeemed in the wrong currency can't be reissued",
+  "Payment can take up to 10 business days after the session"
+ ],
+ "officialUrl": "https://www.userinterviews.com/support/getting-selected-for-studies",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "webcam"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "video",
+   "voice",
+   "text"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 1,
+  "customer": 0,
+  "technical": 0,
+  "creative": 0,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": "USD",
+  "unit": "study",
+  "basis": "aggregator",
+  "notes": "No official average. A third-party review (The Work at Home Woman) reports about US$45 per completed study in its 2026 data, up from $29 in 2021. Each incentive is set by the researcher and varies with study length and type."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "Officially, a participant can expect 1–2 invitations every 6 months, and the first selection can take time."
+ },
+ "workerStatus": "participant",
+ "fees": null,
+ "applicationSteps": [
+  "Create a participant profile and keep it complete and accurate",
+  "Apply to studies by answering their screener surveys",
+  "If selected, attend the scheduled session",
+  "Redeem the incentive through Tremendous, choosing the correct currency for Canada"
+ ],
+ "timeToFirstEarnings": "months",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work"
+ ],
+ "fitsIf": "You don't mind filling in screeners now and then for the chance of a well-paid one-off session.",
+ "notFitIf": "You need regular income, or you want cash to PayPal or your bank rather than gift cards.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.userinterviews.com/support/getting-selected-for-studies",
+   "title": "Getting selected for studies (User Interviews support)",
+   "type": "official",
+   "publisher": "User Interviews",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "From a search summary: not every study fits everyone. Participants can expect 1–2 invitations every 6 months, and the first selection can take time. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.userinterviews.com/support/incentive-and-currency-options",
+   "title": "Choose from dozens of currencies and incentive types",
+   "type": "official",
+   "publisher": "User Interviews",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "pay"
+   ],
+   "notes": "From a search summary of User Interviews' incentive support pages: Recruit projects support participants in the US, UK, Canada, Australia, France, Germany, South Africa and India. Incentives are shown in USD and must be redeemed in the correct local currency. User Interviews pays through Tremendous, with no PayPal, Venmo or bank option, and a prepaid Visa is the closest thing to cash. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://support.userinterviews.com/hc/en-us/articles/51535828055699-Learn-how-and-when-you-ll-receive-your-incentive-payment",
+   "title": "Learn how and when you'll receive your incentive payment",
+   "type": "official",
+   "publisher": "User Interviews",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary: expect payment within 10 business days of the session. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.theworkathomewoman.com/user-interviews-review/",
+   "title": "User Interviews Review: Earn an Average of $45 per Survey",
+   "type": "independent_review",
+   "publisher": "The Work at Home Woman",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Third-party review: averages about $45 per completed study in its 2026 data, versus $29 in an earlier 2021 review.",
+   "accessible": false
+  },
+  {
+   "url": "https://visu.network/blog/user-interviews-review/",
+   "title": "User Interviews Review 2026: Pay, Frequency, Payouts - Visu Network",
+   "type": "independent_review",
+   "publisher": "Visu Network",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "risk"
+   ],
+   "notes": "Third-party review: says how rarely people get selected is under-discussed. Reviewers report screeners as long as full surveys, followed by days or weeks of silence. Trustpilot is cited as about 68% five-star and 15% one-star.",
+   "accessible": false
+  }
+ ]
+}

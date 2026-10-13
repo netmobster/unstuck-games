@@ -1,0 +1,219 @@
+{
+ "id": "remote-contact-centre-customer-support-category",
+ "name": "Remote call-centre, chat & email customer support (category)",
+ "organization": "Various",
+ "type": "category",
+ "category": "customer_ops",
+ "tags": [
+  "customer-service",
+  "call-centre",
+  "chat-support",
+  "email-support",
+  "work-from-home",
+  "entry-level"
+ ],
+ "summary": "Work-from-home customer service jobs answering customers by phone, chat or email for retailers, outsourcers and other companies across Canada.",
+ "whatYouDo": "You answer customer questions, fix order, account or product problems, document each contact and escalate tricky cases, working scheduled shifts against quality and speed targets. Many roles mix phone with chat and email; some retail roles also involve upselling.",
+ "appeal": [
+  "Job Bank says the occupation usually needs secondary school or several weeks of on-the-job training",
+  "Remote postings for people living in Canada exist now (e.g. a retailer posted one on 2026-10-05)",
+  "Employers often supply laptop, headset and monitor",
+  "Mostly employee roles with paid training"
+ ],
+ "watchOuts": [
+  "Regional median wages on Job Bank are roughly $18–$25/hr; remote postings seen paid $17–$18/hr",
+  "Shift work incl. weekends/holidays, metrics and call-handling targets",
+  "Many remote postings are temporary or limited to some provinces",
+  "Job scams imitate real employers: 2,300+ Canadians reported losing $49M+ to job scams in 2024",
+  "Never deposit an 'employer' cheque, buy equipment, or reply to unsolicited job texts"
+ ],
+ "officialUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/15201/NS",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [
+   "secondary school diploma often requested"
+  ],
+  "equipment": [
+   "quiet space",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "shifts",
+  "windows": [
+   "day",
+   "evening",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "voice",
+   "text"
+  ],
+  "realtime": "high",
+  "phone": true
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 3,
+  "technical": 1,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": true,
+  "cost": "free",
+  "notes": "Postings seen describe employer-run (often paid) training."
+ },
+ "compensation": {
+  "min": 18.27,
+  "max": 25.3,
+  "currency": "CAD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Spread of Job Bank regional MEDIAN wages seen for call-centre CSRs (NOC 64409): MB North Central ~18.27, NS ~18.53, ON ~21.50, North Coast region ~25.30. Medians, not a floor/ceiling."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "medium",
+  "notes": "Employee roles usually give steady shifts; many remote postings are temporary/seasonal."
+ },
+ "workerStatus": "varies",
+ "fees": null,
+ "applicationSteps": [
+  "Search Job Bank, employer career sites and reputable job boards for 'remote customer service Canada'",
+  "Check province eligibility, schedule, pay and whether it is employee or contractor",
+  "Verify the employer domain before sharing ID or banking info",
+  "Report suspected job scams to the Canadian Anti-Fraud Centre (1-888-495-8501)"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "phone_heavy",
+  "scam_impersonation"
+ ],
+ "fitsIf": "You are patient with people, can keep to a shift schedule and want an accessible entry into remote work.",
+ "notFitIf": "You strongly dislike live calls, metrics or rigid schedules.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/summary-occupation/15201/NS",
+   "title": "Customer Service Representative - Call Centre in Nova Scotia",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search-summary only (fetch blocked). NOC 64409; median ~$18.53/hr in NS.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/summary-occupation/15201/ON;jsessionid=357FA18734DDD2560746499A22635501.jobsearch76",
+   "title": "Customer Service Representative - Call Centre in Ontario",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements"
+   ],
+   "notes": "Search-summary only; page ~574 days old. ON median ~$21.50/hr; usually secondary school or several weeks of on-the-job training.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/summary-occupation/15201/geo29304",
+   "title": "Customer Service Representative - Call Centre in the North Coast Region",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search-summary only. Median ~$25.30/hr (highest regional median seen).",
+   "accessible": false
+  },
+  {
+   "url": "https://to.indeed.com/aapddztfrbmx",
+   "title": "Temporary Call Center Universal Agent, Canada (Remote) - Carter's",
+   "type": "aggregator",
+   "publisher": "Indeed",
+   "published": "2026-10-05",
+   "accessed": "2026-10-13",
+   "claims": [
+    "status",
+    "pay",
+    "requirements",
+    "schedule"
+   ],
+   "notes": "Full posting read via Indeed API. Fully remote, must reside in Canada; $17.95/hr; phone/email/chat; laptop, headset, monitor provided; 6+ months CS; weekend day and holidays; temporary, may convert.",
+   "accessible": true
+  },
+  {
+   "url": "https://to.indeed.com/aap6z79wfs28",
+   "title": "WAH Call Center Agent (Immediate Need) - MCI",
+   "type": "aggregator",
+   "publisher": "Indeed",
+   "published": "2026-02-27",
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Full posting read via Indeed API. Remote work-at-home Canada; 18+, HS diploma, pre-employment test, possible background check; phone/email/chat; pay not stated.",
+   "accessible": true
+  },
+  {
+   "url": "https://www.fcnb.ca/en/news-alerts/cafc-bulletin-job-scams",
+   "title": "CAFC bulletin: job scams",
+   "type": "government",
+   "publisher": "Financial and Consumer Services Commission (NB)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Search-summary only. Red flags: unsolicited texts/emails, web-based email addresses, fake cheques victims must repay; CAFC 1-888-495-8501.",
+   "accessible": false
+  },
+  {
+   "url": "https://dailyhive.com/calgary/job-scam-canada-losses",
+   "title": "Canadians lost $49 million in job scams last year and it's getting worse",
+   "type": "journalism",
+   "publisher": "Daily Hive",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Search-summary only. 2,300+ Canadians reported $49M+ lost to job scams in 2024; CAFC says only 5–10% are reported.",
+   "accessible": false
+  }
+ ]
+}

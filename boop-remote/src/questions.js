@@ -1,5 +1,6 @@
 // The preference questionnaire. Each question writes one key of the profile.
-// `when(profile)` makes a question adaptive: it is only asked if it would change matching.
+// `when` makes a question adaptive: it is only asked if it would change matching. It is plain
+// data (see conditionHolds) so the questionnaire can be exported as JSON for other front ends.
 // Every question can be skipped; a skipped answer is stored as null ("not answered"),
 // which the engine treats as neutral, never as a negative.
 
@@ -48,7 +49,7 @@ export const QUESTIONS = [
     title: 'Are those times a firm limit?',
     help: 'If firm, we hide routes with fixed shifts outside your times.',
     kind: 'single',
-    when: p => Array.isArray(p.windows) && p.windows.length > 0 && p.windows.length < 4,
+    when: { key: 'windows', minLength: 1, maxLength: 3 },
     options: [
       { value: true, label: 'Yes, firm' },
       { value: false, label: 'Preferred, not firm' },
@@ -71,7 +72,7 @@ export const QUESTIONS = [
     title: 'And phone or voice calls specifically?',
     help: 'Phone comfort is separate from being sociable.',
     kind: 'single',
-    when: p => p.interaction !== 'live',
+    when: { key: 'interaction', not: 'live' },
     options: [
       { value: 'fine', label: 'Fine' },
       { value: 'prefer_not', label: 'Prefer not' },
@@ -176,7 +177,7 @@ export const QUESTIONS = [
     id: 'minPayFirm',
     title: 'Is that floor firm?',
     kind: 'single',
-    when: p => typeof p.minPay === 'number' && p.minPay > 0,
+    when: { key: 'minPay', gt: 0 },
     options: [
       { value: true, label: 'Firm: hide anything below it' },
       { value: false, label: 'A preference' },
@@ -194,6 +195,18 @@ export const QUESTIONS = [
   },
 ];
 
+// Evaluate a question's `when` condition against a profile. Conditions are small objects so they
+// survive JSON export: { key, not?, gt?, minLength?, maxLength? }. All given tests must hold.
+export function conditionHolds(c, p) {
+  if (!c) return true;
+  const v = p[c.key];
+  if ('not' in c && v === c.not) return false;
+  if ('gt' in c && !(typeof v === 'number' && v > c.gt)) return false;
+  if ('minLength' in c && !(Array.isArray(v) && v.length >= c.minLength)) return false;
+  if ('maxLength' in c && !(Array.isArray(v) && v.length <= c.maxLength)) return false;
+  return true;
+}
+
 export function emptyProfile() {
   const p = {};
   for (const q of QUESTIONS) p[q.id] = q.kind === 'matrix' ? {} : null;
@@ -201,5 +214,5 @@ export function emptyProfile() {
 }
 
 export function visibleQuestions(profile) {
-  return QUESTIONS.filter(q => !q.when || q.when(profile));
+  return QUESTIONS.filter(q => conditionHolds(q.when, profile));
 }

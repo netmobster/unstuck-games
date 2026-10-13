@@ -1,0 +1,269 @@
+{
+ "id": "adobe-stock-contributor",
+ "name": "Stock photo, video & illustration contributor",
+ "organization": "Adobe Stock",
+ "type": "freelance",
+ "category": "creative_production",
+ "tags": [
+  "stock-photography",
+  "stock-video",
+  "illustration",
+  "vectors",
+  "royalties",
+  "side-income",
+  "sporadic"
+ ],
+ "summary": "Sell licences to your photos, videos, vectors and illustrations through Adobe Stock and earn a share of each sale.",
+ "whatYouDo": "You create and upload images, footage or vector art with titles and keywords through the Adobe Stock Contributor portal. Submissions are moderated, and accepted files earn a royalty whenever an Adobe Stock customer licenses them.",
+ "appeal": [
+  "Free to join with an Adobe ID. Adobe says there are no upfront or subscription fees",
+  "Adobe's published royalty rate is 33% for photos, vectors and illustrations and 35% for video",
+  "Adobe sets per-download royalty floors for large-subscription sales (about $0.33–$0.38, rising with lifetime licences)",
+  "Payouts through PayPal, Payoneer or Skrill"
+ ],
+ "watchOuts": [
+  "Per-download earnings are often under $1. Adobe's own example is about US$0.99 per photo on a 10-licence monthly plan, and as low as $0.33–$0.40 on large plans",
+  "You can only request a payout once you have at least US$25 and 45 days have passed since your first sale",
+  "Contributors on Adobe's forum report sharp download drops in 2025–2026 (one went from 50–60 to 10–20 a week with 6,200+ assets). Community experts blame competition from AI-generated content, now about half the library (anecdotal)",
+  "Forum posters also complain of vague rejections and some account deactivations. Adobe staff don't answer individual account issues on the forum",
+  "Without a valid US tax form, Adobe withholds tax at the maximum rate (30%)",
+  "Your country of residence is fixed when you create the Adobe ID",
+  "You must be 18 or older"
+ ],
+ "officialUrl": "https://contributor.stock.adobe.com/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "fast internet"
+  ],
+  "minAge": 18,
+  "assessment": "none"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 0,
+  "technical": 2,
+  "creative": 3,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": "No required training; must follow Adobe's account, content submission and model-release guidelines."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Official: royalty 33% (photos, vectors, illustrations) and 35% (video) of the net licence price, based on the US purchase price. Adobe's contributor page shows about $3.30 per download on a small monthly plan, down to $0.33–$0.40 on the largest plans; extended and HD/4K licences pay more. Free-collection placements pay a one-time credit instead. Payout minimum US$25. No typical monthly income is published."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "Income depends on buyer downloads. Adobe community forum threads (2025–2026, anecdotal) report large, unexplained drops in downloads and blame a growing share of AI content."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Create a free Adobe ID and sign in to the Adobe Stock Contributor portal (your country of residence can't be changed later)",
+  "Accept the Contributor Agreement and read the submission and model-release guidelines",
+  "Upload files with titles and keywords and wait for moderation",
+  "Link PayPal, Payoneer or Skrill and file a US tax form (non-US residents use a W-8 form) before requesting payment"
+ ],
+ "timeToFirstEarnings": "months",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "contractor_no_benefits",
+  "account_deactivation_reports"
+ ],
+ "fitsIf": "You already create photos, video or vector art and want to earn a little from a growing back catalogue over time.",
+ "notFitIf": "You need predictable income soon or don't want your earnings to depend on an algorithm and a crowded library.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://contributor.stock.adobe.com/",
+   "title": "Adobe Stock Contributor: sell photos, footage, illustrations and vectors",
+   "type": "official",
+   "publisher": "Adobe",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Official contributor portal landing page seen in search results. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://helpx.adobe.com/stock/contributor/payments-earnings/royalties-pricing/royalty-rates-assets.html",
+   "title": "Adobe Stock royalty rates for contributors",
+   "type": "official",
+   "publisher": "Adobe",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search summary: 33% for photos, vectors and illustrations and 35% for video, applied to the net licence price based on the US purchase price; example of US$0.99 per photo on a US$29.99 10-licence monthly plan. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://contributor.stock.adobe.com/royalties",
+   "title": "Adobe Stock contributor royalties",
+   "type": "official",
+   "publisher": "Adobe",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search summary: about $3.30 per download on a 3-credit monthly plan and $0.33–$0.40 on the 350+ credit minimum-guaranteed tier; extended licences and HD/4K pay more. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://helpx.adobe.com/stock/contributor/help/royalty-details.html",
+   "title": "Adobe Stock contributor payment guidelines",
+   "type": "official",
+   "publisher": "Adobe",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search summary (not pinned to this page): lifetime royalty floors on large-subscription standard content of $0.33 (0–999 licences), $0.36 (1,000–9,999) and $0.38 (10,000+); free-collection placements pay one-time credits. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://helpx.adobe.com/stock/contributor/payments-earnings/payment-taxes/payment-requirements.html",
+   "title": "Payment requirements for Contributors",
+   "type": "official",
+   "publisher": "Adobe",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "canada_eligibility"
+   ],
+   "notes": "Search summary: US$25 minimum balance, 45-day wait after first sale, linked PayPal, Payoneer or Skrill account; PayPal available globally, Skrill in most countries (not Russia for new accounts). Canada not named specifically. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://helpx.adobe.com/stock/contributor/help/getting-paid.html",
+   "title": "Getting paid (Adobe Stock contributor help)",
+   "type": "official",
+   "publisher": "Adobe",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search summary (not pinned precisely to this page): without a valid tax form Adobe withholds at the maximum rate of 30% depending on country of residence. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://helpx.adobe.com/stock/contributor/get-started/manage-your-account/account-submission-guidelines.html",
+   "title": "Adobe Stock contributor guidelines",
+   "type": "official",
+   "publisher": "Adobe",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search summary: contributors must be 18+; country of residence is set when the Adobe ID is created and cannot be changed; submissions are moderated and contributors must accept the Contributor Agreement. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://helpx.adobe.com/stock/contributor/get-started/become-contributor/contributor-overview.html",
+   "title": "Adobe Stock Contributor overview",
+   "type": "official",
+   "publisher": "Adobe",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search summary: free Adobe ID; Adobe says there are no upfront costs or subscription fees for contributors. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://community.adobe.com/questions-38/downloads-dropped-from-50-60-to-10-20-weekly-despite-6200-quality-assets-advice-needed-1547768",
+   "title": "Downloads dropped from 50–60 to 10–20 weekly despite 6,200 quality assets",
+   "type": "forum",
+   "publisher": "Adobe Community (contributor forum)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "risk"
+   ],
+   "notes": "Anecdotal 2026 thread: contributor with 6,200+ assets reports weekly downloads falling since November 2025; community experts cite AI assets added at hundreds of thousands per week, now over half the database. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://community.adobe.com/questions-38/has-anyone-else-experienced-a-sudden-drop-in-adobe-stock-downloads-in-2026-1630684",
+   "title": "Has anyone else experienced a sudden drop in Adobe Stock downloads in 2026?",
+   "type": "forum",
+   "publisher": "Adobe Community (contributor forum)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Anecdotal 2026 thread: several contributors describe sales drops from about April 2026; a moderator points to consumer spending, economy and seasonality. Page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://community.adobe.com/questions-38/sharp-drop-in-sales-high-rejection-rates-any-official-insight-1551007",
+   "title": "Sharp drop in sales, high rejection rates: any official insight?",
+   "type": "forum",
+   "publisher": "Adobe Community (contributor forum)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Anecdotal thread on vague rejections and falling sales; search summary also notes community experts saying Adobe staff don't respond to personal account matters on the forum. Page not opened.",
+   "accessible": false
+  }
+ ]
+}

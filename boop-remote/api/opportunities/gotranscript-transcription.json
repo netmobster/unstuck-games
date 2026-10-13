@@ -1,0 +1,179 @@
+{
+ "id": "gotranscript-transcription",
+ "name": "Freelance transcriptionist (multi-language)",
+ "organization": "GoTranscript",
+ "type": "task_platform",
+ "category": "language_writing",
+ "tags": [
+  "transcription",
+  "text-only",
+  "per-audio-minute",
+  "multilingual",
+  "french"
+ ],
+ "summary": "Freelance transcription work for GoTranscript in English or many other languages, paid per audio minute after a quiz and audio-sample test.",
+ "whatYouDo": "You pick transcription tasks on GoTranscript's platform and type what you hear following its guidelines. Work is offered in many languages, which can help bilingual people; pay varies by language demand, task difficulty, speed and accuracy.",
+ "appeal": [
+  "GoTranscript's jobs page says it is short on transcribers and editors and hiring is open (company claim, as indexed)",
+  "No application fee",
+  "Many languages supported, so French or another language may open extra work",
+  "Payouts via PayPal or Payoneer"
+ ],
+ "watchOuts": [
+  "Advertised 'up to $1.75 per minute' is a ceiling across languages; third-party guides cite much lower English rates (around $0.60 per audio minute, unverified)",
+  "Unpaid grammar/guidelines quiz and audio transcription sample",
+  "Impersonation risk: the company warns to apply only directly and use only your own account; never pay to apply",
+  "Canada not specifically confirmed on an official page",
+  "Independent contractor with no guaranteed volume"
+ ],
+ "officialUrl": "https://gotranscript.com/transcription-jobs",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "headset",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unpaid_test"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "independent",
+   "text"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 2,
+  "numeracy": 0,
+  "detail": 3,
+  "customer": 0,
+  "technical": 1,
+  "creative": 0,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": "Must learn GoTranscript's guidelines for the quiz and sample."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": "minute_audio",
+  "basis": "unknown",
+  "notes": "Official jobs page advertises up to $1.75 per audio minute, varying by language demand, speed, accuracy and complexity; third-party guides cite about $0.60 per audio minute for English (unverified). Left blank because no official English-specific rate was found."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "unknown",
+  "notes": "Company states a shortage of transcribers; no independent data on task supply found in this pass."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Choose your language on GoTranscript's transcription jobs page and complete the online application",
+  "Pass a short A/B-type quiz on the guidelines",
+  "Transcribe a short audio sample (a few minutes) using the style guide",
+  "If accepted, pick tasks and withdraw earnings via PayPal or Payoneer"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "unpaid_assessment",
+  "variable_work",
+  "contractor_no_benefits",
+  "scam_impersonation"
+ ],
+ "fitsIf": "You want flexible text-only work and especially if you can transcribe French or another in-demand language.",
+ "notFitIf": "You need a clear, reliable hourly rate before investing time in an unpaid test.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://gotranscript.com/transcription-jobs",
+   "title": "Online transcription jobs at GoTranscript",
+   "type": "official",
+   "publisher": "GoTranscript",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status",
+    "pay",
+    "worker_status",
+    "risk"
+   ],
+   "notes": "Search-indexed: freelance remote work for independent contractors; says it is short on transcribers/editors and hiring is fully open; pay up to $1.75/min varying by language and performance; no application fee; warns to apply directly and use only your own account. Not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://gotranscript.com/english-uk-transcription-job",
+   "title": "English (UK) transcription job with GoTranscript",
+   "type": "official",
+   "publisher": "GoTranscript",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search-indexed: first step is a short A/B-type quiz on the guidelines, then a short audio clip transcription sample.",
+   "accessible": false
+  },
+  {
+   "url": "https://transcriptionist.net/jobs/gotranscript/",
+   "title": "GoTranscript Jobs (2026): How to Apply, Pay & Practice Test",
+   "type": "aggregator",
+   "publisher": "transcriptionist.net",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements"
+   ],
+   "notes": "Third-party guide. Search summaries of such guides cite ~$0.60/audio minute for English, PayPal/Payoneer payouts and an estimated 35–40% pass rate; not pinned to this page, unverified.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.lilachbullock.com/what-reddit-reveals-about-transcription-jobs/",
+   "title": "What Reddit reveals about transcription jobs",
+   "type": "independent_review",
+   "publisher": "Lilach Bullock",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Summarizes Reddit discussion: r/transcription moderators pin warnings about recurring recruitment scams; advice never to pay before earning. Secondhand summary of forum content.",
+   "accessible": false
+  }
+ ]
+}

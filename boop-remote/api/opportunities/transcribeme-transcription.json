@@ -1,0 +1,176 @@
+{
+ "id": "transcribeme-transcription",
+ "name": "Freelance transcriptionist (short audio clips)",
+ "organization": "TranscribeMe",
+ "type": "task_platform",
+ "category": "language_writing",
+ "tags": [
+  "transcription",
+  "text-only",
+  "per-audio-hour",
+  "entrance-exam",
+  "short-tasks"
+ ],
+ "summary": "Transcribe short audio clips on TranscribeMe's WorkHub platform after passing an entrance exam, paid per audio hour via PayPal.",
+ "whatYouDo": "After passing an entrance exam, you log into WorkHub and transcribe short audio clips (described as 2–4 minutes) following TranscribeMe's style guide. With experience and extra exams you can join specialty teams (e.g. legal, medical) that pay more.",
+ "appeal": [
+  "Short clips suit small blocks of free time",
+  "No experience needed to start; mainly a computer and internet connection",
+  "Specialty teams (legal, medical) pay more after additional exams",
+  "Paid through PayPal, which operates in Canada"
+ ],
+ "watchOuts": [
+  "Low starting pay: $15–22 per audio hour, and one audio hour can take several hours to transcribe",
+  "Unpaid entrance exam (style-guide quiz plus short audio clips)",
+  "Canada eligibility only evidenced by a third-party 'worldwide' listing, not an official country list",
+  "PayPal account required",
+  "Several sources found are more than two years old; rates and exam availability may have changed"
+ ],
+ "officialUrl": "https://www.transcribeme.com/freelancers/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "headset",
+   "fast internet"
+  ],
+  "minAge": 18,
+  "assessment": "unpaid_test"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "independent",
+   "text"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 2,
+  "numeracy": 0,
+  "detail": 3,
+  "customer": 0,
+  "technical": 1,
+  "creative": 0,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": "Must learn the style guide for the entrance exam; no paid training identified."
+ },
+ "compensation": {
+  "min": 0.25,
+  "max": 0.37,
+  "currency": "unstated",
+  "unit": "minute_audio",
+  "basis": "official",
+  "notes": "Official freelancer page (per search summary) cites starting rates of $15–22 per audio hour, converted here to roughly $0.25–0.37 per audio minute. Specialty-team rates cited variously as ~$36–40 or $60–70+ per audio hour. Currency not stated in indexed text (US company; likely USD)."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "No official or independent evidence on task supply was found in this pass."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Sign up on TranscribeMe's WorkHub site",
+  "Pass the general entrance exam (style-guide quiz plus short audio clips)",
+  "Account is activated after a pass; start transcribing short clips",
+  "Optionally take further exams to join specialty teams"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "unpaid_assessment",
+  "variable_work",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You want a low-commitment, text-only side task you can do in 10–20 minute bursts and are comfortable with modest pay while you build speed.",
+ "notFitIf": "You need at least minimum-wage-equivalent hourly earnings from the start.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.transcribeme.com/freelancers/",
+   "title": "Freelance Transcription Jobs - TranscribeMe",
+   "type": "official",
+   "publisher": "TranscribeMe",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements"
+   ],
+   "notes": "Search-indexed: starting $15–22 per audio hour; specialty teams $60–70+ per audio hour; only a computer and internet needed. Not opened directly.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.transcribeme.com/legal-transcriptionists-jobs/",
+   "title": "How to Become a Legal Transcriptionist at TranscribeMe",
+   "type": "official",
+   "publisher": "TranscribeMe",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search-indexed: every transcriptionist must first pass a general entrance exam; specialty teams require further exams.",
+   "accessible": false
+  },
+  {
+   "url": "https://newworkhub.transcribeme.com/signup/",
+   "title": "Sign Up - WorkHub - TranscribeMe",
+   "type": "official",
+   "publisher": "TranscribeMe",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Transcriber signup page. Search summary of TranscribeMe pages: 18+, computer with latest Chrome, stable internet, PayPal account; account activated after passing the exam. Not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.wahojobs.com/job/transcribeme-transcriber-1",
+   "title": "Transcriber - Work from Home - Starts $15 audio hr",
+   "type": "aggregator",
+   "publisher": "WahoJobs",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "pay"
+   ],
+   "notes": "Undated job-board listing marking the TranscribeMe transcriber role as open worldwide, starting at $15 per audio hour.",
+   "accessible": false
+  }
+ ]
+}

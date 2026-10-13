@@ -1,0 +1,196 @@
+{
+ "id": "working-solutions-on-demand-agent",
+ "name": "On-demand work-at-home contact centre agent (Working Solutions)",
+ "organization": "Working Solutions",
+ "type": "contract",
+ "category": "customer_ops",
+ "tags": [
+  "contractor",
+  "on-demand",
+  "call-centre",
+  "per-minute-pay",
+  "flexible-hours"
+ ],
+ "summary": "Working Solutions contracts independent agents in the US and Canada to handle customer calls for client programs from home, paid per productive minute.",
+ "whatYouDo": "You certify for a client program (e.g. customer care, sales or benefits enrollment), book available time slots, and handle customer contacts from home. You are paid only for productive minutes and invoice as an independent contractor.",
+ "appeal": [
+  "Official pages say Canadian applicants are accepted",
+  "Self-scheduled slots; reviewers praise flexibility",
+  "Program classes/certifications are free; possible education stipend after minimum hours",
+  "Choice of client programs"
+ ],
+ "watchOuts": [
+  "Paid per productive minute ($0.25–$0.31/min ≈ $15–$18.60/hr only while productive); currency/Canadian rates not confirmed",
+  "Independent contractor: no benefits; you handle your own taxes",
+  "Reviewers report limited available hours, competition for slots and a 20-hour weekly minimum on some programs",
+  "One reviewer says ~2 weeks of training time was unpaid (another says paid)",
+  "Complaint-site reports (unverified) of disputed final payments; province rules not stated"
+ ],
+ "officialUrl": "https://workingsolutions.com/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "US",
+   "CA",
+   "JM"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "unknown",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "voice"
+  ],
+  "realtime": "high",
+  "phone": true
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 3,
+  "technical": 1,
+  "creative": 0,
+  "language": 0
+ },
+ "training": {
+  "required": true,
+  "cost": "free",
+  "notes": "Official FAQ: classes/certifications at no cost; stipend possible after minimum authorized hours. Reviewers disagree on whether training time is paid."
+ },
+ "compensation": {
+  "min": 15,
+  "max": 18.6,
+  "currency": "unstated",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Derived from official FAQ rate of $0.25–$0.31 per productive minute (x60). Only productive minutes paid; currency not stated in what was seen (US-based company)."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Reviewers report limited hours and competition among contractors; work depends on client program demand."
+ },
+ "workerStatus": "contractor",
+ "fees": "No certification fee per official FAQ; payment by no-fee direct deposit or debit card. As a contractor you cover your own taxes.",
+ "applicationSteps": [
+  "Apply on jobs.workingsolutions.com and confirm your Canadian location is accepted",
+  "Choose a client program and complete its free certification",
+  "Book available time slots and start taking contacts",
+  "Track productive minutes and set aside tax (no employer deductions)"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "likely",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "contractor_no_benefits",
+  "variable_work",
+  "payment_delay_reports",
+  "phone_heavy"
+ ],
+ "fitsIf": "You want self-scheduled phone work from home and can accept contractor status and uneven hours.",
+ "notFitIf": "You need a guaranteed paycheque, benefits, or pay for idle time between calls.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://jobs.workingsolutions.com/faqs/",
+   "title": "Working Solutions FAQs for Remote Agents",
+   "type": "official",
+   "publisher": "Working Solutions",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "worker_status",
+    "requirements"
+   ],
+   "notes": "Search-summary only (fetch blocked). Paid per productive minute ~$0.25–$0.31; free classes/certification; stipend possible; independent contractors; direct deposit or debit card.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.workingsolutions.com/faq/",
+   "title": "Working Solutions FAQ (older)",
+   "type": "official",
+   "publisher": "Working Solutions",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Search-summary only. Summary of several jobs.workingsolutions.com pages: accepts applicants in the US, Canada (some versions add Jamaica); excludes some US states.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.workingsolutions.com/about-us/",
+   "title": "About us - Working Solutions",
+   "type": "official",
+   "publisher": "Working Solutions",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Search-summary only. Requires a Canadian or US address in a jurisdiction where they do business; province rules not listed.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.indeed.com/cmp/Working-Solutions/reviews",
+   "title": "Working Solutions Employee Reviews (Indeed)",
+   "type": "independent_review",
+   "publisher": "Indeed",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "reliability"
+   ],
+   "notes": "Anecdotal. One reviewer: ~2 weeks unpaid training, hard to meet 20 h/wk minimum due to limited hours; another says training paid but short.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.pissedconsumer.com/working-solutions/RT-F.html",
+   "title": "Working Solutions complaints",
+   "type": "forum",
+   "publisher": "PissedConsumer",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Anecdotal, unverified complaint site. Reports of unpaid hours and disputed final payment.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.workingsolutions.com/",
+   "title": "Careers / application page (listed in research, not opened)",
+   "type": "official",
+   "publisher": "Working Solutions",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [],
+   "notes": "Seen in search results only; kept for re-checking.",
+   "accessible": false
+  }
+ ]
+}

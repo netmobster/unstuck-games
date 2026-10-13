@@ -1,0 +1,198 @@
+{
+ "id": "fiverr-gigs",
+ "name": "Selling freelance service 'gigs' on Fiverr",
+ "organization": "Fiverr",
+ "type": "freelance",
+ "category": "freelance_microbusiness",
+ "tags": [
+  "freelance",
+  "marketplace",
+  "gigs",
+  "commission"
+ ],
+ "summary": "List fixed-price service packages ('gigs') that buyers can order directly; Fiverr keeps 20% of each sale.",
+ "whatYouDo": "You create gig listings that describe a specific service, with price tiers and delivery times. Buyers find and order your gig, you deliver the work through Fiverr's order system, and your earnings clear to your balance after a holding period.",
+ "appeal": [
+  "Buyers find you through search instead of you bidding on jobs",
+  "Simple flat fee: you keep 80% of each order",
+  "Faster 7-day clearance and early payout become available at higher seller levels or with Seller Plus"
+ ],
+ "watchOuts": [
+  "Fiverr keeps 20% of every order, including tips",
+  "Standard sellers' earnings are held for 14 days after an order completes before you can withdraw",
+  "Early payout costs 1% and is limited to Top Rated sellers and Seller Plus Premium members",
+  "Buyers also pay a 5.5% service fee (plus $3.50 on orders under $200), which makes your gig cost them more",
+  "Fiverr Community posts report sudden drops in gig impressions and accounts disabled after several order cancellations",
+  "Canada-specific payout methods and fees weren't confirmed in this check"
+ ],
+ "officialUrl": "https://www.fiverr.com/sellers/freelance-jobs",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "unclear",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 2,
+  "technical": 1,
+  "creative": 1,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "You set your gig prices. No earnings data was checked. You receive 80% of the order value after any discounts."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Orders depend on how your gigs rank in search. Fiverr Community anecdotes describe sudden impression drops and long gaps with no orders."
+ },
+ "workerStatus": "contractor",
+ "fees": "20% commission on every order, tips included. Earnings clear after 14 days (7 days for Seller Plus, Top Rated and Pro). Early payout costs 1%. Withdrawal-method fees vary and weren't confirmed for Canada.",
+ "applicationSteps": [
+  "Create a seller account and profile",
+  "Publish gigs with clear packages, prices and delivery times",
+  "Deliver orders on time and avoid cancellations, which can hurt your ranking",
+  "Withdraw cleared revenue through an available payout method"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "fees",
+  "variable_work",
+  "account_deactivation_reports",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You can package a clear, repeatable service and can wait while your gigs build reviews and ranking.",
+ "notFitIf": "You need quick, predictable income or can't absorb a 20% commission.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://help.fiverr.com/hc/en-us/articles/5244747923985-Seller-coupons",
+   "title": "Growth Tools for Seller Plus",
+   "type": "official",
+   "publisher": "Fiverr",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary: the seller's revenue is 80% of the order amount after any discount. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://help.fiverr.com/hc/en-us/articles/4402267122449-Early-Payout",
+   "title": "Early Payout",
+   "type": "official",
+   "publisher": "Fiverr",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary of Fiverr help pages (attribution approximate): standard clearance is 14 days, or 7 days for Seller Plus, Top Rated and Pro. Early payout is for Top Rated sellers and Seller Plus Premium members and costs 1% each time. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://help.fiverr.com/hc/en-us/articles/360050216133-Paying-for-orders-extras-or-custom-offers",
+   "title": "Paying for orders, extras, or custom offers",
+   "type": "official",
+   "publisher": "Fiverr",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary: buyers pay a 5.5% service fee, plus $3.50 on orders under $200. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://freelancercalculator.com/fiverr-seller-fees-2026-official-guide/",
+   "title": "Fiverr Seller Fees 2026: The Official Complete Guide for Freelancers — FreelancerCalculator.com",
+   "type": "aggregator",
+   "publisher": "FreelancerCalculator.com",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "A third-party guide, not an official Fiverr page despite its title. It says Fiverr takes a flat 20% including tips and holds earnings 14 days, and that withdrawal fees vary by method (PayPal, bank, Payoneer). It doesn't cover Canada.",
+   "accessible": false
+  },
+  {
+   "url": "https://community.fiverr.com/public/forum/boards/ask-the-community-xsm/posts/341384-fiverr-accounts-are-empty-of-orders-and-impressions-have-dropped-drastically",
+   "title": "Fiverr accounts are empty of orders and impressions have dropped drastically",
+   "type": "forum",
+   "publisher": "Fiverr Community",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Seller anecdotes about sharp drops in impressions and long stretches without orders, sometimes after a cancelled order.",
+   "accessible": false
+  },
+  {
+   "url": "https://community.fiverr.com/public/forum/boards/start-here-c9d/posts/335163-account-disable-issue",
+   "title": "Account disable issue",
+   "type": "forum",
+   "publisher": "Fiverr Community",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Anecdotes (attribution approximate): accounts disabled after several order cancellations, including one that still had orders in progress.",
+   "accessible": false
+  }
+ ]
+}

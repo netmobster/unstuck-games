@@ -1,0 +1,168 @@
+{
+ "id": "employment-ontario-employment-services",
+ "name": "Employment Ontario employment services (free job-search help)",
+ "organization": "Government of Ontario - Employment Ontario (local service providers)",
+ "type": "program",
+ "category": "government_program",
+ "tags": [
+  "job-search-help",
+  "free",
+  "counselling",
+  "resume",
+  "interview-prep",
+  "ontario",
+  "integrated-employment-services"
+ ],
+ "summary": "Free one-on-one job-search help in Ontario (resumes, interview prep, job matching and referrals to funded training) through more than 700 local Employment Ontario locations.",
+ "whatYouDo": "You connect with a local provider and work with an employment counsellor on a job-search plan, your resume and interview skills, and introductions to employers. Providers are also the door to funded programs such as Better Jobs Ontario and pre-apprenticeship training. Self-serve job information is open to anyone.",
+ "appeal": [
+  "Free 1-on-1 counsellor support; over 700 locations",
+  "Gateway to funded training (Better Jobs Ontario, pre-apprenticeship) and youth supports",
+  "Self-service information open to anyone, including people who are employed or students",
+  "Toll-free contact centre: 1-800-387-5656 (TTY 1-866-533-6339)"
+ ],
+ "watchOuts": [
+  "Full assisted services usually target people who are unemployed or working under about 20 hours a week and not in full-time school (provider rules vary)",
+  "Usually requires Ontario residence and legal entitlement to work in Canada",
+  "Quality and offerings vary by provider; it is help to find work, not a paid job",
+  "System was restructured as Integrated Employment Services (rolled out province-wide by March 2025) and now absorbs social-assistance employment supports; disability advocates criticized parts of the change",
+  "No first-hand user reviews found in this research pass"
+ ],
+ "officialUrl": "https://ontario.ca/page/employment-ontario",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [
+   "ON"
+  ],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": null,
+  "assessment": "none"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person",
+   "voice"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 0,
+  "writing": 0,
+  "numeracy": 0,
+  "detail": 0,
+  "customer": 0,
+  "technical": 0,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "free",
+  "notes": "Can refer you to funded training such as Better Jobs Ontario or pre-apprenticeship programs."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Free service, not a paid job. Older youth streams (e.g., Youth Job Connection) offered paid pre-employment training/placements, but current availability varies by region."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "Outcomes depend on the local provider and labour market; not measured here."
+ },
+ "workerStatus": "participant",
+ "fees": null,
+ "applicationSteps": [
+  "Call 1-800-387-5656 or use the 'find services in your area' tool on ontario.ca/employmentontario",
+  "Contact a nearby provider and complete an intake conversation to confirm eligibility",
+  "Work with a counsellor on a job-search plan, resume, interview prep and referrals"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [],
+ "fitsIf": "You live in Ontario, can legally work in Canada and want free, personal help with your job search or with getting into funded training.",
+ "notFitIf": "You need paid work immediately or prefer a fully self-directed job search.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://ontario.ca/page/employment-ontario",
+   "title": "Employment Ontario - Get free support from a counsellor",
+   "type": "official",
+   "publisher": "Government of Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "legitimacy"
+   ],
+   "notes": "Search-result summary only (fetch blocked). Says 700+ locations, free 1-on-1 counsellor support for job search, resumes, interviews and training; has a find-services tool.",
+   "accessible": false
+  },
+  {
+   "url": "https://achev.ca/service/employment-ontario/",
+   "title": "Employment Ontario - Achev",
+   "type": "official",
+   "publisher": "Achev (Employment Ontario service provider)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "canada_eligibility"
+   ],
+   "notes": "GTA provider (not the ministry). Search summary: eligibility = unemployed or under 20 hrs/week, not in full-time training, Ontario resident, legally entitled to work in Canada.",
+   "accessible": false
+  },
+  {
+   "url": "https://aeswellnessportal.ca/Services/Display/166038/Integrated_Employment_Services",
+   "title": "Integrated Employment Services",
+   "type": "aggregator",
+   "publisher": "Community services directory",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Directory listing: assisted services for unemployed people out of school; self-service open to anyone; lists contact centre number; 'most programs are free for those eligible'.",
+   "accessible": false
+  },
+  {
+   "url": "https://ontario.cmha.ca/news/oden-move-odsp-employment-programmes-to-employment-ontario/",
+   "title": "ODEN: move ODSP employment programmes to Employment Ontario",
+   "type": "independent_review",
+   "publisher": "CMHA Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Advocacy news item: disability employment network opposed folding ODSP employment supports into Employment Ontario. Opinion, undated in results.",
+   "accessible": false
+  }
+ ]
+}

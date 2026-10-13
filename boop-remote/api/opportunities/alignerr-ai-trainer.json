@@ -1,0 +1,180 @@
+{
+ "id": "alignerr-ai-trainer",
+ "name": "Freelance AI training specialist (Alignerr)",
+ "organization": "Alignerr (Labelbox)",
+ "type": "task_platform",
+ "category": "ai_data",
+ "tags": [
+  "ai-training",
+  "hourly-contract",
+  "expert-roles",
+  "remote"
+ ],
+ "summary": "Labelbox-run marketplace that hires freelance generalists and experts by the hour to train and evaluate AI models.",
+ "whatYouDo": "You apply to a specific posting (e.g. AI Training Specialist, software engineer, language expert), pass screening, then write, review and correct AI model outputs. Postings list commitments of roughly 10–40 hours a week, some with a 15-hour minimum.",
+ "appeal": [
+  "Official postings list US$15–120/hr depending on role",
+  "General AI Training Specialist posting says no prior AI or technical experience needed",
+  "Hourly contract with weekly payouts on some postings",
+  "Postings are syndicated to Canadian job boards such as Built In Ottawa"
+ ],
+ "watchOuts": [
+  "Published pay ranges are for US-based candidates; Canadian rates are not published",
+  "A 2026 review blog says evaluation phases are often unpaid and qualified people can wait months between projects",
+  "1099-style contract: no benefits; you must be authorized to work in your country",
+  "Canada eligibility varies by posting and was not confirmed on an official page"
+ ],
+ "officialUrl": "https://www.alignerr.com/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "US",
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unpaid_test"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 3,
+  "numeracy": 1,
+  "detail": 3,
+  "customer": 0,
+  "technical": 1,
+  "creative": 1,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "unknown",
+  "notes": "Screening/evaluation before projects; a blog says these phases are often unpaid."
+ },
+ "compensation": {
+  "min": 15,
+  "max": 120,
+  "currency": "USD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Alignerr jobs page postings range US$15–120/hr (e.g. AI Training Specialist $40–120/hr). Ranges are stated for US-based candidates; non-US rates 'may vary'."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "One 2026 blog reports months-long gaps between projects for qualified workers. Anecdotal, single source."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Browse open postings on the Alignerr jobs page",
+  "Apply to a role that lists Canada or remote eligibility",
+  "Complete screening/evaluation tasks",
+  "Wait to be placed on a project"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "uncertain",
+ "legitimacy": "likely",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "unpaid_assessment",
+  "variable_work",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You have strong writing or subject expertise and can tolerate unpaid screening and gaps between projects.",
+ "notFitIf": "You need confirmed Canadian rates or quick, reliable income.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.alignerr.com/jobs",
+   "title": "Alignerr",
+   "type": "official",
+   "publisher": "Alignerr",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "schedule",
+    "worker_status"
+   ],
+   "notes": "Search summary: roles US$15–120/hr; 10–40 hrs/week; hourly contract; some weekly payouts. Direct fetch blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.alignerr.com/jobs/b7b95845-ac1a-4742-8537-094eb6ac59ee",
+   "title": "AI Training Specialist",
+   "type": "official",
+   "publisher": "Alignerr",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements"
+   ],
+   "notes": "US$40–120/hr; no prior AI or technical experience required.",
+   "accessible": false
+  },
+  {
+   "url": "https://builtinottawa.com/job/software-engineer-c-ai-training-freelance-remote/4746295",
+   "title": "Alignerr – Software Engineer (C) AI Training (Freelance, Remote)",
+   "type": "aggregator",
+   "publisher": "Built In Ottawa",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "worker_status"
+   ],
+   "notes": "Alignerr freelance posting on a Canadian job board. Search summary of Alignerr postings: 1099 contract, must be authorized to work in your country, no sponsorship, US-candidate pay ranges; one Law role lists Canada among locations.",
+   "accessible": false
+  },
+  {
+   "url": "https://breakingeven.online/blog/alignerr-review-2026",
+   "title": "alignerr review 2026",
+   "type": "independent_review",
+   "publisher": "BreakingEven",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "reliability",
+    "pay"
+   ],
+   "notes": "Blog: evaluation phases often unpaid; months between projects; community-reported pay wider than advertised. Single blog.",
+   "accessible": false
+  }
+ ]
+}

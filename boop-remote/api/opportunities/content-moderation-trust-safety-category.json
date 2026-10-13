@@ -1,0 +1,152 @@
+{
+ "id": "content-moderation-trust-safety-category",
+ "name": "Content moderation / online safety evaluation (category)",
+ "organization": "Various",
+ "type": "category",
+ "category": "customer_ops",
+ "tags": [
+  "content-moderation",
+  "trust-and-safety",
+  "evaluator",
+  "emotional-content",
+  "part-time"
+ ],
+ "summary": "Reviewing posts, videos or search results against safety rules; some evaluator versions are part-time freelance work from home.",
+ "whatYouDo": "You review flagged or sampled content and decide whether it breaks guidelines, or rate how safe and relevant results are, following detailed policies. TELUS Digital's Internet Safety Evaluator, for example, reviews online video search results, including content that may be upsetting or offensive.",
+ "appeal": [
+  "Independent screen-based work with no live customer contact",
+  "TELUS Digital evaluator postings say no previous professional experience is required",
+  "Evaluator variants advertise choosing your own hours, part-time"
+ ],
+ "watchOuts": [
+  "Exposure to upsetting or offensive material is part of the job",
+  "No remote Canadian content-moderator posting from large outsourcers was found; many moderator jobs are office-based abroad",
+  "TELUS Digital's Canada search listed an 'Internet Safety Evaluator - English (Canada)' role, but its pay and requirements were not seen; the detailed Canada listing seen was Russian-language",
+  "Freelance evaluator work: no benefits, hours not guaranteed, must pass an assessment first",
+  "US version of the role required 3 years of US residency, so rules differ by country"
+ ],
+ "officialUrl": null,
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "unclear",
+  "setting": "varies"
+ },
+ "languages": [],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 3,
+  "customer": 0,
+  "technical": 1,
+  "creative": 0,
+  "language": 2
+ },
+ "training": {
+  "required": null,
+  "cost": "unknown",
+  "notes": "Evaluator roles require passing a standard assessment process (paid/unpaid not stated)."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "No Canadian pay data found."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "Freelance evaluator hours are self-chosen but not guaranteed."
+ },
+ "workerStatus": "varies",
+ "fees": null,
+ "applicationSteps": [
+  "Check TELUS Digital's Canada careers listings for evaluator or safety roles in your language",
+  "Read the posting's description of disturbing content before applying",
+  "Pass the qualification assessment"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "uncertain",
+ "legitimacy": "likely",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "emotional_content",
+  "variable_work",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You are detail-oriented, prefer solo screen work, and are confident you can handle disturbing material.",
+ "notFitIf": "Graphic, hateful or upsetting content would affect your wellbeing.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://jobs.telusdigital.com/sv_FI/MoroccoCareers/PipelineDetail/Internet-Safety-Evaluator-Russian-Canada/30606",
+   "title": "Internet Safety Evaluator - Russian (Canada)",
+   "type": "official",
+   "publisher": "TELUS Digital",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "risk",
+    "canada_eligibility"
+   ],
+   "notes": "Search-summary only (fetch blocked). Freelance, part-time, remote; review video search results incl. upsetting/offensive content; no previous professional experience needed; must pass assessment. Language from URL slug.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.telusdigital.com/zh_CN/MoroccoCareers/PipelineDetail/Internet-Safety-Evaluator-United-States/21471",
+   "title": "Internet Safety Evaluator - United States",
+   "type": "official",
+   "publisher": "TELUS Digital",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search-summary only. US version requires full professional English and 3 years US residency; shows rules are country-specific.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.telusdigital.com/search/jobs/in/country/canada",
+   "title": "Canada Careers - TELUS Digital",
+   "type": "official",
+   "publisher": "TELUS Digital",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status"
+   ],
+   "notes": "Search-summary only. Canada listings include part-time evaluator roles (e.g. Internet Safety Evaluator - English (Canada)); job counts inconsistent across pages.",
+   "accessible": false
+  }
+ ]
+}
