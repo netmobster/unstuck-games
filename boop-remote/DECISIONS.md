@@ -233,3 +233,27 @@ npx http-server -c-1 -p 8080 .        # or python3 -m http.server 8080
 ```
 
 Tests: `bun test test/` and `node test/ui.mjs`. Data: `node scripts/normalize-raw.mjs && node scripts/build-catalogue.mjs && node scripts/audit.mjs`.
+
+---
+
+# v2: the Ontario revalidation (2026-10-13)
+
+Jay's second brief changed the product shape: Lovable builds the app, this repo owns the data, and the existing catalogue was to be audited, revalidated and extended into a new, documented dataset. Decisions:
+
+| Decision | Why | Consequence |
+|---|---|---|
+| **A new dataset (`data/v2/`) with its own contract, not an edit of v1** | The brief asked to preserve the original and to separate concepts v1 conflated (relationship vs. destination type, eligibility vs. availability, advertised vs. verified pay, boolean "accessible" vs. five access states). | Two files coexist. The reference app still runs on v1; Lovable targets v2. A later pass can retire v1. |
+| **`record_type` (10 values) separate from `category` (9 fields of work)** | A category must never look like an employer; a marketplace must never look like a job. | Filtering by "what kind of thing is this" is now a single field. |
+| **`availability_status` includes `not_applicable_category`** (added to the brief's enum) | Categories and sellable services have no availability; forcing them into `availability_unknown` would rank them like unverified employers. | Validator enforces it, and that such records carry `how_to_find_work` and no application link. |
+| **"Confirmed" and "accepting applications" need an opened authoritative source** | A search snippet of an official page is not the page. | Both are rare in this run; the dataset reads conservatively, which is the truthful state. |
+| **Confidence is computed, never typed** | The brief wants confidence to reflect evidence and completeness, not plausibility; a formula is auditable. | Rubric in `data/v2/SCHEMA.md`; a test checks moderate-evidence records average above weak ones. |
+| **A mechanical migration produces a baseline marked `pending`; the builder refuses `pending`** | Guarantees every record was revalidated by someone, and makes the mechanical part reproducible and separate from judgement. | `scripts/v2/migrate.mjs` → `data/v2/baseline/`; judgement lives in `data/v2/reviewed/` and the audit trail. |
+| **Research split into six slices with a shared review guide** | Breadth within a ~200-query search budget; one guide keeps dispositions and vocab consistent. | Per-slice ledgers in `research/v2/`. |
+| **Audience-restricted routes carry `audience_restriction[]`; the app never asks who the user is** | The brief forbids inferring demographics or health; the data can still say "students only". | Lovable shows the label and keeps such routes out of automatic shortlists. |
+| **`skill_demands` kept from v1** | A matcher needs something to compare preferences against; demand levels are factual descriptions of the work. | Carried over 0–3 scale. |
+| **The Indeed connector counts as `opened_and_reviewed`, typed `job_board`** | It returns full posting text; that is a read page, though an aggregator copy. | Such sources can support availability for `specific_job`/`employer`, flagged by type so a reader can discount them. |
+| **Validation by two independent implementations** | The in-repo validator is dependency-free; ajv (installed outside the repo) cross-checks the schema file. | `VALIDATION_REPORT.md` lists only checks that ran. |
+
+Rejected alternatives: editing v1 in place (loses the audit trail and the contract separation); asking agents to score confidence (unauditable); treating a search snippet of an official page as opened (false precision); dropping categories entirely (they help discovery when labelled honestly).
+
+Unresolved: page access. Until a run can open pages, no record can honestly reach `strong`, `verified_rate` stays empty, and `accepting_applications` depends on job-board copies of postings.

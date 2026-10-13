@@ -152,8 +152,19 @@ write('index.json', {
     'questions.json': 'the questionnaire',
     'schema.json': 'JSON Schema for one record',
     'safety.json': 'official Canadian job-scam guidance sources',
+    'v2/catalogue.v2.json': 'the v2 (Ontario-revalidated) dataset; schema in v2/catalogue.schema.json; audit trail and changelog alongside',
   },
   licence: 'Catalogue content is research output with cited sources; verify against the source before relying on it.',
+});
+
+// v2 dataset (Ontario revalidation), when built.
+import('node:fs').then(({ existsSync, copyFileSync }) => {
+  const v2 = join(root, 'data', 'v2');
+  if (existsSync(join(v2, 'catalogue.v2.json'))) {
+    mkdirSync(join(api, 'v2'), { recursive: true });
+    for (const f of ['catalogue.v2.json', 'catalogue.schema.json', 'catalogue.audit.json', 'catalogue.changelog.json']) copyFileSync(join(v2, f), join(api, 'v2', f));
+    console.log('api/v2/: catalogue.v2.json, catalogue.schema.json, catalogue.audit.json, catalogue.changelog.json');
+  }
 });
 
 console.log(`api/: ${records.length} records, ${Object.keys(S.CATEGORIES).length} categories.`);

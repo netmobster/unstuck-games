@@ -91,3 +91,51 @@ What is not evidence:
 3. Work through the "Open questions" sections of `research/ledger_*.md`.
 4. Re-run normalise, build, audit and tests.
 5. Get a human review of anything rated higher-risk: AI task platforms, moderation, and routes with fees.
+
+---
+
+# v2: the Ontario revalidation (2026-10-13)
+
+The v1 catalogue above was treated as a starting point, not a source of truth. Every v1 record was re-researched individually, new candidates were held to the same standard, and the result is a new dataset (`data/v2/catalogue.v2.json`) with its own contract (`data/v2/SCHEMA.md`). `data/catalogue.json` is unchanged.
+
+## Search strategy
+- **Perspective:** a person living in Ontario, Canada. Canadian eligibility is a hard requirement for the production dataset; Ontario-only programs are labelled as such in `region_eligibility.provinces`.
+- **Per record, in order:** (a) does it exist and is the official URL its real site; (b) can an Ontario resident take part; (c) is it open, accepting, waitlisted, paused or closed right now; (d) pay, fees, unpaid steps, payout terms; (e) negative evidence (`"[name]" Canada`, `"no work"`, `"payment"`, `scam`, `waitlist`, `deactivated`, r/WorkOnline, r/beermoney and platform-specific subreddits, Trustpilot, Glassdoor and Indeed reviews, journalism).
+- **Discovery:** each research slice also searched for routes the catalogue lacked (banks/telcos hiring remote agents, captioning employers, Ontario university study pools, youth and disability employment programs, seasonal and unusual-schedule work, microbusiness and creator routes), judged by the same rules.
+- **Six parallel agents**, one per slice, with a shared web-search budget of about 200 queries for the run (roughly 32 each), plus an Indeed job-board connector for current Canadian postings.
+
+## Source hierarchy
+1. Official employer careers pages and postings · 2. official platform documentation and terms · 3. government sites (canada.ca, ontario.ca, jobbank.gc.ca) and program documentation · 4. university and research-institution pages · 5. official payment, fee and contractor documentation · 6. worker reports and credible reporting, as corroboration only.
+
+## Source integrity
+Every source carries `access_status`: `opened_and_reviewed` (the page was read), `search_result_only` (a search-engine summary or snippet), `access_blocked`, `not_found`, `not_checked`. **In this run no web page could be opened** (DNS resolution fails for every host from the research environment, and direct downloads are refused by the egress policy). The only `opened_and_reviewed` sources are job postings read in full through the Indeed connector (`source_type: job_board`). A source lists only the claims it genuinely supports (`supports[]`).
+
+## Evidence rules
+- `strong`: central claims directly supported by current authoritative sources that were opened, with eligibility and status checked. Unreachable this run except where an opened posting covers both eligibility and availability.
+- `moderate`: credible authoritative evidence, with at least one important detail unverified.
+- `weak`: limited, indirect, stale or mostly anecdotal evidence.
+- `insufficient`: not enough to include; the record stays in the audit trail only.
+- `confidence` (0–1) is computed by `scripts/v2/build.mjs` from these fields by the rubric in `data/v2/SCHEMA.md`; nobody types it in.
+- Pay: `advertised_rate` (what a page says) is separate from `verified_rate` (opened official document only; none this run) and `anecdotal_effective_rate` (worker-reported, with its basis). Maximum advertised earnings are never presented as typical.
+
+## Date policy
+- `last_researched_at` is the UTC time the record was actually worked on in this run. Records are never bulk-dated.
+- `availability_checked_at` is set only when availability was checked on that record, and must be accompanied by `availability_evidence`.
+- `accessed_at` on a source is when that source was seen.
+
+## Status definitions
+See the `availability_status` table in `data/v2/SCHEMA.md`. In short: `open_specific_opportunity` and `accepting_applications` need an opened authoritative source; a sign-up page is `registration_open_work_not_guaranteed`; a running program is `program_open_check_eligibility`; `availability_unknown` is the honest default; categories are `not_applicable_category`.
+
+## Inclusion and exclusion
+- **Keep** a credible identity with a useful path forward, relevant Canadian eligibility, and enough evidence to describe its limits.
+- **Update** stale URLs, statuses, eligibility, economics and risk notes where evidence supports it (`disposition: updated`).
+- **Downgrade** a legitimate entity whose availability, earnings or eligibility is unverified (`downgraded`).
+- **Reject** what is closed to Ontario residents, misleading, unsupported, unsafe or not useful (`rejected`, kept in the audit trail with the reason).
+- **Merge** records that lead to the same destination (`merged`, with `merged_into`), keeping distinct pathways apart.
+- **Categories** (`work_category`) and sellable services (`service_business`) are directions, not destinations: they carry `how_to_find_work`, no application link, and `not_applicable_category`.
+
+## Limitations of this run
+- No web page opened; evidence is what search engines showed of the cited pages. Treat every `search_result_only` claim as needing a re-check once page access works.
+- Search budget capped depth per record and breadth of discovery.
+- No human review yet.
+- Province-level modelling is Ontario-first; other provinces appear only where a restriction was found.
