@@ -1,0 +1,13 @@
+{
+  "name": "opportunity-engine",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "data": "node scripts/normalize-raw.mjs && node scripts/build-catalogue.mjs",
+    "test": "bun test test/",
+    "test:ui": "node test/ui.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "serve": "npx http-server -c-1 -p 8080 .",
+    "lint": "npx eslint src scripts test"
+  }
+}
