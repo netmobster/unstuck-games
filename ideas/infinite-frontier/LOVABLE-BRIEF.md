@@ -198,6 +198,7 @@ result screen, so these questions can be answered from play data later.
 ## 12. Design record (for context, not for building)
 
 The tombstone, in the studio's method, is the dead game whose living organ this one
-resurrects. It is not yet chosen; the researched candidates are Dungeon Keeper (1997),
-Dungeon of the Endless (2014), The Settlers II (1996) and Desktop Tower Defense (2007),
-with Dungeon Keeper recommended. The pick does not change P0.
+resurrects. It is **Desktop Tower Defense (2007)**: the route is the negative space of what
+you place, and the engine redraws it under the enemies the moment the board changes. The
+one idea taken whole is that destroying is an attack, not a refund. That is already in P0
+(editing during waves, salvage from destroy). Nothing else in P0 changes.

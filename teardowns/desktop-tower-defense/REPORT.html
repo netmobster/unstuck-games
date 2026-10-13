@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Infinite Frontier — Tombstone</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..100,400..900&family=Caveat:wght@500;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=Martian+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column on a desk pad. Graph-paper ground, pencil-grey rules,
+   biro-blue ink for the live board, a highlighter for the verdict. The record block
+   sits like an index card pinned to the pad. */
+:root{
+  --paper:#f3f1e9; --paper2:#e9e6da; --grid:#d9d5c6; --ink:#1d2024; --dim:#5d6168; --line:#c4c0b1;
+  --biro:#2a4fb8; --birobg:#dfe6f7; --creep:#c43a2a; --hilite:#f0c53b; --hilitebg:#f8ecc0;
+  --display:'Archivo','Arial Narrow',Arial,sans-serif;
+  --body:'Source Serif 4',Georgia,serif;
+  --hand:'Caveat','Segoe Print','Comic Sans MS',cursive;
+  --mono:'Martian Mono',ui-monospace,Consolas,monospace;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){ :root:not([data-theme="light"]){
+  --paper:#15171b; --paper2:#1d2026; --grid:#23272e; --ink:#e8e6dd; --dim:#9a9ea6; --line:#363a42;
+  --biro:#8fa8ef; --birobg:#1b2440; --creep:#ef7a66; --hilite:#e0b63a; --hilitebg:#3a3113; color-scheme:dark }}
+:root[data-theme="dark"]{
+  --paper:#15171b; --paper2:#1d2026; --grid:#23272e; --ink:#e8e6dd; --dim:#9a9ea6; --line:#363a42;
+  --biro:#8fa8ef; --birobg:#1b2440; --creep:#ef7a66; --hilite:#e0b63a; --hilitebg:#3a3113; color-scheme:dark }
+*{box-sizing:border-box}
+html,body{margin:0}
+body{background:var(--paper);background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:24px 24px;color:var(--ink);font-family:var(--body);font-size:18px;line-height:1.6;-webkit-font-smoothing:antialiased}
+.wrap{max-width:860px;margin:0 auto;padding-inline:20px;padding-block:0}
+a{color:var(--biro)}
+a:focus-visible,button:focus-visible{outline:2px solid var(--biro);outline-offset:3px}
+h1,h2,h3,h4{font-family:var(--display);margin:0;text-wrap:balance}
+p{margin:0 0 15px}
+header.top{border-bottom:3px double var(--ink);padding-block:52px 26px}
+.kick{font-family:var(--mono);font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--creep)}
+h1{font-size:clamp(52px,12vw,112px);font-weight:900;font-stretch:62%;line-height:.86;letter-spacing:-.01em;text-transform:uppercase;margin:14px 0 10px}
+h1 .f{color:var(--biro)}
+.sub{font-size:21px;font-style:italic;color:var(--dim);max-width:36ch}
+.meta{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--dim);margin-top:20px}
+/* the live board */
+.board{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px;align-items:center;margin:34px 0 8px}
+.pad{position:relative;max-width:100%}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:2px;aspect-ratio:12/8;max-width:100%;background:var(--line);border:2px solid var(--ink);padding:2px}
+.cell{background:var(--paper);position:relative;display:grid;place-items:center}
+.cell.in::before,.cell.out::before{content:attr(data-k);position:absolute;inset:0;display:grid;place-items:center;font-family:var(--hand);font-size:clamp(10px,2.4vw,18px);color:var(--dim)}
+.cell.path{background:var(--birobg)}
+.cell.tower{background:var(--biro)}
+.cell.tower::after{content:"";position:absolute;inset:22%;border:2px solid var(--paper);border-radius:50%}
+.cell.sold{background:var(--hilitebg);outline:2px dashed var(--hilite);outline-offset:-3px}
+.creep{width:62%;height:62%;border-radius:50%;background:var(--creep);border:2px solid var(--paper);position:absolute;top:19%;left:19%}
+.readout{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--dim)}
+.readout .row{display:flex;justify-content:space-between;gap:12px;border-bottom:1px solid var(--line);padding-block:7px;font-variant-numeric:tabular-nums}
+.readout .row b{color:var(--ink);font-weight:600}
+.verb{font-family:var(--display);font-weight:900;font-stretch:70%;font-size:clamp(46px,8vw,72px);line-height:1;text-transform:uppercase;margin:6px 0 14px;color:var(--biro);min-height:1em}
+.verb.sell{color:var(--hilite)} .verb.leak{color:var(--creep)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 16px;margin-top:14px;font-family:var(--mono);font-size:10.5px;color:var(--dim)}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:-1px}
+.ctl{margin-top:14px;display:flex;gap:8px}
+.ctl button{font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;background:transparent;color:var(--ink);border:1.5px solid var(--ink);padding:7px 12px;cursor:pointer}
+.ctl button:hover{background:var(--ink);color:var(--paper)}
+.boardcap{font-size:14.5px;font-style:italic;color:var(--dim);margin:6px 0 0}
+.hand{font-family:var(--hand);font-size:22px;color:var(--biro);line-height:1.2;margin:0 0 10px}
+/* the graveyard record */
+.grave{border:2px solid var(--ink);background:var(--paper2);padding:20px 22px;margin:34px 0 8px;box-shadow:4px 4px 0 var(--line)}
+.grave .lab{font-family:var(--mono);font-size:10.5px;letter-spacing:.28em;color:var(--creep)}
+.grave dl{display:grid;grid-template-columns:auto minmax(0,1fr);gap:9px 20px;margin:14px 0 0}
+.grave dt{font-family:var(--display);font-weight:800;font-stretch:80%;font-size:15px;letter-spacing:.12em;text-transform:uppercase;white-space:nowrap;padding-top:2px}
+.grave dd{margin:0;font-size:16.5px;min-width:0}
+.grave dd b{font-weight:600}
+.grave .tomb{color:var(--creep);font-size:19px}
+.grave .dna{color:var(--dim)}
+.thesis{border-left:5px solid var(--hilite);background:var(--hilitebg);padding:14px 0 14px 22px;margin:38px 0;font-size:23px;line-height:1.45}
+.thesis b{font-weight:600}
+section{padding-block:30px;border-top:1px solid var(--line)}
+h2{font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.24em;color:var(--creep);text-transform:uppercase;margin-bottom:8px}
+h2 .n{color:var(--dim);margin-right:10px}
+h3{font-size:clamp(28px,4.4vw,38px);font-weight:800;font-stretch:72%;line-height:1.05;text-transform:uppercase;margin:0 0 14px}
+.lede{font-size:20px;color:var(--dim);font-style:italic;margin-bottom:18px}
+blockquote{margin:22px 0;padding-left:20px;border-left:3px solid var(--biro);font-style:italic;font-size:20px}
+blockquote cite{display:block;margin-top:8px;font-style:normal;font-family:var(--mono);font-size:10.5px;letter-spacing:.1em;color:var(--dim)}
+ul,ol{margin:0 0 15px;padding-left:22px} li{margin-bottom:7px}
+.scroll{overflow-x:auto}
+.tbl{width:100%;border-collapse:collapse;margin:16px 0;font-size:16px}
+.tbl th{font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--dim);text-align:left;padding:8px 10px;border-bottom:2px solid var(--ink)}
+.tbl td{padding:9px 10px;border-bottom:1px solid var(--line);vertical-align:top}
+.tbl td:first-child{color:var(--dim)}
+.tbl td b{font-weight:600}
+.beats{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin:16px 0}
+.beat{border:1.5px solid var(--ink);padding:14px 16px;background:var(--paper2)}
+.beat .k{font-family:var(--mono);font-size:10px;letter-spacing:.22em;color:var(--creep)}
+.beat .t{font-family:var(--display);font-weight:800;font-stretch:75%;font-size:20px;text-transform:uppercase;margin:4px 0 6px}
+.beat p{font-size:16px;margin:0;color:var(--ink)}
+.cut{list-style:none;padding:0}
+.cut li{padding-left:26px;position:relative}
+.cut li::before{content:"✕";position:absolute;left:0;top:0;color:var(--creep);font-family:var(--mono);font-weight:600}
+.four{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin:16px 0}
+.four div{border-top:2px solid var(--ink);padding-top:8px;font-size:15px}
+.four .q{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:4px}
+.four b{font-family:var(--display);font-stretch:80%;font-size:18px;text-transform:uppercase}
+.four .y{color:var(--biro)} .four .n{color:var(--creep)}
+.oq li b{font-weight:600}
+.oq .from{font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--creep);margin-left:6px}
+footer{border-top:3px double var(--ink);margin-top:20px;padding-block:22px 48px;font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;color:var(--dim);line-height:1.8}
+footer a{color:var(--dim)}
+@media (max-width:640px){
+  .board{grid-template-columns:1fr}
+  .beats,.four{grid-template-columns:1fr 1fr}
+  .grave dl{grid-template-columns:1fr;gap:4px 0}
+  .grave dt{padding-top:10px}
+  body{font-size:17px}
+}
+@media (max-width:420px){ .beats,.four{grid-template-columns:1fr} }
+@media (prefers-reduced-motion: reduce){ .verb{transition:none} }
+</style>
+</head>
+<body>
+<main class="wrap">
+
+<header class="top">
+  <div class="kick">Unstuck Games · Game #6 · The tombstone</div>
+  <h1>Infinite<br><span class="f">Frontier</span></h1>
+  <p class="sub">The road is the negative space of what you put down. Then put it down somewhere that never ends.</p>
+  <div class="meta">TOMBSTONE CHOSEN BY JAY · 13 OCT 2026 · RESEARCH 11 OCT 2026 · CC</div>
+</header>
+
+<div class="board">
+  <div class="pad">
+    <div class="grid" id="grid" role="img" aria-label="A live twelve by eight grid. Red creeps enter at the left and walk the shortest open route to the exit at the right. Blue towers are placed one by one and the route bends around them. Now and then a tower is sold and the creeps turn mid-walk."></div>
+    <p class="boardcap">Desktop Tower Defense's machine, with the desk taken away: creeps take the shortest open route, and every placement or sale redraws it under them.</p>
+  </div>
+  <div>
+    <p class="hand">the desk was never the point</p>
+    <div class="verb" id="verb">BUILD</div>
+    <div class="readout">
+      <div class="row"><span>ROUTE</span><b id="r-route">—</b></div>
+      <div class="row"><span>TOWERS</span><b id="r-towers">0</b></div>
+      <div class="row"><span>KILLED</span><b id="r-killed">0</b></div>
+      <div class="row"><span>LEAKED</span><b id="r-leaked">0</b></div>
+      <div class="row"><span>REROUTES</span><b id="r-reroutes">0</b></div>
+    </div>
+    <div class="legend"><span><i style="background:var(--biro)"></i>tower</span><span><i style="background:var(--creep);border-radius:50%"></i>creep</span><span><i style="background:var(--birobg)"></i>the open route</span><span><i style="background:var(--hilitebg);outline:1px dashed var(--hilite)"></i>just sold</span></div>
+    <div class="ctl"><button id="b-pause" type="button">Pause</button><button id="b-next" type="button">Restart</button></div>
+  </div>
+</div>
+
+<div class="grave">
+  <div class="lab">THE GRAVEYARD</div>
+  <dl>
+    <dt>Tombstone</dt><dd class="tomb"><b>Desktop Tower Defense</b> (Paul Preece, Flash, 2007)</dd>
+    <dt>Markers</dt><dd>
+      <b>Dungeon Keeper</b> — a shape of ground earns its denizen; surround a gate to kill it<br>
+      <b>Dungeon of the Endless</b> — the ground you can't afford to hold is where they spawn<br>
+      <b>The Settlers II</b> — your first ten tiles shape your last hour; demolition burns<br>
+      <b>Mamono Sweeper / A Few Billion Square Tiles</b> — the revealed board is the world<br>
+      <b>Rampart</b> — damage is a hole in your build; rebuild under the clock<br>
+      <b>Fieldrunners</b> — mazing that fit in a hand, 2008
+    </dd>
+    <dt>DNA only</dt><dd class="dna">Against the Storm · Carcassonne / Dorfromantik · Isle of Arrows / Rogue Tower · Kingdom / Thronefall · Infinitode 2 / Mindustry — alive; stay unlike them</dd>
+  </dl>
+</div>
+
+<p class="thesis"><b>You never place a path. You place things, and the path is what is left.</b> The engine redrew it the instant you sold or built, and its maker spent three patches stopping you from using that.</p>
+
+<section>
+  <h2><span class="n">I</span>The verdict</h2>
+  <h3>The organ was never the towers</h3>
+  <p>Desktop Tower Defense is remembered as the desk-mat game with the hand-drawn creeps. Underneath the desk is a different machine: there is no road. Creeps take the shortest open route from one edge to the other, and every tower you place is a wall that happens to shoot. The route is the negative space of your defence.</p>
+  <p>And the machine was live. Sell a tower and every creep on the board recomputed its path that tick. Players found that out within two months and called it <em>juggling</em>: open two exits, sell and rebuild one tile, and watch the creeps turn forever. Preece treated it as a bug. Version 1.2 added a score penalty for selling, 1.2c made selling progressively slower, 1.5 ships a challenge mode named "No sell (no juggling)".</p>
+  <p>The world remembered the desk. The thing worth digging up is the live-rerouting maze editor underneath it, and the fact that its author kept trying to switch it off.</p>
+</section>
+
+<section>
+  <h2><span class="n">II</span>The record</h2>
+  <div class="scroll"><table class="tbl">
+    <tr><td>Game</td><td><b>Desktop Tower Defense</b> · Flash · March 2007 on handdrawngames.com · 1.5 in June 2007 · multiplayer and <em>Desktop TD Pro</em> on Casual Collective, November 2008 · Nintendo DS (THQ / ValuSoft), May 2009</td></tr>
+    <tr><td>Made by</td><td>Paul Preece, UK, with a day job at the time; it followed David Scott's <em>Flash Element TD</em> (January 2007), the game that started the Flash tower-defence wave</td></tr>
+    <tr><td>Scale</td><td>15 million plays by June 2007. TIME's All-Time 100 Video Games, 2012: it "may not have invented the tower defense genre, but it popularized it."</td></tr>
+    <tr><td>Status</td><td>Preece and Scott founded Casual Collective (seed $1M, Lightspeed, 2008), which <b>rebranded as Kixeye in April 2011</b> with <em>Battle Pirates</em>, raised $18M that August for Facebook war games, and was sold to Stillfront in 2019 for $90M plus earnout. Flash died on 31 December 2020. A ten-year multiplayer community reports the servers went down the week before. Playable today only as the original SWF under emulation (CrazyGames, Internet Archive, Flashpoint). <span class="kick" style="font-size:10px">cause: platform extinction + owner abandonment</span></td></tr>
+  </table></div>
+  <blockquote>Is there any place you can play Desktop Tower Defense without Flash? <cite>HACKER NEWS · 26 JUNE 2020 · a reply: newer tower defences "use a fixed field"; DTD let you build your own walls</cite></blockquote>
+  <blockquote>We've played the multiplayer version for over ten years... With the demise of Flash, our playing time is over. <cite>DEFOLD FORUM · DECEMBER 2020</cite></blockquote>
+  <blockquote>One of the very best games from the Flash era. <cite>KOTTKE.ORG · MAY 2026</cite></blockquote>
+</section>
+
+<section>
+  <h2><span class="n">III</span>How it played</h2>
+  <h3>The parts that matter here</h3>
+  <ul>
+    <li><b>A desk-mat grid.</b> Creeps enter left and exit right. From Normal difficulty up, a second stream enters at the top and exits at the bottom, so <b>the two routes cross in the middle</b>. Flying waves ignore the maze.</li>
+    <li><b>No fixed path.</b> Creeps take the shortest route and <b>recompute whenever the layout changes</b>. A placement that would seal every route is refused with the word "Blocking".</li>
+    <li><b>50 waves, 20 lives, 80 gold.</b> Gold per kill, no interest. A bonus for sending the next wave early.</li>
+    <li><b>Selling.</b> Version 1.0 refunded in full <span class="kick" style="font-size:9px">(unverified)</span>; 1.2 added a score penalty; 1.2c slowed selling progressively; 1.5 refunds 75%. All of it aimed at juggling.</li>
+    <li><b>Seven towers.</b> Pellet, Squirt, Dart, Swarm, Frost, Bash, Boost. Boost does not shoot; it multiplies its neighbours. The community converged on a compact central serpentine with towers set diagonally so creeps pass every face.</li>
+  </ul>
+  <p class="lede" style="font-size:15px;margin-top:6px">These details come from the research pass, not a full teardown. They get checked before anything here is quoted publicly.</p>
+</section>
+
+<section>
+  <h2><span class="n">IV</span>Why it died</h2>
+  <h3>Orphaned, not obsolete</h3>
+  <p>Flash killed the client. The rights sat inside a company that had pivoted from a free Flash game to Facebook war games, and was then sold to a roll-up, so nobody with the rights had a reason to port it. The creators' own path, from DTD to Backyard Monsters to Battle Pirates, is the free-to-play pivot in person. The HTML5 versions that exist are fan emulation, not a new version.</p>
+</section>
+
+<section>
+  <h2><span class="n">V</span>The four beats</h2>
+  <div class="beats">
+    <div class="beat"><div class="k">TOMBSTONE</div><div class="t">What was alive</div><p>The road is the negative space of your defence, and the engine redraws it under the creeps the instant you change the board.</p></div>
+    <div class="beat"><div class="k">CREMATION</div><div class="t">What burns</div><p>The desk, Flash, the fixed rectangle, towers as guns with ranges and tiers, gold-per-kill as the only economy, the leaderboard, juggling as an exploit.</p></div>
+    <div class="beat"><div class="k">TRANSPLANT</div><div class="t">What survives</div><p>Place-and-reroute. The can't-seal rule. Live recomputation. Sell as a verb. Two streams that cross.</p></div>
+    <div class="beat"><div class="k">UNSTUCK</div><div class="t">Where it lands</div><p>An endless hex plain. Every obstacle is a piece of the world with a denizen. Destroy is the attack, not the refund. The frontier keeps coming.</p></div>
+  </div>
+
+  <h3 style="font-size:22px;margin-top:22px">Cremation · what we refuse to reproduce</h3>
+  <ul class="cut">
+    <li><b>The desk and the Flash-era joke.</b> The setting is the corpse's face. It stays dead.</li>
+    <li><b>Square cells and a fixed rectangle.</b> We are hex, and the plain has no edge.</li>
+    <li><b>Towers as guns.</b> Range circles, targeting modes, damage-per-second as the whole identity of a piece. A denizen has a behaviour, not a weapon.</li>
+    <li><b>Gold-per-kill as the only economy</b>, and upgrade tiers one to five of the same gun. Tiles come from a draft.</li>
+    <li><b>Juggling as an exploit.</b> We decide what mid-wave change means instead of inheriting the loophole and then the patches.</li>
+    <li><b>The leaderboard as the ending.</b></li>
+  </ul>
+
+  <div class="scroll"><table class="tbl">
+    <tr><th>Desktop Tower Defense</th><th>Infinite Frontier</th></tr>
+    <tr><td>A tower is a wall that shoots</td><td><b>A tile is a piece of ground with a denizen</b>: it blocks, and it acts on its neighbours</td></tr>
+    <tr><td>Creeps take the shortest open route</td><td><b>Enemies walk the gaps</b>, over a flow field from the core, recomputed every tick</td></tr>
+    <tr><td>"Blocking": you cannot seal the exit</td><td><b>Invariant 1</b>: every spawn keeps a route to the core; a sealing placement is refused</td></tr>
+    <tr><td>Sell at 75%, slowed, penalised</td><td><b>Destroy is a first-class verb</b>: partial return, and it feeds the draft, not a gold pile</td></tr>
+    <tr><td>Juggling: sell to flip the route under the creeps</td><td><b>Re-sculpting the world mid-wave is a candidate for the game's best moment</b>, and experiment 4 decides</td></tr>
+    <tr><td>Two streams that cross in the middle</td><td><b>Spawn points multiply</b>, further out and from more directions, and never go away</td></tr>
+    <tr><td>A fixed desk mat</td><td><b>An unbounded plain</b>; the world you must hold keeps growing</td></tr>
+    <tr><td>Gold buys any tower, any time</td><td><b>Three offers, take one, place it now</b></td></tr>
+  </table></div>
+</section>
+
+<section>
+  <h2><span class="n">VI</span>What nobody used properly</h2>
+  <h3>Live rerouting as a legitimate verb</h3>
+  <p>DTD's engine recomputed every creep's path the instant you sold or placed a tower, and a crossing two-stream board made the reroute meaningful. Preece spent three patches penalising what that made possible. Fieldrunners, GemCraft, Infinitode and Mindustry all kept the maze static after placement and treated selling as a refund button. <b>Nobody built the game where selling is the attack and the maze is meant to be rewritten under the creeps.</b></p>
+
+  <h3 style="font-size:22px;margin-top:22px">What Infinite Frontier takes</h3>
+  <p>That idea goes at the centre, and it is where Jay's own pivot already pointed: destroy is one of four verbs, not a cleanup, and destruction feeds the next draft. Everything DTD never had is what keeps us at a distance from it: the plain has no edge, a destroyed thing leaves a mark, and the obstacle is a denizen rather than a gun.</p>
+
+  <div class="four">
+    <div><span class="q">Unconfined</span><b class="n">DTD: no</b><br>a fixed desk mat</div>
+    <div><span class="q">Lasting consequence</span><b class="n">DTD: half</b><br>sell at 75%</div>
+    <div><span class="q">Denizens</span><b class="n">DTD: no</b><br>guns on a grid</div>
+    <div><span class="q">Space controls the enemy</span><b class="y">DTD: yes</b><br>the route is the negative space</div>
+  </div>
+  <p class="lede" style="font-size:16px">One of four tests. The game earns the tombstone only if the other three turn out to matter: if swapping which denizen sits where barely changes a run, we have rebuilt DTD with biomes.</p>
+
+  <p><b>Our own DNA</b>, from the library rather than the graveyard: <b>Orbis</b> (deterministic sim, invariants, sweeps, the causality probe) · <b>The Last Warren</b> (one set of modules for the page and the sweep runner; policies and a lookahead expert) · <b>Elsewhere</b> (unknown is not zero) · <b>Bad Monkeys</b> (generation and dice: pre-generate, lint, taste-sample).</p>
+</section>
+
+<section>
+  <h2><span class="n">VII</span>Open questions</h2>
+  <p class="lede">For the first prototype to answer, not to design in advance.</p>
+  <ol class="oq">
+    <li><b>Is juggling the game or the exploit?</b> Three rules side by side: edit freely during waves; commit each enemy to its route at spawn; no editing during waves. Measure which one is a dominant strategy and which one is the best moment.</li>
+    <li><b>What does "cannot seal" mean on a plain with no edge?</b> <span class="from">from the tombstone</span> DTD refused the sealing placement. Dungeon Keeper killed a gate by surrounding it. Invariant 1 or the DK marker; they cannot both hold.</li>
+    <li><b>Do multiplying spawn points reproduce the crossing streams?</b> <span class="from">from the tombstone</span> DTD's Normal mode was interesting because two routes shared a middle. Our growth rule adds a spawn every two waves; the sweep should report how often routes cross.</li>
+    <li><b>Is the refund too kind?</b> DTD's 75% was still too much for its author. Ours is salvage that buys a reroll. The Settlers II marker says a destroyed thing should leave a scar.</li>
+    <li><b>Does the denizen matter?</b> Permute which denizen sits on which hex over the best layouts, hold everything else fixed, and see if survival moves. This is the test the whole pivot rests on.</li>
+    <li><b>Flyers ignored the maze.</b> <span class="from">from the tombstone</span> What is our exceptional enemy, and does it ignore occupancy, effects, or neither?</li>
+  </ol>
+</section>
+
+<footer>
+  Unstuck Games · Don't bullshit the player. · Research 11 Oct 2026 from search results only; page fetches were unavailable, so facts are from result snippets and secondary coverage and are checked in the teardown. Sources: <a href="https://en.wikipedia.org/wiki/Desktop_Tower_Defense">Wikipedia</a> · <a href="https://techland.time.com/2012/11/15/all-time-100-video-games/slide/desktop-tower-defense-2007/">TIME</a> · <a href="https://techcrunch.com/2007/06/19/desktop-tower-defense-played-15-million-times">TechCrunch</a> · <a href="https://gamesbeat.com/kixeye-re-brands-and-pivots-into-hardcore-social-games-with-battle-pirates/">GamesBeat</a> · <a href="https://jayisgames.com/review/desktop-tower-defense-15.php">JayIsGames</a> · <a href="https://forum.defold.com/t/rip-desktop-tower-defense-long-live-desktop-tower-defense/66988">Defold forum</a> · <a href="https://news.ycombinator.com/item?id=23653296">Hacker News</a> · <a href="https://kottke.org/26/05/0048924-from-the-flash-era">kottke.org</a>. The full report with the three other corpses is <code>ideas/infinite-frontier/TOMBSTONE.md</code>.
+</footer>
+
+</main>
+<script>
+(function(){
+  const W=12,H=8, grid=document.getElementById('grid');
+  const $=id=>document.getElementById(id);
+  const reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const IN={x:0,y:3}, OUT={x:W-1,y:4};
+  let seed=11, st, timer=null, paused=false;
+  function rnd(){ seed=(seed*1103515245+12345)&0x7fffffff; return seed/0x7fffffff; }
+  const key=(x,y)=>x+','+y;
+  function init(){ st={tick:0,towers:new Set(),creeps:[],killed:0,leaked:0,reroutes:0,verb:'BUILD',sold:null,soldAt:0,dist:null}; field(); }
+  function field(){ // BFS from OUT over open cells; dist[key] = steps to exit
+    const d=new Map(); const q=[OUT]; d.set(key(OUT.x,OUT.y),0);
+    while(q.length){ const c=q.shift(); const dc=d.get(key(c.x,c.y));
+      for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){ const x=c.x+dx,y=c.y+dy;
+        if(x<0||y<0||x>=W||y>=H) continue; const k=key(x,y);
+        if(st.towers.has(k)||d.has(k)) continue; d.set(k,dc+1); q.push({x,y}); } }
+    st.dist=d; return d.has(key(IN.x,IN.y));
+  }
+  function routeCells(){ const s=new Set(); let c={...IN}; let guard=0;
+    while(!(c.x===OUT.x&&c.y===OUT.y)&&guard++<200){ s.add(key(c.x,c.y)); const n=next(c); if(!n) break; c=n; }
+    s.add(key(OUT.x,OUT.y)); return s; }
+  function next(c){ let best=null,bd=Infinity; for(const [dx,dy] of [[1,0],[0,1],[0,-1],[-1,0]]){ const k=key(c.x+dx,c.y+dy); if(st.dist.has(k)&&st.dist.get(k)<bd){bd=st.dist.get(k);best={x:c.x+dx,y:c.y+dy};} } return best; }
+  function tryPlace(x,y){ const k=key(x,y); if(st.towers.has(k)) return false; if((x===IN.x&&y===IN.y)||(x===OUT.x&&y===OUT.y)) return false;
+    if(st.creeps.some(c=>c.x===x&&c.y===y)) return false; st.towers.add(k); if(!field()){ st.towers.delete(k); field(); return false; } return true; }
+  function build(){ // greedy: among cells beside the route, place the one that lengthens the route most
+    const route=routeCells(); const before=st.dist.get(key(IN.x,IN.y)); let best=null,bl=before;
+    for(const rk of route){ const [rx,ry]=rk.split(',').map(Number);
+      for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1]]){ const x=rx+dx,y=ry+dy; if(x<0||y<0||x>=W||y>=H) continue; const k=key(x,y); if(st.towers.has(k)||route.has(k)) continue;
+        if(tryPlace(x,y)){ const l=st.dist.get(key(IN.x,IN.y)); if(l>bl||(l===bl&&rnd()<.3)){bl=l;best={x,y};} st.towers.delete(k); } } }
+    field(); if(best&&tryPlace(best.x,best.y)){ st.verb='BUILD'; return true; }
+    // nothing lengthens it: place anywhere open beside the route
+    for(const rk of route){ const [rx,ry]=rk.split(',').map(Number); const x=rx+(rnd()<.5?1:-1), y=ry; if(x>=0&&x<W&&tryPlace(x,y)){ st.verb='BUILD'; return true; } }
+    return false;
+  }
+  function sell(){ // sell the tower whose removal shortens the route most: the juggle
+    const before=st.dist.get(key(IN.x,IN.y)); let best=null,bl=before;
+    for(const k of st.towers){ st.towers.delete(k); field(); const l=st.dist.get(key(IN.x,IN.y)); if(l<bl){bl=l;best=k;} st.towers.add(k); }
+    field(); if(best){ st.towers.delete(best); field(); st.sold=best; st.soldAt=st.tick; st.verb='SELL'; st.reroutes+=st.creeps.length; }
+  }
+  function tick(){
+    st.tick++;
+    if(st.tick%7===0) st.creeps.push({x:IN.x,y:IN.y,hp:14});
+    // towers bite anything beside them
+    for(const c of st.creeps){ let n=0; for(const [dx,dy] of [[1,0],[-1,0],[0,1],[0,-1],[1,1],[1,-1],[-1,1],[-1,-1]]) if(st.towers.has(key(c.x+dx,c.y+dy))) n++; c.hp-=n; }
+    const alive=[]; for(const c of st.creeps){ if(c.hp<=0){ st.killed++; continue; } const n=next(c); if(!n){ alive.push(c); continue; } if(n.x===OUT.x&&n.y===OUT.y){ st.leaked++; st.verb='LEAK'; continue; } c.x=n.x;c.y=n.y; alive.push(c); }
+    st.creeps=alive;
+    if(st.tick%5===0 && st.towers.size<22) build();
+    if(st.tick%31===0 && st.towers.size>8) sell();
+    if(st.sold && st.tick-st.soldAt===6){ const [x,y]=st.sold.split(',').map(Number); if(tryPlace(x,y)){ st.verb='REBUILD'; st.reroutes+=st.creeps.length; } st.sold=null; }
+    if(st.tick>=170){ seed=(seed*7+3)&0x7fffffff; init(); }
+    render();
+  }
+  function render(){
+    const route=routeCells(); let html='';
+    for(let y=0;y<H;y++) for(let x=0;x<W;x++){ const k=key(x,y);
+      let cls='cell', inner='', dk='';
+      if(st.towers.has(k)) cls+=' tower'; else if(route.has(k)) cls+=' path';
+      if(st.sold===k) cls+=' sold';
+      if(x===IN.x&&y===IN.y){cls+=' in';dk=' data-k="in"';} if(x===OUT.x&&y===OUT.y){cls+=' out';dk=' data-k="out"';}
+      if(st.creeps.some(c=>c.x===x&&c.y===y)) inner='<span class="creep"></span>';
+      html+='<div class="'+cls+'"'+dk+'>'+inner+'</div>'; }
+    grid.innerHTML=html;
+    const v=$('verb'); v.textContent=st.verb; v.className='verb'+(st.verb==='SELL'?' sell':st.verb==='LEAK'?' leak':'');
+    $('r-route').textContent=st.dist.get(key(IN.x,IN.y))+' cells'; $('r-towers').textContent=st.towers.size;
+    $('r-killed').textContent=st.killed; $('r-leaked').textContent=st.leaked; $('r-reroutes').textContent=st.reroutes;
+  }
+  function play(){ clearInterval(timer); timer=setInterval(tick,420); }
+  $('b-pause').addEventListener('click',()=>{ paused=!paused; $('b-pause').textContent=paused?'Play':'Pause'; paused?clearInterval(timer):play(); });
+  $('b-next').addEventListener('click',()=>{ seed=(seed*31+11)&0x7fffffff; init(); render(); });
+  init();
+  if(reduce){ for(let i=0;i<60;i++) tick(); paused=true; $('b-pause').textContent='Play'; } else { render(); play(); }
+})();
+</script>
+</body>
+</html>

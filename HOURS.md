@@ -16,7 +16,7 @@ Split below is CC's estimate against Jay's ~4:00 total: **Orbis ~1:45 · Game #2
 
 ---
 
-## Game #6 — INFINITE FRONTIER (tombstone: Jay to pick from Dungeon Keeper · Dungeon of the Endless · The Settlers II · Desktop Tower Defense)
+## Game #6 — INFINITE FRONTIER (tombstone: Desktop Tower Defense · markers: Dungeon Keeper, Dungeon of the Endless, The Settlers II, Mamono Sweeper, Rampart, Fieldrunners)
 
 **Clock started 2026-10-11** (brief v0.5 pasted; Jay to correct the time). The brief was made elsewhere and is **not counted**. Game number assumed; correct it if Elsible holds #6.
 
@@ -33,7 +33,8 @@ Split below is CC's estimate against Jay's ~4:00 total: **Orbis ~1:45 · Game #2
 
 | Date | Jay-time | Machine work | What Jay did |
 |---|---|---|---|
-| 2026-10-11 | ~0:03 | Read the brief against METHOD, the library and GOD-MODE; wrote `ideas/infinite-frontier/REVIEW.md`; tombstone research pass, `TOMBSTONE-SHORTLIST.md` | Pasted the name and the brief, answered three setup questions, asked for the tombstone run, went sideways with GPT and pasted the pivot |
+| 2026-10-11 | ~0:08 | Read the brief against METHOD, the library and GOD-MODE; `REVIEW.md`; quick shortlist; pivot response `PIVOT.md`; five parallel research digs; `TOMBSTONE.md` | Pasted the name and the brief, answered three setup questions, asked for the tombstone run, went sideways with GPT and pasted the pivot, answered two question rounds, asked for the real dig |
+| 2026-10-13 | ~0:03 | `LOVABLE-BRIEF.md`; tombstone page `teardowns/desktop-tower-defense/REPORT.html`; records updated | Asked for the complete briefing for Lovable; picked the tombstone: DTD |
 
 ---
 

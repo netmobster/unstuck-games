@@ -35,13 +35,15 @@ candidates for the heart. They are flags in the ground.
 
 ```
 THE GRAVEYARD
-Tombstone:  Desktop Tower Defense (2007) — theoretical, until Jay confirms
-Markers:    Gem TD — the thing you place is random; what you don't keep is a wall
+Tombstone:  Desktop Tower Defense (2007) — chosen by Jay, 2026-10-13
+Markers:    Dungeon Keeper — a shape of ground earns its denizen; surround a gate to kill it
             Dungeon of the Endless — the ground you can't afford to hold is where they spawn
+            The Settlers II — your first ten tiles shape your last hour; demolition burns
+            Mamono Sweeper / A Few Billion Square Tiles — the revealed board is the world
             Rampart — damage is a hole in your build; rebuild under the clock
-            Fieldrunners — open-field mazing that fit in a hand, 2008
-DNA only:   Infinitode 2 / Mindustry — living mazing TDs; stay unlike them
-            Rogue Tower / Isle of Arrows — no longer twins (they draft path tiles; we don't)
+            Fieldrunners — mazing that fit in a hand, 2008
+DNA only:   Against the Storm · Carcassonne/Dorfromantik · Isle of Arrows/Rogue Tower ·
+            Kingdom/Thronefall · Infinitode 2/Mindustry (alive; stay unlike them)
 ```
 
 **Where the A/B/C framing breaks.** It assumed the organ and the tile grammar were
@@ -68,8 +70,8 @@ never place a path; you place things, and the path is what is left.
 **Unstuck.** Put that organ on a hex grid where every obstacle is a piece of a world that
 does something, and make *destroying* a first-class verb rather than a refund button.
 
-**The honest risk.** As written in the handoff, the core loop is Desktop Tower Defense's
-loop with biomes for guns. METHOD's test is that the finished game be so unlike the
+**The honest risk, now a standing test.** As written in the handoff, the core loop is Desktop
+Tower Defense's loop with biomes for guns. METHOD's test is that the finished game be so unlike the
 tombstone that the credit reads as homage in spirit only. The pivot earns that only if the
 things that are *not* in DTD turn out to matter: tiles that act on their neighbours, a
 world you re-sculpt mid-run, and the roguelike draw. Experiment 3 in §6 tests exactly this.

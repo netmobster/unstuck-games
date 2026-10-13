@@ -6,6 +6,11 @@
 > page fetch failed, so facts are from result snippets and secondary coverage. Anything not
 > pinned to a source is marked **(unverified)**, and everything gets checked again in the
 > teardown before it is quoted publicly. **Jay picks the corpse.** CC's read is at the end.
+>
+> **Outcome, 2026-10-13: Jay picked Desktop Tower Defense.** CC's read was Dungeon Keeper;
+> Jay's words are the decision. The chosen record and its page:
+> [`teardowns/desktop-tower-defense/REPORT.html`](../../teardowns/desktop-tower-defense/REPORT.html).
+> Dungeon Keeper, Dungeon of the Endless and The Settlers II become markers.
 
 ## The organ, in Jay's words
 
