@@ -1,6 +1,6 @@
 # Ledger: creative_production slice + overlooked routes (`creative_overlooked`)
 
-Agent run: 2026-10-13, 15:19–15:5x UTC. Output: `data/v2/reviewed/creative_overlooked.json`.
+Agent run: 2026-10-13, 15:19–15:48 UTC. Output: `data/v2/reviewed/creative_overlooked.json`.
 
 ## Tool conditions
 - `WebFetch`: tried once on https://99designs.com/designers at 15:19Z → `getaddrinfo ENOTFOUND`. Every web source below is `search_result_only`.
@@ -83,4 +83,10 @@ Agent run: 2026-10-13, 15:19–15:5x UTC. Output: `data/v2/reviewed/creative_ove
 - Job Bank 2025–2027 outlook for NOC 52113 (video/audio technicians) in Ontario, and current wage table.
 
 ## Indeed retries
-(filled below)
+Retried `get_job_details` for JOBSEARCH_100196 (DMB Video Editor) seven more times between 15:30Z and 15:47Z, spacing calls by up to 50 s; every call was refused ("Rate limit exceeded", wait 4–57 s, resetting on each attempt). No posting was opened. The four pending searches (H&R Block tax professional, ski resort seasonal, Statistics Canada interviewer, production assistant Ontario) were never run. Consequence: no `opened_and_reviewed` job_board source in this file; Indeed listings are cited `search_result_only` from the 15:21Z result lists.
+
+## Categories assigned to new records
+Rover, Etsy, delivery courier category and the notary candidate → `freelance_microbusiness`; H&R Block Tax Academy and the census candidate → `structured_employment`; Amazon KDP → `creative_production`. The file name follows the slice; `category` follows the field of work.
+
+## Validation
+`node scripts/v2/validate.mjs data/v2/reviewed/creative_overlooked.json --records` → 16 records, 0 error(s), 7 warning(s) (all "likely" eligibility without a Canada-specific source; true).
