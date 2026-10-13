@@ -115,7 +115,8 @@ export function semantic(r) {
   if (r.disposition === 'merged' && !r.migration.merged_into) err('merged record needs migration.merged_into');
   if (r.disposition === 'merged' && r.production_eligible) err('merged record cannot be production_eligible');
   if (r.disposition === 'rejected' && r.production_eligible) err('rejected record cannot be production_eligible');
-  if (r.disposition !== 'new' && !r.migration.v1_id) err('non-new record needs migration.v1_id');
+  // A rejected record may be a v1 record or a new candidate that failed; everything else that isn't new came from v1.
+  if (!['new', 'rejected'].includes(r.disposition) && !r.migration.v1_id) err('retained/updated/downgraded/merged record needs migration.v1_id');
   if (r.disposition === 'new' && r.migration.v1_id) err('new record must not carry a v1_id');
   if (r.disposition === 'retained' && r.migration.changes.length) warn('retained but lists changes (should it be "updated"?)');
   if (r.sources.some(s => s.supports.length === 0)) warn('a source supports no claim');
