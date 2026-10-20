@@ -1165,7 +1165,7 @@
     paintCur(); paintEditBar(); route();
     var fresh = false, seen = false;
     try { fresh = sessionStorage.getItem('bunny-goes-new-link') === '1'; sessionStorage.removeItem('bunny-goes-new-link'); seen = localStorage.getItem(HELLO_KEY) === '1'; } catch (e) {}
-    if ((fresh || !seen) && !EDIT) setTimeout(showHello, 500);
+    if (!EDIT) setTimeout(showHello, 500);   // Jay: the welcome always fires
   }).catch(function (err) {
     app.innerHTML = '<div class="card"><h2>Bunny got lost.</h2><p>The data didn\'t load. Try reloading.</p><p class="tiny muted">' + esc(err && err.message) + '</p></div>';
   });
