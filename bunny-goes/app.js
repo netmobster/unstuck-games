@@ -359,6 +359,7 @@
     { id: 'L.home.2bed', group: 'home', emoji: '💞', title: 'Room for Bebu', fun: 'A spare room for visits. And a closet for the shoes.', apply: function () { S.home.size = '2bed'; }, on: function () { return S.home.size === '2bed'; }, cost: function () { var r = cUSD(c('rent')['2bed'], 0); return { lo: r.lo, hi: r.hi, what: 'rent a month, asked', src: c('rent')['2bed'].src }; } },
     { id: 'L.food.cook', group: 'food', emoji: '🍳', title: 'Home chef', fun: 'Rice cooker on, paksoi in the pan.', apply: function () { S.food.style = 0.2; S.food.casual = 2; }, on: function () { return S.food.style < 0.5; }, cost: function () { var r = cUSD(c('groceries'), 0.5); return { lo: r.lo, hi: r.hi, what: 'groceries a month', src: c('groceries').src }; } },
     { id: 'L.food.warung', group: 'food', emoji: '🍛', title: 'Warung life', fun: 'Roti on Monday, bami on Tuesday, saoto on Wednesday…', apply: function () { S.food.style = 0.8; S.food.casual = 5; }, on: function () { return S.food.style >= 0.5; }, cost: function () { var r = cUSD(c('mealCasual'), 0.5); return { lo: r.lo, hi: r.hi, what: 'per warung plate', src: c('mealCasual').src }; } },
+    { id: 'L.food.both', group: 'food', emoji: '🥘', title: 'A bit of both', fun: 'Cook on weeknights, warung on Fridays.', apply: function () { S.food.style = 0.5; S.food.casual = 3; }, on: function () { return false; }, cost: function () { var r = cUSD(c('groceries'), 0.4); return { lo: r.lo, hi: r.hi, what: 'groceries a month, plus a few warung plates', src: c('groceries').src.concat(c('mealCasual').src) }; } },
     { id: 'L.move.bus', group: 'move', emoji: '🚌', title: 'Bus adventurer', fun: 'Cash in hand, no timetable, music on.', apply: function () { S.around.mode = 'bus'; }, on: function () { return S.around.mode === 'bus'; }, cost: function () { var r = cUSD(c('busMonthly'), 0.5); return { lo: r.lo, hi: r.hi, what: 'a month of commuting', src: c('busMonthly').src }; } },
     { id: 'L.move.mix', group: 'move', emoji: '🚕', title: 'Bus by day, taxi by night', fun: 'The sensible-but-fun combo. Bunny approves.', apply: function () { S.around.mode = 'mix'; S.around.taxi = 3; }, on: function () { return S.around.mode === 'mix'; }, cost: function () { var r = cUSD(c('taxiRide'), 0.5); return { lo: r.lo, hi: r.hi, what: 'per short taxi ride', src: c('taxiRide').src }; } },
     { id: 'L.move.taxi', group: 'move', emoji: '👑', title: 'Taxi princess', fun: 'Door to door, every time. Royalty.', apply: function () { S.around.mode = 'taxi'; S.around.taxi = 8; }, on: function () { return S.around.mode === 'taxi'; }, cost: function () { var r = cUSD(c('taxiRide'), 0.5); return { lo: r.lo, hi: r.hi, what: 'per short taxi ride', src: c('taxiRide').src }; } },
@@ -366,6 +367,7 @@
     { id: 'L.cool.ac', group: 'cool', emoji: '❄️', title: 'AC at night', fun: 'Cool sleeps, warm days.', apply: function () { S.utilT = 0.45; }, on: function () { return S.utilT >= 0.3 && S.utilT < 0.7; }, cost: function () { var r = cUSD(c('utilities'), 0.45); return { lo: r.at, hi: r.at, what: 'power and water a month', src: c('utilities').src }; } },
     { id: 'L.cool.arctic', group: 'cool', emoji: '🧊', title: 'Arctic mode', fun: 'Sweater weather indoors. In the tropics.', apply: function () { S.utilT = 0.9; }, on: function () { return S.utilT >= 0.7; }, cost: function () { var r = cUSD(c('utilities'), 0.9); return { lo: r.at, hi: r.at, what: 'power and water a month', src: c('utilities').src }; } },
     { id: 'L.calls.fibre', group: 'calls', emoji: '📡', title: 'Fibre for long calls', fun: 'Hours of video with Bebu and Mama. No freezing faces.', apply: function () { S.connected.fibre = true; S.connected.phone = S.connected.phone || 'telesur'; }, on: function () { return S.connected.fibre === true; }, cost: function () { var f = toUSD(c('fibre').typical || c('fibre').low, c('fibre').cur); return { lo: f, hi: f, what: 'a month, before VAT, 2-year contract', src: c('fibre').src }; } },
+    { id: 'L.calls.both', group: 'calls', emoji: '💞', title: 'Fibre and a good phone plan', fun: 'Long calls at home, and Bebu in your pocket everywhere else.', apply: function () { S.connected.fibre = true; S.connected.phone = 'telesur'; }, on: function () { return false; }, cost: function () { var f = toUSD(c('fibre').typical || c('fibre').low, c('fibre').cur), v = c('phone').telesur, u = toUSD(v.typical || v.low, v.cur); return { lo: f + u, hi: f + u, what: 'a month for both, before VAT', src: c('fibre').src.concat(v.src) }; } },
     { id: 'L.calls.data', group: 'calls', emoji: '📱', title: 'Phone data only', fun: 'Light and free. Calls from anywhere.', apply: function () { S.connected.fibre = false; S.connected.phone = 'dataonly'; }, on: function () { return S.connected.fibre === false; }, cost: function () { var v = c('phone').dataonly; var u = toUSD(v.typical || v.low, v.cur); return { lo: u, hi: u, what: 'a month of data', src: v.src }; } }
   ];
   var LIFE_BY = {};
@@ -463,23 +465,25 @@
 
   /* ---------- this or that ---------- */
   var ROUNDS = [
-    { q: 'Your nest?', a: 'L.home.1bed', b: 'L.home.2bed' },
-    { q: 'Dinner tonight?', a: 'L.food.cook', b: 'L.food.warung' },
-    { q: 'Getting to work?', a: 'L.move.bus', b: 'L.move.taxi' },
-    { q: 'Bedtime?', a: 'L.cool.fan', b: 'L.cool.ac' },
-    { q: 'Calls home?', a: 'L.calls.fibre', b: 'L.calls.data' },
-    { q: 'Your street?', a: 'E1.area.centrum', b: 'E1.area.noord' },
-    { q: 'Payday treat?', a: 'T.pretty', b: 'T.padala' },
-    { q: 'Sunday?', a: 'T.city', b: 'T.jungle' }
+    { q: 'Your nest?', opts: ['L.home.studio', 'L.home.1bed', 'L.home.2bed'] },
+    { q: 'Dinner tonight?', opts: ['L.food.cook', 'L.food.both', 'L.food.warung'] },
+    { q: 'Getting to work?', opts: ['L.move.bus', 'L.move.mix', 'L.move.taxi'] },
+    { q: 'Bedtime?', opts: ['L.cool.fan', 'L.cool.ac', 'L.cool.arctic'] },
+    { q: 'Calls home?', opts: ['L.calls.data', 'L.calls.both', 'L.calls.fibre'] },
+    { q: 'Your street?', opts: ['E1.area.centrum', 'E1.area.zuid-hermitage', 'E1.area.noord'] },
+    { q: 'Payday treat?', opts: ['T.pretty', 'T.cushion', 'T.padala'] },
+    { q: 'Sunday?', opts: ['T.city', 'T.cozy', 'T.jungle'] }
   ];
   var TREATS = {
     'T.pretty': { emoji: '💅', title: 'Pretty fund first', fun: 'Nails, hair, conditioner. Protected.', apply: function () { S.buckets.pretty = Math.max(S.buckets.pretty, 60); } },
     'T.padala': { emoji: '💌', title: 'Padala first', fun: 'Send some home before anything else.', apply: function () { S.buckets.home = Math.max(S.buckets.home, 150); } },
+    'T.cushion': { emoji: '🛟', title: 'Escape pod first', fun: 'A little cushion, then everything else feels lighter.', apply: function () { S.buckets.emergency = Math.max(S.buckets.emergency, 50); } },
+    'T.cozy': { emoji: '🛋️', title: 'Couch and a good drama', fun: 'Aircon, snacks, three episodes. Zero regrets.', apply: function () { S.vibe = 'cozy'; } },
     'T.city': { emoji: '🏛️', title: 'Wander the old city', fun: 'Wooden houses, the river, a cold drink.', apply: function () { S.vibe = 'city'; } },
     'T.jungle': { emoji: '🛶', title: 'River and jungle', fun: 'Boats, dolphins, green as far as you can see.', apply: function () { S.vibe = 'jungle'; } }
   };
-  function choiceCard(id, side) {
-    var t = TREATS[id], card = t ? { title: t.title, fun: t.fun, emoji: t.emoji, row: side === 'a' ? 'everyday' : 'see' } : cardOf(id);
+  function choiceCard(id, i) {
+    var t = TREATS[id], card = t ? { title: t.title, fun: t.fun, emoji: t.emoji, row: ['everyday', 'pretty', 'see'][i % 3] } : cardOf(id);
     var bg = BG[card.row] || BG.everyday;
     return '<button type="button" class="tot" data-pick="' + esc(id) + '"><span class="tot-art" style="background:linear-gradient(160deg,' + bg[0] + ',' + bg[1] + ')"><span class="pc-emoji big">' + card.emoji + '</span></span><b>' + esc(card.title) + '</b><span>' + esc(card.fun) + '</span></button>';
   }
@@ -488,8 +492,9 @@
     var r = ROUNDS[n - 1];
     var dots = ROUNDS.map(function (_, i) { return '<span class="' + (i + 1 < n ? 'done' : i + 1 === n ? 'on' : '') + '"></span>'; }).join('');
     app.innerHTML = '<section class="play"><div class="hops" aria-hidden="true">' + dots + '</div><p class="step-kicker" style="text-align:center">This or that · round ' + n + '</p><h1 class="play-q">' + r.q + '</h1>' +
-      '<div class="tot-pair">' + choiceCard(r.a, 'a') + '<span class="tot-or">or</span>' + choiceCard(r.b, 'b') + '</div>' +
-      '<div class="btn-row"><a class="skip-link" href="#/play/' + (n + 1) + '">Can\'t choose, skip</a></div></section>';
+      '<p class="play-sub">Pick the one that feels most like you. Nothing is final, and you can change it any time.</p>' +
+      '<div class="tot-trio">' + r.opts.map(choiceCard).join('') + '</div>' +
+      '<div class="btn-row"><a class="skip-link" href="#/play/' + (n + 1) + '">I DUNNO BEBU!!! &gt; Skip</a></div>' + notesHTML('play-' + n) + '</section>';
   }
   function pick(id, btn) {
     if (TREATS[id]) TREATS[id].apply(); else if (LIFE_BY[id]) LIFE_BY[id].apply(); else if (AREA_FUN[id] && S.home.likes.indexOf(id) < 0) S.home.likes.push(id);
@@ -503,7 +508,7 @@
     app.innerHTML = '<section class="hero match">' + bunny('bunny-big', 'happy', 'suitcase', 'It\'s a match! Bunny ♥ Paramaribo.') +
       '<h1>Your Paramaribo is ready</h1><p>Here\'s what you picked. Everything can change, any time.</p>' +
       '<div class="pick-chips">' + picks.map(function (l) { return '<span class="pick-chip">' + l.emoji + ' ' + esc(l.title) + '</span>'; }).join('') + S.home.likes.map(function (id) { return '<span class="pick-chip">' + AREA_FUN[id][0] + ' ' + esc(areaName(id)) + '</span>'; }).join('') + '</div>' +
-      '<div class="btn-row"><a class="btn btn-pink" href="#/mine">See my Paramaribo</a><a class="btn btn-ghost" href="#/postcard">Send Bebu a postcard</a></div></section>';
+      '<div class="btn-row"><a class="btn btn-pink" href="#/mine">See my Paramaribo</a><a class="btn btn-ghost" href="#/postcard">Send Bebu a postcard</a></div></section>' + notesHTML('match');
     confetti();
   }
 
@@ -541,7 +546,7 @@
       '</ul><p class="pc-hand pc-total">About ' + money(spend) + ' to live' + (bucketsUSD() ? ', plus ' + money(bucketsUSD()) + ' for the things I love' : '') + '.</p>' +
       '<p class="pc-hand">Wish you were here. (You will be.)<br>Love, Bunny</p>' +
       '<p class="tiny muted">A first sketch from your picks and the research. Not a forecast.</p></div></section>' +
-      '<div class="btn-row"><a class="btn btn-pink" href="#/mine">My Paramaribo</a><a class="btn btn-ghost" href="#/real">Make it real</a></div>';
+      '<div class="btn-row"><a class="btn btn-pink" href="#/mine">My Paramaribo</a><a class="btn btn-ghost" href="#/real">Make it real</a></div>' + notesHTML('postcard');
     confetti();
   }
 
@@ -777,7 +782,25 @@
   try { DRAFTS = JSON.parse(localStorage.getItem(DKEY) || '{}') || {}; } catch (e) {}
   function saveDrafts() { try { localStorage.setItem(DKEY, JSON.stringify(DRAFTS)); } catch (e) {} paintEditBar(); }
   var SPOT_NAMES = { welcome: 'Explore', mine: 'My Paramaribo', life: 'Make it real', home: 'Home and neighbourhoods', money: 'Money and banking', connected: 'Getting connected', around: 'Getting around', health: 'Health and safety', papers: 'Papers', briefing: 'the Suriname briefing', quests: 'Quests', open: 'Open questions' };
-  function spotName(w) { var m = w.match(/^build-(\d+)$/); return m ? 'builder step ' + m[1] : (SPOT_NAMES[w] || w); }
+  var SPOTS = [['welcome', '#/']].concat([1, 2, 3, 4, 5, 6, 7, 8].map(function (n) { return ['play-' + n, '#/play/' + n]; }))
+    .concat([['match', '#/play/9'], ['mine', '#/mine'], ['postcard', '#/postcard'], ['life', '#/real'], ['home', '#/real'], ['money', '#/real'], ['connected', '#/real'], ['around', '#/real'], ['health', '#/real'], ['papers', '#/real'], ['briefing', '#/briefing'], ['quests', '#/quests'], ['open', '#/open']]);
+  SPOT_NAMES.match = 'the match screen'; SPOT_NAMES.postcard = 'the postcard';
+  function spotName(w) { var m = w.match(/^play-(\d+)$/); return m ? 'This or that, round ' + m[1] + (ROUNDS[m[1] - 1] ? ' (' + ROUNDS[m[1] - 1].q + ')' : '') : (SPOT_NAMES[w] || w); }
+  var spotAt = -1;
+  function goSpot(i) {
+    spotAt = (i + SPOTS.length) % SPOTS.length;
+    var sp = SPOTS[spotAt];
+    sheet.hidden = true;
+    if (location.hash === sp[1] || (sp[1] === '#/' && !location.hash)) route(); else location.hash = sp[1];
+    setTimeout(function () {
+      var el = document.querySelector('[data-bebu-edit="' + sp[0] + '"]');
+      if (!el) return;
+      var d = el.closest('details'); if (d) d.open = true;
+      el.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      el.classList.remove('spot-pulse'); void el.offsetWidth; el.classList.add('spot-pulse');
+    }, 150);
+    paintEditBar();
+  }
   function foundCount() { return NOTES.filter(function (n, i) { return S.found && S.found[n.where + ':' + i]; }).length; }
   function notesHTML(where) {
     if (EDIT) {
@@ -813,11 +836,12 @@
     if (!EDIT) return;
     if (!editBar) {
       editBar = document.createElement('div');
-      editBar.setAttribute('style', 'position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;gap:8px;align-items:center;justify-content:space-between;background:var(--ink);color:var(--bg);border-radius:999px;padding:8px 8px 8px 16px;box-shadow:var(--shadow);max-width:600px;margin:0 auto');
+      editBar.setAttribute('style', 'position:fixed;left:12px;right:12px;bottom:12px;z-index:40;display:flex;gap:8px;align-items:center;justify-content:space-between;background:var(--ink);color:var(--bg);border-radius:20px;padding:10px 12px 10px 16px;box-shadow:var(--shadow);max-width:600px;margin:0 auto;flex-wrap:wrap');
       document.body.appendChild(editBar);
     }
     var n = Object.keys(DRAFTS).filter(function (k) { return (DRAFTS[k] || '').trim(); }).length;
-    editBar.innerHTML = '<span class="small"><b>Bebu mode</b> · ' + n + ' note' + (n === 1 ? '' : 's') + '</span>' + bebuButtons();
+    editBar.innerHTML = '<span class="small"><b>Bebu mode</b> · ' + n + ' note' + (n === 1 ? '' : 's') + (spotAt >= 0 ? '<br><span class="tiny">Spot ' + (spotAt + 1) + ' of ' + SPOTS.length + ': ' + esc(spotName(SPOTS[spotAt][0])) + '</span>' : '') + '</span>' +
+      '<span class="row" style="gap:6px"><button type="button" class="btn btn-ghost btn-small" data-bebu-spots="1">Spots</button><button type="button" class="btn btn-ghost btn-small" data-bebu-next="1">Next ›</button>' + bebuButtons() + '</span>';
   }
 
   /* ---------- sources sheet ---------- */
@@ -894,6 +918,14 @@
     if (t.dataset.bebuEdit) { openDraft(t.dataset.bebuEdit); return; }
     if (t.dataset.bebuSave) { var tx = document.getElementById('bebu-text'); DRAFTS[t.dataset.bebuSave] = tx ? tx.value : ''; saveDrafts(); sheet.hidden = true; route(); return; }
     if (t.dataset.bebuDel) { delete DRAFTS[t.dataset.bebuDel]; saveDrafts(); sheet.hidden = true; route(); return; }
+    if (t.dataset.bebuNext) { goSpot(spotAt + 1); return; }
+    if (t.dataset.bebuGo) { goSpot(Number(t.dataset.bebuGo)); return; }
+    if (t.dataset.bebuSpots) {
+      showSheet('<h2 id="sheet-title">Where notes can go</h2><p class="tiny muted">' + SPOTS.length + ' spots. Tap one to jump there.</p><ul class="lines">' + SPOTS.map(function (sp, i) {
+        return '<li><button type="button" class="src" style="text-decoration:none;text-align:left;font-size:15px;color:var(--ink)" data-bebu-go="' + i + '">' + (i + 1) + '. ' + esc(spotName(sp[0])) + '</button><span>' + ((DRAFTS[sp[0]] || '').trim() ? '♥ written' : '') + '</span></li>';
+      }).join('') + '</ul>');
+      return;
+    }
     if (t.dataset.bebuPublish) {
       var list = Object.keys(DRAFTS).filter(function (k) { return (DRAFTS[k] || '').trim(); }).map(function (k) { return { where: k, text: DRAFTS[k].trim() }; });
       t.textContent = 'Publishing…';
