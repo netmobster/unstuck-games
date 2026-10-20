@@ -16,6 +16,7 @@
     var m = location.hash.match(/^#k=([A-Za-z0-9_-]{16,})(?:&b=([A-Za-z0-9_-]{16,}))?/);
     try {
       if (m) {
+        if (localStorage.getItem(SKEY) !== m[1]) sessionStorage.setItem('bunny-goes-new-link', '1');
         localStorage.setItem(SKEY, m[1]);
         if (m[2]) localStorage.setItem(BKEY, m[2]);
         history.replaceState(null, '', location.pathname + location.search + '#/');
@@ -24,6 +25,13 @@
       BEBU_LINK = localStorage.getItem(BKEY) || '';
     } catch (e) { if (m) { LINK = m[1]; BEBU_LINK = m[2] || ''; } }
   })();
+  function privateLink(bebu) { return location.origin + location.pathname + (bebu ? '?bebu=edit' : '') + '#k=' + LINK + (bebu && BEBU_LINK ? '&b=' + BEBU_LINK : ''); }
+  function linkCard() {
+    if (!LINK) return '';
+    return '<div class="card link-card"><h3>Your private link</h3><p class="small muted">This link is your key: it opens your picks and Bebu’s carrots on any phone or computer. Keep it somewhere safe, and don’t share it.</p>' +
+      '<div class="btn-row" style="justify-content:flex-start"><button type="button" class="btn btn-pink btn-small" data-copy-link="1">Copy my private link</button>' +
+      (BEBU_LINK ? '<button type="button" class="btn btn-ghost btn-small" data-copy-link="bebu">Copy Bebu link</button>' : '') + '</div></div>';
+  }
   function keyed(extra) { var h = { 'X-Bunny-Key': LINK }; Object.keys(extra || {}).forEach(function (k) { h[k] = extra[k]; }); return h; }
   var app = document.getElementById('app');
   var openChip = null;
@@ -529,7 +537,7 @@
       (hc.length ? '<section class="row-sec"><div class="row-head"><h2>Things I hearted</h2></div><div class="rail">' + hc.map(pcard).join('') + '</div></section>' : '') +
       '<div class="card real-teaser"><div class="spread"><div><p class="step-kicker">When you want the realistic part</p><h2>About ' + money(spend) + ' a month to live</h2><p class="small muted">A picture, not a promise: from your picks and the research. Rent and salary sharpen it.</p></div></div>' +
       '<div class="btn-row" style="justify-content:flex-start"><a class="btn btn-pink btn-small" href="#/real">Make it real</a><a class="btn btn-ghost btn-small" href="#/postcard">Postcard to Bebu</a><a class="btn btn-ghost btn-small" href="#/play">Play again</a></div></div>' +
-      notesHTML('mine');
+      notesHTML('mine') + linkCard();
   }
 
   function renderReveal() {
@@ -599,7 +607,7 @@
       return '<button type="button" class="chip' + (ch[2]() ? ' set' : '') + '" data-chip="' + ch[0] + '" aria-expanded="' + (openChip === ch[0]) + '">' + ch[1] + '</button>';
     }).join('') + '</div>' + (openChip ? '<div class="drop">' + CONTROLS[openChip]() + '<div class="btn-row"><button type="button" class="btn btn-ghost btn-small" data-chip="' + openChip + '">Done</button></div></div>' : '') + '</div>';
     app.innerHTML = chips + monthCard() + sectionsHTML() + phrasesHTML() + notesHTML('life') +
-      '<p class="tiny muted" style="text-align:center;margin-top:20px">' + (LINK ? 'Your picks are saved to your private link.' : 'Your picks are saved in this browser only.') + ' <button type="button" class="src" data-forget="1">Forget my picks</button></p>';
+      '<p class="tiny muted" style="text-align:center;margin-top:20px">' + (LINK ? 'Your picks are saved to your private link.' : 'Your picks are saved in this browser only.') + ' <button type="button" class="src" data-forget="1">Forget my picks</button></p>' + linkCard();
   }
 
   function monthCard() {
@@ -918,6 +926,12 @@
     if (t.dataset.bebuEdit) { openDraft(t.dataset.bebuEdit); return; }
     if (t.dataset.bebuSave) { var tx = document.getElementById('bebu-text'); DRAFTS[t.dataset.bebuSave] = tx ? tx.value : ''; saveDrafts(); sheet.hidden = true; route(); return; }
     if (t.dataset.bebuDel) { delete DRAFTS[t.dataset.bebuDel]; saveDrafts(); sheet.hidden = true; route(); return; }
+    if (t.dataset.copyLink) {
+      var url = privateLink(t.dataset.copyLink === 'bebu'), label = t.textContent;
+      var shown = function () { showSheet('<h2 id="sheet-title">Your private link</h2><p class="small">Select it all and copy. Keep it somewhere safe.</p><textarea class="input" rows="3" readonly id="link-out">' + esc(url) + '</textarea>'); var o = document.getElementById('link-out'); o.focus(); o.select(); };
+      try { navigator.clipboard.writeText(url).then(function () { t.textContent = 'Copied! Save it somewhere safe'; setTimeout(function () { t.textContent = label; }, 2500); }, shown); } catch (err) { shown(); }
+      return;
+    }
     if (t.dataset.bebuNext) { goSpot(spotAt + 1); return; }
     if (t.dataset.bebuGo) { goSpot(Number(t.dataset.bebuGo)); return; }
     if (t.dataset.bebuSpots) {
@@ -1041,7 +1055,11 @@
   fetch('data/site.json').then(function (r) { return r.json(); }).then(function (j) {
     D = j;
     return Promise.all([loadServer(), loadNotes()]);
-  }).then(function () { paintCur(); paintEditBar(); route(); }).catch(function (err) {
+  }).then(function () {
+    paintCur(); paintEditBar(); route();
+    var fresh = false; try { fresh = sessionStorage.getItem('bunny-goes-new-link') === '1'; sessionStorage.removeItem('bunny-goes-new-link'); } catch (e) {}
+    if (fresh && LINK) setTimeout(function () { showSheet('<div style="text-align:center">' + bunny('bunny-mid', 'happy', 'heart') + '</div><h2 id="sheet-title">Welcome, Bunny!</h2><p>This link is your key. Save it, and your picks and Bebu’s notes follow you to any phone.</p><div class="btn-row"><button type="button" class="btn btn-pink" data-copy-link="1">Copy my private link</button></div><p class="tiny muted">You can copy it again any time from My Paramaribo.</p>'); }, 600);
+  }).catch(function (err) {
     app.innerHTML = '<div class="card"><h2>Bunny got lost.</h2><p>The data didn\'t load. Try reloading.</p><p class="tiny muted">' + esc(err && err.message) + '</p></div>';
   });
 })();

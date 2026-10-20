@@ -351,3 +351,6 @@ details.more summary { cursor: pointer; font-weight: 700; color: var(--pink-ink)
 
 .spot-pulse { animation: spotPulse 1.6s ease 2; }
 @keyframes spotPulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(255,143,177,0); } 40% { box-shadow: 0 0 0 10px rgba(255,143,177,.45); transform: scale(1.06); } }
+
+.link-card { background: var(--sky-soft); }
+.sheet-card .bunny-mid { width: 90px; height: 90px; margin: 0 auto; }
