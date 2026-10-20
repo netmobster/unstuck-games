@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<meta name="color-scheme" content="light dark">
+<title>Bunny Goes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;700&family=Fredoka:wght@400;500;600&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cellipse cx='22' cy='18' rx='7' ry='16' fill='%23fff' stroke='%232b2240' stroke-width='3'/%3E%3Cellipse cx='42' cy='18' rx='7' ry='16' fill='%23fff' stroke='%232b2240' stroke-width='3'/%3E%3Ccircle cx='32' cy='40' r='18' fill='%23fff' stroke='%232b2240' stroke-width='3'/%3E%3Ccircle cx='32' cy='44' r='3' fill='%23ff8fb1'/%3E%3C/svg%3E">
+</head>
+<body>
+<header class="top">
+  <a class="brand" href="#/" aria-label="Bunny Goes home">
+    <span class="brand-bunny" data-bunny="mini"></span>
+    <span class="brand-name">Bunny Goes</span>
+  </a>
+  <div class="cur" role="group" aria-label="Show money in">
+    <button type="button" data-cur="PHP">₱</button>
+    <button type="button" data-cur="USD">$</button>
+    <button type="button" data-cur="SRD">SRD</button>
+  </div>
+</header>
+<nav class="tabs" aria-label="Sections">
+  <a href="#/" data-tab="explore">Explore</a>
+  <a href="#/play" data-tab="play">This or that</a>
+  <a href="#/mine" data-tab="mine">My Paramaribo</a>
+  <a href="#/real" data-tab="real">Make it real</a>
+  <a href="#/briefing" data-tab="briefing">Suriname</a>
+  <a href="#/quests" data-tab="quests">Quests</a>
+  <a href="#/open" data-tab="open">Open questions</a>
+</nav>
+<main id="app" tabindex="-1"></main>
+<div id="sheet" class="sheet" hidden>
+  <div class="sheet-scrim" data-close></div>
+  <div class="sheet-card" role="dialog" aria-modal="true" aria-labelledby="sheet-title">
+    <button type="button" class="sheet-x" data-close aria-label="Close">×</button>
+    <div id="sheet-body"></div>
+  </div>
+</div>
+<script src="app.js"></script>
+</body>
+</html>

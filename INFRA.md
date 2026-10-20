@@ -20,6 +20,7 @@ on the box goes through [`infra/box.ps1`](infra/box.ps1), which a person runs.
 | `deadline.unstuck-games.com` | Deadline Dungeon (game #4): holding page, design docs | files from `deadline-dungeon/` |
 | `last-warren.unstuck-games.com` | The Last Warren (game #5): the diary, and the game at `/play/` | files from `the-last-warren/`; `/play/` is a single-file build of `games/the-last-warren/` |
 | `elsible.unstuck-games.com` | Elsible (in design): a holding page, and the deal prototype (deck v4) at `/play/` | files from `elsible/site/`. `/play/` is built by `python elsible/prototype/build.py --publish` |
+| `unstuck-games.com/bunny-goes/` | Bunny Goes: a guide to moving to Paramaribo, for one person. Public and noindexed; her saved picks and Bebu's notes sit behind a secret link | files from `bunny-goes/`, plus the Bunny Goes service for `/bunny-goes/api/` |
 | `seren.unstuck-games.com` | SEREN, the AI-DM table, behind a door: Google sign-in for the guest list, or the password | the SEREN service; content from `/srv/seren`, never the repo |
 
 **Old links still work.** `unstuck-games.com/orbis/…`, `/bad-monkeys/…`, `/ferret-bowling/…`
@@ -52,6 +53,7 @@ live at the repo root and nginx serves them on every game address. So do `ai-not
 | `seren` | 8790 | SEREN: the door, Google sign-in, the table, Bedrock calls | [`infra/systemd/seren.service`](infra/systemd/seren.service) |
 | `elsewhere` | 8765 | The Elsewhere world: password gate, sessions, Bedrock calls | [`infra/systemd/elsewhere.service`](infra/systemd/elsewhere.service) |
 | `unstuck-contact` | 8770 | Contact form: stores every message to `/srv/contact`, then sends it through SES. Also takes "ask for a key" from the Elsewhere door | [`infra/systemd/unstuck-contact.service`](infra/systemd/unstuck-contact.service) |
+| `unstuck-bunny` | 8775 | Bunny Goes: keeps one person's picks (`/srv/bunny/state.json`, the last 20 copies in `history/`) and Bebu's notes. Answers only to the secret-link key in `X-Bunny-Key`; writing notes also takes `X-Bebu-Key`. Wrong keys are rate-limited. The keys are made on the box by `box.ps1 bunny-env` and printed only by `box.ps1 bunny-links` | [`infra/systemd/unstuck-bunny.service`](infra/systemd/unstuck-bunny.service) |
 | `unstuck-feed.timer` | — | Daily: caches the Substack feed to `/srv/cache/feed.json` for the updates page | [`.service`](infra/systemd/unstuck-feed.service), [`.timer`](infra/systemd/unstuck-feed.timer) |
 
 **When SEREN or Elsewhere isn't answering** (a restart, a crash), nginx serves a "moving

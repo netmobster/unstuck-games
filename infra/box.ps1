@@ -39,7 +39,7 @@ PY=$(command -v python3.11 || command -v python3)
 echo "== repo";  git -C /srv/unstuck log --oneline -1
 echo "== build"; tail -n 1 /var/log/unstuck-bootstrap.log
 echo "== services"
-for s in nginx unstuck-contact unstuck-feed.timer certbot-renew-unstuck.timer elsewhere seren; do printf '  %-30s %-9s %s\n' "$s" "$(systemctl is-active $s)" "$(systemctl show -p ExecStart --value $s | grep -o 'python3[.0-9]*' | head -n 1)"; done
+for s in nginx unstuck-contact unstuck-feed.timer certbot-renew-unstuck.timer elsewhere seren unstuck-bunny; do printf '  %-30s %-9s %s\n' "$s" "$(systemctl is-active $s)" "$(systemctl show -p ExecStart --value $s | grep -o 'python3[.0-9]*' | head -n 1)"; done
 echo "== nginx"; nginx -t 2>&1 | tail -n 1; echo "  conf.d/unstuck.conf: $(wc -l < /etc/nginx/conf.d/unstuck.conf) lines"
 echo "== certificate"; certbot certificates 2>/dev/null | grep -E 'Domains|Expiry' || echo "  none yet"
 echo "== Nova, through the box's own role"
@@ -132,6 +132,33 @@ sleep 3
 echo "seren: $(systemctl is-active seren)"
 curl -s -o /dev/null -w 'the table answers on 127.0.0.1:8790 with %{http_code}\n' http://127.0.0.1:8790/
 journalctl -u seren -n 12 --no-pager
+'@ }
+
+$Steps['bunny-env'] = @{ box = 'new'; what = 'Bunny Goes, once: writes /etc/bunny.env with its two secret-link keys (made here, only ever on the box), and makes /srv/bunny'; script = @'
+set -e
+$(command -v python3.11 || command -v python3) /srv/unstuck/infra/unstuck-env.py bunny --ensure BUNNY_KEY BUNNY_BEBU_KEY
+install -d -m 700 -o ec2-user -g ec2-user /srv/bunny
+echo "/srv/bunny ready: $(stat -c '%U %a' /srv/bunny)"
+'@ }
+
+$Steps['bunny-start'] = @{ box = 'new'; what = 'Starts (or restarts) the Bunny Goes service, and checks it answers and refuses a call with no key'; script = @'
+systemctl enable unstuck-bunny
+systemctl restart unstuck-bunny
+sleep 2
+echo "unstuck-bunny: $(systemctl is-active unstuck-bunny)"
+curl -s -w '  health %{http_code}\n' http://127.0.0.1:8775/health
+curl -s -o /dev/null -w '  state without the key: %{http_code} (401 is right)\n' http://127.0.0.1:8775/state
+curl -s -o /dev/null -w '  the page, through nginx: %{http_code}\n' https://unstuck-games.com/bunny-goes/
+curl -s -o /dev/null -w '  the save, through nginx, without the key: %{http_code} (401 is right)\n' https://unstuck-games.com/bunny-goes/api/state
+journalctl -u unstuck-bunny -n 5 --no-pager
+'@ }
+
+$Steps['bunny-links'] = @{ box = 'new'; what = 'Prints the two Bunny Goes secret links. THE OUTPUT IS SECRET: Bunny''s link is hers, the Bebu link also writes notes. Nothing else is changed'; script = @'
+. /etc/bunny.env
+echo "Bunny's link (send her this one):"
+echo "  https://unstuck-games.com/bunny-goes/#k=$BUNNY_KEY"
+echo "Bebu's link (yours: it can also publish notes, in Bebu mode):"
+echo "  https://unstuck-games.com/bunny-goes/?bebu=edit#k=$BUNNY_KEY&b=$BUNNY_BEBU_KEY"
 '@ }
 
 $Steps['cert'] = @{ box = 'new'; what = 'Let''s Encrypt certificate for every name whose DNS already points at the new box, then the full nginx config. Running it accepts the Let''s Encrypt subscriber agreement, as the old box did.'; script = @'
