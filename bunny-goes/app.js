@@ -1,6 +1,5 @@
 /* Bunny Goes: build your life in Paramaribo, then see it.
-   Data: data/site.json (built from the research by data/build_site.py),
-   plus data/places.json (named places to eat and fun things to do, merged in on load).
+   Data: data/site.json (built from the research by data/build_site.py).
    State: saved in this browser, and to the server when /api/state answers. */
 (function () {
   'use strict';
@@ -17,6 +16,7 @@
     var m = location.hash.match(/^#k=([A-Za-z0-9_-]{16,})(?:&b=([A-Za-z0-9_-]{16,}))?/);
     try {
       if (m) {
+        if (localStorage.getItem(SKEY) !== m[1]) sessionStorage.setItem('bunny-goes-new-link', '1');
         localStorage.setItem(SKEY, m[1]);
         if (m[2]) localStorage.setItem(BKEY, m[2]);
         history.replaceState(null, '', location.pathname + location.search + '#/');
@@ -25,6 +25,13 @@
       BEBU_LINK = localStorage.getItem(BKEY) || '';
     } catch (e) { if (m) { LINK = m[1]; BEBU_LINK = m[2] || ''; } }
   })();
+  function privateLink(bebu) { return location.origin + location.pathname + (bebu ? '?bebu=edit' : '') + '#k=' + LINK + (bebu && BEBU_LINK ? '&b=' + BEBU_LINK : ''); }
+  function linkCard() {
+    if (!LINK) return '';
+    return '<div class="card link-card"><h3>Your private link</h3><p class="small muted">This link is your key: it opens your picks and Bebu’s carrots on any phone or computer. Keep it somewhere safe, and don’t share it.</p>' +
+      '<div class="btn-row" style="justify-content:flex-start"><button type="button" class="btn btn-pink btn-small" data-copy-link="1">Copy my private link</button>' +
+      (BEBU_LINK ? '<button type="button" class="btn btn-ghost btn-small" data-copy-link="bebu">Copy Bebu link</button>' : '') + '</div></div>';
+  }
   function keyed(extra) { var h = { 'X-Bunny-Key': LINK }; Object.keys(extra || {}).forEach(function (k) { h[k] = extra[k]; }); return h; }
   var app = document.getElementById('app');
   var openChip = null;
@@ -236,10 +243,12 @@
     phone: '<g><rect x="96" y="72" width="20" height="34" rx="4" fill="#7cc6fe" stroke="#2b2240" stroke-width="4" transform="rotate(12 106 89)"/><circle cx="104" cy="98" r="2" fill="#2b2240" transform="rotate(12 106 89)"/></g>',
     heart: '<g class="float"><path d="M104 40 c-6 -10 -20 -4 -14 8 l14 14 l14 -14 c6 -12 -8 -18 -14 -8 Z" fill="#ff8fb1" stroke="#2b2240" stroke-width="3" stroke-linejoin="round"/></g>',
     umbrella: '<g><path d="M92 54 Q114 22 136 54 Z" fill="#ff8fb1" stroke="#2b2240" stroke-width="4" stroke-linejoin="round"/><path d="M114 54 v52 q0 8 -8 6" fill="none" stroke="#2b2240" stroke-width="4" stroke-linecap="round"/><path d="M103 54 q0 -10 11 -20 M125 54 q0 -10 -11 -20" fill="none" stroke="#2b2240" stroke-width="2"/></g>',
+    wave: '<g class="wave"><ellipse cx="108" cy="64" rx="11" ry="15" fill="#fff" stroke="#2b2240" stroke-width="4"/><path d="M103 56 v6 M109 54 v7 M115 56 v6" stroke="#ffb3cb" stroke-width="2.5" stroke-linecap="round"/></g>',
     suitcase: '<g><rect x="92" y="100" width="34" height="26" rx="4" fill="#2e9e6b" stroke="#2b2240" stroke-width="4"/><path d="M102 100 v-6 h14 v6" fill="none" stroke="#2b2240" stroke-width="4"/><path d="M92 110 h34" stroke="#ffc93c" stroke-width="3"/><circle cx="100" cy="118" r="2" fill="#fff"/></g>'
   };
   function bunny(cls, mood, outfit, say) {
-    var svg = outfit && OUTFIT[outfit] ? BUNNY.replace('</svg>', OUTFIT[outfit] + '</svg>') : BUNNY;
+    var extra = String(outfit || '').split('+').map(function (o) { return OUTFIT[o] || ''; }).join('');
+    var svg = extra ? BUNNY.replace('</svg>', extra + '</svg>') : BUNNY;
     var b = '<button type="button" class="bunny ' + cls + ' ' + (mood || 'happy') + '" data-poke="1" aria-label="Poke Bunny">' + svg + '</button>';
     if (!say) return b;
     return '<div class="talk">' + b + '<div class="bubble" aria-live="polite">' + say + '</div></div>';
@@ -409,17 +418,71 @@
       '<span class="pcard-body"><b>' + esc(card.title) + '</b><span>' + esc(card.fun) + '</span></span></button>' +
       '<button type="button" class="pcard-heart" data-heart="' + esc(card.id) + '" aria-pressed="' + card.picked + '" aria-label="' + (card.picked ? 'Unheart ' : 'Heart ') + esc(card.title) + '">' + (card.picked ? '♥' : '♡') + '</button></div>';
   }
+  function rail(cards) {
+    return '<div class="rail-wrap at-start"><button type="button" class="rail-arrow prev" data-rail="-1" aria-label="Scroll back">‹</button>' +
+      '<div class="rail">' + cards + '</div><button type="button" class="rail-arrow next" data-rail="1" aria-label="Scroll on">›</button></div>';
+  }
+  // Rows drift slowly on their own to show there's more. They stop while touched,
+  // stay still for a while after, and never move with reduced motion.
+  var drifting = [], driftOn = false;
+  function driftLoop(prev) {
+    var now = performance.now(), dt = Math.min(64, now - (prev || now));
+    drifting = drifting.filter(function (r) { return document.body.contains(r); });
+    drifting.forEach(function (r) {
+      if (!r._visible || now < (r._pauseUntil || 0) || r.scrollWidth <= r.clientWidth + 4) return;
+      if (r.style.scrollSnapType !== 'none') r.style.scrollSnapType = 'none';
+      if (r._pos == null) r._pos = r.scrollLeft;
+      r._pos += (r._dir || 1) * dt * 0.022;
+      var max = r.scrollWidth - r.clientWidth;
+      if (r._pos >= max) { r._pos = max; r._dir = -1; r._pauseUntil = now + 1800; }
+      if (r._pos <= 0) { r._pos = 0; r._dir = 1; r._pauseUntil = now + 1800; }
+      r.scrollLeft = r._pos;
+    });
+    if (drifting.length) requestAnimationFrame(driftLoop); else driftOn = false;
+  }
+  var driftSeen = 'IntersectionObserver' in window ? new IntersectionObserver(function (es) { es.forEach(function (e) { e.target._visible = e.isIntersecting; }); }, { threshold: 0.4 }) : null;
+  function drift(r) {
+    if (matchMedia('(prefers-reduced-motion: reduce)').matches || !driftSeen) return;
+    r._pauseUntil = performance.now() + 1500;
+    var hold = function () { r._pauseUntil = performance.now() + 6000; r._pos = null; r.style.scrollSnapType = ''; };
+    ['pointerdown', 'touchstart', 'wheel'].forEach(function (ev) { r.addEventListener(ev, hold, { passive: true }); });
+    r.parentNode.querySelectorAll('.rail-arrow').forEach(function (a) { a.addEventListener('click', hold); });
+    driftSeen.observe(r);
+    drifting.push(r);
+    if (!driftOn) { driftOn = true; requestAnimationFrame(driftLoop); }
+  }
+  function railEnds() {
+    document.querySelectorAll('.rail-wrap').forEach(function (w) {
+      var r = w.querySelector('.rail');
+      var paint = function () {
+        w.classList.toggle('at-start', r.scrollLeft < 8);
+        w.classList.toggle('at-end', r.scrollLeft + r.clientWidth >= r.scrollWidth - 8);
+      };
+      if (!r.dataset.wired) {
+        r.dataset.wired = '1';
+        r.addEventListener('scroll', paint, { passive: true });
+        // Click-and-drag with a mouse; touch keeps its own swipe.
+        var down = false, startX = 0, startL = 0, moved = false;
+        r.addEventListener('pointerdown', function (e) { if (e.pointerType !== 'mouse') return; down = true; moved = false; startX = e.clientX; startL = r.scrollLeft; });
+        window.addEventListener('pointermove', function (e) { if (!down) return; var dx = e.clientX - startX; if (Math.abs(dx) > 5) { moved = true; r.classList.add('dragging'); } r.scrollLeft = startL - dx; });
+        window.addEventListener('pointerup', function () { if (!down) return; down = false; setTimeout(function () { r.classList.remove('dragging'); }, 0); });
+        r.addEventListener('click', function (e) { if (moved) { e.stopPropagation(); e.preventDefault(); moved = false; } }, true);
+        drift(r);
+      }
+      paint();
+    });
+  }
   function row(key, title, sub, ids) {
     var cards = ids.map(function (id) { return cardOf(id, key); }).filter(Boolean);
     if (!cards.length) return '';
-    return '<section class="row-sec"><div class="row-head"><h2>' + title + '</h2>' + (sub ? '<span class="muted small">' + sub + '</span>' : '') + '</div><div class="rail">' + cards.map(pcard).join('') + '</div></section>';
+    return '<section class="row-sec"><div class="row-head"><h2>' + title + '</h2>' + (sub ? '<span class="muted small">' + sub + '</span>' : '') + '</div>' + rail(cards.map(pcard).join('')) + '</section>';
   }
 
   function renderExplore() {
     var d = daysTo(S.moveDate);
     var n = Object.keys(S.hearts || {}).filter(function (k) { return S.hearts[k]; }).length + S.home.likes.length;
     app.innerHTML = '<section class="hero explore-hero">' + bunny('bunny-big', 'happy', 'shades', d > 0 ? d + ' sleeps until Paramaribo! Kaya nato ni.' : 'You made it! Amping, Bunny.') +
-      '<h1>Bunny goes to Paramaribo</h1><p>Look around. Heart what makes you smile. Bunny keeps the boring maths on the back of every card.</p>' +
+      '<h1>Bunny goes to Paramaribo</h1><p><button type="button" class="src" data-hello="1">What is this?</button> Look around. Heart what makes you smile. Bunny keeps the boring maths on the back of every card.</p>' +
       '<div class="btn-row"><a class="btn btn-pink" href="#/play">Play this or that</a><a class="btn btn-ghost" href="#/mine">My Paramaribo' + (n ? ' · ' + n + ' ♥' : '') + '</a></div></section>' +
       notesHTML('welcome') +
       row('live', 'Where you could live', 'Heart the ones you like', D.areas) +
@@ -527,14 +590,14 @@
       return '<button type="button" class="mine-pick' + (on ? '' : ' empty') + '" data-card="' + (on ? on.id : LIFE.filter(function (l) { return l.group === g; })[0].id) + '" data-row="everyday"><span class="pc-emoji">' + (on ? on.emoji : '❔') + '</span><span><small>' + GROUP_NAMES[g] + '</small><b>' + (on ? esc(on.title) : 'Not picked yet') + '</b></span></button>';
     }).join('');
     var areas = S.home.likes.map(function (id) { return cardOf(id, 'live'); });
-    var hc = hearts.map(function (id) { var it = D.items[id]; var rowKey = /^X1/.test(id) ? 'eat' : /^X2/.test(id) ? 'see' : /^X3/.test(id) ? 'weekend' : /^X4/.test(id) ? 'hobby' : /^X5/.test(id) ? 'pretty' : 'words'; return cardOf(id, rowKey); }).filter(Boolean);
+    var hc = hearts.map(function (id) { var it = D.items[id]; var rowKey = /^X1/.test(id) ? 'eat' : /^X2/.test(id) ? 'see' : /^X3/.test(id) ? 'weekend' : /^X4/.test(id) ? 'hobby' : /^X5/.test(id) ? 'pretty' : /^X6/.test(id) ? 'spots' : /^X7/.test(id) ? 'cafe' : /^X8/.test(id) ? 'homey' : /^X9/.test(id) ? 'fun' : 'words'; return cardOf(id, rowKey); }).filter(Boolean);
     app.innerHTML = '<section class="hero">' + bunny('bunny-big', 'happy', 'heart', picks.length ? 'Look at you, building a whole life.' : 'Nothing picked yet. Play this or that?') + '<h1>My Paramaribo</h1></section>' +
       '<div class="card"><h2>My everyday</h2><div class="mine-grid">' + groups + '</div></div>' +
-      (areas.length ? '<section class="row-sec"><div class="row-head"><h2>Streets I like</h2></div><div class="rail">' + areas.map(pcard).join('') + '</div></section>' : '') +
-      (hc.length ? '<section class="row-sec"><div class="row-head"><h2>Things I hearted</h2></div><div class="rail">' + hc.map(pcard).join('') + '</div></section>' : '') +
+      (areas.length ? '<section class="row-sec"><div class="row-head"><h2>Streets I like</h2></div>' + rail(areas.map(pcard).join('')) + '</section>' : '') +
+      (hc.length ? '<section class="row-sec"><div class="row-head"><h2>Things I hearted</h2></div>' + rail(hc.map(pcard).join('')) + '</section>' : '') +
       '<div class="card real-teaser"><div class="spread"><div><p class="step-kicker">When you want the realistic part</p><h2>About ' + money(spend) + ' a month to live</h2><p class="small muted">A picture, not a promise: from your picks and the research. Rent and salary sharpen it.</p></div></div>' +
       '<div class="btn-row" style="justify-content:flex-start"><a class="btn btn-pink btn-small" href="#/real">Make it real</a><a class="btn btn-ghost btn-small" href="#/postcard">Postcard to Bebu</a><a class="btn btn-ghost btn-small" href="#/play">Play again</a></div></div>' +
-      notesHTML('mine');
+      notesHTML('mine') + linkCard();
   }
 
   function renderReveal() {
@@ -604,7 +667,7 @@
       return '<button type="button" class="chip' + (ch[2]() ? ' set' : '') + '" data-chip="' + ch[0] + '" aria-expanded="' + (openChip === ch[0]) + '">' + ch[1] + '</button>';
     }).join('') + '</div>' + (openChip ? '<div class="drop">' + CONTROLS[openChip]() + '<div class="btn-row"><button type="button" class="btn btn-ghost btn-small" data-chip="' + openChip + '">Done</button></div></div>' : '') + '</div>';
     app.innerHTML = chips + monthCard() + sectionsHTML() + phrasesHTML() + notesHTML('life') +
-      '<p class="tiny muted" style="text-align:center;margin-top:20px">' + (LINK ? 'Your picks are saved to your private link.' : 'Your picks are saved in this browser only.') + ' <button type="button" class="src" data-forget="1">Forget my picks</button></p>';
+      '<p class="tiny muted" style="text-align:center;margin-top:20px">' + (LINK ? 'Your picks are saved to your private link.' : 'Your picks are saved in this browser only.') + ' <button type="button" class="src" data-forget="1">Forget my picks</button></p>' + linkCard();
   }
 
   function monthCard() {
@@ -787,9 +850,9 @@
   try { DRAFTS = JSON.parse(localStorage.getItem(DKEY) || '{}') || {}; } catch (e) {}
   function saveDrafts() { try { localStorage.setItem(DKEY, JSON.stringify(DRAFTS)); } catch (e) {} paintEditBar(); }
   var SPOT_NAMES = { welcome: 'Explore', mine: 'My Paramaribo', life: 'Make it real', home: 'Home and neighbourhoods', money: 'Money and banking', connected: 'Getting connected', around: 'Getting around', health: 'Health and safety', papers: 'Papers', briefing: 'the Suriname briefing', quests: 'Quests', open: 'Open questions' };
-  var SPOTS = [['welcome', '#/']].concat([1, 2, 3, 4, 5, 6, 7, 8].map(function (n) { return ['play-' + n, '#/play/' + n]; }))
+  var SPOTS = [['hello', '#/'], ['welcome', '#/']].concat([1, 2, 3, 4, 5, 6, 7, 8].map(function (n) { return ['play-' + n, '#/play/' + n]; }))
     .concat([['match', '#/play/9'], ['mine', '#/mine'], ['postcard', '#/postcard'], ['life', '#/real'], ['home', '#/real'], ['money', '#/real'], ['connected', '#/real'], ['around', '#/real'], ['health', '#/real'], ['papers', '#/real'], ['briefing', '#/briefing'], ['quests', '#/quests'], ['open', '#/open']]);
-  SPOT_NAMES.match = 'the match screen'; SPOT_NAMES.postcard = 'the postcard';
+  SPOT_NAMES.hello = 'the welcome pop-up'; SPOT_NAMES.match = 'the match screen'; SPOT_NAMES.postcard = 'the postcard';
   function spotName(w) { var m = w.match(/^play-(\d+)$/); return m ? 'This or that, round ' + m[1] + (ROUNDS[m[1] - 1] ? ' (' + ROUNDS[m[1] - 1].q + ')' : '') : (SPOT_NAMES[w] || w); }
   var spotAt = -1;
   function goSpot(i) {
@@ -798,6 +861,7 @@
     sheet.hidden = true;
     if (location.hash === sp[1] || (sp[1] === '#/' && !location.hash)) route(); else location.hash = sp[1];
     setTimeout(function () {
+      if (sp[0] === 'hello') showHello();
       var el = document.querySelector('[data-bebu-edit="' + sp[0] + '"]');
       if (!el) return;
       var d = el.closest('details'); if (d) d.open = true;
@@ -849,6 +913,23 @@
       '<span class="row" style="gap:6px"><button type="button" class="btn btn-ghost btn-small" data-bebu-spots="1">Spots</button><button type="button" class="btn btn-ghost btn-small" data-bebu-next="1">Next ›</button>' + bebuButtons() + '</span>';
   }
 
+  /* ---------- hello: the first-visit welcome ---------- */
+  var HELLO_KEY = 'bunny-goes-hello-seen';
+  function showHello() {
+    var note = NOTES.filter(function (n) { return n.where === 'hello'; })[0];
+    showSheet('<div class="hello">' + bunny('bunny-hello', 'happy', 'shades+wave') +
+      '<h2 id="sheet-title">Welcome to Bunny Goes</h2>' +
+      (note ? '<div class="hello-note"><span class="step-kicker">A note from Bebu</span><p class="pc-hand">' + esc(note.text) + '</p></div>' : '') +
+      '<p>Bunny Goes is your little guide to life in Paramaribo. Food, streets, weekend trips and pretty things to fall in love with, built on real research, with every number traceable to where it came from. The boring maths lives on the back of each card, for when you want it.</p>' +
+      '<ul class="hello-steps"><li><b>Explore:</b> swipe the rows and heart what makes you smile.</li>' +
+      '<li><b>This or that:</b> eight quick rounds so Bunny learns what you like. "I DUNNO BEBU" is always allowed.</li>' +
+      '<li><b>My Paramaribo:</b> your picks in one place, with the realistic stuff one tap away.</li></ul>' +
+      '<div class="btn-row"><a class="btn btn-pink" href="#/play" data-close>Go dream up your dream</a></div>' +
+      (LINK ? '<p class="tiny muted" style="text-align:center">This page opened from your private link, which is your key. <button type="button" class="src" data-copy-link="1">Copy it</button> and keep it safe.</p>' : '') +
+      notesHTML('hello') + '</div>');
+    try { localStorage.setItem(HELLO_KEY, '1'); } catch (e) {}
+  }
+
   /* ---------- sources sheet ---------- */
   var sheet = document.getElementById('sheet'), sheetBody = document.getElementById('sheet-body');
   function openSources(ids) {
@@ -880,7 +961,38 @@
   document.addEventListener('click', function (e) {
     var t = e.target.closest('button, a');
     if (!t) return;
+    if (t.dataset.hello) { showHello(); return; }
+    if (t.dataset.fs) {
+      var fs = 0; try { fs = Number(localStorage.getItem('bunny-goes-fs') || 0); } catch (e) {}
+      fs = Math.max(-8, fs + Number(t.dataset.fs));
+      document.documentElement.style.setProperty('--fs-zoom', String((16 + fs) / 16));
+      try { localStorage.setItem('bunny-goes-fs', String(fs)); } catch (e) {}
+      return;
+    }
+    if (t.dataset.themeToggle) {
+      var root = document.documentElement, cur = root.getAttribute('data-theme');
+      var dark = cur ? cur === 'dark' : matchMedia('(prefers-color-scheme: dark)').matches;
+      root.setAttribute('data-theme', dark ? 'light' : 'dark');
+      try { localStorage.setItem('bunny-goes-theme', dark ? 'light' : 'dark'); } catch (e) {}
+      return;
+    }
     if (t.dataset.cur) { S.cur = t.dataset.cur; save(); paintCur(); route(); return; }
+    if (t.dataset.rail) {
+      // Step whole cards, so scroll-snap agrees with where we're going.
+      var rr = t.parentNode.querySelector('.rail'), card = rr.querySelector('.pcard');
+      var step = card ? card.getBoundingClientRect().width + 12 : 180, per = Math.max(1, Math.floor(rr.clientWidth / step));
+      var target = Math.max(0, Math.min(rr.scrollWidth - rr.clientWidth, Math.round(rr.scrollLeft / step + Number(t.dataset.rail) * per) * step));
+      // Animated by hand: smooth scrollTo stalls inside a zoomed page.
+      rr.style.scrollSnapType = 'none';
+      var from = rr.scrollLeft, t0 = performance.now(), dur = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 380;
+      var stepFn = function (now) {
+        var k = dur ? Math.min(1, (now - t0) / dur) : 1, e = 1 - Math.pow(1 - k, 3);
+        rr.scrollLeft = from + (target - from) * e;
+        if (k < 1) requestAnimationFrame(stepFn); else setTimeout(function () { rr.style.scrollSnapType = ''; }, 60);
+      };
+      requestAnimationFrame(stepFn);
+      return;
+    }
     if (t.dataset.card) { openCard(t.dataset.card, t.dataset.row); return; }
     if (t.dataset.flip) { var fl = sheet.querySelector('.flip'); if (fl) fl.dataset.flipped = fl.dataset.flipped === 'true' ? 'false' : 'true'; return; }
     if (t.dataset.heart) {
@@ -923,12 +1035,31 @@
     if (t.dataset.bebuEdit) { openDraft(t.dataset.bebuEdit); return; }
     if (t.dataset.bebuSave) { var tx = document.getElementById('bebu-text'); DRAFTS[t.dataset.bebuSave] = tx ? tx.value : ''; saveDrafts(); sheet.hidden = true; route(); return; }
     if (t.dataset.bebuDel) { delete DRAFTS[t.dataset.bebuDel]; saveDrafts(); sheet.hidden = true; route(); return; }
+    if (t.dataset.copyLink) {
+      var url = privateLink(t.dataset.copyLink === 'bebu'), label = t.textContent;
+      var shown = function () { showSheet('<h2 id="sheet-title">Your private link</h2><p class="small">Select it all and copy. Keep it somewhere safe.</p><textarea class="input" rows="3" readonly id="link-out">' + esc(url) + '</textarea>'); var o = document.getElementById('link-out'); o.focus(); o.select(); };
+      try { navigator.clipboard.writeText(url).then(function () { t.textContent = 'Copied! Save it somewhere safe'; setTimeout(function () { t.textContent = label; }, 2500); }, shown); } catch (err) { shown(); }
+      return;
+    }
     if (t.dataset.bebuNext) { goSpot(spotAt + 1); return; }
     if (t.dataset.bebuGo) { goSpot(Number(t.dataset.bebuGo)); return; }
     if (t.dataset.bebuSpots) {
       showSheet('<h2 id="sheet-title">Where notes can go</h2><p class="tiny muted">' + SPOTS.length + ' spots. Tap one to jump there.</p><ul class="lines">' + SPOTS.map(function (sp, i) {
         return '<li><button type="button" class="src" style="text-decoration:none;text-align:left;font-size:15px;color:var(--ink)" data-bebu-go="' + i + '">' + (i + 1) + '. ' + esc(spotName(sp[0])) + '</button><span>' + ((DRAFTS[sp[0]] || '').trim() ? '♥ written' : '') + '</span></li>';
-      }).join('') + '</ul>');
+      }).join('') + '</ul>' +
+        '<p class="field-label" style="margin-top:16px">Bring notes from another browser</p><p class="tiny muted">Paste what "Copy for CC" gave you, then Import. Then Publish.</p>' +
+        '<textarea id="bebu-import" class="input" rows="4" placeholder="BUNNY GOES · Bebu notes · …"></textarea>' +
+        '<div class="btn-row" style="justify-content:flex-start"><button type="button" class="btn btn-pink btn-small" data-bebu-import="1">Import</button><span id="bebu-import-msg" class="small"></span></div>');
+      return;
+    }
+    if (t.dataset.bebuImport) {
+      var raw = (document.getElementById('bebu-import') || {}).value || '', msg = document.getElementById('bebu-import-msg'), got = 0;
+      try {
+        var list = JSON.parse(raw.slice(raw.indexOf('[')));
+        list.forEach(function (n) { if (n && n.where && (n.text || '').trim()) { DRAFTS[String(n.where)] = String(n.text); got++; } });
+        saveDrafts();
+        msg.textContent = got + ' note' + (got === 1 ? '' : 's') + ' imported. Tap Publish to send them to Bunny.';
+      } catch (err) { msg.textContent = "That didn't look like the copied notes. Paste the whole thing."; }
       return;
     }
     if (t.dataset.bebuPublish) {
@@ -1025,10 +1156,11 @@
     if (h !== lastRoute) { openChip = (h.indexOf('#/real') === 0 || h.indexOf('#/life') === 0) ? openChip : null; window.scrollTo(0, 0); }
     else window.scrollTo(0, y);
     lastRoute = h;
+    railEnds();
   }
   window.addEventListener('hashchange', route);
 
-  // Named places live in their own file so a rebuild of site.json never drops them.
+  // Named places live in their own file (the research from PR #148), so a rebuild of site.json never drops them.
   function loadPlaces() {
     return fetch('data/places.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (p) {
       if (!p || !p.items) return;
@@ -1043,7 +1175,12 @@
   fetch('data/site.json').then(function (r) { return r.json(); }).then(function (j) {
     D = j;
     return Promise.all([loadServer(), loadNotes(), loadPlaces()]);
-  }).then(function () { paintCur(); paintEditBar(); route(); }).catch(function (err) {
+  }).then(function () {
+    paintCur(); paintEditBar(); route();
+    var fresh = false, seen = false;
+    try { fresh = sessionStorage.getItem('bunny-goes-new-link') === '1'; sessionStorage.removeItem('bunny-goes-new-link'); seen = localStorage.getItem(HELLO_KEY) === '1'; } catch (e) {}
+    if (!EDIT) setTimeout(showHello, 500);   // Jay: the welcome always fires
+  }).catch(function (err) {
     app.innerHTML = '<div class="card"><h2>Bunny got lost.</h2><p>The data didn\'t load. Try reloading.</p><p class="tiny muted">' + esc(err && err.message) + '</p></div>';
   });
 })();
