@@ -923,7 +923,20 @@
     if (t.dataset.bebuSpots) {
       showSheet('<h2 id="sheet-title">Where notes can go</h2><p class="tiny muted">' + SPOTS.length + ' spots. Tap one to jump there.</p><ul class="lines">' + SPOTS.map(function (sp, i) {
         return '<li><button type="button" class="src" style="text-decoration:none;text-align:left;font-size:15px;color:var(--ink)" data-bebu-go="' + i + '">' + (i + 1) + '. ' + esc(spotName(sp[0])) + '</button><span>' + ((DRAFTS[sp[0]] || '').trim() ? '♥ written' : '') + '</span></li>';
-      }).join('') + '</ul>');
+      }).join('') + '</ul>' +
+        '<p class="field-label" style="margin-top:16px">Bring notes from another browser</p><p class="tiny muted">Paste what "Copy for CC" gave you, then Import. Then Publish.</p>' +
+        '<textarea id="bebu-import" class="input" rows="4" placeholder="BUNNY GOES · Bebu notes · …"></textarea>' +
+        '<div class="btn-row" style="justify-content:flex-start"><button type="button" class="btn btn-pink btn-small" data-bebu-import="1">Import</button><span id="bebu-import-msg" class="small"></span></div>');
+      return;
+    }
+    if (t.dataset.bebuImport) {
+      var raw = (document.getElementById('bebu-import') || {}).value || '', msg = document.getElementById('bebu-import-msg'), got = 0;
+      try {
+        var list = JSON.parse(raw.slice(raw.indexOf('[')));
+        list.forEach(function (n) { if (n && n.where && (n.text || '').trim()) { DRAFTS[String(n.where)] = String(n.text); got++; } });
+        saveDrafts();
+        msg.textContent = got + ' note' + (got === 1 ? '' : 's') + ' imported. Tap Publish to send them to Bunny.';
+      } catch (err) { msg.textContent = "That didn't look like the copied notes. Paste the whole thing."; }
       return;
     }
     if (t.dataset.bebuPublish) {
