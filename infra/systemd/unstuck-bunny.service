@@ -1,0 +1,15 @@
+[Unit]
+Description=Bunny Goes: one person's saved picks and Bebu's notes, behind a secret link
+After=network-online.target
+
+[Service]
+User=ec2-user
+EnvironmentFile=/etc/bunny.env
+Environment=BUNNY_DIR=/srv/bunny
+Environment=BUNNY_PORT=8775
+ExecStart=/usr/bin/python3.11 -u /srv/unstuck/services/bunny.py
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
