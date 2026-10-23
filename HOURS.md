@@ -16,6 +16,28 @@ Split below is CC's estimate against Jay's ~4:00 total: **Orbis ~1:45 · Game #2
 
 ---
 
+## Game #6 — INFINITE FRONTIER (tombstone: Desktop Tower Defense · markers: Dungeon Keeper, Dungeon of the Endless, The Settlers II, Mamono Sweeper, Rampart, Fieldrunners)
+
+**Clock started 2026-10-11** (brief v0.5 pasted; Jay to correct the time). The brief was made elsewhere and is **not counted**. Game number assumed; correct it if Elsible holds #6.
+
+| Milestone | Jay-time (cumulative) | Date |
+|---|---|---|
+| Brief filed as received, reviewed against the method, round-one boundary questions posed | ~0:02 | 2026-10-11 |
+| Tombstone shortlist researched (five corpses, three organs) | ~0:03 | 2026-10-11 |
+| Pivot: "no towers, the hex tile is the unit"; DTD named as theoretical tombstone by the red team | ~0:?? (Jay's GPT brainstorm; Jay to fill) | 2026-10-11 |
+| Grave re-opened on Jay's organ ("a constrained game unconfined, where original choices last"); five parallel digs; `TOMBSTONE.md` with four corpses and three possible records | ~0:05 (two question rounds) | 2026-10-11 |
+| Pivot document, old brief classified, P0 and experiments proposed, round two posed | (machine work) | 2026-10-11 |
+| Boundaries in | | |
+| P0: hex board, three denizens, flow-field routing, place/destroy, invariants, sweep | | |
+| First Jay playtest from the phone | | |
+
+| Date | Jay-time | Machine work | What Jay did |
+|---|---|---|---|
+| 2026-10-11 | ~0:08 | Read the brief against METHOD, the library and GOD-MODE; `REVIEW.md`; quick shortlist; pivot response `PIVOT.md`; five parallel research digs; `TOMBSTONE.md` | Pasted the name and the brief, answered three setup questions, asked for the tombstone run, went sideways with GPT and pasted the pivot, answered two question rounds, asked for the real dig |
+| 2026-10-13 | ~0:03 | `LOVABLE-BRIEF.md`; tombstone page `teardowns/desktop-tower-defense/REPORT.html`; records updated | Asked for the complete briefing for Lovable; picked the tombstone: DTD |
+
+---
+
 ## Game #5 — THE LAST WARREN (tombstone: Tokyo Jungle · markers: Agar.io, Rodent's Revenge, Hitman GO, Invisible Inc., Anomaly)
 
 **Clock started 2026-10-01 ~16:10 ET** (name + red-team brief pasted). The idea and brief were made with the red team before the clock and are **not counted**.
