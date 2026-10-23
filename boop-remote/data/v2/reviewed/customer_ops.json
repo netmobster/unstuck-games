@@ -1,0 +1,4478 @@
+[
+ {
+  "id": "apple-at-home-advisor-canada",
+  "name": "AppleCare At Home Advisor (Canada)",
+  "organization": "Apple",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "Apple's At Home Advisor remote support role has had Canadian postings in the past, but no Canadian posting was found in this or the previous run, Apple's careers site could not be reached, and the title is widely used in fake job offers.",
+  "what_you_do": "At Home Advisors troubleshoot Apple devices and services for customers from home, working independently without in-person supervision (per Apple's FAQ for another country).",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "Only as something to watch for: if an At Home Advisor (Canada) posting reappears on jobs.apple.com."
+  ],
+  "who_it_may_not_fit": [
+   "You need remote work now: the Indeed API returned no Apple At Home Advisor posting for Canada on 2026-10-13 and web search returned no jobs.apple.com pages; a Glassdoor snapshot of ~107 Apple jobs in Canada showed only retail Specialist roles.",
+   "Blogs claiming \"Apple remote jobs\" often point to outsourced contracts at Concentrix or Foundever, not Apple.",
+   "Fake Apple recruiters (\"Apple Mall\" and similar) push high-pay remote roles through messaging apps and fake training portals, then ask for money."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "unclear",
+   "ontario_residents": "unclear",
+   "provinces": [],
+   "eligibility_notes": [],
+   "work_authorization_notes": null
+  },
+  "availability_status": "rejected_insufficient_evidence",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API search \"Apple At Home Advisor\", remote Canada (2026-10-13): no results.",
+   "Web search \"jobs.apple.com At Home Advisor Canada 2026\" returned no Apple pages; third-party pages only."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.apple.com/careers/ca/teams/support-and-service.html",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "unknown",
+   "languages": [],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "unknown",
+   "schedule_type": "unknown",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "unknown",
+   "phone_or_video_required": "unknown",
+   "text_based_work": "unknown",
+   "independent_work": "unknown",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "unknown",
+   "training_required": "unknown",
+   "conditions_notes": [
+    "No Canadian posting found."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 2,
+   "creative": 0,
+   "language": 0
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "unknown",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "A ZipRecruiter figure of about US$26.41/hr (Aug 2026) is for the United States, not Canada; not recorded as a rate."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "scam_impersonation",
+   "stale_information"
+  ],
+  "risk_notes": [
+   "malwaretips.com report: fraudulent Apple job offers tied to fake \"Apple Mall\" sites mimicking Apple training portals; victims asked to send money after fake commissions accrue."
+  ],
+  "barriers": [
+   "No Canadian opening evidenced."
+  ],
+  "progression_potential": "unknown",
+  "horizon": "bridge",
+  "evidence_quality": "insufficient",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://www.lilachbullock.com/remote-apple-product-support-jobs/",
+    "source_type": "other",
+    "publisher": "Lilach Bullock (blog)",
+    "title": "Remote Apple product support jobs",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "risks"
+    ],
+    "evidence_summary": "Blog says the At Home Advisor program is limited to the US and Canada and posted on jobs.apple.com, and warns that many \"Apple remote job\" listings on general boards are outsourced Concentrix/Foundever contracts.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Secondary, undated blog."
+    ]
+   },
+   {
+    "url": "https://www.ziprecruiter.com/Jobs/Apple-Home-Advisor",
+    "source_type": "aggregator",
+    "publisher": "ZipRecruiter",
+    "title": "Apple Home Advisor jobs",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "pay"
+    ],
+    "evidence_summary": "US average about US$26.41/hour as of August 2026; not Canadian data.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://malwaretips.com/blogs/?p=247225",
+    "source_type": "independent_reporting",
+    "publisher": "MalwareTips",
+    "title": "Beware the Fake Apple Job Scam",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning"
+    ],
+    "evidence_summary": "Fraudulent Apple job offers circulate globally via fake \"Apple Mall\" sites that mimic Apple training portals; fake commissions accrue before victims are asked to send money.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.scamwatch.gov.au/about-us/news-and-alerts/scam-alert-job-recruitment-scams",
+    "source_type": "government",
+    "publisher": "Scamwatch (Australian Government)",
+    "title": "Scam alert: job recruitment scams",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning"
+    ],
+    "evidence_summary": "Warning signs: unexpected contact from a \"recruiter\" via SMS or encrypted messaging; high pay for little work; no experience needed; being told to pay money to earn more.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Australian guidance; general, not Canada-specific."
+    ]
+   },
+   {
+    "url": "https://www.antifraudcentre-centreantifraude.ca/index-eng.htm",
+    "source_type": "government",
+    "publisher": "Canadian Anti-Fraud Centre",
+    "title": "Canadian Anti-Fraud Centre (home / news list)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning",
+     "risks"
+    ],
+    "evidence_summary": "CAFC news list includes a June 2025 alert on a fake Amazon job investment scam ($1.2M lost across Canada); job offers arrive by text, WhatsApp, email and social ads and use real company names; victims are asked to pay by cheque, e-Transfer or crypto. CAFC line 1-888-495-8501.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "v1 jobs.apple.com sources (postings marked no longer available) were not re-seen; official_url carried from v1 without re-verification."
+  ],
+  "open_questions": [
+   "Does Apple currently run an At Home Advisor program in Canada at all?"
+  ],
+  "disposition": "rejected",
+  "disposition_reason": "No Canadian At Home Advisor opening found in two consecutive runs and Apple's site unreachable; the record cannot support any opportunity claim and the title is a scam magnet. Kept for the audit trail with scam-warning sources.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "apple-at-home-advisor-canada",
+   "v1_name": "AppleCare At Home Advisor (Canada)",
+   "v1_status": "not_currently_open",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "disposition rejected (was closed_or_not_open in v1 with sources no longer re-seen)",
+    "Added scam-warning sources",
+    "Removed v1 Apple page sources not re-seen"
+   ],
+   "claims_verified": [
+    "No Canadian At Home Advisor posting found",
+    "Apple-branded job scams exist"
+   ],
+   "unresolved_claims": [
+    "Existence of the program in Canada",
+    "Pay"
+   ]
+  }
+ },
+ {
+  "id": "belay-virtual-assistant-contractor",
+  "name": "Virtual assistant contractor (BELAY)",
+  "organization": "BELAY",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "BELAY is a US virtual-assistant staffing firm whose 1099 contractor roles are open only to residents of US states (excluding CA, CO, MT, NJ, NY and PA); Canada is not accepted.",
+  "what_you_do": "BELAY contractors provide remote administrative and executive support to US clients.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "Not applicable to Canadian residents."
+  ],
+  "who_it_may_not_fit": [
+   "You live in Canada: BELAY's jobs page accepts applications from US residents only; aggregator copies label the role \"US National\" and 1099 contractor.",
+   "Pay cited on an aggregator copy is $19–$22 per hour (currency unstated, US role)."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "not_eligible",
+   "ontario_residents": "not_eligible",
+   "provinces": [],
+   "eligibility_notes": [
+    "Jobs page: accepting applications for residents of all states except California, Colorado, Montana, New Jersey, New York and Pennsylvania; Canada not mentioned."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "not_eligible_for_ontario",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "belaysolutions.com/jobs (search summary, 2026-10-13) lists US-state eligibility only; FlexJobs copy labels the location \"US National\"."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://belaysolutions.com/jobs",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "unknown",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "contractor",
+   "schedule_type": "unknown",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "unknown",
+   "phone_or_video_required": "unknown",
+   "text_based_work": "yes",
+   "independent_work": "yes",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "unknown",
+   "training_required": "unknown",
+   "conditions_notes": []
+  },
+  "skill_demands": {
+   "computer": 3,
+   "writing": 3,
+   "numeracy": 1,
+   "detail": 3,
+   "customer": 2,
+   "technical": 1,
+   "creative": 0,
+   "language": 0
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": "unstated",
+   "advertised_rate": {
+    "min": 19,
+    "max": 22,
+    "unit": "hour",
+    "note": "FlexJobs copy of a BELAY virtual assistant listing: $19–$22 per hour based on experience; US-only role, currency not stated."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "unknown",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Not researched further: not open to Canadians."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "geographic_restriction"
+  ],
+  "risk_notes": [],
+  "barriers": [
+   "US residency required."
+  ],
+  "progression_potential": "unknown",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://belaysolutions.com/jobs",
+    "source_type": "official",
+    "publisher": "BELAY",
+    "title": "Current Job Openings at BELAY",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "canadian_eligibility",
+     "official_url",
+     "existence"
+    ],
+    "evidence_summary": "Accepting applications for residents of all US states except CA, CO, MT, NJ, NY and PA; residents of those states not considered for contract opportunities; Canada not listed.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.flexjobs.com/gjw/publicjobs?id=2206448",
+    "source_type": "aggregator",
+    "publisher": "FlexJobs",
+    "title": "BELAY virtual assistant listing (copy)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "canadian_eligibility",
+     "pay"
+    ],
+    "evidence_summary": "Location \"US National\"; 1099 contractor; $19–$22 per hour based on experience and skillset.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Search \"BELAY virtual assistant contractor Canada residents eligible\" found no evidence of Canadian hiring; the only Canada hit was a different company (Virtual Gurus)."
+  ],
+  "open_questions": [],
+  "disposition": "rejected",
+  "disposition_reason": "Closed to Canadian residents (US-state eligibility only), re-confirmed on 2026-10-13.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "belay-virtual-assistant-contractor",
+   "v1_name": "Virtual assistant contractor (BELAY)",
+   "v1_status": "rejected",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "Re-confirmed US-only eligibility from current jobs page summary",
+    "Added aggregator pay figure",
+    "availability_status set to not_eligible_for_ontario"
+   ],
+   "claims_verified": [
+    "US residents only; 1099 contractors"
+   ],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "concentrix-canada-customer-service",
+  "name": "Customer service / tech support representative (Concentrix Canada)",
+  "organization": "Concentrix",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "Concentrix hires customer service and tech support representatives in Canada and aggregator pages show work-from-home listings, but no current remote customer service posting could be read, and most dated Canadian postings are on-site or hybrid.",
+  "what_you_do": "You handle customer calls or tech-support contacts for a client brand on scheduled shifts that can run early morning to late evening, seven days a week, after paid classroom training.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You want a structured call-centre job with paid training at a large outsourcer and can work rotating shifts.",
+   "Indeed Canada listings tagged work-from-home show roles from $15/hr (customer service / tech support) to $16–$25/hr (Manitoba) and $18/hr (an Ontario moderation role), with PTO, dental, vision and EAP."
+  ],
+  "who_it_may_not_fit": [
+   "You need a confirmed, current remote opening: the Indeed API returned no remote Concentrix customer service posting for Canada on 2026-10-13 (only a Mississauga marketing strategist and a field representative).",
+   "Posting dates on the aggregator pages are not shown, so the remote listings may be stale.",
+   "Scammers use the Concentrix name, logo and real recruiters' names; Concentrix never asks for money, equipment fees or banking details during hiring."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Canadian listings exist for Ontario, Manitoba and Nunavut; province limits for remote roles were not visible."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API search \"Concentrix customer service\", remote, Canada (2026-10-13): no customer service or tech support posting; two unrelated Mississauga roles.",
+   "Search summaries of ca.indeed.com Concentrix pages show work-from-home customer service / tech support listings with pay but without posting dates."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.concentrix.com/scam-warning/",
+  "requirements": {
+   "minimum_age": null,
+   "education": "High school diploma or GED on postings seen previously",
+   "experience": "some",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "high-speed internet (tested for WFH roles)"
+   ],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "employee",
+   "schedule_type": "shifts",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day",
+    "evening",
+    "night",
+    "weekend"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": [
+    "A remote representative posting (per search summary) describes training, technologies and ongoing support for new hires; Concentrix claims about 80% of leaders were promoted from within."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 2,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 15,
+    "max": 25,
+    "unit": "hour",
+    "note": "Search summaries of Indeed Canada / Glassdoor Concentrix listings (dates not shown): $15/hr remote customer service and tech support; $16–$25/hr Manitoba; $20/hr remote tech products (Manitoba); $18/hr Ontario moderation role tagged work from home."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": []
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "scam_impersonation",
+   "phone_heavy",
+   "stale_information"
+  ],
+  "risk_notes": [
+   "Concentrix's own scam page: fake recruiters offer phone interviews and offers, then ask for SIN/SSN or banking details; any request for equipment or travel fees is fraud."
+  ],
+  "barriers": [],
+  "progression_potential": "unknown",
+  "horizon": "now",
+  "evidence_quality": "weak",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://ca.indeed.com/Concentrix-Canada-jobs",
+    "source_type": "aggregator",
+    "publisher": "Indeed Canada",
+    "title": "Concentrix Canada jobs",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "canadian_eligibility",
+     "pay",
+     "work_conditions"
+    ],
+    "evidence_summary": "Search summary: Concentrix postings tagged work from home incl. tech support and automotive support; $15/hr remote CS/tech support, $16–$25/hr Manitoba, $15/hr Nunavut; PTO, dental, vision, EAP listed; several other roles on-site.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Posting dates not shown."
+    ]
+   },
+   {
+    "url": "https://ca.indeed.com/q-content-moderators-jobs.html",
+    "source_type": "aggregator",
+    "publisher": "Indeed Canada",
+    "title": "Content moderator jobs (Canada)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "pay"
+    ],
+    "evidence_summary": "Search summary lists a Concentrix Ontario posting at $18/hr, full-time, with paid time off and work from home.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Date and role details not shown."
+    ]
+   },
+   {
+    "url": "https://www.concentrix.com/scam-warning/",
+    "source_type": "official",
+    "publisher": "Concentrix",
+    "title": "Concentrix scam warning / disclaimer",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning",
+     "legitimacy",
+     "official_url"
+    ],
+    "evidence_summary": "Scammers use Concentrix's name, logo and real recruiter names, run fake interviews and offers, then request SSN/banking details; Concentrix never asks for money or ID numbers at application; report via its fraud form.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://concentrixcareers.com/recruitment-fraud-alert",
+    "source_type": "official",
+    "publisher": "Concentrix Careers",
+    "title": "Recruitment fraud alert",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning"
+    ],
+    "evidence_summary": "Any request for equipment fees, travel fees or a deposit, even framed as reimbursable, is not from Concentrix.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "v1 Niagara Falls / Belleville / Calgary postings were not re-seen and were dropped; the pay range now comes from undated aggregator summaries.",
+   "Several content-farm copies of a \"Concentrix pay schedule scam\" article appeared in results and were ignored."
+  ],
+  "open_questions": [
+   "Is any remote Concentrix customer service role currently open to Ontario residents?",
+   "Posting dates for the work-from-home listings on Indeed Canada."
+  ],
+  "disposition": "downgraded",
+  "disposition_reason": "Employer is real and posts in Canada, but no current remote customer service posting could be opened; pay evidence is now undated aggregator summaries; scam warning re-confirmed.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "concentrix-canada-customer-service",
+   "v1_name": "Customer service / tech support representative (Concentrix Canada)",
+   "v1_status": "stale_needs_recheck",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "Replaced v1 posting sources (not re-seen) with current aggregator summaries and official scam pages",
+    "advertised_rate note rewritten to reflect undated listings",
+    "official_url now the only Concentrix page seen verbatim (scam warning)",
+    "Added stale_information risk"
+   ],
+   "claims_verified": [
+    "Concentrix publishes an official recruitment-scam warning",
+    "Canadian listings tagged work-from-home exist on Indeed Canada"
+   ],
+   "unresolved_claims": [
+    "Current remote availability",
+    "Current pay on remote roles",
+    "Hybrid 35 km rule and rotating-schedule details from v1"
+   ]
+  }
+ },
+ {
+  "id": "content-moderation-trust-safety-category",
+  "name": "Content moderation / online safety evaluation (category)",
+  "organization": null,
+  "record_type": "work_category",
+  "category": "customer_ops",
+  "summary": "Reviewing posts, videos or search results against safety rules; a few Canada-eligible remote roles exist (part-time freelance evaluator work at TELUS Digital, a Montreal-based moderation specialist listing), but most moderation jobs are office-based or outside Canada.",
+  "what_you_do": "You review flagged or sampled content and decide whether it breaks guidelines, or rate how safe and relevant search results are, following detailed policies. TELUS Digital's Internet Safety Evaluator reviews online video search results, including material that may be upsetting or offensive.",
+  "how_to_find_work": "Search Indeed Canada and Job Bank for \"content moderator\", \"trust and safety\", \"internet safety evaluator\" and \"online data analyst\" with a Remote filter, and check the TELUS Digital careers site (jobs.telusdigital.com) for roles with \"Canada\" in the title. Read residency rules in each listing (the US evaluator role needs three years of US residency). Expect an unpaid assessment before freelance evaluator work; never pay to apply.",
+  "who_it_may_fit": [
+   "You are detail-oriented, prefer solo screen work, and are confident you can handle disturbing material.",
+   "TELUS Digital evaluator postings say no previous professional experience is required and hours are flexible, part-time.",
+   "A remote Content Moderation Specialist listing for Canada (Centro.team, Montreal head office) was visible on aggregators."
+  ],
+  "who_it_may_not_fit": [
+   "Graphic, hateful or upsetting content would affect your wellbeing: reviewing it is part of the job.",
+   "The only Canada evaluator posting seen this run is titled for Russian speakers; an English (Canada) variant was not confirmed.",
+   "The Indeed API returned no remote content-moderator posting for Canada on 2026-10-13; many moderator jobs are office-based abroad.",
+   "Freelance evaluator work has no benefits or guaranteed hours and requires passing an assessment first.",
+   "Pay was rarely stated: one Ontario Concentrix moderation listing showed $18/hr (date unknown)."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "unclear",
+   "ontario_residents": "unclear",
+   "provinces": [],
+   "eligibility_notes": [
+    "Eligibility is set per listing; the US evaluator role's residency rule shows rules differ by country."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "not_applicable_category",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": null,
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "none",
+   "languages": [],
+   "equipment": [
+    "computer",
+    "high-speed internet"
+   ],
+   "certifications": [],
+   "other": [
+    "Pass a standard assessment (TELUS Digital evaluator roles)"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "varies",
+   "schedule_type": "varies",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "none",
+   "phone_or_video_required": "no",
+   "text_based_work": "partly",
+   "independent_work": "yes",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "yes",
+   "training_required": "unknown",
+   "conditions_notes": [
+    "Freelance evaluator hours are self-chosen but not guaranteed.",
+    "Employed moderation roles (e.g. at outsourcers) follow shift schedules."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 3,
+   "customer": 0,
+   "technical": 1,
+   "creative": 0,
+   "language": 2
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 18,
+    "max": 18,
+    "unit": "hour",
+    "note": "Single data point: a Concentrix Ontario moderation listing at $18/hr, full-time, work from home, seen in a search summary of Indeed Canada (date not shown). A 2026 careers blog claims $15 to $30+/hr across platforms (unverified)."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "receiving_tasks",
+    "passing_qualification",
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "TELUS Digital evaluator pay was not visible in any result."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "emotional_content",
+   "low_task_volume",
+   "unpaid_qualification",
+   "contractor_tax_obligations",
+   "no_guaranteed_work"
+  ],
+  "risk_notes": [],
+  "barriers": [
+   "Few Canada-eligible remote postings at any one time."
+  ],
+  "progression_potential": "unknown",
+  "horizon": "now",
+  "evidence_quality": "weak",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://jobs.telusdigital.com/fr_FR/MoroccoCareers/PipelineDetail/Internet-Safety-Evaluator-Russian-Canada/30606",
+    "source_type": "official",
+    "publisher": "TELUS Digital",
+    "title": "Internet Safety Evaluator – Russian (Canada), job 30606",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "requirements",
+     "risks",
+     "work_conditions"
+    ],
+    "evidence_summary": "Freelance, remote, part-time, flexible hours; rate online video search results incl. upsetting or offensive material; no previous professional experience needed; must pass basic requirements and a standard assessment.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Title indicates a Russian-language role; Canadian eligibility details were cut off in the snippet."
+    ]
+   },
+   {
+    "url": "https://jobs.telusdigital.com/zh_CN/MoroccoCareers/PipelineDetail/Internet-Safety-Evaluator-United-States/21471",
+    "source_type": "official",
+    "publisher": "TELUS Digital",
+    "title": "Internet Safety Evaluator – United States, job 21471",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "requirements"
+    ],
+    "evidence_summary": "US version requires full professional English and residence in the US for the last three consecutive years; shows rules are country-specific.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://remotive.com/remote/jobs/all-others/content-moderation-specialist-4932011",
+    "source_type": "aggregator",
+    "publisher": "Remotive",
+    "title": "Content Moderation Specialist @Centro.team (Canada)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "Remote content moderation specialist with Canada as location; salary unspecified; parent company head office in Montreal.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Posting date not shown."
+    ]
+   },
+   {
+    "url": "https://ca.indeed.com/q-content-moderators-jobs.html",
+    "source_type": "aggregator",
+    "publisher": "Indeed Canada",
+    "title": "Content moderator jobs (Canada)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "pay",
+     "existence"
+    ],
+    "evidence_summary": "Lists a remote Moderator (Operations & Customer Support) role and a Concentrix Ontario posting at $18/hr full-time with work from home.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Dates not shown."
+    ]
+   },
+   {
+    "url": "https://blog.theinterviewguys.com/?p=12001",
+    "source_type": "other",
+    "publisher": "The Interview Guys (blog)",
+    "title": "10 Best Content Moderation Jobs in 2026",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "pay",
+     "work_volume"
+    ],
+    "evidence_summary": "Blog claims pay of $15 to over $30 per hour depending on platform, content type and language skills; names Accenture, TaskUs and Cognizant as large hirers.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Unverified blog; not Canada-specific."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Indeed API \"content moderator\" remote Canada (2026-10-13) returned no results; a \"trust and safety\" search was rate-limited.",
+   "v1 jobs.telusdigital.com Canada search page was not re-seen and was dropped."
+  ],
+  "open_questions": [
+   "Is an English (Canada) Internet Safety Evaluator role currently open, and what does it pay?",
+   "Is the Centro.team listing current and open to Ontario?"
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Category confirmed with current but thin evidence; how_to_find_work added, one pay data point added, stale sources dropped.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "content-moderation-trust-safety-category",
+   "v1_name": "Content moderation / online safety evaluation (category)",
+   "v1_status": "uncertain",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "Added how_to_find_work",
+    "Added Centro.team listing and Indeed Canada moderation summary",
+    "Added $18/hr data point with caveats",
+    "text_based_work set to partly; emotional_content_risk kept yes"
+   ],
+   "claims_verified": [
+    "TELUS Digital posts freelance part-time remote evaluator roles with a Canada variant and an assessment requirement",
+    "Exposure to upsetting content is part of the role"
+   ],
+   "unresolved_claims": [
+    "Pay for evaluator roles",
+    "English (Canada) evaluator availability"
+   ]
+  }
+ },
+ {
+  "id": "cra-contact-centre-agent-seasonal",
+  "name": "Contact centre agent, seasonal/term (Canada Revenue Agency)",
+  "organization": "Canada Revenue Agency",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "The Canada Revenue Agency hires call-centre agents in waves (about 1,250 added in fall 2025), but the two 2026 postings found had closed by June and September 2026, no open posting was found in October 2026, and the agency is cutting spending.",
+  "what_you_do": "You answer calls from individuals and businesses about taxes and benefits, look up accounts and explain CRA rules under strict privacy procedures, on shifts that can include evenings and weekends. Terms are often temporary and may or may not be renewed.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You want a federal-government phone job with public-service pay and can accept term contracts and busy call queues.",
+   "2026 SP-03 call-centre postings paid $59,623–$65,813 (Ottawa, bilingual, temporary) and $65,389–$73,595 (Montreal).",
+   "Secondary school diploma level; roles exist in English, French and bilingual."
+  ],
+  "who_it_may_not_fit": [
+   "You need an opening now: the Ottawa posting closed 2026-06-15 and the Montreal posting closed 2026-09-04; nothing open was found on 2026-10-13.",
+   "You need confirmed remote work: the 2026 postings named cities; telework was not stated.",
+   "Job security is weak: the union counts about 3,300 call-centre job losses since May 2024 (CRA attributes 1,300 to seasonal contracts ending), 280 more layoffs were announced, and the CRA must cut $715M by 2028–29.",
+   "Phone-heavy work with frustrated callers; evenings, weekends, overtime and shift work expected; background check."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Postings are tied to CRA locations (e.g. Ottawa); eligibility follows the federal staffing rules on each poster."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API search \"Canada Revenue Agency contact centre agent\", Ontario (2026-10-13): no CRA posting.",
+   "Web search found two 2026 CRA call-centre postings, both closed (Ottawa bilingual SP-03, closed 2026-06-15; Montreal, closed 2026-09-04).",
+   "CRA news (Feb 2026) says ~1,250 service representatives were added in fall 2025, so hiring recurs but no current poster was confirmed."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.canada.ca/en/revenue-agency/news/2026/02/update-on-contact-centres-for-the-2026-tax-filing-season-ensuring-canadians-receive-the-support-they-need.html",
+  "requirements": {
+   "minimum_age": null,
+   "education": "Secondary school diploma (2026 postings); security/background check",
+   "experience": "unknown",
+   "languages": [
+    "en",
+    "fr"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Willing to work evenings and/or weekends, overtime, shifts or a flexible schedule (Montreal 2026 posting)"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "employee",
+   "schedule_type": "shifts",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day",
+    "evening",
+    "weekend"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Term/seasonal contracts; 850 contracts were extended in 2025 after complaints, others were not renewed.",
+    "Telework status of 2026 postings not seen."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 1,
+   "detail": 3,
+   "customer": 3,
+   "technical": 1,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "salary",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 59623,
+    "max": 73595,
+    "unit": "year",
+    "note": "SP-03 call-centre agent postings seen via search summaries in 2026: Ottawa bilingual temporary $59,623–$65,813 (closed 2026-06-15); Montreal $65,389–$73,595 (closed 2026-09-04)."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "year",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "hours_worked",
+    "program_funding"
+   ],
+   "economics_notes": []
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "phone_heavy",
+   "no_guaranteed_work",
+   "unpredictable_income",
+   "credential_required",
+   "funding_uncertain"
+  ],
+  "risk_notes": [
+   "CRA budget reduction of $715M by 2028–29 and repeated non-renewal of term contracts."
+  ],
+  "barriers": [
+   "Postings open only periodically and close within weeks."
+  ],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [
+   "Union says about 3,300 call-centre jobs were lost since May 2024; CRA says 1,300 of the May departures were seasonal contracts ending (same disagreement as in v1)."
+  ],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://www.canada.ca/en/revenue-agency/news/2026/02/update-on-contact-centres-for-the-2026-tax-filing-season-ensuring-canadians-receive-the-support-they-need.html",
+    "source_type": "government",
+    "publisher": "Canada Revenue Agency",
+    "title": "Update on contact centres for the 2026 tax-filing season (Feb 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-02",
+    "supports": [
+     "existence",
+     "official_url",
+     "work_volume",
+     "availability"
+    ],
+    "evidence_summary": "CRA added approximately 1,250 service representatives to its contact centres in fall 2025 to increase capacity.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.narcity.com/cra-jobs-no-degree-hiring-ontario-bc-quebec",
+    "source_type": "independent_reporting",
+    "publisher": "Narcity",
+    "title": "CRA is hiring for jobs in these cities and some positions don't require a degree",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "pay",
+     "requirements",
+     "availability",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "Montreal Call Centre Customer Service Agent at $65,389–$73,595; secondary school diploma; bilingual; evenings/weekends/overtime/shifts; closing 2026-09-04.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://ca.indeed.com/Canada-Revenue-Agency-Cra-jobs",
+    "source_type": "aggregator",
+    "publisher": "Indeed Canada",
+    "title": "Canada Revenue Agency jobs",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "pay",
+     "availability"
+    ],
+    "evidence_summary": "Listed a temporary bilingual SP-03 Call Centre Agent in Ottawa at $59,623–$65,813 closing 2026-06-15.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://psacunion.ca/canada-hold-psac-and-ute-launch-campaign-save-call",
+    "source_type": "other",
+    "publisher": "PSAC",
+    "title": "Canada on Hold: PSAC and UTE launch campaign to save call centre jobs",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "work_volume",
+     "risks"
+    ],
+    "evidence_summary": "Union says nearly 3,300 call-centre workers lost jobs since May 2024 and over 1,000 term contracts were not renewed on May 16; cites wait times of 30 minutes to 3.5 hours.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.hrreporter.com/focus-areas/recruitment-and-staffing/cra-extends-contracts-for-850-call-centre-workers-amid-complaints/393230",
+    "source_type": "independent_reporting",
+    "publisher": "Canadian HR Reporter",
+    "title": "CRA extends contracts for 850 call centre workers amid complaints",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "work_volume"
+    ],
+    "evidence_summary": "CRA extended about 850 call-centre contracts to end of March 2025; CRA spokesperson attributes fluctuations to seasonal hires, incl. 1,300 let go in May.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.benefitsandpensionsmonitor.com/news/industry-news/union-demands-halt-to-cra-job-cuts-as-280-more-layoffs-confirmed/392026",
+    "source_type": "independent_reporting",
+    "publisher": "Benefits and Pensions Monitor",
+    "title": "Union demands halt to CRA job cuts as 280 more layoffs confirmed",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "risks",
+     "funding"
+    ],
+    "evidence_summary": "Up to 280 more CRA employees to lose jobs; CRA must reduce spending by $715M by 2028–29.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "v1 2022 news-release sources (remote roles, $53k–$58k) were not re-seen and were dropped; pay now reflects 2026 postings.",
+   "The CRA careers search page was not re-seen; official_url points to the 2026 contact-centre update on canada.ca."
+  ],
+  "open_questions": [
+   "When does the next call-centre poster open, and does it allow telework?",
+   "Outcome of PSAC-UTE bargaining on job security."
+  ],
+  "disposition": "downgraded",
+  "disposition_reason": "Real recurring employer, but both 2026 postings found are closed, telework is unconfirmed and budget cuts continue; pay updated to 2026 postings.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "cra-contact-centre-agent-seasonal",
+   "v1_name": "Contact centre agent, seasonal/term (Canada Revenue Agency)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "Pay updated from 2022 release ($53k–$58k) to 2026 SP-03 postings ($59,623–$73,595)",
+    "Dropped 2022 sources not re-seen; added 2026 CRA update, postings and union/press reports",
+    "Added funding_uncertain risk and $715M cut",
+    "official_url changed to a page seen this run"
+   ],
+   "claims_verified": [
+    "CRA hires call-centre agents in waves (1,250 added fall 2025)",
+    "Secondary school diploma level; bilingual roles; evenings/weekends",
+    "Term contracts frequently not renewed"
+   ],
+   "unresolved_claims": [
+    "Remote/telework availability for current roles",
+    "Whether a poster is open now"
+   ]
+  }
+ },
+ {
+  "id": "foundever-work-at-home-customer-service-canada",
+  "name": "Work-at-home customer service representative (Foundever Canada)",
+  "organization": "Foundever (formerly Sitel)",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "Foundever (formerly Sitel) is hiring work-from-home bilingual customer service and roadside-assistance representatives anywhere in Canada, with equipment, paid virtual training and benefits; every current remote posting read requires French and English.",
+  "what_you_do": "You take calls from vehicle owners or roadside-assistance members for a client brand, dispatch help or resolve warranty, repair and connectivity questions, and document each case. Training is paid, virtual and webcam-on; schedules vary by account from Monday–Friday daytime to nights and weekends.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You are fluent in English and French and want a benefits-eligible employee job from home with equipment supplied.",
+   "Employee role listing medical, dental, life and vision insurance, company-matched RRSP, paid vacation and EAP.",
+   "One automotive account is Monday–Friday 8:30 a.m.–6:30 p.m. ET with no weekends ($16.10–$16.60/hr plus $2.00 bilingual premium).",
+   "Entry bar is moderate: 18+, high school diploma, 3–6 months customer service experience."
+  ],
+  "who_it_may_not_fit": [
+   "You are not fluent in French: all three remote postings read on 2026-10-13 require English and French.",
+   "Base pay is $15–$19.35/hr depending on province (plus $2.50 bilingual premium) on the ASG roadside and automotive accounts, with nights, evenings and weekends.",
+   "Hardwired internet (10 Mbps down / 5 up), a quiet space, webcam on during training and production, and a background check are required.",
+   "Reviews mention heavy call volume, KPI pressure and short training; pay and management are the weaker-rated areas."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "ASG roadside posting is headed \"Remote, Any Province, CA\"; two automotive postings are headed \"Remote, New Brunswick, CA\" but require only that you reside in Canada."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "accepting_applications",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API (2026-10-13): Bilingual Customer Assistance Representative – ASG (posted 2026-08-21, \"existing vacancy supporting current business operations\"), Bilingual Customer Service Representative (posted 2026-08-17) and Bilingual Customer Service Representative – ASG (posted 2026-09-11) are all live remote postings for people residing in Canada."
+  ],
+  "application_or_registration_url": "https://to.indeed.com/aamh4gf6q784",
+  "official_url": "https://jobs.foundever.com/job/Virtual-Remote-Customer-Service-Rep-%28Canada%29-Any/1008620000",
+  "requirements": {
+   "minimum_age": 18,
+   "education": "High school diploma or equivalent; must pass a background check",
+   "experience": "some",
+   "languages": [
+    "en",
+    "fr"
+   ],
+   "equipment": [
+    "hardwired internet, 10 Mbps download / 5 Mbps upload",
+    "quiet, distraction-free space",
+    "webcam"
+   ],
+   "certifications": [],
+   "other": [
+    "3 months (roadside) to 6 months (automotive) of customer service experience",
+    "MS Office 365 / Teams and Windows proficiency"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "employee",
+   "schedule_type": "shifts",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day",
+    "evening",
+    "night",
+    "weekend"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "yes",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Full-time employee roles; the ASG accounts need flexibility for nights, evenings and weekends, the New Brunswick automotive account is Monday–Friday daytime ET.",
+    "Paid virtual classroom training plus ongoing job-specific training; webcam presence required in training and production.",
+    "Postings say approved AI tools may be used in day-to-day tasks."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 1,
+   "creative": 0,
+   "language": 2
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 15,
+    "max": 19.35,
+    "unit": "hour",
+    "note": "ASG postings: $15–$19.35/hr by province of residence plus $2.50 bilingual premium; New Brunswick automotive posting: $16.10–$16.60/hr plus $2.00 bilingual premium (read 2026-10-13)."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Benefits listed: medical, dental, life, vision, company-matched RRSP, paid vacation, complimentary roadside membership, EAP."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": [
+    "hardwired internet plan"
+   ]
+  },
+  "risks": [
+   "phone_heavy",
+   "credential_required"
+  ],
+  "risk_notes": [
+   "Roadside-assistance calls involve members in stressful situations (stranded, late at night)."
+  ],
+  "barriers": [
+   "French-English fluency required on all remote postings found."
+  ],
+  "progression_potential": "unknown",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://to.indeed.com/aamh4gf6q784",
+    "source_type": "job_board",
+    "publisher": "Indeed (Foundever)",
+    "title": "Bilingual Customer Assistance Representative - ASG (Remote, Any Province)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-08-21",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "ontario_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (Req 403039, posted 2026-08-21). Remote, any province; must reside in Canada; 18+; HS diploma; 3 months CS; nights/evenings/weekends; background check; $15–$19.35/hr + $2.50 bilingual; equipment provided; paid virtual training; benefits.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aa8p6bppzq8k",
+    "source_type": "job_board",
+    "publisher": "Indeed (Foundever)",
+    "title": "Bilingual Customer Service Representative (Remote, New Brunswick)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-08-17",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (Req 406119, posted 2026-08-17). Automotive brand; $16.10–$16.60/hr + $2.00 bilingual; Monday–Friday 8:30–6:30 ET, no weekends; must reside in Canada; 6 months CS; equipment provided.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aah7brf64fgg",
+    "source_type": "job_board",
+    "publisher": "Indeed (Foundever)",
+    "title": "Bilingual Customer Service Representative - ASG (Remote, New Brunswick)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-09-11",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "pay",
+     "requirements"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (Req 406806, posted 2026-09-11). Automotive telematics support; $15–$19.35/hr + $2.50 bilingual; nights/evenings/weekends; must reside in Canada; existing vacancy.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://jobs.foundever.com/job/Virtual-Remote-Customer-Service-Rep-%28Canada%29-Any/1008620000",
+    "source_type": "official",
+    "publisher": "Foundever",
+    "title": "Virtual Remote Customer Service Rep (Canada) – Any (jobs.foundever.com)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "Foundever's own careers site lists a remote Canada customer service posting; the search summary of Foundever's Canadian postings cites wages of $14–$18.20 by province and a requirement to legally reside in Canada.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "The $14–$18.20 figure may come from a different or older posting than the ones read on Indeed."
+    ]
+   },
+   {
+    "url": "https://au.indeed.com/cmp/Foundever-1/reviews",
+    "source_type": "worker_anecdote",
+    "publisher": "Indeed",
+    "title": "Foundever employee reviews",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Overall 3.4/5 from about 29,400 reviews; management and pay rated weakest; complaints of heavy call volume, KPI pressure and limited training; work-from-home praised.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://static-pc.glassdoor.fr/Reviews/Employee-Review-Foundever-E11480-RVW15252318.htm",
+    "source_type": "worker_anecdote",
+    "publisher": "Glassdoor",
+    "title": "Work at home customer service rep – Foundever employee review",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "work_conditions",
+     "risks"
+    ],
+    "evidence_summary": "Reviewer says only high-speed internet and a monitor were needed, other equipment supplied; pay decent but benefits weak and PTO only after six months.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "No English-only remote Foundever posting surfaced via the Indeed API on 2026-10-13; all three remote postings are bilingual.",
+   "Web search for Foundever Canada reviews/scam returned no evidence of fraud, only mixed employee reviews and several low-quality aggregator pages (ignored)."
+  ],
+  "open_questions": [
+   "Are English-only remote roles currently open in Canada?",
+   "Exact wage for Ontario residents within the $15–$19.35 provincial range."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Three current remote postings read in full confirm availability, pay, requirements and Canada-wide residency; eligibility and status upgraded from unknown, bilingual requirement added.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "foundever-work-at-home-customer-service-canada",
+   "v1_name": "Work-at-home customer service representative (Foundever Canada)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "availability_status unknown → accepting_applications (three live postings read)",
+    "Pay range $15–$19.35/hr confirmed; second account at $16.10–$16.60 added",
+    "Bilingual French requirement recorded on all remote postings",
+    "Monday–Friday daytime account added; minimum experience 3–6 months",
+    "Replaced sources; v1 Glassdoor summary dropped (not re-seen)"
+   ],
+   "claims_verified": [
+    "Remote employee roles in Canada with equipment provided and paid training",
+    "Base pay $15–$19.35/hr by province plus bilingual premium",
+    "Benefits incl. RRSP match",
+    "18+, HS diploma, background check, wired internet and webcam"
+   ],
+   "unresolved_claims": [
+    "v1 wage of $19.35 for Ontario specifically"
+   ]
+  }
+ },
+ {
+  "id": "intuit-turbotax-seasonal-tax-expert-canada",
+  "name": "Seasonal tax expert, work from home (Intuit TurboTax Canada)",
+  "organization": "Intuit (TurboTax)",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "Intuit is accepting applications from experienced Canadian tax preparers for remote TurboTax Live tax expert roles (Ontario base pay $24.22–$30.95/hr, minimum 20 hours a week, 2+ years paid tax-prep experience and a CRA RepID); the work is seasonal around tax-filing season.",
+  "what_you_do": "You help TurboTax customers by video and audio: giving tax guidance, reviewing self-prepared personal returns, preparing full-service returns and answering product questions, then documenting each interaction. You work a flexible schedule of at least 20 hours a week during the season.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You have 2+ years of paid professional tax preparation, a CRA RepID and want well-paid remote seasonal work.",
+   "Ontario base pay $24.22–$30.95/hr, eligible for cash bonus, equity rewards and benefits per the posting.",
+   "Flexible schedule with a 20-hour weekly minimum; a French-English bilingual variant exists.",
+   "Lead posting says Intuit offers returning-season work to people who finish a season."
+  ],
+  "who_it_may_not_fit": [
+   "You have no professional tax-prep background: the posting asks for 2+ years paid experience with complex personal returns (self-employment, rental, investments, T1135, foreign income) and professional tax software.",
+   "You need year-round income: TurboTax Live is seasonal (lead posting: peak February to early May).",
+   "Live video and audio customer work."
+  ],
+  "audience_restriction": [
+   "Experienced Canadian tax preparers"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Postings are located in Ontario cities (Oakville, Hamilton) and list an Ontario pay range alongside PEI, BC and Nova Scotia."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "accepting_applications",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API (2026-10-13): \"Tax Professional - Work from Home\" (Oakville, ON) and \"Fiscaliste bilingue - Télétravail (Bilingual Tax Expert)\" (Hamilton, ON), both posted 2026-09-23, part-time, live.",
+   "jobs.intuit.com search results list Seasonal Tax Expert – Work From Home – Canada and related seasonal roles."
+  ],
+  "application_or_registration_url": "https://to.indeed.com/aasqj8kkr2kx",
+  "official_url": "https://jobs.intuit.com/job/ottawa/seasonal-tax-expert-work-from-home-canada/27595/87269278416",
+  "requirements": {
+   "minimum_age": null,
+   "education": "2+ years of paid professional tax preparation experience; CRA RepID required after onboarding; experience with professional tax software and complex personal returns",
+   "experience": "significant",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Available for a flexible schedule of at least 20 hours per week",
+    "Bilingual variant requires demonstrated English and French proficiency",
+    "T2 and Quebec TP1 experience are assets"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "employee",
+   "schedule_type": "flexible",
+   "hours_commitment": "part_time",
+   "hours_min_weekly": 20,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "no",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "unknown",
+   "training_required": "unknown",
+   "conditions_notes": [
+    "Seasonal: lead posting says peak work runs February to early May; Oct 2026 postings are for the coming season.",
+    "Customer contact is by video communication software; interactions must be documented."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 3,
+   "detail": 3,
+   "customer": 2,
+   "technical": 2,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 24.22,
+    "max": 30.95,
+    "unit": "hour",
+    "note": "Expected base pay range on both 2026-09-23 postings for Ontario (same for PEI, BC and Nova Scotia); eligible for cash bonus, equity rewards and benefits."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "v1 recorded $24.50–$33.50/hr from an earlier posting; the October 2026 postings show $24.22–$30.95."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "phone_heavy",
+   "credential_required",
+   "no_guaranteed_work"
+  ],
+  "risk_notes": [
+   "Seasonal employment; hours offered depend on demand."
+  ],
+  "barriers": [
+   "Requires professional tax-preparation experience and a CRA RepID."
+  ],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://to.indeed.com/aasqj8kkr2kx",
+    "source_type": "job_board",
+    "publisher": "Indeed (Intuit)",
+    "title": "Tax Professional - Work from Home (Oakville, ON)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-09-23",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "ontario_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Full bilingual-text posting read 2026-10-13 (posted 2026-09-23, part-time). Virtual customer-facing role via video software; 2+ yrs paid tax prep; CRA RepID; flexible schedule min 20 h/wk; Ontario $24.22–$30.95/hr; bonus, equity, benefits eligible.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aa8lclhtpkg6",
+    "source_type": "job_board",
+    "publisher": "Indeed (Intuit)",
+    "title": "Fiscaliste bilingue - Télétravail (Bilingual Tax Expert) (Hamilton, ON)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-09-23",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "pay",
+     "requirements"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (posted 2026-09-23). Same role with demonstrated English/French proficiency; same Ontario pay range.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://jobs.intuit.com/job/ottawa/seasonal-tax-expert-work-from-home-canada/27595/87269278416",
+    "source_type": "official",
+    "publisher": "Intuit",
+    "title": "Seasonal Tax Expert - Work From Home - Canada",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "work_conditions"
+    ],
+    "evidence_summary": "Intuit careers listing for the seasonal remote Canadian tax expert role; search summary says postings pitch extra income, flexible scheduling and a 92% annual return rate among tax experts (Intuit's own claim).",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://jobs.intuit.com/job/ottawa/turbotax-live-seasonal-tax-expert-lead/27595/81020337984",
+    "source_type": "official",
+    "publisher": "Intuit",
+    "title": "TurboTax Live Seasonal Tax Expert Lead (Canada)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "work_conditions"
+    ],
+    "evidence_summary": "Lead posting: fully remote, no travel; peak work February to early May; Intuit offers returning-season work to people who finish a season.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Negative-evidence search (\"Intuit TurboTax Live tax expert Canada seasonal reviews\") returned only official postings; v1 Glassdoor/Indeed anecdotes were not re-seen and were dropped.",
+   "The Indeed postings do not use the word \"seasonal\"; seasonality comes from the jobs.intuit.com titles and lead posting."
+  ],
+  "open_questions": [
+   "Season start/end dates and whether Intuit still supplies a laptop and headset (v1 claim not re-seen).",
+   "Citizenship/PR/work-permit wording (v1) not present in the postings read."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Two current postings read in full: availability confirmed, Ontario pay range updated, requirements confirmed; seasonal nature supported by official listings.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "intuit-turbotax-seasonal-tax-expert-canada",
+   "v1_name": "Seasonal tax expert, work from home (Intuit TurboTax Canada)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "availability_status unknown → accepting_applications",
+    "Pay updated to $24.22–$30.95/hr (Ontario) from $24.50–$33.50",
+    "Removed age_or_group_restricted and low_task_volume risks (unsupported)",
+    "Dropped v1 anecdote and FAQ sources not re-seen",
+    "Equipment claim (Intuit laptop) moved to open questions"
+   ],
+   "claims_verified": [
+    "Remote Canadian tax expert roles open",
+    "2+ years paid tax prep and CRA RepID required",
+    "Minimum 20 hours/week, flexible",
+    "Bilingual variant exists"
+   ],
+   "unresolved_claims": [
+    "Equipment provided",
+    "Training length",
+    "Work-authorization wording"
+   ]
+  }
+ },
+ {
+  "id": "remote-appointment-setting-category",
+  "name": "Remote appointment setting & scheduling (category)",
+  "organization": null,
+  "record_type": "work_category",
+  "category": "customer_ops",
+  "summary": "Calling businesses or consumers from home to qualify interest and book meetings for a sales team, paid by salary, hourly wage or per booked lead; current remote postings for people living in Canada exist, with pay structures ranging from a salary to commission-only.",
+  "what_you_do": "You work through call lists, introduce a product or service from a script, handle objections, decide whether the prospect qualifies, book an appointment for a salesperson and log notes in a CRM. Targets are daily: one current posting expects 10 or more qualified appointments a day.",
+  "how_to_find_work": "Search Indeed Canada and Job Bank for \"appointment setter\", \"lead setter\", \"inside sales\" or \"business development representative\" with the Remote filter and read the pay section carefully (salary vs per-lead vs commission). Check that the employer is registered with the National Do Not Call List if calls go to consumers (CRTC rules). Never pay for leads, training or software to start.",
+  "who_it_may_fit": [
+   "You are comfortable on the phone, handle rejection well and want target-driven work from home.",
+   "Remote postings for people living in Canada were live on 2026-10-13: a permanent salaried role ($30,300–$55,000/yr, Monday–Friday 9–5) and a freelance per-lead role.",
+   "You book meetings rather than close sales; skills transfer to inside-sales jobs."
+  ],
+  "who_it_may_not_fit": [
+   "You dislike cold calling or need a guaranteed income: per-lead and commission roles can pay close to zero.",
+   "The freelance role pays $50 per qualified lead plus $5,000 when a group closes, with no base pay; Indeed displays an estimated \"$36,300–$112,180.86 per year\" for it that is not a wage.",
+   "Postings usually want at least a year of cold-calling or client-facing experience and 10+ appointments a day.",
+   "Calls to consumers must follow CRTC telemarketing rules (National DNCL registration, internal do-not-call list, calling hours 9:00–21:30 weekdays and 10:00–18:00 weekends); an employer that ignores them puts you at risk."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Property Print posting: \"Applicants must currently reside in Canada\"; Kazmir posting targets Canadian business owners, remote."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "not_applicable_category",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://crtc.gc.ca/eng/phone/telemarketing/tobligations/rules-regles.htm",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "some",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "reliable computer",
+    "stable high-speed internet",
+    "quiet professional workspace",
+    "reliable telephone access"
+   ],
+   "certifications": [],
+   "other": [
+    "1 year of cold calling required (Property Print); CRM, Microsoft 365 and Zoom proficiency"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "varies",
+   "schedule_type": "varies",
+   "hours_commitment": "varies",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "partly",
+   "independent_work": "yes",
+   "task_variety": "repetitive",
+   "customer_facing": "high",
+   "sales_or_commission": "yes",
+   "deadline_pressure": "high",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "unknown",
+   "training_required": "no",
+   "conditions_notes": [
+    "Salaried roles give steady hours (Mon–Fri 9–5 on the permanent posting); per-lead and commission roles depend on lead quality and conversions.",
+    "Postings mention scripts, coaching and team meetings; no formal training route."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 0,
+   "creative": 0,
+   "language": 2
+  },
+  "economics": {
+   "pay_type": "mixed",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 30300,
+    "max": 55000,
+    "unit": "year",
+    "note": "Salaried example only: Property Print permanent remote posting shows $30,300–$55,000/yr in one section and $38,000–$45,000/yr in another (read 2026-10-13). The Kazmir freelance role pays $50 per qualified lead plus $5,000 per closed group, no base."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "year",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "sales",
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Indeed shows an auto-estimated \"$36,300–$112,180.86 per year\" on the per-lead posting; treat it as an estimate, not pay."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "low",
+   "required_purchases": [],
+   "potential_expenses": [
+    "computer, internet and phone are your own on both postings"
+   ]
+  },
+  "risks": [
+   "phone_heavy",
+   "commission_dependence",
+   "contractor_tax_obligations",
+   "no_guaranteed_work",
+   "unpredictable_income"
+  ],
+  "risk_notes": [
+   "Commission-only listings with large unverified earnings claims are common in this niche."
+  ],
+  "barriers": [
+   "Most postings expect prior cold-calling experience."
+  ],
+  "progression_potential": "medium",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [
+   "The Property Print posting lists two different salary ranges ($30,300–$55,000 and $38,000–$45,000)."
+  ],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://crtc.gc.ca/eng/phone/telemarketing/tobligations/rules-regles.htm",
+    "source_type": "government",
+    "publisher": "CRTC",
+    "title": "Key Unsolicited Telecommunications Rules",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "risks",
+     "work_conditions"
+    ],
+    "evidence_summary": "Telemarketing calls limited to 9:00–21:30 weekdays and 10:00–18:00 weekends; telemarketers must register with the National DNCL, update lists within 31 days and keep an internal do-not-call list (requests added within 14 days, kept 3 years and 14 days).",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://crtc.gc.ca/eng/phone/telemarketing/reg.htm",
+    "source_type": "government",
+    "publisher": "CRTC",
+    "title": "Understand telemarketing rules for compliance",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "requirements"
+    ],
+    "evidence_summary": "Consumer registrations on the National DNCL are permanent and take effect within 24 hours; telemarketers have a 31-day grace period to update their lists.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aafkgpsyyws9",
+    "source_type": "job_board",
+    "publisher": "Indeed (Property Print)",
+    "title": "Appointment Setter – Inside Sales, Remote (Canada)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-09-27",
+    "supports": [
+     "canadian_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (posted 2026-09-27, permanent). Must reside in Canada; high-activity outbound B2B calls to Canada and US; 10+ qualified appointments/day target; Mon–Fri 9–5; 1 year cold calling required; own computer, internet, phone; pay $30,300–$55,000/yr (second section $38,000–$45,000).",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aaj694vlj9cw",
+    "source_type": "job_board",
+    "publisher": "Indeed (Kazmir Consulting Group)",
+    "title": "B2B Appointment Setter – Group Benefits (Remote, Freelance)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-09-17",
+    "supports": [
+     "pay",
+     "work_conditions",
+     "requirements"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (posted 2026-09-17, freelance). Leads supplied; call Canadian business owners/HR; $50 per qualified lead plus $5,000 when a group closes; no base; Indeed shows an estimated $36,300–$112,180.86/yr.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Indeed API \"appointment setter\" remote Canada (2026-10-13) listed eight roles incl. a bilingual inside sales / lead setter at Lifestyle Home Products (details not read: rate limit) and several contract setter roles at small agencies.",
+   "v1 Hubstaff commission-only listing and the cleaning-consultation posting were not re-seen and were dropped."
+  ],
+  "open_questions": [
+   "Share of remote setter roles with a base wage vs commission-only."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Category re-confirmed from two current postings read in full plus CRTC rules; how_to_find_work added, pay restructured to show salaried vs per-lead examples.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "remote-appointment-setting-category",
+   "v1_name": "Remote appointment setting & scheduling (category)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "Added how_to_find_work",
+    "advertised_rate now the salaried example with the per-lead model in the note",
+    "pay_type mixed; sales_or_commission yes; deadline_pressure high",
+    "Replaced two posting sources with the current versions; dropped Hubstaff and cleaning-consultation postings"
+   ],
+   "claims_verified": [
+    "Remote setter roles for people living in Canada exist",
+    "CRTC calling-hour and DNCL rules",
+    "10+ appointments/day target; 1 year cold-calling experience"
+   ],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "remote-contact-centre-customer-support-category",
+  "name": "Remote call-centre, chat & email customer support (category)",
+  "organization": null,
+  "record_type": "work_category",
+  "category": "customer_ops",
+  "summary": "Work-from-home customer service jobs answering customers by phone, chat or email for outsourcers, telecom and health-services providers and retailers; remote postings for Canadian residents were live in October 2026, but many exclude Ontario or require French.",
+  "what_you_do": "You answer customer questions, fix order, account or product problems, document each contact and escalate tricky cases, working scheduled shifts against quality and speed targets. Most roles mix phone with chat and email; some add sales conversion.",
+  "how_to_find_work": "Search Indeed Canada and Job Bank (jobbank.gc.ca) for \"customer service representative\" or \"call centre\" with the Remote filter, then read the province list and language requirement in each posting before applying. Check employer career sites directly (jobs.foundever.com, ttecjobs.com, careers-thesydneycentre.icims.com for MCI). Employer-run paid training is the norm; never pay for equipment, deposit an \"employer\" cheque or accept a job offered only by text.",
+  "who_it_may_fit": [
+   "You are patient with people, can keep to a shift schedule and want an accessible entry into remote work.",
+   "Job Bank: Ontario median wage for call-centre customer service representatives (NOC 64409) is $21.50/hr (low $17.60, high $33.17; updated 2025-11-19).",
+   "Remote postings for Canadian residents were live on 2026-10-13: Foundever ($15–$19.35/hr + bilingual premium, any province), MCI (work-at-home Canada, paid training) and TELUS Digital ($39,994.50/yr bilingual, fully remote).",
+   "Employers typically supply the computer and headset and pay for training."
+  ],
+  "who_it_may_not_fit": [
+   "You strongly dislike live calls, metrics or rigid schedules.",
+   "Several remote postings exclude Ontario (TTEC: eight provinces only; NTT DATA: QC, AB, MB, NB, NS, PE only) or require French-English fluency (Foundever, NTT DATA, TELUS Digital).",
+   "Base pay on remote postings is modest: $15–$20/hr, below the Ontario median.",
+   "Shift work including evenings and weekends; webcam-on training; hardwired internet of 10–100 Mbps and background checks are common requirements.",
+   "Job scams imitate real employers: Ontario police report $46.5M lost to employment fraud in the first nine months of 2025; never deposit a cheque and send money back."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "partial",
+   "provinces": [],
+   "eligibility_notes": [
+    "Ontario eligibility varies posting by posting: Foundever, MCI and TELUS Digital postings read accept residents anywhere in Canada; TTEC and NTT DATA postings exclude Ontario."
+   ],
+   "work_authorization_notes": "MCI: must be authorized to work in Canada; TELUS Digital: criminal background check that may include federal fingerprinting."
+  },
+  "availability_status": "not_applicable_category",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://www.jobbank.gc.ca/marketreport/wages-occupation/15201/ON",
+  "requirements": {
+   "minimum_age": 18,
+   "education": "High school diploma or equivalent on most postings",
+   "experience": "some",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "quiet private workspace",
+    "hardwired high-speed internet (10–100 Mbps depending on employer)",
+    "webcam for training"
+   ],
+   "certifications": [],
+   "other": [
+    "6 months to 2 years of customer service experience depending on employer",
+    "Bilingual English-French widens options and earns a premium"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "employee",
+   "schedule_type": "shifts",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day",
+    "evening",
+    "night",
+    "weekend"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "partly",
+   "independent_work": "no",
+   "task_variety": "repetitive",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "medium",
+   "work_guaranteed": "yes",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Employee roles with paid virtual training; some employers (TELUS Digital client care) run 24/7 operations with 8-hour shifts five days a week.",
+    "One e-commerce posting (SelectBlinds Canada) describes a 100% remote inbound centre but lists \"Work Location: In person\" (contradiction recorded)."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 1,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 15,
+    "max": 21.5,
+    "unit": "hour",
+    "note": "Base wages on remote-Canada postings read 2026-10-13: Foundever $15–$19.35 (+$2.50 bilingual), TTEC $17–$18, NTT DATA $20 (bilingual), TELUS Digital $39,994.50/yr (≈$19/hr at 40 h); Job Bank Ontario median for NOC 64409 is $21.50/hr (updated 2025-11-19)."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Job Bank national median $22.00/hr (low $16.00, high $33.14); 80.6% of Ontario workers in the occupation get at least one non-wage benefit."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": [
+    "hardwired internet plan"
+   ]
+  },
+  "risks": [
+   "phone_heavy",
+   "scam_impersonation",
+   "geographic_restriction",
+   "credential_required"
+  ],
+  "risk_notes": [
+   "Province restrictions and French requirements remove many remote postings for English-only Ontario residents."
+  ],
+  "barriers": [],
+  "progression_potential": "medium",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [
+   "SelectBlinds Canada posting says \"100% remote (work from home)\" and also \"Work Location: In person\"."
+  ],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://www.jobbank.gc.ca/marketreport/wages-occupation/15201/ON",
+    "source_type": "government",
+    "publisher": "Job Bank (Government of Canada)",
+    "title": "Wages: Customer Service Representative – Call Centre in Ontario",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "pay"
+    ],
+    "evidence_summary": "NOC 64409 Ontario: low $17.60, median $21.50, high $33.17/hr; Ottawa median $23.33, Toronto $21.54, Windsor-Sarnia $19.00; Canada median $22.00; updated 2025-11-19.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aamh4gf6q784",
+    "source_type": "job_board",
+    "publisher": "Indeed (Foundever)",
+    "title": "Bilingual Customer Assistance Representative - ASG (Remote, Any Province)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-08-21",
+    "supports": [
+     "canadian_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Remote any province in Canada; $15–$19.35/hr + $2.50 bilingual; equipment provided; paid virtual training; nights/evenings/weekends.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aaljxpth2wzs",
+    "source_type": "job_board",
+    "publisher": "Indeed (TTEC)",
+    "title": "Customer Service Representative – Automotive Support - Remote Canada",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-08-19",
+    "supports": [
+     "ontario_eligibility",
+     "pay",
+     "requirements"
+    ],
+    "evidence_summary": "Remote for eight provinces; Ontario and BC excluded; $17/hr base; phone, chat and email.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aaw4z7kp99lt",
+    "source_type": "job_board",
+    "publisher": "Indeed (TELUS Digital)",
+    "title": "Bilingual Call Center Representative (Remote)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-09-07",
+    "supports": [
+     "pay",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Fully remote client care via phone and chat; $39,994.50/yr; 2+ yrs CS; English plus French or Cantonese/Mandarin; 24/7 operation, 8-hour shifts; 100/50 Mbps; background check.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aaxx6mxjpv8z",
+    "source_type": "job_board",
+    "publisher": "Indeed (NTT DATA)",
+    "title": "Remote Bilingual Customer Care Associate",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-08-28",
+    "supports": [
+     "ontario_eligibility",
+     "pay",
+     "requirements"
+    ],
+    "evidence_summary": "Remote, $20/hr bilingual, open only to residents of QC, AB, MB, NB, NS and PE; \"for future vacancies\"; equipment provided; virtual paid training.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aann8zyxd8wn",
+    "source_type": "job_board",
+    "publisher": "Indeed (MCI)",
+    "title": "Remote Inbound Customer Service Representative (Work-at-Home, Canada)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-02-27",
+    "supports": [
+     "canadian_eligibility",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Remote work-at-home Canada; 18+; HS diploma; CS experience preferred; pre-employment test; paid training; background check; pay not stated.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aabnclgwg68x",
+    "source_type": "job_board",
+    "publisher": "Indeed (SelectBlinds Canada)",
+    "title": "Customer Service Representative – Remote",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-08-30",
+    "supports": [
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Bilingual inbound centre (voice, live chat, email); 3+ years CS; described as 100% remote but tagged \"Work Location: In person\"; dental and extended health.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://www.antifraudcentre-centreantifraude.ca/index-eng.htm",
+    "source_type": "government",
+    "publisher": "Canadian Anti-Fraud Centre",
+    "title": "Canadian Anti-Fraud Centre (home / news list)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning",
+     "risks"
+    ],
+    "evidence_summary": "CAFC news list includes a June 2025 alert on a fake Amazon job investment scam ($1.2M lost across Canada); job offers arrive by text, WhatsApp, email and social ads and use real company names; victims are asked to pay by cheque, e-Transfer or crypto. CAFC line 1-888-495-8501.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.londonpolice.ca/media/tzld0o0a/20251216-employment-frauds-new-variation-en.pdf",
+    "source_type": "government",
+    "publisher": "London Police Service (Ontario)",
+    "title": "Employment frauds: new variation (bulletin, Dec 2025)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2025-12-16",
+    "supports": [
+     "scam_warning",
+     "risks"
+    ],
+    "evidence_summary": "Ontario police bulletin: in the first nine months of 2025 victims reported $46.5M in employment-fraud losses; fake offers use real company names and ask victims to \"boost\" products, deposit counterfeit cheques or forward funds.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.telus.com/en/wise/resources/content/article/dream-job-or-deepfake",
+    "source_type": "official",
+    "publisher": "TELUS Wise",
+    "title": "Dream job or deepfake? (July 28, 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-07-28",
+    "supports": [
+     "scam_warning"
+    ],
+    "evidence_summary": "TELUS consumer-safety article on AI deepfake recruiters and fake job offers; cites the CAFC figure that job scams cost Canadians more than $49M in 2024.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Indeed API searches run 2026-10-13: \"customer service representative remote\" (Ontario) returned mostly on-site sales roles; \"remote customer service representative work from home\" (remote, Canada) surfaced TELUS Digital, NTT DATA, MCI, SelectBlinds, boldr and Tigertel.",
+   "v1 Job Bank NS/North Coast pages and the two v1 postings were not re-seen and were dropped."
+  ],
+  "open_questions": [
+   "How many remote postings at any time accept English-only Ontario residents?"
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Category re-verified with seven current postings read in full, Job Bank Ontario wages refreshed, scam guidance from CAFC and Ontario police added.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "remote-contact-centre-customer-support-category",
+   "v1_name": "Remote call-centre, chat & email customer support (category)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "Added how_to_find_work",
+    "Ontario eligibility set to partial with per-employer notes",
+    "Pay range rebuilt from 2026 postings and Job Bank Ontario wage page",
+    "Replaced all sources"
+   ],
+   "claims_verified": [
+    "Remote CSR postings for Canadian residents exist",
+    "Job Bank Ontario median $21.50/hr",
+    "Employers supply equipment and paid training",
+    "Job-scam losses reported by police/CAFC"
+   ],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "shopify-merchant-support-advisor-canada",
+  "name": "Merchant Support Advisor (Shopify, Canada)",
+  "organization": "Shopify",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "Shopify, a remote-first Canadian ecommerce company, periodically posts Merchant Support Advisor roles for Canada (including an overnight variant), but no current opening could be confirmed in October 2026 and the latest aggregator copy appears to have expired.",
+  "what_you_do": "You help merchants solve problems with their Shopify stores and accounts by chat, messaging and phone, troubleshooting technical issues and using AI tools, on a schedule that for the overnight variant starts 9–11 p.m. local time and includes weekends.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You have technical support and troubleshooting experience, are comfortable with AI tools and flexible schedules, and want a support job at a well-known Canadian tech company.",
+   "Shopify describes itself as fully remote; Canada-titled support roles can be done from anywhere in Canada per earlier listings."
+  ],
+  "who_it_may_not_fit": [
+   "You need an opening now: the Indeed API returned no Shopify support posting for Canada on 2026-10-13, an aggregator copy of the overnight Canada role was posted 2026-07-08 with an estimated expiry of 2026-08-12, and another aggregator copy says the role is no longer available.",
+   "You need job security: journalism reported repeated support-staff cuts in 2025–2026 (v1; not re-checked this run).",
+   "Fake \"Shopify\" part-time job offers that ask for a deposit circulate on messaging apps; Shopify staff say all genuine jobs are on its careers website and it never asks for deposits.",
+   "Pay is unknown: no official figure was seen this run."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Roles are titled for Canada; v1 noted no visa sponsorship."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API (2026-10-13): no Shopify merchant support posting returned for Canada/remote.",
+   "Web search: JobCrawls copy of an overnight Canada merchant-support role posted 2026-07-08, estimated expiry 2026-08-12; Refresh.cv shows a \"Merchant Support Advisor, Canada\" with only a relative date; Nodesk copy marked no longer available."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.shopify.com/careers",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "some",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Technical support and troubleshooting experience; familiarity with AI tools; schedule flexibility (aggregator copy of the 2026 overnight posting)"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "employee",
+   "schedule_type": "shifts",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "night",
+    "weekend"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "partly",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "unknown",
+   "training_required": "unknown",
+   "conditions_notes": [
+    "Overnight variant (v1 and 2026 aggregator copy): rotating ~40 h/week starting 9–11 p.m. local time incl. weekends; 1-year fixed term per v1."
+   ]
+  },
+  "skill_demands": {
+   "computer": 3,
+   "writing": 2,
+   "numeracy": 1,
+   "detail": 2,
+   "customer": 3,
+   "technical": 2,
+   "creative": 0,
+   "language": 0
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "unknown",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "v1 carried an Indeed salary estimate ($28k–$71k/yr); it was not re-seen and is dropped. No official pay seen."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "scam_impersonation",
+   "stale_information"
+  ],
+  "risk_notes": [
+   "Shopify community threads document fake part-time \"Shopify\" jobs requiring deposits or membership fees."
+  ],
+  "barriers": [
+   "Openings are intermittent and the overnight variant suits few schedules."
+  ],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "weak",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://www.jobcrawls.com/en/job/3LDrPxRE6/Shopify",
+    "source_type": "aggregator",
+    "publisher": "JobCrawls",
+    "title": "Shopify – overnight merchant support, Canada (aggregator copy)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-07-08",
+    "supports": [
+     "availability",
+     "work_conditions",
+     "requirements"
+    ],
+    "evidence_summary": "Remote role supporting merchants in Canada, overnight schedule starting 9–11 p.m. local time; chat, messaging and phone; technical support experience and AI familiarity; posted 2026-07-08, estimated expiry 2026-08-12.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Third-party copy; dates may be inaccurate."
+    ]
+   },
+   {
+    "url": "https://refresh.cv/jobs/shopify",
+    "source_type": "aggregator",
+    "publisher": "Refresh.cv",
+    "title": "Shopify jobs (incl. Merchant Support Advisor, Canada)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "existence"
+    ],
+    "evidence_summary": "Lists a Merchant Support Advisor, Canada (Customer Success, remote, mid-level) with a relative \"3 weeks ago\" date and no clear status.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://nodesk.co/remote-jobs/shopify-merchant-support-advisor-canada-pst-or-mst/",
+    "source_type": "aggregator",
+    "publisher": "NoDesk",
+    "title": "Shopify Merchant Support Advisor – Canada (PST or MST)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "availability",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "Role could be done remotely anywhere in Canada; listing now says the opportunity is no longer available.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://community.shopify.com/t/is-this-part-time-job-opportunity-with-shopify-legitimate-or-a-scam/282858",
+    "source_type": "official",
+    "publisher": "Shopify Community (staff replies)",
+    "title": "Is this part time job opportunity with Shopify legitimate or a scam?",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning",
+     "application_route"
+    ],
+    "evidence_summary": "Shopify staff: all job opportunities are posted on Shopify's careers website; the offer discussed is not official; do not pay anyone; scams asked for deposits or membership fees for \"merchant ranking\" work.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Forum thread rather than a formal policy page."
+    ]
+   },
+   {
+    "url": "https://www.antifraudcentre-centreantifraude.ca/index-eng.htm",
+    "source_type": "government",
+    "publisher": "Canadian Anti-Fraud Centre",
+    "title": "Canadian Anti-Fraud Centre (home / news list)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning",
+     "risks"
+    ],
+    "evidence_summary": "CAFC news list includes a June 2025 alert on a fake Amazon job investment scam ($1.2M lost across Canada); job offers arrive by text, WhatsApp, email and social ads and use real company names; victims are asked to pay by cheque, e-Transfer or crypto. CAFC line 1-888-495-8501.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Indeed API searches \"Shopify support advisor\" (remote) returned an unrelated controller role; \"Shopify\" and \"Shopify support\" searches were rate-limited twice.",
+   "v1 official posting URLs, Indeed salary page and layoff journalism were not re-seen and were dropped; shopify.com/careers was named in a search summary."
+  ],
+  "open_questions": [
+   "Is a Merchant Support Advisor (Canada) role open on shopify.com/careers right now, and what does it pay?"
+  ],
+  "disposition": "downgraded",
+  "disposition_reason": "Real employer and real past Canadian postings, but no current opening or pay could be confirmed; evidence is aggregator copies and a forum scam warning.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "shopify-merchant-support-advisor-canada",
+   "v1_name": "Merchant Support Advisor (Shopify, Canada)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "Pay estimate dropped (not re-seen); pay_type unknown",
+    "Availability evidence updated: latest aggregator copy likely expired",
+    "Added official-forum scam warning and CAFC source",
+    "Replaced sources"
+   ],
+   "claims_verified": [
+    "Shopify posts Canada-titled remote merchant support roles incl. an overnight variant",
+    "Shopify staff warn genuine jobs are only on its careers site"
+   ],
+   "unresolved_claims": [
+    "Current availability",
+    "Pay",
+    "2025–2026 support layoffs (v1 journalism not re-seen)"
+   ]
+  }
+ },
+ {
+  "id": "ttec-work-from-home-customer-service-canada",
+  "name": "Work-from-home customer service representative (TTEC Canada)",
+  "organization": "TTEC",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "TTEC posts permanent work-from-home customer service jobs for people living in Canada, but every remote posting read in October 2026 refuses applications from Ontario and British Columbia residents.",
+  "what_you_do": "You answer customers of a client brand (automotive, luxury retail, healthcare) by phone, chat and email from home, using the client's systems, documenting each case and escalating complex issues. Shifts are scheduled and performance is measured; training is instructor-led online with your webcam on.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You live in Alberta, Manitoba, New Brunswick, Newfoundland and Labrador, Nova Scotia, PEI, Quebec or Saskatchewan and want a permanent full-time employee job doing phone, chat or email support from home.",
+   "Permanent, full-time employee roles with a base wage plus performance bonus (automotive account) and a benefits package.",
+   "Bilingual French-English and Spanish-English variants exist."
+  ],
+  "who_it_may_not_fit": [
+   "You live in Ontario: the automotive, luxury-retail and bilingual remote postings read on 2026-10-13 say applications from Ontario and BC residents are not accepted (TTEC says the restriction is per posting).",
+   "Base wage is $17–$18/hr.",
+   "You need 6 months to 1 year of customer service experience, a high school diploma and a wired connection of at least 30 Mbps.",
+   "Employee reviews are polarized: remote setup and provided computer praised; micromanagement, pay, stress and rushed training criticized."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "partial",
+   "ontario_residents": "unclear",
+   "provinces": [
+    "AB",
+    "MB",
+    "NB",
+    "NL",
+    "NS",
+    "PE",
+    "QC",
+    "SK"
+   ],
+   "eligibility_notes": [
+    "Both remote postings read on 2026-10-13 list the same eight eligible provinces and state that applications from BC, Ontario or outside Canada will not be accepted for that opportunity.",
+    "TTEC says other openings may have different restrictions; none open to Ontario was found."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API (2026-10-13): TTEC remote-Canada postings for Automotive Support (posted 2026-08-19, \"regularly hiring\") and Luxury Retail (posted 2026-07-06) are live, but both exclude Ontario residents.",
+   "No TTEC remote posting open to Ontario residents (including a chat-only role) was found via the Indeed API or web search."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.ttecjobs.com/en/job/montreal/customer-service-representative-automotive-support-remote-canada/44028/99461315760",
+  "requirements": {
+   "minimum_age": null,
+   "education": "High school diploma or equivalent",
+   "experience": "some",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "wired high-speed internet (minimum 30 Mbps)",
+    "webcam for instructor-led training"
+   ],
+   "certifications": [],
+   "other": [
+    "6 months (automotive) to 1 year (luxury retail) of customer service experience",
+    "Must live in one of the eight eligible provinces named on the posting"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "employee",
+   "schedule_type": "shifts",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "partly",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "yes",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Postings say all positions are permanently remote and full-time; webcam participation expected during all instructor-led training.",
+    "Chat and email channels are mixed with phone on the automotive account."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 1,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 17,
+    "max": 18,
+    "unit": "hour",
+    "note": "Base wage $17/hr plus performance bonus (Automotive Support) and $17–$18/hr (Luxury Retail) on remote-Canada postings read 2026-10-13."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Benefits package \"based on your position\" may include PTO, tuition reimbursement and wellness incentives."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": [
+    "wired internet plan meeting the 30 Mbps minimum"
+   ]
+  },
+  "risks": [
+   "phone_heavy",
+   "geographic_restriction",
+   "scam_impersonation"
+  ],
+  "risk_notes": [
+   "TTEC replies to reviews point to a recruitment-scam reporting form, so look-alike offers exist; apply only via ttecjobs.com."
+  ],
+  "barriers": [
+   "Ontario residents are excluded from every current remote posting found."
+  ],
+  "progression_potential": "unknown",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://to.indeed.com/aaljxpth2wzs",
+    "source_type": "job_board",
+    "publisher": "Indeed (TTEC)",
+    "title": "Customer Service Representative – Automotive Support - Remote Canada",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-08-19",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "ontario_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (posted 2026-08-19). Open to residents of AB, MB, NB, NL, NS, PE, QC, SK; not BC or Ontario. Phone, chat and email; 6+ months CS; HS diploma; wired 30 Mbps; $17/hr base plus bonus; webcam-on online training; \"regularly hiring\".",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aaqqx9pmfmxz",
+    "source_type": "job_board",
+    "publisher": "Indeed (TTEC)",
+    "title": "Customer Service Representative – Luxury Retail - English – Remote Canada",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-07-06",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "ontario_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (posted 2026-07-06). Same eight-province list, Ontario and BC excluded. Permanently remote, full-time; 1 year CS/luxury retail; CRM proficiency; $17–$18/hr base.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://www.ttecjobs.com/en/job/montreal/customer-service-representative-automotive-support-remote-canada/44028/99461315760",
+    "source_type": "official",
+    "publisher": "TTEC",
+    "title": "Customer Service Representative – Automotive Support - Remote Canada (ttecjobs.com)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "The same automotive posting on TTEC's own careers site; search summary repeats that Ontario and BC residents cannot apply and that the restriction is for this opportunity only.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.indeed.com/cmp/TTEC/reviews",
+    "source_type": "worker_anecdote",
+    "publisher": "Indeed",
+    "title": "TTEC employee reviews",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Polarized reviews: 2026 reviews praise work-from-home and provided computer; others cite no paid breaks, high stress and layoffs without notice.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://ca.indeed.com/cmp/Ttec/faq/work-from-home",
+    "source_type": "worker_anecdote",
+    "publisher": "Indeed Canada",
+    "title": "TTEC Q&A: work from home",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "work_conditions",
+     "risks"
+    ],
+    "evidence_summary": "Respondents say the company sends a basic PC that must be returned on leaving; one notes remote rehiring of former agents in Canada.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://static.glassdoor.com.ar/Reviews/TTEC-Reviews-E5944_P2.htm",
+    "source_type": "worker_anecdote",
+    "publisher": "Glassdoor",
+    "title": "TTEC reviews",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Overall 3.3/5 from about 11,400 reviews; older reviews allege unpaid wages, newer ones are mixed on pay and management.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Indeed API search \"TTEC customer service\" remote Canada (2026-10-13) listed seven TTEC roles, all located Montreal; the remote ones carry the same province restriction.",
+   "v1 noted a chat-only posting open to BC residents; no chat-only posting was found this run."
+  ],
+  "open_questions": [
+   "Does any current TTEC remote program accept Ontario residents?"
+  ],
+  "disposition": "downgraded",
+  "disposition_reason": "Legitimate and hiring remotely in Canada, but every remote posting found excludes Ontario residents; Ontario eligibility set to unclear and availability to unknown.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "ttec-work-from-home-customer-service-canada",
+   "v1_name": "Work-from-home customer service representative (TTEC Canada)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "Ontario excluded on all remote postings read; canadian_residents set to partial with the eight eligible provinces",
+    "Pay $17–$18/hr confirmed from opened postings",
+    "Replaced search-only sources with opened Indeed postings and current anecdotes",
+    "official_url now points to the ttecjobs.com posting seen"
+   ],
+   "claims_verified": [
+    "TTEC posts permanent, full-time remote customer service roles for Canadian residents",
+    "Base wage $17–$18/hr",
+    "Province restrictions apply per posting"
+   ],
+   "unresolved_claims": [
+    "Existence of a chat-only role open to Ontario or BC residents"
+   ]
+  }
+ },
+ {
+  "id": "virtual-assistant-admin-support-category",
+  "name": "Virtual assistant / administrative support (category)",
+  "organization": null,
+  "record_type": "work_category",
+  "category": "customer_ops",
+  "summary": "Remote administrative support (inbox, calendar, documents, CRM, follow-ups) for one employer or several clients; Ontario administrative assistants earn a median $26.67/hr as employees, while remote contractor VA postings read in October 2026 paid $25/hr or a share of client plans.",
+  "what_you_do": "You manage email and calendars, keep contact lists and CRM records accurate, prepare documents, book travel and meetings and chase follow-ups for a manager or for several clients. Niche roles add industry paperwork such as real-estate forms.",
+  "how_to_find_work": "Search Indeed Canada and Job Bank for \"virtual assistant\", \"executive assistant remote\" or \"administrative assistant remote\" and read whether the role is employee or independent contractor and which provinces it accepts. VA agencies that accept Canadians include Zirtual (contractor, US/Canada) and niche firms such as Red Rover (real-estate admin, ON/AB/SK). For freelance clients use Upwork or direct outreach to small businesses; expect to supply your own equipment and handle your own taxes. Never pay for onboarding, equipment or software to start.",
+  "who_it_may_fit": [
+   "You are organized, write clearly and like keeping someone else's working day running from home.",
+   "Job Bank Ontario wages for administrative assistants (NOC 13110): low $19.00, median $26.67, high $37.95/hr (updated 2025-11-19); 85.1% receive a non-wage benefit.",
+   "Mostly written, independent work during business hours.",
+   "Current remote postings for Canada: Zirtual contractor (US or Canada, avg $1,500–$3,800/month) and Red Rover real-estate EA contractor ($25/hr, 30–40 h/week, ON/AB/SK)."
+  ],
+  "who_it_may_not_fit": [
+   "You have no office experience: remote VA roles want 2–4+ years as an executive/administrative assistant, 50 WPM typing, or niche skills (Canadian real-estate admin).",
+   "Contract VA work means no benefits, your own computer, internet and phone, and your own tax and GST/HST obligations; Zirtual pays a percentage of client plans and reviewers say client flow can be slow.",
+   "\"Virtual assistant\" is a common job-scam title: fake employers send a cheque to deposit and ask you to forward money; universities and the CAFC publish warnings."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Zirtual posting: residents of the United States or Canada; Red Rover: ON, AB, SK only."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "not_applicable_category",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://www.jobbank.gc.ca/marketreport/wages-occupation/24789/ON",
+  "requirements": {
+   "minimum_age": null,
+   "education": "Associate's/Bachelor's or equivalent experience (Zirtual); 1+ year Canadian real-estate admin plus 3+ years EA (Red Rover)",
+   "experience": "significant",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "computer",
+    "high-speed internet",
+    "phone",
+    "quiet home office"
+   ],
+   "certifications": [],
+   "other": [
+    "Typing 50+ WPM (Zirtual)",
+    "Google Workspace / Microsoft Office, calendar, CRM and project tools"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "varies",
+   "schedule_type": "fixed",
+   "hours_commitment": "varies",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "sometimes",
+   "text_based_work": "yes",
+   "independent_work": "yes",
+   "task_variety": "varied",
+   "customer_facing": "some",
+   "sales_or_commission": "no",
+   "deadline_pressure": "medium",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "unknown",
+   "training_required": "no",
+   "conditions_notes": [
+    "Contractor postings expect business-hours availability (PST/EST or MST) and quick response times (Zirtual: within two hours).",
+    "Red Rover describes a plug-and-play role with minimal to no training."
+   ]
+  },
+  "skill_demands": {
+   "computer": 3,
+   "writing": 2,
+   "numeracy": 1,
+   "detail": 3,
+   "customer": 2,
+   "technical": 1,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "mixed",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 19,
+    "max": 37.95,
+    "unit": "hour",
+    "note": "Job Bank Ontario low/median/high for administrative assistants (NOC 13110): $19.00 / $26.67 / $37.95, updated 2025-11-19 (employee wages). Contractor postings read 2026-10-13: Red Rover $25/hr; Zirtual a percentage of client plans averaging $1,500–$3,800/month (currency unstated)."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "winning_clients",
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Job Bank national: low $19.23, median $26.44, high $36.88/hr."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "low",
+   "required_purchases": [],
+   "potential_expenses": [
+    "own computer, internet, phone and software for contractor roles"
+   ]
+  },
+  "risks": [
+   "scam_impersonation",
+   "contractor_tax_obligations",
+   "low_task_volume",
+   "no_guaranteed_work"
+  ],
+  "risk_notes": [],
+  "barriers": [
+   "Experience requirements of 2–4+ years on remote postings."
+  ],
+  "progression_potential": "medium",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://www.jobbank.gc.ca/marketreport/wages-occupation/24789/ON",
+    "source_type": "government",
+    "publisher": "Job Bank (Government of Canada)",
+    "title": "Wages: Administrative Assistant in Ontario",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "pay"
+    ],
+    "evidence_summary": "NOC 13110 Ontario: low $19.00, median $26.67, high $37.95/hr; Ottawa $28.85, Toronto $26.50; updated 2025-11-19; 85.1% receive a non-wage benefit.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.jobbank.gc.ca/marketreport/wages-occupation/24789/ca;jsessionid=B37A520C93342FF9822AFC3A96752F84.jobsearch77",
+    "source_type": "government",
+    "publisher": "Job Bank (Government of Canada)",
+    "title": "Wages: Administrative Assistant in Canada",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "pay"
+    ],
+    "evidence_summary": "Canada: low $19.23, median $26.44, high $36.88/hr.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aat68dqxbg7d",
+    "source_type": "job_board",
+    "publisher": "Indeed (Zirtual)",
+    "title": "Remote Virtual Executive Assistant (contract)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-07-15",
+    "supports": [
+     "canadian_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions",
+     "scam_warning"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (posted 2026-07-15). Independent contractor for US or Canada residents; 2–4+ yrs EA; 50 WPM; business hours PST/EST; pay a % of client plans, avg $1,500–$3,800/month; no equipment provided; Zirtual never asks for payment and emails only from @zirtual.com.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aanbnbstdm6j",
+    "source_type": "job_board",
+    "publisher": "Indeed (Red Rover)",
+    "title": "Real Estate Executive Virtual Assistant (ON, AB, SK)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-08-13",
+    "supports": [
+     "canadian_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (posted 2026-08-13). Independent contractor $25/hr, 30–40 h/week, Mon–Fri 9–5; 1+ yr Canadian real-estate admin and 3+ yrs EA required; fully equipped home office; minimal training.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://it.ucalgary.ca/it-security/recruitment-fraud",
+    "source_type": "other",
+    "publisher": "University of Calgary IT Security",
+    "title": "Recruitment fraud",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning"
+    ],
+    "evidence_summary": "University warning page on fake recruiters and job offers; scammers can spoof legitimate email domains.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.antifraudcentre-centreantifraude.ca/index-eng.htm",
+    "source_type": "government",
+    "publisher": "Canadian Anti-Fraud Centre",
+    "title": "Canadian Anti-Fraud Centre (home / news list)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning",
+     "risks"
+    ],
+    "evidence_summary": "CAFC news list includes a June 2025 alert on a fake Amazon job investment scam ($1.2M lost across Canada); job offers arrive by text, WhatsApp, email and social ads and use real company names; victims are asked to pay by cheque, e-Transfer or crypto. CAFC line 1-888-495-8501.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.londonpolice.ca/media/tzld0o0a/20251216-employment-frauds-new-variation-en.pdf",
+    "source_type": "government",
+    "publisher": "London Police Service (Ontario)",
+    "title": "Employment frauds: new variation (bulletin, Dec 2025)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2025-12-16",
+    "supports": [
+     "scam_warning",
+     "risks"
+    ],
+    "evidence_summary": "Ontario police bulletin: in the first nine months of 2025 victims reported $46.5M in employment-fraud losses; fake offers use real company names and ask victims to \"boost\" products, deposit counterfeit cheques or forward funds.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Indeed API \"virtual assistant\" remote Canada (2026-10-13) returned five roles, of which Zirtual and Red Rover are VA roles; the others were clerks and an accounts-payable contract.",
+   "v1 Job Bank outlook pages, GST/HST page and the health-products VA posting were not re-seen and were dropped."
+  ],
+  "open_questions": [
+   "Share of remote VA postings that are employee vs contractor."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Category re-verified: Job Bank Ontario wages refreshed, two current contractor postings read in full, scam guidance refreshed, how_to_find_work added.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "virtual-assistant-admin-support-category",
+   "v1_name": "Virtual assistant / administrative support (category)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "Added how_to_find_work",
+    "Pay note rebuilt from Job Bank Ontario page and 2026 postings",
+    "Dropped outlook, GST/HST and v1 posting sources not re-seen",
+    "experience set to significant to match postings"
+   ],
+   "claims_verified": [
+    "Job Bank wages for NOC 13110",
+    "Remote VA contractor postings open to Canadians exist",
+    "VA title used in job scams"
+   ],
+   "unresolved_claims": [
+    "Job Bank outlook rating for Ontario (v1: Moderate)"
+   ]
+  }
+ },
+ {
+  "id": "working-solutions-on-demand-agent",
+  "name": "On-demand work-at-home contact centre agent (Working Solutions)",
+  "organization": "Working Solutions",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "Working Solutions contracts independent home-based agents in the US, Canada and Jamaica for client programs, paid per productive minute; no current program opening for Canada could be seen, and reviewers report unpaid training, thin hours and withheld final pay.",
+  "what_you_do": "You certify for a client program, book available time slots and handle customer calls from home as an independent contractor, paid only for productive minutes.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You want self-scheduled phone work from home and can accept contractor status and uneven hours.",
+   "Official pages say the network covers the United States, Canada and Jamaica (150,000+ agents) and that agents need a valid Canadian or US address."
+  ],
+  "who_it_may_not_fit": [
+   "You need a paycheque you can count on: pay is per minute and reviewers say scheduling is sporadic, 20-hour weekly minimums are hard to reach and agents can be dropped for inactivity.",
+   "Reviewers report about two weeks of unpaid training and one complaint of withheld pay for hours already worked (the company says contractors' compensation varies by program).",
+   "No program opening for Canada was visible on 2026-10-13 and the per-minute rate was not re-seen; v1's $0.25–$0.31/min figure is unverified.",
+   "Independent contractor: no benefits; you handle your own taxes."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "unclear",
+   "provinces": [],
+   "eligibility_notes": [
+    "Official about-us page: valid Canadian or US address \"located in a state in which we do business\"; no province list was found."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API search \"Working Solutions customer service agent\", remote Canada (2026-10-13): no Working Solutions postings.",
+   "Web search returned official about/FAQ pages describing the contractor model but no current Canadian program opening."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://jobs.workingsolutions.com/about-us/",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "unknown",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "own computer, headset and internet (contractor)"
+   ],
+   "certifications": [],
+   "other": [
+    "Pass program certification/assessment"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "contractor",
+   "schedule_type": "flexible",
+   "hours_commitment": "varies",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "sporadic",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Reviewers: hours depend on program demand and performance ranking; some programs require 20 hours a week.",
+    "Reviewers disagree on whether certification time is paid."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 1,
+   "creative": 0,
+   "language": 0
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [
+    "About two weeks of unpaid training/certification reported by several reviewers (company response: compensation varies by program)."
+   ],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "receiving_tasks",
+    "passing_qualification",
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Pay is per productive minute, not hourly (reviews); the official rate page from v1 ($0.25–$0.31/min) was not re-seen and the figure is dropped."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "low",
+   "required_purchases": [],
+   "potential_expenses": [
+    "own equipment and internet"
+   ]
+  },
+  "risks": [
+   "contractor_tax_obligations",
+   "low_task_volume",
+   "payment_delay_reports",
+   "phone_heavy",
+   "no_guaranteed_work",
+   "unpredictable_income",
+   "unpaid_qualification"
+  ],
+  "risk_notes": [
+   "Glassdoor 3.5/5 (487 reviews); Indeed pay/benefits 3.4/5; one PissedConsumer complaint of withheld final pay."
+  ],
+  "barriers": [
+   "Program openings for Canada appear intermittently; none visible now."
+  ],
+  "progression_potential": "low",
+  "horizon": "now",
+  "evidence_quality": "weak",
+  "confidence": 0,
+  "contradictions": [
+   "Reviewers disagree on whether training is paid (some say ~2 weeks unpaid, another says paid but short)."
+  ],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://jobs.workingsolutions.com/about-us/",
+    "source_type": "official",
+    "publisher": "Working Solutions",
+    "title": "About us (jobs.workingsolutions.com)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "canadian_eligibility",
+     "work_conditions"
+    ],
+    "evidence_summary": "Independent-contractor, work-at-home opportunities for people in the US, Canada or Jamaica; agents need a valid Canadian or US address in a jurisdiction where the company does business; network of 150,000+ agents.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.techmonitor.ai/?p=41884",
+    "source_type": "independent_reporting",
+    "publisher": "Tech Monitor",
+    "title": "Working Solutions / Telus agreement to recruit Canadian home-based agents",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "Reports an agreement with Telus to recruit and pre-qualify Canadian contact-centre workers who work from home; CEO said agents could live anywhere in Canada.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Undated; likely old."
+    ]
+   },
+   {
+    "url": "https://www.indeed.com/cmp/Working-Solutions/reviews",
+    "source_type": "worker_anecdote",
+    "publisher": "Indeed",
+    "title": "Working Solutions employee reviews",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "risks",
+     "work_volume",
+     "work_conditions"
+    ],
+    "evidence_summary": "Reviewers: training unpaid making the 20-hour minimum hard to reach; sporadic scheduling; pay and benefits rated 3.4/5.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.glassdoor.ca/Reviews/Working-Solutions-Reviews-E242433.htm",
+    "source_type": "worker_anecdote",
+    "publisher": "Glassdoor",
+    "title": "Working Solutions reviews",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "risks",
+     "work_volume"
+    ],
+    "evidence_summary": "3.5/5 from 487 reviews; about two weeks of unpaid training; pay per minute; agents not in the top tier end up short of hours; company responds that compensation varies by client program.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.pissedconsumer.com/working-solutions/RT-F.html",
+    "source_type": "worker_anecdote",
+    "publisher": "PissedConsumer",
+    "title": "Working Solutions complaint",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Single complaint: contract ended before 172 hours and the agent says they are owed for hours worked; site summary notes reports of unpaid hours and withheld final pay.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "One unverified complaint."
+    ]
+   }
+  ],
+  "research_notes": [
+   "v1 FAQ URLs (rate, free classes, stipend) were not re-seen; the per-minute rate is therefore removed rather than carried forward."
+  ],
+  "open_questions": [
+   "Current per-minute rates and currency for Canadian agents",
+   "Which provinces Working Solutions serves",
+   "Whether any program is currently recruiting in Canada"
+  ],
+  "disposition": "downgraded",
+  "disposition_reason": "Legitimate contractor platform that accepts Canadians, but no current opening, no verifiable pay and consistent reports of unpaid training and thin hours.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "working-solutions-on-demand-agent",
+   "v1_name": "On-demand work-at-home contact centre agent (Working Solutions)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "Removed the derived $15–$18.60/hr rate (FAQ not re-seen); pay_type unknown",
+    "Added unpaid_qualification risk and unpaid_work entry",
+    "Ontario eligibility set to unclear (no province list)",
+    "work_guaranteed set to sporadic",
+    "Replaced sources"
+   ],
+   "claims_verified": [
+    "Accepts contractors in Canada (official about-us page)",
+    "Paid per productive minute; contractor status",
+    "Reports of limited hours and unpaid training"
+   ],
+   "unresolved_claims": [
+    "Per-minute rate",
+    "Free certification and stipend (v1 FAQ)",
+    "Province coverage"
+   ]
+  }
+ },
+ {
+  "id": "zirtual-virtual-executive-assistant",
+  "name": "Remote virtual executive assistant (Zirtual)",
+  "organization": "Zirtual",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "Zirtual is accepting applications from experienced executive assistants in the US or Canada to work as independent contractors for its clients, paid a percentage of client plans (average $1,500–$3,800 a month per the posting; currency unstated).",
+  "what_you_do": "You manage clients' calendars, inboxes, travel, documents and research remotely during business hours (PST or EST, Monday–Friday), respond within two hours, send weekly usage reports and keep client profiles current, with an account supervisor handling client relationships.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You are an experienced admin or executive assistant in Canada who wants mostly written, independent remote work in business hours.",
+   "Posting explicitly accepts residents of the United States or Canada.",
+   "Zirtual vets clients and provides an account supervisor; bilingual English/French or Spanish is a plus."
+  ],
+  "who_it_may_not_fit": [
+   "You are new to admin work: 2–4+ years as an executive/administrative assistant and 50 WPM typing required.",
+   "You need a set wage: pay is a share of client plans (one reviewer says Zirtual keeps 50%), averaging $1,500–$3,800/month depending on client mix; reviewers say clients are assigned slowly and pay has fallen (Indeed pay rating 2.5/5).",
+   "No equipment provided: you supply computer, internet and phone and cover your own taxes.",
+   "Scammers impersonate Zirtual recruiters; genuine emails come only from @zirtual.com and Zirtual never asks for payment."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Posting: \"currently available only to individuals residing in the United States or Canada\"."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "accepting_applications",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API (2026-10-13): \"Remote Virtual Executive Assistant\" (Zirtual, contract, posted 2026-07-15, listed under Dryden, ON) is live and open to US or Canada residents."
+  ],
+  "application_or_registration_url": "https://to.indeed.com/aat68dqxbg7d",
+  "official_url": null,
+  "requirements": {
+   "minimum_age": null,
+   "education": "Associate's or Bachelor's degree in business administration or related field, or equivalent experience",
+   "experience": "significant",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "reliable high-speed internet",
+    "computer",
+    "phone"
+   ],
+   "certifications": [],
+   "other": [
+    "2–4+ years as an executive or administrative assistant",
+    "Typing 50+ WPM with accuracy",
+    "Google Workspace/Microsoft Office, calendar, CRM/project tools (Asana, Trello, ClickUp, Zoho, Salesforce), Slack/Zoom/Teams"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "contractor",
+   "schedule_type": "fixed",
+   "hours_commitment": "varies",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "sometimes",
+   "text_based_work": "yes",
+   "independent_work": "yes",
+   "task_variety": "varied",
+   "customer_facing": "high",
+   "sales_or_commission": "no",
+   "deadline_pressure": "medium",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "unknown",
+   "training_required": "no",
+   "conditions_notes": [
+    "Available during business hours as agreed with each client; two-hour response window; weekly usage reports.",
+    "Earnings depend on the number and size of client plans assigned; reviewers report slow client flow."
+   ]
+  },
+  "skill_demands": {
+   "computer": 3,
+   "writing": 3,
+   "numeracy": 1,
+   "detail": 3,
+   "customer": 2,
+   "technical": 1,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "revenue_share",
+   "currency": "unstated",
+   "advertised_rate": {
+    "min": 1500,
+    "max": 3800,
+    "unit": "month",
+    "note": "Posting: compensation is a percentage of client monthly plans, with average monthly earnings of $1,500–$3,800 depending on client mix; currency not stated (US company)."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "month",
+   "fees": [
+    "None to apply (posting: Zirtual never asks for payment); one reviewer says Zirtual retains 50% of the client fee."
+   ],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "winning_clients",
+    "hours_worked"
+   ],
+   "economics_notes": []
+  },
+  "costs": {
+   "upfront_cost": "low",
+   "required_purchases": [],
+   "potential_expenses": [
+    "own computer, internet, phone and software"
+   ]
+  },
+  "risks": [
+   "contractor_tax_obligations",
+   "low_task_volume",
+   "scam_impersonation",
+   "no_guaranteed_work",
+   "unpredictable_income",
+   "commission_or_platform_fees"
+  ],
+  "risk_notes": [
+   "Indeed: 3.5/5 overall (28 reviews), pay and benefits 2.5/5."
+  ],
+  "barriers": [
+   "Experience and typing requirements; slow client assignment reported."
+  ],
+  "progression_potential": "low",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://to.indeed.com/aat68dqxbg7d",
+    "source_type": "job_board",
+    "publisher": "Indeed (Zirtual)",
+    "title": "Remote Virtual Executive Assistant (contract)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-07-15",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "ontario_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions",
+     "scam_warning",
+     "fees"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (posted 2026-07-15). Independent contractor for US or Canada residents; 2–4+ yrs EA; 50 WPM; business hours PST/EST Mon–Fri; two-hour response; % of client plans, avg $1,500–$3,800/month; no equipment; recruitment-scam warning (@zirtual.com only, never asks for payment).",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://www.indeed.com/cmp/Zirtual/reviews",
+    "source_type": "worker_anecdote",
+    "publisher": "Indeed",
+    "title": "Working at Zirtual: reviews",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "risks",
+     "pay"
+    ],
+    "evidence_summary": "Overall 3.5/5 from 28 reviews; pay and benefits 2.5/5; flexibility praised.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://www.glassdoor.co.in/Reviews/Zirtual-Reviews-E691728.htm",
+    "source_type": "worker_anecdote",
+    "publisher": "Glassdoor",
+    "title": "Zirtual reviews",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "risks",
+     "fees"
+    ],
+    "evidence_summary": "Reviewer: Zirtual takes 50% of the client fee; VAs cover self-employment tax, software and equipment; clients rarely sent; pay has dropped over time.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Trustpilot client-side reviews are mostly positive but concern clients, not contractors; excluded.",
+   "No official Zirtual site URL appeared verbatim in results, so official_url stays null."
+  ],
+  "open_questions": [
+   "Currency of the stated earnings (likely USD) and typical hours per month",
+   "Time from acceptance to first client assignment"
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Posting re-read in full and confirmed live; negative evidence added (fee split, slow client flow, low pay rating); pay_type corrected to revenue share.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "zirtual-virtual-executive-assistant",
+   "v1_name": "Remote virtual executive assistant (Zirtual)",
+   "v1_status": "uncertain",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "availability_status unknown → accepting_applications",
+    "pay_type salary → revenue_share; fees note added",
+    "Added Indeed and Glassdoor anecdotes (negative evidence)",
+    "phone_or_video_required set to sometimes; hours_commitment varies"
+   ],
+   "claims_verified": [
+    "Open to US or Canada residents",
+    "Contractor paid a % of client plans, avg $1,500–$3,800/month",
+    "2–4+ yrs experience, 50 WPM, business hours",
+    "Scam-impersonation warning"
+   ],
+   "unresolved_claims": [
+    "Currency",
+    "Official website URL"
+   ]
+  }
+ },
+ {
+  "id": "telus-digital-bilingual-client-care-representative-remote",
+  "name": "Bilingual Client Care Representative, fully remote (TELUS Digital)",
+  "organization": "TELUS Digital",
+  "record_type": "specific_job",
+  "category": "customer_ops",
+  "summary": "TELUS Digital is hiring fully remote bilingual client care representatives in Canada ($39,994.50/yr) to answer calls and chats in a 24/7 care access centre, including assessing callers for short-term counselling referrals; requires 2+ years of customer service and English plus French or Cantonese/Mandarin.",
+  "what_you_do": "You are the first responder to inbound calls and chats, run assessments to determine suitability for short-term counselling referrals, give practical support, triage crisis situations to a clinical team, answer emails and keep records, on 8-hour shifts five days a week within a 24/7 operation.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You are fluent in English and French (or English and Cantonese/Mandarin), have 2+ years of customer service experience and can work any shift in a 24/7 schedule.",
+   "Fully remote anywhere in Canada per the posting (no province list); full-time salaried at $39,994.50/yr.",
+   "Suits people with psychology or social-services background who can stay calm with distressed callers (post-secondary in psychology preferred, not required)."
+  ],
+  "who_it_may_not_fit": [
+   "You are not bilingual, or cannot pass a criminal background check that may include federal fingerprinting.",
+   "You cannot work evenings, nights or weekends: shifts are assigned across 24 hours, 7 days.",
+   "Emotionally heavy work: callers may be in distress or crisis.",
+   "Home internet must be at least 100 Mbps download / 50 Mbps upload with a private workspace; you troubleshoot your own devices.",
+   "Reviews of TELUS Digital are mixed (Glassdoor 3.4/5): rigid scripts, call-by-call grading and isolation are common complaints."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Posting is tagged \"Remote\" with no province restriction; it reads as a TELUS Health Care Access Centre role published under the TELUS Digital name on Indeed."
+   ],
+   "work_authorization_notes": "Ability to pass a criminal background check, which may include federal fingerprinting."
+  },
+  "availability_status": "open_specific_opportunity",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API (2026-10-13): \"Bilingual Call Center Representative (Remote)\", TELUS Digital, full-time, posted 2026-09-07, live with pay $39,994.50 per year."
+  ],
+  "application_or_registration_url": "https://to.indeed.com/aaw4z7kp99lt",
+  "official_url": null,
+  "requirements": {
+   "minimum_age": null,
+   "education": "Bachelor's degree, college diploma or equivalent in a subject such as psychology strongly preferred (or similar work experience); criminal background check",
+   "experience": "significant",
+   "languages": [
+    "en",
+    "fr"
+   ],
+   "equipment": [
+    "home internet of at least 100 Mbps download / 50 Mbps upload",
+    "dedicated private workspace",
+    "ability to troubleshoot own devices and network"
+   ],
+   "certifications": [],
+   "other": [
+    "2+ years of interactive customer service experience",
+    "Fluent in English and French, or English and Cantonese/Mandarin",
+    "Flexibility to work any assigned shift, 24/7 operation"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "employee",
+   "schedule_type": "shifts",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": 40,
+   "hours_max_weekly": 40,
+   "time_windows": [
+    "day",
+    "evening",
+    "night",
+    "weekend"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "partly",
+   "independent_work": "no",
+   "task_variety": "mixed",
+   "customer_facing": "high",
+   "sales_or_commission": "no",
+   "deadline_pressure": "high",
+   "work_guaranteed": "yes",
+   "emotional_content_risk": "yes",
+   "training_required": "unknown",
+   "conditions_notes": [
+    "Inbound calls and chat plus email handling; targets around call volume and quality; high volume under pressure.",
+    "Shifts are 8 hours a day, 5 days a week, assigned across 24/7 hours of operation."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 2,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 1,
+   "creative": 0,
+   "language": 3
+  },
+  "economics": {
+   "pay_type": "salary",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 39994.5,
+    "max": 39994.5,
+    "unit": "year",
+    "note": "Posting states \"Pay: $39,994.50 per year\"; benefits listed only as work from home."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "year",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "high",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Equivalent to roughly $19.23/hr on a 40-hour week."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "low",
+   "required_purchases": [],
+   "potential_expenses": [
+    "home internet plan meeting 100/50 Mbps"
+   ]
+  },
+  "risks": [
+   "phone_heavy",
+   "emotional_content",
+   "credential_required",
+   "scam_impersonation"
+  ],
+  "risk_notes": [
+   "TELUS itself publishes consumer guidance on fake recruiters and deepfake job offers; apply only through the Indeed link or TELUS career sites."
+  ],
+  "barriers": [
+   "Bilingual requirement and 24/7 shift flexibility."
+  ],
+  "progression_potential": "medium",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [
+   "The posting is published under \"TELUS Digital\" but describes a Care Access Centre with counselling referrals and \"TELUS Values\", which matches TELUS Health; the hiring entity is not fully clear."
+  ],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://to.indeed.com/aaw4z7kp99lt",
+    "source_type": "job_board",
+    "publisher": "Indeed (TELUS Digital)",
+    "title": "Bilingual Call Center Representative (Remote)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-09-07",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "ontario_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (posted 2026-09-07, full-time, remote). First responders to calls and chats; assessments for short-term counselling referrals; 2+ yrs CS; English + French or Cantonese/Mandarin; 24/7 shifts 8h x 5; background check incl. possible federal fingerprinting; 100/50 Mbps; $39,994.50/yr.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   },
+   {
+    "url": "https://ca.indeed.com/cmp/Telus-Digital-3/reviews",
+    "source_type": "worker_anecdote",
+    "publisher": "Indeed Canada",
+    "title": "TELUS Digital employee reviews",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Mixed remote reviews: equipment and benefits praised; isolation, script grading on each call and low pay for the workload criticized.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://static-pc.glassdoor.de/Reviews/TELUS-Digital-Reviews-E2841163_P6.htm",
+    "source_type": "worker_anecdote",
+    "publisher": "Glassdoor",
+    "title": "TELUS Digital reviews",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Overall 3.4/5 from about 5,500 reviews, in line with industry average; complaints of rigid scripts and tedious timed work.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "Multi-country; few reviews specific to Canadian client care."
+    ]
+   },
+   {
+    "url": "https://www.telus.com/en/wise/resources/content/article/dream-job-or-deepfake",
+    "source_type": "official",
+    "publisher": "TELUS Wise",
+    "title": "Dream job or deepfake? (July 28, 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-07-28",
+    "supports": [
+     "scam_warning"
+    ],
+    "evidence_summary": "TELUS consumer-safety article on AI deepfake recruiters and fake job offers; cites the CAFC figure that job scams cost Canadians more than $49M in 2024.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Found via Indeed API searches \"remote customer service representative work from home\" and \"paid training customer service work from home\" (2026-10-13); the same posting appeared three times under different Indeed IDs.",
+   "No official telusdigital.com or telushealth.com URL for this role appeared verbatim, so official_url is null."
+  ],
+  "open_questions": [
+   "Is the employer TELUS Digital or TELUS Health, and is paid training provided?",
+   "Does the role accept applicants in every province?"
+  ],
+  "disposition": "new",
+  "disposition_reason": "New discovery: a current, fully remote, Canada-wide bilingual contact-centre posting from a major Canadian telecom group with stated salary, read in full.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": null,
+   "v1_name": null,
+   "v1_status": null,
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "mci-sydney-call-centre-work-at-home-canada",
+  "name": "Work-at-home inbound customer service representative (MCI / The Sydney Call Centre, Canada)",
+  "organization": "MCI (The Sydney Call Centre)",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "MCI, a US business-process outsourcer with a Nova Scotia operation (The Sydney Call Centre), lists remote work-at-home inbound customer service roles for Canada with paid training, PTO and benefits for full-timers; pay is not stated on the posting and the Indeed listing dates from February 2026.",
+  "what_you_do": "You answer inbound customer calls for client programs from home, resolve inquiries and complaints, give product and policy information, document each interaction and escalate complex issues, after paid training and a pre-employment test.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You want an entry-level phone job from home: 18+, high school diploma, customer service experience preferred but not required.",
+   "Paid training, paid time off and holidays, supplemental health coverage (Blue Cross) for full-time staff, and an internal-promotion culture are listed.",
+   "Work-at-home Canada listings also appear on MCI's own careers site (The Sydney Call Centre, provincewide)."
+  ],
+  "who_it_may_not_fit": [
+   "You need to know the wage first: the posting says only that starting compensation is based on experience; a 2023 blog reported $14.50/hr base on an earlier posting.",
+   "You cannot pass up to a Level II background/security check with fingerprinting (job offers are contingent on it).",
+   "The Indeed posting is from 2026-02-27, so it may be an evergreen pipeline rather than an immediate vacancy.",
+   "No worker reviews specific to Canadian work-at-home roles were found, so conditions are unverified."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Posting location: \"Remote Work-at-Home | Canada\"; must be authorized to work in Canada; Indeed lists it under Alberta while MCI's site lists provincewide and PEI work-at-home roles."
+   ],
+   "work_authorization_notes": "Must be authorized to work in the country where the job is based; drug screening does not apply in Canada."
+  },
+  "availability_status": "accepting_applications",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API (2026-10-13): \"Remote Inbound Customer Service Representative\" (MCI, full-time, Remote Work-at-Home | Canada) posted 2026-02-27 is still listed; related MCI/Sydney Call Center remote sales and renewal roles carry the same date.",
+   "MCI careers site (iCIMS) lists \"Work at Home Contact Center Agent\" and \"Work-At-Home Call Center Representative (Full-Time)\" for Canada (search summary)."
+  ],
+  "application_or_registration_url": "https://to.indeed.com/aann8zyxd8wn",
+  "official_url": "https://careers-thesydneycentre.icims.com/jobs/42486/work-at-home-contact-center-agent/job",
+  "requirements": {
+   "minimum_age": 18,
+   "education": "High school diploma or equivalent",
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "reliable internet connection",
+    "quiet workspace"
+   ],
+   "certifications": [],
+   "other": [
+    "Complete the full application on MCI's careers page including screening questions and a brief pre-employment test",
+    "Background/security investigation up to Level II with fingerprint"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "employee",
+   "schedule_type": "shifts",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "repetitive",
+   "customer_facing": "high",
+   "sales_or_commission": "no",
+   "deadline_pressure": "medium",
+   "work_guaranteed": "yes",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Paid training; MCI also lists remote outbound sales and renewal-sales roles, which are commission-oriented and separate from this inbound role.",
+    "Equipment provision is claimed on MCI's own listings (search summary), not stated in the Indeed posting."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 1,
+   "creative": 0,
+   "language": 0
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Posting: starting compensation based on experience; no figure.",
+    "Rat Race Rebellion (2023) reported a base of $14.50/hr plus bonuses on an earlier MCI Canada posting; stale and not recorded as a rate."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": [
+    "internet plan"
+   ]
+  },
+  "risks": [
+   "phone_heavy",
+   "credential_required",
+   "stale_information"
+  ],
+  "risk_notes": [
+   "Posting age (Feb 2026) and unstated pay."
+  ],
+  "barriers": [
+   "Background check with fingerprinting."
+  ],
+  "progression_potential": "medium",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://to.indeed.com/aann8zyxd8wn",
+    "source_type": "job_board",
+    "publisher": "Indeed (MCI)",
+    "title": "Remote Inbound Customer Service Representative (Work-at-Home, Canada)",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-02-27",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "ontario_eligibility",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (posted 2026-02-27, full-time). Remote work-at-home Canada; 18+; HS diploma; CS experience preferred; pre-employment test; up to Level II background check with fingerprint; paid training, PTO, Blue Cross supplemental health for full-time; pay \"based on experience\".",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable.",
+     "Posting is about eight months old."
+    ]
+   },
+   {
+    "url": "https://careers-thesydneycentre.icims.com/jobs/42486/work-at-home-contact-center-agent/job",
+    "source_type": "official",
+    "publisher": "MCI / The Sydney Call Centre (iCIMS careers)",
+    "title": "Work at Home Contact Center Agent",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "canadian_eligibility",
+     "work_conditions"
+    ],
+    "evidence_summary": "MCI's own careers site lists provincewide Canadian work-at-home contact-centre roles; postings describe paid time off, paid training, benefits for full-time staff and equipment provided.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://careers-thesydneycentre.icims.com/jobs/47380/work-at-home-call-center-representative-%28full-time%29/job",
+    "source_type": "official",
+    "publisher": "MCI / The Sydney Call Centre (iCIMS careers)",
+    "title": "Work-At-Home Call Center Representative (Full-Time)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "availability"
+    ],
+    "evidence_summary": "Second work-at-home Canada listing on MCI's careers site (one version lists a PEI location).",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure)."
+    ]
+   },
+   {
+    "url": "https://ratracerebellion.com/mci-is-hiring-1000-customer-service-reps-across-the-us-canada",
+    "source_type": "independent_reporting",
+    "publisher": "Rat Race Rebellion",
+    "title": "MCI is hiring 1,000 customer service reps across the US & Canada",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": null,
+    "supports": [
+     "pay"
+    ],
+    "evidence_summary": "Blog (2023) reported base pay of $14.50/hr plus bonuses and incentives on an MCI listing, noting a lower rate elsewhere in the posting.",
+    "limitations": [
+     "Seen as a search-engine summary only; the page itself could not be opened (DNS failure).",
+     "2023; stale."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Negative-evidence search (\"MCI Mass Markets OR Sydney Call Center work from home Canada reviews\") returned only postings and a blog; no worker reviews surfaced.",
+   "The Indeed API listed the same inbound role under \"Alberta\" and the Sydney, NS roles under MCI and The Sydney Call Center."
+  ],
+  "open_questions": [
+   "Current hourly wage for Canadian work-at-home agents",
+   "Whether Ontario residents are placed on the Canadian program",
+   "Worker experience (no reviews found)"
+  ],
+  "disposition": "new",
+  "disposition_reason": "New discovery: Canadian BPO employer with a live remote work-at-home Canada posting read in full and paid training; pay unverified.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": null,
+   "v1_name": null,
+   "v1_status": null,
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "ntt-data-remote-bilingual-customer-care-canada",
+  "name": "Remote Bilingual Customer Care Associate (NTT DATA, Canada)",
+  "organization": "NTT DATA",
+  "record_type": "employer",
+  "category": "customer_ops",
+  "summary": "NTT DATA lists a remote bilingual client care role at $20/hr for a group-insurance client, but only for residents of Quebec, Alberta, Manitoba, New Brunswick, Nova Scotia and PEI, and the posting is for future vacancies.",
+  "what_you_do": "You resolve inbound phone, email and chat inquiries for a group-insurance client in English and French, Monday–Friday 8 a.m.–8 p.m. ET on rotational shifts, documenting each contact.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "Not applicable to Ontario residents."
+  ],
+  "who_it_may_not_fit": [
+   "You live in Ontario or BC: hires are open only to residents of QC, AB, MB, NB, NS and PE.",
+   "The posting is \"for future vacancies\" and applications are screened with AI before recruiters review them.",
+   "Requires post-secondary education, call-centre experience and fluent written and spoken English and French; 25 WPM typing; hardwired 30/10 Mbps internet."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "partial",
+   "ontario_residents": "not_eligible",
+   "provinces": [
+    "QC",
+    "AB",
+    "MB",
+    "NB",
+    "NS",
+    "PE"
+   ],
+   "eligibility_notes": [
+    "Posting: \"Location of Hires: Open to candidates residing in Quebec, Alberta, Manitoba, New Brunswick, Nova Scotia, and Prince Edward Island\"."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "not_eligible_for_ontario",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API (2026-10-13): \"Remote Bilingual Customer Care Associate\", NTT DATA, posted 2026-08-28, \"This job posting is for future vacancies\"; Ontario excluded."
+  ],
+  "application_or_registration_url": null,
+  "official_url": null,
+  "requirements": {
+   "minimum_age": null,
+   "education": "Post-secondary degree or diploma",
+   "experience": "some",
+   "languages": [
+    "en",
+    "fr"
+   ],
+   "equipment": [
+    "high-speed internet 30 Mbps down / 10 up, no satellite",
+    "Ethernet connection",
+    "private space for PC and monitor",
+    "smartphone with Google Authenticator"
+   ],
+   "certifications": [],
+   "other": [
+    "Call-centre customer service experience",
+    "Typing 25 WPM at 95% accuracy",
+    "Rotational shifts incl. evenings"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "employee",
+   "schedule_type": "shifts",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day",
+    "evening"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "partly",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Equipment provided; virtual paid training; benefits, EAP, RRSP options listed."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 2,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 1,
+   "creative": 0,
+   "language": 3
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 20,
+    "max": 20,
+    "unit": "hour",
+    "note": "Posting: \"Rate of Pay: $20.00/Hr Bilingual (French/English)\"."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": []
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "geographic_restriction",
+   "phone_heavy"
+  ],
+  "risk_notes": [],
+  "barriers": [
+   "Ontario excluded."
+  ],
+  "progression_potential": "unknown",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://to.indeed.com/aaxx6mxjpv8z",
+    "source_type": "job_board",
+    "publisher": "Indeed (NTT DATA)",
+    "title": "Remote Bilingual Customer Care Associate",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-08-28",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "ontario_eligibility",
+     "pay",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (Req 387747, posted 2026-08-28). Remote; hires open to QC, AB, MB, NB, NS, PE residents only; $20/hr bilingual; Mon–Fri 8–8 ET; post-secondary; call-centre experience; equipment provided; virtual paid training; \"for future vacancies\".",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Considered as a discovery candidate and rejected because Ontario residents are excluded; kept so the exclusion is on record."
+  ],
+  "open_questions": [],
+  "disposition": "rejected",
+  "disposition_reason": "Rejected new candidate (kept for the audit trail): the current remote posting explicitly excludes Ontario residents and is for future vacancies only.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": null,
+   "v1_name": null,
+   "v1_status": null,
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ },
+ {
+  "id": "cibc-universal-fraud-agent-remote-regina",
+  "name": "Universal Fraud Agent, Remote, 12-month contract (CIBC, Regina)",
+  "organization": "CIBC",
+  "record_type": "specific_job",
+  "category": "customer_ops",
+  "summary": "CIBC's remote Agent@Home fraud contact-centre contract (Nov 2026–Nov 2027) is tied to its Regina, Saskatchewan location and requires attending that site within two hours' notice, so it is not open to someone living in Ontario.",
+  "what_you_do": "You investigate suspected fraudulent card and account activity, take inbound calls and referrals, review client profiles and transactions and escalate cases, working remotely from a secure home office under CIBC's Agent@Home program, with the contact centre open Monday–Sunday 7 a.m.–midnight ET.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "Not applicable to Ontario residents (Regina-based)."
+  ],
+  "who_it_may_not_fit": [
+   "You live in Ontario: employees must be able to attend the primary work location (Regina, SK) within two hours' notice and be legally eligible to work at that location.",
+   "Fixed 12-month term starting 2026-11-30 (expected end 2027-11-26).",
+   "Wired internet of at least 15/10 Mbps, no satellite; a room with a door."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "partial",
+   "ontario_residents": "not_eligible",
+   "provinces": [
+    "SK"
+   ],
+   "eligibility_notes": [
+    "Posting location Regina, SK; Agent@Home requires attending the primary work location within two hours' notice."
+   ],
+   "work_authorization_notes": "Legally eligible to work at the location specified; valid work or study permit where applicable."
+  },
+  "availability_status": "not_eligible_for_ontario",
+  "availability_checked_at": "2026-10-13T15:39:06Z",
+  "availability_evidence": [
+   "Indeed API (2026-10-13): \"Universal Fraud Agent, Remote (12 Month Contract)\", CIBC, Regina SK, posted 2026-09-21; CIBC says all posted roles are actively recruited unless stated otherwise."
+  ],
+  "application_or_registration_url": null,
+  "official_url": null,
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "some",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "wired internet 15 Mbps down / 10 up, no satellite",
+    "secure room with a door"
+   ],
+   "certifications": [],
+   "other": [
+    "Experience with COINS/ECIF, PRM, TSYS, CRS an asset",
+    "Available and flexible Monday–Sunday 7 a.m.–12 a.m. ET"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "employee",
+   "schedule_type": "shifts",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day",
+    "evening",
+    "weekend"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "no",
+   "independent_work": "mixed",
+   "task_variety": "unknown",
+   "customer_facing": "high",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "unknown",
+   "training_required": "unknown",
+   "conditions_notes": [
+    "12-month fixed term; occasional on-site attendance in Regina."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 2,
+   "detail": 3,
+   "customer": 2,
+   "technical": 1,
+   "creative": 0,
+   "language": 0
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Posting mentions competitive compensation and a banking benefit; no figure."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "geographic_restriction",
+   "in_person_required",
+   "phone_heavy"
+  ],
+  "risk_notes": [],
+  "barriers": [
+   "Regina-based."
+  ],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:06Z",
+  "sources": [
+   {
+    "url": "https://to.indeed.com/aax8lrwp9l2f",
+    "source_type": "job_board",
+    "publisher": "Indeed (CIBC)",
+    "title": "Universal Fraud Agent, Remote (12 Month Contract) – Regina, SK",
+    "access_status": "opened_and_reviewed",
+    "accessed_at": "2026-10-13T15:39:06Z",
+    "published_at": "2026-09-21",
+    "supports": [
+     "availability",
+     "canadian_eligibility",
+     "ontario_eligibility",
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Full posting read 2026-10-13 (posted 2026-09-21). Fraud contact centre; start 2026-11-30, end 2027-11-26; Agent@Home remote with attendance at primary location within two hours' notice; wired 15/10 Mbps; Mon–Sun 7 a.m.–12 a.m. ET; pay not stated.",
+    "limitations": [
+     "Posting read through the Indeed job API; the employer's own careers page was not reachable."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Only bank contact-centre remote posting surfaced by the Indeed API (\"bank customer service remote\", Canada); web search for RBC/TD/Scotiabank/BMO/CIBC Ontario remote contact-centre roles returned no current postings (only a 2022 National Bank article)."
+  ],
+  "open_questions": [
+   "Does CIBC post Agent@Home contact-centre roles tied to Ontario sites?"
+  ],
+  "disposition": "rejected",
+  "disposition_reason": "Rejected new candidate (kept for the audit trail): a verified current remote bank posting, but location-bound to Regina with on-site attendance on two hours' notice; not available to Ontario residents.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": null,
+   "v1_name": null,
+   "v1_status": null,
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ }
+]

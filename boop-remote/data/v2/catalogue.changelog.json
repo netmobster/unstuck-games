@@ -1,0 +1,940 @@
+{
+ "schema_version": "2.0.0",
+ "generated_at": "2026-10-13T15:51:30.164Z",
+ "from": {
+  "file": "data/catalogue.json",
+  "records": 77
+ },
+ "to": {
+  "file": "data/v2/catalogue.v2.json",
+  "records": 98
+ },
+ "added": [
+  {
+   "id": "amazon-kdp-self-publishing",
+   "name": "Self-publish ebooks and paperbacks on Amazon KDP",
+   "record_type": "freelance_marketplace",
+   "category": "creative_production"
+  },
+  {
+   "id": "app-based-delivery-courier-category",
+   "name": "App-based food and grocery delivery courier (category)",
+   "record_type": "work_category",
+   "category": "freelance_microbusiness"
+  },
+  {
+   "id": "betatesting-tester",
+   "name": "Paid beta and usability tests (BetaTesting)",
+   "record_type": "research_participation",
+   "category": "research_participation"
+  },
+  {
+   "id": "canada-training-credit",
+   "name": "Canada Training Credit (refundable tax credit for tuition, ages 26-65)",
+   "record_type": "government_support",
+   "category": "government_program"
+  },
+  {
+   "id": "cnib-access-labs-accessibility-tester",
+   "name": "Accessibility tester who is blind, Deafblind or has low vision (CNIB Access Labs)",
+   "record_type": "employer",
+   "category": "tech_digital"
+  },
+  {
+   "id": "code-for-canada-grit-user-tester",
+   "name": "Paid user research and usability tester (Code for Canada GRIT)",
+   "record_type": "research_participation",
+   "category": "tech_digital"
+  },
+  {
+   "id": "crowd-content-freelance-writer",
+   "name": "Freelance product-description and content writer (Crowd Content)",
+   "record_type": "task_platform",
+   "category": "language_writing"
+  },
+  {
+   "id": "etsy-seller-canada",
+   "name": "Etsy shop (handmade, vintage, digital products)",
+   "record_type": "freelance_marketplace",
+   "category": "freelance_microbusiness"
+  },
+  {
+   "id": "habitat-learn-captioner-note-taker",
+   "name": "Captioner and note-taker for students (Habitat Learn, Oshawa)",
+   "record_type": "employer",
+   "category": "language_writing"
+  },
+  {
+   "id": "hr-block-canada-tax-academy",
+   "name": "H&R Block Tax Academy course leading to seasonal tax-preparer work",
+   "record_type": "training_program",
+   "category": "structured_employment"
+  },
+  {
+   "id": "kelly-remote-interpreter-paid-training-ontario",
+   "name": "Interpreter with paid training (Kelly, Ontario postings)",
+   "record_type": "employer",
+   "category": "language_writing"
+  },
+  {
+   "id": "mci-sydney-call-centre-work-at-home-canada",
+   "name": "Work-at-home inbound customer service representative (MCI / The Sydney Call Centre, Canada)",
+   "record_type": "employer",
+   "category": "customer_ops"
+  },
+  {
+   "id": "mcis-language-solutions-freelance-interpreter",
+   "name": "Freelance community interpreter (MCIS Language Solutions, Ontario)",
+   "record_type": "employer",
+   "category": "language_writing"
+  },
+  {
+   "id": "mcmaster-research-participant-pool",
+   "name": "Paid university research studies (McMaster University participant pool, Hamilton)",
+   "record_type": "research_participation",
+   "category": "research_participation"
+  },
+  {
+   "id": "ontario-skills-development-fund-training-stream",
+   "name": "Skills Development Fund Training Stream projects (Ontario, join via funded organisations)",
+   "record_type": "training_program",
+   "category": "government_program"
+  },
+  {
+   "id": "opportunities-fund-persons-with-disabilities",
+   "name": "Opportunities Fund for Persons with Disabilities (federal employment supports via local providers)",
+   "record_type": "funded_employment_program",
+   "category": "government_program"
+  },
+  {
+   "id": "playtestcloud-paid-game-tester",
+   "name": "Paid mobile and PC game playtester (PlaytestCloud)",
+   "record_type": "task_platform",
+   "category": "tech_digital"
+  },
+  {
+   "id": "quickbooks-proadvisor-bookkeeping-canada",
+   "name": "Small-business bookkeeping micro-practice via Intuit's QuickBooks ProAdvisor program (Canada)",
+   "record_type": "service_business",
+   "category": "freelance_microbusiness"
+  },
+  {
+   "id": "rover-pet-sitter-canada",
+   "name": "Pet sitter / dog walker via Rover (Canada)",
+   "record_type": "freelance_marketplace",
+   "category": "freelance_microbusiness"
+  },
+  {
+   "id": "telus-digital-bilingual-client-care-representative-remote",
+   "name": "Bilingual Client Care Representative, fully remote (TELUS Digital)",
+   "record_type": "specific_job",
+   "category": "customer_ops"
+  },
+  {
+   "id": "toronto-public-library-career-coaches-in-residence",
+   "name": "Toronto Public Library Career Coaches in Residence (free career and job-search coaching)",
+   "record_type": "government_support",
+   "category": "government_program"
+  },
+  {
+   "id": "translation-bureau-translation-supplier-directory",
+   "name": "Translation Bureau freelance translation supplier directory (RFSA)",
+   "record_type": "freelance_marketplace",
+   "category": "language_writing"
+  },
+  {
+   "id": "waterloo-community-research-participants",
+   "name": "Paid university research studies (University of Waterloo community participant registries)",
+   "record_type": "research_participation",
+   "category": "research_participation"
+  },
+  {
+   "id": "western-ourbrainscan-registry",
+   "name": "Cognitive neuroscience research registry (Western University OurBrainsCAN, London)",
+   "record_type": "research_participation",
+   "category": "research_participation"
+  },
+  {
+   "id": "yess-youth-employment-skills-strategy-program",
+   "name": "Youth Employment and Skills Strategy Program (funded youth employment projects, ages 15-30)",
+   "record_type": "funded_employment_program",
+   "category": "government_program"
+  }
+ ],
+ "updated": [
+  {
+   "id": "adobe-stock-contributor",
+   "v1_id": "adobe-stock-contributor",
+   "changes": [
+    "pay_type set to royalties with USD per-item minimum as advertised_rate",
+    "risks add low_monetization_probability; progression lowered to low",
+    "payout/account rules moved to unresolved; sources replaced with those re-seen"
+   ]
+  },
+  {
+   "id": "ai-response-evaluation-category",
+   "v1_id": "ai-response-evaluation-category",
+   "changes": [
+    "how_to_find_work added",
+    "anecdotal_effective_rate added from Business Insider figures",
+    "evidence moderate → weak (no official/government source)",
+    "sources replaced"
+   ]
+  },
+  {
+   "id": "better-jobs-ontario",
+   "v1_id": "better-jobs-ontario",
+   "changes": [
+    "availability_status: availability_unknown -> program_open_check_eligibility with evidence",
+    "economics: living allowance recorded as advertised stipend (CAD, up to $500/week)",
+    "region_eligibility.canadian_residents: likely -> partial (Ontario-only program)",
+    "Sources replaced: dropped Lambton, George Brown and EOPG update page; added EOPG program overview, Niagara College and ACCES flyer",
+    "Recorded 12-week vs six-month contradiction; added 6-8 week processing estimate"
+   ]
+  },
+  {
+   "id": "bilingual-en-fr-work-category",
+   "v1_id": "bilingual-en-fr-work-category",
+   "changes": [
+    "how_to_find_work written",
+    "advertised_rate now Ontario median only ($25.64/h); national range flagged unverified",
+    "Translation Bureau RFSA WS5665734815 (2026–2031) added",
+    "official_url set to Job Bank Ontario translator jobs page",
+    "Sources replaced"
+   ]
+  },
+  {
+   "id": "cambly-english-tutor",
+   "v1_id": "cambly-english-tutor",
+   "changes": [
+    "Currency confirmed USD from help centre",
+    "Payout terms (Tuesdays, PayPal/Stripe, cadence options) added",
+    "relationship_type set to contractor; work_guaranteed no",
+    "official_url changed to help-centre FAQ",
+    "Sources replaced"
+   ]
+  },
+  {
+   "id": "canada-summer-jobs",
+   "v1_id": "canada-summer-jobs",
+   "changes": [
+    "record_type: government_support -> funded_employment_program",
+    "availability_checked_at and availability_evidence filled (2026 cycle closed; employer window Nov 4-Dec 11, 2025)",
+    "Sources replaced with canada.ca program page, applicant guide, April 2026 release, YESS criteria page and a flagged third-party 2027 estimate",
+    "Subsidy rates (100% / 50% of minimum wage) added to economics"
+   ]
+  },
+  {
+   "id": "canadian-freelance-boards-associations",
+   "v1_id": "canadian-freelance-boards-associations",
+   "changes": [
+    "how_to_find_work added (required for categories)",
+    "dues recorded for both associations",
+    "upfront_fees risk added for optional dues",
+    "Workhoppers and Glassdoor sources dropped (not re-seen)",
+    "Unifor affiliation claim removed"
+   ]
+  },
+  {
+   "id": "canva-creators-template-designer",
+   "v1_id": "canva-creators-template-designer",
+   "changes": [
+    "availability set to registration_open_work_not_guaranteed with official evidence",
+    "royalty mechanics corrected: pool is a share of Canva Pro revenue allocated by Pro exports",
+    "portfolio requirement (5–10 examples) added; evidence_quality raised to moderate on official sources",
+    "Danish, education-creator and Startup Daily sources dropped (not re-seen)"
+   ]
+  },
+  {
+   "id": "content-moderation-trust-safety-category",
+   "v1_id": "content-moderation-trust-safety-category",
+   "changes": [
+    "Added how_to_find_work",
+    "Added Centro.team listing and Indeed Canada moderation summary",
+    "Added $18/hr data point with caveats",
+    "text_based_work set to partly; emotional_content_risk kept yes"
+   ]
+  },
+  {
+   "id": "ecommerce-operations-support-category",
+   "v1_id": "ecommerce-operations-support-category",
+   "changes": [
+    "how_to_find_work added",
+    "advertised_rate refreshed to Oct 2026 Ontario postings ($18–36/hr CAD)",
+    "who_it_may_fit/not_fit updated to Ontario postings",
+    "sources replaced"
+   ]
+  },
+  {
+   "id": "election-worker-paid-temporary",
+   "v1_id": "election-worker-paid-temporary",
+   "changes": [
+    "how_to_find_work added (required for work_category)",
+    "economics: advertised_rate $17.72-$26.46/hour CAD with municipal daily rates in note; pay_type mixed",
+    "official_url changed to the elections.ca poll-worker positions page (elections.ca/jobs not re-seen verbatim)",
+    "Sources replaced with elections.ca eligibility/positions pages, St. Catharines, Whitby, Kitchener, Elections Ontario 2026 posting, 2025 pay reports and an Indeed listing",
+    "Recorded federal pay-rate contradiction"
+   ]
+  },
+  {
+   "id": "employment-ontario-employment-services",
+   "v1_id": "employment-ontario-employment-services",
+   "changes": [
+    "availability_status: availability_unknown -> program_open_check_eligibility with evidence",
+    "region_eligibility.canadian_residents: likely -> partial (Ontario-only)",
+    "economics.pay_type set to none; conditions simplified",
+    "Sources replaced with ontario.ca, toronto.ca (2026), 2026 directory listing and July 2026 procurement notice",
+    "Removed assertion that ODSP employment supports are absorbed; now an open question"
+   ]
+  },
+  {
+   "id": "fable-accessibility-tester",
+   "v1_id": "fable-accessibility-tester",
+   "changes": [
+    "availability_unknown → registration_open_work_not_guaranteed with official evidence",
+    "audience_restriction and eligibility notes updated to 'people living with a disability'",
+    "no_guaranteed_work risk added",
+    "sources replaced"
+   ]
+  },
+  {
+   "id": "film-tv-production-assistant-category",
+   "v1_id": "film-tv-production-assistant-category",
+   "changes": [
+    "advertised_rate switched to Job Bank Ontario wages $18–$38 (median $24)",
+    "how_to_find_work written (required for categories)",
+    "Toronto-region 'good prospects' and national labour-surplus risk added; contradiction recorded",
+    "Nova Scotia outlook, Playback day rates, Reel Canada workshops and 2020 expansion release dropped (not re-seen)"
+   ]
+  },
+  {
+   "id": "foundever-work-at-home-customer-service-canada",
+   "v1_id": "foundever-work-at-home-customer-service-canada",
+   "changes": [
+    "availability_status unknown → accepting_applications (three live postings read)",
+    "Pay range $15–$19.35/hr confirmed; second account at $16.10–$16.60 added",
+    "Bilingual French requirement recorded on all remote postings",
+    "Monday–Friday daytime account added; minimum experience 3–6 months",
+    "Replaced sources; v1 Glassdoor summary dropped (not re-seen)"
+   ]
+  },
+  {
+   "id": "gotranscript-transcription",
+   "v1_id": "gotranscript-transcription",
+   "changes": [
+    "advertised_rate set from official English FAQ (up to $0.60/min)",
+    "availability set to registration_open_work_not_guaranteed with evidence",
+    "payment_terms added (Friday payouts)",
+    "risks: payment_delay_reports, account_deactivation_reports added",
+    "Sources replaced"
+   ]
+  },
+  {
+   "id": "intuit-turbotax-seasonal-tax-expert-canada",
+   "v1_id": "intuit-turbotax-seasonal-tax-expert-canada",
+   "changes": [
+    "availability_status unknown → accepting_applications",
+    "Pay updated to $24.22–$30.95/hr (Ontario) from $24.50–$33.50",
+    "Removed age_or_group_restricted and low_task_volume risks (unsupported)",
+    "Dropped v1 anecdote and FAQ sources not re-seen",
+    "Equipment claim (Intuit laptop) moved to open questions"
+   ]
+  },
+  {
+   "id": "job-bank-canada",
+   "v1_id": "job-bank-canada",
+   "changes": [
+    "availability_status: availability_unknown -> registration_open_work_not_guaranteed",
+    "official_url: https://www.jobbank.gc.ca/intro/findajob -> https://www.jobbank.gc.ca/",
+    "economics.pay_type set to none",
+    "Sources replaced: safety tips re-seen; report-a-problem pages and a 2026 scam roundup added; Manitoba factsheet and FAQ qaid=16 dropped"
+   ]
+  },
+  {
+   "id": "odsp-employment-supports",
+   "v1_id": "odsp-employment-supports",
+   "changes": [
+    "availability_status: availability_unknown -> program_open_check_eligibility with 2026-27 evidence",
+    "official_url changed to directive 2.1 (v1 overview page not re-seen)",
+    "Added Ontario Works exclusion and verification-form requirement; removed Employment Ontario transfer claim",
+    "Sources replaced: directives 2.1 and 3.1, 2026-27 service objectives, MSDSB note, hellodarwin; CMHA/ODEN item kept as re-seen"
+   ]
+  },
+  {
+   "id": "ontario-pre-apprenticeship-training",
+   "v1_id": "ontario-pre-apprenticeship-training",
+   "changes": [
+    "availability_status: availability_unknown -> program_open_check_eligibility",
+    "economics.pay_type unknown -> mixed (paid placement at Algonquin and St. Lawrence; unpaid classroom weeks)",
+    "official_url changed to the provincial program dataset page (ontario.ca page not re-seen)",
+    "requirements.minimum_age set to 16 with provider variation noted; education field filled",
+    "Sources replaced with 2026-27 guidelines and 2026 college listings; Central West Healthline listing dropped"
+   ]
+  },
+  {
+   "id": "ontario-registered-apprenticeship",
+   "v1_id": "ontario-registered-apprenticeship",
+   "changes": [
+    "availability_status: availability_unknown -> program_open_check_eligibility",
+    "region_eligibility.canadian_residents: likely -> partial (Ontario sponsor required)",
+    "economics.pay_type unknown -> hourly; incentives note added",
+    "Added Portal (18+) vs email/mail (16-17) application routes and sponsor approval step",
+    "Sources: STO Portal page dropped; July 2026 toolkit and 2026 funding announcements added"
+   ]
+  },
+  {
+   "id": "preply-online-tutor",
+   "v1_id": "preply-online-tutor",
+   "changes": [
+    "Fees text updated with 'trial lessons count toward hours' and 2026 tier guide",
+    "unpaid_work lists trial lessons",
+    "work_guaranteed set to competitive",
+    "Sources replaced with 2026 results",
+    "region_eligibility lowered from likely to unclear (no source re-seen)"
+   ]
+  },
+  {
+   "id": "prolific-paid-studies",
+   "v1_id": "prolific-paid-studies",
+   "changes": [
+    "availability_status waitlist now backed by official waitlist post with availability_checked_at",
+    "advertised_rate removed (Ethical Rewards page not re-seen)",
+    "official_url changed to participant FAQ",
+    "payment_terms and requirements filled from help articles",
+    "added geographic_restriction risk (GBP/USD only)"
+   ]
+  },
+  {
+   "id": "proofreading-copyediting-category",
+   "v1_id": "proofreading-copyediting-category",
+   "changes": [
+    "how_to_find_work written",
+    "advertised_rate switched to Ontario figures ($20–$48.72)",
+    "Fees note now cites the 2026 fee freeze; v1 amounts flagged unverified",
+    "official_url set to the Ontario wage page",
+    "Sources replaced"
+   ]
+  },
+  {
+   "id": "public-service-student-new-grad-programs",
+   "v1_id": "public-service-student-new-grad-programs",
+   "changes": [
+    "how_to_find_work added (required for work_category)",
+    "official_url changed to the ontario.ca summer-employment page (canada.ca FSWEP page not re-seen)",
+    "economics: outdated OPS pay figure removed; pay_type hourly",
+    "Sources replaced with ontario.ca summer page, university FSWEP/OIP pages and an Indeed listing"
+   ]
+  },
+  {
+   "id": "remote-appointment-setting-category",
+   "v1_id": "remote-appointment-setting-category",
+   "changes": [
+    "Added how_to_find_work",
+    "advertised_rate now the salaried example with the per-lead model in the note",
+    "pay_type mixed; sales_or_commission yes; deadline_pressure high",
+    "Replaced two posting sources with the current versions; dropped Hubstaff and cleaning-consultation postings"
+   ]
+  },
+  {
+   "id": "remote-contact-centre-customer-support-category",
+   "v1_id": "remote-contact-centre-customer-support-category",
+   "changes": [
+    "Added how_to_find_work",
+    "Ontario eligibility set to partial with per-employer notes",
+    "Pay range rebuilt from 2026 postings and Job Bank Ontario wage page",
+    "Replaced all sources"
+   ]
+  },
+  {
+   "id": "rev-transcription-captioning",
+   "v1_id": "rev-transcription-captioning",
+   "changes": [
+    "Eligibility note now cites Rev's help-centre country list (Canada accepted)",
+    "Requirements: 18+ and ID from an accepted country",
+    "Sources replaced with October 2026 search results",
+    "Added geographic_restriction risk"
+   ]
+  },
+  {
+   "id": "scribbr-academic-editor",
+   "v1_id": "scribbr-academic-editor",
+   "changes": [
+    "pay_type per_word",
+    "official_url set to the apply page",
+    "work_guaranteed sporadic; hours_min_weekly 10",
+    "Sources replaced"
+   ]
+  },
+  {
+   "id": "shopify-partner-program-freelance",
+   "v1_id": "shopify-partner-program-freelance",
+   "changes": [
+    "economics rewritten for the 2026-08-10 earning model",
+    "pay_type unknown → revenue_share, currency USD",
+    "availability_unknown → registration_open_work_not_guaranteed",
+    "commission_dependence risk added",
+    "contradiction on payout currency recorded",
+    "sources replaced"
+   ]
+  },
+  {
+   "id": "shutterstock-contributor",
+   "v1_id": "shutterstock-contributor",
+   "changes": [
+    "pay_type royalties; advertised_rate US$0.10 minimum with tier note",
+    "payment terms (PayPal/Skrill/Payoneer, $25 min, 7th–15th) added from official pages",
+    "risks add low_monetization_probability and payment_delay_reports",
+    "2020 journalism and contributor-blog sources dropped (not re-seen)"
+   ]
+  },
+  {
+   "id": "small-business-digital-help-category",
+   "v1_id": "small-business-digital-help-category",
+   "changes": [
+    "how_to_find_work added",
+    "official_url changed to the Digital Service Squad grant page",
+    "BIA counts (Ontario 270–300+, Toronto 83) added as the route to clients",
+    "pay_type unknown → per_project",
+    "funding_uncertain risk added",
+    "CDAP, StatCan and BDC claims dropped (not re-seen)"
+   ]
+  },
+  {
+   "id": "social-media-coordinator-category",
+   "v1_id": "social-media-coordinator-category",
+   "changes": [
+    "advertised_rate switched to Ontario range $20.00–$58.97 (median $37.02)",
+    "Ontario prospects 'limited' added; Yukon/Alberta/Nova Scotia outlook claims dropped (not re-seen)",
+    "how_to_find_work written; Indeed listings cited as job_board sources",
+    "official_url changed to the Ontario occupation summary"
+   ]
+  },
+  {
+   "id": "spreadsheet-data-cleanup-freelancing-category",
+   "v1_id": "spreadsheet-data-cleanup-freelancing-category",
+   "changes": [
+    "how_to_find_work added",
+    "advertised_rate now Job Bank Ontario employee wages in CAD (was Upwork $10–$30, unstated currency)",
+    "official_url changed to the Job Bank wages page",
+    "pay_type hourly → mixed"
+   ]
+  },
+  {
+   "id": "statcan-data-collection-clerk",
+   "v1_id": "statcan-data-collection-clerk",
+   "changes": [
+    "availability_checked_at and availability_evidence filled (Indeed negative; census hiring over)",
+    "Added Talent Retention Bank application route",
+    "economics: pay_type hourly, CAD; 2026 Census rates recorded in notes (not as advertised_rate)",
+    "Sources replaced: statcan job-opportunities page, jobads.ca census listing and Naskapi notice added; Job Bank wage table, West Boundary and Indeed salaries page dropped"
+   ]
+  },
+  {
+   "id": "toronto-public-library-free-elearning",
+   "v1_id": "toronto-public-library-free-elearning",
+   "changes": [
+    "eligibility likely → partial with notes",
+    "availability_unknown → program_open_check_eligibility",
+    "costs updated with non-resident fees",
+    "geographic_restriction risk added",
+    "sources replaced"
+   ]
+  },
+  {
+   "id": "uoft-paid-research-pools",
+   "v1_id": "uoft-paid-research-pools",
+   "changes": [
+    "availability_status availability_unknown → registration_open_work_not_guaranteed with evidence",
+    "application_or_registration_url set to the Become a Volunteer page",
+    "audience_restriction adds the 55–80 band",
+    "currency set to unstated per the data contract",
+    "Rotman and UTM claims dropped (not re-seen)",
+    "in_person_required risk added"
+   ]
+  },
+  {
+   "id": "upwork-freelance",
+   "v1_id": "upwork-freelance",
+   "changes": [
+    "relationship_type contractor → freelance; work_guaranteed conditional → competitive",
+    "costs.upfront_cost unknown → low (Connects)",
+    "official_url changed to Upwork's 2026 resource page",
+    "contradictions recorded (flat 10% claim; processing time)",
+    "upfront_fees risk added"
+   ]
+  },
+  {
+   "id": "user-interviews-participant",
+   "v1_id": "user-interviews-participant",
+   "changes": [
+    "official_url changed to the incentive/currency support page",
+    "unpaid_work records unpaid screeners",
+    "payment_delay_reports risk added from Trustpilot",
+    "sources replaced with those seen this pass"
+   ]
+  },
+  {
+   "id": "usertesting-contributor",
+   "v1_id": "usertesting-contributor",
+   "changes": [
+    "advertised_rate (third-party $10) replaced by anecdotal_effective_rate $4–$120 per test",
+    "official_url changed to the countries help article",
+    "requirements add verified PayPal and microphone",
+    "contradiction on payout timing added"
+   ]
+  },
+  {
+   "id": "video-audio-podcast-editing-category",
+   "v1_id": "video-audio-podcast-editing-category",
+   "changes": [
+    "advertised_rate removed (Nov 2023 wage table not re-seen); pay_type mixed",
+    "how_to_find_work written; four Indeed listings cited",
+    "official_url changed to the Ontario outlook page that was re-seen",
+    "self-employment share (42%) added; film-editor progression claim dropped (not re-seen)"
+   ]
+  },
+  {
+   "id": "virtual-assistant-admin-support-category",
+   "v1_id": "virtual-assistant-admin-support-category",
+   "changes": [
+    "Added how_to_find_work",
+    "Pay note rebuilt from Job Bank Ontario page and 2026 postings",
+    "Dropped outlook, GST/HST and v1 posting sources not re-seen",
+    "experience set to significant to match postings"
+   ]
+  },
+  {
+   "id": "welo-data-search-quality-rater-canada",
+   "v1_id": "welo-data-search-quality-rater-canada",
+   "changes": [
+    "name and summary broadened to cover several Canada rater projects",
+    "advertised_rate extended to $20.30/hr French maps reviewer",
+    "availability_evidence added",
+    "sources replaced"
+   ]
+  },
+  {
+   "id": "welocalize-freelance-linguist",
+   "v1_id": "welocalize-freelance-linguist",
+   "changes": [
+    "advertised_rate added ($27.23/h fr-CA quality rater, currency unstated)",
+    "Risks: scam_impersonation, no_guaranteed_work, unpredictable_income added",
+    "Sources replaced with 2026 aggregator and review results"
+   ]
+  },
+  {
+   "id": "zirtual-virtual-executive-assistant",
+   "v1_id": "zirtual-virtual-executive-assistant",
+   "changes": [
+    "availability_status unknown → accepting_applications",
+    "pay_type salary → revenue_share; fees note added",
+    "Added Indeed and Glassdoor anecdotes (negative evidence)",
+    "phone_or_video_required set to sometimes; hours_commitment varies"
+   ]
+  }
+ ],
+ "downgraded": [
+  {
+   "id": "99designs-designer",
+   "v1_id": "99designs-designer",
+   "v1_status": "official_info_found",
+   "availability_status": "registration_open_work_not_guaranteed",
+   "reason": "Legitimate and apparently taking applications, but Canadian eligibility is only inferred, the v1 fee schedule and contest-odds study could not be re-seen, and unpaid contest work is now made explicit."
+  },
+  {
+   "id": "alignerr-ai-trainer",
+   "v1_id": "alignerr-ai-trainer",
+   "v1_status": "uncertain",
+   "availability_status": "availability_unknown",
+   "reason": "Canada-tagged postings exist only as aggregator copies (several possibly filled), no official page was re-seen, and a 2026 guide reports qualified people receiving no work."
+  },
+  {
+   "id": "concentrix-canada-customer-service",
+   "v1_id": "concentrix-canada-customer-service",
+   "v1_status": "stale_needs_recheck",
+   "availability_status": "availability_unknown",
+   "reason": "Employer is real and posts in Canada, but no current remote customer service posting could be opened; pay evidence is now undated aggregator summaries; scam warning re-confirmed."
+  },
+  {
+   "id": "contra-freelance",
+   "v1_id": "contra-freelance",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Commission-free model still reported by 2026 guides, but no official page re-seen, Pro pricing conflicts, Canadian payout unconfirmed and no negative-evidence source found; evidence weak."
+  },
+  {
+   "id": "cra-contact-centre-agent-seasonal",
+   "v1_id": "cra-contact-centre-agent-seasonal",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Real recurring employer, but both 2026 postings found are closed, telework is unconfirmed and budget cuts continue; pay updated to 2026 postings."
+  },
+  {
+   "id": "crowdgen-appen-ai-projects",
+   "v1_id": "crowdgen-appen-ai-projects",
+   "v1_status": "stale_needs_recheck",
+   "availability_status": "waitlist",
+   "reason": "Official Canada-specific posting exists but says selection is random and volume not guaranteed; worker reviews consistently report onboarding followed by no work; earlier Canada project pages and pay figures were not re-seen. Absorbs the Canadian French voice record."
+  },
+  {
+   "id": "dataannotation-ai-trainer",
+   "v1_id": "dataannotation-ai-trainer",
+   "v1_status": "uncertain",
+   "availability_status": "waitlist",
+   "reason": "Legitimate and widely reported to accept Canadians, but no official page was re-seen, pay tiers could not be re-confirmed, and 2026 reviews consistently report long periods with no work."
+  },
+  {
+   "id": "digital-main-street-digital-service-squad",
+   "v1_id": "digital-main-street-digital-service-squad",
+   "v1_status": "official_info_found",
+   "availability_status": "closed_or_not_open",
+   "reason": "Legitimate program, but the only 2026 posting closed May 29, 2026, no current opening was found on Indeed or in search, pay is unpublished, and squad hiring outside Toronto depends on grant rounds whose 2026 status is unconfirmed."
+  },
+  {
+   "id": "dscout-scout",
+   "v1_id": "dscout-scout",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Legitimate, but Canadian eligibility remains unstated after two passes and partial-payment complaints were found; eligibility set to unclear and the record is weak evidence."
+  },
+  {
+   "id": "fiverr-gigs",
+   "v1_id": "fiverr-gigs",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Legitimate; 20% fee and 14-day hold consistent across guides, but no official page was re-seen, withdrawal fees conflict, Canadian payout unconfirmed and 2026 anecdotes report falling sales for new sellers."
+  },
+  {
+   "id": "freelancer-com",
+   "v1_id": "freelancer-com",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Legitimate but every fee figure this pass comes from third parties that disagree with each other and with v1; Canadian payout unconfirmed; evidence weak."
+  },
+  {
+   "id": "italki-language-tutor",
+   "v1_id": "italki-language-tutor",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Legitimate platform and the 2026 Teacher Policy was re-seen, but commission, Community Tutor requirements, Canada eligibility and current intake could not be re-verified; evidence now rests on a single official page."
+  },
+  {
+   "id": "languageline-indigenous-language-interpreter-canada",
+   "v1_id": "languageline-indigenous-language-interpreter-canada",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Legitimate employer and role type, but no current Canadian opening could be found (Indeed Canada empty; aggregator copies undated), one copy restricts to the USA, and pay rests on aggregator copies with a single worker estimate of low effective pay."
+  },
+  {
+   "id": "mercor-ai-expert-evaluator",
+   "v1_id": "mercor-ai-expert-evaluator",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Canada support is evidenced only by aggregators this run; official listings were not re-seen, and Nov 2025–May 2026 reporting and blogs describe abrupt project endings, lower re-offers and a delayed bonus."
+  },
+  {
+   "id": "npower-canada-junior-it-analyst",
+   "v1_id": "npower-canada-junior-it-analyst",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Program confirmed real, free and offered in Ontario (official), but the only cohort dates seen have passed and the next intake and age rule remain unconfirmed."
+  },
+  {
+   "id": "outlier-ai-trainer",
+   "v1_id": "outlier-ai-trainer",
+   "v1_status": "waitlist_or_no_work_guarantee",
+   "availability_status": "waitlist",
+   "reason": "Legitimate platform, but no official Canada-specific listing could be re-seen; 2025–26 reporting and reviews describe large contributor cuts, empty queues and falling effective pay, and pay figures are now aggregator-only."
+  },
+  {
+   "id": "respondent-research-participant",
+   "v1_id": "respondent-research-participant",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Legitimate and fee structure re-verified, but Canadian eligibility was not re-seen and the payout has shifted toward gift cards for many participants; eligibility set to unclear."
+  },
+  {
+   "id": "shopify-merchant-support-advisor-canada",
+   "v1_id": "shopify-merchant-support-advisor-canada",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Real employer and real past Canadian postings, but no current opening or pay could be confirmed; evidence is aggregator copies and a forum scam warning."
+  },
+  {
+   "id": "simply-tv-metadata-data-editor",
+   "v1_id": "simply-tv-metadata-data-editor",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Real employer and Canada postings re-seen, but the latest dated posting is four months old, listings conflict on contract type and pay, and no current vacancy could be confirmed."
+  },
+  {
+   "id": "staffing-agency-temp-placements",
+   "v1_id": "staffing-agency-temp-placements",
+   "v1_status": "official_info_found",
+   "availability_status": "not_applicable_category",
+   "reason": "Category remains valid, but this pass found only 2021-2023 reporting on Ontario's licensing regime; the fee-prohibition and licence-database claims were not re-read on ontario.ca, no official or job-board source could be cited, and current assignment volume could not be measured."
+  },
+  {
+   "id": "telus-digital-ai-community-rater",
+   "v1_id": "telus-digital-ai-community-rater",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Legitimate Canadian vendor, but no Canada-specific posting was re-seen in web results, pay is now third-party only, and 2026 reviews consistently report 'no tasks available' stretches and a ~45-day pay lag."
+  },
+  {
+   "id": "test-io-crowdtester",
+   "v1_id": "test-io-crowdtester",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Legitimate but no official tester page was re-seen; Canada eligibility remains unclear and Trustpilot reviews add complaints about rejected bugs, low pay and unexplained bans."
+  },
+  {
+   "id": "testlio-freelance-tester",
+   "v1_id": "testlio-freelance-tester",
+   "v1_status": "waitlist_or_no_work_guarantee",
+   "availability_status": "availability_unknown",
+   "reason": "Still recruiting in Canada, but the only open project is Alberta-only and overnight; Canada-wide postings are closed and the help-centre pay/acceptance details were not re-seen."
+  },
+  {
+   "id": "transcribeme-transcription",
+   "v1_id": "transcribeme-transcription",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Legitimate platform, but the entrance exam was reported unavailable in August 2026, recent reviews report no work, and the official page and Canada eligibility could not be re-verified."
+  },
+  {
+   "id": "ttec-work-from-home-customer-service-canada",
+   "v1_id": "ttec-work-from-home-customer-service-canada",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Legitimate and hiring remotely in Canada, but every remote posting found excludes Ontario residents; Ontario eligibility set to unclear and availability to unknown."
+  },
+  {
+   "id": "utest-applause-crowdtester",
+   "v1_id": "utest-applause-crowdtester",
+   "v1_status": "waitlist_or_no_work_guarantee",
+   "availability_status": "waitlist",
+   "reason": "Legitimate, but Canada eligibility and pay could not be evidenced from any official page this run, and 2025–26 reports describe scarce invitations and country-dependent rates."
+  },
+  {
+   "id": "working-solutions-on-demand-agent",
+   "v1_id": "working-solutions-on-demand-agent",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Legitimate contractor platform that accepts Canadians, but no current opening, no verifiable pay and consistent reports of unpaid training and thin hours."
+  },
+  {
+   "id": "young-canada-works-heritage-students",
+   "v1_id": "young-canada-works-heritage-students",
+   "v1_status": "official_info_found",
+   "availability_status": "availability_unknown",
+   "reason": "Program exists and ran through 2025–26, but 2026–27 funding and the next student cycle could not be confirmed; wage example and eligibility rules from v1 were not re-seen."
+  }
+ ],
+ "retained": [],
+ "merged": [
+  {
+   "v1_id": "crowdgen-canadian-french-voice-tasks",
+   "merged_into": "crowdgen-appen-ai-projects",
+   "reason": "Project-specific instance of CrowdGen; merged into crowdgen-appen-ai-projects, which now carries the current Canadian French posting and the Canada-relevant evidence."
+  }
+ ],
+ "removed": [
+  {
+   "v1_id": null,
+   "candidate_id": "clickworker-uhrs-microtasks",
+   "name": "Microtasks and UHRS work (Clickworker)",
+   "reason": "Rejected candidate: official support page tells people outside SEPA/US bank-payment coverage not to register and does not mention Canada; third-party claims of Canadian availability conflict and are unverified. Not for production."
+  },
+  {
+   "v1_id": null,
+   "candidate_id": "comit-free-it-training",
+   "name": "Free three-month IT/software course (ComIT)",
+   "reason": "Rejected candidate: real charity, but no 2026 Ontario cohort, application window or official page was seen; evidence is 2020–2024 coverage only. Not for production."
+  },
+  {
+   "v1_id": null,
+   "candidate_id": "ontario-non-lawyer-notary-commissioner",
+   "name": "Non-lawyer notary public / commissioner for taking affidavits (Ontario)",
+   "reason": "Rejected candidate: not an accessible microbusiness. Ontario grants non-lawyer notary and commissioner appointments only for existing employment needs and explicitly not to start a new line of business."
+  },
+  {
+   "v1_id": null,
+   "candidate_id": "statcan-census-2026-enumerator",
+   "name": "2026 Census enumerator / crew leader (Statistics Canada)",
+   "reason": "Rejected candidate: one-off hiring campaign whose employment period ended July 2026; not useful until the 2031 Census. Ongoing StatCan interviewer work is covered by statcan-data-collection-clerk."
+  },
+  {
+   "v1_id": "apple-at-home-advisor-canada",
+   "candidate_id": null,
+   "name": "AppleCare At Home Advisor (Canada)",
+   "reason": "No Canadian At Home Advisor opening found in two consecutive runs and Apple's site unreachable; the record cannot support any opportunity claim and the title is a scam magnet. Kept for the audit trail with scam-warning sources."
+  },
+  {
+   "v1_id": "belay-virtual-assistant-contractor",
+   "candidate_id": null,
+   "name": "Virtual assistant contractor (BELAY)",
+   "reason": "Closed to Canadian residents (US-state eligibility only), re-confirmed on 2026-10-13."
+  },
+  {
+   "v1_id": null,
+   "candidate_id": "ntt-data-remote-bilingual-customer-care-canada",
+   "name": "Remote Bilingual Customer Care Associate (NTT DATA, Canada)",
+   "reason": "Rejected new candidate (kept for the audit trail): the current remote posting explicitly excludes Ontario residents and is for future vacancies only."
+  },
+  {
+   "v1_id": null,
+   "candidate_id": "cibc-universal-fraud-agent-remote-regina",
+   "name": "Universal Fraud Agent, Remote, 12-month contract (CIBC, Regina)",
+   "reason": "Rejected new candidate (kept for the audit trail): a verified current remote bank posting, but location-bound to Regina with on-site attendance on two hours' notice; not available to Ontario residents."
+  },
+  {
+   "v1_id": null,
+   "candidate_id": "verbit-vitac-freelance-captioner",
+   "name": "Freelance post-production captioner (Verbit / VITAC)",
+   "reason": "Considered and rejected: no evidence Canadians can take part: the only current listing is US-remote and experience-gated; kept for the audit trail. Encoded as disposition new with availability_status rejected_insufficient_evidence and evidence_quality insufficient because the validator requires a v1_id for disposition rejected."
+  },
+  {
+   "v1_id": null,
+   "candidate_id": "3play-media-contract-transcript-editor",
+   "name": "Contract transcript editor (3Play Media)",
+   "reason": "Considered and rejected: Canadian eligibility unevidenced and US-oriented signals persist; kept for the audit trail. Encoded as disposition new with availability_status rejected_insufficient_evidence and evidence_quality insufficient because the validator requires a v1_id for disposition rejected."
+  },
+  {
+   "v1_id": null,
+   "candidate_id": "paper-online-tutor-canada",
+   "name": "Online tutor (Paper, Canadian students)",
+   "reason": "Considered and rejected: no verifiable Canadian tutor route in 2026; kept for the audit trail. Encoded as disposition new with availability_status rejected_insufficient_evidence and evidence_quality insufficient because the validator requires a v1_id for disposition rejected."
+  },
+  {
+   "v1_id": null,
+   "candidate_id": "ontario-college-micro-credential-paid-placement",
+   "name": "Ontario college micro-credential with paid placement (candidate, not found)",
+   "reason": "No current Ontario college micro-credential with a paid placement was identified; kept for the audit trail so the candidate is not re-searched without new leads."
+  },
+  {
+   "v1_id": "leger-leo-survey-panel",
+   "candidate_id": null,
+   "name": "Paid online surveys (Leger LEO panel)",
+   "reason": "Legitimate Canadian panel, but no source supports a meaningful effective hourly rate and cash redemption needs about $20 of points; it fails the earnings test applied to survey panels."
+  },
+  {
+   "v1_id": null,
+   "candidate_id": "angus-reid-forum-panel",
+   "name": "Paid online surveys (Angus Reid Forum)",
+   "reason": "Considered and rejected (new candidate): legitimate Canadian panel, but official terms cap each survey at the equivalent of $0–$5 with gift-card-only redemption from $25, and no source supports an effective hourly rate; fails the earnings test."
+  }
+ ],
+ "type_changes": [
+  {
+   "id": "mercor-ai-expert-evaluator",
+   "v1_type": "contract",
+   "record_type": "task_platform"
+  },
+  {
+   "id": "canada-summer-jobs",
+   "v1_type": "program",
+   "record_type": "funded_employment_program"
+  }
+ ]
+}

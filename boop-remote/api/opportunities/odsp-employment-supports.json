@@ -1,0 +1,168 @@
+{
+ "id": "odsp-employment-supports",
+ "name": "ODSP Employment Supports (job help for people with a disability)",
+ "organization": "Government of Ontario - Ontario Disability Support Program",
+ "type": "program",
+ "category": "government_program",
+ "tags": [
+  "disability-inclusive",
+  "job-coaching",
+  "on-the-job-support",
+  "ontario",
+  "job-retention"
+ ],
+ "summary": "Ontario employment help (job coaching, job placement and on-the-job supports) for people whose long-term disability makes finding or keeping work harder; you do not need to receive ODSP income support.",
+ "whatYouDo": "Through a community-based provider, you get help preparing for, finding and keeping a job, such as job coaching, job placement and supports once you start working. Delivery is moving into Employment Ontario's integrated system, so your local route may be through an Employment Ontario provider.",
+ "appeal": [
+  "You do not have to be on ODSP income support to qualify",
+  "Includes job coaching and on-the-job supports",
+  "Job-retention support can continue after you are placed",
+  "Delivered by community providers in your area"
+ ],
+ "watchOuts": [
+  "Eligibility (community directory): 16+, Ontario resident, legally able to work, with a substantial disability expected to last a year or more that makes finding or keeping work hard",
+  "If not on income support you may need a Verification of Disability form",
+  "Retention supports for non-income-support clients were capped at 15 months after placement (2021 policy) vs. up to 33 months for income-support clients",
+  "Services are being folded into Employment Ontario's Integrated Employment Services; advocates criticized the change and the local route varies"
+ ],
+ "officialUrl": "https://www.ontario.ca/page/ontario-disability-support-program-employment-supports",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [
+   "ON"
+  ],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": 16,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 0,
+  "writing": 0,
+  "numeracy": 0,
+  "detail": 0,
+  "customer": 0,
+  "technical": 0,
+  "creative": 0,
+  "language": 0
+ },
+ "training": {
+  "required": false,
+  "cost": "unknown",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Support service, not a paid job."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "Depends on the provider and the job found."
+ },
+ "workerStatus": "participant",
+ "fees": null,
+ "applicationSteps": [
+  "Contact your local ODSP office or an Employment Ontario provider and ask about employment supports",
+  "Complete the Application for Employment Supports (plus Verification of Disability if you are not on income support)",
+  "Work with the provider on a plan, job search and on-the-job supports"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [],
+ "fitsIf": "You live in Ontario, a long-term health condition or disability makes finding or keeping work harder, and you want hands-on job support.",
+ "notFitIf": "You do not need disability-related supports; general Employment Ontario services may fit better.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.ontario.ca/page/ontario-disability-support-program-employment-supports",
+   "title": "Ontario Disability Support Program employment supports",
+   "type": "official",
+   "publisher": "Government of Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "legitimacy"
+   ],
+   "notes": "Search-result summary only (fetch blocked). No need to receive ODSP income support; community-based providers; job coaching and on-the-job supports.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.ontario.ca/document/ontario-disability-support-program-policy-directives-employment-supports/42-job-retention",
+   "title": "ODSP policy directives for employment supports - 4.2 Job retention",
+   "type": "government",
+   "publisher": "Government of Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "reliability"
+   ],
+   "notes": "Directive dated March 2021: retention supports capped at 15 consecutive months for non-income-support clients vs. up to 33 months for income-support recipients. May be outdated.",
+   "accessible": false
+  },
+  {
+   "url": "https://communityreach.cioc.ca/record/ORI0826?Number=1",
+   "title": "ODSP Employment Supports (Record ORI0826)",
+   "type": "aggregator",
+   "publisher": "Community Information Ontario directory",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "canada_eligibility"
+   ],
+   "notes": "Directory: 16+, Ontario resident, legally allowed to work, substantial disability lasting 1+ year that impedes work; Application for Employment Supports form.",
+   "accessible": false
+  },
+  {
+   "url": "https://ontario.cmha.ca/news/oden-move-odsp-employment-programmes-to-employment-ontario/",
+   "title": "ODEN: move ODSP employment programmes to Employment Ontario",
+   "type": "independent_review",
+   "publisher": "CMHA Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Advocacy position opposing the transfer of ODSP employment supports into Employment Ontario. Opinion, undated in results.",
+   "accessible": false
+  }
+ ],
+ "audience": [
+  "Ontario residents with a disability or long-term health condition"
+ ]
+}

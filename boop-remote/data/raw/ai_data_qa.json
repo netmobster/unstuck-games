@@ -1,0 +1,2666 @@
+[
+  {
+    "id": "outlier-ai-trainer",
+    "name": "AI trainer / response evaluator (Outlier)",
+    "organization": "Outlier (Scale AI)",
+    "type": "task_platform",
+    "category": "ai_data",
+    "tags": [
+      "ai-training",
+      "response-rating",
+      "writing",
+      "remote",
+      "usd-pay",
+      "contractor"
+    ],
+    "summary": "Scale AI's freelance platform where contributors write, rate and correct AI chatbot answers for hourly pay.",
+    "whatYouDo": "After a skills screening you are matched to projects where you compare, rate or rewrite AI-generated answers by following detailed guidelines. Generalist projects focus on English writing and content review; specialist projects (coding, math, finance, languages) pay more.",
+    "appeal": [
+      "Official listings name Canada as an eligible location for generalist and specialist roles",
+      "Remote and self-scheduled",
+      "Weekly payouts via PayPal, Airtm or ACH (official FAQ)",
+      "Higher rates for specialist skills such as coding, math or quant finance"
+    ],
+    "watchOuts": [
+      "Generalist roles open to Canada list 'up to' US$15–35/hr; rates vary by assessment, location and project, and onboarding phases may pay less",
+      "Many reports of 'empty queue' periods and silent removal from projects; a 2026 blog reports large contributor cuts",
+      "Contractor work: no benefits, no guaranteed hours, you handle your own taxes",
+      "Scale AI faced 2024–25 California lawsuits alleging misclassification and unpaid training time (outcome not verified)",
+      "VPN use to hide your location is prohibited; eligibility differs by project"
+    ],
+    "officialUrl": "https://outlier.ai/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA",
+        "US",
+        "GB",
+        "AU",
+        "NZ"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 3,
+      "numeracy": 1,
+      "detail": 3,
+      "customer": 0,
+      "technical": 1,
+      "creative": 1,
+      "language": 2
+    },
+    "training": {
+      "required": true,
+      "cost": "unknown",
+      "notes": "Project onboarding against written guidelines; postings say lower rates may apply during onboarding. Whether screening time is paid was not evidenced."
+    },
+    "compensation": {
+      "min": null,
+      "max": 35,
+      "currency": "USD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Official Outlier generalist listings that include Canada show 'up to' rates: US$15/hr (English writing/content review), US$18/hr (AI Evaluator – English), US$35/hr (general inbound). Specialist roles are higher (e.g. up to US$150/hr quant finance). A Built In mirror of a Canadian English writing posting cites an average of about US$25/hr."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Third-party guides and forum posts describe empty queues when projects end and silent removals; a blog reports thousands removed around early 2026 and another references a Sept 2026 removal wave on one project. Anecdotal."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Create an Outlier account and pick a listed opportunity that includes Canada",
+      "Complete the skills screening for that project",
+      "Set up a payout method (PayPal, Airtm or ACH per the FAQ)",
+      "Complete project onboarding and wait to be matched to tasks"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "waitlist_or_no_work_guarantee",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "contractor_no_benefits",
+      "account_deactivation_reports"
+    ],
+    "fitsIf": "You write clearly, follow detailed rules, and want flexible side income that can stop without notice.",
+    "notFitIf": "You need steady, predictable hours or income you can budget around.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://outlier.ai/",
+        "title": "Train the Next Generation of AI as a Freelancer",
+        "type": "official",
+        "publisher": "Outlier",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy",
+          "requirements"
+        ],
+        "notes": "Official homepage: freelance AI-training platform. Seen as a search result only; direct fetch blocked in research sandbox.",
+        "accessible": false
+      },
+      {
+        "url": "https://outlier.ai/coding/front-end-en-ca",
+        "title": "Front-End Developer AI Trainer, Canada",
+        "type": "official",
+        "publisher": "Outlier",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "Official Canada-specific role page (title names Canada). Search result only.",
+        "accessible": false
+      },
+      {
+        "url": "https://app.outlier.ai/en/expert/opportunities/4613691005?_gl=1*18bm78c*_gcl_au*MTE4MTQ5ODQ1Mi4xNzYyNDUzMzM1&location=All&type=generalist",
+        "title": "English Writing and Content Reviewing Expertise Sought ...",
+        "type": "official",
+        "publisher": "Outlier",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay"
+        ],
+        "notes": "Search summary: remote English writing/content review role lists Canada among locations; up to US$15/hr for core work; rates vary by expertise, assessment, location, project need.",
+        "accessible": false
+      },
+      {
+        "url": "https://app.outlier.ai/opportunities?category=pod%3Ageneralist",
+        "title": "Outlier",
+        "type": "official",
+        "publisher": "Outlier",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "canada_eligibility"
+        ],
+        "notes": "Search summary: generalist listings including Canada – 'General Inbound' up to US$35/hr; 'AI Evaluator – English' up to US$18/hr.",
+        "accessible": false
+      },
+      {
+        "url": "https://outlier.ai/faq",
+        "title": "Train the Next Generation of AI as a Freelancer",
+        "type": "official",
+        "publisher": "Outlier",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "FAQ (search summary): pays via PayPal, Airtm or ACH; payouts processed weekly.",
+        "accessible": false
+      },
+      {
+        "url": "https://outlier.ai/legal/flexible-working-guidelines",
+        "title": "Flexible Working Guidelines",
+        "type": "official",
+        "publisher": "Outlier",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "risk"
+        ],
+        "notes": "Lists countries you may work from (snippet truncated, Canada not visible in the excerpt); VPNs to mask location not permitted.",
+        "accessible": false
+      },
+      {
+        "url": "https://builtincalgary.org/job/canadian-english-writing-expertise-ai-training/3418266",
+        "title": "Outlier AI – Canadian English Writing Expertise (AI Training)",
+        "type": "aggregator",
+        "publisher": "Built In Calgary",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "worker_status"
+        ],
+        "notes": "Job-board mirror: Canadian English writing posting cites ~US$25/hr average; 1099-style contract; must be authorized to work in your country; lower rates possible during onboarding.",
+        "accessible": false
+      },
+      {
+        "url": "https://techcrunch.com/2025/01/09/scale-ai-hit-by-its-second-employee-wage-lawsuit-in-less-than-a-month",
+        "title": "Scale AI hit by its second employee wage lawsuit in less than a month",
+        "type": "journalism",
+        "publisher": "TechCrunch",
+        "published": "2025-01-09",
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "worker_status"
+        ],
+        "notes": "Reports California suits (Dec 2024 class action; Jan 2025 PAGA claim) alleging contractor misclassification at Scale AI/Outlier. Outcome not verified.",
+        "accessible": false
+      },
+      {
+        "url": "https://valawyersweekly.com/2025/01/28/ai-company-sued-for-wage-theft-misclassification/",
+        "title": "AI company sued for wage theft, misclassification",
+        "type": "journalism",
+        "publisher": "Virginia Lawyers Weekly",
+        "published": "2025-01-28",
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Describes allegations of unpaid minimum wage, overtime and training time for California Outlier/Remotasks workers.",
+        "accessible": false
+      },
+      {
+        "url": "https://aitrainer.work/guides/outlier-empty-queue-fix",
+        "title": "outlier empty queue fix",
+        "type": "independent_review",
+        "publisher": "aitrainer.work",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "Third-party guide: empty queues usually mean a project batch ended; quality-related removals can be indefinite with no notice. Anecdotal; site carries referral content.",
+        "accessible": false
+      },
+      {
+        "url": "https://breakingeven.online/blog/outlier-aether-project-what-happened",
+        "title": "outlier aether project what happened",
+        "type": "independent_review",
+        "publisher": "BreakingEven",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Blog says thousands of contributors were removed around early 2026 as work shifted to specialised tasks. Single blog, unverified.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "dataannotation-ai-trainer",
+    "name": "AI chatbot evaluator and writer (DataAnnotation)",
+    "organization": "DataAnnotation",
+    "type": "task_platform",
+    "category": "ai_data",
+    "tags": [
+      "ai-training",
+      "response-rating",
+      "writing",
+      "coding",
+      "paypal",
+      "self-paced"
+    ],
+    "summary": "Online platform that pays contributors to rate chatbot answers, write and check code for AI training, paid via PayPal.",
+    "whatYouDo": "After passing a starter assessment, you choose from available projects such as rating or comparing chatbot answers, writing prompts or checking code. Work is self-paced with no minimum hours.",
+    "appeal": [
+      "Official FAQ lists general projects from about $25/hr, multilingual from $20/hr, and coding/STEM from $40/hr",
+      "No minimum hours and no sign-up fee (official pages)",
+      "Paid via PayPal, with deposits a few days after you request them (official FAQ)",
+      "Company pages carry a testimonial from a Canadian worker"
+    ],
+    "watchOuts": [
+      "No official country list is published; Canada appears only in third-party lists and testimonials",
+      "Applicants who are not accepted often hear nothing back after the starter assessment (blog reports)",
+      "Reviews describe work 'droughts' and account bans",
+      "Pay ranges are company marketing figures that differ between pages; currency was not shown in what we saw",
+      "Scammers impersonate the brand; the company says it never asks workers for money"
+    ],
+    "officialUrl": "https://www.dataannotation.tech/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "US",
+        "GB",
+        "CA",
+        "AU",
+        "NZ"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [
+        "bachelor's degree may qualify for the general tier (FAQ); advanced degrees or licences for STEM/professional tiers"
+      ],
+      "equipment": [
+        "computer",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 3,
+      "numeracy": 1,
+      "detail": 3,
+      "customer": 0,
+      "technical": 1,
+      "creative": 1,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "A starter assessment is required; whether it is paid was not evidenced in sources seen."
+    },
+    "compensation": {
+      "min": 20,
+      "max": 150,
+      "currency": "unstated",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Official FAQ/role pages: multilingual from $20+/hr; general chatbot evaluation $25–50+/hr; coding $40–150+/hr; STEM/professional $40–125+/hr. Pages disagree slightly; currency not stated in the snippets (likely USD, unverified)."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Blogs report silent rejections, work droughts and bans; no official statement on volume. Anecdotal."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Sign up on the DataAnnotation site",
+      "Complete the starter assessment (plus any specialist assessments)",
+      "Wait for acceptance; blogs say replies take 1–4 weeks or never come",
+      "Link a PayPal account and choose projects from your dashboard"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "now",
+    "status": "uncertain",
+    "legitimacy": "likely",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "contractor_no_benefits",
+      "account_deactivation_reports",
+      "scam_impersonation"
+    ],
+    "fitsIf": "You write well, are comfortable with self-paced online work, and can treat it as a bonus if you are accepted.",
+    "notFitIf": "You need a clear yes/no on acceptance or a dependable weekly income.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.dataannotation.tech/faqs",
+        "title": "FAQs",
+        "type": "official",
+        "publisher": "DataAnnotation",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements",
+          "schedule"
+        ],
+        "notes": "Search summary: tiered starting pay (general, multilingual, coding, STEM); PayPal payments; no minimum hours. Direct fetch blocked in sandbox.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.dataannotation.tech/",
+        "title": "DataAnnotation",
+        "type": "official",
+        "publisher": "DataAnnotation",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy",
+          "canada_eligibility"
+        ],
+        "notes": "Homepage. Search summary reports a Canadian worker testimonial on company pages (exact page not identified).",
+        "accessible": false
+      },
+      {
+        "url": "https://www.dataannotation.tech/about-us",
+        "title": "About DataAnnotation",
+        "type": "official",
+        "publisher": "DataAnnotation",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "Says available in 50+ countries but does not list them.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.dataannotation.tech/trust-safety",
+        "title": "Trust & Safety",
+        "type": "official",
+        "publisher": "DataAnnotation",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "States the company never asks workers for money; warns about fraud.",
+        "accessible": false
+      },
+      {
+        "url": "https://app.dataannotation.tech/da-privacy-policy",
+        "title": "DataAnnotation privacy policy",
+        "type": "official",
+        "publisher": "DataAnnotation",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "worker_status",
+          "pay"
+        ],
+        "notes": "Says independent contractors are paid through PayPal.",
+        "accessible": false
+      },
+      {
+        "url": "https://labelingjobs.net/guides/is-dataannotation-tech-legit-what-it-publishes-and-what-workers-report",
+        "title": "Is DataAnnotation Legit? Pay ($25–$150/hr), Droughts and Bans",
+        "type": "independent_review",
+        "publisher": "labelingjobs.net",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "risk",
+          "reliability"
+        ],
+        "notes": "Notes no official eligibility list; third-party consensus is US, UK, Canada, Australia, Ireland, NZ; covers droughts and bans. Unverified.",
+        "accessible": false
+      },
+      {
+        "url": "https://aitrainer.work/guides/is-dataannotation-legit-review",
+        "title": "is dataannotation legit review",
+        "type": "independent_review",
+        "publisher": "aitrainer.work",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "Lists Canada among six accepted countries; says VPN use gets accounts banned. Referral-style site.",
+        "accessible": false
+      },
+      {
+        "url": "https://riseuplabs.com/how-long-to-get-accepted-data-annotation/",
+        "title": "how long to get accepted data annotation",
+        "type": "independent_review",
+        "publisher": "Riseup Labs",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Blog: most hear back in 1–4 weeks; silent non-acceptance common. Not an official source.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "alignerr-ai-trainer",
+    "name": "Freelance AI training specialist (Alignerr)",
+    "organization": "Alignerr (Labelbox)",
+    "type": "task_platform",
+    "category": "ai_data",
+    "tags": [
+      "ai-training",
+      "hourly-contract",
+      "expert-roles",
+      "remote"
+    ],
+    "summary": "Labelbox-run marketplace that hires freelance generalists and experts by the hour to train and evaluate AI models.",
+    "whatYouDo": "You apply to a specific posting (e.g. AI Training Specialist, software engineer, language expert), pass screening, then write, review and correct AI model outputs. Postings list commitments of roughly 10–40 hours a week, some with a 15-hour minimum.",
+    "appeal": [
+      "Official postings list US$15–120/hr depending on role",
+      "General AI Training Specialist posting says no prior AI or technical experience needed",
+      "Hourly contract with weekly payouts on some postings",
+      "Postings are syndicated to Canadian job boards such as Built In Ottawa"
+    ],
+    "watchOuts": [
+      "Published pay ranges are for US-based candidates; Canadian rates are not published",
+      "A 2026 review blog says evaluation phases are often unpaid and qualified people can wait months between projects",
+      "1099-style contract: no benefits; you must be authorized to work in your country",
+      "Canada eligibility varies by posting and was not confirmed on an official page"
+    ],
+    "officialUrl": "https://www.alignerr.com/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "US",
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unpaid_test"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 3,
+      "numeracy": 1,
+      "detail": 3,
+      "customer": 0,
+      "technical": 1,
+      "creative": 1,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "Screening/evaluation before projects; a blog says these phases are often unpaid."
+    },
+    "compensation": {
+      "min": 15,
+      "max": 120,
+      "currency": "USD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Alignerr jobs page postings range US$15–120/hr (e.g. AI Training Specialist $40–120/hr). Ranges are stated for US-based candidates; non-US rates 'may vary'."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "One 2026 blog reports months-long gaps between projects for qualified workers. Anecdotal, single source."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Browse open postings on the Alignerr jobs page",
+      "Apply to a role that lists Canada or remote eligibility",
+      "Complete screening/evaluation tasks",
+      "Wait to be placed on a project"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "uncertain",
+    "legitimacy": "likely",
+    "evidenceStrength": "weak",
+    "riskFlags": [
+      "unpaid_assessment",
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You have strong writing or subject expertise and can tolerate unpaid screening and gaps between projects.",
+    "notFitIf": "You need confirmed Canadian rates or quick, reliable income.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.alignerr.com/jobs",
+        "title": "Alignerr",
+        "type": "official",
+        "publisher": "Alignerr",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "schedule",
+          "worker_status"
+        ],
+        "notes": "Search summary: roles US$15–120/hr; 10–40 hrs/week; hourly contract; some weekly payouts. Direct fetch blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.alignerr.com/jobs/b7b95845-ac1a-4742-8537-094eb6ac59ee",
+        "title": "AI Training Specialist",
+        "type": "official",
+        "publisher": "Alignerr",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "US$40–120/hr; no prior AI or technical experience required.",
+        "accessible": false
+      },
+      {
+        "url": "https://builtinottawa.com/job/software-engineer-c-ai-training-freelance-remote/4746295",
+        "title": "Alignerr – Software Engineer (C) AI Training (Freelance, Remote)",
+        "type": "aggregator",
+        "publisher": "Built In Ottawa",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "worker_status"
+        ],
+        "notes": "Alignerr freelance posting on a Canadian job board. Search summary of Alignerr postings: 1099 contract, must be authorized to work in your country, no sponsorship, US-candidate pay ranges; one Law role lists Canada among locations.",
+        "accessible": false
+      },
+      {
+        "url": "https://breakingeven.online/blog/alignerr-review-2026",
+        "title": "alignerr review 2026",
+        "type": "independent_review",
+        "publisher": "BreakingEven",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "reliability",
+          "pay"
+        ],
+        "notes": "Blog: evaluation phases often unpaid; months between projects; community-reported pay wider than advertised. Single blog.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "mercor-ai-expert-evaluator",
+    "name": "AI output evaluator / domain expert (Mercor)",
+    "organization": "Mercor",
+    "type": "contract",
+    "category": "ai_data",
+    "tags": [
+      "ai-training",
+      "evaluation",
+      "expert-roles",
+      "hourly-contract",
+      "us-canada"
+    ],
+    "summary": "AI-training marketplace that contracts generalists and professionals at hourly rates to judge AI outputs; some roles are open specifically to US and Canada residents.",
+    "whatYouDo": "You apply to a specific listing. In the US/Canada generalist role you review everyday work files produced by AI (documents, slides, spreadsheets) for quality and accuracy; expert roles (law, STEM, finance, design) ask you to judge or create content in your field.",
+    "appeal": [
+      "Official listing titled 'Generalist Expert (US/Canada)' reported at $50–70/hr",
+      "That generalist role reportedly needs no prior AI experience",
+      "Several Canada-eligible expert roles at higher rates",
+      "Weekly payment via Stripe or Wise (postings and help docs)"
+    ],
+    "watchOuts": [
+      "Projects can end abruptly; media reported contractors re-offered work at lower rates after a project ended (Mercor disputed this)",
+      "A 2026 blog reports a mass offboarding on one project (May 2026)",
+      "Some projects require ~15 hrs/week for a few weeks",
+      "Mercor's help-centre country list is hard to read; confirm Canada is supported for payment before starting",
+      "Independent contractor: no benefits, you handle taxes"
+    ],
+    "officialUrl": "https://talent.docs.mercor.com/how-to/create-account",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "US",
+        "CA",
+        "GB",
+        "AU",
+        "NZ"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [
+        "bachelor's degree or equivalent experience (one aggregator copy of the generalist listing); expert roles need domain credentials"
+      ],
+      "equipment": [
+        "computer",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 3,
+      "writing": 2,
+      "numeracy": 2,
+      "detail": 3,
+      "customer": 0,
+      "technical": 1,
+      "creative": 0,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "A blog describes paid onboarding on one project; not confirmed as general policy."
+    },
+    "compensation": {
+      "min": 50,
+      "max": 70,
+      "currency": "unstated",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Generalist Expert (US/Canada) listing, per search summaries of the official page and an aggregator copy (posted 2026-08-16). Currency not stated in snippets. Expert roles in aggregator listings run ~$25–150/hr."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Reviews call availability 'feast-or-famine'; reported project endings and offboardings in 2026. Anecdotal plus one media report."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Create a Mercor talent account",
+      "Apply to a listing that names Canada (e.g. Generalist Expert US/Canada)",
+      "Complete Mercor's screening for that listing",
+      "Sign the contractor agreement and set up Stripe or Wise payouts"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "contractor_no_benefits",
+      "account_deactivation_reports"
+    ],
+    "fitsIf": "You have professional or strong general office skills and want well-paid but short, project-based contracts.",
+    "notFitIf": "You need ongoing work or dislike sudden project changes.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://work.mercor.com/jobs/list_AAABn_wJmpMuhtibNHZLXr9O/generalist-expert-us-canada",
+        "title": "Generalist Expert (US/Canada) - Mercor Jobs",
+        "type": "official",
+        "publisher": "Mercor",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay"
+        ],
+        "notes": "Official listing for US- or Canada-based generalists; search summary gives $50–70/hr. Direct fetch blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://work.mercor.com/jobs/list_AAABn5VZd-pn1Ae-osROeqoW/stem-phds-and-technical-domain-experts",
+        "title": "STEM PhDs and Technical Domain Experts - Mercor Jobs",
+        "type": "official",
+        "publisher": "Mercor",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "worker_status"
+        ],
+        "notes": "Accepting applicants only from US, UK, Australia, NZ and Canada; independent contractor engagement.",
+        "accessible": false
+      },
+      {
+        "url": "https://talent.docs.mercor.com/policies/supported-countries",
+        "title": "Supported Countries for Payment - Mercor",
+        "type": "official",
+        "publisher": "Mercor",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "Lists locations Mercor cannot onboard. Two search summaries disagreed on whether Canada appears (page text scrambled in one). Needs direct check.",
+        "accessible": false
+      },
+      {
+        "url": "https://talent.docs.mercor.com/how-to/payments",
+        "title": "Payments - Mercor",
+        "type": "official",
+        "publisher": "Mercor",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Payment methods page; payouts processed through Stripe or Wise depending on country.",
+        "accessible": false
+      },
+      {
+        "url": "https://alignlist.com/jobs/mercor-generalist-expert-us-canada-list-aaabn-wjmpmuhtibnhzlxr9o",
+        "title": "Mercor – Generalist Expert (US/Canada)",
+        "type": "aggregator",
+        "publisher": "AlignList",
+        "published": "2026-08-16",
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "pay"
+        ],
+        "notes": "Copy of listing: US/Canada based, strong English, productivity tools, no prior AI experience; $50–70/hr.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.aol.com/articles/worlds-youngest-self-made-billionaires-204308445.html",
+        "title": "World's 'Youngest Self-Made Billionaires' Slammed by Some Contractors at Their AI Company Over Allegedly Cutting Pay",
+        "type": "journalism",
+        "publisher": "People (via AOL)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "reliability"
+        ],
+        "notes": "Citing Forbes/Business Insider: a project with thousands of contractors ended, workers re-offered lower rates; Mercor called claims inaccurate.",
+        "accessible": false
+      },
+      {
+        "url": "https://breakingeven.online/blog/mercor-project-l-mass-offboarding-may-2026",
+        "title": "mercor project l mass offboarding may 2026",
+        "type": "independent_review",
+        "publisher": "BreakingEven",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "Blog on a May 2026 mass offboarding; says some onboarding was paid. Opinion-leaning single source.",
+        "accessible": false
+      },
+      {
+        "url": "https://remowork.life/blog/mercor-review-how-it-works-pay-and-is-it-worth-it-in-2026",
+        "title": "Mercor review: how it works, pay and is it worth it in 2026",
+        "type": "independent_review",
+        "publisher": "remowork.life",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Job-board blog; warns of feast-or-famine contract availability.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "telus-digital-ai-community-rater",
+    "name": "Part-time online rater / evaluator (TELUS Digital AI Community)",
+    "organization": "TELUS Digital AI Community (formerly TELUS International AI)",
+    "type": "contract",
+    "category": "ai_data",
+    "tags": [
+      "search-rating",
+      "content-evaluation",
+      "part-time",
+      "canada-residents",
+      "qualification-exam"
+    ],
+    "summary": "TELUS Digital's AI Community hires people living in Canada as part-time freelancers to evaluate search, media and online-safety content from home.",
+    "whatYouDo": "Depending on the posting (e.g. Internet Safety Evaluator, Online Data Analyst, Media Search Analyst), you review online content or search results against detailed guidelines and submit ratings. Work is part-time, remote and paid per completed task.",
+    "appeal": [
+      "Several current-style postings are reserved for Canada residents, including French-language ones",
+      "Open-book qualification exam with study materials provided",
+      "Part-time and self-paced; some roles have no set hours",
+      "Run by the digital arm of a large Canadian company"
+    ],
+    "watchOuts": [
+      "Official estimate for Internet Safety Evaluator is about US$13.50/hr, paid per completed task",
+      "Must have lived in Canada 1–5 consecutive years depending on role",
+      "Blogs report no-task periods, sudden account 'under review' holds, and pay arriving weeks after the work month",
+      "Internet-safety work may involve viewing harmful content (not confirmed in posting snippets)",
+      "Freelance agreement: no guaranteed hours or benefits; TELUS told the Globe and Mail hours cannot be guaranteed"
+    ],
+    "officialUrl": "https://jobs.telusdigital.com/search/cfm5/ai-community/jobs",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "free_test"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 0,
+      "technical": 1,
+      "creative": 0,
+      "language": 2
+    },
+    "training": {
+      "required": true,
+      "cost": "free",
+      "notes": "Guidelines and learning materials before an open-book qualification exam; language test and ID verification also required."
+    },
+    "compensation": {
+      "min": 13.5,
+      "max": null,
+      "currency": "USD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Internet Safety Evaluator – English (Canada) posting: estimated US$13.50/hr, paid per completed task, potentially more with productivity. Other Canada postings give no rate; one says pay depends on tasks completed and project availability."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Globe and Mail (2023) quoted TELUS saying flexibility means hours cannot be guaranteed; 2026 blogs describe no-task periods. Anecdotal for recent years."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Apply to a Canada posting on the TELUS Digital AI Community careers site",
+      "Pass the language test",
+      "Study the guidelines and pass the open-book qualification exam within the set window",
+      "Complete ID verification and onboarding, then start tasks"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "contractor_no_benefits",
+      "account_deactivation_reports"
+    ],
+    "fitsIf": "You have lived in Canada for several years, follow detailed rules well, and want low-pressure part-time work from home.",
+    "notFitIf": "You need more than about US$13–14/hr or guaranteed weekly hours.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://jobs.telusdigital.com/search/cfm5/ai-community/jobs",
+        "title": "AI Community Careers",
+        "type": "official",
+        "publisher": "TELUS Digital",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status",
+          "legitimacy"
+        ],
+        "notes": "Official AI Community job search; Canada filter showed 2–6 jobs across search snapshots. Direct fetch blocked, so live openings not confirmed today.",
+        "accessible": false
+      },
+      {
+        "url": "https://jobs.telusdigital.com/jobs/18257907-internet-safety-evaluator-english-canada",
+        "title": "Internet Safety Evaluator - English (Canada) in Canada",
+        "type": "official",
+        "publisher": "TELUS Digital",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay",
+          "requirements",
+          "schedule"
+        ],
+        "notes": "Part-time long-term project; est. US$13.50/hr, task-based; 3 consecutive years Canadian residency; knowledge of Canadian current affairs/social media; broadband and PC with antivirus; language test, open-book exam, ID check.",
+        "accessible": false
+      },
+      {
+        "url": "https://jobs.telusdigital.com/jobs/17271746-online-data-analyst-canada",
+        "title": "Online Data Analyst - Canada in Canada",
+        "type": "official",
+        "publisher": "TELUS Digital",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "requirements",
+          "worker_status"
+        ],
+        "notes": "Part-time remote freelance role; 5 consecutive years residency; open-book exam within a set timeframe; no pay figure in snippet.",
+        "accessible": false
+      },
+      {
+        "url": "https://jobs.telusdigital.com/jobs/18134702-media-search-analyst-english-canada",
+        "title": "Media Search Analyst - English (Canada) in Canada",
+        "type": "official",
+        "publisher": "TELUS Digital",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay",
+          "schedule"
+        ],
+        "notes": "1 year residency; pay based on tasks completed and project availability; no predetermined hours.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.theglobeandmail.com/business/article-ai-data-gig-workers/",
+        "title": "Meet the gig workers making AI machines more accurate, capable and powerful",
+        "type": "journalism",
+        "publisher": "The Globe and Mail",
+        "published": "2023-09-16",
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "pay",
+          "risk"
+        ],
+        "notes": "Rater profiled earned ~US$14/hr without benefits; TELUS International said flexibility means hours can't be guaranteed. Dated (2023).",
+        "accessible": false
+      },
+      {
+        "url": "https://www.aitrainingjobsfinder.com/blog/telus-international-ai-review-2026",
+        "title": "telus international ai review 2026",
+        "type": "independent_review",
+        "publisher": "AI Training Jobs Finder",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "One of several affiliate-style 2026 reviews that together report inconsistent task availability, 'under review' holds and monthly pay lag; individual claims not separable by site in search output.",
+        "accessible": false
+      },
+      {
+        "url": "https://breakingeven.online/blog/telus-ai-review",
+        "title": "telus ai review",
+        "type": "independent_review",
+        "publisher": "BreakingEven",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "Blog review describing no-task periods tied to paused client batches. Anecdotal.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "crowdgen-appen-ai-projects",
+    "name": "AI data project contributor (CrowdGen by Appen)",
+    "organization": "Appen (CrowdGen, formerly Appen Connect)",
+    "type": "task_platform",
+    "category": "ai_data",
+    "tags": [
+      "ai-training",
+      "data-annotation",
+      "project-based",
+      "canada-projects",
+      "canadian-french"
+    ],
+    "summary": "Appen's contributor platform where you apply to individual AI data projects, some of them reserved for Canada residents.",
+    "whatYouDo": "You apply to a specific project and CrowdGen creates your account and onboards you. Canada-only projects have included rating AI-generated text and recording short video reactions (Project Coffee), facial-image annotation (Project Pine) and Canadian French evaluation (Project Babel).",
+    "appeal": [
+      "Official project pages reserved for Canada residents, including Canadian French work",
+      "Pay rate shown on each project page before you apply (e.g. US$16.50/hr, about C$23, on Project Coffee)",
+      "Project Coffee: work any time of day as long as weekly targets are met",
+      "Large, long-running company; says it never charges contributors to join"
+    ],
+    "watchOuts": [
+      "The Canada project pages found are 1–2 years old and may be closed",
+      "Pay varies by country and language; reviews report some projects paying far below minimum wage",
+      "2026 reviews describe inconsistent project availability",
+      "Some projects need an assessment or language exam",
+      "Some projects involve recording yourself or face images – a privacy consideration"
+    ],
+    "officialUrl": "https://crowdgen.com/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "webcam"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "video",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 0,
+      "technical": 0,
+      "creative": 1,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": "Project-specific onboarding instructions are emailed after you apply."
+    },
+    "compensation": {
+      "min": 16.5,
+      "max": null,
+      "currency": "USD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Project Coffee (Canada) page: US$16.50/hr (~C$23), up to 20 hrs/week; page about a year old. A Project Babel (Canadian French) page advertises $22/hr (currency not shown in summary). Paid in local currency via bank transfer or PayPal."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "Project-based; 2026 reviews describe inconsistent availability. Indeed Canada employee reviews (Aug 2025) rate pay/benefits 2.8/5 (employees, not contributors)."
+    },
+    "workerStatus": "unknown",
+    "fees": null,
+    "applicationSteps": [
+      "Find a CrowdGen project page open to Canada residents",
+      "Apply to that project; CrowdGen emails account-creation instructions",
+      "Complete any project assessment or language exam",
+      "Set up payment in the dashboard's Payments tab"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "stale_needs_recheck",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "payment_delay_reports"
+    ],
+    "fitsIf": "You live in Canada (bonus if bilingual) and are happy to apply project by project for occasional paid tasks.",
+    "notFitIf": "You want a single ongoing role or are uncomfortable sharing video or face images.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://crowdgen.com/",
+        "title": "CrowdGen by Appen - Where expert contributors shape frontier AI",
+        "type": "official",
+        "publisher": "Appen",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy"
+        ],
+        "notes": "Official contributor homepage. Direct fetch blocked in sandbox.",
+        "accessible": false
+      },
+      {
+        "url": "https://crowdgen.com/crowdgen-by-appen/",
+        "title": "Appen Connect is now CrowdGen by Appen",
+        "type": "official",
+        "publisher": "Appen",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy"
+        ],
+        "notes": "Confirms CrowdGen is the renamed Appen Connect.",
+        "accessible": false
+      },
+      {
+        "url": "https://crowdgen.com/docs/general-onboarding/getting-started/how-do-i-start-working-at-crowdgen/",
+        "title": "How do I start working at CrowdGen?",
+        "type": "official",
+        "publisher": "Appen",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "New contributors apply to a project and receive emailed account instructions; payment set up afterwards.",
+        "accessible": false
+      },
+      {
+        "url": "https://crowdgen.com/coffee-en-ca/",
+        "title": "Project Coffee",
+        "type": "official",
+        "publisher": "Appen",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay",
+          "schedule",
+          "requirements"
+        ],
+        "notes": "Canada residents, fluent English, up to 20 hrs/week, computer with microphone; US$16.50/hr (~C$23); text evaluation and short video reactions. Page reportedly ~1 year old.",
+        "accessible": false
+      },
+      {
+        "url": "https://crowdgen.com/babel-canadian-french-c/",
+        "title": "Project Babel: Help AI speak Canadian French better (C)",
+        "type": "official",
+        "publisher": "Appen",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "requirements"
+        ],
+        "notes": "Canada residents with strong English and French writing. A related Babel page advertises $22/hr for evaluators.",
+        "accessible": false
+      },
+      {
+        "url": "https://crowdgen.com/pine-en-ca-b/",
+        "title": "Project Pine",
+        "type": "official",
+        "publisher": "Appen",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "requirements"
+        ],
+        "notes": "Facial recognition annotation; Canada residents, native English, arts/photography/design background.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.aitrainingjobs.it/appen-crowdgen-review-2026-ai-training-jobs-pay-tasks-reality/",
+        "title": "Appen (CrowdGen) Review (2026): AI Training Jobs, Pay, Tasks & Reality",
+        "type": "independent_review",
+        "publisher": "aitrainingjobs.it",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "reliability"
+        ],
+        "notes": "Review: pay priced by country/language; inconsistent project availability. Affiliate-style blog.",
+        "accessible": false
+      },
+      {
+        "url": "https://de.trustpilot.com/review/crowdgen.com",
+        "title": "Crowdgen Bewertungen",
+        "type": "aggregator",
+        "publisher": "Trustpilot",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "User reviews; one (China-based work, not Canada) reports not being paid what was owed after the platform change. Anecdotal.",
+        "accessible": false
+      },
+      {
+        "url": "https://ca.indeed.com/cmp/Appen/reviews",
+        "title": "Appen Employee Reviews",
+        "type": "aggregator",
+        "publisher": "Indeed Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Employee reviews (last updated Aug 2025) rate pay and benefits 2.8/5; employees, not contributors.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "welo-data-search-quality-rater-canada",
+    "name": "Search quality rater – English (Canada) (Welo Data / Welocalize)",
+    "organization": "Welocalize (Welo Data / Welo Global)",
+    "type": "freelance",
+    "category": "ai_data",
+    "tags": [
+      "search-rating",
+      "part-time",
+      "canada-residents",
+      "nda",
+      "qualification-exam"
+    ],
+    "summary": "Freelance, remote role rating search-engine results for relevance and quality, for people located in Canada working 10–20 hours a week.",
+    "whatYouDo": "You review search queries and results and give subjective and objective ratings following the client's guidelines. Before starting you complete learning modules and pass a client-designed quality test.",
+    "appeal": [
+      "Official posting specifically for people located in Canada",
+      "Set your own schedule within 10–20 hours a week",
+      "No rating background needed (past ads-rating experience actually disqualifies you)",
+      "Long-established localization company"
+    ],
+    "watchOuts": [
+      "Pay is 'up to $15 gross per hour' and may vary with task complexity; currency not stated in what we saw",
+      "Must sign an NDA and pass learning modules plus a client exam before earning",
+      "You may have to work only on this rating program, not other search/ads rating programs",
+      "Support only Mon–Fri 9:00–17:30 Pacific",
+      "Posting date not confirmed; reposted listings may be an ongoing talent pipeline rather than a live opening"
+    ],
+    "officialUrl": "https://welodata.ai/welo-works-the-ai-training-worker-platform/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "free_test"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": 10,
+      "hoursMaxWeekly": 20
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 0,
+      "technical": 0,
+      "creative": 0,
+      "language": 2
+    },
+    "training": {
+      "required": true,
+      "cost": "unknown",
+      "notes": "Learning modules and a client-designed quality test before work; whether this time is paid was not stated."
+    },
+    "compensation": {
+      "min": null,
+      "max": 15,
+      "currency": "unstated",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Official Lever posting: up to $15 gross per hour, varying with task complexity. Currency not shown in the snippet."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "Posting sets a 10–20 hr/week band; no evidence on actual task supply."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Submit interest through the Welo careers/Lever posting and answer project questions",
+      "Complete the skills and language assessment on Welo's platform",
+      "Sign the NDA and complete learning modules",
+      "Pass the client's quality test, then start rating"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "contractor_no_benefits",
+      "payment_delay_reports"
+    ],
+    "fitsIf": "You know Canadian culture and current events well and want a steady-ish 10–20 hour weekly side gig.",
+    "notFitIf": "You already do or want to do other search/ads rating work, or need well above $15/hr.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://jobs.lever.co/welocalize/3571ca23-becc-40f1-902f-637e67e9e69f",
+        "title": "Welocalize - *Scout Search Quality Rater - English (Canada)",
+        "type": "official",
+        "publisher": "Welocalize (Lever job board)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay",
+          "requirements",
+          "schedule"
+        ],
+        "notes": "Freelance remote; up to $15 gross/hr; 10–20 hrs/week; must be in Canada; Canadian pop culture; no past ads rating; NDA; modules + client test; support Mon–Fri PT. Posting date not shown.",
+        "accessible": false
+      },
+      {
+        "url": "https://jobs.lever.co/weloglobal/7b07afde-d586-4945-9ef8-b41ca36a739b",
+        "title": "Welo Global - Maps Personalization Relevance Rater - English (Canada)",
+        "type": "official",
+        "publisher": "Welo Global (Lever job board)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "Separate Canada rater project (maps relevance); details not captured.",
+        "accessible": false
+      },
+      {
+        "url": "https://welodata.ai/welo-works-the-ai-training-worker-platform/",
+        "title": "Welo Works — The AI Training Worker Platform - Welo Data",
+        "type": "official",
+        "publisher": "Welo Data",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy"
+        ],
+        "notes": "Official page for Welo's AI-training worker platform; content not captured.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.espresso-jobs.com/emploi/202059/search-quality-rater-english-canada-welo-data-montreal",
+        "title": "Search Quality Rater English Canada – Welo Data – Montreal",
+        "type": "aggregator",
+        "publisher": "Espresso Jobs",
+        "published": "2026-01-01",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "Mirror: up to $15 gross/hr; 10–20 hrs/week; Gmail address to apply; must be dedicated only to this program.",
+        "accessible": false
+      },
+      {
+        "url": "https://annotation.academy/blog/is-welocalize-legit",
+        "title": "is welocalize legit",
+        "type": "independent_review",
+        "publisher": "Annotation Academy",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "legitimacy"
+        ],
+        "notes": "Small sample: one non-payment account, one paid fine; no clear pattern of payment complaints.",
+        "accessible": false
+      },
+      {
+        "url": "https://selfmadesuccess.com/welocalize-review/",
+        "title": "Welocalize review",
+        "type": "independent_review",
+        "publisher": "SelfMadeSuccess",
+        "published": "2026-06-17",
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Reddit feedback mixed; payment complaints mostly about delays rather than non-payment.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "utest-applause-crowdtester",
+    "name": "Freelance crowd software tester (uTest / Applause)",
+    "organization": "uTest (Applause)",
+    "type": "task_platform",
+    "category": "tech_digital",
+    "tags": [
+      "software-testing",
+      "bug-reporting",
+      "crowdtesting",
+      "qa",
+      "per-task"
+    ],
+    "summary": "Free-to-join tester community where you accept paid invitations to find bugs and run test cases on clients' apps and websites.",
+    "whatYouDo": "After building a profile with your devices and finishing an introductory Sandbox/Academy cycle, you receive invitations matched to your profile. You test apps or sites, report bugs or run test cases, and are paid once the client approves your work.",
+    "appeal": [
+      "Free to sign up; run by established testing company Applause",
+      "Payout is shown before you accept an invitation",
+      "Paid twice a month (15th and month-end) via PayPal or Payoneer",
+      "Builds hands-on QA skills that can lead to software-testing jobs"
+    ],
+    "watchOuts": [
+      "Many testers report few or no paid invitations, especially at first; invitations depend on rating, devices and country",
+      "Academy practice cycles are unpaid",
+      "You are paid only for approved bugs/tasks; rejected work earns nothing",
+      "Canada eligibility not stated on an official page we could see"
+    ],
+    "officialUrl": "https://www.utest.com/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "smartphone"
+      ],
+      "minAge": null,
+      "assessment": "unpaid_test"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 3,
+      "writing": 2,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 0,
+      "technical": 2,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": true,
+      "cost": "free",
+      "notes": "Introductory Sandbox class and uTest Academy courses; practice cycles are unpaid."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": "task",
+      "basis": "unknown",
+      "notes": "Pay per approved bug, test case or project; amount shown per invitation. A review blog cites ~$3–100 per approved bug by severity (unverified)."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "r/UTEST threads (2023–2025) report few invitations even after Academy work; a 2026 review says projects are not guaranteed."
+    },
+    "workerStatus": "unknown",
+    "fees": null,
+    "applicationSteps": [
+      "Create a free uTest profile listing your devices",
+      "Complete the Sandbox/Academy introductory cycle",
+      "Link a PayPal or Payoneer account",
+      "Accept paid invitations as they arrive"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "waitlist_or_no_work_guarantee",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "unpaid_assessment"
+    ],
+    "fitsIf": "You are detail-oriented, own several devices, and want to learn software testing while earning occasionally.",
+    "notFitIf": "You need predictable income soon.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.utest.com/",
+        "title": "uTest - The Professional Network for Testers",
+        "type": "official",
+        "publisher": "uTest",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy"
+        ],
+        "notes": "Official homepage. Direct fetch blocked in sandbox.",
+        "accessible": false
+      },
+      {
+        "url": "https://support.utest.com/csp?id=kb_article_view&sysparm_article=KB0010032",
+        "title": "Tester Service - How can I earn money on uTest? - Tester Support",
+        "type": "official",
+        "publisher": "uTest",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Testers choose invitations, see payout first, and earn when completed tasks are approved.",
+        "accessible": false
+      },
+      {
+        "url": "https://support.utest.com/csp?id=kb_article_view&sysparm_article=KB0010033",
+        "title": "Tester Service - When will I receive my money? - Tester Support",
+        "type": "official",
+        "publisher": "uTest",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Paid twice monthly, on the 15th and last day of the month.",
+        "accessible": false
+      },
+      {
+        "url": "https://support.utest.com/csp?id=kb_article_view&sysparm_article=KB0010036",
+        "title": "Tester Service - What do I need to do to get paid? - Tester Support",
+        "type": "official",
+        "publisher": "uTest",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Must link a Payoneer or PayPal account (snippet truncated).",
+        "accessible": false
+      },
+      {
+        "url": "https://www.applause.com/blog/work-from-home-with-utest/",
+        "title": "Earn Money While Working From Home With uTest",
+        "type": "official",
+        "publisher": "Applause",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "legitimacy"
+        ],
+        "notes": "Applause blog: signing up to uTest is free. Possibly dated.",
+        "accessible": false
+      },
+      {
+        "url": "https://paidfromsurveys.com/utest-review",
+        "title": "uTest Review – Legit or Scam? (Full Details + Rating)",
+        "type": "independent_review",
+        "publisher": "PaidFromSurveys",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay"
+        ],
+        "notes": "Says uTest accepts testers from almost every country; $2 minimum per pay period; bug payouts roughly $3–100. Unverified.",
+        "accessible": false
+      },
+      {
+        "url": "https://reddit.birdcat.cafe/r/UTEST/comments/1in63vz/almost_giving_up_on_utest",
+        "title": "r/UTEST – Almost giving up on uTest",
+        "type": "forum",
+        "publisher": "Reddit (third-party mirror)",
+        "published": "2025-02-11",
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Anecdote: Silver-rated tester got only a few paid invitations after Academy work; moderator notes practice cycles are unpaid.",
+        "accessible": false
+      },
+      {
+        "url": "https://lr.in.psf.lt/r/UTEST/comments/17js9qm/is_this_normal",
+        "title": "r/UTEST – Is this normal",
+        "type": "forum",
+        "publisher": "Reddit (third-party mirror)",
+        "published": "2023-10-30",
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "canada_eligibility"
+        ],
+        "notes": "Anecdote: moderator says invitations depend heavily on country. Dated.",
+        "accessible": false
+      },
+      {
+        "url": "https://selfmadesuccess.com/utest-review/",
+        "title": "uTest review",
+        "type": "independent_review",
+        "publisher": "SelfMadeSuccess",
+        "published": "2026-08-24",
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy",
+          "reliability"
+        ],
+        "notes": "Legitimate with a good reputation; projects not guaranteed and earnings hard to predict.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "testlio-freelance-tester",
+    "name": "Freelance software tester, paid hourly (Testlio)",
+    "organization": "Testlio",
+    "type": "freelance",
+    "category": "tech_digital",
+    "tags": [
+      "software-testing",
+      "qa",
+      "hourly",
+      "crowdtesting",
+      "device-testing"
+    ],
+    "summary": "Managed crowdtesting company that pays vetted freelance testers by the hour for client test runs, with occasional Canada-specific projects.",
+    "whatYouDo": "Once registered and accepted onto client projects, you run scripted or exploratory test 'runs' on apps and websites, report issues and log your time. Canada-specific projects have included smoke-testing a wagering app in Alberta and payment testing.",
+    "appeal": [
+      "Paid by the hour, not per bug",
+      "Weekly payouts via PayPal or Payoneer",
+      "Open to people without prior testing experience; certifications available",
+      "Past Canada-specific postings paid US$18–30/hr"
+    ],
+    "watchOuts": [
+      "A Testlio page says only about 3% of applicants are accepted onto client projects",
+      "The Canada-specific postings we found were closed",
+      "Some projects need specific devices (e.g. iPhone/iPad), a non-CAD credit card, or physical presence in one province",
+      "ID verification needed before payment; contractor terms with no benefits"
+    ],
+    "officialUrl": "https://www.testlio.com/community",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "smartphone"
+      ],
+      "minAge": 18,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 3,
+      "writing": 2,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 0,
+      "technical": 2,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "free",
+      "notes": "Optional certifications (e.g. Functional Regression Testing) unlock the Testlio community; cost not stated, assumed none."
+    },
+    "compensation": {
+      "min": 18,
+      "max": 30,
+      "currency": "USD",
+      "unit": "hour",
+      "basis": "aggregator",
+      "notes": "Mirrors of Testlio Canada postings: US$30/hr Alberta app smoke testing (about 30–60 min every few weeks); US$18/hr plus bonuses for a Canadian delivery-driver study. Both appear closed."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "Project-based; one Canada project offered under an hour every few weeks; selective acceptance (~3%)."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Register a Testlio account and verify contact details",
+      "Complete your profile and devices; optionally earn certifications",
+      "Apply to specific projects (Canada postings name a project code for email applications)",
+      "Complete ID verification and add a personal PayPal/Payoneer account before working"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "waitlist_or_no_work_guarantee",
+    "legitimacy": "established",
+    "evidenceStrength": "weak",
+    "riskFlags": [
+      "variable_work",
+      "waitlist",
+      "contractor_no_benefits",
+      "equipment_cost"
+    ],
+    "fitsIf": "You own current devices, want hourly (not per-bug) testing work, and can wait for selective project placement.",
+    "notFitIf": "You need work soon or lack the specific devices projects require.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.testlio.com/join-the-community",
+        "title": "Join the Testlio Community - Testlio",
+        "type": "official",
+        "publisher": "Testlio",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Register an account and verify contact details; open to people with no prior testing experience. Direct fetch blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.testlio.com/community",
+        "title": "Get to Know Our Global Community - Testlio",
+        "type": "official",
+        "publisher": "Testlio",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Search summary attributes the '3% of applicants accepted to client projects' claim to a Testlio marketing page (exact page not certain).",
+        "accessible": false
+      },
+      {
+        "url": "https://help.testlio.com/en/articles/6819354-freelancing-at-testlio",
+        "title": "Freelancing at Testlio",
+        "type": "official",
+        "publisher": "Testlio",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "worker_status"
+        ],
+        "notes": "Help centre: paid hourly, not per bug; weekly payouts via PayPal or Payoneer after task approval.",
+        "accessible": false
+      },
+      {
+        "url": "https://help.testlio.com/en/articles/10353574-join-the-testlio-community",
+        "title": "Join the Testlio Community",
+        "type": "official",
+        "publisher": "Testlio",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Community access after 30 approved hours or a Functional Regression / Scripter certification.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.testlio.com/fsa",
+        "title": "Testlio Freelancer Services Agreement",
+        "type": "official",
+        "publisher": "Testlio",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "worker_status",
+          "requirements"
+        ],
+        "notes": "Freelancer agreement: personal payment method required before work; payment subject to ID verification; no sanctioned countries.",
+        "accessible": false
+      },
+      {
+        "url": "https://jobs.techstars.com/companies/testlio/jobs/86488758-freelance-software-tester-remote-in-alberta-ca",
+        "title": "Freelance Software Tester (Remote in Alberta, CA)",
+        "type": "aggregator",
+        "publisher": "Techstars job board",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay",
+          "requirements",
+          "status"
+        ],
+        "notes": "US$30/hr; 30–60 min every few weeks; 21+; physically in Alberta, no VPN; iPhone/iPad; weekly PayPal/Payoneer. Marked no longer accepting applications.",
+        "accessible": false
+      },
+      {
+        "url": "https://jobs.techstars.com/companies/testlio/jobs/57669441-freelance-software-tester-payment-testing-canada",
+        "title": "Freelance Software Tester (Payment Testing, Canada)",
+        "type": "aggregator",
+        "publisher": "Techstars job board",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "requirements",
+          "status"
+        ],
+        "notes": "18+, anywhere in Canada, non-CAD credit card, paid hourly; marked no longer accepting applications.",
+        "accessible": false
+      },
+      {
+        "url": "https://jobs.techstars.com/companies/testlio/jobs/51665324-uber-delivery-driver-study-canada",
+        "title": "Uber Delivery Driver Study (Canada)",
+        "type": "aggregator",
+        "publisher": "Techstars job board",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "canada_eligibility"
+        ],
+        "notes": "US$18/h plus possible bonuses, weekly via PayPal or Payoneer.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "test-io-crowdtester",
+    "name": "Freelance bug-hunting tester (Test IO)",
+    "organization": "Test IO",
+    "type": "task_platform",
+    "category": "tech_digital",
+    "tags": [
+      "software-testing",
+      "exploratory-testing",
+      "bug-bounty",
+      "crowdtesting",
+      "per-bug"
+    ],
+    "summary": "Free crowdtesting platform that pays testers per accepted bug or test for exploratory testing of apps and websites.",
+    "whatYouDo": "You join test cycles, explore a client's app or website, and report bugs with clear reproduction steps; team leads review and accept or reject them. Pay is per accepted bug or completed test.",
+    "appeal": [
+      "Free to register; official scam warning says testers never pay to join",
+      "Beginners praise the onboarding and training",
+      "Monthly payment to a bank account or PayPal",
+      "Good way to learn exploratory testing"
+    ],
+    "watchOuts": [
+      "Paid only for accepted bugs; reviewers describe inconsistent or biased team-lead decisions",
+      "Low-tier testers report few paid cases and low earnings for the hours spent",
+      "Canada not named explicitly; the community claims testers in 190+ countries and some tests are country-restricted",
+      "Scammers impersonate the brand"
+    ],
+    "officialUrl": "https://test.io/company/become-a-tester",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "unclear",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "smartphone"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 3,
+      "writing": 2,
+      "numeracy": 0,
+      "detail": 3,
+      "customer": 0,
+      "technical": 2,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "free",
+      "notes": "Tester Academy materials; reviewers describe onboarding as useful."
+    },
+    "compensation": {
+      "min": null,
+      "max": 50,
+      "currency": "USD",
+      "unit": "task",
+      "basis": "official",
+      "notes": "Official tester page: most valuable bugs pay up to $50; some special tests pay more (a community listing mentions up to $200). Paid monthly."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "G2/Trustpilot reviewers say basic-level testers get few cases; Trustpilot averages about 3.5/5 over ~200 reviews. Anecdotal."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Register free as a tester on Test IO",
+      "Complete onboarding/Academy material",
+      "Add a bank account or PayPal for monthly payment",
+      "Join available test cycles and submit bug reports"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "likely",
+    "evidenceStrength": "weak",
+    "riskFlags": [
+      "variable_work",
+      "contractor_no_benefits",
+      "scam_impersonation"
+    ],
+    "fitsIf": "You enjoy hunting for bugs, write clear reports, and see it as paid practice for a QA career.",
+    "notFitIf": "You dislike having work rejected without pay or need steady earnings.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://test.io/company/become-a-tester",
+        "title": "Become a Tester",
+        "type": "official",
+        "publisher": "Test IO",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "No fee to register; bank account or PayPal; monthly payment; bugs up to $50; contact testersupport@test.io. Direct fetch blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://test.io/scam-and-fraud-warning",
+        "title": "Scam & Fraud Warning",
+        "type": "official",
+        "publisher": "Test IO",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "legitimacy"
+        ],
+        "notes": "Testers will never be asked to pay to join; links official sign-up.",
+        "accessible": false
+      },
+      {
+        "url": "https://community.test.io/",
+        "title": "Test IO Community - Join Global Testing Professionals",
+        "type": "official",
+        "publisher": "Test IO",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "Claims testers in 190+ countries; does not say which countries can be paid.",
+        "accessible": false
+      },
+      {
+        "url": "https://test.io/policies-testers",
+        "title": "Policies for Testers",
+        "type": "official",
+        "publisher": "Test IO",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "worker_status"
+        ],
+        "notes": "Tester terms; content not captured.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.trustpilot.com/review/test.io?page=4",
+        "title": "Test IO reviews",
+        "type": "aggregator",
+        "publisher": "Trustpilot",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "legitimacy"
+        ],
+        "notes": "About 3.5/5 over ~200 reviews; complaints about biased/rude team leads; praise for training. Anecdotal.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.g2.com/products/test-io",
+        "title": "Test IO Reviews",
+        "type": "aggregator",
+        "publisher": "G2",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Reviewer: hard to earn as a basic-badge tester due to few cases.",
+        "accessible": false
+      },
+      {
+        "url": "https://club.ministryoftesting.com/t/im-evgeniya-reaching-out-to-you-from-test-io/30370",
+        "title": "I'm Evgeniya - reaching out to you from test IO",
+        "type": "forum",
+        "publisher": "Ministry of Testing",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Forum reply flags paying only for accepted bugs and poor acceptance criteria as red flags. Anecdote.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "fable-accessibility-tester",
+    "name": "Accessibility tester with lived disability experience (Fable)",
+    "organization": "Fable (Fable Tech Labs, Toronto)",
+    "type": "freelance",
+    "category": "tech_digital",
+    "tags": [
+      "accessibility",
+      "assistive-technology",
+      "disability-led",
+      "user-testing",
+      "canadian-company"
+    ],
+    "summary": "Toronto-founded company that pays people with disabilities who use assistive technology to test websites and apps for accessibility.",
+    "whatYouDo": "You complete testing tasks on client websites and apps using the assistive technology you already rely on (e.g. screen reader, magnification, alternative input) and give feedback. You choose how much to work each month.",
+    "appeal": [
+      "Residents of Canada, the US and the UK are eligible (official)",
+      "Values lived experience with assistive technology over formal credentials",
+      "Paid training and a 'competitive hourly wage'; Fable says testers average more than double minimum wage",
+      "Credible: a Government of Canada notice named Fable as the only provider of this kind of tester pool"
+    ],
+    "watchOuts": [
+      "Only for adults with vision, mobility or cognitive accessibility needs, including daily assistive-technology users",
+      "Exact hourly rate not published in what we saw",
+      "Contractor status, paid once a month in arrears",
+      "Onboarding includes an assistive-technology and communication-skills assessment and a conversation with staff",
+      "Monthly work volume not published"
+    ],
+    "officialUrl": "https://makeitfable.com/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA",
+        "US",
+        "GB"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "interview"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 3,
+      "writing": 2,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 0,
+      "technical": 2,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": true,
+      "cost": "paid_to_you",
+      "notes": "Testers complete paid training after the assessment."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Fable describes a 'competitive hourly wage' and says testers earn on average more than double minimum wage; no figure published in what we saw. Paid at month-end."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "Testers choose how much to work monthly; available volume not published. A 2020 figure cited about 100 testers."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Sign up on Fable's community page and verify your email",
+      "Describe the assistive technology you use",
+      "Talk with a Fable team member and complete the AT and communication skills assessment",
+      "Complete paid training, then take testing tasks"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You are an experienced assistive-technology user in Canada who wants flexible, fairly paid remote work using that expertise.",
+    "notFitIf": "You do not use assistive technology or need guaranteed monthly hours.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://makeitfable.com/community/",
+        "title": "Join the Fable Community - Fable Accessibility Testing",
+        "type": "official",
+        "publisher": "Fable",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "requirements",
+          "pay",
+          "worker_status"
+        ],
+        "notes": "Adults with vision, mobility or cognitive accessibility needs in Canada/US/UK; competitive hourly wage; FAQ: contractors, paid month-end; assessment and paid training. Page metadata shows 2025-12-04 update. Direct fetch blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://makeitfable.com/testers/",
+        "title": "Accessibility Testers",
+        "type": "official",
+        "publisher": "Fable",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Describes Fable's tester community of assistive-technology users.",
+        "accessible": false
+      },
+      {
+        "url": "https://makeitfable.com/",
+        "title": "Fable",
+        "type": "official",
+        "publisher": "Fable",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "legitimacy"
+        ],
+        "notes": "Homepage claims 100% of testers trained and fairly compensated; a Fable page says testers average more than double minimum wage.",
+        "accessible": false
+      },
+      {
+        "url": "https://canadabuys.canada.ca/sites/default/files/webform/tender_notice/39081/acan---final-en.pdf",
+        "title": "Advance Contract Award Notice (accessibility testing)",
+        "type": "government",
+        "publisher": "Government of Canada (CanadaBuys)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy"
+        ],
+        "notes": "Federal notice found only one supplier with a pool of expert accessibility testers with disabilities using assistive technology, identified as Fable.",
+        "accessible": false
+      },
+      {
+        "url": "https://zeroproject.org/view/project/da5a0478-3512-eb11-a813-0022489b3a6d",
+        "title": "An accessibility testing platform, powered by people with disabilities",
+        "type": "independent_review",
+        "publisher": "Zero Project",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy"
+        ],
+        "notes": "Profile citing ~100 testers with disabilities in 2020. Dated.",
+        "accessible": false
+      }
+    ],
+    "audience": [
+      "People who use assistive technology (lived disability experience)"
+    ]
+  },
+  {
+    "id": "ai-response-evaluation-category",
+    "name": "AI response evaluation and rating (category)",
+    "organization": "Various",
+    "type": "category",
+    "category": "ai_data",
+    "tags": [
+      "ai-training",
+      "rlhf",
+      "response-rating",
+      "search-rating",
+      "gig-work"
+    ],
+    "summary": "Remote gig work rating, ranking and rewriting chatbot or search outputs so AI companies can improve their models.",
+    "whatYouDo": "Typical tasks include reading two AI answers and choosing which better follows instructions, rewriting a weak answer, or rating search and content results against long guidelines. Work comes in project batches through platforms or vendors and is paid per hour or per task.",
+    "appeal": [
+      "Fully remote with flexible hours on most platforms",
+      "Several platforms and vendors recruit Canada residents specifically",
+      "Strong writers and subject experts can earn well above minimum wage on some projects",
+      "Low barrier to try: most platforms are free to join"
+    ],
+    "watchOuts": [
+      "Journalism describes the work as often underpaid, sporadic and precarious, with no benefits",
+      "Hours are rarely guaranteed and projects can end without notice",
+      "Screening tests and onboarding are often unpaid",
+      "Fake job offers imitate real platforms; legitimate ones do not charge you to join",
+      "Pay is usually quoted in US dollars and you are typically an independent contractor"
+    ],
+    "officialUrl": null,
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 2,
+      "numeracy": 1,
+      "detail": 3,
+      "customer": 0,
+      "technical": 1,
+      "creative": 1,
+      "language": 2
+    },
+    "training": {
+      "required": true,
+      "cost": "unknown",
+      "notes": "Platforms typically require guideline study and qualification tests."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": "hour",
+      "basis": "unknown",
+      "notes": "Varies widely. Records in this file range from ~US$13.50/hr (TELUS est.) to US$50–70/hr (Mercor generalist) and more for specialists; the Globe and Mail profiled a rater at ~US$14/hr."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Globe and Mail (2023) interviews describe sporadic, per-task work; 2026 blogs describe project cuts and empty queues."
+    },
+    "workerStatus": "contractor",
+    "fees": null,
+    "applicationSteps": [
+      "Shortlist legitimate platforms that accept Canada residents",
+      "Apply and complete the qualification test(s)",
+      "Set up a payout account (often PayPal or similar)",
+      "Keep more than one platform active because tasks come and go"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "contractor_no_benefits",
+      "unpaid_assessment",
+      "account_deactivation_reports",
+      "scam_impersonation"
+    ],
+    "fitsIf": "You read carefully, write well, and want flexible remote side income you can scale up or down.",
+    "notFitIf": "You need stable hours, benefits, or a predictable paycheque.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.theglobeandmail.com/business/article-ai-data-gig-workers/",
+        "title": "Meet the gig workers making AI machines more accurate, capable and powerful",
+        "type": "journalism",
+        "publisher": "The Globe and Mail",
+        "published": "2023-09-16",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "reliability",
+          "risk"
+        ],
+        "notes": "Interviews with 20 gig workers: work is often low-paid, sporadic and per-task; a rater earned ~US$14/hr without benefits. Dated (2023).",
+        "accessible": false
+      },
+      {
+        "url": "https://www.remoteworkunion.com/blog/canada-ai-training-jobs-legit-remote-ai-work",
+        "title": "canada ai training jobs legit remote ai work",
+        "type": "independent_review",
+        "publisher": "Remote Work Union",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "risk"
+        ],
+        "notes": "Canada-focused guide: typical tasks (comparing two chatbot answers, rewriting weak ones) and advice on avoiding scams. Blog.",
+        "accessible": false
+      },
+      {
+        "url": "https://techcrunch.com/2025/01/09/scale-ai-hit-by-its-second-employee-wage-lawsuit-in-less-than-a-month",
+        "title": "Scale AI hit by its second employee wage lawsuit in less than a month",
+        "type": "journalism",
+        "publisher": "TechCrunch",
+        "published": "2025-01-09",
+        "accessed": "2026-10-13",
+        "claims": [
+          "worker_status",
+          "risk"
+        ],
+        "notes": "Illustrates industry disputes over contractor classification and unpaid training time for AI raters (California).",
+        "accessible": false
+      }
+    ]
+  }
+]

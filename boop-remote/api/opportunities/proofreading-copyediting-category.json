@@ -1,0 +1,203 @@
+{
+ "id": "proofreading-copyediting-category",
+ "name": "Proofreading & copyediting (category)",
+ "organization": "Various",
+ "type": "category",
+ "category": "language_writing",
+ "tags": [
+  "editing",
+  "proofreading",
+  "copyediting",
+  "freelance",
+  "career",
+  "editors-canada"
+ ],
+ "summary": "Checking and correcting other people's writing for errors, clarity and style, as an employee or freelancer; a recognized Canadian occupation with a national association and certification.",
+ "whatYouDo": "Proofreaders catch spelling, grammar and formatting errors in near-final text; copyeditors also fix consistency, clarity and style. Freelancers find clients through directories, platforms (e.g. Scribbr), publishers and referrals, and charge by the hour, word or project.",
+ "appeal": [
+  "Remote, text-based work",
+  "High self-employment share: Job Bank reports 39% of Ontario editors are self-employed (vs 15% across occupations)",
+  "Clear professional route in Canada via Editors Canada (directory listing and certification)",
+  "Job Bank national wage range for editors $20–$50/hour (median about $34.62)"
+ ],
+ "watchOuts": [
+  "Job Bank says the occupation usually requires a university degree",
+  "Job Bank outlook 2025–2027 is 'Limited' in Ontario and Quebec",
+  "Editors Canada directory listing requires paid membership (about $310/yr plus $80/yr profile, plus tax)",
+  "Certification exams cost about $450 (members) to $550 (non-members) each, plus annual maintenance fees",
+  "Finding freelance clients takes time; no guaranteed work"
+ ],
+ "officialUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/5332/ca",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [
+   "University degree usually expected (Job Bank)",
+   "Editors Canada certification (optional)"
+  ],
+  "equipment": [
+   "computer"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [
+   "day",
+   "evening",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 3,
+  "numeracy": 0,
+  "detail": 3,
+  "customer": 1,
+  "technical": 1,
+  "creative": 1,
+  "language": 3
+ },
+ "training": {
+  "required": false,
+  "cost": "user_pays",
+  "notes": "Optional paid professional development and certification through Editors Canada."
+ },
+ "compensation": {
+  "min": 20,
+  "max": 50,
+  "currency": "CAD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Job Bank wages for Editors (NOC 51110), Canada, 2023–2024 Labour Force Survey reference period: low $20, median ~$34.62, high $50/hour. Mostly employee wages; freelance proofreading rates vary widely."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "medium",
+  "notes": "Job Bank outlook Limited in ON and QC, Moderate in Ottawa/Outaouais (2025–2027). Freelance volume depends on client base."
+ },
+ "workerStatus": "varies",
+ "fees": "Optional: Editors Canada membership ~$310/yr plus $80/yr directory profile (plus tax); certification exams ~$450–$550 each; credential maintenance $25 (members) or $100 (non-members) per year.",
+ "applicationSteps": [
+  "Build skills and samples (style guides, before/after edits)",
+  "Consider joining Editors Canada and listing in its Online Directory of Editors",
+  "Optionally pursue Editors Canada certification",
+  "Find clients directly, via publishers, or via editing platforms such as Scribbr"
+ ],
+ "timeToFirstEarnings": "months",
+ "horizon": "career",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "fees"
+ ],
+ "fitsIf": "You have strong English (or French) writing skills, love precision, and are willing to build a client base over months.",
+ "notFitIf": "You need income quickly or dislike close, repetitive reading for errors.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/summary-occupation/5332/ca",
+   "title": "Editor in Canada",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements"
+   ],
+   "notes": "National median about $34.62/h, range $20–$50 (2023–2024 LFS); occupation usually requires a university degree. Seen via search; page not opened.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/5332/ON",
+   "title": "Editor in Ontario",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "2025–2027 outlook Limited (employment decline); search summary reports 39% of Ontario editors are self-employed vs 15% average.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/5332/QC",
+   "title": "Editor in Québec",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "2025–2027 outlook Limited; employment expected to remain relatively stable.",
+   "accessible": false
+  },
+  {
+   "url": "https://editors.ca/join/fees/",
+   "title": "Fees - Editors Canada",
+   "type": "official",
+   "publisher": "Editors Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "One-year membership $310; optional one-year directory profile $80 (two-year $589/$160); plus sales tax; non-refundable. Directory listing limited to members and student affiliates.",
+   "accessible": false
+  },
+  {
+   "url": "https://editors.ca/professional-development/certification/",
+   "title": "Editors Canada Professional Certification",
+   "type": "official",
+   "publisher": "Editors Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Current exam fee per search summary: $450 per exam for members, $550 for non-members.",
+   "accessible": false
+  },
+  {
+   "url": "https://editors.ca/professional-development/certification/maintenance/",
+   "title": "Editors Canada Professional Certification credential maintenance",
+   "type": "official",
+   "publisher": "Editors Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Annual credential maintenance fee $25 (members) or $100 (non-members); non-payment removes name from the certified roster.",
+   "accessible": false
+  }
+ ]
+}

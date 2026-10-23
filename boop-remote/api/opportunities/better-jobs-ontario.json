@@ -1,0 +1,189 @@
+{
+ "id": "better-jobs-ontario",
+ "name": "Better Jobs Ontario (funded retraining for laid-off or long-unemployed people)",
+ "organization": "Government of Ontario - Employment Ontario",
+ "type": "program",
+ "category": "government_program",
+ "tags": [
+  "training-funding",
+  "retraining",
+  "living-allowance",
+  "ontario",
+  "laid-off",
+  "career-change"
+ ],
+ "summary": "Ontario grant that can cover tuition, books, transportation and a basic living allowance while an eligible laid-off or long-unemployed person trains for an in-demand job.",
+ "whatYouDo": "With an Employment Ontario provider, you research an in-demand occupation and an approved training program, then build and submit an application. If approved, you attend the training while Better Jobs Ontario helps with costs, then look for work in that field.",
+ "appeal": [
+  "Up to $28,000 for training of 1 year or less, or up to $35,000 for programs over 1 year and up to 2 years",
+  "Basic living allowance up to $500/week plus a transportation allowance (guidelines cite $45/week)",
+  "May also cover childcare, disability-related supports and language training",
+  "People receiving EI, Ontario Works or ODSP can still apply",
+  "Not laid off? You may still qualify after 12+ weeks unemployed in a low-income household"
+ ],
+ "watchOuts": [
+  "Must be an Ontario resident and a Canadian citizen or permanent resident (program guidelines)",
+  "Living allowance is income-tested and only tops household income up to a 'moderate standard of living'",
+  "Quitting a job less than 12 months ago can make you ineligible unless the quit is authorized",
+  "Training for regulated occupations must be fully accredited",
+  "Multi-step application that colleges say can take several months; some college pages still cite older rules (e.g., 6 months unemployed)",
+  "No first-hand accounts of approval times found in this research pass"
+ ],
+ "officialUrl": "https://ontario.ca/betterjobsontario",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [
+   "ON"
+  ],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 1,
+  "numeracy": 1,
+  "detail": 1,
+  "customer": 0,
+  "technical": 0,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": true,
+  "cost": "free",
+  "notes": "Approved costs (tuition, books, transportation, other instructional costs) covered up to the caps; costs above caps not described in sources found."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": "CAD",
+  "unit": null,
+  "basis": "official",
+  "notes": "Allowance, not wages: up to $500/week basic living allowance plus $45/week transportation (EOPG guidance), income-tested."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "Allowance paid during approved training; job outcomes after training not evidenced."
+ },
+ "workerStatus": "participant",
+ "fees": null,
+ "applicationSteps": [
+  "Contact an Employment Ontario provider (ontario.ca/employmentontario or 1-800-387-5656)",
+  "Confirm eligibility: laid off, or unemployed 12+ weeks in a low-income household; Ontario resident; citizen or PR",
+  "Research an in-demand job and an approved training program with your provider",
+  "Submit the application package with your provider and wait for a decision"
+ ],
+ "timeToFirstEarnings": "months",
+ "horizon": "career",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [],
+ "fitsIf": "You live in Ontario, were laid off (or have been unemployed 12+ weeks in a low-income household) and want funded training for a new occupation.",
+ "notFitIf": "You need wages right away, would have to quit a current job to train, or are not a citizen or permanent resident.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://ontario.ca/betterjobsontario",
+   "title": "Better Jobs Ontario",
+   "type": "official",
+   "publisher": "Government of Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "pay",
+    "canada_eligibility"
+   ],
+   "notes": "Search-result summary only (fetch blocked). Eligibility: laid off and not working / in temporary job, or not laid off but unemployed 12+ weeks in low-income household; up to $28,000/$35,000; living allowance up to $500/week; apply via EO provider.",
+   "accessible": false
+  },
+  {
+   "url": "https://eopg.labour.gov.on.ca/en/updates-to-the-better-jobs-ontario-guidelines/",
+   "title": "Updates to the Better Jobs Ontario guidelines",
+   "type": "government",
+   "publisher": "Ontario Employment Ontario Partners' Gateway",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "pay"
+   ],
+   "notes": "Search summary: revised guidelines effective January 27, 2026; $500/week living allowance plus $45/week transportation, capped at a moderate standard of living.",
+   "accessible": false
+  },
+  {
+   "url": "https://eopg.labour.gov.on.ca/wp-content/uploads/2026/01/bjo-program-guidelines-en-2.pdf",
+   "title": "Better Jobs Ontario program guidelines (January 2026)",
+   "type": "government",
+   "publisher": "Government of Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "canada_eligibility"
+   ],
+   "notes": "Guidelines PDF seen in results; summary attributes residency and citizen/PR requirements to program guidelines (exact version not confirmed).",
+   "accessible": false
+  },
+  {
+   "url": "https://lambtoncollege.ca/training-career-advancement/employees-job-seekers/better-jobs-ontario",
+   "title": "Better Jobs Ontario - Lambton College",
+   "type": "independent_review",
+   "publisher": "Lambton College",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "risk"
+   ],
+   "notes": "College guidance (third party): authorization-to-quit form; August 2025 change limits ineligibility to those who quit under 12 months ago; accreditation rule for regulated jobs.",
+   "accessible": false
+  },
+  {
+   "url": "https://georgebrown.ca/media/better-jobs-ontario-passport-document-2024",
+   "title": "Better Jobs Ontario passport document 2024",
+   "type": "independent_review",
+   "publisher": "George Brown College",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "risk"
+   ],
+   "notes": "College document (2024): 10-step process can take several months; start early.",
+   "accessible": false
+  }
+ ],
+ "audience": [
+  "People in Ontario who were laid off or have been unemployed for a long stretch"
+ ]
+}

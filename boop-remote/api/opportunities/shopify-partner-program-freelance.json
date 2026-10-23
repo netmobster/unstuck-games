@@ -1,0 +1,203 @@
+{
+ "id": "shopify-partner-program-freelance",
+ "name": "Shopify Partner Program (freelance store setup & referrals)",
+ "organization": "Shopify",
+ "type": "freelance",
+ "category": "tech_digital",
+ "tags": [
+  "ecommerce",
+  "shopify",
+  "store-setup",
+  "product-listings",
+  "referral-revenue",
+  "find-your-own-clients"
+ ],
+ "summary": "A free program for freelancers and agencies who build or manage Shopify stores for clients, which pays a recurring revenue share while referred merchants stay on paid plans.",
+ "whatYouDo": "You set up and customize Shopify stores for your own clients (products, listings, themes, settings) using free development stores, then transfer them to the client. You earn mainly what you charge clients, plus Shopify's share of the subscription fees of merchants you refer.",
+ "appeal": [
+  "Free to join, with unlimited development stores for practice and client builds",
+  "Shopify says partners earn a 20% recurring revenue share on referred merchants' subscriptions",
+  "Shopify's help centre says a Canadian partner paid in CAD may be able to use PayPal or a bank account",
+  "Payouts are made twice a month once the balance passes 25 USD"
+ ],
+ "watchOuts": [
+  "Shopify does not give you clients or work; you must find and bill your own clients",
+  "Joining does not list you as a Shopify expert: the Partner Directory is limited to higher tiers (Plus and above) and a limited number of Registered-tier partners",
+  "Recurring revenue share continues only if you stay active at least once every 12 months",
+  "Sources conflict on payout currency: one Shopify FAQ says payments are in USD, while the payout pages describe CAD options",
+  "You are self-employed: no benefits, and GST/HST registration is required once taxable revenue passes $30,000 in a quarter or over four consecutive quarters"
+ ],
+ "officialUrl": "https://www.shopify.com/shopifypartnersvap",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 3,
+  "writing": 2,
+  "numeracy": 1,
+  "detail": 2,
+  "customer": 2,
+  "technical": 2,
+  "creative": 2,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "unknown",
+  "notes": "Not checked. Development stores let you practise without a time limit."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "official",
+  "notes": "Shopify states a 20% recurring revenue share on referred merchants' subscription fees (search summary). Client fees are whatever you charge. No earnings data for typical partners was found; a vendor blog's claim about total partner payouts was not used."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Income depends entirely on finding clients and on referred merchants staying on paid plans."
+ },
+ "workerStatus": "contractor",
+ "fees": "Free to join, according to Shopify. No partner fees were found; payout-method limits apply.",
+ "applicationSteps": [
+  "Create a free Shopify Partner account from Shopify's partner page",
+  "Practise on a development store and build one or two sample stores for a portfolio",
+  "Find clients yourself (local shops, referrals, freelance marketplaces) and agree fees in writing",
+  "Set your payout method in the Partner Dashboard and check which currencies your country allows"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You know Shopify, or will learn it, and can find your own small-business clients.",
+ "notFitIf": "You need an employer to hand you steady paid work.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.shopify.com/shopifypartnersvap",
+   "title": "Become a Shopify partner and earn revenue",
+   "type": "official",
+   "publisher": "Shopify",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements"
+   ],
+   "notes": "Search-summary only (fetch blocked). Free to join; partners get new clients and earn a 20% revenue share; unlimited development stores instead of a 14-day trial.",
+   "accessible": false
+  },
+  {
+   "url": "https://help.shopify.com/en/partners/manage-account/manage-payouts-invoices/payout-method",
+   "title": "Shopify Help Center - Payout method",
+   "type": "official",
+   "publisher": "Shopify",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "pay"
+   ],
+   "notes": "Search-summary only. Payout options (PayPal, bank account, wire) depend on country and currency. A Canadian partner receiving CAD may have PayPal and bank-account options. Payouts go out twice a month once the balance exceeds 25 USD; the account must be a real bank account, not a virtual one.",
+   "accessible": false
+  },
+  {
+   "url": "https://help.shopify.com/en/partners/help-support/faq/earnings",
+   "title": "Shopify Help Center - Earnings FAQ",
+   "type": "official",
+   "publisher": "Shopify",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search-summary only. Says payments are made in USD, which conflicts with the payout-method page's CAD example.",
+   "accessible": false
+  },
+  {
+   "url": "https://help.shopify.com/partners/glossary",
+   "title": "Shopify Partners glossary",
+   "type": "official",
+   "publisher": "Shopify",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "reliability"
+   ],
+   "notes": "Search-summary only. Recurring payments from earlier referrals continue only if the partner stays active at least once within each 12 months.",
+   "accessible": false
+  },
+  {
+   "url": "https://help.shopify.com/en/partners/directory/join",
+   "title": "Eligibility for the Shopify Partner Directory",
+   "type": "official",
+   "publisher": "Shopify",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search-summary only. Plus, Premier and Platinum tier partners are invited to the directory; a limited number of Registered-tier partners are eligible. A Shopify community reply gave a different threshold (Select tier), so the rules may have changed.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/when-register-charge.html",
+   "title": "When to register for and start charging the GST/HST - Canada.ca",
+   "type": "government",
+   "publisher": "Canada Revenue Agency",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search-summary only. GST/HST registration is required once taxable supplies exceed $30,000 in a calendar quarter or over four consecutive quarters.",
+   "accessible": false
+  }
+ ]
+}

@@ -1,0 +1,166 @@
+{
+ "id": "apple-at-home-advisor-canada",
+ "name": "AppleCare At Home Advisor (Canada)",
+ "organization": "Apple",
+ "type": "employment",
+ "category": "customer_ops",
+ "tags": [
+  "applecare",
+  "technical-support",
+  "not-open",
+  "scam-impersonation"
+ ],
+ "summary": "Apple's At Home Advisor remote support role has had Canadian postings in the past, but none were found open in Canada now.",
+ "whatYouDo": "At Home Advisors troubleshoot Apple devices and services for customers from home, working independently without in-person supervision (per Apple's FAQ for another country).",
+ "appeal": [
+  "Apple's FAQ (Singapore) says At Home Advisors are Apple employees, part- or full-time",
+  "Well-known employer if a Canadian posting reappears"
+ ],
+ "watchOuts": [
+  "Canadian French AHA posting and College Program AHA posting both show as no longer available",
+  "Current Canadian AppleCare listings seen are retail-channel roles (Calgary/Winnipeg, 25 h/week), not at-home",
+  "An older Apple Community thread reports being told there was no at-home program in Canada",
+  "Unofficial look-alike pages on unrelated domains advertise 'Apple Home Advisor Canada' jobs; apply only via jobs.apple.com"
+ ],
+ "officialUrl": "https://www.apple.com/careers/ca/teams/support-and-service.html",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "unclear",
+  "setting": "remote"
+ },
+ "languages": [],
+ "requirements": {
+  "experience": "unknown",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "unknown",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [],
+  "realtime": "unknown",
+  "phone": null
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 3,
+  "technical": 2,
+  "creative": 0,
+  "language": 0
+ },
+ "training": {
+  "required": null,
+  "cost": "unknown",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "No Canadian pay data found."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "No open Canadian posting found."
+ },
+ "workerStatus": "unknown",
+ "fees": null,
+ "applicationSteps": [
+  "Periodically search jobs.apple.com (Canada) for 'At Home Advisor' or AppleCare",
+  "Ignore offers from other sites or messaging apps claiming to hire for Apple"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "not_currently_open",
+ "legitimacy": "established",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "scam_impersonation"
+ ],
+ "fitsIf": "You want to watch for a future Apple remote support opening in Canada.",
+ "notFitIf": "You need remote work now.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://jobs.apple.com/fr-fr/details/200000066/applecare-customer-relations-at-home-advisor-canadian-french",
+   "title": "AppleCare Customer Relations At Home Advisor - Canadian French",
+   "type": "official",
+   "publisher": "Apple",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status",
+    "canada_eligibility"
+   ],
+   "notes": "Search-summary only (fetch failed). Page says the position no longer exists or is unavailable.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.apple.com/en-ca/details/200493335/apple-support-college-program-at-home-advisor",
+   "title": "Apple Support College Program At Home Advisor",
+   "type": "official",
+   "publisher": "Apple",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status"
+   ],
+   "notes": "Search-summary only. Canadian-site posting shows as no longer available; page ~1,168 days old.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.apple.com/en-ca/search?product=applecare-APPAC",
+   "title": "Search Jobs - AppleCare - Jobs at Apple (CA)",
+   "type": "official",
+   "publisher": "Apple",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status"
+   ],
+   "notes": "Search-summary only. Canadian AppleCare listings seen were retail-channel Advisor roles (Calgary, Winnipeg; 25 h/wk; dated 2026-08-11); no At Home Advisor.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.apple.com/careers/sg/aha/advisor_pro_faq.html",
+   "title": "Apple At Home Advisor - FAQ (SG)",
+   "type": "official",
+   "publisher": "Apple",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "worker_status"
+   ],
+   "notes": "Search-summary only; Singapore, not Canada. AHAs are Apple employees (part/full time); work independently from home.",
+   "accessible": false
+  },
+  {
+   "url": "https://discussions.apple.com/thread/250483225",
+   "title": "At Home Adviser (Apple Community)",
+   "type": "forum",
+   "publisher": "Apple Community",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Anecdotal, older thread. Applicant reports either no openings or no at-home program in Canada.",
+   "accessible": false
+  }
+ ]
+}

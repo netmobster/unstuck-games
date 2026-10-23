@@ -1,0 +1,214 @@
+{
+ "id": "test-io-crowdtester",
+ "name": "Freelance bug-hunting tester (Test IO)",
+ "organization": "Test IO",
+ "type": "task_platform",
+ "category": "tech_digital",
+ "tags": [
+  "software-testing",
+  "exploratory-testing",
+  "bug-bounty",
+  "crowdtesting",
+  "per-bug"
+ ],
+ "summary": "Free crowdtesting platform that pays testers per accepted bug or test for exploratory testing of apps and websites.",
+ "whatYouDo": "You join test cycles, explore a client's app or website, and report bugs with clear reproduction steps; team leads review and accept or reject them. Pay is per accepted bug or completed test.",
+ "appeal": [
+  "Free to register; official scam warning says testers never pay to join",
+  "Beginners praise the onboarding and training",
+  "Monthly payment to a bank account or PayPal",
+  "Good way to learn exploratory testing"
+ ],
+ "watchOuts": [
+  "Paid only for accepted bugs; reviewers describe inconsistent or biased team-lead decisions",
+  "Low-tier testers report few paid cases and low earnings for the hours spent",
+  "Canada not named explicitly; the community claims testers in 190+ countries and some tests are country-restricted",
+  "Scammers impersonate the brand"
+ ],
+ "officialUrl": "https://test.io/company/become-a-tester",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "unclear",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "smartphone"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 3,
+  "writing": 2,
+  "numeracy": 0,
+  "detail": 3,
+  "customer": 0,
+  "technical": 2,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "free",
+  "notes": "Tester Academy materials; reviewers describe onboarding as useful."
+ },
+ "compensation": {
+  "min": null,
+  "max": 50,
+  "currency": "USD",
+  "unit": "task",
+  "basis": "official",
+  "notes": "Official tester page: most valuable bugs pay up to $50; some special tests pay more (a community listing mentions up to $200). Paid monthly."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "G2/Trustpilot reviewers say basic-level testers get few cases; Trustpilot averages about 3.5/5 over ~200 reviews. Anecdotal."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Register free as a tester on Test IO",
+  "Complete onboarding/Academy material",
+  "Add a bank account or PayPal for monthly payment",
+  "Join available test cycles and submit bug reports"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "likely",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "variable_work",
+  "contractor_no_benefits",
+  "scam_impersonation"
+ ],
+ "fitsIf": "You enjoy hunting for bugs, write clear reports, and see it as paid practice for a QA career.",
+ "notFitIf": "You dislike having work rejected without pay or need steady earnings.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://test.io/company/become-a-tester",
+   "title": "Become a Tester",
+   "type": "official",
+   "publisher": "Test IO",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements"
+   ],
+   "notes": "No fee to register; bank account or PayPal; monthly payment; bugs up to $50; contact testersupport@test.io. Direct fetch blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://test.io/scam-and-fraud-warning",
+   "title": "Scam & Fraud Warning",
+   "type": "official",
+   "publisher": "Test IO",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "legitimacy"
+   ],
+   "notes": "Testers will never be asked to pay to join; links official sign-up.",
+   "accessible": false
+  },
+  {
+   "url": "https://community.test.io/",
+   "title": "Test IO Community - Join Global Testing Professionals",
+   "type": "official",
+   "publisher": "Test IO",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Claims testers in 190+ countries; does not say which countries can be paid.",
+   "accessible": false
+  },
+  {
+   "url": "https://test.io/policies-testers",
+   "title": "Policies for Testers",
+   "type": "official",
+   "publisher": "Test IO",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "worker_status"
+   ],
+   "notes": "Tester terms; content not captured.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.trustpilot.com/review/test.io?page=4",
+   "title": "Test IO reviews",
+   "type": "aggregator",
+   "publisher": "Trustpilot",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "legitimacy"
+   ],
+   "notes": "About 3.5/5 over ~200 reviews; complaints about biased/rude team leads; praise for training. Anecdotal.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.g2.com/products/test-io",
+   "title": "Test IO Reviews",
+   "type": "aggregator",
+   "publisher": "G2",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Reviewer: hard to earn as a basic-badge tester due to few cases.",
+   "accessible": false
+  },
+  {
+   "url": "https://club.ministryoftesting.com/t/im-evgeniya-reaching-out-to-you-from-test-io/30370",
+   "title": "I'm Evgeniya - reaching out to you from test IO",
+   "type": "forum",
+   "publisher": "Ministry of Testing",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Forum reply flags paying only for accepted bugs and poor acceptance criteria as red flags. Anecdote.",
+   "accessible": false
+  }
+ ]
+}

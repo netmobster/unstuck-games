@@ -1,0 +1,243 @@
+{
+ "id": "spreadsheet-data-cleanup-freelancing-category",
+ "name": "Spreadsheet & data clean-up freelancing (category)",
+ "organization": "Various",
+ "type": "category",
+ "category": "freelance_microbusiness",
+ "tags": [
+  "data-entry",
+  "spreadsheets",
+  "excel",
+  "data-cleanup",
+  "freelance",
+  "text-only"
+ ],
+ "summary": "Freelance work tidying, entering and organizing business data in spreadsheets: removing duplicates, fixing formats, building simple formulas and reports.",
+ "whatYouDo": "You take messy customer lists, inventory sheets or exported records and clean them: removing duplicates, standardizing names and dates, splitting or merging columns, and entering missing data from source documents. More skilled freelancers add formulas, pivot tables and simple dashboards.",
+ "appeal": [
+  "Quiet, independent, text-only work with no calls",
+  "You can start small with fixed-price projects",
+  "Spreadsheet skills pay more than plain data entry: Upwork's median is about $20/hr for Excel experts versus $13/hr for data entry (currency not stated)",
+  "Job Bank lists a national median of about $23.50/hr for employed data entry clerks"
+ ],
+ "watchOuts": [
+  "Job Bank rates Ontario's 2025–2027 outlook for data entry clerks as Limited because employment is declining",
+  "Job Bank notes AI tools such as OCR and robotic process automation are automating data entry tasks",
+  "Global freelance competition keeps plain data-entry rates low (Upwork typical $10–$20/hr; currency not stated)",
+  "Remote data-entry employee jobs are rare: a remote search for Canada on Indeed (2026-10-13) returned mostly on-site postings",
+  "'Data entry clerk' is a classic scam title: fake employers send cheques to deposit and forward, or recruit you as a 'payment processor'. Never move money for an employer"
+ ],
+ "officialUrl": "https://www.jobbank.gc.ca/marketreport/summary-occupation/19213/ca",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 2,
+  "detail": 3,
+  "customer": 1,
+  "technical": 1,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "unknown",
+  "notes": "No training route was checked. Learning lookups, pivot tables and clean-up functions is what separates this from low-paid typing work."
+ },
+ "compensation": {
+  "min": 10,
+  "max": 30,
+  "currency": "unstated",
+  "unit": "hour",
+  "basis": "aggregator",
+  "notes": "Upwork's own rate pages (search summary): data entry specialists median $13/hr (typically $10–$20); Excel experts median $20/hr (typically $12–$30). Currency not stated. For comparison, Job Bank shows employed data entry clerks (NOC 14111) at a national median of about $23.50/hr CAD (low $17.00, high $32.60; 2023–2024 LFS)."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Freelance clean-up work is project-based. Employee data-entry demand is shrinking in Ontario, according to Job Bank."
+ },
+ "workerStatus": "contractor",
+ "fees": "Freelance marketplaces such as Upwork charge service fees (see those platforms' own records).",
+ "applicationSteps": [
+  "Build skills beyond typing: clean-up functions, lookups, pivot tables and basic charts",
+  "Make two or three before-and-after sample sheets using made-up data",
+  "Offer fixed-price clean-up jobs to local businesses or on established freelance marketplaces",
+  "Never accept a 'data entry' job that sends you a cheque or asks you to move money"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "scam_impersonation",
+  "variable_work",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You enjoy careful, quiet detail work and are willing to learn spreadsheet skills beyond basic typing.",
+ "notFitIf": "You are looking for an easy work-from-home typing job with steady hours.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/summary-occupation/19213/ca",
+   "title": "Data Input Clerk in Canada",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "reliability"
+   ],
+   "notes": "Search-summary only. NOC 14111, Canada: low $17.00, median $23.50, high $32.60/hr (2023–2024 LFS). Prospects vary by province or territory.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/19213/ON",
+   "title": "Data Input Clerk in Ontario",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Search-summary only. Outlook is Limited for 2025–2027: employment decline will remove some positions, retirements open others, and there is a moderate pool of unemployed experienced workers. Updated 2025-12-10. Toronto is also Limited and Ottawa Very limited.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/19213/geo25418",
+   "title": "Data Input Clerk in the Banff–Jasper–Rocky Mountain House Region",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "reliability"
+   ],
+   "notes": "Search-summary only. Key trends include AI automating data entry through OCR and robotic process automation.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.upwork.com/hire/data-entry-specialists/cost/",
+   "title": "Data Entry Specialist Hourly Rates",
+   "type": "official",
+   "publisher": "Upwork",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search-summary only. Median $13/hr; typically $10–$20/hr; suggests $50–$300 per project for basic data entry. Currency not stated in the summary.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.upwork.com/hire/microsoft-excel-experts/cost/",
+   "title": "Excel Expert Hourly Rates",
+   "type": "official",
+   "publisher": "Upwork",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search-summary only. Median $20/hr; typically $12–$30/hr; dashboard projects quoted at $500–$2,000. Currency not stated in the summary.",
+   "accessible": false
+  },
+  {
+   "url": "https://infosec.yorku.ca/2023/04/job-scam-alert-data-entry-clerk",
+   "title": "Job Scam Alert - Data Entry Clerk",
+   "type": "independent_review",
+   "publisher": "York University Information Security",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Search-summary only (the URL suggests April 2023). A university security team warns about a fake 'Data Entry Clerk' job offer.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.fcnb.ca/en/news-alerts/cafc-bulletin-job-scams",
+   "title": "CAFC bulletin: job scams",
+   "type": "government",
+   "publisher": "Financial and Consumer Services Commission (NB)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Search-summary only. Fraudsters recruit 'payment processors' through classifieds and email, have victims receive money into their own bank accounts and forward it, and use cheques that later prove invalid.",
+   "accessible": false
+  },
+  {
+   "url": "https://antifraudcentre-centreantifraude.ca/scams-fraudes/job-emploi-eng.htm",
+   "title": "Job",
+   "type": "government",
+   "publisher": "Canadian Anti-Fraud Centre",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Search-summary only. CAFC job-scam page (counterfeit cheques, money mules, task-based crypto scams).",
+   "accessible": false
+  },
+  {
+   "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/when-register-charge.html",
+   "title": "When to register for and start charging the GST/HST - Canada.ca",
+   "type": "government",
+   "publisher": "Canada Revenue Agency",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search-summary only. GST/HST registration is required once taxable supplies exceed $30,000 in a calendar quarter or over four consecutive quarters.",
+   "accessible": false
+  }
+ ]
+}

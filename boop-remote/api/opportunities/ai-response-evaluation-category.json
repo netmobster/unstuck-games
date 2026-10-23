@@ -1,0 +1,168 @@
+{
+ "id": "ai-response-evaluation-category",
+ "name": "AI response evaluation and rating (category)",
+ "organization": "Various",
+ "type": "category",
+ "category": "ai_data",
+ "tags": [
+  "ai-training",
+  "rlhf",
+  "response-rating",
+  "search-rating",
+  "gig-work"
+ ],
+ "summary": "Remote gig work rating, ranking and rewriting chatbot or search outputs so AI companies can improve their models.",
+ "whatYouDo": "Typical tasks include reading two AI answers and choosing which better follows instructions, rewriting a weak answer, or rating search and content results against long guidelines. Work comes in project batches through platforms or vendors and is paid per hour or per task.",
+ "appeal": [
+  "Fully remote with flexible hours on most platforms",
+  "Several platforms and vendors recruit Canada residents specifically",
+  "Strong writers and subject experts can earn well above minimum wage on some projects",
+  "Low barrier to try: most platforms are free to join"
+ ],
+ "watchOuts": [
+  "Journalism describes the work as often underpaid, sporadic and precarious, with no benefits",
+  "Hours are rarely guaranteed and projects can end without notice",
+  "Screening tests and onboarding are often unpaid",
+  "Fake job offers imitate real platforms; legitimate ones do not charge you to join",
+  "Pay is usually quoted in US dollars and you are typically an independent contractor"
+ ],
+ "officialUrl": null,
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 2,
+  "numeracy": 1,
+  "detail": 3,
+  "customer": 0,
+  "technical": 1,
+  "creative": 1,
+  "language": 2
+ },
+ "training": {
+  "required": true,
+  "cost": "unknown",
+  "notes": "Platforms typically require guideline study and qualification tests."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": "hour",
+  "basis": "unknown",
+  "notes": "Varies widely. Records in this file range from ~US$13.50/hr (TELUS est.) to US$50–70/hr (Mercor generalist) and more for specialists; the Globe and Mail profiled a rater at ~US$14/hr."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Globe and Mail (2023) interviews describe sporadic, per-task work; 2026 blogs describe project cuts and empty queues."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Shortlist legitimate platforms that accept Canada residents",
+  "Apply and complete the qualification test(s)",
+  "Set up a payout account (often PayPal or similar)",
+  "Keep more than one platform active because tasks come and go"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "contractor_no_benefits",
+  "unpaid_assessment",
+  "account_deactivation_reports",
+  "scam_impersonation"
+ ],
+ "fitsIf": "You read carefully, write well, and want flexible remote side income you can scale up or down.",
+ "notFitIf": "You need stable hours, benefits, or a predictable paycheque.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.theglobeandmail.com/business/article-ai-data-gig-workers/",
+   "title": "Meet the gig workers making AI machines more accurate, capable and powerful",
+   "type": "journalism",
+   "publisher": "The Globe and Mail",
+   "published": "2023-09-16",
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "reliability",
+    "risk"
+   ],
+   "notes": "Interviews with 20 gig workers: work is often low-paid, sporadic and per-task; a rater earned ~US$14/hr without benefits. Dated (2023).",
+   "accessible": false
+  },
+  {
+   "url": "https://www.remoteworkunion.com/blog/canada-ai-training-jobs-legit-remote-ai-work",
+   "title": "canada ai training jobs legit remote ai work",
+   "type": "independent_review",
+   "publisher": "Remote Work Union",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "risk"
+   ],
+   "notes": "Canada-focused guide: typical tasks (comparing two chatbot answers, rewriting weak ones) and advice on avoiding scams. Blog.",
+   "accessible": false
+  },
+  {
+   "url": "https://techcrunch.com/2025/01/09/scale-ai-hit-by-its-second-employee-wage-lawsuit-in-less-than-a-month",
+   "title": "Scale AI hit by its second employee wage lawsuit in less than a month",
+   "type": "journalism",
+   "publisher": "TechCrunch",
+   "published": "2025-01-09",
+   "accessed": "2026-10-13",
+   "claims": [
+    "worker_status",
+    "risk"
+   ],
+   "notes": "Illustrates industry disputes over contractor classification and unpaid training time for AI raters (California).",
+   "accessible": false
+  }
+ ]
+}

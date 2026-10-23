@@ -1,0 +1,240 @@
+{
+ "id": "utest-applause-crowdtester",
+ "name": "Freelance crowd software tester (uTest / Applause)",
+ "organization": "uTest (Applause)",
+ "type": "task_platform",
+ "category": "tech_digital",
+ "tags": [
+  "software-testing",
+  "bug-reporting",
+  "crowdtesting",
+  "qa",
+  "per-task"
+ ],
+ "summary": "Free-to-join tester community where you accept paid invitations to find bugs and run test cases on clients' apps and websites.",
+ "whatYouDo": "After building a profile with your devices and finishing an introductory Sandbox/Academy cycle, you receive invitations matched to your profile. You test apps or sites, report bugs or run test cases, and are paid once the client approves your work.",
+ "appeal": [
+  "Free to sign up; run by established testing company Applause",
+  "Payout is shown before you accept an invitation",
+  "Paid twice a month (15th and month-end) via PayPal or Payoneer",
+  "Builds hands-on QA skills that can lead to software-testing jobs"
+ ],
+ "watchOuts": [
+  "Many testers report few or no paid invitations, especially at first; invitations depend on rating, devices and country",
+  "Academy practice cycles are unpaid",
+  "You are paid only for approved bugs/tasks; rejected work earns nothing",
+  "Canada eligibility not stated on an official page we could see"
+ ],
+ "officialUrl": "https://www.utest.com/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "smartphone"
+  ],
+  "minAge": null,
+  "assessment": "unpaid_test"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 3,
+  "writing": 2,
+  "numeracy": 0,
+  "detail": 3,
+  "customer": 0,
+  "technical": 2,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": true,
+  "cost": "free",
+  "notes": "Introductory Sandbox class and uTest Academy courses; practice cycles are unpaid."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": "task",
+  "basis": "unknown",
+  "notes": "Pay per approved bug, test case or project; amount shown per invitation. A review blog cites ~$3–100 per approved bug by severity (unverified)."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "r/UTEST threads (2023–2025) report few invitations even after Academy work; a 2026 review says projects are not guaranteed."
+ },
+ "workerStatus": "unknown",
+ "fees": null,
+ "applicationSteps": [
+  "Create a free uTest profile listing your devices",
+  "Complete the Sandbox/Academy introductory cycle",
+  "Link a PayPal or Payoneer account",
+  "Accept paid invitations as they arrive"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "waitlist_or_no_work_guarantee",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "unpaid_assessment"
+ ],
+ "fitsIf": "You are detail-oriented, own several devices, and want to learn software testing while earning occasionally.",
+ "notFitIf": "You need predictable income soon.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.utest.com/",
+   "title": "uTest - The Professional Network for Testers",
+   "type": "official",
+   "publisher": "uTest",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy"
+   ],
+   "notes": "Official homepage. Direct fetch blocked in sandbox.",
+   "accessible": false
+  },
+  {
+   "url": "https://support.utest.com/csp?id=kb_article_view&sysparm_article=KB0010032",
+   "title": "Tester Service - How can I earn money on uTest? - Tester Support",
+   "type": "official",
+   "publisher": "uTest",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Testers choose invitations, see payout first, and earn when completed tasks are approved.",
+   "accessible": false
+  },
+  {
+   "url": "https://support.utest.com/csp?id=kb_article_view&sysparm_article=KB0010033",
+   "title": "Tester Service - When will I receive my money? - Tester Support",
+   "type": "official",
+   "publisher": "uTest",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Paid twice monthly, on the 15th and last day of the month.",
+   "accessible": false
+  },
+  {
+   "url": "https://support.utest.com/csp?id=kb_article_view&sysparm_article=KB0010036",
+   "title": "Tester Service - What do I need to do to get paid? - Tester Support",
+   "type": "official",
+   "publisher": "uTest",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Must link a Payoneer or PayPal account (snippet truncated).",
+   "accessible": false
+  },
+  {
+   "url": "https://www.applause.com/blog/work-from-home-with-utest/",
+   "title": "Earn Money While Working From Home With uTest",
+   "type": "official",
+   "publisher": "Applause",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "legitimacy"
+   ],
+   "notes": "Applause blog: signing up to uTest is free. Possibly dated.",
+   "accessible": false
+  },
+  {
+   "url": "https://paidfromsurveys.com/utest-review",
+   "title": "uTest Review – Legit or Scam? (Full Details + Rating)",
+   "type": "independent_review",
+   "publisher": "PaidFromSurveys",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "pay"
+   ],
+   "notes": "Says uTest accepts testers from almost every country; $2 minimum per pay period; bug payouts roughly $3–100. Unverified.",
+   "accessible": false
+  },
+  {
+   "url": "https://reddit.birdcat.cafe/r/UTEST/comments/1in63vz/almost_giving_up_on_utest",
+   "title": "r/UTEST – Almost giving up on uTest",
+   "type": "forum",
+   "publisher": "Reddit (third-party mirror)",
+   "published": "2025-02-11",
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Anecdote: Silver-rated tester got only a few paid invitations after Academy work; moderator notes practice cycles are unpaid.",
+   "accessible": false
+  },
+  {
+   "url": "https://lr.in.psf.lt/r/UTEST/comments/17js9qm/is_this_normal",
+   "title": "r/UTEST – Is this normal",
+   "type": "forum",
+   "publisher": "Reddit (third-party mirror)",
+   "published": "2023-10-30",
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "canada_eligibility"
+   ],
+   "notes": "Anecdote: moderator says invitations depend heavily on country. Dated.",
+   "accessible": false
+  },
+  {
+   "url": "https://selfmadesuccess.com/utest-review/",
+   "title": "uTest review",
+   "type": "independent_review",
+   "publisher": "SelfMadeSuccess",
+   "published": "2026-08-24",
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy",
+    "reliability"
+   ],
+   "notes": "Legitimate with a good reputation; projects not guaranteed and earnings hard to predict.",
+   "accessible": false
+  }
+ ]
+}

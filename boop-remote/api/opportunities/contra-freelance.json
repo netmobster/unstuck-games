@@ -1,0 +1,187 @@
+{
+ "id": "contra-freelance",
+ "name": "Commission-free freelance portfolio and payments (Contra)",
+ "organization": "Contra",
+ "type": "freelance",
+ "category": "freelance_microbusiness",
+ "tags": [
+  "freelance",
+  "portfolio",
+  "commission-free",
+  "design",
+  "invoicing"
+ ],
+ "summary": "Show a portfolio, find or bring your own clients, and get paid without Contra taking a commission from your earnings.",
+ "whatYouDo": "You build a portfolio profile, apply to opportunities or invite your own clients, and handle proposals, contracts and invoices through Contra. Clients pay through the platform, and you withdraw to a payout method such as PayPal or Payoneer.",
+ "appeal": [
+  "No commission on freelancer earnings (Contra has been commission-free since 2021)",
+  "Handy for invoicing clients you find yourself",
+  "Portfolio-centred profiles suit designers and other creatives",
+  "Most payouts arrive within minutes (Contra help)"
+ ],
+ "watchOuts": [
+  "Clients pay platform fees ($29 per one-off invoice or contract, or $29/month for ongoing projects) unless you have Contra Pro, which may put some clients off",
+  "Payout fees: 2% to PayPal, or a flat $3 to Payoneer plus Payoneer's own charges",
+  "Third-party sources say Contra Pro costs about $29/month and some features need it",
+  "It's not mainly a job board, so you still have to find clients",
+  "Payout options for Canada weren't confirmed in this check"
+ ],
+ "officialUrl": "https://contra.com/commission-free",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "unclear",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "video",
+   "independent"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 2,
+  "technical": 1,
+  "creative": 2,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "You set your rates, and no earnings data was found. Contra takes no commission, but payout and client-side fees apply."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "No data on how much work new freelancers find on Contra."
+ },
+ "workerStatus": "contractor",
+ "fees": "No commission on freelancer earnings. Clients pay $29 per one-off invoice or contract, or $29/month per ongoing project (waived on invoices from Contra Pro members). Payouts cost 2% to PayPal or $3 to Payoneer. Contra Pro is about $29/month (third-party figure).",
+ "applicationSteps": [
+  "Create a Contra profile and add portfolio projects",
+  "Find opportunities or invite your existing clients",
+  "Send proposals, contracts or invoices through Contra",
+  "Withdraw payments to an available payout method (check what's offered in Canada)"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "likely",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "fees",
+  "variable_work",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You already have, or can find, clients, especially for design or creative work, and want to avoid marketplace commissions.",
+ "notFitIf": "You need a platform to bring you steady work, or your clients won't accept platform fees.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://contra.com/commission-free",
+   "title": "Get paid for freelancing commission-free",
+   "type": "official",
+   "publisher": "Contra",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary: Contra markets freelancing with no commission on earnings. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://client-help.contra.com/en/articles/9708235-understanding-contra-s-fees-as-a-client",
+   "title": "Understanding Contra's fees as a client",
+   "type": "official",
+   "publisher": "Contra",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary: clients pay $29 per one-off invoice (waived on invoices from Contra Pro members) and $29 per contract or $29/month per ongoing project. An older Contra page showed $19. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://client-help.contra.com/en/articles/9708244-payout-options-for-contractors",
+   "title": "Payout options for contractors",
+   "type": "official",
+   "publisher": "Contra",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary: PayPal payouts cost 2% and Payoneer a flat $3 (plus Payoneer's charges), and most payouts arrive within minutes. It refers to a supported-methods-by-country page, which wasn't retrieved. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://techcrunch.com/2021/11/02/independent-worker-network-contra-goes-commission-free-as-it-secures-new-nea-led-capital",
+   "title": "Independent worker network Contra goes commission-free as it secures new NEA-led capital",
+   "type": "journalism",
+   "publisher": "TechCrunch",
+   "published": "2021-11-02",
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy",
+    "pay"
+   ],
+   "notes": "Reports Contra's 2021 switch to letting freelancers be paid without commission, alongside venture funding.",
+   "accessible": false
+  },
+  {
+   "url": "https://toolradar.com/tools/contra/pricing",
+   "title": "Contra pricing (Toolradar)",
+   "type": "aggregator",
+   "publisher": "Toolradar",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Third-party pricing summary (attribution approximate): Contra Pro is about $29/month, and transaction-level fees (processing, conversion, faster payout) may apply. Unverified.",
+   "accessible": false
+  }
+ ]
+}

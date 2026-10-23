@@ -1,0 +1,4516 @@
+[
+ {
+  "id": "better-jobs-ontario",
+  "name": "Better Jobs Ontario (funded retraining for laid-off or long-unemployed people)",
+  "organization": "Government of Ontario - Employment Ontario",
+  "record_type": "government_support",
+  "category": "government_program",
+  "summary": "Ontario grant of up to $28,000 (training of one year or less) or $35,000 (one to two years) covering tuition, books, transportation and an income-tested living allowance of up to $500 a week while an eligible laid-off or long-unemployed person retrains for an in-demand occupation. Applications go through an Employment Ontario provider.",
+  "what_you_do": "With an Employment Ontario service provider you confirm you qualify, research an in-demand occupation and an approved training program, and complete a suitability assessment and application. If the ministry approves it, you attend the training with costs covered up to the caps, then look for work in the new field.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You live in Ontario, were laid off and are not working (or are only in a temporary job to cover costs), or you have been unemployed for a long stretch in a low-income household, and you want funded training for a new occupation.",
+   "You receive EI, Ontario Works or ODSP; ontario.ca says these do not rule you out."
+  ],
+  "who_it_may_not_fit": [
+   "You need income now: the living allowance is income-tested and only starts after approval, and one provider flyer estimates about 6-8 weeks of ministry processing after submission.",
+   "You are not a Canadian citizen or permanent resident (the Employment Ontario program overview lists residency and citizen/PR status).",
+   "You are employed and would have to quit; the program is built around people who were laid off or are unemployed."
+  ],
+  "audience_restriction": [
+   "Ontario residents who were laid off, or who have been unemployed for an extended period in a low-income household"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "partial",
+   "ontario_residents": "likely",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [
+    "Ontario-only program; the Employment Ontario program overview lists Ontario residency and Canadian citizenship or permanent residence as requirements (search summary).",
+    "Unemployment threshold for people who were not laid off: ontario.ca says 12 weeks or longer; the EOPG program overview and some college pages still say six months or longer."
+   ],
+   "work_authorization_notes": "Citizen or permanent resident per the Employment Ontario program overview; wording in the January 2026 guidelines was not read."
+  },
+  "availability_status": "program_open_check_eligibility",
+  "availability_checked_at": "2026-10-13T15:19:40Z",
+  "availability_evidence": [
+   "Program guidelines dated January 27, 2026 are posted on the Employment Ontario Partners' Gateway, and ontario.ca currently lists eligibility, funding caps and the apply-through-a-provider route (search summaries).",
+   "An Employment Ontario provider flyer (ACCES Employment, September 2025) advertises intake and a 6-8 week processing estimate."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://ontario.ca/betterjobsontario",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Laid off and not working (or in a temporary job to cover costs), or unemployed 12+ weeks in a low-income household",
+    "Suitability assessment and an approved training program leading to an in-demand occupation"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "participant",
+   "schedule_type": "fixed",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "no",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "no",
+   "emotional_content_risk": "no",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Funding supports training, not a job; employment after training is not promised."
+   ]
+  },
+  "skill_demands": {
+   "computer": 1,
+   "writing": 1,
+   "numeracy": 1,
+   "detail": 1,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "stipend",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": null,
+    "max": 500,
+    "unit": "other",
+    "note": "Basic living allowance of up to $500 per week during approved training, income-tested; total funding capped at $28,000 (training of one year or less) or $35,000 (over one year, up to two years)."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "other",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "months",
+   "income_predictability": "unknown",
+   "earnings_depend_on": [
+    "program_funding"
+   ],
+   "economics_notes": [
+    "Allowance, not wages; the amount depends on household income."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": [
+    "Training costs above the funding caps, if any (not described in sources seen)"
+   ]
+  },
+  "risks": [
+   "age_or_group_restricted",
+   "funding_uncertain"
+  ],
+  "risk_notes": [
+   "Approval depends on a ministry suitability assessment; the grant is not an entitlement."
+  ],
+  "barriers": [
+   "Multi-step application through a provider; a provider flyer estimates about 6-8 weeks of ministry processing after submission."
+  ],
+  "progression_potential": "high",
+  "horizon": "career",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [
+   "Unemployment threshold for applicants who were not laid off: ontario.ca (search summary) says 12 weeks or longer, while the EOPG program overview and Niagara College say six months or longer."
+  ],
+  "last_researched_at": "2026-10-13T15:36:00Z",
+  "sources": [
+   {
+    "url": "https://ontario.ca/betterjobsontario",
+    "source_type": "official",
+    "publisher": "Government of Ontario",
+    "title": "Better Jobs Ontario",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "ontario_eligibility",
+     "program_eligibility",
+     "funding",
+     "application_route",
+     "availability",
+     "pay"
+    ],
+    "evidence_summary": "Eligibility: laid off and not working or in a temporary job, or not laid off but unemployed 12+ weeks in a low-income household; EI/OW/ODSP recipients can apply; up to $28,000/$35,000; living allowance up to $500/week; apply through an Employment Ontario provider.",
+    "limitations": [
+     "Search snippet only; page not opened."
+    ]
+   },
+   {
+    "url": "https://eopg.labour.gov.on.ca/wp-content/uploads/2026/01/bjo-program-guidelines-en-2.pdf",
+    "source_type": "government",
+    "publisher": "Employment Ontario Partners' Gateway",
+    "title": "Better Jobs Ontario program guidelines (January 27, 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": "2026-01-27",
+    "supports": [
+     "existence",
+     "availability"
+    ],
+    "evidence_summary": "Current guidelines PDF dated January 27, 2026 appeared in results; shows the program is in force in 2026.",
+    "limitations": [
+     "Seen as a result title and date only; the PDF was not opened."
+    ]
+   },
+   {
+    "url": "https://eopg.labour.gov.on.ca/?p=4865",
+    "source_type": "government",
+    "publisher": "Employment Ontario Partners' Gateway",
+    "title": "Better Jobs Ontario - Program Overview",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility",
+     "canadian_eligibility",
+     "ontario_eligibility"
+    ],
+    "evidence_summary": "Lists Ontario residency and citizenship or permanent resident status; states six months or more unemployed for the non-laid-off route.",
+    "limitations": [
+     "Search snippet only; may predate the January 2026 guidelines."
+    ]
+   },
+   {
+    "url": "https://www.niagaracollege.ca/ces/?p=8799",
+    "source_type": "other",
+    "publisher": "Niagara College",
+    "title": "Better Jobs Ontario (Niagara College)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility"
+    ],
+    "evidence_summary": "College summary stating six months or longer unemployed for the low-income route (conflicts with ontario.ca's 12 weeks).",
+    "limitations": [
+     "Third-party college page; search snippet only."
+    ]
+   },
+   {
+    "url": "https://accesemployment.ca/wp-content/uploads/2025/09/Better-Jobs-Ontario_Flyer.pdf",
+    "source_type": "official",
+    "publisher": "ACCES Employment (Employment Ontario provider)",
+    "title": "Better Jobs Ontario flyer (September 2025)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2025-09",
+    "supports": [
+     "application_route",
+     "availability",
+     "work_volume"
+    ],
+    "evidence_summary": "Provider flyer advertising the program; cites approximately 6-8 weeks of ministry processing after an application is submitted.",
+    "limitations": [
+     "Provider estimate, not an official service standard; snippet only."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Negative-evidence query (reddit / denied / rejected / took months) returned only official and provider pages; no first-hand accounts of approvals or refusals were found.",
+   "v1 college sources (Lambton, George Brown) and the EOPG guideline-update page were not re-seen and were dropped."
+  ],
+  "open_questions": [
+   "Which unemployment threshold (12 weeks or six months) the January 2026 guidelines apply for the low-income route.",
+   "Typical approval times and refusal rates."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Core claims re-seen on ontario.ca and the EO Partners' Gateway (January 2026 guidelines); status set to program running; citizenship/PR requirement and the 12-week vs six-month discrepancy recorded; living allowance recorded as an advertised stipend.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "better-jobs-ontario",
+   "v1_name": "Better Jobs Ontario (funded retraining for laid-off or long-unemployed people)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "availability_status: availability_unknown -> program_open_check_eligibility with evidence",
+    "economics: living allowance recorded as advertised stipend (CAD, up to $500/week)",
+    "region_eligibility.canadian_residents: likely -> partial (Ontario-only program)",
+    "Sources replaced: dropped Lambton, George Brown and EOPG update page; added EOPG program overview, Niagara College and ACCES flyer",
+    "Recorded 12-week vs six-month contradiction; added 6-8 week processing estimate"
+   ],
+   "claims_verified": [
+    "Funding caps of $28,000 and $35,000",
+    "Living allowance up to $500/week",
+    "Apply through an Employment Ontario provider",
+    "EI, Ontario Works and ODSP recipients may apply",
+    "Eligibility routes: laid off, or long-unemployed in a low-income household"
+   ],
+   "unresolved_claims": [
+    "$45/week transportation allowance (v1) not re-seen",
+    "Authorization-to-quit rule and 12-month quit window (v1) not re-seen",
+    "Exact citizenship/PR wording in the January 2026 guidelines"
+   ]
+  }
+ },
+ {
+  "id": "canada-summer-jobs",
+  "name": "Canada Summer Jobs (youth summer jobs, ages 15-30)",
+  "organization": "Government of Canada - Employment and Social Development Canada",
+  "record_type": "funded_employment_program",
+  "category": "government_program",
+  "summary": "Federal wage subsidy that funds employers to hire youth aged 15-30 for 6-16 week summer jobs; funded jobs are posted on Job Bank each spring. The 2026 cycle is over and 2027 dates were not announced in sources seen.",
+  "what_you_do": "Employers that receive Canada Summer Jobs funding post their jobs on Job Bank during the youth hiring period (April 20 to July 20 in 2026), and youth apply directly to those employers. Jobs span recreation, food service, marketing, tourism, construction, environmental work and technology and must end by late August.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You are 15-30 and want a summer job next year; up to 100,000 funded jobs were announced for 2026, all listed in one place on Job Bank.",
+   "You want a common first-job route with a wide range of fields."
+  ],
+  "who_it_may_not_fit": [
+   "You need work this autumn or winter: the 2026 youth hiring period ended July 20, 2026 and jobs ended by August 29, 2026.",
+   "You are in Canada on a temporary permit: the Youth Employment and Skills Strategy criteria that cover this program require citizenship, permanent residence or protected-person status."
+  ],
+  "audience_restriction": [
+   "Youth aged 15-30"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Youth must be 15-30 at the start of the job (canada.ca).",
+    "Citizen, permanent resident or protected person per the Youth Employment and Skills Strategy criteria that cover Canada Summer Jobs (canada.ca search summary); the 2026 CSJ backgrounder wording was not re-seen."
+   ],
+   "work_authorization_notes": "Legally entitled to work in Canada; citizen, permanent resident or protected person (YESS umbrella criteria)."
+  },
+  "availability_status": "closed_or_not_open",
+  "availability_checked_at": "2026-10-13T15:19:40Z",
+  "availability_evidence": [
+   "canada.ca lists the 2026 employer application period (November 4 to December 11, 2025) as closed; the applicant guide sets the earliest job start at April 20, 2026 and the latest end at August 29, 2026, and the youth hiring period ran April 20 to July 20, 2026 (search summaries).",
+   "No official 2027 dates were found; a third-party guide expects the employer intake to reopen in late November or December 2026 (unverified)."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.canada.ca/canadasummerjobs",
+  "requirements": {
+   "minimum_age": 15,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "employee",
+   "schedule_type": "varies",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "some",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "competitive",
+   "emotional_content_risk": "unknown",
+   "training_required": "no",
+   "conditions_notes": [
+    "Seasonal: full-time jobs of 6 to 16 consecutive weeks between late April and late August (applicant guide)."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 0,
+   "detail": 1,
+   "customer": 1,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "being_selected",
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Employers set wages per posting. The subsidy reimburses non-profits up to 100% of provincial minimum wage plus mandatory employment costs, and public-sector or private employers with 50 or fewer staff up to 50% (canada.ca search summary)."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "age_or_group_restricted",
+   "no_guaranteed_work",
+   "low_task_volume"
+  ],
+  "risk_notes": [
+   "Only available for a few months each year; you compete for each posting."
+  ],
+  "barriers": [],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:36:00Z",
+  "sources": [
+   {
+    "url": "https://www.canada.ca/canadasummerjobs",
+    "source_type": "official",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Canada Summer Jobs wage subsidy",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "availability",
+     "program_eligibility",
+     "funding",
+     "pay"
+    ],
+    "evidence_summary": "Employer application period November 4 to December 11, 2025 shown as closed; youth aged 15-30; non-profits get up to 100% of minimum wage, small private/public employers up to 50%.",
+    "limitations": [
+     "Search snippet only; page not opened."
+    ]
+   },
+   {
+    "url": "https://www.canada.ca/content/dam/esdc-edsc/documents/services/funding/canada-summer-jobs/canada-summer-jobs-applicant-guide.pdf",
+    "source_type": "official",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Canada Summer Jobs applicant guide",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": null,
+    "supports": [
+     "work_conditions",
+     "availability"
+    ],
+    "evidence_summary": "Jobs must last 6 to 16 consecutive weeks, earliest start April 20, 2026, latest end August 29, 2026.",
+    "limitations": [
+     "Search snippet only; PDF not opened."
+    ]
+   },
+   {
+    "url": "https://www.canada.ca/en/employment-social-development/news/2026/04/canada-summer-jobs-2026-youth-hiring-period-now-open-with-up-to-100000-jobs-available.html",
+    "source_type": "official",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Canada Summer Jobs 2026: Youth hiring period now open, with up to 100,000 jobs available",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": "2026-04",
+    "supports": [
+     "work_volume",
+     "availability"
+    ],
+    "evidence_summary": "April 2026 release: up to 100,000 CSJ openings for people aged 15-30; jobs posted on Job Bank.",
+    "limitations": [
+     "Seen in results for a Youth Employment and Skills Strategy query; snippet only."
+    ]
+   },
+   {
+    "url": "https://www.canada.ca/en/employment-social-development/services/funding/youth-focused-projects/who-can-apply.html",
+    "source_type": "government",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Youth Employment and Skills Strategy Program - Youth Focused Projects - Who can apply",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "canadian_eligibility",
+     "program_eligibility"
+    ],
+    "evidence_summary": "Participants must be 15-30 at the start of the activity, legally entitled to work in Canada, and a citizen, permanent resident or protected person; umbrella criteria for YESS programs including CSJ.",
+    "limitations": [
+     "YESS-wide criteria; CSJ-specific wording not re-seen."
+    ]
+   },
+   {
+    "url": "https://grantcompass.ca/canada-summer-jobs-employer-guide.html",
+    "source_type": "aggregator",
+    "publisher": "GrantCompass",
+    "title": "Canada Summer Jobs employer guide (updated June 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": "2026-06",
+    "supports": [
+     "availability"
+    ],
+    "evidence_summary": "Third-party guide expecting the next employer intake in late November or December 2026; not confirmed by a government source.",
+    "limitations": [
+     "Unofficial estimate."
+    ]
+   }
+  ],
+  "research_notes": [
+   "No negative evidence specific to CSJ was sought beyond official pages; the program's risks are structural (seasonal, competitive)."
+  ],
+  "open_questions": [
+   "2027 employer and youth hiring dates."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "2026 dates and closure re-verified on canada.ca; record_type changed to funded_employment_program because the program is a wage subsidy; eligibility wording sourced to the YESS umbrella criteria.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "canada-summer-jobs",
+   "v1_name": "Canada Summer Jobs (youth summer jobs, ages 15-30)",
+   "v1_status": "not_currently_open",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "record_type: government_support -> funded_employment_program",
+    "availability_checked_at and availability_evidence filled (2026 cycle closed; employer window Nov 4-Dec 11, 2025)",
+    "Sources replaced with canada.ca program page, applicant guide, April 2026 release, YESS criteria page and a flagged third-party 2027 estimate",
+    "Subsidy rates (100% / 50% of minimum wage) added to economics"
+   ],
+   "claims_verified": [
+    "Ages 15-30",
+    "2026 youth hiring April 20-July 20; jobs ended by August 29, 2026",
+    "Jobs posted on Job Bank",
+    "Up to 100,000 jobs announced for 2026"
+   ],
+   "unresolved_claims": [
+    "SIN and citizenship/PR/refugee-protection wording from the 2026 CSJ backgrounder (v1) not re-seen"
+   ]
+  }
+ },
+ {
+  "id": "digital-main-street-digital-service-squad",
+  "name": "Digital Service Squad member (Digital Main Street, Ontario)",
+  "organization": "Digital Main Street",
+  "record_type": "employer",
+  "category": "government_program",
+  "summary": "Paid, hybrid squad roles helping Toronto main-street businesses get online; Digital Main Street's 2026 Toronto posting closed May 29, 2026 and no current opening was found. Squads elsewhere in Ontario are hired by BIAs, municipalities or chambers when they hold a Digital Service Squad grant.",
+  "what_you_do": "You are assigned to specific small-business areas, travel independently to storefront businesses (sometimes door to door with a BIA coordinator), onboard them to the Digital Main Street platform, walk owners through digital assessments, set up tools such as online stores, Google Business Profiles and social media accounts, and file daily field reports.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You live in Toronto, like talking with shop owners, can explain basic digital tools and can travel around the city; the role is hybrid and must be Toronto-based.",
+   "You have sales, marketing or small-business digital-tools experience and strong written and verbal communication (2026 posting)."
+  ],
+  "who_it_may_not_fit": [
+   "You need an opening now: the 2026 Toronto posting closed May 29, 2026 and an Indeed search on 2026-10-13 found no squad postings in Ontario.",
+   "You need fully remote or permanent work; roles are term contracts tied to yearly program and grant funding, and pay is described only as 'competitive'."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "partial",
+   "ontario_residents": "partial",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [
+    "Digital Main Street's own 2026 role had to be based in Toronto; squads outside Toronto exist only where a local BIA, municipality, chamber of commerce or Small Business Enterprise Centre holds a squad grant."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "closed_or_not_open",
+  "availability_checked_at": "2026-10-13T15:21:50Z",
+  "availability_evidence": [
+   "The careers page (search cache roughly 158 days old) lists the Toronto Digital Service Squad Team Member role with a May 29, 2026 closing date and rolling review; no newer posting was seen.",
+   "Indeed search for 'Digital Service Squad' in Ontario on 2026-10-13 returned no postings."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://digitalmainstreet.ca/careers/",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "some",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Based in Toronto and able to travel independently across assigned business areas (2026 posting)"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "hybrid",
+   "relationship_type": "unknown",
+   "schedule_type": "unknown",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "sometimes",
+   "text_based_work": "partly",
+   "independent_work": "mixed",
+   "task_variety": "varied",
+   "customer_facing": "high",
+   "sales_or_commission": "no",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "no",
+   "emotional_content_risk": "no",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Older descriptions (2021-2022) were 35-hour-per-week contracts; the 2026 posting does not state hours."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 3,
+   "technical": 2,
+   "creative": 1,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "being_selected",
+    "program_funding"
+   ],
+   "economics_notes": [
+    "2026 posting: 'competitive remuneration in line with industry standards', no figure. A 2017 posting listed $15.50/hr and 2021-2022 descriptions a 35-hour contract; both outdated."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": [
+    "Local travel between businesses (reimbursement not stated)"
+   ]
+  },
+  "risks": [
+   "no_guaranteed_work",
+   "funding_uncertain",
+   "in_person_required"
+  ],
+  "risk_notes": [
+   "Hiring outside Toronto depends on grant rounds; a third-party listing says the squad grant is open with continuous intake (checked March 2026), but no official 2026 grant round was found."
+  ],
+  "barriers": [
+   "Toronto residence for Digital Main Street's own roles"
+  ],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:36:00Z",
+  "sources": [
+   {
+    "url": "https://digitalmainstreet.ca/careers/",
+    "source_type": "official",
+    "publisher": "Digital Main Street",
+    "title": "Careers - Digital Main Street",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "official_url",
+     "availability",
+     "application_route"
+    ],
+    "evidence_summary": "Lists the Toronto Digital Service Squad Team Member role, closing May 29, 2026, rolling review; apply by email to careers@digitalmainstreet.ca with the stated subject line. Cached copy about 158 days old.",
+    "limitations": [
+     "Search snippet of a stale cache; current page state unknown."
+    ]
+   },
+   {
+    "url": "https://digitalmainstreet.ca/wp-content/uploads/2026/05/Position-Description-Digital-Service-Squad-Member-2026.pdf",
+    "source_type": "official",
+    "publisher": "Digital Main Street",
+    "title": "Position Description - Digital Service Squad Member 2026",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": "2026-05",
+    "supports": [
+     "requirements",
+     "work_conditions",
+     "pay",
+     "ontario_eligibility"
+    ],
+    "evidence_summary": "Hybrid, must be based in Toronto, assigned business areas with independent travel; duties include onboarding, digital assessments, tool setup and daily field reports; 'competitive remuneration in-line with industry standards'.",
+    "limitations": [
+     "Search snippet only; PDF not opened."
+    ]
+   },
+   {
+    "url": "https://digitalmainstreet.ca/?p=130739",
+    "source_type": "official",
+    "publisher": "Digital Main Street",
+    "title": "What is the Digital Service Squad Grant Program",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": null,
+    "supports": [
+     "funding",
+     "legitimacy"
+    ],
+    "evidence_summary": "Grant applicants are Ontario BIAs, municipalities, chambers of commerce, boards of trade and Small Business Enterprise Centres (or partnerships including one); small businesses cannot apply directly.",
+    "limitations": [
+     "Search snippet only; no 2026 round dates shown."
+    ]
+   },
+   {
+    "url": "https://www.hellodarwin.com/business-aid/programs/digital-main-street-digital-service-squad-grant",
+    "source_type": "aggregator",
+    "publisher": "hellodarwin",
+    "title": "Digital Main Street Digital Service Squad Grant",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": null,
+    "supports": [
+     "funding",
+     "availability"
+    ],
+    "evidence_summary": "Third-party listing marks the squad grant open with continuous intake (last checked March 2026); eligible costs include staff salaries, limited equipment ($1,200 per member), print marketing and travel.",
+    "limitations": [
+     "Unofficial; not confirmed against Digital Main Street."
+    ]
+   },
+   {
+    "url": "https://digitalmainstreet.ca/wp-content/uploads/2022/07/Job-Description_DSS.2021-1.pdf",
+    "source_type": "official",
+    "publisher": "Digital Main Street",
+    "title": "Job Description - Digital Service Squad (2021)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": "2022-07",
+    "supports": [
+     "work_conditions"
+    ],
+    "evidence_summary": "Older squad description with a 35-hour-per-week contract structure.",
+    "limitations": [
+     "Outdated (2021-2022)."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Indeed connector search 'Digital Service Squad' (Ontario, 2026-10-13) returned no results; no job_board source could be cited.",
+   "v1 sources from Brampton, Prescott, the Ontario annual report and the French DMS page were not re-seen and were dropped."
+  ],
+  "open_questions": [
+   "Whether Digital Main Street reposts Toronto squad roles each spring and whether a 2026-27 squad grant round was opened for other Ontario communities."
+  ],
+  "disposition": "downgraded",
+  "disposition_reason": "Legitimate program, but the only 2026 posting closed May 29, 2026, no current opening was found on Indeed or in search, pay is unpublished, and squad hiring outside Toronto depends on grant rounds whose 2026 status is unconfirmed.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "digital-main-street-digital-service-squad",
+   "v1_name": "Digital Service Squad member (Digital Main Street, Ontario)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "availability_status: availability_unknown -> closed_or_not_open (2026 posting deadline passed; Indeed check negative)",
+    "region_eligibility: likely -> partial (Toronto-based for DMS roles; grant-dependent elsewhere)",
+    "Sources trimmed to those re-seen; v1 Brampton/Prescott/annual-report sources dropped"
+   ],
+   "claims_verified": [
+    "2026 Toronto posting: hybrid, Toronto-based, closing May 29, 2026, 'competitive remuneration'",
+    "Grant applicants are BIAs, municipalities, chambers and SBECs, not small businesses",
+    "Older roles were 35-hour contracts"
+   ],
+   "unresolved_claims": [
+    "Brampton's 2025 note that the grant program's future awaited provincial updates (v1) not re-seen",
+    "Over 1,600 students hired by March 2021 (v1, Ontario annual report) not re-seen"
+   ]
+  }
+ },
+ {
+  "id": "employment-ontario-employment-services",
+  "name": "Employment Ontario employment services (free job-search help)",
+  "organization": "Government of Ontario - Employment Ontario (local service providers)",
+  "record_type": "government_support",
+  "category": "government_program",
+  "summary": "Free one-on-one job-search help (resumes, interview prep, job matching, referrals to funded training such as Better Jobs Ontario) through local Employment Ontario providers, now organised as Integrated Employment Services. Self-serve information is open to anyone; assisted services are aimed at working-age Ontario residents allowed to work in Canada.",
+  "what_you_do": "You contact a local provider (or the 1-800-387-5656 contact centre), meet an employment counsellor, agree a job-search plan, work on your resume and interviews, and get introductions to employers or referrals into funded programs. Ontario Works clients are referred through their caseworker.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You live in Ontario, can legally work in Canada and want free, personal help with a job search or with getting into funded training.",
+   "You are on Ontario Works; Toronto's social-services page says caseworkers refer clients to Employment Ontario."
+  ],
+  "who_it_may_not_fit": [
+   "You need paid work immediately: this is help to find work, not a job, and quality varies by provider.",
+   "You are in full-time school or training: some provider listings exclude full-time students from assisted services."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "partial",
+   "ontario_residents": "likely",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [
+    "Provider listings (updated January-April 2026) describe clients as working-age Ontario residents legally allowed to work in Canada; some sites add 'not attending full-time school or training'."
+   ],
+   "work_authorization_notes": "Legally entitled to work in Canada (provider listings)."
+  },
+  "availability_status": "program_open_check_eligibility",
+  "availability_checked_at": "2026-10-13T15:21:20Z",
+  "availability_evidence": [
+   "City of Toronto page modified February 25, 2026 tells residents not on Ontario Works to contact Employment Ontario directly for free one-on-one help.",
+   "A July 2026 ministry procurement notice pre-qualifies organisations to run Integrated Employment Services in catchment areas, and service-directory listings were updated in January-April 2026."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.ontario.ca/page/employment-ontario",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "participant",
+   "schedule_type": "flexible",
+   "hours_commitment": "low",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "sometimes",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "no",
+   "deadline_pressure": "low",
+   "work_guaranteed": "no",
+   "emotional_content_risk": "no",
+   "training_required": "no",
+   "conditions_notes": [
+    "Outcomes depend on the local provider and labour market; no outcome data was found."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 0,
+   "detail": 0,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "none",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": null,
+   "income_predictability": "none",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "Free service; no payment to participants. It is the gateway to Better Jobs Ontario and pre-apprenticeship funding."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [],
+  "risk_notes": [
+   "No independent reviews or outcome data found; only provider-chosen testimonials and municipal complaint channels."
+  ],
+  "barriers": [],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:00Z",
+  "sources": [
+   {
+    "url": "https://www.ontario.ca/page/employment-ontario",
+    "source_type": "official",
+    "publisher": "Government of Ontario",
+    "title": "Employment Ontario",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "legitimacy",
+     "application_route"
+    ],
+    "evidence_summary": "Free one-on-one support from an Employment Ontario counsellor (resumes, job search); locations across the province; lists ODSP among related services; 'services in your area' finder.",
+    "limitations": [
+     "Search snippet only; page not opened."
+    ]
+   },
+   {
+    "url": "https://www.toronto.ca/community-people/employment-social-support/employment-support/job-fair-tips/",
+    "source_type": "government",
+    "publisher": "City of Toronto",
+    "title": "Job fair tips - Toronto Employment and Social Services",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": "2026-02-25",
+    "supports": [
+     "availability",
+     "application_route"
+    ],
+    "evidence_summary": "Ontario Works clients are referred to Employment Ontario by their caseworker; other Toronto residents can contact Employment Ontario directly for free one-on-one job-search help. Page modified February 25, 2026.",
+    "limitations": [
+     "Search snippet only."
+    ]
+   },
+   {
+    "url": "https://southwesthealthline.ca/printService.aspx?id=12935",
+    "source_type": "aggregator",
+    "publisher": "Southwest Healthline (community services directory)",
+    "title": "Program: Integrated Employment Services",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility",
+     "ontario_eligibility"
+    ],
+    "evidence_summary": "Directory listing: working-age Ontario residents legally allowed to work in Canada; one site adds not attending full-time school or training; a youth site serves ages 18-29 with multiple barriers.",
+    "limitations": [
+     "Directory listing, not ministry policy; criteria vary by office."
+    ]
+   },
+   {
+    "url": "https://app.govly.com/public/opportunities/16781784",
+    "source_type": "other",
+    "publisher": "Govly (procurement aggregator)",
+    "title": "Ministry of Labour, Immigration, Training and Skills Development - IES service system manager pre-qualification",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": "2026-07",
+    "supports": [
+     "availability",
+     "existence"
+    ],
+    "evidence_summary": "July 2026 notice: the ministry plans a pre-qualification process for organisations to serve as service system managers for Integrated Employment Services in defined catchment areas.",
+    "limitations": [
+     "Procurement notice seen via aggregator; does not describe client eligibility."
+    ]
+   },
+   {
+    "url": "https://www.toronto.ca/city-government/accountability-operations-customer-service/city-administration/staff-directory-divisions-and-customer-service/employment-social-services/employment-social-services-complaints-compliments/",
+    "source_type": "government",
+    "publisher": "City of Toronto",
+    "title": "Employment & Social Services complaints and compliments",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": "2026-04-15",
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Complaint and escalation channel (General Manager's office, then Ombudsman Toronto) plus selected client compliments; no complaint statistics published.",
+    "limitations": [
+     "Negative-evidence pass found no independent reviews; this page shows only the complaints process."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Negative-evidence query for reviews/complaints returned provider testimonials (Starling Community Services) and municipal complaint pages only.",
+   "v1 sources from Achev, the AES wellness portal and the CMHA/ODEN news item were not re-seen and were dropped."
+  ],
+  "open_questions": [
+   "Whether ODSP Employment Supports are delivered through Integrated Employment Services in a given area.",
+   "Whether the under-20-hours-per-week rule for assisted services still applies."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Service confirmed running in 2026 via the ontario.ca page, a February 2026 City of Toronto referral page and a July 2026 ministry procurement notice; eligibility wording sourced to 2026 provider listings; v1 claim that ODSP supports have been absorbed was softened to an open question.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "employment-ontario-employment-services",
+   "v1_name": "Employment Ontario employment services (free job-search help)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "availability_status: availability_unknown -> program_open_check_eligibility with evidence",
+    "region_eligibility.canadian_residents: likely -> partial (Ontario-only)",
+    "economics.pay_type set to none; conditions simplified",
+    "Sources replaced with ontario.ca, toronto.ca (2026), 2026 directory listing and July 2026 procurement notice",
+    "Removed assertion that ODSP employment supports are absorbed; now an open question"
+   ],
+   "claims_verified": [
+    "Free one-on-one counsellor support",
+    "Contact centre 1-800-387-5656 (seen in 2026 directory summaries)",
+    "Working-age Ontario residents legally allowed to work in Canada",
+    "Gateway to Better Jobs Ontario"
+   ],
+   "unresolved_claims": [
+    "700+ locations (v1) not re-seen",
+    "Under-20-hours-per-week and not-in-full-time-training rules (v1 Achev page) not re-seen",
+    "Integrated Employment Services province-wide rollout by March 2025 (v1) not re-seen"
+   ]
+  }
+ },
+ {
+  "id": "job-bank-canada",
+  "name": "Job Bank job search and alerts (Government of Canada)",
+  "organization": "Government of Canada - Job Bank",
+  "record_type": "government_support",
+  "category": "government_program",
+  "summary": "Free federal job board for searching Canadian postings, setting email alerts and checking typical wages and outlooks by occupation; Canada Summer Jobs postings appear there each spring. A search tool, not a source of work itself.",
+  "what_you_do": "You search postings by keyword, occupation and location, save searches as email alerts, and use the labour-market pages to judge whether a posting's pay is realistic. Each posting has a 'Report a problem with this job posting' button for suspicious ads.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You want a free, government-run place to search Canadian postings, get alerts and check typical wages.",
+   "You want a built-in way to report suspicious postings or employers."
+  ],
+  "who_it_may_not_fit": [
+   "You want one-on-one coaching or placement (Employment Ontario fits better).",
+   "You expect Job Bank to screen every posting: some listings are drawn from other sites, and Job Bank's safety page says legitimate ads never ask for banking details, SIN or deposits."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Open to anyone searching; Ontario-specific wage and outlook pages exist (e.g., jobbank.gc.ca marketreport pages for ON)."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "registration_open_work_not_guaranteed",
+  "availability_checked_at": "2026-10-13T15:21:50Z",
+  "availability_evidence": [
+   "Job Bank support, safety-tips, report-a-problem and Ontario labour-market pages were live in search results on 2026-10-13 (cached copies of varying age); the service itself offers no work, only postings and alerts."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.jobbank.gc.ca/",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "computer or phone with internet"
+   ],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "varies",
+   "schedule_type": "flexible",
+   "hours_commitment": "none",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day",
+    "evening",
+    "night",
+    "weekend"
+   ],
+   "real_time_interaction": "none",
+   "phone_or_video_required": "no",
+   "text_based_work": "yes",
+   "independent_work": "yes",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "no",
+   "deadline_pressure": "low",
+   "work_guaranteed": "no",
+   "emotional_content_risk": "no",
+   "training_required": "no",
+   "conditions_notes": [
+    "Volume of postings varies by occupation and region; not measured."
+   ]
+  },
+  "skill_demands": {
+   "computer": 1,
+   "writing": 1,
+   "numeracy": 0,
+   "detail": 1,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "none",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": null,
+   "income_predictability": "none",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "Not a paying job; pay depends on each posting. Job Bank's wage and outlook pages (e.g., Ontario employment-counsellor outlook 2024-2026 seen in results) help benchmark offers."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "scam_impersonation"
+  ],
+  "risk_notes": [
+   "Job Bank's safety page warns that legitimate ads do not request banking details, SIN or deposits; a 2026 scam roundup (FlexJobs) describes cloned job boards with slightly altered URLs. Type jobbank.gc.ca directly rather than following links."
+  ],
+  "barriers": [],
+  "progression_potential": "unknown",
+  "horizon": "now",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:00Z",
+  "sources": [
+   {
+    "url": "https://www.jobbank.gc.ca/findajob/resources/safety-tips",
+    "source_type": "official",
+    "publisher": "Government of Canada (Job Bank)",
+    "title": "Job Search Safety Tips - Job Bank",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning",
+     "risks",
+     "legitimacy",
+     "availability"
+    ],
+    "evidence_summary": "Legitimate Canadian job ads do not request banking or personal details; do not put SIN, banking or PIN in a resume; avoid deposits; report suspected fraud.",
+    "limitations": [
+     "Search snippet only; page not opened."
+    ]
+   },
+   {
+    "url": "https://www.jobbank.gc.ca/support/question?qaid=18&tid=7",
+    "source_type": "official",
+    "publisher": "Government of Canada (Job Bank)",
+    "title": "How can I report a problem with a job posting?",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "risks",
+     "legitimacy"
+    ],
+    "evidence_summary": "Each posting has a 'Report a problem with this job posting' button; report options include being asked to pay to get hired or a non-existent job/employer.",
+    "limitations": [
+     "Search snippet only."
+    ]
+   },
+   {
+    "url": "https://www.jobbank.gc.ca/support/reportproblemform",
+    "source_type": "official",
+    "publisher": "Government of Canada (Job Bank)",
+    "title": "Report a problem or provide feedback to Job Bank",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "scam_warning",
+     "existence"
+    ],
+    "evidence_summary": "Reporting form; asks that reports exclude SIN or other personal information.",
+    "limitations": [
+     "Search snippet only."
+    ]
+   },
+   {
+    "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/5143/ON",
+    "source_type": "government",
+    "publisher": "Government of Canada (Job Bank)",
+    "title": "Job prospects: Employment Counsellor in Ontario",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "availability",
+     "ontario_eligibility"
+    ],
+    "evidence_summary": "Example of Job Bank's live Ontario outlook pages (2024-2026 projection), showing the labour-market tools remain available.",
+    "limitations": [
+     "Seen incidentally in an Employment Ontario query; snippet only."
+    ]
+   },
+   {
+    "url": "https://www.flexjobs.com/blog/post/remote-job-search-red-flags",
+    "source_type": "aggregator",
+    "publisher": "FlexJobs",
+    "title": "30 Job Scams to Watch for in 2026",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2026",
+    "supports": [
+     "scam_warning"
+    ],
+    "evidence_summary": "Describes fraudsters cloning job boards with slightly altered URLs and fake application portals; legitimate employers never ask for money.",
+    "limitations": [
+     "Generic; not Job Bank-specific. No Job Bank imitation-site report for 2026 was found."
+    ]
+   }
+  ],
+  "research_notes": [
+   "official_url is the site root; only sub-pages (helpsupport, safety-tips, support questions, marketreport) appeared verbatim in results.",
+   "Negative-evidence query found no Job Bank-specific scam or imitation-site warning for 2026."
+  ],
+  "open_questions": [
+   "Whether searching still needs no account and how often alerts are sent (v1 Manitoba factsheet not re-seen)."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Service and safety features re-seen on jobbank.gc.ca support pages; status set to sign-up open (alerts) with no work offered; official_url changed to the site root because the v1 'findajob' page was not re-seen.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "job-bank-canada",
+   "v1_name": "Job Bank job search and alerts (Government of Canada)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "availability_status: availability_unknown -> registration_open_work_not_guaranteed",
+    "official_url: https://www.jobbank.gc.ca/intro/findajob -> https://www.jobbank.gc.ca/",
+    "economics.pay_type set to none",
+    "Sources replaced: safety tips re-seen; report-a-problem pages and a 2026 scam roundup added; Manitoba factsheet and FAQ qaid=16 dropped"
+   ],
+   "claims_verified": [
+    "Safety page warns against sharing banking details, SIN or deposits",
+    "'Report a problem with this job posting' button exists",
+    "Labour-market/outlook pages for Ontario are live"
+   ],
+   "unresolved_claims": [
+    "'Posted on Job Bank' flag for employer-created postings (v1) not re-seen",
+    "No account needed to search; alert frequency (v1) not re-seen",
+    "Some listings come from other websites (v1 FAQ) not re-seen"
+   ]
+  }
+ },
+ {
+  "id": "odsp-employment-supports",
+  "name": "ODSP Employment Supports (job help for people with a disability)",
+  "organization": "Government of Ontario - Ministry of Children, Community and Social Services (ODSP)",
+  "record_type": "government_support",
+  "category": "government_program",
+  "summary": "Ontario employment help (job preparation, placement, coaching and job-retention supports) through community service providers for people 16+ whose physical or mental impairment, expected to last a year or more, is a substantial barrier to work. You do not need to receive ODSP income support; Ontario Works recipients are generally excluded.",
+  "what_you_do": "If you are not on ODSP income support you apply through an ODSP Employment Supports service provider or your local ODSP office, with a Verification of Disability/Impairment form completed by an approved health professional; a caseworker determines eligibility. A provider then helps you prepare for, find and keep a job, with retention supports after placement.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You live in Ontario, are 16 or older, can legally work in Canada and a long-term disability or impairment makes finding or keeping work harder.",
+   "You are not on ODSP income support: the policy directives say that is not required."
+  ],
+  "who_it_may_not_fit": [
+   "You receive Ontario Works financial assistance: directive 2.1 excludes OW recipients unless they are voluntarily in OW employment assistance.",
+   "You cannot get the disability verification form completed, which non-income-support applicants need."
+  ],
+  "audience_restriction": [
+   "People aged 16+ with a physical or mental impairment expected to last a year or more that is a substantial barrier to employment"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "partial",
+   "ontario_residents": "likely",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [
+    "Directive 2.1: 16 or older, Ontario resident, legally entitled to work in Canada, continuous or recurrent impairment expected to last more than one year that presents a substantial barrier to work.",
+    "Ontario Works recipients excluded (directive 2.1; aggregator listing agrees)."
+   ],
+   "work_authorization_notes": "Legally entitled to work in Canada (directive 2.1)."
+  },
+  "availability_status": "program_open_check_eligibility",
+  "availability_checked_at": "2026-10-13T15:21:50Z",
+  "availability_evidence": [
+   "The ministry's 2026-2027 service objectives for social assistance include ODSP Employment Supports job retention and advancement funding, and the employment-supports policy directives (2.1 eligibility, 3.1 client pathway) are current on ontario.ca (search summaries, cached about 217 days)."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.ontario.ca/document/ontario-disability-support-program-policy-directives-employment-supports/21-program",
+  "requirements": {
+   "minimum_age": 16,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Verification of Disability/Impairment form from an approved health professional if not receiving ODSP income support"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "participant",
+   "schedule_type": "varies",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "sometimes",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "no",
+   "deadline_pressure": "low",
+   "work_guaranteed": "no",
+   "emotional_content_risk": "no",
+   "training_required": "no",
+   "conditions_notes": [
+    "Depends on the provider and the job found; providers are paid retention fees, so support continues after placement."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 0,
+   "detail": 0,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 0
+  },
+  "economics": {
+   "pay_type": "none",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": null,
+   "income_predictability": "none",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "Support service, not a paid job."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": [
+    "Possible fee for a health professional to complete the verification form (not stated in sources)"
+   ]
+  },
+  "risks": [
+   "age_or_group_restricted"
+  ],
+  "risk_notes": [
+   "Advocacy groups (ODEN, via CMHA Ontario) have argued for moving these supports into Employment Ontario; no official transfer decision was found, so the local route may change."
+  ],
+  "barriers": [
+   "Disability verification paperwork for non-income-support applicants"
+  ],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:39:00Z",
+  "sources": [
+   {
+    "url": "https://www.ontario.ca/document/ontario-disability-support-program-policy-directives-employment-supports/21-program",
+    "source_type": "government",
+    "publisher": "Government of Ontario",
+    "title": "ODSP employment supports policy directives - 2.1 Program eligibility",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility",
+     "ontario_eligibility",
+     "canadian_eligibility",
+     "requirements",
+     "availability"
+    ],
+    "evidence_summary": "16+, Ontario resident, legally entitled to work in Canada, impairment expected to last over a year that is a substantial barrier; not required to receive income support; Ontario Works recipients excluded unless voluntarily in OW employment assistance.",
+    "limitations": [
+     "Search snippet only; cached copy roughly 217 days old."
+    ]
+   },
+   {
+    "url": "https://www.ontario.ca/document/ontario-disability-support-program-policy-directives-employment-supports/31-client-pathway",
+    "source_type": "government",
+    "publisher": "Government of Ontario",
+    "title": "ODSP employment supports policy directives - 3.1 Client pathway",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "application_route",
+     "requirements"
+    ],
+    "evidence_summary": "Non-recipients apply through a service provider or local ODSP office; Verification of Disability/Impairment form by an approved health professional; caseworker reviews the package.",
+    "limitations": [
+     "Search snippet only."
+    ]
+   },
+   {
+    "url": "https://www.ontario.ca/document/2026-2027-mccss-service-objectives-social-assistance/job-retention",
+    "source_type": "government",
+    "publisher": "Government of Ontario",
+    "title": "2026-2027 Services delivered: job retention and advancement",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": "2026",
+    "supports": [
+     "availability",
+     "existence"
+    ],
+    "evidence_summary": "2026-2027 ministry service objectives show ODSP Employment Supports job retention fees still paid to service providers, i.e. the program is operating in 2026-27.",
+    "limitations": [
+     "Seen as result title and summary only."
+    ]
+   },
+   {
+    "url": "https://www.msdsb.net/next-steps-for-integrated-employment-services-and-social-assistance-odsp-intake",
+    "source_type": "other",
+    "publisher": "Manitoulin-Sudbury District Services Board",
+    "title": "Next Steps for Integrated Employment Services and Social Assistance (ODSP) Intake",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": null,
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Integrated Employment Services launched March 2025 and is expanding; an accelerated pathway for some Ontario Works applicants began November 10, 2025; the ministry planned to centralise ODSP intake. Does not state that ODSP Employment Supports moved to Employment Ontario.",
+    "limitations": [
+     "Local board summary; snippet only."
+    ]
+   },
+   {
+    "url": "https://ontario.cmha.ca/news/oden-move-odsp-employment-programmes-to-employment-ontario/",
+    "source_type": "other",
+    "publisher": "CMHA Ontario",
+    "title": "ODEN: move ODSP employment programmes to Employment Ontario",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": null,
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Advocacy position (Ontario Disability Employment Network) arguing a transfer to Employment Ontario would improve access; a proposal, not a decision.",
+    "limitations": [
+     "Undated opinion piece."
+    ]
+   },
+   {
+    "url": "https://hellodarwin.com/business-aid/programs/ontario-disability-support-program-employment-supports",
+    "source_type": "aggregator",
+    "publisher": "hellodarwin",
+    "title": "Ontario Disability Support Program Employment Supports",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:19:40Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility"
+    ],
+    "evidence_summary": "Third-party summary repeating the eligibility basics and noting Ontario Works recipients are excluded.",
+    "limitations": [
+     "Unofficial."
+    ]
+   }
+  ],
+  "research_notes": [
+   "v1 stated delivery was moving into Employment Ontario's integrated system; this pass found no official confirmation, and 2026-27 ministry documents still treat ODSP Employment Supports as an MCCSS program.",
+   "official_url changed to the eligibility directive because the v1 overview page was not re-seen; the ODSP main page (ontario.ca/page/ontario-disability-support-program) also appeared in results."
+  ],
+  "open_questions": [
+   "Whether, and where, Integrated Employment Services now deliver ODSP employment supports.",
+   "Current retention-support duration caps (v1 cited 15 vs 33 months from a 2021 directive)."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Eligibility and application route re-sourced to the current ODSP employment-supports directives (2.1, 3.1); program confirmed funded in the ministry's 2026-27 service objectives; the unconfirmed 'moving into Employment Ontario' claim was removed and the Ontario Works exclusion added.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "odsp-employment-supports",
+   "v1_name": "ODSP Employment Supports (job help for people with a disability)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "availability_status: availability_unknown -> program_open_check_eligibility with 2026-27 evidence",
+    "official_url changed to directive 2.1 (v1 overview page not re-seen)",
+    "Added Ontario Works exclusion and verification-form requirement; removed Employment Ontario transfer claim",
+    "Sources replaced: directives 2.1 and 3.1, 2026-27 service objectives, MSDSB note, hellodarwin; CMHA/ODEN item kept as re-seen"
+   ],
+   "claims_verified": [
+    "16+, Ontario resident, legally entitled to work, long-term impairment that is a substantial barrier",
+    "No need to receive ODSP income support",
+    "Verification of Disability form for non-recipients",
+    "Delivered through community service providers with retention supports"
+   ],
+   "unresolved_claims": [
+    "15-month vs 33-month retention cap (v1, 2021 directive 4.2) not re-read",
+    "Delivery through Employment Ontario Integrated Employment Services (v1) not confirmed"
+   ]
+  }
+ },
+ {
+  "id": "ontario-pre-apprenticeship-training",
+  "name": "Pre-apprenticeship training (free trade-readiness programs, Ontario)",
+  "organization": "Government of Ontario (delivered by colleges and community agencies)",
+  "record_type": "training_program",
+  "category": "government_program",
+  "summary": "Ministry-funded, tuition-free trade-readiness programs at Ontario colleges and agencies, typically 14-26 weeks of classroom and shop training followed by an 8-12 week work placement that at least some providers describe as paid. Intake criteria and dates are set per program; the province's 2026-27 funding call for providers runs to October 27, 2026.",
+  "what_you_do": "You apply to a specific funded program (for example a carpentry or general-trades cohort at a college), complete full-time trade-focused training with books, safety gear and tools covered, then do a work placement with an employer to build the experience sponsors look for when hiring apprentices.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You want into a trade but lack the skills or experience to get an employer to sponsor you, and you can commit to several months of full-time, in-person training.",
+   "You are unemployed or underemployed and not in school; several 2026 programs list this as a requirement."
+  ],
+  "who_it_may_not_fit": [
+   "You need income now: classroom weeks are unpaid and only the placement is paid where providers say so.",
+   "You do not meet a provider's entry rules; some require 18+ and an Ontario Secondary School Diploma, others accept 16+ who are eligible to work in Ontario."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "partial",
+   "ontario_residents": "likely",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [
+    "Ontario-funded; providers require eligibility to work in Ontario (Mohawk) and often unemployed/underemployed status and no current enrolment (Algonquin Pembroke)."
+   ],
+   "work_authorization_notes": "Eligible to work in Ontario (Mohawk College listing)."
+  },
+  "availability_status": "program_open_check_eligibility",
+  "availability_checked_at": "2026-10-13T15:20:30Z",
+  "availability_evidence": [
+   "Provincial 2026-27 Pre-Apprenticeship Training Program guidelines: organisations apply through Transfer Payment Ontario from September 22, 2026, reviewed continuously until October 27, 2026 (search summary).",
+   "Provider status varies: Fanshawe has a 2026-2027 pre-apprenticeship registration form; Algonquin Pembroke's May 2026 carpentry intake is closed; Mohawk's General Carpenter listing is marked pending ministry funding."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://forms.mgcs.gov.on.ca/dataset/on00575",
+  "requirements": {
+   "minimum_age": 16,
+   "education": "varies by provider: OSSD or grade 12 equivalent required by Algonquin Pembroke and Fanshawe; Mohawk lists age 16+ only",
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Unemployed or underemployed and not in education (Algonquin Pembroke 2026)"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "onsite",
+   "relationship_type": "trainee",
+   "schedule_type": "fixed",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "varied",
+   "customer_facing": "none",
+   "sales_or_commission": "no",
+   "deadline_pressure": "low",
+   "work_guaranteed": "no",
+   "emotional_content_risk": "no",
+   "training_required": "yes",
+   "conditions_notes": [
+    "2026 examples: Algonquin Pembroke carpentry 26 weeks including an 8-week paid off-site placement (started mid-May 2026); Fanshawe 14 weeks training plus a 10-week placement.",
+    "Cohort-based with provider-specific intake dates."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 1,
+   "detail": 1,
+   "customer": 0,
+   "technical": 1,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "mixed",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [
+    "Classroom and shop training weeks (no stipend mentioned by any provider seen)"
+   ],
+   "time_to_first_payment": "months",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "program_funding",
+    "being_selected"
+   ],
+   "economics_notes": [
+    "No tuition for eligible job seekers (Algonquin; St. Lawrence says fully funded by the ministry for qualified candidates). Algonquin and St. Lawrence describe the 8-week placement as paid; the wage is set by the host employer and not published. Fanshawe's form does not say whether its placement is paid."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": [
+    "Transport to the training site and placement"
+   ]
+  },
+  "risks": [
+   "in_person_required",
+   "funding_uncertain",
+   "competitive_acceptance"
+  ],
+  "risk_notes": [
+   "Programs run only when the ministry funds them (Mohawk's listing is 'pending ministry funding')."
+  ],
+  "barriers": [
+   "Full-time attendance for several months",
+   "Provider-specific entry rules (age, OSSD, unemployed status)"
+  ],
+  "progression_potential": "high",
+  "horizon": "career",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [
+   "Entry requirements differ by provider: Algonquin Pembroke carpentry requires 18+ (17 with OSSD), an OSSD and unemployed/underemployed status; Mohawk lists 16+ and eligible to work in Ontario; Fanshawe requires OSSD or grade 12 equivalent."
+  ],
+  "last_researched_at": "2026-10-13T15:39:00Z",
+  "sources": [
+   {
+    "url": "https://forms.mgcs.gov.on.ca/en/dataset/1c808860-adfb-451b-a3fe-3e9a82681e18/resource/4dfa3831-e533-4d0a-9983-45caa0ec4e0b/download/pre-apprenticeship-2026-27-guidelines-en-final.pdf",
+    "source_type": "government",
+    "publisher": "Government of Ontario",
+    "title": "Pre-Apprenticeship Training Program 2026-27 guidelines",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2026",
+    "supports": [
+     "existence",
+     "availability",
+     "funding"
+    ],
+    "evidence_summary": "Organisations apply via Transfer Payment Ontario from September 22, 2026; applications reviewed continuously until October 27, 2026; contact contactEO@ontario.ca.",
+    "limitations": [
+     "Funding call for providers, not individuals; snippet only."
+    ]
+   },
+   {
+    "url": "https://forms.mgcs.gov.on.ca/dataset/on00575",
+    "source_type": "government",
+    "publisher": "Government of Ontario",
+    "title": "Pre-Apprenticeship Training Program call for proposals application guide",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url"
+    ],
+    "evidence_summary": "Dataset page for the program's call-for-proposals guides (2025-2026 and 2026-27).",
+    "limitations": [
+     "Provider-facing; the ontario.ca public program page was not re-seen."
+    ]
+   },
+   {
+    "url": "https://www.algonquincollege.com/pembroke-employment/pre-apprenticeship-carpentry",
+    "source_type": "official",
+    "publisher": "Algonquin College (Pembroke)",
+    "title": "Pre-apprenticeship carpentry",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2026",
+    "supports": [
+     "program_eligibility",
+     "work_conditions",
+     "pay",
+     "availability",
+     "fees"
+    ],
+    "evidence_summary": "18+ (17 with OSSD), OSSD, currently unemployed or underemployed and not in education; started mid-May 2026, 26 weeks including an 8-week off-site paid placement; no tuition for eligible job seekers; application period closed.",
+    "limitations": [
+     "Single provider; snippet only."
+    ]
+   },
+   {
+    "url": "https://www.mohawkcollege.ca/node/32926",
+    "source_type": "official",
+    "publisher": "Mohawk College",
+    "title": "Pre-Apprenticeship Training Program",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility",
+     "availability",
+     "ontario_eligibility"
+    ],
+    "evidence_summary": "Minimum age 16 and eligible to work in Ontario; General Carpenter listing marked 'Pending Ministry funding'.",
+    "limitations": [
+     "Snippet only."
+    ]
+   },
+   {
+    "url": "https://hc.fanshawec.ca/forms/registration/index.aspx?e=425",
+    "source_type": "official",
+    "publisher": "Fanshawe College",
+    "title": "2026-2027 Pre-Apprenticeship Registration",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": null,
+    "supports": [
+     "availability",
+     "work_conditions",
+     "requirements"
+    ],
+    "evidence_summary": "2026-2027 registration form: full-time 14-week training plus a 10-week work placement; OSSD or grade 12 equivalent required.",
+    "limitations": [
+     "Form page; whether the placement is paid is not stated."
+    ]
+   },
+   {
+    "url": "https://stlawrencecollege.ca/programs/frequently-asked-questions-pre-apprenticeships",
+    "source_type": "official",
+    "publisher": "St. Lawrence College",
+    "title": "Frequently asked questions - pre-apprenticeships",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "pay",
+     "funding"
+    ],
+    "evidence_summary": "Program includes an 8-week paid placement and is fully funded by the ministry for qualified candidates.",
+    "limitations": [
+     "Undated page."
+    ]
+   }
+  ],
+  "research_notes": [
+   "The ontario.ca public page (v1 official_url) did not appear in results; the provincial dataset page is used as official_url and Employment Ontario or a college is the practical first step.",
+   "Negative evidence: none found; the main risk is funding-dependent intakes."
+  ],
+  "open_questions": [
+   "How many graduates obtain an apprenticeship sponsor.",
+   "Which 2026-27 programs are funded and when their intakes open."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Program confirmed active for 2026-27 via the provincial guidelines and 2026 college intakes; found that the placement is paid at some providers (v1 said no pay information); recorded provider-specific entry rules and the contradiction between them.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "ontario-pre-apprenticeship-training",
+   "v1_name": "Pre-apprenticeship training (free trade-readiness programs, Ontario)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "availability_status: availability_unknown -> program_open_check_eligibility",
+    "economics.pay_type unknown -> mixed (paid placement at Algonquin and St. Lawrence; unpaid classroom weeks)",
+    "official_url changed to the provincial program dataset page (ontario.ca page not re-seen)",
+    "requirements.minimum_age set to 16 with provider variation noted; education field filled",
+    "Sources replaced with 2026-27 guidelines and 2026 college listings; Central West Healthline listing dropped"
+   ],
+   "claims_verified": [
+    "No tuition; books, safety gear and tools covered (provider pages)",
+    "Work placement of 8-10 weeks",
+    "Aimed at unemployed/underemployed people without trade experience"
+   ],
+   "unresolved_claims": [
+    "'Age and EI eligibility are not factors' (v1 ontario.ca) not re-seen; providers do set age rules",
+    "'Up to 52 weeks' total length (v1) not re-seen; 2026 examples run 24-26 weeks"
+   ]
+  }
+ },
+ {
+  "id": "election-worker-paid-temporary",
+  "name": "Paid election worker (municipal, provincial or federal elections)",
+  "organization": null,
+  "record_type": "work_category",
+  "category": "structured_employment",
+  "summary": "Short, paid, in-person work staffing voting places (and, for a few people, running a returning office) in the weeks around a municipal, provincial or federal election. Ontario's municipal vote is October 26, 2026 and most local hiring has closed; federal poll-worker applications are accepted any time but work only comes when an election is called.",
+  "what_you_do": "After a short paid training session (about three hours federally), you work advance-poll days or election day at a voting location greeting voters, checking registration, issuing ballots or supervising; days run 13 hours or more. Returning-officer roles are longer-term management contracts.",
+  "how_to_find_work": "Federal: apply online any time through the Poll workers section of elections.ca (Canadian citizen, 16+ on election day, non-partisan); the local returning office hires when an election or by-election is called, and Elections Canada also posts returning-officer vacancies on Indeed. Provincial: Elections Ontario posts returning-officer and election-period roles on elections.on.ca (its 2026 returning-officer posting closed in March). Municipal: check your city's election-employment page in the months before a vote; for October 26, 2026 most cities (Whitby, Kitchener) have closed or filled recruitment, while St. Catharines listed openings at $250 plus training.",
+  "who_it_may_fit": [
+   "You want occasional, short, in-person paid work, can handle a 13-hour day and can stay politically neutral.",
+   "You are 16 or 17: Elections Canada encourages applications from 16- and 17-year-old citizens."
+  ],
+  "who_it_may_not_fit": [
+   "You need regular income or remote work; the work exists only around elections and pay arrives afterwards.",
+   "You are a candidate, a candidate's family member or a campaign worker, or you cannot work a full day on site."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Federal: Canadian citizen, at least 16 on election day, non-partisan (elections.ca).",
+    "Elections Ontario returning officer 2026: voting age, Canadian citizen, Ontario resident.",
+    "Municipal rules vary by city (age 18+ and legal right to work are typical; not re-seen for 2026)."
+   ],
+   "work_authorization_notes": "Federal and Elections Ontario roles require Canadian citizenship."
+  },
+  "availability_status": "not_applicable_category",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://www.elections.ca/content2.aspx?section=job&dir=pos&document=index&lang=e",
+  "requirements": {
+   "minimum_age": 16,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Canadian citizenship (federal, provincial)",
+    "Non-partisan during employment"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "onsite",
+   "relationship_type": "varies",
+   "schedule_type": "fixed",
+   "hours_commitment": "low",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day",
+    "evening",
+    "weekend"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "repetitive",
+   "customer_facing": "high",
+   "sales_or_commission": "no",
+   "deadline_pressure": "medium",
+   "work_guaranteed": "sporadic",
+   "emotional_content_risk": "no",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Federal poll days are at least 13 hours; weekend advance-poll shifts exist; training of about three hours is paid (elections.ca).",
+    "Ontario municipal 2026: advance voting mid-October and election day October 26, 2026 (Kitchener)."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 1,
+   "detail": 2,
+   "customer": 2,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "mixed",
+   "currency": "CAD",
+   "advertised_rate": {
+    "min": 17.72,
+    "max": 26.46,
+    "unit": "hour",
+    "note": "Elections Canada hourly rates seen across pages and 2025 postings: $17.72 deputy returning officer (2025 Quebec listing), $20.01-$23.01 (2025 campus poll), $26.46 central poll supervisor (elections.ca page marked subject to change, about 533 days old). Ontario municipal 2026 daily rates: $250 plus training (St. Catharines), $350 per day (Whitby). Elections Ontario 2026 returning officer: $48.60/hour."
+   },
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [
+    "Paid after the election period; federal overtime after eight hours in a day (2025 listing)"
+   ],
+   "unpaid_work": [],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "being_selected",
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Rates differ by election body, role and year; check the current posting."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "low_task_volume",
+   "no_guaranteed_work",
+   "unpredictable_income",
+   "in_person_required"
+  ],
+  "risk_notes": [
+   "Next federal and Ontario general elections are not scheduled soon; municipal hiring for October 26, 2026 is largely complete."
+  ],
+  "barriers": [
+   "Very long on-site days",
+   "Citizenship requirement for federal and provincial roles"
+  ],
+  "progression_potential": "low",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [
+   "Federal pay figures differ by page and year: $17.72/hour (2025 DRO listing), $20.01-$23.01/hour (2025 campus posting), $26.46/hour central poll supervisor (elections.ca, about 533 days old) and an older $53.25 training payment on a page about 1,078 days old."
+  ],
+  "last_researched_at": "2026-10-13T15:42:00Z",
+  "sources": [
+   {
+    "url": "https://www.elections.ca/content2.aspx?section=job&dir=eli&document=index&lang=e",
+    "source_type": "official",
+    "publisher": "Elections Canada",
+    "title": "Who is eligible to work as a poll worker",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "canadian_eligibility",
+     "work_conditions"
+    ],
+    "evidence_summary": "Must be a Canadian citizen, at least 16 on election day and non-partisan; 16- and 17-year-olds encouraged to apply.",
+    "limitations": [
+     "Search snippet only."
+    ]
+   },
+   {
+    "url": "https://www.elections.ca/content2.aspx?section=job&dir=pos&document=index&lang=e",
+    "source_type": "official",
+    "publisher": "Elections Canada",
+    "title": "Poll workers positions",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "official_url",
+     "application_route",
+     "pay",
+     "work_conditions"
+    ],
+    "evidence_summary": "Positions page: about three hours of paid training, days of at least 13 hours, weekend shifts available; one page lists $26.46/hour for central poll supervisors with overtime after eight hours (marked subject to change).",
+    "limitations": [
+     "Cached copy about 533 days old; rates likely outdated."
+    ]
+   },
+   {
+    "url": "https://www.stcatharines.ca/council-and-administration/elections/election-employment/",
+    "source_type": "government",
+    "publisher": "City of St. Catharines",
+    "title": "Election Employment",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": null,
+    "supports": [
+     "pay",
+     "availability",
+     "work_conditions"
+    ],
+    "evidence_summary": "2026 municipal election roles at $250 plus training; summary said applications open (page date unknown).",
+    "limitations": [
+     "Snippet only; whether still open on 2026-10-13 is unconfirmed."
+    ]
+   },
+   {
+    "url": "https://www.whitby.ca/town-hall/municipal-elections/election-workers/",
+    "source_type": "government",
+    "publisher": "Town of Whitby",
+    "title": "Election Workers",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": null,
+    "supports": [
+     "pay",
+     "availability"
+    ],
+    "evidence_summary": "Recruitment closed; $350 for each day worked during the election.",
+    "limitations": [
+     "Snippet only."
+    ]
+   },
+   {
+    "url": "https://www.kitchener.ca/council-and-city-administration/election/election-hiring-in-2026/",
+    "source_type": "government",
+    "publisher": "City of Kitchener",
+    "title": "Election Hiring in 2026",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": null,
+    "supports": [
+     "work_conditions",
+     "application_route"
+    ],
+    "evidence_summary": "Advance voting October 13-17 and election day October 26, 2026; details on the city job board.",
+    "limitations": [
+     "Snippet only."
+    ]
+   },
+   {
+    "url": "https://www.elections.on.ca/content/dam/NGW/sitecontent/2026/jobs/Returning%20Officer.pdf",
+    "source_type": "government",
+    "publisher": "Elections Ontario",
+    "title": "Returning Officer (2026 posting)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": "2026",
+    "supports": [
+     "pay",
+     "requirements",
+     "availability"
+    ],
+    "evidence_summary": "Contract role at $48.60/hour, full-time during elections and part-time otherwise; voting age, Canadian citizen, Ontario resident; closing date late March 2026 (passed).",
+    "limitations": [
+     "Management role, not poll work; snippet only."
+    ]
+   },
+   {
+    "url": "https://www.mtlblog.com/elections-canada-hiring-quebec-poll-workers/information-officer",
+    "source_type": "independent_reporting",
+    "publisher": "MTL Blog",
+    "title": "Elections Canada Is Hiring For Its Quebec Polling Stations & It Pays Up To $23.44/Hour",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2025",
+    "supports": [
+     "pay"
+    ],
+    "evidence_summary": "2025 federal election: deputy returning officer $17.72/hour plus overtime beyond eight hours.",
+    "limitations": [
+     "2025 rates; Quebec-focused."
+    ]
+   },
+   {
+    "url": "https://socialsciences.careers.mcmaster.ca/elections-canada-now-hiring-on-campus-poll-workers/",
+    "source_type": "other",
+    "publisher": "McMaster University careers",
+    "title": "Elections Canada Now Hiring On-Campus Poll Workers",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2025",
+    "supports": [
+     "pay",
+     "requirements"
+    ],
+    "evidence_summary": "April 28, 2025 election: $20.01 to $23.01 per hour depending on role; Canadian citizen, 16+.",
+    "limitations": [
+     "2025 campus posting."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aav94sg7sn4d",
+    "source_type": "job_board",
+    "publisher": "Indeed (Elections Canada posting)",
+    "title": "Federal Returning Officer - Hastings District, ON (posted September 15, 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2026-09-15",
+    "supports": [
+     "availability",
+     "existence"
+    ],
+    "evidence_summary": "Indeed connector search 'Elections Canada' (Ontario) listed a temporary Federal Returning Officer posting for Hastings District dated September 15, 2026; details could not be opened because the connector was rate-limited.",
+    "limitations": [
+     "Seen only as a search listing; the posting itself was not opened."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Indeed connector searches for 'election worker poll official' and 'Elections Canada' in Ontario on 2026-10-13: only the Elections Canada returning-officer posting appeared; no municipal poll-worker postings.",
+   "v1 Toronto, Windsor-Essex and BNN Bloomberg sources were not re-seen and were dropped."
+  ],
+  "open_questions": [
+   "Current federal poll-worker hourly rates (the elections.ca rate page is stale).",
+   "Whether St. Catharines was still recruiting on 2026-10-13."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Category re-verified against elections.ca eligibility pages, 2026 Ontario municipal election pages and an Elections Ontario 2026 posting; how_to_find_work added; pay recorded as a CAD range with the federal rate contradiction; current Elections Canada returning-officer vacancy noted from Indeed.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "election-worker-paid-temporary",
+   "v1_name": "Paid election worker (municipal, provincial or federal elections)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "how_to_find_work added (required for work_category)",
+    "economics: advertised_rate $17.72-$26.46/hour CAD with municipal daily rates in note; pay_type mixed",
+    "official_url changed to the elections.ca poll-worker positions page (elections.ca/jobs not re-seen verbatim)",
+    "Sources replaced with elections.ca eligibility/positions pages, St. Catharines, Whitby, Kitchener, Elections Ontario 2026 posting, 2025 pay reports and an Indeed listing",
+    "Recorded federal pay-rate contradiction"
+   ],
+   "claims_verified": [
+    "Federal: Canadian citizen, 16+ on election day, non-partisan",
+    "About three hours of paid training; 13+ hour days",
+    "Ontario municipal election day October 26, 2026",
+    "Municipal daily rates in the $250-$350 range in 2026"
+   ],
+   "unresolved_claims": [
+    "Toronto's 2026 recruitment closed and $280 rate (v1) not re-seen",
+    "Windsor-Essex $225-$300/day (v1) not re-seen",
+    "Toronto 18+ requirement (v1) not re-seen"
+   ]
+  }
+ },
+ {
+  "id": "ontario-registered-apprenticeship",
+  "name": "Registered apprenticeship in a skilled trade (Ontario)",
+  "organization": "Skilled Trades Ontario",
+  "record_type": "training_program",
+  "category": "structured_employment",
+  "summary": "Earn-while-you-learn route into a trade: you find an Ontario sponsor (employer, union, contractor or association), the sponsor signs your application, and Skilled Trades Ontario registers a Training Agreement. Most time is paid on-the-job work with blocks of in-school training; registration is open year-round.",
+  "what_you_do": "You confirm you qualify (16+, legal permission to work in Canada, your trade's education requirement), find a sponsor through contacts, job postings, college career centres or Employment Ontario, apply through the Skilled Trades Ontario Portal (18+) or by email/mail (16-17), and once the Training Agreement is registered you work under qualified tradespeople and attend in-school training. Apprentice and sponsor can then apply for provincial and federal financial incentives.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You like hands-on, physical work and want to be paid while you train toward a trade credential.",
+   "You already have, or can find, an Ontario employer willing to sponsor you; that is the key step."
+  ],
+  "who_it_may_not_fit": [
+   "You need remote work, or you cannot find a sponsor; a first-time sponsor must also be approved by Skilled Trades Ontario before registration.",
+   "You cannot meet your trade's education requirement or are under 16."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "partial",
+   "ontario_residents": "likely",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [
+    "Skilled Trades Ontario: at least 16, legal permission to work in Canada, trade-specific education requirements, and a sponsor in Ontario."
+   ],
+   "work_authorization_notes": "Legal permission to work in Canada required (Skilled Trades Ontario)."
+  },
+  "availability_status": "program_open_check_eligibility",
+  "availability_checked_at": "2026-10-13T15:21:50Z",
+  "availability_evidence": [
+   "Skilled Trades Ontario's 'Start an apprenticeship' page and a July 2026 apprentice toolkit describe ongoing registration through the STO Portal once a sponsor signs; 2026 provincial apprenticeship funding announcements (Windsor, July 2026; Hamilton, August 2026) show the system active."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.skilledtradesontario.ca/apprenticeship/starting-your-apprenticeship/",
+  "requirements": {
+   "minimum_age": 16,
+   "education": "trade-specific minimum education (varies by trade)",
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "An Ontario sponsor who signs the application",
+    "Portal application at 18+; email or mail at 16-17"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "onsite",
+   "relationship_type": "employee",
+   "schedule_type": "varies",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "varied",
+   "customer_facing": "some",
+   "sales_or_commission": "no",
+   "deadline_pressure": "medium",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "no",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Work depends on the sponsor's workload; in-school training blocks are part of the program (fees not verified).",
+    "Compulsory-trade apprentices are listed in the Skilled Trades Ontario Public Register."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 2,
+   "detail": 2,
+   "customer": 1,
+   "technical": 2,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "hours_worked",
+    "being_selected"
+   ],
+   "economics_notes": [
+    "Wages are paid by the sponsor; trade-specific rates and in-school fees were not checked. After registration, apprentice and sponsor can apply for provincial and federal financial incentives (Skilled Trades Ontario)."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": [
+    "In-school training fees, tools and safety gear (not verified)"
+   ]
+  },
+  "risks": [
+   "in_person_required",
+   "competitive_acceptance"
+  ],
+  "risk_notes": [
+   "Finding a sponsor is the bottleneck; registration is only possible once a sponsor signs."
+  ],
+  "barriers": [
+   "Securing an Ontario sponsor",
+   "Trade-specific education requirement"
+  ],
+  "progression_potential": "high",
+  "horizon": "career",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:42:00Z",
+  "sources": [
+   {
+    "url": "https://www.skilledtradesontario.ca/apprenticeship/starting-your-apprenticeship/",
+    "source_type": "official",
+    "publisher": "Skilled Trades Ontario",
+    "title": "Start an apprenticeship - Skilled Trades Ontario",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "official_url",
+     "requirements",
+     "canadian_eligibility",
+     "ontario_eligibility",
+     "application_route",
+     "availability",
+     "funding"
+    ],
+    "evidence_summary": "16+, legal permission to work in Canada, trade education requirements, Ontario sponsor; find sponsors via counsellors, college career centres, job postings or Employment Ontario; Portal application at 18+, email/mail at 16-17; first-time sponsors need approval and a Sponsor ID; Training Agreement registration starts the apprenticeship and unlocks provincial and federal incentives.",
+    "limitations": [
+     "Search snippet only; page not opened."
+    ]
+   },
+   {
+    "url": "https://www.skilledtradesontario.ca/wp-content/uploads/2026/07/Apprentice-Toolkit-Web-Version-2-En.pdf",
+    "source_type": "official",
+    "publisher": "Skilled Trades Ontario",
+    "title": "Everything you need to know about starting and completing your apprenticeship (Apprentice Toolkit, July 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": "2026-07",
+    "supports": [
+     "training",
+     "availability",
+     "existence"
+    ],
+    "evidence_summary": "July 2026 apprentice toolkit PDF in results; shows current guidance is being published.",
+    "limitations": [
+     "Title and date only; PDF not opened."
+    ]
+   },
+   {
+    "url": "https://www.skilledtradesontario.ca/apprenticeship/sponsor-an-apprentice/",
+    "source_type": "official",
+    "publisher": "Skilled Trades Ontario",
+    "title": "Sponsor an apprentice - Skilled Trades Ontario",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "requirements"
+    ],
+    "evidence_summary": "Sponsor-facing page re-seen as a result title; v1 summary (minimum-wage compliance, ratio rules) not re-read.",
+    "limitations": [
+     "Title only this pass."
+    ]
+   },
+   {
+    "url": "https://www.stclaircollege.ca/news/2026/ontario-investing-millions-expand-access-apprenticeship-training-and-resources-windsor",
+    "source_type": "official",
+    "publisher": "St. Clair College",
+    "title": "Ontario investing millions to expand access to apprenticeship training and resources in Windsor (July 7, 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2026-07-07",
+    "supports": [
+     "funding",
+     "legitimacy"
+    ],
+    "evidence_summary": "$2.2 million for Windsor through the Pre-Apprenticeship Training Program and Apprenticeship Capital Grant (funds go to training providers).",
+    "limitations": [
+     "Provider-side funding; snippet only."
+    ]
+   },
+   {
+    "url": "https://www.educationnewscanada.com/article/organization/14117/1212944/Ontario-Investing-More-Than-6-Million-to-Protect-and-Train-Workers-in-Hamilton.htm",
+    "source_type": "independent_reporting",
+    "publisher": "Education News Canada",
+    "title": "Ontario Investing More Than $6 Million to Protect and Train Workers in Hamilton (August 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2026-08",
+    "supports": [
+     "funding"
+    ],
+    "evidence_summary": "Eight Hamilton organisations funded to help nearly 200 people prepare for skilled-trades jobs, including Skills Development Fund capital funding.",
+    "limitations": [
+     "Republished government release; snippet only."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Negative evidence: none sought beyond official pages; the structural risk is sponsor availability.",
+   "A blog mentioned a federal 'Build Canada Apprenticeship Service' ($2 billion, spring 2026); unverified and not recorded as a claim."
+  ],
+  "open_questions": [
+   "In-school training fees and typical apprentice wage progressions by trade.",
+   "Current ratio rules for trades with journeyperson-to-apprentice ratios."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Registration steps, eligibility and the Portal/email routes re-verified on Skilled Trades Ontario; status set to program running with 2026 evidence (July 2026 toolkit, 2026 funding announcements); incentive availability after registration added.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "ontario-registered-apprenticeship",
+   "v1_name": "Registered apprenticeship in a skilled trade (Ontario)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "availability_status: availability_unknown -> program_open_check_eligibility",
+    "region_eligibility.canadian_residents: likely -> partial (Ontario sponsor required)",
+    "economics.pay_type unknown -> hourly; incentives note added",
+    "Added Portal (18+) vs email/mail (16-17) application routes and sponsor approval step",
+    "Sources: STO Portal page dropped; July 2026 toolkit and 2026 funding announcements added"
+   ],
+   "claims_verified": [
+    "16+, legal permission to work in Canada, trade education requirement, Ontario sponsor",
+    "Portal or paper application; Training Agreement registration",
+    "Sponsors can be employers, unions, contractors or associations (via STO guidance on finding sponsors)"
+   ],
+   "unresolved_claims": [
+    "Sponsors must comply with minimum wage; 1:1 ratio in ratio trades (v1 sponsor page) not re-read",
+    "Out-of-province training recognition (v1) not re-seen"
+   ]
+  }
+ },
+ {
+  "id": "public-service-student-new-grad-programs",
+  "name": "Government student and new-grad job programs (FSWEP, Ontario SEO, Ontario Internship Program)",
+  "organization": null,
+  "record_type": "work_category",
+  "category": "structured_employment",
+  "summary": "Federal and Ontario public-service hiring streams reserved for students (Federal Student Work Experience Program, Ontario Public Service Summer Employment Opportunities) and recent graduates (Ontario Internship Program). All 2026 Ontario summer ads have closed; 2027 summer postings are expected in fall/winter and OIP applications usually open in January.",
+  "what_you_do": "You submit a profile to the federal student inventory or apply to individual Ontario postings; departments and ministries hire students for temporary jobs (mostly summer, some part-time in term) or recent graduates for paid internships. Work ranges from office and program support to field roles.",
+  "how_to_find_work": "FSWEP: create a profile in the federal student inventory on canada.ca at any time (full-time students returning to studies); departments pull from the pool, with most summer referrals in winter and spring, and a university page says the summer 2027 border-services student posting is expected via FSWEP from early July 2026. Ontario Public Service: set a job alert for 'Student Summer Employment Opportunities' on the ontario.ca careers site, where summer 2027 postings are promised for fall/winter 2026-27. Ontario Internship Program: applications are generally accepted in the first two weeks of January (2026 deadline was January 30, 2026). Parliament also runs student jobs: a House of Commons Page posting (Ottawa, part-time) was live on Indeed on September 28, 2026. University career centres repost all of these.",
+  "who_it_may_fit": [
+   "You are a full-time student returning to studies, or an Ontario graduate of the last two years, and want paid government experience with a predictable annual cycle.",
+   "You can plan ahead: applying in autumn (FSWEP profile, OPS alerts) and January (OIP) positions you for the next summer."
+  ],
+  "who_it_may_not_fit": [
+   "You are not a student or recent graduate, or you need work this autumn: 2026 ads are closed and 2027 cycles have not opened.",
+   "You expect a guaranteed job from the FSWEP pool; being in the inventory does not ensure a referral."
+  ],
+  "audience_restriction": [
+   "Current full-time students (FSWEP, OPS summer jobs) or recent graduates (Ontario Internship Program)"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Ontario summer jobs are open to students or recent graduates (within six months) who live in Ontario during the job; FSWEP requires full-time student status with a return to studies (search summaries)."
+   ],
+   "work_authorization_notes": "Legal entitlement to work in Canada expected for all streams; 2026 wording not re-seen."
+  },
+  "availability_status": "not_applicable_category",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": "https://www.ontario.ca/page/careers-summer-employment-opportunities",
+  "requirements": {
+   "minimum_age": 15,
+   "education": "current full-time student status (FSWEP, OPS summer jobs) or a college/university credential within the last two years (OIP; five years for some equity groups per v1, not re-seen)",
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "employee",
+   "schedule_type": "fixed",
+   "hours_commitment": "varies",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "partly",
+   "independent_work": "mixed",
+   "task_variety": "varied",
+   "customer_facing": "some",
+   "sales_or_commission": "no",
+   "deadline_pressure": "low",
+   "work_guaranteed": "competitive",
+   "emotional_content_risk": "no",
+   "training_required": "no",
+   "conditions_notes": [
+    "Annual cycles: OPS summer jobs are 7-18 week full-time roles May-September (v1, partially re-seen); OIP is a paid internship for graduates."
+   ]
+  },
+  "skill_demands": {
+   "computer": 1,
+   "writing": 1,
+   "numeracy": 1,
+   "detail": 1,
+   "customer": 1,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "months",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "being_selected",
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Pay is set per posting; no current rates were seen and the v1 2015-era OPS figure was dropped."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "no_guaranteed_work",
+   "age_or_group_restricted",
+   "low_task_volume"
+  ],
+  "risk_notes": [
+   "Hiring is seasonal and competitive; a university page notes the Canada Border Services Agency stopped hiring student border services officers for summer 2026."
+  ],
+  "barriers": [
+   "Student or recent-graduate status",
+   "Long lead times between application and start"
+  ],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:42:00Z",
+  "sources": [
+   {
+    "url": "https://www.ontario.ca/page/careers-summer-employment-opportunities",
+    "source_type": "official",
+    "publisher": "Government of Ontario",
+    "title": "Careers: summer employment opportunities",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": null,
+    "supports": [
+     "official_url",
+     "availability",
+     "application_route",
+     "program_eligibility",
+     "ontario_eligibility"
+    ],
+    "evidence_summary": "All 2026 student summer ads closed; summer 2027 opportunities to be posted in fall/winter; job alerts available for the Student Summer Employment Opportunities category.",
+    "limitations": [
+     "Search snippet only."
+    ]
+   },
+   {
+    "url": "https://www.cbu.ca/current-students/student-services/career-services/student-job-opportunities/summer-2026-federal-student-work-experience-program-fswep/",
+    "source_type": "other",
+    "publisher": "Cape Breton University career services",
+    "title": "Summer 2026: Federal Student Work Experience Program (FSWEP)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2026",
+    "supports": [
+     "availability",
+     "application_route"
+    ],
+    "evidence_summary": "CBSA no longer hiring student border services officers for summer 2026; to apply for summer 2027 visit FSWEP in early July 2026.",
+    "limitations": [
+     "University page about one department's stream; the canada.ca FSWEP page was not re-seen."
+    ]
+   },
+   {
+    "url": "https://www.utm.utoronto.ca/careers/tips-summer-employment-programs",
+    "source_type": "other",
+    "publisher": "University of Toronto Mississauga Career Centre",
+    "title": "Tips | Summer Employment Programs",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": null,
+    "supports": [
+     "availability",
+     "application_route"
+    ],
+    "evidence_summary": "Ontario Internship Program applications are generally accepted in the first two weeks of January; 2026 deadline January 30, 2026.",
+    "limitations": [
+     "Third-party summary; ontario.ca OIP pages not re-seen."
+    ]
+   },
+   {
+    "url": "https://telfer.uottawa.ca/en/telfer-knowledge-hub/career-centre-blog/starting-a-public-service-career-with-the-federal-student-work-experience-program-fswep/",
+    "source_type": "other",
+    "publisher": "Telfer School of Management (uOttawa)",
+    "title": "Starting a public service career with the Federal Student Work Experience Program (FSWEP)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility",
+     "work_conditions"
+    ],
+    "evidence_summary": "Career-centre explainer of FSWEP as the federal student inventory for full-time students.",
+    "limitations": [
+     "Secondary explainer."
+    ]
+   },
+   {
+    "url": "https://to.indeed.com/aabc87qwr862",
+    "source_type": "job_board",
+    "publisher": "Indeed (House of Commons Student Employment)",
+    "title": "House of Commons Page - Ottawa, ON (part-time, posted September 28, 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2026-09-28",
+    "supports": [
+     "existence",
+     "availability"
+    ],
+    "evidence_summary": "Indeed connector listing of a current parliamentary student job (Page Programme) in Ottawa; details not opened because the connector was rate-limited.",
+    "limitations": [
+     "Listing only; eligibility (typically first-year university students in Ottawa) not read."
+    ]
+   }
+  ],
+  "research_notes": [
+   "The canada.ca FSWEP page, ontario.ca OIP pages and the PSC audit (v1 sources) were not re-seen and were dropped; official_url moved to the ontario.ca summer-employment page.",
+   "Negative evidence this pass: the CBSA student stream pause for 2026 and the general competitiveness of the pools."
+  ],
+  "open_questions": [
+   "2027 OPS summer posting dates and the OIP 2027 window.",
+   "Whether FSWEP accepts international students (v1 unverified claim)."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Category re-verified: 2026 Ontario summer ads closed with 2027 postings expected fall/winter, OIP January window from a university source, FSWEP 2027 timing from a university page; how_to_find_work added and a current parliamentary student posting noted.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "public-service-student-new-grad-programs",
+   "v1_name": "Government student and new-grad job programs (FSWEP, Ontario SEO, Ontario Internship Program)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "how_to_find_work added (required for work_category)",
+    "official_url changed to the ontario.ca summer-employment page (canada.ca FSWEP page not re-seen)",
+    "economics: outdated OPS pay figure removed; pay_type hourly",
+    "Sources replaced with ontario.ca summer page, university FSWEP/OIP pages and an Indeed listing"
+   ],
+   "claims_verified": [
+    "All 2026 OPS student summer ads closed; 2027 postings in fall/winter",
+    "OIP applications normally open in January",
+    "FSWEP is the federal full-time-student inventory"
+   ],
+   "unresolved_claims": [
+    "OPS SEO hires about 4,000 students for 7-18 week jobs (v1) not re-seen",
+    "OIP two-year/five-year graduation windows (v1) not re-seen",
+    "PSC audit findings on FSWEP (v1) not re-seen"
+   ]
+  }
+ },
+ {
+  "id": "staffing-agency-temp-placements",
+  "name": "Temporary placements through staffing agencies (office/admin and general)",
+  "organization": null,
+  "record_type": "work_category",
+  "category": "structured_employment",
+  "summary": "Licensed temporary help agencies place workers in short-term or contract assignments (reception, office support, data entry, light industrial). Ontario has licensed agencies and recruiters since 2024 and has fined recruiters for charging workers illegal hiring fees; this pass could not re-verify the current rules on official pages.",
+  "what_you_do": "You register with one or more agencies, interview with a recruiter, and accept assignments at client companies lasting days to months; some convert to permanent jobs. The agency is your employer and pays you.",
+  "how_to_find_work": "Register directly with large licensed agencies (Randstad, Adecco, Robert Half and similar) through their websites or Indeed, and search job boards for postings marked 'temporary' or 'contract' by an agency. Before signing, confirm the agency holds an Ontario temporary help agency licence (the Ministry of Labour publishes a searchable list), never pay a fee to be placed, and check that recruiter emails come from the agency's own domain.",
+  "who_it_may_fit": [
+   "You want to start earning soon in short-term office or general roles and do not mind changing assignments.",
+   "You want a route into a permanent job via a temp-to-hire placement."
+  ],
+  "who_it_may_not_fit": [
+   "You need guaranteed steady hours or only fully remote work; assignments are uneven and mostly on site.",
+   "You would pay a 'placement fee': Ontario inspectors found recruiters charging workers illegal hiring fees and clawing back pay (CTV News)."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Ontario's licensing regime for temporary help agencies and recruiters took effect January 1, 2024 (reporting); workers need legal entitlement to work in Canada."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "not_applicable_category",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": null,
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "some",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "employee",
+   "schedule_type": "varies",
+   "hours_commitment": "varies",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "sometimes",
+   "text_based_work": "partly",
+   "independent_work": "mixed",
+   "task_variety": "varied",
+   "customer_facing": "some",
+   "sales_or_commission": "no",
+   "deadline_pressure": "medium",
+   "work_guaranteed": "sporadic",
+   "emotional_content_risk": "no",
+   "training_required": "no",
+   "conditions_notes": [
+    "Assignment-based; Indeed connector searches for temporary admin roles in Toronto on 2026-10-13 returned no agency postings (one search errored on rate limits), so current volume is unmeasured."
+   ]
+  },
+  "skill_demands": {
+   "computer": 2,
+   "writing": 1,
+   "numeracy": 1,
+   "detail": 2,
+   "customer": 1,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "being_selected",
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Pay varies by assignment; not checked this pass."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "low_task_volume",
+   "scam_impersonation",
+   "no_guaranteed_work",
+   "unpredictable_income",
+   "upfront_fees"
+  ],
+  "risk_notes": [
+   "Licensing reporting: agencies must post a $25,000 letter of credit; penalties up to $50,000 and possible bans for unlicensed operation (2021-2023 reporting, not re-verified for 2026).",
+   "Illegal hiring fees charged to workers were documented by Ontario inspectors; employers using deceitful recruiters could be made to repay workers."
+  ],
+  "barriers": [],
+  "progression_potential": "unknown",
+  "horizon": "now",
+  "evidence_quality": "weak",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:45:00Z",
+  "sources": [
+   {
+    "url": "https://toronto.ctvnews.ca/ontario-says-it-s-coming-for-scumbag-temp-help-agencies-mistreating-workers-1.6467359",
+    "source_type": "independent_reporting",
+    "publisher": "CTV News Toronto",
+    "title": "Ontario says it's coming for 'scumbag' temp help agencies mistreating workers",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2023",
+    "supports": [
+     "risks",
+     "legitimacy",
+     "fees",
+     "ontario_eligibility"
+    ],
+    "evidence_summary": "Licensing from January 1, 2024; inspectors found recruiters charging workers illegal hiring fees and clawing back pay; online database of licensed agencies for businesses and job seekers.",
+    "limitations": [
+     "2023 reporting; current rules not re-read on ontario.ca."
+    ]
+   },
+   {
+    "url": "https://toronto.ctvnews.ca/this-ends-now-ontario-proposes-new-temporary-agency-laws-that-would-require-license-1.5627358",
+    "source_type": "independent_reporting",
+    "publisher": "CTV News Toronto",
+    "title": "'This ends now': Ontario proposes new temporary agency laws that would require license",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2021",
+    "supports": [
+     "legitimacy",
+     "risks"
+    ],
+    "evidence_summary": "Proposed licensing with a $25,000 irrevocable letter of credit to cover unpaid wages; fines up to $50,000.",
+    "limitations": [
+     "2021 proposal stage."
+    ]
+   },
+   {
+    "url": "https://hrlawcanada.com/?p=6787",
+    "source_type": "other",
+    "publisher": "HR Law Canada",
+    "title": "Ontario temporary help agency and recruiter licensing (summary)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": null,
+    "supports": [
+     "legitimacy"
+    ],
+    "evidence_summary": "Legal-news summary of the licensing regime: refused applicants have 30 days to stop operating; annual renewal.",
+    "limitations": [
+     "Secondary legal commentary; snippet only."
+    ]
+   }
+  ],
+  "research_notes": [
+   "v1 official_url (O. Reg. 99/23 on ontario.ca) and the Parkdale legal clinic, HR Reporter, Randstad posting and WelcomeAide sources were not re-seen and were dropped; no official page appeared this pass, so official_url is null.",
+   "Indeed connector: 'temporary administrative assistant staffing agency' (Toronto, temporary) returned no results; 'Randstad administrative assistant' could not run because of rate limits."
+  ],
+  "open_questions": [
+   "Current text of the Employment Standards Act fee prohibition for assignment employees and the licence-database URL.",
+   "Share of agency admin assignments that are hybrid or remote."
+  ],
+  "disposition": "downgraded",
+  "disposition_reason": "Category remains valid, but this pass found only 2021-2023 reporting on Ontario's licensing regime; the fee-prohibition and licence-database claims were not re-read on ontario.ca, no official or job-board source could be cited, and current assignment volume could not be measured.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "staffing-agency-temp-placements",
+   "v1_name": "Temporary placements through staffing agencies (office/admin and general)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "how_to_find_work added (required for work_category)",
+    "official_url set to null (v1 regulation page not re-seen)",
+    "evidence_quality moderate -> weak (no official/job-board source re-seen)",
+    "Sources replaced with CTV News (2021, 2023) and HR Law Canada; v1 Randstad/WelcomeAide/Parkdale/HR Reporter dropped",
+    "risks: upfront_fees added (illegal recruiter fees documented)"
+   ],
+   "claims_verified": [
+    "Ontario licenses temporary help agencies and recruiters (from January 1, 2024)",
+    "Recruiters have charged workers illegal hiring fees"
+   ],
+   "unresolved_claims": [
+    "Agencies cannot charge workers fees for registration or assignment (v1) not re-read in the regulation",
+    "Temp roles often open and close within 48 hours (v1, Randstad) not re-seen",
+    "Hybrid admin postings (v1 Randstad example) not re-seen"
+   ]
+  }
+ },
+ {
+  "id": "statcan-data-collection-clerk",
+  "name": "Statistics Canada data collection clerk (survey interviewer)",
+  "organization": "Statistics Canada",
+  "record_type": "employer",
+  "category": "structured_employment",
+  "summary": "Statistics Canada hires data collection clerks as needed, for up to 35 hours a week, to run survey interviews mostly by phone from home or on site, with some in-person visits; candidates can also sit in a Talent Retention Bank for part-time, casual, term or indeterminate work. No Ontario posting was found on 2026-10-13 and the 2026 Census field hiring (March-July 2026) is over.",
+  "what_you_do": "You contact selected households or businesses by phone (sometimes in person), explain the survey, ask the questions and record answers in a computer-assisted system. Work-from-home or on-site placement depends on operational needs; postings have required reliable home phone service and willingness to travel.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You are comfortable making many calls to strangers and want a federal employer that may let you work from home.",
+   "You can accept part-time, casual or term hours; the Talent Retention Bank covers all of these."
+  ],
+  "who_it_may_not_fit": [
+   "You need a job now: hiring is 'as needed' and no Ontario posting was found this pass.",
+   "You dislike phone work or rejection; respondents sometimes assume calls are scams (v1 reviews, not re-seen)."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Federal public-service employer; Ontario regional hiring happens when surveys need staff. Public-service appointment rules (citizenship preference) were not checked."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": "2026-10-13T15:21:20Z",
+  "availability_evidence": [
+   "Indeed connector searches 'Statistics Canada data collection clerk interviewer' (Ontario) and 'Statistics Canada' (Canada) on 2026-10-13 returned no Statistics Canada postings.",
+   "statcan.gc.ca says clerks are hired as needed via its job pages and Talent Retention Bank; 2026 Census enumerator postings (e.g., Saskatchewan, May 2026, $25.87/hour) covered March-July 2026 and have ended."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.statcan.gc.ca/en/employment/opportunities/data-collection",
+  "requirements": {
+   "minimum_age": null,
+   "education": "secondary school typically required for the occupation (NOC 14110)",
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "reliable home phone service and a quiet space when working from home (past postings)"
+   ],
+   "certifications": [],
+   "other": [
+    "Basic computer skills; willingness to travel for in-person interviews (past postings)"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "employee",
+   "schedule_type": "shifts",
+   "hours_commitment": "varies",
+   "hours_min_weekly": null,
+   "hours_max_weekly": 35,
+   "time_windows": [
+    "day",
+    "evening",
+    "weekend"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "no",
+   "independent_work": "mixed",
+   "task_variety": "repetitive",
+   "customer_facing": "high",
+   "sales_or_commission": "no",
+   "deadline_pressure": "medium",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "no",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Up to 35 hours a week, as needed; Talent Retention Bank candidates may be offered part-time, casual, term or indeterminate roles (statcan.gc.ca).",
+    "May be eligible for Public Service group insurance benefit plans."
+   ]
+  },
+  "skill_demands": {
+   "computer": 1,
+   "writing": 0,
+   "numeracy": 0,
+   "detail": 2,
+   "customer": 2,
+   "technical": 0,
+   "creative": 0,
+   "language": 2
+  },
+  "economics": {
+   "pay_type": "hourly",
+   "currency": "CAD",
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": "hour",
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "medium",
+   "earnings_depend_on": [
+    "hours_worked",
+    "being_selected"
+   ],
+   "economics_notes": [
+    "The data-collection page shows no salary. Related 2026 Census field roles were advertised at $25.87/hour (enumerator) and $31.32/hour (crew leader) in a May 2026 Saskatchewan listing, with northern rates of $35.79-$37.79/hour; older postings showed $17.83-$21.78/hour. These are census roles, not the clerk rate."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": [
+    "Home phone/internet if working from home"
+   ]
+  },
+  "risks": [
+   "phone_heavy",
+   "low_task_volume",
+   "no_guaranteed_work"
+  ],
+  "risk_notes": [
+   "Hiring is intermittent and tied to survey cycles."
+  ],
+  "barriers": [
+   "Phone-heavy work with strangers",
+   "No current posting to apply to"
+  ],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:45:00Z",
+  "sources": [
+   {
+    "url": "https://www.statcan.gc.ca/en/employment/opportunities/data-collection",
+    "source_type": "official",
+    "publisher": "Statistics Canada",
+    "title": "Jobs in data collection",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "requirements",
+     "work_conditions",
+     "availability",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "Hires Data Collection Clerks as needed for up to 35 hours a week; work from home or on site by operational need; mainly phone interviews or travel to respondents' homes; may be eligible for Public Service group insurance.",
+    "limitations": [
+     "Search snippet only; no salary shown."
+    ]
+   },
+   {
+    "url": "https://www.statcan.gc.ca/en/job-opportunities",
+    "source_type": "official",
+    "publisher": "Statistics Canada",
+    "title": "Job opportunities",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "application_route",
+     "work_conditions"
+    ],
+    "evidence_summary": "Talent Retention Bank: candidates may be hired for part-time, casual, indeterminate or term appointments depending on business needs.",
+    "limitations": [
+     "Snippet only."
+    ]
+   },
+   {
+    "url": "https://www23.statcan.gc.ca/imdb/p3VD.pl?Function=getVD&TVD=1322554&CVD=1322870&CPV=14110&CST=01052021&MLV=5&CLV=5",
+    "source_type": "government",
+    "publisher": "Statistics Canada",
+    "title": "NOC 2021 Version 1.0 - 14110 - Survey interviewers and statistical clerks",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "requirements"
+    ],
+    "evidence_summary": "Occupation description for survey interviewers and statistical clerks (secondary school and computer experience may be required).",
+    "limitations": [
+     "Occupational classification, not a posting."
+    ]
+   },
+   {
+    "url": "https://jobads.ca/job/sk/1513184",
+    "source_type": "aggregator",
+    "publisher": "jobads.ca",
+    "title": "2026 Census positions - Saskatchewan (May 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2026-05",
+    "supports": [
+     "pay",
+     "work_conditions"
+    ],
+    "evidence_summary": "Non-supervisory census enumerators $25.87/hour, supervisory $31.32/hour plus authorised expenses; door-to-door, evenings and weekends; applications assessed in order received.",
+    "limitations": [
+     "Census roles, not data collection clerks; Saskatchewan listing."
+    ]
+   },
+   {
+    "url": "https://naskapi.ca/2025/11/26/statistics-canada-hiring-local-workers-for-the-2026-census-in-kawawachikamach/",
+    "source_type": "other",
+    "publisher": "Naskapi Nation of Kawawachikamach",
+    "title": "Statistics Canada hiring local workers for the 2026 Census in Kawawachikamach",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": "2025-11-26",
+    "supports": [
+     "pay"
+    ],
+    "evidence_summary": "Northern 2026 Census rates: $35.79/hour enumerators, $37.79/hour crew leaders, mileage and parking covered.",
+    "limitations": [
+     "Remote-community rates; not Ontario."
+    ]
+   },
+   {
+    "url": "https://www.narcity.com/en-ca/money/statistics-canada-is-hiring-interviewers-right-now-you-dont-need-any-experience",
+    "source_type": "independent_reporting",
+    "publisher": "Narcity",
+    "title": "Statistics Canada Is Hiring 'Interviewers' Right Now & You Don't Need Any Experience",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:20:30Z",
+    "published_at": null,
+    "supports": [
+     "requirements",
+     "work_conditions"
+    ],
+    "evidence_summary": "Past interviewer posting: work from home or on site, phone-based, reliable home phone, high school, basic computer skills, possible travel and overtime.",
+    "limitations": [
+     "Undated article about a past posting."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Indeed connector 'survey interviewer telephone' (Ontario) could not run because of rate limits; the two StatCan searches that ran found nothing.",
+   "v1 Job Bank wage table (median $24.18/hour for NOC 14110 in Ontario), the West Boundary census listing and the Indeed salary page were not re-seen and were dropped."
+  ],
+  "open_questions": [
+   "Current data collection clerk hourly rate and whether Ontario regional offices are recruiting.",
+   "Citizenship or residency preferences applied to these appointments."
+  ],
+  "disposition": "updated",
+  "disposition_reason": "Employer page re-verified (as-needed hiring, up to 35 hours, home or on-site); Talent Retention Bank route and 2026 Census pay added; Indeed check found no current posting, so availability stays unknown.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": "statcan-data-collection-clerk",
+   "v1_name": "Statistics Canada data collection clerk (survey interviewer)",
+   "v1_status": "official_info_found",
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [
+    "availability_checked_at and availability_evidence filled (Indeed negative; census hiring over)",
+    "Added Talent Retention Bank application route",
+    "economics: pay_type hourly, CAD; 2026 Census rates recorded in notes (not as advertised_rate)",
+    "Sources replaced: statcan job-opportunities page, jobads.ca census listing and Naskapi notice added; Job Bank wage table, West Boundary and Indeed salaries page dropped"
+   ],
+   "claims_verified": [
+    "Hired as needed, up to 35 hours a week",
+    "Work from home or on site; mostly phone interviews with some home visits",
+    "May be eligible for Public Service group insurance plans"
+   ],
+   "unresolved_claims": [
+    "Ontario median wage $24.18/hour for the occupation (v1 Job Bank) not re-seen",
+    "Worker reviews about part-time-only roles and scam suspicion (v1 Indeed) not re-seen"
+   ]
+  }
+ },
+ {
+  "id": "yess-youth-employment-skills-strategy-program",
+  "name": "Youth Employment and Skills Strategy Program (funded youth employment projects, ages 15-30)",
+  "organization": "Government of Canada - Employment and Social Development Canada (delivered by funded organisations)",
+  "record_type": "funded_employment_program",
+  "category": "government_program",
+  "summary": "Federal funding for community organisations to run employment projects for youth aged 15-30 who face barriers to work: employability sessions, job-search help, paid work experience, mentorship and help with living costs. In 2026-27 the government says YESS, the Student Work Placement Program and Canada Summer Jobs will support about 175,000 opportunities, including 20,000 youth facing barriers under the YESS Program.",
+  "what_you_do": "You join a project run by a funded organisation in your area (for example a London, Ontario program combining five weeks of pre-employment classes with a 10-week paid placement). Intake is through the organisation, usually by phone or appointment, and the mix of training, paid placement and supports depends on the project.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You are 15-30, legally entitled to work in Canada (citizen, permanent resident or protected person), out of school and facing barriers to work.",
+   "You want paid work experience with coaching and possibly help with living costs or disability supports."
+  ],
+  "who_it_may_not_fit": [
+   "You are over 30 or on a temporary permit: the age and status rules have no exceptions (canada.ca).",
+   "You are collecting Employment Insurance or in school: one Ontario project excludes both, and others set their own rules."
+  ],
+  "audience_restriction": [
+   "Youth aged 15-30 (inclusive) at the start of the activity"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Participants must be 15-30 at the start of the activity, legally entitled to work in Canada, and a Canadian citizen, permanent resident or protected person (canada.ca).",
+    "Projects prioritise youth facing multiple barriers (Indigenous, Black and racialised youth, 2SLGBTQI+ youth, youth with disabilities, rural/northern and official-language-minority youth); each funded organisation sets intake rules (e.g., ATN London: out of school, not collecting EI)."
+   ],
+   "work_authorization_notes": "Citizen, permanent resident or protected person, legally entitled to work in Canada."
+  },
+  "availability_status": "program_open_check_eligibility",
+  "availability_checked_at": "2026-10-13T15:21:50Z",
+  "availability_evidence": [
+   "ESDC's January 2026 question-period note says YESS, SWPP and CSJ will support about 175,000 youth opportunities in 2026-27, including 20,000 youth facing barriers under the YESS Program; a July 2026 ESDC release announces new funding to remove employment barriers for youth and persons with disabilities (title seen).",
+   "Local intake depends on each funded organisation; the only Ontario listing found (ATN, London) gives no 2026 intake date."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.canada.ca/en/employment-social-development/services/funding/youth-employment-strategy.html",
+  "requirements": {
+   "minimum_age": 15,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Project-specific intake criteria (e.g., out of school, not receiving EI at one Ontario provider)"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "participant",
+   "schedule_type": "fixed",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "varied",
+   "customer_facing": "some",
+   "sales_or_commission": "no",
+   "deadline_pressure": "low",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "no",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Example structure (ATN, London ON): five weeks of pre-employment classes then a 10-week paid placement; other projects differ."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 0,
+   "detail": 1,
+   "customer": 1,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "mixed",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [
+    "Pre-employment classroom weeks may be unpaid unless the project provides an allowance (not stated in sources seen)"
+   ],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "being_selected",
+    "program_funding",
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Supports can include paid work experience, help with living costs and disability supports (Youth Digital Gateway); wage rates are set by the placement employer and were not published in sources seen."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "age_or_group_restricted",
+   "no_guaranteed_work",
+   "funding_uncertain"
+  ],
+  "risk_notes": [
+   "Places depend on each organisation's funding agreement and cohort schedule."
+  ],
+  "barriers": [
+   "Finding the funded organisation serving your area; canada.ca lists streams, not a directory of local projects"
+  ],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:48:00Z",
+  "sources": [
+   {
+    "url": "https://www.canada.ca/en/employment-social-development/services/funding/youth-focused-projects/who-can-apply.html",
+    "source_type": "government",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Youth Employment and Skills Strategy Program - Youth Focused Projects - Who can apply",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility",
+     "canadian_eligibility",
+     "requirements"
+    ],
+    "evidence_summary": "Participants: 15-30 inclusive at the start of the activity, legally entitled to work in Canada, citizen/PR/protected person; criteria have no exceptions.",
+    "limitations": [
+     "Search snippet only."
+    ]
+   },
+   {
+    "url": "https://www.canada.ca/en/employment-social-development/programs/youth-employment-strategy.html",
+    "source_type": "government",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Youth Employment and Skills Strategy - Canada.ca",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "program_eligibility"
+    ],
+    "evidence_summary": "Strategy overview; funded projects focus on youth facing multiple barriers, naming Indigenous, Black and racialised, 2SLGBTQI+, disabled, rural/northern and official-language-minority youth.",
+    "limitations": [
+     "Snippet only."
+    ]
+   },
+   {
+    "url": "https://youth-jeunesse.service.canada.ca/en/programs/8383a134-3be4-47ee-8167-6b14806da379",
+    "source_type": "government",
+    "publisher": "Government of Canada - Youth Digital Gateway",
+    "title": "Youth Employment and Skills Strategy Program - Program Details",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "funding",
+     "work_conditions",
+     "pay"
+    ],
+    "evidence_summary": "Funded organisations deliver employability sessions, job-search help, paid work experience, mentorship, disability supports, counselling and help with living costs.",
+    "limitations": [
+     "Snippet only; no rates."
+    ]
+   },
+   {
+    "url": "https://www.canada.ca/en/employment-social-development/services/funding/youth-employment-strategy.html",
+    "source_type": "government",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Youth Employment and Skills Strategy (funding programs)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "official_url",
+     "application_route"
+    ],
+    "evidence_summary": "'Learn about and apply to YESS funding programs' page listing funded streams filtered by youth facing barriers, Indigenous youth, newcomers and students.",
+    "limitations": [
+     "Lists streams, not local organisations."
+    ]
+   },
+   {
+    "url": "https://search.open.canada.ca/qpnotes/record/esdc-edsc%2CEF_039_20260105",
+    "source_type": "government",
+    "publisher": "Employment and Social Development Canada (Open Government)",
+    "title": "Question Period Note: Employment and Skills Support for Canada's Youth (January 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": "2026-01-05",
+    "supports": [
+     "availability",
+     "funding",
+     "work_volume"
+    ],
+    "evidence_summary": "About 175,000 opportunities for youth in 2026-27 through SWPP, YESS and CSJ; 20,000 youth facing barriers helped under the YESS Program.",
+    "limitations": [
+     "Snippet only."
+    ]
+   },
+   {
+    "url": "https://www.canada.ca/en/employment-social-development/news/2026/07/government-of-canada-invests-over-15-million-to-help-remove-employment-barriers-for-youth-and-persons-with-disabilities.html",
+    "source_type": "government",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Government of Canada invests over $1.5 million to help remove employment barriers for youth and persons with disabilities (July 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": "2026-07",
+    "supports": [
+     "availability"
+    ],
+    "evidence_summary": "July 2026 release title indicating new youth/disability employment funding; location and recipients not read.",
+    "limitations": [
+     "Title only."
+    ]
+   },
+   {
+    "url": "https://www.southwesthealthline.ca/displayService.aspx?id=15779",
+    "source_type": "aggregator",
+    "publisher": "Southwest Healthline (community services directory)",
+    "title": "Youth Employment and Skills Strategy (YESS) - ATN, London ON",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility",
+     "work_conditions",
+     "application_route",
+     "ontario_eligibility"
+    ],
+    "evidence_summary": "Ontario project: ages 15-30, five weeks of pre-employment classes plus a 10-week paid placement; out of school, citizen/PR/refugee status, legally entitled to work in Ontario, not collecting EI; phone intake 519-433-7950.",
+    "limitations": [
+     "Directory listing without a 2026 intake date; free service."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Discovery record. Negative-evidence pass: none specific found; the search budget was spent on official pages.",
+   "Indeed connector search for youth paid placement programs could not run because of rate limits."
+  ],
+  "open_questions": [
+   "Which Ontario organisations currently hold YESS funding and their intake dates.",
+   "Whether participants receive an allowance during classroom weeks."
+  ],
+  "disposition": "new",
+  "disposition_reason": "Legitimate federal program with Ontario delivery, clear age/status eligibility on canada.ca and 2026-27 funding evidence; local intake unverified.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": null,
+   "v1_name": null,
+   "v1_status": null,
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": [
+    "Current Ontario project list and intake dates"
+   ]
+  }
+ },
+ {
+  "id": "opportunities-fund-persons-with-disabilities",
+  "name": "Opportunities Fund for Persons with Disabilities (federal employment supports via local providers)",
+  "organization": "Government of Canada - Employment and Social Development Canada (delivered by funded service providers)",
+  "record_type": "funded_employment_program",
+  "category": "government_program",
+  "summary": "Canada's main federal employment program for people with disabilities. ESDC funds service providers (in Ontario, organisations such as March of Dimes Canada, CMHA branches, Collège Boréal and ATN Access have held agreements) to deliver pre-employment skills, paid work placements with possible wage subsidies, self-employment support and employer supports. Aimed mainly at people who do not qualify for EI-funded training.",
+  "what_you_do": "You contact a funded provider in your area (or Service Canada) and, if you self-identify as having a lasting physical or mental impairment that limits daily activities, join a project: skills preparation, a paid placement in a vacant or newly created position, or help starting a business, depending on the provider's stream.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You self-identify as having a lasting physical or mental impairment that limits daily activities and you do not qualify for Employment Insurance or EI-funded training.",
+   "You want a paid placement or self-employment support with disability-aware coaching."
+  ],
+  "who_it_may_not_fit": [
+   "You need a confirmed opening now: no Ontario provider's current intake was found, and two Ontario agreements listed end dates in February-March 2026 with renewal status unknown.",
+   "You are already eligible for EI-funded training; the program is designed as a route for people with weaker labour-market attachment."
+  ],
+  "audience_restriction": [
+   "People who self-identify as having a lasting physical or mental impairment that limits daily activities"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Participant focus per canada.ca: people self-identifying with a lasting physical or mental impairment; mainly those not eligible for EI or EI-funded training.",
+    "An older third-party page lists unemployed or working under 20 hours a week, not collecting EI, and legally entitled to work in Canada; not confirmed on canada.ca."
+   ],
+   "work_authorization_notes": "Legally entitled to work in Canada (third-party summary; not confirmed on canada.ca)."
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": "2026-10-13T15:21:50Z",
+  "availability_evidence": [
+   "canada.ca program pages and a July 2026 ESDC release title show the fund is active federally, but no Ontario provider's current participant intake was found; Open Government grant records for ATN Access and Gateway Opportunities list agreement end dates of February 20 and March 27, 2026 without renewal information."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.canada.ca/en/employment-social-development/services/funding/disability-opportunity-national-regional.html",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Self-identification of a lasting physical or mental impairment that limits daily activities"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "participant",
+   "schedule_type": "varies",
+   "hours_commitment": "varies",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "mixed",
+   "task_variety": "varied",
+   "customer_facing": "some",
+   "sales_or_commission": "no",
+   "deadline_pressure": "low",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "no",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Work placements must be paid and in vacant or newly created positions; unpaid placements are not allowed (applicant guide, search summary).",
+    "Projects must serve a minimum number of participants per year (eight for participant-focused projects)."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 0,
+   "detail": 0,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 0
+  },
+  "economics": {
+   "pay_type": "mixed",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "being_selected",
+    "program_funding",
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Placements are paid by the employer, who may receive a wage subsidy; self-employment support and pre-employment skills activities are also funded. No participant pay rates are published."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "age_or_group_restricted",
+   "no_guaranteed_work",
+   "funding_uncertain"
+  ],
+  "risk_notes": [
+   "Delivery depends on time-limited contribution agreements with local providers; coverage varies by region."
+  ],
+  "barriers": [
+   "Locating a funded provider with open intake in your area"
+  ],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:48:00Z",
+  "sources": [
+   {
+    "url": "https://www.canada.ca/en/employment-social-development/services/funding/disability-opportunity-national-regional.html",
+    "source_type": "government",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Apply for funding: Opportunities Fund for Persons with Disabilities",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "funding",
+     "program_eligibility"
+    ],
+    "evidence_summary": "Program page: eligible applicants (not-for-profits, municipalities, Indigenous organisations, educational institutions, provincial bodies); funding via contribution agreements with service providers.",
+    "limitations": [
+     "Organisation-facing page; snippet only."
+    ]
+   },
+   {
+    "url": "https://www.canada.ca/en/employment-social-development/services/funding/disability-opportunity-national-regional/applicant-guide.html",
+    "source_type": "government",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Applicant guide: Opportunities Fund for Persons with Disabilities",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility",
+     "work_conditions",
+     "pay",
+     "canadian_eligibility"
+    ],
+    "evidence_summary": "Participants self-identify as having a lasting physical or mental impairment; eligible activities include paid work experience (with possible wage subsidies), pre-employment skills, self-employment support and employer supports; placements must be paid; minimum participants per project.",
+    "limitations": [
+     "Snippet only."
+    ]
+   },
+   {
+    "url": "https://www.canada.ca/en/employment-social-development/corporate/reports/evaluations/opportunities-fund-persons-disabilities.html",
+    "source_type": "government",
+    "publisher": "Employment and Social Development Canada",
+    "title": "Evaluation of the Opportunities Fund for Persons with Disabilities",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility"
+    ],
+    "evidence_summary": "Program aimed mainly at people who do not qualify for EI or EI-funded training; may be a last-resort option for those with weaker labour-market ties.",
+    "limitations": [
+     "Evaluation date not seen."
+    ]
+   },
+   {
+    "url": "https://search.open.canada.ca/grants/record/esdc-edsc,141-2023-2024-Q1-00057,current",
+    "source_type": "government",
+    "publisher": "Government of Canada - Open Government (grants and contributions)",
+    "title": "Grants and Contributions: March of Dimes Canada (Opportunities Fund)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "application_route",
+     "ontario_eligibility"
+    ],
+    "evidence_summary": "Grant record naming March of Dimes Canada as an Opportunities Fund recipient; CMHA and Collège Boréal appear in companion records.",
+    "limitations": [
+     "Funding records, not intake announcements."
+    ]
+   },
+   {
+    "url": "https://search.open.canada.ca/grants/record/esdc-edsc%2C141-2023-2024-Q1-00054%2Ccurrent",
+    "source_type": "government",
+    "publisher": "Government of Canada - Open Government (grants and contributions)",
+    "title": "Grants and Contributions: Great Opportunities (ATN Access)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "availability"
+    ],
+    "evidence_summary": "Ontario agreement with an end date of February 20, 2026; companion Gateway Opportunities record ends March 27, 2026; renewal not shown.",
+    "limitations": [
+     "Does not establish current status."
+    ]
+   },
+   {
+    "url": "https://www.mentorworks.ca/?p=43363",
+    "source_type": "aggregator",
+    "publisher": "Mentor Works (grant consultancy)",
+    "title": "Opportunities Fund for Persons with Disabilities",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility"
+    ],
+    "evidence_summary": "Older third-party summary: two streams (individual start-up support; employer wage subsidies); individual criteria listed as unemployed or under 20 hours a week, not collecting EI, legally entitled to work in Canada.",
+    "limitations": [
+     "Commercial, undated; not confirmed on canada.ca."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Discovery record. Eligibility is described factually from program documents; no assumptions are made about who uses the catalogue.",
+   "Negative-evidence pass (program ended/renewed, provider intake) found only grant records; no reports of problems and no current intake notices."
+  ],
+  "open_questions": [
+   "Which Ontario providers currently hold Opportunities Fund agreements and accept participants.",
+   "Whether the 20-hours-per-week and no-EI conditions still apply to participants."
+  ],
+  "disposition": "new",
+  "disposition_reason": "Real federal program with Ontario delivery history and clear participant criteria on canada.ca; included with availability unknown because no current Ontario intake could be found.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": null,
+   "v1_name": null,
+   "v1_status": null,
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": [
+    "Current Ontario provider list and intake status",
+    "Participant hours/EI conditions"
+   ]
+  }
+ },
+ {
+  "id": "canada-training-credit",
+  "name": "Canada Training Credit (refundable tax credit for tuition, ages 26-65)",
+  "organization": "Government of Canada - Canada Revenue Agency",
+  "record_type": "government_support",
+  "category": "government_program",
+  "summary": "Refundable federal tax credit that repays up to half of eligible tuition and fees at a Canadian institution, up to your accumulated credit limit ($250 a year of room, lifetime $5,000) for people aged 26-65 with sufficient working income. Claimed on your tax return, not paid up front.",
+  "what_you_do": "You check your Canada training credit limit on your notice of assessment, pay for an eligible course or occupational exam at a Canadian institution, and claim the lesser of your limit and 50% of the fees on line 45350 (Schedule 11) when you file. Room accumulates $250 a year while you meet the income tests.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You are 26-65, resident in Canada all year, have at least about $12,000 of working income, and plan to pay for training at a Canadian college, university or exam body.",
+   "You want to lower the cost of a course that could lead to work; it combines with provincial funding such as Better Jobs Ontario where rules allow."
+  ],
+  "who_it_may_not_fit": [
+   "You are under 26 or over 65 at year end, or you had no working income: your limit is zero and you cannot claim.",
+   "You need money before the course: the credit arrives with your tax refund after the year ends."
+  ],
+  "audience_restriction": [
+   "Adults aged 26 to 65 at the end of the tax year"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "likely",
+   "ontario_residents": "likely",
+   "provinces": [],
+   "eligibility_notes": [
+    "Resident in Canada throughout the year; file a return; aged at least 26 and under 66 at year end (CRA).",
+    "Annual $250 accumulation for 2026 requires at least $12,058 of working income (CRA); a net-income ceiling also applies (taxtips.ca cites $177,882 for 2025 income)."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "program_open_check_eligibility",
+  "availability_checked_at": "2026-10-13T15:21:50Z",
+  "availability_evidence": [
+   "CRA's Canada training credit page describes the credit as in force, with a $250 annual accumulation, the 2026 working-income threshold ($12,058), the 26-to-under-66 age window and claiming on line 45350 (search summary)."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/deductions-credits-expenses/line-45350-canada-training-credit.html",
+  "requirements": {
+   "minimum_age": 26,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Fees paid to an eligible educational institution in Canada, or for an occupational, trade or professional exam",
+    "Tuition otherwise eligible for the tuition tax credit"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "varies",
+   "relationship_type": "participant",
+   "schedule_type": "flexible",
+   "hours_commitment": "none",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "none",
+   "phone_or_video_required": "no",
+   "text_based_work": "yes",
+   "independent_work": "yes",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "no",
+   "deadline_pressure": "low",
+   "work_guaranteed": "no",
+   "emotional_content_risk": "no",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Funding mechanism for training, not work; the course you choose sets the schedule."
+   ]
+  },
+  "skill_demands": {
+   "computer": 1,
+   "writing": 0,
+   "numeracy": 1,
+   "detail": 1,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "none",
+   "currency": "CAD",
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [
+    "Refundable credit paid through your tax return for the year the fees were paid"
+   ],
+   "unpaid_work": [],
+   "time_to_first_payment": "months",
+   "income_predictability": "none",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "Claim = lesser of your Canada training credit limit (accumulates $250/year to a lifetime $5,000) and 50% of eligible fees; institutions outside Canada do not qualify (CRA). Claiming also reduces the tuition amount available for the tuition tax credit."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "moderate",
+   "required_purchases": [
+    "Course tuition paid up front"
+   ],
+   "potential_expenses": []
+  },
+  "risks": [
+   "age_or_group_restricted"
+  ],
+  "risk_notes": [
+   "Only refunds part of a course you have already paid for; it is not training funding."
+  ],
+  "barriers": [
+   "Need enough working income to accumulate room",
+   "Paying tuition before the refund"
+  ],
+  "progression_potential": "medium",
+  "horizon": "career",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [
+   "Age window: the CRA page and BDO say at least 26 and under 66 at year end; taxtips.ca and the 2019 budget design say 25 to under 65."
+  ],
+  "last_researched_at": "2026-10-13T15:48:00Z",
+  "sources": [
+   {
+    "url": "https://www.canada.ca/en/revenue-agency/services/tax/individuals/topics/about-your-tax-return/tax-return/completing-a-tax-return/deductions-credits-expenses/line-45350-canada-training-credit.html",
+    "source_type": "government",
+    "publisher": "Canada Revenue Agency",
+    "title": "Canada training credit : Personal income tax - Canada.ca",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "program_eligibility",
+     "canadian_eligibility",
+     "funding",
+     "availability"
+    ],
+    "evidence_summary": "Refundable credit for eligible tuition/fees; must be resident in Canada all year, file a return, be at least 26 and under 66 at year end; limit accumulates $250/year (2026 accumulation needs $12,058 working income); claim the lesser of the limit or 50% of fees; Canadian institutions only.",
+    "limitations": [
+     "Search snippet only; page not opened."
+    ]
+   },
+   {
+    "url": "https://www.budget.canada.ca/2019/docs/tm-mf/si-is-en.html",
+    "source_type": "government",
+    "publisher": "Department of Finance Canada",
+    "title": "Budget 2019: Tax Measures: Supplementary Information (archived)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": "2019",
+    "supports": [
+     "existence"
+    ],
+    "evidence_summary": "Original design: at least 25 and under 65 at year end; unused balances expire at 65.",
+    "limitations": [
+     "Superseded design parameters."
+    ]
+   },
+   {
+    "url": "https://www.taxtips.ca/filing/canada-training-credit.htm",
+    "source_type": "aggregator",
+    "publisher": "TaxTips.ca",
+    "title": "Canada Training Credit",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "funding",
+     "program_eligibility"
+    ],
+    "evidence_summary": "Claim is the lowest of accumulated room, 50% of eligible fees and $5,000 minus prior claims; cites $12,058 working income and a $177,882 net-income ceiling for 2025; states ages 25 to under 65.",
+    "limitations": [
+     "Third-party tax site; age range conflicts with CRA."
+    ]
+   },
+   {
+    "url": "https://www.bdo.ca/en-ca/insights/tax/tax-articles/new-canada-training-benefit/",
+    "source_type": "other",
+    "publisher": "BDO Canada",
+    "title": "New Canada Training Benefit",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "program_eligibility"
+    ],
+    "evidence_summary": "At least 26 and not older than 65 at year end.",
+    "limitations": [
+     "Accounting-firm explainer."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Discovery record. Negative evidence: none expected for a tax credit; the practical limits are the age window and paying tuition up front."
+  ],
+  "open_questions": [
+   "Current net-income ceiling for 2026 accumulation."
+  ],
+  "disposition": "new",
+  "disposition_reason": "Federal tax credit in force per CRA with clear eligibility; useful to anyone in Ontario aged 26-65 paying for training; age-window contradiction between sources recorded.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": null,
+   "v1_name": null,
+   "v1_status": null,
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": [
+    "Net-income ceiling for 2026"
+   ]
+  }
+ },
+ {
+  "id": "ontario-skills-development-fund-training-stream",
+  "name": "Skills Development Fund Training Stream projects (Ontario, join via funded organisations)",
+  "organization": "Government of Ontario - Ministry of Labour, Immigration, Training and Skills Development (delivered by funded organisations)",
+  "record_type": "training_program",
+  "category": "government_program",
+  "summary": "Ontario fund that pays employers, unions, colleges and community groups to run short training projects, many with paid work placements (for example eight weeks of training then a six-week paid placement). Individuals cannot apply to the fund; you join a funded project through its lead organisation. The Auditor General found the 2025 selection process not fair or transparent.",
+  "what_you_do": "You find a funded project in your area or sector (health care, construction trades, manufacturing and others), apply to the lead organisation, complete the training and, where the project includes one, a paid placement with a partner employer that may receive a wage offset.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You are unemployed or underemployed in Ontario and want a short, free, job-specific course with a paid placement or employer connection.",
+   "You are open to sectors where projects are concentrated (health-care support roles, skilled trades, manufacturing)."
+  ],
+  "who_it_may_not_fit": [
+   "You want to apply to the fund yourself: only organisations apply, and the latest round found (round 6) closed October 1, 2025.",
+   "You need a guaranteed job: placements and hiring depend on the project's employer partners."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "partial",
+   "ontario_residents": "likely",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [
+    "Ontario program; participant eligibility (often unemployed or underemployed Ontario residents) is set by each funded project."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "program_open_check_eligibility",
+  "availability_checked_at": "2026-10-13T15:21:50Z",
+  "availability_evidence": [
+   "Funded training projects were still being announced in August 2026 (ten health-care training projects, $10.9 million, round 6, with work placements and mentorship) and a participant registration form was updated on the EO Partners' Gateway in July 2026; the latest organisation application round found (round 6) ran July 29 to October 1, 2025.",
+   "ontario.ca says people who want to participate should contact the lead organisations of funded projects directly."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://Ontario.ca/page/skills-development-fund",
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [],
+   "certifications": [],
+   "other": [
+    "Project-specific criteria (e.g., unemployed or underemployed for a Niagara construction project)"
+   ]
+  },
+  "work_conditions": {
+   "work_location": "onsite",
+   "relationship_type": "trainee",
+   "schedule_type": "fixed",
+   "hours_commitment": "full_time",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day"
+   ],
+   "real_time_interaction": "some",
+   "phone_or_video_required": "no",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "varied",
+   "customer_facing": "some",
+   "sales_or_commission": "no",
+   "deadline_pressure": "low",
+   "work_guaranteed": "conditional",
+   "emotional_content_risk": "no",
+   "training_required": "yes",
+   "conditions_notes": [
+    "Example: Niagara roofing/drywall project with eight weeks of college training then a six-week paid placement; employers could claim up to $5,000 per participant toward wages (2022 reporting).",
+    "2026 health-care projects include work placements, mentorship and career supports for roles such as personal support workers and nurses."
+   ]
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 1,
+   "detail": 1,
+   "customer": 1,
+   "technical": 1,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "mixed",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [
+    "Classroom weeks unless the project pays a stipend (not stated in sources seen)"
+   ],
+   "time_to_first_payment": "weeks",
+   "income_predictability": "low",
+   "earnings_depend_on": [
+    "being_selected",
+    "program_funding",
+    "hours_worked"
+   ],
+   "economics_notes": [
+    "Training is free to participants in funded projects; placement wages are paid by the host employer, who may receive a per-participant offset (up to $5,000 in the Niagara example)."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": [
+    "Travel to training and placement sites"
+   ]
+  },
+  "risks": [
+   "funding_uncertain",
+   "no_guaranteed_work",
+   "in_person_required"
+  ],
+  "risk_notes": [
+   "Ontario's Auditor General (October 1, 2025) found the fund's selection process not fair, transparent or accountable, with 670 high-ranked applications unfunded; the ministry accepted the recommendations. Project availability therefore depends on political and funding decisions."
+  ],
+  "barriers": [
+   "No central list of open participant intakes; you must find each project's lead organisation"
+  ],
+  "progression_potential": "medium",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:48:00Z",
+  "sources": [
+   {
+    "url": "https://Ontario.ca/page/skills-development-fund",
+    "source_type": "official",
+    "publisher": "Government of Ontario",
+    "title": "Skills Development Fund Training Stream",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "program_eligibility",
+     "application_route",
+     "availability",
+     "ontario_eligibility"
+    ],
+    "evidence_summary": "Funding for organisations' projects addressing hiring, training and retention challenges; people who want to participate should contact the lead organisations of projects directly; contact skillsdevelopmentfund@ontario.ca.",
+    "limitations": [
+     "Search snippet only; URL capitalisation as shown in results."
+    ]
+   },
+   {
+    "url": "https://eopg.labour.gov.on.ca/program-taxonomy/skills-development-fund-training-stream/",
+    "source_type": "government",
+    "publisher": "Employment Ontario Partners' Gateway",
+    "title": "Skills Development Fund Training Stream",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "funding",
+     "availability"
+    ],
+    "evidence_summary": "Program taxonomy page with guidelines and forms; search summary notes a Participant Registration Form updated July 2026 and lists of approved organisations by round.",
+    "limitations": [
+     "Snippet only."
+    ]
+   },
+   {
+    "url": "https://electricalindustry.ca/?p=78658",
+    "source_type": "independent_reporting",
+    "publisher": "Electrical Industry Canada",
+    "title": "Applications Now Open for Next Round of Ontario Skills Development Fund",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": "2025",
+    "supports": [
+     "availability"
+    ],
+    "evidence_summary": "Round 6 opened July 29, 2025 and closed October 1, 2025 (organisation applications).",
+    "limitations": [
+     "Trade press; snippet only."
+    ]
+   },
+   {
+    "url": "https://torontocentralhealthline.ca/displayArticle.aspx?id=40181",
+    "source_type": "aggregator",
+    "publisher": "Toronto Central Healthline",
+    "title": "Health news: Ontario funds health-care training projects through the Skills Development Fund (August 2026)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": "2026-08-12",
+    "supports": [
+     "availability",
+     "work_conditions",
+     "funding"
+    ],
+    "evidence_summary": "August 12, 2026: more than $10.9 million across ten round-6 training projects for health-care job seekers, including work placements, mentorship and career supports.",
+    "limitations": [
+     "Republished release via a health directory; attribution of the date to this page is from the search summary."
+    ]
+   },
+   {
+    "url": "https://www.theglobeandmail.com/canada/article-ontario-skills-development-fund-auditor-general-report",
+    "source_type": "independent_reporting",
+    "publisher": "The Globe and Mail",
+    "title": "Ontario Skills Development Fund: Auditor General report",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": "2025-10",
+    "supports": [
+     "risks"
+    ],
+    "evidence_summary": "Auditor General (October 1, 2025): selection process not fair, transparent or accountable; 670 applications ranked high by ministry staff received no funding; ministry agreed with recommendations.",
+    "limitations": [
+     "Snippet only."
+    ]
+   },
+   {
+    "url": "https://www.blogto.com/city/2022/04/ontario-paying-jobs-roofing-drywalling/",
+    "source_type": "independent_reporting",
+    "publisher": "blogTO",
+    "title": "Ontario Skills Development Fund roofing and drywall training (Niagara)",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": "2022-04",
+    "supports": [
+     "work_conditions",
+     "pay",
+     "program_eligibility"
+    ],
+    "evidence_summary": "Eight weeks of college training then a six-week paid placement; employers eligible for up to $5,000 per participant toward wages; targeted unemployed and underemployed people.",
+    "limitations": [
+     "2022 example project."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Discovery record. Negative evidence: the Auditor General's 2025 findings and a federal review of money committed to the fund (CTV) are recorded as risk, not as a reason to reject; projects for job seekers continued in 2026."
+  ],
+  "open_questions": [
+   "Whether a 2026 organisation application round opened and which projects currently take participants."
+  ],
+  "disposition": "new",
+  "disposition_reason": "Real Ontario fund whose projects offer free training with paid placements to job seekers; only reachable through lead organisations, so recorded as a training route with that caveat and the audit findings.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": null,
+   "v1_name": null,
+   "v1_status": null,
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": [
+    "Current list of projects with open participant intake"
+   ]
+  }
+ },
+ {
+  "id": "toronto-public-library-career-coaches-in-residence",
+  "name": "Toronto Public Library Career Coaches in Residence (free career and job-search coaching)",
+  "organization": "Toronto Public Library",
+  "record_type": "government_support",
+  "category": "government_program",
+  "summary": "Free one-on-one career and job-search coaching for younger adults, delivered remotely by volunteer career coaches through Toronto Public Library; past sessions were for ages 18-29. Covers career advice, resumes and cover letters, job search, interviews and LinkedIn or portfolio material. Current session dates could not be confirmed.",
+  "what_you_do": "You book a remote appointment with one of the library's coaches in residence during a session period and work through your career questions, resume, interview preparation or personal branding; the library also points to LinkedIn Learning and career databases with a library card.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [
+   "You are a younger adult in Toronto who wants free, individual coaching rather than a program with eligibility paperwork.",
+   "You can use remote appointments and want help with resumes, interviews or LinkedIn."
+  ],
+  "who_it_may_not_fit": [
+   "You are outside the age range used in past sessions (18-29) or outside Toronto Public Library's service area.",
+   "You need a session now: the most recent dates seen were for spring 2025."
+  ],
+  "audience_restriction": [
+   "Younger adults (past sessions specified ages 18-29)"
+  ],
+  "region_eligibility": {
+   "canadian_residents": "partial",
+   "ontario_residents": "partial",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [
+    "Toronto Public Library program; whether a library card or Toronto residence is required was not stated in sources seen."
+   ],
+   "work_authorization_notes": null
+  },
+  "availability_status": "availability_unknown",
+  "availability_checked_at": "2026-10-13T15:21:50Z",
+  "availability_evidence": [
+   "The tpl.ca program page is live and describes remote career and job-search help for younger adults, but the most recent coach announcements found were for 2025 sessions, so a current session could not be confirmed."
+  ],
+  "application_or_registration_url": null,
+  "official_url": "https://tpl.ca/programs-and-classes/featured/career-coaches-in-residence/",
+  "requirements": {
+   "minimum_age": 18,
+   "education": null,
+   "experience": "none",
+   "languages": [
+    "en"
+   ],
+   "equipment": [
+    "device for remote appointments"
+   ],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "remote",
+   "relationship_type": "participant",
+   "schedule_type": "flexible",
+   "hours_commitment": "low",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [
+    "day",
+    "evening"
+   ],
+   "real_time_interaction": "high",
+   "phone_or_video_required": "yes",
+   "text_based_work": "no",
+   "independent_work": "no",
+   "task_variety": "unknown",
+   "customer_facing": "none",
+   "sales_or_commission": "no",
+   "deadline_pressure": "low",
+   "work_guaranteed": "no",
+   "emotional_content_risk": "no",
+   "training_required": "no",
+   "conditions_notes": [
+    "Coaching service, not a job; sessions run in periods announced on the library's blog."
+   ]
+  },
+  "skill_demands": {
+   "computer": 1,
+   "writing": 0,
+   "numeracy": 0,
+   "detail": 0,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 1
+  },
+  "economics": {
+   "pay_type": "none",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": null,
+   "income_predictability": "none",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "Free."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "none",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "age_or_group_restricted",
+   "stale_information"
+  ],
+  "risk_notes": [
+   "Session availability is periodic; the latest dates seen were 2025."
+  ],
+  "barriers": [],
+  "progression_potential": "low",
+  "horizon": "bridge",
+  "evidence_quality": "moderate",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:48:00Z",
+  "sources": [
+   {
+    "url": "https://tpl.ca/programs-and-classes/featured/career-coaches-in-residence/",
+    "source_type": "official",
+    "publisher": "Toronto Public Library",
+    "title": "Career Coaches in Residence",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": null,
+    "supports": [
+     "existence",
+     "official_url",
+     "program_eligibility",
+     "work_conditions",
+     "availability"
+    ],
+    "evidence_summary": "Remote career and job-search help for younger adults: general career advice, resumes and cover letters, job search, interview preparation, LinkedIn/portfolio material.",
+    "limitations": [
+     "Search snippet only; current session dates not shown."
+    ]
+   },
+   {
+    "url": "https://tpl.ca/blogs/post/meet-our-latest-career-coaches-in-residence-2/",
+    "source_type": "official",
+    "publisher": "Toronto Public Library",
+    "title": "Meet our Latest Career Coaches in Residence",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": "2025",
+    "supports": [
+     "availability",
+     "existence"
+    ],
+    "evidence_summary": "Spring 2025 session announcement naming the coaches and their coaching areas.",
+    "limitations": [
+     "2025; no later session seen."
+    ]
+   },
+   {
+    "url": "https://blogs.tpl.ca/jobhelp/2022/10/meet-our-new-career-coaches-in-residence-october-2022/",
+    "source_type": "official",
+    "publisher": "Toronto Public Library",
+    "title": "Meet Our New Career Coaches in Residence: October 2022",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:50Z",
+    "published_at": "2022-10",
+    "supports": [
+     "program_eligibility"
+    ],
+    "evidence_summary": "Describes the service as free one-on-one career counselling and job-search help for younger adults aged 18-29.",
+    "limitations": [
+     "2022 age range; may have changed."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Discovery record for a municipal/library employment-support service. The City of Toronto's own employment pages mainly refer residents to Employment Ontario, so the library program was chosen as the distinct service.",
+   "Negative evidence: none sought (budget); the service is free and low-risk."
+  ],
+  "open_questions": [
+   "Whether a 2026 session is running and the current age range."
+  ],
+  "disposition": "new",
+  "disposition_reason": "Real, free library coaching service with an official page; included with availability unknown because the latest session evidence is from 2025.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": null,
+   "v1_name": null,
+   "v1_status": null,
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": [
+    "2026 session dates",
+    "Library card or residency requirement"
+   ]
+  }
+ },
+ {
+  "id": "ontario-college-micro-credential-paid-placement",
+  "name": "Ontario college micro-credential with paid placement (candidate, not found)",
+  "organization": null,
+  "record_type": "training_program",
+  "category": "government_program",
+  "summary": "Candidate for a college continuing-education micro-credential that includes a paid work placement. No current (2026) Ontario program matching that description was found; results were pre-apprenticeship programs (covered separately), an undated Ontario Tech/TD offer of free micro-credentials without placement, and news that micro-credentials are OSAP-eligible.",
+  "what_you_do": "Not applicable; no specific program identified.",
+  "how_to_find_work": null,
+  "who_it_may_fit": [],
+  "who_it_may_not_fit": [
+   "Anyone looking for a confirmed program: none was identified in this pass."
+  ],
+  "audience_restriction": [],
+  "region_eligibility": {
+   "canadian_residents": "unclear",
+   "ontario_residents": "unclear",
+   "provinces": [
+    "ON"
+   ],
+   "eligibility_notes": [],
+   "work_authorization_notes": null
+  },
+  "availability_status": "rejected_insufficient_evidence",
+  "availability_checked_at": null,
+  "availability_evidence": [],
+  "application_or_registration_url": null,
+  "official_url": null,
+  "requirements": {
+   "minimum_age": null,
+   "education": null,
+   "experience": "unknown",
+   "languages": [],
+   "equipment": [],
+   "certifications": [],
+   "other": []
+  },
+  "work_conditions": {
+   "work_location": "unknown",
+   "relationship_type": "trainee",
+   "schedule_type": "unknown",
+   "hours_commitment": "unknown",
+   "hours_min_weekly": null,
+   "hours_max_weekly": null,
+   "time_windows": [],
+   "real_time_interaction": "unknown",
+   "phone_or_video_required": "unknown",
+   "text_based_work": "unknown",
+   "independent_work": "unknown",
+   "task_variety": "unknown",
+   "customer_facing": "unknown",
+   "sales_or_commission": "unknown",
+   "deadline_pressure": "unknown",
+   "work_guaranteed": "unknown",
+   "emotional_content_risk": "unknown",
+   "training_required": "yes",
+   "conditions_notes": []
+  },
+  "skill_demands": {
+   "computer": 0,
+   "writing": 0,
+   "numeracy": 0,
+   "detail": 0,
+   "customer": 0,
+   "technical": 0,
+   "creative": 0,
+   "language": 0
+  },
+  "economics": {
+   "pay_type": "unknown",
+   "currency": null,
+   "advertised_rate": null,
+   "verified_rate": null,
+   "anecdotal_effective_rate": null,
+   "rate_unit": null,
+   "fees": [],
+   "payment_terms": [],
+   "unpaid_work": [],
+   "time_to_first_payment": "unknown",
+   "income_predictability": "unknown",
+   "earnings_depend_on": [],
+   "economics_notes": [
+    "Micro-credentials at Ontario colleges and universities can be financed through OSAP (2025-2026 announcements); no placement pay evidence."
+   ]
+  },
+  "costs": {
+   "upfront_cost": "unknown",
+   "required_purchases": [],
+   "potential_expenses": []
+  },
+  "risks": [
+   "stale_information"
+  ],
+  "risk_notes": [],
+  "barriers": [],
+  "progression_potential": "unknown",
+  "horizon": "career",
+  "evidence_quality": "insufficient",
+  "confidence": 0,
+  "contradictions": [],
+  "last_researched_at": "2026-10-13T15:48:00Z",
+  "sources": [
+   {
+    "url": "https://ontariotechu.ca/microcredentials/",
+    "source_type": "official",
+    "publisher": "Ontario Tech University",
+    "title": "Microcredentials - Ontario Tech University",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "existence"
+    ],
+    "evidence_summary": "Mentions 1,000 free micro-credentials (TD Ready Commitment) for mid-career, under-employed people; university program, undated, no placement.",
+    "limitations": [
+     "Not a college; no placement; undated."
+    ]
+   },
+   {
+    "url": "https://educationnewscanada.com/article/education/level/colleges/2/1154084/level-up-your-career-with-new-osap-eligible-micro-credentials.html",
+    "source_type": "independent_reporting",
+    "publisher": "Education News Canada",
+    "title": "Level up your career with new OSAP-eligible micro-credentials",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "funding"
+    ],
+    "evidence_summary": "Micro-credentials can be financed through OSAP; no paid placement described.",
+    "limitations": [
+     "Page dating unreliable (listed as July 2026 but content may be older)."
+    ]
+   },
+   {
+    "url": "https://www.hrreporter.com/focus-areas/recruitment-and-staffing/ontario-launches-micro-certification-pilot-project/325817",
+    "source_type": "independent_reporting",
+    "publisher": "Canadian HR Reporter",
+    "title": "Ontario launches micro-certification pilot project",
+    "access_status": "search_result_only",
+    "accessed_at": "2026-10-13T15:21:20Z",
+    "published_at": null,
+    "supports": [
+     "existence"
+    ],
+    "evidence_summary": "Earlier Ontario micro-certification pilot announcement; not a current program with a placement.",
+    "limitations": [
+     "Old pilot news."
+    ]
+   }
+  ],
+  "research_notes": [
+   "Two searches (college micro-credential paid placement; SDF-funded free training with paid placement) found no qualifying program; the nearest match with a paid placement is pre-apprenticeship training, already in the catalogue."
+  ],
+  "open_questions": [
+   "Whether any Ontario college runs a micro-credential with a paid placement in 2026-27."
+  ],
+  "disposition": "rejected",
+  "disposition_reason": "No current Ontario college micro-credential with a paid placement was identified; kept for the audit trail so the candidate is not re-searched without new leads.",
+  "production_eligible": false,
+  "migration": {
+   "v1_id": null,
+   "v1_name": null,
+   "v1_status": null,
+   "merged_into": null,
+   "merged_from": [],
+   "changes": [],
+   "claims_verified": [],
+   "unresolved_claims": []
+  }
+ }
+]

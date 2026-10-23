@@ -1,0 +1,261 @@
+{
+ "id": "virtual-assistant-admin-support-category",
+ "name": "Virtual assistant / administrative support (category)",
+ "organization": "Various",
+ "type": "category",
+ "category": "customer_ops",
+ "tags": [
+  "virtual-assistant",
+  "administrative",
+  "calendar-inbox",
+  "remote",
+  "text-mostly"
+ ],
+ "summary": "Remote administrative support, such as inbox, calendar, documents, CRM upkeep and follow-ups, done for one employer or for several clients from home.",
+ "whatYouDo": "You manage email and calendars, keep contact lists and CRM records accurate, prepare documents, book meetings and chase follow-ups for a manager or for several small-business clients. Some roles add phone or email outreach, shipping coordination or industry paperwork such as real-estate forms.",
+ "appeal": [
+  "Job Bank lists a national median of about $26.44/hr for administrative assistants (NOC 13110)",
+  "Job Bank outlook pages say there may be openings for virtual assistants who support multiple clients",
+  "Mostly written, independent work during business hours",
+  "Remote part-time postings for people in Canada exist, e.g. 15–25 hrs/week at $19–$23/hr with training provided (posted 2026-10-13)"
+ ],
+ "watchOuts": [
+  "Ontario's 2025–2027 outlook is only 'Moderate', and Job Bank warns that AI, virtual agents and automation may change or cut some admin tasks",
+  "Many remote VA roles want years of admin experience or niche skills: one $25/hr contractor role required Canadian real-estate admin experience and was limited to ON, AB and SK",
+  "Freelance or contract VA work usually means no benefits, your own equipment, and your own tax and GST/HST obligations",
+  "'Virtual assistant' is a common job-scam title. Fake employers send a cheque to deposit and ask you to send money back for equipment or software",
+  "Never pay for equipment, training or onboarding up front, and never forward money for an 'employer'"
+ ],
+ "officialUrl": "https://www.jobbank.gc.ca/wagereport/occupation/24789",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [
+   "Job Bank: usually a college diploma, a short apprenticeship or more than 6 months of on-the-job training"
+  ],
+  "equipment": [
+   "computer",
+   "fast internet",
+   "quiet space"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [
+   "day"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent",
+   "voice"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 3,
+  "writing": 2,
+  "numeracy": 1,
+  "detail": 3,
+  "customer": 2,
+  "technical": 1,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "unknown",
+  "notes": "Some employers train new hires (one remote part-time posting said 'training provided'). Experienced-VA contractor roles expect you to start with little or no training."
+ },
+ "compensation": {
+  "min": 19.23,
+  "max": 36.88,
+  "currency": "CAD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Job Bank national low and high wages for administrative assistants (NOC 13110), with a median of $26.44/hr (2023–2024 Labour Force Survey, updated 2025-11-19; seen via search summary). These are employee wages. Remote postings read on 2026-10-13 paid $19–$23/hr (part-time employee) and $25/hr (contractor). Freelance VA rates were not evidenced."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "medium",
+  "notes": "Employee roles give steady hours. Freelance VAs depend on keeping clients. Job Bank outlooks range from Moderate (Ontario 2025–2027) to Very good (Alberta 2024–2026)."
+ },
+ "workerStatus": "varies",
+ "fees": null,
+ "applicationSteps": [
+  "Search Job Bank and reputable job boards for 'administrative assistant remote' or 'virtual assistant' with Canada as the location",
+  "Check whether the role is employee or contractor, and check the hours, province limits and pay",
+  "Look up the employer independently before sharing ID or banking details",
+  "If you freelance for several clients, track income for tax and register for GST/HST once you pass the $30,000 small-supplier threshold"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "scam_impersonation",
+  "contractor_no_benefits",
+  "variable_work"
+ ],
+ "fitsIf": "You are organized, write clearly and like keeping someone else's working day running from home.",
+ "notFitIf": "You want work that needs no office experience, or you dislike a constant stream of small requests and deadlines.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.jobbank.gc.ca/wagereport/occupation/24789",
+   "title": "Wages for Administrative assistants - Job Bank",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Search-summary only (fetch blocked). NOC 13110, Canada: low $19.23, median $26.44, high $36.88/hr; Ontario median $26.67/hr; 2023–2024 LFS data, wages updated 2025-11-19.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/summary-occupation/24789/ca",
+   "title": "Administrative Assistant in Canada",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search-summary only. The occupation usually requires a college diploma, an apprenticeship of under 2 years, or more than 6 months of on-the-job training.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/24789/ON;jsessionid=B1BD970C72F7E39AFF44C2FB7DF9474F.jobsearch75",
+   "title": "Administrative Assistant in Ontario",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Search-summary only. Ontario outlook for 2025–2027 is Moderate (an earlier 2024–2026 version said Good). Says there may be some opportunities for virtual assistants to support multiple clients, while technology may temper job growth. The summaries blended several Job Bank outlook pages, so the exact page for each sentence is not certain.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/marketreport/outlook-occupation/25599/BC",
+   "title": "Office Administrative Assistant in British Columbia",
+   "type": "government",
+   "publisher": "Job Bank (Government of Canada)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "risk"
+   ],
+   "notes": "Search-summary only. Notes growth in virtual assistant roles, but says AI virtual agents and back-office automation, such as data entry, may affect employment.",
+   "accessible": false
+  },
+  {
+   "url": "https://to.indeed.com/aarwx66jww9b",
+   "title": "Assistant to the Founder/CEO - Medole Inc. (Indeed)",
+   "type": "aggregator",
+   "publisher": "Indeed",
+   "published": "2026-10-13",
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements",
+    "schedule"
+   ],
+   "notes": "Full posting read via the Indeed job API. Remote part-time role (15–25 hrs/week, starting about Nov 2026) at a Canadian health-products company: inbox and calendar, CRM upkeep, sample shipments, and phone or email outreach to clinics. $19–$23/hr; training provided; Shopify or Amazon Seller Central experience an asset.",
+   "accessible": true
+  },
+  {
+   "url": "https://to.indeed.com/aa2cfvx8fymk",
+   "title": "Real Estate Executive Virtual Assistant (ON, AB, SK) - Red Rover (Indeed)",
+   "type": "aggregator",
+   "publisher": "Indeed",
+   "published": "2026-08-13",
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements",
+    "worker_status",
+    "schedule",
+    "canada_eligibility"
+   ],
+   "notes": "Full posting read via the Indeed job API. Independent contractor at $25/hr, 30–40 hrs/week, Mon–Fri 9–5. Requires 1+ year of Canadian real-estate admin and 3+ years of executive-assistant experience, plus a fully equipped home office. Limited to ON, AB and SK.",
+   "accessible": true
+  },
+  {
+   "url": "https://infosec.yorku.ca/2024/03/job-scam-alert-virtual-assistant-needed-2",
+   "title": "Job Scam Alert - Virtual Assistant Needed",
+   "type": "independent_review",
+   "publisher": "York University Information Security",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Search-summary only (the URL suggests March 2024). A university security team flags a 'Virtual Assistant Needed' job-scam message and advises reporting it to the Canadian Anti-Fraud Centre.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.cp24.com/news/2024/01/18/job-scam-losses-more-than-tripled-over-last-year-canadian-anti-fraud-centre",
+   "title": "Job scam losses more than tripled over last year: Canadian Anti-Fraud Centre",
+   "type": "journalism",
+   "publisher": "CP24",
+   "published": "2024-01-18",
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Search-summary only. CAFC figures: reported job-scam losses rose from about $7.2M in 2022 to about $27.7M in 2023. The CAFC advises never accepting a cheque and sending money back, and never taking a job offered only by text or email.",
+   "accessible": false
+  },
+  {
+   "url": "https://antifraudcentre-centreantifraude.ca/scams-fraudes/job-emploi-eng.htm",
+   "title": "Job",
+   "type": "government",
+   "publisher": "Canadian Anti-Fraud Centre",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Search-summary only. CAFC job-scam page covering counterfeit-cheque, 'payment processor' (money mule) and task-based crypto job scams.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.canada.ca/en/revenue-agency/services/tax/businesses/topics/gst-hst-businesses/when-register-charge.html",
+   "title": "When to register for and start charging the GST/HST - Canada.ca",
+   "type": "government",
+   "publisher": "Canada Revenue Agency",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search-summary only. You must register for GST/HST once taxable supplies exceed $30,000 in a single calendar quarter or over the last four consecutive quarters. Registering below the threshold is voluntary.",
+   "accessible": false
+  }
+ ]
+}

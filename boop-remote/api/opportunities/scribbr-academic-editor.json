@@ -1,0 +1,179 @@
+{
+ "id": "scribbr-academic-editor",
+ "name": "Freelance academic editor / proofreader",
+ "organization": "Scribbr",
+ "type": "freelance",
+ "category": "language_writing",
+ "tags": [
+  "editing",
+  "proofreading",
+  "academic",
+  "per-word",
+  "degree-required"
+ ],
+ "summary": "Edit and proofread students' academic papers for Scribbr at fixed per-word rates; requires native-level English and a university degree.",
+ "whatYouDo": "You claim editing orders (theses, essays, papers), correct language and comment on structure and clarity within a set deadline. Rates are fixed per word and higher for shorter deadlines.",
+ "appeal": [
+  "Structured entry into paid editing with set per-word rates",
+  "Scribbr states average earnings of roughly €20–30 per hour",
+  "Onboarding training through the Scribbr Academy",
+  "Remote; choose orders around your schedule"
+ ],
+ "watchOuts": [
+  "Bachelor's degree or higher and native English required",
+  "Multi-stage screening: 10-question language quiz (80+ to pass), test assignment, Academy training and 2–5 simulation orders; pay status of later stages unclear",
+  "Must be able to edit at least 10,000 words per week",
+  "Reviews describe a very hard entry barrier and actual hourly pay often below the advertised average",
+  "Hiring is periodic; applications are not always open",
+  "Rates are in euros; Canadian residency rules not stated on pages found"
+ ],
+ "officialUrl": "https://www.scribbr.com/frequently-asked-questions/how-can-i-become-a-scribbr-editor/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": true,
+  "credentials": [
+   "Bachelor's degree or higher"
+  ],
+  "equipment": [
+   "computer"
+  ],
+  "minAge": null,
+  "assessment": "free_test"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 3,
+  "numeracy": 0,
+  "detail": 3,
+  "customer": 1,
+  "technical": 1,
+  "creative": 0,
+  "language": 3
+ },
+ "training": {
+  "required": true,
+  "cost": "unknown",
+  "notes": "Scribbr Academy training and simulation orders are part of onboarding; whether these stages are paid could not be confirmed."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Scribbr FAQ: average approx. €20–30 per hour (EUR), based on fixed per-word rates that rise for shorter deadlines. Not recorded numerically because the currency is EUR. Reviews say real hourly earnings are often lower."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "unknown",
+  "notes": "Work depends on order volume; reviews mention periodic hiring."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Take the 10-question language quiz (score 80+ to continue)",
+  "Create an account and upload CV, motivation letter and ID",
+  "Complete the test assignment",
+  "Complete Scribbr Academy training and 2–5 simulation orders",
+  "Start claiming real orders"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You hold a degree, write excellent English and want a structured way to start earning from editing.",
+ "notFitIf": "You have no degree, or cannot commit to around 10,000 words of editing per week.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.scribbr.com/frequently-asked-questions/how-can-i-become-a-scribbr-editor/",
+   "title": "How can I become a Scribbr editor?",
+   "type": "official",
+   "publisher": "Scribbr",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Steps: language quiz, account with CV/motivation letter/ID, test assignment, Scribbr Academy, 2–5 simulation orders; native speakers and university degree required (per search summary of Scribbr pages).",
+   "accessible": false
+  },
+  {
+   "url": "https://www.scribbr.com/freelance-native-english-editor/apply-scribbr-editor/",
+   "title": "Scribbr language quiz",
+   "type": "official",
+   "publisher": "Scribbr",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "10-question quiz; bachelor's degree or higher; able to edit at least 10,000 words per week; score of 80+ leads to the test assignment.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.scribbr.com/frequently-asked-questions/how-much-will-i-earn-as-a-scribbr-editor/",
+   "title": "How much will I earn as a Scribbr editor?",
+   "type": "official",
+   "publisher": "Scribbr",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "Average approx. €20–30 per hour based on fixed per-word rates; shorter deadlines pay more.",
+   "accessible": false
+  },
+  {
+   "url": "https://digitalbazaari.com/scribbr-proofreading-review/",
+   "title": "Scribbr: A Platform for Freelance Editors and Proofreaders (with a super-hard entry barrier)",
+   "type": "independent_review",
+   "publisher": "Digital Bazaari",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "status"
+   ],
+   "notes": "Review describing a very hard entry barrier. Search summaries of reviews also report pay below advertised and that Scribbr is not always accepting applications (not all pinned to this page).",
+   "accessible": false
+  }
+ ],
+ "audience": [
+  "Degree holders"
+ ]
+}

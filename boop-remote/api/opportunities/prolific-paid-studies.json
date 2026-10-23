@@ -1,0 +1,205 @@
+{
+ "id": "prolific-paid-studies",
+ "name": "Paid online research studies (Prolific)",
+ "organization": "Prolific",
+ "type": "research_participation",
+ "category": "research_participation",
+ "tags": [
+  "research-participation",
+  "not-a-job",
+  "online-surveys",
+  "experiments",
+  "paypal",
+  "waitlist"
+ ],
+ "summary": "Take part in paid online research studies when you match a study's criteria; this is research participation, not a job.",
+ "whatYouDo": "You fill in a demographic profile, then claim studies (mostly surveys and online experiments) that appear in your dashboard on a first-come, first-served basis. Each study lists its reward and estimated time. Once the researcher approves your submission, the reward goes to your balance, which you cash out to PayPal.",
+ "appeal": [
+  "Researchers must pay at least £6 / $8 per hour and are advised to pay £9 / $12 (Prolific rules)",
+  "Prolific charges no cash-out fee, and the minimum cash-out is a low £6/$6",
+  "You pick studies whenever you like, with no set hours",
+  "Long-established platform with a public participant help centre"
+ ],
+ "watchOuts": [
+  "Not a job: studies aren't guaranteed, and 2026 third-party reviews say new sign-ups may be waitlisted",
+  "Study supply is the most common complaint: some days nothing matches your profile, and popular studies fill fast",
+  "The pay rate uses estimated or median completion time, so your real hourly earnings can be lower",
+  "Accounts can be put 'On hold' (for example for VPN or location mismatch, many rejections, multiple accounts, or using AI or automation), and Prolific doesn't give a specific reason. You can appeal through support",
+  "Payout is PayPal only (through Hyperwallet), in GBP or USD. PayPal may charge for currency conversion, and your PayPal name must match your Prolific details"
+ ],
+ "officialUrl": "https://participant-help.prolific.com/en/articles/445007-who-can-participate-in-studies-on-prolific",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer"
+  ],
+  "minAge": 18,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 0,
+  "technical": 0,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": 8,
+  "max": null,
+  "currency": "USD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Prolific's researcher rules set a minimum reward rate of £6 / $8 per hour and recommend £9 / $12, based on estimated or median completion time. Third-party 2026 reviews report a wide range of effective rates, from about $8–15/hr down to far lower once unpaid waiting and screening time is counted. Rewards are paid in GBP or USD, not CAD."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "Studies are first-come, first-served and depend on your demographics. 2026 reviews describe days with no eligible studies and frequent 'study full' messages. No official supply statistics were found."
+ },
+ "workerStatus": "participant",
+ "fees": "Prolific charges no cash-out fee (official); PayPal may charge for currency conversion.",
+ "applicationSteps": [
+  "Confirm your country of residence is on Prolific's supported list (Canada is listed)",
+  "Create a participant account (you may be put on a waitlist)",
+  "Pass account and identity verification and complete your profile questions",
+  "Link a PayPal account whose details match your Prolific details",
+  "Claim studies you qualify for, and cash out from £6/$6 (your first four cash-outs wait 72 hours)"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "waitlist_or_no_work_guarantee",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "waitlist",
+  "account_deactivation_reports"
+ ],
+ "fitsIf": "You want occasional, flexible small earnings from your computer and can live with unpredictable study supply.",
+ "notFitIf": "You need dependable weekly income or don't want identity checks and PayPal-only payouts.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://participant-help.prolific.com/en/articles/445007-who-can-participate-in-studies-on-prolific",
+   "title": "Who can participate in studies on Prolific?",
+   "type": "official",
+   "publisher": "Prolific",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "requirements"
+   ],
+   "notes": "From a search summary: Prolific is open to participants in most OECD countries, including Canada. Eligibility depends on where you currently live. You must be 18+ with a verified account, and people in unsupported countries can join a waitlist. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://researcher-help.prolific.com/en/article/2273bd",
+   "title": "Ethical Rewards",
+   "type": "official",
+   "publisher": "Prolific",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary: researchers must pay at least £6.00/$8.00 per hour and are advised to pay £9.00/$12.00 per hour. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://participant-help.prolific.com/en/articles/445067-cashing-out-with-paypal-faq-and-troubleshooting",
+   "title": "Cashing out with PayPal: FAQ and troubleshooting",
+   "type": "official",
+   "publisher": "Prolific",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary of Prolific's payment help articles: payouts go to PayPal through Hyperwallet. The minimum is £6/$6 (mixed currencies allowed) and Prolific charges no fee. The first four cash-outs wait 72 hours, then daily cash-outs are allowed, and the PayPal name must match. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://participant-help.prolific.com/en/article/978f54",
+   "title": "Participant help article on accounts placed 'On hold' (title not shown in search result)",
+   "type": "official",
+   "publisher": "Prolific",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "From a search summary: accounts can be put on hold after automated flags or a terms breach. Listed reasons include a failed ID check, location or VPN mismatch, many rejections, multiple accounts, and using LLMs or automation. No specific reason is given, and you can appeal through support. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://visu.network/blog/prolific-review/",
+   "title": "Prolific Review 2026: What It Really Pays - Visu Network",
+   "type": "independent_review",
+   "publisher": "Visu Network",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "pay"
+   ],
+   "notes": "One of several 2026 third-party reviews summarised together, so attribution of individual claims is approximate. Together they say availability is the main catch, effective hourly rates vary widely, and joining currently goes through a waitlist.",
+   "accessible": false
+  },
+  {
+   "url": "https://annotation.academy/blog/is-prolific-legit",
+   "title": "Is Prolific Legit? What 1,141 Reddit Comments Show",
+   "type": "independent_review",
+   "publisher": "Annotation Academy",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy",
+    "risk"
+   ],
+   "notes": "An analysis of Reddit comments, so the evidence is anecdotal. Some posts from September 2026 describe accounts put on hold, but too few to call it a pattern.",
+   "accessible": false
+  }
+ ]
+}

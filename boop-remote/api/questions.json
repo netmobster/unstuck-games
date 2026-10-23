@@ -1,0 +1,388 @@
+{
+ "generated": "2026-10-13",
+ "questions": [
+  {
+   "id": "region",
+   "title": "Where do you need the work to accept you?",
+   "help": "Eligibility is country-specific. We only use this to filter out routes that are closed to you.",
+   "kind": "single",
+   "options": [
+    {
+     "value": "CA-ON",
+     "label": "Ontario"
+    },
+    {
+     "value": "CA",
+     "label": "Elsewhere in Canada"
+    },
+    {
+     "value": "outside",
+     "label": "Outside Canada"
+    }
+   ]
+  },
+  {
+   "id": "hours",
+   "title": "How much time could you realistically give most weeks?",
+   "help": "Realistic beats ambitious. You can change this later.",
+   "kind": "single",
+   "options": [
+    {
+     "value": "lt10",
+     "label": "Under 10 hours"
+    },
+    {
+     "value": "10to20",
+     "label": "10–20 hours"
+    },
+    {
+     "value": "20to30",
+     "label": "20–30 hours"
+    },
+    {
+     "value": "30plus",
+     "label": "30+ hours"
+    }
+   ]
+  },
+  {
+   "id": "windows",
+   "title": "When could you work?",
+   "help": "Pick all that apply.",
+   "kind": "multi",
+   "options": [
+    {
+     "value": "day",
+     "label": "Daytime"
+    },
+    {
+     "value": "evening",
+     "label": "Evenings"
+    },
+    {
+     "value": "night",
+     "label": "Overnight"
+    },
+    {
+     "value": "weekend",
+     "label": "Weekends"
+    }
+   ]
+  },
+  {
+   "id": "windowsFirm",
+   "title": "Are those times a firm limit?",
+   "help": "If firm, we hide routes with fixed shifts outside your times.",
+   "kind": "single",
+   "when": {
+    "key": "windows",
+    "minLength": 1,
+    "maxLength": 3
+   },
+   "options": [
+    {
+     "value": true,
+     "label": "Yes, firm"
+    },
+    {
+     "value": false,
+     "label": "Preferred, not firm"
+    }
+   ]
+  },
+  {
+   "id": "interaction",
+   "title": "How do you prefer to deal with people at work?",
+   "help": "There is no right answer. Plenty of good work is mostly solo.",
+   "kind": "single",
+   "options": [
+    {
+     "value": "text",
+     "label": "Mostly by text: chat or email"
+    },
+    {
+     "value": "live",
+     "label": "Live calls or video are fine"
+    },
+    {
+     "value": "independent",
+     "label": "Mostly on my own"
+    },
+    {
+     "value": "mix",
+     "label": "A mix is good"
+    }
+   ]
+  },
+  {
+   "id": "phone",
+   "title": "And phone or voice calls specifically?",
+   "help": "Phone comfort is separate from being sociable.",
+   "kind": "single",
+   "when": {
+    "key": "interaction",
+    "not": "live"
+   },
+   "options": [
+    {
+     "value": "fine",
+     "label": "Fine"
+    },
+    {
+     "value": "prefer_not",
+     "label": "Prefer not"
+    },
+    {
+     "value": "no",
+     "label": "Rule them out"
+    }
+   ]
+  },
+  {
+   "id": "goals",
+   "title": "What would help most right now?",
+   "help": "Pick as many as are true. Wanting money soon and a better long-term route can coexist.",
+   "kind": "multi",
+   "options": [
+    {
+     "value": "fast",
+     "label": "First earnings soon"
+    },
+    {
+     "value": "stable",
+     "label": "Steady, predictable income"
+    },
+    {
+     "value": "flexible",
+     "label": "Flexible side income"
+    },
+    {
+     "value": "career",
+     "label": "A longer-term career route"
+    },
+    {
+     "value": "explore",
+     "label": "Just exploring"
+    }
+   ]
+  },
+  {
+   "id": "computer",
+   "title": "How comfortable are you with computers today?",
+   "help": "“Today” is the point. This is about now, not what you could learn.",
+   "kind": "single",
+   "options": [
+    {
+     "value": 1,
+     "label": "Still finding my feet"
+    },
+    {
+     "value": 2,
+     "label": "Comfortable with everyday stuff"
+    },
+    {
+     "value": 3,
+     "label": "Confident: I pick up new tools fast"
+    }
+   ]
+  },
+  {
+   "id": "strengths",
+   "title": "How do these kinds of work feel?",
+   "help": "Answer only the ones you have a feel for. “Not sure” is treated as neutral.",
+   "kind": "matrix",
+   "rows": [
+    {
+     "value": "writing",
+     "label": "Writing clearly"
+    },
+    {
+     "value": "detail",
+     "label": "Careful, detail-heavy checking"
+    },
+    {
+     "value": "numeracy",
+     "label": "Numbers and spreadsheets"
+    },
+    {
+     "value": "technical",
+     "label": "Troubleshooting tech problems"
+    },
+    {
+     "value": "customer",
+     "label": "Helping customers"
+    },
+    {
+     "value": "creative",
+     "label": "Creative work: design, video, audio"
+    },
+    {
+     "value": "language",
+     "label": "Working in a second language"
+    }
+   ],
+   "options": [
+    {
+     "value": "yes",
+     "label": "I like it"
+    },
+    {
+     "value": "learn",
+     "label": "Would learn"
+    },
+    {
+     "value": "prefer_not",
+     "label": "Prefer not"
+    }
+   ]
+  },
+  {
+   "id": "learn",
+   "title": "Are you open to training before you earn?",
+   "kind": "single",
+   "options": [
+    {
+     "value": "yes",
+     "label": "Yes, if it leads somewhere real"
+    },
+    {
+     "value": "some",
+     "label": "A little, if it’s short"
+    },
+    {
+     "value": "no",
+     "label": "Not right now"
+    }
+   ]
+  },
+  {
+   "id": "equipment",
+   "title": "What do you have access to?",
+   "help": "Pick all that apply. Skip if you’d rather not say. Nothing is ruled out except routes that need a computer, if you say you don’t have one.",
+   "kind": "multi",
+   "options": [
+    {
+     "value": "computer",
+     "label": "A computer"
+    },
+    {
+     "value": "fast internet",
+     "label": "Reliable internet"
+    },
+    {
+     "value": "headset",
+     "label": "A headset"
+    },
+    {
+     "value": "quiet space",
+     "label": "A quiet space"
+    },
+    {
+     "value": "webcam",
+     "label": "A webcam"
+    },
+    {
+     "value": "smartphone",
+     "label": "A smartphone"
+    },
+    {
+     "value": "__none",
+     "label": "None of these",
+     "exclusive": true
+    }
+   ]
+  },
+  {
+   "id": "dealbreakers",
+   "title": "Anything that is a firm no?",
+   "help": "These are hard filters. Leave empty if nothing is.",
+   "kind": "multi",
+   "options": [
+    {
+     "value": "unpaid_test",
+     "label": "Unpaid tests or assessments"
+    },
+    {
+     "value": "fees",
+     "label": "Fees or commission to take part"
+    },
+    {
+     "value": "emotional_content",
+     "label": "Disturbing content"
+    },
+    {
+     "value": "contractor",
+     "label": "Contractor status (I want to be an employee)"
+    },
+    {
+     "value": "onsite",
+     "label": "Going in person"
+    }
+   ]
+  },
+  {
+   "id": "minPay",
+   "title": "Is there a pay floor?",
+   "help": "Many routes don’t publish pay. Unknown pay is shown with a caveat, not hidden.",
+   "kind": "single",
+   "options": [
+    {
+     "value": 0,
+     "label": "No floor"
+    },
+    {
+     "value": 18,
+     "label": "About $18/hr or more"
+    },
+    {
+     "value": 22,
+     "label": "About $22/hr or more"
+    },
+    {
+     "value": 28,
+     "label": "About $28/hr or more"
+    }
+   ]
+  },
+  {
+   "id": "minPayFirm",
+   "title": "Is that floor firm?",
+   "kind": "single",
+   "when": {
+    "key": "minPay",
+    "gt": 0
+   },
+   "options": [
+    {
+     "value": true,
+     "label": "Firm: hide anything below it"
+    },
+    {
+     "value": false,
+     "label": "A preference"
+    }
+   ]
+  },
+  {
+   "id": "adult",
+   "title": "Are you 18 or older?",
+   "help": "Some routes have age rules. Optional.",
+   "kind": "single",
+   "options": [
+    {
+     "value": true,
+     "label": "Yes"
+    },
+    {
+     "value": false,
+     "label": "No"
+    }
+   ]
+  }
+ ],
+ "notes": {
+  "skipped": "An unanswered question is null (or {} for the matrix). The engine treats it as neutral.",
+  "multi": "A multi-select with nothing ticked is null (skipped), not an empty list. The value \"__none\" is an explicit \"none of these\" and is stored as [].",
+  "when": "A question with a `when` condition is only asked when conditionHolds(when, profile) is true. Tests: not, gt, minLength, maxLength on profile[key]."
+ }
+}
