@@ -360,7 +360,7 @@
     'E1.area.lelydorp': ['🚜', 'Small-town Wanica, near the airport. A commute in.'],
     'E1.area.commewijne-meerzorg': ['🌉', 'Across the bridge: quieter, cheaper, rush-hour queues.']
   };
-  var BG = { live: ['#ddf4e8', '#9fdcbf'], everyday: ['#ffe3ec', '#ffb3cb'], eat: ['#fff1c7', '#ffd36b'], see: ['#e2f2ff', '#9fd2ff'], weekend: ['#ddf4e8', '#7fcfa6'], hobby: ['#efe6ff', '#c9b3ff'], pretty: ['#ffe3ec', '#ff9fc0'], words: ['#e2f2ff', '#bfe4ff'] };
+  var BG = { live: ['#ddf4e8', '#9fdcbf'], everyday: ['#ffe3ec', '#ffb3cb'], eat: ['#fff1c7', '#ffd36b'], see: ['#e2f2ff', '#9fd2ff'], weekend: ['#ddf4e8', '#7fcfa6'], hobby: ['#efe6ff', '#c9b3ff'], pretty: ['#ffe3ec', '#ff9fc0'], spots: ['#ffe9d6', '#ffbf8a'], cafe: ['#f3e6da', '#e0b98f'], homey: ['#fff1c7', '#ffb3cb'], fun: ['#efe6ff', '#9fd2ff'], words: ['#e2f2ff', '#bfe4ff'] };
 
   // Everyday choices. Hearting one IS the decision; its back shows what it costs.
   var LIFE = [
@@ -397,7 +397,7 @@
     if (!it) return null;
     if (AREA_FUN[id]) return { id: id, row: 'live', title: areaName(id), fun: AREA_FUN[id][1], emoji: AREA_FUN[id][0], picked: S.home.likes.indexOf(id) >= 0 };
     if (row === 'words') return { id: id, row: 'words', title: it.label, fun: (it.value || '').split(/[;.]/)[0], emoji: '💬', picked: !!(S.hearts && S.hearts[id]) };
-    return { id: id, row: row, title: it.label, fun: it.fun || it.notes || '', emoji: { eat: '🍽️', see: '📍', weekend: '🛶', hobby: '🎨', pretty: '💅' }[row] || '✨', image: it.image, picked: !!(S.hearts && S.hearts[id]) };
+    return { id: id, row: row, title: it.label, fun: it.fun || it.notes || '', emoji: { eat: '🍽️', see: '📍', weekend: '🛶', hobby: '🎨', pretty: '💅', spots: '🍛', cafe: '☕', homey: '🍜', fun: '🎉' }[row] || '✨', image: it.image, picked: !!(S.hearts && S.hearts[id]) };
   }
   function hearted(id) { return LIFE_BY[id] ? LIFE_BY[id].on() : AREA_FUN[id] ? S.home.likes.indexOf(id) >= 0 : !!(S.hearts && S.hearts[id]); }
   function toggleHeart(id) {
@@ -488,10 +488,14 @@
       row('live', 'Where you could live', 'Heart the ones you like', D.areas) +
       row('everyday', 'Pick your everyday', 'One per group. Flip for the cost', LIFE.map(function (l) { return l.id; })) +
       row('eat', 'What you\'ll eat', 'Lami!', funIds('X1')) +
+      row('spots', 'Where to eat', 'Real places, real plates', funIds('X6')) +
+      row('cafe', 'Coffee and sweet things', 'Merienda o\'clock', funIds('X7')) +
+      row('homey', 'Tastes of home', 'When you miss Mama\'s cooking', funIds('X8')) +
       row('see', 'Places to see', '', funIds('X2')) +
       row('weekend', 'Weekend adventures', '', funIds('X3')) +
       row('hobby', 'Things to do and people to meet', '', funIds('X4')) +
       row('pretty', 'Pretty and cute', 'For the pretty fund', funIds('X5')) +
+      row('fun', 'Fun times', 'Evenings, weekends and your first Christmas', funIds('X9')) +
       row('words', 'Words to know', 'Tap Bunny too', D.phrases) +
       (funIds('X1').length ? '' : '<div class="note note-sky">More rows are coming: food, places, weekends and pretty things are still being researched.</div>');
   }
@@ -586,7 +590,7 @@
       return '<button type="button" class="mine-pick' + (on ? '' : ' empty') + '" data-card="' + (on ? on.id : LIFE.filter(function (l) { return l.group === g; })[0].id) + '" data-row="everyday"><span class="pc-emoji">' + (on ? on.emoji : '❔') + '</span><span><small>' + GROUP_NAMES[g] + '</small><b>' + (on ? esc(on.title) : 'Not picked yet') + '</b></span></button>';
     }).join('');
     var areas = S.home.likes.map(function (id) { return cardOf(id, 'live'); });
-    var hc = hearts.map(function (id) { var it = D.items[id]; var rowKey = /^X1/.test(id) ? 'eat' : /^X2/.test(id) ? 'see' : /^X3/.test(id) ? 'weekend' : /^X4/.test(id) ? 'hobby' : /^X5/.test(id) ? 'pretty' : 'words'; return cardOf(id, rowKey); }).filter(Boolean);
+    var hc = hearts.map(function (id) { var it = D.items[id]; var rowKey = /^X1/.test(id) ? 'eat' : /^X2/.test(id) ? 'see' : /^X3/.test(id) ? 'weekend' : /^X4/.test(id) ? 'hobby' : /^X5/.test(id) ? 'pretty' : /^X6/.test(id) ? 'spots' : /^X7/.test(id) ? 'cafe' : /^X8/.test(id) ? 'homey' : /^X9/.test(id) ? 'fun' : 'words'; return cardOf(id, rowKey); }).filter(Boolean);
     app.innerHTML = '<section class="hero">' + bunny('bunny-big', 'happy', 'heart', picks.length ? 'Look at you, building a whole life.' : 'Nothing picked yet. Play this or that?') + '<h1>My Paramaribo</h1></section>' +
       '<div class="card"><h2>My everyday</h2><div class="mine-grid">' + groups + '</div></div>' +
       (areas.length ? '<section class="row-sec"><div class="row-head"><h2>Streets I like</h2></div>' + rail(areas.map(pcard).join('')) + '</section>' : '') +
@@ -1156,11 +1160,21 @@
   }
   window.addEventListener('hashchange', route);
 
+  // Named places live in their own file (the research from PR #148), so a rebuild of site.json never drops them.
+  function loadPlaces() {
+    return fetch('data/places.json').then(function (r) { return r.ok ? r.json() : null; }).then(function (p) {
+      if (!p || !p.items) return;
+      D.fun = D.fun || {};
+      Object.keys(p.fun || {}).forEach(function (k) { D.fun[k] = p.fun[k]; });
+      p.items.forEach(function (it) { D.items[it.id] = it; });
+    }).catch(function () {});
+  }
+
   document.querySelector('[data-bunny="mini"]').innerHTML = '<div class="bunny happy" style="width:34px;height:34px">' + BUNNY + '</div>';
   paintCur();
   fetch('data/site.json').then(function (r) { return r.json(); }).then(function (j) {
     D = j;
-    return Promise.all([loadServer(), loadNotes()]);
+    return Promise.all([loadServer(), loadNotes(), loadPlaces()]);
   }).then(function () {
     paintCur(); paintEditBar(); route();
     var fresh = false, seen = false;
