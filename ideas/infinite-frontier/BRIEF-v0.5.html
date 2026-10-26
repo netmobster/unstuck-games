@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>INFINITE FRONTIER — Build Brief v0.5</title>
+<style>
+:root{--bg:#090c10;--panel:#111720;--panel2:#18212b;--line:#2b3744;--text:#edf3f8;--muted:#9eacbb;--cyan:#7de5dc;--gold:#f4c66a;--pink:#f2a0b8;--green:#a6e6a8}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 15% 0%,#172832 0,transparent 43%),var(--bg);color:var(--text);font:16px/1.6 Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.wrap{max-width:1120px;margin:auto;padding:34px 22px 76px}.kicker{font-size:.74rem;font-weight:850;text-transform:uppercase;letter-spacing:.17em;color:var(--cyan)}h1{font-size:clamp(3rem,9vw,7rem);line-height:.84;letter-spacing:-.075em;margin:19px 0 24px}h1 span{color:var(--cyan)}h2{font-size:1.8rem;line-height:1.15;letter-spacing:-.04em;margin:0 0 14px}h3{font-size:1.08rem;line-height:1.25;margin:0 0 7px}p{margin:0 0 12px}.sub{font-size:clamp(1.08rem,2.2vw,1.4rem);max-width:760px;color:#c7d2dd}.meta{display:flex;flex-wrap:wrap;gap:8px;margin:24px 0 34px}.pill{border:1px solid var(--line);border-radius:999px;padding:5px 10px;background:#111820;color:#cbd6e0;font-size:.77rem}.hero{display:grid;grid-template-columns:1fr 1fr;gap:25px;align-items:center;border:1px solid var(--line);border-radius:22px;padding:24px;background:linear-gradient(135deg,#16232d,#10151c 75%)}.hero p{color:#c5d0da}.visual{max-width:430px;width:100%;margin:auto}.board{display:grid;grid-template-columns:repeat(9,1fr);gap:3px;background:#06090d;padding:8px;border:1px solid #2d3b49;border-radius:12px;aspect-ratio:1}.c{background:#1b2731;border-radius:3px;position:relative}.c.fog{background:#070a0e;border:1px solid #121923}.c.road{background:#344653}.c.road:after{content:"";position:absolute;width:46%;height:46%;left:27%;top:27%;border:2px solid var(--cyan);border-radius:3px}.c.tower{background:#57472f}.c.tower:after{content:"◆";position:absolute;inset:0;display:grid;place-items:center;color:var(--gold);font-size:clamp(7px,1.5vw,15px)}.c.core{background:#583441}.c.core:after{content:"⌂";position:absolute;inset:0;display:grid;place-items:center;color:var(--pink)}.caption{text-align:center;color:var(--muted);font-size:.74rem;margin-top:8px}section{margin-top:44px}.lede{color:#bdc9d5;max-width:850px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.card{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:17px}.card p,.card li{color:#c0ccd7;font-size:.93rem}.tag{display:inline-block;font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;font-weight:850;color:var(--gold);margin-bottom:7px}.flow{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;margin:18px 0}.step{background:var(--panel2);border:1px solid var(--line);border-radius:12px;padding:14px 12px}.step b{display:block;color:var(--cyan);font-size:.86rem;margin-bottom:5px}.step span{font-size:.85rem;color:#bfccd7}.timing{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}.timecard{padding:18px;border-radius:14px;border:1px solid var(--line);background:#121922}.time{font-size:1.9rem;line-height:1;color:var(--cyan);font-weight:850;letter-spacing:-.05em;margin-bottom:10px}.timecard p{color:#c0ccd7;font-size:.91rem}.rulegrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.rule{border-left:3px solid var(--cyan);background:#121820;border-radius:0 10px 10px 0;padding:14px}.rule b{display:block;margin-bottom:4px}.rule span{color:#bfccd7;font-size:.92rem}.sequence{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}.phase{border:1px solid var(--line);background:var(--panel);border-radius:14px;padding:16px}.phase .n{color:var(--cyan);font-weight:850;font-size:.74rem;letter-spacing:.1em}.phase p{color:#c1cdd8;font-size:.91rem;margin-top:8px}.callout{border:1px solid #38645f;background:linear-gradient(125deg,#102622,#11171d);padding:20px;border-radius:16px}.callout strong{color:var(--cyan)}.warning{border-color:#67532f;background:#1b1710}.warning strong{color:var(--gold)}table{width:100%;border-collapse:collapse;font-size:.92rem}th,td{text-align:left;vertical-align:top;padding:11px 12px;border-bottom:1px solid var(--line)}th{color:var(--cyan);text-transform:uppercase;letter-spacing:.08em;font-size:.74rem}td{color:#c3ced9}.small{font-size:.81rem;color:var(--muted)}footer{border-top:1px solid var(--line);margin-top:48px;padding-top:18px;color:#8c9aaa;font-size:.82rem}@media(max-width:760px){.wrap{padding:25px 15px 60px}.hero{grid-template-columns:1fr}.grid,.timing,.rulegrid{grid-template-columns:1fr}.flow{grid-template-columns:1fr 1fr}.sequence{grid-template-columns:1fr 1fr}}@media(max-width:430px){.flow,.sequence{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="wrap">
+<div class="kicker">Game concept · Build brief for implementation · v0.5 · 11 October 2026</div>
+<h1>INFINITE<br><span>FRONTIER</span></h1>
+<p class="sub">A 2D top-down roguelike tower defense where the player builds the battlefield one tile at a time, drafts temporary power, and survives as long as possible.</p>
+<div class="meta"><span class="pill">Single-player first</span><span class="pill">2D top-down</span><span class="pill">Math-generated visuals</span><span class="pill">Infinite run map</span><span class="pill">Run resets on death</span><span class="pill">No runtime AI</span></div>
+<div class="hero">
+<div><div class="kicker">Core thesis</div><h2>The board is the build.</h2><p>Traditional tower defense asks the player to optimize a map someone else designed. Infinite Frontier asks the player to design the route, shape the battlefield, draft the tools, and defend the thing they created.</p><p>The map grows throughout a run. Death resets it. The player is continuously solving a spatial problem with an imperfect, randomized toolkit.</p></div>
+<div class="visual"><div class="board" aria-label="Illustrative tiny 9 by 9 starting map">
+<div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div>
+<div class="c fog"></div><div class="c"></div><div class="c"></div><div class="c road"></div><div class="c road"></div><div class="c"></div><div class="c"></div><div class="c fog"></div><div class="c fog"></div>
+<div class="c fog"></div><div class="c"></div><div class="c tower"></div><div class="c"></div><div class="c road"></div><div class="c"></div><div class="c"></div><div class="c fog"></div><div class="c fog"></div>
+<div class="c fog"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c road"></div><div class="c tower"></div><div class="c"></div><div class="c fog"></div><div class="c fog"></div>
+<div class="c fog"></div><div class="c fog"></div><div class="c"></div><div class="c road"></div><div class="c road"></div><div class="c"></div><div class="c"></div><div class="c fog"></div><div class="c fog"></div>
+<div class="c fog"></div><div class="c fog"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c fog"></div><div class="c fog"></div>
+<div class="c fog"></div><div class="c fog"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c core"></div><div class="c"></div><div class="c fog"></div><div class="c fog"></div>
+<div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c"></div><div class="c"></div><div class="c"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div>
+<div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div><div class="c fog"></div>
+</div><div class="caption">Illustrative 9×9 world tile/chunk · visual generated from simple geometry</div></div>
+</div>
+
+<section><h2>01 / The pacing model</h2><p class="lede">Combat is fast. Decisions should be quick, contextual, and constrained by the board—not long inventory-management pauses.</p>
+<div class="timing">
+<div class="timecard"><div class="tag">Every wave</div><div class="time">~30 sec</div><h3>Draft & defend</h3><p>A wave resolves quickly. Then draw three reward cards and take one: typically two new towers and one upgrade, but the exact mix is randomized. Choose, place or apply, and get back into play.</p></div>
+<div class="timecard"><div class="tag">Every milestone</div><div class="time">10 waves</div><h3>Boss → relic → tile</h3><p>Wave 10, 20, 30, and onward is a boss. Beat it to draft/receive a relic and choose one of three new tiles. Place and rotate it to expand the route and battlefield. The map changes in meaningful chunks, about every five minutes of combat.</p></div>
+<div class="timecard"><div class="tag">When you die</div><div class="time">Run ends</div><h3>Reset & return</h3><p>The map, towers, resources, cards gained, upgrades, potions, and relics reset. Eligible unlocks and records persist. Start again on a tiny map with a wider pool of possible strategies.</p></div>
+</div></section>
+
+<section><h2>02 / The fast loop</h2><div class="flow">
+<div class="step"><b>01 · WAVE ENDS</b><span>Brief result; core damage, kills, reward trigger.</span></div>
+<div class="step"><b>02 · DRAFT</b><span>See 3 cards; choose 1 in seconds.</span></div>
+<div class="step"><b>03 · APPLY</b><span>Place a tower in a limited number of viable spaces, apply an upgrade, or hold/use a potion.</span></div>
+<div class="step"><b>04 · NEXT WAVE</b><span>Combat resumes quickly. The chosen reward changes the next encounter.</span></div>
+<div class="step"><b>05 · MILESTONE</b><span>After wave 10 boss: relic + tile choice + rotate/place, then continue.</span></div>
+</div><p class="small">The intended feel is closer to a fast Slay the Spire reward decision than a lengthy build menu. Board constraints make the choices concrete: a powerful tower is only valuable if there is somewhere useful to put it.</p></section>
+
+<section><h2>03 / Three layers of decisions</h2><div class="grid">
+<div class="card"><div class="tag">Wave · tactical</div><h3>Reward card</h3><p>Choose one of three offers from the currently unlocked pool. Common offer types: new tower, upgrade bonus, consumable potion. Example: two towers and an upgrade. The draft should be fast, legible, and contextual enough to avoid three useless options.</p></div>
+<div class="card"><div class="tag">Milestone · strategic</div><h3>Relic + tile</h3><p>Beat the boss to gain a relic that meaningfully changes the current run and a choice of three tiles, each with route geometry, a benefit, and a consequence. Place and rotate the chosen tile to extend the connected path.</p></div>
+<div class="card"><div class="tag">Run · meta</div><h3>Unlock possibilities</h3><p>Death resets the attempt. Across runs, unlock new towers, upgrades, potions, relics, tile families, and enemy types through milestones/achievements. Unlock breadth and alternate strategies—not permanent raw stat inflation. Rapid death should not be the optimal unlock strategy.</p></div>
+</div></section>
+
+<section><h2>04 / The battlefield</h2><div class="grid">
+<div class="card"><h3>Tiny opening</h3><p>Begin on one randomly selected 9×9 world tile/chunk, with fog of war. Only two or three good tower positions may exist. Space scarcity makes every reward contextual and gives the first few waves immediate tension. The world map is assembled from these chunks; it is not one 9×9 board.</p></div>
+<div class="card"><h3>Tile grammar</h3><p>Draw three candidate tiles randomly. Each combines path geometry and a built-in bonus/consequence (terrain, adjacency, cost, range, risk, or future placement). Select one, place it at the frontier, rotate it to connect. Placement is committed.</p></div>
+<div class="card"><h3>One continuous run map</h3><p>Expansion happens at boss milestones, not every wave. The same board grows continuously; there are no acts or map transitions. The full map becomes a strategic overview and a record of this run's design.</p></div>
+</div><div class="callout" style="margin-top:13px"><strong>Path-length hypothesis:</strong> Long routes increase firing time, but should not automatically dominate. First test geometry, coverage, tower budgets, terrain, and enemy traits. Do not add arbitrary long-path penalties before observing play.</div></section>
+
+<section><h2>05 / Reward economy</h2><div class="rulegrid">
+<div class="rule"><b>Wave cards are temporary</b><span>New towers, upgrades, and potions belong to the current run. No permanent accumulation of tower power across lives.</span></div>
+<div class="rule"><b>Relics are run-defining</b><span>A relic is awarded after each boss milestone. It bends a rule or creates a synergy for the current run, then disappears on death.</span></div>
+<div class="rule"><b>Pool unlocks are lateral</b><span>Unlocks add possibilities rather than direct numerical superiority. Unlock in curated batches so the reward pool doesn't become too diluted.</span></div>
+<div class="rule"><b>Keep agency in the draw</b><span>RNG chooses offers and threats; the player chooses a response. Maintain a few broadly useful options, some build synergies, and occasional build-defining offers.</span></div>
+</div></section>
+
+<section><h2>06 / Visual and technical direction</h2><div class="grid">
+<div class="card"><div class="tag">Locked</div><h3>2D top-down</h3><p>Flat grid viewed directly from above. No isometric camera, 3D scene, or perspective presentation in the prototype. Board geometry and enemy paths must be immediately readable.</p></div>
+<div class="card"><div class="tag">Locked</div><h3>Math-generated visuals</h3><p>Render the world from simple geometry, rules, and parameters: grid cells, paths, towers, projectiles, enemies, effects, fog, and UI. Prefer generated/vector-like shapes and procedural effects over hand-painted assets or an asset-heavy pipeline.</p></div>
+<div class="card"><div class="tag">Locked</div><h3>Simulation-first</h3><p>Deterministic rules resolve path connectivity, enemy movement, tower targeting, damage, resources, and run state. No runtime AI is needed for core gameplay. Seeded randomness can make runs reproducible.</p></div>
+</div><p class="lede" style="margin-top:13px">The art direction should come from clean silhouettes, color, animation, impact feedback, and composition—not texture detail. The strategic overview should be readable at a glance, even as the map grows.</p></section>
+
+<section><h2>07 / Prototype sequence</h2><div class="sequence">
+<div class="phase"><div class="n">PROTOTYPE 0</div><h3>Tile grammar</h3><p>Flat grid; one randomized 9×9 starting chunk with core and spawn; four path shapes; three 9×9 expansion-chunk offers; rotation; legal boundary connectivity; fog reveal.</p></div>
+<div class="phase"><div class="n">PROTOTYPE 1</div><h3>One wave</h3><p>Three tower types, a few enemy profiles, build phase, 30-second wave, readable projectile/damage feedback.</p></div>
+<div class="phase"><div class="n">PROTOTYPE 2</div><h3>Draft loop</h3><p>Three reward cards after every wave; quick application; tower-space constraints; wave difficulty tests different layouts.</p></div>
+<div class="phase"><div class="n">PROTOTYPE 3</div><h3>Run loop</h3><p>Wave 10 boss, relic + tile milestone, death/reset, results, and a small lateral unlock pool. Observe multiple runs before expanding content.</p></div>
+</div></section>
+
+<section><h2>08 / Open questions for implementation</h2><table><thead><tr><th>Question</th><th>Working direction</th><th>Don't overbuild yet</th></tr></thead><tbody>
+<tr><td>Tile cadence</td><td>One tile after each boss milestone (about every five minutes of combat)</td><td>Don't expand every wave just to keep the board moving.</td></tr>
+<tr><td>Reward mix</td><td>Three offers, usually tower/tower/upgrade or other mix from unlocked pool</td><td>Don't guarantee a perfect synergy.</td></tr>
+<tr><td>Route topology</td><td>One connected route for first prototype</td><td>No multi-branch pathfinding until tile grammar feels good.</td></tr>
+<tr><td>Long-path balance</td><td>Measure coverage and enemy interactions first</td><td>No arbitrary route-length tax without evidence.</td></tr>
+<tr><td>Meta progression</td><td>Unlock breadth, not permanent power</td><td>Prevent rapid death from being the best way to progress.</td></tr>
+<tr><td>Visual pipeline</td><td>2D top-down, math-generated geometry</td><td>No dependency on bespoke art to validate gameplay.</td></tr>
+</tbody></table></section>
+
+<section><div class="callout warning"><div class="kicker" style="color:var(--gold)">The thesis to test</div><h2 style="margin-top:8px">Does building the board make every run feel different?</h2><p>Every tile changes the battlefield. Every wave draft changes the tools. Every milestone adds a relic and another piece of route. The player's skill is choosing well under spatial, economic, and RNG constraints.</p><p><strong>For Claude Code:</strong> Start with the smallest playable gray-box that tests grid geometry, tile selection/rotation, route connectivity, and tower placement. Keep systems modular and deterministic. Do not build the full content library, meta-progression, elaborate menus, or final visual polish before the core loop is playable.</p></div></section>
+
+<section id="implementation-appendix">
+  <h2>09 / Implementation appendix for Claude Code</h2>
+  <p class="lede">Concrete starting points, not permission to overbuild. Inspect the existing repository and its stack first; follow established conventions where they exist. Keep the simulation deterministic and the first prototype small.</p>
+
+  <div class="grid">
+    <div class="card">
+      <div class="tag">Data model</div>
+      <h3>Separate state from rendering</h3>
+      <p>The grid, tile ports, route graph, tower placements, enemy positions, health, resources, wave number, reward offers, relics, and run state are authoritative game data. Rendering reads this state; drawing code must not decide gameplay outcomes.</p>
+    </div>
+    <div class="card">
+      <div class="tag">Tile grammar</div>
+      <h3>Four-bit connection masks</h3>
+      <p>Represent cardinal ports with N = 1, E = 2, S = 4, W = 8. A straight N–S tile is 5; an N–E bend is 3; a three-way junction N–E–S is 7; a cross is 15. Rotate the mask by moving each port clockwise and wrapping W back to N.</p>
+    </div>
+    <div class="card">
+      <div class="tag">Validation</div>
+      <h3>Check the route graph</h3>
+      <p>Adjacent ports must be reciprocal: an east port on one cell requires a west port on its neighbor. After placement, validate the full route from spawn to core and reject illegal placements before committing. Local adjacency alone does not prove the whole route is valid.</p>
+    </div>
+  </div>
+
+  <div class="callout" style="margin-top:13px">
+    <strong>Clockwise rotation rule:</strong> with N=bit 0, E=bit 1, S=bit 2, W=bit 3, rotate a four-bit mask using <code>((mask &lt;&lt; 1) &amp; 15) | (mask &gt;&gt; 3)</code>. Apply it once per 90° clockwise turn. Test all 16 masks and four rotations; rotating four times must return the original mask.
+  </div>
+
+  <section style="margin-top:26px">
+    <h3>Core state machine</h3>
+    <div class="sequence">
+      <div class="phase"><div class="n">A · COMBAT</div><h3>Wave running</h3><p>Enemies traverse the validated route; towers acquire targets and deal damage. Resolve the wave result and check whether the core has been destroyed.</p></div>
+      <div class="phase"><div class="n">B · REGULAR</div><h3>Reward draft</h3><p>If the wave is not a milestone, offer three reward cards and let the player choose one. Apply it quickly, then begin the next wave.</p></div>
+      <div class="phase"><div class="n">C · MILESTONE</div><h3>Boss → relic → tile</h3><p>On waves 10, 20, 30, etc., run the boss encounter. If defeated, award a relic and offer three tiles; select, rotate, and place one legally before the next wave.</p></div>
+      <div class="phase"><div class="n">D · RUN END</div><h3>Death / reset</h3><p>If the core is destroyed, end the run, record results, grant eligible unlocks, clear run-only state, and start a fresh tiny map.</p></div>
+    </div>
+    <p class="small" style="margin-top:10px">Implementation detail to settle explicitly: whether the boss wave also grants the ordinary three-card reward. The concept currently guarantees the milestone relic + tile; do not silently add or omit a second reward. Make it a simple configurable rule.</p>
+  </section>
+
+  <section style="margin-top:26px">
+    <h3>Build order: prove the geometry before combat</h3>
+    <div class="timeline">
+      <div class="event"><h3>Prototype 0 — grid and route</h3><p>Render the small top-down grid and fog; select a candidate tile; rotate and place it; display ports clearly; validate reciprocal connections and spawn-to-core reachability. Include automated tests for rotation and route validation.</p></div>
+      <div class="event"><h3>Prototype 1 — one deterministic wave</h3><p>Add a small set of enemy profiles, route-following movement, three tower archetypes, range/targeting, damage, and a readable wave result. Use a fixed seed or fixed test scenario while debugging.</p></div>
+      <div class="event"><h3>Prototype 2 — fast reward draft</h3><p>Offer three cards after regular waves, select one, apply its effect, and resume quickly. Make tower placement legal and obvious; avoid a large inventory or lengthy modal flow.</p></div>
+      <div class="event"><h3>Prototype 3 — milestone and reset</h3><p>Trigger a boss every tenth wave; on victory grant the relic and tile choice; on death reset run-only state and retain only eligible unlocks/records.</p></div>
+    </div>
+  </section>
+
+  <section style="margin-top:26px">
+    <h3>Visual implementation notes</h3>
+    <div class="rulegrid">
+      <div class="rule"><b>Readable geometry first</b><span>Use simple vector/canvas-style shapes for grid, paths, towers, enemies, projectiles, range indicators, fog, and health. Silhouette and contrast matter more than decorative detail.</span></div>
+      <div class="rule"><b>Use visuals as feedback</b><span>Show route direction, tower range, target selection, hits, slow effects, leaks, core damage, and valid/invalid tile placement clearly. Animation should communicate simulation state.</span></div>
+      <div class="rule"><b>2D top-down only</b><span>No isometric or 3D presentation in the prototype. Keep the strategic overview and tactical board consistent so players can read the map at either scale.</span></div>
+      <div class="rule"><b>Choose the renderer pragmatically</b><span>Inspect the repository and runtime before choosing Canvas, SVG, or another existing rendering path. Do not introduce WebGL or a new framework without a demonstrated need.</span></div>
+    </div>
+  </section>
+
+  <div class="callout warning" style="margin-top:18px">
+    <strong>Guardrail for implementation:</strong> Do not build all content, meta-progression, sophisticated enemy AI, multiplayer, or final polish yet. First deliver a playable loop that proves legal tile placement, a readable route, meaningful tower placement, and one wave that can be won or lost.
+  </div>
+</section>
+
+
+<section id="world-chunks-and-seeds">
+  <h2>10 / World chunks and seeded generation</h2>
+  <p class="lede"><strong>Important spatial rule:</strong> every world tile is a 9×9 chunk of grid cells. The world is a larger grid of these chunks. Do not implement each expansion as a single cell on the combat grid.</p>
+  <div class="grid">
+    <div class="card">
+      <div class="tag">Starting chunk</div>
+      <h3>Randomized Tile 1</h3>
+      <p>A new run begins on one randomly selected/generated 9×9 starting chunk. It must guarantee a valid spawn-to-core route and enough legal build space for the opening encounter. Fog hides unrevealed cells/frontier as appropriate.</p>
+    </div>
+    <div class="card">
+      <div class="tag">Expansion chunk</div>
+      <h3>One of three offers</h3>
+      <p>At each boss milestone, offer three candidate 9×9 chunks. Each has internal route geometry, legal boundary connection points, terrain/placement characteristics, and a bonus/consequence. The player chooses one, rotates it, and attaches it to the current world frontier.</p>
+    </div>
+    <div class="card">
+      <div class="tag">World coordinates</div>
+      <h3>Chunk grid + local grid</h3>
+      <p>Track each chunk at world/chunk coordinates and each cell at local coordinates 0–8 in both axes. Convert between them through one well-tested helper; keep chunk placement and cell placement distinct in code.</p>
+    </div>
+  </div>
+  <section style="margin-top:24px">
+    <h3>Seed strategy: many possible chunks, not 10,000 hand-authored maps</h3>
+    <p>Use deterministic generation from a seed, a small set of validated chunk archetypes, and controlled variations. A target catalogue of 10,000 distinct seeded chunk instances is possible, but it is not a Prototype 0 requirement and should not mean manually authoring 10,000 maps.</p>
+    <div class="rulegrid">
+      <div class="rule"><b>Seeded offer generation</b><span>Derive each offer from the run seed plus a stable offer counter (or equivalent deterministic stream). The same seed and state should reproduce the same three offers.</span></div>
+      <div class="rule"><b>Validated archetypes</b><span>Start with a small set of known-valid 9×9 layouts: straight-through, bend, offset, and other controlled route patterns. Generate variations in terrain, bonuses, consequences, and orientation within constraints.</span></div>
+      <div class="rule"><b>Validate before offering</b><span>Every generated chunk must have compatible boundary ports, a traversable internal route, no accidental route breaks, and sensible buildable space. Regenerate or fall back to a known-valid chunk if validation fails.</span></div>
+      <div class="rule"><b>Reproducibility</b><span>Store the run seed and the chosen chunk seed/definition. Do not depend on a single global random stream whose results change when unrelated visual effects consume randomness.</span></div>
+    </div>
+  </section>
+  <div class="callout warning" style="margin-top:18px">
+    <strong>Prototype constraint:</strong> begin with a handful of hand-validated 9×9 chunk archetypes and seeded variations. Prove chunk attachment, route continuity across chunk boundaries, rotation, tower placement, and combat first. Scale the generation catalogue only after those rules work.
+  </div>
+</section>
+
+<footer>INFINITE FRONTIER · Build brief v0.5 · Chunk map and seeded generation clarified · 2D top-down / math-generated visuals · 11 October 2026</footer>
+</main></body></html>
