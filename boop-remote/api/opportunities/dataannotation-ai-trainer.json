@@ -1,0 +1,241 @@
+{
+ "id": "dataannotation-ai-trainer",
+ "name": "AI chatbot evaluator and writer (DataAnnotation)",
+ "organization": "DataAnnotation",
+ "type": "task_platform",
+ "category": "ai_data",
+ "tags": [
+  "ai-training",
+  "response-rating",
+  "writing",
+  "coding",
+  "paypal",
+  "self-paced"
+ ],
+ "summary": "Online platform that pays contributors to rate chatbot answers, write and check code for AI training, paid via PayPal.",
+ "whatYouDo": "After passing a starter assessment, you choose from available projects such as rating or comparing chatbot answers, writing prompts or checking code. Work is self-paced with no minimum hours.",
+ "appeal": [
+  "Official FAQ lists general projects from about $25/hr, multilingual from $20/hr, and coding/STEM from $40/hr",
+  "No minimum hours and no sign-up fee (official pages)",
+  "Paid via PayPal, with deposits a few days after you request them (official FAQ)",
+  "Company pages carry a testimonial from a Canadian worker"
+ ],
+ "watchOuts": [
+  "No official country list is published; Canada appears only in third-party lists and testimonials",
+  "Applicants who are not accepted often hear nothing back after the starter assessment (blog reports)",
+  "Reviews describe work 'droughts' and account bans",
+  "Pay ranges are company marketing figures that differ between pages; currency was not shown in what we saw",
+  "Scammers impersonate the brand; the company says it never asks workers for money"
+ ],
+ "officialUrl": "https://www.dataannotation.tech/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "US",
+   "GB",
+   "CA",
+   "AU",
+   "NZ"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [
+   "bachelor's degree may qualify for the general tier (FAQ); advanced degrees or licences for STEM/professional tiers"
+  ],
+  "equipment": [
+   "computer",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 3,
+  "numeracy": 1,
+  "detail": 3,
+  "customer": 0,
+  "technical": 1,
+  "creative": 1,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "unknown",
+  "notes": "A starter assessment is required; whether it is paid was not evidenced in sources seen."
+ },
+ "compensation": {
+  "min": 20,
+  "max": 150,
+  "currency": "unstated",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Official FAQ/role pages: multilingual from $20+/hr; general chatbot evaluation $25–50+/hr; coding $40–150+/hr; STEM/professional $40–125+/hr. Pages disagree slightly; currency not stated in the snippets (likely USD, unverified)."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Blogs report silent rejections, work droughts and bans; no official statement on volume. Anecdotal."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Sign up on the DataAnnotation site",
+  "Complete the starter assessment (plus any specialist assessments)",
+  "Wait for acceptance; blogs say replies take 1–4 weeks or never come",
+  "Link a PayPal account and choose projects from your dashboard"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "now",
+ "status": "uncertain",
+ "legitimacy": "likely",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "contractor_no_benefits",
+  "account_deactivation_reports",
+  "scam_impersonation"
+ ],
+ "fitsIf": "You write well, are comfortable with self-paced online work, and can treat it as a bonus if you are accepted.",
+ "notFitIf": "You need a clear yes/no on acceptance or a dependable weekly income.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.dataannotation.tech/faqs",
+   "title": "FAQs",
+   "type": "official",
+   "publisher": "DataAnnotation",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements",
+    "schedule"
+   ],
+   "notes": "Search summary: tiered starting pay (general, multilingual, coding, STEM); PayPal payments; no minimum hours. Direct fetch blocked in sandbox.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.dataannotation.tech/",
+   "title": "DataAnnotation",
+   "type": "official",
+   "publisher": "DataAnnotation",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy",
+    "canada_eligibility"
+   ],
+   "notes": "Homepage. Search summary reports a Canadian worker testimonial on company pages (exact page not identified).",
+   "accessible": false
+  },
+  {
+   "url": "https://www.dataannotation.tech/about-us",
+   "title": "About DataAnnotation",
+   "type": "official",
+   "publisher": "DataAnnotation",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Says available in 50+ countries but does not list them.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.dataannotation.tech/trust-safety",
+   "title": "Trust & Safety",
+   "type": "official",
+   "publisher": "DataAnnotation",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "States the company never asks workers for money; warns about fraud.",
+   "accessible": false
+  },
+  {
+   "url": "https://app.dataannotation.tech/da-privacy-policy",
+   "title": "DataAnnotation privacy policy",
+   "type": "official",
+   "publisher": "DataAnnotation",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "worker_status",
+    "pay"
+   ],
+   "notes": "Says independent contractors are paid through PayPal.",
+   "accessible": false
+  },
+  {
+   "url": "https://labelingjobs.net/guides/is-dataannotation-tech-legit-what-it-publishes-and-what-workers-report",
+   "title": "Is DataAnnotation Legit? Pay ($25–$150/hr), Droughts and Bans",
+   "type": "independent_review",
+   "publisher": "labelingjobs.net",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "risk",
+    "reliability"
+   ],
+   "notes": "Notes no official eligibility list; third-party consensus is US, UK, Canada, Australia, Ireland, NZ; covers droughts and bans. Unverified.",
+   "accessible": false
+  },
+  {
+   "url": "https://aitrainer.work/guides/is-dataannotation-legit-review",
+   "title": "is dataannotation legit review",
+   "type": "independent_review",
+   "publisher": "aitrainer.work",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Lists Canada among six accepted countries; says VPN use gets accounts banned. Referral-style site.",
+   "accessible": false
+  },
+  {
+   "url": "https://riseuplabs.com/how-long-to-get-accepted-data-annotation/",
+   "title": "how long to get accepted data annotation",
+   "type": "independent_review",
+   "publisher": "Riseup Labs",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Blog: most hear back in 1–4 weeks; silent non-acceptance common. Not an official source.",
+   "accessible": false
+  }
+ ]
+}

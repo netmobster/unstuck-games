@@ -1,0 +1,198 @@
+{
+ "id": "respondent-research-participant",
+ "name": "Paid research interviews and focus groups (Respondent)",
+ "organization": "Respondent",
+ "type": "research_participation",
+ "category": "research_participation",
+ "tags": [
+  "research-participation",
+  "not-a-job",
+  "interviews",
+  "focus-groups",
+  "professional-research"
+ ],
+ "summary": "Apply to paid interviews, focus groups and surveys that companies run with consumers and professionals; this is research participation, not a job.",
+ "whatYouDo": "You create a verified profile and apply to studies by answering a screener, then the researcher decides whom to invite. Respondent focuses on remote qualitative interviews, and the incentive is paid after the session.",
+ "appeal": [
+  "Canada is one of Respondent's 21 primary recruiting markets",
+  "Studies are often higher-value interviews and focus groups (third-party reviews cite roughly $50–$250 per study)",
+  "Payout through Tremendous offers many redemption options"
+ ],
+ "watchOuts": [
+  "Not a job: you can be screened out by the screener or by the researcher, often without being told (G2 user reviews)",
+  "A fulfillment fee of 5% or $1, whichever is higher, comes off each incentive",
+  "Profiles are verified by phone, email and LinkedIn, and professional studies may expect a work profile",
+  "One review-site complaint (2025) says a study was still unpaid four weeks later",
+  "Older reviews say payouts go to PayPal, but Respondent's current help says Tremendous gift cards, so check payout options before counting on cash"
+ ],
+ "officialUrl": "https://help.respondent.io/en/articles/12552492-screener-explained-how-to-qualify-for-studies",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "webcam"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "video",
+   "voice",
+   "text"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 1,
+  "customer": 0,
+  "technical": 0,
+  "creative": 0,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": "USD",
+  "unit": "study",
+  "basis": "aggregator",
+  "notes": "No official pay figures were retrieved. Third-party review titles advertise about $50–$250 per focus group and '$100+/hour', which are marketing-style claims. Each researcher sets the incentive, and the fulfillment fee is deducted from it."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "The researcher decides who is selected. G2 reviewers say they often aren't picked, and popular studies draw many applicants."
+ },
+ "workerStatus": "participant",
+ "fees": "A 5% or $1 fulfillment fee, whichever is higher, is deducted from each incentive (official help).",
+ "applicationSteps": [
+  "Create a participant profile and verify your phone and email (LinkedIn may be requested)",
+  "Browse studies and answer the screener for ones that fit",
+  "If the researcher picks you, schedule and attend the session",
+  "Receive the incentive, minus the fulfillment fee, through Tremendous"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "fees",
+  "payment_delay_reports"
+ ],
+ "fitsIf": "You have a specific consumer or professional background that researchers seek and are comfortable on video calls.",
+ "notFitIf": "You want steady income or dislike verification steps such as connecting LinkedIn.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://help.respondent.io/en/articles/5471299-what-countries-can-i-recruit-in-on-respondent",
+   "title": "What countries can I recruit in on Respondent",
+   "type": "official",
+   "publisher": "Respondent",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "From a search summary of this researcher-facing article: Respondent specialises in remote qualitative interviews in countries with many English speakers. It has 21 primary target markets, Canada among them. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://help.respondent.io/en/articles/5489331-paying-participant-incentives",
+   "title": "Paying Participant Incentives",
+   "type": "official",
+   "publisher": "Respondent",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "From a search summary: a 5% or $1 fulfillment fee, whichever is higher, applies to incentives, and incentives are issued as Tremendous virtual gift cards. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.respondent.io/compare/respondent-vs-user-interviews",
+   "title": "respondent vs user interviews",
+   "type": "official",
+   "publisher": "Respondent",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy",
+    "requirements"
+   ],
+   "notes": "A marketing page. It claims 3M+ participants verified by phone, email and LinkedIn. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.g2.com/products/respondent/reviews",
+   "title": "Respondent Reviews & Product Details",
+   "type": "forum",
+   "publisher": "G2",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "risk"
+   ],
+   "notes": "User reviews (anecdotes, undated in summary). Reviewers say they often aren't picked and want to be told whether they were selected, and that response times are inconsistent.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.smartcustomer.com/reviews/respondent.io",
+   "title": "Respondent.io reviews (SmartCustomer)",
+   "type": "forum",
+   "publisher": "SmartCustomer",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "A single user complaint: a study completed in April 2025 was still unpaid more than four weeks later. This is an anecdote.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.surveyexaminer.com/survey-platform-reviews/respondent/",
+   "title": "Respondent.io Review 2026: $50-$250 Focus Groups",
+   "type": "independent_review",
+   "publisher": "Survey Examiner",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "A third-party review whose title claims $50–$250 focus groups. The figure is not verified.",
+   "accessible": false
+  }
+ ]
+}

@@ -1,0 +1,182 @@
+{
+ "id": "canadian-freelance-boards-associations",
+ "name": "Canadian freelance job boards and freelancer associations",
+ "organization": "Various",
+ "type": "category",
+ "category": "freelance_microbusiness",
+ "tags": [
+  "freelance",
+  "canada",
+  "job-board",
+  "writing",
+  "editing",
+  "association"
+ ],
+ "summary": "Canada-focused places to find freelance and contract postings (especially writing, editing and communications) and groups that support freelancers.",
+ "whatYouDo": "You browse Canadian job banks and boards for freelance, contract or remote postings and apply directly to the client or employer. Associations such as the Canadian Freelance Guild and the Canadian Freelance Union offer job listings or member supports such as insurance and contract advice.",
+ "appeal": [
+  "Postings are aimed at people in Canada, and some are open only to Canadian citizens or permanent residents",
+  "No marketplace commission when a client hires you directly",
+  "Canadian Freelance Union membership is open to media, communications and information freelancers with a Canadian connection, and offers insurance plans, press cards, grievance support and contract advice"
+ ],
+ "watchOuts": [
+  "Postings lean towards writing, editing and communications",
+  "Membership costs and job-bank access terms weren't checked",
+  "Some boards make unverified claims (for example, Workhoppers calls itself Canada's #1 freelance site)",
+  "Listings on aggregators (Glassdoor, SimplyHired, Workopolis) can be stale, so check posting dates",
+  "Freelance or contract status usually means no employee benefits"
+ ],
+ "officialUrl": null,
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 2,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 1,
+  "technical": 0,
+  "creative": 1,
+  "language": 2
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Pay varies by posting, and no rate data was collected."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Posting volume wasn't measured. Search results showed recent Canadian Freelance Guild job bank postings dated September 2026."
+ },
+ "workerStatus": "varies",
+ "fees": "Unknown: association membership fees weren't checked, and no marketplace commission was found.",
+ "applicationSteps": [
+  "Browse the Canadian Freelance Guild job bank and other Canada-focused boards",
+  "Check each posting's date, eligibility (such as citizenship or PR) and contract terms",
+  "Apply directly to the client or employer",
+  "Consider joining a freelancer association for insurance, contract advice or grievance support"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "likely",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "variable_work",
+  "contractor_no_benefits"
+ ],
+ "fitsIf": "You write, edit or do communications work and want Canadian clients and freelancer supports.",
+ "notFitIf": "You need a high volume of quick gigs or have no portfolio to show yet.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://canadianfreelanceguild.ca/en/job-bank/browse",
+   "title": "CanadianFreelanceGuild.ca - Job Bank",
+   "type": "official",
+   "publisher": "Canadian Freelance Guild",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status",
+    "requirements"
+   ],
+   "notes": "From a search summary: writing, editing and content postings, with the most recent dated September 2026. One full-time term role (Writer in Residence) is open only to Canadian citizens or PRs. Membership terms weren't seen. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://canadianfreelanceunion.ca/faq/",
+   "title": "Frequently Asked Questions",
+   "type": "official",
+   "publisher": "Canadian Freelance Union (Unifor)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "From a search summary: anyone doing freelance work can join, with a focus on media, communications and information work and a connection to Canada. Benefits include insurance plans, press cards, grievance support and contract advice. Direct fetch was blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://canadianfreelanceunion.ca/?p=3608",
+   "title": "Canadian Freelance Union announces massive drive to organize freelancers; interpreters and translators form first unit",
+   "type": "official",
+   "publisher": "Canadian Freelance Union (Unifor)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy"
+   ],
+   "notes": "A May 2024 announcement: an organizing drive beyond communications work, starting with an interpreters and translators unit.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.workhoppers.com/en/freelance-canada",
+   "title": "#1 website for freelancers in Canada",
+   "type": "official",
+   "publisher": "Workhoppers",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy"
+   ],
+   "notes": "The site describes itself as Canada's #1 freelance site and accepts freelance, contract, part-time, temporary, remote and gig postings. This is self-promotion and wasn't independently checked.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.glassdoor.ca/Job/canada-freelance-content-writer-jobs-SRCH_IL.0,6_IN3_KO7,31.htm",
+   "title": "22 freelance content writer jobs in Canada, September 2026",
+   "type": "aggregator",
+   "publisher": "Glassdoor",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status"
+   ],
+   "notes": "An aggregator listing showing freelance content-writing postings in Canada in September 2026. Some related Glassdoor pages were stale.",
+   "accessible": false
+  }
+ ]
+}

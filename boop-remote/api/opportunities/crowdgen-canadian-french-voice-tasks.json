@@ -1,0 +1,209 @@
+{
+ "id": "crowdgen-canadian-french-voice-tasks",
+ "name": "Canadian French voice-rating and speech data tasks",
+ "organization": "CrowdGen by Appen",
+ "type": "task_platform",
+ "category": "language_writing",
+ "tags": [
+  "speech-data",
+  "voice-rating",
+  "french-canadian",
+  "ai-data",
+  "bilingual",
+  "short-tasks",
+  "audio"
+ ],
+ "summary": "Short online projects where native Canadian French speakers located in Canada rate computer-generated voices or audio for AI training through Appen's CrowdGen platform.",
+ "whatYouDo": "After applying to a specific project and setting up a CrowdGen account, you listen to pairs of synthetic (text-to-speech) clips in Canadian French and judge which sounds more natural, or rate voice quality. Projects are temporary and pay per task, with rates sent in kickoff emails.",
+ "appeal": [
+  "Postings specifically seek native Canadian French speakers currently located in Canada",
+  "No fee to join (official)",
+  "Work from home in short tasks",
+  "Payouts by bank transfer, PayPal, Payoneer or Airtm depending on location"
+ ],
+ "watchOuts": [
+  "Postings warn high work volumes are not guaranteed; listed pay is a placeholder ($0.01–$1 per task) with real rates only in kickoff emails",
+  "Worker reviews (Trustpilot, Dec 2025) report onboarding then no work, and a payment that took two months",
+  "Projects can end without notice and some qualification assessments are reportedly unpaid",
+  "No general signup: you apply project by project",
+  "No Canadian French voice-recording (as opposed to rating) project was found"
+ ],
+ "officialUrl": "https://crowdgen.com/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "fr"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "headset",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unpaid_test"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 0,
+  "numeracy": 0,
+  "detail": 2,
+  "customer": 0,
+  "technical": 0,
+  "creative": 0,
+  "language": 3
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": "Project-specific guidelines and qualifications; some reportedly unpaid. Chrome browser recommended."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": "task",
+  "basis": "unknown",
+  "notes": "fr-CA postings show placeholder rates ($1/task; $0.01 piece rate); actual rates come in kickoff emails. Homepage advertises top rates of $100+/hour depending on location and skills, which is not representative of these tasks."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "Official posting says high volumes not guaranteed; worker reviews report long waits for work after onboarding and projects ending without notice."
+ },
+ "workerStatus": "unknown",
+ "fees": null,
+ "applicationSteps": [
+  "Find a current Canadian French project on Appen's CrowdGen job board (jobs.lever.co/appen)",
+  "Apply to that project",
+  "Follow the emailed instructions to create a CrowdGen account",
+  "Complete project qualification and guidelines",
+  "Do tasks when available and withdraw earnings"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "waitlist_or_no_work_guarantee",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "unpaid_assessment",
+  "payment_delay_reports",
+  "waitlist"
+ ],
+ "fitsIf": "You are a native Canadian French speaker living in Canada who wants occasional small online tasks and doesn't depend on the income.",
+ "notFitIf": "You need predictable work or income, or dislike unpaid qualification steps.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://crowdgen.com/",
+   "title": "CrowdGen by Appen - Where expert contributors shape frontier AI",
+   "type": "official",
+   "publisher": "Appen",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy",
+    "pay",
+    "requirements"
+   ],
+   "notes": "Appen's contributor platform (Appen listed on ASX as APX); apply to specific projects; never asks you to pay; top pay '$100+/h' depending on location and skills; withdrawals via bank transfer, PayPal, Payoneer, Airtm by location.",
+   "accessible": false
+  },
+  {
+   "url": "https://crowdgen.com/docs/general-onboarding/getting-started/how-do-i-start-working-at-crowdgen/",
+   "title": "How do I start working at CrowdGen?",
+   "type": "official",
+   "publisher": "Appen",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "You apply to a project and follow emailed instructions to create your CrowdGen account; existing Appen Connect credentials work.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.lever.co/appen/c955501f-01d4-4363-8b36-1c381e421db4",
+   "title": "CrowdGen by Appen - Computer Voice Rating Task for French (Canada)",
+   "type": "official",
+   "publisher": "Appen (Lever job board)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "reliability",
+    "pay"
+   ],
+   "notes": "Requires a native Canadian French speaker currently located in Canada; warns high work volumes aren't guaranteed; lists a $0.01 placeholder piece rate.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.lever.co/appen/2bea550c-8a19-4d50-9421-8b64aedd23cd",
+   "title": "CrowdGen by Appen - Text-to-Speech Voice Rater; French (Canada)",
+   "type": "official",
+   "publisher": "Appen (Lever job board)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "requirements"
+   ],
+   "notes": "Compare pairs of synthetic audio clips for naturalness; pay differs per task and is given in kickoff emails ($1 placeholder).",
+   "accessible": false
+  },
+  {
+   "url": "https://ca.trustpilot.com/review/crowdgen.com",
+   "title": "CrowdGen reviews (Trustpilot Canada)",
+   "type": "forum",
+   "publisher": "Trustpilot",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "risk"
+   ],
+   "notes": "Anecdotal, mostly negative reviews: Dec 2025 reports of onboarding and training followed by no work, and a ~£271 payment taking two months; others say they do get paid.",
+   "accessible": false
+  },
+  {
+   "url": "https://alignlist.com/companies/appen",
+   "title": "Appen worker reviews",
+   "type": "forum",
+   "publisher": "Alignlist",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Worker review: projects can end without notice; some qualification assessments are unpaid. Anecdotal.",
+   "accessible": false
+  }
+ ],
+ "audience": [
+  "Canadian French speakers"
+ ]
+}

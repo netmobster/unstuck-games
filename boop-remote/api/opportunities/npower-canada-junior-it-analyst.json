@@ -1,0 +1,196 @@
+{
+ "id": "npower-canada-junior-it-analyst",
+ "name": "NPower Canada Junior IT Analyst Program (free IT training)",
+ "organization": "NPower Canada",
+ "type": "training_pathway",
+ "category": "tech_digital",
+ "tags": [
+  "it-support",
+  "free-training",
+  "google-certificate",
+  "young-adults",
+  "career-change",
+  "charity"
+ ],
+ "summary": "Free 15-week beginner IT training, with the Google IT Support Professional Certificate and job-search support, for young adults facing barriers to work.",
+ "whatYouDo": "You attend daily technical and professional-skills training in a simulated workplace for about 15 weeks, working toward certificates such as Google IT Support. NPower then supports graduates in looking for entry-level IT roles.",
+ "appeal": [
+  "Tuition-free; NPower says it never charges a fee to apply or join",
+  "No prior IT knowledge needed, only basic computer use",
+  "Industry certificates (Google IT Support; some streams list CompTIA Security+ and Azure Fundamentals)",
+  "Offered to Ontario residents (also AB, BC, MB, NS; French version in Quebec)",
+  "NPower reports over 80% of graduates employed or in school within 12 months (self-reported)"
+ ],
+ "watchOuts": [
+  "Eligibility per a partner info sheet: ages 18-29, high school diploma or GED, unemployed or underemployed, facing barriers, English around CLB 6/7; an older sheet said 17-30, so confirm",
+  "Mandatory online assessment and one-on-one interview; admissions makes the final decision",
+  "Daily training for about 15 weeks (session seen: April 7-July 17, 2026); next Ontario intake not confirmed",
+  "Outcome figures are NPower's own; Indeed interview reviews are mixed (about 6/10 from roughly 25 reports)",
+  "Delivery format (online vs. in person) for Ontario cohorts not confirmed",
+  "Unpaid while training"
+ ],
+ "officialUrl": "https://npowercanada.ca/junior-it-analyst-program/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [
+   "AB",
+   "BC",
+   "MB",
+   "NS",
+   "ON",
+   "QC"
+  ],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": true,
+  "credentials": [
+   "high school diploma or GED (per partner info sheet)"
+  ],
+  "equipment": [],
+  "minAge": 18,
+  "assessment": "free_test"
+ },
+ "schedule": {
+  "flexibility": "fixed",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person",
+   "video"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 1,
+  "detail": 1,
+  "customer": 1,
+  "technical": 2,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": true,
+  "cost": "free",
+  "notes": "Tuition-free 15-week program; NPower states there is never a fee and it will never ask for payment details."
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Training is unpaid; graduate starting wages not evidenced."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "Cohort-based intakes; job outcomes self-reported by NPower."
+ },
+ "workerStatus": "student",
+ "fees": null,
+ "applicationSteps": [
+  "Check current eligibility and intake dates on NPower Canada's Junior IT Analyst page",
+  "Submit the online application form (one application per person is kept)",
+  "Complete the mandatory online assessment and a one-on-one interview",
+  "If accepted, attend the ~15-week program and use NPower's job-search support"
+ ],
+ "timeToFirstEarnings": "months",
+ "horizon": "career",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "scam_impersonation"
+ ],
+ "fitsIf": "You are a young adult (roughly 18-29) with a high-school diploma who wants a free, structured start in IT support.",
+ "notFitIf": "You are outside the age range, need income during training, or cannot commit to a daily 15-week schedule.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://npowercanada.ca/?p=83684",
+   "title": "Junior IT Analyst Program",
+   "type": "official",
+   "publisher": "NPower Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "status",
+    "schedule"
+   ],
+   "notes": "Search-result summary only (fetch blocked). Tuition-free, 15 weeks, session April 7-July 17, 2026; provinces served; admissions decides eligibility.",
+   "accessible": false
+  },
+  {
+   "url": "https://npowercanada.ca/junior-it-analyst-program/",
+   "title": "Junior IT Analyst Program - NPower Canada",
+   "type": "official",
+   "publisher": "NPower Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Graduates receive Google IT Support Professional Certificate; no IT background needed, basic computer skills required.",
+   "accessible": false
+  },
+  {
+   "url": "https://npowercanada.ca/jita-application-form/",
+   "title": "Junior IT Analyst Application Form",
+   "type": "official",
+   "publisher": "NPower Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "requirements"
+   ],
+   "notes": "One application per person kept; NPower never charges fees or asks for payment details; report payment requests.",
+   "accessible": false
+  },
+  {
+   "url": "https://costi.org/downloads/npower.pdf",
+   "title": "NPower Canada info sheet (COSTI)",
+   "type": "independent_review",
+   "publisher": "COSTI Immigrant Services",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Undated partner info sheet: ages 18-29, HS diploma/GED, unemployed/underemployed, barriers, CLB 6/7, assessment. A 2021 COSTI sheet listed ages 17-30.",
+   "accessible": false
+  },
+  {
+   "url": "https://ca.indeed.com/cmp/Npower-Canada/interviews",
+   "title": "NPower Canada interviews - Indeed",
+   "type": "forum",
+   "publisher": "Indeed",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Anecdotal: about 25 interview reports, experience rated about 6/10; company rating 3.8/5. Undated.",
+   "accessible": false
+  }
+ ],
+ "audience": [
+  "Young adults (roughly 18–29)"
+ ]
+}

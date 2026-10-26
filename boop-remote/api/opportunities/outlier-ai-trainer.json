@@ -1,0 +1,278 @@
+{
+ "id": "outlier-ai-trainer",
+ "name": "AI trainer / response evaluator (Outlier)",
+ "organization": "Outlier (Scale AI)",
+ "type": "task_platform",
+ "category": "ai_data",
+ "tags": [
+  "ai-training",
+  "response-rating",
+  "writing",
+  "remote",
+  "usd-pay",
+  "contractor"
+ ],
+ "summary": "Scale AI's freelance platform where contributors write, rate and correct AI chatbot answers for hourly pay.",
+ "whatYouDo": "After a skills screening you are matched to projects where you compare, rate or rewrite AI-generated answers by following detailed guidelines. Generalist projects focus on English writing and content review; specialist projects (coding, math, finance, languages) pay more.",
+ "appeal": [
+  "Official listings name Canada as an eligible location for generalist and specialist roles",
+  "Remote and self-scheduled",
+  "Weekly payouts via PayPal, Airtm or ACH (official FAQ)",
+  "Higher rates for specialist skills such as coding, math or quant finance"
+ ],
+ "watchOuts": [
+  "Generalist roles open to Canada list 'up to' US$15–35/hr; rates vary by assessment, location and project, and onboarding phases may pay less",
+  "Many reports of 'empty queue' periods and silent removal from projects; a 2026 blog reports large contributor cuts",
+  "Contractor work: no benefits, no guaranteed hours, you handle your own taxes",
+  "Scale AI faced 2024–25 California lawsuits alleging misclassification and unpaid training time (outcome not verified)",
+  "VPN use to hide your location is prohibited; eligibility differs by project"
+ ],
+ "officialUrl": "https://outlier.ai/",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA",
+   "US",
+   "GB",
+   "AU",
+   "NZ"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "fast internet"
+  ],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 3,
+  "numeracy": 1,
+  "detail": 3,
+  "customer": 0,
+  "technical": 1,
+  "creative": 1,
+  "language": 2
+ },
+ "training": {
+  "required": true,
+  "cost": "unknown",
+  "notes": "Project onboarding against written guidelines; postings say lower rates may apply during onboarding. Whether screening time is paid was not evidenced."
+ },
+ "compensation": {
+  "min": null,
+  "max": 35,
+  "currency": "USD",
+  "unit": "hour",
+  "basis": "official",
+  "notes": "Official Outlier generalist listings that include Canada show 'up to' rates: US$15/hr (English writing/content review), US$18/hr (AI Evaluator – English), US$35/hr (general inbound). Specialist roles are higher (e.g. up to US$150/hr quant finance). A Built In mirror of a Canadian English writing posting cites an average of about US$25/hr."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Third-party guides and forum posts describe empty queues when projects end and silent removals; a blog reports thousands removed around early 2026 and another references a Sept 2026 removal wave on one project. Anecdotal."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Create an Outlier account and pick a listed opportunity that includes Canada",
+  "Complete the skills screening for that project",
+  "Set up a payout method (PayPal, Airtm or ACH per the FAQ)",
+  "Complete project onboarding and wait to be matched to tasks"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "waitlist_or_no_work_guarantee",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "contractor_no_benefits",
+  "account_deactivation_reports"
+ ],
+ "fitsIf": "You write clearly, follow detailed rules, and want flexible side income that can stop without notice.",
+ "notFitIf": "You need steady, predictable hours or income you can budget around.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://outlier.ai/",
+   "title": "Train the Next Generation of AI as a Freelancer",
+   "type": "official",
+   "publisher": "Outlier",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy",
+    "requirements"
+   ],
+   "notes": "Official homepage: freelance AI-training platform. Seen as a search result only; direct fetch blocked in research sandbox.",
+   "accessible": false
+  },
+  {
+   "url": "https://outlier.ai/coding/front-end-en-ca",
+   "title": "Front-End Developer AI Trainer, Canada",
+   "type": "official",
+   "publisher": "Outlier",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Official Canada-specific role page (title names Canada). Search result only.",
+   "accessible": false
+  },
+  {
+   "url": "https://app.outlier.ai/en/expert/opportunities/4613691005?_gl=1*18bm78c*_gcl_au*MTE4MTQ5ODQ1Mi4xNzYyNDUzMzM1&location=All&type=generalist",
+   "title": "English Writing and Content Reviewing Expertise Sought ...",
+   "type": "official",
+   "publisher": "Outlier",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "pay"
+   ],
+   "notes": "Search summary: remote English writing/content review role lists Canada among locations; up to US$15/hr for core work; rates vary by expertise, assessment, location, project need.",
+   "accessible": false
+  },
+  {
+   "url": "https://app.outlier.ai/opportunities?category=pod%3Ageneralist",
+   "title": "Outlier",
+   "type": "official",
+   "publisher": "Outlier",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "canada_eligibility"
+   ],
+   "notes": "Search summary: generalist listings including Canada – 'General Inbound' up to US$35/hr; 'AI Evaluator – English' up to US$18/hr.",
+   "accessible": false
+  },
+  {
+   "url": "https://outlier.ai/faq",
+   "title": "Train the Next Generation of AI as a Freelancer",
+   "type": "official",
+   "publisher": "Outlier",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay"
+   ],
+   "notes": "FAQ (search summary): pays via PayPal, Airtm or ACH; payouts processed weekly.",
+   "accessible": false
+  },
+  {
+   "url": "https://outlier.ai/legal/flexible-working-guidelines",
+   "title": "Flexible Working Guidelines",
+   "type": "official",
+   "publisher": "Outlier",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "risk"
+   ],
+   "notes": "Lists countries you may work from (snippet truncated, Canada not visible in the excerpt); VPNs to mask location not permitted.",
+   "accessible": false
+  },
+  {
+   "url": "https://builtincalgary.org/job/canadian-english-writing-expertise-ai-training/3418266",
+   "title": "Outlier AI – Canadian English Writing Expertise (AI Training)",
+   "type": "aggregator",
+   "publisher": "Built In Calgary",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "worker_status"
+   ],
+   "notes": "Job-board mirror: Canadian English writing posting cites ~US$25/hr average; 1099-style contract; must be authorized to work in your country; lower rates possible during onboarding.",
+   "accessible": false
+  },
+  {
+   "url": "https://techcrunch.com/2025/01/09/scale-ai-hit-by-its-second-employee-wage-lawsuit-in-less-than-a-month",
+   "title": "Scale AI hit by its second employee wage lawsuit in less than a month",
+   "type": "journalism",
+   "publisher": "TechCrunch",
+   "published": "2025-01-09",
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "worker_status"
+   ],
+   "notes": "Reports California suits (Dec 2024 class action; Jan 2025 PAGA claim) alleging contractor misclassification at Scale AI/Outlier. Outcome not verified.",
+   "accessible": false
+  },
+  {
+   "url": "https://valawyersweekly.com/2025/01/28/ai-company-sued-for-wage-theft-misclassification/",
+   "title": "AI company sued for wage theft, misclassification",
+   "type": "journalism",
+   "publisher": "Virginia Lawyers Weekly",
+   "published": "2025-01-28",
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Describes allegations of unpaid minimum wage, overtime and training time for California Outlier/Remotasks workers.",
+   "accessible": false
+  },
+  {
+   "url": "https://aitrainer.work/guides/outlier-empty-queue-fix",
+   "title": "outlier empty queue fix",
+   "type": "independent_review",
+   "publisher": "aitrainer.work",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability",
+    "risk"
+   ],
+   "notes": "Third-party guide: empty queues usually mean a project batch ended; quality-related removals can be indefinite with no notice. Anecdotal; site carries referral content.",
+   "accessible": false
+  },
+  {
+   "url": "https://breakingeven.online/blog/outlier-aether-project-what-happened",
+   "title": "outlier aether project what happened",
+   "type": "independent_review",
+   "publisher": "BreakingEven",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Blog says thousands of contributors were removed around early 2026 as work shifted to specialised tasks. Single blog, unverified.",
+   "accessible": false
+  }
+ ]
+}

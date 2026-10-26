@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Opportunity Engine</title>
+<meta name="description" content="Find work that fits. Answer a few questions, explore evidence-backed earning routes, and leave with three realistic next steps. Canada-first.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230b1220'/%3E%3Cpath d='M9 22l7-12 7 12' stroke='%2385f0c1' stroke-width='3' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+<header class="top">
+  <button class="brand" data-go="intro" aria-label="Opportunity Engine: start page"><span class="mark" aria-hidden="true">◭</span> Opportunity Engine</button>
+  <nav aria-label="Main">
+    <button data-go="deck">Explore</button>
+    <button data-go="shortlist">My three</button>
+    <button data-go="saved">Saved <span class="count" id="saved-count"></span></button>
+    <button data-go="about">About</button>
+  </nav>
+</header>
+
+<main id="main" tabindex="-1">
+  <p id="load-error" class="notice bad" hidden></p>
+
+  <!-- Intro -->
+  <section id="view-intro" class="view" aria-labelledby="intro-h">
+    <p class="eyebrow">Canada-first · No sign-up · Nothing leaves your device</p>
+    <h1 id="intro-h">Find work that fits.<br><span>Not another job board.</span></h1>
+    <p class="lede">Answer a few questions about how you like to work. We filter out routes that can’t work for you, rank the rest on fit, and show the trade-offs plainly, including what we couldn’t verify.</p>
+    <div class="actions">
+      <button class="btn primary" id="start">Start: about 2 minutes</button>
+      <button class="btn" data-go="deck" id="browse-all">Just show me everything</button>
+    </div>
+    <ul class="promises">
+      <li><strong>Explore without committing.</strong> No account, no name, no email. Your answers stay in this browser and you can clear them anytime.</li>
+      <li><strong>Evidence, not hype.</strong> Every route lists its sources and when we last checked. A real company doesn’t mean a good fit, or that there’s work right now.</li>
+      <li><strong>Skip anything.</strong> “Not sure” is a fine answer and never counts against you.</li>
+    </ul>
+    <p class="fine" id="catalogue-stamp"></p>
+  </section>
+
+  <!-- Questions -->
+  <section id="view-quiz" class="view" aria-labelledby="q-title" hidden>
+    <div class="progress" aria-hidden="true"><div class="bar" id="q-bar"></div></div>
+    <p class="eyebrow" id="q-step"></p>
+    <form id="q-form" novalidate>
+      <fieldset>
+        <legend><h2 id="q-title"></h2></legend>
+        <p class="help" id="q-help"></p>
+        <div id="q-options" class="options"></div>
+      </fieldset>
+      <div class="q-nav">
+        <button type="button" class="btn ghost" id="q-back">Back</button>
+        <button type="button" class="btn ghost" id="q-skip">Not sure / skip</button>
+        <button type="submit" class="btn primary" id="q-next">Next</button>
+      </div>
+    </form>
+  </section>
+
+  <!-- Deck -->
+  <section id="view-deck" class="view" aria-labelledby="deck-h" hidden>
+    <div class="deck-head">
+      <div>
+        <h2 id="deck-h">Explore routes</h2>
+        <p class="help" id="deck-sub"></p>
+      </div>
+      <div class="deck-tools">
+        <button class="btn small" id="edit-answers">Edit answers</button>
+        <button class="btn small primary" data-go="shortlist">See my three</button>
+      </div>
+    </div>
+    <div id="deck-area"></div>
+    <details class="hidden-list" id="excluded">
+      <summary id="excluded-sum"></summary>
+      <ul id="excluded-list"></ul>
+    </details>
+  </section>
+
+  <!-- Shortlist -->
+  <section id="view-shortlist" class="view" aria-labelledby="sl-h" hidden>
+    <h2 id="sl-h">Your three to look at</h2>
+    <p class="help">A best fit, plus two that make a different trade-off. Your likes and saves nudge this; passes remove things. None of these is a promise of work or income.</p>
+    <div id="shortlist-area"></div>
+  </section>
+
+  <!-- Saved -->
+  <section id="view-saved" class="view" aria-labelledby="saved-h" hidden>
+    <h2 id="saved-h">Saved and decided</h2>
+    <div id="saved-area"></div>
+    <div class="actions">
+      <button class="btn" id="reset-decisions">Clear likes, saves and passes</button>
+      <button class="btn" id="reset-all">Clear everything, including answers</button>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="view-about" class="view prose" aria-labelledby="about-h" hidden>
+    <h2 id="about-h">How this works</h2>
+    <p><strong>Ask about the person. Filter on reality. Rank on fit. Explain the trade-offs.</strong></p>
+    <h3>Matching</h3>
+    <p>Hard limits come first. If you rule out phone work, need a route open in your province, or set a firm pay floor, anything that breaks it is hidden, and the Explore page lists what was hidden and why. Everything else is ranked on interaction style, skills you enjoy, goals, schedule, pay, equipment, and how strong and fresh the evidence is. We show plain labels (“Strong fit”, “Possible fit”), not made-up percentages. Unanswered questions count as neutral.</p>
+    <h3>What “verified” means here</h3>
+    <ul id="status-defs"></ul>
+    <p>A registration page doesn’t prove there’s work. A careers page doesn’t prove there’s an opening. A forum post doesn’t prove anything is current. Records marked “Kind of work to investigate” are categories, not employers.</p>
+    <h3>Staying safe</h3>
+    <ul id="safety-tips"></ul>
+    <h3>Privacy</h3>
+    <p>Your answers and swipes are stored only in this browser’s local storage. Nothing is sent anywhere. The research prompt contains only the preferences you chose to give, and you decide where to paste it.</p>
+    <p class="fine">Opportunity Engine is not a hiring directory. Information was researched and dated by an AI-assisted process with no human review yet, and it may be wrong or out of date. Always check the official source.</p>
+  </section>
+</main>
+
+<dialog id="detail" aria-labelledby="d-title">
+  <div class="d-inner">
+    <button class="close" id="d-close" aria-label="Close details">×</button>
+    <div id="d-body"></div>
+  </div>
+</dialog>
+
+<div id="toast" class="toast" role="status" aria-live="polite"></div>
+<script type="module" src="src/app.js"></script>
+</body>
+</html>

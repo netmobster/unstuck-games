@@ -1,0 +1,17 @@
+{
+  "name": "opportunity-engine",
+  "private": true,
+  "type": "module",
+  "types": "types/index.d.ts",
+  "scripts": {
+    "data": "node scripts/normalize-raw.mjs && node scripts/build-catalogue.mjs && node scripts/build-api.mjs && node scripts/build-sql.mjs && node scripts/audit.mjs",
+    "test": "bun test test/",
+    "test:ui": "node test/ui.mjs",
+    "check:links": "node scripts/check-links.mjs",
+    "check:sql": "bash scripts/check-sql.sh",
+    "lint": "npx eslint src scripts test",
+    "serve": "npx http-server -c-1 -p 8080 .",
+    "data:v2": "node scripts/v2/schema.mjs && node scripts/v2/baseline-audit.mjs && node scripts/v2/build.mjs && node scripts/v2/validate.mjs --report && node scripts/v2/audit-md.mjs",
+    "validate:v2": "node scripts/v2/validate.mjs"
+  }
+}

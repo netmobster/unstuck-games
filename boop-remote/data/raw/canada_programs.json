@@ -1,0 +1,2302 @@
+[
+  {
+    "id": "job-bank-canada",
+    "name": "Job Bank job search and alerts (Government of Canada)",
+    "organization": "Government of Canada - Job Bank",
+    "type": "program",
+    "category": "government_program",
+    "tags": [
+      "job-search",
+      "free",
+      "government",
+      "job-alerts",
+      "wage-data",
+      "scam-reporting"
+    ],
+    "summary": "Free federal job board where you can search Canadian job postings, set daily email alerts and check typical wages for an occupation, without creating an account.",
+    "whatYouDo": "You search postings by keyword, occupation, province and other filters, and save a search as an email alert for new matches. Job Bank also publishes wage ranges by occupation and region, which helps you judge whether a posting's pay is realistic. Canada Summer Jobs-funded jobs are listed there too.",
+    "appeal": [
+      "Free, government-run, no account needed to search",
+      "Email job alerts for saved searches",
+      "Occupation wage pages help you spot pay that looks too good to be true",
+      "Each posting has a 'Report a problem with this job posting' button",
+      "Postings created directly by registered employers carry a 'Posted on Job Bank' flag"
+    ],
+    "watchOuts": [
+      "It is a search tool, not a job: you still compete for each posting",
+      "Some listings are pulled in from other websites, so check who actually posted a job",
+      "Job Bank warns about imitation sites and fake job offers; legitimate employers will not ask for banking details to apply",
+      "Alert frequency described differently in older material (once vs. twice a day)"
+    ],
+    "officialUrl": "https://www.jobbank.gc.ca/intro/findajob",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "none"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "independent",
+        "text"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 1,
+      "customer": 0,
+      "technical": 0,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "Not a paying job; pay depends on each posting. Job Bank wage pages give occupation medians (e.g., Ontario survey interviewers about $24.18/hr) for comparison."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "Number of postings varies by occupation and region; not measured here."
+    },
+    "workerStatus": "varies",
+    "fees": null,
+    "applicationSteps": [
+      "Search jobs on Job Bank by keyword, occupation and location (no account needed)",
+      "Use 'Create an alert with this search' to get new matching jobs by email",
+      "Check the occupation's wage page to sanity-check the posted pay",
+      "Apply using each posting's instructions; report suspicious postings with the 'Report a problem' button"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "scam_impersonation"
+    ],
+    "fitsIf": "You want a free, government-run place to search Canadian job postings, get alerts and check typical wages.",
+    "notFitIf": "You want someone to coach you one-on-one or place you in a job (Employment Ontario is a better fit).",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.jobbank.gc.ca/intro/findajob",
+        "title": "Find a job - Job Bank",
+        "type": "official",
+        "publisher": "Government of Canada (Job Bank)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "legitimacy"
+        ],
+        "notes": "Search-result summary only (fetch blocked in research environment). Describes search filters, email alerts and the report-a-posting button; site says it is the only source of jobs validated by the Government of Canada.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.jobbank.gc.ca/findajob/resources/safety-tips",
+        "title": "Job Search Safety Tips - Job Bank",
+        "type": "official",
+        "publisher": "Government of Canada (Job Bank)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "legitimacy"
+        ],
+        "notes": "Search-result summary only. Advises not to share banking details, SIN or ID numbers early; notes 'Posted on Job Bank' flag for postings created by registered employers; says Job Bank does not handle immigration.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.jobbank.gc.ca/support/question?qaid=16&tid=7",
+        "title": "Why do I see jobs from other websites on Job Bank?",
+        "type": "official",
+        "publisher": "Government of Canada (Job Bank)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "FAQ title seen in search results confirms some listings come from other websites; page content not retrieved.",
+        "accessible": false
+      },
+      {
+        "url": "https://gov.mb.ca/wd/ites/tes/pubs/jobs_careers/jobbank_for_jobseekers_factsheet.pdf",
+        "title": "Job Bank for job seekers factsheet",
+        "type": "government",
+        "publisher": "Government of Manitoba",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Undated provincial factsheet (search summary): job search needs no account or personal information; alerts up to twice daily (may be outdated).",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "employment-ontario-employment-services",
+    "name": "Employment Ontario employment services (free job-search help)",
+    "organization": "Government of Ontario - Employment Ontario (local service providers)",
+    "type": "program",
+    "category": "government_program",
+    "tags": [
+      "job-search-help",
+      "free",
+      "counselling",
+      "resume",
+      "interview-prep",
+      "ontario",
+      "integrated-employment-services"
+    ],
+    "summary": "Free one-on-one job-search help in Ontario (resumes, interview prep, job matching and referrals to funded training) through more than 700 local Employment Ontario locations.",
+    "whatYouDo": "You connect with a local provider and work with an employment counsellor on a job-search plan, your resume and interview skills, and introductions to employers. Providers are also the door to funded programs such as Better Jobs Ontario and pre-apprenticeship training. Self-serve job information is open to anyone.",
+    "appeal": [
+      "Free 1-on-1 counsellor support; over 700 locations",
+      "Gateway to funded training (Better Jobs Ontario, pre-apprenticeship) and youth supports",
+      "Self-service information open to anyone, including people who are employed or students",
+      "Toll-free contact centre: 1-800-387-5656 (TTY 1-866-533-6339)"
+    ],
+    "watchOuts": [
+      "Full assisted services usually target people who are unemployed or working under about 20 hours a week and not in full-time school (provider rules vary)",
+      "Usually requires Ontario residence and legal entitlement to work in Canada",
+      "Quality and offerings vary by provider; it is help to find work, not a paid job",
+      "System was restructured as Integrated Employment Services (rolled out province-wide by March 2025) and now absorbs social-assistance employment supports; disability advocates criticized parts of the change",
+      "No first-hand user reviews found in this research pass"
+    ],
+    "officialUrl": "https://ontario.ca/page/employment-ontario",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [
+        "ON"
+      ],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [],
+      "minAge": null,
+      "assessment": "none"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person",
+        "voice"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 0,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 0,
+      "customer": 0,
+      "technical": 0,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "free",
+      "notes": "Can refer you to funded training such as Better Jobs Ontario or pre-apprenticeship programs."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "Free service, not a paid job. Older youth streams (e.g., Youth Job Connection) offered paid pre-employment training/placements, but current availability varies by region."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "Outcomes depend on the local provider and labour market; not measured here."
+    },
+    "workerStatus": "participant",
+    "fees": null,
+    "applicationSteps": [
+      "Call 1-800-387-5656 or use the 'find services in your area' tool on ontario.ca/employmentontario",
+      "Contact a nearby provider and complete an intake conversation to confirm eligibility",
+      "Work with a counsellor on a job-search plan, resume, interview prep and referrals"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [],
+    "fitsIf": "You live in Ontario, can legally work in Canada and want free, personal help with your job search or with getting into funded training.",
+    "notFitIf": "You need paid work immediately or prefer a fully self-directed job search.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://ontario.ca/page/employment-ontario",
+        "title": "Employment Ontario - Get free support from a counsellor",
+        "type": "official",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "legitimacy"
+        ],
+        "notes": "Search-result summary only (fetch blocked). Says 700+ locations, free 1-on-1 counsellor support for job search, resumes, interviews and training; has a find-services tool.",
+        "accessible": false
+      },
+      {
+        "url": "https://achev.ca/service/employment-ontario/",
+        "title": "Employment Ontario - Achev",
+        "type": "official",
+        "publisher": "Achev (Employment Ontario service provider)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "canada_eligibility"
+        ],
+        "notes": "GTA provider (not the ministry). Search summary: eligibility = unemployed or under 20 hrs/week, not in full-time training, Ontario resident, legally entitled to work in Canada.",
+        "accessible": false
+      },
+      {
+        "url": "https://aeswellnessportal.ca/Services/Display/166038/Integrated_Employment_Services",
+        "title": "Integrated Employment Services",
+        "type": "aggregator",
+        "publisher": "Community services directory",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Directory listing: assisted services for unemployed people out of school; self-service open to anyone; lists contact centre number; 'most programs are free for those eligible'.",
+        "accessible": false
+      },
+      {
+        "url": "https://ontario.cmha.ca/news/oden-move-odsp-employment-programmes-to-employment-ontario/",
+        "title": "ODEN: move ODSP employment programmes to Employment Ontario",
+        "type": "independent_review",
+        "publisher": "CMHA Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Advocacy news item: disability employment network opposed folding ODSP employment supports into Employment Ontario. Opinion, undated in results.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "better-jobs-ontario",
+    "name": "Better Jobs Ontario (funded retraining for laid-off or long-unemployed people)",
+    "organization": "Government of Ontario - Employment Ontario",
+    "type": "program",
+    "category": "government_program",
+    "tags": [
+      "training-funding",
+      "retraining",
+      "living-allowance",
+      "ontario",
+      "laid-off",
+      "career-change"
+    ],
+    "summary": "Ontario grant that can cover tuition, books, transportation and a basic living allowance while an eligible laid-off or long-unemployed person trains for an in-demand job.",
+    "whatYouDo": "With an Employment Ontario provider, you research an in-demand occupation and an approved training program, then build and submit an application. If approved, you attend the training while Better Jobs Ontario helps with costs, then look for work in that field.",
+    "appeal": [
+      "Up to $28,000 for training of 1 year or less, or up to $35,000 for programs over 1 year and up to 2 years",
+      "Basic living allowance up to $500/week plus a transportation allowance (guidelines cite $45/week)",
+      "May also cover childcare, disability-related supports and language training",
+      "People receiving EI, Ontario Works or ODSP can still apply",
+      "Not laid off? You may still qualify after 12+ weeks unemployed in a low-income household"
+    ],
+    "watchOuts": [
+      "Must be an Ontario resident and a Canadian citizen or permanent resident (program guidelines)",
+      "Living allowance is income-tested and only tops household income up to a 'moderate standard of living'",
+      "Quitting a job less than 12 months ago can make you ineligible unless the quit is authorized",
+      "Training for regulated occupations must be fully accredited",
+      "Multi-step application that colleges say can take several months; some college pages still cite older rules (e.g., 6 months unemployed)",
+      "No first-hand accounts of approval times found in this research pass"
+    ],
+    "officialUrl": "https://ontario.ca/betterjobsontario",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [
+        "ON"
+      ],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 1,
+      "numeracy": 1,
+      "detail": 1,
+      "customer": 0,
+      "technical": 0,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": true,
+      "cost": "free",
+      "notes": "Approved costs (tuition, books, transportation, other instructional costs) covered up to the caps; costs above caps not described in sources found."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": "CAD",
+      "unit": null,
+      "basis": "official",
+      "notes": "Allowance, not wages: up to $500/week basic living allowance plus $45/week transportation (EOPG guidance), income-tested."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "Allowance paid during approved training; job outcomes after training not evidenced."
+    },
+    "workerStatus": "participant",
+    "fees": null,
+    "applicationSteps": [
+      "Contact an Employment Ontario provider (ontario.ca/employmentontario or 1-800-387-5656)",
+      "Confirm eligibility: laid off, or unemployed 12+ weeks in a low-income household; Ontario resident; citizen or PR",
+      "Research an in-demand job and an approved training program with your provider",
+      "Submit the application package with your provider and wait for a decision"
+    ],
+    "timeToFirstEarnings": "months",
+    "horizon": "career",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [],
+    "fitsIf": "You live in Ontario, were laid off (or have been unemployed 12+ weeks in a low-income household) and want funded training for a new occupation.",
+    "notFitIf": "You need wages right away, would have to quit a current job to train, or are not a citizen or permanent resident.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://ontario.ca/betterjobsontario",
+        "title": "Better Jobs Ontario",
+        "type": "official",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "pay",
+          "canada_eligibility"
+        ],
+        "notes": "Search-result summary only (fetch blocked). Eligibility: laid off and not working / in temporary job, or not laid off but unemployed 12+ weeks in low-income household; up to $28,000/$35,000; living allowance up to $500/week; apply via EO provider.",
+        "accessible": false
+      },
+      {
+        "url": "https://eopg.labour.gov.on.ca/en/updates-to-the-better-jobs-ontario-guidelines/",
+        "title": "Updates to the Better Jobs Ontario guidelines",
+        "type": "government",
+        "publisher": "Ontario Employment Ontario Partners' Gateway",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "pay"
+        ],
+        "notes": "Search summary: revised guidelines effective January 27, 2026; $500/week living allowance plus $45/week transportation, capped at a moderate standard of living.",
+        "accessible": false
+      },
+      {
+        "url": "https://eopg.labour.gov.on.ca/wp-content/uploads/2026/01/bjo-program-guidelines-en-2.pdf",
+        "title": "Better Jobs Ontario program guidelines (January 2026)",
+        "type": "government",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "canada_eligibility"
+        ],
+        "notes": "Guidelines PDF seen in results; summary attributes residency and citizen/PR requirements to program guidelines (exact version not confirmed).",
+        "accessible": false
+      },
+      {
+        "url": "https://lambtoncollege.ca/training-career-advancement/employees-job-seekers/better-jobs-ontario",
+        "title": "Better Jobs Ontario - Lambton College",
+        "type": "independent_review",
+        "publisher": "Lambton College",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "risk"
+        ],
+        "notes": "College guidance (third party): authorization-to-quit form; August 2025 change limits ineligibility to those who quit under 12 months ago; accreditation rule for regulated jobs.",
+        "accessible": false
+      },
+      {
+        "url": "https://georgebrown.ca/media/better-jobs-ontario-passport-document-2024",
+        "title": "Better Jobs Ontario passport document 2024",
+        "type": "independent_review",
+        "publisher": "George Brown College",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "College document (2024): 10-step process can take several months; start early.",
+        "accessible": false
+      }
+    ],
+    "audience": [
+      "People in Ontario who were laid off or have been unemployed for a long stretch"
+    ]
+  },
+  {
+    "id": "ontario-registered-apprenticeship",
+    "name": "Registered apprenticeship in a skilled trade (Ontario)",
+    "organization": "Skilled Trades Ontario",
+    "type": "training_pathway",
+    "category": "structured_employment",
+    "tags": [
+      "skilled-trades",
+      "apprenticeship",
+      "earn-while-you-learn",
+      "sponsor",
+      "ontario",
+      "hands-on"
+    ],
+    "summary": "Earn-while-you-learn route into a skilled trade: you work for a sponsor and register a training agreement with Skilled Trades Ontario.",
+    "whatYouDo": "Most of your time is paid, on-the-job work under qualified tradespeople, with time off for in-school technical training. You hold a registered training agreement and carry a Registered Apprentice Wallet Card while working.",
+    "appeal": [
+      "Paid while you learn; sponsors must follow Ontario law, including minimum wage",
+      "No special course or school enrolment needed to start; the key step is finding a sponsor",
+      "Sponsors can be employers, journeypersons, contractors, unions or industry associations",
+      "Online portal (or paper) application; training done in another province can be recognized after verification"
+    ],
+    "watchOuts": [
+      "You must find a sponsor in Ontario before you can register, which can be the hardest step",
+      "Minimum age 16, legal permission to work in Canada, and trade-specific education requirements",
+      "Trades with ratios need a 1:1 journeyperson-to-apprentice ratio, limiting how many apprentices an employer can take",
+      "Mostly physical, on-site work; length of apprenticeship and classroom fees not checked here"
+    ],
+    "officialUrl": "https://www.skilledtradesontario.ca/apprenticeship/starting-your-apprenticeship/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [
+        "ON"
+      ],
+      "canadaEligibility": "likely",
+      "setting": "onsite"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [
+        "trade-specific minimum education (varies by trade)"
+      ],
+      "equipment": [],
+      "minAge": 16,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 0,
+      "writing": 0,
+      "numeracy": 2,
+      "detail": 2,
+      "customer": 1,
+      "technical": 2,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": true,
+      "cost": "unknown",
+      "notes": "In-school technical training is part of the apprenticeship; classroom fees and grants not verified."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "Paid by the sponsor; Skilled Trades Ontario says sponsors must comply with minimum wage laws. Trade-specific rates not checked."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "Depends on the sponsor's workload and trade."
+    },
+    "workerStatus": "employee",
+    "fees": null,
+    "applicationSteps": [
+      "Pick a trade and check its requirements (16+, legal right to work, education requirement)",
+      "Find a sponsor in Ontario (employer, journeyperson, contractor, union or association)",
+      "Apply with your sponsor through the Skilled Trades Ontario Portal or on paper",
+      "After approval, sign the Training Agreement and carry your Registered Apprentice Wallet Card at work"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "career",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [],
+    "fitsIf": "You like hands-on, physical work and want to be paid while you train toward a trade.",
+    "notFitIf": "You need remote work, or you cannot yet find an employer or other sponsor to take you on.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.skilledtradesontario.ca/apprenticeship/starting-your-apprenticeship/",
+        "title": "Starting your apprenticeship - Skilled Trades Ontario",
+        "type": "official",
+        "publisher": "Skilled Trades Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "canada_eligibility"
+        ],
+        "notes": "Search-result summary only (fetch blocked). Requirements: 16+, legal permission to work in Canada, trade education requirement, Ontario sponsor; apply via portal or paper; training agreement and wallet card.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.skilledtradesontario.ca/apprenticeship/sponsor-an-apprentice/",
+        "title": "Sponsor an apprentice - Skilled Trades Ontario",
+        "type": "official",
+        "publisher": "Skilled Trades Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "pay"
+        ],
+        "notes": "Sponsors need facilities and qualified trainers, must allow in-school training time, comply with minimum wage; 1:1 ratio in trades with ratios; first-time sponsors need approval.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.skilledtradesontario.ca/skilled-trades-ontario-portal/",
+        "title": "Skilled Trades Ontario Portal",
+        "type": "official",
+        "publisher": "Skilled Trades Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Online portal used for apprenticeship applications (search summary).",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "ontario-pre-apprenticeship-training",
+    "name": "Pre-apprenticeship training (free trade-readiness programs, Ontario)",
+    "organization": "Government of Ontario (delivered by colleges and community agencies)",
+    "type": "training_pathway",
+    "category": "government_program",
+    "tags": [
+      "skilled-trades",
+      "free-training",
+      "work-placement",
+      "ontario",
+      "no-sponsor-needed"
+    ],
+    "summary": "Free Ontario programs of up to 52 weeks, including an 8-12 week work placement, that help people without trade experience get ready to land an apprenticeship.",
+    "whatYouDo": "You take trade-focused training at a college or community agency, then complete a work placement with an employer. The goal is to build the skills and experience that sponsors look for when hiring apprentices.",
+    "appeal": [
+      "No charge; textbooks, safety equipment and tools are covered",
+      "Includes an 8-12 week work placement",
+      "Age and EI eligibility are not factors",
+      "Start dates throughout the year",
+      "Open to high-school graduates and people who left school early who are unemployed or underemployed"
+    ],
+    "watchOuts": [
+      "Training, not a job: no wage or stipend information found",
+      "Each program sets its own trade focus and intake criteria; availability varies by area",
+      "Listed priority groups (e.g., Indigenous people, newcomers, women, Francophones, youth-at-risk) may get priority",
+      "Sources do not say how many graduates go on to get an apprenticeship sponsor"
+    ],
+    "officialUrl": "https://www.ontario.ca/page/pre-apprenticeship-training",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [
+        "ON"
+      ],
+      "canadaEligibility": "likely",
+      "setting": "onsite"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "fixed",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 0,
+      "writing": 0,
+      "numeracy": 1,
+      "detail": 1,
+      "customer": 0,
+      "technical": 1,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": true,
+      "cost": "free",
+      "notes": "No charge; textbooks, safety equipment and tools covered (ontario.ca, via search)."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "No pay information found; treat as unpaid training unless the provider says otherwise."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "Cohort-based programs; intake dates vary by provider."
+    },
+    "workerStatus": "student",
+    "fees": null,
+    "applicationSteps": [
+      "Contact Employment Ontario (1-800-387-5656) or a local provider to find pre-apprenticeship programs near you",
+      "Check each program's trade, start date and intake criteria",
+      "Apply to the provider, then complete the in-class training and work placement",
+      "Use the placement and contacts to look for an apprenticeship sponsor"
+    ],
+    "timeToFirstEarnings": "months",
+    "horizon": "career",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [],
+    "fitsIf": "You are interested in a trade but do not yet have the skills or experience to get an employer to sponsor you.",
+    "notFitIf": "You need income now or cannot commit to months of in-person training.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.ontario.ca/page/pre-apprenticeship-training",
+        "title": "Pre-apprenticeship training",
+        "type": "official",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "legitimacy"
+        ],
+        "notes": "Search-result summary only (fetch blocked). No charge; books, safety gear and tools covered; up to 52 weeks with 8-12 week placement; for unemployed/underemployed high-school grads or early leavers; age and EI not factors; apply via Employment Ontario.",
+        "accessible": false
+      },
+      {
+        "url": "https://centralwesthealthline.ca/printService.aspx?id=14052",
+        "title": "Pre-apprenticeship training (service listing)",
+        "type": "aggregator",
+        "publisher": "Central West Healthline",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Community directory listing describing the program for unemployed people wanting skilled-trades careers (narrower wording than ontario.ca).",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "canada-summer-jobs",
+    "name": "Canada Summer Jobs (youth summer jobs, ages 15-30)",
+    "organization": "Government of Canada - Employment and Social Development Canada",
+    "type": "program",
+    "category": "government_program",
+    "tags": [
+      "youth",
+      "summer",
+      "seasonal",
+      "first-job",
+      "job-bank"
+    ],
+    "summary": "Federally funded summer jobs for people aged 15 to 30, posted on Job Bank each spring; the 2026 hiring period has ended.",
+    "whatYouDo": "Employers that receive Canada Summer Jobs funding post their jobs on Job Bank, and youth apply directly to those employers. Jobs span recreation, food service, marketing, tourism, construction, environmental work and technology, and run through the summer.",
+    "appeal": [
+      "Up to 100,000 jobs announced for 2026",
+      "All funded jobs listed in one place on Job Bank",
+      "A common first-job or student route for ages 15-30",
+      "Wide range of fields"
+    ],
+    "watchOuts": [
+      "Seasonal and closed now: 2026 hiring ran April 20 to July 20 and jobs ended by August 29, 2026",
+      "Must be 15-30 at the start of the job, have a valid SIN, and be a citizen, permanent resident or person with refugee protection",
+      "Pay, hours and length are set per posting; third-party pay figures are unverified",
+      "Next cycle's dates not announced in sources found"
+    ],
+    "officialUrl": "https://www.canada.ca/en/employment-social-development/news/2026/04/canada-summer-jobs-2026.html",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [],
+      "minAge": 15,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 0,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 1,
+      "customer": 1,
+      "technical": 0,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "Wages set by each employer's posting; not verified."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "medium",
+      "notes": "Seasonal: hiring April-July, jobs end late August."
+    },
+    "workerStatus": "employee",
+    "fees": null,
+    "applicationSteps": [
+      "Watch for the next hiring-period announcement (2026 ran April 20 to July 20)",
+      "Search Canada Summer Jobs postings on Job Bank (youth section)",
+      "Apply directly to employers following each posting's instructions"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "bridge",
+    "status": "not_currently_open",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work"
+    ],
+    "fitsIf": "You are 15-30, a citizen, PR or protected person with a SIN, and want a summer job next year.",
+    "notFitIf": "You need work this autumn or winter, or you are in Canada on a temporary permit.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.canada.ca/en/employment-social-development/news/2026/04/canada-summer-jobs-2026-youth-hiring-period-now-open-with-up-to-100000-jobs-available.html",
+        "title": "Canada Summer Jobs 2026: Youth hiring period now open, with up to 100,000 jobs available",
+        "type": "official",
+        "publisher": "Employment and Social Development Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status",
+          "requirements"
+        ],
+        "notes": "April 2026 news release (search summary; fetch blocked): up to 100,000 jobs for ages 15-30; jobs posted on Job Bank; fields listed.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.canada.ca/en/employment-social-development/news/2026/04/canada-summer-jobs-2026.html",
+        "title": "Canada Summer Jobs 2026",
+        "type": "official",
+        "publisher": "Employment and Social Development Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status",
+          "requirements",
+          "canada_eligibility"
+        ],
+        "notes": "Backgrounder (search summary): hiring period April 20-July 20, 2026, jobs until August 29, 2026; youth must be 15-30, have a SIN and be citizen/PR/refugee-protected.",
+        "accessible": false
+      },
+      {
+        "url": "https://ns.jobbank.gc.ca/youth",
+        "title": "Job Bank - youth",
+        "type": "official",
+        "publisher": "Government of Canada (Job Bank)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Job Bank youth section where summer jobs are listed (title seen in results).",
+        "accessible": false
+      }
+    ],
+    "audience": [
+      "Youth aged 15–30"
+    ]
+  },
+  {
+    "id": "npower-canada-junior-it-analyst",
+    "name": "NPower Canada Junior IT Analyst Program (free IT training)",
+    "organization": "NPower Canada",
+    "type": "training_pathway",
+    "category": "tech_digital",
+    "tags": [
+      "it-support",
+      "free-training",
+      "google-certificate",
+      "young-adults",
+      "career-change",
+      "charity"
+    ],
+    "summary": "Free 15-week beginner IT training, with the Google IT Support Professional Certificate and job-search support, for young adults facing barriers to work.",
+    "whatYouDo": "You attend daily technical and professional-skills training in a simulated workplace for about 15 weeks, working toward certificates such as Google IT Support. NPower then supports graduates in looking for entry-level IT roles.",
+    "appeal": [
+      "Tuition-free; NPower says it never charges a fee to apply or join",
+      "No prior IT knowledge needed, only basic computer use",
+      "Industry certificates (Google IT Support; some streams list CompTIA Security+ and Azure Fundamentals)",
+      "Offered to Ontario residents (also AB, BC, MB, NS; French version in Quebec)",
+      "NPower reports over 80% of graduates employed or in school within 12 months (self-reported)"
+    ],
+    "watchOuts": [
+      "Eligibility per a partner info sheet: ages 18-29, high school diploma or GED, unemployed or underemployed, facing barriers, English around CLB 6/7; an older sheet said 17-30, so confirm",
+      "Mandatory online assessment and one-on-one interview; admissions makes the final decision",
+      "Daily training for about 15 weeks (session seen: April 7-July 17, 2026); next Ontario intake not confirmed",
+      "Outcome figures are NPower's own; Indeed interview reviews are mixed (about 6/10 from roughly 25 reports)",
+      "Delivery format (online vs. in person) for Ontario cohorts not confirmed",
+      "Unpaid while training"
+    ],
+    "officialUrl": "https://npowercanada.ca/junior-it-analyst-program/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [
+        "AB",
+        "BC",
+        "MB",
+        "NS",
+        "ON",
+        "QC"
+      ],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": true,
+      "credentials": [
+        "high school diploma or GED (per partner info sheet)"
+      ],
+      "equipment": [],
+      "minAge": 18,
+      "assessment": "free_test"
+    },
+    "schedule": {
+      "flexibility": "fixed",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person",
+        "video"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 1,
+      "numeracy": 1,
+      "detail": 1,
+      "customer": 1,
+      "technical": 2,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": true,
+      "cost": "free",
+      "notes": "Tuition-free 15-week program; NPower states there is never a fee and it will never ask for payment details."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "Training is unpaid; graduate starting wages not evidenced."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "Cohort-based intakes; job outcomes self-reported by NPower."
+    },
+    "workerStatus": "student",
+    "fees": null,
+    "applicationSteps": [
+      "Check current eligibility and intake dates on NPower Canada's Junior IT Analyst page",
+      "Submit the online application form (one application per person is kept)",
+      "Complete the mandatory online assessment and a one-on-one interview",
+      "If accepted, attend the ~15-week program and use NPower's job-search support"
+    ],
+    "timeToFirstEarnings": "months",
+    "horizon": "career",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "scam_impersonation"
+    ],
+    "fitsIf": "You are a young adult (roughly 18-29) with a high-school diploma who wants a free, structured start in IT support.",
+    "notFitIf": "You are outside the age range, need income during training, or cannot commit to a daily 15-week schedule.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://npowercanada.ca/?p=83684",
+        "title": "Junior IT Analyst Program",
+        "type": "official",
+        "publisher": "NPower Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "status",
+          "schedule"
+        ],
+        "notes": "Search-result summary only (fetch blocked). Tuition-free, 15 weeks, session April 7-July 17, 2026; provinces served; admissions decides eligibility.",
+        "accessible": false
+      },
+      {
+        "url": "https://npowercanada.ca/junior-it-analyst-program/",
+        "title": "Junior IT Analyst Program - NPower Canada",
+        "type": "official",
+        "publisher": "NPower Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Graduates receive Google IT Support Professional Certificate; no IT background needed, basic computer skills required.",
+        "accessible": false
+      },
+      {
+        "url": "https://npowercanada.ca/jita-application-form/",
+        "title": "Junior IT Analyst Application Form",
+        "type": "official",
+        "publisher": "NPower Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "requirements"
+        ],
+        "notes": "One application per person kept; NPower never charges fees or asks for payment details; report payment requests.",
+        "accessible": false
+      },
+      {
+        "url": "https://costi.org/downloads/npower.pdf",
+        "title": "NPower Canada info sheet (COSTI)",
+        "type": "independent_review",
+        "publisher": "COSTI Immigrant Services",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Undated partner info sheet: ages 18-29, HS diploma/GED, unemployed/underemployed, barriers, CLB 6/7, assessment. A 2021 COSTI sheet listed ages 17-30.",
+        "accessible": false
+      },
+      {
+        "url": "https://ca.indeed.com/cmp/Npower-Canada/interviews",
+        "title": "NPower Canada interviews - Indeed",
+        "type": "forum",
+        "publisher": "Indeed",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Anecdotal: about 25 interview reports, experience rated about 6/10; company rating 3.8/5. Undated.",
+        "accessible": false
+      }
+    ],
+    "audience": [
+      "Young adults (roughly 18–29)"
+    ]
+  },
+  {
+    "id": "statcan-data-collection-clerk",
+    "name": "Statistics Canada data collection clerk (survey interviewer)",
+    "organization": "Statistics Canada",
+    "type": "employment",
+    "category": "structured_employment",
+    "tags": [
+      "survey-interviewer",
+      "phone",
+      "work-from-home-possible",
+      "federal-government",
+      "part-time"
+    ],
+    "summary": "Statistics Canada hires data collection clerks as needed, for up to 35 hours a week, to run survey interviews, mostly by phone, from home or on-site.",
+    "whatYouDo": "You contact selected households or businesses, mostly by telephone and sometimes in person, explain the survey, ask the questions and enter answers into a computer-assisted system. Some roles involve visiting respondents' homes in your region.",
+    "appeal": [
+      "Can be done from home or on-site depending on operational needs",
+      "Federal employer; clerks may be eligible for Public Service group insurance benefit plans",
+      "Occupation typically needs high school plus on-the-job training",
+      "Ontario median wage for survey interviewers and statistical clerks is about $24.18/hr (Job Bank, all employers)"
+    ],
+    "watchOuts": [
+      "Hiring is 'as needed'; no current Ontario posting was confirmed",
+      "Phone-heavy: lots of calls to strangers, some of whom assume it is a scam (worker reviews)",
+      "Hours up to 35/week; reviewers say many roles are part-time",
+      "2026 Census field jobs (reported $25.87/hr enumerators, May-July 2026) are over",
+      "A reported posting required reliable home phone service and willingness to travel"
+    ],
+    "officialUrl": "https://www.statcan.gc.ca/en/employment/opportunities/data-collection",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [
+        "secondary school diploma (often required)"
+      ],
+      "equipment": [
+        "quiet space",
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "shifts",
+      "windows": [
+        "day",
+        "evening",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": 35
+    },
+    "interaction": {
+      "modes": [
+        "voice",
+        "in_person"
+      ],
+      "realtime": "high",
+      "phone": true
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 2,
+      "technical": 0,
+      "creative": 0,
+      "language": 2
+    },
+    "training": {
+      "required": true,
+      "cost": "unknown",
+      "notes": "On-the-job training usually provided for this occupation (NOC description)."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "StatCan page lists no salary. Job Bank Ontario median for the occupation is $24.18/hr (range $17.60-$59.13, all employers). A secondary listing reported $25.87/hr for 2026 Census enumerators."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "medium",
+      "notes": "Hired as needed for up to 35 hrs/week; reviews mention mostly part-time positions."
+    },
+    "workerStatus": "employee",
+    "fees": null,
+    "applicationSteps": [
+      "Check Statistics Canada's 'Jobs in data collection' page for current openings in your region",
+      "Follow the application instructions in the posting",
+      "Make sure you have a quiet space and reliable phone service if working from home"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "phone_heavy",
+      "variable_work"
+    ],
+    "fitsIf": "You are comfortable making many phone calls to strangers and want a government job that may be done from home.",
+    "notFitIf": "You dislike phone work or rejection, or you need guaranteed full-time hours.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.statcan.gc.ca/en/employment/opportunities/data-collection",
+        "title": "Jobs in data collection",
+        "type": "official",
+        "publisher": "Statistics Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "schedule",
+          "worker_status"
+        ],
+        "notes": "Search-result summary only (fetch blocked). Hires data collection clerks as needed, up to 35 hrs/week; work from home or on-site; mostly phone, some home visits; may be eligible for PS insurance plans; no salary shown.",
+        "accessible": false
+      },
+      {
+        "url": "https://www23.statcan.gc.ca/imdb/p3VD.pl?Function=getVD&TVD=1322554&CVD=1322870&CPV=14110&CST=01052021&MLV=5&CLV=5",
+        "title": "NOC 2021 Version 1.0 - 14110 - Survey interviewers and statistical clerks",
+        "type": "government",
+        "publisher": "Statistics Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Occupation description: secondary school and computer experience may be required.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.jobbank.gc.ca/marketreport/wages-occupation/2363/ON",
+        "title": "Coding Clerk - Statistics in Ontario (wages)",
+        "type": "government",
+        "publisher": "Government of Canada (Job Bank)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Ontario wage table for NOC 14110: median $24.18/hr, low $17.60, high $59.13 (2023-2024 LFS data). All employers, not StatCan-specific.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.narcity.com/en-ca/money/statistics-canada-is-hiring-interviewers-right-now-you-dont-need-any-experience",
+        "title": "Statistics Canada Is Hiring 'Interviewers' Right Now & You Don't Need Any Experience",
+        "type": "journalism",
+        "publisher": "Narcity",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "schedule"
+        ],
+        "notes": "Undated article on a past posting: work from home or on-site, phone-based, needs reliable home phone, high school, basic computer skills, travel/overtime possible.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.westboundary.com/?p=22143",
+        "title": "Job Opportunities: 2026 Census Positions",
+        "type": "aggregator",
+        "publisher": "West Boundary community site",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "schedule"
+        ],
+        "notes": "Secondary listing: 2026 Census enumerators $25.87/hr, 20-40 hrs/week, May-July; crew leaders $31.32/hr. Now past.",
+        "accessible": false
+      },
+      {
+        "url": "https://ca.indeed.com/cmp/Statistics-Canada/salaries/Interviewer",
+        "title": "Statistics Canada Interviewer salaries - Indeed",
+        "type": "forum",
+        "publisher": "Indeed",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "Anecdotal reviews (undated): flexible hours and benefits praised; only part-time positions; public often assumes calls are scams.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "election-worker-paid-temporary",
+    "name": "Paid election worker (municipal, provincial or federal elections)",
+    "organization": "Various",
+    "type": "category",
+    "category": "structured_employment",
+    "tags": [
+      "temporary",
+      "one-day",
+      "election",
+      "paid-training",
+      "civic",
+      "in-person"
+    ],
+    "summary": "Short-term paid jobs staffing voting places for municipal, provincial or federal elections; hiring happens in the weeks or months before each vote.",
+    "whatYouDo": "After a short paid training session, you work at a voting location on advance-poll days or election day, greeting voters, checking registration, issuing ballots or supervising. Days often run 12-14 hours, and the election office decides your assignment.",
+    "appeal": [
+      "Paid training (Elections Canada pays about 3 hours)",
+      "No experience needed for entry roles",
+      "Elections Canada accepts online applications at any time; age 16+ for federal elections",
+      "Ontario municipal examples: $225-$300/day plus $50-$60 for training in Windsor-Essex (news); Toronto lists about $280 for one role",
+      "Often assigned near your home"
+    ],
+    "watchOuts": [
+      "Very long days (12-14 hours) on site",
+      "Work exists only around elections, so it is sporadic",
+      "Toronto's hiring for the October 26, 2026 municipal election is closed (positions filled); other cities' training ran late September-early October, so this cycle is likely too late",
+      "Must stay non-partisan; candidates, their families and campaign workers are excluded",
+      "Eligibility differs: federal requires Canadian citizenship and age 16+; Toronto requires 18+ and legal right to work",
+      "Federal pay rates differ between Elections Canada pages and years; check the current rate"
+    ],
+    "officialUrl": "https://www.elections.ca/jobs",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "onsite"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [],
+      "minAge": 16,
+      "assessment": "interview"
+    },
+    "schedule": {
+      "flexibility": "fixed",
+      "windows": [
+        "day",
+        "evening",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person"
+      ],
+      "realtime": "high",
+      "phone": false
+    },
+    "skills": {
+      "computer": 0,
+      "writing": 0,
+      "numeracy": 1,
+      "detail": 2,
+      "customer": 2,
+      "technical": 0,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": true,
+      "cost": "paid_to_you",
+      "notes": "Mandatory training; Elections Canada pays about 3 hours; Toronto training about 2.5 hours; Windsor-Essex pays $50-$60."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "Varies by election and role. Elections Canada pages: roughly $20-$27/hr (one page), $27.76 for central poll supervisor (another); 2025 news: $17.40-$33.08/hr. Ontario municipal 2026 examples: $225-$300/day (Windsor-Essex news), about $280 (Toronto)."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "Only during election periods; next federal/provincial dates depend on when elections are called."
+    },
+    "workerStatus": "varies",
+    "fees": null,
+    "applicationSteps": [
+      "Federal: apply online at elections.ca/jobs (accepted any time); you are contacted when an election is called",
+      "Municipal or provincial: watch your city clerk's or Elections Ontario's site in the months before a vote",
+      "Attend the mandatory paid training",
+      "Work your assigned advance-poll or election-day shift"
+    ],
+    "timeToFirstEarnings": "months",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work"
+    ],
+    "fitsIf": "You want occasional, short, in-person paid work, can handle long days and can stay politically neutral.",
+    "notFitIf": "You need regular income or remote work, or cannot manage a 13-14 hour day on site.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.elections.ca/content.aspx?section=emp&dir=pos&document=pollworker&lang=e",
+        "title": "Apply to work as a poll worker",
+        "type": "official",
+        "publisher": "Elections Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "pay",
+          "schedule"
+        ],
+        "notes": "Search-result summary only (fetch blocked). Citizens 16+ on election day; non-partisan; apply online any time; 12-14 hr shifts; ~3 hrs paid training; hourly rates vary by page.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.elections.ca/jobs",
+        "title": "Employment - Elections Canada",
+        "type": "official",
+        "publisher": "Elections Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Elections Canada jobs entry point (seen in results).",
+        "accessible": false
+      },
+      {
+        "url": "https://www.toronto.ca/city-government/elections/work-for-toronto-elections/about-election-jobs/",
+        "title": "About election jobs - City of Toronto",
+        "type": "official",
+        "publisher": "City of Toronto",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status",
+          "requirements",
+          "pay"
+        ],
+        "notes": "Search summary: recruitment closed, all 2026 positions filled, vacancies filled from existing pool; 18+ and legally able to work; ~2.5 hr training; one role shows $280.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.toronto.ca/news/toronto-residents-encouraged-to-apply-for-2026-municipal-election-jobs/",
+        "title": "Toronto residents encouraged to apply for 2026 municipal election jobs",
+        "type": "official",
+        "publisher": "City of Toronto",
+        "published": "2026-07-06",
+        "accessed": "2026-10-13",
+        "claims": [
+          "status"
+        ],
+        "notes": "News release opening applications for thousands of paid voting-place jobs; election day Monday October 26, 2026.",
+        "accessible": false
+      },
+      {
+        "url": "https://sarnianewstoday.ca/windsor/news/2026/07/20/windsor-and-essex-recruiting-election-workers-for-municipal-vote",
+        "title": "Windsor and Essex recruiting election workers for municipal vote",
+        "type": "journalism",
+        "publisher": "Sarnia News Today",
+        "published": "2026-07-20",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "schedule"
+        ],
+        "notes": "Most positions $225-$300/day plus $50-$60 for mandatory training; up to 13 hours on voting days.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.kitchener.ca/council-and-city-administration/election/election-hiring-in-2026/",
+        "title": "Election Hiring in 2026 - City of Kitchener",
+        "type": "official",
+        "publisher": "City of Kitchener",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "schedule"
+        ],
+        "notes": "Advance-vote and election-day roles; mandatory training September 28-October 9, 2026.",
+        "accessible": false
+      },
+      {
+        "url": "https://bnnbloomberg.ca/federal-election-2025/2025/03/31/a-guide-to-the-200000-temporary-jobs-offered-by-elections-canada-for-the-upcoming-federal-election",
+        "title": "A guide to the 200,000 temporary jobs offered by Elections Canada for the upcoming federal election",
+        "type": "journalism",
+        "publisher": "BNN Bloomberg",
+        "published": "2025-03-31",
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "2025 federal election pay reported at $17.40 (Level 1) to $33.08 (Level 5) per hour.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "public-service-student-new-grad-programs",
+    "name": "Government student and new-grad job programs (FSWEP, Ontario SEO, Ontario Internship Program)",
+    "organization": "Various",
+    "type": "category",
+    "category": "structured_employment",
+    "tags": [
+      "students",
+      "new-grads",
+      "public-service",
+      "summer-jobs",
+      "internship",
+      "federal",
+      "ontario"
+    ],
+    "summary": "Federal and Ontario public-service hiring streams reserved for students (FSWEP, Ontario Summer Employment Opportunities) and recent graduates (Ontario Internship Program).",
+    "whatYouDo": "You submit a profile or applications to a government student inventory or job board; departments and ministries hire students for temporary jobs (often summer, sometimes part-time during the school year) or recent grads for internships. Work ranges from office and program support to field jobs such as natural-resources roles.",
+    "appeal": [
+      "FSWEP is the federal government's largest student hiring program, open to full-time high-school, college and university students returning to studies",
+      "FSWEP part-time roles possible during the school year; full-time in breaks",
+      "Ontario SEO hires up to about 4,000 students for 7-18 week full-time summer jobs; 2027 postings expected in fall/winter",
+      "Ontario Internship Program is for recent college/university grads (within 2 years; 5 years for bilingual, Indigenous or disabled candidates); recruitment begins in December",
+      "Government work experience for your resume"
+    ],
+    "watchOuts": [
+      "Student status required (FSWEP: full-time and returning next term)",
+      "Being in the FSWEP inventory does not guarantee a referral; departments search the pool",
+      "Ontario SEO 2026 ads are closed and OIP applications are currently closed (ontario.ca)",
+      "SEO requires living in Ontario during the job, age 15+ (some roles 18+), legal right to work and a SIN",
+      "International-student eligibility for FSWEP only claimed by a third-party guide; unverified",
+      "A 2019-20 PSC audit found departments saw FSWEP rules as inflexible and some referrals were bypassed"
+    ],
+    "officialUrl": "https://www.canada.ca/en/government/publicservice/workforce/staffing/mobility/student-employment-programs-federal-government/federal-student-work-experience-program.html",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [
+        "current student status (FSWEP, SEO) or recent degree/diploma (OIP)"
+      ],
+      "equipment": [],
+      "minAge": 15,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [
+        "day"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 1,
+      "numeracy": 1,
+      "detail": 1,
+      "customer": 1,
+      "technical": 0,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "Pay set per posting. An older Ontario page listed SEO pay around $15.00-$15.85/hr; outdated."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "medium",
+      "notes": "Seasonal hiring cycles; temporary positions."
+    },
+    "workerStatus": "employee",
+    "fees": null,
+    "applicationSteps": [
+      "FSWEP: submit a student profile through the federal student inventory; departments search it and contact candidates",
+      "Ontario SEO: from fall/winter, apply to each posting on the OPS Summer Employment Opportunities board (resume and cover letter in one document, up to 5 pages)",
+      "OIP: watch ontario.ca for the next intake; recruitment begins in December"
+    ],
+    "timeToFirstEarnings": "months",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [],
+    "fitsIf": "You are a full-time student or recent Ontario grad who wants paid government work experience.",
+    "notFitIf": "You are not a student or recent grad, or you need work immediately this autumn.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.canada.ca/en/government/publicservice/workforce/staffing/mobility/student-employment-programs-federal-government/federal-student-work-experience-program.html",
+        "title": "Federal Student Work Experience Program (FSWEP) - Canada.ca",
+        "type": "official",
+        "publisher": "Government of Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Search-result summary only (fetch blocked). Full-time secondary/post-secondary students returning to studies who meet provincial minimum working age; PSC refers candidates to hiring managers.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.canada.ca/en/public-service-commission/services/publications/audit-student-hiring-fswep.html",
+        "title": "Horizontal Audit of Student Hiring under the Federal Student Work Experience Program",
+        "type": "government",
+        "publisher": "Public Service Commission of Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "reliability"
+        ],
+        "notes": "2019-20 audit: FSWEP was 62% of student hires; departments found rules inflexible; weak learning-plan compliance; some referrals possibly bypassed.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.ontario.ca/page/careers-summer-employment-opportunities",
+        "title": "Careers: summer employment opportunities",
+        "type": "official",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status",
+          "requirements",
+          "schedule"
+        ],
+        "notes": "Search summary: all 2026 student summer ads closed; summer 2027 postings in fall/winter; students or grads within 6 months; 7-18 week full-time jobs May-September; one application per job.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.ontario.ca/page/summer-jobs-students",
+        "title": "Summer jobs for students",
+        "type": "official",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "canada_eligibility"
+        ],
+        "notes": "Minimum age 15 (some roles 18), live in Ontario during the job, legally entitled to work in Canada.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.ontario.ca/page/apply-ontario-internship-program",
+        "title": "Apply to the Ontario Internship Program",
+        "type": "official",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status",
+          "requirements"
+        ],
+        "notes": "Applications currently closed; graduates within the last two years from a recognized college/university; extended 5-year eligibility for bilingual, Indigenous or disabled candidates.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.ontario.ca/page/careers-ontario-internship-program",
+        "title": "Careers: Ontario Internship Program",
+        "type": "official",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "schedule"
+        ],
+        "notes": "Recruitment begins in December and continues through the following summer (search summary).",
+        "accessible": false
+      }
+    ],
+    "audience": [
+      "Current students or recent graduates"
+    ]
+  },
+  {
+    "id": "staffing-agency-temp-placements",
+    "name": "Temporary placements through staffing agencies (office/admin and general)",
+    "organization": "Various",
+    "type": "category",
+    "category": "structured_employment",
+    "tags": [
+      "temp-work",
+      "staffing-agency",
+      "admin",
+      "contract",
+      "quick-start"
+    ],
+    "summary": "Licensed temp and staffing agencies (e.g., Randstad, Adecco, Robert Half) place workers in short-term or contract roles, including office and admin work that is occasionally partly remote.",
+    "whatYouDo": "You register with one or more agencies, talk with a recruiter, and get offered assignments at client companies such as reception, office support, data entry or industrial roles. Assignments can last from days to months, and some can turn into permanent jobs.",
+    "appeal": [
+      "Can lead to work quickly; temp roles often open and close within 48 hours (Randstad)",
+      "In Ontario, temp help agencies cannot charge workers fees for becoming an agency employee or being assigned work",
+      "Ontario requires temporary help agencies and recruiters to be licensed (O. Reg. 99/23)",
+      "Some admin postings are hybrid (e.g., a Randstad admin role remote except one office day a week)"
+    ],
+    "watchOuts": [
+      "Fully remote temp admin work appears sporadic; most listings found were on-site",
+      "Assignment-based work means hours and income can be uneven",
+      "Many postings are tied to one city (e.g., Greater Montreal only)",
+      "Fake recruiters impersonate agencies; verify the agency and never pay a fee",
+      "Agencies' own job-seeker terms were not verified in this pass"
+    ],
+    "officialUrl": "https://www.ontario.ca/laws/regulation/230099/v8",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [],
+      "minAge": null,
+      "assessment": "interview"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [
+        "day"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person",
+        "text",
+        "voice"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 1,
+      "numeracy": 1,
+      "detail": 2,
+      "customer": 1,
+      "technical": 0,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "Pay varies by assignment; not checked."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Assignment-based; remote admin openings appear sporadic in search results."
+    },
+    "workerStatus": "employee",
+    "fees": null,
+    "applicationSteps": [
+      "Check that the agency is real and, in Ontario, licensed",
+      "Register on the agency's Canadian careers site or apply to a specific posting",
+      "Interview with a recruiter; never pay a fee to be placed",
+      "Accept assignments that fit and keep records of your hours and pay"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "likely",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "scam_impersonation"
+    ],
+    "fitsIf": "You want to start earning soon in short-term office or general roles and do not mind changing assignments.",
+    "notFitIf": "You need guaranteed steady hours or only fully remote work.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.ontario.ca/laws/regulation/230099/v8",
+        "title": "O. Reg. 99/23: Licensing - Temporary Help Agencies and Recruiters, Employment Standards Act, 2000",
+        "type": "government",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy"
+        ],
+        "notes": "Search-result summary only (fetch blocked). Regulation establishing licensing of temp help agencies and recruiters ($750 licence fee paid by the agency).",
+        "accessible": false
+      },
+      {
+        "url": "https://parkdalelegal.org/news/employment-standards-decision-prohibits-temp-agencies-from-charging-employees-25000-in-fees",
+        "title": "Employment standards decision prohibits temp agencies from charging employees $25,000 in fees",
+        "type": "independent_review",
+        "publisher": "Parkdale Community Legal Services",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk",
+          "legitimacy"
+        ],
+        "notes": "Legal clinic news: ESA officer found a staffing firm was a temp help agency subject to the fee prohibition.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.hrreporter.com/news/hr-news/ontario-increases-protection-of-temporary-workers/312582",
+        "title": "Ontario increases protection of temporary workers",
+        "type": "journalism",
+        "publisher": "Canadian HR Reporter",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Reports Ontario rules protecting temp workers, including bans on charging workers fees.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.randstad.ca/jobs/-_-_BD4VV7ZSTFEN",
+        "title": "Administrative Assistant - Remote Work (1 day/week in-office)",
+        "type": "official",
+        "publisher": "Randstad Canada",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "schedule"
+        ],
+        "notes": "Example temp admin posting in Quebec, mostly remote with one office day; not confirmed open today.",
+        "accessible": false
+      },
+      {
+        "url": "https://welcomeaide.com/ne/blog/temporary-staffing-agencies-guide-newcomers-canada-2026",
+        "title": "Using Staffing Agencies to Find Work Quickly in Canada: A Newcomer's Guide",
+        "type": "aggregator",
+        "publisher": "WelcomeAide",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "Third-party guide describing Robert Half (finance, tech, admin, legal) and Adecco (industrial, office, professional) placements.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "odsp-employment-supports",
+    "name": "ODSP Employment Supports (job help for people with a disability)",
+    "organization": "Government of Ontario - Ontario Disability Support Program",
+    "type": "program",
+    "category": "government_program",
+    "tags": [
+      "disability-inclusive",
+      "job-coaching",
+      "on-the-job-support",
+      "ontario",
+      "job-retention"
+    ],
+    "summary": "Ontario employment help (job coaching, job placement and on-the-job supports) for people whose long-term disability makes finding or keeping work harder; you do not need to receive ODSP income support.",
+    "whatYouDo": "Through a community-based provider, you get help preparing for, finding and keeping a job, such as job coaching, job placement and supports once you start working. Delivery is moving into Employment Ontario's integrated system, so your local route may be through an Employment Ontario provider.",
+    "appeal": [
+      "You do not have to be on ODSP income support to qualify",
+      "Includes job coaching and on-the-job supports",
+      "Job-retention support can continue after you are placed",
+      "Delivered by community providers in your area"
+    ],
+    "watchOuts": [
+      "Eligibility (community directory): 16+, Ontario resident, legally able to work, with a substantial disability expected to last a year or more that makes finding or keeping work hard",
+      "If not on income support you may need a Verification of Disability form",
+      "Retention supports for non-income-support clients were capped at 15 months after placement (2021 policy) vs. up to 33 months for income-support clients",
+      "Services are being folded into Employment Ontario's Integrated Employment Services; advocates criticized the change and the local route varies"
+    ],
+    "officialUrl": "https://www.ontario.ca/page/ontario-disability-support-program-employment-supports",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [
+        "ON"
+      ],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [],
+      "minAge": 16,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 0,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 0,
+      "customer": 0,
+      "technical": 0,
+      "creative": 0,
+      "language": 0
+    },
+    "training": {
+      "required": false,
+      "cost": "unknown",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "Support service, not a paid job."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "Depends on the provider and the job found."
+    },
+    "workerStatus": "participant",
+    "fees": null,
+    "applicationSteps": [
+      "Contact your local ODSP office or an Employment Ontario provider and ask about employment supports",
+      "Complete the Application for Employment Supports (plus Verification of Disability if you are not on income support)",
+      "Work with the provider on a plan, job search and on-the-job supports"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [],
+    "fitsIf": "You live in Ontario, a long-term health condition or disability makes finding or keeping work harder, and you want hands-on job support.",
+    "notFitIf": "You do not need disability-related supports; general Employment Ontario services may fit better.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.ontario.ca/page/ontario-disability-support-program-employment-supports",
+        "title": "Ontario Disability Support Program employment supports",
+        "type": "official",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "legitimacy"
+        ],
+        "notes": "Search-result summary only (fetch blocked). No need to receive ODSP income support; community-based providers; job coaching and on-the-job supports.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.ontario.ca/document/ontario-disability-support-program-policy-directives-employment-supports/42-job-retention",
+        "title": "ODSP policy directives for employment supports - 4.2 Job retention",
+        "type": "government",
+        "publisher": "Government of Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "reliability"
+        ],
+        "notes": "Directive dated March 2021: retention supports capped at 15 consecutive months for non-income-support clients vs. up to 33 months for income-support recipients. May be outdated.",
+        "accessible": false
+      },
+      {
+        "url": "https://communityreach.cioc.ca/record/ORI0826?Number=1",
+        "title": "ODSP Employment Supports (Record ORI0826)",
+        "type": "aggregator",
+        "publisher": "Community Information Ontario directory",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "canada_eligibility"
+        ],
+        "notes": "Directory: 16+, Ontario resident, legally allowed to work, substantial disability lasting 1+ year that impedes work; Application for Employment Supports form.",
+        "accessible": false
+      },
+      {
+        "url": "https://ontario.cmha.ca/news/oden-move-odsp-employment-programmes-to-employment-ontario/",
+        "title": "ODEN: move ODSP employment programmes to Employment Ontario",
+        "type": "independent_review",
+        "publisher": "CMHA Ontario",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Advocacy position opposing the transfer of ODSP employment supports into Employment Ontario. Opinion, undated in results.",
+        "accessible": false
+      }
+    ],
+    "audience": [
+      "Ontario residents with a disability or long-term health condition"
+    ]
+  },
+  {
+    "id": "toronto-public-library-free-elearning",
+    "name": "Toronto Public Library free online courses (LinkedIn Learning, IT skills)",
+    "organization": "Toronto Public Library",
+    "type": "training_pathway",
+    "category": "tech_digital",
+    "tags": [
+      "free-training",
+      "digital-skills",
+      "library",
+      "self-paced",
+      "toronto",
+      "it-skills",
+      "office-software"
+    ],
+    "summary": "With a free Toronto Public Library card you can take online courses (LinkedIn Learning, Let's Learn Tech IT training, Brainfuse workplace tech skills, Gale Courses) at no cost.",
+    "whatYouDo": "You sign in with your library card and work through self-paced video courses or instructor-led online classes on office software, IT support, programming, data analytics and job-search skills. It builds skills for your resume; it does not place you in a job.",
+    "appeal": [
+      "Free with a TPL card",
+      "Self-paced and flexible; learn from home",
+      "LinkedIn Learning (16,000+ courses per a TPL blog) includes resume and job-search topics",
+      "Let's Learn Tech covers IT skills such as cybersecurity, Python, data analytics, AI and networking",
+      "Brainfuse pathway covers word processing, spreadsheets, presentations and video-call tools"
+    ],
+    "watchOuts": [
+      "Toronto-focused: requires a TPL card (card eligibility not verified here); other Ontario libraries may offer similar services",
+      "Training only: no pay, placement or guaranteed credential",
+      "Course line-ups change; confirm on the eLearning page",
+      "Self-paced study needs your own motivation and a device with internet"
+    ],
+    "officialUrl": "https://torontopubliclibrary.ca/elearning",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [
+        "ON"
+      ],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "fast internet"
+      ],
+      "minAge": null,
+      "assessment": "none"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 1,
+      "customer": 0,
+      "technical": 1,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "free",
+      "notes": "Free with a library card."
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "No pay; free learning resource."
+    },
+    "reliability": {
+      "workVolume": "unknown",
+      "predictability": "unknown",
+      "notes": "Not work; self-paced learning."
+    },
+    "workerStatus": "student",
+    "fees": null,
+    "applicationSteps": [
+      "Get a Toronto Public Library card",
+      "Open TPL's eLearning page and choose a service (e.g., LinkedIn Learning, Let's Learn Tech)",
+      "Sign in with your library card and start a course",
+      "Add new skills to your resume and pair with job-search help (e.g., Employment Ontario)"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [],
+    "fitsIf": "You live in Toronto and want free, flexible, self-paced courses to build office, IT or job-search skills.",
+    "notFitIf": "You need income now or want structured training with job placement.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://torontopubliclibrary.ca/elearning",
+        "title": "eLearning - Toronto Public Library",
+        "type": "official",
+        "publisher": "Toronto Public Library",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements",
+          "legitimacy"
+        ],
+        "notes": "Search-result summary only (fetch blocked). Library card gives free access to LinkedIn Learning, Let's Learn Tech Online, Brainfuse and Gale Courses.",
+        "accessible": false
+      },
+      {
+        "url": "https://tpl.ca/blogs/post/upgrade-your-skills-for-free/",
+        "title": "Five Free Online Resources to Boost Your Professional Skills",
+        "type": "official",
+        "publisher": "Toronto Public Library",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "TPL blog: LinkedIn Learning has 16,000+ courses; Let's Learn Tech offers free IT training to job seekers (cybersecurity, programming, Linux, data analytics, AI, networking).",
+        "accessible": false
+      }
+    ]
+  }
+]

@@ -1,0 +1,126 @@
+{
+ "id": "belay-virtual-assistant-contractor",
+ "name": "Virtual assistant contractor (BELAY)",
+ "organization": "BELAY",
+ "type": "contract",
+ "category": "customer_ops",
+ "tags": [
+  "virtual-assistant",
+  "us-only",
+  "closed-to-canada"
+ ],
+ "summary": "BELAY is a US virtual-assistant staffing firm whose contractor roles are open only to residents of certain US states, not Canada.",
+ "whatYouDo": "BELAY contractors provide remote administrative and executive support to US clients.",
+ "appeal": [
+  "Established US VA staffing company (not available to Canadians)"
+ ],
+ "watchOuts": [
+  "Official jobs page accepts residents of US states only (excluding several states); Canada is not listed",
+  "Contractor roles are set up as US 1099 contracts",
+  "'CA' in BELAY's exclusion lists means California, not Canada"
+ ],
+ "officialUrl": "https://belaysolutions.com/jobs",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "US"
+  ],
+  "regions": [],
+  "canadaEligibility": "not_eligible",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "unknown",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": null,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "unknown",
+  "windows": [],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "unknown",
+  "phone": null
+ },
+ "skills": {
+  "computer": 3,
+  "writing": 3,
+  "numeracy": 1,
+  "detail": 3,
+  "customer": 2,
+  "technical": 1,
+  "creative": 0,
+  "language": 0
+ },
+ "training": {
+  "required": null,
+  "cost": "unknown",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Not researched further: not open to Canadians."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": ""
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "rejected",
+ "legitimacy": "likely",
+ "evidenceStrength": "moderate",
+ "riskFlags": [],
+ "fitsIf": "Not applicable to Canadian residents.",
+ "notFitIf": "You live in Canada (US residents only).",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://belaysolutions.com/jobs",
+   "title": "Current Job Openings At BELAY",
+   "type": "official",
+   "publisher": "BELAY",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility"
+   ],
+   "notes": "Search-summary only (fetch blocked). Accepting applications from residents of all US states except CA, CO, MT, NJ, NY, PA; Canada not mentioned.",
+   "accessible": false
+  },
+  {
+   "url": "https://dynamitejobs.com/company/belaysolutionscom/remote-job/virtual-assistant-remote-contractor",
+   "title": "BELAY Virtual Assistant - Remote Contractor (closed listing)",
+   "type": "aggregator",
+   "publisher": "Dynamite Jobs",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "worker_status"
+   ],
+   "notes": "Search-summary only; closed listing. Described as US-only, paid as 1099 independent contractor.",
+   "accessible": false
+  }
+ ]
+}

@@ -1,0 +1,235 @@
+{
+ "id": "testlio-freelance-tester",
+ "name": "Freelance software tester, paid hourly (Testlio)",
+ "organization": "Testlio",
+ "type": "freelance",
+ "category": "tech_digital",
+ "tags": [
+  "software-testing",
+  "qa",
+  "hourly",
+  "crowdtesting",
+  "device-testing"
+ ],
+ "summary": "Managed crowdtesting company that pays vetted freelance testers by the hour for client test runs, with occasional Canada-specific projects.",
+ "whatYouDo": "Once registered and accepted onto client projects, you run scripted or exploratory test 'runs' on apps and websites, report issues and log your time. Canada-specific projects have included smoke-testing a wagering app in Alberta and payment testing.",
+ "appeal": [
+  "Paid by the hour, not per bug",
+  "Weekly payouts via PayPal or Payoneer",
+  "Open to people without prior testing experience; certifications available",
+  "Past Canada-specific postings paid US$18–30/hr"
+ ],
+ "watchOuts": [
+  "A Testlio page says only about 3% of applicants are accepted onto client projects",
+  "The Canada-specific postings we found were closed",
+  "Some projects need specific devices (e.g. iPhone/iPad), a non-CAD credit card, or physical presence in one province",
+  "ID verification needed before payment; contractor terms with no benefits"
+ ],
+ "officialUrl": "https://www.testlio.com/community",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "remote"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer",
+   "smartphone"
+  ],
+  "minAge": 18,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "text",
+   "independent"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 3,
+  "writing": 2,
+  "numeracy": 0,
+  "detail": 3,
+  "customer": 0,
+  "technical": 2,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "free",
+  "notes": "Optional certifications (e.g. Functional Regression Testing) unlock the Testlio community; cost not stated, assumed none."
+ },
+ "compensation": {
+  "min": 18,
+  "max": 30,
+  "currency": "USD",
+  "unit": "hour",
+  "basis": "aggregator",
+  "notes": "Mirrors of Testlio Canada postings: US$30/hr Alberta app smoke testing (about 30–60 min every few weeks); US$18/hr plus bonuses for a Canadian delivery-driver study. Both appear closed."
+ },
+ "reliability": {
+  "workVolume": "sporadic",
+  "predictability": "low",
+  "notes": "Project-based; one Canada project offered under an hour every few weeks; selective acceptance (~3%)."
+ },
+ "workerStatus": "contractor",
+ "fees": null,
+ "applicationSteps": [
+  "Register a Testlio account and verify contact details",
+  "Complete your profile and devices; optionally earn certifications",
+  "Apply to specific projects (Canada postings name a project code for email applications)",
+  "Complete ID verification and add a personal PayPal/Payoneer account before working"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "bridge",
+ "status": "waitlist_or_no_work_guarantee",
+ "legitimacy": "established",
+ "evidenceStrength": "weak",
+ "riskFlags": [
+  "variable_work",
+  "waitlist",
+  "contractor_no_benefits",
+  "equipment_cost"
+ ],
+ "fitsIf": "You own current devices, want hourly (not per-bug) testing work, and can wait for selective project placement.",
+ "notFitIf": "You need work soon or lack the specific devices projects require.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.testlio.com/join-the-community",
+   "title": "Join the Testlio Community - Testlio",
+   "type": "official",
+   "publisher": "Testlio",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Register an account and verify contact details; open to people with no prior testing experience. Direct fetch blocked.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.testlio.com/community",
+   "title": "Get to Know Our Global Community - Testlio",
+   "type": "official",
+   "publisher": "Testlio",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "reliability"
+   ],
+   "notes": "Search summary attributes the '3% of applicants accepted to client projects' claim to a Testlio marketing page (exact page not certain).",
+   "accessible": false
+  },
+  {
+   "url": "https://help.testlio.com/en/articles/6819354-freelancing-at-testlio",
+   "title": "Freelancing at Testlio",
+   "type": "official",
+   "publisher": "Testlio",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "worker_status"
+   ],
+   "notes": "Help centre: paid hourly, not per bug; weekly payouts via PayPal or Payoneer after task approval.",
+   "accessible": false
+  },
+  {
+   "url": "https://help.testlio.com/en/articles/10353574-join-the-testlio-community",
+   "title": "Join the Testlio Community",
+   "type": "official",
+   "publisher": "Testlio",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Community access after 30 approved hours or a Functional Regression / Scripter certification.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.testlio.com/fsa",
+   "title": "Testlio Freelancer Services Agreement",
+   "type": "official",
+   "publisher": "Testlio",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "worker_status",
+    "requirements"
+   ],
+   "notes": "Freelancer agreement: personal payment method required before work; payment subject to ID verification; no sanctioned countries.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.techstars.com/companies/testlio/jobs/86488758-freelance-software-tester-remote-in-alberta-ca",
+   "title": "Freelance Software Tester (Remote in Alberta, CA)",
+   "type": "aggregator",
+   "publisher": "Techstars job board",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "pay",
+    "requirements",
+    "status"
+   ],
+   "notes": "US$30/hr; 30–60 min every few weeks; 21+; physically in Alberta, no VPN; iPhone/iPad; weekly PayPal/Payoneer. Marked no longer accepting applications.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.techstars.com/companies/testlio/jobs/57669441-freelance-software-tester-payment-testing-canada",
+   "title": "Freelance Software Tester (Payment Testing, Canada)",
+   "type": "aggregator",
+   "publisher": "Techstars job board",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "canada_eligibility",
+    "requirements",
+    "status"
+   ],
+   "notes": "18+, anywhere in Canada, non-CAD credit card, paid hourly; marked no longer accepting applications.",
+   "accessible": false
+  },
+  {
+   "url": "https://jobs.techstars.com/companies/testlio/jobs/51665324-uber-delivery-driver-study-canada",
+   "title": "Uber Delivery Driver Study (Canada)",
+   "type": "aggregator",
+   "publisher": "Techstars job board",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "pay",
+    "canada_eligibility"
+   ],
+   "notes": "US$18/h plus possible bonuses, weekly via PayPal or Payoneer.",
+   "accessible": false
+  }
+ ]
+}

@@ -1,0 +1,706 @@
+{
+ "$schema": "https://json-schema.org/draft/2020-12/schema",
+ "$id": "https://unstuck-games.com/boop-remote/api/schema.json",
+ "title": "Opportunity record",
+ "description": "One earning route in the Opportunity Engine catalogue. Enums mirror src/schema.js; the evidence rules (e.g. \"applications_open_confirmed needs an opened official source\") are enforced by the validator, not expressible here.",
+ "type": "object",
+ "properties": {
+  "id": {
+   "type": "string",
+   "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$"
+  },
+  "name": {
+   "type": "string",
+   "minLength": 1
+  },
+  "organization": {
+   "type": "string",
+   "minLength": 1
+  },
+  "type": {
+   "type": "string",
+   "enum": [
+    "employment",
+    "contract",
+    "freelance",
+    "task_platform",
+    "research_participation",
+    "training_pathway",
+    "program",
+    "category"
+   ]
+  },
+  "category": {
+   "type": "string",
+   "enum": [
+    "customer_ops",
+    "language_writing",
+    "ai_data",
+    "tech_digital",
+    "research_participation",
+    "creative_production",
+    "structured_employment",
+    "freelance_microbusiness",
+    "government_program"
+   ]
+  },
+  "tags": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "summary": {
+   "type": "string",
+   "minLength": 1
+  },
+  "whatYouDo": {
+   "type": "string",
+   "minLength": 1
+  },
+  "appeal": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "minItems": 1
+  },
+  "watchOuts": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   },
+   "minItems": 1
+  },
+  "officialUrl": {
+   "anyOf": [
+    {
+     "type": "string",
+     "format": "uri",
+     "pattern": "^https?://"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "applyUrl": {
+   "anyOf": [
+    {
+     "type": "string",
+     "format": "uri",
+     "pattern": "^https?://"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "geography": {
+   "type": "object",
+   "properties": {
+    "countries": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "regions": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "canadaEligibility": {
+     "type": "string",
+     "enum": [
+      "confirmed",
+      "likely",
+      "unclear",
+      "not_eligible"
+     ]
+    },
+    "setting": {
+     "type": "string",
+     "enum": [
+      "remote",
+      "hybrid",
+      "onsite",
+      "varies"
+     ]
+    }
+   },
+   "required": [
+    "countries",
+    "regions",
+    "canadaEligibility",
+    "setting"
+   ],
+   "additionalProperties": true
+  },
+  "languages": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "requirements": {
+   "type": "object",
+   "properties": {
+    "experience": {
+     "type": "string",
+     "enum": [
+      "none",
+      "some",
+      "significant",
+      "unknown"
+     ]
+    },
+    "credentialRequired": {
+     "type": "boolean"
+    },
+    "credentials": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "equipment": {
+     "type": "array",
+     "items": {
+      "type": "string"
+     }
+    },
+    "minAge": {
+     "anyOf": [
+      {
+       "type": "integer"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "assessment": {
+     "type": "string",
+     "enum": [
+      "none",
+      "free_test",
+      "unpaid_test",
+      "paid_test",
+      "interview",
+      "unknown"
+     ]
+    }
+   },
+   "required": [
+    "experience",
+    "credentialRequired",
+    "credentials",
+    "equipment",
+    "minAge",
+    "assessment"
+   ],
+   "additionalProperties": true
+  },
+  "schedule": {
+   "type": "object",
+   "properties": {
+    "flexibility": {
+     "type": "string",
+     "enum": [
+      "flexible",
+      "shifts",
+      "fixed",
+      "varies",
+      "unknown"
+     ]
+    },
+    "windows": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "day",
+       "evening",
+       "night",
+       "weekend"
+      ]
+     }
+    },
+    "hoursMinWeekly": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "hoursMaxWeekly": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "required": [
+    "flexibility",
+    "windows",
+    "hoursMinWeekly",
+    "hoursMaxWeekly"
+   ],
+   "additionalProperties": true
+  },
+  "interaction": {
+   "type": "object",
+   "properties": {
+    "modes": {
+     "type": "array",
+     "items": {
+      "type": "string",
+      "enum": [
+       "text",
+       "voice",
+       "video",
+       "in_person",
+       "independent"
+      ]
+     }
+    },
+    "realtime": {
+     "type": "string",
+     "enum": [
+      "none",
+      "some",
+      "high",
+      "unknown"
+     ]
+    },
+    "phone": {
+     "anyOf": [
+      {
+       "type": "boolean"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    }
+   },
+   "required": [
+    "modes",
+    "realtime",
+    "phone"
+   ],
+   "additionalProperties": true
+  },
+  "skills": {
+   "type": "object",
+   "properties": {
+    "computer": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 3
+    },
+    "writing": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 3
+    },
+    "numeracy": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 3
+    },
+    "detail": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 3
+    },
+    "customer": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 3
+    },
+    "technical": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 3
+    },
+    "creative": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 3
+    },
+    "language": {
+     "type": "integer",
+     "minimum": 0,
+     "maximum": 3
+    }
+   },
+   "required": [
+    "computer",
+    "writing",
+    "numeracy",
+    "detail",
+    "customer",
+    "technical",
+    "creative",
+    "language"
+   ],
+   "additionalProperties": true
+  },
+  "training": {
+   "type": "object",
+   "properties": {
+    "required": {
+     "type": "boolean"
+    },
+    "cost": {
+     "type": "string",
+     "enum": [
+      "free",
+      "paid_to_you",
+      "user_pays",
+      "none",
+      "unknown"
+     ]
+    },
+    "notes": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "required",
+    "cost",
+    "notes"
+   ],
+   "additionalProperties": true
+  },
+  "compensation": {
+   "type": "object",
+   "properties": {
+    "min": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "max": {
+     "anyOf": [
+      {
+       "type": "number"
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "currency": {
+     "anyOf": [
+      {
+       "type": "string",
+       "enum": [
+        "CAD",
+        "USD",
+        "unstated"
+       ]
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "unit": {
+     "anyOf": [
+      {
+       "type": "string",
+       "enum": [
+        "hour",
+        "task",
+        "minute_audio",
+        "study",
+        "project",
+        "month",
+        "year"
+       ]
+      },
+      {
+       "type": "null"
+      }
+     ]
+    },
+    "basis": {
+     "type": "string",
+     "enum": [
+      "official",
+      "self_reported",
+      "aggregator",
+      "unknown"
+     ]
+    },
+    "notes": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "min",
+    "max",
+    "currency",
+    "unit",
+    "basis",
+    "notes"
+   ],
+   "additionalProperties": true
+  },
+  "reliability": {
+   "type": "object",
+   "properties": {
+    "workVolume": {
+     "type": "string",
+     "enum": [
+      "steady",
+      "variable",
+      "sporadic",
+      "unknown"
+     ]
+    },
+    "predictability": {
+     "type": "string",
+     "enum": [
+      "high",
+      "medium",
+      "low",
+      "unknown"
+     ]
+    },
+    "notes": {
+     "type": "string"
+    }
+   },
+   "required": [
+    "workVolume",
+    "predictability",
+    "notes"
+   ],
+   "additionalProperties": true
+  },
+  "workerStatus": {
+   "type": "string",
+   "enum": [
+    "employee",
+    "contractor",
+    "participant",
+    "student",
+    "varies",
+    "unknown"
+   ]
+  },
+  "fees": {
+   "anyOf": [
+    {
+     "type": "string"
+    },
+    {
+     "type": "null"
+    }
+   ]
+  },
+  "applicationSteps": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "timeToFirstEarnings": {
+   "type": "string",
+   "enum": [
+    "days",
+    "weeks",
+    "months",
+    "unknown"
+   ]
+  },
+  "horizon": {
+   "type": "string",
+   "enum": [
+    "now",
+    "bridge",
+    "career"
+   ]
+  },
+  "status": {
+   "type": "string",
+   "enum": [
+    "applications_open_confirmed",
+    "registration_open_not_work_guaranteed",
+    "eligibility_confirmed",
+    "official_info_found",
+    "waitlist_or_no_work_guarantee",
+    "uncertain",
+    "not_currently_open",
+    "stale_needs_recheck",
+    "rejected"
+   ]
+  },
+  "legitimacy": {
+   "type": "string",
+   "enum": [
+    "established",
+    "likely",
+    "unclear"
+   ]
+  },
+  "evidenceStrength": {
+   "type": "string",
+   "enum": [
+    "strong",
+    "moderate",
+    "weak"
+   ]
+  },
+  "riskFlags": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "audience": {
+   "type": "array",
+   "items": {
+    "type": "string"
+   }
+  },
+  "fitsIf": {
+   "type": "string",
+   "minLength": 1
+  },
+  "notFitIf": {
+   "type": "string",
+   "minLength": 1
+  },
+  "lastChecked": {
+   "type": "string",
+   "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+  },
+  "sources": {
+   "type": "array",
+   "minItems": 1,
+   "items": {
+    "type": "object",
+    "properties": {
+     "url": {
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+     },
+     "title": {
+      "type": "string",
+      "minLength": 1
+     },
+     "type": {
+      "type": "string",
+      "enum": [
+       "official",
+       "government",
+       "independent_review",
+       "forum",
+       "journalism",
+       "aggregator"
+      ]
+     },
+     "publisher": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "published": {
+      "anyOf": [
+       {
+        "type": "string"
+       },
+       {
+        "type": "null"
+       }
+      ]
+     },
+     "accessed": {
+      "type": "string",
+      "pattern": "^\\d{4}-\\d{2}-\\d{2}$"
+     },
+     "claims": {
+      "type": "array",
+      "items": {
+       "type": "string"
+      }
+     },
+     "notes": {
+      "type": "string"
+     },
+     "accessible": {
+      "type": "boolean"
+     }
+    },
+    "required": [
+     "url",
+     "title",
+     "type",
+     "accessed",
+     "claims"
+    ],
+    "additionalProperties": true
+   }
+  }
+ },
+ "required": [
+  "id",
+  "name",
+  "organization",
+  "type",
+  "category",
+  "summary",
+  "whatYouDo",
+  "appeal",
+  "watchOuts",
+  "officialUrl",
+  "applyUrl",
+  "geography",
+  "languages",
+  "requirements",
+  "schedule",
+  "interaction",
+  "skills",
+  "training",
+  "compensation",
+  "reliability",
+  "workerStatus",
+  "fees",
+  "applicationSteps",
+  "timeToFirstEarnings",
+  "horizon",
+  "status",
+  "legitimacy",
+  "evidenceStrength",
+  "riskFlags",
+  "fitsIf",
+  "notFitIf",
+  "lastChecked",
+  "sources"
+ ],
+ "additionalProperties": true
+}

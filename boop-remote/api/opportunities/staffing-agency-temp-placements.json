@@ -1,0 +1,183 @@
+{
+ "id": "staffing-agency-temp-placements",
+ "name": "Temporary placements through staffing agencies (office/admin and general)",
+ "organization": "Various",
+ "type": "category",
+ "category": "structured_employment",
+ "tags": [
+  "temp-work",
+  "staffing-agency",
+  "admin",
+  "contract",
+  "quick-start"
+ ],
+ "summary": "Licensed temp and staffing agencies (e.g., Randstad, Adecco, Robert Half) place workers in short-term or contract roles, including office and admin work that is occasionally partly remote.",
+ "whatYouDo": "You register with one or more agencies, talk with a recruiter, and get offered assignments at client companies such as reception, office support, data entry or industrial roles. Assignments can last from days to months, and some can turn into permanent jobs.",
+ "appeal": [
+  "Can lead to work quickly; temp roles often open and close within 48 hours (Randstad)",
+  "In Ontario, temp help agencies cannot charge workers fees for becoming an agency employee or being assigned work",
+  "Ontario requires temporary help agencies and recruiters to be licensed (O. Reg. 99/23)",
+  "Some admin postings are hybrid (e.g., a Randstad admin role remote except one office day a week)"
+ ],
+ "watchOuts": [
+  "Fully remote temp admin work appears sporadic; most listings found were on-site",
+  "Assignment-based work means hours and income can be uneven",
+  "Many postings are tied to one city (e.g., Greater Montreal only)",
+  "Fake recruiters impersonate agencies; verify the agency and never pay a fee",
+  "Agencies' own job-seeker terms were not verified in this pass"
+ ],
+ "officialUrl": "https://www.ontario.ca/laws/regulation/230099/v8",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "some",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [],
+  "minAge": null,
+  "assessment": "interview"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [
+   "day"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person",
+   "text",
+   "voice"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 2,
+  "writing": 1,
+  "numeracy": 1,
+  "detail": 2,
+  "customer": 1,
+  "technical": 0,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Pay varies by assignment; not checked."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "low",
+  "notes": "Assignment-based; remote admin openings appear sporadic in search results."
+ },
+ "workerStatus": "employee",
+ "fees": null,
+ "applicationSteps": [
+  "Check that the agency is real and, in Ontario, licensed",
+  "Register on the agency's Canadian careers site or apply to a specific posting",
+  "Interview with a recruiter; never pay a fee to be placed",
+  "Accept assignments that fit and keep records of your hours and pay"
+ ],
+ "timeToFirstEarnings": "weeks",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "likely",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "variable_work",
+  "scam_impersonation"
+ ],
+ "fitsIf": "You want to start earning soon in short-term office or general roles and do not mind changing assignments.",
+ "notFitIf": "You need guaranteed steady hours or only fully remote work.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.ontario.ca/laws/regulation/230099/v8",
+   "title": "O. Reg. 99/23: Licensing - Temporary Help Agencies and Recruiters, Employment Standards Act, 2000",
+   "type": "government",
+   "publisher": "Government of Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "legitimacy"
+   ],
+   "notes": "Search-result summary only (fetch blocked). Regulation establishing licensing of temp help agencies and recruiters ($750 licence fee paid by the agency).",
+   "accessible": false
+  },
+  {
+   "url": "https://parkdalelegal.org/news/employment-standards-decision-prohibits-temp-agencies-from-charging-employees-25000-in-fees",
+   "title": "Employment standards decision prohibits temp agencies from charging employees $25,000 in fees",
+   "type": "independent_review",
+   "publisher": "Parkdale Community Legal Services",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "legitimacy"
+   ],
+   "notes": "Legal clinic news: ESA officer found a staffing firm was a temp help agency subject to the fee prohibition.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.hrreporter.com/news/hr-news/ontario-increases-protection-of-temporary-workers/312582",
+   "title": "Ontario increases protection of temporary workers",
+   "type": "journalism",
+   "publisher": "Canadian HR Reporter",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "Reports Ontario rules protecting temp workers, including bans on charging workers fees.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.randstad.ca/jobs/-_-_BD4VV7ZSTFEN",
+   "title": "Administrative Assistant - Remote Work (1 day/week in-office)",
+   "type": "official",
+   "publisher": "Randstad Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "schedule"
+   ],
+   "notes": "Example temp admin posting in Quebec, mostly remote with one office day; not confirmed open today.",
+   "accessible": false
+  },
+  {
+   "url": "https://welcomeaide.com/ne/blog/temporary-staffing-agencies-guide-newcomers-canada-2026",
+   "title": "Using Staffing Agencies to Find Work Quickly in Canada: A Newcomer's Guide",
+   "type": "aggregator",
+   "publisher": "WelcomeAide",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Third-party guide describing Robert Half (finance, tech, admin, legal) and Adecco (industrial, office, professional) placements.",
+   "accessible": false
+  }
+ ]
+}

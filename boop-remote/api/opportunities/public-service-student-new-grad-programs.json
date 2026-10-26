@@ -1,0 +1,203 @@
+{
+ "id": "public-service-student-new-grad-programs",
+ "name": "Government student and new-grad job programs (FSWEP, Ontario SEO, Ontario Internship Program)",
+ "organization": "Various",
+ "type": "category",
+ "category": "structured_employment",
+ "tags": [
+  "students",
+  "new-grads",
+  "public-service",
+  "summer-jobs",
+  "internship",
+  "federal",
+  "ontario"
+ ],
+ "summary": "Federal and Ontario public-service hiring streams reserved for students (FSWEP, Ontario Summer Employment Opportunities) and recent graduates (Ontario Internship Program).",
+ "whatYouDo": "You submit a profile or applications to a government student inventory or job board; departments and ministries hire students for temporary jobs (often summer, sometimes part-time during the school year) or recent grads for internships. Work ranges from office and program support to field jobs such as natural-resources roles.",
+ "appeal": [
+  "FSWEP is the federal government's largest student hiring program, open to full-time high-school, college and university students returning to studies",
+  "FSWEP part-time roles possible during the school year; full-time in breaks",
+  "Ontario SEO hires up to about 4,000 students for 7-18 week full-time summer jobs; 2027 postings expected in fall/winter",
+  "Ontario Internship Program is for recent college/university grads (within 2 years; 5 years for bilingual, Indigenous or disabled candidates); recruitment begins in December",
+  "Government work experience for your resume"
+ ],
+ "watchOuts": [
+  "Student status required (FSWEP: full-time and returning next term)",
+  "Being in the FSWEP inventory does not guarantee a referral; departments search the pool",
+  "Ontario SEO 2026 ads are closed and OIP applications are currently closed (ontario.ca)",
+  "SEO requires living in Ontario during the job, age 15+ (some roles 18+), legal right to work and a SIN",
+  "International-student eligibility for FSWEP only claimed by a third-party guide; unverified",
+  "A 2019-20 PSC audit found departments saw FSWEP rules as inflexible and some referrals were bypassed"
+ ],
+ "officialUrl": "https://www.canada.ca/en/government/publicservice/workforce/staffing/mobility/student-employment-programs-federal-government/federal-student-work-experience-program.html",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [
+   "current student status (FSWEP, SEO) or recent degree/diploma (OIP)"
+  ],
+  "equipment": [],
+  "minAge": 15,
+  "assessment": "unknown"
+ },
+ "schedule": {
+  "flexibility": "varies",
+  "windows": [
+   "day"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "in_person"
+  ],
+  "realtime": "some",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 1,
+  "numeracy": 1,
+  "detail": 1,
+  "customer": 1,
+  "technical": 0,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Pay set per posting. An older Ontario page listed SEO pay around $15.00-$15.85/hr; outdated."
+ },
+ "reliability": {
+  "workVolume": "variable",
+  "predictability": "medium",
+  "notes": "Seasonal hiring cycles; temporary positions."
+ },
+ "workerStatus": "employee",
+ "fees": null,
+ "applicationSteps": [
+  "FSWEP: submit a student profile through the federal student inventory; departments search it and contact candidates",
+  "Ontario SEO: from fall/winter, apply to each posting on the OPS Summer Employment Opportunities board (resume and cover letter in one document, up to 5 pages)",
+  "OIP: watch ontario.ca for the next intake; recruitment begins in December"
+ ],
+ "timeToFirstEarnings": "months",
+ "horizon": "bridge",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [],
+ "fitsIf": "You are a full-time student or recent Ontario grad who wants paid government work experience.",
+ "notFitIf": "You are not a student or recent grad, or you need work immediately this autumn.",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.canada.ca/en/government/publicservice/workforce/staffing/mobility/student-employment-programs-federal-government/federal-student-work-experience-program.html",
+   "title": "Federal Student Work Experience Program (FSWEP) - Canada.ca",
+   "type": "official",
+   "publisher": "Government of Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Search-result summary only (fetch blocked). Full-time secondary/post-secondary students returning to studies who meet provincial minimum working age; PSC refers candidates to hiring managers.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.canada.ca/en/public-service-commission/services/publications/audit-student-hiring-fswep.html",
+   "title": "Horizontal Audit of Student Hiring under the Federal Student Work Experience Program",
+   "type": "government",
+   "publisher": "Public Service Commission of Canada",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "reliability"
+   ],
+   "notes": "2019-20 audit: FSWEP was 62% of student hires; departments found rules inflexible; weak learning-plan compliance; some referrals possibly bypassed.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.ontario.ca/page/careers-summer-employment-opportunities",
+   "title": "Careers: summer employment opportunities",
+   "type": "official",
+   "publisher": "Government of Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status",
+    "requirements",
+    "schedule"
+   ],
+   "notes": "Search summary: all 2026 student summer ads closed; summer 2027 postings in fall/winter; students or grads within 6 months; 7-18 week full-time jobs May-September; one application per job.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.ontario.ca/page/summer-jobs-students",
+   "title": "Summer jobs for students",
+   "type": "official",
+   "publisher": "Government of Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "canada_eligibility"
+   ],
+   "notes": "Minimum age 15 (some roles 18), live in Ontario during the job, legally entitled to work in Canada.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.ontario.ca/page/apply-ontario-internship-program",
+   "title": "Apply to the Ontario Internship Program",
+   "type": "official",
+   "publisher": "Government of Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "status",
+    "requirements"
+   ],
+   "notes": "Applications currently closed; graduates within the last two years from a recognized college/university; extended 5-year eligibility for bilingual, Indigenous or disabled candidates.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.ontario.ca/page/careers-ontario-internship-program",
+   "title": "Careers: Ontario Internship Program",
+   "type": "official",
+   "publisher": "Government of Ontario",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "schedule"
+   ],
+   "notes": "Recruitment begins in December and continues through the following summer (search summary).",
+   "accessible": false
+  }
+ ],
+ "audience": [
+  "Current students or recent graduates"
+ ]
+}

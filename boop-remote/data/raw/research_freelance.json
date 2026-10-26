@@ -1,0 +1,2293 @@
+[
+  {
+    "id": "prolific-paid-studies",
+    "name": "Paid online research studies (Prolific)",
+    "organization": "Prolific",
+    "type": "research_participation",
+    "category": "research_participation",
+    "tags": [
+      "research-participation",
+      "not-a-job",
+      "online-surveys",
+      "experiments",
+      "paypal",
+      "waitlist"
+    ],
+    "summary": "Take part in paid online research studies when you match a study's criteria; this is research participation, not a job.",
+    "whatYouDo": "You fill in a demographic profile, then claim studies (mostly surveys and online experiments) that appear in your dashboard on a first-come, first-served basis. Each study lists its reward and estimated time. Once the researcher approves your submission, the reward goes to your balance, which you cash out to PayPal.",
+    "appeal": [
+      "Researchers must pay at least £6 / $8 per hour and are advised to pay £9 / $12 (Prolific rules)",
+      "Prolific charges no cash-out fee, and the minimum cash-out is a low £6/$6",
+      "You pick studies whenever you like, with no set hours",
+      "Long-established platform with a public participant help centre"
+    ],
+    "watchOuts": [
+      "Not a job: studies aren't guaranteed, and 2026 third-party reviews say new sign-ups may be waitlisted",
+      "Study supply is the most common complaint: some days nothing matches your profile, and popular studies fill fast",
+      "The pay rate uses estimated or median completion time, so your real hourly earnings can be lower",
+      "Accounts can be put 'On hold' (for example for VPN or location mismatch, many rejections, multiple accounts, or using AI or automation), and Prolific doesn't give a specific reason. You can appeal through support",
+      "Payout is PayPal only (through Hyperwallet), in GBP or USD. PayPal may charge for currency conversion, and your PayPal name must match your Prolific details"
+    ],
+    "officialUrl": "https://participant-help.prolific.com/en/articles/445007-who-can-participate-in-studies-on-prolific",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": 18,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 0,
+      "technical": 0,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": 8,
+      "max": null,
+      "currency": "USD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "Prolific's researcher rules set a minimum reward rate of £6 / $8 per hour and recommend £9 / $12, based on estimated or median completion time. Third-party 2026 reviews report a wide range of effective rates, from about $8–15/hr down to far lower once unpaid waiting and screening time is counted. Rewards are paid in GBP or USD, not CAD."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "Studies are first-come, first-served and depend on your demographics. 2026 reviews describe days with no eligible studies and frequent 'study full' messages. No official supply statistics were found."
+    },
+    "workerStatus": "participant",
+    "fees": "Prolific charges no cash-out fee (official); PayPal may charge for currency conversion.",
+    "applicationSteps": [
+      "Confirm your country of residence is on Prolific's supported list (Canada is listed)",
+      "Create a participant account (you may be put on a waitlist)",
+      "Pass account and identity verification and complete your profile questions",
+      "Link a PayPal account whose details match your Prolific details",
+      "Claim studies you qualify for, and cash out from £6/$6 (your first four cash-outs wait 72 hours)"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "waitlist_or_no_work_guarantee",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "waitlist",
+      "account_deactivation_reports"
+    ],
+    "fitsIf": "You want occasional, flexible small earnings from your computer and can live with unpredictable study supply.",
+    "notFitIf": "You need dependable weekly income or don't want identity checks and PayPal-only payouts.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://participant-help.prolific.com/en/articles/445007-who-can-participate-in-studies-on-prolific",
+        "title": "Who can participate in studies on Prolific?",
+        "type": "official",
+        "publisher": "Prolific",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "requirements"
+        ],
+        "notes": "From a search summary: Prolific is open to participants in most OECD countries, including Canada. Eligibility depends on where you currently live. You must be 18+ with a verified account, and people in unsupported countries can join a waitlist. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://researcher-help.prolific.com/en/article/2273bd",
+        "title": "Ethical Rewards",
+        "type": "official",
+        "publisher": "Prolific",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: researchers must pay at least £6.00/$8.00 per hour and are advised to pay £9.00/$12.00 per hour. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://participant-help.prolific.com/en/articles/445067-cashing-out-with-paypal-faq-and-troubleshooting",
+        "title": "Cashing out with PayPal: FAQ and troubleshooting",
+        "type": "official",
+        "publisher": "Prolific",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary of Prolific's payment help articles: payouts go to PayPal through Hyperwallet. The minimum is £6/$6 (mixed currencies allowed) and Prolific charges no fee. The first four cash-outs wait 72 hours, then daily cash-outs are allowed, and the PayPal name must match. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://participant-help.prolific.com/en/article/978f54",
+        "title": "Participant help article on accounts placed 'On hold' (title not shown in search result)",
+        "type": "official",
+        "publisher": "Prolific",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "From a search summary: accounts can be put on hold after automated flags or a terms breach. Listed reasons include a failed ID check, location or VPN mismatch, many rejections, multiple accounts, and using LLMs or automation. No specific reason is given, and you can appeal through support. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://visu.network/blog/prolific-review/",
+        "title": "Prolific Review 2026: What It Really Pays - Visu Network",
+        "type": "independent_review",
+        "publisher": "Visu Network",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "pay"
+        ],
+        "notes": "One of several 2026 third-party reviews summarised together, so attribution of individual claims is approximate. Together they say availability is the main catch, effective hourly rates vary widely, and joining currently goes through a waitlist.",
+        "accessible": false
+      },
+      {
+        "url": "https://annotation.academy/blog/is-prolific-legit",
+        "title": "Is Prolific Legit? What 1,141 Reddit Comments Show",
+        "type": "independent_review",
+        "publisher": "Annotation Academy",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy",
+          "risk"
+        ],
+        "notes": "An analysis of Reddit comments, so the evidence is anecdotal. Some posts from September 2026 describe accounts put on hold, but too few to call it a pattern.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "user-interviews-participant",
+    "name": "Paid user research sessions (User Interviews)",
+    "organization": "User Interviews",
+    "type": "research_participation",
+    "category": "research_participation",
+    "tags": [
+      "research-participation",
+      "not-a-job",
+      "ux-research",
+      "interviews",
+      "gift-cards"
+    ],
+    "summary": "Apply to occasional paid product-research sessions (interviews, surveys, tests) run by companies; this is research participation, not a job.",
+    "whatYouDo": "You build a participant profile and answer screener surveys for studies that interest you. If a researcher picks you, you join a session such as a video interview or survey and receive an incentive afterwards.",
+    "appeal": [
+      "Canada is a supported participant country for projects that User Interviews runs itself ('Recruit' projects)",
+      "A single session can pay well for its length (one third-party review reports about US$45 per study on average)",
+      "You can redeem incentives in your local currency"
+    ],
+    "watchOuts": [
+      "Very occasional: User Interviews itself estimates 1–2 study invitations every 6 months",
+      "Screeners can be long, and you may hear nothing for days or weeks (third-party review)",
+      "When User Interviews pays you, it's a Tremendous digital gift card or prepaid Visa, not PayPal, Venmo or a bank transfer",
+      "Incentives are shown in USD, and one redeemed in the wrong currency can't be reissued",
+      "Payment can take up to 10 business days after the session"
+    ],
+    "officialUrl": "https://www.userinterviews.com/support/getting-selected-for-studies",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "webcam"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "video",
+        "voice",
+        "text"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 1,
+      "customer": 0,
+      "technical": 0,
+      "creative": 0,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": "USD",
+      "unit": "study",
+      "basis": "aggregator",
+      "notes": "No official average. A third-party review (The Work at Home Woman) reports about US$45 per completed study in its 2026 data, up from $29 in 2021. Each incentive is set by the researcher and varies with study length and type."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "Officially, a participant can expect 1–2 invitations every 6 months, and the first selection can take time."
+    },
+    "workerStatus": "participant",
+    "fees": null,
+    "applicationSteps": [
+      "Create a participant profile and keep it complete and accurate",
+      "Apply to studies by answering their screener surveys",
+      "If selected, attend the scheduled session",
+      "Redeem the incentive through Tremendous, choosing the correct currency for Canada"
+    ],
+    "timeToFirstEarnings": "months",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work"
+    ],
+    "fitsIf": "You don't mind filling in screeners now and then for the chance of a well-paid one-off session.",
+    "notFitIf": "You need regular income, or you want cash to PayPal or your bank rather than gift cards.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.userinterviews.com/support/getting-selected-for-studies",
+        "title": "Getting selected for studies (User Interviews support)",
+        "type": "official",
+        "publisher": "User Interviews",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "From a search summary: not every study fits everyone. Participants can expect 1–2 invitations every 6 months, and the first selection can take time. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.userinterviews.com/support/incentive-and-currency-options",
+        "title": "Choose from dozens of currencies and incentive types",
+        "type": "official",
+        "publisher": "User Interviews",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay"
+        ],
+        "notes": "From a search summary of User Interviews' incentive support pages: Recruit projects support participants in the US, UK, Canada, Australia, France, Germany, South Africa and India. Incentives are shown in USD and must be redeemed in the correct local currency. User Interviews pays through Tremendous, with no PayPal, Venmo or bank option, and a prepaid Visa is the closest thing to cash. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://support.userinterviews.com/hc/en-us/articles/51535828055699-Learn-how-and-when-you-ll-receive-your-incentive-payment",
+        "title": "Learn how and when you'll receive your incentive payment",
+        "type": "official",
+        "publisher": "User Interviews",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: expect payment within 10 business days of the session. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.theworkathomewoman.com/user-interviews-review/",
+        "title": "User Interviews Review: Earn an Average of $45 per Survey",
+        "type": "independent_review",
+        "publisher": "The Work at Home Woman",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Third-party review: averages about $45 per completed study in its 2026 data, versus $29 in an earlier 2021 review.",
+        "accessible": false
+      },
+      {
+        "url": "https://visu.network/blog/user-interviews-review/",
+        "title": "User Interviews Review 2026: Pay, Frequency, Payouts - Visu Network",
+        "type": "independent_review",
+        "publisher": "Visu Network",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "Third-party review: says how rarely people get selected is under-discussed. Reviewers report screeners as long as full surveys, followed by days or weeks of silence. Trustpilot is cited as about 68% five-star and 15% one-star.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "respondent-research-participant",
+    "name": "Paid research interviews and focus groups (Respondent)",
+    "organization": "Respondent",
+    "type": "research_participation",
+    "category": "research_participation",
+    "tags": [
+      "research-participation",
+      "not-a-job",
+      "interviews",
+      "focus-groups",
+      "professional-research"
+    ],
+    "summary": "Apply to paid interviews, focus groups and surveys that companies run with consumers and professionals; this is research participation, not a job.",
+    "whatYouDo": "You create a verified profile and apply to studies by answering a screener, then the researcher decides whom to invite. Respondent focuses on remote qualitative interviews, and the incentive is paid after the session.",
+    "appeal": [
+      "Canada is one of Respondent's 21 primary recruiting markets",
+      "Studies are often higher-value interviews and focus groups (third-party reviews cite roughly $50–$250 per study)",
+      "Payout through Tremendous offers many redemption options"
+    ],
+    "watchOuts": [
+      "Not a job: you can be screened out by the screener or by the researcher, often without being told (G2 user reviews)",
+      "A fulfillment fee of 5% or $1, whichever is higher, comes off each incentive",
+      "Profiles are verified by phone, email and LinkedIn, and professional studies may expect a work profile",
+      "One review-site complaint (2025) says a study was still unpaid four weeks later",
+      "Older reviews say payouts go to PayPal, but Respondent's current help says Tremendous gift cards, so check payout options before counting on cash"
+    ],
+    "officialUrl": "https://help.respondent.io/en/articles/12552492-screener-explained-how-to-qualify-for-studies",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "webcam"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "video",
+        "voice",
+        "text"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 1,
+      "customer": 0,
+      "technical": 0,
+      "creative": 0,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": "USD",
+      "unit": "study",
+      "basis": "aggregator",
+      "notes": "No official pay figures were retrieved. Third-party review titles advertise about $50–$250 per focus group and '$100+/hour', which are marketing-style claims. Each researcher sets the incentive, and the fulfillment fee is deducted from it."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "The researcher decides who is selected. G2 reviewers say they often aren't picked, and popular studies draw many applicants."
+    },
+    "workerStatus": "participant",
+    "fees": "A 5% or $1 fulfillment fee, whichever is higher, is deducted from each incentive (official help).",
+    "applicationSteps": [
+      "Create a participant profile and verify your phone and email (LinkedIn may be requested)",
+      "Browse studies and answer the screener for ones that fit",
+      "If the researcher picks you, schedule and attend the session",
+      "Receive the incentive, minus the fulfillment fee, through Tremendous"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work",
+      "fees",
+      "payment_delay_reports"
+    ],
+    "fitsIf": "You have a specific consumer or professional background that researchers seek and are comfortable on video calls.",
+    "notFitIf": "You want steady income or dislike verification steps such as connecting LinkedIn.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://help.respondent.io/en/articles/5471299-what-countries-can-i-recruit-in-on-respondent",
+        "title": "What countries can I recruit in on Respondent",
+        "type": "official",
+        "publisher": "Respondent",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "From a search summary of this researcher-facing article: Respondent specialises in remote qualitative interviews in countries with many English speakers. It has 21 primary target markets, Canada among them. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://help.respondent.io/en/articles/5489331-paying-participant-incentives",
+        "title": "Paying Participant Incentives",
+        "type": "official",
+        "publisher": "Respondent",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: a 5% or $1 fulfillment fee, whichever is higher, applies to incentives, and incentives are issued as Tremendous virtual gift cards. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.respondent.io/compare/respondent-vs-user-interviews",
+        "title": "respondent vs user interviews",
+        "type": "official",
+        "publisher": "Respondent",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy",
+          "requirements"
+        ],
+        "notes": "A marketing page. It claims 3M+ participants verified by phone, email and LinkedIn. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.g2.com/products/respondent/reviews",
+        "title": "Respondent Reviews & Product Details",
+        "type": "forum",
+        "publisher": "G2",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "User reviews (anecdotes, undated in summary). Reviewers say they often aren't picked and want to be told whether they were selected, and that response times are inconsistent.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.smartcustomer.com/reviews/respondent.io",
+        "title": "Respondent.io reviews (SmartCustomer)",
+        "type": "forum",
+        "publisher": "SmartCustomer",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "A single user complaint: a study completed in April 2025 was still unpaid more than four weeks later. This is an anecdote.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.surveyexaminer.com/survey-platform-reviews/respondent/",
+        "title": "Respondent.io Review 2026: $50-$250 Focus Groups",
+        "type": "independent_review",
+        "publisher": "Survey Examiner",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "A third-party review whose title claims $50–$250 focus groups. The figure is not verified.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "usertesting-contributor",
+    "name": "Website and app tester (UserTesting contributor)",
+    "organization": "UserTesting",
+    "type": "research_participation",
+    "category": "research_participation",
+    "tags": [
+      "research-participation",
+      "not-a-job",
+      "usability-testing",
+      "think-aloud",
+      "paypal"
+    ],
+    "summary": "Get paid small amounts to try websites and apps while speaking your thoughts aloud on a screen recording; occasional paid tests, not a job.",
+    "whatYouDo": "You answer screener questions for tests in your dashboard. If you qualify, you complete tasks on a website or app while recording your screen and voice and saying what you think. Every test in your feed shows its pay before you start.",
+    "appeal": [
+      "Canada is one of UserTesting's seven standard contributor countries",
+      "Pay for each test is shown up front in your feed",
+      "Tests are short: third-party reviews commonly cite about $10 for a roughly 20-minute unmoderated test",
+      "The practice test can be done in English or French (or German)"
+    ],
+    "watchOuts": [
+      "Not a job: screeners often disqualify you, and tests come and go (third-party reviews)",
+      "Signing up includes a practice test that reviews describe as unpaid",
+      "Payment is PayPal only, about 14 days after each test",
+      "If you submit an incomplete test instead of reporting a problem, the payment is cancelled",
+      "You have to talk aloud while your screen is recorded"
+    ],
+    "officialUrl": "https://www.usertesting.com/get-paid-to-test/make-money-online",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en",
+      "fr",
+      "de"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer",
+        "quiet space"
+      ],
+      "minAge": 18,
+      "assessment": "unpaid_test"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "voice",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 0,
+      "technical": 1,
+      "creative": 0,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": 10,
+      "max": null,
+      "currency": "USD",
+      "unit": "task",
+      "basis": "aggregator",
+      "notes": "UserTesting's help centre says pay depends on customer demand, test type and tasks, and is shown for each test. Third-party reviews commonly put a typical unmoderated test at about $10, with longer or live sessions paying more (one site advertises $10–$120). The $10 is a typical figure, not a guaranteed minimum."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "There's no official data on test volume. Third-party reviews report high screener disqualification rates."
+    },
+    "workerStatus": "participant",
+    "fees": null,
+    "applicationSteps": [
+      "Start sign-up on UserTesting's contributor page (it tells you whether your location qualifies)",
+      "Verify your email and connect a PayPal account in good standing",
+      "Complete your profile",
+      "Record the practice test in English, French or German",
+      "Take screeners in your dashboard and complete the tests you qualify for"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "unpaid_assessment",
+      "variable_work"
+    ],
+    "fitsIf": "You're comfortable thinking aloud on a recording and want short, occasional paid tasks.",
+    "notFitIf": "You need regular income or don't want to be recorded while you talk.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://help.usertesting.com/hc/articles/11880389286429-Which-countries-can-I-test-in",
+        "title": "Which countries can I test in",
+        "type": "official",
+        "publisher": "UserTesting",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "From a search summary of this customer-facing article: the standard contributor countries are the US, UK, Germany, France, Canada, India and Australia. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://participant-support.usertesting.com/hc/en-us/articles/38410176419603-Can-I-join-the-UserTesting-Network-from-my-country",
+        "title": "Can I join the UserTesting Network from my country",
+        "type": "official",
+        "publisher": "UserTesting",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "requirements"
+        ],
+        "notes": "From a search summary (attribution approximate): there's no fixed public list of eligible countries because the list changes, and the sign-up page shows whether your location qualifies. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://support.usertesting.com/hc/en-us/articles/4405071522323-What-languages-can-I-speak-in-my-practice-test",
+        "title": "What languages can I speak in my practice test",
+        "type": "official",
+        "publisher": "UserTesting",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "From a search summary: you can speak English, German or French in the practice test. Applicants verify their email and PayPal, complete a profile and submit the practice test. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://help.usertesting.com/hc/en-us/articles/11880240002845-Participant-compensation",
+        "title": "Participant compensation",
+        "type": "official",
+        "publisher": "UserTesting",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: pay depends on demand, test type and tasks, and the feed shows the amount. Payment goes by PayPal about 14 days after completion. Submitting an incomplete test instead of reporting a problem cancels payment. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://sidehustleschool.com/reviews/usertesting/",
+        "title": "Is UserTesting Legit? A Current Contributor Review (2026)",
+        "type": "independent_review",
+        "publisher": "Side Hustle School",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "risk",
+          "requirements"
+        ],
+        "notes": "One of several third-party reviews summarised together (attribution approximate). They put typical unmoderated tests at about $10 and report high screener disqualification. They say the practice test is usually unpaid and contributors must be 18+.",
+        "accessible": false
+      },
+      {
+        "url": "https://focusgrouplist.com/usertesting-pays-10-120-per-test-quick-studies-you-can-do-anytime/",
+        "title": "UserTesting Pays $10-$120 Per Test — Quick Studies You Can Do Anytime",
+        "type": "aggregator",
+        "publisher": "FocusGroupList",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "An aggregator whose title claims $10–$120 per test. The figure is not verified.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "dscout-scout",
+    "name": "Diary studies and video missions (dscout)",
+    "organization": "dscout",
+    "type": "research_participation",
+    "category": "research_participation",
+    "tags": [
+      "research-participation",
+      "not-a-job",
+      "diary-study",
+      "smartphone",
+      "video",
+      "paypal"
+    ],
+    "summary": "Join occasional paid research 'missions' where you record short videos and answer questions on your phone; this is not a job.",
+    "whatYouDo": "You apply to missions in the dscout app by answering screener questions. If chosen, you complete mission parts, such as recording videos and answering questions about how you use products or go about daily life, and you're paid after the project closes.",
+    "appeal": [
+      "Missions can pay tens to hundreds of dollars each (third-party reviews say about $20 to $200+)",
+      "You do it on your phone, on your own schedule within mission deadlines",
+      "dscout says it has scouts in the US, the UK and around the world, and the app is listed in the Canadian App Store"
+    ],
+    "watchOuts": [
+      "No official dscout page confirmed Canada eligibility in this check",
+      "Third-party reviews say mission availability depends on your location and demographics",
+      "Payment is PayPal only, about two weeks after the project's final mission closes, and you must claim the payment within 30 days",
+      "You record videos about your life and habits"
+    ],
+    "officialUrl": "https://dscout.com/participate-in-research-studies",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "smartphone"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "video",
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 1,
+      "customer": 0,
+      "technical": 0,
+      "creative": 1,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": "USD",
+      "unit": "study",
+      "basis": "aggregator",
+      "notes": "dscout says pay varies with each project's requirements and time. Third-party reviews give about $25–$150 per mission or $20–$200+ per study, without a stated currency basis for Canada."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "Missions depend on researcher demand and your demographics and location. No volume data was found."
+    },
+    "workerStatus": "participant",
+    "fees": "No dscout fee found; PayPal charges a small fee if you ask for a paper cheque instead.",
+    "applicationSteps": [
+      "Download the dscout app and create a scout profile",
+      "Answer screeners for missions that interest you",
+      "If selected, complete each mission part by its deadline",
+      "Claim the PayPal payment (sent about 2 weeks after the project closes) within 30 days"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "likely",
+    "evidenceStrength": "weak",
+    "riskFlags": [
+      "variable_work"
+    ],
+    "fitsIf": "You're comfortable recording short phone videos and want occasional, higher-value research missions.",
+    "notFitIf": "You need confirmed Canadian access or regular income, or you don't want to film yourself.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://dscout.helpscoutdocs.com/article/172-getting-paid-for-scouting-via-paypal",
+        "title": "Getting paid for scouting via PayPal - Help and Support",
+        "type": "official",
+        "publisher": "dscout",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: payment is PayPal only. The PayPal email arrives about two weeks after the project's final mission closes, and you must claim it within 30 days. A paper cheque through PayPal costs a small fee. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://participanthelp.dscout.com/getting-started/dscout-overview/dscout-overview-for-scouts",
+        "title": "dscout overview for scouts",
+        "type": "official",
+        "publisher": "dscout",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "From a search summary: there are tens of thousands of scouts in the US, the UK and around the world. It gives no country eligibility rules. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://dscout.com/participate-in-research-studies",
+        "title": "Join Dscout For Paid Surveys & Product Testing Opportunities",
+        "type": "official",
+        "publisher": "dscout",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: projects pay various amounts depending on their requirements and time. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://apps.apple.com/ca/app/dscout/id395563123",
+        "title": "Dscout App - App Store",
+        "type": "official",
+        "publisher": "Apple App Store (Canada)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "The app is listed in the Canadian App Store. That doesn't prove missions are open to Canadians.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.thebudgetdiet.com/dscout-review",
+        "title": "dscout Review (2026 Guide) - Is This App Legit & Worth Using?",
+        "type": "independent_review",
+        "publisher": "The Budget Diet",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "reliability"
+        ],
+        "notes": "One of several third-party reviews summarised together (attribution approximate). They give per-mission ranges of about $20–$200+ and say availability depends on location and demographics.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "uoft-paid-research-pools",
+    "name": "Paid university research studies (University of Toronto participant pools)",
+    "organization": "University of Toronto (psychology departments and labs)",
+    "type": "research_participation",
+    "category": "research_participation",
+    "tags": [
+      "research-participation",
+      "not-a-job",
+      "university",
+      "in-person",
+      "toronto",
+      "older-adults"
+    ],
+    "summary": "Sign up to University of Toronto participant registries to be contacted for paid psychology studies; occasional research participation, not a job.",
+    "whatYouDo": "You register with a campus participant pool or sign-up system and are invited to, or sign up for, studies you're eligible for. Sessions in the St. George adult pool usually last 1–2 hours, and some labs run computer tasks or MRI scans.",
+    "appeal": [
+      "Official pay at one pool: $18/hour for the St. George Adult Volunteer Pool",
+      "Community members, not just students, can register at the St. George, Mississauga (UTM) and Scarborough (UTSC) campuses",
+      "Some pools specifically want older adults (40–80 or 55–80), a group online panels often underserve"
+    ],
+    "watchOuts": [
+      "Only practical if you can get to a Toronto-area campus for in-person studies",
+      "Eligibility depends on the study, with age bands such as 55–80, 40–80 or healthy adults 18–35",
+      "Invitations are occasional, and registering doesn't guarantee any studies",
+      "Some UofT recruitment pages are years old, so confirm a pool is active before relying on it",
+      "Rotman's paid pool (about $10/hour) is aimed at students, not the general public"
+    ],
+    "officialUrl": "https://adultvolunteerpool.psych.utoronto.ca/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [
+        "ON"
+      ],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [],
+      "minAge": 18,
+      "assessment": "none"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "in_person",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 1,
+      "customer": 0,
+      "technical": 0,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": 18,
+      "max": 18,
+      "currency": "CAD",
+      "unit": "hour",
+      "basis": "official",
+      "notes": "The St. George Adult Volunteer Pool states $18/hour (ages 55–80, sessions usually 1–2 h). The other UofT community pools reviewed don't give a rate in the text retrieved. The student-oriented Rotman pool is about $10/hour."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "Recruitment depends on active studies and their age bands. No volume data was found."
+    },
+    "workerStatus": "participant",
+    "fees": null,
+    "applicationSteps": [
+      "Choose the pool for your campus: the Adult Volunteer Pool (St. George), the UTM Psychological & Brain Sciences sign-up system, or the UTSC Community Adult Volunteer Panel",
+      "Register with your name, contact details and age",
+      "Wait to be contacted, or sign up for paid studies you're eligible for",
+      "Attend the session and receive your compensation"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "variable_work"
+    ],
+    "fitsIf": "You live near a University of Toronto campus (especially if you're an older adult) and want occasional paid study sessions.",
+    "notFitIf": "You can't travel to campus or you need predictable income.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://adultvolunteerpool.psych.utoronto.ca/",
+        "title": "Adult Volunteer Pool",
+        "type": "official",
+        "publisher": "University of Toronto, Department of Psychology",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "status",
+          "requirements"
+        ],
+        "notes": "From a search summary: currently looking for volunteers aged 55–80, paid $18/hour, with sessions usually 1–2 hours and an online sign-up link. Direct fetch was blocked, so the 'currently' wording could not be checked live.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.utm.utoronto.ca/psychology/faculty-research/psychological-brain-sciences-research-sign-system",
+        "title": "Psychological & Brain Sciences Research Sign-up System",
+        "type": "official",
+        "publisher": "University of Toronto Mississauga",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "From a search summary: anyone wanting financial compensation can create a participant account (name and contact details) and sign up for paid experiments. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.utsc.utoronto.ca/psych/community-adult-volunteer-panel",
+        "title": "Community Adult Volunteer Panel",
+        "type": "official",
+        "publisher": "University of Toronto Scarborough",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "From a search summary: a community registry for adults 18+ who are not currently in PSYA01/PSYA02, especially looking for people aged 40–80. Pay was not stated in the summary. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://macklab.utoronto.ca/participate.html",
+        "title": "Participate - Mack Lab @ UofT",
+        "type": "official",
+        "publisher": "Mack Lab, University of Toronto",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "From a search summary: the lab is looking for healthy adults aged 18–35 for its studies, including MRI and computer tasks. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.rotman.utoronto.ca/faculty-and-research/education-labs/behavioural-research-lab/sign-up-to-participate/",
+        "title": "Sign Up to Participate",
+        "type": "official",
+        "publisher": "Rotman School of Management, University of Toronto",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "requirements"
+        ],
+        "notes": "From a search summary: the Rotman Paid Participant Pool runs marketing and organisational behaviour studies, usually at $10/hour, with most studies on campus. It is aimed at students. Direct fetch was blocked.",
+        "accessible": false
+      }
+    ],
+    "audience": [
+      "People who can get to a University of Toronto campus"
+    ]
+  },
+  {
+    "id": "leger-leo-survey-panel",
+    "name": "Paid online surveys (Leger LEO panel)",
+    "organization": "Leger",
+    "type": "research_participation",
+    "category": "research_participation",
+    "tags": [
+      "research-participation",
+      "not-a-job",
+      "surveys",
+      "points",
+      "canadian-panel"
+    ],
+    "summary": "Answer market-research surveys for points you can redeem for cash, travel miles or gift cards; legitimate, but the earnings look too small to recommend as a way to earn.",
+    "whatYouDo": "You join Leger's LEO panel and get survey invitations. Each survey shows its estimated time and points reward before you start, and points build up until you reach a redemption threshold.",
+    "appeal": [
+      "Canadian-owned research firm with a large North American panel (400,000+ members, per Leger)",
+      "Rewards include cash, PayPal, Air Miles, Aeroplan or gift cards",
+      "Surveys show their time and reward up front"
+    ],
+    "watchOuts": [
+      "Rejected for this tool: no source supports a meaningful effective hourly rate",
+      "Third-party reviews put surveys at roughly $0.50–$35 each, with 1,000 points worth $1",
+      "Cash-type rewards reportedly need 20,000 points (about $20) before you can redeem (not checked against Leger's terms)",
+      "Reviews are mixed: many negative user reviews alongside positive app ratings",
+      "Survey income, not a job: no guarantee of hours or volume"
+    ],
+    "officialUrl": "https://leger360.com/leger-launches-leo-the-mobile-app-to-give-your-opinion/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "none",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "smartphone"
+      ],
+      "minAge": null,
+      "assessment": "none"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "none",
+      "phone": false
+    },
+    "skills": {
+      "computer": 1,
+      "writing": 0,
+      "numeracy": 0,
+      "detail": 1,
+      "customer": 0,
+      "technical": 0,
+      "creative": 0,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "aggregator",
+      "notes": "Third-party reviews say about $0.50–$35 per survey, with 1,000 points ≈ $1. No source gave an hourly figure."
+    },
+    "reliability": {
+      "workVolume": "sporadic",
+      "predictability": "low",
+      "notes": "Invitations depend on panel demand and your profile. No volume data was found."
+    },
+    "workerStatus": "participant",
+    "fees": null,
+    "applicationSteps": [
+      "Join the LEO panel through Leger's app",
+      "Complete the survey invitations you qualify for",
+      "Redeem your points once you reach the threshold"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "now",
+    "status": "rejected",
+    "legitimacy": "established",
+    "evidenceStrength": "weak",
+    "riskFlags": [
+      "variable_work"
+    ],
+    "fitsIf": "You already enjoy doing surveys for points or travel miles and don't mind small rewards.",
+    "notFitIf": "You want meaningful income for your time.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://leger360.com/leger-launches-leo-the-mobile-app-to-give-your-opinion/",
+        "title": "Leger launches LEO: the mobile app to give your opinion",
+        "type": "official",
+        "publisher": "Leger",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy",
+          "pay",
+          "canada_eligibility"
+        ],
+        "notes": "From a search summary of this press release: members earn points per completed survey, redeemable for cash, Air Miles, Aeroplan or gift cards. Leger calls itself the largest Canadian-owned research firm, with 400k+ panel members in North America. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://moneypantry.com/leo-review/",
+        "title": "leo review",
+        "type": "independent_review",
+        "publisher": "Money Pantry",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay",
+          "risk"
+        ],
+        "notes": "Third-party review: about $0.50–$35 per survey, 1,000 points = $1. Redemption needs 10,000 points for Air Miles or Aeroplan and 20,000 for gift cards or PayPal. It notes many bad reviews.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.savvynewcanadians.com/leo-leger-opinion-review/",
+        "title": "LEO (Leger Opinion) review",
+        "type": "independent_review",
+        "publisher": "Savvy New Canadians",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy"
+        ],
+        "notes": "Third-party review: the LEO app is rated about 4.2/5 from 1,100+ Google Play reviews, and the panel dates from 2004.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "upwork-freelance",
+    "name": "Freelance client work through Upwork",
+    "organization": "Upwork",
+    "type": "freelance",
+    "category": "freelance_microbusiness",
+    "tags": [
+      "freelance",
+      "marketplace",
+      "proposals",
+      "connects",
+      "service-fee"
+    ],
+    "summary": "Sell services to clients by sending proposals for projects posted on Upwork's freelance marketplace.",
+    "whatYouDo": "You build a profile, then spend 'Connects' to send proposals to clients' job posts. If hired, you agree hourly or fixed-price terms and deliver the work. Upwork deducts its service fee before you withdraw your earnings to your bank.",
+    "appeal": [
+      "Large marketplace where clients post jobs you can bid on",
+      "The fee is shown before you send a proposal and stays fixed for that contract",
+      "Withdrawals straight to a local bank cost a flat $0.99 USD",
+      "Reviews and a track record can lead to repeat clients"
+    ],
+    "watchOuts": [
+      "Since May 2025 the freelancer service fee varies from 0% to 15% per contract (third-party guides say about 10% is typical)",
+      "Proposals cost Connects ($0.15 each), and many jobs need about 6–16 or more; third-party guides say Connects spent on proposals generally aren't refunded",
+      "New profiles can be rejected when a skill area is crowded (Upwork Community reports)",
+      "Forum posts say new freelancers often spend their Connects and get no interviews",
+      "Optional Freelancer Plus costs $19.99/month",
+      "Canadian bank fees and currency-conversion costs may apply on top"
+    ],
+    "officialUrl": "https://www.upwork.com/i/how-it-works/freelancer/",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "video",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 2,
+      "numeracy": 1,
+      "detail": 2,
+      "customer": 2,
+      "technical": 1,
+      "creative": 1,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "You set your rate or bid. No earnings data was checked in this pass. Take-home pay is after the 0–15% service fee, Connects spending and withdrawal costs."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Work depends on winning proposals. Forum anecdotes describe new freelancers getting no interviews, and there's no official win-rate data."
+    },
+    "workerStatus": "contractor",
+    "fees": "Freelancer service fee varies 0–15% per contract and is shown before you propose. Basic accounts pay 5% on direct contracts. Connects cost $0.15 each (minimum 10). Freelancer Plus is optional at $19.99/month. Direct to Local Bank withdrawal costs $0.99 USD, with a $5 USD minimum.",
+    "applicationSteps": [
+      "Create a freelancer profile focused on a specific skill clients want",
+      "Wait for profile approval (crowded skill areas may be declined)",
+      "Send targeted proposals using free or purchased Connects",
+      "Check the service fee shown on each proposal or offer",
+      "Set up a withdrawal method such as Direct to Local Bank and withdraw your earnings"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "fees",
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You have a skill clients pay for, can write persuasive proposals, and can afford some upfront Connects cost while you build reviews.",
+    "notFitIf": "You need income within days or can't afford to spend money on bids that may not pay off.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.upwork.com/resources/is-upwork-free",
+        "title": "Is Upwork Free To Join? Our Pricing Breakdown (2026) - Upwork",
+        "type": "official",
+        "publisher": "Upwork",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary of Upwork's 2026 resource pages: the variable 0–15% fee is shown before a proposal and fixed once the contract starts. Basic accounts pay 5% on direct contracts. Freelancer Plus is $19.99/mo with 100 Connects (versus 10 on Basic). Connects are $0.15 each with a minimum purchase of 10. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://support.upwork.com/hc/en-us/articles/211063888",
+        "title": "Upwork Help Center withdrawal article (title not shown in search result)",
+        "type": "official",
+        "publisher": "Upwork",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary of Upwork withdrawal help pages: Direct to Local Bank costs $0.99 USD per withdrawal, arrives within about 4 days, and has a $5 USD minimum. The snippet did not show Canada's currency row. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://freelancercalculator.com/upwork-fees-2026/",
+        "title": "Upwork Fees 2026: Variable 0–15% Breakdown",
+        "type": "aggregator",
+        "publisher": "FreelancerCalculator.com",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "One of several third-party guides summarised together. Upwork moved to a variable 0–15% fee on May 1, 2025, and guides estimate the typical fee at about 10%.",
+        "accessible": false
+      },
+      {
+        "url": "https://wise.com/ca/blog/upwork-canada",
+        "title": "Upwork Canada: What You Need To Know Before You Sign Up",
+        "type": "independent_review",
+        "publisher": "Wise",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility",
+          "pay"
+        ],
+        "notes": "A guide for Canadian Upwork users, apparently from about 2020. It says bank transfers can add your bank's receiving fees and currency conversion fees.",
+        "accessible": false
+      },
+      {
+        "url": "https://community.upwork.com/t5/New-to-Upwork/Direct-Deposit-To-Bank-In-Canada/td-p/918386",
+        "title": "Direct Deposit To Bank In Canada",
+        "type": "forum",
+        "publisher": "Upwork Community",
+        "published": "2021-05-28",
+        "accessed": "2026-10-13",
+        "claims": [
+          "canada_eligibility"
+        ],
+        "notes": "A 2021 anecdote: a Toronto freelancer says direct deposit to a Canadian bank only allowed CAD. This may be out of date.",
+        "accessible": false
+      },
+      {
+        "url": "https://community.upwork.com/t5/New-to-Upwork/Rejected-Profile/m-p/493363",
+        "title": "Re: Rejected Profile",
+        "type": "forum",
+        "publisher": "Upwork Community",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "A 2018 thread (anecdote): a rejection email cited many existing freelancers with similar skills, and the advice was to niche down.",
+        "accessible": false
+      },
+      {
+        "url": "https://community.upwork.com/t5/Freelancers/Why-Upwork-make-New-Freelancers-pay-for-Connects-before-they/m-p/1159102",
+        "title": "Why Upwork make New Freelancers pay for Connects before they...",
+        "type": "forum",
+        "publisher": "Upwork Community",
+        "published": "2022-10-05",
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability",
+          "risk"
+        ],
+        "notes": "A 2022 anecdote: many new freelancers get no interview requests after spending their free Connects.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "fiverr-gigs",
+    "name": "Selling freelance service 'gigs' on Fiverr",
+    "organization": "Fiverr",
+    "type": "freelance",
+    "category": "freelance_microbusiness",
+    "tags": [
+      "freelance",
+      "marketplace",
+      "gigs",
+      "commission"
+    ],
+    "summary": "List fixed-price service packages ('gigs') that buyers can order directly; Fiverr keeps 20% of each sale.",
+    "whatYouDo": "You create gig listings that describe a specific service, with price tiers and delivery times. Buyers find and order your gig, you deliver the work through Fiverr's order system, and your earnings clear to your balance after a holding period.",
+    "appeal": [
+      "Buyers find you through search instead of you bidding on jobs",
+      "Simple flat fee: you keep 80% of each order",
+      "Faster 7-day clearance and early payout become available at higher seller levels or with Seller Plus"
+    ],
+    "watchOuts": [
+      "Fiverr keeps 20% of every order, including tips",
+      "Standard sellers' earnings are held for 14 days after an order completes before you can withdraw",
+      "Early payout costs 1% and is limited to Top Rated sellers and Seller Plus Premium members",
+      "Buyers also pay a 5.5% service fee (plus $3.50 on orders under $200), which makes your gig cost them more",
+      "Fiverr Community posts report sudden drops in gig impressions and accounts disabled after several order cancellations",
+      "Canada-specific payout methods and fees weren't confirmed in this check"
+    ],
+    "officialUrl": "https://www.fiverr.com/sellers/freelance-jobs",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "unclear",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 2,
+      "technical": 1,
+      "creative": 1,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "You set your gig prices. No earnings data was checked. You receive 80% of the order value after any discounts."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Orders depend on how your gigs rank in search. Fiverr Community anecdotes describe sudden impression drops and long gaps with no orders."
+    },
+    "workerStatus": "contractor",
+    "fees": "20% commission on every order, tips included. Earnings clear after 14 days (7 days for Seller Plus, Top Rated and Pro). Early payout costs 1%. Withdrawal-method fees vary and weren't confirmed for Canada.",
+    "applicationSteps": [
+      "Create a seller account and profile",
+      "Publish gigs with clear packages, prices and delivery times",
+      "Deliver orders on time and avoid cancellations, which can hurt your ranking",
+      "Withdraw cleared revenue through an available payout method"
+    ],
+    "timeToFirstEarnings": "weeks",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "established",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "fees",
+      "variable_work",
+      "account_deactivation_reports",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You can package a clear, repeatable service and can wait while your gigs build reviews and ranking.",
+    "notFitIf": "You need quick, predictable income or can't absorb a 20% commission.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://help.fiverr.com/hc/en-us/articles/5244747923985-Seller-coupons",
+        "title": "Growth Tools for Seller Plus",
+        "type": "official",
+        "publisher": "Fiverr",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: the seller's revenue is 80% of the order amount after any discount. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://help.fiverr.com/hc/en-us/articles/4402267122449-Early-Payout",
+        "title": "Early Payout",
+        "type": "official",
+        "publisher": "Fiverr",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary of Fiverr help pages (attribution approximate): standard clearance is 14 days, or 7 days for Seller Plus, Top Rated and Pro. Early payout is for Top Rated sellers and Seller Plus Premium members and costs 1% each time. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://help.fiverr.com/hc/en-us/articles/360050216133-Paying-for-orders-extras-or-custom-offers",
+        "title": "Paying for orders, extras, or custom offers",
+        "type": "official",
+        "publisher": "Fiverr",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: buyers pay a 5.5% service fee, plus $3.50 on orders under $200. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://freelancercalculator.com/fiverr-seller-fees-2026-official-guide/",
+        "title": "Fiverr Seller Fees 2026: The Official Complete Guide for Freelancers — FreelancerCalculator.com",
+        "type": "aggregator",
+        "publisher": "FreelancerCalculator.com",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "A third-party guide, not an official Fiverr page despite its title. It says Fiverr takes a flat 20% including tips and holds earnings 14 days, and that withdrawal fees vary by method (PayPal, bank, Payoneer). It doesn't cover Canada.",
+        "accessible": false
+      },
+      {
+        "url": "https://community.fiverr.com/public/forum/boards/ask-the-community-xsm/posts/341384-fiverr-accounts-are-empty-of-orders-and-impressions-have-dropped-drastically",
+        "title": "Fiverr accounts are empty of orders and impressions have dropped drastically",
+        "type": "forum",
+        "publisher": "Fiverr Community",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "reliability"
+        ],
+        "notes": "Seller anecdotes about sharp drops in impressions and long stretches without orders, sometimes after a cancelled order.",
+        "accessible": false
+      },
+      {
+        "url": "https://community.fiverr.com/public/forum/boards/start-here-c9d/posts/335163-account-disable-issue",
+        "title": "Account disable issue",
+        "type": "forum",
+        "publisher": "Fiverr Community",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Anecdotes (attribution approximate): accounts disabled after several order cancellations, including one that still had orders in progress.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "contra-freelance",
+    "name": "Commission-free freelance portfolio and payments (Contra)",
+    "organization": "Contra",
+    "type": "freelance",
+    "category": "freelance_microbusiness",
+    "tags": [
+      "freelance",
+      "portfolio",
+      "commission-free",
+      "design",
+      "invoicing"
+    ],
+    "summary": "Show a portfolio, find or bring your own clients, and get paid without Contra taking a commission from your earnings.",
+    "whatYouDo": "You build a portfolio profile, apply to opportunities or invite your own clients, and handle proposals, contracts and invoices through Contra. Clients pay through the platform, and you withdraw to a payout method such as PayPal or Payoneer.",
+    "appeal": [
+      "No commission on freelancer earnings (Contra has been commission-free since 2021)",
+      "Handy for invoicing clients you find yourself",
+      "Portfolio-centred profiles suit designers and other creatives",
+      "Most payouts arrive within minutes (Contra help)"
+    ],
+    "watchOuts": [
+      "Clients pay platform fees ($29 per one-off invoice or contract, or $29/month for ongoing projects) unless you have Contra Pro, which may put some clients off",
+      "Payout fees: 2% to PayPal, or a flat $3 to Payoneer plus Payoneer's own charges",
+      "Third-party sources say Contra Pro costs about $29/month and some features need it",
+      "It's not mainly a job board, so you still have to find clients",
+      "Payout options for Canada weren't confirmed in this check"
+    ],
+    "officialUrl": "https://contra.com/commission-free",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "unclear",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "video",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 1,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 2,
+      "technical": 1,
+      "creative": 2,
+      "language": 1
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "You set your rates, and no earnings data was found. Contra takes no commission, but payout and client-side fees apply."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "No data on how much work new freelancers find on Contra."
+    },
+    "workerStatus": "contractor",
+    "fees": "No commission on freelancer earnings. Clients pay $29 per one-off invoice or contract, or $29/month per ongoing project (waived on invoices from Contra Pro members). Payouts cost 2% to PayPal or $3 to Payoneer. Contra Pro is about $29/month (third-party figure).",
+    "applicationSteps": [
+      "Create a Contra profile and add portfolio projects",
+      "Find opportunities or invite your existing clients",
+      "Send proposals, contracts or invoices through Contra",
+      "Withdraw payments to an available payout method (check what's offered in Canada)"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "likely",
+    "evidenceStrength": "weak",
+    "riskFlags": [
+      "fees",
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You already have, or can find, clients, especially for design or creative work, and want to avoid marketplace commissions.",
+    "notFitIf": "You need a platform to bring you steady work, or your clients won't accept platform fees.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://contra.com/commission-free",
+        "title": "Get paid for freelancing commission-free",
+        "type": "official",
+        "publisher": "Contra",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: Contra markets freelancing with no commission on earnings. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://client-help.contra.com/en/articles/9708235-understanding-contra-s-fees-as-a-client",
+        "title": "Understanding Contra's fees as a client",
+        "type": "official",
+        "publisher": "Contra",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: clients pay $29 per one-off invoice (waived on invoices from Contra Pro members) and $29 per contract or $29/month per ongoing project. An older Contra page showed $19. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://client-help.contra.com/en/articles/9708244-payout-options-for-contractors",
+        "title": "Payout options for contractors",
+        "type": "official",
+        "publisher": "Contra",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: PayPal payouts cost 2% and Payoneer a flat $3 (plus Payoneer's charges), and most payouts arrive within minutes. It refers to a supported-methods-by-country page, which wasn't retrieved. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://techcrunch.com/2021/11/02/independent-worker-network-contra-goes-commission-free-as-it-secures-new-nea-led-capital",
+        "title": "Independent worker network Contra goes commission-free as it secures new NEA-led capital",
+        "type": "journalism",
+        "publisher": "TechCrunch",
+        "published": "2021-11-02",
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy",
+          "pay"
+        ],
+        "notes": "Reports Contra's 2021 switch to letting freelancers be paid without commission, alongside venture funding.",
+        "accessible": false
+      },
+      {
+        "url": "https://toolradar.com/tools/contra/pricing",
+        "title": "Contra pricing (Toolradar)",
+        "type": "aggregator",
+        "publisher": "Toolradar",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Third-party pricing summary (attribution approximate): Contra Pro is about $29/month, and transaction-level fees (processing, conversion, faster payout) may apply. Unverified.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "freelancer-com",
+    "name": "Bidding on projects at Freelancer.com",
+    "organization": "Freelancer.com",
+    "type": "freelance",
+    "category": "freelance_microbusiness",
+    "tags": [
+      "freelance",
+      "marketplace",
+      "bidding",
+      "project-fee"
+    ],
+    "summary": "Bid on client projects posted to Freelancer.com's marketplace; the platform takes a fee on each project you're awarded.",
+    "whatYouDo": "You create a profile and bid on posted projects. If a client awards you a project and you accept, you deliver the work in milestones while Freelancer.com takes its project fee, then you withdraw your balance.",
+    "appeal": [
+      "Lots of posted projects to bid on",
+      "Fees are listed on an official fees page",
+      "A program lets you bring your own clients at 0% (older terms, may have changed)"
+    ],
+    "watchOuts": [
+      "On fixed-price work the project fee is 10% or $5 USD, whichever is greater, and it's collected when you accept the award",
+      "Hourly work costs 10% of each payment, and enterprise projects 15%",
+      "Official fee pages give inconsistent prices for upgrades and listings",
+      "Complaint boards (2011–2024) report suspended accounts and funds held pending identity or transaction checks",
+      "Withdrawals cost about $1 USD for PayPal, Skrill or Payoneer (wires cost more), and Freelancer uses its own exchange rate",
+      "Payout options for Canada weren't confirmed in this check"
+    ],
+    "officialUrl": "https://www.freelancer.com/info/how-it-works",
+    "applyUrl": null,
+    "geography": {
+      "countries": [],
+      "regions": [],
+      "canadaEligibility": "unclear",
+      "setting": "remote"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "flexible",
+      "windows": [
+        "day",
+        "evening",
+        "night",
+        "weekend"
+      ],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 2,
+      "numeracy": 1,
+      "detail": 2,
+      "customer": 2,
+      "technical": 1,
+      "creative": 1,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "You set your bids. No earnings data was checked. Take-home pay is after the project fee, withdrawal fees and currency conversion."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Work depends on winning bids. No official data on award rates."
+    },
+    "workerStatus": "contractor",
+    "fees": "Project fee on fixed-price work is 10% or $5 USD (whichever is greater), collected when you accept. Hourly work costs 10% per payment and enterprise projects 15%. Upgrades and memberships are optional and paid. Withdrawals cost about $1 USD for PayPal, Skrill or Payoneer; wires cost more (one third-party guide says $25 USD).",
+    "applicationSteps": [
+      "Create a profile and complete identity verification early to avoid payment holds",
+      "Bid on projects that match your skills",
+      "Accept awarded projects (the project fee is collected at this point)",
+      "Deliver through milestones and withdraw your balance"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "likely",
+    "evidenceStrength": "moderate",
+    "riskFlags": [
+      "fees",
+      "variable_work",
+      "account_deactivation_reports",
+      "payment_delay_reports",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You're comfortable competing on bids and can handle a fee taken when you accept a project.",
+    "notFitIf": "You're new, have little to spare for fees, or need fast, reliable access to your money.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://www.freelancer.com/feesandcharges",
+        "title": "Freelancer Fees and Charges, Earn And Save More!",
+        "type": "official",
+        "publisher": "Freelancer.com",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "From a search summary: freelancer fees are 10% or $5 USD (whichever is greater) on fixed-price work, collected on acceptance, and 10% of hourly payments. Enterprise projects are 15%. Card, PayPal and Skrill transactions cost $0.30 + 2.3%, and withdrawals about $1 USD. Upgrade prices differ across official pages. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.freelancer.com/support/Payments/project-fees?amp%3Bw=f&ngsw-bypass=&w=f",
+        "title": "Project Fees",
+        "type": "official",
+        "publisher": "Freelancer.com",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Support page on project fees, summarised together with the fees page above. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.complaintsboard.com/freelancercom-account-suspension-without-explanation-and-withholding-of-funds-c1974646",
+        "title": "Freelancer.com - account suspension without explanation and withholding of funds",
+        "type": "forum",
+        "publisher": "ComplaintsBoard",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "A 2024 complaint (anecdote): an account was suspended with no specific reason and about $200–300 held. Freelancer.com has replied to such complaints that it freezes accounts only to verify identity or transactions.",
+        "accessible": false
+      },
+      {
+        "url": "https://solutions.trustradius.com/buyer-blog/freelancercom-product-guide/",
+        "title": "freelancercom product guide",
+        "type": "independent_review",
+        "publisher": "TrustRadius",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "risk"
+        ],
+        "notes": "Notes user dissatisfaction with account verification and cases of funds withheld from unverified accounts.",
+        "accessible": false
+      },
+      {
+        "url": "https://wise.com/au/blog/freelancer-review",
+        "title": "Freelancer Review: All you need to know",
+        "type": "independent_review",
+        "publisher": "Wise",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "pay"
+        ],
+        "notes": "Says most withdrawal methods are free except wires ($25 USD). This conflicts with other sources' figure of about $1, so check before relying on it.",
+        "accessible": false
+      }
+    ]
+  },
+  {
+    "id": "canadian-freelance-boards-associations",
+    "name": "Canadian freelance job boards and freelancer associations",
+    "organization": "Various",
+    "type": "category",
+    "category": "freelance_microbusiness",
+    "tags": [
+      "freelance",
+      "canada",
+      "job-board",
+      "writing",
+      "editing",
+      "association"
+    ],
+    "summary": "Canada-focused places to find freelance and contract postings (especially writing, editing and communications) and groups that support freelancers.",
+    "whatYouDo": "You browse Canadian job banks and boards for freelance, contract or remote postings and apply directly to the client or employer. Associations such as the Canadian Freelance Guild and the Canadian Freelance Union offer job listings or member supports such as insurance and contract advice.",
+    "appeal": [
+      "Postings are aimed at people in Canada, and some are open only to Canadian citizens or permanent residents",
+      "No marketplace commission when a client hires you directly",
+      "Canadian Freelance Union membership is open to media, communications and information freelancers with a Canadian connection, and offers insurance plans, press cards, grievance support and contract advice"
+    ],
+    "watchOuts": [
+      "Postings lean towards writing, editing and communications",
+      "Membership costs and job-bank access terms weren't checked",
+      "Some boards make unverified claims (for example, Workhoppers calls itself Canada's #1 freelance site)",
+      "Listings on aggregators (Glassdoor, SimplyHired, Workopolis) can be stale, so check posting dates",
+      "Freelance or contract status usually means no employee benefits"
+    ],
+    "officialUrl": null,
+    "applyUrl": null,
+    "geography": {
+      "countries": [
+        "CA"
+      ],
+      "regions": [],
+      "canadaEligibility": "likely",
+      "setting": "varies"
+    },
+    "languages": [
+      "en"
+    ],
+    "requirements": {
+      "experience": "some",
+      "credentialRequired": false,
+      "credentials": [],
+      "equipment": [
+        "computer"
+      ],
+      "minAge": null,
+      "assessment": "unknown"
+    },
+    "schedule": {
+      "flexibility": "varies",
+      "windows": [],
+      "hoursMinWeekly": null,
+      "hoursMaxWeekly": null
+    },
+    "interaction": {
+      "modes": [
+        "text",
+        "independent"
+      ],
+      "realtime": "some",
+      "phone": false
+    },
+    "skills": {
+      "computer": 2,
+      "writing": 2,
+      "numeracy": 0,
+      "detail": 2,
+      "customer": 1,
+      "technical": 0,
+      "creative": 1,
+      "language": 2
+    },
+    "training": {
+      "required": false,
+      "cost": "none",
+      "notes": ""
+    },
+    "compensation": {
+      "min": null,
+      "max": null,
+      "currency": null,
+      "unit": null,
+      "basis": "unknown",
+      "notes": "Pay varies by posting, and no rate data was collected."
+    },
+    "reliability": {
+      "workVolume": "variable",
+      "predictability": "low",
+      "notes": "Posting volume wasn't measured. Search results showed recent Canadian Freelance Guild job bank postings dated September 2026."
+    },
+    "workerStatus": "varies",
+    "fees": "Unknown: association membership fees weren't checked, and no marketplace commission was found.",
+    "applicationSteps": [
+      "Browse the Canadian Freelance Guild job bank and other Canada-focused boards",
+      "Check each posting's date, eligibility (such as citizenship or PR) and contract terms",
+      "Apply directly to the client or employer",
+      "Consider joining a freelancer association for insurance, contract advice or grievance support"
+    ],
+    "timeToFirstEarnings": "unknown",
+    "horizon": "bridge",
+    "status": "official_info_found",
+    "legitimacy": "likely",
+    "evidenceStrength": "weak",
+    "riskFlags": [
+      "variable_work",
+      "contractor_no_benefits"
+    ],
+    "fitsIf": "You write, edit or do communications work and want Canadian clients and freelancer supports.",
+    "notFitIf": "You need a high volume of quick gigs or have no portfolio to show yet.",
+    "lastChecked": "2026-10-13",
+    "sources": [
+      {
+        "url": "https://canadianfreelanceguild.ca/en/job-bank/browse",
+        "title": "CanadianFreelanceGuild.ca - Job Bank",
+        "type": "official",
+        "publisher": "Canadian Freelance Guild",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status",
+          "requirements"
+        ],
+        "notes": "From a search summary: writing, editing and content postings, with the most recent dated September 2026. One full-time term role (Writer in Residence) is open only to Canadian citizens or PRs. Membership terms weren't seen. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://canadianfreelanceunion.ca/faq/",
+        "title": "Frequently Asked Questions",
+        "type": "official",
+        "publisher": "Canadian Freelance Union (Unifor)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "requirements"
+        ],
+        "notes": "From a search summary: anyone doing freelance work can join, with a focus on media, communications and information work and a connection to Canada. Benefits include insurance plans, press cards, grievance support and contract advice. Direct fetch was blocked.",
+        "accessible": false
+      },
+      {
+        "url": "https://canadianfreelanceunion.ca/?p=3608",
+        "title": "Canadian Freelance Union announces massive drive to organize freelancers; interpreters and translators form first unit",
+        "type": "official",
+        "publisher": "Canadian Freelance Union (Unifor)",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy"
+        ],
+        "notes": "A May 2024 announcement: an organizing drive beyond communications work, starting with an interpreters and translators unit.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.workhoppers.com/en/freelance-canada",
+        "title": "#1 website for freelancers in Canada",
+        "type": "official",
+        "publisher": "Workhoppers",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "legitimacy"
+        ],
+        "notes": "The site describes itself as Canada's #1 freelance site and accepts freelance, contract, part-time, temporary, remote and gig postings. This is self-promotion and wasn't independently checked.",
+        "accessible": false
+      },
+      {
+        "url": "https://www.glassdoor.ca/Job/canada-freelance-content-writer-jobs-SRCH_IL.0,6_IN3_KO7,31.htm",
+        "title": "22 freelance content writer jobs in Canada, September 2026",
+        "type": "aggregator",
+        "publisher": "Glassdoor",
+        "published": null,
+        "accessed": "2026-10-13",
+        "claims": [
+          "status"
+        ],
+        "notes": "An aggregator listing showing freelance content-writing postings in Canada in September 2026. Some related Glassdoor pages were stale.",
+        "accessible": false
+      }
+    ]
+  }
+]

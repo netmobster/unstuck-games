@@ -1,0 +1,175 @@
+{
+ "id": "job-bank-canada",
+ "name": "Job Bank job search and alerts (Government of Canada)",
+ "organization": "Government of Canada - Job Bank",
+ "type": "program",
+ "category": "government_program",
+ "tags": [
+  "job-search",
+  "free",
+  "government",
+  "job-alerts",
+  "wage-data",
+  "scam-reporting"
+ ],
+ "summary": "Free federal job board where you can search Canadian job postings, set daily email alerts and check typical wages for an occupation, without creating an account.",
+ "whatYouDo": "You search postings by keyword, occupation, province and other filters, and save a search as an email alert for new matches. Job Bank also publishes wage ranges by occupation and region, which helps you judge whether a posting's pay is realistic. Canada Summer Jobs-funded jobs are listed there too.",
+ "appeal": [
+  "Free, government-run, no account needed to search",
+  "Email job alerts for saved searches",
+  "Occupation wage pages help you spot pay that looks too good to be true",
+  "Each posting has a 'Report a problem with this job posting' button",
+  "Postings created directly by registered employers carry a 'Posted on Job Bank' flag"
+ ],
+ "watchOuts": [
+  "It is a search tool, not a job: you still compete for each posting",
+  "Some listings are pulled in from other websites, so check who actually posted a job",
+  "Job Bank warns about imitation sites and fake job offers; legitimate employers will not ask for banking details to apply",
+  "Alert frequency described differently in older material (once vs. twice a day)"
+ ],
+ "officialUrl": "https://www.jobbank.gc.ca/intro/findajob",
+ "applyUrl": null,
+ "geography": {
+  "countries": [
+   "CA"
+  ],
+  "regions": [],
+  "canadaEligibility": "likely",
+  "setting": "varies"
+ },
+ "languages": [
+  "en"
+ ],
+ "requirements": {
+  "experience": "none",
+  "credentialRequired": false,
+  "credentials": [],
+  "equipment": [
+   "computer"
+  ],
+  "minAge": null,
+  "assessment": "none"
+ },
+ "schedule": {
+  "flexibility": "flexible",
+  "windows": [
+   "day",
+   "evening",
+   "night",
+   "weekend"
+  ],
+  "hoursMinWeekly": null,
+  "hoursMaxWeekly": null
+ },
+ "interaction": {
+  "modes": [
+   "independent",
+   "text"
+  ],
+  "realtime": "none",
+  "phone": false
+ },
+ "skills": {
+  "computer": 1,
+  "writing": 1,
+  "numeracy": 0,
+  "detail": 1,
+  "customer": 0,
+  "technical": 0,
+  "creative": 0,
+  "language": 1
+ },
+ "training": {
+  "required": false,
+  "cost": "none",
+  "notes": ""
+ },
+ "compensation": {
+  "min": null,
+  "max": null,
+  "currency": null,
+  "unit": null,
+  "basis": "unknown",
+  "notes": "Not a paying job; pay depends on each posting. Job Bank wage pages give occupation medians (e.g., Ontario survey interviewers about $24.18/hr) for comparison."
+ },
+ "reliability": {
+  "workVolume": "unknown",
+  "predictability": "unknown",
+  "notes": "Number of postings varies by occupation and region; not measured here."
+ },
+ "workerStatus": "varies",
+ "fees": null,
+ "applicationSteps": [
+  "Search jobs on Job Bank by keyword, occupation and location (no account needed)",
+  "Use 'Create an alert with this search' to get new matching jobs by email",
+  "Check the occupation's wage page to sanity-check the posted pay",
+  "Apply using each posting's instructions; report suspicious postings with the 'Report a problem' button"
+ ],
+ "timeToFirstEarnings": "unknown",
+ "horizon": "now",
+ "status": "official_info_found",
+ "legitimacy": "established",
+ "evidenceStrength": "moderate",
+ "riskFlags": [
+  "scam_impersonation"
+ ],
+ "fitsIf": "You want a free, government-run place to search Canadian job postings, get alerts and check typical wages.",
+ "notFitIf": "You want someone to coach you one-on-one or place you in a job (Employment Ontario is a better fit).",
+ "lastChecked": "2026-10-13",
+ "sources": [
+  {
+   "url": "https://www.jobbank.gc.ca/intro/findajob",
+   "title": "Find a job - Job Bank",
+   "type": "official",
+   "publisher": "Government of Canada (Job Bank)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements",
+    "legitimacy"
+   ],
+   "notes": "Search-result summary only (fetch blocked in research environment). Describes search filters, email alerts and the report-a-posting button; site says it is the only source of jobs validated by the Government of Canada.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/findajob/resources/safety-tips",
+   "title": "Job Search Safety Tips - Job Bank",
+   "type": "official",
+   "publisher": "Government of Canada (Job Bank)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk",
+    "legitimacy"
+   ],
+   "notes": "Search-result summary only. Advises not to share banking details, SIN or ID numbers early; notes 'Posted on Job Bank' flag for postings created by registered employers; says Job Bank does not handle immigration.",
+   "accessible": false
+  },
+  {
+   "url": "https://www.jobbank.gc.ca/support/question?qaid=16&tid=7",
+   "title": "Why do I see jobs from other websites on Job Bank?",
+   "type": "official",
+   "publisher": "Government of Canada (Job Bank)",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "risk"
+   ],
+   "notes": "FAQ title seen in search results confirms some listings come from other websites; page content not retrieved.",
+   "accessible": false
+  },
+  {
+   "url": "https://gov.mb.ca/wd/ites/tes/pubs/jobs_careers/jobbank_for_jobseekers_factsheet.pdf",
+   "title": "Job Bank for job seekers factsheet",
+   "type": "government",
+   "publisher": "Government of Manitoba",
+   "published": null,
+   "accessed": "2026-10-13",
+   "claims": [
+    "requirements"
+   ],
+   "notes": "Undated provincial factsheet (search summary): job search needs no account or personal information; alerts up to twice daily (may be outdated).",
+   "accessible": false
+  }
+ ]
+}
