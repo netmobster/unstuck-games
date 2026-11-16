@@ -8,6 +8,16 @@ EC2 instance that holds a checkout of this repo. Deploying is `git pull` on the 
 files needed to rebuild the box from nothing are in [`infra/`](infra/), and every command
 on the box goes through [`infra/box.ps1`](infra/box.ps1), which a person runs.
 
+> **Moving, November 2026: into SA's AWS account.** This account's Bedrock quotas are all 0,
+> which is why the narrators are off. SA's account (`962000089613`) has real quota in
+> us-east-2, so the box is moving there, walled off from SA's own things: its own instance,
+> role, `/unstuck/*` parameters, bucket, security group and budget, all tagged
+> `Project=unstuck`, and nothing in us-west-2. [`PLAN-SA-MOVE.md`](PLAN-SA-MOVE.md) has the
+> phases. [`infra/sa-account.ps1`](infra/sa-account.ps1) builds that corner (dry by default).
+> `box.ps1` takes `-Box old|sa` and has the move steps: `copy-params`, `carry-out`,
+> `carry-copy` and `carry-in`. Until DNS moves, everything below describes the old box, and
+> `-Box` defaults to `old`.
+
 ## Addresses
 
 | Address | What | Served as |
