@@ -15,8 +15,8 @@ on the box goes through [`infra/box.ps1`](infra/box.ps1), which a person runs.
 > `Project=unstuck`, and nothing in us-west-2. [`PLAN-SA-MOVE.md`](PLAN-SA-MOVE.md) has the
 > phases. [`infra/sa-account.ps1`](infra/sa-account.ps1) builds that corner (dry by default).
 > `box.ps1` takes `-Box old|sa` and has the move steps: `copy-params`, `carry-out`,
-> `carry-copy` and `carry-in`. Until DNS moves, everything below describes the old box, and
-> `-Box` defaults to `old`.
+> `carry-copy` and `carry-in`. **DNS moved on 16 Nov 2026**: the box below is now the one in SA's account, and
+> `-Box` defaults to `sa`. The old box still runs, untouched, until the old account can be signed in to and retired.
 
 ## Addresses
 

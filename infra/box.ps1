@@ -14,12 +14,12 @@
     old  account 968053968391, the default AWS profile. Sign in with:  aws login
     sa   account 962000089613, the 'selfactual' profile. Sign in with:  aws sso login --profile selfactual
          Its instance and address are found by their Name tag, unstuck-web.
-  -Box picks one. It defaults to 'old' until DNS has moved. A few steps are pinned to one box
+  -Box picks one. It defaults to 'sa' since DNS moved (16 Nov 2026). A few steps are pinned to one box
   (carry-out runs on old, carry-in on sa), and two run here on this computer (copy-params,
   carry-copy), with both profiles signed in.
   (The box before those, in account 970376923067, is out of reach and has no steps here.)
 #>
-param([Parameter(Position = 0)][string]$Step, [switch]$Live, [ValidateSet('old', 'sa')][string]$Box = 'old')
+param([Parameter(Position = 0)][string]$Step, [switch]$Live, [ValidateSet('old', 'sa')][string]$Box = 'sa')
 
 $ErrorActionPreference = 'Continue'
 # The box answers in UTF-8 (systemctl prints arrows). Without these the AWS CLI on Windows
