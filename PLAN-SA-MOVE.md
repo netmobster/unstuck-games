@@ -164,3 +164,34 @@ bucket. That ends UG's own AWS bill.
   it's an env change per game (`SEREN_MODEL_*`, `ELSEWHERE_*_MODEL`). It's a separate decision,
   after P3.
 - Other games: only SEREN and Elsewhere call an AI. The rest are static.
+
+## What happened, 16 Nov 2026 (CC-139)
+
+**It ran as a fresh start, not a copy.** The old account's `jay` login lost its MFA device, so
+neither `copy-params` nor the carry steps could run. Jay's call: "fresh start, and there's no seren
+saves, and we have to reset passwords it's fine". In their place, `infra/fresh-start.ps1`:
+- the plain settings come from the env examples
+- the new passwords and the Google client ID and secret were typed in (a new client secret was added
+  in Google Cloud; the old one is still enabled)
+- SEREN's content was packed from `PROJECTS/UNSTUCK/seren/content`, without `players/`
+
+Done:
+- `sa-account.ps1 -Live`: box `i-0d7871ef3ccb0364c`, address `18.190.113.119`. There's no budget
+  yet, because `-AlertEmail` was left off.
+- `check`: all three Nova models answer through the box's role. **Bedrock works.**
+- `seren-content`, both env steps and all three starts (SEREN, Elsewhere, Bunny with new keys).
+- DNS: all 10 A records at IONOS moved to `18.190.113.119`. CC saved them, on Jay's one-time approval.
+- `cert`: one certificate for all 10 names, expiring 2027-02-14. Every address serves 200 over
+  valid HTTPS.
+- `ai-status.json` is `"ok": true` and `box.ps1` defaults to `sa` (this PR).
+
+Still open:
+1. **Mail.** SES identity `unstuck-games.com` in SA's account, its 3 DKIM CNAMEs at IONOS, and
+   Jay's gmail verified, because SES is in sandbox mode. Until then the contact form saves to disk
+   but doesn't email.
+2. **Bunny's link changed.** `box.ps1 bunny-links` prints the new one to re-send. The old picks
+   stayed on the old box.
+3. **The old account keeps running and billing** (box, Elastic IP, Aurora) on its credits, until
+   someone gets in. The route is root sign-in, then Troubleshoot MFA (email + phone), then a new
+   MFA device for `jay`. P4 waits on that.
+4. Disable the old Google client secret once nothing uses it (the old box does, until P4).
