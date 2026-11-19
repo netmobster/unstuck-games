@@ -90,10 +90,12 @@ function waiting(on) {
   }
 }
 
+// The player's own Anthropic key, if they saved one on the account page (this browser only).
+function ownKeyHeaders(){try{var o=JSON.parse(localStorage.getItem('seren.ownkey')||'null');if(!o||!o.key)return{};var h={'X-Seren-Key':o.key,'X-Seren-Model':o.model==='opus'?'opus':'sonnet'};if(o.cap)h['X-Seren-Cap']=String(o.cap);return h;}catch(e){return{};}}
 async function api(path, body) {
   const res = await fetch(path, {
     method: body ? "POST" : "GET",
-    headers: body ? { "Content-Type": "application/json" } : undefined,
+    headers: body ? { "Content-Type": "application/json", ...ownKeyHeaders() } : undefined,
     body: body ? JSON.stringify(body) : undefined,
   });
   if (res.status === 401) { location.href = "/gate"; throw new Error("gate"); }

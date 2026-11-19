@@ -217,6 +217,12 @@ echo "every changed service is running"
 
 $Steps['units'] = @{ what = 'Puts the repo''s systemd units in place and restarts the services whose unit changed. If one won''t stay up, the old units go back and the step fails'; script = $UnitsScript }
 
+$Steps['seren-deps'] = @{ what = 'Installs the anthropic package for Python 3.11, which SEREN needs for players'' own Anthropic keys. Then run seren-start'; script = @'
+set -e
+python3.11 -m pip install --quiet --upgrade anthropic
+python3.11 -c "import anthropic; print('anthropic', anthropic.__version__)"
+'@ }
+
 $Steps['py311'] = @{ what = 'Once: installs Python 3.11 and boto3, checks every service''s code parses under 3.11, then does ''units'' to move the services onto it'; script = @'
 set -e
 dnf install -y -q python3.11 python3.11-pip
