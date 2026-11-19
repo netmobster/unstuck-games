@@ -21,8 +21,8 @@ list: [`STATUS-2026-11-19.md`](STATUS-2026-11-19.md).
 
 ## P0: SEREN with the player's own Anthropic key
 
-- [ ] **Jay picks the route:** BYO key on the web table, or SEREN over MCP in the player's
-      own Claude. The plan in `STATUS-2026-11-19.md` §5 lays out both.
+- [x] **Route and the three calls** (19 Nov, `DECISIONS.md`): web table · just this player ·
+      Sonnet with Opus optional · a cap the player sets.
 - [x] **Test Bedrock in a real SEREN turn**: 19 Nov, Nova Pro narrated, `/api/turn` returned 200.
 - [ ] **Add the player to the guest list:** `SEREN_ALLOW` in Parameter Store, plus Google
       test users. Both lists are needed.
