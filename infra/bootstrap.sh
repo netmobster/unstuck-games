@@ -20,7 +20,7 @@ SRV=/srv/unstuck
 
 # ---- packages. The services run on Python 3.11: boto3 no longer supports the distro's 3.9.
 dnf install -y nginx git python3 python3.11 python3.11-pip openssl
-python3.11 -m pip install --quiet boto3
+python3.11 -m pip install --quiet boto3 anthropic   # anthropic: SEREN players' own keys
 
 # certbot from the distro if it has it, otherwise its own venv (the EFF route on AL2023)
 if ! command -v certbot >/dev/null; then

@@ -279,7 +279,7 @@ class Handler(BaseHTTPRequestHandler):
                 "name": (row or {}).get("name", ""),
                 "picture": (row or {}).get("picture", ""),
                 "plan": (row or {}).get("plan", "free"),
-                "has_key": bool((row or {}).get("api_key")),
+                "byok": llm.own_key_allowed((row or {}).get("email", "")),
                 "since": (row or {}).get("created_at", 0),
             })
 
@@ -337,7 +337,40 @@ class Handler(BaseHTTPRequestHandler):
                  ".css": "text/css", ".svg": "image/svg+xml", ".png": "image/png"}
         self._send(200, body, kinds.get(path.suffix, "application/octet-stream"))
 
+    def _own_key(self):
+        """The player's own Anthropic key from the request headers, if they sent one.
+
+        Returns None (no key), "forbidden" (a key, but not an account allowed to use one),
+        or (key, model, cap). The key is never stored or logged."""
+        key = (self.headers.get("X-Seren-Key") or "").strip()
+        if not key:
+            return None
+        slug = self._signed_in_slug()
+        row = accounts.by_slug(corpus.ROOT, slug) if slug else None
+        if not row or not llm.own_key_allowed(row.get("email", "")):
+            return "forbidden"
+        model = (self.headers.get("X-Seren-Model") or "sonnet").strip().lower()
+        try:
+            cap = float(self.headers.get("X-Seren-Cap") or 0)
+        except ValueError:
+            cap = 0.0
+        return key[:300], model if model in llm.OWN_MODELS else "sonnet", cap if cap > 0 else None
+
     def do_POST(self):
+        own = self._own_key()
+        if own == "forbidden":
+            return self._json(403, {"error": "your own key isn't switched on for this account. "
+                                             "Remove it on your account page to play on ours."})
+        if own is None:
+            return self._post()
+        key, model, cap = own
+        with llm.own_key(key, model, cap):
+            try:
+                return self._post()
+            except llm.OwnKeyError as exc:
+                return self._json(400, {"error": str(exc)})
+
+    def _post(self):
         path = self.path.split("?")[0]
 
         if path == "/api/me":
@@ -347,13 +380,14 @@ class Handler(BaseHTTPRequestHandler):
             if not slug:
                 return self._json(401, {"error": "sign in first"})
             body = self._body()
+            # An Anthropic key is never stored here: it stays in the player's browser
+            # (DECISIONS.md, 19 Nov 2026). Any key saved by the old form is wiped.
             row = accounts.set_fields(
                 corpus.ROOT, slug,
-                **{k: str(body[k])[:400] for k in ("name", "api_key") if k in body}
+                **{k: str(body[k])[:400] for k in ("name",) if k in body}, api_key=""
             ) or {}
             return self._json(200, {"ok": True, "name": row.get("name", ""),
-                                    "plan": row.get("plan", "free"),
-                                    "has_key": bool(row.get("api_key"))})
+                                    "plan": row.get("plan", "free")})
 
         if path == "/api/gate":
             ok = gate.check(str(self._body().get("password") or ""))
@@ -403,7 +437,7 @@ class Handler(BaseHTTPRequestHandler):
 
         if path == "/api/session":
             view = camp.player_view()
-            view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
+            view["cap"] = llm.cap_label(camp.tier)
             # Sent once, at the door: the parts of the table that are not in play.
             view["pages"] = camp.pages()
             view["sheet"] = camp.sheet()
@@ -436,6 +470,8 @@ class Handler(BaseHTTPRequestHandler):
                 out = dm.take_turn(camp, sess["history"], said)
             except llm.CapReached as exc:
                 return self._json(402, {"error": str(exc)})
+            except llm.OwnKeyError as exc:
+                return self._json(400, {"error": str(exc)})
             except Exception as exc:
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
             sess["history"] = dm.trim(out["messages"])   # cut on a turn boundary, never mid-turn
@@ -444,7 +480,7 @@ class Handler(BaseHTTPRequestHandler):
             sess["pending"] = out.get("pending")
             sess["messages"] = out["messages"]
             view = camp.player_view()
-            view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
+            view["cap"] = llm.cap_label(camp.tier)
             view["beats"] = out["beats"]
             view["pending"] = bool(out.get("pending"))
             view["chips"] = [] if view["pending"] else _chips(sess)
@@ -461,6 +497,8 @@ class Handler(BaseHTTPRequestHandler):
                 out = dm.resume_roll(camp, sess.get("messages") or sess["history"], pending)
             except llm.CapReached as exc:
                 return self._json(402, {"error": str(exc)})
+            except llm.OwnKeyError as exc:
+                return self._json(400, {"error": str(exc)})
             except Exception as exc:
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
             sess["pending"] = out.get("pending")
@@ -468,7 +506,7 @@ class Handler(BaseHTTPRequestHandler):
             sess["history"] = dm.trim(out["messages"])
             sess["stream"].extend(out["beats"])
             view = camp.player_view()
-            view["cap"] = f"${llm.cap_for(camp.tier):.2f}"
+            view["cap"] = llm.cap_label(camp.tier)
             view["beats"] = out["beats"]
             view["pending"] = bool(out.get("pending"))
             view["chips"] = [] if view["pending"] else _chips(sess)
@@ -503,6 +541,8 @@ class Handler(BaseHTTPRequestHandler):
                                             "problems": problems, "spent": round(spent, 4)})
             except llm.CapReached as exc:
                 return self._json(402, {"error": str(exc)})
+            except llm.OwnKeyError as exc:
+                return self._json(400, {"error": str(exc)})
             except Exception as exc:
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
 
