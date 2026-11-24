@@ -51,9 +51,9 @@ button{cursor:pointer}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 
 .mono{font-family:var(--mono)}
-.lab{font-family:var(--mono);font-size:10px;letter-spacing:.3em;color:var(--soft);text-transform:uppercase}
+.lab{font-family:var(--mono);font-size:12px;letter-spacing:.24em;color:var(--soft);text-transform:uppercase}
 .lab.hot{color:var(--ember)}
-.lab.sm{font-size:9px;letter-spacing:.2em}
+.lab.sm{font-size:11px;letter-spacing:.18em}
 
 /* ---------------------------------------------------------------- frame
    Fit to screen: on a desktop-sized window the page is exactly one viewport and
@@ -67,13 +67,13 @@ button{cursor:pointer}
 
 .top{flex:0 0 auto;display:flex;align-items:center;gap:16px;padding:10px 20px;border-bottom:1px solid var(--edge);background:var(--bg2);flex-wrap:wrap}
 .logo{display:flex;align-items:center;gap:10px}
-.logo .w{font-family:var(--caps);font-weight:600;font-size:13px;letter-spacing:.22em;display:block}
-.logo .s{font-family:var(--caps);font-size:8px;letter-spacing:.34em;color:var(--ember);display:block}
+.logo .w{font-family:var(--caps);font-weight:600;font-size:15px;letter-spacing:.22em;display:block}
+.logo .s{font-family:var(--caps);font-size:10px;letter-spacing:.34em;color:var(--ember);display:block}
 .vr{width:1px;height:22px;background:var(--edge)}
-.hold{font-family:var(--caps);font-size:15px;letter-spacing:.08em;white-space:nowrap}
-.when{font-style:italic;font-size:13px;color:var(--soft);white-space:nowrap}
-.meta{margin-left:auto;display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:10px;letter-spacing:.14em;color:var(--soft);flex-wrap:wrap}
-.pill{border:1px solid var(--edge);padding:3px 9px;white-space:nowrap;background:transparent;color:var(--soft);font-family:var(--mono);font-size:10px;letter-spacing:.14em}
+.hold{font-family:var(--caps);font-size:20px;letter-spacing:.08em;white-space:nowrap}
+.when{font-style:italic;font-size:16px;color:var(--soft);white-space:nowrap}
+.meta{margin-left:auto;display:flex;gap:10px;align-items:center;font-family:var(--mono);font-size:12px;letter-spacing:.12em;color:var(--soft);flex-wrap:wrap}
+.pill{border:1px solid var(--edge);padding:6px 12px;white-space:nowrap;background:transparent;color:var(--soft);font-family:var(--mono);font-size:12px;letter-spacing:.12em}
 .pill.hot{border-color:rgba(255,77,0,.5);color:var(--ember)}
 .pill.warn{border-color:var(--bad);color:var(--bad2)}
 button.pill:hover{border-color:var(--ember);color:var(--ink)}
@@ -82,41 +82,41 @@ button.pill:hover{border-color:var(--ember);color:var(--ink)}
 .horizon{flex:0 0 auto;padding:12px 22px 11px;border-bottom:1px solid var(--edge);
   background:radial-gradient(ellipse at 88% 130%, rgba(255,77,0,.14), transparent 62%), var(--bg);display:flex;align-items:center;gap:26px}
 .hz-words{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
-.hz-line{font-family:var(--caps);font-size:clamp(21px,2.1vw,32px);line-height:1.12;text-wrap:balance;max-width:44ch}
+.hz-line{font-family:var(--caps);font-size:clamp(24px,2.5vw,38px);line-height:1.12;text-wrap:balance;max-width:44ch}
 .hz-line em{font-style:normal;color:var(--ember)}
-.hz-sub{font-style:italic;font-size:15px;color:var(--mid);max-width:62ch}
+.hz-sub{font-style:italic;font-size:18px;color:var(--mid);max-width:62ch}
 .hz-ring{flex:none;width:100px}
 .hz-ring svg{display:block;width:100px;height:100px}
 
 /* ---------------------------------------------------------------- spine */
 .spine{flex:0 0 auto;padding:9px 22px 8px;border-bottom:1px solid var(--edge);display:flex;flex-direction:column;gap:5px}
 .sp-head{display:flex;justify-content:space-between;align-items:baseline;gap:14px;flex-wrap:wrap}
-.sp-head .r{display:flex;gap:16px;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--dim)}
+.sp-head .r{display:flex;gap:16px;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--dim)}
 .sp-scroll{overflow-x:auto;overflow-y:hidden}
 .sp-canvas{position:relative;height:104px;min-width:720px;margin:0 6px}
 .sp-rule{position:absolute;left:0;right:0;top:50px;height:2px;background:var(--edge)}
 .sp-tick{position:absolute;top:46px;width:1px;height:10px;background:#2f2b27}
 .sp-now{position:absolute;left:0;top:26px;display:flex;flex-direction:column;align-items:flex-start;gap:3px}
 .sp-now i{width:2px;height:26px;background:var(--ember)}
-.sp-now span{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--ember);white-space:nowrap}
+.sp-now span{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--ember);white-space:nowrap}
 .sp-end{position:absolute;right:0;top:56px;display:flex;flex-direction:column;align-items:flex-end;gap:3px}
 .sp-end i{width:1px;height:12px;background:var(--edge)}
-.sp-end span{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--dim);white-space:nowrap}
+.sp-end span{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--dim);white-space:nowrap}
 .sp-mine{position:absolute;display:grid;grid-template-columns:auto minmax(0,1fr);column-gap:7px;align-items:baseline;max-width:24%;cursor:default}
 .sp-mine .stem{grid-column:1/-1}
-.sp-mine .t{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--soft);white-space:nowrap}
+.sp-mine .t{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--soft);white-space:nowrap}
 .sp-mine .n{font-size:13.5px;color:var(--mid);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:100%}
 .sp-mine .stem{width:1px;background:var(--edge);margin-left:1px}
 .sp-mine.next .t{color:var(--ember)} .sp-mine.next .n{color:var(--ink);font-weight:600;font-size:14.5px} .sp-mine.next .stem{background:var(--ember)}
 .sp-mine.far .t{color:var(--dim)} .sp-mine.far .n{color:var(--soft);font-style:italic;font-size:13px}
 .sp-theirs{position:absolute;top:56px;display:flex;flex-direction:column;gap:2px;max-width:30%}
 .sp-theirs i{width:1px;height:12px;background:rgba(255,77,0,.6);margin-left:1px}
-.sp-theirs .t{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--ember);white-space:nowrap}
+.sp-theirs .t{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--ember);white-space:nowrap}
 .sp-theirs .n{font-style:italic;font-size:12.5px;color:var(--mid);white-space:nowrap}
 .sp-smear{position:absolute;height:14px;background:repeating-linear-gradient(45deg,var(--edge) 0 3px,transparent 3px 7px);border:1px dashed var(--edge);display:flex;align-items:center;padding:0 9px;animation:squint 7s ease-in-out infinite;overflow:hidden}
-.sp-smear span{font-family:var(--mono);font-size:8.5px;letter-spacing:.14em;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.sp-smear span{font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;color:var(--soft);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .sp-smear.open{border-right:0;-webkit-mask-image:linear-gradient(90deg,#000 70%,transparent);mask-image:linear-gradient(90deg,#000 70%,transparent)}
-.sp-legend{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--soft);border-top:1px solid var(--edge);padding-top:6px}
+.sp-legend{display:flex;gap:20px;flex-wrap:wrap;font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--soft);border-top:1px solid var(--edge);padding-top:6px}
 .sp-legend > span{display:flex;align-items:center;gap:7px}
 .sp-legend .warn{margin-left:auto;color:var(--bad2)}
 
@@ -127,7 +127,7 @@ button.pill:hover{border-color:var(--ember);color:var(--ink)}
 .gutter::after{content:"";position:absolute;left:50%;top:50%;width:1px;height:32px;transform:translate(-50%,-50%);background:var(--soft);opacity:.6}
 .gutter:hover,.gutter.drag,.gutter:focus-visible{background:var(--ember)}
 body.dragging{cursor:col-resize;user-select:none}
-.sec{padding:14px 22px;border-bottom:1px solid var(--edge);display:flex;flex-direction:column;gap:10px}
+.sec{padding:18px 26px;border-bottom:1px solid var(--edge);display:flex;flex-direction:column;gap:10px}
 .sec:last-child{border-bottom:0}
 .sec-h{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
 
@@ -135,10 +135,10 @@ body.dragging{cursor:col-resize;user-select:none}
 .crow{background:var(--panel);border:1px solid var(--edge);border-left:3px solid var(--soft);padding:8px 12px;display:flex;flex-direction:column;gap:6px}
 .crow.live{cursor:pointer} .crow.live:hover{background:#1c1916}
 .crow .l1{display:flex;gap:12px;align-items:baseline}
-.crow .k{font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--null);flex:none;width:92px}
-.crow .x{font-size:14px;color:var(--mid);flex:1;min-width:0}
+.crow .k{font-family:var(--mono);font-size:11px;letter-spacing:.18em;color:var(--null);flex:none;width:92px}
+.crow .x{font-size:17px;color:var(--mid);flex:1;min-width:0}
 .crow .x i{color:var(--soft)}
-.crow .d{font-family:var(--mono);font-size:11px;color:var(--mid);white-space:nowrap}
+.crow .d{font-family:var(--mono);font-size:13px;color:var(--mid);white-space:nowrap}
 .crow.ok{border-left-color:var(--ok)} .crow.ok .k{color:var(--ok)}
 .crow.partial{border-left-color:var(--partial)} .crow.partial .k{color:var(--partial)}
 .crow.misfire,.crow.raid{border-left-color:var(--bad)} .crow.misfire .k,.crow.raid .k{color:var(--bad2)}
@@ -150,35 +150,35 @@ body.dragging{cursor:col-resize;user-select:none}
 .roll{font-family:var(--mono);font-size:11.5px;line-height:1.7;background:var(--bg);border:1px solid var(--edge);padding:7px 11px;overflow-x:auto;white-space:pre;color:var(--mid)}
 .roll b{color:var(--ink);font-weight:400} .roll em{color:var(--ember);font-style:normal}
 
-.brief{font-size:17px;line-height:1.62;color:var(--ink);max-width:66ch;font-weight:300;text-wrap:pretty}
+.brief{font-size:21px;line-height:1.7;color:var(--ink);max-width:66ch;font-weight:300;text-wrap:pretty}
 .brief p{margin:0 0 .6em} .brief p:last-child{margin:0}
 .brief em{font-style:normal;color:var(--ember)}
-.coda{font-size:15px;line-height:1.6;color:var(--mid);font-style:italic;max-width:66ch}
+.coda{font-size:17px;line-height:1.6;color:var(--mid);font-style:italic;max-width:66ch}
 .older{display:flex;flex-direction:column;gap:1px;background:var(--edge);margin-top:4px}
-.orow{background:var(--bg);padding:8px 12px;display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:11px;color:var(--soft);letter-spacing:.1em;cursor:pointer}
+.orow{background:var(--bg);padding:10px 14px;display:flex;flex-direction:column;gap:6px;font-family:var(--mono);font-size:12px;color:var(--soft);letter-spacing:.1em;cursor:pointer}
 .orow:hover{background:#110f0d}
 .orow .l1{display:flex;gap:12px;align-items:baseline}
 .orow .l1 span:last-child{margin-left:auto;font-style:italic;font-family:var(--serif);letter-spacing:0;font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:55%}
-.orow .body{display:none;font-family:var(--serif);font-size:14.5px;line-height:1.55;letter-spacing:0;color:var(--mid)}
+.orow .body{display:none;font-family:var(--serif);font-size:18px;line-height:1.55;letter-spacing:0;color:var(--mid)}
 .orow.open .body{display:block}
 
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--edge);border-bottom:1px solid var(--edge);flex:none}
 .stats div{background:var(--panel);padding:11px 14px;display:flex;flex-direction:column;gap:3px;min-width:0}
-.stats b{font-family:var(--caps);font-weight:400;font-size:24px;line-height:1;font-variant-numeric:tabular-nums}
-.stats span{font-family:var(--caps);font-size:8px;letter-spacing:.26em;color:var(--soft);display:flex;gap:6px;align-items:baseline}
+.stats b{font-family:var(--caps);font-weight:400;font-size:28px;line-height:1;font-variant-numeric:tabular-nums}
+.stats span{font-family:var(--caps);font-size:10px;letter-spacing:.26em;color:var(--soft);display:flex;gap:6px;align-items:baseline}
 .stats .hot b,.stats .hot span{color:var(--ember)}
 .stats .dl{font-family:var(--mono);font-size:10px;letter-spacing:0;color:var(--ok)} .stats .dl.neg{color:var(--bad2)}
 
 .nb{display:flex;flex-direction:column;gap:8px}
-.front{border:1px solid var(--edge);background:var(--bg2);padding:10px 13px;display:flex;flex-direction:column;gap:7px}
+.front{border:1px solid var(--edge);background:var(--bg2);padding:14px 16px;display:flex;flex-direction:column;gap:7px}
 .front.eyes{border-color:rgba(255,77,0,.45);background:linear-gradient(180deg,rgba(255,77,0,.05),transparent)}
 .front.silent{border-color:var(--edge2);background:var(--bg0)}
 .front.done{border-color:var(--ember)}
 .f1{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
 .f1 .nm{display:flex;align-items:baseline;gap:8px;min-width:0}
-.f1 .nm b{font-family:var(--caps);font-weight:400;font-size:13px;letter-spacing:.1em;white-space:nowrap}
-.f1 .nm i{font-size:12px;color:var(--soft)}
-.f1 .rd{font-family:var(--caps);font-size:14px;font-variant-numeric:tabular-nums;white-space:nowrap}
+.f1 .nm b{font-family:var(--caps);font-weight:400;font-size:16px;letter-spacing:.1em;white-space:nowrap}
+.f1 .nm i{font-size:15px;color:var(--soft)}
+.f1 .rd{font-family:var(--caps);font-size:17px;font-variant-numeric:tabular-nums;white-space:nowrap}
 .front.eyes .rd{color:var(--ember)} .front.rumour .nm b{color:var(--mid)} .front.rumour .rd{color:var(--soft)}
 .front.silent .nm b{color:var(--soft)} .front.silent .nm i,.front.silent .rd{color:var(--dim)}
 .bar{display:flex;gap:2px;height:10px}
@@ -188,94 +188,107 @@ body.dragging{cursor:col-resize;user-select:none}
 .hatch b{position:absolute;top:0;bottom:0;background:rgba(255,77,0,.18)}
 .silence{height:10px;display:flex;align-items:center}
 .silence i{flex:1;height:1px;background:var(--edge2)}
-.silence span{font-family:var(--mono);font-size:9px;letter-spacing:.24em;color:var(--dim);padding:0 10px;white-space:nowrap}
+.silence span{font-family:var(--mono);font-size:11px;letter-spacing:.24em;color:var(--dim);padding:0 10px;white-space:nowrap}
 .f3{display:flex;justify-content:space-between;align-items:baseline;gap:10px}
-.f3 .dg{font-style:italic;font-size:13px;color:var(--ink)}
+.f3 .dg{font-style:italic;font-size:17px;color:var(--ink)}
 .front.rumour .f3 .dg{color:var(--mid)} .front.silent .f3 .dg{color:var(--soft)}
 .f3 .dg small{color:var(--dim);font-size:13px}
-.tag{font-family:var(--caps);font-size:8px;letter-spacing:.2em;border:1px solid var(--edge);color:var(--soft);padding:2px 7px;flex:none;white-space:nowrap}
+.tag{font-family:var(--caps);font-size:10px;letter-spacing:.2em;border:1px solid var(--edge);color:var(--soft);padding:2px 7px;flex:none;white-space:nowrap}
 .tag.eyes{color:var(--ember);border-color:rgba(255,77,0,.45)} .tag.rum{border-style:dashed} .tag.fx{color:var(--ok);border-color:rgba(143,168,107,.35)}
 .tag.won{background:var(--ember);color:var(--bg);border-color:var(--ember)}
 .f4{display:flex;gap:6px;flex-wrap:wrap}
 .disp{font-size:12px;color:var(--soft)}
-.disp summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:9px;letter-spacing:.2em}
+.disp summary{list-style:none;cursor:pointer;font-family:var(--mono);font-size:11px;letter-spacing:.2em}
 .disp summary::-webkit-details-marker{display:none}
 .disp .g{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:7px}
 .pips{display:flex;gap:2px;margin-top:3px} .pips i{width:7px;height:7px;background:var(--edge)} .pips i.on{background:var(--mid)}
 
 .queue{display:flex;flex-direction:column;gap:3px}
-.qrow{display:grid;grid-template-columns:62px 72px minmax(0,1fr) auto;gap:10px;align-items:center;border:1px solid var(--edge);background:var(--bg2);padding:4px 4px 4px 10px;font-size:13px}
+.qrow{display:grid;grid-template-columns:62px 72px minmax(0,1fr) auto;gap:10px;align-items:center;border:1px solid var(--edge);background:var(--bg2);padding:8px 6px 8px 12px;font-size:16px}
 .qrow.next{border-color:rgba(255,77,0,.45)}
-.qrow .t{font-family:var(--mono);font-size:10px;color:var(--soft)} .qrow.next .t{color:var(--ember)}
-.qrow .k{font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--mid);text-transform:uppercase}
+.qrow .t{font-family:var(--mono);font-size:12px;color:var(--soft)} .qrow.next .t{color:var(--ember)}
+.qrow .k{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--mid);text-transform:uppercase}
 .qrow .w{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;color:var(--mid)}
-.qrow .x{background:none;border:1px solid transparent;color:var(--soft);font-family:var(--mono);font-size:10px;letter-spacing:.12em;padding:3px 8px}
+.qrow .x{background:none;border:1px solid transparent;color:var(--soft);font-family:var(--mono);font-size:12px;letter-spacing:.12em;padding:3px 8px}
 .qrow .x:hover{border-color:var(--bad);color:var(--bad2)}
-.fullnote{font-size:12.5px;color:var(--ember);font-style:italic}
+.fullnote{font-size:16px;color:var(--ember);font-style:italic}
 .fullnote button{background:none;border:0;padding:0;color:var(--ink);text-decoration:underline;font:inherit;cursor:pointer}
-.ledger{border:1px solid var(--edge);max-height:260px;overflow-y:auto}
+.ledger{border:1px solid var(--edge)}
 .lrow{padding:8px 11px;border-top:1px solid var(--edge);cursor:pointer;display:flex;flex-direction:column;gap:5px}
 .lrow:first-child{border-top:0} .lrow:hover{background:#15130f}
 .lrow .l1{display:flex;gap:10px;align-items:baseline}
-.lrow .k{font-family:var(--mono);font-size:9px;letter-spacing:.16em;color:var(--soft);width:72px;flex:none}
+.lrow .k{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--soft);width:72px;flex:none}
 .lrow.ok .k{color:var(--ok)} .lrow.partial .k{color:var(--partial)} .lrow.misfire .k,.lrow.raid .k{color:var(--bad2)}
-.lrow .w{flex:1;min-width:0;font-size:13px;color:var(--mid)}
-.lrow .d{font-family:var(--mono);font-size:10.5px;color:var(--mid)}
+.lrow .w{flex:1;min-width:0;font-size:16px;color:var(--mid)}
+.lrow .d{font-family:var(--mono);font-size:12.5px;color:var(--mid)}
 .lrow .roll{display:none} .lrow.open .roll{display:block}
-.empty{font-style:italic;font-size:13px;color:var(--dim);padding:2px 0}
+.empty{font-style:italic;font-size:17px;color:var(--dim);padding:2px 0}
 
-/* ---------------------------------------------------------------- the turn */
-.turn{flex:0 0 auto;border-top:2px solid var(--ember);background:linear-gradient(180deg,rgba(255,77,0,.07),var(--bg2));padding:9px 22px 11px;display:flex;flex-direction:column;gap:8px}
-.turn-h{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
-.olab{display:flex;justify-content:space-between;align-items:center;gap:10px}
-.turn-h > b{font-family:var(--caps);font-weight:400;font-size:17px;letter-spacing:.14em;color:var(--ember)}
-.turn-h span{font-style:italic;font-size:14px;color:var(--mid)}
-.turn-h .rt{margin-left:auto}
-.tgrid{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.5fr) minmax(0,.8fr);gap:1px;background:var(--edge);border:1px solid var(--edge)}
-.tcol{background:var(--bg);padding:8px 12px;display:flex;flex-direction:column;gap:5px;min-width:0}
-.tcol.order{background:linear-gradient(180deg,rgba(255,77,0,.05),transparent 60%),var(--bg);box-shadow:inset 2px 0 0 var(--ember),inset -2px 0 0 var(--ember)}
-.opts{display:flex;flex-direction:column;gap:3px}
-.opts.two{display:grid;grid-template-columns:1fr 1fr 1fr;gap:3px}
-.opt{border:1px solid var(--edge);background:transparent;padding:4px 9px;font-size:13px;color:var(--ink);display:flex;justify-content:space-between;align-items:baseline;gap:8px;text-align:left;min-width:0;transition:border-color .12s,background .12s}
+/* ---------------------------------------------------------------- the panel
+   Everything that isn't the briefing lives in one panel beside it, under four tabs. */
+.middle{grid-template-columns:minmax(0,1fr) minmax(400px,500px)}
+.gutter{display:none}
+#colRight{background:var(--bg2);border-left:1px solid var(--edge)}
+.ptabs{flex:none;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--edge);position:sticky;top:0;background:var(--bg2);z-index:2}
+.ptabs button{background:none;border:0;border-bottom:3px solid transparent;padding:15px 4px 13px;font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--soft)}
+.ptabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--ember)}
+.ptabs button .n{color:var(--ember)}
+.ppane{flex:1;min-height:0;overflow-y:auto;display:flex;flex-direction:column}
+
+/* ---------------------------------------------------------------- the turn
+   An accordion: where the eyes go, then the order, then how long. One step open at a time. */
+.turn{flex:1;min-height:0;display:flex;flex-direction:column}
+.accs{flex:1;min-height:0;overflow-y:auto;padding:12px 18px 6px;display:flex;flex-direction:column;gap:8px}
+.acc{border:1px solid var(--edge);background:var(--bg)}
+.acc.open{border-color:var(--ember)}
+.acc-h{width:100%;background:none;border:0;display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:13px 15px;text-align:left}
+.acc-h .k{font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--soft);flex:none}
+.acc.open .acc-h .k{color:var(--ember)}
+.acc-h .v{font-size:18px;color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.acc-h .v.none{color:var(--soft);font-style:italic}
+.acc.open .acc-h .v{display:none}
+.acc-b{padding:0 14px 14px;display:flex;flex-direction:column;gap:8px}
+.acc:not(.open) .acc-b{display:none}
+.olab{display:flex;justify-content:flex-end;align-items:center;gap:10px}
+.opts{display:flex;flex-direction:column;gap:8px}
+.opts.two{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.opt{border:1px solid var(--edge);background:transparent;padding:10px 13px;min-height:48px;font-size:18px;color:var(--ink);display:flex;justify-content:space-between;align-items:baseline;gap:10px;text-align:left;min-width:0;transition:border-color .12s,background .12s}
 .opt:hover:not(:disabled){border-color:rgba(255,77,0,.6)}
-.opt .r{color:var(--soft);font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.opt .r{color:var(--soft);font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .opt .r i{font-style:italic}
 .opt.on{border-color:var(--ember);background:rgba(255,77,0,.1)}
-.opt.on .r{color:var(--ember);font-family:var(--mono);font-size:10px;letter-spacing:.1em}
+.opt.on .r{color:var(--ember);font-family:var(--mono);font-size:11px;letter-spacing:.1em}
 .opt.mega{border-color:rgba(163,58,34,.6)} .opt.mega .r{color:var(--bad2)}
 .opt.mega.on{background:rgba(163,58,34,.16);border-color:var(--bad2)}
 .opt.lr .l{color:var(--ember)}
 .opt:disabled{opacity:.35;cursor:not-allowed}
-.at{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:9px;letter-spacing:.18em;color:var(--soft)}
-.at select{background:var(--bg);border:1px solid var(--edge);color:var(--ink);font-family:var(--serif);font-size:13px;letter-spacing:0;padding:3px 6px}
-.or{display:flex;align-items:center;gap:10px}
-.or i{flex:1;height:1px;background:var(--edge)}
+.at{display:flex;gap:8px;align-items:center;font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--soft)}
+.at select{background:var(--bg);border:1px solid var(--edge);color:var(--ink);font-family:var(--serif);font-size:16px;letter-spacing:0;padding:6px 8px}
 .say{border:1px solid var(--ember);background:rgba(255,77,0,.04);display:flex;flex-direction:column}
-.say textarea{background:transparent;border:0;resize:none;padding:6px 11px 0;font-family:var(--serif);font-size:15px;line-height:1.35;color:var(--ink);min-height:30px;max-height:110px;field-sizing:content}
+.say textarea{background:transparent;border:0;resize:none;padding:10px 13px 2px;font-family:var(--serif);font-size:18px;line-height:1.4;color:var(--ink);min-height:48px;max-height:140px;field-sizing:content}
 .say textarea:focus{outline:none}
 .say textarea::placeholder{color:var(--soft);font-style:italic}
-.say .hint{align-self:flex-end;font-family:var(--mono);font-size:9px;letter-spacing:.14em;color:var(--dim);padding:0 9px 4px}
-.note{font-size:12.5px;line-height:1.4;color:var(--soft);font-style:italic}
-.sealbar{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
-.sealing{flex:1;min-width:280px;display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;font-size:14px}
+.say .hint{align-self:flex-end;font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--dim);padding:0 10px 6px}
+.note{font-size:15px;line-height:1.4;color:var(--soft);font-style:italic}
+.sealbar{flex:none;padding:10px 18px 14px;border-top:1px solid var(--edge);display:flex;flex-direction:column;gap:10px;background:linear-gradient(180deg,rgba(255,77,0,.06),var(--bg2))}
+/* the collapsed steps already say what is being sealed; the line stays for the sealed record */
+.sealing{display:none}
 .sealing b{color:var(--ember);font-weight:400}
 .sealing .sep{color:var(--edge)}
 .sealing .qt{color:var(--soft);font-style:italic}
-.seal{background:var(--ember);color:var(--bg);border:0;padding:10px 26px;font-family:var(--caps);font-size:14px;letter-spacing:.22em;transition:background .15s}
+.seal{background:var(--ember);color:var(--bg);border:0;padding:15px 26px;font-family:var(--caps);font-size:18px;letter-spacing:.24em;transition:background .15s}
 .seal:hover{background:var(--ember2)} .seal:disabled{opacity:.5;cursor:progress}
-.either{font-style:italic;font-size:13.5px;color:var(--soft)}
 
-.sealed{flex:0 0 auto;border-top:2px solid var(--ember);background:linear-gradient(180deg,rgba(255,77,0,.06),var(--bg2));padding:12px 22px;display:flex;flex-direction:column;gap:9px}
+.sealed{flex:none;padding:18px 20px;display:flex;flex-direction:column;gap:12px}
 .sealed .l1{display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
-.sealed .l1 > b{font-family:var(--caps);font-weight:400;font-size:15px;letter-spacing:.16em;color:var(--ember)}
-.sealed .l1 > span{font-size:14px;color:var(--mid)}
-.sealed .l1 .again{margin-left:auto}
-.priced{border:1px dashed var(--edge);padding:7px 12px;display:grid;grid-template-columns:auto minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr);gap:3px 12px;font-size:13px;margin:0}
-.priced dt{font-family:var(--mono);font-size:10px;letter-spacing:.12em;color:var(--ember);padding-top:2px}
+.sealed .l1 > b{font-family:var(--caps);font-weight:400;font-size:18px;letter-spacing:.16em;color:var(--ember)}
+.sealed .l1 > span{font-size:17px;color:var(--mid);flex-basis:100%}
+.priced{border:1px dashed var(--edge);padding:9px 13px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:5px 12px;font-size:15px;margin:0}
+.priced dt{font-family:var(--mono);font-size:11px;letter-spacing:.12em;color:var(--ember);padding-top:2px}
 .priced dd{margin:0;color:var(--mid)}
-.priced .why{grid-column:1/-1;font-style:italic;font-size:12px;color:var(--soft);margin-top:3px}
+.priced .why{grid-column:1/-1;font-style:italic;font-size:14px;color:var(--soft);margin-top:3px}
 
-.btn{border:1px solid var(--edge);background:transparent;padding:6px 12px;font-family:var(--mono);font-size:10px;letter-spacing:.16em;color:var(--mid)}
+.btn{border:1px solid var(--edge);background:transparent;padding:9px 14px;font-family:var(--mono);font-size:12px;letter-spacing:.16em;color:var(--mid)}
 .btn:hover{border-color:var(--ember);color:var(--ink)}
 .btn.solid{background:var(--ember);border-color:var(--ember);color:var(--bg)}
 
@@ -323,10 +336,9 @@ dialog.epi::backdrop{background:rgba(0,0,0,.74);backdrop-filter:blur(3px)}
 /* ---------------------------------------------------------------- narrow */
 @media (max-width:1099px){
   .middle{grid-template-columns:minmax(0,1fr)}
-  .gutter{display:none}
-  .tgrid{grid-template-columns:minmax(0,1fr)}
-  .turn-h{order:2}                 /* choose first, seal at the bottom */
-  .turn{padding-bottom:18px}
+  #colRight{border-left:0;border-top:1px solid var(--edge)}
+  .horizon{flex-wrap:wrap}
+  .horizon .stats{order:3;flex-basis:100%}
   .hz-ring{width:96px} .hz-ring svg{width:96px;height:96px}
   .when{display:none}
 }
@@ -334,7 +346,7 @@ dialog.epi::backdrop{background:rgba(0,0,0,.74);backdrop-filter:blur(3px)}
   .top{gap:10px;padding:9px 12px}
   .meta #aiPill,.meta #seedPill,.vr{display:none}
   .horizon{padding:14px;gap:14px}
-  .spine,.sec,.turn,.sealed{padding-left:14px;padding-right:14px}
+  .spine,.sec,.accs,.sealbar,.sealed{padding-left:14px;padding-right:14px}
   .stats b{font-size:20px}
   .opts.two{grid-template-columns:1fr}
   .sp-legend .warn{margin-left:0}
@@ -368,6 +380,7 @@ dialog.epi::backdrop{background:rgba(0,0,0,.74);backdrop-filter:blur(3px)}
       <div class="hz-line" id="hzLine">&hellip;</div>
       <div class="hz-sub" id="hzSub"></div>
     </div>
+    <div class="stats" id="stats"></div>
     <div class="hz-ring" id="hzRing"></div>
   </section>
 
@@ -394,43 +407,66 @@ dialog.epi::backdrop{background:rgba(0,0,0,.74);backdrop-filter:blur(3px)}
     </div>
     <div class="gutter" id="gutter" role="separator" aria-orientation="vertical" aria-label="Resize the columns" tabindex="0" title="Drag to resize · double-click to reset"></div>
     <div class="col" id="colRight">
-      <div class="stats" id="stats"></div>
-      <div class="sec" id="queueSec">
-        <div class="sec-h"><span class="lab" id="qTitle">THE QUEUE</span><span class="lab sm">NOTHING IS SPENT UNTIL IT FIRES</span></div>
-        <div class="queue" id="queue"></div>
+      <div class="ptabs" role="tablist" aria-label="The panel">
+        <button role="tab" data-tab="turn" aria-selected="true">TURN</button>
+        <button role="tab" data-tab="world" aria-selected="false">WORLD <span class="n" id="tabWorldN"></span></button>
+        <button role="tab" data-tab="queue" aria-selected="false">QUEUE <span class="n" id="tabQueueN"></span></button>
+        <button role="tab" data-tab="ledger" aria-selected="false">LEDGER</button>
       </div>
-      <div class="sec">
-        <div class="sec-h"><span class="lab">NEIGHBOURS</span><span class="lab sm hot" id="nbCount"></span></div>
-        <div class="nb" id="fronts"></div>
+
+      <div class="ppane" data-pane="turn">
+        <section class="turn" id="turn" aria-label="Take the turn">
+          <div class="accs">
+            <div class="acc open" data-step="1">
+              <button class="acc-h" aria-expanded="true"><span class="k">1 · WHERE THE EYES GO</span><span class="v" id="accEyes"></span></button>
+              <div class="acc-b"><div class="opts" id="tEyes"></div></div>
+            </div>
+            <div class="acc" data-step="2">
+              <button class="acc-h" aria-expanded="false"><span class="k" id="tOrderLab">2 · THE ORDER</span><span class="v" id="accOrder"></span></button>
+              <div class="acc-b">
+                <div class="olab"><span class="at" id="tAt">AT <select id="tTarget" aria-label="Which neighbour the order is aimed at"></select><span id="tAtNote"></span></span></div>
+                <div class="opts two" id="tOrders"></div>
+                <div class="fullnote" id="tFull" hidden>All five slots are spoken for. <button id="tFullGo">Withdraw one</button> to give a new order &mdash; or leave the queue to run.</div>
+                <div class="say"><textarea id="tSay" rows="1" placeholder="Or say it yourself. Throw a feast. Send every worker somewhere they should not go." aria-label="Or say it yourself"></textarea><span class="hint">SAME DECISION · PRICED, ROLLED, LIVED WITH · ENTER TO SEAL</span></div>
+              </div>
+            </div>
+            <div class="acc" data-step="3">
+              <button class="acc-h" aria-expanded="false"><span class="k">3 · THEN HOW LONG</span><span class="v" id="accTime"></span></button>
+              <div class="acc-b"><div class="opts" id="tTime"></div></div>
+            </div>
+          </div>
+          <div class="sealbar">
+            <div class="sealing" id="sealing"></div>
+            <button class="seal" id="sealBtn">SEAL THE WATCH</button>
+          </div>
+        </section>
+        <section class="sealed" id="sealed" hidden aria-label="The sealed watch">
+          <div class="l1"><b>SEALED</b><span id="sealedWhat"></span><button class="btn again" id="reopen">OPEN THE WATCH AGAIN</button></div>
+          <div id="sealedPriced"></div>
+        </section>
       </div>
-      <div class="sec">
-        <div class="sec-h"><span class="lab">THE LEDGER</span><span class="empty" id="ledgerNote"></span></div>
-        <div class="ledger" id="ledger" hidden></div>
+
+      <div class="ppane" data-pane="world" hidden>
+        <div class="sec">
+          <div class="sec-h"><span class="lab">NEIGHBOURS</span><span class="lab sm hot" id="nbCount"></span></div>
+          <div class="nb" id="fronts"></div>
+        </div>
+      </div>
+      <div class="ppane" data-pane="queue" hidden>
+        <div class="sec" id="queueSec">
+          <div class="sec-h"><span class="lab" id="qTitle">THE QUEUE</span><span class="lab sm">NOTHING IS SPENT UNTIL IT FIRES</span></div>
+          <div class="queue" id="queue"></div>
+        </div>
+      </div>
+      <div class="ppane" data-pane="ledger" hidden>
+        <div class="sec">
+          <div class="sec-h"><span class="lab">THE LEDGER</span><span class="empty" id="ledgerNote"></span></div>
+          <div class="ledger" id="ledger" hidden></div>
+        </div>
       </div>
     </div>
   </div>
 
-  <section class="turn" id="turn" aria-label="Take the turn">
-    <div class="turn-h"><b>TAKE THE TURN</b>
-      <div class="sealing" id="sealing"></div>
-      <span class="either">the world moves either way</span>
-      <button class="seal" id="sealBtn">SEAL THE WATCH</button></div>
-    <div class="tgrid">
-      <div class="tcol"><span class="lab sm">1 · WHERE THE EYES GO</span><div class="opts" id="tEyes"></div></div>
-      <div class="tcol order">
-        <div class="olab"><span class="lab sm hot" id="tOrderLab">2 · THE ORDER</span><span class="at" id="tAt">AT <select id="tTarget" aria-label="Which neighbour the order is aimed at"></select><span id="tAtNote"></span></span></div>
-        <div class="opts two" id="tOrders"></div>
-        <div class="fullnote" id="tFull" hidden>All five slots are spoken for. <button id="tFullGo">Withdraw one</button> to give a new order &mdash; or leave the queue to run.</div>
-        <div class="say"><textarea id="tSay" rows="1" placeholder="Or say it yourself. Throw a feast. Send every worker somewhere they should not go." aria-label="Or say it yourself"></textarea><span class="hint">SAME DECISION · PRICED, ROLLED, LIVED WITH · ENTER TO SEAL</span></div>
-      </div>
-      <div class="tcol"><span class="lab sm">3 · THEN HOW LONG</span><div class="opts" id="tTime"></div></div>
-    </div>
-  </section>
-
-  <section class="sealed" id="sealed" hidden aria-label="The sealed watch">
-    <div class="l1"><b>SEALED</b><span id="sealedWhat"></span><button class="btn again" id="reopen">OPEN THE WATCH AGAIN</button></div>
-    <div id="sealedPriced"></div>
-  </section>
 </div>
 
 <dialog class="how" id="howDlg" aria-label="How to play Elsewhere">
@@ -804,7 +840,7 @@ function renderTurn() {
     const hint = held ? "HELD" : f.sight === "band" ? "on the hill" : m.never_watched ? "never watched" : `${daysWord(m.dark_days)} dark`;
     return `<button class="opt${pick.eyes === f.id ? " on" : ""}" data-eyes="${esc(f.id)}"><span class="l">${esc(f.name)}</span><span class="r">${held ? esc(hint) : `<i>${esc(hint)}</i>`}</span></button>`;
   }).join("") + `<button class="opt${pick.eyes === "general" ? " on" : ""}" data-eyes="general"><span class="l">From the hill</span><span class="r">${watchId === "general" ? "HELD" : "<i>a rough read on all three</i>"}</span></button>`;
-  $("tEyes").querySelectorAll("[data-eyes]").forEach(b => b.onclick = () => { pick.eyes = b.dataset.eyes; if (pick.eyes !== "general") $("tTarget").value = pick.eyes; renderTurn(); });
+  $("tEyes").querySelectorAll("[data-eyes]").forEach(b => b.onclick = () => { pick.eyes = b.dataset.eyes; if (pick.eyes !== "general") $("tTarget").value = pick.eyes; renderTurn(); openStep(2); });
 
   // 2 · the order
   const full = v.options.slots_left <= 0;
@@ -812,12 +848,12 @@ function renderTurn() {
   $("tFull").hidden = !full;
   $("tSay").disabled = full;
   $("tSay").placeholder = full ? "The queue is full. Withdraw an order to say something new." : "Or say it yourself. Throw a feast. Send every worker somewhere they should not go.";
-  $("tFullGo").onclick = () => { $("queueSec").scrollIntoView({behavior: "smooth", block: "start"}); $("queue").querySelector(".x")?.focus(); };
+  $("tFullGo").onclick = () => { panelTab("queue"); $("queue").querySelector(".x")?.focus(); };
   const opts = ["disrupt", "scout", "trade", "fortify", "invest", "mega"].map(k => v.options.options.find(o => o.kind === k)).filter(Boolean);
   $("tOrders").innerHTML = opts.map(o => `<button class="opt${o.kind === "mega" ? " mega" : ""}${pick.order === o.kind ? " on" : ""}" data-order="${o.kind}" ${!o.affordable || full ? "disabled" : ""} title="${!o.affordable ? "You cannot afford this." : full ? "The queue is full — withdraw an order first." : ""}">
     <span class="l">${CAT[o.kind][0]}</span><span class="r">${o.kind === "mega" ? `ALL ${esc(o.cost)} · ${CAT.mega[1]}` : `${esc(o.cost)} · ${CAT[o.kind][1]}`}</span></button>`).join("")
     || `<span class="note">Nothing affordable. Say something instead — a broke holding can still send people.</span>`;
-  $("tOrders").querySelectorAll("[data-order]").forEach(b => b.onclick = () => { pick.order = pick.order === b.dataset.order ? null : b.dataset.order; if (pick.order) $("tSay").value = ""; renderTurn(); });
+  $("tOrders").querySelectorAll("[data-order]").forEach(b => b.onclick = () => { pick.order = pick.order === b.dataset.order ? null : b.dataset.order; if (pick.order) $("tSay").value = ""; renderTurn(); if (pick.order) openStep(3); });
   const sel = $("tTarget"), keep = sel.value;
   sel.innerHTML = v.fronts.filter(f => !f.done).map(f => `<option value="${esc(f.id)}">${esc(f.name)}</option>`).join("");
   const eyeTarget = pick.eyes && pick.eyes !== "general" ? pick.eyes : null;
@@ -838,7 +874,33 @@ function renderSealing() {
     : pick.order ? `<span>${esc(CAT[pick.order][0].toLowerCase())} <b>${esc(nameOf($("tTarget").value))}</b></span>` : `<span class="qt">no order given</span>`;
   const time = pick.hours ? `<b>skip ${pick.hours === 8 ? "8 hours" : "a day"}</b>` : `<b>leave it running</b>`;
   $("sealing").innerHTML = `<span class="lab sm">SEALING</span><span>eyes on <b>${esc(eyesName)}</b></span><span class="sep"> · </span>${order}<span class="sep"> · </span><span>then ${time}</span>`;
+  // what each collapsed step shows
+  $("accEyes").textContent = pick.eyes === "general" ? "From the hill" : pick.eyes ? nameOf(pick.eyes) : "nobody yet";
+  $("accEyes").classList.toggle("none", !pick.eyes);
+  $("accOrder").textContent = text ? `“${text.length > 40 ? text.slice(0, 40) + "…" : text}”` : pick.order ? `${CAT[pick.order][0]} · ${nameOf($("tTarget").value)}` : "no order";
+  $("accOrder").classList.toggle("none", !text && !pick.order);
+  $("accTime").textContent = pick.hours ? (pick.hours === 8 ? "+8 hours" : "+1 day") : "Leave it running";
 }
+function panelCounts() {
+  const v = P.view;
+  $("tabQueueN").textContent = `${v.queue.length}/5`;
+  $("tabWorldN").textContent = v.watch.mode === "general" ? "HILL" : `${v.fronts.filter(f => f.watched).length}/${v.fronts.length}`;
+}
+
+// ---------------------------------------------------------------- the panel and the accordion
+function panelTab(t) {
+  document.querySelectorAll(".ptabs [data-tab]").forEach(b => b.setAttribute("aria-selected", String(b.dataset.tab === t)));
+  document.querySelectorAll(".ppane").forEach(p => p.hidden = p.dataset.pane !== t);
+}
+document.querySelectorAll(".ptabs [data-tab]").forEach(b => b.onclick = () => panelTab(b.dataset.tab));
+function openStep(n) {
+  document.querySelectorAll("#turn .acc").forEach(a => {
+    const on = +a.dataset.step === n;
+    a.classList.toggle("open", on);
+    a.querySelector(".acc-h").setAttribute("aria-expanded", String(on));
+  });
+}
+document.querySelectorAll("#turn .acc-h").forEach(h => h.onclick = () => openStep(+h.parentElement.dataset.step));
 $("tSay").addEventListener("input", () => { if ($("tSay").value.trim() && pick.order) { pick.order = null; renderTurn(); } else renderSealing(); });
 $("tSay").addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); seal(); } });
 $("sealBtn").onclick = () => seal();
@@ -883,7 +945,7 @@ async function seal() {
       setChanges(fresh, `WHAT CHANGED IN THE ${pick.hours === 8 ? "LAST 8 HOURS" : "LAST DAY"}`) || setChanges([], "");
     } else { takeNew(p.view.ledger); }
     store.set(sealKey(), JSON.stringify({tick: p.view.tick, summary, priced}));
-    $("tSay").value = ""; pick.order = null; pick.hours = 0; pick.eyes = null;
+    $("tSay").value = ""; pick.order = null; pick.hours = 0; pick.eyes = null; openStep(1);
     render(p);
   } catch (e) {
     if (e.data && e.data.view) render(e.data);
@@ -915,7 +977,7 @@ function renderHeader() {
 }
 function render(p) {
   P = p;
-  renderHeader(); renderHorizon(); renderSpine(); renderChanges(); renderBriefing(); renderBoard(); renderTurn();
+  renderHeader(); renderHorizon(); renderSpine(); renderChanges(); renderBriefing(); renderBoard(); renderTurn(); panelCounts();
   if (P.view.settled && !store.get(`elsewhere-epi-${SID}`)) { store.set(`elsewhere-epi-${SID}`, "1"); setTimeout(openEpi, 600); }
 }
 
