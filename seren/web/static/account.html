@@ -161,6 +161,9 @@ input[type=range]{width:190px;accent-color:var(--ember-dim)}
 
     var vol = readJSON(PREFS.tableMusic.key, {}) || {};
     var loom = readJSON(PREFS.loomSound.key, {}) || {};
+    // The player's own Anthropic key: in this browser only, never on the server.
+    var own = readJSON('seren.ownkey', {}) || {};
+    var ownModel = own.model === 'opus' ? 'opus' : 'sonnet';
     var theme = (function () { try { return localStorage.getItem('seren.theme') || 'light'; }
                                catch (e) { return 'light'; } })();
     var auto = (function () { try { return localStorage.getItem('seren.music.autoplay') !== '0'; }
@@ -223,15 +226,33 @@ input[type=range]{width:190px;accent-color:var(--ember-dim)}
           '<label class="lab" for="name">Name at the table</label>' +
           '<input id="name" type="text" maxlength="80" value="' + esc(me.name || '') + '">' +
         '</div>' +
+        (me.byok ? (
         '<div class="field">' +
           '<label class="lab" for="key">Your own Anthropic key</label>' +
           '<input id="key" type="password" autocomplete="off" placeholder="' +
-            (me.has_key ? 'a key is set — type to replace it' : 'sk-ant-…') + '">' +
-          '<p class="note">Optional. With a key of your own a session runs on it instead of ' +
-          'ours, and the spend cap stops being the only thing between you and a long night. ' +
-          'Leave it blank and nothing changes. <b>We never show it back to you</b> — only ' +
-          'whether one is set.</p>' +
+            (own.key ? 'a key is saved in this browser — type to replace it' : 'sk-ant-…') + '">' +
+          '<p class="note">Optional. With a key of your own every turn runs on it, and on ' +
+          'your bill, instead of ours. <b>It stays in this browser.</b> It goes with each turn ' +
+          'to Anthropic and is never saved on our side or shown back to you. ' +
+          'Another browser or a cleared one needs it typed in again.</p>' +
         '</div>' +
+        '<div class="field">' +
+          '<label class="lab">The DM on your key</label>' +
+          '<span class="seg" id="ownModel">' +
+            '<button data-m="sonnet" aria-pressed="' + (own.model !== 'opus') + '">Sonnet</button>' +
+            '<button data-m="opus" aria-pressed="' + (own.model === 'opus') + '">Opus</button>' +
+          '</span>' +
+          '<p class="note">Sonnet is the default. Opus writes richer scenes and costs about ' +
+          'twice as much a turn.</p>' +
+        '</div>' +
+        '<div class="field">' +
+          '<label class="lab" for="ownCap">Your cap per session, in dollars</label>' +
+          '<input id="ownCap" type="number" min="0" step="0.5" placeholder="no cap" value="' +
+            (own.cap ? esc(String(own.cap)) : '') + '">' +
+          '<p class="note">Optional. A session on your key stops when it reaches this. ' +
+          'Leave it blank for no cap. The table shows what each session has spent either way.</p>' +
+          (own.key ? '<button class="cta ghost" id="forget" style="margin-top:8px">Forget my key</button>' : '') +
+        '</div>') : '') +
         '<div class="field">' +
           '<label class="lab">Plan</label>' +
           '<div class="plan">' + esc((me.plan || 'free').toUpperCase()) + '</div>' +
@@ -278,11 +299,39 @@ input[type=range]{width:190px;accent-color:var(--ember-dim)}
       setTimeout(function () { $('howSaid').textContent = ''; }, 3000);
     });
 
+    // ── the own key, this browser only ─────────────────────────────────────
+    if (me.byok) {
+      Array.prototype.forEach.call($('ownModel').querySelectorAll('button'), function (b) {
+        b.addEventListener('click', function () {
+          Array.prototype.forEach.call($('ownModel').querySelectorAll('button'), function (o) {
+            o.setAttribute('aria-pressed', String(o === b));
+          });
+          ownModel = b.dataset.m;
+        });
+      });
+      if ($('forget')) $('forget').addEventListener('click', function () {
+        try { localStorage.removeItem('seren.ownkey'); } catch (e) {}
+        own = {};
+        $('key').value = '';
+        $('key').placeholder = 'sk-ant-…';
+        this.remove();
+        $('said').className = 'said';
+        $('said').textContent = 'Forgotten. Turns run on ours again';
+      });
+    }
+
     // ── settings, written to the account ───────────────────────────────────
     $('save').addEventListener('click', function () {
       var body = { name: $('name').value.trim() };
-      var k = $('key').value.trim();
-      if (k) body.api_key = k;           // blank means leave it alone, never erase it
+      if (me.byok) {
+        // The key never goes to /api/me. It stays here and rides each turn as a header.
+        var k = $('key').value.trim();
+        var cap = parseFloat($('ownCap').value);
+        var next = { key: k || own.key || '', model: ownModel,
+                     cap: cap > 0 ? cap : null };
+        if (next.key) write('seren.ownkey', next);
+        own = next;
+      }
       fetch('/api/me', {
         method: 'POST', headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(body)
@@ -290,8 +339,10 @@ input[type=range]{width:190px;accent-color:var(--ember-dim)}
         if (!r.ok) throw new Error(r.status);
         return r.json();
       }).then(function (out) {
-        $('key').value = '';
-        $('key').placeholder = out.has_key ? 'a key is set — type to replace it' : 'sk-ant-…';
+        if (me.byok) {
+          $('key').value = '';
+          $('key').placeholder = own.key ? 'a key is saved in this browser — type to replace it' : 'sk-ant-…';
+        }
         $('said').className = 'said';
         $('said').textContent = 'Saved';
         setTimeout(function () { $('said').textContent = ''; }, 2600);

@@ -347,8 +347,10 @@ const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '
 const sum = mods => (mods || []).reduce((n, m) => n + (parseInt((String(m).match(/[-+]\d+/) || ['0'])[0], 10) || 0), 0);
 const signed = n => (n >= 0 ? '+' : '') + n;
 
+// The player's own Anthropic key, if they saved one on the account page (this browser only).
+function ownKeyHeaders(){try{var o=JSON.parse(localStorage.getItem('seren.ownkey')||'null');if(!o||!o.key)return{};var h={'X-Seren-Key':o.key,'X-Seren-Model':o.model==='opus'?'opus':'sonnet'};if(o.cap)h['X-Seren-Cap']=String(o.cap);return h;}catch(e){return{};}}
 async function api(path, body) {
-  const r = await fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body || {}) });
+  const r = await fetch(path, { method: 'POST', headers: { 'Content-Type': 'application/json', ...ownKeyHeaders() }, body: JSON.stringify(body || {}) });
   let d = {};
   try { d = await r.json(); } catch (e) { d = {}; }
   if (!r.ok) throw new Error(d.error || ('the table answered ' + r.status));
