@@ -899,10 +899,16 @@ function renderHeader() {
   $("seedPill").textContent = `SEED ${v.seed}`;
   document.title = `${v.holding.name} — Elsewhere`;
   const t = $("timePill");
-  if (P.unlimited) { t.textContent = "UNLIMITED"; t.className = "pill hot"; }
-  else if (P.expired) { t.textContent = "FREE PLAY USED"; t.className = "pill warn"; }
-  else { const m = Math.max(0, Math.ceil(P.minutes_left)); t.textContent = `${m} MIN OF PLAY`; t.className = "pill" + (m <= 5 ? " warn" : ""); }
-  t.title = "Free play is spent only while you are actually playing. Your world keeps running regardless.";
+  if (P.unlimited) { t.textContent = "UNLIMITED"; t.className = "pill hot"; t.title = "The owner link: no limits on this world."; }
+  else if (P.expired) { t.textContent = "FREE PLAY USED"; t.className = "pill warn"; t.title = "Your world keeps running regardless."; }
+  else if (P.minutes_left != null) { const m = Math.max(0, Math.ceil(P.minutes_left)); t.textContent = `${m} MIN OF PLAY`; t.className = "pill" + (m <= 5 ? " warn" : ""); t.title = "Free play is spent only while you are actually playing. Your world keeps running regardless."; }
+  else {
+    // No clock: what is limited is the narrator. Past the last briefing the world still
+    // plays, and its reports come back plain.
+    const max = (P.max_calls || {}).narrate || 14, used = (P.calls || {}).narrate || 0, left = Math.max(0, max - used);
+    t.textContent = left ? `${left} OF ${max} BRIEFINGS` : "BRIEFINGS PLAIN"; t.className = "pill" + (left <= 2 ? " warn" : "");
+    t.title = left ? `The narrator writes ${max} briefings for this world. After that the world keeps playing and its reports come back plain.` : "The narrator's briefings for this world are used up. Everything still plays; reports come back plain.";
+  }
   const a = $("aiPill");
   if (P.ai_mode === "bedrock") { a.textContent = `NARRATOR ${(P.spend_usd * 100).toFixed(2)}¢`; a.title = `Bedrock · ${(P.spend_usd * 100).toFixed(2)}¢ of ${(P.budget_usd * 100).toFixed(0)}¢ on this world`; }
   else { a.textContent = "NARRATOR · TEMPLATES"; a.title = "No AWS credentials on the server, so narration is templated. The engine decides everything either way."; }

@@ -17,7 +17,10 @@ ROOT = HERE.parent
 SESS = HERE / "sessions"
 SESS.mkdir(exist_ok=True)
 
-SESSION_MINUTES = int(os.environ.get("ELSEWHERE_SESSION_MINUTES", "30"))
+# Minutes of active play a free world gets. 0 (the default since 24 Nov 2026) means no
+# clock at all: the world does nothing in real time, it catches up when you act, so the
+# only thing worth limiting is the AI, and MAX_CALLS and BUDGET_USD already do that.
+SESSION_MINUTES = int(os.environ.get("ELSEWHERE_SESSION_MINUTES", "0"))
 # A gap between two requests longer than this is the player being away, not
 # playing, and does not count against their free time. The client pings while
 # the tab is visible, so reading the board counts; closing the laptop does not.
@@ -56,7 +59,7 @@ def remaining(sess: dict) -> float:
     in real time for as long as it lives; the free tier is thirty minutes of
     actually playing it, spent across as many visits as you like.
     """
-    if sess.get("unlimited"):
+    if sess.get("unlimited") or SESSION_MINUTES <= 0:
         return float("inf")
     return max(0.0, SESSION_MINUTES * 60 - float(sess.get("play_seconds", 0.0)))
 
@@ -90,6 +93,8 @@ def catch_up(sess: dict) -> dict:
 
 
 def spend_ok(sess: dict, layer: str) -> bool:
+    if sess.get("unlimited"):
+        return True          # the owner link: no call caps, no spend cap
     if sess["spend_usd"] >= BUDGET_USD:
         return False
     return sess["calls"].get(layer, 0) < MAX_CALLS[layer]
@@ -144,18 +149,19 @@ def _stamp(s: dict) -> dict:
 
 def public(sess: dict) -> dict:
     left = remaining(sess)
-    unlimited = left == float("inf")
+    timed = left != float("inf")
     return {
         "id": sess["id"],
-        "unlimited": unlimited,
-        "minutes_left": None if unlimited else round(left / 60, 2),
-        "seconds_left": None if unlimited else int(left),
+        "unlimited": bool(sess.get("unlimited")),
+        "minutes_left": round(left / 60, 2) if timed else None,
+        "seconds_left": int(left) if timed else None,
         "play_minutes": round(float(sess.get("play_seconds", 0.0)) / 60, 1),
         "expired": expired(sess),
         "spend_usd": sess["spend_usd"],
         "budget_usd": BUDGET_USD,
         "ai_mode": sess["ai_mode"],
         "calls": sess["calls"],
+        "max_calls": MAX_CALLS,
         "models": ai.DEFAULTS,
         "messages": sess["messages"],
         "view": fog.view(sess["state"]),

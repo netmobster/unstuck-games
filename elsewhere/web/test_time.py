@@ -13,6 +13,7 @@ from pathlib import Path
 
 os.environ["ELSEWHERE_AI"] = "off"
 os.environ["ELSEWHERE_OWNER_TOKEN"] = "test-owner-token"
+os.environ["ELSEWHERE_SESSION_MINUTES"] = "30"   # the clock tests below need one; 0 is tested at the end
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
 
@@ -87,10 +88,27 @@ stranger = game.new_session(seed=4247, owner_token="wrong")
 check("a wrong token grants nothing", not stranger["unlimited"])
 check("no token grants nothing", not game.new_session(seed=4248)["unlimited"])
 
+print("no clock (ELSEWHERE_SESSION_MINUTES=0, the default)")
+game.SESSION_MINUTES = 0
+sess = game.new_session(seed=4249)
+sess["play_seconds"] = 10 * 3600         # ten hours with the tab open
+check("with no clock, play time never expires a world", not game.expired(sess))
+pub = game.public(sess)
+check("with no clock, there is no countdown", pub["minutes_left"] is None, pub["minutes_left"])
+check("with no clock, a stranger is still not unlimited", pub["unlimited"] is False, pub["unlimited"])
+check("the payload says how many briefings a world gets", pub["max_calls"]["narrate"] == game.MAX_CALLS["narrate"])
+sess["calls"]["narrate"] = game.MAX_CALLS["narrate"]
+check("a stranger past the narrator cap gets plain reports", not game.spend_ok(sess, "narrate"))
+owner = game.new_session(seed=4250, owner_token="test-owner-token")
+owner["calls"]["narrate"] = 99
+owner["spend_usd"] = 5.0
+check("the owner skips the call and spend caps", game.spend_ok(owner, "narrate"))
+game.SESSION_MINUTES = 30
+
 # tidy the sessions this wrote
 for p in game.SESS.glob("*.json"):
     try:
-        if game.load_session(p.stem)["state"]["seed"] in {4242, 4243, 4244, 4245, 4246, 4247, 4248, 1}:
+        if game.load_session(p.stem)["state"]["seed"] in {4242, 4243, 4244, 4245, 4246, 4247, 4248, 4249, 4250, 1}:
             p.unlink()
     except Exception:
         pass
