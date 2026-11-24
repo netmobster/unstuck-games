@@ -74,7 +74,7 @@ class Handler(SimpleHTTPRequestHandler):
             return self._door()
         if parsed.path == "/gate":
             return self._door()
-        if parsed.path in ("/", "/play", "/play.html"):
+        if parsed.path in ("/", "/play", "/play/", "/play.html"):
             self.path = "/play.html"
             return SimpleHTTPRequestHandler.do_GET(self)
         if parsed.path == "/api/health":
