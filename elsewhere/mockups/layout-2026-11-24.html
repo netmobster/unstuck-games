@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Elsewhere Layout Mockup</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Spectral:ital,wght@0,300;0,400;0,600;1,300&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d0c0b; --bg2:#12100e; --ink:#e9e1d3; --mid:#a9a297; --soft:#7d776e;
+  --dim:#4a463f; --edge:#2a2622; --ember:#ff4d00;
+  --caps:'Cinzel',serif; --serif:'Spectral',Georgia,serif; --mono:'IBM Plex Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;height:100%;background:var(--bg);color:var(--ink);font-family:var(--serif);-webkit-font-smoothing:antialiased}
+body{display:flex;flex-direction:column}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer}
+[hidden]{display:none !important}
+.lab{font-family:var(--mono);font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--soft)}
+.em{color:var(--ember)}
+
+/* the switcher: mockup only, not part of the game */
+.switch{flex:none;display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:8px 16px;background:#1b1714;border-bottom:1px solid var(--ember)}
+.switch b{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--ember)}
+.switch button{font-family:var(--mono);font-size:13px;padding:6px 12px;border:1px solid var(--edge)}
+.switch button[aria-pressed=true]{border-color:var(--ember);color:var(--ember)}
+.switch span{font-style:italic;color:var(--mid);font-size:15px}
+
+/* the game fills the window; only the briefing and the panel scroll, and only if they must */
+#app{flex:1;min-height:0;display:flex;flex-direction:column}
+.top{flex:none;display:flex;align-items:center;gap:20px;padding:12px 24px;border-bottom:1px solid var(--edge);flex-wrap:wrap}
+.logo{font-family:var(--caps);font-weight:600;font-size:16px;letter-spacing:.22em;line-height:1.1}
+.logo small{display:block;font-size:10px;letter-spacing:.34em;color:var(--ember);font-weight:400}
+.hold{font-family:var(--caps);font-size:22px;letter-spacing:.06em}
+.when{font-style:italic;color:var(--mid);font-size:17px}
+.pills{margin-left:auto;display:flex;gap:10px;flex-wrap:wrap}
+.pill{font-family:var(--mono);font-size:12px;letter-spacing:.12em;padding:6px 12px;border:1px solid var(--edge);color:var(--mid)}
+
+.threat{flex:none;display:flex;gap:28px;align-items:center;padding:18px 24px;border-bottom:1px solid var(--edge);
+  background:radial-gradient(120% 160% at 85% 100%,rgba(255,77,0,.13),transparent 60%)}
+.threat .what{flex:1;min-width:0}
+.threat h1{font-family:var(--caps);font-weight:400;font-size:clamp(26px,2.8vw,40px);line-height:1.1;margin:6px 0 6px}
+.threat p{margin:0;font-style:italic;color:var(--mid);font-size:19px}
+.nums{display:flex;gap:0;flex:none}
+.nums div{padding:0 20px;border-left:1px solid var(--edge);text-align:left}
+.nums b{display:block;font-family:var(--caps);font-weight:400;font-size:30px;line-height:1.1}
+.clock{width:104px;height:104px;border-radius:50%;border:3px solid var(--edge);border-top-color:var(--ember);display:grid;place-items:center;text-align:center;flex:none}
+.clock b{font-family:var(--caps);font-size:22px;font-weight:400;display:block}
+.clock span{font-family:var(--mono);font-size:10px;letter-spacing:.2em;color:var(--soft)}
+
+.body{flex:1;min-height:0;display:grid;grid-template-columns:minmax(0,1fr) 480px}
+.main{overflow:auto;padding:22px 32px 28px;border-right:1px solid var(--edge)}
+.changed{padding:12px 18px;border:1px solid var(--edge);border-left:3px solid var(--dim);font-size:18px;font-style:italic;color:var(--mid);max-width:62ch}
+.briefing{margin-top:22px}
+.briefing .text{font-size:22px;line-height:1.72;max-width:62ch;margin-top:10px}
+.briefing .text p{margin:0 0 .9em}
+.briefing .foot{font-style:italic;color:var(--soft);font-size:17px}
+
+/* the one panel: everything that isn't the briefing */
+.side{min-height:0;display:flex;flex-direction:column;background:var(--bg2)}
+.tabs{flex:none;display:grid;grid-template-columns:repeat(4,1fr);border-bottom:1px solid var(--edge)}
+.tabs button{padding:16px 4px;font-family:var(--mono);font-size:13px;letter-spacing:.14em;color:var(--soft);border-bottom:3px solid transparent}
+.tabs button[aria-selected=true]{color:var(--ink);border-bottom-color:var(--ember)}
+.tabs .n{color:var(--ember)}
+.pane{flex:1;min-height:0;overflow:auto;padding:20px 24px}
+
+/* the turn, as an accordion: one step open at a time, 1 then 2 then 3 */
+.acc{border:1px solid var(--edge);margin-bottom:10px}
+.acc.open{border-color:var(--ember)}
+.acc-h{width:100%;display:flex;justify-content:space-between;align-items:baseline;gap:14px;padding:14px 16px;text-align:left}
+.acc-h .k{font-family:var(--mono);font-size:12px;letter-spacing:.18em;color:var(--soft);flex:none}
+.acc.open .acc-h .k{color:var(--ember)}
+.acc-h b{font-weight:400;font-size:19px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acc.open .acc-h b{display:none}
+.acc-h b.none{color:var(--soft);font-style:italic}
+.acc-b{padding:0 16px 16px}
+.acc:not(.open) .acc-b{display:none}
+.choices{display:grid;gap:10px}
+.choices.two{grid-template-columns:1fr 1fr}
+.choice{display:flex;justify-content:space-between;align-items:baseline;gap:12px;text-align:left;padding:14px 16px;border:1px solid var(--edge);font-size:19px;min-height:54px}
+.choice i{color:var(--soft);font-size:15px}
+.choice[aria-pressed=true]{border-color:var(--ember);background:rgba(255,77,0,.09)}
+.say{width:100%;min-height:84px;margin-top:12px;padding:12px 16px;background:var(--bg);border:1px solid var(--edge);color:var(--ink);font:italic 19px/1.5 var(--serif);resize:vertical}
+.say:focus{outline:none;border-color:var(--ember)}
+.sealbar{flex:none;padding:14px 24px 18px;border-top:1px solid var(--edge)}
+.sealbar .sum{font-size:16px;color:var(--mid);margin-bottom:10px;font-style:italic}
+.seal{width:100%;padding:17px;background:var(--ember);color:#160a04;font-family:var(--caps);font-size:20px;letter-spacing:.24em}
+
+.nb{border:1px solid var(--edge);padding:16px 18px;margin-bottom:12px}
+.nb.hot{border-color:var(--ember)}
+.nb h3{margin:0;font-family:var(--caps);font-weight:400;font-size:19px;letter-spacing:.05em;display:flex;justify-content:space-between;align-items:baseline;gap:10px}
+.nb h3 i{font-family:var(--serif);font-size:15px;color:var(--soft);letter-spacing:0}
+.nb .track{display:grid;grid-template-columns:repeat(10,1fr);gap:4px;margin:12px 0}
+.nb .track span{height:9px;background:#2a1d16}
+.nb p{margin:8px 0 0;font-size:18px;font-style:italic}
+.nb.cold{opacity:.62}
+.empty{font-style:italic;color:var(--soft);font-size:19px;margin:12px 0 0}
+
+/* phones: stack, and let the page scroll */
+@media (max-width:900px){
+  html,body{height:auto}
+  .threat{flex-wrap:wrap}
+  .nums{width:100%}
+  .nums div:first-child{border-left:0;padding-left:0}
+  .body{grid-template-columns:1fr}
+  .main{border-right:0}
+  .choices.two{grid-template-columns:1fr}
+  .briefing .text{font-size:20px}
+  .pills{margin-left:0}
+}
+</style>
+</head>
+<body>
+
+<div class="switch"><b>MOCKUP</b><span>One panel beside the briefing. The turn is an accordion: eyes, then order, then how long.</span></div>
+
+<div id="app">
+  <header class="top">
+    <div class="logo">ELSEWHERE<small>IDLE WORLD</small></div>
+    <div class="hold">THYRE'S CROSSING</div>
+    <div class="when">day 1 · the day watch · 15:04</div>
+    <div class="pills">
+      <span class="pill">12 OF 14 BRIEFINGS</span>
+      <span class="pill">HOW TO PLAY</span>
+    </div>
+  </header>
+
+  <section class="threat">
+    <div class="what">
+      <div class="lab em">What is coming</div>
+      <h1><span class="em">The Ninth Charter</span> is about 20 days away.</h1>
+      <p>On your own count. They want to wake the thing under the barrow.</p>
+    </div>
+    <div class="nums">
+      <div><b>200</b><span class="lab">Coin</span></div>
+      <div><b>4</b><span class="lab">Hands</span></div>
+      <div><b>0/5</b><span class="lab">Queue</span></div>
+      <div><b>Intact</b><span class="lab">Standing</span></div>
+    </div>
+    <div class="clock"><div><b>7h 57m</b><span>NEXT TICK</span></div></div>
+  </section>
+
+  <div class="body">
+    <main class="main"><div>
+      <div class="changed">Nothing new since you last looked. The engine has not rolled yet.</div>
+      <section class="briefing">
+        <div class="lab em">The briefing · day 1</div>
+        <div class="text">
+          <p>Thyre's Crossing stands quiet under the watchful eye of <span class="em">The Ninth Charter</span>, their presence a constant reminder of the zealots' intent to wake the thing beneath the barrow. The air is thick with the unknown, as no reliable word has reached from The Iron Hand or The Quiet Watch.</p>
+          <p>The silence from the coast road and the digging site feels like a tightening noose, each day without news a step closer to dread. What are The Iron Hand unearthing? What chaos are The Quiet Watch sowing on the road?</p>
+        </div>
+        <div class="foot">The engine already rolled. This is only the reading.</div>
+      </section>
+    </div></main>
+
+    <!-- The one panel: everything that isn't the briefing. -->
+    <aside class="side" id="side">
+      <div class="tabs" role="tablist">
+        <button role="tab" aria-selected="true" data-t="turn">TURN</button>
+        <button role="tab" aria-selected="false" data-t="world">WORLD <span class="n">1/3</span></button>
+        <button role="tab" aria-selected="false" data-t="queue">QUEUE</button>
+        <button role="tab" aria-selected="false" data-t="ledger">LEDGER</button>
+      </div>
+
+      <div class="pane" data-p="turn">
+        <div class="acc open" data-step="1">
+          <button class="acc-h" aria-expanded="true"><span class="k">1 · WHERE THE EYES GO</span><b id="pick1">The Ninth Charter</b></button>
+          <div class="acc-b">
+            <div class="choices" data-pick="1">
+              <button class="choice" aria-pressed="true">The Ninth Charter <i>held</i></button>
+              <button class="choice" aria-pressed="false">The Iron Hand <i>never watched</i></button>
+              <button class="choice" aria-pressed="false">The Quiet Watch <i>never watched</i></button>
+              <button class="choice" aria-pressed="false">From the hill <i>a rough read on all three</i></button>
+            </div>
+          </div>
+        </div>
+        <div class="acc" data-step="2">
+          <button class="acc-h" aria-expanded="false"><span class="k">2 · THE ORDER · 200 TO SPEND</span><b id="pick2" class="none">nothing yet</b></button>
+          <div class="acc-b">
+            <div class="choices two" data-pick="2">
+              <button class="choice" aria-pressed="false">Disrupt <i>60</i></button>
+              <button class="choice" aria-pressed="false">Scout <i>30</i></button>
+              <button class="choice" aria-pressed="false">Trade <i>20</i></button>
+              <button class="choice" aria-pressed="false">Fortify <i>50</i></button>
+              <button class="choice" aria-pressed="false">Invest <i>40</i></button>
+              <button class="choice" aria-pressed="false">Mega <i>all 200</i></button>
+            </div>
+            <textarea class="say" placeholder="Or say it yourself, then press Enter. Throw a feast."></textarea>
+          </div>
+        </div>
+        <div class="acc" data-step="3">
+          <button class="acc-h" aria-expanded="false"><span class="k">3 · THEN HOW LONG</span><b id="pick3">Leave it running</b></button>
+          <div class="acc-b">
+            <div class="choices" data-pick="3">
+              <button class="choice" aria-pressed="false">+8 hours <i>one tick</i></button>
+              <button class="choice" aria-pressed="false">+1 day <i>three ticks</i></button>
+              <button class="choice" aria-pressed="true">Leave it running <i>the real game</i></button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pane" data-p="world" hidden>
+        <div class="nb hot"><h3>The Ninth Charter <i>zealots</i></h3>
+          <div class="track"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <p>singing at the barrow mouth, in shifts</p></div>
+        <div class="nb cold"><h3>The Iron Hand <i>diggers</i></h3><p>sinking a shaft nobody was asked about. Never watched.</p></div>
+        <div class="nb cold"><h3>The Quiet Watch <i>raiders</i></h3><p>burning waystations, one a week. Never watched.</p></div>
+      </div>
+      <div class="pane" data-p="queue" hidden><div class="lab">The queue · 0/5</div><p class="empty">Empty. An empty queue earns nothing while you are gone.</p></div>
+      <div class="pane" data-p="ledger" hidden><div class="lab">The ledger</div><p class="empty">Empty. The cleanest it will ever look.</p></div>
+
+      <div class="sealbar" data-for="turn">
+        <div class="sum" id="sum">Eyes on The Ninth Charter · no order · then leave it running</div>
+        <button class="seal">SEAL THE WATCH</button>
+      </div>
+    </aside>
+  </div>
+
+</div>
+
+<script>
+const $ = (s, r = document) => r.querySelector(s), $$ = (s, r = document) => [...r.querySelectorAll(s)];
+const app = $("#app");
+
+function tab(t) {
+  $$(".tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.t === t)));
+  $$(".pane").forEach(p => p.hidden = p.dataset.p !== t);
+  $(".sealbar").hidden = t !== "turn";
+}
+$(".tabs").addEventListener("click", e => { const b = e.target.closest("button"); if (b) tab(b.dataset.t); });
+
+function step(n) {
+  $$(".acc").forEach(a => {
+    const on = a.dataset.step === String(n);
+    a.classList.toggle("open", on);
+    $(".acc-h", a).setAttribute("aria-expanded", String(on));
+  });
+}
+$$(".acc-h").forEach(h => h.onclick = () => step(+h.parentElement.dataset.step));
+
+function summary() {
+  const o = $("#pick2").textContent;
+  $("#sum").textContent = `Eyes on ${$("#pick1").textContent} · ${o === "nothing yet" ? "no order" : o} · then ${$("#pick3").textContent.toLowerCase()}`;
+}
+// a choice marks itself, fills its step's label, and moves on to the next step
+document.addEventListener("click", e => {
+  const c = e.target.closest(".choice"); if (!c) return;
+  const group = c.parentElement, n = +group.dataset.pick;
+  $$(".choice", group).forEach(x => x.setAttribute("aria-pressed", String(x === c)));
+  $("#pick" + n).textContent = c.firstChild.textContent.trim();
+  $("#pick" + n).classList.remove("none");
+  summary();
+  if (n < 3) step(n + 1);
+});
+$(".say").addEventListener("input", e => {
+  const v = e.target.value.trim();
+  $("#pick2").textContent = v ? "“" + v.slice(0, 40) + (v.length > 40 ? "…" : "") + "”" : "nothing yet";
+  $("#pick2").classList.toggle("none", !v);
+  if (v) $$('[data-pick="2"] .choice').forEach(x => x.setAttribute("aria-pressed", "false"));
+  summary();
+});
+$(".say").addEventListener("keydown", e => {
+  if (e.key === "Enter" && !e.shiftKey && e.target.value.trim()) { e.preventDefault(); step(3); }
+});
+
+tab("turn"); step(1);
+</script>
+</body>
+</html>
