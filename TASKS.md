@@ -51,6 +51,35 @@ list: [`STATUS-2026-11-19.md`](STATUS-2026-11-19.md).
 - [ ] Andy's 10 Nov messages in #andy-chats (couldn't pay at imprint.selfactual.ai/billing;
       unclear what to do after setup) look unanswered. That's SA, not UG; noted here so it isn't lost.
 
+## P1: Seren 1.5 (scoped 24 Nov, CC-162)
+
+Scope and every pick are in [`DECISIONS.md`](DECISIONS.md) (two 24 Nov entries). The vault super task is
+SAI-1013. Pages: [launch](https://claude.ai/artifact/8DMghfTBSYgL6VXtLvJMWM) ·
+[scope picker](https://claude.ai/artifact/CvXAmxKXvRrV1rR8aiusWd) ·
+[additions](https://claude.ai/artifact/BGxKCy8jjgGsE3aXDnnePd) ·
+[mischief](https://claude.ai/artifact/SfK3hUoUka2khhqeMAcPyF) ·
+[side quests](https://claude.ai/artifact/Be3W7tTkgiSPPkjGnQsB4E) ·
+[chronicle sample](https://claude.ai/artifact/554MdoTUMKSMEqaKuYdd8i) (private: licensed module).
+Data: `seren/mischief/pass-1.json` (118), `seren/sidequests/pass-1.json` (97).
+
+- [ ] **First: plan how to build the MCP** rather than building the obvious one. Check Imprint (sessions,
+      MCP v2), guard approvals, Judgement OS and MINDER before lifting from Campfire or QuestBook.
+      Until then every platform and backend pick is a maybe.
+- [ ] Seren inside Claude (MCP), SAI-1014 · the table as an app · secrets the model never holds · dice
+      the model can't fudge.
+- [ ] The Director and the randomness engine, SAI-1017 · fronts and clocks (Dungeon World and Blades,
+      both CC BY 3.0) · DM personas with their own allow/block lists.
+- [ ] DM mischief, SAI-1015 · score all 118, SAI-1016 · the side-quest library (all yes; scoring later).
+- [ ] The campaign chronicle, SAI-1019 · corpus → campaign (SRN-17), SAI-1020.
+- [ ] Instances: one dungeon first, then towns, castles, cities (`IDEAS.md`).
+- [ ] An original starter campaign on SRD 5.2.1, with the attribution copied from the PDF.
+- [ ] Session zero as a form · the world moves while you're away, **a player option**.
+- [ ] Multiplayer, each player with their own Claude (Jay and Andy first; needs Andy's email).
+- [ ] Squint inside Seren, SAI-589 (the trust model first).
+- [ ] **The Loom is now the Deal** ("deal this hand"; decided 24 Nov). Rename the code at build time:
+      `loom.html`, `loom.ps1`, and the "weave" wording in the Seren skill and docs.
+- [ ] Later: any model as DM · seeds as a backlog and an active list · red team's five QuestBook tests.
+
 ## P2: Later
 
 - [ ] Decide whether SEREN and Elsewhere move from Nova to Claude on Bedrock (SA's quota allows it).
