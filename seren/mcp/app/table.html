@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seren</title>
+<style>
+/* Seren's look, self-contained: the app runs in a sandbox with no outside fonts or files yet. */
+:root{--ink:#100d0b;--ink2:#17130f;--bone:#e8e1d6;--dust:#a39a8f;--copper:#b07a4e;--copper-hi:#c89060;
+  --verd:#7f9b8c;--edge:rgba(232,225,214,.16);--hair:rgba(232,225,214,.09);
+  --serif:'IBM Plex Serif',Georgia,'Times New Roman',serif;--sans:'IBM Plex Sans',system-ui,sans-serif;
+  --mono:'Space Mono',ui-monospace,Consolas,monospace;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--ink);color:var(--bone);min-height:100%}
+body{font:300 16px/1.6 var(--sans);display:flex;align-items:center;justify-content:center;min-height:100vh;padding:24px 16px}
+::selection{background:var(--copper);color:var(--ink)}
+main{max-width:560px;width:100%;text-align:center}
+.eb{font:400 11px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--copper-hi)}
+h1{font:400 clamp(34px,7vw,54px)/1.08 var(--serif);margin:16px 0 12px}
+h1 em{color:var(--copper-hi)}
+p{color:var(--dust);margin:0 auto 22px;max-width:460px}
+.cards{display:flex;justify-content:center;gap:10px;margin:26px 0 30px}
+.cards span{width:54px;height:82px;border:1px solid var(--copper);border-radius:4px;background:
+  repeating-linear-gradient(45deg,rgba(176,122,78,.18) 0 2px,transparent 2px 9px),var(--ink2);
+  animation:deal .9s ease-out both}
+.cards span:nth-child(2){animation-delay:.12s}.cards span:nth-child(3){animation-delay:.24s}
+.cards span:nth-child(4){animation-delay:.36s}.cards span:nth-child(5){animation-delay:.48s}
+@keyframes deal{from{opacity:0;transform:translateY(-18px) rotate(-6deg)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.cards span{animation:none}}
+.row{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+button{font:400 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--copper-hi);
+  background:transparent;border:1px solid var(--copper);border-radius:2px;padding:12px 16px;cursor:pointer}
+button:hover{color:var(--bone)} button:disabled{opacity:.4;cursor:default}
+.status{margin-top:28px;padding-top:14px;border-top:1px solid var(--hair);font:400 11px/1.7 var(--mono);
+  letter-spacing:.06em;color:var(--dust);text-align:left}
+.status b{color:var(--verd);font-weight:400}
+</style>
+</head>
+<body>
+<main>
+  <div class="eb">Seren · the fortune teller's table</div>
+  <h1>The table is <em>set.</em></h1>
+  <p>Hello from inside Claude. This is step two: the pipe works. The shelf, the deal, the dials and the book come next.</p>
+  <div class="cards" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+  <div class="row">
+    <button id="full" disabled>Full screen</button>
+    <button id="inline" disabled>Back to the chat</button>
+  </div>
+  <div class="status" id="status">connecting…</div>
+</main>
+<script type="module">
+/*__MCP_APPS_LIBRARY__*/
+</script>
+<script type="module">
+const out = document.getElementById('status');
+const lines = {};
+function show(key, value) { lines[key] = value; out.innerHTML = Object.entries(lines).map(([k, v]) => `${k}: <b>${v}</b>`).join('<br>'); }
+
+const { App } = window.McpApps || {};
+if (!App) { show('host', 'the app library did not load'); }
+else if (window.parent === window) { show('host', 'none: open this through Claude to see it work'); }
+else {
+  const app = new App({ name: 'seren-table', version: '0.1.0' }, { availableDisplayModes: ['inline', 'fullscreen'] });
+  const full = document.getElementById('full'), inline = document.getElementById('inline');
+  const modes = () => app.getHostContext()?.availableDisplayModes || [];
+  const mode = () => app.getHostContext()?.displayMode || 'inline';
+  async function go(m) {
+    try { const r = await app.requestDisplayMode({ mode: m }); show('display', r?.mode || m); }
+    catch (e) { show('display', 'refused: ' + (e?.message || e)); }
+  }
+  app.ontoolresult = (params) => { const s = params?.structuredContent; if (s) show('tool', `${s.app} · ${s.screen}`); };
+  app.onhostcontextchanged = () => show('display', mode());
+  full.onclick = () => go('fullscreen');
+  inline.onclick = () => go('inline');
+  try {
+    await app.connect();
+    const info = app.getHostVersion?.();
+    show('host', info ? `${info.name} ${info.version || ''}`.trim() : 'connected');
+    show('display', mode());
+    const can = modes().includes('fullscreen');
+    full.disabled = !can; inline.disabled = !can;
+    // Jay's flow: one tool call from the chat, and the table pops out full screen, MINDER-style.
+    if (can && mode() !== 'fullscreen') await go('fullscreen');
+  } catch (e) { show('host', 'could not connect: ' + (e?.message || e)); }
+}
+</script>
+</body>
+</html>

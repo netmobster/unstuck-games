@@ -1,0 +1,73 @@
+"""In-process checks for the Seren MCP server (as MINDER's test/minder.test.mjs does).
+
+    .venv/Scripts/python test_server.py
+
+No network, no Claude: an MCP client talks to the server object directly, once advertising MCP
+Apps support (as Claude does) and once without it.
+"""
+from __future__ import annotations
+
+import asyncio
+import sys
+
+from mcp import Client
+from mcp.client import advertise
+from mcp.server.apps import APP_MIME_TYPE, EXTENSION_ID
+
+import server as seren
+
+FAILS: list[str] = []
+
+
+def check(ok: bool, what: str) -> None:
+    print(("ok   " if ok else "FAIL ") + what)
+    if not ok:
+        FAILS.append(what)
+
+
+def dump(model) -> dict:
+    return model.model_dump(by_alias=True, exclude_none=True) if hasattr(model, "model_dump") else model
+
+
+async def main() -> int:
+    as_claude = [advertise(EXTENSION_ID, {"mimeTypes": [APP_MIME_TYPE]})]
+    async with Client(seren.server, extensions=as_claude) as client:
+        tools = dump(await client.list_tools())["tools"]
+        names = [t["name"] for t in tools]
+        check(names == ["open_seren"], f"one tool, open_seren (got {names})")
+        tool = tools[0]
+        ui = (tool.get("_meta") or {}).get("ui") or {}
+        check(ui.get("resourceUri") == seren.APP_URI, "open_seren points at the app's hashed address")
+        check(seren.APP_URI.startswith("ui://seren/table-") and seren.APP_URI.endswith(".html"),
+              f"the address carries a hash ({seren.APP_URI})")
+        ann = tool.get("annotations") or {}
+        check(ann.get("readOnlyHint") is True, "open_seren is marked read-only")
+        check("destructiveHint" not in ann, "a read-only tool leaves out the destructive hint")
+
+        res = dump(await client.read_resource(seren.APP_URI))["contents"][0]
+        check(res.get("mimeType") == APP_MIME_TYPE, f"the app is served as {APP_MIME_TYPE}")
+        html = res.get("text", "")
+        check("window.McpApps={" in html and "App:" in html, "the app library is inlined and exposes App")
+        check("/*__MCP_APPS_LIBRARY__*/" not in html, "no placeholder left in the page")
+        check("export{" not in html[-2000:], "the library's trailing export was rewritten")
+
+        old = dump(await client.read_resource("ui://seren/table-deadbeef.html"))["contents"][0]
+        check(old.get("text") == html and old.get("mimeType") == APP_MIME_TYPE,
+              "an old address still answers with today's page")
+
+        result = dump(await client.call_tool("open_seren", {}))
+        sc = result.get("structuredContent") or {}
+        check(sc.get("app") == "seren" and sc.get("screen") == "hello", "open_seren returns the app and screen")
+        check(sc.get("note") == "The table is open.", "with app support, it says the table is open")
+
+    async with Client(seren.server) as plain:
+        result = dump(await plain.call_tool("open_seren", {}))
+        note = (result.get("structuredContent") or {}).get("note", "")
+        check("can't show apps" in note, "without app support, it says so in plain text")
+
+    print(f"\n{'all passed' if not FAILS else str(len(FAILS)) + ' failed'}")
+    return 1 if FAILS else 0
+
+
+if __name__ == "__main__":
+    sys.exit(asyncio.run(main()))

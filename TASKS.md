@@ -60,25 +60,68 @@ SAI-1013. Pages: [launch](https://claude.ai/artifact/8DMghfTBSYgL6VXtLvJMWM) ·
 [mischief](https://claude.ai/artifact/SfK3hUoUka2khhqeMAcPyF) ·
 [side quests](https://claude.ai/artifact/Be3W7tTkgiSPPkjGnQsB4E) ·
 [chronicle sample](https://claude.ai/artifact/554MdoTUMKSMEqaKuYdd8i) (private: licensed module).
-Data: `seren/mischief/pass-1.json` (118), `seren/sidequests/pass-1.json` (97).
+Data, in the private SEREN-AI repo (moved off this public one 25 Nov): `libraries/mischief/pass-1.json`
+(118), `libraries/sidequests/pass-1.json` (97). Published campaigns: `campaigns/published/` there too.
 
-- [ ] **First: plan how to build the MCP** rather than building the obvious one. Check Imprint (sessions,
+- [ ] **First: spec the game and the features** (Jay, 25 Nov: the MCP comes last, because it has to
+      carry what the specs decide). Then a version roadmap and timeline. **Architecture settled 25 Nov**
+      (A1–A8 in `DECISIONS.md`): one engine (the web port's Python), state only through code, the log
+      is the record, the book fixed with play on top, the Director in code, fog fails closed, a server clock.
+- [ ] **Last: plan how to build the MCP** rather than building the obvious one. Check Imprint (sessions,
       MCP v2), guard approvals, Judgement OS and MINDER before lifting from Campfire or QuestBook.
       Until then every platform and backend pick is a maybe.
-- [ ] Seren inside Claude (MCP), SAI-1014 · the table as an app · secrets the model never holds · dice
-      the model can't fudge.
-- [ ] The Director and the randomness engine, SAI-1017 · fronts and clocks (Dungeon World and Blades,
-      both CC BY 3.0) · DM personas with their own allow/block lists.
-- [ ] DM mischief, SAI-1015 · score all 118, SAI-1016 · the side-quest library (all yes; scoring later).
-- [ ] The campaign chronicle, SAI-1019 · corpus → campaign (SRN-17), SAI-1020.
-- [ ] Instances: one dungeon first, then towns, castles, cities (`IDEAS.md`).
-- [ ] An original starter campaign on SRD 5.2.1, with the attribution copied from the PDF.
-- [ ] Session zero as a form · the world moves while you're away, **a player option**.
-- [ ] Multiplayer, each player with their own Claude (Jay and Andy first; needs Andy's email).
-- [ ] Squint inside Seren, SAI-589 (the trust model first).
-- [ ] **The Loom is now the Deal** ("deal this hand"; decided 24 Nov). Rename the code at build time:
+
+**The cut, decided 25 Nov** ([versions picker](https://claude.ai/artifact/3oy46G41rzYB3ZaP1SqifX); `DECISIONS.md`).
+
+**Milestone one (Jay, 25 Nov): the first magic moment, in Claude via MCP.** Choose a campaign
+(a summary card each: title, header graphic, key info, description, starting level, tags for what's
+locked and how much chaos is allowed), then the deal, the dials, and the book presented.
+Decided (`DECISIONS.md`, 25 Nov): all three originals shown on the shelf, blood-and-ink tightened
+and decked; the weave unchanged except its inputs, on our server; campaigns set dial ranges; an
+**MCP MVP plan first**: the smallest server with the 2–3 tools the app needs.
+- [ ] **Build the MCP MVP** per `seren/MCP-MVP-PLAN.md` (approved with edits 25 Nov): seven visible
+      steps from the campaign format to the book saved and downloadable for red team.
+
+**1.5**
+- [ ] The one engine, A1–A8 built.
+- [ ] Seren inside Claude (MCP), SAI-1014 · dice the model can't fudge · fog that fails closed.
+- [ ] **The table app, rethought** (Jay: "a fun little thing to work on earlier than later"). We have one
+      built; now that apps can talk to chat and back, and animate, it gets a serious rethink. Includes
+      the map with fog and the rest of the table. Goes with the animated fortune teller in `IDEAS.md`.
+- [ ] **The Loom is now the Deal**, and preflight.py the Doorkeeper. Rename the code at build time:
       `loom.html`, `loom.ps1`, and the "weave" wording in the Seren skill and docs.
-- [ ] Later: any model as DM · seeds as a backlog and an active list · red team's five QuestBook tests.
+- [ ] The Director and the randomness engine, SAI-1017 · fronts and clocks (Dungeon World and Blades,
+      both CC BY 3.0).
+- [ ] DM mischief, SAI-1015, and the side-quest library: score both (SAI-1016), ship a subset.
+- [ ] DM personas with their own allow/block lists. Local Seren already has four in `SEREN/dm/personas/`
+      (The Play Master, the default; The Rulemaker; The Jester; Wick), so this adds the lists to them.
+- [ ] **The existing start flow, moved into Claude as the app:** the table with the fortune teller deals
+      the cards (some random, some player preferences), then the tuning dials, then the Doorkeeper and
+      the door, then the campaign boots in Claude. Same flow as local Seren today, made sexy. (Replaces
+      "session zero as a form", which was never a separate thing; settled 25 Nov.)
+- [ ] **Publish the three originals** (blood-and-ink, quire, tallage): review and tighten each, write
+      its decks (origins, companions, personas, 2–3 antagonists), lock its spine, and lift it out of
+      `LIVE/` without Jay's played sessions. SRD 5.2.1 attribution copied from the PDF.
+      **blood-and-ink is the starter**, with the first dungeon under the press.
+- [ ] **Published campaigns at the table:** every card dealt face down on a card back made for that
+      campaign (generated art), flipped one at a time. Each slot is dealt, locked (face
+      up, in chains) or hidden (sealed until the story reveals it), set per campaign. The antagonist
+      is normally shown. Dials always stay. Part of the table-app rethink.
+- [ ] The campaign chronicle, SAI-1019.
+- [ ] Turn any material into a campaign (corpus → campaign, SRN-17), SAI-1020.
+- [ ] Squint inside Seren, SAI-589 (the trust model first). **Squint uses the campaign's deck**
+      (Jay, 25 Nov): played at a campaign's table, it's dealt on that campaign's own card backs. The player
+      always carries a Squint pack in their inventory, with the campaign's backs.
+
+**1.6**
+- [ ] Multiplayer, each player with their own Claude. Jay and Andy first, needs Andy's email;
+      per-player fog (A7) and turn-waiting on the clock (A8) come with it.
+- [ ] Towns, castles and cities (the instance ladder after the first dungeon).
+- [ ] Any model as the DM.
+
+**Later**
+- [ ] The world moves while you're away (a player option; A8's clock is built in 1.5 regardless).
+- [ ] Seeds as a backlog and an active list · red team's five QuestBook tests.
 
 ## P2: Later
 
