@@ -26,7 +26,7 @@ $cf = Join-Path $here 'bin\cloudflared.exe'
 if (-not (Test-Path $py)) {
   Write-Host 'No .venv yet. Making one...'
   python -m venv (Join-Path $here '.venv')
-  & $py -m pip install -q 'mcp==2.2.0' uvicorn boto3
+  & $py -m pip install -q 'mcp==2.2.0' uvicorn boto3 'botocore[crt]'
 }
 if (-not (Test-Path $cf)) {
   $known = @(

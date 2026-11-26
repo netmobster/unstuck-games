@@ -566,7 +566,7 @@ class Handler(BaseHTTPRequestHandler):
             try:
                 out = weave.weave(picks, dials, cards, tier=TIER)
                 campaign_obj, spent = out["campaign"], out["spent"]
-                problems = audit.check(campaign_obj)
+                problems = audit.check(campaign_obj) + weave.player_leaks(campaign_obj, picks, cards)
                 mended = False
                 if problems:
                     # One fix pass: the auditor's complaints go back to the weaver before
@@ -574,7 +574,7 @@ class Handler(BaseHTTPRequestHandler):
                     out = weave.mend(campaign_obj, problems, picks, dials, cards, tier=TIER)
                     campaign_obj, mended = out["campaign"], True
                     spent += out["spent"]
-                    problems = audit.check(campaign_obj)
+                    problems = audit.check(campaign_obj) + weave.player_leaks(campaign_obj, picks, cards)
                 if problems:
                     return self._json(422, {"error": "the auditor refused it",
                                             "problems": problems, "spent": round(spent, 4)})

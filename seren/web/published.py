@@ -79,6 +79,30 @@ def sealed(slug: str) -> dict:
     return out
 
 
+def story(slug: str, cards: dict) -> dict | None:
+    """The published campaign's own story, for the WEAVER ONLY (server-side, DM-side).
+
+    Without this a real weave of Blood and Ink only had the dealt cards, and wrote a different story
+    each time (26 Nov: three weaves, one title, none of them Agnes and the press). This is the shelf
+    card plus the house rules and the truths for the cards actually dealt. It never goes to the
+    browser, the app, or the book writer."""
+    base = root()
+    if base is None or not SLUG.match(slug):
+        return None
+    card = _read(base / slug / "card.json") or {}
+    truths = _read(base / slug / "truths.json") or {}
+    known = truths.get("cards") or {}
+    dealt = {}
+    for slot, value in (cards or {}).items():
+        for c in (value if isinstance(value, list) else [value]):
+            key = f"{slot}:{(c or {}).get('id')}"
+            if key in known:
+                dealt[key] = known[key]
+    return {"title": card.get("title"), "tagline": card.get("tagline"), "description": card.get("description"),
+            "key_info": card.get("key_info"), "level": card.get("level"), "length": card.get("length"),
+            "rules": truths.get("rules") or [], "truths_for_this_hand": dealt}
+
+
 def art(slug: str, name: str) -> bytes | None:
     base = root()
     if base is None or not SLUG.match(slug) or name not in ART:

@@ -69,6 +69,18 @@ TIER = os.environ.get("SEREN_TIER", "free")
 PORT = int(os.environ.get("SEREN_MCP_PORT", "3020"))
 PUBLIC = (os.environ.get("SEREN_PUBLIC_URL") or f"http://127.0.0.1:{PORT}").rstrip("/")
 ACCOUNT = "mcp"                    # one local player until sign-up exists
+AI_MODE = LOCAL / "ai-mode"        # "real" or "fake": switch without restarting (ai.ps1)
+
+
+def ai_mode() -> str:
+    """Real or fake AI, read on every call, so the switch needs no restart and no new tunnel address."""
+    try:
+        want = AI_MODE.read_text(encoding="utf-8").strip().lower()
+    except OSError:
+        want = ""
+    if want in ("real", "fake"):
+        os.environ["SEREN_AI"] = "bedrock" if want == "real" else "mock"
+    return "fake" if weave.mocking() else "real"
 
 # The vault server's tool types. Read-only tools leave out the destructive and idempotent hints:
 # the MCP spec says those only mean something when a tool writes.
@@ -208,6 +220,7 @@ def _art(c: dict) -> dict:
     annotations=READ,
 )
 def seren_deal() -> dict[str, Any]:
+    ai_mode()
     return {"campaigns": [_art(c) for c in published.listing()], "fake_ai": weave.mocking()}
 
 
@@ -222,6 +235,7 @@ def seren_deal() -> dict[str, Any]:
 )
 def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, Any]) -> dict[str, Any]:
     """The web table's /api/weave, as a tool: weave, audit (one mend), write the book, save it."""
+    ai_mode()
     if picks.get("campaign"):
         for slot, card in published.sealed(str(picks["campaign"])).items():
             cards.setdefault(slot, card)       # sealed cards never reached the app
@@ -232,11 +246,11 @@ def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, A
     try:
         out = weave.weave(picks, dials, cards, tier=TIER)
         camp, spent = out["campaign"], out["spent"]
-        problems = audit.check(camp)
+        problems = audit.check(camp) + weave.player_leaks(camp, picks, cards)
         if problems:
             out = weave.mend(camp, problems, picks, dials, cards, tier=TIER)
             camp, spent = out["campaign"], spent + out["spent"]
-            problems = audit.check(camp)
+            problems = audit.check(camp) + weave.player_leaks(camp, picks, cards)
         if problems:
             return {"ok": False, "error": "the Doorkeeper sent it back", "problems": problems}
         written = weave.book(camp, picks, dials, cards, tier=TIER)
@@ -302,7 +316,7 @@ async def book_file(request: Request) -> Response:
 
 @server.custom_route("/health", methods=["GET"])
 async def health(request: Request) -> Response:
-    return JSONResponse({"ok": True, "public": PUBLIC, "fake_ai": weave.mocking(), "ai": llm.ready(),
+    return JSONResponse({"ok": True, "public": PUBLIC, "ai_mode": ai_mode(), "fake_ai": weave.mocking(), "ai": llm.ready(),
                          "campaigns": len(published.listing())})
 
 

@@ -104,6 +104,69 @@ world may be, how big the trouble is allowed to get, how dangerous, whether pres
 from people or from places, and how long the clocks run."""
 
 
+PUBLISHED = """
+
+THE PUBLISHED CAMPAIGN. This story is fixed: write the skeleton INSIDE it. Same place, same victim,
+same premise; do not invent a different one. The dealt cards choose which version of it this is.
+- "title" must be exactly: {title}
+- The premise and the opening must agree with what the player is told below.
+- The antagonist, the fronts and the true facts come from "what is actually true" for this hand.
+  Those are secrets: write them as `true` (or `false` for what the town wrongly believes), never `known`.
+- Keep the house rules.
+- "premise", "where", "opening", the pc's "why_here" and any fact marked `known` or `suspected` are
+  what the PLAYER sees. They never name who did it.
+
+{story}"""
+
+
+def full_brief(picks: dict, dials: dict, cards: dict) -> str:
+    """The hand, plus the published campaign's own story when the hand was dealt from one."""
+    import published
+    slug = str(picks.get("campaign") or "")
+    told = published.story(slug, cards) if slug else None
+    if not told:
+        return brief(picks, dials, cards)
+    return brief(picks, dials, cards) + PUBLISHED.format(
+        title=told.get("title") or "", story=json.dumps(told, ensure_ascii=False, indent=1))
+
+
+def _keep_title(camp: dict, picks: dict) -> None:
+    """A published campaign keeps its own name, whatever the model wrote."""
+    import published
+    slug = str(picks.get("campaign") or "")
+    told = published.story(slug, {}) if slug else None
+    if told and told.get("title"):
+        camp["title"] = told["title"]
+
+
+def secret_names(picks: dict, cards: dict) -> list[str]:
+    """The names a published campaign keeps secret for this hand: each truth's culprit."""
+    import published
+    slug = str(picks.get("campaign") or "")
+    told = published.story(slug, cards) if slug else None
+    names = []
+    for entry in ((told or {}).get("truths_for_this_hand") or {}).values():
+        name = str((entry or {}).get("culprit") or "").split(",")[0].strip()
+        if len(name) > 3:
+            names.append(name)
+    return names
+
+
+def player_leaks(camp: dict, picks: dict, cards: dict, book_text: str = "") -> list[str]:
+    """Problems in the auditor's voice when a secret name reaches what the player sees."""
+    seen = " ".join([str(camp.get(k) or "") for k in ("premise", "where", "opening")]
+                    + [str((camp.get("pc") or {}).get("why_here") or "")]
+                    + [str(f.get("fact") or "") for f in camp.get("facts") or []
+                       if str(f.get("visibility", "")).lower() in ("known", "suspected")]).lower()
+    out = []
+    for name in secret_names(picks, cards):
+        if name.lower() in seen:
+            out.append(f"the player-facing premise, opening or a known/suspected fact names {name!r}, who is a secret. Remove the name")
+        if book_text and name.lower() in book_text.lower():
+            out.append(f"the book names {name!r}, who is a secret")
+    return out
+
+
 def mocking() -> bool:
     return os.environ.get("SEREN_AI", "").lower() in ("mock", "local")
 
@@ -174,7 +237,7 @@ def weave(picks: dict, dials: dict, cards: dict, tier: str = "paid") -> dict:
     was, llm.MAX_TOKENS = llm.MAX_TOKENS, GEN_TOKENS
     try:
         reply = llm.converse(system=SYSTEM,
-                             messages=[{"role": "user", "content": [{"text": brief(picks, dials, cards)}]}],
+                             messages=[{"role": "user", "content": [{"text": full_brief(picks, dials, cards)}]}],
                              tools=None, tier=tier, spent=0.0, temperature=0.8)
     finally:
         llm.MAX_TOKENS = was
@@ -182,7 +245,9 @@ def weave(picks: dict, dials: dict, cards: dict, tier: str = "paid") -> dict:
     start, end = text.find("{"), text.rfind("}")
     if start < 0 or end < 0:
         raise ValueError("the weaver returned no json")
-    return {"campaign": json.loads(text[start:end + 1]), "spent": reply["spent"]}
+    camp_out = json.loads(text[start:end + 1])
+    _keep_title(camp_out, picks)
+    return {"campaign": camp_out, "spent": reply["spent"]}
 
 
 BOOK_TOKENS = int(os.environ.get("SEREN_BOOK_TOKENS", "3500"))
@@ -239,7 +304,7 @@ def _player_side(camp: dict, cards: dict, shelf: dict | None, dials: dict) -> di
     return {
         "title": camp.get("title"), "premise": camp.get("premise"), "where": camp.get("where"),
         "opening": camp.get("opening"), "pc": camp.get("pc"), "companions": camp.get("companions"),
-        "antagonist": {"name": a.get("name"), "kind": a.get("posture")},
+        "antagonist": {"kind": a.get("posture"), "note": "public reputation only; the book never names them"},
         "what_the_player_suspects": [f.get("fact") for f in camp.get("facts") or []
                                      if str(f.get("visibility", "")).lower() == "suspected"],
         "what_the_player_knows": [f.get("fact") for f in camp.get("facts") or []
@@ -290,7 +355,7 @@ def book(camp: dict, picks: dict, dials: dict, cards: dict, tier: str = "paid") 
     text = llm.text_of(reply["content"]).strip()
     if text.startswith("```"):
         text = text.strip("`").partition("\n")[2].rsplit("```", 1)[0].strip()
-    if leaks(text, camp):
+    if leaks(text, camp) or player_leaks({}, picks, cards, text):
         # Never hand over a book that names a secret. The skeleton's own premise and opening stand in.
         text = f"# {camp.get('title', '')} — your book\n\n{camp.get('premise', '')}\n\n## Tonight\n\n> {camp.get('opening', '')}\n"
     return {"book": text, "spent": reply["spent"]}
@@ -309,7 +374,7 @@ def mend(campaign: dict, problems: list[str], picks: dict, dials: dict, cards: d
     try:
         reply = llm.converse(
             system=SYSTEM,
-            messages=[{"role": "user", "content": [{"text": brief(picks, dials, cards)}]},
+            messages=[{"role": "user", "content": [{"text": full_brief(picks, dials, cards)}]},
                       {"role": "assistant", "content": [{"text": json.dumps(campaign, ensure_ascii=False)}]},
                       {"role": "user", "content": [{"text":
                           "The auditor refused this. Fix exactly these and change nothing "
@@ -322,7 +387,9 @@ def mend(campaign: dict, problems: list[str], picks: dict, dials: dict, cards: d
     start, end = text.find("{"), text.rfind("}")
     if start < 0:
         return {"campaign": campaign, "spent": reply["spent"]}
-    return {"campaign": json.loads(text[start:end + 1]), "spent": reply["spent"]}
+    camp_out = json.loads(text[start:end + 1])
+    _keep_title(camp_out, picks)
+    return {"campaign": camp_out, "spent": reply["spent"]}
 
 
 # ── writing it down ──────────────────────────────────────────────────────────
