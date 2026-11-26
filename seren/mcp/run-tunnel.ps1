@@ -54,7 +54,7 @@ if (-not (Test-Path (Join-Path $certs 'cert.pem'))) {
   & $openssl req -x509 -newkey rsa:2048 -nodes -keyout (Join-Path $certs 'key.pem') -out (Join-Path $certs 'cert.pem') `
     -days 365 -subj '/CN=localhost' -addext 'subjectAltName=DNS:localhost,IP:127.0.0.1' 2>$null
 }
-$tunnel = Start-Process -FilePath $cf -ArgumentList @('tunnel', '--no-autoupdate', '--no-tls-verify', '--url', "https://127.0.0.1:$Port") `
+$tunnel = Start-Process -FilePath $cf -ArgumentList @('tunnel', '--no-autoupdate', '--protocol', 'http2', '--no-tls-verify', '--url', "https://127.0.0.1:$Port") `
   -RedirectStandardError $log -WindowStyle Hidden -PassThru
 $url = $null
 for ($i = 0; $i -lt 60 -and -not $url; $i++) {
