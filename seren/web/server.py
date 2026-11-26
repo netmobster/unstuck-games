@@ -585,6 +585,12 @@ class Handler(BaseHTTPRequestHandler):
             except Exception as exc:
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
 
+            try:
+                written = weave.book(campaign_obj, picks, dials, cards, tier=TIER)
+                campaign_obj["briefing"], spent = written["book"], spent + written["spent"]
+            except Exception as exc:
+                return self._json(500, {"error": f"the book could not be written: {type(exc).__name__}: {exc}"})
+
             slug = weave.slugify(campaign_obj.get("title"), "a-campaign")
             root = corpus.ROOT / "players" / account
             module = root / "modules" / slug

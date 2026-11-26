@@ -33,9 +33,16 @@ async def main() -> int:
     as_claude = [advertise(EXTENSION_ID, {"mimeTypes": [APP_MIME_TYPE]})]
     async with Client(seren.server, extensions=as_claude) as client:
         tools = dump(await client.list_tools())["tools"]
-        names = [t["name"] for t in tools]
-        check(names == ["open_seren"], f"one tool, open_seren (got {names})")
-        tool = tools[0]
+        names = sorted(t["name"] for t in tools)
+        check(names == ["open_seren", "seren_deal", "seren_weave"], f"three tools (got {names})")
+        by = {t["name"]: t for t in tools}
+        vis = {n: ((by[n].get("_meta") or {}).get("ui") or {}).get("visibility") for n in names}
+        check(vis["open_seren"] is None and vis["seren_deal"] == ["app"] and vis["seren_weave"] == ["app"],
+              f"only open_seren is the model's; the other two are app-only ({vis})")
+        w = by["seren_weave"].get("annotations") or {}
+        check(w.get("readOnlyHint") is False and w.get("destructiveHint") is False,
+              "seren_weave writes, and is marked non-destructive")
+        tool = by["open_seren"]
         ui = (tool.get("_meta") or {}).get("ui") or {}
         check(ui.get("resourceUri") == seren.APP_URI, "open_seren points at the app's hashed address")
         check(seren.APP_URI.startswith("ui://seren/table-") and seren.APP_URI.endswith(".html"),
@@ -48,7 +55,11 @@ async def main() -> int:
         check(res.get("mimeType") == APP_MIME_TYPE, f"the app is served as {APP_MIME_TYPE}")
         html = res.get("text", "")
         check("window.McpApps={" in html and "App:" in html, "the app library is inlined and exposes App")
-        check("/*__MCP_APPS_LIBRARY__*/" not in html, "no placeholder left in the page")
+        check("window.serenShelf" in html and "window.serenWeave" in html, "the bridge answers the deal page's hooks")
+        check("Blood and Ink" not in html and "truths" not in html.lower(), "no campaign data baked into the page")
+        meta = (res.get("_meta") or {}).get("ui") or {}
+        check(seren.PUBLIC in ((meta.get("csp") or {}).get("resourceDomains") or []),
+              "the app's CSP allows this server's public address for art and music")
         check("export{" not in html[-2000:], "the library's trailing export was rewritten")
 
         old = dump(await client.read_resource("ui://seren/table-deadbeef.html"))["contents"][0]
@@ -57,8 +68,25 @@ async def main() -> int:
 
         result = dump(await client.call_tool("open_seren", {}))
         sc = result.get("structuredContent") or {}
-        check(sc.get("app") == "seren" and sc.get("screen") == "hello", "open_seren returns the app and screen")
-        check(sc.get("note") == "The table is open.", "with app support, it says the table is open")
+        check(sc.get("app") == "seren" and sc.get("screen") == "shelf", "open_seren returns the app and screen")
+        check(sc.get("note", "").startswith("The table is open."), "with app support, it says the table is open")
+
+        deal = dump(await client.call_tool("seren_deal", {})).get("structuredContent") or {}
+        camps = deal.get("campaigns") or []
+        check([c["slug"] for c in camps][:1] == ["blood-and-ink"], "seren_deal returns the shelf, Blood and Ink first")
+        check(all(c["back"].startswith(seren.PUBLIC + "/assets/") for c in camps), "card backs point at this server")
+        import json as _json
+        check("culprit" not in _json.dumps(deal) and "truths" not in _json.dumps(deal), "no truths reach the app")
+
+        d = camps[0]["deck"]["slots"]
+        hand = {k: d[k]["card"] for k in ("trope", "world", "trouble")}
+        hand.update(pc=d["pc"]["deck"][0], origin=d["origin"]["deck"][0], posture=d["posture"]["deck"][0],
+                    persona=d["persona"]["deck"][0], companions=d["companions"]["deck"][:2])
+        woven = dump(await client.call_tool("seren_weave", {"picks": {"campaign": "blood-and-ink"}, "cards": hand,
+                                                           "dials": camps[0]["deck"]["dials"]["defaults"]}))
+        wv = woven.get("structuredContent") or {}
+        check(wv.get("ok") is True and "## Who's who" in (wv.get("book") or ""), f"seren_weave writes a full book ({wv.get('error')})")
+        check((seren.BOOKS / f"{wv.get('slug')}.md").is_file(), "the book is saved for red team")
 
     async with Client(seren.server) as plain:
         result = dump(await plain.call_tool("open_seren", {}))

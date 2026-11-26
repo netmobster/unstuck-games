@@ -185,6 +185,117 @@ def weave(picks: dict, dials: dict, cards: dict, tier: str = "paid") -> dict:
     return {"campaign": json.loads(text[start:end + 1]), "spent": reply["spent"]}
 
 
+BOOK_TOKENS = int(os.environ.get("SEREN_BOOK_TOKENS", "3500"))
+
+BOOK_SYSTEM = """You write the player's book for a one-shot tabletop campaign: what a dungeon master
+hands the player before the first scene. It is the one thing in the campaign written for the player.
+
+Second person, present tense, addressed to the player. Player-side only: what their character knows
+or has heard. A suspicion is written as a suspicion, in the character's own terms, never as the
+answer. The antagonist appears only by public reputation: what people say. Everything you write is
+true from the first scene, and every place and person you name becomes somewhere the player can go
+and someone they can find, so write them as places to go, not scenery. Invent places freely; never
+use a published setting. Nobody is called Seren. About 900 to 1,400 words.
+
+Markdown, in exactly this order and with exactly these headings:
+
+# <title> — your book
+Three or four sentences: who you are and what is happening tonight. Then where you are standing.
+---
+## You
+Name, class and a line of who they are. Bullets: where they came from, who took them in, what they
+suspect about themselves. Use the origin and the character card's own words as lived experience.
+### What you can do, in plain words
+A two-column table (| | |), four to six rows: what this class can do at this level, in plain words.
+---
+## Your people
+A short paragraph for each companion, as the character knows them: the card's visible half only.
+---
+## <the world's name>, and how it works
+The rules everyone here knows: money, law, families, institutions. The world card as lived experience.
+---
+## Who's who
+A table, | who | what people say |, every person the premise names, public reputation only.
+---
+## Places you know
+"Go anywhere. These are the places you already know your way around." Then a table,
+| place | what is there |, five to eight places.
+---
+## Tonight
+The hook and the first scene's situation, ending with the opening as a > quote.
+---
+## How this table plays
+Bullets: who tells it and how; dice only when the outcome is uncertain; what the stakes and danger
+dials mean here, in plain words; death as the danger dial sets it; and last, "Everything in this
+book is true. The rest is there to find."
+
+Return the markdown and nothing else."""
+
+
+def _player_side(camp: dict, cards: dict, shelf: dict | None, dials: dict) -> dict:
+    """What the book writer may see. No fronts, no grudges, no true or false facts: it can't leak
+    what it was never told."""
+    a = camp.get("antagonist") or {}
+    return {
+        "title": camp.get("title"), "premise": camp.get("premise"), "where": camp.get("where"),
+        "opening": camp.get("opening"), "pc": camp.get("pc"), "companions": camp.get("companions"),
+        "antagonist": {"name": a.get("name"), "kind": a.get("posture")},
+        "what_the_player_suspects": [f.get("fact") for f in camp.get("facts") or []
+                                     if str(f.get("visibility", "")).lower() == "suspected"],
+        "what_the_player_knows": [f.get("fact") for f in camp.get("facts") or []
+                                  if str(f.get("visibility", "")).lower() == "known"],
+        "cards": {k: ({"name": v.get("name"), "line": v.get("line"), "changes": v.get("changes"),
+                       "at_this_table": v.get("as")} if isinstance(v, dict) else
+                      [{"name": c.get("name"), "line": c.get("line"), "at_this_table": c.get("as")} for c in v])
+                  for k, v in cards.items() if k != "posture"},
+        "the_campaign": {k: (shelf or {}).get(k) for k in ("title", "tagline", "description", "key_info", "level", "length")}
+                        if shelf else None,
+        "dials": dials,
+    }
+
+
+def leaks(book: str, camp: dict) -> list[str]:
+    """Secrets that reached the book verbatim. It can't see a paraphrase; the writer never saw them."""
+    text = book.lower()
+    found = []
+    for f in camp.get("facts") or []:
+        fact = str(f.get("fact") or "")
+        if str(f.get("visibility", "")).lower() in ("true", "false") and len(fact) > 24 and fact.lower() in text:
+            found.append(fact)
+    a = camp.get("antagonist") or {}
+    for key in ("grudge",):
+        line = str(a.get(key) or "")
+        if len(line) > 24 and line.lower() in text:
+            found.append(line)
+    return found
+
+
+def book(camp: dict, picks: dict, dials: dict, cards: dict, tier: str = "paid") -> dict:
+    """The player's book (SEREN docs/weave-from-hand.md 4b), written once the auditor has passed the
+    skeleton. Returns {"book": markdown, "spent": cost}. Fake AI keeps the canned one."""
+    import published
+    slug = str(picks.get("campaign") or "")
+    shelf = next((c for c in published.listing() if c.get("slug") == slug), None) if slug else None
+    if mocking():
+        import mock_book
+        return {"book": camp.get("briefing") or mock_book.briefing(camp, cards, shelf, slug), "spent": 0.0}
+    was, llm.MAX_TOKENS = llm.MAX_TOKENS, BOOK_TOKENS
+    try:
+        ask = ("Write the book from this. It is everything the player may know.\n\n"
+               + json.dumps(_player_side(camp, cards, shelf, dials), ensure_ascii=False, indent=1))
+        reply = llm.converse(system=BOOK_SYSTEM, messages=[{"role": "user", "content": [{"text": ask}]}],
+                             tools=None, tier=tier, spent=0.0, temperature=0.7)
+    finally:
+        llm.MAX_TOKENS = was
+    text = llm.text_of(reply["content"]).strip()
+    if text.startswith("```"):
+        text = text.strip("`").partition("\n")[2].rsplit("```", 1)[0].strip()
+    if leaks(text, camp):
+        # Never hand over a book that names a secret. The skeleton's own premise and opening stand in.
+        text = f"# {camp.get('title', '')} — your book\n\n{camp.get('premise', '')}\n\n## Tonight\n\n> {camp.get('opening', '')}\n"
+    return {"book": text, "spent": reply["spent"]}
+
+
 def mend(campaign: dict, problems: list[str], picks: dict, dials: dict, cards: dict,
          tier: str = "paid") -> dict:
     """One fix pass. The audit's complaints go back to the weaver before anything is refused.

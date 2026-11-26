@@ -1,37 +1,79 @@
 """Seren's MCP server: the fortune teller's table inside Claude.
 
-Written from scratch on 25 Nov 2026 (step 2 of seren/MCP-MVP-PLAN.md: "hello, fullscreen").
-MINDER on the selfActual vault server is the pattern we follow, not code we copy:
+Written from scratch on 25 Nov 2026 (seren/MCP-MVP-PLAN.md). MINDER on the selfActual vault
+server is the pattern we follow, not code we copy:
 
 - The app is a tool. `open_seren` is the one tool Claude sees; it opens the app.
+- The app's own work goes through app-only tools (`visibility: ["app"]`): `seren_deal` reads the
+  shelf and the decks, `seren_weave` writes the book. Claude never sees them in its tool list.
 - One HTML resource, served as `text/html;profile=mcp-app`, at an address that carries a hash of
-  the HTML, so a redeploy never serves a cached page under the old address. A catch-all template
-  answers old addresses, because claude.ai keeps the tool list it saw when it connected.
+  the HTML. A catch-all template answers old addresses, because claude.ai keeps the tool list it
+  saw when it connected.
 - Tools are typed read-only or write, with matching hints (the vault server's tool-types.js).
 - Streamable HTTP, stateless.
 
-Run it locally:  .venv/Scripts/python server.py          (http://127.0.0.1:3020/mcp)
-Test it:         .venv/Scripts/python test_server.py
+**One engine (A1).** The app is the web table's own deal page (`seren/web/static/deal.html`), and
+the tools import the web port's own modules: `published` (campaigns, never truths), `weave` (the
+weaver, fake or real, and the book), `audit` (the auditor). Nothing is copied.
+
+**Assets over the tunnel.** Art and music are served by this server at `/assets/...`, and the
+app's content security policy allows `SEREN_PUBLIC_URL`, the tunnel's address (see run-tunnel.ps1).
+
+Run it:   .venv/Scripts/python server.py      (http://127.0.0.1:3020/mcp)
+Test it:  .venv/Scripts/python test_server.py
 """
 from __future__ import annotations
 
 import hashlib
+import json
 import os
 import re
+import secrets
+import shutil
+import sys
 from pathlib import Path
 from typing import Any
+from urllib.parse import urlparse
 
-from mcp.server.apps import Apps, client_supports_apps
-from mcp.server.mcpserver import Context, MCPServer
-from mcp_types import ToolAnnotations
+HERE = Path(__file__).resolve().parent
+SEREN = HERE.parent
+WEB = SEREN / "web"
+PROJECTS = SEREN.parent.parent
+LOCAL = SEREN / ".local"
 
-HERE = Path(__file__).parent
+# The web port's settings, as run_local.py sets them: fake AI unless told otherwise.
+os.environ.setdefault("SEREN_AI", "mock")
+os.environ.setdefault("SEREN_CONTENT_DIR", str(LOCAL / "content"))
+os.environ.setdefault("SEREN_PUBLISHED", str(PROJECTS / "SEREN" / "campaigns" / "published"))
+(LOCAL / "content").mkdir(parents=True, exist_ok=True)
+sys.path.insert(0, str(WEB))
+
+import audit  # noqa: E402  (the web port's modules, after its path)
+import corpus  # noqa: E402
+import llm  # noqa: E402
+import published  # noqa: E402
+import weave  # noqa: E402
+
+from mcp.server.apps import Apps, ResourceCsp, client_supports_apps  # noqa: E402
+from mcp.server.mcpserver import Context, MCPServer  # noqa: E402
+from mcp.server.transport_security import TransportSecuritySettings  # noqa: E402
+from mcp_types import ToolAnnotations  # noqa: E402
+from starlette.requests import Request  # noqa: E402
+from starlette.responses import FileResponse, JSONResponse, Response  # noqa: E402
+
 VENDOR = HERE / "vendor" / "ext-apps-1.7.5-app-with-deps.js"
-APP = HERE / "app" / "table.html"
+DEAL = WEB / "static" / "deal.html"
+AUDIO = WEB / "static" / "audio" / "forest-pulse.mp3"
+BOOKS = LOCAL / "books"            # every woven book, kept for red team
+TIER = os.environ.get("SEREN_TIER", "free")
+PORT = int(os.environ.get("SEREN_MCP_PORT", "3020"))
+PUBLIC = (os.environ.get("SEREN_PUBLIC_URL") or f"http://127.0.0.1:{PORT}").rstrip("/")
+ACCOUNT = "mcp"                    # one local player until sign-up exists
 
-# The vault server's tool types, by name. Read-only tools leave out the destructive and
-# idempotent hints: the MCP spec says those only mean something when a tool writes.
+# The vault server's tool types. Read-only tools leave out the destructive and idempotent hints:
+# the MCP spec says those only mean something when a tool writes.
 READ = ToolAnnotations(readOnlyHint=True, openWorldHint=False)
+CREATE = ToolAnnotations(readOnlyHint=False, destructiveHint=False, idempotentHint=False, openWorldHint=False)
 
 
 def _library() -> str:
@@ -48,21 +90,68 @@ def _library() -> str:
     for item in match.group(1).split(","):
         local, _, public = item.strip().partition(" as ")
         pairs.append(f"{(public or local).strip()}:{local.strip()}")
-    return src[: match.start()] + "window.McpApps={" + ",".join(pairs) + "};"
+    return src[: match.start()] + "window.McpApps={" + ",".join(pairs) + "};if(window.__mcpResolve)window.__mcpResolve();"
+
+
+# The bridge: the deal page's three hooks, answered by MCP tool calls instead of fetch.
+BRIDGE = """<script>
+window.SEREN_APP=true;window.SEREN_AUDIO=%(audio)s;
+window.__mcpReady=new Promise(function(r){window.__mcpResolve=r});
+(function(){
+  var app=null,ready=window.__mcpReady.then(function(){
+    var A=window.McpApps;if(window.parent===window)throw new Error('open this through Claude');
+    app=new A.App({name:'seren-table',version:'0.3.0'},{availableDisplayModes:['inline','fullscreen']});
+    return app.connect().then(function(){
+      var ctx=app.getHostContext()||{},modes=ctx.availableDisplayModes||[];
+      // Jay's flow: one tool call from the chat, and the table pops out full screen, MINDER-style.
+      if(modes.indexOf('fullscreen')>=0&&ctx.displayMode!=='fullscreen')return app.requestDisplayMode({mode:'fullscreen'}).catch(function(){});
+    });
+  });
+  function call(name,args){
+    return ready.then(function(){return app.callServerTool({name:name,arguments:args||{}})}).then(function(r){
+      var s=r&&r.structuredContent;if(r&&r.isError&&!s)throw new Error(((r.content||[])[0]||{}).text||'the tool failed');return s||{};
+    });
+  }
+  window.serenShelf=function(){return call('seren_deal')};
+  window.serenWeave=function(body){return call('seren_weave',body).then(function(j){return{ok:!!j.ok,j:j}})};
+  window.serenDownload=function(j){
+    var file={type:'resource',resource:{uri:'file:///'+j.slug+'.md',mimeType:'text/markdown',text:j.book||''}};
+    return ready.then(function(){return app.downloadFile({contents:[file]})})
+      .catch(function(){return app.openLink({url:j.download})}).catch(function(){});
+  };
+  window.serenWoven=function(j){
+    // Claude learns what was woven, so the player can talk about the book in the chat.
+    ready.then(function(){return app.updateModelContext({content:[{type:'text',text:
+      'The player wove a Seren campaign at the table: '+j.title+'. Their book follows. It is player-side and true; '+
+      'do not add secrets to it.\\n\\n'+(j.book||'')}]})}).catch(function(){});
+  };
+})();
+</script>
+"""
 
 
 def app_html() -> str:
-    page = APP.read_text(encoding="utf-8")
-    return page.replace("/*__MCP_APPS_LIBRARY__*/", _library())
+    """The deal page, with the MCP Apps library and the bridge put in front of its own script."""
+    page = DEAL.read_text(encoding="utf-8")
+    head = (BRIDGE % {"audio": json.dumps(f"{PUBLIC}/assets/audio/forest-pulse.mp3")}
+            + "<script type=\"module\">" + _library() + "</script>\n")
+    marker = "<script>\n(function(){"
+    if marker not in page:
+        raise RuntimeError("deal.html: can't find the start of its script to put the bridge before")
+    return page.replace(marker, head + marker, 1)
 
 
 HTML = app_html()
-HASH = hashlib.sha256(HTML.encode("utf-8")).hexdigest()[:8]
+HASH = hashlib.sha256((HTML + PUBLIC).encode("utf-8")).hexdigest()[:8]
 APP_URI = f"ui://seren/table-{HASH}.html"
+CSP = ResourceCsp(
+    resource_domains=[PUBLIC, "https://fonts.googleapis.com", "https://fonts.gstatic.com"],
+    connect_domains=[PUBLIC],
+)
 
 apps = Apps()
 apps.add_html_resource(APP_URI, HTML, name="Seren", title="Seren · the fortune teller's table",
-                       prefers_border=False)
+                       csp=CSP, prefers_border=False)
 
 
 @apps.tool(
@@ -77,16 +166,86 @@ apps.add_html_resource(APP_URI, HTML, name="Seren", title="Seren · the fortune 
 )
 def open_seren(ctx: Context) -> dict[str, Any]:
     """The one tool Claude sees. Read-only: it opens the app and changes nothing."""
-    note = ("The table is open." if client_supports_apps(ctx) else
+    note = ("The table is open. The player chooses a campaign, is dealt a hand, tunes it and weaves "
+            "a book, all in the app." if client_supports_apps(ctx) else
             "Seren's table is an app, and this client can't show apps. Try it in Claude.")
-    return {"app": "seren", "screen": "hello", "note": note}
+    return {"app": "seren", "screen": "shelf", "note": note}
+
+
+def _art(c: dict) -> dict:
+    """The shelf card with its art on this server's public address."""
+    c = dict(c)
+    for key in ("header", "back"):
+        if c.get(key, "").startswith("/published/"):
+            c[key] = f"{PUBLIC}/assets{c[key]}"
+    return c
+
+
+@apps.tool(
+    resource_uri=APP_URI,
+    visibility=["app"],
+    name="seren_deal",
+    title="Seren: the shelf and the decks",
+    description="The published campaigns, their decks and dials. Player-side only: never the truths.",
+    annotations=READ,
+)
+def seren_deal() -> dict[str, Any]:
+    return {"campaigns": [_art(c) for c in published.listing()], "fake_ai": weave.mocking()}
+
+
+@apps.tool(
+    resource_uri=APP_URI,
+    visibility=["app"],
+    name="seren_weave",
+    title="Seren: weave the book",
+    description=("Weave the dealt hand into a campaign and write the player's book. Creates a new "
+                 "campaign and book each time; changes nothing that exists."),
+    annotations=CREATE,
+)
+def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, Any]) -> dict[str, Any]:
+    """The web table's /api/weave, as a tool: weave, audit (one mend), write the book, save it."""
+    if picks.get("campaign"):
+        for slot, card in published.sealed(str(picks["campaign"])).items():
+            cards.setdefault(slot, card)       # sealed cards never reached the app
+    if not cards.get("trope") or not cards.get("trouble"):
+        return {"ok": False, "error": "that hand is not finished"}
+    if not llm.ready():
+        return {"ok": False, "error": "the weaver is not connected (no Bedrock)"}
+    try:
+        out = weave.weave(picks, dials, cards, tier=TIER)
+        camp, spent = out["campaign"], out["spent"]
+        problems = audit.check(camp)
+        if problems:
+            out = weave.mend(camp, problems, picks, dials, cards, tier=TIER)
+            camp, spent = out["campaign"], spent + out["spent"]
+            problems = audit.check(camp)
+        if problems:
+            return {"ok": False, "error": "the Doorkeeper sent it back", "problems": problems}
+        written = weave.book(camp, picks, dials, cards, tier=TIER)
+        camp["briefing"], spent = written["book"], spent + written["spent"]
+    except llm.CapReached as exc:
+        return {"ok": False, "error": str(exc)}
+    except Exception as exc:  # the app shows it; the server keeps running
+        return {"ok": False, "error": f"{type(exc).__name__}: {exc}"}
+
+    slug = weave.slugify(camp.get("title"), "a-campaign") + "-" + secrets.token_hex(2)
+    module = corpus.ROOT / "players" / ACCOUNT / "modules" / slug
+    weave.write_module(module, camp, picks, dials, cards)
+    BOOKS.mkdir(parents=True, exist_ok=True)
+    (BOOKS / f"{slug}.md").write_text(camp["briefing"], encoding="utf-8")   # for red team
+    return {
+        "ok": True, "slug": slug, "title": camp.get("title"), "premise": camp.get("premise"),
+        "opening": camp.get("opening"), "where": camp.get("where"), "book": camp["briefing"],
+        "download": f"{PUBLIC}/book/{slug}.md", "spent": round(spent, 4), "fake_ai": weave.mocking(),
+    }
 
 
 server = MCPServer(
     "seren",
     title="Seren",
-    version="0.1.0",
-    instructions="Seren is a single-player tabletop RPG. Call open_seren to open the table.",
+    version="0.3.0",
+    instructions=("Seren is a single-player tabletop RPG. Call open_seren to open the table, where the "
+                  "player chooses a campaign, is dealt a hand, tunes it and weaves their book."),
     extensions=[apps],
 )
 
@@ -97,13 +256,49 @@ def any_address(file: str) -> str:
     return HTML
 
 
+# ── assets and the book, over the tunnel ───────────────────────────────────────────────────
+SAFE = re.compile(r"^[a-z0-9-]{1,64}$")
+
+
+@server.custom_route("/assets/published/{slug}/{name}", methods=["GET"])
+async def art(request: Request) -> Response:
+    body = published.art(request.path_params["slug"], request.path_params["name"])
+    if body is None:
+        return JSONResponse({"error": "no such art"}, status_code=404)
+    return Response(body, media_type="image/webp", headers={"Cache-Control": "public, max-age=3600"})
+
+
+@server.custom_route("/assets/audio/forest-pulse.mp3", methods=["GET"])
+async def music(request: Request) -> Response:
+    return FileResponse(AUDIO, media_type="audio/mpeg")
+
+
+@server.custom_route("/book/{file}", methods=["GET"])
+async def book_file(request: Request) -> Response:
+    slug = request.path_params["file"].removesuffix(".md")
+    path = BOOKS / f"{slug}.md"
+    if not SAFE.match(slug) or not path.is_file():
+        return JSONResponse({"error": "no such book"}, status_code=404)
+    return FileResponse(path, media_type="text/markdown; charset=utf-8", filename=f"{slug}.md")
+
+
+@server.custom_route("/health", methods=["GET"])
+async def health(request: Request) -> Response:
+    return JSONResponse({"ok": True, "public": PUBLIC, "fake_ai": weave.mocking(), "ai": llm.ready(),
+                         "campaigns": len(published.listing())})
+
+
 def main() -> None:
+    hosts = ["127.0.0.1:*", "localhost:*"]
+    if PUBLIC.startswith("https://"):
+        hosts.append(urlparse(PUBLIC).netloc)
     server.run(
         "streamable-http",
         host=os.environ.get("SEREN_MCP_HOST", "127.0.0.1"),
-        port=int(os.environ.get("SEREN_MCP_PORT", "3020")),
+        port=PORT,
         streamable_http_path="/mcp",
         stateless_http=True,
+        transport_security=TransportSecuritySettings(allowed_hosts=hosts, allowed_origins=["https://claude.ai", PUBLIC]),
     )
 
 

@@ -393,7 +393,7 @@ function renderOwn(){
   $('detail').innerHTML='<div class="hero ownhero"><div class="cap"><h2>Make your own</h2><div class="tag">Nothing locked. She deals every card from the whole Loom, and the weaver writes a campaign nobody has played.</div></div></div>'+
     '<div class="body"><div><p class="desc">The fortune teller deals seven slots from every deck at once: trope, origin, world, trouble, her antagonist, two companions and the voice that tells it. Keep what you like, redeal what you don&#39;t, then tune the stakes.</p>'+
     '<ul class="facts"><li>Every slot dealt, none locked</li><li>Any level, any length</li><li>All five dials, full range</li><li>A new book every time</li></ul></div>'+
-    '<div class="side"><a class="go" href="/loom" style="text-decoration:none">Open the Loom</a></div></div>';
+    '<div class="side">'+(window.SEREN_APP?'<button class="go" disabled>On the web table for now</button>':'<a class="go" href="/loom" style="text-decoration:none">Open the Loom</a>')+'</div></div>';
 }
 
 /* ── shelf ── */
@@ -646,7 +646,7 @@ function ramp(to,seconds,then){if(fading)clearInterval(fading);var a=players[liv
   fading=setInterval(function(){var k=Math.min(1,(performance.now()-t0)/(seconds*1000));a.volume=Math.max(0,Math.min(1,from+(to-from)*k));
     if(k>=1){clearInterval(fading);fading=null;if(then)then()}},40)}
 function startMusic(){if(started||muted)return;started=true;
-  if(!players.length)players=[0,1].map(function(){var a=new Audio('/static/audio/forest-pulse.mp3');a.preload='auto';a.volume=0;return a});
+  if(!players.length)players=[0,1].map(function(){var a=new Audio(window.SEREN_AUDIO||'/static/audio/forest-pulse.mp3');a.preload='auto';a.volume=0;return a});
   var a=players[live];a.volume=0;a.play().then(function(){ramp(target(),FADE_IN)}).catch(function(){started=false});
   if(!looping){looping=true;setInterval(function(){var a=players[live];if(!a||!a.duration||a.paused)return;var left=a.duration-a.currentTime;if(left>XFADE)return;
     var b=players[1-live];if(b.paused){b.currentTime=0;b.volume=0;b.play().catch(function(){})}
@@ -723,7 +723,8 @@ function weaveIt(c){
   lit('w1',300);lit('w2',1900);lit('w3',3300);
   setTimeout(function(){smoke(document.querySelector('.gather'),8)},2300);
   var minWait=new Promise(function(r){setTimeout(r,4200)});
-  var call=fetch('/api/weave',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({picks:picks,cards:cards,dials:dials})})
+  var body={picks:picks,cards:cards,dials:dials};
+  var call=window.serenWeave?window.serenWeave(body):fetch('/api/weave',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
     .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})});
   Promise.all([call,minWait]).then(function(res){var x=res[0];$('veil').dataset.locked='';
     if(!x.ok){veil('<div class="mhead"><div class="lbl">The Doorkeeper sent it back</div><p class="msent">'+esc(x.j.error||'It failed')+'</p>'+
@@ -758,13 +759,15 @@ function showBook(j,c,said){
       '<p class="mnote">Written, read at the door, and dealt out as yours.</p>'+
       '<h3 class="rtitle">'+esc(j.title)+'</h3>'+(j.where?'<p class="bwhere">'+esc(j.where)+'</p>':'')+
       '<p class="rprem">'+esc(j.premise)+'</p><blockquote class="ropen">'+esc(j.opening)+'</blockquote>'+
-      '<div class="macts"><button class="ghost" id="mback">← Back to the table</button><a class="ghost" href="/api/book?slug='+encodeURIComponent(j.slug)+'" download>Download the book (.md)</a>'+
-      '<a class="go" id="sit" href="'+(j.play||'/table')+'">Sit down at the table</a></div></div>'+
+      '<div class="macts"><button class="ghost" id="mback">← Back to the table</button>'+(window.serenDownload?'<button class="ghost" id="dl">Download the book (.md)</button>':'<a class="ghost" href="/api/book?slug='+encodeURIComponent(j.slug)+'" download>Download the book (.md)</a>')+
+      (window.SEREN_APP?'':'<a class="go" id="sit" href="'+(j.play||'/table')+'">Sit down at the table</a>')+'</div></div>'+
     (b.toc.length?'<div class="lbl" style="text-align:center;margin:26px 0 14px">The book</div>'+
       '<div class="bookbody"><nav class="toc" aria-label="Chapters">'+b.toc.map(function(t){return '<a href="#'+t[0]+'">'+inline(t[1])+'</a>'}).join('')+'</nav>'+
       '<article class="pages" id="pages">'+b.html+'</article></div>':'')+'</div>');
   $('mback').onclick=function(){unveil()};
-  $('sit').onclick=function(){fadeOutMusic()};
+  if($('sit'))$('sit').onclick=function(){fadeOutMusic()};
+  if($('dl'))$('dl').onclick=function(){window.serenDownload(j)};
+  if(window.serenWoven)window.serenWoven(j);
   $('vmodal').querySelectorAll('.toc a').forEach(function(a){a.onclick=function(e){e.preventDefault();var t=document.getElementById(a.getAttribute('href').slice(1));if(t)$('pages').scrollTo({top:t.offsetTop-$('pages').offsetTop-8,behavior:'smooth'})}});
 }
 /* ── the table's own randomness ──
@@ -828,7 +831,8 @@ function mischief(kind){
 }
 window.serenMischief=mischief;
 (function next(){setTimeout(function(){mischief();next()},FAST?(5000+Math.random()*4000):(40000+Math.random()*45000))})();
-fetch('/api/published').then(function(r){return r.json()}).then(function(j){
+// Inside Claude the app swaps these for MCP tool calls (seren/mcp/server.py injects them).
+(window.serenShelf||function(){return fetch('/api/published').then(function(r){return r.json()})})().then(function(j){
   D.campaigns=j.campaigns||[];FAKE=!!j.fake_ai;
   $('note').textContent=FAKE?'Local · fake AI · nothing spent':'The deal';
   renderList();renderDetail();
