@@ -123,7 +123,7 @@ def _mock_campaign(picks: dict, cards: dict) -> dict:
     return {
         "title": title,
         "premise": (f"{trouble}, in {world}, and nobody wants it asked about. You came because of "
-                    f"the {origin.lower()}, and the {posture} would rather you went home."),
+                    f"the {origin.lower()}, and somebody at this wake would rather you went home."),
         "where": f"{world}, the hour before dark",
         "pc": {"name": name("pc", "Wren Cole"),
                "class": str((cards.get("pc") or {}).get("changes", "Rogue")).split(".")[0],
@@ -156,7 +156,7 @@ def _mock_campaign(picks: dict, cards: dict) -> dict:
             {"fact": "The dog knows the way to the mill race.", "visibility": "true", "why": "a companion's use"},
             {"fact": "The town believes the debt died with the debtor.", "visibility": "false", "why": "the lie"},
         ],
-        "opening": (f"Rain on the lychgate. The {posture} stands under it with an umbrella that isn't theirs, "
+        "opening": ("Rain on the lychgate. A stranger in a good coat stands under it with an umbrella that isn't theirs, "
                     "and holds out a hand for your papers before you've said a word."),
     }
 

@@ -68,7 +68,7 @@ def briefing(camp: dict, cards: dict, shelf: dict | None, slug: str) -> str:
     lines = [f"# {title} — your book", ""]
     lines += [f"**You are {who}, and tonight the person who took you in is being waked.** "
               + (shelf.get("description") or camp.get("premise") or ""), ""]
-    lines += [f"It is the hour before dark. {camp.get('opening', '')}", "", "---", ""]
+    lines += ["It is the hour before dark. You are standing at the lychgate, and the wake has started without you.", "", "---", ""]
 
     lines += ["## You", "",
               f"**{who}.** {klass}. {pc.get('line', '')}. {flavour}".strip(), ""]
