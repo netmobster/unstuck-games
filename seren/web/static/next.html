@@ -3,13 +3,13 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Seren 1.5 · the moments a dungeon master for one deals you</title>
-<meta name="description" content="Seren is an AI dungeon master for one player. Choose a campaign, take the hand she deals, turn her card over, tune it, and get the book before session one. What is built, and what is coming in 1.5.">
+<title>Seren 1.5 · same campaign, never the same story</title>
+<meta name="description" content="Seren is an AI dungeon master for one player. The same campaign is dealt differently every time: you choose what you hope for, the teller writes your book, and you walk in.">
 <meta name="page-type" content="software">
 <meta name="site-kind" content="gaming">
 <meta name="theme-color" content="#0d0c0b">
-<meta property="og:title" content="Seren 1.5 · the moments she deals">
-<meta property="og:description" content="A dungeon master for one player. The deal, her card, the dials, the book, and the cat.">
+<meta property="og:title" content="Seren 1.5 · same campaign, never the same story">
+<meta property="og:description" content="Same campaign. Never the same story. An AI dungeon master for one player.">
 <meta property="og:image" content="next/art/blood-and-ink-header.webp">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -261,20 +261,105 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
   main > section > .wrap{padding-top:56px;padding-bottom:56px}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.willo{display:none}}
+
+/* ── v2: one campaign, many stories ── */
+.tables{display:grid;gap:14px;margin-top:30px}
+.tline{display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:center;border:1px solid #26314d;border-radius:8px;background:rgba(10,16,30,.55);padding:14px 16px}
+.tline .who{font:700 9.5px/1.4 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gilt)}
+.tline .who b{display:block;font:400 21px/1.1 var(--fell);letter-spacing:0;text-transform:none;color:var(--fbone);margin-top:6px}
+.trow{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.mc{position:relative;min-height:104px;border:1px solid var(--edge);border-radius:6px;background:linear-gradient(170deg,var(--card),#111a2e);padding:8px 9px;min-width:0;overflow:hidden}
+.mc i{display:block;font:700 7px/1.2 var(--mono);letter-spacing:.14em;color:var(--gilt);font-style:normal;text-transform:uppercase}
+.mc b{display:block;font:400 15px/1.1 var(--fell);color:var(--fbone);margin-top:5px;font-weight:400}
+.mc em{display:block;font:italic 10.5px/1.3 var(--fell);color:#aab3c9;margin-top:4px}
+.mc.her{border-color:rgba(255,77,0,.6);box-shadow:0 0 22px rgba(255,77,0,.12)}
+.mc.her i{color:#ff8a55}
+.sent{grid-column:1/-1;font:italic 15.5px/1.45 var(--fell);color:#c9cfdd;margin:2px 0 0}
+.sent b{font-style:normal;color:var(--fbone);font-weight:400}
+.locked{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
+.locked span{display:inline-flex;align-items:center;gap:8px;font:400 13px/1 var(--mono);color:#aab3c9;border:1px solid #3a4664;border-radius:999px;padding:8px 12px}
+.locked svg{width:13px;height:13px}
+[data-deal] .tline{opacity:1}
+[data-deal].dealing .mc{animation:dealin .6s cubic-bezier(.2,.8,.2,1) both;animation-delay:calc(var(--k) * 70ms + var(--row) * 260ms)}
+@keyframes dealin{0%{opacity:0;transform:translate(60px,-40px) rotate(8deg)}100%{opacity:1;transform:none}}
+@media (max-width:900px){.tline{grid-template-columns:1fr}.trow{grid-template-columns:repeat(3,minmax(0,1fr))}}
+
+/* ── v2: campaign, table, book ── */
+.ctb{display:grid;grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:18px;margin-top:30px;align-items:stretch}
+.ctb .steps{display:grid;gap:18px;grid-template-rows:1fr 1fr}
+.step{position:relative}
+.step .n{position:absolute;left:12px;top:12px;z-index:2;font:700 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--fbone);background:rgba(10,16,30,.85);border:1px solid rgba(201,164,74,.5);border-radius:2px;padding:7px 9px}
+.step .shot{height:100%}
+.ctb .book{aspect-ratio:auto;min-height:100%}
+.ctb .book img{object-position:50% 100%}
+@media (max-width:900px){.ctb{grid-template-columns:1fr}.ctb .steps{grid-template-columns:1fr 1fr;grid-template-rows:auto}.step .shot{aspect-ratio:16/10}.ctb .book{aspect-ratio:16/11}}
+
+/* ── v2: three dials, three books ── */
+.books{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:30px}
+.bk{border:1px solid rgba(201,164,74,.45);border-radius:8px;background:linear-gradient(180deg,#16203a,#101829);padding:20px;display:flex;flex-direction:column;gap:12px;min-width:0}
+.bk .set{font:700 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gilt)}
+.dl{display:grid;gap:5px}
+.dl div{display:grid;grid-template-columns:72px 1fr;gap:8px;align-items:center;font:400 10px/1 var(--mono);color:var(--mute);letter-spacing:.06em}
+.dl span{position:relative;height:4px;border-radius:2px;background:#26314d}
+.dl span i{position:absolute;left:0;top:0;bottom:0;border-radius:2px;background:var(--gilt)}
+.bk h3{font:400 24px/1.1 var(--deco);color:var(--gilt-hi);margin-top:6px}
+.bk .where{font:700 9.5px/1.4 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.bk p{margin:0;font:400 15px/1.5 var(--fell);color:#d6d0bd}
+.bk blockquote{margin:0;padding-left:12px;border-left:2px solid var(--gilt);font:italic 15px/1.5 var(--fell);color:var(--gilt-hi)}
+.bk .cost{margin-top:auto;font:400 10px/1.5 var(--mono);letter-spacing:.08em;color:var(--mute)}
+@media (max-width:900px){.books{grid-template-columns:1fr}}
+
+/* ── v2: open the box ── */
+.box{display:grid;grid-template-columns:auto minmax(0,1fr);gap:0;border:1px solid var(--rule);border-radius:3px;background:var(--ink-2);overflow:hidden;font-family:var(--mono);font-size:12.5px;line-height:1.9}
+.tree{border-right:1px solid var(--rule);padding:18px 20px;color:var(--bone-2)}
+.tree div{white-space:nowrap}
+.tree .d{color:var(--bone)}
+.tree .on{color:var(--ember)}
+.tree .lk{color:var(--bone-3)}
+.file{padding:18px 20px;min-width:0;overflow-x:auto;color:var(--bone-2)}
+.file .h{font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--bone-3);border-bottom:1px solid var(--rule);padding-bottom:10px;margin-bottom:12px}
+.file pre{margin:0;font:inherit;white-space:pre-wrap}
+.file pre > span.rec{display:block;margin-bottom:10px}
+.file .k1{color:var(--gold)} .file .s{color:var(--bone)} .file .id{color:var(--ember)}
+@media (max-width:760px){.box{grid-template-columns:1fr}.tree{border-right:0;border-bottom:1px solid var(--rule)}}
+
+/* ── v2: judges ── */
+.judges{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:34px}
+.judge{border:1px solid var(--rule);border-radius:3px;background:var(--ink-2);padding:22px;display:flex;flex-direction:column;gap:12px}
+.judge .who{font:700 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--ember)}
+.judge h3{font-family:var(--serif);font-style:italic;font-size:22px;line-height:1.2}
+.judge p{margin:0;font-size:15.5px;line-height:1.55;color:var(--bone-2)}
+.judge .q{font-family:var(--mono);font-size:12px;color:var(--bone);border:1px solid var(--rule-2);border-radius:2px;padding:10px 12px;line-height:1.6}
+.judge .tag{align-self:flex-start;margin-top:auto}
+@media (max-width:900px){.judges{grid-template-columns:1fr}}
+
+/* ── v2: the stack ── */
+.stack{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:32px}
+.layer{border:1px solid var(--rule);border-radius:3px;background:var(--ink-2);padding:18px 20px}
+.layer .lbl{font:700 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.layer ul{list-style:none;margin:12px 0 0;padding:0;display:flex;flex-wrap:wrap;gap:6px}
+.layer li{font:400 12px/1.2 var(--mono);color:var(--bone);border:1px solid var(--rule-2);border-radius:2px;padding:7px 9px}
+.layer li em{font-style:normal;color:var(--gold)}
+@media (max-width:760px){.stack{grid-template-columns:1fr}}
+
+/* ── v2: the close ── */
+.notyet{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:30px;font:400 11.5px/1 var(--mono);letter-spacing:.06em;color:var(--bone-3)}
+.notyet span{border:1px solid var(--rule-2);border-radius:2px;padding:8px 10px}
+.notyet b{color:var(--bone-2);font-weight:400}
 </style>
 </head>
 <body>
-<!-- Mockup, 26 Nov 2026, for seren.unstuck-games.com/next. Static: no routes, nothing deployed.
-     Deal: software page, site-kind gaming. Palette: the site's own (home.html) plus the deal's felt.
-     Hero: Blood and Ink's header art, full bleed. Moments: the hero's dealt cards; a will-o'-wisp
-     that crosses section VI, and the cat's paw on request. Screenshots: local /deal, fake AI. -->
+<!-- Mockup v2, 26 Nov 2026, for seren.unstuck-games.com/next. Static: no routes, nothing deployed.
+     Sections as Jay picked them. Moments: the hero's dealt backs, and three tables dealt in section I.
+     The three tables are real deals from the local /deal (Play it out for me), the screenshots are that
+     page on fake AI, and the three openings in section IV are real runs of the teller on Bedrock (Nova Pro), 26 Nov. -->
 <a class="skip" href="#main">Skip to the page</a>
 
 <header class="top">
   <div class="wrap">
     <a class="brand" href="/">SEREN<small>1.5</small></a>
     <nav aria-label="Main">
-      <a href="#deal">The deal</a>
+      <a href="#many">Three tables</a>
       <a href="#book">The book</a>
       <a href="#makers">For creators</a>
       <a class="cta" href="/deal">Choose a campaign</a>
@@ -290,10 +375,10 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
   <div class="wrap">
     <div class="lead">
       <div class="k">Seren 1.5 · an AI dungeon master for one player</div>
-      <h1>Seren deals you a story. <span>Then she keeps it honest.</span></h1>
-      <p class="fact"><b>Pick a campaign, take the hand she deals, turn her card over, and get the book before session one.</b> Nothing before the book uses AI: the shelf, the deal and the dials are code.</p>
+      <h1>Same campaign. <span>Never the same story.</span></h1>
+      <p class="fact"><b>You choose what you hope for. The teller deals the rest, writes your book, and you walk in.</b> Blood and Ink, a level 3 murder at a wake, is on the table now.</p>
       <div class="acts">
-        <a class="cta" href="#deal">See the deal</a>
+        <a class="cta" href="#many">See three tables</a>
         <a class="cta ghost" href="#makers">Publish a campaign</a>
       </div>
       <div class="tags"><span class="tag built">Running on a laptop today</span><span class="tag coming">Coming to Claude</span></div>
@@ -306,26 +391,65 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
   </div>
 </section>
 
-<!-- I · THE SHELF -->
-<section class="felt" id="shelf">
-  <div class="wrap split">
-    <div class="copy">
-      <div class="r">I · THE SHELF <span class="tag built">Built</span></div>
-      <h2 class="say">Choose a campaign, or make your own.</h2>
-      <p><b>Blood and Ink</b> is ready: level 3, one night and a morning, a woman dead in her own pressing pit and a wake tonight. <b>Quire</b> and <b>Tallage</b> are on the shelf and coming.</p>
-      <p>Each one carries its own card back. Make your own opens the Loom, where nothing is locked.</p>
+<!-- I · ONE CAMPAIGN, MANY STORIES -->
+<section class="felt" id="many">
+  <div class="wrap">
+    <div class="split" style="align-items:end">
+      <div class="copy">
+        <div class="r">I · ONE CAMPAIGN, MANY STORIES <span class="tag built">Built</span></div>
+        <h2 class="say">The same murder, dealt three times.</h2>
+      </div>
+      <div class="copy">
+        <p>Blood and Ink always opens on a death at the wake, in the orchard counties. Everyone else is dealt: who you are, why you came, who walks in beside you, who wants you gone, and who tells it. <b>Then you play, and what you do is written down and stays done.</b></p>
+        <div class="locked"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Taken in</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Orchard counties</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>A death</span></div>
+      </div>
     </div>
-    <div class="shot wide"><img src="next/shelf.jpg" alt="The shelf: three published campaigns on their card backs, Blood and Ink open with its header art and Build my adventure" loading="lazy"></div>
+    <div class="tables" data-deal id="tables">
+      <div class="tline" style="--row:0">
+        <div class="who">Table one<b>Kit Marrow</b></div>
+        <div class="trow">
+          <div class="mc" style="--k:0"><i>You play</i><b>Kit Marrow</b><em>Kept her books since you were twelve</em></div>
+          <div class="mc" style="--k:1"><i>Origin</i><b>Accident</b><em>You were standing in the wrong place</em></div>
+          <div class="mc" style="--k:2"><i>Companion</i><b>The novice</b><em>volunteers</em></div>
+          <div class="mc" style="--k:3"><i>Companion</i><b>The scribe</b><em>writes it down</em></div>
+          <div class="mc her" style="--k:4"><i>Against</i><b>Bureaucrat</b><em>“Your paperwork is not in order”</em></div>
+          <div class="mc" style="--k:5"><i>Told by</i><b>The Archivist</b><em>with footnotes you did not ask for</em></div>
+        </div>
+      </div>
+      <div class="tline" style="--row:1">
+        <div class="who">Table two<b>Ash Varley</b></div>
+        <div class="trow">
+          <div class="mc" style="--k:0"><i>You play</i><b>Ash Varley</b><em>Grew up in her orchard rows</em></div>
+          <div class="mc" style="--k:1"><i>Origin</i><b>Legacy</b><em>It was your mother's, and now it is yours</em></div>
+          <div class="mc" style="--k:2"><i>Companion</i><b>The dog</b><em>knows</em></div>
+          <div class="mc" style="--k:3"><i>Companion</i><b>The scribe</b><em>writes it down</em></div>
+          <div class="mc her" style="--k:4"><i>Against</i><b>Parent</b><em>“I am protecting mine”</em></div>
+          <div class="mc" style="--k:5"><i>Told by</i><b>The Registrar</b><em>a clerk reading out a form</em></div>
+        </div>
+      </div>
+      <div class="tline" style="--row:2">
+        <div class="who">Table three<b>Pip Callow</b></div>
+        <div class="trow">
+          <div class="mc" style="--k:0"><i>You play</i><b>Pip Callow</b><em>Sang at every one of her harvests</em></div>
+          <div class="mc" style="--k:1"><i>Origin</i><b>Legacy</b><em>It was your mother's, and now it is yours</em></div>
+          <div class="mc" style="--k:2"><i>Companion</i><b>The debtor</b><em>pays their way</em></div>
+          <div class="mc" style="--k:3"><i>Companion</i><b>The scribe</b><em>writes it down</em></div>
+          <div class="mc her" style="--k:4"><i>Against</i><b>Schemer</b><em>You meet the plan before the person</em></div>
+          <div class="mc" style="--k:5"><i>Told by</i><b>The Archivist</b><em>with footnotes you did not ask for</em></div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- II · THE DEAL -->
-<section class="felt" id="deal">
-  <div class="wrap split flip">
+<!-- II · YOUR CHOICES ARE YOUR HOPES -->
+<section class="felt" id="hopes">
+  <div class="wrap split">
     <div class="copy">
-      <div class="r">II · THE DEAL <span class="tag built">Built</span></div>
-      <h2 class="say">Her deck sits on the felt. Every open slot is a hand.</h2>
-      <p>The cards that make it <b>that</b> story arrive face up, in chains. The rest are dealt from her deck, three at a time. Read what a card changes, then play it, or deal again.</p>
+      <div class="r">II · YOUR CHOICES ARE YOUR HOPES <span class="tag built">Built</span></div>
+      <h2 class="say">You pick what you hope for. The teller decides. You walk in.</h2>
+      <p>Locked cards are the story you chose. The rest come in a hand you pick from. Her card she plays face down: <b>keep it, or make her play another.</b></p>
+      <p>Your picks don't have to fit. You get what you asked for, made to work, and you find out how when you open the book.</p>
       <div class="modes">
         <div class="mode">
           <div class="c3"><div class="f"><i>TROUBLE</i><b>A death</b><em>Somebody did it and is still in the room</em></div><svg class="chain" viewBox="0 0 150 225" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#2c3038" stroke-width="5"><ellipse cx="-4" cy="126" rx="8.5" ry="5.5"/><ellipse cx="24" cy="126" rx="8.5" ry="5.5"/><ellipse cx="52" cy="126" rx="8.5" ry="5.5"/><ellipse cx="80" cy="126" rx="8.5" ry="5.5"/><ellipse cx="108" cy="126" rx="8.5" ry="5.5"/><ellipse cx="136" cy="126" rx="8.5" ry="5.5"/><ellipse cx="10" cy="126" rx="8.5" ry="3"/><ellipse cx="38" cy="126" rx="8.5" ry="3"/><ellipse cx="66" cy="126" rx="8.5" ry="3"/><ellipse cx="94" cy="126" rx="8.5" ry="3"/><ellipse cx="122" cy="126" rx="8.5" ry="3"/><ellipse cx="150" cy="126" rx="8.5" ry="3"/></g><g fill="none" stroke="#a7adb7" stroke-width="2.4"><ellipse cx="-4" cy="126" rx="8.5" ry="5.5"/><ellipse cx="24" cy="126" rx="8.5" ry="5.5"/><ellipse cx="52" cy="126" rx="8.5" ry="5.5"/><ellipse cx="80" cy="126" rx="8.5" ry="5.5"/><ellipse cx="108" cy="126" rx="8.5" ry="5.5"/><ellipse cx="136" cy="126" rx="8.5" ry="5.5"/></g><g fill="none" stroke="#7f858f" stroke-width="2.4"><ellipse cx="10" cy="126" rx="8.5" ry="3"/><ellipse cx="38" cy="126" rx="8.5" ry="3"/><ellipse cx="66" cy="126" rx="8.5" ry="3"/><ellipse cx="94" cy="126" rx="8.5" ry="3"/><ellipse cx="122" cy="126" rx="8.5" ry="3"/><ellipse cx="150" cy="126" rx="8.5" ry="3"/></g></svg>
@@ -334,131 +458,86 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
         </div>
         <div class="mode">
           <div class="c3"><div class="f"><i>YOU PLAY</i><b>Kit Marrow</b><em>Kept her books since you were twelve</em></div></div>
-          <div class="lbl">Dealt</div><p>A hand to pick from.</p>
+          <div class="lbl">Yours to pick</div><p>A hand of three.</p>
         </div>
         <div class="mode">
-          <div class="c3 back"><img src="next/art/blood-and-ink-back.webp" alt="">
-            <svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><defs><radialGradient id="wx" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#b8322a"/><stop offset=".7" stop-color="#7a1712"/><stop offset="1" stop-color="#4d0d0a"/></radialGradient></defs><path d="M30 4c5 0 7 3 11 4s8 1 10 5-1 7 0 11 4 7 2 11-6 4-8 7-3 8-8 9-8-2-12-2-8 3-12 0-2-7-4-10-7-6-6-10 4-6 4-10-2-8 2-11 8-1 11-3 5-5 10-5z" fill="url(#wx)"/><circle cx="30" cy="30" r="13" fill="none" stroke="#e08a6a" stroke-opacity=".45" stroke-width="1.5"/><text x="30" y="35.5" text-anchor="middle" font-family="Cinzel Decorative,serif" font-size="15" fill="#f2b49a" fill-opacity=".8">S</text></svg></div>
+          <div class="c3 back"><img src="next/art/blood-and-ink-back.webp" alt=""><svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><defs><radialGradient id="wx" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#b8322a"/><stop offset=".7" stop-color="#7a1712"/><stop offset="1" stop-color="#4d0d0a"/></radialGradient></defs><path d="M30 4c5 0 7 3 11 4s8 1 10 5-1 7 0 11 4 7 2 11-6 4-8 7-3 8-8 9-8-2-12-2-8 3-12 0-2-7-4-10-7-6-6-10 4-6 4-10-2-8 2-11 8-1 11-3 5-5 10-5z" fill="url(#wx)"/><circle cx="30" cy="30" r="13" fill="none" stroke="#e08a6a" stroke-opacity=".45" stroke-width="1.5"/><text x="30" y="35.5" text-anchor="middle" font-family="Cinzel Decorative,serif" font-size="15" fill="#f2b49a" fill-opacity=".8">S</text></svg></div>
           <div class="lbl">Sealed</div><p>Shut until the story opens it.</p>
         </div>
       </div>
-    </div>
-    <div class="shot wide"><img class="z" style="--z:1.25;--o:55% 62%" src="next/table-dealt.jpg" alt="The table: her deck on the felt, trope, world and trouble locked in chains, and a hand of three characters fanned below" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- III · HER CARD -->
-<section class="felt" id="her">
-  <div class="wrap split">
-    <div class="copy">
-      <div class="r">III · HER CARD <span class="tag built">Built</span></div>
-      <h2 class="say">When your hand is laid, she plays hers. Face down.</h2>
-      <p>Turn it over and you meet who you are up against. <b>Keep it, or make her play another.</b></p>
-      <p>Your picks don't have to fit each other. You get what you asked for, made to work: the weaver writes the world that hand implies, and the book is the reveal.</p>
     </div>
     <div class="shot wide"><img class="z" style="--z:1.3;--o:50% 25%" src="next/her-card.jpg" alt="Her counter turned over, an antagonist card called Schemer, with Keep it and Make her play another" loading="lazy"></div>
   </div>
 </section>
 
-<!-- IV · THE DIALS AND THE WEAVE -->
-<section class="felt" id="weave">
+<!-- III · CAMPAIGN, TABLE, BOOK -->
+<section class="felt" id="book">
   <div class="wrap">
     <div class="split" style="align-items:end">
       <div class="copy">
-        <div class="r">IV · THE DIALS, THEN THE WEAVE <span class="tag built">Built</span></div>
-        <h2 class="say">Five dials. None of them picks a card.</h2>
+        <div class="r">III · CAMPAIGN, TABLE, BOOK <span class="tag built">Built, stand-in writer</span></div>
+        <h2 class="say">And then she hands you the book.</h2>
       </div>
-      <div class="copy"><p style="max-width:52ch">Absurdity, stakes, danger, whether trouble is a person or a place, and how long the clocks run. A campaign can narrow each range. Then about ten seconds of weaving, and <b>the Doorkeeper reads it before you do, and may send it back.</b></p></div>
+      <div class="copy"><p>Who you are, your people, how the place works, who's who, and tonight. <b>Everything in this book is true;</b> the rest of the valley is there to find. Download it, then sit down at the table. On the laptop a stand-in writes it from your cards.</p></div>
     </div>
-    <div class="pair" style="margin-top:34px">
-      <div class="shot wide"><img src="next/dials.jpg" alt="Tune your loom: five dials, each showing the range this campaign allows" loading="lazy"></div>
-      <div class="shot wide"><img src="next/weave.jpg" alt="Weaving: the hand gathered into threads, with three steps lighting in turn" loading="lazy"></div>
-    </div>
-  </div>
-</section>
-
-<!-- V · THE BOOK -->
-<section class="felt" id="book">
-  <div class="wrap split flip">
-    <div class="copy">
-      <div class="r">V · THE BOOK <span class="tag built">Built, fake AI</span></div>
-      <h2 class="say">Before session one, she hands you the book.</h2>
-      <p>Who you are, your people, how the place works, who's who, tonight. <b>Everything in this book is true.</b> The rest of the valley is there to find.</p>
-      <p>Download it as markdown, then sit down at the table. On this laptop the book is written by a stand-in from your cards; the real weave runs on the server.</p>
-    </div>
-    <div class="shot wide"><img src="next/book-reveal.jpg" alt="The book: Blood and Ink's title, the premise, an opening line, and chapters beside the first page" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- VI · THE TABLE'S OWN RANDOMNESS -->
-<section class="felt mischief" id="mischief">
-  <div class="motes" aria-hidden="true" id="motes"></div>
-  <span class="willo" id="willo" aria-hidden="true"></span>
-  <div class="wrap split">
-    <div class="copy">
-      <div class="r">VI · THE TABLE'S OWN RANDOMNESS <span class="tag built">Built</span></div>
-      <h2 class="say">Every minute or so, something nobody asked for.</h2>
-      <div class="happen">
-        <div><svg viewBox="0 0 28 28" aria-hidden="true"><circle cx="14" cy="14" r="5" fill="#cff5e3"/><circle cx="14" cy="14" r="11" fill="rgba(140,220,190,.18)"/></svg><span><b>A will-o'-wisp</b> drifts along the top of the table.</span></div>
-        <div><svg viewBox="0 0 28 28" aria-hidden="true"><ellipse cx="14" cy="17" rx="6" ry="5" fill="#7a5662"/><ellipse cx="7" cy="10" rx="2.4" ry="3" fill="#7a5662"/><ellipse cx="12" cy="7" rx="2.4" ry="3" fill="#7a5662"/><ellipse cx="17" cy="7" rx="2.4" ry="3" fill="#7a5662"/><ellipse cx="22" cy="10" rx="2.4" ry="3" fill="#7a5662"/></svg><span><b>A cat</b> paws at one of your cards.</span></div>
-        <div><svg viewBox="0 0 28 28" aria-hidden="true"><path d="M11 6v12.5a3.5 3.5 0 1 1-2-3.2V8l12-3v10.5a3.5 3.5 0 1 1-2-3.2V7.5z" fill="#c9a44a"/><path d="M4 4l20 20" stroke="#b8665a" stroke-width="2.4"/></svg><span><b>The cat turns your music off.</b> She has opinions about the music.</span></div>
+    <div class="ctb">
+      <div class="steps">
+        <div class="step"><span class="n">1 · Campaign</span><div class="shot"><img src="next/shelf.jpg" alt="The shelf of published campaigns, Blood and Ink open" loading="lazy"></div></div>
+        <div class="step"><span class="n">2 · Table</span><div class="shot"><img src="next/table-laid.jpg" alt="The table with Ash Varley's hand laid, waiting for her card" loading="lazy" style="object-position:50% 40%"></div></div>
       </div>
-      <button class="cta ghost paw-btn" type="button" id="callcat">Call the cat over</button>
-    </div>
-    <div class="shot wide" id="catshot"><img class="z" style="--z:1.75;--o:58% 58%" src="next/cat.jpg" alt="A black cat's paw reaching up from below the table and batting at the Trouble card" loading="lazy"></div>
-  </div>
-</section>
-
-<!-- VII · THE DIRECTOR -->
-<section id="director">
-  <div class="wrap split flip">
-    <div class="copy">
-      <div class="r">VII · THE DIRECTOR <span class="tag coming">Coming in 1.5</span></div>
-      <h2 class="say">Random encounters that entertain, not ones that pile up.</h2>
-      <p>The Director is code. It reads the log and the villains' plans, and picks the next side quest or bit of DM mischief with seeded dice. The model narrates what was chosen and <b>never sees why</b>.</p>
-      <p>Before anything fires, one question: does this add to what's happening, or distract from it? And never within <b>seven turns</b> of the last one, whatever the answer.</p>
-    </div>
-    <div class="panel">
-      <div class="h"><span>director · a sketch of the log</span><span>Blood and Ink</span></div>
-      <div class="row"><span class="id">t09</span><span class="lit">fired: the scribe's ledger goes missing</span><span class="ok">fired</span></div>
-      <div class="row"><span class="id">t12</span><span>a stranger offers a debt for sale</span><span class="dim">held · 3 turns</span></div>
-      <div class="row"><span class="id">t14</span><span>the press creaks with nobody at it</span><span class="dim">held · 5 turns</span></div>
-      <div class="row"><span class="id">t16</span><span>side quest: the haunted cottage</span><span class="ok">adds</span></div>
-      <div class="row"><span class="id">t16</span><span class="lit">fired: a child asks you to look in the cottage</span><span class="ok">fired</span></div>
-      <div class="row"><span class="id">t19</span><span>a fiddler wants paying for the wake</span><span class="dim">held · 3 turns</span></div>
-      <div class="row"><span class="id">t24</span><span>a second wake, two villages over</span><span class="no">distracts</span></div>
-      <div class="row"><span class="id">t25</span><span class="held">the antagonist moves against a companion</span><span class="dim">cold pile</span></div>
-      <div class="f">7-turn backstop · about 3 threads at once · ceiling 6, then it merges, never opens</div>
+      <div class="step"><span class="n">3 · The book</span><div class="shot book"><img class="z" style="--z:1.12;--o:50% 100%" src="next/book-reveal.jpg" alt="The book: Blood and Ink's title, the premise, the opening line, and its chapters beside the first page" loading="lazy"></div></div>
     </div>
   </div>
 </section>
 
-<!-- VIII · MEMORY -->
-<section id="memory">
+<!-- IV · THREE DIALS, THREE BOOKS -->
+<section class="felt" id="dials">
   <div class="wrap">
-    <div class="r">VIII · MEMORY THAT DOESN'T DRIFT</div>
-    <h2 class="say" style="max-width:26ch">What happened is written down. She can colour it. She can't change it.</h2>
-    <div class="owns">
-      <div class="own"><h3>The book is a contract.</h3>Fixed and versioned when the Doorkeeper passes it. Play sits on top, so a redeal or a replay starts clean.<span class="tag decided">Decided for 1.5</span></div>
-      <div class="own"><h3>The log is the record.</h3>Every roll and ruling is a line in the ledger. A fix is a new line, never an edit.<span class="tag built">Built on the web table</span></div>
-      <div class="own"><h3>Dice she can't fudge.</h3>The server rolls and writes it down. A roll can be interpreted. It cannot be reversed.<span class="tag built">Built on the web table</span></div>
-      <div class="own"><h3>Fog that holds.</h3>A secret she's holding, the gate won't let her say. In Claude, the secrets stay on our server and never reach the model at all.<span class="tag coming">Server-side in 1.5</span></div>
+    <div class="split" style="align-items:end">
+      <div class="copy">
+        <div class="r">IV · THE DIALS MATTER <span class="tag built">Built</span></div>
+        <h2 class="say">One hand. Three settings of the dials. Three openings.</h2>
+      </div>
+      <div class="copy"><p>Five dials, and none of them picks a card. They tell the teller how to write what you were dealt: how absurd, how big the stakes, how dangerous, people or places, and how long the clocks run. <b>Kit Marrow's hand from table one, written three times by the real teller:</b> a family library at dusk, a county official in the orchard, the whole market square.</p></div>
     </div>
-    <div class="panel" style="margin-top:18px">
-      <div class="row"><span class="id">e001</span><span>INSIGHT  d20=<span class="lit">14</span> +2 = <span class="lit">16</span>  · the clerk will not meet your eye</span><span class="ok">DID</span></div>
-      <div class="row"><span class="id">e002</span><span>STEALTH  d20=<span class="lit">6</span> +3 = <span class="lit">9</span>  · the dog in the yard lifts its head</span><span class="no">DID NOT</span></div>
-    </div>
+    <div class="books"><div class="bk">
+        <div class="set">Hyper-personal</div>
+        <div class="dl"><div>absurdity<span><i style="width:10%"></i></span></div><div>stakes<span><i style="width:0%"></i></span></div><div>danger<span><i style="width:30%"></i></span></div><div>places<span><i style="width:0%"></i></span></div><div>length<span><i style="width:0%"></i></span></div></div>
+        <h3>Ledger of Lies</h3>
+        <div class="where">The grand library of the Marrow estate, dusk.</div>
+        <blockquote>As dusk falls over the grand library of the Marrow estate, Kit Marrow pores over a dusty ledger, her fingers tracing the familiar lines of ink. The air is thick with the scent of old paper and the weight of unspoken secrets. A soft knock at the door startles her, and she looks up to see Elara, the novice, standing nervously in the doorway, a message in hand.</blockquote>
+        <p><b style="font-weight:400;color:var(--fbone)">Its fronts:</b> The Orchard Syndicate · The County Bureaucracy · The Marrow Estate</p>
+        <div class="cost">Nova Pro on Bedrock · $0.0045 · passed the Doorkeeper first time</div>
+      </div>
+      <div class="bk">
+        <div class="set">The campaign's defaults</div>
+        <div class="dl"><div>absurdity<span><i style="width:20%"></i></span></div><div>stakes<span><i style="width:30%"></i></span></div><div>danger<span><i style="width:60%"></i></span></div><div>places<span><i style="width:20%"></i></span></div><div>length<span><i style="width:0%"></i></span></div></div>
+        <h3>Ledger of Lies</h3>
+        <div class="where">A quiet, sun-dappled orchard at midday.</div>
+        <blockquote>Kit Marrow stands among the sun-dappled trees of the orchard, the scent of ripe fruit heavy in the air. The novice, eager to help, fidgets nearby, while the scribe diligently records the scene. The Archivist approaches, a stack of papers in hand, and begins to speak in a voice filled with footnotes and cross-references. &#x27;The death of the official was no accident,&#x27; they say, &#x27;and the truth lies within the County Ledger.&#x27;</blockquote>
+        <p><b style="font-weight:400;color:var(--fbone)">Its fronts:</b> The Archivist · The County Ledger · The Bureaucrat</p>
+        <div class="cost">Nova Pro on Bedrock · $0.0098 · sent back once by the Doorkeeper, then passed</div>
+      </div>
+      <div class="bk">
+        <div class="set">At the campaign's ceiling</div>
+        <div class="dl"><div>absurdity<span><i style="width:40%"></i></span></div><div>stakes<span><i style="width:50%"></i></span></div><div>danger<span><i style="width:70%"></i></span></div><div>places<span><i style="width:60%"></i></span></div><div>length<span><i style="width:30%"></i></span></div></div>
+        <h3>Ledger of Lies</h3>
+        <div class="where">A bustling market square in the heart of the orchard counties, midday.</div>
+        <blockquote>Kit Marrow, rogue and seeker of truths, stands in the bustling market square, eyes locked on the sealed ledger that holds the key to a recent, suspicious death. The Archivist, a figure from Kit&#x27;s past, approaches with a knowing look, while the novice and the scribe hover nearby, each with their own hidden agendas.</blockquote>
+        <p><b style="font-weight:400;color:var(--fbone)">Its fronts:</b> The Archivist · The Bureaucrat · The orchard families</p>
+        <div class="cost">Nova Pro on Bedrock · $0.0094 · sent back once by the Doorkeeper, then passed</div>
+      </div></div>
   </div>
 </section>
 
-<!-- IX · YOUR CHARACTER -->
+<!-- V · YOUR CHARACTER -->
 <section id="character">
   <div class="wrap split">
     <div class="copy">
-      <div class="r">IX · BRING YOUR CHARACTER <span class="tag coming">Coming</span></div>
-      <h2 class="say">Bring the character you already built in D&amp;D Beyond.</h2>
-      <p>The build stays where it is. Seren fits it to the campaign: a level 10 steps down a level at a time, a fresh level 1 steps up, on one screen, like a character sheet in a game.</p>
-      <p>Going down is a choice, not a subtraction: <b>spells and items get chosen again.</b> The shape is decided. It isn't built yet.</p>
+      <div class="r">V · YOUR CHARACTER <span class="tag coming">Coming</span></div>
+      <h2 class="say">Bring your characters. Seren moulds them to your story.</h2>
+      <p>The build stays in D&amp;D Beyond. Seren steps it to the campaign's level, one level at a time, up or down, and the teller ties it to the people in the story the way it ties a dealt character today.</p>
+      <p>Going down is a choice, not a subtraction: <b>spells and items get chosen again.</b></p>
     </div>
     <div class="sheet">
       <div class="lv">
@@ -477,49 +556,114 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
   </div>
 </section>
 
+<!-- VI · OFF THE MAP -->
+<section id="director">
+  <div class="wrap split flip">
+    <div class="copy">
+      <div class="r">VI · OFF THE MAP <span class="tag coming">Coming in 1.5</span></div>
+      <h2 class="say">The campaign has its villain. The world has others.</h2>
+      <p>Side quests, DM mischief and villain moves the campaign never wrote, on clocks that run whether or not you act. About thirty of each ship in 1.5, scored from 97 side quests and 118 DM tricks.</p>
+      <p>The Director is code. It picks with seeded dice; the narrator tells it <b>without knowing why</b>. Never within seven turns of the last surprise, and only if it adds to what's happening.</p>
+    </div>
+    <div class="panel">
+      <div class="h"><span>director · a sketch of the log</span><span>Blood and Ink</span></div>
+      <div class="row"><span class="id">t09</span><span class="lit">fired: the scribe's ledger goes missing</span><span class="ok">fired</span></div>
+      <div class="row"><span class="id">t12</span><span>a stranger offers a debt for sale</span><span class="dim">held · 3 turns</span></div>
+      <div class="row"><span class="id">t14</span><span>the press creaks with nobody at it</span><span class="dim">held · 5 turns</span></div>
+      <div class="row"><span class="id">t16</span><span>side quest: the haunted cottage</span><span class="ok">adds</span></div>
+      <div class="row"><span class="id">t16</span><span class="lit">fired: a child asks you to look in the cottage</span><span class="ok">fired</span></div>
+      <div class="row"><span class="id">t19</span><span>a fiddler wants paying for the wake</span><span class="dim">held · 3 turns</span></div>
+      <div class="row"><span class="id">t24</span><span>a second wake, two villages over</span><span class="no">distracts</span></div>
+      <div class="row"><span class="id">t25</span><span class="held">a rival family moves on the press</span><span class="dim">cold pile</span></div>
+      <div class="f">7-turn backstop · about 3 threads at once · ceiling 6, then it merges, never opens</div>
+    </div>
+  </div>
+</section>
+
+<!-- VII · OPEN THE BOX -->
+<section id="box">
+  <div class="wrap">
+    <div class="r">VII · OPEN THE BOX <span class="tag built">Built</span></div>
+    <h2 class="say" style="max-width:28ch">Everything is a file you can read.</h2>
+    <div class="split" style="margin-top:30px;align-items:start">
+      <div class="copy">
+        <p>A campaign is a folder. The book is markdown. Every roll and ruling is a line in an append-only log, and <b>a fix is a new line, never an edit.</b></p>
+        <p>Facts are marked true, known, suspected or false, so your character can be wrong and the game knows it. What she is hiding stays hidden until the story opens it; then it's yours too.</p>
+      </div>
+      <div class="box">
+        <div class="tree">
+          <div class="d">taken-in-at-the-mill/</div>
+          <div>├ briefing.md <span class="lk">the book</span></div>
+          <div>├ campaign.md</div>
+          <div>├ fronts.md</div>
+          <div>├ hand.json</div>
+          <div>├ DM-persona.md</div>
+          <div>├ builds/kit-marrow.md</div>
+          <div>├ canon/antagonists/parent.md</div>
+          <div class="d">└ state/</div>
+          <div class="on">&nbsp;&nbsp;├ facts.jsonl</div>
+          <div>&nbsp;&nbsp;├ party.md</div>
+          <div>&nbsp;&nbsp;├ scene.md</div>
+          <div>&nbsp;&nbsp;└ ledger.jsonl</div>
+        </div>
+        <div class="file">
+          <div class="h">state/facts.jsonl · three of its fields, illustrative lines</div>
+<pre><span class="rec">{<span class="k1">"id"</span>: <span class="id">"f001"</span>, <span class="k1">"fact"</span>: <span class="s">"Agnes was buried owing nobody"</span>, <span class="k1">"visibility"</span>: <span class="s">"false"</span>, …}</span><span class="rec">{<span class="k1">"id"</span>: <span class="id">"f002"</span>, <span class="k1">"fact"</span>: <span class="s">"The scribe keeps the yard's talk"</span>, <span class="k1">"visibility"</span>: <span class="s">"known"</span>, …}</span><span class="rec">{<span class="k1">"id"</span>: <span class="id">"f003"</span>, <span class="k1">"fact"</span>: <span class="s">"The clerk keeps a second ledger"</span>, <span class="k1">"visibility"</span>: <span class="s">"suspected"</span>, …}</span><span class="rec">{<span class="k1">"id"</span>: <span class="id">"f004"</span>, <span class="k1">"fact"</span>: <span class="held">held until the story opens it</span>, <span class="k1">"visibility"</span>: <span class="s">"true"</span>, …}</span></pre>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIII · JUDGES AND DICE -->
+<section id="judges">
+  <div class="wrap">
+    <div class="r">VIII · JUDGES AND DICE</div>
+    <h2 class="say" style="max-width:26ch">The storyteller never marks her own homework.</h2>
+    <div class="judges">
+      <div class="judge"><span class="who">The Doorkeeper</span><h3>Reads the book before you do.</h3><p>Code, not a model. Every front has a clock, no secret starts known, no borrowed setting, nobody called Seren. It sends the draft back once, then refuses it.</p><span class="tag built">Built</span></div>
+      <div class="judge"><span class="who">An outside judge</span><h3>Asks one question.</h3><div class="q">Does this add to what's happening, or distract from it?</div><p>Before the Director fires. It can only say no.</p><span class="tag decided">Decided for 1.5</span></div>
+      <div class="judge"><span class="who">The dice</span><h3>Rolled before she's told why.</h3><p>The server rolls and writes it down first. A roll can be interpreted. It cannot be reversed.</p><span class="tag built">Built on the web table</span></div>
+    </div>
+    <div class="panel ledger" style="margin-top:18px">
+      <div class="row"><span class="id">e001</span><span>INSIGHT  d20=<span class="lit">14</span> +2 = <span class="lit">16</span>  · the clerk will not meet your eye</span><span class="ok">DID</span></div>
+      <div class="row"><span class="id">e002</span><span>STEALTH  d20=<span class="lit">6</span> +3 = <span class="lit">9</span>  · the dog in the yard lifts its head</span><span class="no">DID NOT</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- IX · UNDER THE TABLE -->
+<section id="stack">
+  <div class="wrap">
+    <div class="r">IX · UNDER THE TABLE</div>
+    <h2 class="say" style="max-width:26ch">What it's built on.</h2>
+    <div class="stack">
+      <div class="layer"><span class="lbl">Engine</span><ul><li>Python 3.11</li><li>one engine for web, MCP and Claude Code</li><li>state changes only through code</li><li>SQLite for accounts</li></ul></div>
+      <div class="layer"><span class="lbl">Models</span><ul><li>Amazon Bedrock</li><li>Nova at the table today</li><li>Claude Sonnet and Opus by tier <em>coming</em></li><li>bring your own Anthropic key</li></ul></div>
+      <div class="layer"><span class="lbl">Inside Claude</span><ul><li>MCP server, official Python SDK</li><li>MCP Apps</li><li>three tools, read-only split from write</li><li>the table as an app <em>coming</em></li></ul></div>
+      <div class="layer"><span class="lbl">Rules of the house</span><ul><li>the Doorkeeper</li><li>the fog gate</li><li>server dice</li><li>append-only ledger</li><li>the Director, seeded <em>coming</em></li></ul></div>
+      <div class="layer"><span class="lbl">The box</span><ul><li>AWS EC2 Graviton</li><li>Amazon Linux 2023</li><li>nginx</li><li>Let's Encrypt</li><li>systemd</li><li>no SSH, only SSM</li></ul></div>
+      <div class="layer"><span class="lbl">Around it</span><ul><li>Parameter Store for secrets</li><li>SES for mail</li><li>S3</li><li>Google sign-in</li><li>Cloudflare tunnel for MCP testing</li></ul></div>
+      <div class="layer" style="grid-column:1/-1"><span class="lbl">Content</span><ul><li>SRD 5.2, CC BY 4.0</li><li>fronts from Dungeon World, CC BY 3.0</li><li>clocks from Blades in the Dark, CC BY 3.0</li><li>a Claude Code skill for local play</li></ul></div>
+    </div>
+  </div>
+</section>
+
 <!-- X · FOR CREATORS -->
 <section class="makers" id="makers">
   <div class="art" aria-hidden="true"><img src="next/art/tallage-header.webp" alt="" loading="lazy"></div>
   <div class="wrap">
     <div class="r" style="color:var(--ember)">X · FOR CREATORS <span class="tag coming">Opening to creators later</span></div>
-    <h2 class="big">Write the campaign. Seren deals it differently to every player.</h2>
+    <h2 class="big">Write the campaign once. Every player gets their own.</h2>
     <div class="knobs">
       <div class="knob"><h3>Lock the spine.</h3><p>Per slot, choose locked, dealt or sealed. Lock what makes it your story; seal the killer.</p><span class="tag built">In the format</span></div>
       <div class="knob"><h3>Write the decks.</h3><p>Three or four origins, your own cast as companions, the voices it suits, two or three antagonists.</p><span class="tag built">In the format</span></div>
       <div class="knob"><h3>Its own card backs.</h3><div class="backs"><img src="next/art/blood-and-ink-back.webp" alt="Blood and Ink's card back"><img src="next/art/quire-back.webp" alt="Quire's card back"><img src="next/art/tallage-back.webp" alt="Tallage's card back"></div><p>A deck that looks like your story.</p><span class="tag built">Three made</span></div>
       <div class="knob"><h3>Set the dials' range.</h3><p>Grim to wry, not grim to a sheep with opinions. Players tune inside your range.</p><span class="tag built">Built</span></div>
       <div class="knob"><h3>Allow and block lists.</h3><p>Which tropes and mischief can ever reach your table, from a shared library of thousands.</p><span class="tag decided">Decided, not built</span></div>
-      <div class="knob"><h3>The truths stay yours.</h3><p>What each card really means lives in a file the browser never gets. Only the weave reads it.</p><span class="tag built">In the format</span></div>
+      <div class="knob"><h3>The truths stay yours.</h3><p>What each card really means lives in a file the browser never gets. Only the teller reads it.</p><span class="tag built">In the format</span></div>
     </div>
     <div class="acts"><a class="cta" href="/deal">See a published campaign dealt</a></div>
-  </div>
-</section>
-
-<!-- XI · WHAT SHE IS, AND ISN'T -->
-<section id="fit">
-  <div class="wrap">
-    <div class="r">XI · WHAT SHE IS, AND ISN'T</div>
-    <h2 class="say" style="max-width:28ch">Other AI tables are good at maps and minis. Seren is built for one player and a story that holds.</h2>
-    <div class="cmp">
-      <div>
-        <span class="mono">What she does differently</span>
-        <ul>
-          <li><i class="ok">→</i><span><b>The deal before the story.</b> A campaign you shape in cards, not a blank prompt.</span></li>
-          <li><i class="ok">→</i><span><b>Believed and true are kept apart.</b> Your character can be wrong, and the game knows it.</span></li>
-          <li><i class="ok">→</i><span><b>Rulings stand.</b> A result can be coloured, never turned from success into failure.</span></li>
-          <li><i class="ok">→</i><span><b>A book you keep.</b> The briefing is yours before play. A chronicle at the end comes in 1.5.</span></li>
-        </ul>
-      </div>
-      <div class="not">
-        <span class="mono">Not yet, or not her</span>
-        <ul>
-          <li><i style="color:var(--ember-dim)">×</i><span><b>Maps and a virtual tabletop.</b> One dungeon with fog comes in 1.5; prettier maps aren't the point.</span></li>
-          <li><i style="color:var(--ember-dim)">×</i><span><b>A full party of humans.</b> Multiplayer is 1.6.</span></li>
-          <li><i style="color:var(--ember-dim)">×</i><span><b>Taking a roll back.</b> Ever.</span></li>
-          <li><i style="color:var(--ember-dim)">×</i><span><b>Every system.</b> She starts with 5e.</span></li>
-        </ul>
-      </div>
-    </div>
   </div>
 </section>
 
@@ -532,6 +676,7 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
       <a class="cta" href="/deal">Choose a campaign</a>
       <a class="cta ghost" href="/contract">Read the contract</a>
     </div>
+    <div class="notyet"><span><b>Not yet:</b> maps past one dungeon with fog</span><span>multiplayer, in 1.6</span><span>rule systems past 5e</span><span><b>Never:</b> taking a roll back</span></div>
     <div class="deck3" aria-hidden="true">
       <img src="next/art/quire-back.webp" alt="">
       <img src="next/art/blood-and-ink-back.webp" alt="">
@@ -552,40 +697,22 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
 (function(){
   var quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // motes on the felt in section VI
-  var m = document.getElementById('motes'), h = '';
-  for (var i = 0; i < 18; i++) h += '<i style="left:' + Math.round(Math.random()*100) + '%;top:' + Math.round(Math.random()*100) + '%;--d:' + (12+Math.random()*14).toFixed(1) + 's;--dl:-' + (Math.random()*20).toFixed(1) + 's;--dx:' + Math.round(Math.random()*80-40) + 'px"></i>';
-  m.innerHTML = h;
+  // the dealt moment: section I's three tables are dealt onto the felt the first time it's on screen
+  var t = document.getElementById('tables');
+  if (!quiet) new IntersectionObserver(function(es, o){ es.forEach(function(e){
+    if (e.isIntersecting){ t.classList.add('dealing'); o.disconnect(); }
+  }); }, { threshold: .35 }).observe(t);
 
-  // the dealt moment: a will-o'-wisp crosses section VI the first time it's on screen, then now and then
-  var w = document.getElementById('willo'), sec = document.getElementById('mischief'), seen = false;
-  function drift(){ if (quiet) return; w.classList.remove('go'); void w.offsetWidth; w.classList.add('go'); }
-  new IntersectionObserver(function(es){ es.forEach(function(e){
-    if (e.isIntersecting && !seen){ seen = true; drift(); setInterval(function(){ if (!document.hidden) drift(); }, 26000); }
-  }); }, { threshold: .4 }).observe(sec);
-
-  // the cat, on request: the deal page's own paw
-  var PAW = '<svg viewBox="0 0 60 220" aria-hidden="true"><path d="M14 220 L14 56 Q14 22 30 18 Q46 22 46 56 L46 220 Z" fill="#17151b"/><path d="M30 6c-14 0-24 12-24 26 0 12 10 20 24 20s24-8 24-20C54 18 44 6 30 6z" fill="#1d1a21"/><ellipse cx="30" cy="36" rx="9" ry="7" fill="#7a5662"/><ellipse cx="15" cy="22" rx="4.2" ry="5" fill="#7a5662"/><ellipse cx="24" cy="15" rx="4.2" ry="5" fill="#7a5662"/><ellipse cx="36" cy="15" rx="4.2" ry="5" fill="#7a5662"/><ellipse cx="45" cy="22" rx="4.2" ry="5" fill="#7a5662"/></svg>';
-  document.getElementById('callcat').addEventListener('click', function(){
-    var t = document.getElementById('catshot');
-    if (quiet){ return; }
-    var r = t.getBoundingClientRect(), p = document.createElement('div');
-    p.className = 'paw'; p.innerHTML = PAW; p.style.left = Math.round(r.left + r.width*0.4) + 'px';
-    document.body.appendChild(p);
-    var reach = window.innerHeight - (r.top + r.height*0.5);
-    var a = p.animate([{transform:'translateY(0)'},{transform:'translateY(-'+(reach*0.8)+'px) rotate(4deg)',offset:.32},
-      {transform:'translateY(-'+reach+'px) rotate(-7deg)',offset:.46},{transform:'translateY(-'+(reach-8)+'px) rotate(9deg)',offset:.56},
-      {transform:'translateY(0)'}], {duration:3200, easing:'ease-in-out'});
-    setTimeout(function(){ t.animate([{transform:'rotate(0)'},{transform:'rotate(-2deg) translateX(-6px)'},{transform:'rotate(1.5deg) translateX(4px)'},{transform:'rotate(0)'}],{duration:600,easing:'ease-out'}); }, 1450);
-    a.onfinish = function(){ p.remove(); };
-  });
-
-  // IX: level a character up and down, one level at a time (an illustration of the decided shape)
+  // V: level a character up and down, one level at a time (an illustration of the decided shape)
   var lv = 10, out = document.getElementById('lvl'), pips = document.getElementById('pips'), ch = document.getElementById('changes');
+  function ord(n){ return n + (['','st','nd','rd'][n] || 'th'); }
   function paint(){
     out.textContent = lv;
     var p = ''; for (var i = 1; i <= 20; i++) p += '<i class="' + (i <= lv ? 'on' : '') + '"></i>'; pips.innerHTML = p;
-    ch.innerHTML = (lv === 10 ? ['Hit points <span>62</span>','Spells up to <span>5th</span> level, as imported','Your sheet, as you built it.'] : ['Hit points <span>' + (8 + (lv-1)*6) + '</span>', 'Spells up to <span>' + Math.min(9, Math.ceil(lv/2)) + (['','st','nd','rd'][Math.ceil(lv/2)] || 'th') + '</span> level, chosen again', lv < 10 ? 'One level at a time, so nothing is lost by accident.' : 'Past your sheet: each new level is a choice.']).join('<br>');
+    ch.innerHTML = (lv === 10
+      ? ['Hit points <span>62</span>', 'Spells up to <span>5th</span> level, as imported', 'Your sheet, as you built it.']
+      : ['Hit points <span>' + (8 + (lv-1)*6) + '</span>', 'Spells up to <span>' + ord(Math.min(9, Math.ceil(lv/2))) + '</span> level, chosen again',
+         lv < 10 ? 'One level at a time, so nothing is lost by accident.' : 'Past your sheet: each new level is a choice.']).join('<br>');
   }
   document.getElementById('up').onclick = function(){ if (lv < 20){ lv++; paint(); } };
   document.getElementById('down').onclick = function(){ if (lv > 1){ lv--; paint(); } };
