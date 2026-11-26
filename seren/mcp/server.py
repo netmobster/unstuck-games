@@ -319,9 +319,19 @@ def asgi_app():
     ))
 
 
+CERT, KEY = HERE / "certs" / "cert.pem", HERE / "certs" / "key.pem"
+
+
 def main() -> None:
+    """HTTPS when there's a local certificate, which is how the tunnel reaches us.
+
+    AVG's Web Shield rewrites plain-HTTP loopback traffic on /mcp (Imprint Desk found it on 10 Nov,
+    the-desktop/DECISIONS.md), and claude.ai saw "Couldn't reach" for Seren the same way on 26 Nov.
+    Over TLS it can't touch the traffic. cloudflared connects with --no-tls-verify (run-tunnel.ps1).
+    The certificate is self-signed for localhost, made locally and gitignored."""
     import uvicorn
-    uvicorn.run(asgi_app(), host=os.environ.get("SEREN_MCP_HOST", "127.0.0.1"), port=PORT, log_level="info")
+    tls = {"ssl_certfile": str(CERT), "ssl_keyfile": str(KEY)} if CERT.is_file() and KEY.is_file() else {}
+    uvicorn.run(asgi_app(), host=os.environ.get("SEREN_MCP_HOST", "127.0.0.1"), port=PORT, log_level="info", **tls)
 
 
 if __name__ == "__main__":

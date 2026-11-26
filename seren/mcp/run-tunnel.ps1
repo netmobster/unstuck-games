@@ -46,7 +46,15 @@ if ($Real) {
 
 # 1. The tunnel, logging to a file we can read the address out of.
 $log = Join-Path $env:TEMP ('seren-tunnel-' + [guid]::NewGuid().ToString('N').Substring(0, 8) + '.log')
-$tunnel = Start-Process -FilePath $cf -ArgumentList @('tunnel', '--no-autoupdate', '--url', "http://127.0.0.1:$Port") `
+# HTTPS to our own server: AVG's Web Shield rewrites plain-HTTP loopback /mcp traffic (Imprint Desk, 10 Nov).
+$certs = Join-Path $here 'certs'
+if (-not (Test-Path (Join-Path $certs 'cert.pem'))) {
+  New-Item -ItemType Directory -Force $certs | Out-Null
+  $openssl = 'C:\Program Files\Git\usr\bin\openssl.exe'
+  & $openssl req -x509 -newkey rsa:2048 -nodes -keyout (Join-Path $certs 'key.pem') -out (Join-Path $certs 'cert.pem') `
+    -days 365 -subj '/CN=localhost' -addext 'subjectAltName=DNS:localhost,IP:127.0.0.1' 2>$null
+}
+$tunnel = Start-Process -FilePath $cf -ArgumentList @('tunnel', '--no-autoupdate', '--no-tls-verify', '--url', "https://127.0.0.1:$Port") `
   -RedirectStandardError $log -WindowStyle Hidden -PassThru
 $url = $null
 for ($i = 0; $i -lt 60 -and -not $url; $i++) {
