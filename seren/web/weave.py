@@ -103,8 +103,65 @@ world may be, how big the trouble is allowed to get, how dangerous, whether pres
 from people or from places, and how long the clocks run."""
 
 
+def mocking() -> bool:
+    return os.environ.get("SEREN_AI", "").lower() in ("mock", "local")
+
+
+def _mock_campaign(picks: dict, cards: dict) -> dict:
+    """A canned skeleton built from the dealt cards, for local runs with SEREN_AI=mock.
+
+    It is not a story. It puts the real card names where the weaver would, and passes the
+    real auditor, so the whole flow (deal, dials, book, table) can be clicked through with
+    no model and no spend."""
+    def name(slot, fallback):
+        return str((cards.get(slot) or {}).get("name") or fallback)
+    comps = cards.get("companions") or []
+    trope, world, trouble = name("trope", "A debt"), name("world", "a small town"), name("trouble", "a death")
+    origin, posture = name("origin", "a stranger"), name("posture", "the one in charge")
+    title = picks.get("campaign_title") or f"{trope} at the Mill"
+    return {
+        "title": title,
+        "premise": (f"{trouble}, in {world}, and nobody wants it asked about. You came because of "
+                    f"the {origin.lower()}, and the {posture} would rather you went home."),
+        "where": f"{world}, the hour before dark",
+        "pc": {"name": "Wren Ashby", "class": "Rogue", "why_here": f"The {origin.lower()}: someone here owes you."},
+        "companions": [{"name": str(c.get("name", "")), "does": str(c.get("line", "")),
+                        "friction": str(c.get("changes", ""))} for c in comps],
+        "fronts": [
+            {"name": "The Parish Clerk", "impulse": "to keep the register closed",
+             "wants_from": "The Millers' Guild — the ledger page they tore out",
+             "clock": ["the register goes missing", "a witness leaves town", "the page is burned"],
+             "doom": "nobody can ever prove what happened"},
+            {"name": "The Millers' Guild", "impulse": "to settle the debt quietly",
+             "wants_from": "The Parish Clerk — the burial record",
+             "clock": ["a debt is called in", "a lease is cancelled", "a family is turned out"],
+             "doom": "the orchard changes hands for nothing"},
+            {"name": posture, "impulse": "to be thanked for keeping order",
+             "wants_from": "the party — their silence",
+             "clock": ["a warning", "a fine", "an arrest"],
+             "doom": "the wrong person hangs"},
+        ],
+        "antagonist": {"name": posture, "axis": "stopped", "posture": posture,
+                       "grudge": "You are strangers stirring up grief, and they are right that it will hurt people.",
+                       "escalation": ["2 — a polite warning", "3 — doors close", "4+ — the law moves"]},
+        "facts": [
+            {"fact": "The ledger page was torn out after the death, not before.", "visibility": "true", "why": "the clock"},
+            {"fact": "Two families owed the same debt.", "visibility": "true", "why": "the motive"},
+            {"fact": "The clerk can't read the old hand.", "visibility": "true", "why": "a weakness"},
+            {"fact": "The death was not an accident.", "visibility": "suspected", "why": "the hook"},
+            {"fact": "The guild paid for the funeral.", "visibility": "true", "why": "a thread"},
+            {"fact": "The dog knows the way to the mill race.", "visibility": "true", "why": "a companion's use"},
+            {"fact": "The town believes the debt died with the debtor.", "visibility": "false", "why": "the lie"},
+        ],
+        "opening": (f"Rain on the lychgate. The {posture} stands under it with an umbrella that isn't theirs, "
+                    "and holds out a hand for your papers before you've said a word."),
+    }
+
+
 def weave(picks: dict, dials: dict, cards: dict, tier: str = "paid") -> dict:
     """One call. Returns the campaign object and what it cost."""
+    if mocking():
+        return {"campaign": _mock_campaign(picks, cards), "spent": 0.0}
     was, llm.MAX_TOKENS = llm.MAX_TOKENS, GEN_TOKENS
     try:
         reply = llm.converse(system=SYSTEM,
@@ -125,6 +182,8 @@ def mend(campaign: dict, problems: list[str], picks: dict, dials: dict, cards: d
 
     Cheaper than a re-roll and kinder to the player, who has already dealt a hand they like.
     """
+    if mocking():
+        return {"campaign": campaign, "spent": 0.0}
     said = "\n".join("- " + p for p in problems)
     was, llm.MAX_TOKENS = llm.MAX_TOKENS, GEN_TOKENS
     try:

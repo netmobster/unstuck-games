@@ -79,7 +79,14 @@ locked and how much chaos is allowed), then the deal, the dials, and the book pr
 Decided (`DECISIONS.md`, 25 Nov): all three originals shown on the shelf, blood-and-ink tightened
 and decked; the weave unchanged except its inputs, on our server; campaigns set dial ranges; an
 **MCP MVP plan first**: the smallest server with the 2–3 tools the app needs.
-- [ ] **Build the MCP MVP** per `seren/MCP-MVP-PLAN.md` (approved with edits 25 Nov): seven visible
+**The order (Jay, 26 Nov): local, then web, then the interactive app.** The real dream is the deal
+(the three campaigns plus generate-your-own) and the book, downloadable as markdown.
+- [ ] **1. Local:** the Seren site running on Jay's machine with fake AI (`SEREN_AI=mock`), the
+      approved shelf-and-deal look at `/deal`, and the book with a markdown download. Click it all in Chrome.
+- [ ] **Then the campaigns:** tighten blood-and-ink, deck quire and tallage, felt in the local build.
+- [ ] **2. Web:** a new `seren.unstuck-games.com/next` that holds it, wired to the real weave.
+- [ ] **3. The interactive app:** the whole flow working inside Claude off the MCP.
+- [ ] **Build the MCP MVP** (step 3 above) per `seren/MCP-MVP-PLAN.md` (approved with edits 25 Nov): seven visible
       steps from the campaign format to the book saved and downloadable for red team.
 
 **1.5**

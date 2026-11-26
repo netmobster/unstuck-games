@@ -1,0 +1,357 @@
+<meta charset="utf-8">
+<title>Seren · The Deal</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: a shelf (campaign list left, the chosen campaign right) that gives way to the Loom's table.
+   One committed dark world, the Loom's own: night-blue felt, gilt, bone. */
+:root{
+  --felt:#0f1728; --felt-hi:#141f38; --card:#1a2540; --card-lo:#111a2e; --edge:#3a4664; --edge-lo:#2a3450;
+  --gilt:#c9a44a; --gilt-hi:#e3c06a; --bone:#e9dcb5; --bone-lo:#b8ab8a; --mute:#7d8aa8; --mute-lo:#4a5570;
+  --iron:#8a8f99; --shade:rgba(5,8,16,.72);
+  --serif:'IM Fell English',Georgia,'Times New Roman',serif; --display:'Cinzel Decorative','Cinzel',Georgia,serif;
+  --sans:'Work Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{background:var(--felt);color:var(--bone)}
+body{font:400 17px/1.5 var(--serif);min-height:100vh;
+  background:radial-gradient(1200px 700px at 50% -10%,var(--felt-hi),transparent 70%),var(--felt)}
+::selection{background:var(--gilt);color:var(--felt)}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:3px}
+img{max-width:100%;display:block}
+.wrap{max-width:1240px;margin:0 auto;padding-block:26px 60px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.lbl{font:600 10.5px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gilt)}
+.lbl.mute{color:var(--mute)}
+h1,h2,h3{font-weight:400;margin:0;text-wrap:balance}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.brand{font:400 15px/1 var(--display);letter-spacing:.08em;color:var(--gilt)}
+.top .ask{font:italic 400 clamp(20px,3.4vw,26px)/1.2 var(--serif);color:var(--bone);margin-top:8px}
+.top .note{font:500 11px/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+
+/* ── the shelf ── */
+.shelf{display:grid;grid-template-columns:minmax(230px,300px) minmax(0,1fr);gap:26px;align-items:start}
+.list{display:flex;flex-direction:column;gap:12px}
+.tab{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:center;text-align:left;padding:10px;border-radius:10px;
+  border:1px solid var(--edge-lo);background:linear-gradient(160deg,var(--card),var(--card-lo));box-shadow:0 14px 28px rgba(0,0,0,.45);
+  transition:border-color .2s,transform .2s}
+.tab:hover{border-color:var(--edge);transform:translateX(3px)}
+.tab[aria-selected=true]{border-color:var(--gilt);box-shadow:0 14px 28px rgba(0,0,0,.5),0 0 0 1px var(--gilt),0 0 24px rgba(201,164,74,.22)}
+.tab .thumb{width:72px;height:96px;border-radius:6px;object-fit:cover;border:1px solid var(--edge-lo)}
+.tab .t{font:400 21px/1.1 var(--serif);color:var(--bone)}
+.tab .m{font:500 11px/1.4 var(--sans);letter-spacing:.08em;color:var(--mute);margin-top:6px}
+.tab .st{display:inline-block;margin-top:8px;font:600 9.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:5px 7px;border-radius:999px;border:1px solid var(--edge)}
+.st.ready{color:var(--felt);background:var(--gilt);border-color:var(--gilt)}
+.st.soon{color:var(--mute)}
+
+.detail{border:1px solid var(--edge-lo);border-radius:14px;overflow:hidden;background:var(--card-lo);box-shadow:0 30px 70px rgba(0,0,0,.55);min-width:0}
+.hero{position:relative;aspect-ratio:16/8;max-width:100%;background:#000}
+.hero img{width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,14,26,.55) 62%,var(--card-lo) 100%)}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 clamp(18px,4vw,36px) 18px}
+.hero h2{font:400 clamp(30px,5.6vw,56px)/1 var(--display);color:var(--bone);text-shadow:0 6px 24px rgba(0,0,0,.8)}
+.hero .tag{font:italic 400 clamp(16px,2.2vw,21px)/1.35 var(--serif);color:var(--gilt-hi);margin-top:10px;max-width:60ch;text-shadow:0 4px 16px rgba(0,0,0,.9)}
+.body{padding:18px clamp(18px,4vw,36px) 30px;display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:28px}
+.desc{font-size:18px;line-height:1.6;color:var(--bone);max-width:64ch;margin:0 0 20px}
+.facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:8px 18px;margin:0 0 22px;padding:0;list-style:none}
+.facts li{font:400 14px/1.45 var(--sans);color:var(--bone-lo);padding-left:16px;position:relative}
+.facts li::before{content:"✦";position:absolute;left:0;top:0;color:var(--gilt);font-size:10px;line-height:2}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;font:500 12px/1 var(--sans);letter-spacing:.04em;color:var(--bone);padding:8px 11px;border-radius:999px;border:1px solid var(--edge);background:rgba(255,255,255,.03)}
+.chip svg{width:14px;height:14px;flex:none}
+.chip.chaos{border-color:rgba(201,164,74,.5);color:var(--gilt-hi)}
+.side{display:flex;flex-direction:column;gap:14px;align-items:center}
+.backs{position:relative;width:170px;height:200px}
+.backs img{position:absolute;bottom:0;left:50%;width:112px;aspect-ratio:2/3;max-width:none;object-fit:cover;border-radius:9px;
+  box-shadow:0 18px 34px rgba(0,0,0,.6);border:1px solid rgba(0,0,0,.5);transform-origin:bottom center}
+.backs img:nth-child(1){transform:translateX(-50%) rotate(-12deg) translateX(-26px)}
+.backs img:nth-child(2){transform:translateX(-50%) rotate(0deg) translateY(-6px)}
+.backs img:nth-child(3){transform:translateX(-50%) rotate(12deg) translateX(26px)}
+.side .lbl{text-align:center}
+.go{font:600 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:16px 22px;border-radius:999px;
+  background:var(--gilt);color:var(--felt);box-shadow:0 12px 30px rgba(201,164,74,.25);transition:background .2s,transform .2s}
+.go:hover{background:var(--gilt-hi);transform:translateY(-2px)}
+.go[disabled]{background:transparent;color:var(--mute);border:1px solid var(--edge);box-shadow:none;cursor:default;transform:none}
+.ghost{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:12px 16px;border-radius:999px;border:1px solid var(--edge);color:var(--bone-lo)}
+.ghost:hover{border-color:var(--gilt);color:var(--bone)}
+
+/* ── the table ── */
+.table[hidden],.shelf[hidden]{display:none}
+.table{display:flex;flex-direction:column;gap:22px}
+.tbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.tbar h2{font:400 clamp(24px,4vw,34px)/1.1 var(--display);color:var(--bone)}
+.tbar .sub{font:italic 400 18px/1.3 var(--serif);color:var(--bone-lo);margin-top:4px}
+.tbar .acts{display:flex;gap:8px;flex-wrap:wrap}
+.felt{border-radius:18px;padding:clamp(16px,3vw,30px);border:1px solid var(--edge-lo);
+  background:radial-gradient(900px 500px at 50% 0%,rgba(201,164,74,.07),transparent 70%),linear-gradient(180deg,var(--felt-hi),var(--felt));
+  box-shadow:inset 0 0 80px rgba(0,0,0,.5)}
+.howto{text-align:center;font:italic 400 19px/1.3 var(--serif);color:var(--gilt-hi);margin:0 0 18px;min-height:1.3em}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,150px));justify-content:center;gap:clamp(10px,1.6vw,18px)}
+.slot{display:flex;flex-direction:column;gap:8px;align-items:stretch}
+.slot .lbl{text-align:center}
+.slot.hers .lbl{color:var(--bone-lo)}
+.c3{position:relative;aspect-ratio:2/3;max-width:100%;perspective:900px;border-radius:10px}
+.c3 .in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.7,.2,1)}
+.c3.up .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;
+  box-shadow:0 18px 34px rgba(0,0,0,.6)}
+.face.back{background:#000}
+.face.back img{width:100%;height:100%;object-fit:cover}
+.face.front{transform:rotateY(180deg);background:linear-gradient(160deg,var(--card),var(--card-lo));border:1px solid var(--gilt);
+  padding:12px 11px 11px;display:flex;flex-direction:column;gap:6px;text-align:left}
+.face.front .k{font:600 9px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt)}
+.face.front .n{font:400 clamp(17px,1.9vw,20px)/1.08 var(--serif);color:var(--bone)}
+.face.front .l{font:italic 400 13px/1.3 var(--serif);color:var(--bone-lo)}
+.face.front .as{margin-top:auto;font:400 11.5px/1.4 var(--sans);color:var(--bone);border-top:1px solid var(--edge);padding-top:7px}
+.c3.down{cursor:pointer}
+.c3.down:hover .in{transform:translateY(-6px) rotateZ(-1deg)}
+.c3.down::after{content:"";position:absolute;inset:-3px;border-radius:12px;border:1px solid transparent;transition:border-color .2s;pointer-events:none}
+.c3.down:hover::after{border-color:var(--gilt)}
+.c3.deal{animation:deal .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes deal{from{opacity:0;transform:translateY(60px) rotate(-9deg)}to{opacity:1;transform:none}}
+/* locked: dealt face up, in chains */
+.chains{position:absolute;inset:0;pointer-events:none;z-index:2}
+.chains>svg:not(.lock){position:absolute;inset:0;width:100%;height:100%}
+.chains>svg.lock{position:absolute;left:50%;top:59%;transform:translate(-50%,-50%);width:30px;height:36px;z-index:3;filter:drop-shadow(0 4px 8px rgba(0,0,0,.7))}
+.c3.locked .face.front{border-color:var(--iron)}
+.c3.locked .face.front::after{content:"";position:absolute;inset:0;background:rgba(10,14,26,.25)}
+
+.sentence{text-align:center;font:400 clamp(18px,2.6vw,24px)/1.4 var(--serif);color:var(--bone);max-width:880px;margin:22px auto 0;text-wrap:balance}
+.sentence i{color:var(--gilt-hi)}
+.sentence .blank{color:var(--mute-lo)}
+.laid{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.count{font:600 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:15px 22px;border-radius:999px;background:rgba(201,164,74,.18);color:var(--gilt-hi);border:1px solid rgba(201,164,74,.35)}
+
+/* dials */
+.dials{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:16px 22px}
+.dial{display:flex;flex-direction:column;gap:8px}
+.dial .h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.dial .h b{font:400 19px/1.1 var(--serif);color:var(--bone);font-weight:400}
+.dial .h span{font:500 11px/1 var(--sans);color:var(--gilt-hi);font-variant-numeric:tabular-nums}
+.dial .ends{display:flex;justify-content:space-between;font:italic 400 13px/1.2 var(--serif);color:var(--bone-lo)}
+.track{position:relative;height:28px}
+.track .rail{position:absolute;left:0;right:0;top:12px;height:4px;border-radius:4px;background:var(--edge-lo)}
+.track .allowed{position:absolute;top:11px;height:6px;border-radius:6px;background:rgba(201,164,74,.35)}
+.track input{position:absolute;inset:0;width:100%;margin:0;background:transparent;-webkit-appearance:none;appearance:none}
+.track input::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gilt);border:2px solid var(--felt);box-shadow:0 0 0 1px var(--gilt)}
+.track input::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--gilt);border:2px solid var(--felt)}
+.track input::-webkit-slider-runnable-track{background:transparent}
+.dial .why{font:400 12.5px/1.45 var(--sans);color:var(--mute)}
+.weave{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:22px;text-align:center}
+.weave p{margin:0;font:italic 400 16px/1.4 var(--serif);color:var(--bone-lo);max-width:52ch}
+h3.sec{font:400 22px/1.2 var(--display);color:var(--gilt);text-align:center;margin:0 0 16px}
+
+/* make-your-own and the book */
+.thumb.own{display:grid;place-items:center;font-size:30px;color:var(--gilt);background:radial-gradient(circle at 50% 40%,rgba(201,164,74,.25),var(--card-lo) 70%)}
+.ownhero{background:radial-gradient(700px 300px at 30% 30%,rgba(201,164,74,.22),transparent 70%),linear-gradient(160deg,var(--felt-hi),var(--card-lo))}
+.ownhero::after{display:none}
+.book{max-width:820px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:14px}
+.btitle{font:400 clamp(28px,5vw,46px)/1.05 var(--display);color:var(--bone);text-align:center;margin:4px 0 0}
+.bwhere{text-align:center;font:500 11px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0}
+.bprem{font:400 20px/1.55 var(--serif);color:var(--bone);margin:6px 0 0;text-wrap:pretty}
+.bopen{border-left:2px solid var(--gilt);padding:4px 0 4px 16px}
+.bopen p{font:italic 400 19px/1.5 var(--serif);color:var(--gilt-hi);margin:6px 0 0}
+.bacts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.bacts a{text-decoration:none}
+@media (max-width:820px){
+  .shelf{grid-template-columns:minmax(0,1fr)}
+  .list{flex-direction:row;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+  .tab{min-width:230px;scroll-snap-align:start}
+  .body{grid-template-columns:minmax(0,1fr)}
+  .side{flex-direction:row;justify-content:space-between;flex-wrap:wrap}
+}
+@media (max-width:460px){
+  .row{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .backs{width:150px;height:170px}.backs img{width:92px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div><div class="brand">SEREN</div><div class="ask" id="ask">Choose your campaign.</div></div>
+    <div class="note" id="note">The deal</div>
+  </div>
+
+  <section class="shelf" id="shelf">
+    <div class="list" role="tablist" aria-label="Campaigns" id="list"></div>
+    <article class="detail" id="detail" role="tabpanel"></article>
+  </section>
+
+  <section class="table" id="table" hidden></section>
+</div>
+
+<script>
+(function(){
+var D={campaigns:[]};
+var $=function(id){return document.getElementById(id)};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var LOCK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+var FLAME='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></svg>';
+var current=0;
+var OWN={own:true,title:'Make your own',level:'any',length:'you choose',selectable:true};
+function renderOwn(){
+  $('detail').setAttribute('aria-labelledby','tab-'+current);
+  $('detail').innerHTML='<div class="hero ownhero"><div class="cap"><h2>Make your own</h2><div class="tag">Nothing locked. She deals every card from the whole Loom, and the weaver writes a campaign nobody has played.</div></div></div>'+
+    '<div class="body"><div><p class="desc">The fortune teller deals seven slots from every deck at once: trope, origin, world, trouble, her antagonist, two companions and the voice that tells it. Keep what you like, redeal what you don&#39;t, then tune the stakes.</p>'+
+    '<ul class="facts"><li>Every slot dealt, none locked</li><li>Any level, any length</li><li>All five dials, full range</li><li>A new book every time</li></ul></div>'+
+    '<div class="side"><a class="go" href="/loom" style="text-decoration:none">Open the Loom</a></div></div>';
+}
+
+/* ── shelf ── */
+function renderList(){
+  $('list').innerHTML=D.campaigns.concat([OWN]).map(function(c,i){
+    return '<button class="tab" role="tab" id="tab-'+i+'" aria-selected="'+(i===current)+'" aria-controls="detail" data-i="'+i+'">'+
+      (c.own?'<span class="thumb own" aria-hidden="true">✦</span>':'<img class="thumb" src="'+c.back+'" alt="">')+
+      '<span><span class="t">'+esc(c.title)+'</span><span class="m" style="display:block">Level '+c.level+' · '+esc(c.length)+'</span>'+
+      '<span class="st '+(c.selectable?'ready':'soon')+'">'+(c.own?'From scratch':c.selectable?'Ready to deal':'Coming soon')+'</span></span></button>';
+  }).join('');
+  $('list').querySelectorAll('.tab').forEach(function(b){b.onclick=function(){current=+b.dataset.i;renderList();renderDetail()}});
+  $('list').onkeydown=function(e){if(e.key!=='ArrowDown'&&e.key!=='ArrowUp'&&e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+    e.preventDefault();var n=D.campaigns.length+1;current=(current+(e.key==='ArrowDown'||e.key==='ArrowRight'?1:-1)+n)%n;renderList();renderDetail();$('tab-'+current).focus()};
+}
+function renderDetail(){
+  var c=D.campaigns[current]||OWN;
+  if(c.own) return renderOwn();
+  $('detail').setAttribute('aria-labelledby','tab-'+current);
+  $('detail').innerHTML=
+    '<div class="hero"><img src="'+c.header+'" alt=""><div class="cap"><h2>'+esc(c.title)+'</h2><div class="tag">'+esc(c.tagline)+'</div></div></div>'+
+    '<div class="body"><div>'+
+      '<p class="desc">'+esc(c.description)+'</p>'+
+      '<ul class="facts">'+c.key_info.map(function(k){return '<li>'+esc(k)+'</li>'}).join('')+'</ul>'+
+      '<div class="lbl mute" style="margin-bottom:10px">Locked in this campaign</div>'+
+      '<div class="chips">'+c.tags.locked.map(function(t){return '<span class="chip">'+LOCK+esc(t)+'</span>'}).join('')+
+      '<span class="chip chaos">'+FLAME+'Chaos: '+esc(c.tags.chaos)+'</span></div>'+
+    '</div><div class="side">'+
+      '<div class="backs" aria-hidden="true"><img src="'+c.back+'" alt=""><img src="'+c.back+'" alt=""><img src="'+c.back+'" alt=""></div>'+
+      '<div class="lbl">Its deck</div>'+
+      (c.selectable?'<button class="go" id="build">Build my adventure</button>':'<button class="go" disabled>Coming soon</button>')+
+    '</div></div>';
+  var b=$('build'); if(b) b.onclick=function(){openTable(c)};
+}
+
+/* ── the table ── */
+var SLOTS=[['trope','Trope'],['origin','Origin'],['world','World'],['trouble','Trouble'],['posture','Antagonist'],['companions','Companion'],['companions','Companion'],['persona','Told by']];
+var hand=[],flipped=0,dealtCount=0;
+function pick(arr){return arr[Math.floor(Math.random()*arr.length)]}
+function dealHand(c){
+  var s=c.deck.slots,used={};
+  hand=SLOTS.map(function(x){
+    var slot=s[x[0]];
+    if(slot.mode==='locked') return {slot:x[0],label:x[1],card:slot.card,locked:true,up:true};
+    var pool=slot.deck.filter(function(k){return !used[x[0]+':'+k.id]});
+    var k=pick(pool); used[x[0]+':'+k.id]=1;
+    return {slot:x[0],label:x[1],card:k,locked:false,up:false,hers:x[0]==='posture'};
+  });
+  dealtCount=hand.filter(function(h){return !h.locked}).length; flipped=0;
+}
+var CHAIN_SVG=(function(){
+  // One chain across the middle of the card, between its line and its note, so the text stays readable.
+  var a='',b='';for(var i=0;i<12;i++){var x=-4+i*14;if(i%2)b+='<ellipse cx="'+x+'" cy="126" rx="8.5" ry="3" />';else a+='<ellipse cx="'+x+'" cy="126" rx="8.5" ry="5.5" />'}
+  return '<svg viewBox="0 0 150 225" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#2c3038" stroke-width="5">'+a+b+'</g><g fill="none" stroke="#a7adb7" stroke-width="2.4">'+a+'</g><g fill="none" stroke="#7f858f" stroke-width="2.4">'+b+'</g></svg>';
+})();
+var PADLOCK='<svg class="lock" viewBox="0 0 34 40" aria-hidden="true"><path d="M9 17v-6a8 8 0 0 1 16 0v6" fill="none" stroke="#9aa0aa" stroke-width="3.5"/><rect x="4" y="16" width="26" height="22" rx="4" fill="#5d636e" stroke="#2c3038" stroke-width="1.5"/><circle cx="17" cy="25" r="3" fill="#1d2027"/><rect x="15.8" y="26" width="2.4" height="7" rx="1" fill="#1d2027"/></svg>';
+function cardHTML(h,i,c){
+  var k=h.card;
+  var front='<div class="face front"><div class="k">'+esc(h.label)+'</div><div class="n">'+esc(k.name)+'</div><div class="l">'+esc(k.line)+'</div><div class="as">'+esc(k.as)+'</div></div>';
+  var back='<div class="face back"><img src="'+c.back+'" alt=""></div>';
+  var chains=h.locked?'<div class="chains">'+CHAIN_SVG+PADLOCK+'</div>':'';
+  var cls='c3 deal'+(h.up?' up':' down')+(h.locked?' locked':'');
+  var aria=h.locked?(h.label+', locked: '+k.name):(h.up?(h.label+': '+k.name):(h.label+', face down. Turn it over'));
+  return '<div class="slot'+(h.hers?' hers':'')+'"><div class="lbl">'+(h.hers?'Her card · ':'')+esc(h.label)+(h.locked?' · locked':'')+'</div>'+
+    '<div class="'+cls+'" style="animation-delay:'+(i*0.09)+'s" data-i="'+i+'" role="button" tabindex="'+(h.up?-1:0)+'" aria-label="'+esc(aria)+'"><div class="in">'+back+front+'</div>'+chains+'</div></div>';
+}
+function sentence(){
+  function v(slot,n,how){var hs=hand.filter(function(h){return h.slot===slot});var h=hs[n||0];
+    if(!(h&&h.up))return '<span class="blank">a card still face down</span>';
+    var t=h.card.name; if(how==='low')t=t.charAt(0).toLowerCase()+t.slice(1); if(how==='the')t='the '+t.toLowerCase();
+    return '<i>'+esc(t)+'</i>'}
+  return v('trope')+'. From '+v('origin',0,'low')+', in '+v('world',0,'low')+', facing '+v('trouble',0,'low')+'; with '+v('companions',0,'low')+' and '+v('companions',1,'low')+', against '+v('posture',0,'the')+', told by '+v('persona')+'.';
+}
+function openTable(c){
+  dealHand(c);
+  $('shelf').hidden=true; $('table').hidden=false; $('ask').textContent='She deals. Turn them over.';
+  renderTable(c); window.scrollTo({top:0});
+}
+function renderTable(c){
+  var left=dealtCount-flipped;
+  $('table').innerHTML=
+    '<div class="tbar"><div><h2>'+esc(c.title)+'</h2><div class="sub">Three cards are locked: this is the story you chose. The rest are dealt from its own deck.</div></div>'+
+    '<div class="acts"><button class="ghost" id="redeal">Deal again</button><button class="ghost" id="back">Back to the shelf</button></div></div>'+
+    '<div class="felt"><p class="howto" id="howto">'+(left?('Tap a card to turn it over · '+left+' face down'):'The hand is laid.')+'</p>'+
+    '<div class="row" id="row">'+hand.map(function(h,i){return cardHTML(h,i,c)}).join('')+'</div>'+
+    '<p class="sentence" id="sentence">'+sentence()+'</p>'+
+    '<div class="laid"><span class="count" id="count">'+(dealtCount-left)+' of '+dealtCount+' turned · 3 locked</span></div></div>'+
+    '<div class="felt" id="dialsbox"'+(left?' hidden':'')+'><h3 class="sec">Tune it</h3>'+dialsHTML(c)+
+    '<div class="weave"><button class="go" id="weave">Weave my book</button><p id="weavenote">'+(FAKE?'Fake AI is on: the book is canned, built from your cards. Nothing is spent.':'The weaver writes it, and the auditor reads it before you sit down.')+'</p></div></div>'+
+    '<section class="felt book" id="book" hidden></section>';
+  $('redeal').onclick=function(){dealHand(c);renderTable(c)};
+  $('back').onclick=function(){$('table').hidden=true;$('shelf').hidden=false;$('ask').textContent='Choose your campaign.';renderDetail()};
+  $('row').querySelectorAll('.c3.down').forEach(function(el){
+    var turn=function(){var i=+el.dataset.i;if(hand[i].up)return;hand[i].up=true;flipped++;el.classList.remove('down','deal');el.classList.add('up');
+      el.setAttribute('tabindex','-1');el.setAttribute('aria-label',hand[i].label+': '+hand[i].card.name);
+      var left=dealtCount-flipped;$('howto').textContent=left?('Tap a card to turn it over · '+left+' face down'):'The hand is laid.';
+      $('sentence').innerHTML=sentence();$('count').textContent=flipped+' of '+dealtCount+' turned · 3 locked';
+      if(!left){var box=$('dialsbox');box.hidden=false;setTimeout(function(){box.scrollIntoView({behavior:'smooth',block:'start'})},500)}};
+    el.onclick=turn; el.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();turn()}};
+  });
+  wireDials(c);
+  $('weave').onclick=function(){weaveIt(c)};
+}
+var DIALS=[['absurdity','Absurdity','grim','a sheep with opinions','Which people are even in scope. At the top it makes the talking sheep possible.'],
+  ['stakes','Stakes','personal','epic','How big the trouble is allowed to get.'],
+  ['danger','Danger','bruises','deaths','How hard the rolls are, and whether the antagonist dies or gets away.'],
+  ['people','Trouble is','a person','a place','Whether pressure comes from somebody who wants something, or somewhere in the way.'],
+  ['length','Length','one session','a season','How long the clocks run. Nothing else.']];
+function dialsHTML(c){
+  var r=c.deck.dials.ranges,d=c.deck.dials.defaults;
+  return '<div class="dials">'+DIALS.map(function(x){var lo=r[x[0]][0],hi=r[x[0]][1];
+    return '<div class="dial"><div class="h"><b>'+x[1]+'</b><span id="v-'+x[0]+'">'+d[x[0]]+'</span></div>'+
+      '<div class="track"><div class="rail"></div><div class="allowed" style="left:'+lo+'%;width:'+(hi-lo)+'%"></div>'+
+      '<input type="range" id="dial-'+x[0]+'" min="0" max="100" value="'+d[x[0]]+'" data-lo="'+lo+'" data-hi="'+hi+'" aria-label="'+x[1]+'"></div>'+
+      '<div class="ends"><span>'+x[2]+'</span><span>'+x[3]+'</span></div>'+
+      '<div class="why">'+x[4]+' This campaign allows '+lo+'–'+hi+'.</div></div>'}).join('')+'</div>';
+}
+function wireDials(c){
+  DIALS.forEach(function(x){var el=$('dial-'+x[0]);if(!el)return;el.oninput=function(){var lo=+el.dataset.lo,hi=+el.dataset.hi;
+    var v=Math.min(hi,Math.max(lo,+el.value));el.value=v;$('v-'+x[0]).textContent=v}});
+}
+
+var FAKE=false;
+function weaveIt(c){
+  var b=$('weave');b.disabled=true;b.textContent='Weaving…';
+  var cards={},picks={campaign:c.slug,campaign_title:c.title},comps=[];
+  hand.forEach(function(h){var k={id:h.card.id,name:h.card.name,line:h.card.line,changes:h.card.changes};
+    if(h.slot==='companions'){comps.push(k)}else{cards[h.slot]=k;picks[h.slot]=k.id}});
+  cards.companions=comps;picks.companions=comps.map(function(k){return k.id});
+  var dials={};DIALS.forEach(function(x){dials[x[0]]=+$('dial-'+x[0]).value});
+  fetch('/api/weave',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({picks:picks,cards:cards,dials:dials})})
+    .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})
+    .then(function(x){
+      if(!x.ok){b.disabled=false;b.textContent='Weave my book';$('weavenote').textContent=(x.j.error||'It failed')+((x.j.problems||[]).length?': '+x.j.problems.join('; '):'');return}
+      showBook(x.j,c);b.textContent='Woven';
+    }).catch(function(e){b.disabled=false;b.textContent='Weave my book';$('weavenote').textContent='Could not reach the server: '+e});
+}
+function showBook(j,c){
+  var bk=$('book');bk.hidden=false;
+  bk.innerHTML='<div class="lbl" style="text-align:center">Your book</div>'+
+    '<h3 class="btitle">'+esc(j.title)+'</h3>'+
+    (j.where?'<p class="bwhere">'+esc(j.where)+'</p>':'')+
+    '<p class="bprem">'+esc(j.premise)+'</p>'+
+    '<div class="bopen"><div class="lbl">It opens</div><p>'+esc(j.opening)+'</p></div>'+
+    '<div class="bacts"><a class="ghost" href="/api/book?slug='+encodeURIComponent(j.slug)+'" download>Download the book (.md)</a>'+
+    '<a class="go" href="'+(j.play||'/table')+'" style="text-decoration:none">Sit down at the table</a></div>';
+  setTimeout(function(){bk.scrollIntoView({behavior:'smooth',block:'start'})},200);
+}
+fetch('/api/published').then(function(r){return r.json()}).then(function(j){
+  D.campaigns=j.campaigns||[];FAKE=!!j.fake_ai;
+  $('note').textContent=FAKE?'Local · fake AI · nothing spent':'The deal';
+  renderList();renderDetail();
+}).catch(function(){$('detail').innerHTML='<p class="desc" style="padding:24px">Could not load the campaigns.</p>'});
+})();
+</script>

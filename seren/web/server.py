@@ -37,6 +37,7 @@ import dm
 import files
 import gate
 import llm
+import published
 import shelf
 import state
 import weave
@@ -319,6 +320,37 @@ class Handler(BaseHTTPRequestHandler):
             return self._file(STATIC / "table.html")
         if path in ("/loom", "/loom/"):
             return self._file(STATIC / "loom.html")
+
+        # The deal: published campaigns on their own card backs, then the dials and the book.
+        if path in ("/deal", "/deal/"):
+            return self._file(STATIC / "deal.html")
+        if path == "/api/published":
+            return self._json(200, {"campaigns": published.listing(),
+                                    "fake_ai": weave.mocking()})
+        if path.startswith("/published/"):
+            parts = path.split("/")
+            body = published.art(parts[2], parts[3]) if len(parts) == 4 else None
+            if body is None:
+                return self._json(404, {"error": "no such art"})
+            return self._send(200, body, "image/webp")
+        if path == "/api/book":
+            # The player's book: campaign.md of a module they wove. Player-safe by design:
+            # the facts and fronts live in other files.
+            slug = (urllib.parse.parse_qs(self.path.partition("?")[2]).get("slug") or [""])[0]
+            if not published.SLUG.match(slug):
+                return self._json(400, {"error": "bad slug"})
+            book = corpus.ROOT / "players" / self._account() / slug / "campaign.md"
+            try:
+                text = book.read_text(encoding="utf-8")
+            except OSError:
+                return self._json(404, {"error": "no such book"})
+            self.send_response(200)
+            self.send_header("Content-Type", "text/markdown; charset=utf-8")
+            self.send_header("Content-Disposition", f'attachment; filename="{slug}.md"')
+            body = text.encode("utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            return self.wfile.write(body)
         if path == "/chat":
             return self._file(STATIC / "index.html")
         if path.startswith("/static/"):
