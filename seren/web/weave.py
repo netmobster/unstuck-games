@@ -125,7 +125,7 @@ def _mock_campaign(picks: dict, cards: dict) -> dict:
         "premise": (f"{trouble}, in {world}, and nobody wants it asked about. You came because of "
                     f"the {origin.lower()}, and the {posture} would rather you went home."),
         "where": f"{world}, the hour before dark",
-        "pc": {"name": name("pc", "Wren Ashby"),
+        "pc": {"name": name("pc", "Wren Cole"),
                "class": str((cards.get("pc") or {}).get("changes", "Rogue")).split(".")[0],
                "why_here": f"The {origin.lower()}: someone here owes you."},
         "companions": [{"name": str(c.get("name", "")), "does": str(c.get("line", "")),
@@ -164,7 +164,13 @@ def _mock_campaign(picks: dict, cards: dict) -> dict:
 def weave(picks: dict, dials: dict, cards: dict, tier: str = "paid") -> dict:
     """One call. Returns the campaign object and what it cost."""
     if mocking():
-        return {"campaign": _mock_campaign(picks, cards), "spent": 0.0}
+        import mock_book
+        import published
+        camp = _mock_campaign(picks, cards)
+        slug = str(picks.get("campaign") or "")
+        shelf = next((c for c in published.listing() if c.get("slug") == slug), None)
+        camp["briefing"] = mock_book.briefing(camp, cards, shelf, slug)
+        return {"campaign": camp, "spent": 0.0}
     was, llm.MAX_TOKENS = llm.MAX_TOKENS, GEN_TOKENS
     try:
         reply = llm.converse(system=SYSTEM,
@@ -225,6 +231,9 @@ def write_module(out: Path, camp: dict, picks: dict, dials: dict, cards: dict, s
     hand = " · ".join(str((cards.get(c) or {}).get("name", "")) for c in
                       ("trope", "origin", "world", "trouble", "posture") if cards.get(c))
     comps = camp.get("companions") or []
+    if camp.get("briefing"):
+        # The book: the one file written for the player (SEREN docs/weave-from-hand.md §4b).
+        files.write(out / "briefing.md", str(camp["briefing"]))
     files.write(out / "campaign.md",
         f"""<!-- Woven from a hand at the Loom. A module: inert until somebody plays it. -->
 # {camp.get('title', 'Untitled')}

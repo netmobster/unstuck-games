@@ -200,6 +200,71 @@ h3.sec{font:400 22px/1.2 var(--display);color:var(--gilt);text-align:center;marg
 .hc .as{margin-top:auto;font:400 12px/1.4 var(--sans);color:var(--bone);border-top:1px solid var(--edge);padding-top:7px}
 @keyframes fromdeck{from{opacity:0;transform:translate(-38vw,-140px) rotate(-24deg) scale(.6)}to{opacity:1;transform:rotate(var(--r)) translateY(var(--y))}}
 @media (max-width:640px){.tabletop{grid-template-columns:minmax(0,1fr)}.pile{flex-direction:row;padding-top:0}.stack{width:56px}}
+/* the veil: tune it, the weave, the book */
+body.veiled{overflow:hidden}
+.veil{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:clamp(10px,3vw,34px);
+  background:rgba(5,8,16,.62);backdrop-filter:blur(9px) brightness(.55);-webkit-backdrop-filter:blur(9px) brightness(.55);animation:vin .35s ease both}
+@keyframes vin{from{opacity:0}to{opacity:1}}
+.vmodal{width:min(1040px,100%);max-height:calc(100vh - 40px);overflow:auto;border-radius:18px;padding:clamp(18px,3vw,34px);
+  background:radial-gradient(900px 400px at 50% 0%,rgba(201,164,74,.08),transparent 70%),linear-gradient(180deg,var(--felt-hi),var(--felt));
+  border:1px solid var(--gilt);box-shadow:0 0 0 1px rgba(201,164,74,.4),0 0 50px rgba(201,164,74,.28),0 40px 90px rgba(0,0,0,.7);
+  animation:mglow 3.4s ease-in-out infinite,min .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes mglow{50%{box-shadow:0 0 0 1px rgba(227,192,106,.6),0 0 70px rgba(227,192,106,.38),0 40px 90px rgba(0,0,0,.7)}}
+@keyframes min{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+.mhead{text-align:center;margin-bottom:20px}
+.mtitle{font:400 clamp(26px,4.4vw,42px)/1.05 var(--display);color:var(--bone);margin:6px 0 0}
+.msent{font:400 clamp(16px,2vw,19px)/1.45 var(--serif);color:var(--bone);max-width:760px;margin:12px auto 0;text-wrap:balance}
+.msent i{color:var(--gilt-hi)}
+.macts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.macts a{text-decoration:none;display:inline-flex;align-items:center}
+.mnote{text-align:center;font:italic 400 15px/1.4 var(--serif);color:var(--bone-lo);margin:12px 0 0}
+.refused{text-align:left;max-width:640px;margin:14px auto 0;color:var(--bone-lo);font:400 14px/1.5 var(--sans)}
+/* her two buttons */
+.herchoice{display:flex;flex-direction:column;align-items:center;gap:12px}
+.herchoice .twins{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.mini.keep{background:var(--gilt);color:var(--felt);border-color:var(--gilt)}
+/* the weave */
+.loom{text-align:center;padding:6px 0}
+.gather{position:relative;height:260px;margin:18px auto 8px;max-width:520px}
+.gather img{position:absolute;left:50%;top:50%;width:64px;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,.6);
+  box-shadow:0 10px 20px rgba(0,0,0,.6);transform:translate(-50%,-50%) translate(var(--x),var(--y)) rotate(var(--rot));
+  animation:gather 2.6s cubic-bezier(.6,.05,.3,1) var(--d) forwards}
+@keyframes gather{70%{transform:translate(-50%,-50%) translate(calc(var(--x) * .25),calc(var(--y) * .25)) rotate(0deg)}
+  100%{transform:translate(-50%,-50%) rotate(0deg) scale(1.15);opacity:.0}}
+.threads{position:absolute;inset:40% 18%;display:flex;flex-direction:column;justify-content:space-between;opacity:0;animation:tin .6s ease 2.2s forwards}
+.threads i{display:block;height:1px;background:linear-gradient(90deg,transparent,var(--gilt-hi),transparent)}
+@keyframes tin{to{opacity:1}}
+.shuttle{position:absolute;top:50%;left:18%;width:34px;height:8px;margin-top:-4px;border-radius:8px;background:var(--gilt-hi);box-shadow:0 0 18px var(--gilt);opacity:0;
+  animation:shuttle 1s ease-in-out 2.4s infinite alternate}
+@keyframes shuttle{0%{opacity:1;left:18%}100%{opacity:1;left:calc(82% - 34px)}}
+.wsteps{list-style:none;padding:0;margin:0 auto;max-width:420px;text-align:left;display:grid;gap:10px}
+.wsteps li{font:400 17px/1.3 var(--serif);color:var(--mute-lo);padding-left:26px;position:relative;transition:color .5s}
+.wsteps li::before{content:"";position:absolute;left:4px;top:6px;width:10px;height:10px;border-radius:50%;border:1px solid var(--mute-lo);transition:all .5s}
+.wsteps li.on{color:var(--bone)}
+.wsteps li.on::before{background:var(--gilt);border-color:var(--gilt);box-shadow:0 0 12px var(--gilt)}
+/* the book */
+.bookhead{text-align:center;margin-bottom:16px}
+.bookbody{display:grid;grid-template-columns:190px minmax(0,1fr);gap:24px;align-items:start}
+.toc{position:sticky;top:0;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--edge-lo);padding-right:14px}
+.toc a{font:400 16px/1.3 var(--serif);color:var(--bone-lo);text-decoration:none;padding:7px 8px;border-radius:8px}
+.toc a:hover{color:var(--gilt-hi);background:rgba(201,164,74,.08)}
+.pages{max-height:min(62vh,680px);overflow:auto;padding-right:10px;scroll-behavior:smooth}
+.pages h2{display:none}
+.pages h3{font:400 26px/1.2 var(--display);color:var(--gilt);margin:6px 0 12px}
+.pages h4{font:600 11px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt);margin:20px 0 10px}
+.pages p{font:400 18px/1.6 var(--serif);color:var(--bone);margin:0 0 14px;max-width:66ch}
+.pages b{color:var(--bone);font-weight:700}
+.pages em{color:var(--gilt-hi)}
+.pages ul{margin:0 0 14px;padding-left:20px;display:grid;gap:7px}
+.pages li{font:400 17px/1.5 var(--serif);color:var(--bone)}
+.pages hr{border:0;border-top:1px solid var(--edge-lo);margin:22px 0}
+.pages blockquote{margin:0 0 16px;border-left:2px solid var(--gilt);padding:4px 0 4px 16px;font:italic 400 18px/1.55 var(--serif);color:var(--gilt-hi)}
+.pages table{width:100%;border-collapse:collapse;margin:0 0 16px;font:400 14.5px/1.45 var(--sans)}
+.pages th{text-align:left;font:600 10.5px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gilt);border-bottom:1px solid var(--edge);padding:8px 10px}
+.pages td{border-bottom:1px solid var(--edge-lo);padding:9px 10px;color:var(--bone-lo);vertical-align:top}
+.pages td:first-child{color:var(--bone);white-space:nowrap}
+@media (max-width:760px){.bookbody{grid-template-columns:minmax(0,1fr)}.toc{position:static;flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--edge-lo);padding:0 0 8px}.pages{max-height:none}.pages td:first-child{white-space:normal}}
+@media (prefers-reduced-motion:reduce){.vmodal,.gather img,.shuttle,.threads{animation:none!important}.threads{opacity:1}}
 @media (max-width:820px){
   .shelf{grid-template-columns:minmax(0,1fr)}
   .list{flex-direction:row;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
@@ -227,6 +292,9 @@ h3.sec{font:400 22px/1.2 var(--display);color:var(--gilt);text-align:center;marg
   </section>
 
   <section class="table" id="table" hidden></section>
+</div>
+<div class="veil" id="veil" hidden><div class="vmodal" id="vmodal" role="dialog" aria-modal="true"></div></div>
+<div>
 </div>
 
 <script>
@@ -305,7 +373,7 @@ function deal(c){
   T.active=nextActive();
 }
 function chosen(k){return k==='companions'?T.picks.companions.length>=2:!!T.picks[k]}
-function done(){return Object.keys(T.hands).every(chosen)&&(!T.her.length||T.herUp)}
+function done(){return Object.keys(T.hands).every(chosen)&&(!T.her.length||T.herKept)}
 function nextActive(){var order=ROW.map(function(x){return x[0]});for(var i=0;i<order.length;i++){var k=order[i];if(T.hands[k]&&!chosen(k))return k}return null}
 function faceHTML(label,k,extra){
   return '<div class="face front'+(extra||'')+'"><div class="k">'+esc(label)+'</div><div class="n">'+esc(k.name)+'</div><div class="l">'+esc(k.line)+'</div><div class="as">'+esc(k.as)+'</div></div>';
@@ -321,7 +389,7 @@ function slotHTML(x,n){
   if(k==='posture'){var h=T.her[T.herAt];
     return '<div class="slot hers">'+head('Her card')+
       '<div class="c3 '+(T.herUp?'up':'down hersdown')+'" id="her" role="button" tabindex="'+(T.herUp?-1:0)+'" aria-label="'+(T.herUp?'Her card: '+esc(h.name):'Her card, face down. Turn it over')+'"><div class="in">'+back+faceHTML('Antagonist',h)+'</div>'+(T.herUp?'':'<span class="ribbon">Turn it over</span>')+'</div>'+
-      (T.herUp&&T.her.length>1?'<button class="mini" id="another">Make her play another</button>':'')+'</div>';}
+      (T.herUp&&!T.herKept?'<button class="mini keep" data-her="keep">Keep it</button>'+(T.her.length>1?'<button class="mini" data-her="another">Make her play another</button>':''):'')+'</div>';}
   var pick=k==='companions'?T.picks.companions[n]:T.picks[k],on=T.active===k;
   if(pick) return '<div class="slot">'+head(esc(label))+
     '<div class="c3 up mine'+(on?' on':'')+'" data-slot="'+k+'" role="button" tabindex="0" aria-label="'+esc(label)+': '+esc(pick.name)+'. Change it"><div class="in">'+back+faceHTML(label,pick,' gilt')+'</div></div></div>';
@@ -330,9 +398,10 @@ function slotHTML(x,n){
 function rowHTML(){var count={};return slotsOf(T.c).map(function(x){var n=count[x[0]]||0;count[x[0]]=n+1;return slotHTML(x,n)}).join('')}
 function handHTML(){
   var k=T.active;
-  if(!k)return T.her.length&&!T.herUp
-    ?'<div class="turnher"><p class="handnote">Your hand is laid. Now she plays hers: the one you are up against.</p><button class="go" id="turnher">Turn her card over</button></div>'
-    :'<p class="handnote">The hand is laid. Tune it below.</p>';
+  if(!k){
+    if(T.her.length&&!T.herUp)return '<div class="turnher"><p class="handnote">Your hand is laid. Now she plays hers: the one you are up against.</p><button class="go" id="turnher">Turn her card over</button></div>';
+    if(T.her.length&&!T.herKept)return '<div class="herchoice"><p class="handnote">That is who you are up against. Keep it, or make her play another.</p><div class="twins"><button class="go" data-her="keep">Keep it</button>'+(T.her.length>1?'<button class="ghost" data-her="another">Make her play another</button>':'')+'</div></div>';
+    return '<div class="herchoice"><p class="handnote">The hand is laid.</p><button class="go" id="retune">Tune it</button></div>';}
   var cards=T.hands[k],label=(ROW.filter(function(x){return x[0]===k})[0]||[k,k])[1],many=k==='companions',mid=(cards.length-1)/2;
   return '<div class="handhead"><span class="lbl">Your hand · '+esc(label)+'</span><span class="lbl mute">'+(many?'pick two · '+T.picks.companions.length+' of 2':'pick one')+' · '+cards.length+' dealt</span></div>'+
     '<div class="fan">'+cards.map(function(card,i){
@@ -370,9 +439,7 @@ function renderTable(fresh){
       '<div class="row" id="row" style="--n:'+slotsOf(c).length+'">'+rowHTML()+'</div></div>'+
     '<p class="sentence" id="sentence">'+sentence()+'</p>'+
     '<div class="hand'+(fresh?' fresh':'')+'" id="hand">'+handHTML()+'</div></div>'+
-    '<div class="felt" id="dialsbox"'+(done()?'':' hidden')+'><h3 class="sec">Tune it</h3>'+dialsHTML(c)+
-    '<div class="weave"><button class="go" id="weave">Weave my book</button><p id="weavenote">'+(FAKE?'Fake AI is on: the book is canned, built from your cards. Nothing is spent.':'The weaver makes your hand work, and the auditor reads it before you sit down.')+'</p></div></div>'+
-    '<section class="felt book" id="book" hidden></section>';
+    '';
   wire();
 }
 function rerender(fresh){var y=window.scrollY;renderTable(!!fresh);window.scrollTo({top:y});}
@@ -386,7 +453,13 @@ function wire(){
   if(her&&!T.herUp){var turn=function(){her.classList.remove('down');her.classList.add('up');T.herUp=true;setTimeout(function(){rerender();afterChange()},700)};
     her.onclick=turn;her.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();turn()}};
     var tb=$('turnher');if(tb)tb.onclick=function(){her.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(turn,450)}}
-  var an=$('another');if(an)an.onclick=function(){T.herAt=(T.herAt+1)%T.her.length;T.herUp=false;rerender()};
+  document.querySelectorAll('[data-her]').forEach(function(b){b.onclick=function(){
+    if(b.dataset.her==='keep'){T.herKept=true;rerender();openTune();return}
+    // She plays another: a fresh card lands face down, then turns.
+    T.herAt=(T.herAt+1)%T.her.length;T.herUp=false;rerender();
+    var h=$('her');setTimeout(function(){h.classList.remove('down','hersdown');h.classList.add('up');var r=h.querySelector('.ribbon');if(r)r.remove();
+      T.herUp=true;setTimeout(rerender,700)},250)}});
+  var rt=$('retune');if(rt)rt.onclick=openTune;
   $('hand').querySelectorAll('.hc').forEach(function(b){b.onclick=function(){
     var k=T.active,card=T.hands[k][+b.dataset.i],moved=false;
     if(k==='companions'){var l=T.picks.companions,at=-1;
@@ -395,10 +468,8 @@ function wire(){
       if(l.length>=2){T.active=nextActive();moved=true}}
     else{T.picks[k]=card;T.active=nextActive();moved=true}
     rerender(moved);afterChange()}});
-  wireDials(c);
-  $('weave').onclick=function(){weaveIt(c)};
 }
-function afterChange(){if(done()){var box=$('dialsbox');if(box)setTimeout(function(){box.scrollIntoView({behavior:'smooth',block:'start'})},350)}}
+function afterChange(){}
 var DIALS=[['absurdity','Absurdity','grim','a sheep with opinions','Which people are even in scope. At the top it makes the talking sheep possible.'],
   ['stakes','Stakes','personal','epic','How big the trouble is allowed to get.'],
   ['danger','Danger','bruises','deaths','How hard the rolls are, and whether the antagonist dies or gets away.'],
@@ -419,32 +490,80 @@ function wireDials(c){
 }
 
 var FAKE=false;
+/* ── the modal: tune it, the weave, the book ── */
+function veil(html,locked){
+  var v=$('veil');v.hidden=false;v.dataset.locked=locked?'1':'';
+  $('vmodal').innerHTML=html;document.body.classList.add('veiled');
+}
+function unveil(){var v=$('veil');if(v.dataset.locked)return;v.hidden=true;document.body.classList.remove('veiled')}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('veil').hidden)unveil()});
+function openTune(){
+  var c=T.c;
+  veil('<div class="mhead"><div class="lbl">Tune it</div><h3 class="mtitle">'+esc(c.title)+'</h3><p class="msent">'+sentence()+'</p></div>'+
+    dialsHTML(c)+
+    '<div class="macts"><button class="ghost" id="mback">Back to the table</button><button class="go" id="weave">Weave my book</button></div>'+
+    '<p class="mnote" id="weavenote">'+(FAKE?'Fake AI is on: the book is canned, built from your cards. Nothing is spent.':'The weaver makes your hand work, and the Doorkeeper reads it before you go through.')+'</p>');
+  wireDials(c);
+  $('mback').onclick=function(){T.herKept=false;unveil();rerender()};
+  $('weave').onclick=function(){weaveIt(c)};
+}
 function weaveIt(c){
-  var b=$('weave');b.disabled=true;b.textContent='Weaving…';
   var s=c.deck.slots,cards={},picks={campaign:c.slug,campaign_title:c.title};
-  var face=function(k){return{id:k.id,name:k.name,line:k.line,changes:k.changes}};
+  var face=function(k){return{id:k.id,name:k.name,line:k.line,changes:k.changes,as:k.as}};
   Object.keys(s).forEach(function(k){if(s[k].mode==='locked'){cards[k]=face(s[k].card);picks[k]=s[k].card.id}});
   Object.keys(T.picks).forEach(function(k){if(k!=='companions'&&T.picks[k]){cards[k]=face(T.picks[k]);picks[k]=T.picks[k].id}});
   if(T.her.length){cards.posture=face(T.her[T.herAt]);picks.posture=T.her[T.herAt].id}
   cards.companions=T.picks.companions.map(face);picks.companions=T.picks.companions.map(function(k){return k.id});
   var dials={};DIALS.forEach(function(x){dials[x[0]]=+$('dial-'+x[0]).value});
-  fetch('/api/weave',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({picks:picks,cards:cards,dials:dials})})
-    .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})})
-    .then(function(x){
-      if(!x.ok){b.disabled=false;b.textContent='Weave my book';$('weavenote').textContent=(x.j.error||'It failed')+((x.j.problems||[]).length?': '+x.j.problems.join('; '):'');return}
-      showBook(x.j,c);b.textContent='Woven';
-    }).catch(function(e){b.disabled=false;b.textContent='Weave my book';$('weavenote').textContent='Could not reach the server: '+e});
+  // The weave: the hand's cards gather to the middle, the shuttle runs, three steps light.
+  var n=slotsOf(c).length;
+  veil('<div class="loom"><div class="lbl">The weave</div><h3 class="mtitle">'+esc(c.title)+'</h3>'+
+    '<div class="gather">'+Array.from({length:n},function(_,i){var a=(i/n)*Math.PI*2;
+      return '<img src="'+c.back+'" alt="" style="--x:'+Math.round(Math.cos(a)*170)+'px;--y:'+Math.round(Math.sin(a)*90)+'px;--d:'+(i*0.12)+'s;--rot:'+Math.round((i-n/2)*9)+'deg">'}).join('')+
+    '<div class="threads"><i></i><i></i><i></i><i></i><i></i></div><div class="shuttle"></div></div>'+
+    '<ol class="wsteps"><li id="w1">She weaves your hand into one story</li><li id="w2">The Doorkeeper reads it at the door</li><li id="w3">It is bound, and yours</li></ol></div>',true);
+  var lit=function(id,t){setTimeout(function(){var el=$(id);if(el)el.classList.add('on')},t)};
+  lit('w1',300);lit('w2',1700);lit('w3',3000);
+  var minWait=new Promise(function(r){setTimeout(r,3800)});
+  var call=fetch('/api/weave',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({picks:picks,cards:cards,dials:dials})})
+    .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})});
+  Promise.all([call,minWait]).then(function(res){var x=res[0];
+    $('veil').dataset.locked='';
+    if(!x.ok){veil('<div class="mhead"><div class="lbl">The Doorkeeper sent it back</div><p class="msent">'+esc(x.j.error||'It failed')+'</p>'+
+      ((x.j.problems||[]).length?'<ul class="refused">'+x.j.problems.map(function(p){return '<li>'+esc(p)+'</li>'}).join('')+'</ul>':'')+
+      '</div><div class="macts"><button class="go" id="again">Tune it again</button></div>');$('again').onclick=openTune;return}
+    showBook(x.j,c);
+  }).catch(function(e){$('veil').dataset.locked='';veil('<div class="mhead"><div class="lbl">Could not reach the server</div><p class="msent">'+esc(String(e))+'</p></div><div class="macts"><button class="go" id="again">Try again</button></div>');$('again').onclick=openTune});
+}
+function inline(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<em>$1</em>')}
+function md(text){
+  var L=String(text||'').replace(/<!--[\s\S]*?-->/g,'').split('\n'),out=[],i=0,toc=[];
+  while(i<L.length){var l=L[i];
+    if(/^---\s*$/.test(l)){out.push('<hr>');i++;continue}
+    var h=/^(#{1,3})\s+(.*)$/.exec(l);
+    if(h){var lv=h[1].length,id='ch'+toc.length;if(lv===2)toc.push([id,h[2]]);out.push('<h'+(lv+1)+(lv===2?' id="'+id+'"':'')+'>'+inline(h[2])+'</h'+(lv+1)+'>');i++;continue}
+    if(/^\|/.test(l)){var rows=[];while(i<L.length&&/^\|/.test(L[i])){rows.push(L[i]);i++}
+      var cells=function(r){return r.replace(/^\||\|$/g,'').split('|').map(function(x){return x.trim()})};
+      var body=rows.filter(function(r){return !/^\|[\s|:-]+\|$/.test(r)});var head=cells(rows[0]),blank=head.every(function(x){return !x});
+      out.push('<table>'+(blank?'':'<thead><tr>'+head.map(function(x){return '<th>'+inline(x)+'</th>'}).join('')+'</tr></thead>')+'<tbody>'+
+        body.slice(blank?0:1).filter(function(r){return !cells(r).every(function(x){return !x})}).map(function(r){return '<tr>'+cells(r).map(function(x){return '<td>'+inline(x)+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table>');continue}
+    if(/^\s*-\s+/.test(l)){var it=[];while(i<L.length&&/^\s*-\s+/.test(L[i])){it.push('<li>'+inline(L[i].replace(/^\s*-\s+/,''))+'</li>');i++}out.push('<ul>'+it.join('')+'</ul>');continue}
+    if(/^>\s?/.test(l)){var q=[];while(i<L.length&&/^>\s?/.test(L[i])){q.push(L[i].replace(/^>\s?/,''));i++}out.push('<blockquote>'+inline(q.join(' '))+'</blockquote>');continue}
+    if(!l.trim()){i++;continue}
+    var p=[];while(i<L.length&&L[i].trim()&&!/^(#|\||>|---|\s*-\s)/.test(L[i])){p.push(L[i]);i++}out.push('<p>'+inline(p.join(' '))+'</p>');
+  }
+  return {html:out.join(''),toc:toc};
 }
 function showBook(j,c){
-  var bk=$('book');bk.hidden=false;
-  bk.innerHTML='<div class="lbl" style="text-align:center">Your book</div>'+
-    '<h3 class="btitle">'+esc(j.title)+'</h3>'+
-    (j.where?'<p class="bwhere">'+esc(j.where)+'</p>':'')+
-    '<p class="bprem">'+esc(j.premise)+'</p>'+
-    '<div class="bopen"><div class="lbl">It opens</div><p>'+esc(j.opening)+'</p></div>'+
-    '<div class="bacts"><a class="ghost" href="/api/book?slug='+encodeURIComponent(j.slug)+'" download>Download the book (.md)</a>'+
-    '<a class="go" href="'+(j.play||'/table')+'" style="text-decoration:none">Sit down at the table</a></div>';
-  setTimeout(function(){bk.scrollIntoView({behavior:'smooth',block:'start'})},200);
+  var b=md(j.book||('# '+j.title+'\n\n'+j.premise+'\n\n> '+j.opening));
+  veil('<div class="bookwrap"><div class="bookhead"><div class="lbl">Your book</div><h3 class="mtitle">'+esc(j.title)+'</h3>'+
+      (j.where?'<p class="bwhere">'+esc(j.where)+'</p>':'')+'</div>'+
+    '<div class="bookbody"><nav class="toc" aria-label="Chapters">'+b.toc.map(function(t){return '<a href="#'+t[0]+'">'+inline(t[1])+'</a>'}).join('')+'</nav>'+
+    '<article class="pages" id="pages">'+b.html+'</article></div>'+
+    '<div class="macts"><button class="ghost" id="mback">Back to the table</button><a class="ghost" href="/api/book?slug='+encodeURIComponent(j.slug)+'" download>Download the book (.md)</a>'+
+    '<a class="go" href="'+(j.play||'/table')+'">Sit down at the table</a></div></div>');
+  $('mback').onclick=function(){unveil()};
+  $('vmodal').querySelectorAll('.toc a').forEach(function(a){a.onclick=function(e){e.preventDefault();var t=document.getElementById(a.getAttribute('href').slice(1));if(t)$('pages').scrollTo({top:t.offsetTop-$('pages').offsetTop-8,behavior:'smooth'})}});
 }
 fetch('/api/published').then(function(r){return r.json()}).then(function(j){
   D.campaigns=j.campaigns||[];FAKE=!!j.fake_ai;

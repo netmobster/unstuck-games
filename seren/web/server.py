@@ -339,7 +339,10 @@ class Handler(BaseHTTPRequestHandler):
             slug = (urllib.parse.parse_qs(self.path.partition("?")[2]).get("slug") or [""])[0]
             if not published.SLUG.match(slug):
                 return self._json(400, {"error": "bad slug"})
-            book = corpus.ROOT / "players" / self._account() / slug / "campaign.md"
+            folder = corpus.ROOT / "players" / self._account() / slug
+            book = folder / "briefing.md"
+            if not book.is_file():
+                book = folder / "campaign.md"
             try:
                 text = book.read_text(encoding="utf-8")
             except OSError:
@@ -610,6 +613,7 @@ class Handler(BaseHTTPRequestHandler):
                 "ok": True, "slug": slug, "title": campaign_obj.get("title"),
                 "premise": campaign_obj.get("premise"), "opening": campaign_obj.get("opening"),
                 "where": campaign_obj.get("where"), "mended": mended,
+                "book": campaign_obj.get("briefing") or "",
                 "spent": round(spent, 4), "play": "/table",
             }, cookie)
 
