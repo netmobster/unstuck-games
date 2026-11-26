@@ -288,18 +288,40 @@ async def health(request: Request) -> Response:
                          "campaigns": len(published.listing())})
 
 
-def main() -> None:
+class NoStream:
+    """A GET on /mcp asks for a standing event stream. Stateless, we have none to offer, and the
+    SDK answered 200 with a stream it closed at once: through the tunnel that's a dropped
+    connection, and claude.ai showed the connector as "Server not responding" (26 Nov). The spec's
+    answer is 405, which clients take to mean "no stream here"."""
+
+    def __init__(self, app):
+        self.app = app
+
+    async def __call__(self, scope, receive, send):
+        if scope.get("type") == "http" and scope.get("method") == "GET" and scope.get("path", "").rstrip("/") == "/mcp":
+            await send({"type": "http.response.start", "status": 405,
+                        "headers": [(b"allow", b"POST"), (b"content-type", b"application/json")]})
+            await send({"type": "http.response.body", "body": b'{"error":"no event stream: this server is stateless"}'})
+            return
+        await self.app(scope, receive, send)
+
+
+def asgi_app():
     hosts = ["127.0.0.1:*", "localhost:*"]
     if PUBLIC.startswith("https://"):
         hosts.append(urlparse(PUBLIC).netloc)
-    server.run(
-        "streamable-http",
-        host=os.environ.get("SEREN_MCP_HOST", "127.0.0.1"),
-        port=PORT,
+    return NoStream(server.streamable_http_app(
         streamable_http_path="/mcp",
         stateless_http=True,
+        # json_response=True would be tidier, but in mcp 2.2.0 stateless it sends an empty body (26 Nov).
         transport_security=TransportSecuritySettings(allowed_hosts=hosts, allowed_origins=["https://claude.ai", PUBLIC]),
-    )
+        host=os.environ.get("SEREN_MCP_HOST", "127.0.0.1"),
+    ))
+
+
+def main() -> None:
+    import uvicorn
+    uvicorn.run(asgi_app(), host=os.environ.get("SEREN_MCP_HOST", "127.0.0.1"), port=PORT, log_level="info")
 
 
 if __name__ == "__main__":
