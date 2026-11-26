@@ -29,7 +29,7 @@ bin/               cloudflared.exe (gitignored)
 ## Play it in Claude (PowerShell)
 
 ```powershell
-.\seren\mcpun-tunnel.ps1
+.\seren\mcp\run-tunnel.ps1
 ```
 
 Then in claude.ai: Settings > Connectors > Add custom connector, paste the printed `https://....trycloudflare.com/mcp`,
