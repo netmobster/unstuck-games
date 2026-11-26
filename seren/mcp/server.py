@@ -100,13 +100,31 @@ window.__mcpReady=new Promise(function(r){window.__mcpResolve=r});
 (function(){
   var app=null,ready=window.__mcpReady.then(function(){
     var A=window.McpApps;if(window.parent===window)throw new Error('open this through Claude');
-    app=new A.App({name:'seren-table',version:'0.3.0'},{availableDisplayModes:['inline','fullscreen']});
+    // autoResize off: left on, the app reports its whole page height and Claude stretches the chat
+    // frame to fit it (26 Nov: "more than the full page"). A fixed frame scrolls inside instead.
+    app=new A.App({name:'seren-table',version:'0.3.1'},{availableDisplayModes:['inline','fullscreen']},{autoResize:false});
     return app.connect().then(function(){
+      app.sendSizeChanged({width:Math.ceil(window.innerWidth),height:INLINE_HEIGHT});
       var ctx=app.getHostContext()||{},modes=ctx.availableDisplayModes||[];
-      // Jay's flow: one tool call from the chat, and the table pops out full screen, MINDER-style.
-      if(modes.indexOf('fullscreen')>=0&&ctx.displayMode!=='fullscreen')return app.requestDisplayMode({mode:'fullscreen'}).catch(function(){});
+      fullButton(modes.indexOf('fullscreen')>=0,ctx.displayMode);
+      app.onhostcontextchanged=function(){var c=app.getHostContext()||{};fullButton((c.availableDisplayModes||modes).indexOf('fullscreen')>=0,c.displayMode)};
+      // Jay's flow: the table pops out full screen, MINDER-style. Hosts may only allow it after a click,
+      // so ask now and again on the first click.
+      var go=function(){var c=app.getHostContext()||{};if((c.availableDisplayModes||modes).indexOf('fullscreen')>=0&&c.displayMode!=='fullscreen')app.requestDisplayMode({mode:'fullscreen'}).catch(function(){})};
+      go();document.addEventListener('click',function once(){document.removeEventListener('click',once,true);go()},true);
     });
   });
+  var INLINE_HEIGHT=640;
+  function fullButton(can,mode){
+    var b=document.getElementById('seren-full');
+    if(!can){if(b)b.remove();return}
+    if(!b){b=document.createElement('button');b.id='seren-full';b.type='button';
+      b.style.cssText='position:fixed;right:12px;bottom:12px;z-index:80;font:600 10.5px/1 Work Sans,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;padding:11px 14px;border-radius:999px;border:1px solid #c9a44a;background:#0f1728;color:#e3c06a;cursor:pointer;box-shadow:0 8px 22px rgba(0,0,0,.6)';
+      b.onclick=function(e){e.stopPropagation();var full=(app.getHostContext()||{}).displayMode==='fullscreen';
+        app.requestDisplayMode({mode:full?'inline':'fullscreen'}).catch(function(){})};
+      document.body.appendChild(b)}
+    b.textContent=mode==='fullscreen'?'Back to the chat':'Full screen';
+  }
   function call(name,args){
     return ready.then(function(){return app.callServerTool({name:name,arguments:args||{}})}).then(function(r){
       var s=r&&r.structuredContent;if(r&&r.isError&&!s)throw new Error(((r.content||[])[0]||{}).text||'the tool failed');return s||{};

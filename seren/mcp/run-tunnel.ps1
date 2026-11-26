@@ -87,7 +87,13 @@ Write-Host '  Ctrl+C stops the server and the tunnel.'
 Write-Host ''
 
 try {
-  & $py (Join-Path $here 'server.py')
+  # If the server stops (or CC stops it to load a fix), start it again behind the SAME tunnel, so the
+  # connector's address stays good. Ctrl+C ends the loop, and the tunnel with it.
+  while ($true) {
+    & $py (Join-Path $here 'server.py')
+    Write-Host '  The server stopped. Starting it again in 2 seconds (Ctrl+C to quit)...' -ForegroundColor Yellow
+    Start-Sleep -Seconds 2
+  }
 }
 finally {
   Stop-Process -Id $tunnel.Id -ErrorAction SilentlyContinue
