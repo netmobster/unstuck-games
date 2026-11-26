@@ -165,7 +165,14 @@ h3.sec{font:400 22px/1.2 var(--display);color:var(--gilt);text-align:center;marg
 .stack{position:relative;width:96px;aspect-ratio:2/3}
 .stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid rgba(0,0,0,.6);
   transform:translate(calc(var(--i) * -2px),calc(var(--i) * -2px));box-shadow:0 10px 22px rgba(0,0,0,.55)}
-.row{grid-template-columns:repeat(auto-fill,minmax(104px,1fr))!important;justify-content:stretch!important}
+.row{grid-template-columns:repeat(var(--n,9),minmax(0,1fr))!important;justify-content:stretch!important;gap:clamp(8px,1vw,14px)!important}
+@media (max-width:900px){.row{grid-template-columns:repeat(auto-fill,minmax(96px,1fr))!important}}
+/* her card asks to be turned */
+.c3.hersdown{box-shadow:0 0 0 2px var(--gilt),0 0 26px rgba(201,164,74,.45);animation:herglow 2.2s ease-in-out infinite}
+@keyframes herglow{50%{box-shadow:0 0 0 2px var(--gilt-hi),0 0 40px rgba(227,192,106,.7)}}
+.ribbon{position:absolute;left:50%;bottom:14%;transform:translateX(-50%);z-index:3;pointer-events:none;white-space:nowrap;
+  font:600 9.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--felt);background:var(--gilt);padding:7px 10px;border-radius:999px;box-shadow:0 6px 14px rgba(0,0,0,.6)}
+.turnher{display:flex;flex-direction:column;align-items:center;gap:10px;margin:6px 0}
 .empty{aspect-ratio:2/3;border-radius:10px;border:1px dashed var(--mute-lo);color:var(--mute);font:italic 400 15px/1.2 var(--serif);transition:border-color .2s,color .2s}
 .empty:hover{border-color:var(--gilt);color:var(--bone)}
 .empty.on{border:1px solid var(--gilt);color:var(--gilt-hi);box-shadow:0 0 0 1px var(--gilt),0 0 22px rgba(201,164,74,.25)}
@@ -204,6 +211,7 @@ h3.sec{font:400 22px/1.2 var(--display);color:var(--gilt);text-align:center;marg
   .row{grid-template-columns:repeat(3,minmax(0,1fr))}
   .backs{width:150px;height:170px}.backs img{width:92px}
 }
+@media (prefers-reduced-motion:reduce){.c3.hersdown{animation:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 
@@ -312,7 +320,7 @@ function slotHTML(x,n){
     '<div class="c3 sealed" title="Sealed until the story opens it"><div class="in">'+back+'</div><div class="waxbox">'+SEAL+'</div></div></div>';
   if(k==='posture'){var h=T.her[T.herAt];
     return '<div class="slot hers">'+head('Her card')+
-      '<div class="c3 '+(T.herUp?'up':'down')+'" id="her" role="button" tabindex="'+(T.herUp?-1:0)+'" aria-label="'+(T.herUp?'Her card: '+esc(h.name):'Her card, face down. Turn it over')+'"><div class="in">'+back+faceHTML('Antagonist',h)+'</div></div>'+
+      '<div class="c3 '+(T.herUp?'up':'down hersdown')+'" id="her" role="button" tabindex="'+(T.herUp?-1:0)+'" aria-label="'+(T.herUp?'Her card: '+esc(h.name):'Her card, face down. Turn it over')+'"><div class="in">'+back+faceHTML('Antagonist',h)+'</div>'+(T.herUp?'':'<span class="ribbon">Turn it over</span>')+'</div>'+
       (T.herUp&&T.her.length>1?'<button class="mini" id="another">Make her play another</button>':'')+'</div>';}
   var pick=k==='companions'?T.picks.companions[n]:T.picks[k],on=T.active===k;
   if(pick) return '<div class="slot">'+head(esc(label))+
@@ -322,7 +330,9 @@ function slotHTML(x,n){
 function rowHTML(){var count={};return slotsOf(T.c).map(function(x){var n=count[x[0]]||0;count[x[0]]=n+1;return slotHTML(x,n)}).join('')}
 function handHTML(){
   var k=T.active;
-  if(!k)return '<p class="handnote">'+(T.her.length&&!T.herUp?'Your hand is laid. Turn her card over.':'The hand is laid.')+'</p>';
+  if(!k)return T.her.length&&!T.herUp
+    ?'<div class="turnher"><p class="handnote">Your hand is laid. Now she plays hers: the one you are up against.</p><button class="go" id="turnher">Turn her card over</button></div>'
+    :'<p class="handnote">The hand is laid. Tune it below.</p>';
   var cards=T.hands[k],label=(ROW.filter(function(x){return x[0]===k})[0]||[k,k])[1],many=k==='companions',mid=(cards.length-1)/2;
   return '<div class="handhead"><span class="lbl">Your hand · '+esc(label)+'</span><span class="lbl mute">'+(many?'pick two · '+T.picks.companions.length+' of 2':'pick one')+' · '+cards.length+' dealt</span></div>'+
     '<div class="fan">'+cards.map(function(card,i){
@@ -357,7 +367,7 @@ function renderTable(fresh){
     '<div class="acts"><button class="ghost" id="redeal">Deal again</button><button class="ghost" id="back">Back to the shelf</button></div></div>'+
     '<div class="felt"><div class="tabletop">'+
       '<div class="pile" aria-hidden="true"><div class="stack">'+[4,3,2,1,0].map(function(i){return '<img src="'+c.back+'" alt="" style="--i:'+i+'">'}).join('')+'</div><div class="lbl">Her deck · '+T.pile+'</div></div>'+
-      '<div class="row" id="row">'+rowHTML()+'</div></div>'+
+      '<div class="row" id="row" style="--n:'+slotsOf(c).length+'">'+rowHTML()+'</div></div>'+
     '<p class="sentence" id="sentence">'+sentence()+'</p>'+
     '<div class="hand'+(fresh?' fresh':'')+'" id="hand">'+handHTML()+'</div></div>'+
     '<div class="felt" id="dialsbox"'+(done()?'':' hidden')+'><h3 class="sec">Tune it</h3>'+dialsHTML(c)+
@@ -374,7 +384,8 @@ function wire(){
     el.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();go()}}});
   var her=$('her');
   if(her&&!T.herUp){var turn=function(){her.classList.remove('down');her.classList.add('up');T.herUp=true;setTimeout(function(){rerender();afterChange()},700)};
-    her.onclick=turn;her.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();turn()}}}
+    her.onclick=turn;her.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();turn()}};
+    var tb=$('turnher');if(tb)tb.onclick=function(){her.scrollIntoView({behavior:'smooth',block:'center'});setTimeout(turn,450)}}
   var an=$('another');if(an)an.onclick=function(){T.herAt=(T.herAt+1)%T.her.length;T.herUp=false;rerender()};
   $('hand').querySelectorAll('.hc').forEach(function(b){b.onclick=function(){
     var k=T.active,card=T.hands[k][+b.dataset.i],moved=false;
