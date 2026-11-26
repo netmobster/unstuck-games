@@ -1,5 +1,22 @@
 # Decisions — Unstuck Games
 
+## 2026-11-26 — local Seren session — A published campaign deals hands, not fates
+
+**Every open slot is a hand you choose from, dealt from a deck on the table.** The local `/deal`
+dealt one card per slot face down and the flip was the whole choice; Jay: "If a choice isn't locked,
+why isn't there a fan of options?" Now:
+- **The deck sits on the table** as a stack on the campaign's card back, and each slot's hand is dealt
+  from it, so the backs are seen being dealt. Deal again redeals, so every visit is different.
+- **Locked** cards are face up in chains. **Hidden** cards stay sealed under wax. Everything else is a
+  fan you pick from (two for companions).
+- **A who-you-play slot** joins the seven: about five characters (name, class, a tie) per campaign.
+- **Picks don't have to fit each other.** The weaver writes the connective tissue from whatever hand
+  was laid, using every card (`seren/web/weave.py`: "It is not allowed to invent the picks... the weaver
+  writes the world those cards imply"). Jay's frame is a djinn: you get what you asked for, made to work,
+  and the book is the reveal. That's why the deal isn't madlibs.
+- **The library isn't hand-written per campaign.** It is the shared card library (thousands of tropes
+  to build from), and each published campaign carries an allow list and a block list per category.
+
 ## 2026-11-25 — CC-164, continued — The table's look, and Squint's deck
 
 **The shelf and table preview is the base look** (Jay: "So good"). Preview:

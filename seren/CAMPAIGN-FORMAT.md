@@ -56,6 +56,14 @@ field the code doesn't recognise is never sent.
 The seven slots are the Loom's: `trope`, `origin`, `world`, `trouble`, `posture` (the antagonist,
 "her card"), `companions` (pick two), `persona` ("told by").
 
+**An eighth, optional: `pc`, who you play** (26 Nov). About five characters per campaign, each a
+face like any other card (`name` the character, `changes` leads with the class). Dealt as a hand like
+the rest. Picks don't have to fit each other: the weaver makes any hand work.
+
+**Every dealt slot is a hand:** the table deals up to three (four for companions) from the slot's deck,
+and the player picks. `posture` is her card: dealt face down, turned over, and she can be made to play
+another. `hidden` slots never reach the browser; the server adds them at weave time.
+
 ```json
 "slots": {
   "trope":      { "mode": "locked", "card": { ...face } },

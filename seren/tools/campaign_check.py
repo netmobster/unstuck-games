@@ -13,6 +13,8 @@ from pathlib import Path
 
 FORMAT = "seren-published/1"
 SLOTS = ("trope", "origin", "world", "trouble", "posture", "companions", "persona")
+# Who you play: optional, so a campaign without characters still checks. Added 26 Nov.
+OPTIONAL = ("pc",)
 MODES = ("locked", "dealt", "hidden")
 DIALS = ("absurdity", "stakes", "danger", "people", "length")
 FACE = ("id", "name", "line", "changes", "as")
@@ -72,8 +74,8 @@ def check(folder: Path) -> list[str]:
         if name not in slots:
             p.append(f"deck.json: no slot '{name}'")
     for name in slots:
-        if name not in SLOTS:
-            p.append(f"deck.json: '{name}' is not one of the seven slots")
+        if name not in SLOTS + OPTIONAL:
+            p.append(f"deck.json: '{name}' is not one of the slots")
 
     locked_names, faces = [], []
     cards_truth = truths.get("cards") or {}

@@ -88,6 +88,7 @@ def brief(picks: dict, dials: dict, cards: dict) -> str:
     return f"""The hand, already dealt. Every card below is in the campaign.
 
 TROPE — the spine, and everything should serve it: {one('trope')}
+WHO THE PLAYER IS — use this name and class for pc: {one('pc') or 'yours to write'}
 ORIGIN — the player's: {one('origin')}
 WORLD: {one('world')}
 TROUBLE: {one('trouble')}
@@ -124,7 +125,9 @@ def _mock_campaign(picks: dict, cards: dict) -> dict:
         "premise": (f"{trouble}, in {world}, and nobody wants it asked about. You came because of "
                     f"the {origin.lower()}, and the {posture} would rather you went home."),
         "where": f"{world}, the hour before dark",
-        "pc": {"name": "Wren Ashby", "class": "Rogue", "why_here": f"The {origin.lower()}: someone here owes you."},
+        "pc": {"name": name("pc", "Wren Ashby"),
+               "class": str((cards.get("pc") or {}).get("changes", "Rogue")).split(".")[0],
+               "why_here": f"The {origin.lower()}: someone here owes you."},
         "companions": [{"name": str(c.get("name", "")), "does": str(c.get("line", "")),
                         "friction": str(c.get("changes", ""))} for c in comps],
         "fronts": [

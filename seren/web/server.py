@@ -550,6 +550,10 @@ class Handler(BaseHTTPRequestHandler):
             body = self._body()
             picks = body.get("picks") or {}
             cards = body.get("cards") or {}
+            if picks.get("campaign"):
+                # Sealed cards were never sent to the browser; the weaver still gets them.
+                for slot, card in published.sealed(str(picks["campaign"])).items():
+                    cards.setdefault(slot, card)
             dials = body.get("dials") or {}
             if not cards.get("trope") or not cards.get("trouble"):
                 return self._json(400, {"error": "that hand is not finished"})

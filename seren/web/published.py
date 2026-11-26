@@ -53,8 +53,29 @@ def listing() -> list[dict]:
             deck = _read(base / slug / "deck.json")
             if not deck:
                 continue
+            # A hidden slot is sealed: the browser learns only that it exists.
+            for name, slot in (deck.get("slots") or {}).items():
+                if slot.get("mode") == "hidden":
+                    deck["slots"][name] = {"mode": "hidden"}
             c["deck"] = deck
         out.append(c)
+    return out
+
+
+def sealed(slug: str) -> dict:
+    """The hidden slots' cards, for the weaver only. {slot: card}; a dealt-hidden slot draws one."""
+    import random
+    base = root()
+    if base is None or not SLUG.match(slug):
+        return {}
+    deck = _read(base / slug / "deck.json") or {}
+    out = {}
+    for name, slot in (deck.get("slots") or {}).items():
+        if slot.get("mode") != "hidden":
+            continue
+        card = slot.get("card") or (random.choice(slot["deck"]) if slot.get("deck") else None)
+        if card:
+            out[name] = card
     return out
 
 
