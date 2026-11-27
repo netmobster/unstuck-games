@@ -346,6 +346,111 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
 .notyet{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:30px;font:400 11.5px/1 var(--mono);letter-spacing:.06em;color:var(--bone-3)}
 .notyet span{border:1px solid var(--rule-2);border-radius:2px;padding:8px 10px}
 .notyet b{color:var(--bone-2);font-weight:400}
+
+/* ── v3: beats on the page, the depth in modals (Jay, 26 Nov: "modals instead of subpages") ── */
+.cta.open{cursor:pointer}
+.felt .cta.open{background:var(--gilt);border-color:var(--gilt);color:#141006}
+.minis{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:28px}
+.mini{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:6px;border:1px solid rgba(201,164,74,.45);border-radius:8px;background:linear-gradient(180deg,#16203a,#101829);padding:18px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.mini:hover{transform:translateY(-3px);border-color:var(--gilt-hi);box-shadow:0 0 30px rgba(201,164,74,.15)}
+.mini:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:3px}
+.mini i{font:700 10px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--gilt);font-style:normal}
+.mini b{font:400 22px/1.1 var(--deco);color:var(--gilt-hi);font-weight:400}
+.mini em{font:italic 14px/1.4 var(--fell);color:#aab3c9}
+@media (max-width:900px){.minis{grid-template-columns:1fr}}
+
+/* the veil: dark, blurred, a glowing gilt edge, like the weave modal at the table */
+dialog.veil{width:min(760px,calc(100vw - 32px));max-height:calc(100svh - 48px);padding:0;border:1px solid rgba(201,164,74,.7);border-radius:12px;
+  background:radial-gradient(900px 500px at 50% 0%,#18223e,transparent 70%),#0e1526;color:var(--fbone);overflow:auto;
+  box-shadow:0 0 0 1px rgba(0,0,0,.6),0 0 40px rgba(201,164,74,.28),0 0 120px rgba(201,164,74,.12),0 40px 90px rgba(0,0,0,.7)}
+dialog.veil.wide{width:min(1120px,calc(100vw - 32px))}
+dialog.veil::backdrop{background:rgba(5,6,10,.72);backdrop-filter:blur(8px) brightness(.7)}
+dialog.veil[open]{animation:veilIn .45s cubic-bezier(.2,.8,.2,1)}
+@keyframes veilIn{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+.veil-in{padding:clamp(24px,4vw,48px)}
+.veil .k{color:var(--gilt)}
+.veil-t{font:400 clamp(28px,3.4vw,42px)/1.15 var(--fell);color:var(--fbone);margin:12px 0 4px}
+.veil-note{margin:26px 0 0;font:400 11px/1.7 var(--mono);letter-spacing:.06em;color:var(--mute)}
+.veil .x{position:sticky;top:12px;float:right;margin:12px 12px 0 0;width:44px;height:44px;border-radius:50%;border:1px solid rgba(201,164,74,.5);background:rgba(10,16,30,.85);color:var(--fbone);font:400 24px/1 var(--serif);cursor:pointer;z-index:2;transition:border-color .2s,transform .2s}
+.veil .x:hover{border-color:var(--gilt-hi);transform:rotate(90deg)}
+body.veiled{overflow:hidden}
+.veil .tables{margin-top:24px}
+.veil .books{margin-top:24px}
+
+/* the real book */
+.mdbook{margin-top:10px;font:400 17px/1.7 var(--fell);color:#ddd5bf}
+.mdbook h2{font:400 clamp(26px,3vw,36px)/1.15 var(--deco);color:var(--gilt-hi);margin:10px 0 18px}
+.mdbook h3{font:400 13px/1 var(--display);letter-spacing:.22em;text-transform:uppercase;color:var(--gilt);margin:34px 0 12px;padding-top:18px;border-top:1px solid rgba(201,164,74,.25)}
+.mdbook h4{font:italic 400 19px/1.3 var(--fell);color:var(--fbone);margin:18px 0 6px}
+.mdbook p{margin:0 0 14px}
+.mdbook b{color:var(--fbone);font-weight:400}
+.mdbook ul{margin:0 0 14px;padding-left:20px}
+.mdbook li{margin-bottom:8px}
+.mdbook blockquote{margin:0 0 14px;padding-left:14px;border-left:2px solid var(--gilt);font-style:italic;color:var(--gilt-hi)}
+.mdbook hr{border:0;border-top:1px solid rgba(201,164,74,.25);margin:22px 0}
+
+/* VII · the DM's tricks */
+.tricks{display:grid;gap:12px}
+.tricks.all{grid-template-columns:repeat(3,minmax(0,1fr));margin-top:24px}
+.trick{border:1px solid #26314d;border-radius:8px;background:rgba(10,16,30,.6);padding:16px 18px;transform:rotate(var(--tilt,0deg));transition:transform .25s}
+.tricks:not(.all) .trick:nth-child(1){--tilt:-1.2deg}
+.tricks:not(.all) .trick:nth-child(2){--tilt:.8deg;margin-left:22px}
+.tricks:not(.all) .trick:nth-child(3){--tilt:-.4deg}
+.trick:hover{transform:rotate(0) translateY(-2px)}
+.trick b{display:block;font:400 20px/1.2 var(--fell);color:var(--fbone);font-weight:400}
+.trick p{margin:6px 0 0;font-size:15px;line-height:1.5;color:#aab3c9}
+@media (max-width:900px){.tricks.all{grid-template-columns:1fr}.tricks:not(.all) .trick:nth-child(2){margin-left:0}}
+
+/* VIII · the chronicle: a page from the book, ink on bone */
+.chronicle{background:radial-gradient(900px 600px at 70% 50%,rgba(194,164,106,.10),transparent 70%),var(--ink)}
+.page-teaser{all:unset;box-sizing:border-box;cursor:pointer;display:block;position:relative;padding:32px 34px 28px;border-radius:4px;
+  background:linear-gradient(175deg,#efe6d0,#ddd0b2);color:#2b2219;box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 0 1px rgba(0,0,0,.4);transform:rotate(1.2deg);transition:transform .35s}
+.page-teaser:hover{transform:rotate(0) translateY(-4px)}
+.page-teaser:focus-visible{outline:2px solid var(--ember);outline-offset:4px}
+.page-teaser .k{color:#8a5a2b}
+.pt-t{display:block;font:400 clamp(26px,2.8vw,34px)/1.15 var(--fell);margin:12px 0 14px}
+.pt-p{display:block;font:400 17px/1.65 var(--fell);color:#3d3226;max-height:9.9em;overflow:hidden;-webkit-mask-image:linear-gradient(180deg,#000 55%,transparent);mask-image:linear-gradient(180deg,#000 55%,transparent)}
+.pt-p i{font-style:italic}
+.pt-more{display:inline-block;margin-top:10px;font:700 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#8a3a12;border-bottom:1px solid currentColor;padding-bottom:4px}
+
+/* the chronicle, in the veil */
+.chr .k{color:var(--gilt)}
+.chr-t{font:400 clamp(32px,4vw,48px)/1.08 var(--fell);color:var(--fbone);margin:12px 0 10px}
+.chr-dek{font:italic 400 18px/1.5 var(--fell);color:#c9cfdd;margin:0}
+.chr-h{display:flex;align-items:baseline;gap:14px;font:400 26px/1.2 var(--fell);color:var(--fbone);margin:44px 0 6px;padding-top:22px;border-top:1px solid rgba(201,164,74,.25)}
+.chr-h span{font:700 11px/1 var(--mono);letter-spacing:.2em;color:var(--gilt)}
+.chr-sub{margin:0 0 16px;color:var(--mute);font-size:15px}
+.chr-story p{font:400 18px/1.75 var(--fell);color:#e0d8c2;margin:16px 0 0}
+.chr-story p:first-child::first-letter{font:400 3.3em/.85 var(--deco);float:left;padding:6px 10px 0 0;color:var(--gilt-hi)}
+.chr-story i{color:var(--fbone)}
+.chr-story b{font-family:var(--mono);font-size:.8em;letter-spacing:.06em;color:var(--fbone);font-weight:400}
+.chr-list{list-style:none;margin:0;padding:0}
+.chr-list li{padding:14px 0;border-bottom:1px solid rgba(201,164,74,.14);font-size:16px;line-height:1.55;color:#aab3c9}
+.chr-list li b{display:block;font:400 19px/1.3 var(--fell);color:var(--fbone);font-weight:400;margin-bottom:3px}
+.chr-list.know li b::before{content:"◆ ";color:var(--held)}
+.chr-roads{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.chr-roads div{border:1px solid rgba(201,164,74,.35);border-radius:6px;padding:16px;background:rgba(10,16,30,.5)}
+.chr-roads span{font:700 11px/1 var(--mono);color:var(--gilt)}
+.chr-roads h4{margin:8px 0 6px;font:400 20px/1.2 var(--fell);color:var(--fbone)}
+.chr-roads p{margin:0;font-size:15px;line-height:1.5;color:#aab3c9}
+@media (max-width:760px){.chr-roads{grid-template-columns:1fr}}
+.chr-seal{text-align:center;margin:48px 0 0;font:italic 400 20px/1.5 var(--fell);color:#c9cfdd}
+.chr-seal span{display:block;margin-top:12px;font:400 10px/1 var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--gilt)}
+.chr-note{margin:28px 0 0;font:400 11px/1.7 var(--mono);color:var(--mute)}
+
+/* IX · how it works, folded */
+.how main > section,.how{align-items:flex-start}
+.accs{margin-top:28px;border-top:1px solid var(--rule)}
+.acc{border-bottom:1px solid var(--rule)}
+.acc summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px;padding:22px 4px;font:italic 400 clamp(20px,2.2vw,28px)/1.2 var(--serif);color:var(--bone);transition:color .2s}
+.acc summary::-webkit-details-marker{display:none}
+.acc summary::after{content:"+";font:400 26px/1 var(--mono);color:var(--ember);transition:transform .3s}
+.acc[open] summary::after{transform:rotate(45deg)}
+.acc summary:hover{color:#fff}
+.acc-in{padding:0 0 30px}
+.acc-in .split{margin-top:0!important}
+.how{min-height:auto!important}
+
 </style>
 </head>
 <body>
@@ -361,6 +466,7 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
     <nav aria-label="Main">
       <a href="#many">Three tables</a>
       <a href="#book">The book</a>
+      <a href="#chronicle">The chronicle</a>
       <a href="#makers">For creators</a>
       <a class="cta" href="/deal">Choose a campaign</a>
     </nav>
@@ -401,42 +507,8 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
       </div>
       <div class="copy">
         <p>Blood and Ink always opens on a death at the wake, in the orchard counties. Everyone else is dealt: who you are, why you came, who walks in beside you, who wants you gone, and who tells it. <b>Then you play, and what you do is written down and stays done.</b></p>
+        <div class="acts"><button class="cta open" type="button" data-open="m-tables">Deal three tables</button></div>
         <div class="locked"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Taken in</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>Orchard counties</span><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>A death</span></div>
-      </div>
-    </div>
-    <div class="tables" data-deal id="tables">
-      <div class="tline" style="--row:0">
-        <div class="who">Table one<b>Kit Marrow</b></div>
-        <div class="trow">
-          <div class="mc" style="--k:0"><i>You play</i><b>Kit Marrow</b><em>Kept her books since you were twelve</em></div>
-          <div class="mc" style="--k:1"><i>Origin</i><b>Accident</b><em>You were standing in the wrong place</em></div>
-          <div class="mc" style="--k:2"><i>Companion</i><b>The novice</b><em>volunteers</em></div>
-          <div class="mc" style="--k:3"><i>Companion</i><b>The scribe</b><em>writes it down</em></div>
-          <div class="mc her" style="--k:4"><i>Against</i><b>Bureaucrat</b><em>“Your paperwork is not in order”</em></div>
-          <div class="mc" style="--k:5"><i>Told by</i><b>The Archivist</b><em>with footnotes you did not ask for</em></div>
-        </div>
-      </div>
-      <div class="tline" style="--row:1">
-        <div class="who">Table two<b>Ash Varley</b></div>
-        <div class="trow">
-          <div class="mc" style="--k:0"><i>You play</i><b>Ash Varley</b><em>Grew up in her orchard rows</em></div>
-          <div class="mc" style="--k:1"><i>Origin</i><b>Legacy</b><em>It was your mother's, and now it is yours</em></div>
-          <div class="mc" style="--k:2"><i>Companion</i><b>The dog</b><em>knows</em></div>
-          <div class="mc" style="--k:3"><i>Companion</i><b>The scribe</b><em>writes it down</em></div>
-          <div class="mc her" style="--k:4"><i>Against</i><b>Parent</b><em>“I am protecting mine”</em></div>
-          <div class="mc" style="--k:5"><i>Told by</i><b>The Registrar</b><em>a clerk reading out a form</em></div>
-        </div>
-      </div>
-      <div class="tline" style="--row:2">
-        <div class="who">Table three<b>Pip Callow</b></div>
-        <div class="trow">
-          <div class="mc" style="--k:0"><i>You play</i><b>Pip Callow</b><em>Sang at every one of her harvests</em></div>
-          <div class="mc" style="--k:1"><i>Origin</i><b>Legacy</b><em>It was your mother's, and now it is yours</em></div>
-          <div class="mc" style="--k:2"><i>Companion</i><b>The debtor</b><em>pays their way</em></div>
-          <div class="mc" style="--k:3"><i>Companion</i><b>The scribe</b><em>writes it down</em></div>
-          <div class="mc her" style="--k:4"><i>Against</i><b>Schemer</b><em>You meet the plan before the person</em></div>
-          <div class="mc" style="--k:5"><i>Told by</i><b>The Archivist</b><em>with footnotes you did not ask for</em></div>
-        </div>
       </div>
     </div>
   </div>
@@ -475,10 +547,10 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
   <div class="wrap">
     <div class="split" style="align-items:end">
       <div class="copy">
-        <div class="r">III · CAMPAIGN, TABLE, BOOK <span class="tag built">Built, stand-in writer</span></div>
+        <div class="r">III · CAMPAIGN, TABLE, BOOK <span class="tag built">Built</span></div>
         <h2 class="say">And then she hands you the book.</h2>
       </div>
-      <div class="copy"><p>Who you are, your people, how the place works, who's who, and tonight. <b>Everything in this book is true;</b> the rest of the valley is there to find. Download it, then sit down at the table. On the laptop a stand-in writes it from your cards.</p></div>
+      <div class="copy"><p>Who you are, your people, how the place works, who's who, and tonight. <b>Everything in this book is true;</b> the rest of the valley is there to find. Download it, then sit down at the table.</p><div class="acts"><button class="cta open" type="button" data-open="m-book">Read a real book</button></div></div>
     </div>
     <div class="ctb">
       <div class="steps">
@@ -500,33 +572,8 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
       </div>
       <div class="copy"><p>Five dials, and none of them picks a card. They tell the teller how to write what you were dealt: how absurd, how big the stakes, how dangerous, people or places, and how long the clocks run. <b>Kit Marrow's hand from table one, written three times by the real teller:</b> a reckoning at one long table, an inquest on a press-house stair, forty mourners at a will-reading.</p></div>
     </div>
-    <div class="books"><div class="bk">
-        <div class="set">Hyper-personal</div>
-        <div class="dl"><div>absurdity<span><i style="width:10%"></i></span></div><div>stakes<span><i style="width:0%"></i></span></div><div>danger<span><i style="width:30%"></i></span></div><div>places<span><i style="width:0%"></i></span></div><div>length<span><i style="width:0%"></i></span></div></div>
-        <h3>The Tithe Hall Cup</h3>
-        <div class="where">The Tithe Hall at Brackwater, Ashcombe county. Late afternoon, the harvest reckoning half-read.</div>
-        <blockquote>Wenna Tregarth&#x27;s cheek rests on the reckoning ledger, and perry runs down the page and blurs the Penrose column. Registrar Fenmore has not stood up. He is turning his own full cup a quarter-turn on its saucer and saying, to nobody in particular, that the counting room will be sealed within the hour. Across the table Dunstan Hollin already has his hand on the physician&#x27;s shoulder. Kit&#x27;s coat is heavy on one side: the daybook, still there. Beside her, Tamsin Rook&#x27;s pen keeps moving. [Archivist&#x27;s note: the tray Kit carried had four cups. See fact 1. The scribe recorded their order. See companions.]</blockquote>
-        <p><b style="font-weight:400;color:var(--fbone)">Its fronts:</b> The Probate Office · The Hollin cousins · The Ashcombe orchard families</p>
-        <div class="cost">Claude Opus 5.5 on Bedrock · passed the Doorkeeper first time</div>
-      </div>
-      <div class="bk">
-        <div class="set">The campaign's defaults</div>
-        <div class="dl"><div>absurdity<span><i style="width:20%"></i></span></div><div>stakes<span><i style="width:30%"></i></span></div><div>danger<span><i style="width:60%"></i></span></div><div>places<span><i style="width:20%"></i></span></div><div>length<span><i style="width:0%"></i></span></div></div>
-        <h3>The Press-Stair Inquest</h3>
-        <div class="where">The Quarrender press-house at Lowhallow, on the stone stair below the counting room, at dusk</div>
-        <blockquote>Lamplight swings over Aldous Pell, folded wrong at the foot of the press-stair, his weighmaster&#x27;s chain under one cheek. Maud Quarrender holds the lamp steady and does not look down at him. She looks up the stair at Kit in the counting-room door, and at the page in Kit&#x27;s hand. Behind them the yard gate bangs open. A Hundred Court clerk comes through with a stick of red sealing wax already warming over his candle, calling for whoever keeps the books.</blockquote>
-        <p><b style="font-weight:400;color:var(--fbone)">Its fronts:</b> The Quarrender house · The Hundred Court · The Pell kin</p>
-        <div class="cost">Claude Opus 5.5 on Bedrock · passed the Doorkeeper first time</div>
-      </div>
-      <div class="bk">
-        <div class="set">At the campaign's ceiling</div>
-        <div class="dl"><div>absurdity<span><i style="width:40%"></i></span></div><div>stakes<span><i style="width:50%"></i></span></div><div>danger<span><i style="width:70%"></i></span></div><div>places<span><i style="width:60%"></i></span></div><div>length<span><i style="width:30%"></i></span></div></div>
-        <h3>The Wrenfield Ledger</h3>
-        <div class="where">The Wrenfield press-house in Coldbrook Vale, late afternoon, the day of the will-reading</div>
-        <blockquote>The press-house smells of crushed pears and candle smoke. Forty Wrenfields and Holts stand shoulder to shoulder between the cider vats, and Ferrin Ashby&#x27;s pen is already scratching. At the head table, Registrar Fenwright breaks the seal on Agathe&#x27;s will, reads one line, and sets it down. &quot;Before we proceed,&quot; she says, not looking up, &quot;is there a Miss Kit Marrow present? Your name appears in my file.&quot; Behind Kit, Hesper Wrenfield presses a warm cup of perry into her hand and squeezes her fingers kindly.</blockquote>
-        <p><b style="font-weight:400;color:var(--fbone)">Its fronts:</b> The Probate Office of Coldbrook · The Wrenfield heirs · The Holt orchard families</p>
-        <div class="cost">Claude Opus 5.5 on Bedrock · passed the Doorkeeper first time</div>
-      </div></div>
+    <div class="minis"><button class="mini" type="button" data-open="m-dials"><i>Hyper-personal</i><b>The Tithe Hall Cup</b><em>The Tithe Hall at Brackwater, Ashcombe county. Late afternoon, the harvest reckoning half-read.</em></button><button class="mini" type="button" data-open="m-dials"><i>The campaign's defaults</i><b>The Press-Stair Inquest</b><em>The Quarrender press-house at Lowhallow, on the stone stair below the counting room, at dusk</em></button><button class="mini" type="button" data-open="m-dials"><i>At the campaign's ceiling</i><b>The Wrenfield Ledger</b><em>The Wrenfield press-house in Coldbrook Vale, late afternoon, the day of the will-reading</em></button></div>
+    <div class="acts"><button class="cta open" type="button" data-open="m-dials">Read all three openings</button></div>
   </div>
 </section>
 
@@ -580,11 +627,46 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
   </div>
 </section>
 
-<!-- VII · OPEN THE BOX -->
-<section id="box">
+<!-- VI½ · DM MISCHIEF -->
+<section class="felt mischief" id="mischief">
+  <div class="willo" aria-hidden="true"></div>
+  <div class="wrap split">
+    <div class="copy">
+      <div class="r">VII · THE DM LEANS OVER THE SCREEN <span class="tag coming">Coming in 1.5</span></div>
+      <h2 class="say">Sometimes she just asks how much you weigh.</h2>
+      <p>A real DM is a little bit of a menace. Seren keeps a deck of tricks for it: small, strange, harmless until they aren't. <b>118 collected from real tables, scored one by one, about thirty ship in 1.5.</b></p>
+      <p>The Director decides when. She never explains.</p>
+      <div class="acts"><button class="cta open" type="button" data-open="m-mischief">See her tricks</button></div>
+    </div>
+    <div class="tricks"><div class="trick"><b>The Roll That Means Nothing</b><p>She asks for a d20, nods gravely at the result, writes something down, and moves on. Not a word.</p></div><div class="trick"><b>How Much Do You Weigh?</b><p>Out of nowhere, she asks exactly how much your character weighs. Writes it down. Moves on.</p></div><div class="trick"><b>The Goose Has a Grudge</b><p>One goose. It follows you through town and honks at the worst possible moment, every time.</p></div></div>
+  </div>
+</section>
+
+<!-- VIII · THE CHRONICLE -->
+<section class="chronicle" id="chronicle">
+  <div class="wrap split">
+    <div class="copy">
+      <div class="r">VIII · WHEN IT ENDS <span class="tag coming">Coming in 1.5</span></div>
+      <h2 class="say">At the end, the fog lifts.</h2>
+      <p>Every session already ends with a chronicle: your evening, told back as a story, in your own words. <b>At the end of a campaign she tells you everything:</b> what's still open, who's still out there, what she knew and you didn't, and the roads you never took.</p>
+      <div class="acts"><button class="cta open" type="button" data-open="m-chronicle">Read a chronicle</button></div>
+    </div>
+    <button class="page-teaser" type="button" data-open="m-chronicle">
+      <span class="k">Seren's first campaign · 27 August</span>
+      <span class="pt-t">A Sheep Who Gave Up His Place</span>
+      <span class="pt-p">The four of them had been sitting outside the Weighed Sack for two days, waiting to be paid by a man called Pell, and Grumble was halfway through explaining how one properly records a debt when a sheep came off the west road at speed, wearing a scroll case like a backpack, and stopped. It looked at all four of them. It picked Ser'en. It stamped.</span>
+      <span class="pt-more">Read on</span>
+    </button>
+  </div>
+</section>
+
+<!-- IX · HOW IT WORKS -->
+<section id="how" class="how">
   <div class="wrap">
-    <div class="r">VII · OPEN THE BOX <span class="tag built">Built</span></div>
-    <h2 class="say" style="max-width:28ch">Everything is a file you can read.</h2>
+    <div class="r">IX · HOW IT WORKS</div>
+    <h2 class="say" style="max-width:26ch">For the curious. Open any of them.</h2>
+    <div class="accs">
+      <details class="acc"><summary><span>Everything is a file you can read.</span></summary><div class="acc-in">
     <div class="split" style="margin-top:30px;align-items:start">
       <div class="copy">
         <p>A campaign is a folder. The book is markdown. Every roll and ruling is a line in an append-only log, and <b>a fix is a new line, never an edit.</b></p>
@@ -612,14 +694,8 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
         </div>
       </div>
     </div>
-  </div>
-</section>
-
-<!-- VIII · JUDGES AND DICE -->
-<section id="judges">
-  <div class="wrap">
-    <div class="r">VIII · JUDGES AND DICE</div>
-    <h2 class="say" style="max-width:26ch">The storyteller never marks her own homework.</h2>
+  </div></details>
+      <details class="acc"><summary><span>The storyteller never marks her own homework.</span></summary><div class="acc-in">
     <div class="judges">
       <div class="judge"><span class="who">The Doorkeeper</span><h3>Reads the book before you do.</h3><p>Code, not a model. Every front has a clock, no secret starts known, no borrowed setting, nobody called Seren. It sends the draft back once, then refuses it.</p><span class="tag built">Built</span></div>
       <div class="judge"><span class="who">An outside judge</span><h3>Asks one question.</h3><div class="q">Does this add to what's happening, or distract from it?</div><p>Before the Director fires. It can only say no.</p><span class="tag decided">Decided for 1.5</span></div>
@@ -629,14 +705,8 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
       <div class="row"><span class="id">e001</span><span>INSIGHT  d20=<span class="lit">14</span> +2 = <span class="lit">16</span>  · the clerk will not meet your eye</span><span class="ok">DID</span></div>
       <div class="row"><span class="id">e002</span><span>STEALTH  d20=<span class="lit">6</span> +3 = <span class="lit">9</span>  · the dog in the yard lifts its head</span><span class="no">DID NOT</span></div>
     </div>
-  </div>
-</section>
-
-<!-- IX · UNDER THE TABLE -->
-<section id="stack">
-  <div class="wrap">
-    <div class="r">IX · UNDER THE TABLE</div>
-    <h2 class="say" style="max-width:26ch">What it's built on.</h2>
+  </div></details>
+      <details class="acc"><summary><span>What it's built on.</span></summary><div class="acc-in">
     <div class="stack">
       <div class="layer"><span class="lbl">Engine</span><ul><li>Python 3.11</li><li>one engine for web, MCP and Claude Code</li><li>state changes only through code</li><li>SQLite for accounts</li></ul></div>
       <div class="layer"><span class="lbl">Models</span><ul><li>Amazon Bedrock</li><li>Nova at the table today</li><li>Claude Sonnet and Opus by tier <em>coming</em></li><li>bring your own Anthropic key</li></ul></div>
@@ -646,8 +716,11 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
       <div class="layer"><span class="lbl">Around it</span><ul><li>Parameter Store for secrets</li><li>SES for mail</li><li>S3</li><li>Google sign-in</li><li>Cloudflare tunnel for MCP testing</li></ul></div>
       <div class="layer" style="grid-column:1/-1"><span class="lbl">Content</span><ul><li>SRD 5.2, CC BY 4.0</li><li>fronts from Dungeon World, CC BY 3.0</li><li>clocks from Blades in the Dark, CC BY 3.0</li><li>a Claude Code skill for local play</li></ul></div>
     </div>
+  </div></details>
+    </div>
   </div>
 </section>
+
 
 <!-- X · FOR CREATORS -->
 <section class="makers" id="makers">
@@ -686,6 +759,203 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
 </section>
 </main>
 
+<dialog class="veil wide" id="m-tables" aria-label="The same murder, dealt three times">
+  <button class="x" type="button" data-close aria-label="Close">×</button>
+  <div class="veil-in">
+    <div class="k">Three real deals · Blood and Ink</div>
+    <h2 class="veil-t">Same campaign. Three tables.</h2>
+    <div class="tables" data-deal id="tables">
+      <div class="tline" style="--row:0">
+        <div class="who">Table one<b>Kit Marrow</b></div>
+        <div class="trow">
+          <div class="mc" style="--k:0"><i>You play</i><b>Kit Marrow</b><em>Kept her books since you were twelve</em></div>
+          <div class="mc" style="--k:1"><i>Origin</i><b>Accident</b><em>You were standing in the wrong place</em></div>
+          <div class="mc" style="--k:2"><i>Companion</i><b>The novice</b><em>volunteers</em></div>
+          <div class="mc" style="--k:3"><i>Companion</i><b>The scribe</b><em>writes it down</em></div>
+          <div class="mc her" style="--k:4"><i>Against</i><b>Bureaucrat</b><em>“Your paperwork is not in order”</em></div>
+          <div class="mc" style="--k:5"><i>Told by</i><b>The Archivist</b><em>with footnotes you did not ask for</em></div>
+        </div>
+      </div>
+      <div class="tline" style="--row:1">
+        <div class="who">Table two<b>Ash Varley</b></div>
+        <div class="trow">
+          <div class="mc" style="--k:0"><i>You play</i><b>Ash Varley</b><em>Grew up in her orchard rows</em></div>
+          <div class="mc" style="--k:1"><i>Origin</i><b>Legacy</b><em>It was your mother's, and now it is yours</em></div>
+          <div class="mc" style="--k:2"><i>Companion</i><b>The dog</b><em>knows</em></div>
+          <div class="mc" style="--k:3"><i>Companion</i><b>The scribe</b><em>writes it down</em></div>
+          <div class="mc her" style="--k:4"><i>Against</i><b>Parent</b><em>“I am protecting mine”</em></div>
+          <div class="mc" style="--k:5"><i>Told by</i><b>The Registrar</b><em>a clerk reading out a form</em></div>
+        </div>
+      </div>
+      <div class="tline" style="--row:2">
+        <div class="who">Table three<b>Pip Callow</b></div>
+        <div class="trow">
+          <div class="mc" style="--k:0"><i>You play</i><b>Pip Callow</b><em>Sang at every one of her harvests</em></div>
+          <div class="mc" style="--k:1"><i>Origin</i><b>Legacy</b><em>It was your mother's, and now it is yours</em></div>
+          <div class="mc" style="--k:2"><i>Companion</i><b>The debtor</b><em>pays their way</em></div>
+          <div class="mc" style="--k:3"><i>Companion</i><b>The scribe</b><em>writes it down</em></div>
+          <div class="mc her" style="--k:4"><i>Against</i><b>Schemer</b><em>You meet the plan before the person</em></div>
+          <div class="mc" style="--k:5"><i>Told by</i><b>The Archivist</b><em>with footnotes you did not ask for</em></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</dialog>
+
+<dialog class="veil" id="m-book" aria-label="A real book, written on Opus">
+  <button class="x" type="button" data-close aria-label="Close">×</button>
+  <div class="veil-in">
+    <div class="k">A real book · Claude Opus 5.5 · 26 Nov</div>
+    <div class="mdbook"><h2>Blood and Ink — your book</h2>
+<p>You are Wenna Hale, and you have come home to bury the woman who raised you. Agnes Tull kept the cider press at Thornby. Two mornings ago she was found at the bottom of her own pressing pit. Her head was broken on the stone. The county says she fell, in drink. Tonight is her wake. Tomorrow at noon she goes into the ground, and after that nobody will ask again.</p>
+<p>You are standing in Agnes's house by the press at Thornby, in the Sallow. It is an hour after dark. The parlour is full.</p>
+<hr>
+<h3>You</h3>
+<p><b>Wenna Hale. Cleric.</b> You took orders, then came home anyway.</p>
+<ul><li><b>Where you came from.</b> The streets of Saltgate. Before that, nothing. Nobody ever told you where you came from before Saltgate. You stopped asking.</li><li><b>Who took you in.</b> Agnes Tull, eleven years ago. She did not have to. She gave you a bed by the press, work in the yard and a place at her table. She never asked for it back.</li><li><b>What came after.</b> You left the parish to take orders. The parish knows you. It remembers that you left, and it remembers why. Half the town confessed to you once. Agnes never did.</li><li><b>What you know.</b> Agnes never drank. You know it. Linnet knows it. Half the Sallow knows it.</li><li><b>What you suspect.</b> You think you have Ashby blood. It is a suspicion, nothing more. Bryony Ashby looks at you too long. An old cousin at a harvest table once said you had the Ashby chin. Somebody at this wake is looking at you now.</li></ul>
+<h4>What you can do, in plain words</h4>
+<p>| | | |---|---| | <b>Mend</b> | Close wounds with a touch or a word. Not death. Everything short of it. | | <b>Bless</b> | Steady a friend's hand, or your own, when it matters. | | <b>Hear the truth</b> | Make a place where no one can lie to you. They can still stay silent. | | <b>Know a body</b> | Sense poison or sickness in food, drink or a corpse. Keep a body from rotting for days. | | <b>Turn the dead</b> | Drive back what should be lying still. | | <b>Be the priest</b> | People still tell you things. Some will not want to. They will do it anyway. |</p>
+<hr>
+<h3>Your people</h3>
+<p><b>Linnet Hobb.</b> Agnes's clerk. She keeps the press ledger and knows it page by page: every orchard's fruit and every family's debt. Nobody in the Sallow knows its accounts better. Tonight she has the ledger under her arm. She is writing down what is said at the wake. She writes everything down. She always has.</p>
+<p><b>Moll Dacre.</b> Cousin to the Ashbys and to the Dacres. She owes the press three years' pressing and came to the wake anyway. She pays her way in gossip, errands and favours. She knows which door every family uses at night. She walked past the press the night Agnes died and saw a light in the yard. She told you that much.</p>
+<hr>
+<h3>The Sallow, and how it works</h3>
+<ul><li><b>Five families.</b> They have married each other for two hundred years. Everyone is a cousin of someone. The Ashbys and the Dacres are two of them. You belong to none of them.</li><li><b>Fruit is money.</b> The Sallow is quiet and rich, and the riches grow on trees. Every family owns orchards, and nearly every family owns a press.</li><li><b>The free press.</b> Agnes's press at Thornby is the only one in the county that no family owns. Every orchard brings her its fruit. Its debts go into her ledger. A family that presses at Thornby owes Thornby, not a rival.</li><li><b>Credit and bonds.</b> Little is paid in coin. Debts are written down and carried for years. A debt can be called. When a bailiff brings the paper, it is due.</li><li><b>Law.</b> The county decides how a person died. The county has decided. A magistrate sits over the Sallow, and his word stands.</li><li><b>Violence is scandal.</b> Nobody draws steel at a wake. A struck blow is talked about for a generation. A ruined name lasts longer than a broken arm. Rumour, marriage, money and paper do the work here.</li><li><b>The burying.</b> Noon tomorrow, in the churchyard. Once the earth closes, the matter is closed.</li></ul>
+<hr>
+<h3>Who's who</h3>
+<p>| who | what people say | |---|---| | <b>Agnes Tull</b> | Kept the free press at Thornby. Fair weights, fair ledger. Took in a Saltgate stray. Never drank. Now the county says she fell in drink. | | <b>Bryony Ashby</b> | Of the Ashbys. Stands by the hearth tonight. People say she has always watched you, and that she has never said why. | | <b>Linnet Hobb</b> | Agnes's clerk. Knows every debt in the Sallow. Writes everything down. | | <b>Moll Dacre</b> | Everybody's cousin. Owes everybody. Hears everything. Comes and goes by the back doors. | | <b>Ha'penny</b> | Agnes's. Went where she went. Tonight he is under the table and will not stop shaking. | | <b>The bailiff</b> | A man in a bailiff's coat. He has followed Moll from room to room tonight. Nobody at the wake has said whose man he is. |</p>
+<hr>
+<h3>Places you know</h3>
+<p>Go anywhere. These are the places you already know your way around.</p>
+<p>| place | what is there | |---|---| | <b>The parlour</b> | Agnes in her coffin on the table. Candles. Cider nobody drinks. The wake. | | <b>The press yard</b> | The cider press itself, the carts, the gate onto the lane. Moll saw a light here the night Agnes died. | | <b>The pressing pit</b> | Stone-floored, below the press. Where Agnes was found. You played on its edge as a girl. She told you not to. | | <b>The cellars under the press</b> | Barrels, old vats, passages older than the house. You know the first rooms. Agnes kept you out of the rest. | | <b>The lane at Thornby</b> | Runs past the press to the village and the orchards beyond. Every family's carts use it. | | <b>Thornby church and churchyard</b> | Your old parish. The confessions you heard. The grave already dug for noon. | | <b>Saltgate</b> | The streets you came from. Far enough that nobody here goes there. Near enough to reach by morning. |</p>
+<hr>
+<h3>Tonight</h3>
+<p>You came home for a burying. You find a verdict already written, and a grave already dug. Agnes never drank, and the county says she fell drunk. Nobody here wants it asked. You have until noon.</p>
+<p>The house is full of cousins. They all knew her. They all owed her. One of them is looking at you too long. Linnet holds the ledger and writes. Moll is in the doorway with a bailiff behind her. He has something for you.</p>
+<blockquote>The parlour. Agnes Tull on the table in her coffin. Long sleeves, buttoned to the wrist. Candles. Cider nobody drinks. Bryony Ashby by the hearth, eyes on you. Linnet Hobb at the window with the ledger under her arm. Moll Dacre in the doorway, and behind her a man in a bailiff's coat. He holds out a folded paper sealed in black wax: your bond, called, due at noon. Under the table, Ha'penny will not stop shaking.</blockquote>
+<hr>
+<h3>How this table plays</h3>
+<ul><li><b>Who tells it.</b> The dungeon master tells it like an entry in the parish book. Short lines. Facts. Names and times. You say what Wenna does and says. Ask anyone anything. Go anywhere.</li><li><b>Dice.</b> You roll only when the outcome is uncertain. If you ask a cousin where she was, she answers, or she does not. If you try to make her tell the truth, you roll.</li><li><b>Stakes.</b> This is about one death, one house, one press and your own name. The county will not burn. Your life here might.</li><li><b>Danger.</b> Real. The Sallow does not brawl, but someone here has already killed once. The pit and the cellars under the press are not safe. Push the wrong person and the answer will not be a raised voice.</li><li><b>Death.</b> It can happen. A careless step in the dark, or the wrong door at the wrong hour, can end you. The dungeon master will not save you from a bad choice. Choose with your eyes open.</li><li><b>The clock.</b> The wake tonight. The bond and the burying at noon. Time passes when you spend it.</li><li>Everything in this book is true. The rest is there to find.</li></ul></div>
+    <p class="veil-note">One real weave of Blood and Ink: Wenna Hale's hand. It passed the Doorkeeper and the leak checks first time. Everything in it is something the player may know.</p>
+  </div>
+</dialog>
+
+<dialog class="veil wide" id="m-dials" aria-label="One hand, three settings">
+  <button class="x" type="button" data-close aria-label="Close">×</button>
+  <div class="veil-in">
+    <div class="k">Kit Marrow's hand · three settings · the real teller</div>
+    <h2 class="veil-t">One hand. Three stories.</h2>
+    <div class="books"><div class="bk">
+        <div class="set">Hyper-personal</div>
+        <div class="dl"><div>absurdity<span><i style="width:10%"></i></span></div><div>stakes<span><i style="width:0%"></i></span></div><div>danger<span><i style="width:30%"></i></span></div><div>places<span><i style="width:0%"></i></span></div><div>length<span><i style="width:0%"></i></span></div></div>
+        <h3>The Tithe Hall Cup</h3>
+        <div class="where">The Tithe Hall at Brackwater, Ashcombe county. Late afternoon, the harvest reckoning half-read.</div>
+        <blockquote>Wenna Tregarth&#x27;s cheek rests on the reckoning ledger, and perry runs down the page and blurs the Penrose column. Registrar Fenmore has not stood up. He is turning his own full cup a quarter-turn on its saucer and saying, to nobody in particular, that the counting room will be sealed within the hour. Across the table Dunstan Hollin already has his hand on the physician&#x27;s shoulder. Kit&#x27;s coat is heavy on one side: the daybook, still there. Beside her, Tamsin Rook&#x27;s pen keeps moving. [Archivist&#x27;s note: the tray Kit carried had four cups. See fact 1. The scribe recorded their order. See companions.]</blockquote>
+        <p><b style="font-weight:400;color:var(--fbone)">Its fronts:</b> The Probate Office · The Hollin cousins · The Ashcombe orchard families</p>
+        <div class="cost">Claude Opus 5.5 on Bedrock · passed the Doorkeeper first time</div>
+      </div>
+      <div class="bk">
+        <div class="set">The campaign's defaults</div>
+        <div class="dl"><div>absurdity<span><i style="width:20%"></i></span></div><div>stakes<span><i style="width:30%"></i></span></div><div>danger<span><i style="width:60%"></i></span></div><div>places<span><i style="width:20%"></i></span></div><div>length<span><i style="width:0%"></i></span></div></div>
+        <h3>The Press-Stair Inquest</h3>
+        <div class="where">The Quarrender press-house at Lowhallow, on the stone stair below the counting room, at dusk</div>
+        <blockquote>Lamplight swings over Aldous Pell, folded wrong at the foot of the press-stair, his weighmaster&#x27;s chain under one cheek. Maud Quarrender holds the lamp steady and does not look down at him. She looks up the stair at Kit in the counting-room door, and at the page in Kit&#x27;s hand. Behind them the yard gate bangs open. A Hundred Court clerk comes through with a stick of red sealing wax already warming over his candle, calling for whoever keeps the books.</blockquote>
+        <p><b style="font-weight:400;color:var(--fbone)">Its fronts:</b> The Quarrender house · The Hundred Court · The Pell kin</p>
+        <div class="cost">Claude Opus 5.5 on Bedrock · passed the Doorkeeper first time</div>
+      </div>
+      <div class="bk">
+        <div class="set">At the campaign's ceiling</div>
+        <div class="dl"><div>absurdity<span><i style="width:40%"></i></span></div><div>stakes<span><i style="width:50%"></i></span></div><div>danger<span><i style="width:70%"></i></span></div><div>places<span><i style="width:60%"></i></span></div><div>length<span><i style="width:30%"></i></span></div></div>
+        <h3>The Wrenfield Ledger</h3>
+        <div class="where">The Wrenfield press-house in Coldbrook Vale, late afternoon, the day of the will-reading</div>
+        <blockquote>The press-house smells of crushed pears and candle smoke. Forty Wrenfields and Holts stand shoulder to shoulder between the cider vats, and Ferrin Ashby&#x27;s pen is already scratching. At the head table, Registrar Fenwright breaks the seal on Agathe&#x27;s will, reads one line, and sets it down. &quot;Before we proceed,&quot; she says, not looking up, &quot;is there a Miss Kit Marrow present? Your name appears in my file.&quot; Behind Kit, Hesper Wrenfield presses a warm cup of perry into her hand and squeezes her fingers kindly.</blockquote>
+        <p><b style="font-weight:400;color:var(--fbone)">Its fronts:</b> The Probate Office of Coldbrook · The Wrenfield heirs · The Holt orchard families</p>
+        <div class="cost">Claude Opus 5.5 on Bedrock · passed the Doorkeeper first time</div>
+      </div></div>
+
+  </div>
+</dialog>
+
+<dialog class="veil wide" id="m-mischief" aria-label="The DM's tricks">
+  <button class="x" type="button" data-close aria-label="Close">×</button>
+  <div class="veil-in">
+    <div class="k">DM mischief · a few from the deck</div>
+    <h2 class="veil-t">She never explains.</h2>
+    <div class="tricks all"><div class="trick"><b>The Roll That Means Nothing</b><p>She asks for a d20, nods gravely at the result, writes something down, and moves on. Not a word.</p></div><div class="trick"><b>How Much Do You Weigh?</b><p>Out of nowhere, she asks exactly how much your character weighs. Writes it down. Moves on.</p></div><div class="trick"><b>The Goose Has a Grudge</b><p>One goose. It follows you through town and honks at the worst possible moment, every time.</p></div><div class="trick"><b>The Unexplained Cow</b><p>A cow is standing in the road. No spell, tracker or interrogation will ever say why.</p></div><div class="trick"><b>The Sword With a Sense of Humour</b><p>A talking blade that only works when it finds the situation funny. It has opinions about comedy.</p></div><div class="trick"><b>The Pickle Dependency</b><p>A merchant&#x27;s pickles give you a full night&#x27;s rest. You come to rely on them. He comes back with plain ones, at a premium.</p></div><div class="trick"><b>Haunted House Wants an Exorcist</b><p>A mimic disguised as a cottage hires you to clear the ghosts out of it. From the inside.</p></div><div class="trick"><b>The Mystery Box Skips Fourteen Months</b><p>A wild effect throws you a year into the future mid-fight. Every villain kept working while you were gone.</p></div><div class="trick"><b>The Wand Keeps Receipts</b><p>A cursed wand makes one enemy a day vanish. You come to rely on it. A year later, she rolls to see how many come back.</p></div></div>
+    <p class="veil-note">Collected from real tables and retold. Each one is scored for whether it adds to what's happening; the ones that only distract stay in the box.</p>
+  </div>
+</dialog>
+
+<dialog class="veil" id="m-chronicle" aria-label="The chronicle">
+  <button class="x" type="button" data-close aria-label="Close">×</button>
+  <div class="veil-in">
+      <div class="chr">
+        <div class="k">The chronicle · campaign end</div>
+        <h2 class="chr-t">A Sheep Who Gave Up His Place</h2>
+        <p class="chr-dek">Seren's first campaign, 27 August, told back at the end. One session, one morning, one sheep. Everything here is from the record.</p>
+
+        <h3 class="chr-h"><span>I</span>The story</h3>
+        <div class="chr-story">
+          <p>The four of them had been sitting outside the Weighed Sack for two days, waiting to be paid by a man called Pell, and Grumble was halfway through explaining how one properly records a debt when a sheep came off the west road at speed, wearing a scroll case like a backpack, and stopped. It looked at all four of them. It picked Ser'en. It stamped.</p>
+          <p>Ser'en knelt down and asked the sheep if it was all right. Not the scroll. Not a spell. The sheep. It tried to answer, heard itself say <i>baa</i>, and then calmed down against its own will because she was standing three feet away. It noticed. She did not. She spent a spell to talk to it, which was when Grumble mentioned, mildly, that he could have done that for free, twice a day, and nobody had asked.</p>
+          <p>The sheep was Finethir Shinebright, a professor of Applied Transmutation, who had been a sheep for two years and change and had dictated his letter one letter at a time onto a slate, over two evenings, to a person signing themselves M, who did not believe him at first. Somebody should write M a thank-you card.</p>
+          <p>Then came Guz and Pettil, the most polite kidnappers in the county, unarmed, with a wolf that sat down and watched the conversation instead of the sheep. Ser'en called Guz a giant, then <i>big boi</i>, and both of those landed somewhere and were kept. When she said a sheep was vastly inferior to a man, Guz said <i>"I wouldn't say that"</i> before the rest of his sentence had finished being built, and would not explain. Grumble tried to buy them off and failed, and the failure shook loose the truth: Guz had been paid six silver for the entire job and had spent one buying a carter a drink. He left the other five on a bench. Pettil wanted it in writing, twice, that he had not taken the sheep.</p>
+          <p>On the road Ser'en gave Guz her goodberries. He didn't eat them. He asked whether they worked on <i>any shape of thing</i>, and put them away for somebody else. Grumble entered them in the book as a debt Guz owed the party, and Guz's ears went red.</p>
+          <p>The villain's lair was not a tower. It was a cold, handsome, unswept house with three oversized kennels and a pair of men's boots placed neatly outside one of them. Noke opened his own front door, because there was nobody left to do it, holding a wand cracked end to end that went off by itself when he adjusted his grip. Ser'en read him closely and decided, firmly, that he was harmless. She was wrong in a very specific way.</p>
+          <p>Upstairs was Tessa Marrick: housekeeper, nine years in the house, fourteen months a bear, and four months not speaking. Ser'en left her shield and her staff on the landing and walked in carrying nothing but a sealed vial of moonwell water, and the bear went still, and Noke, who had been measuring that woman twice a day for four months, said <i>"What did you do. What ARE you?"</i> Under the straw, cut a quarter-inch into the oak floor, was the roll of the household: nine names, who had agreed, who had not, who had never been asked. At the wall, gone over until it nearly went through: <b>I SAID NO.</b></p>
+          <p>Then Grumble worked out that Tessa could write. She had claws and a floor. She'd been able to the whole time. The tap code everyone had been so proud of was never necessary. She wrote, among other things, <b>DONT LEAVE HIM ALONE WITH IT</b>, and then, unasked, <b>IS IT OCTOBER</b>. She took custody of the wand by lying on it.</p>
+          <p>In the morning they told all seven the complete truth, and every one of them formally refused consent, to keep their saving throw, and then stood still and let it happen anyway. Grumble wrote down nine refusals with reasons, because of course he did. Shinebright, asked if he'd like to go first, said <i>"Them first,"</i> and was irritable about being asked twice. One man got his body back. One survived a botched blast on paperwork alone. The wand broke. Shinebright did not refuse and was not restored. He gave up his place.</p>
+          <p>Nobody died. Nobody screamed forever. Noke did not run, and Tessa stood over him in the yard and did not touch him and did not leave. On the road out, Grumble spent his last spell finishing the professor's cut-off sentence, <i>"the one thing nobody has ever done is let me look at it"</i>, said it as a technical complaint, and did not notice he had described his own career.</p>
+        </div>
+
+        <h3 class="chr-h"><span>II</span>Still open</h3>
+        <p class="chr-sub">The promises and threads left on the table. A completionist's to-do list.</p>
+        <ul class="chr-list">
+          <li><b>A gift for Pell.</b> Promised in public, written down, never delivered. Pell hid for two days from a debt he could afford, and is still owed.</li>
+          <li><b>Six people in the wrong shape.</b> The wand is gone. A ninth-level caster is the only road left, and none is within reach.</li>
+          <li><b>Marta Dunn is a wolf,</b> and her brother Pieter, the one success, will not leave the yard without her.</li>
+          <li><b>Who owns the house now,</b> with its master a sheep and its villain sitting in the yard.</li>
+          <li><b>The goodberries.</b> Guz kept them for someone. He never said who.</li>
+          <li><b>Little Bee.</b> Guz wouldn't give a proper name, and nobody got a look.</li>
+          <li><b>PB.</b> Untouched, uninvented, unexplained. Seren doesn't know either.</li>
+        </ul>
+
+        <h3 class="chr-h"><span>III</span>Still out there</h3>
+        <p class="chr-sub">Who wasn't beaten, and what they're doing now.</p>
+        <ul class="chr-list">
+          <li><b>Ahmed Noke.</b> Alive, unresolved, in his own yard, with the pieces of the wand in his lap. The module treats him as a plot device. He outlived the plot. Nobody got the experience points for him, because nobody resolved him.</li>
+          <li><b>Pettil Wynne.</b> Eleven months in the job, most of them spent rehearsing what he'll say to a magistrate. The most dangerous person in this story, and he never once raised his voice.</li>
+        </ul>
+
+        <h3 class="chr-h"><span>IV</span>What Seren knew</h3>
+        <p class="chr-sub">The fog lifts once, here, at the end.</p>
+        <ul class="chr-list know">
+          <li><b>The sheep calmed down because of you, and knew it.</b> From the first minute in the road. You never noticed.</li>
+          <li><b>Guz and Pettil were next.</b> The roll in the oak floor had them both marked NOT DONE. That's why Pettil wanted it in writing, and why Guz wouldn't call an animal inferior.</li>
+          <li><b>"Harmless" was the wrong read.</b> Tessa had heard him sit in that study and say he would do it again.</li>
+          <li><b>Your party doesn't know what the vial is.</b> You told Tessa. A bear knows something about you that your friends don't.</li>
+          <li><b>The guards remember being people, unevenly.</b> Seren held that one ready for if anyone was cruel to one of them. Nobody was.</li>
+          <li><b>Aven found all five missing in nine hours,</b> because somebody asked him instead of telling him to heel. It was the first time anyone had.</li>
+        </ul>
+
+        <h3 class="chr-h"><span>V</span>Roads not taken</h3>
+        <p class="chr-sub">What was waiting that this party never met. Another run might.</p>
+        <div class="chr-roads">
+          <div><span>01</span><h4>The bed dragon.</h4><p>Cornered, Noke would have built something absurd and dangerous out of furniture. You took him out of the house by asking nicely, so the comic set piece and the hardest fight just stayed in the cupboard.</p></div>
+          <div><span>02</span><h4>Keeping the wand.</h4><p>The module expected you to take it: a fight, a theft while he slept, a trick, a trade. You let a bear lie on it instead. A party that pocketed it would have learned what a cracked wand does in a backpack.</p></div>
+          <div><span>03</span><h4>Meeting M.</h4><p>The person who took down a sheep's dictation, one letter at a time, over two evenings, and believed him. Never met. Possibly the best character in the campaign.</p></div>
+        </div>
+
+        <p class="chr-seal">Nobody died. Nobody screamed forever.<span>The chronicle · Seren</span></p>
+        <p class="chr-note">Retold from Seren's play record of 27 August. The adventure is <i>A Wild Sheep Chase</i> by R.M. Jansen-Parkes (Winghorn Press, 2016). It isn't bundled with Seren.</p>
+      </div>
+
+  </div>
+</dialog>
+
+
 <footer>
   <div class="wrap">
     <span>SEREN · an <a href="https://unstuck-games.com/">Unstuck Games</a> build</span>
@@ -697,11 +967,27 @@ footer a{color:var(--bone-2)} footer a:hover{color:var(--bone)}
 (function(){
   var quiet = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  // the dealt moment: section I's three tables are dealt onto the felt the first time it's on screen
-  var t = document.getElementById('tables');
-  if (!quiet) new IntersectionObserver(function(es, o){ es.forEach(function(e){
-    if (e.isIntersecting){ t.classList.add('dealing'); o.disconnect(); }
-  }); }, { threshold: .35 }).observe(t);
+  // the veils: any [data-open] button opens its dialog; Esc, the ×, or a click outside closes it
+  function openVeil(id){
+    var d = document.getElementById(id); if (!d) return;
+    d.showModal(); document.body.classList.add('veiled'); d.scrollTop = 0;
+    var t = d.querySelector('[data-deal]');
+    if (t && !quiet){ t.classList.remove('dealing'); void t.offsetWidth; t.classList.add('dealing'); }
+  }
+  document.querySelectorAll('[data-open]').forEach(function(b){
+    b.addEventListener('click', function(){ openVeil(b.getAttribute('data-open')); });
+  });
+  document.querySelectorAll('dialog.veil').forEach(function(d){
+    d.addEventListener('close', function(){ document.body.classList.remove('veiled'); });
+    d.addEventListener('click', function(e){ if (e.target === d) d.close(); });
+    d.querySelector('[data-close]').addEventListener('click', function(){ d.close(); });
+  });
+
+  // VII: a will-o'-wisp crosses the mischief beat the first time it's on screen
+  var m = document.getElementById('mischief'), w = m && m.querySelector('.willo');
+  if (w && !quiet) new IntersectionObserver(function(es, o){ es.forEach(function(e){
+    if (e.isIntersecting){ w.classList.add('go'); o.disconnect(); }
+  }); }, { threshold: .4 }).observe(m);
 
   // V: level a character up and down, one level at a time (an illustration of the decided shape)
   var lv = 10, out = document.getElementById('lvl'), pips = document.getElementById('pips'), ch = document.getElementById('changes');
