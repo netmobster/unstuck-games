@@ -1,5 +1,29 @@
 # Decisions — Unstuck Games
 
+## 2026-11-27 — the /next session — Campaign, character, fortune teller
+
+**The order is campaign, then character, then the fortune teller** (Jay). After that come the dials,
+the Doorkeeper and the book.
+- **Campaign:** the shelf.
+- **Character:** "Who walks in?", its own screen. It shows the shared six at that campaign's level (3 or
+  5), with Bring your own (the D&D Beyond link and the ladder) as the last tile. Picker:
+  https://claude.ai/artifact/QoqFWVcuzBCoWircKgj5qz.
+- **Fortune teller:** she deals the rest of the hand. The `pc` slot leaves her deck, and the chosen
+  character sits on the table face up as "you".
+
+Why this order:
+- The campaign sets the level, so the picker shows the right builds and the ladder has a target.
+- A character is the biggest choice and gets the full view.
+- The fortune teller's deal stays fast.
+
+**Returning players skip the character screen** ("Walk in as Sable again, or someone new?").
+
+**Builds rules-checked against the SRD 5.2 text on 27 Nov** (SEREN-AI `a7673fc`). Five fixes:
+- Ellery has a dagger, not a rapier (bards get simple weapons), and gained the Lore skill he was missing.
+- Sable has two weapon masteries, not three.
+- Brann gained a ninth prepared spell at level 5, and his Stone's Endurance uses now equal his proficiency bonus.
+- Corwin's Channel Divinity uses are stated.
+
 ## 2026-11-27 — the /next session — Five shared characters, not five per campaign
 
 **Who-you-play is five shared characters who can walk into any campaign** (Jay: "Five shared"). This

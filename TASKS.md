@@ -81,9 +81,11 @@ Data, in the private SEREN-AI repo (moved off this public one 25 Nov): `librarie
       off min-maxed builds. Each gets its own Seren-style picker (yes / no / edit on every suggested change).
       **27 Nov:** six approved (see `DECISIONS.md`). Card art comes from GPT, saved in SEREN-AI at
       `characters/shared/art/`. **Art done 27 Nov:** all six portraits (the matched night-city set) and all six
-      in situ, every one checked and kept (SEREN-AI `9a6b13b`). **Next:** write each of the six into
-      SEREN-AI with the approved changes and SRD builds at level 5 and level 3. Brann's personality still has
-      to be written.
+      in situ, every one checked and kept (SEREN-AI `9a6b13b`). **Write-ups and builds done and rules-checked**
+      (`characters/shared/shared-six.json`, `a7673fc`). The picker page is
+      [Who You Play](https://claude.ai/artifact/QoqFWVcuzBCoWircKgj5qz). **Order decided:** campaign, character,
+      fortune teller (see `DECISIONS.md`). **Still to do:** take the `pc` deck out of Blood and Ink's
+      `deck.json`, and build the character screen into the app.
 - [ ] **1. Blood and Ink.** Tighten it. Its `pc` slot deals the shared five. Lift it out of `LIVE/` without
       Jay's sessions, add the SRD 5.2.1 attribution, and design the first dungeon under the press.
 - [ ] **2. Quire.** Today it's a card and art only. Write its deck (origins, companions, personas, 2–3

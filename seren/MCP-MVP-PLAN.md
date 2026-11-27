@@ -12,9 +12,11 @@ in your hands. The smallest MCP server that carries that, and nothing more.
 
 1. Install the Seren MCP and sign up or log in, in either order.
 2. In chat, Claude calls one tool, and the Seren app opens full screen, MINDER-style.
-3. In the app: the shelf of three campaigns → choose one → the deal (cards face down on the
-   campaign's own backs, flipped one at a time; locked ones in chains, hidden ones sealed) → the
-   dials → the book.
+3. In the app: **campaign, character, fortune teller** (decided 27 Nov). The shelf of three campaigns
+   → choose one → **Who walks in?** (the shared six at that campaign's level, or bring your own from
+   D&D Beyond and take the ladder) → the fortune teller deals the rest (cards face down on the
+   campaign's own backs, flipped one at a time; locked ones in chains, hidden ones sealed; your
+   character face up as "you") → the dials → the book.
 4. The book is handed to the chat. Milestone one ends here; play is the next milestone.
 
 ## Ground rules
