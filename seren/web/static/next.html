@@ -451,6 +451,15 @@ body.veiled{overflow:hidden}
 .acc-in .split{margin-top:0!important}
 .how{min-height:auto!important}
 
+
+/* IV · the sums: real numbers from Blood and Ink's deck */
+.sums{display:grid;grid-template-columns:1fr auto 1fr auto 1.3fr;gap:16px;align-items:start;margin-top:34px;padding-top:26px;border-top:1px solid rgba(201,164,74,.25)}
+.sums b{display:block;font:400 clamp(34px,4vw,54px)/1 var(--deco);color:var(--gilt-hi);font-variant-numeric:tabular-nums}
+.sums .big b{color:#ffd98a;text-shadow:0 0 30px rgba(227,192,106,.35)}
+.sums span{display:block;margin-top:8px;font:700 10px/1.4 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt)}
+.sums em{display:block;margin-top:8px;font:italic 14px/1.45 var(--fell);color:#aab3c9}
+.sums .x{font:400 34px/1 var(--fell);color:var(--mute);padding-top:6px}
+@media (max-width:900px){.sums{grid-template-columns:1fr}.sums .x{display:none}}
 </style>
 </head>
 <body>
@@ -573,6 +582,13 @@ body.veiled{overflow:hidden}
       <div class="copy"><p>Five dials, and none of them picks a card. They tell the teller how to write what you were dealt: how absurd, how big the stakes, how dangerous, people or places, and how long the clocks run. <b>Kit Marrow's hand from table one, written three times by the real teller:</b> a reckoning at one long table, an inquest on a press-house stair, forty mourners at a will-reading.</p></div>
     </div>
     <div class="minis"><button class="mini" type="button" data-open="m-dials"><i>Hyper-personal</i><b>The Tithe Hall Cup</b><em>The Tithe Hall at Brackwater, Ashcombe county. Late afternoon, the harvest reckoning half-read.</em></button><button class="mini" type="button" data-open="m-dials"><i>The campaign's defaults</i><b>The Press-Stair Inquest</b><em>The Quarrender press-house at Lowhallow, on the stone stair below the counting room, at dusk</em></button><button class="mini" type="button" data-open="m-dials"><i>At the campaign's ceiling</i><b>The Wrenfield Ledger</b><em>The Wrenfield press-house in Coldbrook Vale, late afternoon, the day of the will-reading</em></button></div>
+    <div class="sums" id="sums">
+      <div><b data-n="1440">1,440</b><span>hands, from one campaign</span><em>5 characters × 4 origins × 3 of her cards × 6 pairs of companions × 4 tellers</em></div>
+      <div class="x">×</div>
+      <div><b data-n="6720">6,720</b><span>ways to set the dials</span><em>five dials, in steps of ten, inside the campaign's range</em></div>
+      <div class="x">=</div>
+      <div class="big"><b data-n="9676800">9,676,800</b><span>different books, one campaign</span><em>Move the sliders one notch at a time and it's 404,265,241,440. She has never written the same book twice anyway.</em></div>
+    </div>
     <div class="acts"><button class="cta open" type="button" data-open="m-dials">Read all three openings</button></div>
   </div>
 </section>
@@ -983,6 +999,17 @@ body.veiled{overflow:hidden}
     d.querySelector('[data-close]').addEventListener('click', function(){ d.close(); });
   });
 
+  // IV: the sums count up the first time they're on screen
+  var sm = document.getElementById('sums');
+  if (sm && !quiet) new IntersectionObserver(function(es, o){ es.forEach(function(e){
+    if (!e.isIntersecting) return; o.disconnect();
+    sm.querySelectorAll('[data-n]').forEach(function(b, i){
+      var n = +b.dataset.n, t0 = null, dur = 1400 + i * 500;
+      function step(t){ if (!t0) t0 = t; var k = Math.min(1, (t - t0) / dur); k = 1 - Math.pow(1 - k, 3);
+        b.textContent = Math.round(n * k).toLocaleString('en-US'); if (k < 1) requestAnimationFrame(step); }
+      requestAnimationFrame(step);
+    });
+  }); }, { threshold: .5 }).observe(sm);
   // VII: a will-o'-wisp crosses the mischief beat the first time it's on screen
   var m = document.getElementById('mischief'), w = m && m.querySelector('.willo');
   if (w && !quiet) new IntersectionObserver(function(es, o){ es.forEach(function(e){
