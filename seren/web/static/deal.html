@@ -1194,7 +1194,11 @@ function weaveIt(c){
     var i=0;clearInterval(TL.type);TL.type=setInterval(function(){now.textContent=line.slice(0,++i);if(i>=line.length)clearInterval(TL.type)},18);
   }
   function next(){if(TL.q.length)say(TL.q.shift())}
-  function stage(k){if(!TL.got||TL.said[k]||!TL.got[k])return;TL.said[k]=1;say(TL.got[k]);clearInterval(TL.timer);TL.timer=setInterval(next,9000)}
+  function stage(k){if(!TL.got||TL.said[k]||!TL.got[k])return;TL.said[k]=1;
+    // Once it passes the Doorkeeper she's writing the book: what she hadn't said about the hand is stale
+    // (27 Nov, serenseven.mp4: the dials line came after "It passes"). Keep only her last work line.
+    if(k==='book')TL.q=TL.q.slice(-1);
+    say(TL.got[k]);clearInterval(TL.timer);TL.timer=setInterval(next,9000)}
   if(TL.live){say('Sit, sit. Let me look at what you’ve laid…');TL.timer=setInterval(next,9000)}
   window.serenWeaveProgress=function(s){
     var log=s.log||[],ol=$('wlog');if(!ol)return;
