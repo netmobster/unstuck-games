@@ -1,13 +1,28 @@
 # A DM who knows you
 
 **Spec draft, 27 Nov 2026.** Jay's picks are in `DECISIONS.md` (27 Nov, "A DM who knows you"), and the report
-is https://claude.ai/artifact/9BYt1GAh9p3KbTJVsG3YDZ. **Status: spec only.** It's built after the Director
-and player accounts, because it needs both.
+is https://claude.ai/artifact/9BYt1GAh9p3KbTJVsG3YDZ. **Status: partly in 1.5** (Jay's second pass, 27 Nov): player accounts, moments, profile updates, the
+container and the welcome ship in 1.5. The Director's adaptive draw waits for the Director.
 
 ## What it is
 Seren keeps a profile of how the player plays, and the DM adapts what it deals. The player sees the
 profile as the fortune teller's read of them and corrects it out loud, every time they come back. It
 isn't a different product: it's the difference between a module and a DM who has played with you before.
+
+## What ships in 1.5 (Jay, 27 Nov)
+- **Player accounts:** registration and login.
+- **The Seren container** in the player's selfActual vault, created at registration. It holds the **style
+  layer**, **Seren preferences** (the dials they like, DM persona, opt-outs such as cruel and romance) and
+  **Seren moments**. Everything later lands here.
+- **Moments:** at book close, a pass over the log writes the campaign's moments (the source of the door's
+  "what happened last session").
+- **Profile updates:** the style claims written at book close, and the door's yes / no / not tonight.
+- **The welcome.** After registration and login, a new player meets her before anything else:
+  *"Oh, you're new here. What should I call you?"* It's in the teller's own UI, the one the weave uses: her
+  current line types out, and the one before it fades above (`.tl-now` / `.tl-prev`, `say()`, in
+  `seren/web/static/deal.html`). The name they give is the first thing written to the container. A
+  returning player gets the door below instead.
+- **Waits for the Director:** the adaptive draw weights and the stretch.
 
 ## The two layers
 
@@ -66,7 +81,7 @@ If the player is already a selfActual user, she offers once, at the door, to **r
 - **The persona.** She recommends a DM persona from style. The player's choice is final.
 
 ## Where it lands
-- **Vault:** a Seren container (feature data kept together), each claim carrying its evidence and
+- **Vault:** the Seren container (feature data kept together: style, preferences, moments), each claim carrying its evidence and
   provenance (which campaign, when, confirmed or not), **written once at book close**, never in real time.
   The player can read and delete it from their vault.
 - **The chronicle:** a last page, "How you played": the read this campaign, what changed, and the stretch cards.

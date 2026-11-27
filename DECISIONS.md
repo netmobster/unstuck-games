@@ -1,5 +1,17 @@
 # Decisions — Unstuck Games
 
+## 2026-11-27 — the /next session, continued — A DM who knows you: what goes into 1.5
+
+Jay's notes on the same picks, second pass:
+- **The Seren container holds more than the style layer:** Seren preferences and **Seren moments** live in it too.
+- **Into 1.5:** player accounts, moments, profile updates, and, critically, **the container itself**, so every
+  later interaction has somewhere to land. The adaptive Director draw (weights, the stretch) still waits
+  for the Director.
+- **She welcomes the player.** After registration and login, a new player meets the fortune teller first:
+  *"Oh, you're new here. What should I call you?"* It uses the same teller UI as the weave (her line types out,
+  and the line before it fades above: `.tl-now` / `.tl-prev` and `say()` in `seren/web/static/deal.html`).
+  A returning player gets the door from the entry above instead.
+
 ## 2026-11-27 — the /next session, continued — A DM who knows you: the adaptive DM
 
 Jay's picks on the report (https://claude.ai/artifact/9BYt1GAh9p3KbTJVsG3YDZ). Jay: "This is insane and I
