@@ -44,6 +44,22 @@ if ($Real) {
   if ($LASTEXITCODE -ne 0) { throw "AWS isn't signed in. Run 'aws sso login --profile selfactual', then try again." }
 }
 
+# 0. Clear out any old Seren server still holding the port. Ctrl+C ends this script's loop, but the venv's
+#    python.exe is a launcher that starts a second python, and that one can outlive it (27 Nov: three
+#    orphans in a row blocked 3020). Only Seren's own server.py is stopped; anything else is reported.
+function Stop-SerenServers {
+  Get-CimInstance Win32_Process -Filter "Name='python.exe'" |
+    Where-Object { $_.CommandLine -match 'seren\\mcp\\server\.py' } |
+    ForEach-Object { Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }
+}
+Stop-SerenServers
+Start-Sleep -Milliseconds 600
+$held = Get-NetTCPConnection -LocalPort $Port -State Listen -ErrorAction SilentlyContinue
+if ($held) {
+  $who = (Get-CimInstance Win32_Process -Filter "ProcessId=$($held.OwningProcess)").CommandLine
+  throw "Port $Port is in use by something that isn't Seren: $who. Try -Port with another number."
+}
+
 # 1. The tunnel, logging to a file we can read the address out of.
 $log = Join-Path $env:TEMP ('seren-tunnel-' + [guid]::NewGuid().ToString('N').Substring(0, 8) + '.log')
 # HTTPS to our own server: AVG's Web Shield rewrites plain-HTTP loopback /mcp traffic (Imprint Desk, 10 Nov).
@@ -97,5 +113,6 @@ try {
 }
 finally {
   Stop-Process -Id $tunnel.Id -ErrorAction SilentlyContinue
-  Write-Host 'Tunnel closed.'
+  Stop-SerenServers
+  Write-Host 'Tunnel and server closed.'
 }
