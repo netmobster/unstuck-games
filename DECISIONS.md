@@ -312,3 +312,24 @@ module isn't bundled with Seren. The module files themselves still never ship.
 
 **Why:** it's the real first game, and the chronicle is a retelling of what our table did, not the
 module's text. Credited is enough for Jay.
+
+## 2026-11-26 — local Seren session — Bring your own character: the ladder, in the MCP app
+
+Built after Jay's YES JAY APPROVES (26 Nov). `seren/web/leveller.py` (rules from SEREN's
+`library/2024/core.md`, all twelve classes; SRD checks from `library/srd-5.2/`), `ddb.py` (D&D
+Beyond), `bring.py` (the store), four MCP tools and three web routes over the same code, and a
+who-you-play step plus the ladder in `deal.html`.
+
+- **Two ways in.** A D&D Beyond link to a character set to **Public** (the character service answers
+  403 for private ones, even inside the owner's signed-in browser, and Seren never asks for the
+  sign-in token). Anything else: the player attaches the sheet (D&D Beyond's PDF) in the chat and
+  Claude passes it to `seren_character` as a sheet. *Why:* tested 26 Nov on Fingolfan (private, 403)
+  and Ser'en (public, read in full).
+- **What the rules on disk can't check goes to the chat** (Jay): a non-SRD subclass, item, spell or
+  feat is marked, "ask in chat" posts the question as the player's message, Claude talks it over and
+  records `seren_ruling`, and the ladder picks the ruling up. Every ruling is written into the build.
+- **The gate is devolve.md section 2:** no build is written until every rung is decided and every
+  magic item has a fate. The items step comes once, at the last tier crossed.
+- **A brought character keeps its name.** The auditor's no-one-called-Seren rule (written because the
+  weaver reached for the DM's name) now exempts the player's own brought PC; anything the weaver
+  names itself is still refused. *Why:* Jay's own PC is Ser'en, and the full flow failed on her.

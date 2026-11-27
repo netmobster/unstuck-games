@@ -360,6 +360,86 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;back
 }
 @media (prefers-reduced-motion:reduce){.c3.hersdown{animation:none}}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ── who you play, and the ladder (Jay, 26 Nov; the sample was lab/ladder-seren.html) ── */
+.vmodal.ldwide{width:min(1240px,100%);padding:0}
+.ld-doors{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:10px 0 6px}
+.ld-door{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:12px;border:1px solid var(--edge);background:linear-gradient(170deg,var(--card,#1a2540),#111a2e);transition:transform .2s,border-color .2s,box-shadow .2s}
+.ld-door:hover{transform:translateY(-3px);border-color:var(--gilt);box-shadow:0 0 30px rgba(201,164,74,.2)}
+.ld-door:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:3px}
+.ld-door b{font:400 26px/1.1 var(--display);color:var(--bone)}
+.ld-door em{font:italic 15px/1.45 var(--serif);color:var(--mute)}
+@media (max-width:640px){.ld-doors{grid-template-columns:1fr}}
+.ld-form{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ld-form input{flex:1 1 280px;min-width:0;min-height:46px;padding:10px 14px;border-radius:8px;border:1px solid var(--edge);background:rgba(5,8,16,.6);color:var(--bone);font:400 15px/1.2 var(--sans)}
+.ld-form input:focus{outline:none;border-color:var(--gilt);box-shadow:0 0 0 3px rgba(201,164,74,.2)}
+.ld-err{margin:14px 0 0;color:#e2a596;font:italic 15px/1.45 var(--serif)}
+.ld-or{margin:16px 0 0;color:var(--mute);font:italic 14.5px/1.5 var(--serif)}
+.ld-top{position:relative;overflow:hidden;border-radius:18px 18px 0 0;padding:26px clamp(18px,3vw,30px) 22px;display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
+  background:linear-gradient(90deg,rgba(11,15,28,.95),rgba(11,15,28,.78) 50%,rgba(11,15,28,.35)),var(--art) center 35%/cover;border-bottom:1px solid rgba(201,164,74,.4)}
+.ld-h{margin:8px 0 0;font:400 clamp(24px,3.4vw,40px)/1.08 var(--display);color:var(--gilt-hi)}
+.ld-h em{font-style:normal;color:var(--bone)}
+.ld-sub{margin:8px 0 0;font:italic 16px/1.4 var(--serif);color:var(--bone)}
+.ld-back{width:64px;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid rgba(201,164,74,.7);transform:rotate(-4deg);box-shadow:0 10px 22px rgba(0,0,0,.6);flex:none}
+.ld-unsup{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:12px clamp(18px,3vw,30px);border-bottom:1px solid var(--edge);background:rgba(143,168,154,.06)}
+.ld-unsup .lbl{margin-right:6px;color:#8fa89a}
+.ld-ask{cursor:pointer;border:1px solid rgba(143,168,154,.55)!important;color:#a9cfbb!important;background:none;font:400 11.5px/1.2 var(--sans);border-radius:999px;padding:6px 10px}
+.ld-ask:hover{background:rgba(143,168,154,.12)}
+.ld-stage{display:grid;grid-template-columns:200px minmax(0,1fr) 250px;gap:20px;padding:20px clamp(18px,3vw,30px) 26px;align-items:start}
+@media (max-width:980px){.ld-stage{grid-template-columns:170px minmax(0,1fr)}.ld-sheet{grid-column:1/-1}}
+@media (max-width:640px){.ld-stage{grid-template-columns:1fr}.ld-ladder{display:flex;overflow-x:auto;gap:6px}.ld-rung .c{display:none}}
+.ld-ladder{position:relative}
+.ld-rung{display:grid;grid-template-columns:46px 1fr;gap:9px;align-items:center;min-height:44px;padding:3px 0}
+.ld-rung .n{width:46px;height:34px;border-radius:6px;display:grid;place-items:center;font:400 17px/1 var(--display);color:var(--mute);border:1px solid var(--edge);background:var(--felt);transition:all .3s}
+.ld-rung .c{font:400 11px/1.4 var(--sans);color:var(--mute);min-width:0}
+.ld-rung .c b{color:#e2a596;font-weight:400}
+.ld-rung.above .n{color:#8fae84;border-color:rgba(127,174,115,.45)}
+.ld-rung.above .c{color:#8fa38a}
+.ld-rung.here .n{height:44px;font-size:23px;color:#1a1306;background:linear-gradient(170deg,var(--gilt-hi),var(--gilt));border-color:var(--gilt-hi);box-shadow:0 0 24px rgba(227,192,106,.45)}
+.ld-rung.here .c{color:var(--bone)}
+.ld-rung.goal .n{position:relative}
+.ld-rung.goal .n::after{content:"campaign";position:absolute;right:-8px;top:-9px;font:700 7px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;background:#ff6a2b;color:#1a0a02;border-radius:2px;padding:3px 4px}
+.ld-now{min-width:0;border:1px solid rgba(201,164,74,.55);border-radius:12px;background:rgba(10,16,30,.5);padding:clamp(16px,2.4vw,24px)}
+.ld-step h4{margin:6px 0 0;font:400 clamp(21px,2.4vw,28px)/1.15 var(--display);color:var(--bone)}
+.ld-chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 4px}
+.ld-chips .chip.lose{border-color:rgba(192,112,95,.5);color:#e2a596}
+.ld-chips .chip.gain{border-color:rgba(127,174,115,.5);color:#a9cf9e}
+.ld-q{margin:18px 0 10px;font:italic 18px/1.35 var(--serif);color:var(--bone)}
+.ld-opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:9px}
+.ld-opt{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:4px;border:1px solid var(--edge);border-radius:8px;background:linear-gradient(170deg,var(--card,#1a2540),#111a2e);padding:11px 11px 12px;min-height:70px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.ld-opt:hover{transform:translateY(-2px);border-color:#5b6a91}
+.ld-opt:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:2px}
+.ld-opt i{font:700 8px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gilt);font-style:normal}
+.ld-opt b{font:400 16px/1.15 var(--serif);color:var(--bone);font-weight:400}
+.ld-opt em{font:italic 12px/1.3 var(--serif);color:var(--mute)}
+.ld-opt.rec::after{content:"Seren's pick";position:absolute;top:-8px;right:8px;font:700 7.5px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;background:var(--gilt);color:#1a1306;border-radius:2px;padding:3px 5px}
+.ld-opt.gone{border-color:#c0705f;box-shadow:0 0 0 1px #c0705f,0 0 18px rgba(192,112,95,.22)}
+.ld-opt.gone b{text-decoration:line-through;text-decoration-color:rgba(192,112,95,.8)}
+.ld-opt.item.gone b{text-decoration:none}
+.ld-opt.got{border-color:#7fae73;box-shadow:0 0 0 1px #7fae73,0 0 18px rgba(127,174,115,.22)}
+.ld-opt.item.set:not(.gone){border-color:#7fae73}
+.ld-opt .ld-ask{align-self:flex-start;margin-top:4px;font-size:10px;padding:3px 7px}
+.ld-go{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px}
+.push{position:relative;animation:ldpush 1.6s ease-in-out infinite}
+@keyframes ldpush{0%,100%{box-shadow:0 0 14px rgba(227,192,106,.25)}50%{box-shadow:0 0 0 6px rgba(227,192,106,.16),0 0 30px rgba(227,192,106,.5)}}
+.ld-sheet{border:1px solid var(--edge);border-radius:10px;background:rgba(10,16,30,.55);padding:16px}
+.ld-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}
+.ld-stats div{border:1px solid #26314d;border-radius:6px;padding:7px;text-align:center}
+.ld-stats b{display:block;font:400 19px/1 var(--display);color:var(--gilt-hi)}
+.ld-stats span{font:700 8px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.ld-slots{display:grid;gap:4px;margin-top:7px}
+.ld-slots div{display:grid;grid-template-columns:30px 1fr;gap:6px;align-items:center;font:400 10px/1 var(--sans);color:var(--mute)}
+.ld-slots span{display:flex;gap:3px}
+.ld-slots i{width:11px;height:11px;border-radius:50%;background:var(--gilt)}
+.ld-list{margin:6px 0 0;font:400 13px/1.55 var(--serif);color:var(--mute)}
+.ld-done{text-align:center}
+.ld-cover{position:relative;margin:14px auto 0;max-width:480px;aspect-ratio:16/10;border-radius:10px;overflow:hidden;border:1px solid rgba(201,164,74,.6);box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 34px rgba(201,164,74,.2)}
+.ld-cover img{width:100%;height:100%;object-fit:cover}
+.ld-cover div{position:absolute;inset:auto 0 0;padding:18px;background:linear-gradient(0deg,rgba(11,15,28,.95),transparent)}
+.ld-cover b{display:block;font:400 28px/1.05 var(--display);color:var(--gilt-hi)}
+.ld-cover span{display:block;margin-top:4px;font:italic 15px/1.3 var(--serif);color:var(--bone)}
+.ld-toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;transition:all .35s;z-index:90;max-width:min(580px,calc(100vw - 32px));
+  border:1px solid rgba(143,168,154,.6);background:#0f1c1a;color:#cfe5d8;border-radius:8px;padding:12px 16px;font:italic 15px/1.45 var(--serif);box-shadow:0 20px 50px rgba(0,0,0,.6);pointer-events:none}
+.ld-toast.on{transform:translate(-50%,0);opacity:1}
 </style>
 
 <div class="wrap">
@@ -526,7 +606,14 @@ function sentence(){
 }
 function topEl(){return document.querySelector('.top')}
 function openTable(c){
+  // Step 1, who you play: dealt from the campaign's deck, or your own character fitted on the ladder.
+  var pc=c.deck&&c.deck.slots&&c.deck.slots.pc;
+  if(pc&&pc.mode==='dealt')return whoStep(c);
+  startTable(c);
+}
+function startTable(c,own){
   deal(c);
+  if(own){T.picks.pc=own;delete T.hands.pc;T.active=nextActive()}
   $('shelf').hidden=true;$('table').hidden=false;topEl().hidden=true;
   renderTable(true);window.scrollTo({top:0});
   setTimeout(function(){smoke(document.querySelector('.pile .stack'),6)},250);
@@ -691,6 +778,179 @@ function veil(html,locked){
 function unveil(){var v=$('veil');if(v.dataset.locked)return;v.hidden=true;document.body.classList.remove('veiled')}
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('veil').hidden)unveil()});
 $('veil').addEventListener('click',function(e){if(e.target===$('veil'))unveil()});
+/* ── who you play: a dealt card, or your own character fitted on the ladder (Jay, 26 Nov) ── */
+function api(name,body){
+  var hook={character:window.serenCharacter&&function(b){return window.serenCharacter(b.url)},
+            level:window.serenLevel,save_build:window.serenSaveBuild}[name];
+  if(hook)return hook(body);
+  return fetch('/api/'+name,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json()});
+}
+function ldWide(on){$('vmodal').classList.toggle('ldwide',!!on)}
+function whoStep(c){
+  ldWide(false);
+  veil('<div class="mhead"><div class="lbl">Step 1 of 2 · who you play</div><h3 class="mtitle">'+esc(c.title)+'</h3>'+
+    '<p class="mnote">She can deal you someone who belongs in this story, or you can bring a character you already play. Yours is fitted to level '+esc(c.level)+' first, one level at a time.</p></div>'+
+    '<div class="ld-doors">'+
+      '<button class="ld-door" id="whoDeal"><span class="lbl">Dealt</span><b>Deal me someone</b><em>Three characters from '+esc(c.title)+'’s own deck. Pick one at the table.</em></button>'+
+      '<button class="ld-door" id="whoOwn"><span class="lbl">Your own</span><b>Bring my character</b><em>From D&amp;D Beyond. Seren steps them to level '+esc(c.level)+', and nothing goes without you choosing it.</em></button>'+
+    '</div><div class="macts"><button class="ghost" id="mback">← Back to the shelf</button></div>');
+  $('whoDeal').onclick=function(){unveil();startTable(c)};
+  $('whoOwn').onclick=function(){bringForm(c)};
+  $('mback').onclick=function(){unveil()};
+}
+function bringForm(c,err){
+  ldWide(false);
+  veil('<div class="mhead"><div class="lbl">Bring your character</div><h3 class="mtitle">Who walks into '+esc(c.title)+'?</h3>'+
+    '<p class="mnote">Paste the link to your character on D&amp;D Beyond. It has to be set to Public (on the sheet: Home, then Privacy).</p></div>'+
+    '<form class="ld-form" id="bringF"><input id="ddbUrl" type="url" inputmode="url" placeholder="https://www.dndbeyond.com/characters/…" autocomplete="off" aria-label="D&amp;D Beyond character link">'+
+    '<button class="go" id="bringGo" type="submit">Bring them</button></form>'+
+    (err?'<p class="ld-err">'+esc(err)+'</p>':'')+
+    '<p class="ld-or">Not public, or not on D&amp;D Beyond? Attach the character sheet (D&amp;D Beyond’s PDF export works) in the chat and ask Claude to bring it to Seren’s table.</p>'+
+    '<div class="macts"><button class="ghost" id="mback">← Back</button></div>');
+  $('mback').onclick=function(){whoStep(c)};
+  setTimeout(function(){var i=$('ddbUrl');if(i)i.focus()},60);
+  $('bringF').onsubmit=function(e){e.preventDefault();var u=$('ddbUrl').value.trim();if(!u)return;
+    $('bringGo').disabled=true;$('bringGo').textContent='Reading the sheet…';
+    api('character',{url:u}).then(function(j){
+      if(!j.ok)return bringForm(c,j.error||'That character couldn’t be read.');
+      L={key:j.key,name:j.name,cls:j.cls,from:j.level,target:+c.level,decisions:{},c:c,at:0,rulings:0};
+      ladder();
+    }).catch(function(e){bringForm(c,String(e&&e.message||e))});
+  };
+}
+var L=null;
+function ladder(){
+  return api('level',{key:L.key,target:L.target,decisions:L.decisions}).then(function(j){
+    if(!j.ok){ldWide(false);veil('<div class="mhead"><div class="lbl">The ladder</div><h3 class="mtitle">Not yet</h3><p class="mnote">'+esc(j.error)+'</p></div><div class="macts"><button class="ghost" id="mback">← Back</button></div>');$('mback').onclick=function(){bringForm(L.c)};return}
+    L.j=j;if(L.at>j.rungs.length)L.at=j.rungs.length;
+    if((j.rulings||[]).length>L.rulings){if(L.rulings||L.asked)ldToast('Claude’s ruling is in. The ladder took it.');L.rulings=j.rulings.length}
+    renderLadder();
+  });
+}
+function ldName(){return L.name||'They'}
+function renderLadder(){
+  var j=L.j,c=L.c,rungs=j.rungs,at=L.at,r=rungs[at];
+  ldWide(true);
+  var down=j.target<j.from;
+  var list='';
+  var levels=[j.from].concat(rungs.map(function(x){return x.to}));
+  levels.forEach(function(lv,i){
+    var cls=i<at?'above':i===at?'here':'below';if(lv===j.target)cls+=' goal';
+    var txt='';
+    if(i<at){txt=ldSummary(rungs[i])}else if(i===at){txt=at===rungs.length?'here':'deciding'}else{txt=rungs[i]?ldNeeds(rungs[i]):''}
+    list+='<div class="ld-rung '+cls+'"><span class="n">'+lv+'</span><span class="c">'+(txt||'&nbsp;')+'</span></div>';
+  });
+  var main=at===rungs.length?ldDone():ldChoice(r);
+  var f=at===0?null:rungs[at-1].numbers;
+  veil('<div class="ld-top" style="--art:url(\''+esc(c.header)+'\')"><div class="ld-tin">'+
+      '<div class="lbl">Fitting a character to '+esc(c.title)+'</div>'+
+      '<h3 class="ld-h">'+esc(ldName())+' <em>steps into</em> '+esc(c.title)+'</h3>'+
+      '<p class="ld-sub">'+esc(j.cls)+(j.subclass?', '+esc(j.subclass):'')+' · level '+j.from+' to level '+j.target+'. '+(down?'Down':'Up')+' one rung at a time.</p></div>'+
+      '<img class="ld-back" src="'+esc(c.back)+'" alt=""></div>'+
+    ldUnsupported(j)+
+    '<div class="ld-stage"><nav class="ld-ladder" aria-label="Levels">'+list+'</nav><section class="ld-now">'+main+'</section>'+
+      '<aside class="ld-sheet">'+ldSheet(at===0?j.start:rungs[at-1].numbers,j,at)+'</aside></div>',true);
+  ldWire(r);
+}
+function ldSummary(x){var b=[];if(x.forced&&x.forced.length)b.push('−'+x.forced.length+' out of reach');
+  (x.choices||[]).forEach(function(ch){if(ch.kind==='items')b.push('items decided');else if((ch.picked||[]).length)b.push(ch.picked.join(', '))});
+  if(x.lost_feats&&x.lost_feats.length)b.push(x.lost_feats.join(', '));return esc(b.join(' · ')||'nothing to choose')}
+function ldNeeds(x){var b=[];if(x.features&&x.features.length)b.push(esc(x.features[0]));
+  (x.choices||[]).forEach(function(ch){b.push('<b>'+(ch.kind==='items'?'items':(x.direction==='down'?'drop ':'pick ')+ch.need)+'</b>')});return b.join(' · ')}
+var KINDQ={drop:function(r,ch){return 'Level '+r.to+' prepares '+r.numbers.prepared+' spells. Which '+ch.need+' does '+esc(ldName())+' let go?'},
+  drop_cantrips:function(r,ch){return 'Level '+r.to+' holds '+r.numbers.cantrips+' cantrips. Which '+(ch.need>1?ch.need:'one')+' goes?'},
+  add:function(r,ch){return 'Level '+r.to+' prepares '+ch.need+' more. Which spells does '+esc(ldName())+' learn?'},
+  add_cantrips:function(r,ch){return 'A new cantrip at level '+r.to+'. Which one?'},
+  subclass:function(r,ch){return 'Level 3 brings a subclass. Which path?'},
+  items:function(r,ch){return 'Leaving a tier. What happens to what '+esc(ldName())+' carries?'}};
+function ord(n){return n+(['th','st','nd','rd'][n]||'th')}
+function ldChoice(r){
+  var n=r.numbers,h='<div class="ld-step"><span class="lbl">Rung '+(L.at+1)+' of '+L.j.rungs.length+' · level '+r.from+' → '+r.to+'</span>'+
+    '<h4>'+(r.direction==='down'?'What level '+r.to+' costs '+esc(ldName()):'What level '+r.to+' brings')+'</h4><div class="ld-chips">';
+  (r.features||[]).forEach(function(f){h+='<span class="chip '+(r.direction==='down'?'lose':'gain')+'">'+(r.direction==='down'?'− ':'+ ')+esc(f)+'</span>'});
+  (r.forced||[]).forEach(function(f){h+='<span class="chip lose">− '+esc(f)+'</span>'});
+  (r.lost_feats||[]).forEach(function(f){h+='<span class="chip lose">− '+esc(f)+' (and its spells)</span>'});
+  h+='<span class="chip same">proficiency +'+n.pb+' · HP '+n.hp+(n.dc?' · spell DC '+n.dc:'')+'</span></div>';
+  if(!r.choices.length)h+='<p class="ld-q">Nothing to choose on this rung. The table takes it.</p>';
+  r.choices.forEach(function(ch){
+    h+='<p class="ld-q">'+KINDQ[ch.kind](r,ch)+'</p><div class="ld-opts">';
+    if(ch.kind==='items'){
+      ch.options.filter(function(o){return o.magic}).forEach(function(o){
+        var fate=o.picked||null,rec=o.recommended;
+        h+='<button class="ld-opt item'+(fate&&fate!=='kept'?' gone':'')+(fate?' set':'')+'" data-item="'+esc(o.name)+'" data-rec="'+esc(rec)+'"><i>'+(fate?(fate==='kept'?'keeps':'hands back'):'Seren: '+(rec==='kept'?'keep':'hand back'))+'</i><b>'+esc(o.name)+'</b><em>'+esc(o.rarity||'')+(o.attuned?' · attuned':'')+'</em>'+(o.supported?'':'<span class="ld-ask" data-ask="item:'+esc(o.name)+'">not in the rules · ask in chat</span>')+'</button>';
+      });
+    } else {
+      var picked=ch.picked||[];
+      ch.options.forEach(function(o){
+        var on=picked.indexOf(o.name)>=0,rec=(ch.recommended||[]).indexOf(o.name)>=0;
+        h+='<button class="ld-opt'+(on?(r.direction==='down'?' gone':' got'):'')+(rec?' rec':'')+'" data-pick="'+esc(ch.kind)+'" data-name="'+esc(o.name)+'" data-need="'+ch.need+'"><i>'+(o.level?ord(o.level)+' level':o.level===0?'cantrip':'')+'</i><b>'+esc(o.name)+'</b></button>';
+      });
+    }
+    h+='</div>';
+  });
+  var left=r.choices.reduce(function(a,ch){if(ch.kind==='items')return a+ch.options.filter(function(o){return o.magic&&!o.picked}).length;return a+Math.max(0,ch.need-(ch.picked||[]).length)},0);
+  h+='<div class="ld-go"><button class="go'+(left?'':' push')+'" id="ldDown"'+(left?' disabled':'')+'>'+(r.direction==='down'?'Step down to ':'Step up to ')+r.to+'</button>'+
+    (r.choices.length?'<button class="ghost'+(left?' push':'')+'" id="ldAuto">Take Seren’s picks</button>':'')+
+    (L.at?'<button class="ghost" id="ldUp">Back a rung</button>':'')+
+    '<span class="lbl mute">'+(left?left+' to choose':'')+'</span></div></div>';
+  return h;
+}
+function ldDone(){
+  var j=L.j,f=j.final;
+  return '<div class="ld-done"><div class="lbl">Fitted to the book</div><div class="ld-cover"><img src="'+esc(L.c.header)+'" alt=""><div><b>'+esc(L.c.title)+'</b><span>'+esc(ldName())+', '+esc(j.cls)+' '+j.target+'</span></div></div>'+
+    '<p class="ld-q">Every rung decided. Proficiency +'+f.pb+', HP '+f.hp+(f.dc?', spell DC '+f.dc:'')+'.</p><div id="ldRefused"></div>'+
+    '<div class="ld-go" style="justify-content:center"><button class="go push" id="ldTake">Take '+esc(ldName())+' to the table</button>'+(L.at?'<button class="ghost" id="ldUp">Back a rung</button>':'')+'</div></div>';
+}
+function ldSheet(n,j,at){
+  n=n||null;var lv=at===0?j.from:j.rungs[at-1].to;
+  var h='<div class="lbl">'+esc(ldName())+' · live</div><div class="ld-stats">'+
+    [['Level',lv],['HP',n?n.hp:'—'],['Prof.',n?'+'+n.pb:'—'],['Spell DC',n&&n.dc?n.dc:'—']].map(function(s){return '<div><b>'+s[1]+'</b><span>'+s[0]+'</span></div>'}).join('')+'</div>';
+  if(n&&n.slots){h+='<div class="lbl" style="margin-top:12px">Spell slots</div><div class="ld-slots">';
+    n.slots.forEach(function(k,i){if(!k)return;var d='';for(var q=0;q<k;q++)d+='<i></i>';h+='<div>'+ord(i+1)+'<span>'+d+'</span></div>'});h+='</div>'}
+  var sp=at===0?j.start_spells:j.rungs[at-1].spells_after;
+  if(sp)h+='<div class="lbl" style="margin-top:12px">Spells · '+sp.length+'</div><p class="ld-list">'+sp.map(esc).join(' · ')+'</p>';
+  return h;
+}
+function ldUnsupported(j){
+  var u=j.unsupported||[];if(!u.length)return '';
+  return '<div class="ld-unsup"><span class="lbl">The rules on disk can’t check '+u.length+' thing'+(u.length>1?'s':'')+'</span>'+
+    u.slice(0,8).map(function(x){return '<button class="ld-ask chip" data-ask="'+esc(x.kind)+':'+esc(x.name)+'" title="'+esc(x.why)+'">'+esc(x.name)+' · ask in chat</button>'}).join('')+'</div>';
+}
+function ldDec(from){return L.decisions[from]||(L.decisions[from]={})}
+function ldWire(r){
+  var m=$('vmodal');
+  m.querySelectorAll('[data-pick]').forEach(function(b){b.onclick=function(){
+    var d=ldDec(r.from),k=b.dataset.pick,n=b.dataset.name,need=+b.dataset.need;
+    if(k==='subclass'){d.subclass=d.subclass===n?null:n}else{var a=d[k]||(d[k]=[]),i=a.indexOf(n);if(i>=0)a.splice(i,1);else{a.push(n);while(a.length>need)a.shift()}}
+    ladder()}});
+  m.querySelectorAll('[data-item]').forEach(function(b){b.onclick=function(e){
+    if(e.target.dataset.ask)return;var d=ldDec(r.from),items=d.items||(d.items={}),n=b.dataset.item,cur=items[n];
+    items[n]=cur==null?b.dataset.rec:(cur==='kept'?'handed back':'kept');ladder()}});
+  m.querySelectorAll('[data-ask]').forEach(function(b){b.onclick=function(e){e.stopPropagation();ldAsk(b.dataset.ask)}});
+  var a=$('ldAuto');if(a)a.onclick=function(){var d=ldDec(r.from);r.choices.forEach(function(ch){
+    if(ch.kind==='items'){d.items=d.items||{};ch.options.forEach(function(o){if(o.magic&&!d.items[o.name])d.items[o.name]=o.recommended})}
+    else if(ch.kind==='subclass')d.subclass=(ch.recommended||[])[0];else d[ch.kind]=(ch.recommended||[]).slice()});ladder()};
+  var dn=$('ldDown');if(dn)dn.onclick=function(){L.at++;renderLadder()};
+  var up=$('ldUp');if(up)up.onclick=function(){L.at--;renderLadder()};
+  var t=$('ldTake');if(t)t.onclick=function(){t.disabled=true;t.textContent='Writing the build…';
+    api('save_build',{key:L.key,target:L.target,decisions:L.decisions,campaign:L.c.slug}).then(function(j){
+      if(!j.ok){$('ldRefused').innerHTML='<p class="ld-err">Seren won’t write it yet: '+esc((j.refused||[]).join('; '))+'</p>';t.disabled=false;t.textContent='Take '+ldName()+' to the table';return}
+      var card={id:j.card.id,name:j.card.name,line:j.card.title+'. '+j.card.tagline,own:true};
+      clearInterval(L.poll);$('veil').dataset.locked='';unveil();startTable(L.c,card);
+    })};
+}
+function ldAsk(what){
+  var kind=what.split(':')[0],name=what.slice(kind.length+1),j=L.j;
+  var text='At Seren’s table I’m bringing '+ldName()+' ('+j.cls+(j.subclass?', '+j.subclass:'')+', level '+j.from+') into '+L.c.title+' at level '+j.target+
+    '. The '+kind+' “'+name+'” isn’t in the rules Seren can check. What should Seren treat it as? When we agree, record it with seren_ruling (character key '+L.key+', kind '+kind+', name “'+name+'”).';
+  L.asked=true;
+  if(window.serenAsk){window.serenAsk(text).then(function(){ldToast('Sent to the chat. Talk it over there; the ladder picks up the ruling.')}).catch(function(){ldToast('The chat didn’t take it. Copy the question from here instead.')});ldPoll()}
+  else ldToast('In Claude, this goes to the chat: “'+text+'”');
+}
+function ldPoll(){var n=0;clearInterval(L.poll);L.poll=setInterval(function(){if(++n>45||$('veil').hidden){clearInterval(L.poll);return}ladder()},4000)}
+function ldToast(t){var e=$('ldToast');if(!e){e=document.createElement('div');e.id='ldToast';e.className='ld-toast';e.setAttribute('role','status');document.body.appendChild(e)}
+  e.textContent=t;e.classList.add('on');clearTimeout(e.k);e.k=setTimeout(function(){e.classList.remove('on')},6500)}
+
 function openTune(){
   var c=T.c;
   veil('<div class="mhead"><div class="lbl">Tune your loom</div><h3 class="mtitle">'+esc(c.title)+'</h3><p class="msent">'+sentence()+'</p>'+
@@ -706,7 +966,7 @@ function openTune(){
 function plainSentence(){var d=document.createElement('div');d.innerHTML=sentence();return d.textContent}
 function weaveIt(c){
   var s=c.deck.slots,cards={},picks={campaign:c.slug,campaign_title:c.title};
-  var face=function(k){return{id:k.id,name:k.name,line:k.line,changes:k.changes,as:k.as}};
+  var face=function(k){return{id:k.id,name:k.name,line:k.line,changes:k.changes,as:k.as,own:k.own||undefined}};
   Object.keys(s).forEach(function(k){if(s[k].mode==='locked'){cards[k]=face(s[k].card);picks[k]=s[k].card.id}});
   Object.keys(T.picks).forEach(function(k){if(k!=='companions'&&T.picks[k]){cards[k]=face(T.picks[k]);picks[k]=T.picks[k].id}});
   if(T.her.length){cards.posture=face(T.her[T.herAt]);picks.posture=T.her[T.herAt].id}

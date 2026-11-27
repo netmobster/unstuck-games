@@ -38,6 +38,7 @@ import files
 import gate
 import llm
 import published
+import bring
 import shelf
 import state
 import weave
@@ -548,6 +549,18 @@ class Handler(BaseHTTPRequestHandler):
             _save(sess)
             return self._json(200, view, cookie)
 
+        # Bring your own character: the ladder (the MCP app's tools, as routes; seren/web/bring.py)
+        if path == "/api/character":
+            b = self._body()
+            return self._json(200, bring.bring(str(b.get("url") or ""), b.get("sheet")))
+        if path == "/api/level":
+            b = self._body()
+            return self._json(200, bring.level(str(b.get("key") or ""), int(b.get("target") or 1), b.get("decisions") or {}))
+        if path == "/api/save_build":
+            b = self._body()
+            return self._json(200, bring.save(str(b.get("key") or ""), int(b.get("target") or 1), b.get("decisions") or {},
+                                              str(b.get("campaign") or "")))
+
         if path == "/api/weave":
             # The Loom hands over what it dealt; nothing here re-rolls it.
             body = self._body()
@@ -566,7 +579,7 @@ class Handler(BaseHTTPRequestHandler):
             try:
                 out = weave.weave(picks, dials, cards, tier=TIER)
                 campaign_obj, spent = out["campaign"], out["spent"]
-                problems = audit.check(campaign_obj) + weave.player_leaks(campaign_obj, picks, cards)
+                problems = audit.check(campaign_obj, (cards.get("pc") or {}).get("name", "") if (cards.get("pc") or {}).get("own") else "") + weave.player_leaks(campaign_obj, picks, cards)
                 mended = False
                 if problems:
                     # One fix pass: the auditor's complaints go back to the weaver before
@@ -574,7 +587,7 @@ class Handler(BaseHTTPRequestHandler):
                     out = weave.mend(campaign_obj, problems, picks, dials, cards, tier=TIER)
                     campaign_obj, mended = out["campaign"], True
                     spent += out["spent"]
-                    problems = audit.check(campaign_obj) + weave.player_leaks(campaign_obj, picks, cards)
+                    problems = audit.check(campaign_obj, (cards.get("pc") or {}).get("name", "") if (cards.get("pc") or {}).get("own") else "") + weave.player_leaks(campaign_obj, picks, cards)
                 if problems:
                     return self._json(422, {"error": "the auditor refused it",
                                             "problems": problems, "spent": round(spent, 4)})

@@ -1,0 +1,263 @@
+{
+ "name": "Fingolfan",
+ "species": "Wood Elf",
+ "cls": "Sorcerer",
+ "subclass": "Wild Magic Sorcery",
+ "level": 12,
+ "abilities": {
+  "str": 10,
+  "dex": 20,
+  "con": 18,
+  "int": 10,
+  "wis": 14,
+  "cha": 20
+ },
+ "hp": 112,
+ "spells": [
+  {
+   "name": "Dancing Lights",
+   "level": 0,
+   "source": "class"
+  },
+  {
+   "name": "Mage Hand",
+   "level": 0,
+   "source": "class"
+  },
+  {
+   "name": "Mind Sliver",
+   "level": 0,
+   "source": "class"
+  },
+  {
+   "name": "Mold Earth",
+   "level": 0,
+   "source": "class"
+  },
+  {
+   "name": "Prestidigitation",
+   "level": 0,
+   "source": "class"
+  },
+  {
+   "name": "Sorcerous Burst",
+   "level": 0,
+   "source": "class"
+  },
+  {
+   "name": "Chromatic Orb",
+   "level": 1,
+   "source": "class"
+  },
+  {
+   "name": "Magic Missile",
+   "level": 1,
+   "source": "class"
+  },
+  {
+   "name": "Ray of Sickness",
+   "level": 1,
+   "source": "class"
+  },
+  {
+   "name": "Shield",
+   "level": 1,
+   "source": "class"
+  },
+  {
+   "name": "Spellfire Flare",
+   "level": 1,
+   "source": "class"
+  },
+  {
+   "name": "Darkness",
+   "level": 2,
+   "source": "class"
+  },
+  {
+   "name": "Enlarge/Reduce",
+   "level": 2,
+   "source": "class"
+  },
+  {
+   "name": "Gust of Wind",
+   "level": 2,
+   "source": "class"
+  },
+  {
+   "name": "Invisibility",
+   "level": 2,
+   "source": "class"
+  },
+  {
+   "name": "Suggestion",
+   "level": 2,
+   "source": "class"
+  },
+  {
+   "name": "Dispel Magic",
+   "level": 3,
+   "source": "class"
+  },
+  {
+   "name": "Fireball",
+   "level": 3,
+   "source": "class"
+  },
+  {
+   "name": "Fly",
+   "level": 3,
+   "source": "class"
+  },
+  {
+   "name": "Lightning Bolt",
+   "level": 3,
+   "source": "class"
+  },
+  {
+   "name": "Stinking Cloud",
+   "level": 3,
+   "source": "class"
+  },
+  {
+   "name": "Banishment",
+   "level": 4,
+   "source": "class"
+  },
+  {
+   "name": "Hold Monster",
+   "level": 5,
+   "source": "class"
+  },
+  {
+   "name": "Wall of Stone",
+   "level": 5,
+   "source": "class"
+  },
+  {
+   "name": "Chain Lightning",
+   "level": 6,
+   "source": "class"
+  },
+  {
+   "name": "Mass Suggestion",
+   "level": 6,
+   "source": "class"
+  },
+  {
+   "name": "Move Earth",
+   "level": 6,
+   "source": "class"
+  },
+  {
+   "name": "Druidcraft",
+   "level": 0,
+   "source": "species",
+   "always": true
+  },
+  {
+   "name": "Longstrider",
+   "level": 1,
+   "source": "species",
+   "always": true
+  },
+  {
+   "name": "Pass without Trace",
+   "level": 2,
+   "source": "species",
+   "always": true
+  }
+ ],
+ "feats": [
+  {
+   "name": "Conjuration Adept",
+   "level": 4
+  },
+  {
+   "name": "Inspiring Leader",
+   "level": 8
+  },
+  {
+   "name": "Transmutation Adept",
+   "level": 12
+  }
+ ],
+ "items": [
+  {
+   "name": "Smart Dressed Man",
+   "magic": true,
+   "rarity": "custom",
+   "attuned": true
+  },
+  {
+   "name": "Bloodwell Vial, +2",
+   "magic": true,
+   "rarity": "Uncommon",
+   "attuned": true
+  },
+  {
+   "name": "Ring of Fire Resistance",
+   "magic": true,
+   "rarity": "Rare",
+   "attuned": false
+  },
+  {
+   "name": "Stone of Controlling Earth Elementals",
+   "magic": true,
+   "rarity": "Rare",
+   "attuned": false
+  },
+  {
+   "name": "Wand of Wonder",
+   "magic": true,
+   "rarity": "Rare",
+   "attuned": true
+  },
+  {
+   "name": "Cloak of Protection",
+   "magic": true,
+   "rarity": "Uncommon",
+   "attuned": true
+  },
+  {
+   "name": "Hat of Disguise",
+   "magic": true,
+   "rarity": "Uncommon",
+   "attuned": false
+  },
+  {
+   "name": "Rope of Climbing",
+   "magic": true,
+   "rarity": "Uncommon",
+   "attuned": false
+  },
+  {
+   "name": "Wand of Magic Missiles",
+   "magic": true,
+   "rarity": "Uncommon",
+   "attuned": false
+  },
+  {
+   "name": "Dagger",
+   "magic": false,
+   "rarity": "Common",
+   "attuned": false
+  },
+  {
+   "name": "Shortbow",
+   "magic": false,
+   "rarity": "Common",
+   "attuned": false
+  },
+  {
+   "name": "Bag of Holding",
+   "magic": true,
+   "rarity": "Uncommon",
+   "attuned": false
+  }
+ ],
+ "source": {
+  "kind": "chat",
+  "read_from": "D&D Beyond sheet, 26 Nov, read in Chrome tab by tab"
+ }
+}

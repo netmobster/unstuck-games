@@ -57,6 +57,7 @@ import audit  # noqa: E402  (the web port's modules, after its path)
 import corpus  # noqa: E402
 import llm  # noqa: E402
 import published  # noqa: E402
+import bring  # noqa: E402
 import weave  # noqa: E402
 
 from mcp.server.apps import Apps, ResourceCsp, client_supports_apps  # noqa: E402
@@ -153,6 +154,13 @@ window.__mcpReady=new Promise(function(r){window.__mcpResolve=r});
     var file={type:'resource',resource:{uri:'file:///'+j.slug+'.md',mimeType:'text/markdown',text:j.book||''}};
     return ready.then(function(){return app.downloadFile({contents:[file]})})
       .catch(function(){return app.openLink({url:j.download})}).catch(function(){});
+  };
+  window.serenCharacter=function(url){return call('seren_character',{url:url})};
+  window.serenLevel=function(b){return call('seren_level',b)};
+  window.serenSaveBuild=function(b){return call('seren_save_build',b)};
+  window.serenAsk=function(text){
+    // "Talk it over in chat": the question goes into the conversation as the player's own message.
+    return ready.then(function(){return app.sendMessage({role:'user',content:[{type:'text',text:text}]})});
   };
   window.serenWoven=function(j){
     // Claude learns what was woven, so the player can talk about the book in the chat.
@@ -251,11 +259,11 @@ def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, A
     try:
         out = weave.weave(picks, dials, cards, tier=tier)
         camp, spent = out["campaign"], out["spent"]
-        problems = audit.check(camp) + weave.player_leaks(camp, picks, cards)
+        problems = audit.check(camp, (cards.get("pc") or {}).get("name", "") if (cards.get("pc") or {}).get("own") else "") + weave.player_leaks(camp, picks, cards)
         if problems:
             out = weave.mend(camp, problems, picks, dials, cards, tier=tier)
             camp, spent = out["campaign"], spent + out["spent"]
-            problems = audit.check(camp) + weave.player_leaks(camp, picks, cards)
+            problems = audit.check(camp, (cards.get("pc") or {}).get("name", "") if (cards.get("pc") or {}).get("own") else "") + weave.player_leaks(camp, picks, cards)
         if problems:
             return {"ok": False, "error": "the Doorkeeper sent it back", "problems": problems}
         written = weave.book(camp, picks, dials, cards, tier=tier)
@@ -275,6 +283,68 @@ def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, A
         "opening": camp.get("opening"), "where": camp.get("where"), "book": camp["briefing"],
         "download": f"{PUBLIC}/book/{slug}.md", "spent": round(spent, 4), "fake_ai": weave.mocking(),
     }
+
+
+# ── bring your own character: the ladder (Jay, 26 Nov). The store is seren/web/bring.py ──
+
+@apps.tool(
+    resource_uri=APP_URI,
+    name="seren_character",
+    title="Seren: bring a character",
+    description=("Bring a player's own D&D character to Seren's table. Pass `url`: a D&D Beyond character link "
+                 "whose owner set it to Public. Or, when the player attached a character sheet (such as D&D Beyond's "
+                 "PDF export) in the chat, read it and pass `sheet` in this shape: {name, species, cls (one of the "
+                 "twelve 2024 classes), subclass, level, abilities {str,dex,con,int,wis,cha}, hp, spells [{name, level, "
+                 "source: class|species|subclass|feat|item, always}], feats [{name}], items [{name, magic, rarity, "
+                 "attuned}]}. Saves the sheet so the table's ladder can fit it to the campaign's level."),
+    annotations=CREATE,
+)
+def seren_character(url: str = "", sheet: dict[str, Any] | None = None) -> dict[str, Any]:
+    return bring.bring(url, sheet)
+
+
+
+@apps.tool(
+    resource_uri=APP_URI,
+    visibility=["app"],
+    name="seren_level",
+    title="Seren: the ladder",
+    description="Every rung between a brought character's level and the campaign's, with the choice still to make.",
+    annotations=READ,
+)
+def seren_level(key: str, target: int, decisions: dict[str, Any] | None = None) -> dict[str, Any]:
+    return bring.level(key, target, decisions)
+
+
+
+@apps.tool(
+    resource_uri=APP_URI,
+    name="seren_ruling",
+    title="Seren: rule on something the table can't check",
+    description=("Make a ruling for the player's character on Seren's ladder, when the table asked about something "
+                 "the rules on disk don't cover. kind is class, subclass, spell, item or feat. `name` is the name "
+                 "on the sheet; `to` is what Seren should treat it as (an SRD class, subclass, spell, item or feat), "
+                 "or empty to drop it. Give the reason in `why`. Talk it over with the player first; the table "
+                 "picks the ruling up by itself."),
+    annotations=CREATE,
+)
+def seren_ruling(key: str, kind: str, name: str = "", to: str = "", why: str = "") -> dict[str, Any]:
+    return bring.rule(key, kind, name, to, why)
+
+
+
+@apps.tool(
+    resource_uri=APP_URI,
+    visibility=["app"],
+    name="seren_save_build",
+    title="Seren: write the fitted character",
+    description=("Write the fitted character, only if every rung was decided and every item has a fate "
+                 "(SEREN devolve.md section 2). Returns the card that takes the who-you-play slot."),
+    annotations=CREATE,
+)
+def seren_save_build(key: str, target: int, decisions: dict[str, Any], campaign: str = "") -> dict[str, Any]:
+    return bring.save(key, target, decisions, campaign)
+
 
 
 server = MCPServer(

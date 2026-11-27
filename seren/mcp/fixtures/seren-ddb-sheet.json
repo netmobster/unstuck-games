@@ -1,0 +1,543 @@
+{
+ "format": "seren-sheet/1",
+ "name": "Ser'en",
+ "species": "Aasimar",
+ "cls": "Druid",
+ "subclass": "Circle of the Stars",
+ "level": 11,
+ "multiclass": false,
+ "abilities": {
+  "str": 12,
+  "dex": 16,
+  "con": 16,
+  "int": 14,
+  "wis": 18,
+  "cha": 14
+ },
+ "hp": 91,
+ "spells": [
+  {
+   "name": "Shillelagh",
+   "level": 0,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Starry Wisp",
+   "level": 0,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Produce Flame",
+   "level": 0,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Mending",
+   "level": 0,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Moonbeam",
+   "level": 2,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Faerie Fire",
+   "level": 1,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Pass without Trace",
+   "level": 2,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Call Lightning",
+   "level": 3,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Dispel Magic",
+   "level": 3,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Revivify",
+   "level": 3,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Goodberry",
+   "level": 1,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Commune with Nature",
+   "level": 5,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Freedom of Movement",
+   "level": 4,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Mass Cure Wounds",
+   "level": 5,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Heal",
+   "level": 6,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Lesser Restoration",
+   "level": 2,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Healing Word",
+   "level": 1,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Aid",
+   "level": 2,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Speak with Plants",
+   "level": 3,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Polymorph",
+   "level": 4,
+   "source": "class",
+   "always": false
+  },
+  {
+   "name": "Light",
+   "level": 0,
+   "source": "species",
+   "always": true
+  },
+  {
+   "name": "Speak with Animals",
+   "level": 1,
+   "source": "subclass",
+   "always": true
+  },
+  {
+   "name": "Find Familiar",
+   "level": 1,
+   "source": "subclass",
+   "always": true
+  },
+  {
+   "name": "Guidance",
+   "level": 0,
+   "source": "subclass",
+   "always": true
+  },
+  {
+   "name": "Guiding Bolt",
+   "level": 1,
+   "source": "subclass",
+   "always": true
+  },
+  {
+   "name": "Resistance",
+   "level": 0,
+   "source": "subclass",
+   "always": true
+  },
+  {
+   "name": "Bless",
+   "level": 1,
+   "source": "feat",
+   "always": true,
+   "from_feat": 1874753
+  },
+  {
+   "name": "Misty Step",
+   "level": 2,
+   "source": "feat",
+   "always": true,
+   "from_feat": 1874753
+  }
+ ],
+ "feats": [
+  {
+   "name": "Hermit Ability Score Improvements",
+   "id": 1789155,
+   "level": null
+  },
+  {
+   "name": "Fey Touched",
+   "id": 1874753,
+   "level": 4
+  },
+  {
+   "name": "Dark Bargain",
+   "id": 2048517,
+   "level": null
+  },
+  {
+   "name": "Character Threads",
+   "id": 2331813,
+   "level": null
+  },
+  {
+   "name": "Runestones",
+   "id": 2331889,
+   "level": null
+  },
+  {
+   "name": "Alert — Moonwell Presence",
+   "id": 2384623,
+   "level": 8
+  }
+ ],
+ "features": [
+  {
+   "name": "Star Map",
+   "level": 3
+  },
+  {
+   "name": "Starry Form",
+   "level": 3
+  },
+  {
+   "name": "Starry Form",
+   "level": 3
+  },
+  {
+   "name": "Cosmic Omen",
+   "level": 6
+  },
+  {
+   "name": "Cosmic Omen",
+   "level": 6
+  },
+  {
+   "name": "Twinkling Constellations",
+   "level": 10
+  },
+  {
+   "name": "Full of Stars",
+   "level": 14
+  },
+  {
+   "name": "Core Druid Traits",
+   "level": 1
+  },
+  {
+   "name": "Spellcasting",
+   "level": 1
+  },
+  {
+   "name": "Druidic",
+   "level": 1
+  },
+  {
+   "name": "Primal Order",
+   "level": 1
+  },
+  {
+   "name": "Wild Shape",
+   "level": 2
+  },
+  {
+   "name": "Wild Companion",
+   "level": 2
+  },
+  {
+   "name": "Druid Subclass",
+   "level": 3
+  },
+  {
+   "name": "Ability Score Improvement",
+   "level": 4
+  },
+  {
+   "name": "Wild Resurgence",
+   "level": 5
+  },
+  {
+   "name": "Elemental Fury",
+   "level": 7
+  },
+  {
+   "name": "Ability Score Improvement",
+   "level": 8
+  },
+  {
+   "name": "Ability Score Improvement",
+   "level": 12
+  },
+  {
+   "name": "Improved Elemental Fury",
+   "level": 15
+  },
+  {
+   "name": "Ability Score Improvement",
+   "level": 16
+  },
+  {
+   "name": "Beast Spells",
+   "level": 18
+  },
+  {
+   "name": "Epic Boon",
+   "level": 19
+  },
+  {
+   "name": "Archdruid",
+   "level": 20
+  }
+ ],
+ "items": [
+  {
+   "name": "Potion of Healing (Greater)",
+   "magic": true,
+   "rarity": "Uncommon",
+   "kind": "Potion",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Pearl of Power",
+   "magic": true,
+   "rarity": "Uncommon",
+   "kind": "Wondrous item",
+   "attuned": true,
+   "count": 1
+  },
+  {
+   "name": "Presence Pendant",
+   "magic": true,
+   "rarity": "Rare",
+   "kind": "Wondrous item",
+   "attuned": true,
+   "count": 1
+  },
+  {
+   "name": "Bracer of Protection",
+   "magic": true,
+   "rarity": "Uncommon",
+   "kind": "Wondrous item",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Vial of Moonwell Water",
+   "magic": true,
+   "rarity": "Uncommon",
+   "kind": "Wondrous item",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Blue Dragonscale Leathers",
+   "magic": true,
+   "rarity": "Very Rare",
+   "kind": "Armor",
+   "attuned": true,
+   "count": 1
+  },
+  {
+   "name": "Shield",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Armor",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Leather",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Armor",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Quarterstaff",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Weapon",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Sickle",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Weapon",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Oil",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 5
+  },
+  {
+   "name": "Backpack",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Bedroll",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 3
+  },
+  {
+   "name": "Book",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Herbalism Kit",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 2
+  },
+  {
+   "name": "Staff",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Lamp",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Traveler's Clothes",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Mess Kit",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Rations (1 day)",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 10
+  },
+  {
+   "name": "Rope, Hempen (50 feet)",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Tinderbox",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 2
+  },
+  {
+   "name": "Torch",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 20
+  },
+  {
+   "name": "Waterskin",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 2
+  },
+  {
+   "name": "Rations",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 10
+  },
+  {
+   "name": "Rope",
+   "magic": false,
+   "rarity": "Common",
+   "kind": "Other Gear",
+   "attuned": false,
+   "count": 1
+  },
+  {
+   "name": "Diamond (300 gp)",
+   "magic": true,
+   "rarity": "custom",
+   "kind": "custom",
+   "attuned": false,
+   "count": 1
+  }
+ ],
+ "source": {
+  "kind": "ddb",
+  "id": "168395963",
+  "url": "https://www.dndbeyond.com/characters/168395963"
+ }
+}

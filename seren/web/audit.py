@@ -30,7 +30,7 @@ WANT_A_FRONT = re.compile(r"\*\*Wants from:\*\* (.+)$", re.M)
 FRONT_NAME = re.compile(r"^## (.+)$", re.M)
 
 
-def check(camp: dict) -> list[str]:
+def check(camp: dict, brought: str = "") -> list[str]:
     """Audit the campaign object, before it is ever written to disk. Empty list means pass."""
     problems: list[str] = []
 
@@ -83,7 +83,11 @@ def check(camp: dict) -> list[str]:
 
     # The DM's name is not available as a character's. It was the first thing the weaver
     # reached for, and a campaign where the villain is called Seren cannot be narrated.
-    named = [str((camp.get("pc") or {}).get("name") or ""), str((camp.get("antagonist") or {}).get("name") or "")]
+    # A character the player brought keeps the name they gave it (Jay's own PC is Ser'en, 26 Nov);
+    # anything the weaver names itself still may not be called Seren.
+    pc_name = str((camp.get("pc") or {}).get("name") or "")
+    named = [] if (brought and pc_name.strip().lower() == str(brought).strip().lower()) else [pc_name]
+    named += [str((camp.get("antagonist") or {}).get("name") or "")]
     named += [str(c.get("name") or "") for c in (camp.get("companions") or [])]
     named += [str(f.get("name") or "") for f in (camp.get("fronts") or [])]
     if any(re.search(r"\bser'?en\b", n, re.I) for n in named):
