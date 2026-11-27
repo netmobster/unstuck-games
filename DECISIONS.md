@@ -302,3 +302,13 @@ Route A: the key goes into the web table, not SEREN over MCP. MCP stays on the r
 **Why:** it's what the player asked for, on the table they already know, and it's contained in
 `seren/web/llm.py` plus an account-page field. A per-account flag avoids settling paid tiers
 before anyone pays.
+
+## 2026-11-26 — local Seren session — The sheep chronicle can go on the public /next
+
+The campaign-end chronicle on /next retells Seren's first campaign, *A Wild Sheep Chase* (R.M.
+Jansen-Parkes, Winghorn Press, 2016; DMs Guild content, marked `shareable: no` in SEREN's module
+file). Jay's call: keep it, credited. The chronicle names the author and publisher and says the
+module isn't bundled with Seren. The module files themselves still never ship.
+
+**Why:** it's the real first game, and the chronicle is a retelling of what our table did, not the
+module's text. Credited is enough for Jay.
