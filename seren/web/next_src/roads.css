@@ -406,3 +406,19 @@ main.parch > .in{padding-bottom:20px}
 .mk-dots button:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:3px}
 @media (max-width:640px){.mk-stage{aspect-ratio:4/5}.mk-s img{transform:scale(calc(var(--z,1) * 1.1))}.mk-cap{grid-template-columns:1fr}.mk-lines{min-height:7em}.mk-lines i.old{display:none}}
 @media (prefers-reduced-motion:reduce){.mk-s.on img{animation:none}.mk-dots button.on::after{animation:none;transform:scaleX(1)}}
+
+/* the peek: three cards per library show their twist; the eye works like a password field's (27 Nov) */
+.peek{position:relative;padding-right:56px;cursor:pointer}
+.peek .pk-in{display:grid;transition:transform .6s cubic-bezier(.2,.7,.2,1);transform-style:preserve-3d}
+.peek .pk-f,.peek .pk-b{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden}
+.peek .pk-b{transform:rotateY(180deg)}
+.peek.shown .pk-in{transform:rotateY(180deg)}
+.peek .pk-b p{color:#d9cfae}
+.pk-real{display:block;margin-top:8px;font:700 10px/1.4 'Space Mono',monospace;letter-spacing:.16em;text-transform:uppercase;color:#e3c06a}
+.peek .eye{position:absolute;top:10px;right:10px;z-index:2;width:36px;height:36px;display:grid;place-items:center;border-radius:50%;border:1px solid #33405f;background:rgba(10,16,30,.85);color:#aab3c9;cursor:pointer;transition:color .2s,border-color .2s}
+.peek .eye:hover,.peek.shown .eye{color:#e3c06a;border-color:#e3c06a}
+.peek .eye:focus-visible{outline:2px solid #e3c06a;outline-offset:2px}
+.peek .eye svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round;grid-area:1/1}
+.peek .eye .ec,.peek.shown .eye .eo{display:none}
+.peek.shown .eye .ec{display:block}
+@media (prefers-reduced-motion:reduce){.peek .pk-in{transition:none}.peek.shown .pk-in{transform:none}.peek .pk-b{transform:none;visibility:hidden}.peek.shown .pk-b{visibility:visible}.peek.shown .pk-f{visibility:hidden}}

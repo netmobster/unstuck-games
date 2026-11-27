@@ -16,3 +16,13 @@ __pycache__/
 elsible/LIVE/
 elsible/prototype/elsible.html
 elsible/prototype/parlor.html
+
+# Seren MCP server (25 Nov): the local virtual environment
+seren/mcp/.venv/
+
+# Seren local run (26 Nov): a copy of the private DM corpus and woven campaigns
+seren/.local/
+
+# Seren MCP (26 Nov): the cloudflared binary for the quick tunnel, and woven books
+seren/mcp/bin/
+seren/mcp/certs/

@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Seren · The Deal</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* Layout: a shelf (campaign list left, the chosen campaign right) that gives way to the Loom's table.
+   One committed dark world, the Loom's own: night-blue felt, gilt, bone. */
+:root{
+  --felt:#0f1728; --felt-hi:#141f38; --card:#1a2540; --card-lo:#111a2e; --edge:#3a4664; --edge-lo:#2a3450;
+  --gilt:#c9a44a; --gilt-hi:#e3c06a; --bone:#e9dcb5; --bone-lo:#b8ab8a; --mute:#7d8aa8; --mute-lo:#4a5570;
+  --iron:#8a8f99; --shade:rgba(5,8,16,.72);
+  --serif:'IM Fell English',Georgia,'Times New Roman',serif; --display:'Cinzel Decorative','Cinzel',Georgia,serif;
+  --sans:'Work Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html,body{background:var(--felt);color:var(--bone)}
+body{font:400 17px/1.5 var(--serif);min-height:100vh;
+  background:radial-gradient(1200px 700px at 50% -10%,var(--felt-hi),transparent 70%),var(--felt)}
+::selection{background:var(--gilt);color:var(--felt)}
+button{font:inherit;color:inherit;background:none;border:0;padding:0;cursor:pointer}
+button:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:3px}
+img{max-width:100%;display:block}
+.wrap{max-width:1240px;margin:0 auto;padding-block:26px 60px;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.lbl{font:600 10.5px/1.2 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--gilt)}
+.lbl.mute{color:var(--mute)}
+h1,h2,h3{font-weight:400;margin:0;text-wrap:balance}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:16px;flex-wrap:wrap;margin-bottom:22px}
+.brand{font:400 15px/1 var(--display);letter-spacing:.08em;color:var(--gilt)}
+.top .ask{font:italic 400 clamp(20px,3.4vw,26px)/1.2 var(--serif);color:var(--bone);margin-top:8px}
+.top .note{font:500 11px/1.4 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+
+/* ── the shelf ── */
+.shelf{display:grid;grid-template-columns:minmax(230px,300px) minmax(0,1fr);gap:26px;align-items:start}
+.list{display:flex;flex-direction:column;gap:12px}
+.tab{display:grid;grid-template-columns:72px minmax(0,1fr);gap:12px;align-items:center;text-align:left;padding:10px;border-radius:10px;
+  border:1px solid var(--edge-lo);background:linear-gradient(160deg,var(--card),var(--card-lo));box-shadow:0 14px 28px rgba(0,0,0,.45);
+  transition:border-color .2s,transform .2s}
+.tab:hover{border-color:var(--edge);transform:translateX(3px)}
+.tab[aria-selected=true]{border-color:var(--gilt);box-shadow:0 14px 28px rgba(0,0,0,.5),0 0 0 1px var(--gilt),0 0 24px rgba(201,164,74,.22)}
+.tab .thumb{width:72px;height:96px;border-radius:6px;object-fit:cover;border:1px solid var(--edge-lo)}
+.tab .t{font:400 21px/1.1 var(--serif);color:var(--bone)}
+.tab .m{font:500 11px/1.4 var(--sans);letter-spacing:.08em;color:var(--mute);margin-top:6px}
+.tab .st{display:inline-block;margin-top:8px;font:600 9.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:5px 7px;border-radius:999px;border:1px solid var(--edge)}
+.st.ready{color:var(--felt);background:var(--gilt);border-color:var(--gilt)}
+.st.soon{color:var(--mute)}
+
+.detail{border:1px solid var(--edge-lo);border-radius:14px;overflow:hidden;background:var(--card-lo);box-shadow:0 30px 70px rgba(0,0,0,.55);min-width:0}
+.hero{position:relative;aspect-ratio:16/8;max-width:100%;background:#000}
+.hero img{width:100%;height:100%;object-fit:cover}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(10,14,26,.55) 62%,var(--card-lo) 100%)}
+.hero .cap{position:absolute;left:0;right:0;bottom:0;z-index:1;padding:0 clamp(18px,4vw,36px) 18px}
+.hero h2{font:400 clamp(30px,5.6vw,56px)/1 var(--display);color:var(--bone);text-shadow:0 6px 24px rgba(0,0,0,.8)}
+.hero .tag{font:italic 400 clamp(16px,2.2vw,21px)/1.35 var(--serif);color:var(--gilt-hi);margin-top:10px;max-width:60ch;text-shadow:0 4px 16px rgba(0,0,0,.9)}
+.body{padding:18px clamp(18px,4vw,36px) 30px;display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:28px}
+.desc{font-size:18px;line-height:1.6;color:var(--bone);max-width:64ch;margin:0 0 20px}
+.facts{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,210px),1fr));gap:8px 18px;margin:0 0 22px;padding:0;list-style:none}
+.facts li{font:400 14px/1.45 var(--sans);color:var(--bone-lo);padding-left:16px;position:relative}
+.facts li::before{content:"✦";position:absolute;left:0;top:0;color:var(--gilt);font-size:10px;line-height:2}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:8px}
+.chip{display:inline-flex;align-items:center;gap:7px;font:500 12px/1 var(--sans);letter-spacing:.04em;color:var(--bone);padding:8px 11px;border-radius:999px;border:1px solid var(--edge);background:rgba(255,255,255,.03)}
+.chip svg{width:14px;height:14px;flex:none}
+.chip.chaos{border-color:rgba(201,164,74,.5);color:var(--gilt-hi)}
+.side{display:flex;flex-direction:column;gap:14px;align-items:center}
+.backs{position:relative;width:170px;height:200px}
+.backs img{position:absolute;bottom:0;left:50%;width:112px;aspect-ratio:2/3;max-width:none;object-fit:cover;border-radius:9px;
+  box-shadow:0 18px 34px rgba(0,0,0,.6);border:1px solid rgba(0,0,0,.5);transform-origin:bottom center}
+.backs img:nth-child(1){transform:translateX(-50%) rotate(-12deg) translateX(-26px)}
+.backs img:nth-child(2){transform:translateX(-50%) rotate(0deg) translateY(-6px)}
+.backs img:nth-child(3){transform:translateX(-50%) rotate(12deg) translateX(26px)}
+.side .lbl{text-align:center}
+.go{font:600 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:16px 22px;border-radius:999px;
+  background:var(--gilt);color:var(--felt);box-shadow:0 12px 30px rgba(201,164,74,.25);transition:background .2s,transform .2s}
+.go:hover{background:var(--gilt-hi);transform:translateY(-2px)}
+.go[disabled]{background:transparent;color:var(--mute);border:1px solid var(--edge);box-shadow:none;cursor:default;transform:none}
+.ghost{font:600 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;padding:12px 16px;border-radius:999px;border:1px solid var(--edge);color:var(--bone-lo)}
+.ghost:hover{border-color:var(--gilt);color:var(--bone)}
+
+/* ── the table ── */
+.table[hidden],.shelf[hidden]{display:none}
+.table{display:flex;flex-direction:column;gap:22px}
+.tbar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+.tbar h2{font:400 clamp(24px,4vw,34px)/1.1 var(--display);color:var(--bone)}
+.tbar .sub{font:italic 400 18px/1.3 var(--serif);color:var(--bone-lo);margin-top:4px}
+.tbar .acts{display:flex;gap:8px;flex-wrap:wrap}
+.felt{border-radius:18px;padding:clamp(16px,3vw,30px);border:1px solid var(--edge-lo);
+  background:radial-gradient(900px 500px at 50% 0%,rgba(201,164,74,.07),transparent 70%),linear-gradient(180deg,var(--felt-hi),var(--felt));
+  box-shadow:inset 0 0 80px rgba(0,0,0,.5)}
+.howto{text-align:center;font:italic 400 19px/1.3 var(--serif);color:var(--gilt-hi);margin:0 0 18px;min-height:1.3em}
+.row{display:grid;grid-template-columns:repeat(auto-fit,minmax(118px,150px));justify-content:center;gap:clamp(10px,1.6vw,18px)}
+.slot{display:flex;flex-direction:column;gap:8px;align-items:stretch}
+.slot .lbl{text-align:center}
+.slot.hers .lbl{color:var(--bone-lo)}
+.c3{position:relative;aspect-ratio:2/3;max-width:100%;perspective:900px;border-radius:10px}
+.c3 .in{position:absolute;inset:0;transform-style:preserve-3d;transition:transform .7s cubic-bezier(.3,.7,.2,1)}
+.c3.up .in{transform:rotateY(180deg)}
+.face{position:absolute;inset:0;border-radius:10px;backface-visibility:hidden;-webkit-backface-visibility:hidden;overflow:hidden;
+  box-shadow:0 18px 34px rgba(0,0,0,.6)}
+.face.back{background:#000}
+.face.back img{width:100%;height:100%;object-fit:cover}
+.face.front{transform:rotateY(180deg);background:linear-gradient(160deg,var(--card),var(--card-lo));border:1px solid var(--gilt);
+  padding:12px 11px 11px;display:flex;flex-direction:column;gap:6px;text-align:left}
+.face.front .k{font:600 9px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt)}
+.face.front .n{font:400 clamp(17px,1.9vw,20px)/1.08 var(--serif);color:var(--bone)}
+.face.front .l{font:italic 400 13px/1.3 var(--serif);color:var(--bone-lo)}
+.face.front .as{margin-top:auto;font:400 11.5px/1.4 var(--sans);color:var(--bone);border-top:1px solid var(--edge);padding-top:7px}
+.c3.down{cursor:pointer}
+.c3.down:hover .in{transform:translateY(-6px) rotateZ(-1deg)}
+.c3.down::after{content:"";position:absolute;inset:-3px;border-radius:12px;border:1px solid transparent;transition:border-color .2s;pointer-events:none}
+.c3.down:hover::after{border-color:var(--gilt)}
+.c3.deal{animation:deal .55s cubic-bezier(.2,.8,.2,1) both}
+@keyframes deal{from{opacity:0;transform:translateY(60px) rotate(-9deg)}to{opacity:1;transform:none}}
+/* locked: dealt face up, in chains */
+.chains{position:absolute;inset:0;pointer-events:none;z-index:2}
+.chains>svg:not(.lock){position:absolute;inset:0;width:100%;height:100%}
+.chains>svg.lock{position:absolute;left:50%;top:59%;transform:translate(-50%,-50%);width:30px;height:36px;z-index:3;filter:drop-shadow(0 4px 8px rgba(0,0,0,.7))}
+.c3.locked .face.front{border-color:var(--iron)}
+.c3.locked .face.front::after{content:"";position:absolute;inset:0;background:rgba(10,14,26,.25)}
+
+.sentence{text-align:center;font:400 clamp(18px,2.6vw,24px)/1.4 var(--serif);color:var(--bone);max-width:880px;margin:22px auto 0;text-wrap:balance}
+.sentence i{color:var(--gilt-hi)}
+.sentence .blank{color:var(--mute-lo)}
+.laid{display:flex;justify-content:center;gap:10px;margin-top:18px;flex-wrap:wrap}
+.count{font:600 12px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;padding:15px 22px;border-radius:999px;background:rgba(201,164,74,.18);color:var(--gilt-hi);border:1px solid rgba(201,164,74,.35)}
+
+/* dials */
+.dials{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,210px),1fr));gap:16px 22px}
+.dial{display:flex;flex-direction:column;gap:8px}
+.dial .h{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.dial .h b{font:400 19px/1.1 var(--serif);color:var(--bone);font-weight:400}
+.dial .h span{font:500 11px/1 var(--sans);color:var(--gilt-hi);font-variant-numeric:tabular-nums}
+.dial .ends{display:flex;justify-content:space-between;font:italic 400 13px/1.2 var(--serif);color:var(--bone-lo)}
+.track{position:relative;height:28px}
+.track .rail{position:absolute;left:0;right:0;top:12px;height:4px;border-radius:4px;background:var(--edge-lo)}
+.track .allowed{position:absolute;top:11px;height:6px;border-radius:6px;background:rgba(201,164,74,.35)}
+.track input{position:absolute;inset:0;width:100%;margin:0;background:transparent;-webkit-appearance:none;appearance:none}
+.track input::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;border-radius:50%;background:var(--gilt);border:2px solid var(--felt);box-shadow:0 0 0 1px var(--gilt)}
+.track input::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--gilt);border:2px solid var(--felt)}
+.track input::-webkit-slider-runnable-track{background:transparent}
+.dial .why{font:400 12.5px/1.45 var(--sans);color:var(--mute)}
+.weave{display:flex;flex-direction:column;align-items:center;gap:10px;margin-top:22px;text-align:center}
+.weave p{margin:0;font:italic 400 16px/1.4 var(--serif);color:var(--bone-lo);max-width:52ch}
+h3.sec{font:400 22px/1.2 var(--display);color:var(--gilt);text-align:center;margin:0 0 16px}
+
+/* make-your-own and the book */
+.thumb.own{display:grid;place-items:center;font-size:30px;color:var(--gilt);background:radial-gradient(circle at 50% 40%,rgba(201,164,74,.25),var(--card-lo) 70%)}
+.ownhero{background:radial-gradient(700px 300px at 30% 30%,rgba(201,164,74,.22),transparent 70%),linear-gradient(160deg,var(--felt-hi),var(--card-lo))}
+.ownhero::after{display:none}
+.book{max-width:820px;margin:0 auto;width:100%;display:flex;flex-direction:column;gap:14px}
+.btitle{font:400 clamp(28px,5vw,46px)/1.05 var(--display);color:var(--bone);text-align:center;margin:4px 0 0}
+.bwhere{text-align:center;font:500 11px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin:0}
+.bprem{font:400 20px/1.55 var(--serif);color:var(--bone);margin:6px 0 0;text-wrap:pretty}
+.bopen{border-left:2px solid var(--gilt);padding:4px 0 4px 16px}
+.bopen p{font:italic 400 19px/1.5 var(--serif);color:var(--gilt-hi);margin:6px 0 0}
+.bacts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:8px}
+.bacts a{text-decoration:none}
+/* the table: a deck, a row, a hand */
+.tabletop{display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(12px,2vw,24px);align-items:start}
+.pile{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:22px}
+.stack{position:relative;width:96px;aspect-ratio:2/3}
+.stack img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border-radius:8px;border:1px solid rgba(0,0,0,.6);
+  transform:translate(calc(var(--i) * -2px),calc(var(--i) * -2px));box-shadow:0 10px 22px rgba(0,0,0,.55)}
+.row{grid-template-columns:repeat(var(--n,9),minmax(0,1fr))!important;justify-content:stretch!important;gap:clamp(8px,1vw,14px)!important}
+@media (max-width:900px){.row{grid-template-columns:repeat(auto-fill,minmax(96px,1fr))!important}}
+/* her card asks to be turned */
+.c3.hersdown{box-shadow:0 0 0 2px var(--gilt),0 0 26px rgba(201,164,74,.45);animation:herglow 2.2s ease-in-out infinite}
+@keyframes herglow{50%{box-shadow:0 0 0 2px var(--gilt-hi),0 0 40px rgba(227,192,106,.7)}}
+.ribbon{position:absolute;left:50%;bottom:14%;transform:translateX(-50%);z-index:3;pointer-events:none;white-space:nowrap;
+  font:600 9.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--felt);background:var(--gilt);padding:7px 10px;border-radius:999px;box-shadow:0 6px 14px rgba(0,0,0,.6)}
+.turnher{display:flex;flex-direction:column;align-items:center;gap:10px;margin:6px 0}
+.empty{aspect-ratio:2/3;border-radius:10px;border:1px dashed var(--mute-lo);color:var(--mute);font:italic 400 15px/1.2 var(--serif);transition:border-color .2s,color .2s}
+.empty:hover{border-color:var(--gilt);color:var(--bone)}
+.empty.on{border:1px solid var(--gilt);color:var(--gilt-hi);box-shadow:0 0 0 1px var(--gilt),0 0 22px rgba(201,164,74,.25)}
+.c3.mine{cursor:pointer}
+.c3.mine.on{box-shadow:0 0 0 2px var(--gilt),0 0 22px rgba(201,164,74,.3)}
+.face.front.gilt{border-color:var(--gilt-hi)}
+.c3.sealed .waxbox{position:absolute;inset:0;display:grid;place-items:center;z-index:2;pointer-events:none}
+.seal{width:52%;filter:drop-shadow(0 6px 10px rgba(0,0,0,.7))}
+.mini{font:600 10px/1.2 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--bone-lo);border:1px solid var(--edge);border-radius:999px;padding:7px 9px;margin-top:2px}
+.mini:hover{border-color:var(--gilt);color:var(--bone)}
+.hand{margin-top:22px;border-top:1px solid var(--edge-lo);padding-top:18px}
+.handhead{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.handnote{text-align:center;font:italic 400 18px/1.3 var(--serif);color:var(--gilt-hi);margin:6px 0}
+.fan{display:flex;justify-content:center;gap:clamp(8px,1.6vw,18px);flex-wrap:wrap;padding:8px 0 14px}
+.hc{width:clamp(140px,17vw,176px);aspect-ratio:2/3;border-radius:11px;padding:13px 12px;text-align:left;display:flex;flex-direction:column;gap:6px;
+  background:linear-gradient(160deg,var(--card),var(--card-lo));border:1px solid var(--edge);box-shadow:0 18px 34px rgba(0,0,0,.6);
+  transform:rotate(var(--r)) translateY(var(--y));transition:transform .2s,border-color .2s,box-shadow .2s}
+.hand.fresh .hc{animation:fromdeck .6s cubic-bezier(.2,.8,.2,1) both}
+.hc:hover{transform:rotate(0deg) translateY(-10px);border-color:var(--gilt)}
+.hc.taken{border-color:var(--gilt-hi);box-shadow:0 0 0 1px var(--gilt),0 18px 34px rgba(0,0,0,.6),0 0 24px rgba(201,164,74,.28)}
+.hc .k{font:600 9px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt)}
+.hc .n{font:400 21px/1.08 var(--serif);color:var(--bone)}
+.hc .l{font:italic 400 14px/1.3 var(--serif);color:var(--bone-lo)}
+.hc .ch{font:400 12px/1.4 var(--sans);color:var(--gilt-hi)}
+.hc .as{margin-top:auto;font:400 12px/1.4 var(--sans);color:var(--bone);border-top:1px solid var(--edge);padding-top:7px}
+@keyframes fromdeck{from{opacity:0;transform:translate(-38vw,-140px) rotate(-24deg) scale(.6)}to{opacity:1;transform:rotate(var(--r)) translateY(var(--y))}}
+@media (max-width:640px){.tabletop{grid-template-columns:minmax(0,1fr)}.pile{flex-direction:row;padding-top:0}.stack{width:56px}}
+/* the veil: tune it, the weave, the book */
+body.veiled{overflow:hidden}
+.veil{position:fixed;inset:0;z-index:50;display:grid;place-items:center;padding:clamp(10px,3vw,34px);
+  background:rgba(5,8,16,.62);backdrop-filter:blur(9px) brightness(.55);-webkit-backdrop-filter:blur(9px) brightness(.55);animation:vin .35s ease both}
+@keyframes vin{from{opacity:0}to{opacity:1}}
+.vmodal{width:min(1040px,100%);max-height:calc(100vh - 40px);overflow:auto;border-radius:18px;padding:clamp(18px,3vw,34px);
+  background:radial-gradient(900px 400px at 50% 0%,rgba(201,164,74,.08),transparent 70%),linear-gradient(180deg,var(--felt-hi),var(--felt));
+  border:1px solid var(--gilt);box-shadow:0 0 0 1px rgba(201,164,74,.4),0 0 50px rgba(201,164,74,.28),0 40px 90px rgba(0,0,0,.7);
+  animation:mglow 3.4s ease-in-out infinite,min .45s cubic-bezier(.2,.8,.2,1) both}
+@keyframes mglow{50%{box-shadow:0 0 0 1px rgba(227,192,106,.6),0 0 70px rgba(227,192,106,.38),0 40px 90px rgba(0,0,0,.7)}}
+@keyframes min{from{opacity:0;transform:translateY(18px) scale(.98)}to{opacity:1;transform:none}}
+.mhead{text-align:center;margin-bottom:20px}
+.mtitle{font:400 clamp(26px,4.4vw,42px)/1.05 var(--display);color:var(--bone);margin:6px 0 0}
+.msent{font:400 clamp(16px,2vw,19px)/1.45 var(--serif);color:var(--bone);max-width:760px;margin:12px auto 0;text-wrap:balance}
+.msent i{color:var(--gilt-hi)}
+.macts{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-top:22px}
+.macts a{text-decoration:none;display:inline-flex;align-items:center}
+.mnote{text-align:center;font:italic 400 15px/1.4 var(--serif);color:var(--bone-lo);margin:12px 0 0}
+.refused{text-align:left;max-width:640px;margin:14px auto 0;color:var(--bone-lo);font:400 14px/1.5 var(--sans)}
+/* her two buttons */
+.herchoice{display:flex;flex-direction:column;align-items:center;gap:12px}
+.herchoice .twins{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.mini.keep{background:var(--gilt);color:var(--felt);border-color:var(--gilt)}
+/* the weave */
+.loom{text-align:center;padding:6px 0}
+.gather{position:relative;height:260px;margin:18px auto 8px;max-width:520px}
+.gather img{position:absolute;left:50%;top:50%;width:64px;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid rgba(0,0,0,.6);
+  box-shadow:0 10px 20px rgba(0,0,0,.6);transform:translate(-50%,-50%) translate(var(--x),var(--y)) rotate(var(--rot));
+  animation:gather 2.6s cubic-bezier(.6,.05,.3,1) var(--d) forwards}
+@keyframes gather{70%{transform:translate(-50%,-50%) translate(calc(var(--x) * .25),calc(var(--y) * .25)) rotate(0deg)}
+  100%{transform:translate(-50%,-50%) rotate(0deg) scale(1.15);opacity:.0}}
+.threads{position:absolute;inset:40% 18%;display:flex;flex-direction:column;justify-content:space-between;opacity:0;animation:tin .6s ease 2.2s forwards}
+.threads i{display:block;height:1px;background:linear-gradient(90deg,transparent,var(--gilt-hi),transparent)}
+@keyframes tin{to{opacity:1}}
+.shuttle{position:absolute;top:50%;left:18%;width:34px;height:8px;margin-top:-4px;border-radius:8px;background:var(--gilt-hi);box-shadow:0 0 18px var(--gilt);opacity:0;
+  animation:shuttle 1s ease-in-out 2.4s infinite alternate}
+@keyframes shuttle{0%{opacity:1;left:18%}100%{opacity:1;left:calc(82% - 34px)}}
+.teller{max-width:640px;margin:18px auto 22px;min-height:7.5em;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;text-align:center}
+.tl-prev{margin:0;font:italic 400 15px/1.45 var(--serif);color:var(--mute);opacity:.75}
+.tl-now{margin:0;font:italic 400 clamp(19px,2.4vw,23px)/1.45 var(--serif);color:var(--bone);min-height:1.45em}
+.tl-now.in{animation:tlIn .5s ease both}
+@keyframes tlIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+.wlog{max-width:460px;margin:22px auto 0;text-align:left}
+.wlog summary{list-style:none;cursor:pointer}
+.wlog summary::-webkit-details-marker{display:none}
+.wclock{text-align:center;margin-bottom:10px}
+.wclock b{font:400 22px/1 var(--display);color:var(--gilt-hi);font-variant-numeric:tabular-nums;margin-left:6px}
+#wlog{list-style:none;margin:0;padding:0;display:grid;gap:4px}
+#wlog li{display:grid;grid-template-columns:46px 1fr;gap:10px;font:400 13px/1.45 var(--sans);color:var(--bone-lo);animation:wlogIn .4s ease both}
+#wlog li span{color:var(--gilt);font-variant-numeric:tabular-nums}
+#wlog li:last-child{color:var(--bone)}
+@keyframes wlogIn{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+.wsteps{list-style:none;padding:0;margin:0 auto;max-width:420px;text-align:left;display:grid;gap:10px}
+.wsteps li{font:400 17px/1.3 var(--serif);color:var(--mute-lo);padding-left:26px;position:relative;transition:color .5s}
+.wsteps li::before{content:"";position:absolute;left:4px;top:6px;width:10px;height:10px;border-radius:50%;border:1px solid var(--mute-lo);transition:all .5s}
+.wsteps li.on{color:var(--bone)}
+.wsteps li.on::before{background:var(--gilt);border-color:var(--gilt);box-shadow:0 0 12px var(--gilt)}
+/* the book */
+.bookhead{text-align:center;margin-bottom:16px}
+.bookbody{display:grid;grid-template-columns:190px minmax(0,1fr);gap:24px;align-items:start}
+.toc{position:sticky;top:0;display:flex;flex-direction:column;gap:2px;border-right:1px solid var(--edge-lo);padding-right:14px}
+.toc a{font:400 16px/1.3 var(--serif);color:var(--bone-lo);text-decoration:none;padding:7px 8px;border-radius:8px}
+.toc a:hover{color:var(--gilt-hi);background:rgba(201,164,74,.08)}
+.pages{max-height:min(62vh,680px);overflow:auto;padding-right:10px;scroll-behavior:smooth}
+.pages h2{display:none}
+.pages h3{font:400 26px/1.2 var(--display);color:var(--gilt);margin:6px 0 12px}
+.pages h4{font:600 11px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt);margin:20px 0 10px}
+.pages p{font:400 18px/1.6 var(--serif);color:var(--bone);margin:0 0 14px;max-width:66ch}
+.pages b{color:var(--bone);font-weight:700}
+.pages em{color:var(--gilt-hi)}
+.pages ul{margin:0 0 14px;padding-left:20px;display:grid;gap:7px}
+.pages li{font:400 17px/1.5 var(--serif);color:var(--bone)}
+.pages hr{border:0;border-top:1px solid var(--edge-lo);margin:22px 0}
+.pages blockquote{margin:0 0 16px;border-left:2px solid var(--gilt);padding:4px 0 4px 16px;font:italic 400 18px/1.55 var(--serif);color:var(--gilt-hi)}
+.pages table{width:100%;border-collapse:collapse;margin:0 0 16px;font:400 14.5px/1.45 var(--sans)}
+.pages th{text-align:left;font:600 10.5px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gilt);border-bottom:1px solid var(--edge);padding:8px 10px}
+.pages td{border-bottom:1px solid var(--edge-lo);padding:9px 10px;color:var(--bone-lo);vertical-align:top}
+.pages td:first-child{color:var(--bone);white-space:nowrap}
+@media (max-width:760px){.bookbody{grid-template-columns:minmax(0,1fr)}.toc{position:static;flex-direction:row;flex-wrap:wrap;border-right:0;border-bottom:1px solid var(--edge-lo);padding:0 0 8px}.pages{max-height:none}.pages td:first-child{white-space:normal}}
+@media (prefers-reduced-motion:reduce){.vmodal,.gather img,.shuttle,.threads{animation:none!important}.threads{opacity:1}}
+/* the Loom's top bar: her voice and offers, her counter, the music */
+.lbar{display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);gap:18px;align-items:start;margin-bottom:18px}
+.lleft .brand{margin-bottom:6px}
+.says{font:italic 400 clamp(19px,2.2vw,24px)/1.25 var(--serif);color:var(--bone);margin:0 0 12px;max-width:34ch;min-height:2.5em}
+.offers{display:flex;flex-wrap:wrap;gap:8px}
+.offers .ghost{padding:10px 13px;font-size:10px}
+.ghost.gilt{border-color:rgba(201,164,74,.6);color:var(--gilt-hi)}
+.ghost[disabled]{opacity:.4;cursor:default}
+.links{display:flex;gap:16px;margin-top:10px}
+.howlink{font:500 11px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);text-decoration:underline;text-underline-offset:3px}
+.howlink:hover{color:var(--bone)}
+.lmid{display:flex;justify-content:center}
+.counter{display:flex;flex-direction:column;align-items:center;gap:8px;width:220px;text-align:center}
+.counter .c3{width:132px}
+.counter .lbl{white-space:nowrap}
+.cslot{width:132px;aspect-ratio:2/3;border-radius:10px;border:1px dashed var(--mute-lo);display:grid;place-items:center;text-align:center;padding:14px;
+  font:italic 400 14px/1.3 var(--serif);color:var(--mute)}
+.counter .twins{display:flex;flex-direction:column;gap:6px;align-items:center}
+.lright{display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.sound{display:flex;align-items:center;gap:10px}
+.soundbtn{width:34px;height:34px;border-radius:50%;border:1px solid var(--edge);display:grid;place-items:center;color:var(--gilt-hi);font-size:15px}
+.soundbtn.off{color:var(--mute)}
+#vol{width:120px;accent-color:var(--gilt)}
+.lright .note{font:500 10.5px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.under{text-align:center;font:500 9.5px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--mute);margin-top:2px;min-height:12px}
+.redeal{font:500 9.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--gilt-hi);padding:4px 0;margin-top:2px}
+.redeal:hover{color:var(--bone)}
+.face.front .l{-webkit-line-clamp:4;display:-webkit-box;-webkit-box-orient:vertical;overflow:hidden}
+.synopsis{margin:22px auto 0;max-width:820px;text-align:center;border:1px solid var(--edge-lo);border-radius:12px;padding:14px 18px;background:rgba(5,8,16,.25)}
+.synopsis p{margin:6px 0 0;font:italic 400 clamp(17px,2vw,20px)/1.4 var(--serif);color:var(--bone)}
+.synopsis p span{font:500 11px/1 var(--sans);font-style:normal;letter-spacing:.12em;text-transform:uppercase;color:var(--mute);white-space:nowrap}
+.hc{width:clamp(130px,14vw,158px)!important;aspect-ratio:3/4!important}
+.hc .n{font-size:22px!important}
+.hc .l{font-size:15px!important}
+.hc.taken{background:linear-gradient(160deg,#d4b05a,#b8923c)!important}
+.hc.taken .k,.hc.taken .n,.hc.taken .l{color:var(--felt)!important}
+/* a card, opened */
+.cardview{max-width:560px;margin:0 auto}
+.cvhead{display:flex;justify-content:space-between;gap:10px;margin-bottom:10px}
+.cvname{font:400 clamp(32px,5vw,44px)/1.05 var(--serif);color:var(--bone);margin:0}
+.cvline{font:italic 400 20px/1.4 var(--serif);color:var(--gilt-hi);margin:8px 0 16px}
+.cvrow{border-top:1px solid var(--edge-lo);padding:12px 0;display:grid;grid-template-columns:140px minmax(0,1fr);gap:14px;align-items:baseline}
+.cvrow p{margin:0;font:400 16px/1.5 var(--sans);color:var(--bone)}
+.how{max-width:700px;margin:0 auto;padding-left:22px;display:grid;gap:12px;font:400 17px/1.5 var(--serif);color:var(--bone-lo)}
+.how b{color:var(--bone)}
+/* the weave and the reveal */
+.lbl.red{color:#e07a58}
+.bigsent{font:400 clamp(20px,2.8vw,28px)/1.35 var(--serif);color:var(--bone);max-width:780px;margin:12px auto 10px;text-wrap:balance}
+.bigsent.small{font-size:clamp(17px,2.2vw,21px);color:var(--bone-lo)}
+.reveal{text-align:center}
+.rtitle{font:400 clamp(30px,5vw,50px)/1.05 var(--display);color:var(--gilt);margin:22px 0 4px}
+.rprem{font:400 clamp(17px,2vw,20px)/1.55 var(--serif);color:var(--bone);max-width:720px;margin:12px auto 0;text-wrap:pretty}
+.ropen{max-width:680px;margin:16px auto 0;text-align:left;border-left:2px solid var(--gilt);padding:6px 0 6px 18px;font:italic 400 19px/1.55 var(--serif);color:var(--gilt-hi)}
+/* smoke */
+.wisp{position:absolute;width:80px;height:80px;margin:-40px 0 0 -40px;border-radius:50%;pointer-events:none;z-index:60;
+  background:radial-gradient(circle,rgba(233,220,181,.24),rgba(233,220,181,.08) 45%,rgba(233,220,181,0) 70%);filter:blur(7px);
+  animation:wisp 3.6s ease-out both}
+@keyframes wisp{0%{opacity:0;transform:translate(0,0) scale(calc(var(--s) * .35)) rotate(0deg)}
+  18%{opacity:.9}100%{opacity:0;transform:translate(var(--dx),-190px) scale(calc(var(--s) * 2.4)) rotate(var(--rot))}}
+@media (max-width:900px){.lbar{grid-template-columns:minmax(0,1fr)}.lmid{justify-content:flex-start}.lright{align-items:flex-start;flex-direction:row}.says{min-height:0}}
+/* atmosphere: a darker room, candlelight on the felt, dust in it */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;background:radial-gradient(ellipse at 50% 45%,transparent 55%,rgba(2,4,10,.55) 100%)}
+.felt.lit{position:relative;overflow:hidden}
+.felt.lit::before{content:"";position:absolute;inset:-10%;pointer-events:none;z-index:0;
+  background:radial-gradient(700px 360px at 50% 105%,rgba(227,170,90,.16),transparent 70%),radial-gradient(500px 260px at 12% 0%,rgba(140,170,255,.05),transparent 70%);
+  animation:candle 5.5s ease-in-out infinite}
+@keyframes candle{0%,100%{opacity:.85}22%{opacity:1}31%{opacity:.78}47%{opacity:.95}63%{opacity:.82}80%{opacity:1}}
+.felt.lit>*{position:relative;z-index:1}
+.motes{position:absolute!important;inset:0;pointer-events:none;z-index:0!important}
+.motes i{position:absolute;width:3px;height:3px;border-radius:50%;background:rgba(233,220,181,.55);box-shadow:0 0 6px rgba(233,220,181,.6);
+  opacity:0;animation:mote var(--d) linear var(--dl) infinite}
+@keyframes mote{0%{opacity:0;transform:translate(0,0)}15%{opacity:.7}85%{opacity:.5}100%{opacity:0;transform:translate(var(--dx),-120px)}}
+/* the will-o'-wisp */
+.willo{position:fixed;left:0;width:16px;height:16px;margin:-8px;border-radius:50%;pointer-events:none;z-index:70;
+  background:radial-gradient(circle,#f7f3d6 0%,#c8e7d0 35%,rgba(140,210,190,.5) 60%,transparent 72%);
+  box-shadow:0 0 18px 6px rgba(170,230,200,.45),0 0 60px 20px rgba(120,200,180,.18);animation:willo 1.3s ease-in-out infinite alternate}
+.willo::after{content:"";position:absolute;inset:-30px;border-radius:50%;background:radial-gradient(circle,rgba(160,225,200,.14),transparent 65%)}
+@keyframes willo{from{filter:brightness(.8);scale:.85}to{filter:brightness(1.25);scale:1.1}}
+/* the cat */
+.paw{position:fixed;top:100vh;width:60px;height:220px;pointer-events:none;z-index:70;filter:drop-shadow(0 10px 18px rgba(0,0,0,.6))}
+.paw svg{width:100%;height:100%;display:block}
+@media (prefers-reduced-motion:reduce){.felt.lit::before,.motes i{animation:none}.motes{display:none}}
+@media (max-width:820px){
+  .shelf{grid-template-columns:minmax(0,1fr)}
+  .list{flex-direction:row;overflow-x:auto;padding-bottom:6px;scroll-snap-type:x mandatory}
+  .tab{min-width:230px;scroll-snap-align:start}
+  .body{grid-template-columns:minmax(0,1fr)}
+  .side{flex-direction:row;justify-content:space-between;flex-wrap:wrap}
+}
+@media (max-width:460px){
+  .row{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .backs{width:150px;height:170px}.backs img{width:92px}
+}
+@media (prefers-reduced-motion:reduce){.c3.hersdown{animation:none}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+/* ── who you play, and the ladder (Jay, 26 Nov; the sample was lab/ladder-seren.html) ── */
+.vmodal.ldwide{width:min(1240px,100%);padding:0}
+.ld-doors{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:10px 0 6px}
+.ld-door{all:unset;box-sizing:border-box;cursor:pointer;display:flex;flex-direction:column;gap:8px;padding:22px;border-radius:12px;border:1px solid var(--edge);background:linear-gradient(170deg,var(--card,#1a2540),#111a2e);transition:transform .2s,border-color .2s,box-shadow .2s}
+.ld-door:hover{transform:translateY(-3px);border-color:var(--gilt);box-shadow:0 0 30px rgba(201,164,74,.2)}
+.ld-door:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:3px}
+.ld-door b{font:400 26px/1.1 var(--display);color:var(--bone)}
+.ld-door em{font:italic 15px/1.45 var(--serif);color:var(--mute)}
+@media (max-width:640px){.ld-doors{grid-template-columns:1fr}}
+/* ── who walks in: the shared six (27 Nov). Names are set in each card's own gilt band. ── */
+.wy{padding:clamp(20px,3vw,34px)}
+.wy-c{container-type:inline-size;position:relative;margin:0;aspect-ratio:2/3;border-radius:8px;overflow:hidden;background:#000;box-shadow:0 16px 34px rgba(0,0,0,.55);transition:transform .3s}
+.wy-c img{width:100%;height:100%;object-fit:cover;display:block}
+.wy-c figcaption{position:absolute;left:9%;right:9%;top:86.2%;height:10.5%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
+.wy-c figcaption b{font:400 min(6.4cqw,22px)/1.05 var(--display);letter-spacing:.06em;white-space:nowrap;color:var(--gilt-hi);text-shadow:0 1px 8px #000}
+.wy-c figcaption i{font:italic 400 min(3.8cqw,13px)/1.2 var(--serif);color:var(--bone-lo);margin-top:.6cqw;white-space:nowrap}
+.wy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;margin-top:18px}
+.wy-pk{position:relative;min-width:0}
+.wy-open{display:block;width:100%}
+.wy-open:hover .wy-c{transform:translateY(-5px);box-shadow:0 22px 40px rgba(0,0,0,.6),0 0 26px rgba(201,164,74,.25)}
+.wy-tick{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:1px solid rgba(233,220,181,.55);background:rgba(15,23,40,.8);color:var(--bone);font:600 15px/1 var(--sans);display:grid;place-items:center}
+.wy-tick[aria-pressed=true]{background:var(--gilt);border-color:var(--gilt);color:var(--felt)}
+.wy-cls{margin-top:7px;text-align:center;font:500 10.5px/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.wy-own{all:unset;box-sizing:border-box;cursor:pointer;aspect-ratio:2/3;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px;border-radius:8px;border:1px dashed var(--edge);background:linear-gradient(170deg,var(--card),var(--card-lo));transition:border-color .2s,transform .2s}
+.wy-own:hover{border-color:var(--gilt);transform:translateY(-4px)}
+.wy-own:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:3px}
+.wy-own b{font:400 20px/1.1 var(--display);color:var(--bone)}
+.wy-own em{font:italic 14px/1.4 var(--serif);color:var(--mute)}
+.wy-again{display:grid;grid-template-columns:160px 1fr;gap:22px;align-items:center;max-width:620px;margin:22px auto 0}
+.wy-view{max-width:860px;margin:0 auto}
+.wy-back{margin-bottom:14px}
+.wy-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.wy-nm{margin-top:18px;font:400 clamp(28px,4vw,40px)/1.05 var(--display);color:var(--bone)}
+.wy-nm span{font:italic 400 .5em var(--serif);color:var(--bone-lo)}
+.wy-nm.sm{font-size:22px;margin-top:10px}
+.wy-core{margin-top:6px;font:500 11.5px/1.5 var(--sans);letter-spacing:.06em;color:var(--mute)}
+.wy-core b{color:var(--gilt-hi);font-weight:600}
+.wy-hook{margin:14px 0 0;font:italic 400 21px/1.45 var(--serif);color:var(--bone)}
+.wy-hook.sm{font-size:16px;margin-top:8px}
+.wy-plays{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.wy-plays span{font:500 11px/1 var(--sans);letter-spacing:.06em;padding:8px 10px;border-radius:999px;border:1px solid var(--edge);color:var(--bone-lo)}
+.wy-plays span:first-child{border-color:var(--gilt);color:var(--gilt-hi)}
+.wy-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:8px;margin-top:14px}
+.wy-stats div{background:var(--card-lo);border:1px solid var(--edge-lo);border-radius:8px;padding:10px 6px;text-align:center}
+.wy-stats b{display:block;font:400 22px/1 var(--display);color:var(--bone)}
+.wy-stats small{font:500 11px var(--sans);color:var(--gilt)}
+.wy-stats span{display:block;margin-top:6px;font:600 9px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.wy-bio{margin:16px 0 0;font:400 17px/1.6 var(--serif);color:var(--bone-lo)}
+.wy-dr{margin-top:12px;border:1px solid var(--edge-lo);border-radius:10px;background:var(--card-lo)}
+.wy-dr[open]{border-color:var(--gilt)}
+.wy-dr summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:14px 16px;font:400 18px/1.2 var(--serif);color:var(--bone)}
+.wy-dr summary::-webkit-details-marker{display:none}
+.wy-dr summary::after{content:"+";margin-left:auto;font:400 22px/1 var(--sans);color:var(--gilt);transition:transform .25s}
+.wy-dr[open] summary::after{transform:rotate(45deg)}
+.wy-dr summary small{font:500 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.wy-dr > div{padding:0 16px 16px}
+.wy-dr h4{margin:14px 0 4px;font:600 10px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt)}
+.wy-dr p,.wy-dr li,.wy-dr dd,.wy-dr td{font:400 15px/1.5 var(--serif);color:var(--bone-lo);margin:0}
+.wy-dr p.q{font-style:italic;color:var(--bone)}
+.wy-dr ul{margin:0;padding-left:18px}
+.wy-dr table{border-collapse:collapse;width:100%}
+.wy-dr td{padding:6px 6px 6px 0;border-bottom:1px solid var(--edge-lo);vertical-align:top}
+.wy-dr td:nth-child(2){font:500 12.5px/1.6 var(--sans);color:var(--gilt-hi);white-space:nowrap}
+.wy-dr dl{display:grid;grid-template-columns:120px 1fr;gap:4px 12px;margin:0}
+.wy-dr dt{font:600 10px/1.9 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.wy-abil{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-top:4px}
+.wy-abil div{text-align:center;background:var(--card);border-radius:6px;padding:8px 2px}
+.wy-abil span{display:block;font:600 9.5px/1 var(--sans);letter-spacing:.12em;color:var(--mute)}
+.wy-abil b{display:block;font:400 20px/1.2 var(--display);color:var(--bone);margin-top:4px}
+.wy-abil i{display:block;font:500 11px/1 var(--sans);font-style:normal;color:var(--gilt)}
+.wy-cmp{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:14px;margin-top:18px}
+.wy-col{display:flex;flex-direction:column;gap:10px;padding:12px;border:1px solid var(--edge-lo);border-radius:12px;background:var(--card-lo);min-width:0}
+.wy-col .go{margin-top:auto}
+.c3.you{box-shadow:0 0 0 1px var(--gilt),0 0 26px rgba(227,192,106,.35)}
+@media (max-width:640px){
+  .wy-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .wy-pair{gap:8px}.wy-again{grid-template-columns:110px 1fr;gap:14px}
+  .wy-abil{grid-template-columns:repeat(3,minmax(0,1fr))}.wy-dr dl{grid-template-columns:1fr}
+  .wy-cmp{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+.ld-form{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+.ld-form input{flex:1 1 280px;min-width:0;min-height:46px;padding:10px 14px;border-radius:8px;border:1px solid var(--edge);background:rgba(5,8,16,.6);color:var(--bone);font:400 15px/1.2 var(--sans)}
+.ld-form input:focus{outline:none;border-color:var(--gilt);box-shadow:0 0 0 3px rgba(201,164,74,.2)}
+.ld-err{margin:14px 0 0;color:#e2a596;font:italic 15px/1.45 var(--serif)}
+.ld-or{margin:16px 0 0;color:var(--mute);font:italic 14.5px/1.5 var(--serif)}
+.ld-top{position:relative;overflow:hidden;border-radius:18px 18px 0 0;padding:26px clamp(18px,3vw,30px) 22px;display:flex;justify-content:space-between;align-items:flex-end;gap:18px;
+  background:linear-gradient(90deg,rgba(11,15,28,.95),rgba(11,15,28,.78) 50%,rgba(11,15,28,.35)),var(--art) center 35%/cover;border-bottom:1px solid rgba(201,164,74,.4)}
+.ld-h{margin:8px 0 0;font:400 clamp(24px,3.4vw,40px)/1.08 var(--display);color:var(--gilt-hi)}
+.ld-h em{font-style:normal;color:var(--bone)}
+.ld-sub{margin:8px 0 0;font:italic 16px/1.4 var(--serif);color:var(--bone)}
+.ld-back{width:64px;aspect-ratio:2/3;object-fit:cover;border-radius:6px;border:1px solid rgba(201,164,74,.7);transform:rotate(-4deg);box-shadow:0 10px 22px rgba(0,0,0,.6);flex:none}
+.ld-unsup{display:flex;flex-wrap:wrap;gap:6px;align-items:center;padding:12px clamp(18px,3vw,30px);border-bottom:1px solid var(--edge);background:rgba(143,168,154,.06)}
+.ld-unsup .lbl{margin-right:6px;color:#8fa89a}
+.ld-ask{cursor:pointer;border:1px solid rgba(143,168,154,.55)!important;color:#a9cfbb!important;background:none;font:400 11.5px/1.2 var(--sans);border-radius:999px;padding:6px 10px}
+.ld-ask:hover{background:rgba(143,168,154,.12)}
+.ld-stage{display:grid;grid-template-columns:200px minmax(0,1fr) 250px;gap:20px;padding:20px clamp(18px,3vw,30px) 26px;align-items:start}
+@media (max-width:980px){.ld-stage{grid-template-columns:170px minmax(0,1fr)}.ld-sheet{grid-column:1/-1}}
+@media (max-width:640px){.ld-stage{grid-template-columns:1fr}.ld-ladder{display:flex;overflow-x:auto;gap:6px}.ld-rung .c{display:none}}
+.ld-ladder{position:relative}
+.ld-rung{display:grid;grid-template-columns:46px 1fr;gap:9px;align-items:center;min-height:44px;padding:3px 0}
+.ld-rung .n{width:46px;height:34px;border-radius:6px;display:grid;place-items:center;font:400 17px/1 var(--display);color:var(--mute);border:1px solid var(--edge);background:var(--felt);transition:all .3s}
+.ld-rung .c{font:400 11px/1.4 var(--sans);color:var(--mute);min-width:0}
+.ld-rung .c b{color:#e2a596;font-weight:400}
+.ld-rung.above .n{color:#8fae84;border-color:rgba(127,174,115,.45)}
+.ld-rung.above .c{color:#8fa38a}
+.ld-rung.here .n{height:44px;font-size:23px;color:#1a1306;background:linear-gradient(170deg,var(--gilt-hi),var(--gilt));border-color:var(--gilt-hi);box-shadow:0 0 24px rgba(227,192,106,.45)}
+.ld-rung.here .c{color:var(--bone)}
+.ld-rung.goal .n{position:relative}
+.ld-rung.goal .n::after{content:"campaign";position:absolute;right:-8px;top:-9px;font:700 7px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;background:#ff6a2b;color:#1a0a02;border-radius:2px;padding:3px 4px}
+.ld-now{min-width:0;border:1px solid rgba(201,164,74,.55);border-radius:12px;background:rgba(10,16,30,.5);padding:clamp(16px,2.4vw,24px)}
+.ld-step h4{margin:6px 0 0;font:400 clamp(21px,2.4vw,28px)/1.15 var(--display);color:var(--bone)}
+.ld-chips{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0 4px}
+.ld-chips .chip.lose{border-color:rgba(192,112,95,.5);color:#e2a596}
+.ld-chips .chip.gain{border-color:rgba(127,174,115,.5);color:#a9cf9e}
+.ld-q{margin:18px 0 10px;font:italic 18px/1.35 var(--serif);color:var(--bone)}
+.ld-opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:9px}
+.ld-opt{all:unset;box-sizing:border-box;cursor:pointer;position:relative;display:flex;flex-direction:column;gap:4px;border:1px solid var(--edge);border-radius:8px;background:linear-gradient(170deg,var(--card,#1a2540),#111a2e);padding:11px 11px 12px;min-height:70px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.ld-opt:hover{transform:translateY(-2px);border-color:#5b6a91}
+.ld-opt:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:2px}
+.ld-opt i{font:700 8px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--gilt);font-style:normal}
+.ld-opt b{font:400 16px/1.15 var(--serif);color:var(--bone);font-weight:400}
+.ld-opt em{font:italic 12px/1.3 var(--serif);color:var(--mute)}
+.ld-opt.rec::after{content:"Seren's pick";position:absolute;top:-8px;right:8px;font:700 7.5px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;background:var(--gilt);color:#1a1306;border-radius:2px;padding:3px 5px}
+.ld-opt.gone{border-color:#c0705f;box-shadow:0 0 0 1px #c0705f,0 0 18px rgba(192,112,95,.22)}
+.ld-opt.gone b{text-decoration:line-through;text-decoration-color:rgba(192,112,95,.8)}
+.ld-opt.item.gone b{text-decoration:none}
+.ld-opt.got{border-color:#7fae73;box-shadow:0 0 0 1px #7fae73,0 0 18px rgba(127,174,115,.22)}
+.ld-opt.item.set:not(.gone){border-color:#7fae73}
+.ld-opt .ld-ask{align-self:flex-start;margin-top:4px;font-size:10px;padding:3px 7px}
+.ld-go{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:22px}
+.push{position:relative;animation:ldpush 1.6s ease-in-out infinite}
+@keyframes ldpush{0%,100%{box-shadow:0 0 14px rgba(227,192,106,.25)}50%{box-shadow:0 0 0 6px rgba(227,192,106,.16),0 0 30px rgba(227,192,106,.5)}}
+.ld-sheet{border:1px solid var(--edge);border-radius:10px;background:rgba(10,16,30,.55);padding:16px}
+.ld-stats{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:10px}
+.ld-stats div{border:1px solid #26314d;border-radius:6px;padding:7px;text-align:center}
+.ld-stats b{display:block;font:400 19px/1 var(--display);color:var(--gilt-hi)}
+.ld-stats span{font:700 8px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.ld-slots{display:grid;gap:4px;margin-top:7px}
+.ld-slots div{display:grid;grid-template-columns:30px 1fr;gap:6px;align-items:center;font:400 10px/1 var(--sans);color:var(--mute)}
+.ld-slots span{display:flex;gap:3px}
+.ld-slots i{width:11px;height:11px;border-radius:50%;background:var(--gilt)}
+.ld-list{margin:6px 0 0;font:400 13px/1.55 var(--serif);color:var(--mute)}
+.ld-done{text-align:center}
+.ld-cover{position:relative;margin:14px auto 0;max-width:480px;aspect-ratio:16/10;border-radius:10px;overflow:hidden;border:1px solid rgba(201,164,74,.6);box-shadow:0 30px 60px rgba(0,0,0,.55),0 0 34px rgba(201,164,74,.2)}
+.ld-cover img{width:100%;height:100%;object-fit:cover}
+.ld-cover div{position:absolute;inset:auto 0 0;padding:18px;background:linear-gradient(0deg,rgba(11,15,28,.95),transparent)}
+.ld-cover b{display:block;font:400 28px/1.05 var(--display);color:var(--gilt-hi)}
+.ld-cover span{display:block;margin-top:4px;font:italic 15px/1.3 var(--serif);color:var(--bone)}
+.ld-toast{position:fixed;left:50%;bottom:calc(22px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);opacity:0;transition:all .35s;z-index:90;max-width:min(580px,calc(100vw - 32px));
+  border:1px solid rgba(143,168,154,.6);background:#0f1c1a;color:#cfe5d8;border-radius:8px;padding:12px 16px;font:italic 15px/1.45 var(--serif);box-shadow:0 20px 50px rgba(0,0,0,.6);pointer-events:none}
+.ld-name{display:flex;flex-direction:column;gap:6px;max-width:360px;margin:16px auto 0;text-align:left}
+.ld-name input{min-height:44px;padding:8px 12px;border-radius:8px;border:1px solid var(--gilt);background:rgba(5,8,16,.6);color:var(--gilt-hi);font:400 20px/1.2 var(--display)}
+.ld-toast.on{transform:translate(-50%,0);opacity:1}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div><div class="brand">SEREN</div><div class="ask" id="ask">Choose your campaign.</div></div>
+    <div class="note" id="note">The deal</div>
+  </div>
+
+  <section class="shelf" id="shelf">
+    <div class="list" role="tablist" aria-label="Campaigns" id="list"></div>
+    <article class="detail" id="detail" role="tabpanel"></article>
+  </section>
+
+  <section class="table" id="table" hidden></section>
+</div>
+<div class="veil" id="veil" hidden><div class="vmodal" id="vmodal" role="dialog" aria-modal="true"></div></div>
+<div>
+</div>
+
+<script>
+(function(){
+var D={campaigns:[]};
+var $=function(id){return document.getElementById(id)};
+var esc=function(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})};
+var LOCK='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/></svg>';
+var FLAME='<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3c1 3 5 5 5 10a5 5 0 0 1-10 0c0-2 1-3 2-4 0 2 1 3 2 3 0-3-1-5 1-9z"/></svg>';
+var current=0;
+var OWN={own:true,title:'Make your own',level:'any',length:'you choose',selectable:true};
+function renderOwn(){
+  $('detail').setAttribute('aria-labelledby','tab-'+current);
+  $('detail').innerHTML='<div class="hero ownhero"><div class="cap"><h2>Make your own</h2><div class="tag">Nothing locked. She deals every card from the whole Loom, and the weaver writes a campaign nobody has played.</div></div></div>'+
+    '<div class="body"><div><p class="desc">The fortune teller deals seven slots from every deck at once: trope, origin, world, trouble, her antagonist, two companions and the voice that tells it. Keep what you like, redeal what you don&#39;t, then tune the stakes.</p>'+
+    '<ul class="facts"><li>Every slot dealt, none locked</li><li>Any level, any length</li><li>All five dials, full range</li><li>A new book every time</li></ul></div>'+
+    '<div class="side">'+(window.SEREN_APP?'<button class="go" disabled>On the web table for now</button>':'<a class="go" href="/loom" style="text-decoration:none">Open the Loom</a>')+'</div></div>';
+}
+
+/* ── shelf ── */
+function renderList(){
+  $('list').innerHTML=D.campaigns.concat([OWN]).map(function(c,i){
+    return '<button class="tab" role="tab" id="tab-'+i+'" aria-selected="'+(i===current)+'" aria-controls="detail" data-i="'+i+'">'+
+      (c.own?'<span class="thumb own" aria-hidden="true">✦</span>':'<img class="thumb" src="'+c.back+'" alt="">')+
+      '<span><span class="t">'+esc(c.title)+'</span><span class="m" style="display:block">Level '+c.level+' · '+esc(c.length)+'</span>'+
+      '<span class="st '+(c.selectable?'ready':'soon')+'">'+(c.own?'From scratch':c.selectable?'Ready to deal':'Coming soon')+'</span></span></button>';
+  }).join('');
+  $('list').querySelectorAll('.tab').forEach(function(b){b.onclick=function(){current=+b.dataset.i;renderList();renderDetail()}});
+  $('list').onkeydown=function(e){if(e.key!=='ArrowDown'&&e.key!=='ArrowUp'&&e.key!=='ArrowRight'&&e.key!=='ArrowLeft')return;
+    e.preventDefault();var n=D.campaigns.length+1;current=(current+(e.key==='ArrowDown'||e.key==='ArrowRight'?1:-1)+n)%n;renderList();renderDetail();$('tab-'+current).focus()};
+}
+function renderDetail(){
+  var c=D.campaigns[current]||OWN;
+  if(c.own) return renderOwn();
+  $('detail').setAttribute('aria-labelledby','tab-'+current);
+  $('detail').innerHTML=
+    '<div class="hero"><img src="'+c.header+'" alt=""><div class="cap"><h2>'+esc(c.title)+'</h2><div class="tag">'+esc(c.tagline)+'</div></div></div>'+
+    '<div class="body"><div>'+
+      '<p class="desc">'+esc(c.description)+'</p>'+
+      '<ul class="facts">'+c.key_info.map(function(k){return '<li>'+esc(k)+'</li>'}).join('')+'</ul>'+
+      '<div class="lbl mute" style="margin-bottom:10px">Locked in this campaign</div>'+
+      '<div class="chips">'+c.tags.locked.map(function(t){return '<span class="chip">'+LOCK+esc(t)+'</span>'}).join('')+
+      '<span class="chip chaos">'+FLAME+'Chaos: '+esc(c.tags.chaos)+'</span></div>'+
+    '</div><div class="side">'+
+      '<div class="backs" aria-hidden="true"><img src="'+c.back+'" alt=""><img src="'+c.back+'" alt=""><img src="'+c.back+'" alt=""></div>'+
+      '<div class="lbl">Its deck</div>'+
+      (c.selectable?'<button class="go" id="build">Build my adventure</button>':'<button class="go" disabled>Coming soon</button>')+
+    '</div></div>';
+  var b=$('build'); if(b) b.onclick=function(){openTable(c)};
+}
+
+var CHAIN_SVG=(function(){
+  // One chain across the middle of the card, between its line and its note, so the text stays readable.
+  var a='',b='';for(var i=0;i<12;i++){var x=-4+i*14;if(i%2)b+='<ellipse cx="'+x+'" cy="126" rx="8.5" ry="3" />';else a+='<ellipse cx="'+x+'" cy="126" rx="8.5" ry="5.5" />'}
+  return '<svg viewBox="0 0 150 225" preserveAspectRatio="none" aria-hidden="true"><g fill="none" stroke="#2c3038" stroke-width="5">'+a+b+'</g><g fill="none" stroke="#a7adb7" stroke-width="2.4">'+a+'</g><g fill="none" stroke="#7f858f" stroke-width="2.4">'+b+'</g></svg>';
+})();
+var PADLOCK='<svg class="lock" viewBox="0 0 34 40" aria-hidden="true"><path d="M9 17v-6a8 8 0 0 1 16 0v6" fill="none" stroke="#9aa0aa" stroke-width="3.5"/><rect x="4" y="16" width="26" height="22" rx="4" fill="#5d636e" stroke="#2c3038" stroke-width="1.5"/><circle cx="17" cy="25" r="3" fill="#1d2027"/><rect x="15.8" y="26" width="2.4" height="7" rx="1" fill="#1d2027"/></svg>';
+/* ── the table ── */
+// The Loom's table, on a published campaign. Her voice and her three offers top left, her counter
+// top centre, the music top right. The deck sits on the felt; locked cards are face up in chains,
+// sealed ones under wax. You click a card in your hand to read what it changes, then play it; a
+// played card is fixed unless you deal again. She plays her card after your last pick.
+var ROW=[['trope','Trope'],['world','World'],['trouble','Trouble'],['pc','You play'],['origin','Origin'],
+  ['companions','Companion'],['companions','Companion'],['persona','Told by']];
+var ASK={pc:'Who are you? Three, dealt.',origin:'Where did you come from? Three things, dealt.',
+  companions:'Who is beside you? Four, dealt. Take two.',persona:'Who is telling it? Three voices, dealt.'};
+var KICK={pc:'You play · who you are',origin:'Origin · where you came from',companions:'Companion · who is beside you',persona:'Told by · the voice'};
+var HAND={pc:3,origin:3,companions:4,persona:3};
+var T=null;
+function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
+function slotsOf(c){var s=c.deck.slots;
+  // A sealed slot the table has no row for (Quire's dragon, 27 Nov) is still dealt, sealed under wax.
+  var extra=Object.keys(s).filter(function(k){return s[k].mode==='hidden'&&ROW.every(function(x){return x[0]!==k})}).map(function(k){return [k,'Sealed']});
+  return ROW.filter(function(x){return s[x[0]]}).concat(extra)}
+// The same person is never dealt twice in a hand (Quire, 27 Nov): Aurelian can be a companion or her rival,
+// Imrith the charm-seller or her card. Once your hand is laid, her deck drops whoever you already took.
+function herFilter(){var took=T.picks.companions.map(function(p){return p.same_as}).filter(Boolean);
+  if(!took.length)return;var left=T.her.filter(function(h){return !h.same_as||took.indexOf(h.same_as)<0});
+  if(left.length&&left.length!==T.her.length){T.her=left;T.herAt=0}}
+function drawHand(k){var d=T.c.deck.slots[k].deck;return shuffle(d).slice(0,Math.min(HAND[k]||3,d.length))}
+function deal(c){
+  var s=c.deck.slots,pile=0;
+  T={c:c,hands:{},picks:{companions:[]},her:[],herAt:0,herUp:false,herKept:false,active:null,pile:0};
+  Object.keys(s).forEach(function(k){var sl=s[k];if(sl.mode!=='dealt')return;pile+=sl.deck.length;
+    if(k==='posture')T.her=shuffle(sl.deck);else T.hands[k]=drawHand(k)});
+  T.pile=pile;T.active=nextActive();
+}
+function chosen(k){return k==='companions'?T.picks.companions.length>=2:!!T.picks[k]}
+function laid(){return Object.keys(T.hands).every(chosen)}
+function done(){return laid()&&(!T.her.length||T.herKept)}
+function nextActive(){var order=ROW.map(function(x){return x[0]});for(var i=0;i<order.length;i++){var k=order[i];if(T.hands[k]&&!chosen(k))return k}return null}
+function says(){
+  if(T.active)return ASK[T.active]||'Choose.';
+  if(T.her.length&&!T.herUp)return 'I have played. Turn it over when you are ready.';
+  if(T.her.length&&!T.herKept)return 'That is who you are up against. Keep it, or make me play again.';
+  return 'That is a game. Shall we?';
+}
+function faceHTML(label,k,extra){
+  return '<div class="face front'+(extra||'')+'"><div class="k">'+esc(label)+'</div><div class="n">'+esc(k.name)+'</div><div class="l">'+esc(k.line)+'</div></div>';
+}
+var SEAL='<svg class="seal" viewBox="0 0 60 60" aria-hidden="true"><defs><radialGradient id="wx" cx="40%" cy="35%" r="70%"><stop offset="0" stop-color="#b8322a"/><stop offset=".7" stop-color="#7a1712"/><stop offset="1" stop-color="#4d0d0a"/></radialGradient></defs><path d="M30 4c5 0 7 3 11 4s8 1 10 5-1 7 0 11 4 7 2 11-6 4-8 7-3 8-8 9-8-2-12-2-8 3-12 0-2-7-4-10-7-6-6-10 4-6 4-10-2-8 2-11 8-1 11-3 5-5 10-5z" fill="url(#wx)"/><circle cx="30" cy="30" r="13" fill="none" stroke="#e08a6a" stroke-opacity=".45" stroke-width="1.5"/><text x="30" y="35.5" text-anchor="middle" font-family="Cinzel Decorative,serif" font-size="15" fill="#f2b49a" fill-opacity=".8">S</text></svg>';
+function back(){return '<div class="face back"><img src="'+T.c.back+'" alt=""></div>'}
+function slotHTML(x,n){
+  var k=x[0],label=x[1],sl=T.c.deck.slots[k],key=k+(k==='companions'?n:'');
+  var head='<div class="lbl">'+esc(label)+'</div>';
+  if(sl.mode==='locked') return '<div class="slot" data-at="'+key+'">'+head+
+    '<div class="c3 up locked"><div class="in">'+back()+faceHTML(label,sl.card)+'</div><div class="chains">'+CHAIN_SVG+PADLOCK+'</div></div><div class="under">locked</div></div>';
+  if(sl.mode==='you') return '<div class="slot" data-at="'+key+'">'+head+
+    '<div class="c3 up mine you"><div class="in">'+back()+faceHTML('You',sl.card,' gilt')+'</div></div><div class="under">you</div></div>';
+  if(sl.mode==='hidden') return '<div class="slot" data-at="'+key+'">'+head+
+    '<div class="c3 sealed" title="Sealed until the story opens it"><div class="in">'+back()+'</div><div class="waxbox">'+SEAL+'</div></div><div class="under">sealed</div></div>';
+  var pick=k==='companions'?T.picks.companions[n]:T.picks[k],on=T.active===k;
+  if(pick) return '<div class="slot" data-at="'+key+'">'+head+
+    '<div class="c3 up mine"><div class="in">'+back()+faceHTML(label,pick,' gilt')+'</div></div>'+
+    '<button class="redeal" data-redeal="'+k+'" data-n="'+n+'" title="A fresh deal for this slot, and one drawn from it">↻ deal again</button></div>';
+  return '<div class="slot" data-at="'+key+'">'+head+'<button class="empty'+(on?' on':'')+'" data-slot="'+k+'">'+(on?'Choosing…':'Choose')+'</button><div class="under">&nbsp;</div></div>';
+}
+function rowHTML(){var count={};return slotsOf(T.c).map(function(x){var n=count[x[0]]||0;count[x[0]]=n+1;return slotHTML(x,n)}).join('')}
+function herHTML(){
+  if(!T.her.length)return '';
+  var h=T.her[T.herAt],cap='<div class="lbl mute">Her counter · the antagonist</div>';
+  if(!laid())return '<div class="counter">'+cap+'<div class="cslot">She plays once your hand is laid</div></div>';
+  return '<div class="counter">'+cap+
+    '<div class="c3 her '+(T.herUp?'up':'down hersdown')+'" id="her" role="button" tabindex="'+(T.herUp?-1:0)+'" aria-label="'+(T.herUp?'Her card: '+esc(h.name):'Her card, face down. Turn it over')+'">'+
+      '<div class="in">'+back()+faceHTML('Antagonist',h)+'</div>'+(T.herUp?'':'<span class="ribbon">Turn it over</span>')+'</div>'+
+    (T.herUp&&!T.herKept?'<div class="twins"><button class="mini keep" data-her="keep">Keep it</button>'+(T.her.length>1?'<button class="mini" data-her="another">Make her play another</button>':'')+'</div>':'')+
+    (T.herKept?'<div class="twins"><button class="mini" data-her="another">Make her play another</button></div>':'')+'</div>';
+}
+function handHTML(){
+  var k=T.active;
+  if(!k){
+    if(T.her.length&&!T.herUp)return '<div class="herchoice"><p class="handnote">Your hand is laid. Now she plays hers: the one you are up against.</p><button class="go" id="turnher">Turn her card over</button></div>';
+    if(T.her.length&&!T.herKept)return '<div class="herchoice"><p class="handnote">That is who you are up against.</p><div class="twins"><button class="go" data-her="keep">Keep it</button>'+(T.her.length>1?'<button class="ghost" data-her="another">Make her play another</button>':'')+'</div></div>';
+    return '<div class="herchoice"><p class="handnote">That is a game. Shall we?</p><button class="go" id="retune">Tune it</button></div>';
+  }
+  var cards=T.hands[k],label=(ROW.filter(function(x){return x[0]===k})[0]||[k,k])[1],many=k==='companions',mid=(cards.length-1)/2;
+  return '<div class="handhead"><span class="lbl">Your hand · '+esc(label)+'</span><span class="lbl mute">'+(many?'pick two · '+T.picks.companions.length+' of 2 · ':'')+cards.length+' of '+T.c.deck.slots[k].deck.length+' · she holds the rest</span></div>'+
+    '<div class="fan">'+cards.map(function(card,i){
+      var taken=many&&T.picks.companions.some(function(p){return p.id===card.id});
+      return '<button class="hc'+(taken?' taken':'')+'" data-i="'+i+'" style="--r:'+((i-mid)*5)+'deg;--y:'+(Math.abs(i-mid)*8)+'px;animation-delay:'+(i*0.09)+'s">'+
+        '<span class="k">'+esc(label)+(taken?' · taken':'')+'</span><span class="n">'+esc(card.name)+'</span><span class="l">'+esc(card.line)+'</span></button>';
+    }).join('')+'</div>';
+}
+function sentence(){
+  var s=T.c.deck.slots;
+  function v(k,n,how){var card;
+    if(!s[k])return '';
+    if(s[k].mode==='locked'||s[k].mode==='you')card=s[k].card;
+    else if(s[k].mode==='hidden')return '<i>something sealed</i>';
+    else if(k==='posture')card=T.herUp?T.her[T.herAt]:null;
+    else if(k==='companions')card=T.picks.companions[n||0];
+    else card=T.picks[k];
+    if(!card)return '<span class="blank">'+(k==='posture'?'her card':'a card to choose')+'</span>';
+    var t=card.name;if(how==='low')t=t.charAt(0).toLowerCase()+t.slice(1);if(how==='the')t='the '+t.toLowerCase();
+    return '<i>'+esc(t)+'</i>';}
+  return v('trope')+'. '+(s.pc?'You play '+v('pc')+', from ':'From ')+v('origin',0,'low')+', in '+v('world',0,'low')+', facing '+v('trouble',0,'low')+'; with '+v('companions',0,'low')+' and '+v('companions',1,'low')+', against '+v('posture',0,'the')+', told by '+v('persona')+'.';
+}
+function topEl(){return document.querySelector('.top')}
+function openTable(c){
+  // Step 1, who walks in: the shared six, or your own fitted on the ladder (27 Nov: campaign, character, fortune teller).
+  // A campaign that still deals its own who-you-play deck skips straight to the table.
+  var pc=c.deck&&c.deck.slots&&c.deck.slots.pc;
+  if(pc&&pc.mode==='dealt'&&!wyChars().length)return startTable(c);
+  whoStep(c);
+}
+function startTable(c,own){
+  if(own){
+    // Your character sits on the table face up as "you" while she deals the rest.
+    var slots={};Object.keys(c.deck.slots).forEach(function(k){if(k!=='pc')slots[k]=c.deck.slots[k]});
+    slots.pc={mode:'you',card:own};
+    c=Object.assign({},c,{deck:Object.assign({},c.deck,{slots:slots})});
+  }
+  deal(c);
+  $('shelf').hidden=true;$('table').hidden=false;topEl().hidden=true;
+  renderTable(true);window.scrollTo({top:0});
+  setTimeout(function(){smoke(document.querySelector('.pile .stack'),6)},250);
+}
+function renderTable(fresh){
+  var c=T.c;
+  $('table').innerHTML=
+    '<div class="lbar">'+
+      '<div class="lleft"><div class="brand">SEREN</div><p class="says" id="says">'+esc(says())+'</p>'+
+        '<div class="offers"><button class="ghost gilt" id="dealAgain"'+(T.active?'':' disabled')+'>Deal these again</button>'+
+        '<button class="ghost" id="newHand">I don’t like any of these. New hand.</button>'+
+        '<button class="ghost" id="playOut">Play it out for me</button></div>'+
+        '<div class="links"><button class="howlink" id="howAgain">house rules</button><button class="howlink" id="back">back to the shelf</button></div></div>'+
+      '<div class="lmid">'+herHTML()+'</div>'+
+      '<div class="lright"><div class="sound"><button class="soundbtn" id="mute" title="Music on or off" aria-label="Music on or off"><span id="muteIcon">♪</span></button>'+
+        '<input type="range" id="vol" min="0" max="100" value="30" title="Volume" aria-label="Music volume"></div>'+
+        '<div class="note">'+(FAKE?'Local · fake AI':'')+'</div></div>'+
+    '</div>'+
+    '<div class="felt lit">'+motesHTML()+'<div class="tabletop">'+
+      '<div class="pile" aria-hidden="true"><div class="stack">'+[4,3,2,1,0].map(function(i){return '<img src="'+c.back+'" alt="" style="--i:'+i+'">'}).join('')+'</div><div class="lbl">Her deck · '+T.pile+'</div></div>'+
+      '<div class="row" id="row" style="--n:'+slotsOf(c).length+'">'+rowHTML()+'</div></div>'+
+      '<div class="synopsis"><div class="lbl">'+esc(c.title)+' · the story you are filling in</div><p>'+esc(c.tagline)+' <span>Level '+esc(c.level)+' · '+esc(c.length)+'.</span></p></div>'+
+      '<div class="hand'+(fresh?' fresh':'')+'" id="hand">'+handHTML()+'</div></div>';
+  wire();paintSound();
+}
+function rerender(fresh){var y=window.scrollY;renderTable(!!fresh);window.scrollTo({top:y});}
+function slotEl(key){return document.querySelector('[data-at="'+key+'"] .c3')}
+function play(k,card){
+  var key=k;
+  if(k==='companions'){var l=T.picks.companions,at=-1;l.forEach(function(p,j){if(p.id===card.id)at=j});
+    if(at>=0){l.splice(at,1);rerender();return}
+    if(l.length>=2)l.shift();l.push(card);key='companions'+(l.length-1);
+    if(l.length>=2)T.active=nextActive();}
+  else{T.picks[k]=card;T.active=nextActive()}
+  if(laid())herFilter();
+  rerender(true);smoke(slotEl(key),5);
+  if(laid()&&T.her.length&&!T.herUp)setTimeout(function(){smoke($('her'),5)},350);
+}
+function redeal(k,n){
+  // The Loom's "reroll one thing": a fresh deal for that slot, and one drawn from it that isn't the current pick.
+  T.hands[k]=drawHand(k);
+  var cur=k==='companions'?T.picks.companions.map(function(p){return p.id}):[T.picks[k]&&T.picks[k].id];
+  var fresh=T.hands[k].filter(function(x){return cur.indexOf(x.id)<0});
+  if(k==='companions'){if(fresh.length)T.picks.companions[n]=fresh[0]}
+  else if(fresh.length)T.picks[k]=fresh[0];
+  rerender(false);smoke(slotEl(k+(k==='companions'?n:'')),5);
+}
+function turnHer(){
+  var her=$('her');if(!her||T.herUp)return;
+  her.classList.remove('down','hersdown');her.classList.add('up');var r=her.querySelector('.ribbon');if(r)r.remove();
+  smoke(her,7);T.herUp=true;setTimeout(function(){rerender()},700);
+}
+function wire(){
+  var c=T.c;
+  $('newHand').onclick=function(){deal(c);renderTable(true);smoke(document.querySelector('.pile .stack'),6)};
+  $('dealAgain').onclick=function(){if(!T.active)return;T.hands[T.active]=drawHand(T.active);rerender(true);smoke(document.querySelector('.pile .stack'),4)};
+  $('playOut').onclick=function(){
+    Object.keys(T.hands).forEach(function(k){var h=shuffle(T.hands[k]);
+      if(k==='companions')T.picks.companions=h.slice(0,2);else if(!T.picks[k])T.picks[k]=h[0]});
+    herFilter();T.active=null;T.herUp=!!T.her.length;rerender(false);
+    document.querySelectorAll('.slot .c3').forEach(function(el,i){setTimeout(function(){smoke(el,3)},i*90)});
+  };
+  $('howAgain').onclick=openHow;
+  $('back').onclick=function(){$('table').hidden=true;$('shelf').hidden=false;topEl().hidden=false;renderDetail()};
+  $('row').querySelectorAll('[data-slot]').forEach(function(el){el.onclick=function(){T.active=el.dataset.slot;rerender(true)}});
+  $('row').querySelectorAll('[data-redeal]').forEach(function(el){el.onclick=function(){redeal(el.dataset.redeal,+el.dataset.n)}});
+  var her=$('her');
+  if(her&&!T.herUp){her.onclick=turnHer;her.onkeydown=function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();turnHer()}}}
+  var tb=$('turnher');if(tb)tb.onclick=function(){window.scrollTo({top:0,behavior:'smooth'});setTimeout(turnHer,350)};
+  document.querySelectorAll('[data-her]').forEach(function(b){b.onclick=function(){
+    if(b.dataset.her==='keep'){T.herKept=true;rerender();openTune();return}
+    T.herAt=(T.herAt+1)%T.her.length;T.herUp=false;T.herKept=false;rerender();setTimeout(turnHer,250)}});
+  var rt=$('retune');if(rt)rt.onclick=openTune;
+  $('hand').querySelectorAll('.hc').forEach(function(b){b.onclick=function(){openCard(T.active,+b.dataset.i)}});
+  wireSound();
+}
+function openCard(k,i){
+  var card=T.hands[k][i],taken=k==='companions'&&T.picks.companions.some(function(p){return p.id===card.id});
+  veil('<div class="cardview"><div class="cvhead"><span class="lbl">'+esc(KICK[k]||k)+'</span><span class="lbl mute">'+(i+1)+' of '+T.hands[k].length+'</span></div>'+
+    '<h3 class="cvname">'+esc(card.name)+'</h3><p class="cvline">'+esc(card.line)+'</p>'+
+    '<div class="cvrow"><span class="lbl mute">What it changes</span><p>'+esc(card.changes)+'</p></div>'+
+    (card.as?'<div class="cvrow"><span class="lbl mute">At this table</span><p>'+esc(card.as)+'</p></div>':'')+
+    '<div class="macts"><button class="ghost" id="putback">Put it back</button><button class="go" id="playit">'+(taken?'Take it back':'Play it')+'</button></div></div>');
+  $('putback').onclick=unveil;
+  $('playit').onclick=function(){unveil();play(k,card)};
+}
+var HOW='<div class="mhead"><div class="lbl">The house rules</div><h3 class="mtitle">How the deal works</h3></div><ol class="how">'+
+  '<li><b>She deals a few from each deck.</b> The rest stay in her hand. A different few next time, which is the point.</li>'+
+  '<li><b>Some cards are already on the table.</b> Locked cards, in chains, are the story you chose. Sealed cards stay shut until the story opens them.</li>'+
+  '<li><b>Click a card to read it, then play it.</b> What it changes is what it does to the campaign, not flavour. Companions takes two.</li>'+
+  '<li><b>A played card stays played.</b> Unless you deal again: ↻ on the table gives that slot a fresh deal and draws one from it.</li>'+
+  '<li><b>Her three offers, top left.</b> Deal these again is a fresh hand for the slot you are on. New hand throws the table back. Play it out for me means she plays the lot and you watch.</li>'+
+  '<li><b>When your hand is laid, she plays hers,</b> face down. Turn it over. Keep it, or make her play another.</li>'+
+  '<li><b>Tune it, then weave it.</b> The dials never pick a card; they tell her how to write it. Your picks don’t have to fit each other: she makes the hand work, and the book is the reveal.</li></ol>'+
+  '<div class="macts"><button class="go" id="howgo">Deal me in</button></div>';
+function openHow(){veil(HOW);$('howgo').onclick=function(){unveil();startMusic()}}
+/* ── smoke ── */
+function smoke(el,n){
+  if(!el||matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  var r=el.getBoundingClientRect();
+  for(var i=0;i<(n||4);i++){var w=document.createElement('span');w.className='wisp';
+    w.style.left=(r.left+r.width*(0.2+Math.random()*0.6)+window.scrollX)+'px';
+    w.style.top=(r.top+r.height*(0.45+Math.random()*0.3)+window.scrollY)+'px';
+    w.style.setProperty('--dx',Math.round(Math.random()*70-35)+'px');
+    w.style.setProperty('--s',(0.7+Math.random()*0.9).toFixed(2));
+    w.style.setProperty('--rot',Math.round(Math.random()*90-45)+'deg');
+    w.style.animationDelay=(i*0.14)+'s';
+    document.body.appendChild(w);(function(x){setTimeout(function(){x.remove()},4200)})(w)}
+}
+setInterval(function(){if(T&&!$('table').hidden&&$('veil').hidden&&!document.hidden)smoke(document.querySelector('.pile .stack'),1)},3800);
+/* ── music: Forest Pulse, the Loom's own, with its hand-made loop ── */
+var MKEY='seren.loom.sound',FADE_IN=2.0,FADE_OUT=5.0,XFADE=1.6;
+var mset=(function(){try{return JSON.parse(localStorage.getItem(MKEY))||{}}catch(e){return {}}})();
+var level=typeof mset.level==='number'?mset.level:0.30,muted=!!mset.muted,started=false,fading=null,players=[],live=0,looping=false;
+function msave(){try{localStorage.setItem(MKEY,JSON.stringify({level:level,muted:muted}))}catch(e){}}
+function target(){return muted?0:level}
+function ramp(to,seconds,then){if(fading)clearInterval(fading);var a=players[live],from=a.volume,t0=performance.now();
+  fading=setInterval(function(){var k=Math.min(1,(performance.now()-t0)/(seconds*1000));a.volume=Math.max(0,Math.min(1,from+(to-from)*k));
+    if(k>=1){clearInterval(fading);fading=null;if(then)then()}},40)}
+function startMusic(){if(started||muted)return;started=true;
+  if(!players.length)players=[0,1].map(function(){var a=new Audio(window.SEREN_AUDIO||'/static/audio/forest-pulse.mp3');a.preload='auto';a.volume=0;return a});
+  var a=players[live];a.volume=0;a.play().then(function(){ramp(target(),FADE_IN)}).catch(function(){started=false});
+  if(!looping){looping=true;setInterval(function(){var a=players[live];if(!a||!a.duration||a.paused)return;var left=a.duration-a.currentTime;if(left>XFADE)return;
+    var b=players[1-live];if(b.paused){b.currentTime=0;b.volume=0;b.play().catch(function(){})}
+    var k=Math.max(0,Math.min(1,left/XFADE));a.volume=target()*Math.sqrt(k);b.volume=target()*Math.sqrt(1-k);
+    if(left<=0.08){a.pause();a.currentTime=0;live=1-live}},80)}}
+function fadeOutMusic(){if(!started)return;ramp(0,FADE_OUT,function(){players.forEach(function(a){a.pause();a.currentTime=0})});started=false}
+function paintSound(){var m=$('mute');if(!m)return;m.classList.toggle('off',muted);$('muteIcon').textContent=muted?'×':'♪';$('vol').value=Math.round(level*100)}
+function wireSound(){
+  $('mute').onclick=function(){muted=!muted;msave();paintSound();
+    if(muted){if(fading)clearInterval(fading);players.forEach(function(a){a.pause()});started=false}else startMusic()};
+  $('vol').oninput=function(e){level=+e.target.value/100;muted=false;msave();paintSound();
+    if(started&&!fading)players[live].volume=target();else startMusic()};
+}
+(function(){var once=function(){document.removeEventListener('click',once,true);
+  try{if(localStorage.getItem('seren.music.autoplay')==='0')return}catch(e){}startMusic()};
+  document.addEventListener('click',once,true)})();
+var DIALS=[['absurdity','Absurdity','grim','a sheep with opinions','Which people are even in scope. At the top it makes the talking sheep possible.'],
+  ['stakes','Stakes','personal','epic','How big the trouble is allowed to get.'],
+  ['danger','Danger','bruises','deaths','How hard the rolls are, and whether the antagonist dies or gets away.'],
+  ['people','Trouble is','a person','a place','Whether pressure comes from somebody who wants something, or somewhere in the way.'],
+  ['length','Length','one session','a season','How long the clocks run. Nothing else.']];
+function dialsHTML(c){
+  var r=c.deck.dials.ranges,d=c.deck.dials.defaults;
+  return '<div class="dials">'+DIALS.map(function(x){var lo=r[x[0]][0],hi=r[x[0]][1];
+    return '<div class="dial"><div class="h"><b>'+x[1]+'</b><span id="v-'+x[0]+'">'+d[x[0]]+'</span></div>'+
+      '<div class="track"><div class="rail"></div><div class="allowed" style="left:'+lo+'%;width:'+(hi-lo)+'%"></div>'+
+      '<input type="range" id="dial-'+x[0]+'" min="0" max="100" value="'+d[x[0]]+'" data-lo="'+lo+'" data-hi="'+hi+'" aria-label="'+x[1]+'"></div>'+
+      '<div class="ends"><span>'+x[2]+'</span><span>'+x[3]+'</span></div>'+
+      '<div class="why">'+x[4]+' This campaign allows '+lo+'–'+hi+'.</div></div>'}).join('')+'</div>';
+}
+function wireDials(c){
+  DIALS.forEach(function(x){var el=$('dial-'+x[0]);if(!el)return;el.oninput=function(){var lo=+el.dataset.lo,hi=+el.dataset.hi;
+    var v=Math.min(hi,Math.max(lo,+el.value));el.value=v;$('v-'+x[0]).textContent=v}});
+}
+
+var FAKE=false;
+/* ── the veil: a card, the house rules, tune it, the weave, the book ── */
+function veil(html,locked){
+  var v=$('veil');v.hidden=false;v.dataset.locked=locked?'1':'';
+  $('vmodal').innerHTML=html;$('vmodal').scrollTop=0;document.body.classList.add('veiled');
+}
+function unveil(){var v=$('veil');if(v.dataset.locked)return;v.hidden=true;document.body.classList.remove('veiled')}
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!$('veil').hidden)unveil()});
+$('veil').addEventListener('click',function(e){if(e.target===$('veil'))unveil()});
+/* ── who you play: a dealt card, or your own character fitted on the ladder (Jay, 26 Nov) ── */
+function api(name,body){
+  var hook={character:window.serenCharacter&&function(b){return window.serenCharacter(b.url)},
+            level:window.serenLevel,save_build:window.serenSaveBuild}[name];
+  if(hook)return hook(body);
+  return fetch('/api/'+name,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json()});
+}
+function ldWide(on){$('vmodal').classList.toggle('ldwide',!!on)}
+/* ── who walks in: the shared six, or your own (Jay, 27 Nov: campaign, character, fortune teller) ── */
+var WY={ticks:[]},WKEY='seren.who';
+function wyChars(){return D.characters||[]}
+function wyLv(p,c){var ks=Object.keys(p.lv).map(Number).sort(function(a,b){return a-b}),want=+c.level,best=ks[0];
+  ks.forEach(function(k){if(k<=want)best=k});return best}
+function wyCard(p,which,small){
+  var sub=which==='s'?(p.title||'in their element'):(p.title||p.core.split(' · ')[1]);
+  return '<figure class="wy-c'+(small?' sm':'')+'"><img src="'+esc(p.art[which])+'" alt="'+esc(p.nm)+(which==='s'?', in their own world':'')+'" loading="lazy">'+
+    '<figcaption><b>'+esc(p.nm)+'</b><i>'+esc(sub)+'</i></figcaption></figure>';
+}
+function wyMod(n){var m=Math.floor((n-10)/2);return(m>=0?'+':'')+m}
+function wyStats(p,c,few){
+  var L=p.lv[wyLv(p,c)],AB=['STR','DEX','CON','INT','WIS','CHA'],i=L.abil.indexOf(Math.max.apply(null,L.abil));
+  var cells=[['HP',L.hp],['AC',L.ac],[AB[i],L.abil[i]+' <small>'+wyMod(L.abil[i])+'</small>']];
+  if(!few)cells.push(['Speed',L.spd],[L.dc?'Save DC':'Initiative',L.dc||L.init]);
+  return '<div class="wy-stats">'+cells.map(function(x){return '<div><b>'+x[1]+'</b><span>'+x[0]+'</span></div>'}).join('')+'</div>';
+}
+function whoStep(c){
+  ldWide(true);
+  var last=null;try{last=localStorage.getItem(WKEY)}catch(e){}
+  var again=wyChars().filter(function(p){return p.id===last})[0];
+  if(again&&!WY.skipAgain){
+    veil('<div class="wy"><div class="mhead"><div class="lbl">Step 1 of 2 · who walks in</div><h3 class="mtitle">'+esc(c.title)+'</h3></div>'+
+      '<div class="wy-again">'+wyCard(again,'p',true)+'<div><p class="mnote" style="text-align:left">Last time, '+esc(again.nm)+' walked in.</p>'+
+      '<div class="macts" style="justify-content:flex-start"><button class="go" id="wyAgain">Walk in as '+esc(again.nm.split(' ')[0])+' again</button>'+
+      '<button class="ghost" id="wyNew">Someone new</button></div></div></div>'+
+      '<div class="macts"><button class="ghost" id="mback">← Back to the shelf</button></div></div>');
+    $('wyAgain').onclick=function(){wyChoose(c,again)};
+    $('wyNew').onclick=function(){WY.skipAgain=true;whoStep(c)};
+    $('mback').onclick=function(){WY.skipAgain=false;ldWide(false);unveil()};
+    return;
+  }
+  WY.cmp=false;wyPick(c);
+}
+function wyPick(c){
+  WY.here={go:function(){wyPick(c)},say:'← All six'};
+  ldWide(true);
+  var six=wyChars();
+  veil('<div class="wy"><div class="mhead"><div class="lbl">Step 1 of 2 · who walks in</div><h3 class="mtitle">Who walks into '+esc(c.title)+'?</h3>'+
+    '<p class="mnote">Six people who can walk into any story, at level '+esc(c.level)+'. Or bring someone you already play. Tick up to three to compare.</p></div>'+
+    '<div class="wy-grid">'+six.map(function(p){var on=WY.ticks.indexOf(p.id)>-1;
+      return '<div class="wy-pk"><button class="wy-open" data-open="'+p.id+'" aria-label="Read '+esc(p.nm)+'">'+wyCard(p,'p',true)+'</button>'+
+        '<button class="wy-tick" data-tick="'+p.id+'" aria-pressed="'+on+'" aria-label="Compare '+esc(p.nm)+'">'+(on?'✓':'+')+'</button>'+
+        '<div class="wy-cls">'+esc(p.core.split(' · ')[1])+' · '+esc(p.plays[0].toLowerCase())+'</div></div>'}).join('')+
+      '<button class="wy-own" id="whoOwn"><span class="lbl">Your own</span><b>Bring my character</b><em>From D&amp;D Beyond. Seren steps them to level '+esc(c.level)+', and nothing goes without you choosing it.</em></button>'+
+    '</div>'+
+    '<div class="macts"><button class="ghost" id="mback">← Back to the shelf</button>'+
+      (WY.ticks.length?'<button class="go" id="wyCmp"'+(WY.ticks.length<2?' disabled':'')+'>'+(WY.ticks.length<2?'Tick one more to compare':'Compare '+WY.ticks.length)+'</button>':'')+'</div></div>',false);
+  document.querySelectorAll('[data-open]').forEach(function(b){b.onclick=function(){wyView(c,b.dataset.open)}});
+  document.querySelectorAll('[data-tick]').forEach(function(b){b.onclick=function(){var id=b.dataset.tick,i=WY.ticks.indexOf(id);
+    if(i>-1)WY.ticks.splice(i,1);else if(WY.ticks.length<3)WY.ticks.push(id);var y=$('vmodal').scrollTop;wyPick(c);$('vmodal').scrollTop=y}});
+  $('whoOwn').onclick=function(){ldWide(false);bringForm(c)};
+  $('mback').onclick=function(){WY.skipAgain=false;ldWide(false);unveil()};
+  var cb=$('wyCmp');if(cb)cb.onclick=function(){if(WY.ticks.length>1)wyCompare(c)};
+}
+function wyView(c,id){
+  // Back is one step back in history: whichever screen opened this sheet (Jay, 27 Nov: "-1 in history").
+  var p=wyChars().filter(function(x){return x.id===id})[0],lv=wyLv(p,c),L=p.lv[lv],AB=['STR','DEX','CON','INT','WIS','CHA'];
+  var prev=WY.here||{go:function(){wyPick(c)},say:'← All six'},backTo=prev.say;
+  ldWide(true);
+  veil('<div class="wy wy-view"><button class="ghost wy-back" id="wyBack">'+backTo+'</button>'+
+    '<div class="wy-pair">'+wyCard(p,'p')+wyCard(p,'s')+'</div>'+
+    '<div class="wy-nm">'+esc(p.nm)+(p.title?' <span>'+esc(p.title)+'</span>':'')+'</div>'+
+    '<div class="wy-core">'+esc(p.core)+' · <b>level '+lv+'</b> · '+esc(p.bg)+' · '+esc(p.pron)+'</div>'+
+    '<p class="wy-hook">'+esc(p.hook)+'</p>'+
+    '<div class="wy-plays">'+p.plays.map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div>'+
+    wyStats(p,c)+'<p class="wy-bio">'+esc(p.bio)+'</p>'+
+    '<details class="wy-dr"><summary>Character sheet <small>level '+lv+'</small></summary><div>'+
+      '<div class="wy-abil">'+L.abil.map(function(n,i){return '<div><span>'+AB[i]+'</span><b>'+n+'</b><i>'+wyMod(n)+'</i></div>'}).join('')+'</div>'+
+      '<h4>The basics</h4><p>Proficiency +'+L.prof+' · Initiative '+esc(L.init)+' · Speed '+L.spd+' ft · Saves: '+esc(L.saves)+(L.dc?' · Spell save DC '+L.dc+', spell attack '+esc(L.atk):'')+'</p>'+
+      '<h4>Skills</h4><p>'+esc(L.skills)+'</p>'+
+      '<h4>Attacks</h4><table>'+L.attacks.map(function(a){return '<tr><td>'+esc(a[0])+'</td><td>'+esc(a[1])+'</td><td>'+esc(a[2])+'</td></tr>'}).join('')+'</table>'+
+      '<h4>Features</h4><ul>'+L.features.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul>'+
+      (L.spells?'<h4>Spells</h4><dl>'+Object.keys(L.spells).map(function(k){return '<dt>'+esc(k)+'</dt><dd>'+esc(L.spells[k])+'</dd>'}).join('')+'</dl>':'')+
+      '<h4>Gear</h4><p>'+esc(p.kit)+'</p></div></details>'+
+    '<details class="wy-dr"><summary>Background and personality</summary><div>'+
+      ['personality','ideal','bond','flaw'].map(function(k){return '<h4>'+k+'</h4><p class="q">'+esc(p.traits[k])+'</p>'}).join('')+
+      '<h4>Their story</h4><p>'+esc(p.history)+'</p><h4>What they carry</h4><p>'+esc(p.carries)+'</p></div></details>'+
+    '<div class="macts"><button class="ghost" id="wyBack2">'+backTo+'</button><button class="go" id="wyGo">Walk in as '+esc(p.nm.split(' ')[0])+'</button></div></div>');
+  $('vmodal').scrollTop=0;
+  $('wyBack').onclick=$('wyBack2').onclick=function(){prev.go()};
+  $('wyGo').onclick=function(){wyChoose(c,p)};
+}
+function wyCompare(c){
+  WY.here={go:function(){wyCompare(c)},say:'← Back to the comparison'};
+  var list=wyChars().filter(function(p){return WY.ticks.indexOf(p.id)>-1});
+  ldWide(true);
+  veil('<div class="wy"><div class="mhead"><div class="lbl">Side by side · level '+esc(c.level)+'</div><h3 class="mtitle">Who walks in?</h3></div>'+
+    '<div class="wy-cmp" style="--n:'+list.length+'">'+list.map(function(p){
+      return '<div class="wy-col">'+wyCard(p,'p',true)+'<div class="wy-nm sm">'+esc(p.nm)+'</div><div class="wy-core">'+esc(p.core)+'</div>'+
+        '<p class="wy-hook sm">'+esc(p.hook)+'</p><div class="wy-plays">'+p.plays.map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div>'+wyStats(p,c,true)+
+        '<button class="ghost" data-open="'+p.id+'">Read more</button><button class="go" data-go="'+p.id+'">Walk in as '+esc(p.nm.split(' ')[0])+'</button></div>'}).join('')+'</div>'+
+    '<div class="macts"><button class="ghost" id="wyBack">← All six</button></div></div>');
+  $('wyBack').onclick=function(){wyPick(c)};
+  document.querySelectorAll('[data-open]').forEach(function(b){b.onclick=function(){wyView(c,b.dataset.open)}});
+  document.querySelectorAll('[data-go]').forEach(function(b){b.onclick=function(){wyChoose(c,wyChars().filter(function(p){return p.id===b.dataset.go})[0])}});
+}
+function wyChoose(c,p){
+  try{localStorage.setItem(WKEY,p.id)}catch(e){}
+  var lv=wyLv(p,c),cls=p.core.split(' · ');
+  var own={id:'shared:'+p.id,name:p.nm,line:p.hook,changes:cls[1]+' ('+cls[2]+'), level '+lv+'. '+p.plays.join('; ')+'.',as:p.bio,shared:p.id};
+  WY.skipAgain=false;WY.ticks=[];ldWide(false);unveil();startTable(c,own);
+}
+function bringForm(c,err){
+  ldWide(false);
+  veil('<div class="mhead"><div class="lbl">Bring your character</div><h3 class="mtitle">Who walks into '+esc(c.title)+'?</h3>'+
+    '<p class="mnote">Paste the link to your character on D&amp;D Beyond. It has to be set to Public (on the sheet: Home, then Privacy).</p></div>'+
+    '<form class="ld-form" id="bringF"><input id="ddbUrl" type="url" inputmode="url" placeholder="https://www.dndbeyond.com/characters/…" autocomplete="off" aria-label="D&amp;D Beyond character link">'+
+    '<button class="go" id="bringGo" type="submit">Bring them</button></form>'+
+    (err?'<p class="ld-err">'+esc(err)+'</p>':'')+
+    '<p class="ld-or">Not public, or not on D&amp;D Beyond? Attach the character sheet (D&amp;D Beyond’s PDF export works) in the chat and ask Claude to bring it to Seren’s table.</p>'+
+    '<div class="macts"><button class="ghost" id="mback">← Back</button></div>');
+  $('mback').onclick=function(){whoStep(c)};
+  setTimeout(function(){var i=$('ddbUrl');if(i)i.focus()},60);
+  $('bringF').onsubmit=function(e){e.preventDefault();var u=$('ddbUrl').value.trim();if(!u)return;
+    $('bringGo').disabled=true;$('bringGo').textContent='Reading the sheet…';
+    api('character',{url:u}).then(function(j){
+      if(!j.ok)return bringForm(c,j.error||'That character couldn’t be read.');
+      L={key:j.key,name:j.name,cls:j.cls,from:j.level,target:+c.level,decisions:{},c:c,at:0,rulings:0};
+      ladder();
+    }).catch(function(e){bringForm(c,String(e&&e.message||e))});
+  };
+}
+var L=null,DM_NAME=/\bser'?en\b/i;
+function ladder(){
+  return api('level',{key:L.key,target:L.target,decisions:L.decisions}).then(function(j){
+    if(!j.ok){ldWide(false);veil('<div class="mhead"><div class="lbl">The ladder</div><h3 class="mtitle">Not yet</h3><p class="mnote">'+esc(j.error)+'</p></div><div class="macts"><button class="ghost" id="mback">← Back</button></div>');$('mback').onclick=function(){bringForm(L.c)};return}
+    L.j=j;if(L.at>j.rungs.length)L.at=j.rungs.length;
+    if((j.rulings||[]).length>L.rulings){if(L.rulings||L.asked)ldToast('Claude’s ruling is in. The ladder took it.');L.rulings=j.rulings.length}
+    renderLadder();
+  });
+}
+function ldName(){return L.name||'They'}
+function renderLadder(){
+  var j=L.j,c=L.c,rungs=j.rungs,at=L.at,r=rungs[at],keep=L.shownAt===at?$('vmodal').scrollTop:0;L.shownAt=at;
+  ldWide(true);
+  var down=j.target<j.from;
+  var list='';
+  var levels=[j.from].concat(rungs.map(function(x){return x.to}));
+  levels.forEach(function(lv,i){
+    var cls=i<at?'above':i===at?'here':'below';if(lv===j.target)cls+=' goal';
+    var txt='';
+    if(i<at){txt=ldSummary(rungs[i])}else if(i===at){txt=at===rungs.length?'here':'deciding'}else{txt=rungs[i]?ldNeeds(rungs[i]):''}
+    list+='<div class="ld-rung '+cls+'"><span class="n">'+lv+'</span><span class="c">'+(txt||'&nbsp;')+'</span></div>';
+  });
+  var main=at===rungs.length?ldDone():ldChoice(r);
+  var f=at===0?null:rungs[at-1].numbers;
+  veil('<div class="ld-top" style="--art:url(\''+esc(c.header)+'\')"><div class="ld-tin">'+
+      '<div class="lbl">Fitting a character to '+esc(c.title)+'</div>'+
+      '<h3 class="ld-h">'+esc(ldName())+' <em>steps into</em> '+esc(c.title)+'</h3>'+
+      '<p class="ld-sub">'+esc(j.cls)+(j.subclass?', '+esc(j.subclass):'')+' · level '+j.from+' to level '+j.target+'. '+(down?'Down':'Up')+' one rung at a time.</p></div>'+
+      '<img class="ld-back" src="'+esc(c.back)+'" alt=""></div>'+
+    ldUnsupported(j)+
+    '<div class="ld-stage"><nav class="ld-ladder" aria-label="Levels">'+list+'</nav><section class="ld-now">'+main+'</section>'+
+      '<aside class="ld-sheet">'+ldSheet(at===0?j.start:rungs[at-1].numbers,j,at)+'</aside></div>',true);
+  ldWire(r);
+  if(keep)$('vmodal').scrollTop=keep;
+}
+function ldSummary(x){var b=[];if(x.forced&&x.forced.length)b.push('−'+x.forced.length+' out of reach');
+  (x.choices||[]).forEach(function(ch){if(ch.kind==='items')b.push('items decided');else if((ch.picked||[]).length)b.push(ch.picked.join(', '))});
+  if(x.lost_feats&&x.lost_feats.length)b.push(x.lost_feats.join(', '));return esc(b.join(' · ')||'nothing to choose')}
+function ldNeeds(x){var b=[];if(x.features&&x.features.length)b.push(esc(x.features[0]));
+  (x.choices||[]).forEach(function(ch){b.push('<b>'+(ch.kind==='items'?'items':(x.direction==='down'?'drop ':'pick ')+ch.need)+'</b>')});return b.join(' · ')}
+var KINDQ={drop:function(r,ch){return 'Level '+r.to+' prepares '+r.numbers.prepared+' spells. Which '+ch.need+' does '+esc(ldName())+' let go?'},
+  drop_cantrips:function(r,ch){return 'Level '+r.to+' holds '+r.numbers.cantrips+' cantrips. Which '+(ch.need>1?ch.need:'one')+' goes?'},
+  add:function(r,ch){return 'Level '+r.to+' prepares '+ch.need+' more. Which spells does '+esc(ldName())+' learn?'},
+  add_cantrips:function(r,ch){return 'A new cantrip at level '+r.to+'. Which one?'},
+  subclass:function(r,ch){return 'Level 3 brings a subclass. Which path?'},
+  items:function(r,ch){return 'Leaving a tier. What happens to what '+esc(ldName())+' carries?'}};
+function ord(n){return n+(['th','st','nd','rd'][n]||'th')}
+function ldChoice(r){
+  var n=r.numbers,h='<div class="ld-step"><span class="lbl">Rung '+(L.at+1)+' of '+L.j.rungs.length+' · level '+r.from+' → '+r.to+'</span>'+
+    '<h4>'+(r.direction==='down'?'What level '+r.to+' costs '+esc(ldName()):'What level '+r.to+' brings')+'</h4><div class="ld-chips">';
+  (r.features||[]).forEach(function(f){h+='<span class="chip '+(r.direction==='down'?'lose':'gain')+'">'+(r.direction==='down'?'− ':'+ ')+esc(f)+'</span>'});
+  (r.forced||[]).forEach(function(f){h+='<span class="chip lose">− '+esc(f)+'</span>'});
+  (r.lost_feats||[]).forEach(function(f){h+='<span class="chip lose">− '+esc(f)+' (and its spells)</span>'});
+  h+='<span class="chip same">proficiency +'+n.pb+' · HP '+n.hp+(n.dc?' · spell DC '+n.dc:'')+'</span></div>';
+  if(!r.choices.length)h+='<p class="ld-q">Nothing to choose on this rung. The table takes it.</p>';
+  r.choices.forEach(function(ch){
+    h+='<p class="ld-q">'+KINDQ[ch.kind](r,ch)+'</p><div class="ld-opts">';
+    if(ch.kind==='items'){
+      ch.options.filter(function(o){return o.magic}).forEach(function(o){
+        var fate=o.picked||null,rec=o.recommended;
+        h+='<button class="ld-opt item'+(fate&&fate!=='kept'?' gone':'')+(fate?' set':'')+'" data-item="'+esc(o.name)+'" data-rec="'+esc(rec)+'"><i>'+(fate?(fate==='kept'?'keeps':'hands back'):'Seren: '+(rec==='kept'?'keep':'hand back'))+'</i><b>'+esc(o.name)+'</b><em>'+esc(o.rarity||'')+(o.attuned?' · attuned':'')+'</em>'+(o.supported?'':'<span class="ld-ask" data-ask="item:'+esc(o.name)+'">not in the rules · ask in chat</span>')+'</button>';
+      });
+    } else {
+      var picked=ch.picked||[];
+      ch.options.forEach(function(o){
+        var on=picked.indexOf(o.name)>=0,rec=(ch.recommended||[]).indexOf(o.name)>=0;
+        h+='<button class="ld-opt'+(on?(r.direction==='down'?' gone':' got'):'')+(rec?' rec':'')+'" data-pick="'+esc(ch.kind)+'" data-name="'+esc(o.name)+'" data-need="'+ch.need+'"><i>'+(o.level?ord(o.level)+' level':o.level===0?'cantrip':'')+'</i><b>'+esc(o.name)+'</b></button>';
+      });
+    }
+    h+='</div>';
+  });
+  var left=r.choices.reduce(function(a,ch){if(ch.kind==='items')return a+ch.options.filter(function(o){return o.magic&&!o.picked}).length;return a+Math.max(0,ch.need-(ch.picked||[]).length)},0);
+  h+='<div class="ld-go"><button class="go'+(left?'':' push')+'" id="ldDown"'+(left?' disabled':'')+'>'+(r.direction==='down'?'Step down to ':'Step up to ')+r.to+'</button>'+
+    (r.choices.length?'<button class="ghost'+(left?' push':'')+'" id="ldAuto">Take Seren’s picks</button>':'')+
+    (L.at?'<button class="ghost" id="ldUp">Back a rung</button>':'')+
+    '<span class="lbl mute">'+(left?left+' to choose':'')+'</span></div></div>';
+  return h;
+}
+function ldDone(){
+  var j=L.j,f=j.final;
+  return '<div class="ld-done"><div class="lbl">Fitted to the book</div><div class="ld-cover"><img src="'+esc(L.c.header)+'" alt=""><div><b>'+esc(L.c.title)+'</b><span>'+esc(ldName())+', '+esc(j.cls)+' '+j.target+'</span></div></div>'+
+    '<p class="ld-q">Every rung decided. Proficiency +'+f.pb+', HP '+f.hp+(f.dc?', spell DC '+f.dc:'')+'.</p>'+
+    '<label class="ld-name"><span class="lbl">Their name at this table</span><input id="ldName" value="'+esc(L.tableName||(DM_NAME.test(ldName())?ldName().replace(/ser\'?en/i,'Serenista'):ldName()))+'" autocomplete="off"></label>'+
+    (DM_NAME.test(ldName())?'<p class="ld-or">Seren is the dungeon master’s name, so '+esc(ldName())+' needs another one at this table. The build remembers who they are on D&amp;D Beyond.</p>':'')+
+    '<div id="ldRefused"></div>'+
+    '<div class="ld-go" style="justify-content:center"><button class="go push" id="ldTake">Take them to the table</button>'+(L.at?'<button class="ghost" id="ldUp">Back a rung</button>':'')+'</div></div>';
+}
+function ldSheet(n,j,at){
+  n=n||null;var lv=at===0?j.from:j.rungs[at-1].to;
+  var h='<div class="lbl">'+esc(ldName())+' · live</div><div class="ld-stats">'+
+    [['Level',lv],['HP',n?n.hp:'—'],['Prof.',n?'+'+n.pb:'—'],['Spell DC',n&&n.dc?n.dc:'—']].map(function(s){return '<div><b>'+s[1]+'</b><span>'+s[0]+'</span></div>'}).join('')+'</div>';
+  if(n&&n.slots){h+='<div class="lbl" style="margin-top:12px">Spell slots</div><div class="ld-slots">';
+    n.slots.forEach(function(k,i){if(!k)return;var d='';for(var q=0;q<k;q++)d+='<i></i>';h+='<div>'+ord(i+1)+'<span>'+d+'</span></div>'});h+='</div>'}
+  var sp=at===0?j.start_spells:j.rungs[at-1].spells_after;
+  if(sp)h+='<div class="lbl" style="margin-top:12px">Spells · '+sp.length+'</div><p class="ld-list">'+sp.map(esc).join(' · ')+'</p>';
+  return h;
+}
+function ldUnsupported(j){
+  var u=j.unsupported||[];if(!u.length)return '';
+  return '<div class="ld-unsup"><span class="lbl">The rules on disk can’t check '+u.length+' thing'+(u.length>1?'s':'')+'</span>'+
+    u.slice(0,8).map(function(x){return '<button class="ld-ask chip" data-ask="'+esc(x.kind)+':'+esc(x.name)+'" title="'+esc(x.why)+'">'+esc(x.name)+' · ask in chat</button>'}).join('')+'</div>';
+}
+function ldDec(from){return L.decisions[from]||(L.decisions[from]={})}
+function ldWire(r){
+  var m=$('vmodal');
+  m.querySelectorAll('[data-pick]').forEach(function(b){b.onclick=function(){
+    var d=ldDec(r.from),k=b.dataset.pick,n=b.dataset.name,need=+b.dataset.need;
+    if(k==='subclass'){d.subclass=d.subclass===n?null:n}else{var a=d[k]||(d[k]=[]),i=a.indexOf(n);if(i>=0)a.splice(i,1);else{a.push(n);while(a.length>need)a.shift()}}
+    ladder()}});
+  m.querySelectorAll('[data-item]').forEach(function(b){b.onclick=function(e){
+    if(e.target.dataset.ask)return;var d=ldDec(r.from),items=d.items||(d.items={}),n=b.dataset.item,cur=items[n];
+    items[n]=cur==null?b.dataset.rec:(cur==='kept'?'handed back':'kept');ladder()}});
+  m.querySelectorAll('[data-ask]').forEach(function(b){b.onclick=function(e){e.stopPropagation();ldAsk(b.dataset.ask)}});
+  var a=$('ldAuto');if(a)a.onclick=function(){var d=ldDec(r.from);r.choices.forEach(function(ch){
+    if(ch.kind==='items'){d.items=d.items||{};ch.options.forEach(function(o){if(o.magic&&!d.items[o.name])d.items[o.name]=o.recommended})}
+    else if(ch.kind==='subclass')d.subclass=(ch.recommended||[])[0];else d[ch.kind]=(ch.recommended||[]).slice()});ladder()};
+  var dn=$('ldDown');if(dn)dn.onclick=function(){L.at++;renderLadder()};
+  var up=$('ldUp');if(up)up.onclick=function(){L.at--;renderLadder()};
+  var t=$('ldTake');if(t)t.onclick=function(){t.disabled=true;t.textContent='Writing the build…';
+    L.tableName=($('ldName')||{}).value||'';
+    api('save_build',{key:L.key,target:L.target,decisions:L.decisions,campaign:L.c.slug,name:L.tableName}).then(function(j){
+      if(!j.ok){$('ldRefused').innerHTML='<p class="ld-err">Seren won’t write it yet: '+esc((j.refused||[]).join('; '))+'</p>';t.disabled=false;t.textContent='Take them to the table';return}
+      var card={id:j.card.id,name:j.card.name,line:j.card.title+'. '+j.card.tagline,own:true};
+      clearInterval(L.poll);$('veil').dataset.locked='';unveil();startTable(L.c,card);
+    })};
+}
+function ldAsk(what){
+  var kind=what.split(':')[0],name=what.slice(kind.length+1),j=L.j;
+  var text='At Seren’s table I’m bringing '+ldName()+' ('+j.cls+(j.subclass?', '+j.subclass:'')+', level '+j.from+') into '+L.c.title+' at level '+j.target+
+    '. The '+kind+' “'+name+'” isn’t in the rules Seren can check. What should Seren treat it as? When we agree, record it with seren_ruling (character key '+L.key+', kind '+kind+', name “'+name+'”).';
+  L.asked=true;
+  if(window.serenAsk){ldToast('Asked. Approve the message in the chat, talk it over with Claude there, and the ladder picks up the ruling.');
+    window.serenAsk(text).catch(function(){ldToast('The chat didn’t take the question. Ask Claude in the chat instead.')});ldPoll()}
+  else ldToast('In Claude, this goes to the chat: “'+text+'”');
+}
+function ldPoll(){var n=0;clearInterval(L.poll);L.poll=setInterval(function(){if(++n>45||$('veil').hidden){clearInterval(L.poll);return}
+  api('level',{key:L.key,target:L.target,decisions:L.decisions}).then(function(j){if(j.ok&&(j.rulings||[]).length>L.rulings){clearInterval(L.poll);ladder()}})},4000)}
+function ldToast(t){var e=$('ldToast');if(!e){e=document.createElement('div');e.id='ldToast';e.className='ld-toast';e.setAttribute('role','status');document.body.appendChild(e)}
+  e.textContent=t;e.classList.add('on');clearTimeout(e.k);e.k=setTimeout(function(){e.classList.remove('on')},6500)}
+
+function openTune(){
+  var c=T.c;
+  veil('<div class="mhead"><div class="lbl">Tune your loom</div><h3 class="mtitle">'+esc(c.title)+'</h3><p class="msent">'+sentence()+'</p>'+
+    '<p class="mnote">These never pick a card. The hand is dealt and it stands; this is what she is told about how to write it, and leaving every one alone is a perfectly good answer.</p></div>'+
+    dialsHTML(c)+
+    '<div class="macts"><button class="ghost" id="mback">← Back to the table</button><button class="ghost gilt" id="rolld">Roll the stakes</button><button class="go" id="weave">Weave my book</button></div>'+
+    (FAKE?'<p class="mnote">Fake AI is on: the book is canned, built from your cards. Nothing is spent.</p>':''));
+  wireDials(c);
+  $('mback').onclick=function(){T.herKept=false;unveil();rerender()};
+  $('rolld').onclick=function(){DIALS.forEach(function(x){var el=$('dial-'+x[0]),lo=+el.dataset.lo,hi=+el.dataset.hi;el.value=Math.round(lo+Math.random()*(hi-lo));$('v-'+x[0]).textContent=el.value})};
+  $('weave').onclick=function(){weaveIt(c)};
+}
+function plainSentence(){var d=document.createElement('div');d.innerHTML=sentence();return d.textContent}
+function weaveIt(c){
+  var s=c.deck.slots,cards={},picks={campaign:c.slug,campaign_title:c.title};
+  var face=function(k){return{id:k.id,name:k.name,line:k.line,changes:k.changes,as:k.as,own:k.own||undefined}};
+  Object.keys(s).forEach(function(k){if(s[k].mode==='locked'||s[k].mode==='you'){cards[k]=face(s[k].card);picks[k]=s[k].card.id}});
+  Object.keys(T.picks).forEach(function(k){if(k!=='companions'&&T.picks[k]){cards[k]=face(T.picks[k]);picks[k]=T.picks[k].id}});
+  if(T.her.length){cards.posture=face(T.her[T.herAt]);picks.posture=T.her[T.herAt].id}
+  cards.companions=T.picks.companions.map(face);picks.companions=T.picks.companions.map(function(k){return k.id});
+  var dials={};DIALS.forEach(function(x){dials[x[0]]=+$('dial-'+x[0]).value});
+  var n=slotsOf(c).length+1,said=plainSentence();
+  veil('<div class="loom"><div class="lbl red">Weaving</div><p class="bigsent">'+esc(said)+'</p>'+
+    '<p class="mnote">'+(FAKE?'Fake AI: this takes a few seconds.':'This takes about two minutes, sometimes three.')+' She is writing three fronts, an antagonist and seven secrets, and only some of them are yours to know.</p>'+
+    '<div class="gather">'+Array.from({length:n},function(_,i){var a=(i/n)*Math.PI*2;
+      return '<img src="'+c.back+'" alt="" style="--x:'+Math.round(Math.cos(a)*170)+'px;--y:'+Math.round(Math.sin(a)*80)+'px;--d:'+(i*0.12)+'s;--rot:'+Math.round((i-n/2)*9)+'deg">'}).join('')+
+    '<div class="threads"><i></i><i></i><i></i><i></i><i></i></div><div class="shuttle"></div></div>'+
+    '<div class="teller" aria-live="polite"><p class="tl-prev" id="tlPrev"></p><p class="tl-now" id="tlNow"></p></div>'+
+    '<ol class="wsteps"><li id="w1">She weaves your hand into one story</li><li id="w2">The Doorkeeper reads it, and may send it back</li><li id="w3">It is bound, and dealt out as yours</li></ol>'+
+    '<details class="wlog"><summary class="wclock"><span class="lbl mute">Weaving for</span> <b id="wclock">0:00</b> <span class="lbl mute">· what’s happening</span></summary><ol id="wlog"></ol></details></div>',true);
+  var lit=function(id,t){setTimeout(function(){var el=$(id);if(el)el.classList.add('on')},t)};
+  var t0=Date.now(),mm=function(s){return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)};
+  var tick=setInterval(function(){var el=$('wclock');if(!el)return clearInterval(tick);el.textContent=mm(Math.round((Date.now()-t0)/1000))},1000);
+  if(FAKE||!window.serenWeave){lit('w1',300);lit('w2',1900);lit('w3',3300)}else lit('w1',300);
+  // The server's log of where the weave is, every four seconds (Jay, 27 Nov: "so we know where things are hanging").
+  // The fortune teller mutters her way through the book while Opus writes it (Jay, 27 Nov). Her lines
+  // come from the server a few seconds in; until then she has one of her own. A line every nine seconds,
+  // and a stage line jumps the queue when the Doorkeeper or the binding actually happens.
+  var TL={q:[],got:null,said:{},timer:null,live:!!window.serenWeave};
+  function say(line){
+    var now=$('tlNow'),prev=$('tlPrev');if(!now||!line)return;
+    if(now.textContent)prev.textContent=now.textContent;
+    now.classList.remove('in');void now.offsetWidth;now.textContent='';now.classList.add('in');
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){now.textContent=line;return}
+    var i=0;clearInterval(TL.type);TL.type=setInterval(function(){now.textContent=line.slice(0,++i);if(i>=line.length)clearInterval(TL.type)},18);
+  }
+  function next(){if(TL.q.length)say(TL.q.shift())}
+  function stage(k){if(!TL.got||TL.said[k]||!TL.got[k])return;TL.said[k]=1;
+    // Once it passes the Doorkeeper she's writing the book: what she hadn't said about the hand is stale
+    // (27 Nov, serenseven.mp4: the dials line came after "It passes"). Keep only her last work line.
+    if(k==='book')TL.q=TL.q.slice(-1);
+    say(TL.got[k]);clearInterval(TL.timer);TL.timer=setInterval(next,9000)}
+  if(TL.live){say('Sit, sit. Let me look at what you’ve laid…');TL.timer=setInterval(next,9000)}
+  window.serenWeaveProgress=function(s){
+    var log=s.log||[],ol=$('wlog');if(!ol)return;
+    ol.innerHTML=log.map(function(x){return '<li><span>'+mm(x.t)+'</span>'+esc(x.say)+'</li>'}).join('');
+    var said=log.map(function(x){return x.say}).join(' ');
+    if(/Doorkeeper/.test(said))lit('w2',0);if(/writes your book|Binding/.test(said))lit('w3',0);
+    if(s.teller&&!TL.got){TL.got=s.teller;TL.q=(s.teller.lines||[]).slice();next();clearInterval(TL.timer);TL.timer=setInterval(next,9000)}
+    if(/Doorkeeper reads it/.test(said))stage('doorkeeper');
+    if(/sent back/.test(said))stage('mend');
+    if(/writes your book/.test(said))stage('book');
+  };
+  setTimeout(function(){smoke(document.querySelector('.gather'),8)},2300);
+  var minWait=new Promise(function(r){setTimeout(r,4200)});
+  var body={picks:picks,cards:cards,dials:dials};
+  var call=window.serenWeave?window.serenWeave(body):fetch('/api/weave',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+    .then(function(r){return r.json().then(function(j){return{ok:r.ok,j:j}})});
+  Promise.all([call,minWait]).then(function(res){var x=res[0];$('veil').dataset.locked='';
+    if(!x.ok){veil('<div class="mhead"><div class="lbl">The Doorkeeper sent it back</div><p class="msent">'+esc(x.j.error||'It failed')+'</p>'+
+      ((x.j.problems||[]).length?'<ul class="refused">'+x.j.problems.map(function(p){return '<li>'+esc(p)+'</li>'}).join('')+'</ul>':'')+
+      '</div><div class="macts"><button class="go" id="again">Tune it again</button></div>');$('again').onclick=openTune;return}
+    clearInterval(TL.timer);
+    var last=TL.got&&TL.got.done;
+    if(TL.live&&last){say(last);setTimeout(function(){clearInterval(TL.type);showBook(x.j,c,said)},Math.min(6000,1800+last.length*22))}
+    else showBook(x.j,c,said);
+  }).catch(function(e){$('veil').dataset.locked='';veil('<div class="mhead"><div class="lbl">Could not reach the server</div><p class="msent">'+esc(String(e))+'</p></div><div class="macts"><button class="go" id="again">Try again</button></div>');$('again').onclick=openTune});
+}
+function inline(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<em>$1</em>')}
+function md(text){
+  var L=String(text||'').replace(/<!--[\s\S]*?-->/g,'').split('\n'),out=[],i=0,toc=[];
+  while(i<L.length){var l=L[i];
+    if(/^---\s*$/.test(l)){out.push('<hr>');i++;continue}
+    var h=/^(#{1,3})\s+(.*)$/.exec(l);
+    if(h){var lv=h[1].length,id='ch'+toc.length;if(lv===2)toc.push([id,h[2]]);out.push('<h'+(lv+1)+(lv===2?' id="'+id+'"':'')+'>'+inline(h[2])+'</h'+(lv+1)+'>');i++;continue}
+    if(/^\|/.test(l)){var rows=[];while(i<L.length&&/^\|/.test(L[i])){rows.push(L[i]);i++}
+      var cells=function(r){return r.replace(/^\||\|$/g,'').split('|').map(function(x){return x.trim()})};
+      var body=rows.filter(function(r){return !/^\|[\s|:-]+\|$/.test(r)});var head=cells(rows[0]),blank=head.every(function(x){return !x});
+      out.push('<table>'+(blank?'':'<thead><tr>'+head.map(function(x){return '<th>'+inline(x)+'</th>'}).join('')+'</tr></thead>')+'<tbody>'+
+        body.slice(blank?0:1).filter(function(r){return !cells(r).every(function(x){return !x})}).map(function(r){return '<tr>'+cells(r).map(function(x){return '<td>'+inline(x)+'</td>'}).join('')+'</tr>'}).join('')+'</tbody></table>');continue}
+    if(/^\s*-\s+/.test(l)){var it=[];while(i<L.length&&/^\s*-\s+/.test(L[i])){it.push('<li>'+inline(L[i].replace(/^\s*-\s+/,''))+'</li>');i++}out.push('<ul>'+it.join('')+'</ul>');continue}
+    if(/^>\s?/.test(l)){var q=[];while(i<L.length&&/^>\s?/.test(L[i])){q.push(L[i].replace(/^>\s?/,''));i++}out.push('<blockquote>'+inline(q.join(' '))+'</blockquote>');continue}
+    if(!l.trim()){i++;continue}
+    var p=[];while(i<L.length&&L[i].trim()&&!/^(#|\||>|---|\s*-\s)/.test(L[i])){p.push(L[i]);i++}out.push('<p>'+inline(p.join(' '))+'</p>');
+  }
+  return {html:out.join(''),toc:toc};
+}
+function showBook(j,c,said){
+  var b=md(j.book||'');
+  veil('<div class="bookwrap">'+
+    '<div class="reveal"><div class="lbl red">Your loom is woven</div><p class="bigsent small">'+esc(said)+'</p>'+
+      '<p class="mnote">Written, read at the door, and dealt out as yours.</p>'+
+      '<h3 class="rtitle">'+esc(j.title)+'</h3>'+(j.where?'<p class="bwhere">'+esc(j.where)+'</p>':'')+
+      '<p class="rprem">'+esc(j.premise)+'</p><blockquote class="ropen">'+esc(j.opening)+'</blockquote>'+
+      '<div class="macts"><button class="ghost" id="mback">← Back to the table</button>'+(window.serenDownload?'<button class="ghost" id="dl">Download the book (.md)</button>':'<a class="ghost" href="/api/book?slug='+encodeURIComponent(j.slug)+'" download>Download the book (.md)</a>')+
+      (window.SEREN_APP?'':'<a class="go" id="sit" href="'+(j.play||'/table')+'">Sit down at the table</a>')+'</div></div>'+
+    (b.toc.length?'<div class="lbl" style="text-align:center;margin:26px 0 14px">The book</div>'+
+      '<div class="bookbody"><nav class="toc" aria-label="Chapters">'+b.toc.map(function(t){return '<a href="#'+t[0]+'">'+inline(t[1])+'</a>'}).join('')+'</nav>'+
+      '<article class="pages" id="pages">'+b.html+'</article></div>':'')+'</div>');
+  $('mback').onclick=function(){unveil()};
+  if($('sit'))$('sit').onclick=function(){fadeOutMusic()};
+  if($('dl'))$('dl').onclick=function(){window.serenDownload(j)};
+  if(window.serenWoven)window.serenWoven(j);
+  $('vmodal').querySelectorAll('.toc a').forEach(function(a){a.onclick=function(e){e.preventDefault();var t=document.getElementById(a.getAttribute('href').slice(1));if(t)$('pages').scrollTo({top:t.offsetTop-$('pages').offsetTop-8,behavior:'smooth'})}});
+}
+/* ── the table's own randomness ──
+   Every so often, while you sit at the table and nothing is open over it, something happens that
+   nobody asked for: a will-o'-wisp drifts along the top, a cat paws at one of your cards, or the cat
+   turns your music off. ?mischief=fast makes it every few seconds, for looking at. */
+function motesHTML(){var h='';for(var i=0;i<16;i++){h+='<i style="left:'+Math.round(Math.random()*100)+'%;top:'+Math.round(Math.random()*100)+'%;--d:'+(14+Math.random()*16).toFixed(1)+'s;--dl:-'+(Math.random()*20).toFixed(1)+'s;--dx:'+Math.round(Math.random()*80-40)+'px"></i>'}return '<div class="motes" aria-hidden="true">'+h+'</div>'}
+var PAW='<svg viewBox="0 0 60 220" aria-hidden="true"><path d="M14 220 L14 56 Q14 22 30 18 Q46 22 46 56 L46 220 Z" fill="#17151b"/>'+
+  '<path d="M30 6c-14 0-24 12-24 26 0 12 10 20 24 20s24-8 24-20C54 18 44 6 30 6z" fill="#1d1a21"/>'+
+  '<ellipse cx="30" cy="36" rx="9" ry="7" fill="#7a5662"/><ellipse cx="15" cy="22" rx="4.2" ry="5" fill="#7a5662"/><ellipse cx="24" cy="15" rx="4.2" ry="5" fill="#7a5662"/>'+
+  '<ellipse cx="36" cy="15" rx="4.2" ry="5" fill="#7a5662"/><ellipse cx="45" cy="22" rx="4.2" ry="5" fill="#7a5662"/>'+
+  '<path d="M18 60 Q30 66 42 60" stroke="#26232b" stroke-width="2" fill="none"/></svg>';
+function quietMotion(){return matchMedia('(prefers-reduced-motion: reduce)').matches}
+function paw(target,onTouch){
+  if(!target||quietMotion())return false;
+  var r=target.getBoundingClientRect(),p=document.createElement('div');p.className='paw';p.innerHTML=PAW;
+  p.style.left=Math.round(r.left+r.width/2-30+(Math.random()*20-10))+'px';
+  document.body.appendChild(p);
+  var reach=window.innerHeight-(r.top+r.height*0.55),tilt=Math.random()<0.5?-1:1;
+  var a=p.animate([{transform:'translateY(0) rotate(0deg)'},
+    {transform:'translateY(-'+(reach*0.8)+'px) rotate('+(4*tilt)+'deg)',offset:.32},
+    {transform:'translateY(-'+reach+'px) rotate('+(-7*tilt)+'deg)',offset:.46},
+    {transform:'translateY(-'+(reach-8)+'px) rotate('+(9*tilt)+'deg)',offset:.56},
+    {transform:'translateY(-'+reach+'px) rotate('+(-4*tilt)+'deg)',offset:.64},
+    {transform:'translateY(0) rotate(0deg)'}],{duration:3400,easing:'ease-in-out'});
+  setTimeout(function(){if(onTouch)onTouch()},3400*0.46);
+  a.onfinish=function(){p.remove()};
+  return true;
+}
+function jiggle(el){if(el)el.animate([{transform:'rotate(0)'},{transform:'rotate(-5deg) translateX(-4px)'},{transform:'rotate(4deg) translateX(3px)'},{transform:'rotate(-2deg)'},{transform:'rotate(0)'}],{duration:700,easing:'ease-out'})}
+function wisp(){
+  if(quietMotion())return false;
+  var w=document.createElement('div');w.className='willo';
+  var y=Math.round(window.innerHeight*(0.06+Math.random()*0.22)),ltr=Math.random()<0.6;
+  w.style.top=y+'px';document.body.appendChild(w);
+  var from=ltr?-60:window.innerWidth+60,to=ltr?window.innerWidth+60:-60,dur=11000+Math.random()*5000;
+  var a=w.animate([{transform:'translate('+from+'px,0)'},{transform:'translate('+(from+(to-from)*0.3)+'px,-26px)'},
+    {transform:'translate('+(from+(to-from)*0.55)+'px,14px)'},{transform:'translate('+(from+(to-from)*0.8)+'px,-18px)'},
+    {transform:'translate('+to+'px,4px)'}],{duration:dur,easing:'linear'});
+  a.onfinish=function(){w.remove()};
+  return true;
+}
+function catCard(){
+  var cards=[].slice.call(document.querySelectorAll('#row .c3'));if(!cards.length)return false;
+  var c=cards[Math.floor(Math.random()*cards.length)];
+  return paw(c,function(){jiggle(c);smoke(c,2)});
+}
+function catMusic(){
+  if(!started||muted)return false;
+  return paw($('mute'),function(){
+    muted=true;if(fading)clearInterval(fading);players.forEach(function(a){a.pause()});started=false;paintSound();
+    jiggle($('mute'));var s=$('says');if(s)s.textContent='The cat has opinions about the music.';
+  });
+}
+var FAST=/[?&]mischief=fast/.test(location.search);
+function mischief(kind){
+  if(!T||$('table').hidden||!$('veil').hidden||document.hidden)return false;
+  var pool=kind?[kind]:['wisp','wisp','cat','cat','music'];
+  var k=pool[Math.floor(Math.random()*pool.length)];
+  return k==='wisp'?wisp():k==='cat'?catCard():(catMusic()||wisp());
+}
+window.serenMischief=mischief;
+(function next(){setTimeout(function(){mischief();next()},FAST?(5000+Math.random()*4000):(40000+Math.random()*45000))})();
+// Inside Claude the app swaps these for MCP tool calls (seren/mcp/server.py injects them).
+(window.serenShelf||function(){return fetch('/api/published').then(function(r){return r.json()})})().then(function(j){
+  D.campaigns=j.campaigns||[];D.characters=j.characters||[];FAKE=!!j.fake_ai;
+  $('note').textContent=FAKE?'Local · fake AI · nothing spent':'The deal';
+  renderList();renderDetail();
+}).catch(function(){$('detail').innerHTML='<p class="desc" style="padding:24px">Could not load the campaigns.</p>'});
+})();
+</script>

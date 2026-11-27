@@ -37,6 +37,8 @@ import dm
 import files
 import gate
 import llm
+import published
+import bring
 import shelf
 import state
 import weave
@@ -319,6 +321,46 @@ class Handler(BaseHTTPRequestHandler):
             return self._file(STATIC / "table.html")
         if path in ("/loom", "/loom/"):
             return self._file(STATIC / "loom.html")
+
+        # The deal: published campaigns on their own card backs, then the dials and the book.
+        if path in ("/deal", "/deal/"):
+            return self._file(STATIC / "deal.html")
+        if path == "/api/published":
+            return self._json(200, {"campaigns": published.listing(),
+                                    "characters": published.characters(),
+                                    "fake_ai": weave.mocking()})
+        if path.startswith("/characters/"):
+            body = published.character_art(path[len("/characters/"):])
+            if body is None:
+                return self._json(404, {"error": "no such art"})
+            return self._send(200, body, "image/webp")
+        if path.startswith("/published/"):
+            parts = path.split("/")
+            body = published.art(parts[2], parts[3]) if len(parts) == 4 else None
+            if body is None:
+                return self._json(404, {"error": "no such art"})
+            return self._send(200, body, "image/webp")
+        if path == "/api/book":
+            # The player's book: campaign.md of a module they wove. Player-safe by design:
+            # the facts and fronts live in other files.
+            slug = (urllib.parse.parse_qs(self.path.partition("?")[2]).get("slug") or [""])[0]
+            if not published.SLUG.match(slug):
+                return self._json(400, {"error": "bad slug"})
+            folder = corpus.ROOT / "players" / self._account() / slug
+            book = folder / "briefing.md"
+            if not book.is_file():
+                book = folder / "campaign.md"
+            try:
+                text = book.read_text(encoding="utf-8")
+            except OSError:
+                return self._json(404, {"error": "no such book"})
+            self.send_response(200)
+            self.send_header("Content-Type", "text/markdown; charset=utf-8")
+            self.send_header("Content-Disposition", f'attachment; filename="{slug}.md"')
+            body = text.encode("utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.end_headers()
+            return self.wfile.write(body)
         if path == "/chat":
             return self._file(STATIC / "index.html")
         if path.startswith("/static/"):
@@ -513,11 +555,27 @@ class Handler(BaseHTTPRequestHandler):
             _save(sess)
             return self._json(200, view, cookie)
 
+        # Bring your own character: the ladder (the MCP app's tools, as routes; seren/web/bring.py)
+        if path == "/api/character":
+            b = self._body()
+            return self._json(200, bring.bring(str(b.get("url") or ""), b.get("sheet")))
+        if path == "/api/level":
+            b = self._body()
+            return self._json(200, bring.level(str(b.get("key") or ""), int(b.get("target") or 1), b.get("decisions") or {}))
+        if path == "/api/save_build":
+            b = self._body()
+            return self._json(200, bring.save(str(b.get("key") or ""), int(b.get("target") or 1), b.get("decisions") or {},
+                                              str(b.get("campaign") or ""), str(b.get("name") or "")))
+
         if path == "/api/weave":
             # The Loom hands over what it dealt; nothing here re-rolls it.
             body = self._body()
             picks = body.get("picks") or {}
             cards = body.get("cards") or {}
+            if picks.get("campaign"):
+                # Sealed cards were never sent to the browser; the weaver still gets them.
+                for slot, card in published.sealed(str(picks["campaign"])).items():
+                    cards.setdefault(slot, card)
             dials = body.get("dials") or {}
             if not cards.get("trope") or not cards.get("trouble"):
                 return self._json(400, {"error": "that hand is not finished"})
@@ -527,7 +585,7 @@ class Handler(BaseHTTPRequestHandler):
             try:
                 out = weave.weave(picks, dials, cards, tier=TIER)
                 campaign_obj, spent = out["campaign"], out["spent"]
-                problems = audit.check(campaign_obj)
+                problems = audit.check(campaign_obj) + weave.player_leaks(campaign_obj, picks, cards)
                 mended = False
                 if problems:
                     # One fix pass: the auditor's complaints go back to the weaver before
@@ -535,7 +593,7 @@ class Handler(BaseHTTPRequestHandler):
                     out = weave.mend(campaign_obj, problems, picks, dials, cards, tier=TIER)
                     campaign_obj, mended = out["campaign"], True
                     spent += out["spent"]
-                    problems = audit.check(campaign_obj)
+                    problems = audit.check(campaign_obj) + weave.player_leaks(campaign_obj, picks, cards)
                 if problems:
                     return self._json(422, {"error": "the auditor refused it",
                                             "problems": problems, "spent": round(spent, 4)})
@@ -545,6 +603,12 @@ class Handler(BaseHTTPRequestHandler):
                 return self._json(400, {"error": str(exc)})
             except Exception as exc:
                 return self._json(500, {"error": f"{type(exc).__name__}: {exc}"})
+
+            try:
+                written = weave.book(campaign_obj, picks, dials, cards, tier=TIER)
+                campaign_obj["briefing"], spent = written["book"], spent + written["spent"]
+            except Exception as exc:
+                return self._json(500, {"error": f"the book could not be written: {type(exc).__name__}: {exc}"})
 
             slug = weave.slugify(campaign_obj.get("title"), "a-campaign")
             root = corpus.ROOT / "players" / account
@@ -574,6 +638,7 @@ class Handler(BaseHTTPRequestHandler):
                 "ok": True, "slug": slug, "title": campaign_obj.get("title"),
                 "premise": campaign_obj.get("premise"), "opening": campaign_obj.get("opening"),
                 "where": campaign_obj.get("where"), "mended": mended,
+                "book": campaign_obj.get("briefing") or "",
                 "spent": round(spent, 4), "play": "/table",
             }, cookie)
 

@@ -88,6 +88,7 @@ def brief(picks: dict, dials: dict, cards: dict) -> str:
     return f"""The hand, already dealt. Every card below is in the campaign.
 
 TROPE — the spine, and everything should serve it: {one('trope')}
+WHO THE PLAYER IS — use this name and class for pc: {one('pc') or 'yours to write'}
 ORIGIN — the player's: {one('origin')}
 WORLD: {one('world')}
 TROUBLE: {one('trouble')}
@@ -103,12 +104,140 @@ world may be, how big the trouble is allowed to get, how dangerous, whether pres
 from people or from places, and how long the clocks run."""
 
 
+PUBLISHED = """
+
+THE PUBLISHED CAMPAIGN. This story is fixed: write the skeleton INSIDE it. Same place, same victim,
+same premise; do not invent a different one. The dealt cards choose which version of it this is.
+- "title" must be exactly: {title}
+- The premise and the opening must agree with what the player is told below.
+- The antagonist, the fronts and the true facts come from "what is actually true" for this hand.
+  Those are secrets: write them as `true` (or `false` for what the town wrongly believes), never `known`.
+- Keep the house rules.
+- "premise", "where", "opening", the pc's "why_here" and any fact marked `known` or `suspected` are
+  what the PLAYER sees. They never name who did it.
+
+{story}"""
+
+
+def full_brief(picks: dict, dials: dict, cards: dict) -> str:
+    """The hand, plus the published campaign's own story when the hand was dealt from one."""
+    import published
+    slug = str(picks.get("campaign") or "")
+    told = published.story(slug, cards) if slug else None
+    if not told:
+        return brief(picks, dials, cards)
+    return brief(picks, dials, cards) + PUBLISHED.format(
+        title=told.get("title") or "", story=json.dumps(told, ensure_ascii=False, indent=1))
+
+
+def _keep_title(camp: dict, picks: dict) -> None:
+    """A published campaign keeps its own name, whatever the model wrote."""
+    import published
+    slug = str(picks.get("campaign") or "")
+    told = published.story(slug, {}) if slug else None
+    if told and told.get("title"):
+        camp["title"] = told["title"]
+
+
+def secret_names(picks: dict, cards: dict) -> list[str]:
+    """The names a published campaign keeps secret for this hand: each truth's culprit."""
+    import published
+    slug = str(picks.get("campaign") or "")
+    told = published.story(slug, cards) if slug else None
+    names = []
+    for entry in ((told or {}).get("truths_for_this_hand") or {}).values():
+        name = str((entry or {}).get("culprit") or "").split(",")[0].strip()
+        if len(name) > 3:
+            names.append(name)
+    return names
+
+
+def player_leaks(camp: dict, picks: dict, cards: dict, book_text: str = "") -> list[str]:
+    """Problems in the auditor's voice when a secret name reaches what the player sees."""
+    seen = " ".join([str(camp.get(k) or "") for k in ("premise", "where", "opening")]
+                    + [str((camp.get("pc") or {}).get("why_here") or "")]
+                    + [str(f.get("fact") or "") for f in camp.get("facts") or []
+                       if str(f.get("visibility", "")).lower() in ("known", "suspected")]).lower()
+    out = []
+    for name in secret_names(picks, cards):
+        if name.lower() in seen:
+            out.append(f"the player-facing premise, opening or a known/suspected fact names {name!r}, who is a secret. Remove the name")
+        if book_text and name.lower() in book_text.lower():
+            out.append(f"the book names {name!r}, who is a secret")
+    return out
+
+
+def mocking() -> bool:
+    return os.environ.get("SEREN_AI", "").lower() in ("mock", "local")
+
+
+def _mock_campaign(picks: dict, cards: dict) -> dict:
+    """A canned skeleton built from the dealt cards, for local runs with SEREN_AI=mock.
+
+    It is not a story. It puts the real card names where the weaver would, and passes the
+    real auditor, so the whole flow (deal, dials, book, table) can be clicked through with
+    no model and no spend."""
+    def name(slot, fallback):
+        return str((cards.get(slot) or {}).get("name") or fallback)
+    comps = cards.get("companions") or []
+    trope, world, trouble = name("trope", "A debt"), name("world", "a small town"), name("trouble", "a death")
+    origin, posture = name("origin", "a stranger"), name("posture", "the one in charge")
+    title = picks.get("campaign_title") or f"{trope} at the Mill"
+    return {
+        "title": title,
+        "premise": (f"{trouble}, in {world}, and nobody wants it asked about. You came because of "
+                    f"the {origin.lower()}, and somebody at this wake would rather you went home."),
+        "where": f"{world}, the hour before dark",
+        "pc": {"name": name("pc", "Wren Cole"),
+               "class": str((cards.get("pc") or {}).get("changes", "Rogue")).split(".")[0],
+               "why_here": f"The {origin.lower()}: someone here owes you."},
+        "companions": [{"name": str(c.get("name", "")), "does": str(c.get("line", "")),
+                        "friction": str(c.get("changes", ""))} for c in comps],
+        "fronts": [
+            {"name": "The Parish Clerk", "impulse": "to keep the register closed",
+             "wants_from": "The Millers' Guild — the ledger page they tore out",
+             "clock": ["the register goes missing", "a witness leaves town", "the page is burned"],
+             "doom": "nobody can ever prove what happened"},
+            {"name": "The Millers' Guild", "impulse": "to settle the debt quietly",
+             "wants_from": "The Parish Clerk — the burial record",
+             "clock": ["a debt is called in", "a lease is cancelled", "a family is turned out"],
+             "doom": "the orchard changes hands for nothing"},
+            {"name": posture, "impulse": "to be thanked for keeping order",
+             "wants_from": "the party — their silence",
+             "clock": ["a warning", "a fine", "an arrest"],
+             "doom": "the wrong person hangs"},
+        ],
+        "antagonist": {"name": posture, "axis": "stopped", "posture": posture,
+                       "grudge": "You are strangers stirring up grief, and they are right that it will hurt people.",
+                       "escalation": ["2 — a polite warning", "3 — doors close", "4+ — the law moves"]},
+        "facts": [
+            {"fact": "The ledger page was torn out after the death, not before.", "visibility": "true", "why": "the clock"},
+            {"fact": "Two families owed the same debt.", "visibility": "true", "why": "the motive"},
+            {"fact": "The clerk can't read the old hand.", "visibility": "true", "why": "a weakness"},
+            {"fact": "The death was not an accident.", "visibility": "suspected", "why": "the hook"},
+            {"fact": "The guild paid for the funeral.", "visibility": "true", "why": "a thread"},
+            {"fact": "The dog knows the way to the mill race.", "visibility": "true", "why": "a companion's use"},
+            {"fact": "The town believes the debt died with the debtor.", "visibility": "false", "why": "the lie"},
+        ],
+        "opening": ("Rain on the lychgate. A stranger in a good coat stands under it with an umbrella that isn't theirs, "
+                    "and holds out a hand for your papers before you've said a word."),
+    }
+
+
 def weave(picks: dict, dials: dict, cards: dict, tier: str = "paid") -> dict:
     """One call. Returns the campaign object and what it cost."""
+    if mocking():
+        import mock_book
+        import published
+        camp = _mock_campaign(picks, cards)
+        slug = str(picks.get("campaign") or "")
+        shelf = next((c for c in published.listing() if c.get("slug") == slug), None)
+        camp["briefing"] = mock_book.briefing(camp, cards, shelf, slug)
+        return {"campaign": camp, "spent": 0.0}
     was, llm.MAX_TOKENS = llm.MAX_TOKENS, GEN_TOKENS
     try:
         reply = llm.converse(system=SYSTEM,
-                             messages=[{"role": "user", "content": [{"text": brief(picks, dials, cards)}]}],
+                             messages=[{"role": "user", "content": [{"text": full_brief(picks, dials, cards)}]}],
                              tools=None, tier=tier, spent=0.0, temperature=0.8)
     finally:
         llm.MAX_TOKENS = was
@@ -116,7 +245,133 @@ def weave(picks: dict, dials: dict, cards: dict, tier: str = "paid") -> dict:
     start, end = text.find("{"), text.rfind("}")
     if start < 0 or end < 0:
         raise ValueError("the weaver returned no json")
-    return {"campaign": json.loads(text[start:end + 1]), "spent": reply["spent"]}
+    camp_out = json.loads(text[start:end + 1])
+    _keep_title(camp_out, picks)
+    return {"campaign": camp_out, "spent": reply["spent"]}
+
+
+BOOK_TOKENS = int(os.environ.get("SEREN_BOOK_TOKENS", "3500"))
+
+BOOK_SYSTEM = """You write the player's book for a one-shot tabletop campaign: what a dungeon master
+hands the player before the first scene. It is the one thing in the campaign written for the player.
+
+Second person, present tense, addressed to the player. Player-side only: what their character knows
+or has heard. A suspicion is written as a suspicion, in the character's own terms, never as the
+answer. The antagonist appears only by public reputation: what people say. Everything you write is
+true from the first scene, and every place and person you name becomes somewhere the player can go
+and someone they can find, so write them as places to go, not scenery. Invent places freely; never
+use a published setting. Nobody is called Seren. About 900 to 1,400 words.
+
+Markdown, in exactly this order and with exactly these headings:
+
+# <title> — your book
+Three or four sentences: who you are and what is happening tonight. Then where you are standing.
+---
+## You
+Name, class and a line of who they are. Bullets: where they came from, who took them in, what they
+suspect about themselves. Use the origin and the character card's own words as lived experience.
+### What you can do, in plain words
+A two-column table (| | |), four to six rows: what this class can do at this level, in plain words.
+---
+## Your people
+A short paragraph for each companion, as the character knows them: the card's visible half only.
+---
+## <the world's name>, and how it works
+The rules everyone here knows: money, law, families, institutions. The world card as lived experience.
+---
+## Who's who
+A table, | who | what people say |, every person the premise names, public reputation only.
+---
+## Places you know
+"Go anywhere. These are the places you already know your way around." Then a table,
+| place | what is there |, five to eight places.
+---
+## Tonight
+The hook and the first scene's situation, ending with the opening as a > quote.
+---
+## How this table plays
+Bullets: who tells it and how; dice only when the outcome is uncertain; what the stakes and danger
+dials mean here, in plain words; death as the danger dial sets it; and last, "Everything in this
+book is true. The rest is there to find."
+
+Return the markdown and nothing else."""
+
+
+def _player_side(camp: dict, cards: dict, shelf: dict | None, dials: dict) -> dict:
+    """What the book writer may see. No fronts, no grudges, no true or false facts: it can't leak
+    what it was never told."""
+    a = camp.get("antagonist") or {}
+    return {
+        "title": camp.get("title"), "premise": camp.get("premise"), "where": camp.get("where"),
+        "opening": camp.get("opening"), "pc": camp.get("pc"), "companions": camp.get("companions"),
+        "antagonist": {"kind": a.get("posture"), "note": "public reputation only; the book never names them"},
+        "what_the_player_suspects": [f.get("fact") for f in camp.get("facts") or []
+                                     if str(f.get("visibility", "")).lower() == "suspected"],
+        "what_the_player_knows": [f.get("fact") for f in camp.get("facts") or []
+                                  if str(f.get("visibility", "")).lower() == "known"],
+        "cards": {k: ({"name": v.get("name"), "line": v.get("line"), "changes": v.get("changes"),
+                       "at_this_table": v.get("as")} if isinstance(v, dict) else
+                      [{"name": c.get("name"), "line": c.get("line"), "at_this_table": c.get("as")} for c in v])
+                  for k, v in cards.items() if k != "posture"},
+        "the_campaign": {k: (shelf or {}).get(k) for k in ("title", "tagline", "description", "key_info", "level", "length")}
+                        if shelf else None,
+        "dials": dials,
+    }
+
+
+def leaks(book: str, camp: dict) -> list[str]:
+    """Secrets that reached the book verbatim. It can't see a paraphrase; the writer never saw them."""
+    text = book.lower()
+    found = []
+    for f in camp.get("facts") or []:
+        fact = str(f.get("fact") or "")
+        if str(f.get("visibility", "")).lower() in ("true", "false") and len(fact) > 24 and fact.lower() in text:
+            found.append(fact)
+    a = camp.get("antagonist") or {}
+    for key in ("grudge",):
+        line = str(a.get(key) or "")
+        if len(line) > 24 and line.lower() in text:
+            found.append(line)
+    return found
+
+
+# The SRD's own required statement, word for word (SRD 5.2 p.1, Legal Information), and nothing else
+# about Wizards: the SRD asks for no other attribution (27 Nov, Blood and Ink step 1).
+SRD_ATTRIBUTION = ("This work includes material from the System Reference Document 5.2 (“SRD 5.2”) by "
+                   "Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2 is licensed "
+                   "under the Creative Commons Attribution 4.0 International License, available at "
+                   "https://creativecommons.org/licenses/by/4.0/legalcode.")
+
+
+def _with_srd(text: str) -> str:
+    text = (text or "").rstrip()
+    return text if "dndbeyond.com/srd" in text else text + "\n\n---\n\n<small>" + SRD_ATTRIBUTION + "</small>\n"
+
+
+def book(camp: dict, picks: dict, dials: dict, cards: dict, tier: str = "paid") -> dict:
+    """The player's book (SEREN docs/weave-from-hand.md 4b), written once the auditor has passed the
+    skeleton. Returns {"book": markdown, "spent": cost}. Fake AI keeps the canned one."""
+    import published
+    slug = str(picks.get("campaign") or "")
+    shelf = next((c for c in published.listing() if c.get("slug") == slug), None) if slug else None
+    if mocking():
+        import mock_book
+        return {"book": _with_srd(camp.get("briefing") or mock_book.briefing(camp, cards, shelf, slug)), "spent": 0.0}
+    was, llm.MAX_TOKENS = llm.MAX_TOKENS, BOOK_TOKENS
+    try:
+        ask = ("Write the book from this. It is everything the player may know.\n\n"
+               + json.dumps(_player_side(camp, cards, shelf, dials), ensure_ascii=False, indent=1))
+        reply = llm.converse(system=BOOK_SYSTEM, messages=[{"role": "user", "content": [{"text": ask}]}],
+                             tools=None, tier=tier, spent=0.0, temperature=0.7)
+    finally:
+        llm.MAX_TOKENS = was
+    text = llm.text_of(reply["content"]).strip()
+    if text.startswith("```"):
+        text = text.strip("`").partition("\n")[2].rsplit("```", 1)[0].strip()
+    if leaks(text, camp) or player_leaks({}, picks, cards, text):
+        # Never hand over a book that names a secret. The skeleton's own premise and opening stand in.
+        text = f"# {camp.get('title', '')} — your book\n\n{camp.get('premise', '')}\n\n## Tonight\n\n> {camp.get('opening', '')}\n"
+    return {"book": _with_srd(text), "spent": reply["spent"]}
 
 
 def mend(campaign: dict, problems: list[str], picks: dict, dials: dict, cards: dict,
@@ -125,12 +380,14 @@ def mend(campaign: dict, problems: list[str], picks: dict, dials: dict, cards: d
 
     Cheaper than a re-roll and kinder to the player, who has already dealt a hand they like.
     """
+    if mocking():
+        return {"campaign": campaign, "spent": 0.0}
     said = "\n".join("- " + p for p in problems)
     was, llm.MAX_TOKENS = llm.MAX_TOKENS, GEN_TOKENS
     try:
         reply = llm.converse(
             system=SYSTEM,
-            messages=[{"role": "user", "content": [{"text": brief(picks, dials, cards)}]},
+            messages=[{"role": "user", "content": [{"text": full_brief(picks, dials, cards)}]},
                       {"role": "assistant", "content": [{"text": json.dumps(campaign, ensure_ascii=False)}]},
                       {"role": "user", "content": [{"text":
                           "The auditor refused this. Fix exactly these and change nothing "
@@ -143,7 +400,9 @@ def mend(campaign: dict, problems: list[str], picks: dict, dials: dict, cards: d
     start, end = text.find("{"), text.rfind("}")
     if start < 0:
         return {"campaign": campaign, "spent": reply["spent"]}
-    return {"campaign": json.loads(text[start:end + 1]), "spent": reply["spent"]}
+    camp_out = json.loads(text[start:end + 1])
+    _keep_title(camp_out, picks)
+    return {"campaign": camp_out, "spent": reply["spent"]}
 
 
 # ── writing it down ──────────────────────────────────────────────────────────
@@ -163,6 +422,9 @@ def write_module(out: Path, camp: dict, picks: dict, dials: dict, cards: dict, s
     hand = " · ".join(str((cards.get(c) or {}).get("name", "")) for c in
                       ("trope", "origin", "world", "trouble", "posture") if cards.get(c))
     comps = camp.get("companions") or []
+    if camp.get("briefing"):
+        # The book: the one file written for the player (SEREN docs/weave-from-hand.md §4b).
+        files.write(out / "briefing.md", str(camp["briefing"]))
     files.write(out / "campaign.md",
         f"""<!-- Woven from a hand at the Loom. A module: inert until somebody plays it. -->
 # {camp.get('title', 'Untitled')}

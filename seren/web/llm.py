@@ -54,6 +54,15 @@ CACHE_READ = 0.1
 MAX_TOKENS = int(os.environ.get("SEREN_MAX_TOKENS", "1400"))
 
 
+# Claude 5 models think before answering, and the thinking counts toward maxTokens (SRN-1.5-02).
+THINK_TOKENS = int(os.environ.get("SEREN_THINK_TOKENS", "16000"))
+
+
+def thinks(model: str) -> bool:
+    """Claude on Bedrock: no temperature, room to think."""
+    return "anthropic" in model or "claude" in model
+
+
 class CapReached(RuntimeError):
     """Raised instead of spending past a session's ceiling."""
 
@@ -199,6 +208,10 @@ def converse(
         "system": blocks,
         "inferenceConfig": {"maxTokens": MAX_TOKENS, "temperature": temperature},
     }
+    if thinks(model):
+        # SRN-1.5-01/02: Claude 5 on Bedrock refuses `temperature`, and its thinking counts toward
+        # maxTokens, so a 4,000 cap ran out mid-answer. No temperature, and a floor of THINK_TOKENS.
+        kwargs["inferenceConfig"] = {"maxTokens": max(MAX_TOKENS, THINK_TOKENS)}
     if tools:
         kwargs["toolConfig"] = {"tools": tools}
 
