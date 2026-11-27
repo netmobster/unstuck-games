@@ -1,5 +1,11 @@
 # Decisions — Unstuck Games
 
+## 2026-11-27 — the /next session, continued — Side quests are never required
+
+Jay, reminding: "it's important that side quests aren't required." A campaign can always be finished
+without taking a single one; the main plot never waits on a side quest, and no clock or truth depends on
+one. They're offered, never pressed (the job board idea, IDEAS 27 Nov, is the gentlest form of that).
+
 ## 2026-11-27 — the /next session, continued — A DM who knows you: what goes into 1.5
 
 Jay's notes on the same picks, second pass:
