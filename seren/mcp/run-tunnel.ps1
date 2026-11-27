@@ -6,7 +6,7 @@
   add to Claude as a custom connector.
 
     .\seren\mcp\run-tunnel.ps1            # fake AI: canned books, nothing spent
-    .\seren\mcp\run-tunnel.ps1 -Real      # the real weaver on Bedrock (run 'aws login' first)
+    .\seren\mcp\run-tunnel.ps1 -Real      # the real weaver on Bedrock (run 'aws sso login --profile selfactual' first)
     .\seren\mcp\run-tunnel.ps1 -Real -Tier paid
 
   Ctrl+C stops both. The address changes every run, so re-add the connector each time.
@@ -40,8 +40,8 @@ if (-not (Test-Path $cf)) {
 }
 
 if ($Real) {
-  & aws sts get-caller-identity --query Account --output text 2>$null | Out-Null
-  if ($LASTEXITCODE -ne 0) { throw "AWS isn't signed in. Run 'aws login', then try again." }
+  & aws sts get-caller-identity --profile selfactual --query Account --output text 2>$null | Out-Null
+  if ($LASTEXITCODE -ne 0) { throw "AWS isn't signed in. Run 'aws sso login --profile selfactual', then try again." }
 }
 
 # 1. The tunnel, logging to a file we can read the address out of.

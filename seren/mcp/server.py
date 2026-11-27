@@ -45,6 +45,11 @@ LOCAL = SEREN / ".local"
 os.environ.setdefault("SEREN_AI", "mock")
 os.environ.setdefault("SEREN_CONTENT_DIR", str(LOCAL / "content"))
 os.environ.setdefault("SEREN_PUBLISHED", str(PROJECTS / "SEREN" / "campaigns" / "published"))
+# Real AI from this laptop: UG's corner of SA's AWS account (the 'selfactual' sign-in, us-east-2), and
+# Opus for the paid tier. Only Bedrock model calls are made; nothing else in the account is touched.
+os.environ.setdefault("AWS_PROFILE", "selfactual")
+os.environ.setdefault("AWS_REGION", "us-east-2")
+os.environ.setdefault("SEREN_MODEL_PAID", "us.anthropic.claude-opus-5-5")
 (LOCAL / "content").mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(WEB))
 
@@ -235,7 +240,7 @@ def seren_deal() -> dict[str, Any]:
 )
 def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, Any]) -> dict[str, Any]:
     """The web table's /api/weave, as a tool: weave, audit (one mend), write the book, save it."""
-    ai_mode()
+    tier = "paid" if ai_mode() == "real" else TIER      # real from the switch means Opus
     if picks.get("campaign"):
         for slot, card in published.sealed(str(picks["campaign"])).items():
             cards.setdefault(slot, card)       # sealed cards never reached the app
@@ -244,16 +249,16 @@ def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, A
     if not llm.ready():
         return {"ok": False, "error": "the weaver is not connected (no Bedrock)"}
     try:
-        out = weave.weave(picks, dials, cards, tier=TIER)
+        out = weave.weave(picks, dials, cards, tier=tier)
         camp, spent = out["campaign"], out["spent"]
         problems = audit.check(camp) + weave.player_leaks(camp, picks, cards)
         if problems:
-            out = weave.mend(camp, problems, picks, dials, cards, tier=TIER)
+            out = weave.mend(camp, problems, picks, dials, cards, tier=tier)
             camp, spent = out["campaign"], spent + out["spent"]
             problems = audit.check(camp) + weave.player_leaks(camp, picks, cards)
         if problems:
             return {"ok": False, "error": "the Doorkeeper sent it back", "problems": problems}
-        written = weave.book(camp, picks, dials, cards, tier=TIER)
+        written = weave.book(camp, picks, dials, cards, tier=tier)
         camp["briefing"], spent = written["book"], spent + written["spent"]
     except llm.CapReached as exc:
         return {"ok": False, "error": str(exc)}

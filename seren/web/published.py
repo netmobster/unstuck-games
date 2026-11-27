@@ -98,9 +98,18 @@ def story(slug: str, cards: dict) -> dict | None:
             key = f"{slot}:{(c or {}).get('id')}"
             if key in known:
                 dealt[key] = known[key]
-    return {"title": card.get("title"), "tagline": card.get("tagline"), "description": card.get("description"),
-            "key_info": card.get("key_info"), "level": card.get("level"), "length": card.get("length"),
-            "rules": truths.get("rules") or [], "truths_for_this_hand": dealt}
+    out = {"title": card.get("title"), "tagline": card.get("tagline"), "description": card.get("description"),
+           "key_info": card.get("key_info"), "level": card.get("level"), "length": card.get("length"),
+           "rules": truths.get("rules") or [], "truths_for_this_hand": dealt}
+    # The truths were written when the player character was always one person (Blood and Ink's Wren).
+    # The deal now hands out several, so the written name becomes the dealt one's first name.
+    # 26 Nov: an Opus book had Agnes calling Odo Fenn "Wren".
+    written = truths.get("pc_name") or ("Wren" if slug == "blood-and-ink" else None)
+    pc = (cards or {}).get("pc") or {}
+    first = str(pc.get("name") or "").split(" ")[0] if isinstance(pc, dict) else ""
+    if written and first and first != written:
+        out = json.loads(re.sub(r"\b" + re.escape(written) + r"\b", first, json.dumps(out, ensure_ascii=False)))
+    return out
 
 
 def art(slug: str, name: str) -> bytes | None:
