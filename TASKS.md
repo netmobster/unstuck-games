@@ -131,6 +131,12 @@ and decked; the weave unchanged except its inputs, on our server; campaigns set 
 - [ ] **The table app, rethought** (Jay: "a fun little thing to work on earlier than later"). We have one
       built; now that apps can talk to chat and back, and animate, it gets a serious rethink. Includes
       the map with fog and the rest of the table. Goes with the animated fortune teller in `IDEAS.md`.
+      **Jay, 27 Nov:** this is the in-game table, not the fortune teller's deal, and it **must include the
+      book**: the player's own book, always to hand as the reminder of the core facts (who they are,
+      their people, how the place works, who's who, the places they know, tonight). **Merge the two
+      tables:** Seren's (`seren/web/static/table.html`) and the bigger one built for Mike's campaign. Find
+      which that is first (the Ser'en table sheet, `ug:seren-table`, or `table-sheet/`), then take the best
+      features of each.
 - [ ] **The Loom is now the Deal**, and preflight.py the Doorkeeper. Rename the code at build time:
       `loom.html`, `loom.ps1`, and the "weave" wording in the Seren skill and docs.
 - [ ] The Director and the randomness engine, SAI-1017 · fronts and clocks (Dungeon World and Blades,
