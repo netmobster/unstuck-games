@@ -163,6 +163,17 @@
     go(0);
   });
 
+  // the peek: tap the eye (or the card) and it turns over to show the twist; tap again to hide it (27 Nov)
+  document.querySelectorAll('.peek').forEach(function(c){
+    var eye = c.querySelector('.eye'), f = c.querySelector('.pk-f'), b = c.querySelector('.pk-b');
+    function set(on){
+      c.classList.toggle('shown', on); eye.setAttribute('aria-pressed', on);
+      eye.setAttribute('aria-label', on ? 'Hide the twist' : 'Show the twist');
+      b.setAttribute('aria-hidden', !on); f.setAttribute('aria-hidden', on);
+    }
+    c.addEventListener('click', function(e){ if (e.target.closest('a')) return; set(!c.classList.contains('shown')); });
+  });
+
   // a will-o'-wisp crosses the mischief, and motes rise where she's been
   document.querySelectorAll('.mischief').forEach(function(m){
     var w = m.querySelector('.willo');
