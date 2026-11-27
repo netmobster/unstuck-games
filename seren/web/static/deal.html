@@ -239,7 +239,14 @@ body.veiled{overflow:hidden}
 .shuttle{position:absolute;top:50%;left:18%;width:34px;height:8px;margin-top:-4px;border-radius:8px;background:var(--gilt-hi);box-shadow:0 0 18px var(--gilt);opacity:0;
   animation:shuttle 1s ease-in-out 2.4s infinite alternate}
 @keyframes shuttle{0%{opacity:1;left:18%}100%{opacity:1;left:calc(82% - 34px)}}
+.teller{max-width:640px;margin:18px auto 22px;min-height:7.5em;display:flex;flex-direction:column;justify-content:flex-end;gap:8px;text-align:center}
+.tl-prev{margin:0;font:italic 400 15px/1.45 var(--serif);color:var(--mute);opacity:.75}
+.tl-now{margin:0;font:italic 400 clamp(19px,2.4vw,23px)/1.45 var(--serif);color:var(--bone);min-height:1.45em}
+.tl-now.in{animation:tlIn .5s ease both}
+@keyframes tlIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 .wlog{max-width:460px;margin:22px auto 0;text-align:left}
+.wlog summary{list-style:none;cursor:pointer}
+.wlog summary::-webkit-details-marker{display:none}
 .wclock{text-align:center;margin-bottom:10px}
 .wclock b{font:400 22px/1 var(--display);color:var(--gilt-hi);font-variant-numeric:tabular-nums;margin-left:6px}
 #wlog{list-style:none;margin:0;padding:0;display:grid;gap:4px}
@@ -1167,18 +1174,37 @@ function weaveIt(c){
     '<div class="gather">'+Array.from({length:n},function(_,i){var a=(i/n)*Math.PI*2;
       return '<img src="'+c.back+'" alt="" style="--x:'+Math.round(Math.cos(a)*170)+'px;--y:'+Math.round(Math.sin(a)*80)+'px;--d:'+(i*0.12)+'s;--rot:'+Math.round((i-n/2)*9)+'deg">'}).join('')+
     '<div class="threads"><i></i><i></i><i></i><i></i><i></i></div><div class="shuttle"></div></div>'+
+    '<div class="teller" aria-live="polite"><p class="tl-prev" id="tlPrev"></p><p class="tl-now" id="tlNow"></p></div>'+
     '<ol class="wsteps"><li id="w1">She weaves your hand into one story</li><li id="w2">The Doorkeeper reads it, and may send it back</li><li id="w3">It is bound, and dealt out as yours</li></ol>'+
-    '<div class="wlog"><div class="wclock"><span class="lbl mute">Weaving for</span> <b id="wclock">0:00</b></div><ol id="wlog"></ol></div></div>',true);
+    '<details class="wlog"><summary class="wclock"><span class="lbl mute">Weaving for</span> <b id="wclock">0:00</b> <span class="lbl mute">· what’s happening</span></summary><ol id="wlog"></ol></details></div>',true);
   var lit=function(id,t){setTimeout(function(){var el=$(id);if(el)el.classList.add('on')},t)};
   var t0=Date.now(),mm=function(s){return Math.floor(s/60)+':'+('0'+(s%60)).slice(-2)};
   var tick=setInterval(function(){var el=$('wclock');if(!el)return clearInterval(tick);el.textContent=mm(Math.round((Date.now()-t0)/1000))},1000);
   if(FAKE||!window.serenWeave){lit('w1',300);lit('w2',1900);lit('w3',3300)}else lit('w1',300);
   // The server's log of where the weave is, every four seconds (Jay, 27 Nov: "so we know where things are hanging").
+  // The fortune teller mutters her way through the book while Opus writes it (Jay, 27 Nov). Her lines
+  // come from the server a few seconds in; until then she has one of her own. A line every nine seconds,
+  // and a stage line jumps the queue when the Doorkeeper or the binding actually happens.
+  var TL={q:[],got:null,said:{},timer:null,live:!!window.serenWeave};
+  function say(line){
+    var now=$('tlNow'),prev=$('tlPrev');if(!now||!line)return;
+    if(now.textContent)prev.textContent=now.textContent;
+    now.classList.remove('in');void now.offsetWidth;now.textContent='';now.classList.add('in');
+    if(matchMedia('(prefers-reduced-motion: reduce)').matches){now.textContent=line;return}
+    var i=0;clearInterval(TL.type);TL.type=setInterval(function(){now.textContent=line.slice(0,++i);if(i>=line.length)clearInterval(TL.type)},18);
+  }
+  function next(){if(TL.q.length)say(TL.q.shift())}
+  function stage(k){if(!TL.got||TL.said[k]||!TL.got[k])return;TL.said[k]=1;say(TL.got[k]);clearInterval(TL.timer);TL.timer=setInterval(next,9000)}
+  if(TL.live){say('Sit, sit. Let me look at what you’ve laid…');TL.timer=setInterval(next,9000)}
   window.serenWeaveProgress=function(s){
     var log=s.log||[],ol=$('wlog');if(!ol)return;
     ol.innerHTML=log.map(function(x){return '<li><span>'+mm(x.t)+'</span>'+esc(x.say)+'</li>'}).join('');
     var said=log.map(function(x){return x.say}).join(' ');
     if(/Doorkeeper/.test(said))lit('w2',0);if(/writes your book|Binding/.test(said))lit('w3',0);
+    if(s.teller&&!TL.got){TL.got=s.teller;TL.q=(s.teller.lines||[]).slice();next();clearInterval(TL.timer);TL.timer=setInterval(next,9000)}
+    if(/Doorkeeper reads it/.test(said))stage('doorkeeper');
+    if(/sent back/.test(said))stage('mend');
+    if(/writes your book/.test(said))stage('book');
   };
   setTimeout(function(){smoke(document.querySelector('.gather'),8)},2300);
   var minWait=new Promise(function(r){setTimeout(r,4200)});
@@ -1189,7 +1215,10 @@ function weaveIt(c){
     if(!x.ok){veil('<div class="mhead"><div class="lbl">The Doorkeeper sent it back</div><p class="msent">'+esc(x.j.error||'It failed')+'</p>'+
       ((x.j.problems||[]).length?'<ul class="refused">'+x.j.problems.map(function(p){return '<li>'+esc(p)+'</li>'}).join('')+'</ul>':'')+
       '</div><div class="macts"><button class="go" id="again">Tune it again</button></div>');$('again').onclick=openTune;return}
-    showBook(x.j,c,said);
+    clearInterval(TL.timer);
+    var last=TL.got&&TL.got.done;
+    if(TL.live&&last){say(last);setTimeout(function(){clearInterval(TL.type);showBook(x.j,c,said)},Math.min(6000,1800+last.length*22))}
+    else showBook(x.j,c,said);
   }).catch(function(e){$('veil').dataset.locked='';veil('<div class="mhead"><div class="lbl">Could not reach the server</div><p class="msent">'+esc(String(e))+'</p></div><div class="macts"><button class="go" id="again">Try again</button></div>');$('again').onclick=openTune});
 }
 function inline(s){return esc(s).replace(/\*\*(.+?)\*\*/g,'<b>$1</b>').replace(/\*(.+?)\*/g,'<em>$1</em>')}

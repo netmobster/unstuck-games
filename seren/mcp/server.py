@@ -58,6 +58,7 @@ sys.path.insert(0, str(WEB))
 import audit  # noqa: E402  (the web port's modules, after its path)
 import corpus  # noqa: E402
 import llm  # noqa: E402
+import narrate  # noqa: E402
 import published  # noqa: E402
 import bring  # noqa: E402
 import weave  # noqa: E402
@@ -274,7 +275,19 @@ def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, A
     if weave.mocking():
         return _weave_now(picks, cards, dials, tier)
     job = secrets.token_hex(6)
-    JOBS[job] = {"pending": True, "started": time.time(), "log": []}
+    JOBS[job] = {"pending": True, "started": time.time(), "log": [], "teller": None}
+
+    # The fortune teller talks while Opus writes (Jay, 27 Nov). She gets a copy of the hand as the app
+    # sent it, before the sealed cards are added below, and the shelf card: only what the player saw.
+    seen = json.loads(json.dumps(cards))
+    shelf = next((c for c in published.listing() if c.get("slug") == picks.get("campaign")), None)
+
+    def tell():
+        out = narrate.lines(shelf, seen, dials)
+        if job in JOBS:
+            JOBS[job]["teller"] = out
+        print(f"  [weave {job}] the teller is talking ({out.get('source')}, {len(out.get('lines') or [])} lines)", flush=True)
+    threading.Thread(target=tell, daemon=True, name=f"teller-{job}").start()
 
     def note(say: str) -> None:
         # Where the weave is, for the table's live log and this window (Jay, 27 Nov: "so we know where
@@ -291,6 +304,7 @@ def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, A
             out = {"ok": False, "error": f"{type(exc).__name__}: {exc}"}
         note("Done." if out.get("ok") else "Stopped: " + str(out.get("error")))
         out["log"], out["seconds"] = log, int(time.time() - started)
+        out["teller"] = JOBS[job].get("teller")
         JOBS[job] = out
     threading.Thread(target=run, daemon=True, name=f"weave-{job}").start()
     return {"ok": True, "pending": True, "job": job, "note": "Weaving. Ask seren_weave_status with this job."}
@@ -312,7 +326,8 @@ def seren_weave_status(job: str) -> dict[str, Any]:
     if out is None:
         return {"ok": False, "error": "no weave with that job here (the server may have restarted)"}
     if out.get("pending"):
-        return {"ok": True, "pending": True, "seconds": int(time.time() - out["started"]), "log": out["log"]}
+        return {"ok": True, "pending": True, "seconds": int(time.time() - out["started"]), "log": out["log"],
+                "teller": out.get("teller")}
     return out
 
 
