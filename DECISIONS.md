@@ -335,3 +335,23 @@ who-you-play step plus the ladder in `deal.html`.
   name at this table, suggests one when it collides (Ser'en becomes Serenista), and the build keeps
   `known_as` with the D&D Beyond name. *Why:* the full flow failed on Jay's own PC, and the fix is the
   name, not the rule.
+
+## 2026-11-26 — local Seren session — "Roads Not Taken" is the Seren site, conceptually
+
+Jay, of the static mock (https://claude.ai/artifact/WzgSCUMoJ4J2v8GoA5x1y3, kept at
+`seren/web/static/lab/roads/`): "This is the site conceptually."
+
+- **The page is a demonstration, not an explanation** (red team): one character's real run down the
+  page, what happened in the main column (80%), what didn't in ghost cards in the margin (20%).
+- **The hook:** "Bring the character you love into a campaign nobody has ever played."
+- **The emotional centre is the character,** Ser'en becoming Serenista and walking into a story that
+  didn't exist before she arrived, not the 9,676,800.
+- **Six chapters, not equal beats:** the arrival (the rename a small moment inside it), the ladder,
+  the deal (with her card), the dials, the book, when it ends (the chronicle).
+- **The lantern** opens a window of light onto the road not taken, never a feature modal.
+- **The chronicle is the second half of the promise**, ending: "One character. One campaign. One
+  story. All the roads not taken."
+
+*Not built.* Static first: the live site changes only after this concept is turned into the real page
+and approved. Margins hold real data only (the deck, real weaves, real choices); Serenista's own
+chronicle waits for her campaign to be played.
