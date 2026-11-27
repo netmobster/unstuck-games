@@ -73,6 +73,11 @@ What building it takes:
 - **Campaign settings, in each campaign's lists:** `romance_ok` (the Smitten Innkeeper), the time
   skip opt-in (the Mystery Box, and its dead ally), and cruel's off switch. `campaign_check` checks them
   once they exist.
+- **Side quests add their own** (feasibility pass on the 37 kept, 27 Nov, SEREN-AI
+  `libraries/sidequests/feasibility-pass-2.json`): `drank`, `boss_slain`, `duel_outcome`, `gave_credit`,
+  `main_raid`, a search or tracking flag, `board_read`, and terrain tags (coastal, winter) to gate quests
+  that only fit there. **Never required:** two quests (the Rat Cult's tithe, the Sad Pond) were the only way
+  through the main plot as written, and are now shortcuts instead.
 - **Cruel ones keep a way out:** Zombies on the Night Shift fires only when the server can name a
   safe place the party can reach.
 

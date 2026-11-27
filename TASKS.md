@@ -99,10 +99,11 @@ Data, in the private SEREN-AI repo (moved off this public one 25 Nov): `librarie
       real: the first game dealt from Quire or Tallage is its playtest. Name echoes to watch: Brann/Brannoc,
       Sylas Fennick/Fenn.
 - [x] **4. A published campaign's truths reach the weaver**, so its mystery is its own and not invented on each weave.
-- [ ] **5. Score DM mischief** (118 tricks, unscored past heat), then cut the 1.5 subsets of mischief and
+- [x] **5. Score DM mischief** (118 tricks, unscored past heat), then cut the 1.5 subsets of mischief and
       side quests (97, scored). **Mischief done 27 Nov:** two blind scorers, Jay's cut (38 ship, 4 cruel off by
       default, 4 held for 1.6), and a feasibility pass: all 42 work, 11 adapted (SEREN-AI `ec4d529`, `a29eeba`).
-      **Still open: the side-quest cut.**
+      **Side quests done 27 Nov:** Jay's cut, 37 ship, feasibility 23 as-is and 14 adapted, none required
+      (SEREN-AI `66479e6`, `8ac7731`).
 - [ ] **6. Villain moves:** the library the site promises (about thirty in 1.5). It doesn't exist yet.
 - [ ] **7. DM personas' allow and block lists** (five personas: Play Master, Rulemaker, Jester, Wick, Registrar).
 - [ ] **8. Try the app in real Claude:** the custom connector, plus the first real full-book weave.
