@@ -126,14 +126,14 @@ and decked; the weave unchanged except its inputs, on our server; campaigns set 
 (the three campaigns plus generate-your-own) and the book, downloadable as markdown.
 - [ ] **1. Local:** the Seren site running on Jay's machine with fake AI (`SEREN_AI=mock`), the
       approved shelf-and-deal look at `/deal`, and the book with a markdown download. Click it all in Chrome.
-- [ ] **Then the campaigns:** tighten blood-and-ink, deck quire and tallage, felt in the local build.
+- [x] **Then the campaigns:** tighten blood-and-ink, deck quire and tallage, felt in the local build. **Done 27 Nov:** all three selectable.
 - [ ] **2. Web:** a new `seren.unstuck-games.com/next` that holds it, wired to the real weave.
 - [ ] **3. The interactive app:** the whole flow working inside Claude off the MCP. **Built 26 Nov, on this
       laptop:** `seren/mcp/run-tunnel.ps1` (Cloudflare quick tunnel), `open_seren` + app-only `seren_deal` /
       `seren_weave` on the web port's engine, books saved for red team. **Not yet tried in real Claude:** Jay
       adds the printed address as a custom connector. The real weaver now writes the full book after the
       auditor (`weave.book`); **not yet run for real** (AWS sign-in had expired).
-- [ ] **Published campaigns' truths should reach the weaver** (DM-side), so a published campaign's mystery
+- [x] **Published campaigns' truths should reach the weaver** (DM-side), so a published campaign's mystery
       is its own rather than invented each weave. Today only sealed cards are added.
 - [ ] **Build the MCP MVP** (step 3 above) per `seren/MCP-MVP-PLAN.md` (approved with edits 25 Nov): seven visible
       steps from the campaign format to the book saved and downloadable for red team.
