@@ -1,0 +1,373 @@
+{
+  "hand": {
+    "trope": "Taken in",
+    "world": "Orchard counties",
+    "trouble": "A death",
+    "pc": "Kit Marrow",
+    "origin": "Accident",
+    "persona": "The Archivist",
+    "companions": [
+      "The novice",
+      "The scribe"
+    ],
+    "posture": "Bureaucrat"
+  },
+  "model": "us.anthropic.claude-opus-5-5",
+  "books": {
+    "personal": {
+      "dials": {
+        "absurdity": 10,
+        "stakes": 0,
+        "danger": 30,
+        "people": 0,
+        "length": 0
+      },
+      "spent": 0.0999,
+      "mended": false,
+      "refused": [],
+      "campaign": {
+        "title": "The Tithe Hall Cup",
+        "premise": "Wenna Tregarth, the cider-broker who took Kit Marrow off the Brackwater quays and taught her to keep books, has died at the harvest reckoning in the Tithe Hall. Her murderer is still at the long table, and the Probate Office means to seal her estate before dusk, along with the only daybook that says what she really owed.",
+        "where": "The Tithe Hall at Brackwater, Ashcombe county. Late afternoon, the harvest reckoning half-read.",
+        "pc": {
+          "name": "Kit Marrow",
+          "class": "Rogue",
+          "why_here": "She carried the perry tray at Wenna's reckoning because she always did, and she set the cups down in the wrong order."
+        },
+        "companions": [
+          {
+            "name": "Pell Ashby",
+            "does": "Sworn as a coroner's juror three days ago at sixteen, he volunteers to ask the questions Kit has no standing to ask.",
+            "friction": "He knows he is not ready. He freezes in front of anyone with a family name, and the Hollins have the oldest name in the county."
+          },
+          {
+            "name": "Tamsin Rook",
+            "does": "The parish scribe, who took down the reckoning word for word, including who stood where when the cups came out.",
+            "friction": "Her minute-book is evidence. Fenmore wants it filed, the Hollins want it lost, and she will not hand it to anyone, Kit included, without a signature."
+          }
+        ],
+        "fronts": [
+          {
+            "name": "The Probate Office",
+            "impulse": "to seal the Tregarth estate and settle it by the book, at the book's own pace",
+            "wants_from": "the party — Wenna's private daybook, which Kit has had in her coat since the cups fell",
+            "clock": [
+              "Registrar Fenmore orders the counting room locked and the Tregarth seal surrendered",
+              "A notice goes up on the Hall door: all claims on the estate to be lodged in proper form within the week, and Kit's is refused for want of indenture papers",
+              "Fenmore files the old will as uncontested and grants probate"
+            ],
+            "doom": "The estate passes to the Hollins on the first will. The daybook is impounded as unlawful records, and Kit is struck off as a servant with no claim."
+          },
+          {
+            "name": "The Hollin cousins",
+            "impulse": "to inherit the Tregarth presses before anyone reads the off-register accounts",
+            "wants_from": "The Probate Office — the sealed first will, and a quick grant of probate that buries the unwitnessed second one",
+            "clock": [
+              "Marra Hollin offers Kit a kindly place in the household, if she leaves Wenna's papers with the family",
+              "Dunstan Hollin lodges the first will with Fenmore and tells the parish physician the old woman's heart was always weak",
+              "The cousins take the press-house keys and start moving barrels at night"
+            ],
+            "doom": "The presses change hands, the second will is burned, and Wenna's killer sits at the head of her table by the next pressing."
+          },
+          {
+            "name": "The Ashcombe orchard families",
+            "impulse": "to collect the forty barrels of cider credit before the estate closes its doors on them",
+            "wants_from": "The Hollin cousins — the forty barrels Wenna owed against next year's pressing, which now sit in the Hollin cellars",
+            "clock": [
+              "Goodwife Penrose stands up at the reckoning and names the debt aloud, in front of everyone",
+              "The families refuse to sell fruit to anyone pressing under the Tregarth mark",
+              "Two Penrose sons and a cart turn up at the Hollin cellar door after dark"
+            ],
+            "doom": "A brawl at the cellar door becomes the county's scandal of the decade. The families are shamed and fined, and the Hollins use the uproar to rush probate through."
+          }
+        ],
+        "antagonist": {
+          "name": "Registrar Osric Fenmore",
+          "axis": "stopped",
+          "posture": "Bureaucrat — \"Your paperwork is not in order.\" He obstructs without violence and wins by delay.",
+          "grudge": "For eleven years Kit and Wenna kept a second set of books off the county register, and the tithe they hid came out of the poor-fund he answers for. He is right about that.",
+          "escalation": [
+            "2 — He requires Kit to prove her standing in writing, by witnessed indenture, which she has never had",
+            "3 — He names the daybook an unlawful record and has the parish constable ask for it politely, in public, in front of the families",
+            "4+ — He refers Kit to the county bench for tithe fraud, and the inquiry into Wenna's death waits on hers"
+          ]
+        },
+        "facts": [
+          {
+            "fact": "The poisoned perry was meant for Registrar Fenmore. Kit swapped the cups by accident when she set the tray down, and Wenna drank his.",
+            "visibility": "true",
+            "why": "This is Kit's accident. Nobody has put it together, Kit included, and it makes her the hand that killed her mentor."
+          },
+          {
+            "fact": "Dunstan Hollin dosed the cup, because Fenmore was two pages from finding the Hollin debts in the county register.",
+            "visibility": "true",
+            "why": "The killer is still in the room. Cross-reference fact 1: his target was the registrar, not Wenna."
+          },
+          {
+            "fact": "Wenna drafted a second will naming Kit as heir to the presses. It is unwitnessed, and the Hollins have known about it for a month.",
+            "visibility": "true",
+            "why": "This is the Hollin front's secret. It is why one front already knows Kit's name."
+          },
+          {
+            "fact": "Wenna died of a failing heart, as the parish physician pronounced at the table.",
+            "visibility": "false",
+            "why": "The whole hall believes it because Dunstan said it first and loudest."
+          },
+          {
+            "fact": "Kit was never formally indentured or adopted, so in county law she has no standing in the Tregarth estate.",
+            "visibility": "known",
+            "why": "Fenmore says so to her face in the first minutes. It is the opening wall."
+          },
+          {
+            "fact": "Fenmore is stalling the inquiry because the Hollins pay him.",
+            "visibility": "suspected",
+            "why": "His delays help the Hollins so neatly that it looks bought. It isn't. He is only exact, and he does not yet know he was the target."
+          },
+          {
+            "fact": "Wenna had already paid off the forty-barrel debt to the orchard families, in kind. The entries are only in the off-register daybook.",
+            "visibility": "true",
+            "why": "Proving it means showing the books Fenmore wants to prosecute. The families' grievance is real and also already settled."
+          }
+        ],
+        "opening": "Wenna Tregarth's cheek rests on the reckoning ledger, and perry runs down the page and blurs the Penrose column. Registrar Fenmore has not stood up. He is turning his own full cup a quarter-turn on its saucer and saying, to nobody in particular, that the counting room will be sealed within the hour. Across the table Dunstan Hollin already has his hand on the physician's shoulder. Kit's coat is heavy on one side: the daybook, still there. Beside her, Tamsin Rook's pen keeps moving. *[Archivist's note: the tray Kit carried had four cups. See fact 1. The scribe recorded their order. See companions.]*"
+      }
+    },
+    "default": {
+      "dials": {
+        "absurdity": 20,
+        "stakes": 30,
+        "danger": 60,
+        "people": 20,
+        "length": 0
+      },
+      "spent": 0.1066,
+      "mended": false,
+      "refused": [],
+      "campaign": {
+        "title": "The Press-Stair Inquest",
+        "premise": "The county weighmaster lies dead at the foot of the Quarrender press-stair on the last night of harvest assay, and the woman who pushed him is holding the lamp over his body. The Hundred Court will seal the counting room, and with it Kit's eleven years of books, before the tithe is reckoned at week's end. Hollis Quarrender, who took Kit in, is too sick to last the inquest.",
+        "where": "The Quarrender press-house at Lowhallow, on the stone stair below the counting room, at dusk",
+        "pc": {
+          "name": "Kit Marrow",
+          "class": "Rogue",
+          "why_here": "She was alone in the counting room with the assay page in her hand when the weighmaster fell past the door."
+        },
+        "companions": [
+          {
+            "name": "The novice",
+            "does": "Jory Tamsett, the fourteen-year-old cellar-boy Hollis also took in, volunteers to carry messages, watch doors and lie to clerks.",
+            "friction": "He is not ready and knows it. He freezes when an adult raises their voice, and he would rather be caught than admit to Kit that he is scared."
+          },
+          {
+            "name": "The scribe",
+            "does": "Amity Crane, under-scribe to the Hundred Court, writes down everything said in her hearing in a private daybook, word for word with times.",
+            "friction": "Her daybook is evidence. Odile wants it entered into the record, Maud wants it burned, and Amity will not choose between her post and the truth until someone makes her."
+          }
+        ],
+        "fronts": [
+          {
+            "name": "The Quarrender house",
+            "impulse": "to bury the death as a drunk man's fall and keep the press in the family",
+            "wants_from": "the party — Kit holds the assay page Pell died arguing over",
+            "clock": [
+              "Maud asks Kit, kindly, to bring her 'Hollis's papers' for safekeeping",
+              "The counting-room ledgers are found water-ruined from a 'leak' in the cider loft",
+              "Jory is sent on an errand to a far orchard and does not come back by dark"
+            ],
+            "doom": "Hollis dies under the blame and Maud inherits a clean press. Kit is named as the bookkeeper who cooked eleven years of tithe."
+          },
+          {
+            "name": "The Hundred Court",
+            "impulse": "to hold the inquest open until the harvest tithe is assessed against the Quarrender press",
+            "wants_from": "The Quarrender house — the true barrel books, eleven years of them",
+            "clock": [
+              "Clerks seal the counting room with wax and the Hundred's mark",
+              "Writ of residence: no witness may leave Lowhallow parish until the inquest sits",
+              "The inquest is rescheduled to the day after Hollis is expected to die"
+            ],
+            "doom": "The Quarrender press is forfeit to the Hundred for back-tithe. The death is never ruled, so it is never solved."
+          },
+          {
+            "name": "The Pell kin",
+            "impulse": "to secure the weighmaster's pension and seal of office before anyone looks at what Aldous weighed",
+            "wants_from": "The Hundred Court — a finding of accidental death, which alone releases the pension",
+            "clock": [
+              "Widow Ansel Pell gives a sworn statement that Aldous drank at supper",
+              "Pell cousins begin quietly calling in orchard debts owed by Kit's friends",
+              "Ansel offers Odile her husband's private tally book in exchange for a quick ruling"
+            ],
+            "doom": "The Pells get their accident verdict. The proof of the skim goes into Odile's archive, and from there Odile holds the whole county by its ledgers."
+          }
+        ],
+        "antagonist": {
+          "name": "Mistress Odile Fenwarren, Clerk of the Hundred Court",
+          "axis": "used",
+          "posture": "Bureaucrat — \"Your paperwork is not in order.\" Obstructs without violence and wins by delay.",
+          "grudge": "She has watched Hollis Quarrender cheat the tithe that mends the county's bridges for eleven years, with a street girl's tidy columns hiding it, and she is right: Kit's books are a lie.",
+          "escalation": [
+            "2 — Kit is summoned to the Hundred Court to 'clarify her standing' and kept waiting all day while the counting room is inventoried without her",
+            "3 — A writ of residence pins the party to Lowhallow, and Amity Crane is ordered to surrender her daybook to the court archive",
+            "4+ — Odile files Kit as an unindentured ward with no lawful master once Hollis dies, which leaves her no standing to testify, own papers, or stay"
+          ]
+        },
+        "facts": [
+          {
+            "fact": "Maud Quarrender struck Aldous Pell on the press-stair when he refused to strike Hollis's name from the skim tally.",
+            "visibility": "true",
+            "why": "The killer is in the room at the opening, holding the lamp (cf. fact 6, the wrong suspect)."
+          },
+          {
+            "fact": "The assay page Kit was holding when Pell fell carries a correction in fresh ink, made that afternoon in Maud's hand, not Hollis's.",
+            "visibility": "true",
+            "why": "This is Kit's accident. She holds the proof and has not read it as proof yet."
+          },
+          {
+            "fact": "Aldous Pell took a tenth of the Quarrender skim for eleven years in exchange for false weighings.",
+            "visibility": "true",
+            "why": "The dead man was bent, which explains why his own kin want no inquiry (cf. fact 5)."
+          },
+          {
+            "fact": "Odile Fenwarren already has Kit Marrow's name on the witness roll, taken from the doorman's chit at dusk.",
+            "visibility": "true",
+            "why": "One front knows her name before she has spoken a word."
+          },
+          {
+            "fact": "Widow Ansel Pell knows her husband was crooked and needs an accident ruling to keep the pension.",
+            "visibility": "true",
+            "why": "The grieving widow has a motive to lie, though not a motive to have killed him."
+          },
+          {
+            "fact": "Hollis Quarrender pushed Pell after their shouting match in the yard that afternoon.",
+            "visibility": "suspected",
+            "why": "Half the press-house heard them argue. Hollis was abed when Pell fell, but nobody can swear to it except Maud."
+          },
+          {
+            "fact": "Aldous Pell was drunk and missed his footing on the wet stair.",
+            "visibility": "false",
+            "why": "Ansel's sworn statement will say so, and the stair was dry (cf. fact 1)."
+          }
+        ],
+        "opening": "Lamplight swings over Aldous Pell, folded wrong at the foot of the press-stair, his weighmaster's chain under one cheek. Maud Quarrender holds the lamp steady and does not look down at him. She looks up the stair at Kit in the counting-room door, and at the page in Kit's hand. Behind them the yard gate bangs open. A Hundred Court clerk comes through with a stick of red sealing wax already warming over his candle, calling for whoever keeps the books."
+      }
+    },
+    "expansive": {
+      "dials": {
+        "absurdity": 40,
+        "stakes": 50,
+        "danger": 70,
+        "people": 60,
+        "length": 30
+      },
+      "spent": 0.1015,
+      "mended": false,
+      "refused": [],
+      "campaign": {
+        "title": "The Wrenfield Ledger",
+        "premise": "Agathe Wrenfield, the cider-merchant who pulled Kit Marrow off the Pennick Cross quays and taught her to keep books, is dead at her own desk. The county Probate Office has frozen the estate before harvest debts fall due, and the person who poured her last cup is standing in the press-house among the mourners.",
+        "where": "The Wrenfield press-house in Coldbrook Vale, late afternoon, the day of the will-reading",
+        "pc": {
+          "name": "Kit Marrow",
+          "class": "Rogue",
+          "why_here": "She carried Agathe's evening tray up to the counting room the night she died, and a clerk wrote her name down as the last one through the door."
+        },
+        "companions": [
+          {
+            "name": "The novice (Tamsin Holt)",
+            "does": "Sixteen, three weeks sworn to the parish watch. She volunteers to help Kit ask questions because nobody senior will.",
+            "friction": "She is not ready and knows it. She is also a Holt, and her family's orchards are pledged against Wrenfield debt notes, so every answer she finds can cost her family their land."
+          },
+          {
+            "name": "The scribe (Ferrin Ashby)",
+            "does": "The wake-book scribe hired to record the will-reading verbatim. He writes down everything anyone says in the press-house.",
+            "friction": "His pages are evidence. Registrar Fenwright wants them sealed and Lucan wants them burned, so he is always tempted to sell them to whoever asks nicely."
+          }
+        ],
+        "fronts": [
+          {
+            "name": "The Probate Office of Coldbrook",
+            "impulse": "to close the Wrenfield estate cleanly, with every irregularity assigned to someone without standing",
+            "wants_from": "the party: Kit's second ledger, the true accounts she kept for Agathe",
+            "clock": [
+              "A stay is nailed to the press-house door and no cask may leave",
+              "Clerks inventory the counting room and Kit's ledger shelf is found empty",
+              "Kit is summoned to the coroner's inquest as an unregistered ward and the last person seen"
+            ],
+            "doom": "Kit stands at the assize for a death she carried up the stairs, the second ledger is sealed in the Office vault, and the real poisoner inherits."
+          },
+          {
+            "name": "The Wrenfield heirs",
+            "impulse": "to keep the family's money and name intact, at any cost short of open scandal",
+            "wants_from": "The Probate Office of Coldbrook: the sealed will, released before Agathe's draft codicil surfaces",
+            "clock": [
+              "Lucan Wrenfield dines with the Registrar and is seen doing it",
+              "The heirs' solicitor petitions to call the Holt debt notes early",
+              "Bailiffs ride to the Holt orchards with eviction writs"
+            ],
+            "doom": "The Holt orchards are taken, the codicil is lost, and Hesper Wrenfield becomes mistress of the press-house."
+          },
+          {
+            "name": "The Holt orchard families",
+            "impulse": "to keep their trees and get what Agathe promised them",
+            "wants_from": "The Wrenfield heirs: the debt notes over forty years of Holt land, which Agathe swore she'd forgive",
+            "clock": [
+              "Mabry Holt calls the cousins to a barn meeting after dark",
+              "A Wrenfield drying barn burns and nobody saw anything",
+              "A Wrenfield son is beaten on the Pennick road, and the county talks of nothing else"
+            ],
+            "doom": "Open feud between cousins across the vale. The magistrate garrisons the county, and both families are ruined by the scandal."
+          }
+        ],
+        "antagonist": {
+          "name": "Registrar Ottilie Fenwright",
+          "axis": "stopped",
+          "posture": "Bureaucrat: \"Your paperwork is not in order.\" She never raises her voice and wins by delay.",
+          "grudge": "Kit was never registered as apprentice or ward, and she cooked Agathe's books for years. Fenwright is right that the Wrenfield estate was built on paperwork that was never in order, and Kit helped write it.",
+          "escalation": [
+            "2: Kit's testimony is refused for want of standing. Every request she makes needs a form, and every form needs a guarantor who is a Wrenfield.",
+            "3: Ferrin's pages are subpoenaed. Tamsin is reassigned off the watch for conflict of interest. The counting room is sealed with Kit's belongings inside.",
+            "4+: Fenwright refers Kit to the assize on the strength of her witness note. The hearing date is set inside the harvest week, when every Wrenfield will be too busy to speak for her."
+          ]
+        },
+        "facts": [
+          {
+            "fact": "Hesper Wrenfield, Agathe's soft-spoken younger sister, poisoned her with lead-arsenate orchard wash stirred into her evening perry.",
+            "visibility": "true",
+            "why": "This is the death and the person still in the room. Hesper did it to stop the codicil."
+          },
+          {
+            "fact": "Hesper poured the cup, and Kit carried the tray up to the counting room without knowing what was in it.",
+            "visibility": "true",
+            "why": "This is the origin's accident. Nobody, Kit included, knows the cup was the instrument."
+          },
+          {
+            "fact": "Agathe left an unsigned draft codicil forgiving all Holt debt notes at harvest's end. It is folded inside the back board of Kit's second ledger.",
+            "visibility": "true",
+            "why": "It ties all three fronts to one object, and Kit is carrying it without knowing."
+          },
+          {
+            "fact": "Registrar Fenwright holds a footman's sworn note naming Kit as the last person to leave the counting room that night.",
+            "visibility": "true",
+            "why": "This is the front that already knows her name. It is the Office's secret and is never known at the opening."
+          },
+          {
+            "fact": "Agathe died of the bad heart she'd complained of for years.",
+            "visibility": "false",
+            "why": "The household and the party believe it because the family physician, a Wrenfield cousin, signed it so."
+          },
+          {
+            "fact": "Lucan Wrenfield argued with Agathe in the counting room an hour before she died.",
+            "visibility": "suspected",
+            "why": "It is true, but it was about the Holt notes, not murder. It is the obvious wrong road."
+          },
+          {
+            "fact": "Agathe Wrenfield was found dead at her ledger desk two nights ago, pen still in hand.",
+            "visibility": "known",
+            "why": "This is the one thing everyone at the reading agrees on."
+          }
+        ],
+        "opening": "The press-house smells of crushed pears and candle smoke. Forty Wrenfields and Holts stand shoulder to shoulder between the cider vats, and Ferrin Ashby's pen is already scratching. At the head table, Registrar Fenwright breaks the seal on Agathe's will, reads one line, and sets it down. \"Before we proceed,\" she says, not looking up, \"is there a Miss Kit Marrow present? Your name appears in my file.\" Behind Kit, Hesper Wrenfield presses a warm cup of perry into her hand and squeezes her fingers kindly."
+      }
+    }
+  },
+  "total": 0.3079
+}

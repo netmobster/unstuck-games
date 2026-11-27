@@ -1,0 +1,373 @@
+{
+  "hand": {
+    "trope": "Taken in",
+    "world": "Orchard counties",
+    "trouble": "A death",
+    "pc": "Kit Marrow",
+    "origin": "Accident",
+    "persona": "The Archivist",
+    "companions": [
+      "The novice",
+      "The scribe"
+    ],
+    "posture": "Bureaucrat"
+  },
+  "model": "us.amazon.nova-pro-v1:0",
+  "books": {
+    "personal": {
+      "dials": {
+        "absurdity": 10,
+        "stakes": 0,
+        "danger": 30,
+        "people": 0,
+        "length": 0
+      },
+      "spent": 0.0045,
+      "mended": false,
+      "refused": [],
+      "campaign": {
+        "title": "Ledger of Lies",
+        "premise": "A prominent family in the orchard counties has been murdered, and Kit Marrow, a rogue with a talent for reading ledgers, finds herself entangled in a web of deceit and hidden debts. The murderer is still at large, and the truth behind the killings could shake the very foundations of the quiet, rich community.",
+        "where": "The grand library of the Marrow estate, dusk.",
+        "pc": {
+          "name": "Kit Marrow",
+          "class": "Rogue",
+          "why_here": "Drawn back by the death of a mentor and a ledger that only she can read."
+        },
+        "companions": [
+          {
+            "name": "Elara, the novice",
+            "does": "volunteers for dangerous tasks",
+            "friction": "is not ready and knows it"
+          },
+          {
+            "name": "Thrain, the scribe",
+            "does": "writes down every detail",
+            "friction": "the record is evidence, and other people want it"
+          }
+        ],
+        "fronts": [
+          {
+            "name": "The Orchard Syndicate",
+            "impulse": "to uncover the truth behind the murders",
+            "wants_from": "The County Bureaucracy — the hidden ledger of debts",
+            "clock": [
+              "The Syndicate begins to suspect Kit's involvement.",
+              "Internal strife threatens to tear the Syndicate apart.",
+              "The Syndicate is on the brink of discovering the truth."
+            ],
+            "doom": "The truth behind the murders is buried forever, and the killer remains at large."
+          },
+          {
+            "name": "The County Bureaucracy",
+            "impulse": "to maintain order and delay any investigation",
+            "wants_from": "The Marrow Estate — the original, untampered ledger",
+            "clock": [
+              "The Bureaucracy starts to notice Kit's inquiries.",
+              "Key figures within the Bureaucracy begin to turn against each other.",
+              "The Bureaucracy's facade of order starts to crumble."
+            ],
+            "doom": "The Bureaucracy's corruption is exposed, leading to chaos and unrest in the orchard counties."
+          },
+          {
+            "name": "The Marrow Estate",
+            "impulse": "to protect their family's reputation and secrets",
+            "wants_from": "The Orchard Syndicate — the murderer's identity",
+            "clock": [
+              "The Estate starts to hide more evidence.",
+              "Internal conflicts arise within the family.",
+              "The Estate's secrets begin to surface."
+            ],
+            "doom": "The Marrow family's reputation is ruined, and their secrets are laid bare."
+          }
+        ],
+        "antagonist": {
+          "name": "Lady Ivis Marrow",
+          "axis": "stopped",
+          "posture": "Bureaucrat",
+          "grudge": "She believes Kit's investigations will expose her family's dark secrets, and she is right about the potential scandal.",
+          "escalation": [
+            "2 — Lady Ivis increases her obstruction tactics.",
+            "3 — She starts to forge evidence to mislead the investigation.",
+            "4+ — Lady Ivis uses her influence to turn the Syndicate against Kit."
+          ]
+        },
+        "facts": [
+          {
+            "fact": "Lady Ivis Marrow orchestrated the murders to protect her family's financial secrets.",
+            "visibility": "true",
+            "why": "She fears exposure and ruin."
+          },
+          {
+            "fact": "Kit Marrow was adopted by the family that was murdered, making her a potential heir.",
+            "visibility": "suspected",
+            "why": "Kit has a feeling but no concrete evidence."
+          },
+          {
+            "fact": "The County Bureaucracy is deeply corrupt and involved in the orchard counties' illicit trade.",
+            "visibility": "true",
+            "why": "It's an open secret among those who dare to whisper it."
+          },
+          {
+            "fact": "The Orchard Syndicate is not just a social club but a front for a resistance movement against the Bureaucracy.",
+            "visibility": "known",
+            "why": "Kit discovered this during her initial investigation."
+          },
+          {
+            "fact": "Elara, the novice, is Lady Ivis's illegitimate daughter, torn between her loyalty to her mother and her desire for truth.",
+            "visibility": "false",
+            "why": "Elara believes she is just a helper with no connection to the Marrow family."
+          },
+          {
+            "fact": "Thrain, the scribe, has been secretly feeding information to the Syndicate, hoping to bring down the Bureaucracy.",
+            "visibility": "true",
+            "why": "He believes in justice but fears exposure."
+          },
+          {
+            "fact": "The original ledger, hidden in the Marrow estate, holds the key to unraveling the entire conspiracy.",
+            "visibility": "suspected",
+            "why": "Kit suspects its existence but hasn't found it yet."
+          }
+        ],
+        "opening": "As dusk falls over the grand library of the Marrow estate, Kit Marrow pores over a dusty ledger, her fingers tracing the familiar lines of ink. The air is thick with the scent of old paper and the weight of unspoken secrets. A soft knock at the door startles her, and she looks up to see Elara, the novice, standing nervously in the doorway, a message in hand."
+      }
+    },
+    "default": {
+      "dials": {
+        "absurdity": 20,
+        "stakes": 30,
+        "danger": 60,
+        "people": 20,
+        "length": 0
+      },
+      "spent": 0.0098,
+      "mended": true,
+      "refused": [],
+      "campaign": {
+        "title": "Ledger of Lies",
+        "premise": "A high-ranking official in the Orchard counties has been found dead, and Kit Marrow, a rogue with a talent for reading ledgers, is drawn into a web of deceit and scandal. The truth behind the death is buried deep within the county's records, and Kit must unravel it before the killer strikes again.",
+        "where": "A quiet, sun-dappled orchard at midday.",
+        "pc": {
+          "name": "Kit Marrow",
+          "class": "Rogue",
+          "why_here": "Kit was saved from a life of street rat by a mysterious benefactor and now seeks to uncover the truth behind the death of a high-ranking official."
+        },
+        "companions": [
+          {
+            "name": "The novice",
+            "does": "volunteers to help Kit in her investigation",
+            "friction": "is not ready for the dangers they will face and knows it"
+          },
+          {
+            "name": "The scribe",
+            "does": "records their findings and provides valuable information",
+            "friction": "the record they create is evidence that other people want"
+          }
+        ],
+        "fronts": [
+          {
+            "name": "The Archivist",
+            "impulse": "to uncover the truth",
+            "wants_from": "The County Ledger — the record of the official's death",
+            "clock": [
+              "The Archivist begins cross-referencing facts",
+              "The Archivist discovers a discrepancy in the records",
+              "The Archivist finds a crucial footnote"
+            ],
+            "doom": "The truth behind the death is lost forever"
+          },
+          {
+            "name": "The County Ledger",
+            "impulse": "to maintain its secrets",
+            "wants_from": "The bureaucrat — the key to unlock its hidden information",
+            "clock": [
+              "The County Ledger's secrets begin to surface",
+              "The County Ledger's hidden information is accessed",
+              "The County Ledger's true nature is revealed"
+            ],
+            "doom": "The County Ledger's secrets are exposed, causing chaos in the Orchard counties"
+          },
+          {
+            "name": "The Bureaucrat",
+            "impulse": "to protect the status quo",
+            "wants_from": "The Archivist — the key to delay the uncovering of the truth",
+            "clock": [
+              "The Bureaucrat begins obstructing Kit's investigation",
+              "The Bureaucrat finds a loophole to delay the truth",
+              "The Bureaucrat uncovers a scandal that could derail the investigation"
+            ],
+            "doom": "The Bureaucrat's obstruction leads to the killer striking again"
+          }
+        ],
+        "antagonist": {
+          "name": "Elara",
+          "axis": "stopped",
+          "posture": "Bureaucrat",
+          "grudge": "Elara believes Kit's investigation will unearth dangerous secrets that could destabilize the Orchard counties, and she is right that the truth could have far-reaching consequences.",
+          "escalation": [
+            "2 — Elara increases her efforts to delay the investigation",
+            "3 — Elara begins actively sabotaging Kit's progress",
+            "4+ — Elara resorts to desperate measures to protect the status quo"
+          ]
+        },
+        "facts": [
+          {
+            "fact": "Kit was standing in the wrong place when the official died.",
+            "visibility": "true",
+            "why": "A true fact nobody else knows; one front already knows your name."
+          },
+          {
+            "fact": "The death was not an accident.",
+            "visibility": "suspected",
+            "why": "Suspected facts carry the whole game."
+          },
+          {
+            "fact": "The County Ledger holds the key to the truth.",
+            "visibility": "true",
+            "why": "The Archivist begins cross-referencing facts."
+          },
+          {
+            "fact": "The Bureaucrat is not who they seem.",
+            "visibility": "false",
+            "why": "Kit believes the Bureaucrat is merely obstructive, but they have a deeper connection to the death."
+          },
+          {
+            "fact": "The novice has a hidden agenda.",
+            "visibility": "suspected",
+            "why": "Kit suspects the novice's motivations are not purely altruistic."
+          },
+          {
+            "fact": "The scribe has a secret that could change everything.",
+            "visibility": "true",
+            "why": "The scribe's record is evidence that other people want."
+          },
+          {
+            "fact": "The Archivist knows more than they let on.",
+            "visibility": "suspected",
+            "why": "Kit suspects the Archivist is hiding something about the death."
+          }
+        ],
+        "opening": "Kit Marrow stands among the sun-dappled trees of the orchard, the scent of ripe fruit heavy in the air. The novice, eager to help, fidgets nearby, while the scribe diligently records the scene. The Archivist approaches, a stack of papers in hand, and begins to speak in a voice filled with footnotes and cross-references. 'The death of the official was no accident,' they say, 'and the truth lies within the County Ledger.'"
+      }
+    },
+    "expansive": {
+      "dials": {
+        "absurdity": 40,
+        "stakes": 50,
+        "danger": 70,
+        "people": 60,
+        "length": 30
+      },
+      "spent": 0.0094,
+      "mended": true,
+      "refused": [],
+      "campaign": {
+        "title": "Ledger of Lies",
+        "premise": "In the quiet, rich orchard counties, a sudden death has stirred up long-hidden secrets. The party must navigate a web of family ties and social scandal to uncover the truth before the bureaucracy of the land buries it forever.",
+        "where": "A bustling market square in the heart of the orchard counties, midday.",
+        "pc": {
+          "name": "Kit Marrow",
+          "class": "Rogue",
+          "why_here": "Drawn by a debt owed and a mentor's mysterious disappearance."
+        },
+        "companions": [
+          {
+            "name": "The novice",
+            "does": "volunteers to help but is overwhelmed by the complexity of the situation",
+            "friction": "Their inexperience could lead to critical mistakes."
+          },
+          {
+            "name": "The scribe",
+            "does": "meticulously records every detail, unaware of the danger the record poses",
+            "friction": "Others seek the record for their own ends, putting the scribe in peril."
+          }
+        ],
+        "fronts": [
+          {
+            "name": "The Archivist",
+            "impulse": "to uncover the truth behind the death",
+            "wants_from": "The Bureaucrat — the sealed records of the deceased",
+            "clock": [
+              "The Archivist finds a suspicious entry in the ledger.",
+              "A rival claims to have found the true culprit.",
+              "The sealed records are set to be destroyed."
+            ],
+            "doom": "The truth is forever lost, and the real culprit goes free."
+          },
+          {
+            "name": "The Bureaucrat",
+            "impulse": "to maintain order and delay the truth",
+            "wants_from": "The orchard families — compliance and silence",
+            "clock": [
+              "The Bureaucrat issues a new decree delaying the investigation.",
+              "A scandal involving the Bureaucrat's family comes to light.",
+              "The sealed records are about to be opened by force."
+            ],
+            "doom": "The bureaucracy collapses under the weight of its own secrets."
+          },
+          {
+            "name": "The orchard families",
+            "impulse": "to protect their reputation and secrets",
+            "wants_from": "The Archivist — the sealed records to ensure they remain hidden",
+            "clock": [
+              "A family member confesses to the crime to protect another.",
+              "A rival family threatens to reveal a dark secret.",
+              "The sealed records are about to be made public."
+            ],
+            "doom": "The social fabric of the orchard counties unravels in a cascade of revelations."
+          }
+        ],
+        "antagonist": {
+          "name": "Elara",
+          "axis": "stopped",
+          "posture": "Bureaucrat",
+          "grudge": "The party represents chaos and disorder, and Elara is right that their methods could destabilize the county.",
+          "escalation": [
+            "2 — Elara delays the investigation with red tape.",
+            "3 — Elara fabricates evidence to mislead the party.",
+            "4+ — Elara attempts to frame an innocent family to preserve order."
+          ]
+        },
+        "facts": [
+          {
+            "fact": "The deceased had been embezzling from the orchard families.",
+            "visibility": "true",
+            "why": "The embezzlement is the true cause of the death."
+          },
+          {
+            "fact": "The Archivist was the mentor who saved Kit Marrow years ago.",
+            "visibility": "known",
+            "why": "Kit recognizes the Archivist from her past."
+          },
+          {
+            "fact": "The novice is the illegitimate child of the deceased.",
+            "visibility": "suspected",
+            "why": "The novice's behavior suggests a hidden connection."
+          },
+          {
+            "fact": "The scribe has been bribed by one of the orchard families.",
+            "visibility": "false",
+            "why": "The scribe is actually working independently to uncover the truth."
+          },
+          {
+            "fact": "Elara's family is deeply involved in the orchard counties' politics.",
+            "visibility": "true",
+            "why": "Elara's actions are influenced by her family's interests."
+          },
+          {
+            "fact": "The sealed records contain evidence of a conspiracy among the orchard families.",
+            "visibility": "true",
+            "why": "The records are the key to unlocking the truth."
+          },
+          {
+            "fact": "Kit Marrow's accident was no accident but a deliberate act by one of the orchard families.",
+            "visibility": "true",
+            "why": "Kit's past is tied to the present mystery."
+          }
+        ],
+        "opening": "Kit Marrow, rogue and seeker of truths, stands in the bustling market square, eyes locked on the sealed ledger that holds the key to a recent, suspicious death. The Archivist, a figure from Kit's past, approaches with a knowing look, while the novice and the scribe hover nearby, each with their own hidden agendas."
+      }
+    }
+  },
+  "total": 0.0236
+}
