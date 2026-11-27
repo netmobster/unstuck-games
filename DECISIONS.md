@@ -1,5 +1,25 @@
 # Decisions — Unstuck Games
 
+## 2026-11-27 — the /next session, continued — A DM who knows you: the adaptive DM
+
+Jay's picks on the report (https://claude.ai/artifact/9BYt1GAh9p3KbTJVsG3YDZ). Jay: "This is insane and I
+think my change makes it even stronger". Spec: `seren/ADAPTIVE-DM.md`.
+- **Shape:** two layers, filled by behaviour, shown as the fortune teller's read. **Mood** lives for one
+  campaign; **style** carries across campaigns.
+- **Rot:** style halves every three campaigns unless it's re-confirmed.
+- **Where:** a Seren container in the player's selfActual vault.
+- **When:** spec now; build after the Director and player accounts.
+- **Jay's change, the correction happens at the door.** On entering the fortune teller's room she speaks
+  to the player before anything is dealt: what happened last session (three moments, like Imprint's),
+  what she believes about them (three things), and what she knows (three things from the profile). The
+  player's answers are the correction: a yes re-confirms (resets the rot), a no drops it. Then the player
+  sits down and the deal begins. The rot rule stays.
+- **Jay's change, existing selfActual users.** If the player already has an SA profile, she offers to read
+  it, twists it slightly into play-style terms, and stores that as their Seren profile. **Opt-in only**,
+  shown to the player before it's kept, and only from sections the player allows: nothing silo-gated,
+  personal or health ever crosses (CC's line, kept). This replaces the report's "Seren never reads Imprint's
+  profile" with "only when the player asks it to, and they see what crossed".
+
 ## 2026-11-27 — the /next session, continued — The mischief cut, the Director's needs, urgent filed
 
 - **The cut is Jay's** (picker https://claude.ai/artifact/DyhszxsqYHX4utoCF5MuNb): 38 ship, 4 cruel ship off by

@@ -106,6 +106,8 @@ Data, in the private SEREN-AI repo (moved off this public one 25 Nov): `librarie
 - [ ] **6. Villain moves:** the library the site promises (about thirty in 1.5). It doesn't exist yet.
 - [ ] **7. DM personas' allow and block lists** (five personas: Play Master, Rulemaker, Jester, Wick, Registrar).
 - [ ] **8. Try the app in real Claude:** the custom connector, plus the first real full-book weave.
+- [ ] **A DM who knows you** (decided 27 Nov, spec `seren/ADAPTIVE-DM.md`): build after the Director and
+      player accounts. Needs the vault principles reconciled, and the SA sections that may cross named.
 - [ ] **Later in 1.5:** the shared card library (thousands of tropes, allow and block lists per
       campaign), the chronicle, fronts and clocks, the one engine (A1–A8), and the table-app rethink.
 
