@@ -1,5 +1,23 @@
 # Decisions — Unstuck Games
 
+## 2026-11-27 — the /next session, continued — Scoring the mischief, and what the Director runs at once
+
+Jay: "yes to plan", plus two corrections on cruel and table-only.
+- **The scoring stays E5's:** funny, story, solo fit and cost, 1–3 each, higher always better (cost 3 =
+  takes nothing). **Two scorers, blind to each other** (one Opus, one Sonnet), average the two, and flag
+  any trick where they're more than a point apart on any axis for Jay. Also tagged, not scored: which of
+  the five personas would run it (feeds step 7's lists) and whether it recurs (one-off, callback, long con).
+- **Nothing is pre-cut.** Jay's 25 Nov picks were "assume yes to all", so all 118 are scored.
+- **The cut: a floor per category, no ceiling.** Every category gets at least 3 (Wild Magic has only 5,
+  Fate 6), the rest of the ~30 go to the best totals overall. No maximum per category or in total.
+- **Cruel ships, off by default**, on top of the ~30 (E4 already said cruel is off by default and the
+  tuning dials turn it on; CC had first said "never ships", Jay: "why zero cruel?"). **Table-only is
+  scored now and waits for multiplayer (1.6)**, since 1.5 is single-player.
+- **The Director's variety rules** (new; Jay: what if the goose and the pickles and another all fire in one
+  campaign): one live trick per category at a time; never the same category twice in a row; a callback
+  (the goose coming back) is the same thread, not a new one. These sit under E2's heat ceiling (about 3,
+  hard 6) and the 7-turn floor.
+
 ## 2026-11-27 — the /next session — Campaign, character, fortune teller
 
 **The order is campaign, then character, then the fortune teller** (Jay). After that come the dials,
