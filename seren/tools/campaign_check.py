@@ -18,6 +18,8 @@ OPTIONAL = ("pc",)
 MODES = ("locked", "dealt", "hidden")
 DIALS = ("absurdity", "stakes", "danger", "people", "length")
 FACE = ("id", "name", "line", "changes", "as")
+# Optional on a face: same_as names a person who can be dealt in two slots, so the table never deals both (27 Nov).
+FACE_OPTIONAL = ("same_as",)
 CARD_REQUIRED = ("format", "slug", "title", "tagline", "description", "level", "players", "length",
                  "key_info", "tags", "header_art", "art_brief", "card_back", "back_brief",
                  "selectable", "status")
@@ -74,7 +76,8 @@ def check(folder: Path) -> list[str]:
         if name not in slots:
             p.append(f"deck.json: no slot '{name}'")
     for name in slots:
-        if name not in SLOTS + OPTIONAL:
+        # Extra slots are fine when they're hidden: the weaver gets them, the player never does (Quire's dragon, 27 Nov).
+        if name not in SLOTS + OPTIONAL and (slots[name] or {}).get("mode") != "hidden":
             p.append(f"deck.json: '{name}' is not one of the slots")
 
     locked_names, faces = [], []
@@ -107,10 +110,12 @@ def check(folder: Path) -> list[str]:
             for key in FACE:
                 if not c.get(key):
                     p.append(f"deck.json: {name}:{c.get('id')} has no '{key}'")
-            extra = set(c) - set(FACE)
+            extra = set(c) - set(FACE) - set(FACE_OPTIONAL)
             if extra:
                 p.append(f"deck.json: {name}:{c.get('id')} has fields the fog doesn't know: {sorted(extra)}")
-            faces.extend(strings(c))
+            # Hidden cards are stripped before anything reaches the player, so they aren't public.
+            if mode != "hidden":
+                faces.extend(strings(c))
 
     if sorted(locked_names) != sorted(tags.get("locked") or []):
         p.append(f"card.json: tags.locked {tags.get('locked')} doesn't match the locked cards {locked_names}")
@@ -133,7 +138,8 @@ def check(folder: Path) -> list[str]:
             if len(s) > 24 and s.lower() in public:
                 p.append(f"fog: text from truths {key} appears on a player-facing face")
         # Short but deadly: a culprit's or antagonist's name on a face. "Jo Bloggs, the miller" -> "jo bloggs".
-        for field in ("culprit", "antagonist"):
+        # named_openly: a rival everyone already knows (Quire's Aurelian), so his name on a face is no leak.
+        for field in () if entry.get("named_openly") else ("culprit", "antagonist"):
             name = str(entry.get(field, "")).split(",")[0].strip().lower()
             if name and name in public:
                 p.append(f"fog: the {field} of {key} ('{name}') is named on a player-facing face")
