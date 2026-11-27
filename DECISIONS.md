@@ -11,6 +11,10 @@ every table, so a player gets to know them. What it changes:
   their ties and are replaced.
 - **They need a build at each starting level.** Blood and Ink starts at 3, Quire and Tallage at 5. The
   ladder (the one that brought Serenista down from 11) can step a build down from its highest level.
+- **They come from Mike's campaign, anonymised.** Jay: the players have given permission for their
+  characters to be anonymised and used as modified archetypes. Unusual builds appeal to players more than
+  standard ones. Each gets a new name, a few details changed, SRD 5.2.1 only, and no min-maxing. No
+  player names or real sheet names go into the shipped files.
 - **The `pc` slot stays in the deck format**, but it deals from the shared five rather than from a deck
   each campaign writes. A brought character, like Serenista from D&D Beyond, still replaces them.
 

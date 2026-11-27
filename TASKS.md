@@ -76,6 +76,9 @@ Data, in the private SEREN-AI repo (moved off this public one 25 Nov): `librarie
 - [ ] **0. The five shared characters** (decided 27 Nov, `DECISIONS.md`): five who can walk into any
       campaign. Each gets a name, a class and who they are, plus SRD builds at level 3 and level 5, with no tie
       written in (the weave supplies the tie). They replace Blood and Ink's five placeholders.
+      **Source:** 8–10 D&D Beyond sheets from Mike's campaign. Jay sends the links. CC reads each one in Chrome,
+      and five are picked. Each is anonymised and Seren-ized: renamed, refocused onto SRD 5.2.1, and kept
+      off min-maxed builds. Each gets its own Seren-style picker (yes / no / edit on every suggested change).
 - [ ] **1. Blood and Ink.** Tighten it. Its `pc` slot deals the shared five. Lift it out of `LIVE/` without
       Jay's sessions, add the SRD 5.2.1 attribution, and design the first dungeon under the press.
 - [ ] **2. Quire.** Today it's a card and art only. Write its deck (origins, companions, personas, 2–3
