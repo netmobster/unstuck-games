@@ -71,6 +71,24 @@ Data, in the private SEREN-AI repo (moved off this public one 25 Nov): `librarie
       MCP v2), guard approvals, Judgement OS and MINDER before lifting from Campfire or QuestBook.
       Until then every platform and backend pick is a maybe.
 
+**The order, from 27 Nov (Jay: "campaigns first, one at a time").** The site is done (`/next`, #162 and
+#163). Work down this list; one campaign is finished before the next one starts.
+- [ ] **1. Blood and Ink.** Tighten it. Give its five who-you-play cards (Kit Marrow, Odo Fenn, Wenna
+      Hale, Pip Callow, Ash Varley; placeholders today) real level 3 builds. Lift it out of `LIVE/` without
+      Jay's sessions, add the SRD 5.2.1 attribution, and design the first dungeon under the press.
+      **Decide first:** five characters per campaign (as decided 26 Nov), or five shared ones for any campaign.
+- [ ] **2. Quire.** Today it's a card and art only. Write its deck (origins, companions, personas, 2–3
+      antagonists, five who-you-play cards), its truths, and its locked spine, then tighten it.
+- [ ] **3. Tallage.** The same as Quire.
+- [ ] **4. A published campaign's truths reach the weaver**, so its mystery is its own and not invented on each weave.
+- [ ] **5. Score DM mischief** (118 tricks, unscored past heat), then cut the 1.5 subsets of mischief and
+      side quests (97, scored).
+- [ ] **6. Villain moves:** the library the site promises (about thirty in 1.5). It doesn't exist yet.
+- [ ] **7. DM personas' allow and block lists** (five personas: Play Master, Rulemaker, Jester, Wick, Registrar).
+- [ ] **8. Try the app in real Claude:** the custom connector, plus the first real full-book weave.
+- [ ] **Later in 1.5:** the shared card library (thousands of tropes, allow and block lists per
+      campaign), the chronicle, fronts and clocks, the one engine (A1–A8), and the table-app rethink.
+
 **The cut, decided 25 Nov** ([versions picker](https://claude.ai/artifact/3oy46G41rzYB3ZaP1SqifX); `DECISIONS.md`).
 
 **Milestone one (Jay, 25 Nov): the first magic moment, in Claude via MCP.** Choose a campaign
