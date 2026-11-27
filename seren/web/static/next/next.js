@@ -47,6 +47,36 @@
   document.querySelectorAll('[data-redeal]').forEach(function(b){
     b.addEventListener('click', function(){ var t = document.getElementById(b.getAttribute('data-redeal')); if (t) deal(t); });
   });
+  // her card: dealt face down, then the fortune teller turns it over; tap to turn it again
+  document.querySelectorAll('.flipc').forEach(function(c){
+    c.addEventListener('click', function(){ c.classList.toggle('turned'); });
+    var h = c.closest('[data-deal]');
+    once(h || c, function(){ setTimeout(function(){ c.classList.add('turned'); }, quiet ? 0 : 1900); }, .4);
+  });
+
+  // the loom: five dials you can move; it says when you've left her settings
+  document.querySelectorAll('[data-loom]').forEach(function(l){
+    var ins = l.querySelectorAll('input[type=range]'), note = l.querySelector('.lm-note');
+    var home = note ? note.innerHTML : '';
+    function paint(i){
+      var p = (i.value - i.min) / (i.max - i.min) * 100;
+      i.style.setProperty('--p', p + '%');
+      var lab = i.closest('label'); lab.querySelector('output').textContent = i.value;
+      lab.classList.toggle('moved', i.value !== i.dataset.d);
+    }
+    function sum(){
+      var moved = [].filter.call(ins, function(i){ return i.value !== i.dataset.d; }).length;
+      if (!note) return;
+      if (!moved){ note.innerHTML = home; return; }
+      note.innerHTML = 'Not Serenista’s book any more: ' + (moved === 1 ? 'one dial' : moved + ' dials') +
+        ' moved, and the same hand would be written as a different story. <button type="button">Put them back</button>';
+      note.querySelector('button').addEventListener('click', function(){
+        ins.forEach(function(i){ i.value = i.dataset.d; paint(i); }); sum();
+      });
+    }
+    ins.forEach(function(i){ paint(i); i.addEventListener('input', function(){ paint(i); sum(); }); });
+  });
+
   // the director's log writes itself, a line at a time
   document.querySelectorAll('.panel.log').forEach(function(p){
     p.querySelectorAll('.row').forEach(function(r, i){ r.style.transitionDelay = (i * 140) + 'ms'; });
