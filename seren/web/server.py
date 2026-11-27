@@ -327,7 +327,13 @@ class Handler(BaseHTTPRequestHandler):
             return self._file(STATIC / "deal.html")
         if path == "/api/published":
             return self._json(200, {"campaigns": published.listing(),
+                                    "characters": published.characters(),
                                     "fake_ai": weave.mocking()})
+        if path.startswith("/characters/"):
+            body = published.character_art(path[len("/characters/"):])
+            if body is None:
+                return self._json(404, {"error": "no such art"})
+            return self._send(200, body, "image/webp")
         if path.startswith("/published/"):
             parts = path.split("/")
             body = published.art(parts[2], parts[3]) if len(parts) == 4 else None

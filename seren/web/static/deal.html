@@ -1,6 +1,8 @@
+<!DOCTYPE html>
+<html lang="en">
 <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Seren · The Deal</title>
-<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&family=Work+Sans:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
@@ -369,6 +371,77 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;z-index:1;back
 .ld-door b{font:400 26px/1.1 var(--display);color:var(--bone)}
 .ld-door em{font:italic 15px/1.45 var(--serif);color:var(--mute)}
 @media (max-width:640px){.ld-doors{grid-template-columns:1fr}}
+/* ── who walks in: the shared six (27 Nov). Names are set in each card's own gilt band. ── */
+.wy{padding:clamp(20px,3vw,34px)}
+.wy-c{container-type:inline-size;position:relative;margin:0;aspect-ratio:2/3;border-radius:8px;overflow:hidden;background:#000;box-shadow:0 16px 34px rgba(0,0,0,.55);transition:transform .3s}
+.wy-c img{width:100%;height:100%;object-fit:cover;display:block}
+.wy-c figcaption{position:absolute;left:9%;right:9%;top:86.2%;height:10.5%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;pointer-events:none}
+.wy-c figcaption b{font:400 min(6.4cqw,22px)/1.05 var(--display);letter-spacing:.06em;white-space:nowrap;color:var(--gilt-hi);text-shadow:0 1px 8px #000}
+.wy-c figcaption i{font:italic 400 min(3.8cqw,13px)/1.2 var(--serif);color:var(--bone-lo);margin-top:.6cqw;white-space:nowrap}
+.wy-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:16px;margin-top:18px}
+.wy-pk{position:relative;min-width:0}
+.wy-open{display:block;width:100%}
+.wy-open:hover .wy-c{transform:translateY(-5px);box-shadow:0 22px 40px rgba(0,0,0,.6),0 0 26px rgba(201,164,74,.25)}
+.wy-tick{position:absolute;top:8px;right:8px;width:34px;height:34px;border-radius:50%;border:1px solid rgba(233,220,181,.55);background:rgba(15,23,40,.8);color:var(--bone);font:600 15px/1 var(--sans);display:grid;place-items:center}
+.wy-tick[aria-pressed=true]{background:var(--gilt);border-color:var(--gilt);color:var(--felt)}
+.wy-cls{margin-top:7px;text-align:center;font:500 10.5px/1.4 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.wy-own{all:unset;box-sizing:border-box;cursor:pointer;aspect-ratio:2/3;display:flex;flex-direction:column;justify-content:center;gap:8px;padding:16px;border-radius:8px;border:1px dashed var(--edge);background:linear-gradient(170deg,var(--card),var(--card-lo));transition:border-color .2s,transform .2s}
+.wy-own:hover{border-color:var(--gilt);transform:translateY(-4px)}
+.wy-own:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:3px}
+.wy-own b{font:400 20px/1.1 var(--display);color:var(--bone)}
+.wy-own em{font:italic 14px/1.4 var(--serif);color:var(--mute)}
+.wy-again{display:grid;grid-template-columns:160px 1fr;gap:22px;align-items:center;max-width:620px;margin:22px auto 0}
+.wy-view{max-width:860px;margin:0 auto}
+.wy-back{margin-bottom:14px}
+.wy-pair{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.wy-nm{margin-top:18px;font:400 clamp(28px,4vw,40px)/1.05 var(--display);color:var(--bone)}
+.wy-nm span{font:italic 400 .5em var(--serif);color:var(--bone-lo)}
+.wy-nm.sm{font-size:22px;margin-top:10px}
+.wy-core{margin-top:6px;font:500 11.5px/1.5 var(--sans);letter-spacing:.06em;color:var(--mute)}
+.wy-core b{color:var(--gilt-hi);font-weight:600}
+.wy-hook{margin:14px 0 0;font:italic 400 21px/1.45 var(--serif);color:var(--bone)}
+.wy-hook.sm{font-size:16px;margin-top:8px}
+.wy-plays{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.wy-plays span{font:500 11px/1 var(--sans);letter-spacing:.06em;padding:8px 10px;border-radius:999px;border:1px solid var(--edge);color:var(--bone-lo)}
+.wy-plays span:first-child{border-color:var(--gilt);color:var(--gilt-hi)}
+.wy-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(78px,1fr));gap:8px;margin-top:14px}
+.wy-stats div{background:var(--card-lo);border:1px solid var(--edge-lo);border-radius:8px;padding:10px 6px;text-align:center}
+.wy-stats b{display:block;font:400 22px/1 var(--display);color:var(--bone)}
+.wy-stats small{font:500 11px var(--sans);color:var(--gilt)}
+.wy-stats span{display:block;margin-top:6px;font:600 9px/1.2 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--mute)}
+.wy-bio{margin:16px 0 0;font:400 17px/1.6 var(--serif);color:var(--bone-lo)}
+.wy-dr{margin-top:12px;border:1px solid var(--edge-lo);border-radius:10px;background:var(--card-lo)}
+.wy-dr[open]{border-color:var(--gilt)}
+.wy-dr summary{cursor:pointer;list-style:none;display:flex;align-items:center;gap:10px;padding:14px 16px;font:400 18px/1.2 var(--serif);color:var(--bone)}
+.wy-dr summary::-webkit-details-marker{display:none}
+.wy-dr summary::after{content:"+";margin-left:auto;font:400 22px/1 var(--sans);color:var(--gilt);transition:transform .25s}
+.wy-dr[open] summary::after{transform:rotate(45deg)}
+.wy-dr summary small{font:500 10.5px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--mute)}
+.wy-dr > div{padding:0 16px 16px}
+.wy-dr h4{margin:14px 0 4px;font:600 10px/1.4 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt)}
+.wy-dr p,.wy-dr li,.wy-dr dd,.wy-dr td{font:400 15px/1.5 var(--serif);color:var(--bone-lo);margin:0}
+.wy-dr p.q{font-style:italic;color:var(--bone)}
+.wy-dr ul{margin:0;padding-left:18px}
+.wy-dr table{border-collapse:collapse;width:100%}
+.wy-dr td{padding:6px 6px 6px 0;border-bottom:1px solid var(--edge-lo);vertical-align:top}
+.wy-dr td:nth-child(2){font:500 12.5px/1.6 var(--sans);color:var(--gilt-hi);white-space:nowrap}
+.wy-dr dl{display:grid;grid-template-columns:120px 1fr;gap:4px 12px;margin:0}
+.wy-dr dt{font:600 10px/1.9 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
+.wy-abil{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:6px;margin-top:4px}
+.wy-abil div{text-align:center;background:var(--card);border-radius:6px;padding:8px 2px}
+.wy-abil span{display:block;font:600 9.5px/1 var(--sans);letter-spacing:.12em;color:var(--mute)}
+.wy-abil b{display:block;font:400 20px/1.2 var(--display);color:var(--bone);margin-top:4px}
+.wy-abil i{display:block;font:500 11px/1 var(--sans);font-style:normal;color:var(--gilt)}
+.wy-cmp{display:grid;grid-template-columns:repeat(var(--n),minmax(0,1fr));gap:14px;margin-top:18px}
+.wy-col{display:flex;flex-direction:column;gap:10px;padding:12px;border:1px solid var(--edge-lo);border-radius:12px;background:var(--card-lo);min-width:0}
+.wy-col .go{margin-top:auto}
+.c3.you{box-shadow:0 0 0 1px var(--gilt),0 0 26px rgba(227,192,106,.35)}
+@media (max-width:640px){
+  .wy-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .wy-pair{gap:8px}.wy-again{grid-template-columns:110px 1fr;gap:14px}
+  .wy-abil{grid-template-columns:repeat(3,minmax(0,1fr))}.wy-dr dl{grid-template-columns:1fr}
+  .wy-cmp{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 .ld-form{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
 .ld-form input{flex:1 1 280px;min-width:0;min-height:46px;padding:10px 14px;border-radius:8px;border:1px solid var(--edge);background:rgba(5,8,16,.6);color:var(--bone);font:400 15px/1.2 var(--sans)}
 .ld-form input:focus{outline:none;border-color:var(--gilt);box-shadow:0 0 0 3px rgba(201,164,74,.2)}
@@ -558,6 +631,8 @@ function slotHTML(x,n){
   var head='<div class="lbl">'+esc(label)+'</div>';
   if(sl.mode==='locked') return '<div class="slot" data-at="'+key+'">'+head+
     '<div class="c3 up locked"><div class="in">'+back()+faceHTML(label,sl.card)+'</div><div class="chains">'+CHAIN_SVG+PADLOCK+'</div></div><div class="under">locked</div></div>';
+  if(sl.mode==='you') return '<div class="slot" data-at="'+key+'">'+head+
+    '<div class="c3 up mine you"><div class="in">'+back()+faceHTML('You',sl.card,' gilt')+'</div></div><div class="under">you</div></div>';
   if(sl.mode==='hidden') return '<div class="slot" data-at="'+key+'">'+head+
     '<div class="c3 sealed" title="Sealed until the story opens it"><div class="in">'+back()+'</div><div class="waxbox">'+SEAL+'</div></div><div class="under">sealed</div></div>';
   var pick=k==='companions'?T.picks.companions[n]:T.picks[k],on=T.active===k;
@@ -596,7 +671,7 @@ function sentence(){
   var s=T.c.deck.slots;
   function v(k,n,how){var card;
     if(!s[k])return '';
-    if(s[k].mode==='locked')card=s[k].card;
+    if(s[k].mode==='locked'||s[k].mode==='you')card=s[k].card;
     else if(s[k].mode==='hidden')return '<i>something sealed</i>';
     else if(k==='posture')card=T.herUp?T.her[T.herAt]:null;
     else if(k==='companions')card=T.picks.companions[n||0];
@@ -608,14 +683,20 @@ function sentence(){
 }
 function topEl(){return document.querySelector('.top')}
 function openTable(c){
-  // Step 1, who you play: dealt from the campaign's deck, or your own character fitted on the ladder.
+  // Step 1, who walks in: the shared six, or your own fitted on the ladder (27 Nov: campaign, character, fortune teller).
+  // A campaign that still deals its own who-you-play deck skips straight to the table.
   var pc=c.deck&&c.deck.slots&&c.deck.slots.pc;
-  if(pc&&pc.mode==='dealt')return whoStep(c);
-  startTable(c);
+  if(pc&&pc.mode==='dealt'&&!wyChars().length)return startTable(c);
+  whoStep(c);
 }
 function startTable(c,own){
+  if(own){
+    // Your character sits on the table face up as "you" while she deals the rest.
+    var slots={};Object.keys(c.deck.slots).forEach(function(k){if(k!=='pc')slots[k]=c.deck.slots[k]});
+    slots.pc={mode:'you',card:own};
+    c=Object.assign({},c,{deck:Object.assign({},c.deck,{slots:slots})});
+  }
   deal(c);
-  if(own){T.picks.pc=own;delete T.hands.pc;T.active=nextActive()}
   $('shelf').hidden=true;$('table').hidden=false;topEl().hidden=true;
   renderTable(true);window.scrollTo({top:0});
   setTimeout(function(){smoke(document.querySelector('.pile .stack'),6)},250);
@@ -788,17 +869,104 @@ function api(name,body){
   return fetch('/api/'+name,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)}).then(function(r){return r.json()});
 }
 function ldWide(on){$('vmodal').classList.toggle('ldwide',!!on)}
+/* ── who walks in: the shared six, or your own (Jay, 27 Nov: campaign, character, fortune teller) ── */
+var WY={ticks:[]},WKEY='seren.who';
+function wyChars(){return D.characters||[]}
+function wyLv(p,c){var ks=Object.keys(p.lv).map(Number).sort(function(a,b){return a-b}),want=+c.level,best=ks[0];
+  ks.forEach(function(k){if(k<=want)best=k});return best}
+function wyCard(p,which,small){
+  var sub=which==='s'?(p.title||'in their element'):(p.title||p.core.split(' · ')[1]);
+  return '<figure class="wy-c'+(small?' sm':'')+'"><img src="'+esc(p.art[which])+'" alt="'+esc(p.nm)+(which==='s'?', in their own world':'')+'" loading="lazy">'+
+    '<figcaption><b>'+esc(p.nm)+'</b><i>'+esc(sub)+'</i></figcaption></figure>';
+}
+function wyMod(n){var m=Math.floor((n-10)/2);return(m>=0?'+':'')+m}
+function wyStats(p,c,few){
+  var L=p.lv[wyLv(p,c)],AB=['STR','DEX','CON','INT','WIS','CHA'],i=L.abil.indexOf(Math.max.apply(null,L.abil));
+  var cells=[['HP',L.hp],['AC',L.ac],[AB[i],L.abil[i]+' <small>'+wyMod(L.abil[i])+'</small>']];
+  if(!few)cells.push(['Speed',L.spd],[L.dc?'Save DC':'Initiative',L.dc||L.init]);
+  return '<div class="wy-stats">'+cells.map(function(x){return '<div><b>'+x[1]+'</b><span>'+x[0]+'</span></div>'}).join('')+'</div>';
+}
 function whoStep(c){
-  ldWide(false);
-  veil('<div class="mhead"><div class="lbl">Step 1 of 2 · who you play</div><h3 class="mtitle">'+esc(c.title)+'</h3>'+
-    '<p class="mnote">She can deal you someone who belongs in this story, or you can bring a character you already play. Yours is fitted to level '+esc(c.level)+' first, one level at a time.</p></div>'+
-    '<div class="ld-doors">'+
-      '<button class="ld-door" id="whoDeal"><span class="lbl">Dealt</span><b>Deal me someone</b><em>Three characters from '+esc(c.title)+'’s own deck. Pick one at the table.</em></button>'+
-      '<button class="ld-door" id="whoOwn"><span class="lbl">Your own</span><b>Bring my character</b><em>From D&amp;D Beyond. Seren steps them to level '+esc(c.level)+', and nothing goes without you choosing it.</em></button>'+
-    '</div><div class="macts"><button class="ghost" id="mback">← Back to the shelf</button></div>');
-  $('whoDeal').onclick=function(){unveil();startTable(c)};
-  $('whoOwn').onclick=function(){bringForm(c)};
-  $('mback').onclick=function(){unveil()};
+  ldWide(true);
+  var last=null;try{last=localStorage.getItem(WKEY)}catch(e){}
+  var again=wyChars().filter(function(p){return p.id===last})[0];
+  if(again&&!WY.skipAgain){
+    veil('<div class="wy"><div class="mhead"><div class="lbl">Step 1 of 2 · who walks in</div><h3 class="mtitle">'+esc(c.title)+'</h3></div>'+
+      '<div class="wy-again">'+wyCard(again,'p',true)+'<div><p class="mnote" style="text-align:left">Last time, '+esc(again.nm)+' walked in.</p>'+
+      '<div class="macts" style="justify-content:flex-start"><button class="go" id="wyAgain">Walk in as '+esc(again.nm.split(' ')[0])+' again</button>'+
+      '<button class="ghost" id="wyNew">Someone new</button></div></div></div>'+
+      '<div class="macts"><button class="ghost" id="mback">← Back to the shelf</button></div></div>');
+    $('wyAgain').onclick=function(){wyChoose(c,again)};
+    $('wyNew').onclick=function(){WY.skipAgain=true;whoStep(c)};
+    $('mback').onclick=function(){WY.skipAgain=false;ldWide(false);unveil()};
+    return;
+  }
+  WY.cmp=false;wyPick(c);
+}
+function wyPick(c){
+  ldWide(true);
+  var six=wyChars();
+  veil('<div class="wy"><div class="mhead"><div class="lbl">Step 1 of 2 · who walks in</div><h3 class="mtitle">Who walks into '+esc(c.title)+'?</h3>'+
+    '<p class="mnote">Six people who can walk into any story, at level '+esc(c.level)+'. Or bring someone you already play. Tick up to three to compare.</p></div>'+
+    '<div class="wy-grid">'+six.map(function(p){var on=WY.ticks.indexOf(p.id)>-1;
+      return '<div class="wy-pk"><button class="wy-open" data-open="'+p.id+'" aria-label="Read '+esc(p.nm)+'">'+wyCard(p,'p',true)+'</button>'+
+        '<button class="wy-tick" data-tick="'+p.id+'" aria-pressed="'+on+'" aria-label="Compare '+esc(p.nm)+'">'+(on?'✓':'+')+'</button>'+
+        '<div class="wy-cls">'+esc(p.core.split(' · ')[1])+' · '+esc(p.plays[0].toLowerCase())+'</div></div>'}).join('')+
+      '<button class="wy-own" id="whoOwn"><span class="lbl">Your own</span><b>Bring my character</b><em>From D&amp;D Beyond. Seren steps them to level '+esc(c.level)+', and nothing goes without you choosing it.</em></button>'+
+    '</div>'+
+    '<div class="macts"><button class="ghost" id="mback">← Back to the shelf</button>'+
+      (WY.ticks.length?'<button class="go" id="wyCmp"'+(WY.ticks.length<2?' disabled':'')+'>'+(WY.ticks.length<2?'Tick one more to compare':'Compare '+WY.ticks.length)+'</button>':'')+'</div></div>',false);
+  document.querySelectorAll('[data-open]').forEach(function(b){b.onclick=function(){wyView(c,b.dataset.open)}});
+  document.querySelectorAll('[data-tick]').forEach(function(b){b.onclick=function(){var id=b.dataset.tick,i=WY.ticks.indexOf(id);
+    if(i>-1)WY.ticks.splice(i,1);else if(WY.ticks.length<3)WY.ticks.push(id);var y=$('vmodal').scrollTop;wyPick(c);$('vmodal').scrollTop=y}});
+  $('whoOwn').onclick=function(){ldWide(false);bringForm(c)};
+  $('mback').onclick=function(){WY.skipAgain=false;ldWide(false);unveil()};
+  var cb=$('wyCmp');if(cb)cb.onclick=function(){if(WY.ticks.length>1)wyCompare(c)};
+}
+function wyView(c,id){
+  var p=wyChars().filter(function(x){return x.id===id})[0],lv=wyLv(p,c),L=p.lv[lv],AB=['STR','DEX','CON','INT','WIS','CHA'];
+  ldWide(true);
+  veil('<div class="wy wy-view"><button class="ghost wy-back" id="wyBack">← All six</button>'+
+    '<div class="wy-pair">'+wyCard(p,'p')+wyCard(p,'s')+'</div>'+
+    '<div class="wy-nm">'+esc(p.nm)+(p.title?' <span>'+esc(p.title)+'</span>':'')+'</div>'+
+    '<div class="wy-core">'+esc(p.core)+' · <b>level '+lv+'</b> · '+esc(p.bg)+' · '+esc(p.pron)+'</div>'+
+    '<p class="wy-hook">'+esc(p.hook)+'</p>'+
+    '<div class="wy-plays">'+p.plays.map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div>'+
+    wyStats(p,c)+'<p class="wy-bio">'+esc(p.bio)+'</p>'+
+    '<details class="wy-dr"><summary>Character sheet <small>level '+lv+'</small></summary><div>'+
+      '<div class="wy-abil">'+L.abil.map(function(n,i){return '<div><span>'+AB[i]+'</span><b>'+n+'</b><i>'+wyMod(n)+'</i></div>'}).join('')+'</div>'+
+      '<h4>The basics</h4><p>Proficiency +'+L.prof+' · Initiative '+esc(L.init)+' · Speed '+L.spd+' ft · Saves: '+esc(L.saves)+(L.dc?' · Spell save DC '+L.dc+', spell attack '+esc(L.atk):'')+'</p>'+
+      '<h4>Skills</h4><p>'+esc(L.skills)+'</p>'+
+      '<h4>Attacks</h4><table>'+L.attacks.map(function(a){return '<tr><td>'+esc(a[0])+'</td><td>'+esc(a[1])+'</td><td>'+esc(a[2])+'</td></tr>'}).join('')+'</table>'+
+      '<h4>Features</h4><ul>'+L.features.map(function(f){return '<li>'+esc(f)+'</li>'}).join('')+'</ul>'+
+      (L.spells?'<h4>Spells</h4><dl>'+Object.keys(L.spells).map(function(k){return '<dt>'+esc(k)+'</dt><dd>'+esc(L.spells[k])+'</dd>'}).join('')+'</dl>':'')+
+      '<h4>Gear</h4><p>'+esc(p.kit)+'</p></div></details>'+
+    '<details class="wy-dr"><summary>Background and personality</summary><div>'+
+      ['personality','ideal','bond','flaw'].map(function(k){return '<h4>'+k+'</h4><p class="q">'+esc(p.traits[k])+'</p>'}).join('')+
+      '<h4>Their story</h4><p>'+esc(p.history)+'</p><h4>What they carry</h4><p>'+esc(p.carries)+'</p></div></details>'+
+    '<div class="macts"><button class="ghost" id="wyBack2">← All six</button><button class="go" id="wyGo">Walk in as '+esc(p.nm.split(' ')[0])+'</button></div></div>');
+  $('vmodal').scrollTop=0;
+  $('wyBack').onclick=$('wyBack2').onclick=function(){wyPick(c)};
+  $('wyGo').onclick=function(){wyChoose(c,p)};
+}
+function wyCompare(c){
+  var list=wyChars().filter(function(p){return WY.ticks.indexOf(p.id)>-1});
+  ldWide(true);
+  veil('<div class="wy"><div class="mhead"><div class="lbl">Side by side · level '+esc(c.level)+'</div><h3 class="mtitle">Who walks in?</h3></div>'+
+    '<div class="wy-cmp" style="--n:'+list.length+'">'+list.map(function(p){
+      return '<div class="wy-col">'+wyCard(p,'p',true)+'<div class="wy-nm sm">'+esc(p.nm)+'</div><div class="wy-core">'+esc(p.core)+'</div>'+
+        '<p class="wy-hook sm">'+esc(p.hook)+'</p><div class="wy-plays">'+p.plays.map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div>'+wyStats(p,c,true)+
+        '<button class="ghost" data-open="'+p.id+'">Read more</button><button class="go" data-go="'+p.id+'">Walk in as '+esc(p.nm.split(' ')[0])+'</button></div>'}).join('')+'</div>'+
+    '<div class="macts"><button class="ghost" id="wyBack">← All six</button></div></div>');
+  $('wyBack').onclick=function(){wyPick(c)};
+  document.querySelectorAll('[data-open]').forEach(function(b){b.onclick=function(){wyView(c,b.dataset.open)}});
+  document.querySelectorAll('[data-go]').forEach(function(b){b.onclick=function(){wyChoose(c,wyChars().filter(function(p){return p.id===b.dataset.go})[0])}});
+}
+function wyChoose(c,p){
+  try{localStorage.setItem(WKEY,p.id)}catch(e){}
+  var lv=wyLv(p,c),cls=p.core.split(' · ');
+  var own={id:'shared:'+p.id,name:p.nm,line:p.hook,changes:cls[1]+' ('+cls[2]+'), level '+lv+'. '+p.plays.join('; ')+'.',as:p.bio,shared:p.id};
+  WY.skipAgain=false;WY.ticks=[];ldWide(false);unveil();startTable(c,own);
 }
 function bringForm(c,err){
   ldWide(false);
@@ -976,7 +1144,7 @@ function plainSentence(){var d=document.createElement('div');d.innerHTML=sentenc
 function weaveIt(c){
   var s=c.deck.slots,cards={},picks={campaign:c.slug,campaign_title:c.title};
   var face=function(k){return{id:k.id,name:k.name,line:k.line,changes:k.changes,as:k.as,own:k.own||undefined}};
-  Object.keys(s).forEach(function(k){if(s[k].mode==='locked'){cards[k]=face(s[k].card);picks[k]=s[k].card.id}});
+  Object.keys(s).forEach(function(k){if(s[k].mode==='locked'||s[k].mode==='you'){cards[k]=face(s[k].card);picks[k]=s[k].card.id}});
   Object.keys(T.picks).forEach(function(k){if(k!=='companions'&&T.picks[k]){cards[k]=face(T.picks[k]);picks[k]=T.picks[k].id}});
   if(T.her.length){cards.posture=face(T.her[T.herAt]);picks.posture=T.her[T.herAt].id}
   cards.companions=T.picks.companions.map(face);picks.companions=T.picks.companions.map(function(k){return k.id});
@@ -1102,7 +1270,7 @@ window.serenMischief=mischief;
 (function next(){setTimeout(function(){mischief();next()},FAST?(5000+Math.random()*4000):(40000+Math.random()*45000))})();
 // Inside Claude the app swaps these for MCP tool calls (seren/mcp/server.py injects them).
 (window.serenShelf||function(){return fetch('/api/published').then(function(r){return r.json()})})().then(function(j){
-  D.campaigns=j.campaigns||[];FAKE=!!j.fake_ai;
+  D.campaigns=j.campaigns||[];D.characters=j.characters||[];FAKE=!!j.fake_ai;
   $('note').textContent=FAKE?'Local · fake AI · nothing spent':'The deal';
   renderList();renderDetail();
 }).catch(function(){$('detail').innerHTML='<p class="desc" style="padding:24px">Could not load the campaigns.</p>'});

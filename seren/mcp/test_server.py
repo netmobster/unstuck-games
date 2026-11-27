@@ -82,9 +82,16 @@ async def main() -> int:
         import json as _json
         check("culprit" not in _json.dumps(deal) and "truths" not in _json.dumps(deal), "no truths reach the app")
 
+        chars = (deal.get("structuredContent") or deal).get("characters") or []
+        check(len(chars) == 6 and all(c["art"]["p"].startswith(seren.PUBLIC + "/assets/characters/") for c in chars),
+              "seren_deal returns the shared six, art on this server")
+        check("pc" not in camps[0]["deck"]["slots"], "who you play is no longer dealt from Blood and Ink's deck")
         d = camps[0]["deck"]["slots"]
         hand = {k: d[k]["card"] for k in ("trope", "world", "trouble")}
-        hand.update(pc=d["pc"]["deck"][0], origin=d["origin"]["deck"][0], posture=d["posture"]["deck"][0],
+        you = chars[0]
+        hand.update(pc={"id": "shared:" + you["id"], "name": you["nm"], "line": you["hook"],
+                        "changes": you["core"].split(" · ")[1] + ". " + "; ".join(you["plays"])},
+                    origin=d["origin"]["deck"][0], posture=d["posture"]["deck"][0],
                     persona=d["persona"]["deck"][0], companions=d["companions"]["deck"][:2])
         woven = dump(await client.call_tool("seren_weave", {"picks": {"campaign": "blood-and-ink"}, "cards": hand,
                                                            "dials": camps[0]["deck"]["dials"]["defaults"]}))

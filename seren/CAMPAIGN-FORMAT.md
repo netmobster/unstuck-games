@@ -56,9 +56,15 @@ field the code doesn't recognise is never sent.
 The seven slots are the Loom's: `trope`, `origin`, `world`, `trouble`, `posture` (the antagonist,
 "her card"), `companions` (pick two), `persona` ("told by").
 
-**An eighth, optional: `pc`, who you play** (26 Nov). About five characters per campaign, each a
-face like any other card (`name` the character, `changes` leads with the class). Dealt as a hand like
-the rest. Picks don't have to fit each other: the weaver makes any hand work.
+**An eighth: `pc`, who you play.** Since 27 Nov a published campaign does **not** deal it. The player
+chooses before the deal, on the "Who walks in?" screen (campaign, character, fortune teller):
+- **The shared six:** SEREN-AI `characters/shared/shared-six.json`, with builds at levels 3 and 5.
+- **Or their own:** brought from D&D Beyond and fitted on the ladder.
+
+The chosen character sits on the table face up as `mode: "you"`, and reaches the weaver as `cards.pc`
+like any other face (`name` the character, `changes` leads with the class). A campaign may still carry
+a dealt `pc` deck; the table only uses it if there are no shared characters. *(26 Nov had about five
+per campaign. Superseded by five shared on 27 Nov, which became six.)*
 
 **Every dealt slot is a hand:** the table deals up to three (four for companions) from the slot's deck,
 and the player picks. `posture` is her card: dealt face down, turned over, and she can be made to play

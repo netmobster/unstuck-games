@@ -245,7 +245,12 @@ def _art(c: dict) -> dict:
 )
 def seren_deal() -> dict[str, Any]:
     ai_mode()
-    return {"campaigns": [_art(c) for c in published.listing()], "fake_ai": weave.mocking()}
+    chars = []
+    for p in published.characters():
+        p = dict(p)
+        p["art"] = {k: f"{PUBLIC}/assets{v}" for k, v in p["art"].items()}
+        chars.append(p)
+    return {"campaigns": [_art(c) for c in published.listing()], "characters": chars, "fake_ai": weave.mocking()}
 
 
 @apps.tool(
@@ -421,6 +426,23 @@ SAFE = re.compile(r"^[a-z0-9-]{1,64}$")
 @server.custom_route("/assets/published/{slug}/{name}", methods=["GET"])
 async def art(request: Request) -> Response:
     body = published.art(request.path_params["slug"], request.path_params["name"])
+    if body is None:
+        return JSONResponse({"error": "no such art"}, status_code=404)
+    return Response(body, media_type="image/webp", headers={"Cache-Control": "public, max-age=3600"})
+
+
+@server.custom_route("/assets/characters/{name}", methods=["GET"])
+async def character_art(request: Request) -> Response:
+    return _char(request.path_params["name"])
+
+
+@server.custom_route("/assets/characters/in-situ/{name}", methods=["GET"])
+async def character_art_situ(request: Request) -> Response:
+    return _char("in-situ/" + request.path_params["name"])
+
+
+def _char(name: str) -> Response:
+    body = published.character_art(name)
     if body is None:
         return JSONResponse({"error": "no such art"}, status_code=404)
     return Response(body, media_type="image/webp", headers={"Cache-Control": "public, max-age=3600"})

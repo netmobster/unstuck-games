@@ -112,6 +112,43 @@ def story(slug: str, cards: dict) -> dict | None:
     return out
 
 
+CHAR_ART = re.compile(r"^(in-situ/)?[a-z0-9-]{1,64}\.webp$")
+
+
+def _shared() -> Path | None:
+    """SEREN-AI's characters/shared/, beside campaigns/published/ (27 Nov: the shared six)."""
+    base = root()
+    if base is None:
+        return None
+    p = base.parent.parent / "characters" / "shared"
+    return p if p.is_dir() else None
+
+
+def characters() -> list[dict]:
+    """Who you play: the shared six, player-side (Jay, 27 Nov: campaign, character, fortune teller).
+
+    Each one carries both cards' art and a build per starting level; the table shows the build for
+    the chosen campaign's level. Nothing here is secret: it's the character's own sheet."""
+    base = _shared()
+    data = _read(base / "shared-six.json") if base else None
+    out = []
+    for p in (data or {}).get("characters") or []:
+        c = dict(p)
+        c["art"] = {"p": f"/characters/{p['id']}.webp", "s": f"/characters/in-situ/{p['id']}.webp"}
+        out.append(c)
+    return out
+
+
+def character_art(name: str) -> bytes | None:
+    base = _shared()
+    if base is None or not CHAR_ART.match(name):
+        return None
+    try:
+        return (base / "art" / name).read_bytes()
+    except OSError:
+        return None
+
+
 def art(slug: str, name: str) -> bytes | None:
     base = root()
     if base is None or not SLUG.match(slug) or name not in ART:
