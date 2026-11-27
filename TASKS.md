@@ -73,7 +73,7 @@ Data, in the private SEREN-AI repo (moved off this public one 25 Nov): `librarie
 
 **The order, from 27 Nov (Jay: "campaigns first, one at a time").** The site is done (`/next`, #162 and
 #163). Work down this list; one campaign is finished before the next one starts.
-- [ ] **0. The five shared characters** (decided 27 Nov, `DECISIONS.md`): five who can walk into any
+- [x] **0. The five shared characters** (decided 27 Nov, `DECISIONS.md`): five who can walk into any
       campaign. Each gets a name, a class and who they are, plus SRD builds at level 3 and level 5, with no tie
       written in (the weave supplies the tie). They replace Blood and Ink's five placeholders.
       **Source:** 8–10 D&D Beyond sheets from Mike's campaign. Jay sends the links. CC reads each one in Chrome,
@@ -87,12 +87,18 @@ Data, in the private SEREN-AI repo (moved off this public one 25 Nov): `librarie
       fortune teller (see `DECISIONS.md`). **Built 27 Nov:** Who walks in? is in the table (`deal.html`, so
       on the web and in the Claude app), Blood and Ink's `pc` deck is gone (SEREN-AI `d7f2e0a`), and the
       MCP tests pass (`5555be2`). **Step 0 is done** apart from shipping, which goes with the 1.5 branch.
-- [ ] **1. Blood and Ink.** Tighten it. Its `pc` slot deals the shared five. Lift it out of `LIVE/` without
+- [x] **1. Blood and Ink.** Tighten it. Its `pc` slot deals the shared five. Lift it out of `LIVE/` without
       Jay's sessions, add the SRD 5.2.1 attribution, and design the first dungeon under the press.
-- [ ] **2. Quire.** Today it's a card and art only. Write its deck (origins, companions, personas, 2–3
+      **Done 27 Nov** from Jay's picks: "the ward", the five rooms under the press (SEREN-AI `8dce843`).
+- [x] **2. Quire.** Today it's a card and art only. Write its deck (origins, companions, personas, 2–3
       antagonists), its truths, and its locked spine, then tighten it.
-- [ ] **3. Tallage.** The same as Quire.
-- [ ] **4. A published campaign's truths reach the weaver**, so its mystery is its own and not invented on each weave.
+      **Done 27 Nov:** the heir, the Closed Stacks, a sealed dragon card; the charm-seller's secret kept off
+      every face (with the parent card she's Imrith's go-between). Selectable (SEREN-AI `08090ba`…`4393f11`).
+- [x] **3. Tallage.** The same as Quire. **Done 27 Nov:** the foundling, Fosk/Vey/Fenn, Dirk as a companion,
+      Fosk ruined not killed, the cold-store. Selectable (SEREN-AI `43d1020`, `4393f11`). Not yet woven for
+      real: the first game dealt from Quire or Tallage is its playtest. Name echoes to watch: Brann/Brannoc,
+      Sylas Fennick/Fenn.
+- [x] **4. A published campaign's truths reach the weaver**, so its mystery is its own and not invented on each weave.
 - [ ] **5. Score DM mischief** (118 tricks, unscored past heat), then cut the 1.5 subsets of mischief and
       side quests (97, scored).
 - [ ] **6. Villain moves:** the library the site promises (about thirty in 1.5). It doesn't exist yet.
