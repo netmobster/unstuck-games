@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Ladder · Blood and Ink</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@400;700&family=IM+Fell+English:ital@0;1&family=Spectral:ital,wght@0,300;0,400;1,300&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+/* The levelling screen, a standalone sample (26 Nov 2026). Not wired to anything: Ser'en's level-11
+   sheet (SEREN/characters/seren.md) stepped down one level at a time, using the 2024 druid table
+   (SEREN/library/2024/core.md) and, as the recommended picks, the choices the 29 Aug devolve run made
+   (SEREN/LIVE/sheep-crazy/builds/seren.md). Local only: Circle of the Stars is not SRD content. */
+:root{
+  --ink:#0b0f1c; --felt:#0f1728; --felt-hi:#16213d; --card:#1a2540; --edge:#3a4664;
+  --gilt:#c9a44a; --gilt-hi:#e3c06a; --fbone:#e9dcb5; --mute:#8592b0; --text:#aab3c9;
+  --lost:#c0705f; --held:#7fae73; --ember:#ff6a2b;
+  --deco:'Cinzel Decorative',Georgia,serif; --fell:'IM Fell English',Georgia,serif; --serif:Spectral,Georgia,serif; --mono:'Space Mono',ui-monospace,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:radial-gradient(1200px 700px at 50% -10%,var(--felt-hi),transparent 70%),var(--felt);color:var(--fbone);min-height:100%}
+body{font:300 16px/1.55 var(--serif)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:3px}
+.k{font:700 10px/1.3 var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--gilt)}
+.top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;max-width:1240px;margin:0 auto;padding:28px 20px 10px}
+.top h1{margin:6px 0 0;font:400 clamp(30px,4vw,46px)/1.05 var(--deco);color:var(--gilt-hi)}
+.top p{margin:6px 0 0;font:italic 17px/1.4 var(--fell);color:var(--text);max-width:52ch}
+.goal{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.goal button{border:1px solid var(--edge);background:rgba(10,16,30,.6);border-radius:999px;padding:9px 14px;font:700 10px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--text);cursor:pointer}
+.goal button.on{border-color:var(--gilt);color:var(--gilt-hi);box-shadow:0 0 18px rgba(201,164,74,.18)}
+
+.stage{max-width:1240px;margin:0 auto;padding:16px 20px 60px;display:grid;grid-template-columns:240px minmax(0,1fr) 290px;gap:22px;align-items:start}
+@media (max-width:1060px){.stage{grid-template-columns:200px minmax(0,1fr)}.sheet{grid-column:1/-1}}
+@media (max-width:700px){.stage{grid-template-columns:1fr}}
+
+/* the ladder */
+.ladder{position:relative;padding:6px 0}
+.ladder::before{content:"";position:absolute;left:27px;top:10px;bottom:10px;width:2px;background:linear-gradient(var(--edge),rgba(58,70,100,.2))}
+.rung{position:relative;display:grid;grid-template-columns:56px 1fr;gap:10px;align-items:center;min-height:52px;padding:4px 0}
+.rung .n{position:relative;z-index:1;width:56px;height:40px;border-radius:6px;display:grid;place-items:center;font:400 20px/1 var(--deco);color:var(--mute);background:var(--felt);border:1px solid var(--edge);transition:all .35s}
+.rung .c{font:400 11px/1.45 var(--mono);color:var(--mute)}
+.rung .c b{color:var(--lost);font-weight:400}
+.rung.above .n{color:var(--held);border-color:rgba(127,174,115,.45)}
+.rung.above .c{color:#8fa38a}
+.rung.here .n{width:56px;height:52px;font-size:28px;color:#1a1306;background:linear-gradient(170deg,var(--gilt-hi),var(--gilt));border-color:var(--gilt-hi);box-shadow:0 0 26px rgba(227,192,106,.45)}
+.rung.here .c{color:var(--fbone)}
+.rung.goalrung .n::after{content:"campaign";position:absolute;right:-6px;top:-9px;font:700 7px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--ember);color:#1a0a02;border-radius:2px;padding:3px 4px}
+.rung.below{opacity:.85}
+.rung.far{opacity:.45}
+
+/* the choice now */
+.now{border:1px solid rgba(201,164,74,.6);border-radius:12px;background:linear-gradient(180deg,#16203a,#0f1729);padding:clamp(18px,3vw,30px);
+  box-shadow:0 0 40px rgba(201,164,74,.14),0 30px 70px rgba(0,0,0,.5);min-height:460px;position:relative;overflow:hidden}
+.now .head{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+.now h2{margin:0;font:400 clamp(24px,2.8vw,34px)/1.15 var(--fell);color:var(--fbone)}
+.now .lose{display:flex;flex-wrap:wrap;gap:6px;margin:16px 0 6px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid rgba(192,112,95,.45);color:#e2a596;border-radius:999px;padding:6px 10px;font:400 11.5px/1.2 var(--mono)}
+.chip.keep{border-color:rgba(127,174,115,.45);color:#a9cf9e}
+.chip.same{border-color:var(--edge);color:var(--text)}
+.q{margin:22px 0 10px;font:italic 19px/1.35 var(--fell);color:var(--fbone)}
+.q small{display:block;font:400 11px/1.5 var(--mono);font-style:normal;color:var(--mute);margin-top:4px}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:10px}
+.opt{all:unset;box-sizing:border-box;cursor:pointer;position:relative;border:1px solid var(--edge);border-radius:8px;background:linear-gradient(170deg,var(--card),#111a2e);padding:12px 12px 12px;min-height:84px;transition:transform .2s,border-color .2s,box-shadow .2s}
+.opt:hover{transform:translateY(-2px);border-color:#5b6a91}
+.opt:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:2px}
+.opt i{display:block;font:700 8px/1.2 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--gilt);font-style:normal}
+.opt b{display:block;font:400 17px/1.15 var(--fell);color:var(--fbone);margin-top:6px;font-weight:400}
+.opt em{display:block;font:italic 12.5px/1.35 var(--fell);color:var(--text);margin-top:5px}
+.opt.rec::after{content:"Seren's pick";position:absolute;top:-8px;right:8px;font:700 8px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;background:var(--gilt);color:#1a1306;border-radius:2px;padding:4px 5px}
+.opt.sel{border-color:var(--lost);box-shadow:0 0 0 1px var(--lost),0 0 22px rgba(192,112,95,.25)}
+.opt.sel b{text-decoration:line-through;text-decoration-color:rgba(192,112,95,.8)}
+.opt.sel::before{content:"lets go";position:absolute;bottom:8px;right:10px;font:700 8px/1 var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--lost)}
+.opt.item.sel b{text-decoration:none}
+.opt.item.sel::before{content:attr(data-to);color:var(--gilt-hi);max-width:80%;text-align:right;text-transform:none;letter-spacing:0;font:italic 12px/1.2 var(--fell);bottom:6px}
+.why{margin:12px 0 0;font:italic 14px/1.5 var(--fell);color:var(--text);min-height:1.5em}
+.go{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:24px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:12px 20px;border-radius:3px;border:1px solid var(--gilt);background:var(--gilt);color:#141006;font:700 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;cursor:pointer;transition:transform .15s,filter .15s,opacity .2s}
+.btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+.btn:disabled{opacity:.35;cursor:not-allowed;transform:none;filter:none}
+.btn.ghost{background:none;color:var(--fbone);border-color:var(--edge)}
+.note{font:400 11px/1.6 var(--mono);color:var(--mute)}
+.done{text-align:center;padding:40px 10px}
+.done h2{font:400 clamp(28px,3.4vw,40px)/1.1 var(--deco);color:var(--gilt-hi)}
+.done p{font:italic 18px/1.5 var(--fell);color:var(--text);max-width:46ch;margin:12px auto 0}
+.flash{animation:flash .6s ease}
+@keyframes flash{0%{opacity:.2;transform:translateY(8px)}100%{opacity:1;transform:none}}
+
+/* the sheet */
+.sheet{border:1px solid var(--edge);border-radius:10px;background:rgba(10,16,30,.6);padding:18px}
+.sheet h3{margin:0;font:400 24px/1 var(--deco);color:var(--fbone)}
+.sheet .cls{font:italic 14px/1.3 var(--fell);color:var(--text);margin-top:4px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.stat{border:1px solid #26314d;border-radius:6px;padding:8px;text-align:center}
+.stat b{display:block;font:400 20px/1 var(--deco);color:var(--gilt-hi);transition:color .4s}
+.stat span{font:700 8px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+.stat.dip b{color:var(--lost)}
+.sec{margin-top:14px;font:700 9px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt)}
+.slots{display:grid;gap:5px;margin-top:8px}
+.slots div{display:grid;grid-template-columns:28px 1fr;gap:8px;align-items:center;font:400 10px/1 var(--mono);color:var(--mute)}
+.slots span{display:flex;gap:3px}
+.slots i{width:12px;height:12px;border-radius:50%;border:1px solid var(--gilt);background:var(--gilt);transition:all .4s}
+.slots i.gone{background:none;border-color:#3a4664}
+.list{margin-top:8px;font:400 13.5px/1.6 var(--fell);color:var(--text)}
+.list span{white-space:nowrap}
+.list span.x{color:#5d6987;text-decoration:line-through}
+
+/* ── v2: built FOR a campaign and a book (Jay, 26 Nov) ── */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid rgba(201,164,74,.35)}
+.hero .art{position:absolute;inset:0}
+.hero .art img{width:100%;height:100%;object-fit:cover;object-position:50% 35%;animation:drift 40s ease-in-out infinite alternate}
+@keyframes drift{to{transform:scale(1.08) translate(-1%,-1%)}}
+.hero .art::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(11,15,28,.96) 0%,rgba(11,15,28,.82) 45%,rgba(11,15,28,.35) 100%),linear-gradient(0deg,var(--felt) 0%,transparent 60%)}
+.hero .in{position:relative;max-width:1240px;margin:0 auto;padding:34px 20px 26px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:28px;align-items:end}
+.hero h1{margin:10px 0 0;font:400 clamp(30px,4.4vw,54px)/1.05 var(--deco);color:var(--fbone)}
+.hero h1 input{all:unset;font:inherit;color:var(--gilt-hi);border-bottom:1px dashed rgba(227,192,106,.5);min-width:3ch;max-width:100%;text-shadow:0 0 24px rgba(227,192,106,.35)}
+.hero h1 em{font-style:normal;color:var(--fbone)}
+.hero .sub{margin:12px 0 0;font:italic 18px/1.45 var(--fell);color:#c9cfdd;max-width:58ch}
+.book-card{display:flex;gap:14px;align-items:center;border:1px solid rgba(201,164,74,.55);border-radius:10px;background:rgba(10,16,30,.72);padding:12px 16px 12px 12px;backdrop-filter:blur(6px);box-shadow:0 0 30px rgba(201,164,74,.15)}
+.book-card img{width:66px;aspect-ratio:2/3;object-fit:cover;border-radius:5px;border:1px solid rgba(201,164,74,.7);transform:rotate(-4deg);box-shadow:0 10px 22px rgba(0,0,0,.6)}
+.book-card b{display:block;font:400 20px/1.1 var(--deco);color:var(--gilt-hi)}
+.book-card span{display:block;font:italic 13.5px/1.35 var(--fell);color:var(--text);max-width:24ch;margin-top:4px}
+.book-card i{display:inline-block;margin-top:6px;font:700 9px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;color:#1a0a02;background:var(--ember);border-radius:2px;padding:4px 6px;font-style:normal}
+@media (max-width:760px){.hero .in{grid-template-columns:1fr}}
+.top{padding-top:14px}
+.push{position:relative;animation:push 1.6s ease-in-out infinite}
+@keyframes push{0%,100%{box-shadow:0 0 14px rgba(227,192,106,.25)}50%{box-shadow:0 0 0 6px rgba(227,192,106,.18),0 0 34px rgba(227,192,106,.55)}}
+.push::after{content:"push me";position:absolute;top:-22px;left:50%;transform:translateX(-50%);font:700 8.5px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:var(--gilt-hi);white-space:nowrap}
+.btn.chat{background:none;border-color:rgba(143,168,154,.6);color:#a9cfbb}
+.btn.chat::before{content:"\2197";margin-right:8px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,30px);opacity:0;transition:all .35s;z-index:50;max-width:min(560px,calc(100vw - 32px));border:1px solid rgba(143,168,154,.6);background:#0f1c1a;color:#cfe5d8;border-radius:8px;padding:12px 16px;font:italic 15px/1.45 var(--fell);box-shadow:0 20px 50px rgba(0,0,0,.6);pointer-events:none}
+.toast.on{transform:translate(-50%,0);opacity:1}
+.toast b{display:block;font:700 9px/1.2 var(--mono);letter-spacing:.16em;text-transform:uppercase;color:#8fa89a;font-style:normal;margin-bottom:4px}
+.cover{position:relative;border-radius:10px;overflow:hidden;border:1px solid rgba(201,164,74,.6);margin:0 auto;max-width:520px;aspect-ratio:16/10;box-shadow:0 30px 70px rgba(0,0,0,.6),0 0 40px rgba(201,164,74,.2)}
+.cover img{width:100%;height:100%;object-fit:cover}
+.cover::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,15,28,.95) 5%,rgba(11,15,28,.2) 60%)}
+.cover .t{position:absolute;left:0;right:0;bottom:18px;z-index:1;text-align:center}
+.cover .t b{display:block;font:400 30px/1.05 var(--deco);color:var(--gilt-hi)}
+.cover .t span{display:block;margin-top:6px;font:italic 16px/1.3 var(--fell);color:var(--fbone)}
+</style>
+</head>
+<body>
+<section class="hero">
+  <div class="art" aria-hidden="true"><img src="../next/art/blood-and-ink-header.webp" alt=""></div>
+  <div class="in">
+    <div>
+      <div class="k">Seren · fitting a character to a campaign · a sample on made-up data</div>
+      <h1><input id="pcname" value="Ser'en" aria-label="Your character's name" spellcheck="false"> <em>steps into</em><br>Blood and Ink</h1>
+      <p class="sub">She arrives at level 11. The book is level 3. She comes down one rung at a time, and nothing goes without you choosing it.</p>
+    </div>
+    <div class="book-card"><img src="../next/art/blood-and-ink-back.webp" alt="Blood and Ink's card back"><div><b>Blood and Ink</b><span>A wake tonight, a burial at noon, and somebody at the wake who would rather you went home.</span><i>Level 3</i></div></div>
+  </div>
+</section>
+<header class="top">
+  <div class="k" style="color:var(--mute)">The ladder</div>
+  <div class="goal" role="group" aria-label="Book level">
+    <span class="k" style="color:var(--mute)">Book's level</span>
+    <button type="button" data-goal="3" class="on">3 · Blood and Ink</button>
+    <button type="button" data-goal="1">1 · all the way</button>
+  </div>
+</header>
+
+<main class="stage">
+  <nav class="ladder" id="ladder" aria-label="Levels"></nav>
+  <section class="now" id="now" aria-live="polite"></section>
+  <aside class="sheet" id="sheet"></aside>
+</main>
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+(function(){
+// ── the rules: 2024 druid, levels 1-11 (SEREN/library/2024/core.md) ──────────────────────────
+var T = { // level: [PB, wild shape uses, class cantrips, prepared, slots 1..6]
+  1:[2,0,2,4,[2]], 2:[2,2,2,5,[3]], 3:[2,2,2,6,[4,2]], 4:[2,2,3,7,[4,3]], 5:[3,2,3,9,[4,3,2]],
+  6:[3,3,3,10,[4,3,3]], 7:[3,3,3,11,[4,3,3,1]], 8:[3,3,3,12,[4,3,3,2]], 9:[4,3,3,14,[4,3,3,3,1]],
+  10:[4,3,4,15,[4,3,3,3,2]], 11:[4,3,4,16,[4,3,3,3,2,1]]
+};
+// what each level brings (so stepping below it takes it away)
+var GAINS = {
+  11:['6th-level spells','cantrips hit 3d8'],
+  10:['Twinkling Constellations (Stars)'],
+  9:['5th-level spells'],
+  8:['Ability Score Improvement'],
+  7:['Elemental Fury','4th-level spells'],
+  6:['Cosmic Omen (Stars)','a third Wild Shape'],
+  5:['Wild Resurgence','3rd-level spells','cantrips hit 2d8'],
+  4:['Fey Touched (her level-4 feat)'],
+  3:['Circle of the Stars: Star Map, Starry Form','Celestial Revelation (Aasimar)','2nd-level spells'],
+  2:['Wild Shape','Wild Companion']
+};
+// ── her sheet at 11 (SEREN/characters/seren.md) ─────────────────────────────────────────────
+var CANTRIPS = [
+  {n:'Starry Wisp', w:'60 ft, radiant. Her signature.'},
+  {n:'Produce Flame', w:'Light and fire in one hand.'},
+  {n:'Shillelagh', w:'Her staff hits like a wizard\'s spell.'},
+  {n:'Mending', w:'Fixes a tear, a crack, a broken strap.'}
+];
+var SPELLS = [ // her prepared list, with level
+  ['Entangle',1,'Roots hold a crowd'],['Faerie Fire',1,'Light up the invisible'],['Goodberry',1,'Ten berries, ten small heals'],['Thunderwave',1,'Shove everything away, loudly'],
+  ['Lesser Restoration',2,'End a disease or a poison'],['Moonbeam',2,'A druid whose moonwell is gone, still calling moonlight'],['Pass without Trace',2,'The whole party, silent'],
+  ['Call Lightning',3,'A storm on call'],['Dispel Magic',3,'End a spell'],['Revivify',3,'Back from the dead, within a minute'],
+  ['Freedom of Movement',4,'Nothing holds her'],['Guardian of Nature',4,'Becomes a primal beast or great tree'],
+  ['Commune with Nature',5,'Asks the land what it knows'],['Mass Cure Wounds',5,'Six people back on their feet'],
+  ['Heal',6,'Seventy hit points, one touch']
+].map(function(s){ return {n:s[0], l:s[1], w:s[2]}; });
+var ITEMS = [ // what the 29 Aug devolve decided, as Seren's recommendation
+  {n:'Bracer of Protection', w:'+1 AC, no attunement', rec:true, to:'handed back', why:'+1 AC with no attunement is a level-11 freebie.', alt:'kept'},
+  {n:'Presence Pendant', w:'Not in the rules on disk', rec:true, to:'handed back', why:'Never transcribed, so it can\'t be checked. The natural first thing to hand back later in the story.', alt:'kept'},
+  {n:'Potion of Healing (Greater)', w:'4d4 + 4', rec:true, to:'a Potion of Healing', why:'Same kind of thing, one emergency heal, at this tier.', alt:'kept'},
+  {n:'Herbalism Kit ×2', w:'A spare', rec:true, to:'one kit', why:'Two is a level-11 redundancy.', alt:'kept'},
+  {n:'Pearl of Power', w:'Regain a slot up to 3rd', rec:false, to:'handed back', why:'Seren\'s run kept it on purpose: her best slot is 2nd now, so it does less, and that\'s the point.', alt:'kept'},
+  {n:'Vial of Moonwell Water', w:'Unopened', rec:false, to:'handed back', why:'Never. It transposes to itself. It is the strongest hook on the sheet.', alt:'kept', locked:true}
+];
+// the order Seren lets spells go, most expendable first; the 29 Aug run ended on the last six
+var KEEP = ['Moonbeam','Pass without Trace','Faerie Fire','Entangle','Goodberry','Thunderwave','Lesser Restoration','Revivify','Call Lightning','Dispel Magic','Guardian of Nature','Freedom of Movement','Mass Cure Wounds','Commune with Nature','Heal'];
+function expendable(pool, n){ return pool.slice().sort(function(a, b){ return KEEP.indexOf(b) - KEEP.indexOf(a); }).slice(0, n); }
+var HP11 = 101; // her sheet's override; below 11 the class average: 8 + CON 3 at level 1, +8 a level
+
+// ── state: a stack of rungs, each remembering what was decided on it ─────────────────────────
+var goal = 3, level = 11, made = {}; // made[level] = {spells:[...], cantrips:[...], items:{...}}
+var prepared = SPELLS.map(function(s){ return s.n; });
+var cantrips = CANTRIPS.map(function(c){ return c.n; });
+var items = {}; ITEMS.forEach(function(i){ items[i.n] = 'kept'; });
+var picks = new Set(), itemPicks = {};
+
+function slotsAt(l){ return T[l][4]; }
+function maxSpell(l){ return slotsAt(l).length; }
+function hp(l){ return l === 11 ? HP11 : 11 + 8*(l-1); }
+function pb(l){ return T[l][0]; }
+function spell(n){ return SPELLS.find(function(s){ return s.n === n; }); }
+
+// what stepping from `l` to `l-1` costs, given what she still has
+function step(l){
+  var to = l - 1, cap = T[to][3], top = maxSpell(to);
+  var forced = prepared.filter(function(n){ return spell(n).l > top; });
+  var left = prepared.length - forced.length;
+  var mustDrop = Math.max(0, left - cap);
+  var cantCap = T[to][2];
+  var cantDrop = Math.max(0, cantrips.length - cantCap);
+  var itemStep = (l === 5); // leaving tier 2: the equipment pass (devolve.md §2)
+  return {to:to, forced:forced, mustDrop:mustDrop, cantDrop:cantDrop, itemStep:itemStep, gains:GAINS[l] || []};
+}
+
+function chips(st, l){
+  var c = [];
+  st.gains.forEach(function(g){ c.push('<span class="chip">− ' + g + '</span>'); });
+  if (pb(st.to) < pb(l)) c.push('<span class="chip">proficiency +' + pb(l) + ' → +' + pb(st.to) + '</span>');
+  var a = slotsAt(l), b = slotsAt(st.to);
+  a.forEach(function(n, i){ var m = b[i] || 0; if (m < n) c.push('<span class="chip">− ' + (n-m) + ' ' + ord(i+1) + '-level slot' + (n-m>1?'s':'') + '</span>'); });
+  st.forced.forEach(function(n){ c.push('<span class="chip">− ' + n + '</span>'); });
+  c.push('<span class="chip same">HP ' + hp(l) + ' → ' + hp(st.to) + '</span>');
+  if (st.gains.join().indexOf('Ability Score') >= 0) c.push('<span class="chip keep">her scores stay as they are (ruling R-1)</span>');
+  return c.join('');
+}
+function ord(n){ return n + (['','st','nd','rd'][n] || 'th'); }
+function short(st){
+  var bits = [];
+  if (st.gains.length) bits.push(st.gains[0].replace(/ \(.*\)/,''));
+  if (st.forced.length) bits.push('<b>−' + st.forced.length + ' spell' + (st.forced.length>1?'s':'') + '</b>');
+  if (st.mustDrop) bits.push('<b>pick ' + st.mustDrop + '</b>');
+  if (st.cantDrop) bits.push('<b>a cantrip</b>');
+  if (st.itemStep) bits.push('<b>items</b>');
+  return bits.join(' · ');
+}
+
+// ── draw ─────────────────────────────────────────────────────────────────────────────────────
+var $name = document.getElementById('pcname');
+function who(){ return ($name.value || 'She').trim(); }
+var $meas = document.createElement('span'); $meas.style.cssText = 'position:absolute;visibility:hidden;white-space:pre;font:inherit;letter-spacing:inherit';
+$name.parentNode.appendChild($meas);
+function fit(){ $meas.textContent = $name.value || 'Name'; $name.style.width = ($meas.offsetWidth + 6) + 'px'; }
+if (document.fonts) document.fonts.ready.then(fit);
+$name.addEventListener('input', function(){ fit(); drawNow(); drawSheet(); }); fit();
+function toast(t){ var e = document.getElementById('toast'); e.innerHTML = '<b>In Claude, this goes to the chat</b>' + t; e.classList.add('on'); clearTimeout(toast.k); toast.k = setTimeout(function(){ e.classList.remove('on'); }, 5200); }
+var $l = document.getElementById('ladder'), $n = document.getElementById('now'), $s = document.getElementById('sheet');
+
+function drawLadder(){
+  var h = '';
+  for (var l = 11; l >= 1; l--){
+    var cls = l > level ? 'above' : l === level ? 'here' : (l < goal ? 'below far' : 'below');
+    if (l === goal) cls += ' goalrung';
+    var txt = '';
+    if (l > level){ var m = made[l]; txt = m ? m.summary : ''; }
+    else if (l === level){ txt = level === goal ? 'here' : 'deciding'; }
+    else { var st = l+1 <= 11 ? stepPreview(l+1) : null; txt = st ? short(st) : ''; }
+    h += '<div class="rung ' + cls + '"><span class="n">' + l + '</span><span class="c">' + (txt || '&nbsp;') + '</span></div>';
+  }
+  $l.innerHTML = h;
+}
+// a preview of a rung below the current one, as if every pick went with Seren's recommendation
+function stepPreview(l){
+  if (l > level) return null;
+  var save = [prepared.slice(), cantrips.slice()];
+  for (var k = level; k > l; k--){ var s = step(k); simulate(s); }
+  var st = step(l);
+  prepared = save[0]; cantrips = save[1];
+  return st;
+}
+function simulate(s){
+  prepared = prepared.filter(function(n){ return s.forced.indexOf(n) < 0; });
+  var drop = expendable(prepared, s.mustDrop); prepared = prepared.filter(function(n){ return drop.indexOf(n) < 0; });
+  cantrips = cantrips.slice(0, cantrips.length - s.cantDrop);
+}
+
+function drawNow(){
+  if (level === goal){
+    $n.innerHTML = '<div class="done flash"><div class="k">Fitted to the book</div>' +
+      '<div class="cover" style="margin-top:16px"><img src="../next/art/blood-and-ink-header.webp" alt="The orchard at dusk, the wake gathering"><div class="t"><b>Blood and Ink</b><span>' + who() + ', Druid ' + level + ', at the wake</span></div></div>' +
+      '<p>Every spell, cantrip and item that went was decided by you, rung by rung. That is the record Seren needs before she writes the build, and then she weaves the book around who you brought.</p>' +
+      '<div class="go" style="justify-content:center"><button class="btn push" type="button" id="weave">Weave her book</button><button class="btn ghost" type="button" id="back">Climb back up a rung</button><button class="btn ghost" type="button" id="restart">Start again at 11</button></div></div>';
+    document.getElementById('weave').onclick = function(){ toast('The loom takes it from here: ' + who() + ' at level ' + level + ', her picks, and Blood and Ink\'s hand. In this sample nothing is woven.'); };
+    document.getElementById('back').onclick = up;
+    document.getElementById('restart').onclick = reset;
+    return;
+  }
+  var st = step(level);
+  var h = '<div class="flash"><div class="head"><span class="k">Step ' + (12 - level) + ' · level ' + level + ' → ' + st.to + '</span></div>' +
+          '<h2>What level ' + st.to + ' costs ' + who() + '</h2><div class="lose">' + chips(st, level) + '</div>';
+  var need = 0;
+  if (st.itemStep){
+    need = -1;
+    h += '<div class="q">Leaving the second tier. What happens to what ' + who() + ' carries?<small>Nothing is carried down unless you say so. Tap an item to change Seren\'s pick.</small></div><div class="opts">';
+    ITEMS.forEach(function(it){
+      var v = itemPicks[it.n]; if (v === undefined) v = it.rec ? it.to : it.alt;
+      itemPicks[it.n] = v;
+      h += '<button type="button" class="opt item' + (v !== 'kept' ? ' sel' : '') + (it.rec ? ' rec' : '') + '" data-item="' + it.n + '" data-to="→ ' + v + '"' + (it.locked ? ' aria-disabled="true"' : '') + '><i>' + (v === 'kept' ? 'keeps' : 'transposed') + '</i><b>' + it.n + '</b><em>' + it.w + '</em></button>';
+    });
+    h += '</div><p class="why" id="why">Tap an item for why.</p>';
+  }
+  if (st.cantDrop){
+    h += '<div class="q">Level ' + st.to + ' holds ' + T[st.to][2] + ' druid cantrips, not ' + cantrips.length + '. Which one does ' + who() + ' let go?<small>Resistance (Primal Order), Guidance (Star Map) and Light (Aasimar) come from elsewhere and stay.</small></div><div class="opts">';
+    cantrips.forEach(function(n, i){
+      var c = CANTRIPS.find(function(x){ return x.n === n; });
+      h += '<button type="button" class="opt' + (picks.has('c:' + n) ? ' sel' : '') + (i === cantrips.length - 1 ? ' rec' : '') + '" data-pick="c:' + n + '"><i>cantrip</i><b>' + n + '</b><em>' + c.w + '</em></button>';
+    });
+    h += '</div>';
+  }
+  if (st.mustDrop){
+    var pool = prepared.filter(function(n){ return st.forced.indexOf(n) < 0; });
+    var recs = expendable(pool, st.mustDrop);
+    h += '<div class="q">She can prepare ' + T[st.to][3] + ' spells at level ' + st.to + '. Choose ' + st.mustDrop + ' more to let go.<small>Spells above her new highest slot are already gone. A level-' + level + ' list was chosen for level-' + level + ' problems.</small></div><div class="opts">';
+    pool.forEach(function(n){
+      var s = spell(n);
+      h += '<button type="button" class="opt' + (picks.has('s:' + n) ? ' sel' : '') + (recs.indexOf(n) >= 0 ? ' rec' : '') + '" data-pick="s:' + n + '"><i>' + ord(s.l) + ' level</i><b>' + n + '</b><em>' + s.w + '</em></button>';
+    });
+    h += '</div>';
+  }
+  if (!st.itemStep && !st.cantDrop && !st.mustDrop) h += '<p class="q">Nothing to choose on this rung. The table takes it.</p>';
+  h += '<div class="go"><button class="btn" type="button" id="down">Step down to ' + st.to + '</button>' +
+       (level < 11 ? '<button class="btn ghost" type="button" id="up">Back up to ' + (level + 1) + '</button>' : '') +
+       '<button class="btn ghost" type="button" id="auto">Take Seren\'s picks</button><button class="btn chat" type="button" id="ask">Talk it over in chat</button><span class="note" id="left"></span></div></div>';
+  $n.innerHTML = h;
+
+  $n.querySelectorAll('[data-pick]').forEach(function(b){ b.onclick = function(){
+    var k = b.dataset.pick, kind = k[0], same = Array.from(picks).filter(function(p){ return p[0] === kind; });
+    var cap = kind === 'c' ? st.cantDrop : st.mustDrop;
+    if (picks.has(k)) picks.delete(k); else { if (same.length >= cap) picks.delete(same[0]); picks.add(k); }
+    drawNow(); drawSheet();
+  }; });
+  $n.querySelectorAll('[data-item]').forEach(function(b){ b.onclick = function(){
+    var it = ITEMS.find(function(x){ return x.n === b.dataset.item; });
+    if (!it.locked){ itemPicks[it.n] = itemPicks[it.n] === 'kept' ? it.to : 'kept'; drawNow(); }
+    var w = document.getElementById('why'); if (w) w.textContent = it.n + ': ' + it.why;
+  }; });
+  document.getElementById('down').onclick = function(){ down(st); };
+  document.getElementById('auto').onclick = function(){ autopick(st); };
+  document.getElementById('ask').onclick = function(){ toast(st.itemStep
+    ? '“' + who() + ' is leaving the second tier. Seren suggests handing back the Bracer and the Pendant and keeping the Pearl. What would you do?”'
+    : '“Level ' + level + ' to ' + st.to + ': ' + (st.mustDrop ? 'which ' + st.mustDrop + ' spell' + (st.mustDrop > 1 ? 's' : '') + ' should ' + who() + ' let go, and why?' : 'what does ' + who() + ' lose here, and does it matter at the wake?') + '”'); };
+  var u = document.getElementById('up'); if (u) u.onclick = up;
+  ready(st);
+}
+function ready(st){
+  var sp = Array.from(picks).filter(function(p){ return p[0] === 's'; }).length;
+  var cp = Array.from(picks).filter(function(p){ return p[0] === 'c'; }).length;
+  var left = (st.mustDrop - sp) + (st.cantDrop - cp);
+  var d = document.getElementById('down'), au = document.getElementById('auto');
+  d.disabled = left > 0;
+  d.classList.toggle('push', left === 0); au.classList.toggle('push', left > 0);
+  document.getElementById('left').textContent = left > 0 ? left + ' to choose' : '';
+}
+function autopick(st){
+  picks.clear();
+  if (st.cantDrop) cantrips.slice(-st.cantDrop).forEach(function(n){ picks.add('c:' + n); });
+  if (st.mustDrop) expendable(prepared.filter(function(n){ return st.forced.indexOf(n) < 0; }), st.mustDrop).forEach(function(n){ picks.add('s:' + n); });
+  drawNow(); drawSheet();
+}
+
+function down(st){
+  var gone = st.forced.slice(), cg = [];
+  picks.forEach(function(p){ if (p[0] === 's') gone.push(p.slice(2)); else cg.push(p.slice(2)); });
+  var snapshot = {prepared:prepared.slice(), cantrips:cantrips.slice(), items:Object.assign({}, items)};
+  prepared = prepared.filter(function(n){ return gone.indexOf(n) < 0; });
+  cantrips = cantrips.filter(function(n){ return cg.indexOf(n) < 0; });
+  var it = [];
+  if (st.itemStep) ITEMS.forEach(function(i){ items[i.n] = itemPicks[i.n]; if (itemPicks[i.n] !== 'kept') it.push(i.n.split(' (')[0] + ' → ' + itemPicks[i.n]); });
+  var sum = [];
+  if (gone.length) sum.push('let go ' + gone.join(', '));
+  if (cg.length) sum.push(cg.join(', '));
+  if (it.length) sum.push(it.length + ' items transposed');
+  made[level] = {snapshot:snapshot, summary:(sum.join(' · ') || 'nothing to choose')};
+  picks.clear(); level = st.to;
+  draw();
+}
+function up(){
+  if (level >= 11) return;
+  var m = made[level + 1];
+  prepared = m.snapshot.prepared; cantrips = m.snapshot.cantrips; items = m.snapshot.items;
+  delete made[level + 1]; level += 1; picks.clear();
+  draw();
+}
+function reset(){
+  level = 11; made = {}; picks.clear(); itemPicks = {};
+  prepared = SPELLS.map(function(s){ return s.n; }); cantrips = CANTRIPS.map(function(c){ return c.n; });
+  ITEMS.forEach(function(i){ items[i.n] = 'kept'; });
+  draw();
+}
+
+function drawSheet(){
+  var p = pb(level), wis = 4;
+  var stats = [['Level', level], ['HP', hp(level)], ['Prof.', '+' + p], ['Spell DC', 8 + p + wis], ['Attack', '+' + (p + wis)], ['Wild Shape', T[level][1] || '—']];
+  var h = '<div class="k">Her sheet, live</div><h3 style="margin-top:8px">' + who() + '</h3><div class="cls">Aasimar Druid ' + level + (level >= 3 ? ', Circle of the Stars' : '') + '</div><div class="stats">';
+  stats.forEach(function(s){ h += '<div class="stat"><b>' + s[1] + '</b><span>' + s[0] + '</span></div>'; });
+  h += '</div><div class="sec">Spell slots</div><div class="slots">';
+  var full = slotsAt(11), now = slotsAt(level);
+  full.forEach(function(n, i){
+    var m = now[i] || 0, dots = '';
+    for (var k = 0; k < n; k++) dots += '<i class="' + (k < m ? '' : 'gone') + '"></i>';
+    h += '<div>' + ord(i+1) + '<span>' + dots + '</span></div>';
+  });
+  var pend = new Set(); picks.forEach(function(x){ pend.add(x.slice(2)); });
+  var top = maxSpell(level);
+  h += '</div><div class="sec">Prepared · ' + prepared.length + ' of ' + T[level][3] + '</div><div class="list">' +
+    SPELLS.map(function(s){
+      var has = prepared.indexOf(s.n) >= 0;
+      return has ? '<span' + (pend.has(s.n) ? ' class="x"' : '') + '>' + s.n + '</span>' : '<span class="x">' + s.n + '</span>';
+    }).join(' · ') + '</div>';
+  h += '<div class="sec">Cantrips</div><div class="list">' + CANTRIPS.map(function(c){
+      return '<span' + (cantrips.indexOf(c.n) < 0 || pend.has(c.n) ? ' class="x"' : '') + '>' + c.n + '</span>'; }).join(' · ') +
+    ' · Resistance · Guidance · Light</div>';
+  h += '<div class="sec">Carrying</div><div class="list">' + ITEMS.map(function(i){
+      var v = items[i.n]; return v === 'kept' ? '<span>' + i.n + '</span>' : '<span class="x">' + i.n + '</span>'; }).join(' · ') + '</div>';
+  $s.innerHTML = h;
+}
+
+function draw(){ drawLadder(); drawNow(); drawSheet(); }
+
+document.querySelectorAll('[data-goal]').forEach(function(b){ b.onclick = function(){
+  document.querySelectorAll('[data-goal]').forEach(function(x){ x.classList.toggle('on', x === b); });
+  goal = +b.dataset.goal; if (level < goal) reset(); draw();
+}; });
+draw();
+})();
+</script>
+</body>
+</html>
