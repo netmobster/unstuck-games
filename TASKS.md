@@ -79,6 +79,9 @@ Data, in the private SEREN-AI repo (moved off this public one 25 Nov): `librarie
       **Source:** 8–10 D&D Beyond sheets from Mike's campaign. Jay sends the links. CC reads each one in Chrome,
       and five are picked. Each is anonymised and Seren-ized: renamed, refocused onto SRD 5.2.1, and kept
       off min-maxed builds. Each gets its own Seren-style picker (yes / no / edit on every suggested change).
+      **27 Nov:** six approved (see `DECISIONS.md`). Card art comes from GPT, saved in SEREN-AI at
+      `characters/shared/art/`. Done: Ellery, Tibbet, Sable. Still to come: Brann, Sylas, Corwin, all in the
+      matched night-city set. **Then a second set:** all six in situ, each in their own setting.
 - [ ] **1. Blood and Ink.** Tighten it. Its `pc` slot deals the shared five. Lift it out of `LIVE/` without
       Jay's sessions, add the SRD 5.2.1 attribution, and design the first dungeon under the press.
 - [ ] **2. Quire.** Today it's a card and art only. Write its deck (origins, companions, personas, 2–3
