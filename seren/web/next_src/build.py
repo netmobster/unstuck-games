@@ -108,6 +108,10 @@ def shell(cur, title, desc, body):
 """
 
 
+# one stylesheet: the old /next's house, verbatim, then what Roads adds on top of it
+(OUT / "next.css").write_text((SRC / "house.css").read_text(encoding="utf-8") + (SRC / "roads.css").read_text(encoding="utf-8"),
+                              encoding="utf-8", newline="\n")
+
 book = book_html(BOOK.read_text(encoding="utf-8"))
 for f, path, label, title, desc in PAGES:
     body = (SRC / f"{f}.html").read_text(encoding="utf-8").replace("{{L}}", LANTERN).replace("{{BOOK}}", book)
