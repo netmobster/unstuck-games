@@ -84,8 +84,9 @@ Data, in the private SEREN-AI repo (moved off this public one 25 Nov): `librarie
       in situ, every one checked and kept (SEREN-AI `9a6b13b`). **Write-ups and builds done and rules-checked**
       (`characters/shared/shared-six.json`, `a7673fc`). The picker page is
       [Who You Play](https://claude.ai/artifact/QoqFWVcuzBCoWircKgj5qz). **Order decided:** campaign, character,
-      fortune teller (see `DECISIONS.md`). **Still to do:** take the `pc` deck out of Blood and Ink's
-      `deck.json`, and build the character screen into the app.
+      fortune teller (see `DECISIONS.md`). **Built 27 Nov:** Who walks in? is in the table (`deal.html`, so
+      on the web and in the Claude app), Blood and Ink's `pc` deck is gone (SEREN-AI `d7f2e0a`), and the
+      MCP tests pass (`5555be2`). **Step 0 is done** apart from shipping, which goes with the 1.5 branch.
 - [ ] **1. Blood and Ink.** Tighten it. Its `pc` slot deals the shared five. Lift it out of `LIVE/` without
       Jay's sessions, add the SRD 5.2.1 attribution, and design the first dungeon under the press.
 - [ ] **2. Quire.** Today it's a card and art only. Write its deck (origins, companions, personas, 2–3
