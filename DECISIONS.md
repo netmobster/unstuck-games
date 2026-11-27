@@ -15,6 +15,17 @@ every table, so a player gets to know them. What it changes:
   characters to be anonymised and used as modified archetypes. Unusual builds appeal to players more than
   standard ones. Each gets a new name, a few details changed, SRD 5.2.1 only, and no min-maxing. No
   player names or real sheet names go into the shipped files.
+- **The six, and every change, approved** (Jay: "all changes approved"). Scored on uniqueness,
+  playability, versatility and character ([page](https://claude.ai/artifact/8AYsb62CZyH2L7SsHkwLx9)):
+  - Ellery du Lacq, a Lore bard (was Llewellyn)
+  - Sable the Mislaid, a Thief rogue (was Deerx)
+  - Tibbet Wickmoor, a Hunter ranger and candlemaker (was Chancy)
+  - Brann Stonequill, a Life cleric (was Reg)
+  - Sylas Fennick, a Fiend warlock (was Fingolfan)
+  - Corwin Ashbanner, a Devotion paladin (was Arthryn)
+
+  Bram Holloway (was Korth) and Vael (was Ara) are renamed alternates. Kree and Ithilwen are passed over.
+  Card art comes from GPT, one prompt per card ([prompts](https://claude.ai/artifact/XPF3QE1abune3UqvYFvm5k)).
 - **The `pc` slot stays in the deck format**, but it deals from the shared five rather than from a deck
   each campaign writes. A brought character, like Serenista from D&D Beyond, still replaces them.
 
