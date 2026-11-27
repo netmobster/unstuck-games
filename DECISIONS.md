@@ -1,5 +1,21 @@
 # Decisions — Unstuck Games
 
+## 2026-11-27 — the /next session, continued — The mischief cut, the Director's needs, urgent filed
+
+- **The cut is Jay's** (picker https://claude.ai/artifact/DyhszxsqYHX4utoCF5MuNb): 38 ship, 4 cruel ship off by
+  default, 4 table-only held for 1.6 (SEREN-AI `libraries/mischief/pass-2.json`). He trimmed tricks that
+  weren't realistically feasible ("a player says x and then"). Table Theatre, Traps and Fate end with 2
+  each, under the floor of 3: his call, left as is. The scorers marked down pure-dread table theatre on
+  story; Jay's 25 Nov top 10 started on regardless.
+- **Feasibility:** all 42 work, 31 as written and 11 adapted (`feasibility-pass-2.json`).
+- **The Director changes are yes** (Jay: "yes to director changes besides that"): triggers are
+  structured state, never the player's words; the dice log carries each check's type and target; the
+  new narrator flags; the server holds every secret; mischief runs beside the main plot, never rewrites
+  it; campaign settings for romance and the time skip; cruel keeps a way out. Written into
+  `seren/DM-MISCHIEF.md` ("What the Director needs").
+- **URGENT goes to IDEAS, not 1.5** (Jay: "move urgent to ideas"). It's easier once player accounts exist:
+  count the player's sessions, and decide whether a campaign allows urgent when the book is written.
+
 ## 2026-11-27 — the /next session, continued — Scoring the mischief, and what the Director runs at once
 
 Jay: "yes to plan", plus two corrections on cruel and table-only.
