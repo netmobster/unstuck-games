@@ -97,6 +97,72 @@
     });
   }, .45);
 
+  // Watch one get made: eight beats of a real run. Plays only while it's on screen; tap or arrows step it;
+  // reduced motion gets the stills and the words with nothing moving (Jay, 27 Nov).
+  document.querySelectorAll('[data-mk]').forEach(function(mk){
+    var slides = [].slice.call(mk.querySelectorAll('.mk-s')), steps = [];
+    try { steps = JSON.parse(mk.parentNode.querySelector('[data-mk-steps]').textContent); } catch(e){}
+    var dots = mk.querySelector('[data-mk-dots]'), kEl = mk.querySelector('[data-mk-k]'), pEl = mk.querySelector('[data-mk-p]');
+    var play = mk.querySelector('[data-mk-play]'), at = 0, timer = null, typing = [], inView = false, paused = quiet;
+    slides.forEach(function(s, i){
+      if (s.dataset.z) s.style.setProperty('--z', s.dataset.z);
+      if (s.dataset.o) s.style.setProperty('--o', s.dataset.o);
+      var b = document.createElement('button'); b.type = 'button'; b.setAttribute('aria-label', 'Step ' + (i + 1) + ': ' + ((steps[i] || [])[0] || ''));
+      b.onclick = function(){ go(i, true); }; dots.appendChild(b);
+    });
+    function hold(i){ return +(slides[i].dataset.hold || 5200); }
+    function stopTyping(){ typing.forEach(clearTimeout); typing = []; }
+    function teller(s){
+      var box = s.querySelector('.mk-lines'), clock = s.querySelector('.mk-clock b'); if (!box) return;
+      var lines = [1, 2, 3, 4].map(function(n){ return box.getAttribute('data-l' + n); }).filter(Boolean);
+      box.innerHTML = '';
+      if (quiet){ box.innerHTML = '<i>' + lines[0] + '</i>'; if (clock) clock.textContent = '1:12'; return; }
+      var per = Math.floor(hold(at) / lines.length), secs = [8, 41, 79, 112];
+      lines.forEach(function(line, n){
+        typing.push(setTimeout(function(){
+          [].forEach.call(box.children, function(c){ c.classList.add('old'); });
+          while (box.children.length > 1) box.removeChild(box.firstChild);
+          var el = document.createElement('i'); box.appendChild(el);
+          if (clock) clock.textContent = Math.floor(secs[n] / 60) + ':' + ('0' + secs[n] % 60).slice(-2);
+          var c = 0; (function type(){ el.textContent = line.slice(0, ++c); if (c < line.length) typing.push(setTimeout(type, 16)); })();
+        }, n * per));
+      });
+    }
+    function go(i, byHand){
+      at = (i + slides.length) % slides.length; stopTyping();
+      slides.forEach(function(s, n){ s.classList.toggle('on', n === at); });
+      [].forEach.call(dots.children, function(d, n){
+        d.classList.toggle('done', n < at); d.classList.remove('on'); void d.offsetWidth;
+        if (n === at){ d.classList.add('on'); d.style.setProperty('--d', hold(n) + 'ms'); }
+      });
+      var st = steps[at] || ['', '']; kEl.textContent = st[0]; pEl.textContent = st[1];
+      if (slides[at].classList.contains('mk-teller')) teller(slides[at]);
+      if (byHand && !quiet) { paused = false; }
+      schedule();
+    }
+    function schedule(){
+      clearTimeout(timer); mk.classList.toggle('paused', paused || !inView);
+      play.textContent = paused ? '▶' : '❚❚'; play.setAttribute('aria-label', paused ? 'Play' : 'Pause');
+      if (!paused && inView && !document.hidden) timer = setTimeout(function(){ go(at + 1); }, hold(at));
+    }
+    mk.querySelector('[data-mk-next]').onclick = function(){ go(at + 1, true); };
+    mk.querySelector('[data-mk-prev]').onclick = function(){ go(at - 1, true); };
+    mk.querySelector('[data-mk-stage]').onclick = function(){ go(at + 1, true); };
+    play.onclick = function(){ paused = !paused; if (!paused) go(at); else { stopTyping(); schedule(); } };
+    mk.addEventListener('keydown', function(e){
+      if (e.key === 'ArrowRight'){ e.preventDefault(); go(at + 1, true); }
+      if (e.key === 'ArrowLeft'){ e.preventDefault(); go(at - 1, true); }
+    });
+    document.addEventListener('visibilitychange', schedule);
+    // Lazy images on stacked, hidden slides may never load in time; once it's near, ask for all eight.
+    function eager(){ slides.forEach(function(s){ var im = s.querySelector('img'); if (im) im.loading = 'eager'; }); }
+    if (io){
+      new IntersectionObserver(function(es, o){ if (es[0].isIntersecting){ eager(); o.disconnect(); } }, { rootMargin: '600px 0px' }).observe(mk);
+      new IntersectionObserver(function(es){ inView = es[0].isIntersecting; schedule(); }, { threshold: .35 }).observe(mk);
+    } else { inView = true; eager(); }
+    go(0);
+  });
+
   // a will-o'-wisp crosses the mischief, and motes rise where she's been
   document.querySelectorAll('.mischief').forEach(function(m){
     var w = m.querySelector('.willo');

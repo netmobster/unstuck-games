@@ -813,3 +813,44 @@ main.parch > .in{padding-bottom:20px}
   .js .rv,.js .punch,.js .panel.log .row,.js .sc-name b{opacity:1!important;transform:none!important;clip-path:none!important}
   .willo{display:none}
 }
+
+/* ── Watch one get made (Jay, 27 Nov): a real run, cut to eight beats, wisps drifting through ── */
+.make{background:radial-gradient(1000px 560px at 70% 10%,rgba(140,220,190,.07),transparent 70%),radial-gradient(1100px 620px at 30% 0%,var(--felt-hi),transparent 70%),var(--felt);border-top-color:#1d2944}
+.make .willo.go{animation:willoPath 16s linear infinite,willoGlow 1.3s ease-in-out infinite alternate}
+.make .in{position:relative;z-index:2}
+.mk-head .say{max-width:24ch}
+.mk{margin-top:30px;outline:none}
+.mk:focus-visible .mk-stage{box-shadow:0 0 0 2px var(--gilt-hi),0 30px 70px rgba(0,0,0,.55)}
+.mk-stage{position:relative;aspect-ratio:1600/1050;border-radius:14px;overflow:hidden;cursor:pointer;background:#0a0f1c;
+  box-shadow:0 0 0 1px rgba(201,164,74,.55),0 30px 70px rgba(0,0,0,.55),0 0 60px rgba(201,164,74,.12)}
+.mk-s{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .9s ease}
+.mk-s.on{opacity:1;z-index:1}
+.mk-s img{width:100%;height:100%;object-fit:cover;object-position:var(--o,50% 50%);transform:scale(var(--z,1));transform-origin:var(--o,50% 50%)}
+.mk-s.on img{animation:mkPush 7s ease-out both}
+@keyframes mkPush{from{transform:scale(calc(var(--z,1) * 1.05))}to{transform:scale(var(--z,1))}}
+.mk-teller img{filter:blur(6px) brightness(.45);transform:scale(1.08)}
+.mk-teller.on img{animation:none}
+.mk-tl{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:18px;padding:6% 9%;text-align:center}
+.mk-clock{font:700 10.5px/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--mute)}
+.mk-clock b{font:400 22px/1 var(--deco);color:var(--gilt-hi);margin-left:6px;letter-spacing:0;font-variant-numeric:tabular-nums}
+.mk-lines{display:flex;flex-direction:column;gap:12px;max-width:44ch;min-height:9em;justify-content:flex-end}
+.mk-lines i{display:block;font:italic 400 clamp(15px,2vw,23px)/1.45 var(--fell);color:var(--fbone);text-shadow:0 2px 12px #000;transition:opacity .6s,font-size .6s}
+.mk-lines i.old{opacity:.4;font-size:clamp(13px,1.4vw,16px)}
+.mk-cap{display:grid;grid-template-columns:auto 1fr;gap:6px 18px;align-items:baseline;margin-top:18px;min-height:3.2em}
+.mk-cap .k{color:var(--gilt);white-space:nowrap}
+.mk-cap p{margin:0;font:italic 400 clamp(17px,1.8vw,20px)/1.45 var(--fell);color:#d6d0bd}
+.mk-ctl{display:flex;align-items:center;gap:10px;margin-top:14px}
+.mk-b{all:unset;box-sizing:border-box;cursor:pointer;width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(201,164,74,.45);color:var(--gilt-hi);font:400 18px/1 var(--serif);transition:border-color .2s,background .2s}
+.mk-b:hover{border-color:var(--gilt-hi);background:rgba(201,164,74,.1)}
+.mk-b:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:3px}
+.mk-b[data-mk-play]{font-size:11px;letter-spacing:-1px}
+.mk-dots{display:flex;gap:6px;flex:1;align-items:center}
+.mk-dots button{all:unset;cursor:pointer;flex:1;height:4px;border-radius:2px;background:rgba(201,164,74,.2);position:relative;overflow:hidden}
+.mk-dots button::after{content:"";position:absolute;inset:0;background:var(--gilt-hi);transform:scaleX(0);transform-origin:left}
+.mk-dots button.done::after{transform:scaleX(1)}
+.mk-dots button.on::after{animation:mkFill var(--d,5s) linear both}
+.mk.paused .mk-dots button.on::after{animation-play-state:paused}
+@keyframes mkFill{to{transform:scaleX(1)}}
+.mk-dots button:focus-visible{outline:2px solid var(--gilt-hi);outline-offset:3px}
+@media (max-width:640px){.mk-stage{aspect-ratio:4/5}.mk-s img{transform:scale(calc(var(--z,1) * 1.1))}.mk-cap{grid-template-columns:1fr}.mk-lines{min-height:7em}.mk-lines i.old{display:none}}
+@media (prefers-reduced-motion:reduce){.mk-s.on img{animation:none}.mk-dots button.on::after{animation:none;transform:scaleX(1)}}
