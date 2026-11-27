@@ -16,6 +16,10 @@ from mcp.server.apps import APP_MIME_TYPE, EXTENSION_ID
 
 import server as seren
 
+# The tests run on fake AI whatever the live switch (seren/.local/ai-mode) says.
+seren.AI_MODE = seren.LOCAL / 'no-such-ai-mode'
+seren.os.environ['SEREN_AI'] = 'mock'
+
 FAILS: list[str] = []
 
 
@@ -34,7 +38,7 @@ async def main() -> int:
     async with Client(seren.server, extensions=as_claude) as client:
         tools = dump(await client.list_tools())["tools"]
         names = sorted(t["name"] for t in tools)
-        check(names == ["open_seren", "seren_character", "seren_deal", "seren_level", "seren_ruling", "seren_save_build", "seren_weave"], f"seven tools (got {names})")
+        check(names == ["open_seren", "seren_character", "seren_deal", "seren_level", "seren_ruling", "seren_save_build", "seren_weave", "seren_weave_status"], f"eight tools (got {names})")
         by = {t["name"]: t for t in tools}
         vis = {n: ((by[n].get("_meta") or {}).get("ui") or {}).get("visibility") for n in names}
         check(vis["open_seren"] is None and vis["seren_deal"] == ["app"] and vis["seren_weave"] == ["app"],

@@ -31,6 +31,8 @@ import re
 import secrets
 import shutil
 import sys
+import threading
+import time
 from pathlib import Path
 from typing import Any
 from urllib.parse import urlparse
@@ -149,7 +151,16 @@ window.__mcpReady=new Promise(function(r){window.__mcpResolve=r});
     });
   }
   window.serenShelf=function(){return call('seren_deal')};
-  window.serenWeave=function(body){return call('seren_weave',body).then(function(j){return{ok:!!j.ok,j:j}})};
+  window.serenWeave=function(body){
+    // A real weave runs in the background on the server; ask every 4 seconds until it is done (about 2-3 minutes).
+    return call('seren_weave',body).then(function(j){
+      if(!j.pending)return{ok:!!j.ok,j:j};
+      var n=0;return new Promise(function(done){(function ask(){
+        if(++n>120)return done({ok:false,j:{error:'The weave took longer than eight minutes. Try again.'}});
+        setTimeout(function(){call('seren_weave_status',{job:j.job}).then(function(s){
+          if(s.pending)return ask();done({ok:!!s.ok,j:s})}).catch(function(){ask()})},4000)})()});
+    });
+  };
   window.serenDownload=function(j){
     var file={type:'resource',resource:{uri:'file:///'+j.slug+'.md',mimeType:'text/markdown',text:j.book||''}};
     return ready.then(function(){return app.downloadFile({contents:[file]})})
@@ -247,8 +258,48 @@ def seren_deal() -> dict[str, Any]:
     annotations=CREATE,
 )
 def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, Any]) -> dict[str, Any]:
-    """The web table's /api/weave, as a tool: weave, audit (one mend), write the book, save it."""
+    """The web table's /api/weave, as a tool: weave, audit (one mend), write the book, save it.
+
+    A real weave on Opus takes about two and a half minutes, and Claude gives up on a tool call at two
+    (26 Nov, the play-through: "MCP error -32001: Request timed out", while the server went on to write
+    the book). So a real weave starts in the background and returns a job at once; the app asks
+    seren_weave_status until it is done. Fake AI answers in a second, so it still answers inline."""
     tier = "paid" if ai_mode() == "real" else TIER      # real from the switch means Opus
+    if weave.mocking():
+        return _weave_now(picks, cards, dials, tier)
+    job = secrets.token_hex(6)
+    JOBS[job] = {"pending": True, "started": time.time()}
+
+    def run():
+        try:
+            JOBS[job] = _weave_now(picks, cards, dials, tier)
+        except Exception as exc:  # never leave a job pending forever
+            JOBS[job] = {"ok": False, "error": f"{type(exc).__name__}: {exc}"}
+    threading.Thread(target=run, daemon=True, name=f"weave-{job}").start()
+    return {"ok": True, "pending": True, "job": job, "note": "Weaving. Ask seren_weave_status with this job."}
+
+
+JOBS: dict[str, dict] = {}       # weaves in flight and done, this server's lifetime only
+
+
+@apps.tool(
+    resource_uri=APP_URI,
+    visibility=["app"],
+    name="seren_weave_status",
+    title="Seren: is the book woven yet",
+    description="Whether a weave started by seren_weave has finished, and its book when it has.",
+    annotations=READ,
+)
+def seren_weave_status(job: str) -> dict[str, Any]:
+    out = JOBS.get(job)
+    if out is None:
+        return {"ok": False, "error": "no weave with that job here (the server may have restarted)"}
+    if out.get("pending"):
+        return {"ok": True, "pending": True, "seconds": int(time.time() - out["started"])}
+    return out
+
+
+def _weave_now(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, Any], tier: str) -> dict[str, Any]:
     if picks.get("campaign"):
         for slot, card in published.sealed(str(picks["campaign"])).items():
             cards.setdefault(slot, card)       # sealed cards never reached the app
