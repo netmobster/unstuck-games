@@ -335,6 +335,19 @@ def leaks(book: str, camp: dict) -> list[str]:
     return found
 
 
+# The SRD's own required statement, word for word (SRD 5.2 p.1, Legal Information), and nothing else
+# about Wizards: the SRD asks for no other attribution (27 Nov, Blood and Ink step 1).
+SRD_ATTRIBUTION = ("This work includes material from the System Reference Document 5.2 (“SRD 5.2”) by "
+                   "Wizards of the Coast LLC, available at https://www.dndbeyond.com/srd. The SRD 5.2 is licensed "
+                   "under the Creative Commons Attribution 4.0 International License, available at "
+                   "https://creativecommons.org/licenses/by/4.0/legalcode.")
+
+
+def _with_srd(text: str) -> str:
+    text = (text or "").rstrip()
+    return text if "dndbeyond.com/srd" in text else text + "\n\n---\n\n<small>" + SRD_ATTRIBUTION + "</small>\n"
+
+
 def book(camp: dict, picks: dict, dials: dict, cards: dict, tier: str = "paid") -> dict:
     """The player's book (SEREN docs/weave-from-hand.md 4b), written once the auditor has passed the
     skeleton. Returns {"book": markdown, "spent": cost}. Fake AI keeps the canned one."""
@@ -343,7 +356,7 @@ def book(camp: dict, picks: dict, dials: dict, cards: dict, tier: str = "paid") 
     shelf = next((c for c in published.listing() if c.get("slug") == slug), None) if slug else None
     if mocking():
         import mock_book
-        return {"book": camp.get("briefing") or mock_book.briefing(camp, cards, shelf, slug), "spent": 0.0}
+        return {"book": _with_srd(camp.get("briefing") or mock_book.briefing(camp, cards, shelf, slug)), "spent": 0.0}
     was, llm.MAX_TOKENS = llm.MAX_TOKENS, BOOK_TOKENS
     try:
         ask = ("Write the book from this. It is everything the player may know.\n\n"
@@ -358,7 +371,7 @@ def book(camp: dict, picks: dict, dials: dict, cards: dict, tier: str = "paid") 
     if leaks(text, camp) or player_leaks({}, picks, cards, text):
         # Never hand over a book that names a secret. The skeleton's own premise and opening stand in.
         text = f"# {camp.get('title', '')} — your book\n\n{camp.get('premise', '')}\n\n## Tonight\n\n> {camp.get('opening', '')}\n"
-    return {"book": text, "spent": reply["spent"]}
+    return {"book": _with_srd(text), "spent": reply["spent"]}
 
 
 def mend(campaign: dict, problems: list[str], picks: dict, dials: dict, cards: dict,
