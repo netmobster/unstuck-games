@@ -831,7 +831,7 @@ function ladder(){
 }
 function ldName(){return L.name||'They'}
 function renderLadder(){
-  var j=L.j,c=L.c,rungs=j.rungs,at=L.at,r=rungs[at];
+  var j=L.j,c=L.c,rungs=j.rungs,at=L.at,r=rungs[at],keep=L.shownAt===at?$('vmodal').scrollTop:0;L.shownAt=at;
   ldWide(true);
   var down=j.target<j.from;
   var list='';
@@ -853,6 +853,7 @@ function renderLadder(){
     '<div class="ld-stage"><nav class="ld-ladder" aria-label="Levels">'+list+'</nav><section class="ld-now">'+main+'</section>'+
       '<aside class="ld-sheet">'+ldSheet(at===0?j.start:rungs[at-1].numbers,j,at)+'</aside></div>',true);
   ldWire(r);
+  if(keep)$('vmodal').scrollTop=keep;
 }
 function ldSummary(x){var b=[];if(x.forced&&x.forced.length)b.push('−'+x.forced.length+' out of reach');
   (x.choices||[]).forEach(function(ch){if(ch.kind==='items')b.push('items decided');else if((ch.picked||[]).length)b.push(ch.picked.join(', '))});
@@ -950,10 +951,12 @@ function ldAsk(what){
   var text='At Seren’s table I’m bringing '+ldName()+' ('+j.cls+(j.subclass?', '+j.subclass:'')+', level '+j.from+') into '+L.c.title+' at level '+j.target+
     '. The '+kind+' “'+name+'” isn’t in the rules Seren can check. What should Seren treat it as? When we agree, record it with seren_ruling (character key '+L.key+', kind '+kind+', name “'+name+'”).';
   L.asked=true;
-  if(window.serenAsk){window.serenAsk(text).then(function(){ldToast('Sent to the chat. Talk it over there; the ladder picks up the ruling.')}).catch(function(){ldToast('The chat didn’t take it. Copy the question from here instead.')});ldPoll()}
+  if(window.serenAsk){ldToast('Asked. Approve the message in the chat, talk it over with Claude there, and the ladder picks up the ruling.');
+    window.serenAsk(text).catch(function(){ldToast('The chat didn’t take the question. Ask Claude in the chat instead.')});ldPoll()}
   else ldToast('In Claude, this goes to the chat: “'+text+'”');
 }
-function ldPoll(){var n=0;clearInterval(L.poll);L.poll=setInterval(function(){if(++n>45||$('veil').hidden){clearInterval(L.poll);return}ladder()},4000)}
+function ldPoll(){var n=0;clearInterval(L.poll);L.poll=setInterval(function(){if(++n>45||$('veil').hidden){clearInterval(L.poll);return}
+  api('level',{key:L.key,target:L.target,decisions:L.decisions}).then(function(j){if(j.ok&&(j.rulings||[]).length>L.rulings){clearInterval(L.poll);ladder()}})},4000)}
 function ldToast(t){var e=$('ldToast');if(!e){e=document.createElement('div');e.id='ldToast';e.className='ld-toast';e.setAttribute('role','status');document.body.appendChild(e)}
   e.textContent=t;e.classList.add('on');clearTimeout(e.k);e.k=setTimeout(function(){e.classList.remove('on')},6500)}
 
