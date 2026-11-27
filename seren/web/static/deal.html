@@ -617,7 +617,15 @@ var KICK={pc:'You play · who you are',origin:'Origin · where you came from',co
 var HAND={pc:3,origin:3,companions:4,persona:3};
 var T=null;
 function shuffle(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1));var t=a[i];a[i]=a[j];a[j]=t}return a}
-function slotsOf(c){var s=c.deck.slots;return ROW.filter(function(x){return s[x[0]]})}
+function slotsOf(c){var s=c.deck.slots;
+  // A sealed slot the table has no row for (Quire's dragon, 27 Nov) is still dealt, sealed under wax.
+  var extra=Object.keys(s).filter(function(k){return s[k].mode==='hidden'&&ROW.every(function(x){return x[0]!==k})}).map(function(k){return [k,'Sealed']});
+  return ROW.filter(function(x){return s[x[0]]}).concat(extra)}
+// The same person is never dealt twice in a hand (Quire, 27 Nov): Aurelian can be a companion or her rival,
+// Imrith the charm-seller or her card. Once your hand is laid, her deck drops whoever you already took.
+function herFilter(){var took=T.picks.companions.map(function(p){return p.same_as}).filter(Boolean);
+  if(!took.length)return;var left=T.her.filter(function(h){return !h.same_as||took.indexOf(h.same_as)<0});
+  if(left.length&&left.length!==T.her.length){T.her=left;T.herAt=0}}
 function drawHand(k){var d=T.c.deck.slots[k].deck;return shuffle(d).slice(0,Math.min(HAND[k]||3,d.length))}
 function deal(c){
   var s=c.deck.slots,pile=0;
@@ -746,6 +754,7 @@ function play(k,card){
     if(l.length>=2)l.shift();l.push(card);key='companions'+(l.length-1);
     if(l.length>=2)T.active=nextActive();}
   else{T.picks[k]=card;T.active=nextActive()}
+  if(laid())herFilter();
   rerender(true);smoke(slotEl(key),5);
   if(laid()&&T.her.length&&!T.herUp)setTimeout(function(){smoke($('her'),5)},350);
 }
@@ -770,7 +779,7 @@ function wire(){
   $('playOut').onclick=function(){
     Object.keys(T.hands).forEach(function(k){var h=shuffle(T.hands[k]);
       if(k==='companions')T.picks.companions=h.slice(0,2);else if(!T.picks[k])T.picks[k]=h[0]});
-    T.active=null;T.herUp=!!T.her.length;rerender(false);
+    herFilter();T.active=null;T.herUp=!!T.her.length;rerender(false);
     document.querySelectorAll('.slot .c3').forEach(function(el,i){setTimeout(function(){smoke(el,3)},i*90)});
   };
   $('howAgain').onclick=openHow;
