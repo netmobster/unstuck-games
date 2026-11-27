@@ -330,6 +330,8 @@ who-you-play step plus the ladder in `deal.html`.
   records `seren_ruling`, and the ladder picks the ruling up. Every ruling is written into the build.
 - **The gate is devolve.md section 2:** no build is written until every rung is decided and every
   magic item has a fate. The items step comes once, at the last tier crossed.
-- **A brought character keeps its name.** The auditor's no-one-called-Seren rule (written because the
-  weaver reached for the DM's name) now exempts the player's own brought PC; anything the weaver
-  names itself is still refused. *Why:* Jay's own PC is Ser'en, and the full flow failed on her.
+- **Nobody but the DM is called Seren, brought characters included** (Jay: "Rename her Serenista or
+  something"). The auditor's rule stands as written; the ladder's last rung asks for the character's
+  name at this table, suggests one when it collides (Ser'en becomes Serenista), and the build keeps
+  `known_as` with the D&D Beyond name. *Why:* the full flow failed on Jay's own PC, and the fix is the
+  name, not the rule.

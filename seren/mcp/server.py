@@ -259,11 +259,11 @@ def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, A
     try:
         out = weave.weave(picks, dials, cards, tier=tier)
         camp, spent = out["campaign"], out["spent"]
-        problems = audit.check(camp, (cards.get("pc") or {}).get("name", "") if (cards.get("pc") or {}).get("own") else "") + weave.player_leaks(camp, picks, cards)
+        problems = audit.check(camp) + weave.player_leaks(camp, picks, cards)
         if problems:
             out = weave.mend(camp, problems, picks, dials, cards, tier=tier)
             camp, spent = out["campaign"], spent + out["spent"]
-            problems = audit.check(camp, (cards.get("pc") or {}).get("name", "") if (cards.get("pc") or {}).get("own") else "") + weave.player_leaks(camp, picks, cards)
+            problems = audit.check(camp) + weave.player_leaks(camp, picks, cards)
         if problems:
             return {"ok": False, "error": "the Doorkeeper sent it back", "problems": problems}
         written = weave.book(camp, picks, dials, cards, tier=tier)
@@ -342,8 +342,8 @@ def seren_ruling(key: str, kind: str, name: str = "", to: str = "", why: str = "
                  "(SEREN devolve.md section 2). Returns the card that takes the who-you-play slot."),
     annotations=CREATE,
 )
-def seren_save_build(key: str, target: int, decisions: dict[str, Any], campaign: str = "") -> dict[str, Any]:
-    return bring.save(key, target, decisions, campaign)
+def seren_save_build(key: str, target: int, decisions: dict[str, Any], campaign: str = "", name: str = "") -> dict[str, Any]:
+    return bring.save(key, target, decisions, campaign, name)
 
 
 

@@ -351,7 +351,11 @@ def ladder(sheet: dict, target: int, decisions: dict | None = None, rulings: lis
 
 
 # ── the gate, and the build file ───────────────────────────────────────────────────────────
-def build(sheet: dict, target: int, decisions: dict, rulings: list | None = None, campaign: str = "") -> dict:
+DM_NAME = re.compile(r"\bser'?en\b", re.I)   # the auditor's rule (audit.py): the DM's name is nobody else's
+
+
+def build(sheet: dict, target: int, decisions: dict, rulings: list | None = None, campaign: str = "",
+          table_name: str = "") -> dict:
     """devolve.md section 2: refuse unless every rung is decided and every item has a recorded fate."""
     lad = ladder(sheet, target, decisions, rulings)
     if not lad["ok"]:
@@ -363,12 +367,16 @@ def build(sheet: dict, target: int, decisions: dict, rulings: list | None = None
                 missing += [f"no decision for {o['name']}" for o in c["options"] if o["magic"] and o["picked"] is None]
             elif len(c.get("picked") or []) < c["need"]:
                 missing.append(f"level {r['from']} to {r['to']}: {c['need'] - len(c.get('picked') or [])} {c['kind'].replace('_', ' ')} still to choose")
+    name = (table_name or sheet.get("name") or "").strip()
+    if DM_NAME.search(name):
+        missing.append(f"{name} shares the dungeon master's name. Give them another name at this table")
     if missing:
         return {"ok": False, "refused": missing}
     f, s = lad["final"], apply_rulings(sheet, rulings or [])
+    known_as, s["name"] = s["name"], name
     import datetime
     today = datetime.date.today().isoformat()
-    lines = ["---", f"pc: {slug(s['name'])}", f"master: \"{s.get('source', {}).get('url', 'a D&D Beyond sheet')}\"",
+    lines = ["---", f"pc: {slug(s['name'])}", f"known_as: \"{known_as}\"", f"master: \"{s.get('source', {}).get('url', 'a D&D Beyond sheet')}\"",
              f"level: {target}", f"class: \"{s['cls']} {target}\"", f"subclass: \"{s.get('subclass') or ''}\"",
              f"species: \"{s.get('species', '')}\"", f"campaign: \"{campaign}\"", f"built: {today}",
              f"proficiency_bonus: {f['pb']}", "abilities: {" + ", ".join(f"{k}: {v}" for k, v in s["abilities"].items()) + "}",
@@ -404,7 +412,7 @@ def build(sheet: dict, target: int, decisions: dict, rulings: list | None = None
                 bits.append(c["kind"].replace("_", " ") + ": " + ", ".join(c["picked"]))
         lines.append(f"- **{r['from']} → {r['to']}** " + ("; ".join(bits) or "nothing to choose"))
     card = {"id": "own:" + slug(s["name"]), "name": s["name"], "title": f"{s.get('species', '')} {s['cls']} {target}".strip(),
-            "tagline": f"Brought from D&D Beyond, fitted to level {target}", "level": target, "own": True}
+            "tagline": (f"Brought from D&D Beyond as {known_as}" if known_as != s["name"] else "Brought from D&D Beyond") + f", fitted to level {target}", "level": target, "own": True}
     return {"ok": True, "markdown": "\n".join(lines) + "\n", "card": card, "final": f}
 
 

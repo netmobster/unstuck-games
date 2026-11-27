@@ -83,14 +83,14 @@ def rule(key: str, kind: str, name: str, to: str = "", why: str = "") -> dict[st
     return {"ok": True, "rulings": rs, "note": "The table picks this up on its next look."}
 
 
-def save(key: str, target: int, decisions: dict, campaign: str = "") -> dict[str, Any]:
+def save(key: str, target: int, decisions: dict, campaign: str = "", name: str = "") -> dict[str, Any]:
     s = sheet(key)
     if not s:
         return {"ok": False, "refused": ["that character hasn't been brought to the table yet"]}
-    out = leveller.build(s, target, decisions, rulings(key), campaign)
+    out = leveller.build(s, target, decisions, rulings(key), campaign, name)
     if out["ok"]:
         BUILDS.mkdir(parents=True, exist_ok=True)
-        name = f"{leveller.slug(s['name'])}-{key_of(campaign) or 'table'}-{int(target)}.md"
-        (BUILDS / name).write_text(out["markdown"], encoding="utf-8")
-        out["file"] = name
+        file = f"{leveller.slug(out['card']['name'])}-{key_of(campaign) or 'table'}-{int(target)}.md"
+        (BUILDS / file).write_text(out["markdown"], encoding="utf-8")
+        out["file"] = file
     return out

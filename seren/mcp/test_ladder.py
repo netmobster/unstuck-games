@@ -83,9 +83,12 @@ def main() -> int:
     partial["5"]["items"].pop("Pearl of Power")
     refused = leveller.build(seren, 3, partial, [], "blood-and-ink")
     check(not refused["ok"] and "no decision for Pearl of Power" in refused["refused"], "the gate names an item with no fate")
-    ok = leveller.build(seren, 3, dec, [], "blood-and-ink")
+    clash = leveller.build(seren, 3, dec, [], "blood-and-ink")
+    check(not clash["ok"] and any("dungeon master" in m for m in clash["refused"]), "Ser'en is refused under the DM's name")
+    ok = leveller.build(seren, 3, dec, [], "blood-and-ink", "Serenista")
     check(ok["ok"] and "equipment_pass:" in ok["markdown"] and "Pearl of Power" in ok["markdown"], "a decided ladder writes a build with its equipment pass")
-    check(ok["card"]["name"] == "Ser'en" and ok["card"]["own"], "the build hands back a who-you-play card")
+    check(ok["card"]["name"] == "Serenista" and ok["card"]["own"] and 'known_as: "Ser\'en"' in ok["markdown"],
+          "renamed Serenista at the table, remembered as Ser'en from D&D Beyond")
 
     # Fingolfan, the chat path: Sorcerer 12 to Quire's 5, with the 8 Oct ruling (Wild Magic is not SRD)
     fin = fixture("fingolfan-chat-sheet.json")
