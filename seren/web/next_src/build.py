@@ -1,7 +1,7 @@
 """Builds seren/web/static/next/*.html from the fragments beside this file: one shell, one nav.
    python seren/web/next_src/build.py   ·   preview the way nginx routes it: python seren/web/next_src/serve.py 8812
    The pages are static and public at seren.unstuck-games.com/next/ (infra/nginx/unstuck.conf)."""
-import html, re
+import hashlib, html, re
 from pathlib import Path
 
 SRC = Path(__file__).resolve().parent
@@ -84,7 +84,7 @@ def shell(cur, title, desc, body):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="{FONTS}" rel="stylesheet">
-<link rel="stylesheet" href="/next/next.css">
+<link rel="stylesheet" href="/next/next.css?v={CSS_V}">
 </head>
 <body>
 <a class="skip" href="#main">Skip to the page</a>
@@ -102,15 +102,24 @@ def shell(cur, title, desc, body):
     <span>Rules from SRD 5.2, CC BY 4.0, Wizards of the Coast · Not affiliated with D&amp;D Beyond</span>
   </div>
 </footer>
-<script src="/next/next.js"></script>
+<script src="/next/next.js?v={JS_V}"></script>
 </body>
 </html>
 """
 
 
 # one stylesheet: the old /next's house, verbatim, then what Roads adds on top of it
-(OUT / "next.css").write_text((SRC / "house.css").read_text(encoding="utf-8") + (SRC / "roads.css").read_text(encoding="utf-8"),
-                              encoding="utf-8", newline="\n")
+CSS = (SRC / "house.css").read_text(encoding="utf-8") + (SRC / "roads.css").read_text(encoding="utf-8")
+(OUT / "next.css").write_text(CSS, encoding="utf-8", newline="\n")
+
+# Each page asks for next.css and next.js with a fingerprint of their contents, so a browser holding
+# yesterday's copy fetches the new one the moment either changes (27 Nov: the live flip cards rendered
+# broken for anyone with the old files cached).
+def _v(text):
+    return hashlib.sha256(text.encode("utf-8")).hexdigest()[:10]
+
+CSS_V = _v(CSS)
+JS_V = _v((OUT / "next.js").read_text(encoding="utf-8"))
 
 book = book_html(BOOK.read_text(encoding="utf-8"))
 for f, path, label, title, desc in PAGES:
