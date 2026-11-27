@@ -1,5 +1,19 @@
 # Decisions — Unstuck Games
 
+## 2026-11-27 — the /next session — Five shared characters, not five per campaign
+
+**Who-you-play is five shared characters who can walk into any campaign** (Jay: "Five shared"). This
+replaces 26 Nov's "about five characters per campaign". Why: less to write, and the same five turn up at
+every table, so a player gets to know them. What it changes:
+- **A character's tie to the story comes from the weave, not the card.** The card carries name, class
+  and who they are. The weaver writes why they're at this wake or this table, the way it already does
+  for Serenista. Blood and Ink's five placeholders (Kit Marrow and the rest, all tied to Agnes) give up
+  their ties and are replaced.
+- **They need a build at each starting level.** Blood and Ink starts at 3, Quire and Tallage at 5. The
+  ladder (the one that brought Serenista down from 11) can step a build down from its highest level.
+- **The `pc` slot stays in the deck format**, but it deals from the shared five rather than from a deck
+  each campaign writes. A brought character, like Serenista from D&D Beyond, still replaces them.
+
 ## 2026-11-26 — local Seren session — A published campaign deals hands, not fates
 
 **Every open slot is a hand you choose from, dealt from a deck on the table.** The local `/deal`
