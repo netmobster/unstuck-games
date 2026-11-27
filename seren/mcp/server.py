@@ -158,6 +158,7 @@ window.__mcpReady=new Promise(function(r){window.__mcpResolve=r});
       var n=0;return new Promise(function(done){(function ask(){
         if(++n>120)return done({ok:false,j:{error:'The weave took longer than eight minutes. Try again.'}});
         setTimeout(function(){call('seren_weave_status',{job:j.job}).then(function(s){
+          if(window.serenWeaveProgress)window.serenWeaveProgress(s);
           if(s.pending)return ask();done({ok:!!s.ok,j:s})}).catch(function(){ask()})},4000)})()});
     });
   };
@@ -273,13 +274,24 @@ def seren_weave(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, A
     if weave.mocking():
         return _weave_now(picks, cards, dials, tier)
     job = secrets.token_hex(6)
-    JOBS[job] = {"pending": True, "started": time.time()}
+    JOBS[job] = {"pending": True, "started": time.time(), "log": []}
+
+    def note(say: str) -> None:
+        # Where the weave is, for the table's live log and this window (Jay, 27 Nov: "so we know where
+        # things are hanging"). Each line carries the seconds since the weave began.
+        t = int(time.time() - JOBS[job]["started"])
+        JOBS[job]["log"].append({"t": t, "say": say})
+        print(f"  [weave {job}] {t // 60}:{t % 60:02d}  {say}", flush=True)
 
     def run():
+        started, log = JOBS[job]["started"], JOBS[job]["log"]
         try:
-            JOBS[job] = _weave_now(picks, cards, dials, tier)
+            out = _weave_now(picks, cards, dials, tier, note)
         except Exception as exc:  # never leave a job pending forever
-            JOBS[job] = {"ok": False, "error": f"{type(exc).__name__}: {exc}"}
+            out = {"ok": False, "error": f"{type(exc).__name__}: {exc}"}
+        note("Done." if out.get("ok") else "Stopped: " + str(out.get("error")))
+        out["log"], out["seconds"] = log, int(time.time() - started)
+        JOBS[job] = out
     threading.Thread(target=run, daemon=True, name=f"weave-{job}").start()
     return {"ok": True, "pending": True, "job": job, "note": "Weaving. Ask seren_weave_status with this job."}
 
@@ -300,11 +312,12 @@ def seren_weave_status(job: str) -> dict[str, Any]:
     if out is None:
         return {"ok": False, "error": "no weave with that job here (the server may have restarted)"}
     if out.get("pending"):
-        return {"ok": True, "pending": True, "seconds": int(time.time() - out["started"])}
+        return {"ok": True, "pending": True, "seconds": int(time.time() - out["started"]), "log": out["log"]}
     return out
 
 
-def _weave_now(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, Any], tier: str) -> dict[str, Any]:
+def _weave_now(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, Any], tier: str,
+               note=lambda say: None) -> dict[str, Any]:
     if picks.get("campaign"):
         for slot, card in published.sealed(str(picks["campaign"])).items():
             cards.setdefault(slot, card)       # sealed cards never reached the app
@@ -313,17 +326,23 @@ def _weave_now(picks: dict[str, Any], cards: dict[str, Any], dials: dict[str, An
     if not llm.ready():
         return {"ok": False, "error": "the weaver is not connected (no Bedrock)"}
     try:
+        note("She weaves your hand into one story" + ("" if weave.mocking() else " (Claude Opus, the longest step)"))
         out = weave.weave(picks, dials, cards, tier=tier)
         camp, spent = out["campaign"], out["spent"]
+        note("The Doorkeeper reads it")
         problems = audit.check(camp) + weave.player_leaks(camp, picks, cards)
         if problems:
+            note(f"The Doorkeeper sent back {len(problems)} thing{'s' if len(problems) != 1 else ''}; she mends it")
             out = weave.mend(camp, problems, picks, dials, cards, tier=tier)
             camp, spent = out["campaign"], spent + out["spent"]
+            note("The Doorkeeper reads the mend")
             problems = audit.check(camp) + weave.player_leaks(camp, picks, cards)
         if problems:
             return {"ok": False, "error": "the Doorkeeper sent it back", "problems": problems}
+        note("It passed. She writes your book")
         written = weave.book(camp, picks, dials, cards, tier=tier)
         camp["briefing"], spent = written["book"], spent + written["spent"]
+        note("Binding it and saving your copy")
     except llm.CapReached as exc:
         return {"ok": False, "error": str(exc)}
     except Exception as exc:  # the app shows it; the server keeps running
